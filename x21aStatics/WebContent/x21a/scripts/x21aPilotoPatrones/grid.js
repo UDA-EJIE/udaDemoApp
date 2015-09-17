@@ -1,67 +1,24 @@
 jQuery(document).ready(function () {
 	$("#grid_usuarios").rup_grid({
-		url:"../patrones/usuarios",
-		colNames: [
-			"id",
-			"nombre",
-			"apellido1",
-			"apellido2",
-			"ejie",
-			"fechaAlta",
-			"fechaBaja"
-		],
+		url:"../patrones/usuario",
+		width: 650,
+		pagerName:"pager",
+		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja" ],
 		colModel: [
-			{ name: "id",
-				label: "id",
-				index: "id",
-				width: "150",
-				sortable: true
-			},
-			{ name: "nombre",
-				label: "nombre",
-				index: "nombre",
-				width: "150",
-				sortable: true
-			},
-			{ name: "apellido1",
-				label: "apellido1",
-				index: "apellido1",
-				width: "150",
-				sortable: true
-			},
-			{ name: "apellido2",
-				label: "apellido2",
-				index: "apellido2",
-				width: "150",
-				sortable: true
-			},
-			{ name: "ejie",
-				label: "ejie",
-				index: "ejie",
-				width: "150",
-				sortable: true,
+			{ name: "id", index: "id" },
+			{ name: "nombre", index: "nombre" },
+			{ name: "apellido1", index: "apellido1" },
+			{ name: "apellido2", index: "apellido2" },
+			{ name: "ejie", index: "ejie",
 				editoptions: {
 					defaultValue:"0",
 					value:{"1":"Sí","0":"No"}
 				},
 				formatter:"select"
 			},
-			{ name: "fechaAlta",
-				label: "fechaAlta",
-				index: "fechaAlta",
-				width: "150",
-				sortable: true
-			},
-			{ name: "fechaBaja",
-				label: "fechaBaja",
-				index: "fechaBaja",
-				width: "150",
-				sortable: true
-			}
-	    ],
-		width: 600,
-		pagerName:"pager",
-		sortable: true
+			{ name: "fechaAlta", index: "fechaAlta" },
+			{ name: "fechaBaja", index: "fechaBaja"	}
+	    ]
 	});
 	
 	$("#btnInsertar").bind("click", function () {

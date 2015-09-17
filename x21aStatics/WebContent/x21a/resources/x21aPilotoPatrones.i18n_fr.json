@@ -3,6 +3,7 @@
 		"inicio" : "Inicio_fr",
 		"mantenimientos" : "x21aMantenimientosWar_fr",
 		"patrones" : "Patrones_fr",
+			"all" : "[Todos los patrones_fr]",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"combo" : "Combo_fr",
@@ -22,13 +23,14 @@
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
 		"experimental": "Experimental_fr",
-			"maestro_detalle": "Maestro-Detalle_fr",
-			"generic_object": "Objeto genérico_fr"
+			"generic_object": "Objeto genérico_fr",
+			"maestro_detalle": "Maestro-Detalle_fr"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio_fr",
 		"mantenimientos" : "x21aMantenimientosWar_fr",
 		"patrones" : "Patrones_fr",
+			"all" : "[Todos los patrones_fr]",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"combo" : "Combo_fr",
@@ -48,11 +50,12 @@
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
 		"experimental": "Experimental_fr",
-			"maestro_detalle": "Maestro-Detalle_fr",
-			"generic_object": "Objeto genérico_fr"
+			"generic_object": "Objeto genérico_fr",
+			"maestro_detalle": "Maestro-Detalle_fr"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones_fr",
+			"all" : "[Todos los patrones_fr]",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"comboSimple" : "Combo Simple_fr",
@@ -69,9 +72,9 @@
 			"tabs" : "Pestañas_fr",
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
-			"experimental": "Experimental_fr",
-			"maestro_detalle": "Maestro-Detalle_fr",
-			"generic_object": "Objeto genérico_fr"
+		"experimental": "Experimental_fr",
+			"generic_object": "Objeto genérico_fr",
+			"maestro_detalle": "Maestro-Detalle_fr"
 	},
 	
 "_comment":"PATRONES",	
@@ -127,7 +130,7 @@
 			"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
 			"mad_doe":"Mad Doe Kiiid - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)"
 		},
-	"_coment":"COMBO_ENLAZADO",
+	"_coment":"COMBO_frLAZADO",
 		"comboAbuelo":{
 			"_blank":"[Selecciona Abuelo_fr]",
 			"a":"Álava_fr",
@@ -168,7 +171,7 @@
 			"b":"Vizcaya_fr",
 			"g":"Gipúzcoa_fr"
 		},
-	"_coment":"COMBO_ENLAZADO_MULTIPLE",
+	"_coment":"COMBO_frLAZADO_MULTIPLE",
 		"departamentoRemote": {
 			"_blank":"[Selecciona Dpto._fr]"
 		},
@@ -203,6 +206,14 @@
 		"sub11" 	: "sub11_fr",
 		"pestana2" 	: "Tab 2_fr"
 	},
+	"tabsDialog" : {
+		"pestana0" 	: "Tab 0_fr",
+		"sub01" 	: "sub01_fr",
+		"sub02" 	: "sub02_fr",
+		"pestana1"  : "Tab 1_fr",
+		"sub10" 	: "sub10_fr",
+		"sub11" 	: "sub11_fr"
+	},
 	"toolbar" : {
 		"buscar"  	: "Buscar_fr",
 		"otros"	  	: "Otros botones_fr",
@@ -224,5 +235,13 @@
 		"TXT"		: "TXT",
 		"XLS"		: "XLS",
 		"ZIP"		: "ZIP"
+	},
+	"grid##ejie" : {
+		"0" : "Non",
+		"1" : "Oui"
+	},
+	"gridDialog##ejie" : {
+		"0" : "Non",
+		"1" : "Oui"
 	}
 }

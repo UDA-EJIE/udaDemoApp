@@ -1,11 +1,11 @@
-jQuery(function($){
+﻿jQuery(function($){
 	
 	$("#GRID_comarca").rup_grid({
 		hasMaint: true,
 		width: "600",
 		url: "../experimental/comarca",
 		pagerName: "pager_comarca",
-		rowNum: "3",
+		rowNum: "10",
 		sortorder: "asc",
 		sortname: "code",
 		colNames: [
@@ -55,12 +55,11 @@ jQuery(function($){
 	});
 
 	$("#GRID_localidad").rup_grid({
-		
 		hasMaint: true,
 		width: "600",
 		url: "../experimental/localidad",
 		pagerName: "pager_localidad",
-		rowNum: "3",
+		rowNum: "10",
 		sortorder: "asc",
 		sortname: "code",
 		colNames: [
@@ -110,7 +109,7 @@ jQuery(function($){
 		
 	});
 	
-	$("#EJIE_MAINT_comarca").rup_maint({
+	$("#comarca").rup_maint({
 		jQueryGrid: "GRID_comarca",
 		primaryKey: "code",
 		modelObject: "Comarca",
@@ -119,14 +118,14 @@ jQuery(function($){
 		showMessages: true
 	});
 
-	$("#EJIE_MAINT_localidad").rup_maint({
+	$("#localidad").rup_maint({
 		jQueryGrid: "GRID_localidad",
-		primaryKey: "code;codeComarca",
+		primaryKey: "code;comarca.codeComarca",
 		modelObject: "Localidad",
 		detailButtons: $.rup.maint.detailButtons.SAVE,
-		searchForm: "searchForm",
+		searchForm: "searchFormDetalle",
 		showMessages: true,
-		parent:"EJIE_MAINT_comarca"
+		parent:"comarca"
 	});
 	
 });

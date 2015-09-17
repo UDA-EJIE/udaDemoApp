@@ -1,0 +1,19 @@
+rup.alert.24.png 	(24x24) => http://www.iconfinder.com/icondetails/34248/24/alert_question_mark_warning_icon
+rup.alert.png 	(16x16) =>http://www.iconfinder.com/icondetails/34248/16/alert_question_mark_warning_icon
+rup.confirm.24.png	(24x24) => http://www.iconfinder.com/icondetails/27853/24/help_question_support_icon
+rup.confirm.png	(16x16) => http://www.iconfinder.com/icondetails/27853/16/help_question_support_icon
+rup.error.24.png 	(24x24) => http://www.iconfinder.com/icondetails/23207/24/cross_dialog_error_icon
+rup.error.png 	(16x16) => http://www.iconfinder.com/icondetails/23207/16/cross_dialog_error_icon
+rup.ok.24.png 		(24x24) => http://www.iconfinder.com/icondetails/27837/24/accept_check_confirmed_green_ok_positiv_yes_icon
+rup.ok.png 		(16x16) => http://www.iconfinder.com/icondetails/27837/16/accept_check_confirmed_green_ok_positiv_yes_icon
+
+rup.close.png [16x16] => Obtenidos de RIA (t29a)
+rup.close_hover.png [16x16] => Obtenidos de RIA (t29a)
+
+Otros:
+******
+Icono de espera añadido pero falta url o buscar nuevo (rup.ajaxLoader.gif)
+Exclamation.png
+numero_elementos.png
+carpeta files (son imagenes de ficheros en formato gif) => pasarlos a png
+carpeta toolbar (16x16) aunque en css se definen como (18x18)

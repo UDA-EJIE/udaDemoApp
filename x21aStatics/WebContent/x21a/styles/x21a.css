@@ -11,7 +11,7 @@ div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset
 a img,:link img,:visited img,form,fieldset {border:none}
 
 /* Hx */
-h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc; height:1%;}
+h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
 h2 { font-size:1.8em; color:#000000; display:block; margin:1.5em 0 0 0; padding:0; }
 h3 { font-size:1.4em; color:#555555; display:block; margin:1.5em 0 0.5em 0; padding:0; }
 
@@ -30,6 +30,7 @@ input.disabled { background-color: #D3D3D3; }
 }
 .cabecera {
 	margin-bottom: 2em;
+	width: 100%;
 }
 .menu {
 	margin-top: 1em; 
@@ -42,6 +43,7 @@ input.disabled { background-color: #D3D3D3; }
 	font-size:0.9em;
 	margin:2em 0 0;
 	padding:0.7em;
+	padding-bottom: 0em;
 }
 .footer a {
 	color:#000;
@@ -77,6 +79,7 @@ input.disabled { background-color: #D3D3D3; }
 .formulario_linea_izda_float { 
 	margin-top: 1em;
 	margin-left: 2em;
+	margin-right: 2em;
 	float:left;
 }
 .formulario_linea_label { 

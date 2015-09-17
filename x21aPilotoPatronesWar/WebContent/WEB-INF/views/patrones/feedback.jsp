@@ -61,7 +61,7 @@ Texto post capa<br/>
 </table>
 				
 <input id="boton_create" type="button" value="_Create" />
-<input id="boton_destroy" type="button" value="Destroy disabled" />
+<input id="boton_destroy" type="button" value="Destroy" disabled="disabled" />
 <input id="boton_set" type="button" value="Set" />
 <input id="boton_setOptions" type="button" value="Set_options" />
 <input id="boton_setType" type="button" value="Set_type" />

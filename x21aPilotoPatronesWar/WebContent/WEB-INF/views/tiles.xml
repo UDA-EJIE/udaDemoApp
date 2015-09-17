@@ -71,6 +71,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/patrones/dialog.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/dialog-includes.jsp"/>					
 	</definition>
+	<definition name="dialogAjax" template="/WEB-INF/views/patrones/dialogAjax.jsp"/>
 	
 	<definition name="combo" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/combo/combo.jsp"/>		
@@ -133,14 +134,20 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/tooltip-includes.jsp"/>					
 	</definition>
 	
-	<!-- Experimental -->
-	<definition name="maestro_detalle" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp"/>					
+	<definition name="all" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/all.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/all-includes.jsp"/>					
 	</definition>
+	<definition name="allDialog" template="/WEB-INF/views/patrones/allDialog.jsp"/>		
+	
+	<!-- Experimental -->
 	<definition name="generic_object" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/experimental/generic_object.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/experimental/generic_object-includes.jsp"/>
+	</definition>
+	<definition name="maestro_detalle" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp"/>					
 	</definition>
 	
 </tiles-definitions>

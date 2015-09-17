@@ -9,11 +9,14 @@ import java.util.Locale;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,6 +78,13 @@ public class PatronesController {
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
 		return new ModelAndView("dialog", "model", model);
 	}
+	//Dialog (petición Ajax)
+	@RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
+	public ModelAndView dialogJSP(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("dialogAjax", "model", model);
+	}	
 
 	//Combos
 	@RequestMapping(value = "comboSimple", method = RequestMethod.GET)
@@ -174,6 +184,19 @@ public class PatronesController {
 		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
 		return new ModelAndView("tooltip", "model", model);
+	}
+	
+	//All (todos los patrones en una página)
+	@RequestMapping(value = "all", method = RequestMethod.GET)
+	public ModelAndView getAll(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("all", "model", model);
+	}
+	//AllDialog (todos los patrones en un dialogo)
+	@RequestMapping(value = "allDialog", method = RequestMethod.GET)
+	public ModelAndView getAllDialog(Model model) {
+		return new ModelAndView("allDialog", "model", model);
 	}
 	
 	/**
@@ -354,7 +377,6 @@ public class PatronesController {
 			return departamentoProvinciaService.findAll(departamentoProvincia, null);
 		}
 		
-		
 	/**
 	 * TABS -> Contenidos
 	 */
@@ -382,7 +404,7 @@ public class PatronesController {
 	/**
 	 * GRID (Usuarios)
 	 */
-		@RequestMapping(value = "usuarios", method = RequestMethod.GET)
+		@RequestMapping(value = "usuario", method = RequestMethod.GET)
 		public @ResponseBody Object getAll(
 			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "nombre", required = false) String nombre,
@@ -425,7 +447,7 @@ public class PatronesController {
 				    throw new ResourceNotFoundException("No data Found.");
 				}
 		}
-		@RequestMapping(value = "usuarios/count", method = RequestMethod.GET)
+		@RequestMapping(value = "usuario/count", method = RequestMethod.GET)
 		public @ResponseBody Long getAllCount(
 				@RequestParam(value = "usuario", required = false) Usuario  filterUsuario, HttpServletRequest request) {
 		    try {
@@ -434,4 +456,59 @@ public class PatronesController {
 				throw new ServiceUnavailableException("Count Service is not responding.");
 			}
 		}
+		
+	/**
+	 * MAINT (Usuarios) [all.jsp]
+	 */
+		@RequestMapping(value = "usuario/{id}", method = RequestMethod.GET)
+		public @ResponseBody Usuario getById(@PathVariable String id) {
+			try{
+	            Usuario usuario = new Usuario();
+				usuario.setId(id);
+	            usuario = this.usuarioService.find(usuario);
+	            if (usuario == null) {
+	                throw new Exception(id.toString());
+	            }
+	            return usuario;
+			}catch (Exception e){
+			    throw new ResourceNotFoundException(id.toString());
+			}
+		}
+		@RequestMapping(value = "usuario", method = RequestMethod.PUT)
+	    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response) {		
+			try {
+	            Usuario usuarioAux  = this.usuarioService.update(usuario);
+	            return usuarioAux;
+	        } catch(Exception e) {
+	            throw new MethodFailureException("Method failed");
+	        }
+	    }
+		@RequestMapping(value = "usuario", method = RequestMethod.POST)
+		public @ResponseBody Usuario add(@RequestBody Usuario usuario) {		
+	        try {
+	            Usuario usuarioAux = this.usuarioService.add(usuario);
+	        	return usuarioAux;
+			} catch(Exception e) {
+	        	throw new MethodFailureException("Method failed");
+			}
+		}
+		@RequestMapping(value = "usuario/{id}", method = RequestMethod.DELETE)
+	    public void remove(
+					@PathVariable String id,
+						HttpServletResponse  response) {
+	        response.setContentType("text/javascript;charset=utf-8");
+	        response.setHeader("Pragma", "cache");
+	        response.setHeader("Expires", "0");
+	        response.setHeader("Cache-Control", "private");
+	    	try{
+	            Usuario usuario = new Usuario();
+	            usuario.setId(id);
+	            this.usuarioService.remove(usuario);
+	            response.setStatus(HttpServletResponse.SC_OK);
+	    	} catch(Exception e) {
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+	    		throw new MethodFailureException("Method failed");
+	    	}
+	    }
+		
 }

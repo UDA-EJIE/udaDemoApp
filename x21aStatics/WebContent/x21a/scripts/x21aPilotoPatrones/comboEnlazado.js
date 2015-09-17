@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 		}
 	});
 	
+	
 	//REMOTO
 	$('#comboAbueloRemoto').rup_combo({
 		source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
@@ -52,8 +53,10 @@ jQuery(document).ready(function(){
 		parent: [ "comboPadreRemoto" ],
 		source : "comboEnlazadoSimple/remoteEnlazadoLocalidad",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
-	})
+	});
 
+	
+	
 	//MIXTO I
 	$('#mixto_comboAbueloRemoto').rup_combo({
 		source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
@@ -74,6 +77,8 @@ jQuery(document).ready(function(){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
 	});
 
+	
+	
 	//MIXTO II
 	$('#mixto2_comboAbuelo').rup_combo({
 		source: [
@@ -95,5 +100,5 @@ jQuery(document).ready(function(){
 				 "8":["Leioa","Las Arenas","Getxo"],
 				 "9":["Sestao","Barakaldo","Portu"]
 		}
-	})
+	});
 });

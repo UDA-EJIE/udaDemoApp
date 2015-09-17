@@ -4,7 +4,7 @@ xmlns:util="http://www.springframework.org/schema/util"
 xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 <!-- Especificar un valor entre 0 (no cacheo - peticiones continuas) y 600 segundos -->
 <!--    <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">-->
-<!--            <property name="xlnetCachingPeriod" value="2" />-->
+<!--            <property name="xlnetCachingPeriod" value="120" />-->
 <!--    </bean>-->
     <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperMockImpl">
         <property name="principal" value="USER_UDA" />

@@ -7,6 +7,9 @@ jQuery(document).ready(function(){
 		mixto = true;
 	}
 	
+	//ThemeRoller
+	$('#themeroller').click($.rup.themeRoller);
+	
 	//rastro de migas
 	$("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
 		breadCrumb: {
@@ -14,6 +17,7 @@ jQuery(document).ready(function(){
 				//Literal
 				"i18nCaption" : "patrones",
 				//Elementos (url)
+				"all" : { "i18nCaption" : "all" },
 				"autocomplete" : { "i18nCaption" : "autocomplete" }, 
 				"toolbar" : { "i18nCaption" : "toolbar" },
 				"comboSimple" : {"i18nCaption":"comboSimple" },
@@ -32,6 +36,7 @@ jQuery(document).ready(function(){
 				"tooltip" : { "i18nCaption" : "tooltip" },
 				//Submenu
 				"subLevel":[
+				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
 				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
                     {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
                   	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple" },
@@ -54,8 +59,13 @@ jQuery(document).ready(function(){
 				//Literal
 				"i18nCaption" : "experimental",
 				//Elementos (url)
-				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" }, 
-				"generic_object" : { "i18nCaption" : "generic_object" }
+				"generic_object" : { "i18nCaption" : "generic_object" },
+				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" },
+				//Submenu
+				"subLevel":[
+				 	{"i18nCaption":"generic_object", "url": "/x21aPilotoPatronesWar/experimental/generic_object" },
+					{"i18nCaption":"maestro_detalle", "url": "/x21aPilotoPatronesWar/experimental/maestro_detalle" }
+				]
 			}
 		}
 	});
@@ -68,6 +78,7 @@ jQuery(document).ready(function(){
 		       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
 				{"i18nCaption":"inicio", "url": "" },
 				{"i18nCaption":"patrones", "submenu":[
+				    {"i18nCaption":"all", "url": "patrones/all" },  
 				    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
                     {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
                     {"i18nCaption":"combo", "submenu":[
@@ -90,8 +101,8 @@ jQuery(document).ready(function(){
 					{"i18nCaption":"tooltip", "url": "patrones/tooltip" }
 				]},
 				{"i18nCaption":"experimental", "submenu":[
-				    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
 				    {"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
+				    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" }
 				]}
 		]
 	});
@@ -103,6 +114,7 @@ jQuery(document).ready(function(){
 			       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
 					{"i18nCaption":"inicio", "url": "" },
 					{"i18nCaption":"patrones", "submenu":[
+					    {"i18nCaption":"all", "url": "patrones/all" },                             
 					    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
 	                    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
 	                    {"i18nCaption":"combo", "submenu":[
@@ -125,8 +137,8 @@ jQuery(document).ready(function(){
 						{"i18nCaption":"tooltip", "url": "patrones/tooltip" }
 					]},
 					{"i18nCaption":"experimental", "submenu":[
-					    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
-					    {"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
+						{"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
+						{"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" }                            
 					]}
 			]
 		});

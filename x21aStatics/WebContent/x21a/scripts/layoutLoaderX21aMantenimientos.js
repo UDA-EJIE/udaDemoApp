@@ -7,8 +7,8 @@ jQuery(document).ready(function(){
 		mixto = true;
 	}
 
-	
-//NOTA: Adaptado a la aplicación
+	//ThemeRoller
+	$('#themeroller').click($.rup.themeRoller);
 	
 	//rastro de migas
 	$("#x21aMantenimientosWar_migas").rup_breadCrumb({

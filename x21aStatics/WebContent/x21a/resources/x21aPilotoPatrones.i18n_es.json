@@ -3,6 +3,7 @@
 		"inicio" : "Inicio",
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Patrones",
+			"all" : "[Todos los patrones]",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"combo" : "Combo",
@@ -22,13 +23,14 @@
 			"grid" : "Tabla",
 			"tooltip" :  "Tooltip",
 		"experimental": "Experimental",
-			"maestro_detalle": "Maestro-Detalle",
-			"generic_object": "Objeto genérico"
+			"generic_object": "Objeto genérico",
+			"maestro_detalle": "Maestro-Detalle"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio",
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Patrones",
+			"all" : "[Todos los patrones]",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"combo" : "Combo",
@@ -48,11 +50,12 @@
 			"grid" : "Tabla",
 			"tooltip" :  "Tooltip",
 		"experimental": "Experimental",
-			"maestro_detalle": "Maestro-Detalle",
-			"generic_object": "Objeto genérico"
+			"generic_object": "Objeto genérico",
+			"maestro_detalle": "Maestro-Detalle"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones",
+			"all" : "[Todos los patrones]",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"comboSimple" : "Combo Simple",
@@ -69,9 +72,9 @@
 			"tabs" : "Pestañas",
 			"grid" : "Tabla",
 			"tooltip" :  "Tooltip",
-			"experimental": "Experimental",
-			"maestro_detalle": "Maestro-Detalle",
-			"generic_object": "Objeto genérico"
+		"experimental": "Experimental",
+			"generic_object": "Objeto genérico",
+			"maestro_detalle": "Maestro-Detalle"
 	},
 	
 "_comment":"PATRONES",	
@@ -203,6 +206,14 @@
 		"sub11" 	: "sub11",
 		"pestana2" 	: "Tab 2"
 	},
+	"tabsDialog" : {
+		"pestana0" 	: "Tab 0",
+		"sub01" 	: "sub01",
+		"sub02" 	: "sub02",
+		"pestana1"  : "Tab 1",
+		"sub10" 	: "sub10",
+		"sub11" 	: "sub11"
+	},
 	"toolbar" : {
 		"buscar"  	: "Buscar",
 		"otros"	  	: "Otros botones",
@@ -224,5 +235,13 @@
 		"TXT"		: "TXT",
 		"XLS"		: "XLS",
 		"ZIP"		: "ZIP"
+	},
+	"grid##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
+	},
+	"gridDialog##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
 	}
 }

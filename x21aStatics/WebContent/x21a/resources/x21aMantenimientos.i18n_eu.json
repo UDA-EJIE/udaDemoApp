@@ -10,5 +10,17 @@
 		"simple"	: "Selección simple_eu",
 		"multi"		: "Multiselección_eu",
 		"edlinea"	: "Edición en línea_eu"	
+	},
+	"GRID_simple##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"GRID_multi##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"GRID_edlinea##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
 	}
 }

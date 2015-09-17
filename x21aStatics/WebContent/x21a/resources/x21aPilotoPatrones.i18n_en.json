@@ -3,6 +3,7 @@
 		"inicio" : "Inicio_en",
 		"mantenimientos" : "x21aMantenimientosWar_en",
 		"patrones" : "Patrones_en",
+			"all" : "[Todos los patrones_en]",
 			"autocomplete" : "Autocomplete_en",
 			"toolbar" : "Botonera_en",
 			"combo" : "Combo_en",
@@ -22,13 +23,14 @@
 			"grid" : "Tabla_en",
 			"tooltip" :  "Tooltip_en",
 		"experimental": "Experimental_en",
-			"maestro_detalle": "Maestro-Detalle_en",
-			"generic_object": "Objeto genérico_en"
+			"generic_object": "Objeto genérico_en",
+			"maestro_detalle": "Maestro-Detalle_en"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio_en",
 		"mantenimientos" : "x21aMantenimientosWar_en",
 		"patrones" : "Patrones_en",
+			"all" : "[Todos los patrones_en]",
 			"autocomplete" : "Autocomplete_en",
 			"toolbar" : "Botonera_en",
 			"combo" : "Combo_en",
@@ -48,11 +50,12 @@
 			"grid" : "Tabla_en",
 			"tooltip" :  "Tooltip_en",
 		"experimental": "Experimental_en",
-			"maestro_detalle": "Maestro-Detalle_en",
-			"generic_object": "Objeto genérico_en"
+			"generic_object": "Objeto genérico_en",
+			"maestro_detalle": "Maestro-Detalle_en"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones_en",
+			"all" : "[Todos los patrones_en]",
 			"autocomplete" : "Autocomplete_en",
 			"toolbar" : "Botonera_en",
 			"comboSimple" : "Combo Simple_en",
@@ -69,9 +72,9 @@
 			"tabs" : "Pestañas_en",
 			"grid" : "Tabla_en",
 			"tooltip" :  "Tooltip_en",
-			"experimental": "Experimental_en",
-			"maestro_detalle": "Maestro-Detalle_en",
-			"generic_object": "Objeto genérico_en"
+		"experimental": "Experimental_en",
+			"generic_object": "Objeto genérico_en",
+			"maestro_detalle": "Maestro-Detalle_en"
 	},
 	
 "_comment":"PATRONES",	
@@ -203,6 +206,14 @@
 		"sub11" 	: "sub11_en",
 		"pestana2" 	: "Tab 2_en"
 	},
+	"tabsDialog" : {
+		"pestana0" 	: "Tab 0_en",
+		"sub01" 	: "sub01_en",
+		"sub02" 	: "sub02_en",
+		"pestana1"  : "Tab 1_en",
+		"sub10" 	: "sub10_en",
+		"sub11" 	: "sub11_en"
+	},
 	"toolbar" : {
 		"buscar"  	: "Buscar_en",
 		"otros"	  	: "Otros botones_en",
@@ -224,5 +235,13 @@
 		"TXT"		: "TXT",
 		"XLS"		: "XLS",
 		"ZIP"		: "ZIP"
+	},
+	"grid##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
+	},
+	"gridDialog##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
 	}
 }

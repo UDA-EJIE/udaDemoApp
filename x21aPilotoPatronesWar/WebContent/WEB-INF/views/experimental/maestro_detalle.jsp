@@ -1,9 +1,9 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+﻿<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
 <h1>Maestro-Detalle</h1>
 <div id="error" style="display:none"></div>
 
 <h2>Comarca</h2>
-<div id="EJIE_MAINT_comarca">
+<div id="comarca">
 	<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
 		<form id="searchForm">
 			<div  class="formulario_legend" id="titleSearch_comarca"><spring:message code="searchCriteria" />:</div>
@@ -41,15 +41,12 @@
 		<!-- Barra de paginación -->
 		<div id="pager_comarca" style="text-align:center;"></div>
 	</div>
-
-	<div id="detailBody_comarca" style="padding-top: 0.6em;display:none;">
-	</div>
 </div>
 
 <h2>Localidad</h2>
-<div id="EJIE_MAINT_localidad">
+<div id="localidad">
 	<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
-		<form id="searchForm">
+		<form id="searchFormDetalle">
 			<div  class="formulario_legend" id="titleSearch_localidad"><spring:message code="searchCriteria" />:</div>
 			<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_localidad">
 				<div class="formulario_columna_cnt">
@@ -86,6 +83,4 @@
 		<div id="pager_localidad" style="text-align:center;"></div>
 	</div>
 
-	<div id="detailBody_localidad" style="padding-top: 0.6em;display:none;">
-	</div>
 </div>

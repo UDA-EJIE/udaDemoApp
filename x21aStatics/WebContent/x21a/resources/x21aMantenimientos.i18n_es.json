@@ -10,5 +10,17 @@
 		"simple"	: "Selección simple",
 		"multi"		: "Multiselección",
 		"edlinea"	: "Edición en línea"	
+	},
+	"GRID_simple##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
+	},
+	"GRID_multi##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
+	},
+	"GRID_edlinea##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
 	}
 }

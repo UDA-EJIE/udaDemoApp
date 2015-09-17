@@ -9,6 +9,18 @@
 	"x21aMantenimientosWar_migas" :{
 		"simple"	: "Selección simple_en",
 		"multi"		: "Multiselección_en",
-		"edlinea"	: "Edición en línea_en",
+		"edlinea"	: "Edición en línea_en"
+	},
+	"GRID_simple##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
+	},
+	"GRID_multi##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
+	},
+	"GRID_edlinea##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
 	}
 }
