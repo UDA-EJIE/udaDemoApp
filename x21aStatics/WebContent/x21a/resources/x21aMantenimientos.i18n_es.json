@@ -1,0 +1,14 @@
+{
+	"x21aMantenimientosWar_menu" : {
+		"inicio"	: "Inicio",
+		"patrones" 	: "x21aPilotoPatronesWar", 
+		"simple"	: "Selección simple",
+		"multi"		: "Multiselección",
+		"edlinea"	: "Edición en línea"
+	},
+	"x21aMantenimientosWar_migas" :{
+		"simple"	: "Selección simple",
+		"multi"		: "Multiselección",
+		"edlinea"	: "Edición en línea"	
+	}
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="x21aEAR">
+        <wb-resource deploy-path="/" source-path="/EarContent"/>
+        <dependent-module deploy-path="/" handle="module:/resource/x21aMantenimientosWar/x21aMantenimientosWar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/lib" handle="module:/resource/x21aEARClasses/x21aEARClasses">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="x21aPilotoPatronesWar.war" deploy-path="/" handle="module:/resource/x21aPilotoPatronesWar/x21aPilotoPatronesWar">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

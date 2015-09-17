@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+  	<!-- ****************************** -->
+  	<!--          PLANTILLAS            -->
+  	<!-- ****************************** -->
+	<definition name="template" template="/WEB-INF/layouts/template.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp"/>
+		
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+		<put-attribute name="includes" value=""/>				
+	</definition>
+	
+	<definition name="errorTemplate" template="/WEB-INF/layouts/errorTemplate.jsp"/>
+	
+	<!-- ***************************** -->
+  	<!--          PANTALLAS            -->
+  	<!-- ***************************** -->
+	<definition extends="errorTemplate" name="error">
+		<put-attribute name="content" value="/WEB-INF/views/error.jsp"/>	
+	</definition>
+	<definition extends="errorTemplate" name="accessDenied">
+		<put-attribute name="content" value="/WEB-INF/views/accessDenied.jsp"/>
+	</definition>	
+	
+	<!-- cambio de la pagina de inicio (welcome) -->
+	<!-- definition name="welcome" template="/WEB-INF/views/welcome.jsp"/>-->
+	<definition name="welcome" extends="template" >
+        <put-attribute name="content" value="/WEB-INF/views/welcome.jsp"/>
+    </definition>
+
+	<definition extends="template" name="simple">
+        <put-attribute name="content" value="/WEB-INF/views/simple/simple.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/simple/simple-includes.jsp"/>
+    </definition>
+	<definition extends="template" name="multi">
+        <put-attribute name="content" value="/WEB-INF/views/multi/multi.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/multi/multi-includes.jsp"/>
+    </definition>
+	<definition extends="template" name="edlinea">
+        <put-attribute name="content" value="/WEB-INF/views/edlinea/edlinea.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/edlinea/edlinea-includes.jsp"/>
+    </definition>
+</tiles-definitions>
