@@ -8,8 +8,22 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
         <property name="order" value="1" />
     </bean>
+    
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.ejie.x21a.converter.DateConverter" />
+            </list>
+        </property>
+    </bean>
+    
 <!-- Enables annotated @Controllers; responsible for invoking an annotated POJO @Controller when one is mapped. -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    	<property name="webBindingInitializer">
+        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+            <property name="conversionService" ref="conversionService" />
+        </bean>
+       </property>
         <property name="messageConverters">
             <list>
                 <bean class="com.ejie.x38.serialization.UdaMappingJacksonHttpMessageConverter">

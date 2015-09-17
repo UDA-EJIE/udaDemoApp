@@ -24,7 +24,12 @@
 			"tooltip" :  "Tooltip_en",
 		"experimental": "Experimental_en",
 			"generic_object": "Objeto genérico_en",
-			"maestro_detalle": "Maestro-Detalle_en"
+			"maestro_detalle": "Maestro-Detalle_en",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad_en",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta_en",
+			"mant_clave_compuesta_multi":"Multiselección_en",
+			"mant_clave_compuesta_edlinea":"Edición en línea_en"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio_en",
@@ -51,7 +56,12 @@
 			"tooltip" :  "Tooltip_en",
 		"experimental": "Experimental_en",
 			"generic_object": "Objeto genérico_en",
-			"maestro_detalle": "Maestro-Detalle_en"
+			"maestro_detalle": "Maestro-Detalle_en",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad_en",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta_en",
+			"mant_clave_compuesta_multi":"Multiselección_en",
+			"mant_clave_compuesta_edlinea":"Edición en línea_en"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones_en",
@@ -74,7 +84,12 @@
 			"tooltip" :  "Tooltip_en",
 		"experimental": "Experimental_en",
 			"generic_object": "Objeto genérico_en",
-			"maestro_detalle": "Maestro-Detalle_en"
+			"maestro_detalle": "Maestro-Detalle_en",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad_en",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta_en",
+			"mant_clave_compuesta_multi":"Multiselección_en",
+			"mant_clave_compuesta_edlinea":"Edición en línea_en"
 	},
 	
 "_comment":"PATRONES",	

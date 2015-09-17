@@ -1,4 +1,4 @@
-﻿<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+﻿<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h1>Maestro-Detalle</h1>
 <div id="error" style="display:none"></div>
 

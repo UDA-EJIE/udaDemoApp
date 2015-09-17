@@ -67,5 +67,14 @@ public interface UsuarioDao {
      * @return List
      */
 	List<Usuario> findAllLike(Usuario usuario, Pagination pagination, Boolean startsWith);
+
+	/**
+	 * Counts rows in the Usuario table using like.
+	 * 
+	 * @param usuario
+	 *            Usuario
+	 * @return Long
+	 */
+	Long findAllLikeCount(Usuario usuario, Boolean startsWith);
 }
 

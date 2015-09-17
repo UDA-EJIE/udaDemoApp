@@ -24,7 +24,12 @@
 			"tooltip" :  "Tooltip",
 		"experimental": "Experimental",
 			"generic_object": "Objeto genérico",
-			"maestro_detalle": "Maestro-Detalle"
+			"maestro_detalle": "Maestro-Detalle",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
+			"mant_clave_compuesta_multi":"Multiselección",
+			"mant_clave_compuesta_edlinea":"Edición en línea"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio",
@@ -51,7 +56,12 @@
 			"tooltip" :  "Tooltip",
 		"experimental": "Experimental",
 			"generic_object": "Objeto genérico",
-			"maestro_detalle": "Maestro-Detalle"
+			"maestro_detalle": "Maestro-Detalle",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
+			"mant_clave_compuesta_multi":"Multiselección",
+			"mant_clave_compuesta_edlinea":"Edición en línea"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones",
@@ -72,9 +82,15 @@
 			"tabs" : "Pestañas",
 			"grid" : "Tabla",
 			"tooltip" :  "Tooltip",
-		"experimental": "Experimental",
+			"experimental": "Experimental",
 			"generic_object": "Objeto genérico",
-			"maestro_detalle": "Maestro-Detalle"
+			"maestro_detalle": "Maestro-Detalle",
+			"z-index": "z-index",
+			"mant_multi_entidad":"Mantenimiento multi-entidad",
+			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
+			"mant_clave_compuesta_multi":"Multiselección",
+			"mant_clave_compuesta_edlinea":"Edición en línea"
+			
 	},
 	
 "_comment":"PATRONES",	

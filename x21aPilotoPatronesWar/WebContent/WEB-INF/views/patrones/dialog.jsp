@@ -1,4 +1,4 @@
-﻿<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+﻿<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h1><spring:message  code="patronDialogTitle" /></h1>		
 <div id="idDialog" style="display:none"><spring:message code="divDialogContent" /></div>
 <div id="pruebas">

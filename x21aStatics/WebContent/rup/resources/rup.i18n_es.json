@@ -7,7 +7,7 @@
 		"httpStatus503":"El servicio solicitado no está disponible"
 	},
 	"rup_maint": {
-		"detailTitle":"Agregar Registro",
+		"detailTitle":"Modificar registro",
 		"deletedOK":"El elemento se ha borrado correctamente.",
 		"insertOK":"El elemento se ha añadido correctamente.",
 		"modifyOK":"El elemento se ha modificado correctamente.",
@@ -23,12 +23,14 @@
 		"delete":"Eliminar",
 		"filter":"Filtrar",
 		"cancel":"Cancelar",
-		"searchOptions":"Criterio de búsqueda:",
+		"searchOptions":"Criterios de búsqueda:",
 		"noGrid":"No es posible crear un mantenimiento sin un grid.",
 		"numResult":"Número de resultados",
 		"de":"de",
 		"changes": "Se han realizado cambios",
 		"saveAndContinue": "¿Se han realizado cambios, desea continuar?",
+		"checkSelectedElems": "Se van a deseleccionar los elementos seleccionados, ¿desea continuar?",
+		"checkAddedSelectedElems":"Los elementos añadidos en la pagina actual van a ser deseleccionados, ¿desea continuar?",
 		"selectAll": "Ha seleccionado todos los registros de la página actual.",
 		"selected": "Registros seleccionados.",
 		"deleteAll": "¿Está seguro que desea eliminar todos los registros seleccionados?",
@@ -60,7 +62,8 @@
 		"save_repeat":"Guardar y Repetir",
 		"cancel":"Cancelar",
 		"initError":"Se ha especificado más de un elemento en el constructor.<br> Por favor revise la función de creación para el objeto con ID: ",
-		"developerError":"Error de desarrollo" 
+		"developerError":"Error de desarrollo",
+		"metodError":"Error en el método: " 
     },
     "rup_menu": {
     	"developerError":"Error de desarrollo",
@@ -111,6 +114,9 @@
 		"hourText": "Hora",
 		"minuteText": "Minuto",
 		"secondText": "Segundo"
+	},
+	"rup_utils":{
+		"paramsError" : "Alguno de los parámetros especificados es 'null' o 'undefined'"
 	},
     "rup_grid": {
     	"selectedElems":"Se han seleccionado los ",
@@ -227,7 +233,8 @@
             "errcap": "Error",
             "nourl": "No se ha especificado una URL",
             "norecords": "No hay datos para procesar",
-            "model": "Las columnas de nombres son diferentes de las columnas de modelo" 
+            "model": "Las columnas de nombres son diferentes de las columnas de modelo",
+            "errorOnGet": "Se ha producido un error al tratar de recuperar los datos"
         },
         "formatter": {
             "integer": {

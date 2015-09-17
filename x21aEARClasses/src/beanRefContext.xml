@@ -9,11 +9,11 @@
 		class="org.springframework.context.support.ClassPathXmlApplicationContext">
 		<constructor-arg>
 			<list>
-				<value>META-INF/spring/dao-config.xml</value>
-				<value>META-INF/spring/log-config.xml</value>
-				<value>META-INF/spring/service-config.xml</value>
-				<value>META-INF/spring/security-config.xml</value>				
-				<value>META-INF/spring/tx-config.xml</value>
+				<value>spring/dao-config.xml</value>
+				<value>spring/log-config.xml</value>
+				<value>spring/service-config.xml</value>
+				<value>spring/security-config.xml</value>				
+				<value>spring/tx-config.xml</value>
 			</list>
 		</constructor-arg>
 	</bean>	

@@ -50,7 +50,7 @@ import com.ejie.x38.dto.Pagination;
 @RequestMapping(value = "/patrones")
 public class PatronesController {
 
-	//private static final Logger logger = Logger.getLogger(PatronesController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(PatronesController.class);
 
 	@Autowired
 	private Properties appConfiguration;
@@ -423,7 +423,7 @@ public class PatronesController {
 					    pagination.setRows(Long.valueOf(request.getParameter("rows")));
 					    pagination.setSort(request.getParameter("sidx"));
 					    pagination.setAscDsc(request.getParameter("sord"));
-	                    List<Usuario> usuarios =  this.usuarioService.findAll(filterUsuario, pagination);
+	                    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
 	
 	     			    if (usuarios == null) {
 		    	            throw new Exception("No data Found.");
@@ -437,7 +437,7 @@ public class PatronesController {
 					    data.setRows(usuarios);
 					    return data;
 					}else{
-					    List<Usuario> usuarios =  this.usuarioService.findAll(filterUsuario, pagination);
+					    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
 						if (usuarios == null) {
 		    	            throw new Exception("No data Found.");
 			            }
@@ -451,7 +451,7 @@ public class PatronesController {
 		public @ResponseBody Long getAllCount(
 				@RequestParam(value = "usuario", required = false) Usuario  filterUsuario, HttpServletRequest request) {
 		    try {
-				return usuarioService.findAllCount(filterUsuario != null ? filterUsuario: new Usuario ());
+				return usuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (), false);
 			} catch (Exception e) {
 				throw new ServiceUnavailableException("Count Service is not responding.");
 			}

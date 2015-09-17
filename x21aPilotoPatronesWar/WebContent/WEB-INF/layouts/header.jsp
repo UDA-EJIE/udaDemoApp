@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <div id="cabecera" class="cabecera" style="margin-bottom: 2em;" >
 	<a href="#" id="themeroller" style="float: left; margin-top:-1.5em;" >

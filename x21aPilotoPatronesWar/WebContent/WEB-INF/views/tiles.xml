@@ -149,5 +149,20 @@
 		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp"/>					
 	</definition>
-	
+	<definition name="z-index" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/experimental/z-index.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/z-index-includes.jsp"/>					
+	</definition>
+	<definition name="mant_multi_entidad" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/experimental/mant_multi_entidad.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/mant_multi_entidad-includes.jsp"/>
+	</definition>
+	<definition name="mant_clave_compuesta_multi" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/experimental/mant_clave_compuesta_multi.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/experimental/mant_clave_compuesta_multi-includes.jsp"/>
+    </definition>
+    <definition name="mant_clave_compuesta_edlinea" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea-includes.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -101,3 +101,8 @@ input.disabled { background-color: #D3D3D3; }
 	text-align:left;
 	margin-top:5px;
 }
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+	background: url("../../rup/custom-theme/images/ui-bg_glass_55_fffeda_1x400.png") repeat-x scroll 50% 50% #FFFEDA;
+    border: 1px solid #AAAAAA;
+}

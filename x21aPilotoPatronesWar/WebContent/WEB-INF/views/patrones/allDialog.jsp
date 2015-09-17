@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <div style="float:left">
 	<!-- Maint (toolbar + grid + maint) -->

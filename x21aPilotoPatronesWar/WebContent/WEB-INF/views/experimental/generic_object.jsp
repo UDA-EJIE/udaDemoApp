@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h1>Objeto genérico (multi-entidad)</h1>
 
 <div id=response></div>

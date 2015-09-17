@@ -25,6 +25,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/security http://www.sp
                 <security:intercept-url pattern="/**" access="permitAll" />
                 <security:intercept-url pattern="/comarca/**" access="hasRole('ROLE_UDA')" />
                 <security:intercept-url pattern="/localidad/**" access="hasRole('ROLE_UDA')" />
+                <security:intercept-url pattern="/provincia/**" access="hasRole('ROLE_UDA')" />
+                <security:intercept-url pattern="/alumno/**" access="hasRole('ROLE_UDA')" />
             </security:filter-security-metadata-source>
         </property>
     </bean>

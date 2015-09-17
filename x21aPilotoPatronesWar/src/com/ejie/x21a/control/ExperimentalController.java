@@ -11,8 +11,8 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +49,7 @@ import com.ejie.x38.util.ObjectConversionManager;
 @RequestMapping(value = "/experimental")
 public class ExperimentalController {
 
-	private static final Logger logger = Logger.getLogger(ExperimentalController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ExperimentalController.class);
 
 	@Autowired
 	private Properties appConfiguration;
@@ -68,7 +68,38 @@ public class ExperimentalController {
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
 		return new ModelAndView("maestro_detalle", "model", model);
 	}
+
+	//z-index
+	@RequestMapping(value = "z-index", method = RequestMethod.GET)
+	public ModelAndView getZIndex(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("z-index", "model", model);
+	}
 	
+	//multi entidad
+	@RequestMapping(value = "mant_multi_entidad", method = RequestMethod.GET)
+	public ModelAndView getMultiEntidad(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("mant_multi_entidad", "model", model);
+	}
+	
+	//mantenimiento clave compuesta multiseleccion
+	@RequestMapping(value = "mant_clave_compuesta_multi", method = RequestMethod.GET)
+	public ModelAndView getClaveCompuestaMulti(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("mant_clave_compuesta_multi", "model", model);
+	}
+	
+	//mantenimiento clave compuesta edicion en linea
+	@RequestMapping(value = "mant_clave_compuesta_edlinea", method = RequestMethod.GET)
+	public ModelAndView getClaveCompuestaEdlinea(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("mant_clave_compuesta_edlinea", "model", model);
+	}
 	
 	/**
 	 * SERVICIOS NECESARIOS:
@@ -168,7 +199,7 @@ public class ExperimentalController {
 	    public @ResponseBody Comarca edit(@RequestBody Comarca comarca, HttpServletResponse response) {		
 			try {
 	            Comarca comarcaAux  = this.comarcaService.update(comarca);
-				logger.log(Level.INFO, "Entity correctly inserted!");
+				logger.info( "Entity correctly inserted!");
 	            return comarcaAux;
 	        } catch(Exception e) {
 	            throw new MethodFailureException("Method failed");
@@ -184,7 +215,7 @@ public class ExperimentalController {
 		public @ResponseBody Comarca add(@RequestBody Comarca comarca) {		
 	        try {
 	            Comarca comarcaAux = this.comarcaService.add(comarca);
-	            logger.log(Level.INFO, "Entity correctly inserted!");
+	            logger.info( "Entity correctly inserted!");
 	        	return comarcaAux;
 			} catch(Exception e) {
 	        	throw new MethodFailureException("Method failed");
@@ -211,7 +242,7 @@ public class ExperimentalController {
 	            this.comarcaService.remove(comarca);
 	            response.setStatus(HttpServletResponse.SC_OK);
 	    	} catch(Exception e) {
-	    		logger.log(Level.ERROR, "Unable to delete " +  code);
+	    		logger.error( "Unable to delete " +  code);
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 	    		throw new MethodFailureException("Method failed");
 	    	}
@@ -314,7 +345,7 @@ public class ExperimentalController {
 				HttpServletResponse response) {
 			try {
 				Localidad localidadAux = this.localidadService.update(localidad);
-				logger.log(Level.INFO, "Entity correctly inserted!");
+				logger.info( "Entity correctly inserted!");
 				return localidadAux;
 			} catch (Exception e) {
 				throw new MethodFailureException("Method failed");
@@ -333,7 +364,7 @@ public class ExperimentalController {
 		Localidad addLocalidad(@RequestBody Localidad localidad) {
 			try {
 				Localidad localidadAux = this.localidadService.add(localidad);
-				logger.log(Level.INFO, "Entity correctly inserted!");
+				logger.info( "Entity correctly inserted!");
 				return localidadAux;
 			} catch (Exception e) {
 				throw new MethodFailureException("Method failed");
@@ -362,7 +393,7 @@ public class ExperimentalController {
 				this.localidadService.remove(localidad);
 				response.setStatus(HttpServletResponse.SC_OK);
 			} catch (Exception e) {
-				logger.log(Level.ERROR, "Unable to delete " + code);
+				logger.error( "Unable to delete " + code);
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				throw new MethodFailureException("Method failed");
 			}
@@ -431,18 +462,18 @@ public class ExperimentalController {
 		@RequestMapping(value="genericObject",method=RequestMethod.POST)
 		public @ResponseBody List<RUPBean> patronPruebaEnvio(@RequestBody GenericObject genericObject) throws Exception{
 			
-			logger.log(Level.TRACE, "ENTIDADES:");
+			logger.trace( "ENTIDADES:");
 			Map<String, Object> entidades = genericObject.getEntidades();
 			Set<String> keys = entidades.keySet();
 			for (Iterator<?> iterator = keys.iterator(); iterator.hasNext();) {
 				String key = (String) iterator.next();
-				logger.log(Level.TRACE, "key: "+key+" / value: "+ entidades.get(key));
+				logger.trace( "key: "+key+" / value: "+ entidades.get(key));
 			}
 			
-			logger.log(Level.TRACE, "EXTRA DATA:");
-			logger.log(Level.TRACE, "label:"+genericObject.getData().get("label"));
-			logger.log(Level.TRACE, "value:"+genericObject.getData().get("value"));
-			logger.log(Level.TRACE, "style:"+genericObject.getData().get("style"));
+			logger.trace( "EXTRA DATA:");
+			logger.trace( "label:"+genericObject.getData().get("label"));
+			logger.trace( "value:"+genericObject.getData().get("value"));
+			logger.trace( "style:"+genericObject.getData().get("style"));
 			
 			List<RUPBean> retorno = new ArrayList<RUPBean>();
 			DepartamentoProvincia departamentoProvincia = (DepartamentoProvincia) genericObject.getEntidades().get("departamentoProvincia");
@@ -452,4 +483,7 @@ public class ExperimentalController {
 			return retorno;
 		}
 			
+		/**
+		 * Multi_Entidad
+		 */
 }

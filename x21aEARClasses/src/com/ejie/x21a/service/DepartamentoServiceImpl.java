@@ -3,8 +3,8 @@ import com.ejie.x21a.dao.DepartamentoDao;
 import com.ejie.x38.dto.Pagination;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public  class DepartamentoServiceImpl implements DepartamentoService {
     /**
     * Final static logger.
     */
-    private static final  Logger  logger = Logger.getLogger(DepartamentoServiceImpl.class);
+    private static final  Logger  logger = LoggerFactory.getLogger(DepartamentoServiceImpl.class);
 @Autowired
     private DepartamentoDao departamentoDao;
 
@@ -119,7 +119,7 @@ public  class DepartamentoServiceImpl implements DepartamentoService {
      * @param  departamentoDao DepartamentoDao
      */
     public void setDepartamentoDao(DepartamentoDao departamentoDao) {
-        logger.log(Level.INFO, "Setting Dependency "+departamentoDao);
+        logger.info( "Setting Dependency "+departamentoDao);
         this.departamentoDao = departamentoDao;
     }
 }

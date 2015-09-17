@@ -3,8 +3,8 @@ import com.ejie.x21a.dao.UsuarioDao;
 import com.ejie.x38.dto.Pagination;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public  class UsuarioServiceImpl implements UsuarioService {
     /**
     * Final static logger.
     */
-    private static final  Logger  logger = Logger.getLogger(UsuarioServiceImpl.class);
+    private static final  Logger  logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 @Autowired
     private UsuarioDao usuarioDao;
 
@@ -85,6 +85,17 @@ public  class UsuarioServiceImpl implements UsuarioService {
     public List<Usuario> findAllLike(Usuario usuario, Pagination pagination, Boolean startsWith) {
        return (List<Usuario>) this.usuarioDao.findAllLike(usuario, pagination, startsWith);
     }
+    
+    /**
+     * Counts rows in the Usuario table using like.
+     *
+     * @param usuario Usuario
+     * @return Long
+     */
+     public Long findAllLikeCount(Usuario usuario, Boolean startsWith) {        
+         return  this.usuarioDao.findAllLikeCount(usuario, startsWith);
+     }
+    
     /**
      * Deletes a single row in the Usuario table.
      *
@@ -119,7 +130,7 @@ public  class UsuarioServiceImpl implements UsuarioService {
      * @param  usuarioDao UsuarioDao
      */
     public void setUsuarioDao(UsuarioDao usuarioDao) {
-        logger.log(Level.INFO, "Setting Dependency "+usuarioDao);
+        logger.info( "Setting Dependency "+usuarioDao);
         this.usuarioDao = usuarioDao;
     }
 }

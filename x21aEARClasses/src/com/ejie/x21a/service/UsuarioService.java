@@ -75,6 +75,14 @@ public interface UsuarioService {
      * @param usuarioList  ArrayList
      */	
 	void removeMultiple(ArrayList<Usuario> usuarioList);
+
+	/**
+     * Counts rows in the Usuario table using like.
+     *
+     * @param usuario Usuario
+     * @return Long
+     */
+	Long findAllLikeCount(Usuario usuario, Boolean startsWith);
     
 }
 

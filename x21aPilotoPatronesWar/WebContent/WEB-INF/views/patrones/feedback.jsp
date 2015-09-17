@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h1>Feedback</h1>
 <hr/>
 Texto pre capa

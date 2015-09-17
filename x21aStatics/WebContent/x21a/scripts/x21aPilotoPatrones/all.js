@@ -10,7 +10,7 @@ jQuery(function($){
 		sortname: "id",
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
 		colModel: [
-			{ name: "id", label: "id", index: "id", width: "75", editable: true },
+			{ id:"grid_id", name: "id", label: "id", index: "id", width: "75", editable: true },
 			{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true },
 			{ name: "apellido1", label: "apellido1", index: "apellido1", width: "150", editable: true },
 			{ name: "apellido2", label: "apellido2", index: "apellido2", width: "150", editable: true },
@@ -50,7 +50,8 @@ jQuery(function($){
 		   {i18nCaption: "1", value:"1"}
 		],
 		i18nId: "grid##ejie",
-		width: 120
+		width: 120,
+		blank:""
 	});
 	$("#fechaAlta_search").rup_date();
 	$("#fechaBaja_search").rup_date();
@@ -165,7 +166,8 @@ jQuery(function($){
 					   {i18nCaption: "1", value:"1"}
 					],
 					i18nId: "gridDialog##ejie",
-					width: 155
+					width: 155,
+					blank:""
 				});
 				$("#dialog_fechaAlta_search").rup_date();
 				$("#dialog_fechaBaja_search").rup_date();

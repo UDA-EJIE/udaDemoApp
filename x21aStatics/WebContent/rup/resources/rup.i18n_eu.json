@@ -28,6 +28,8 @@
 		"de":"eu_de",
 		"changes":"eu_Se han realizado cambios",
 		"saveAndContinue":"eu_¿Se han realizado cambios, desea continuar?",
+		"checkSelectedElems": "eu_Se van a deseleccionar los elementos seleccionados, ¿desea continuar?",
+		"checkAddedSelectedElems":"eu_Los elementos añadidos en la pagina actual van a ser deseleccionados, ¿desea continuar?",
 		"selectAll":"eu_Ha seleccionado todos los registros de la pagina actual.",
 		"selected":"eu_Registros seleccionados.",
 		"deleteAll":"eu_¿Estaseguro que desea eliminar todos los registros seleccionados?",
@@ -59,7 +61,8 @@
 		"save_repeat":"eu_Guardar y Repetir",
 		"cancel":"eu_Cancelar",
 		"initError":"eu_Se ha especificado mas de un elemento en la constructora. <br> Por favor revise la funcion creadora para el objeto con ID: ",
-		"developerError":"eu_Error de desarrollo"		
+		"developerError":"eu_Error de desarrollo",
+		"metodError":"eu_Error en el método: "		
     },
     "rup_menu": {
     	"developerError":"eu_Error de desarrollo",
@@ -100,7 +103,7 @@
 		"nextText":"Hur&#x3e;",
 		"prevText":"&#x3c;Aur"
 	},
-"rup_time":{
+	"rup_time":{
 		"mask" : "(hh:mm)",
 		"buttonText" : "Abrir hora",
 		"currentText": "Ahora",
@@ -110,6 +113,9 @@
 		"hourText": "Hora",
 		"minuteText": "Minuto",
 		"secondText": "Segundo"
+	},
+	"rup_utils":{
+		"paramsError" : "eu_Alguno de los parámetros especificados es 'null' o 'undefined'"
 	},
     "rup_grid": {
     	"selectedElems":"eu_Se han seleccionado los ",
@@ -226,7 +232,8 @@
             "errcap":"eu_Error",
             "nourl":"eu_No se ha especificado una URL",
             "norecords":"eu_No hay datos para procesar",
-            "model":"eu_Las columnas de nombres son diferentes de las columnas de modelo" 
+            "model":"eu_Las columnas de nombres son diferentes de las columnas de modelo", 
+            "errorOnGet": "eu_Se ha producido un error al tratar de recuperar los datos"
         },
         "formatter": {
             "integer": {

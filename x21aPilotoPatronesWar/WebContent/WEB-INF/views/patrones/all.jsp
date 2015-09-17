@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/views/includes/includeTemplate.inc"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h1>Todos los patrones</h1>
 
 <div style="float:left">
@@ -28,7 +28,7 @@
 						</div>
 						<div class="formulario_linea_izda_float">
 							<div class="formulario_linea_label">ejie:</div>
-							<div style="float: left;"><select id="ejie_search" class="rup-combo" ></select></div>
+							<div style="float: left;"><select id="ejie_search" name="ejie" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
 							<div class="formulario_linea_label">fechaAlta:</div>
