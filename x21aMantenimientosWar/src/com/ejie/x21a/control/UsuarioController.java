@@ -1,5 +1,5 @@
 /*
-* Copyright 2011 E.J.I.E., S.A.
+* Copyright 2012 E.J.I.E., S.A.
 *
 * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
 * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -78,6 +78,46 @@ public class UsuarioController  {
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
 		return new ModelAndView("multi", "model", model);
 	}
+	
+	//Llamadas ajax de mantenimientos
+	@RequestMapping(value = "simpleTable1", method = RequestMethod.GET)
+	public ModelAndView getMaintSimple1(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("simpleTable1", "model", model);
+	}
+	@RequestMapping(value = "simpleTable2", method = RequestMethod.GET)
+	public ModelAndView getMaintSimple2(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("simpleTable2", "model", model);
+	}
+	@RequestMapping(value = "simpleTable3", method = RequestMethod.GET)
+	public ModelAndView getMaintSimple3(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("simpleTable3", "model", model);
+	}
+	@RequestMapping(value = "editTable1", method = RequestMethod.GET)
+	public ModelAndView getEditMaint1(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("editMaint1", "model", model);
+	}
+	@RequestMapping(value = "multiTable1", method = RequestMethod.GET)
+	public ModelAndView getMultiMaint1(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("multiMaint1", "model", model);
+	}
+	
+	//Multiselección agrupada
+	@RequestMapping(value = "groupMulti", method = RequestMethod.GET)
+	public ModelAndView getGroupMulti(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("groupMulti", "model", model);
+	}
 	//Edición en línea
 	@RequestMapping(value = "edlinea", method = RequestMethod.GET)
 	public ModelAndView getCreateForm(Model model) {
@@ -85,7 +125,13 @@ public class UsuarioController  {
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
 		return new ModelAndView("edlinea", "model", model);
 	}
-
+	//Selección simple [diseño líquido]
+	@RequestMapping(value = "simpleFluido", method = RequestMethod.GET)
+	public ModelAndView getSimpleFluido(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
+		return new ModelAndView("simpleFluido", "model", model);
+	}
 	 /**
 	 * Method 'getById'.
 	 * @param  id String

@@ -4,6 +4,7 @@
 		"mantenimientos" : "x21aMantenimientosWar_fr",
 		"patrones" : "Patrones_fr",
 			"all" : "[Todos los patrones_fr]",
+			"accordion" : "Accordion_fr",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"combo" : "Combo_fr",
@@ -20,7 +21,14 @@
 				"menuVertical":"Vertical_fr",
 				"menuMixto":"Mixto_fr",
 			"tabs" : "Pestañas_fr",
+				"tabsStatic":"Carga Estática_fr",
+				"tabsAjax":"Carga Ajax_fr",
+				"tabsMixto":"Carga Mixta_fr",
+				"maintTab":"Pestañas con mantenimientos_fr",
 			"grid" : "Tabla_fr",
+				"grid_grupo" : "Tabla Agrupada_fr",
+				"grid_base" : "Tabla Basico_fr",
+				"grid_arbol" : "Tabla Arbol_fr",
 			"tooltip" :  "Tooltip_fr",
 			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
@@ -30,13 +38,16 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad_fr",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta_fr",
 			"mant_clave_compuesta_multi":"Multiselección_fr",
-			"mant_clave_compuesta_edlinea":"Edición en línea_fr"
+			"mant_clave_compuesta_edlinea":"Edición en línea_fr",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio_fr",
 		"mantenimientos" : "x21aMantenimientosWar_fr",
 		"patrones" : "Patrones_fr",
 			"all" : "[Todos los patrones_fr]",
+			"accordion" : "Accordion_fr",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"combo" : "Combo_fr",
@@ -53,7 +64,14 @@
 				"menuVertical":"Vertical_fr",
 				"menuMixto":"Mixto_fr",
 			"tabs" : "Pestañas_fr",
+				"tabsStatic":"Carga Estática_fr",
+				"tabsAjax":"Carga Ajax_fr",
+				"tabsMixto":"Carga Mixta_fr",
+				"maintTab":"Pestañas con mantenimientos_fr",
 			"grid" : "Tabla_fr",
+				"grid_grupo" : "Tabla Agrupada_fr",
+				"grid_base" : "Tabla Basico_fr",
+				"grid_arbol" : "Tabla Arbol_fr",
 			"tooltip" :  "Tooltip_fr",
 			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
@@ -63,11 +81,14 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad_fr",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta_fr",
 			"mant_clave_compuesta_multi":"Multiselección_fr",
-			"mant_clave_compuesta_edlinea":"Edición en línea_fr"
+			"mant_clave_compuesta_edlinea":"Edición en línea_fr",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones_fr",
 			"all" : "[Todos los patrones_fr]",
+			"accordion" : "Accordion_fr",
 			"autocomplete" : "Autocomplete_fr",
 			"toolbar" : "Botonera_fr",
 			"comboSimple" : "Combo Simple_fr",
@@ -82,7 +103,14 @@
 			"menuVertical":"Menú Vertical_fr",
 			"menuMixto":"Menú Mixto_fr",
 			"tabs" : "Pestañas_fr",
+				"tabsStatic":"Carga Estática_fr",
+				"tabsAjax":"Carga Ajax_fr",
+				"tabsMixto":"Carga Mixta_fr",
+				"maintTab":"Pestañas con mantenimientos_fr",
 			"grid" : "Tabla_fr",
+				"grid_grupo" : "Tabla Agrupada_fr",
+				"grid_base" : "Tabla Basico_fr",
+				"grid_arbol" : "Tabla Arbol_fr",
 			"tooltip" :  "Tooltip_fr",
 			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
@@ -92,7 +120,9 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad_fr",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta_fr",
 			"mant_clave_compuesta_multi":"Multiselección_fr",
-			"mant_clave_compuesta_edlinea":"Edición en línea_fr"
+			"mant_clave_compuesta_edlinea":"Edición en línea_fr",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
@@ -222,7 +252,32 @@
 		"pestana1"  : "Tab 1_fr",
 		"sub10" 	: "sub10_fr",
 		"sub11" 	: "sub11_fr",
-		"pestana2" 	: "Tab 2_fr"
+		"pestana2" 	: "Tab 2_fr",
+		"pestanaAna"   	: "Nueva Pestaña_fr",
+		"nuevaPestaña" 	: "Nuevo Nivel_fr",
+		"PestañasMaint"	: "Pestaña con Mantenimientos_fr"
+	},
+	"pruebaSub3Maint" : {
+		"maint1"		: "Mantenimiento 1_fr",
+		"maint2"		: "Mantenimiento 2_fr",
+		"maint3"		: "Mantenimiento 3_fr"	
+	},
+	"tabsStatic" : {
+		"pestana0" 	: "Pestaña 1_fr",
+		"pestana1"  : "Pestaña 2_fr",
+		"pestana2" 	: "Pestaña 3_fr",
+		"pestanaAna" : "Pestaña Añadida_fr"
+	},
+	"tabsMixta" : {
+		"pestanaUrl" 	: "Pestaña con url_fr",
+		"pestanaHtml"  : "Pestaña con html_fr"
+	},
+	"maintTab" : {
+		"maint1"	: "Mantenimiento Simple 1_fr",
+		"maint2"    : "Mantenimiento Simple 2_fr",
+		"maint3" 	: "Mantenimiento Simple 3_fr",
+		"edit1" 	: "Mantenimiento edición en línea_fr",
+		"multi1" 	: "Mantenimiento múltiple_fr"
 	},
 	"tabsDialog" : {
 		"pestana0" 	: "Tab 0_fr",
@@ -258,6 +313,10 @@
 		"0" : "Non",
 		"1" : "Oui"
 	},
+	"GRID_simple##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
+	},
 	"gridDialog##ejie" : {
 		"0" : "Non",
 		"1" : "Oui"
@@ -268,5 +327,21 @@
 		"uploadForm" : "Upload form_fr",
 		"uploadFormSimple" : "Upload simple en formulario_fr",
 		"uploadFormMultiple" : "Multiples upload en formulario_fr"
+	},
+	"comboProvincias":{
+		"_blank":"Seleccione un elemento_fr" 	
+	},
+	"comboMunicipios":{
+		"_blank":"Seleccione un elemento_fr" 	
+	},
+	"comboProvinciasAPI":{
+		"_blank":"Seleccione un elemento_fr"
+	},
+	"comboMunicipiosAPI":{
+		"_blank":"Seleccione un elemento_fr"
+	},
+	"gridTree":{
+		"total":"Total:_fr",
+		"gana":"Gana:_fr"  	
 	}
 }

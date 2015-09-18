@@ -12,7 +12,7 @@
 		<org.springframework.security.version>3.0.5.RELEASE</org.springframework.security.version>
 		<org.logback.version>0.9.29</org.logback.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
-		<com.ejie.x38.version>1.2.0</com.ejie.x38.version>
+		<com.ejie.x38.version>1.2.1</com.ejie.x38.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -38,6 +38,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
+		
 		<!-- Spring Security -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
@@ -65,8 +66,8 @@
         	<version>${org.springframework.security.version}</version>
 		</dependency>
 		
-			<!-- Logging -->
-                  <!-- SLF4J -->
+		<!-- Logging -->
+            <!-- SLF4J -->
             <dependency>
                   <groupId>org.slf4j</groupId>
                   <artifactId>jcl-over-slf4j</artifactId>
@@ -90,7 +91,7 @@
                         </exclusion>                       
                   </exclusions> 
             </dependency>
-                  <!-- Logback -->
+            <!-- Logback -->
             <dependency>
                   <groupId>ch.qos.logback</groupId>
                   <artifactId>logback-core</artifactId>
@@ -101,7 +102,7 @@
                   <artifactId>logback-classic</artifactId>
                   <version>${org.logback.version}</version>
             </dependency>
-					<!-- Jdbcdslog -->
+			<!-- Jdbcdslog -->
 			<dependency>
 				<groupId>org</groupId>
 				<artifactId>jdbcdslog</artifactId>
@@ -114,7 +115,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
-
+		
 		<!-- Joda Time -->
 		<dependency>
 			<groupId>joda-time</groupId>

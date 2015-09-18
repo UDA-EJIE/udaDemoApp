@@ -38,6 +38,18 @@
 		<put-attribute name="includes" value=""/>				
 	</definition>
 	
+	<definition name="templateNora" template="/WEB-INF/layouts/templateNora.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp"/>
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+		<put-attribute name="includes" value=""/>				
+		<put-attribute name="base-includesNora" value="/WEB-INF/layouts/base-includesNora.jsp"/>
+		<put-attribute name="includesNora" value=""/>				
+	</definition>
+	
 	<definition name="errorTemplate" template="/WEB-INF/layouts/errorTemplate.jsp"/>
 	
 	<!-- ***************************** -->
@@ -57,6 +69,11 @@
     </definition>
 
 	<!-- Patrones -->
+	<definition name="accordion" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/accordion.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/accordion-includes.jsp"/>					
+	</definition>
+	
 	<definition name="autocomplete" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/autocomplete.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/autocomplete-includes.jsp"/>					
@@ -111,10 +128,26 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/message-includes.jsp"/>					
 	</definition>
 	
-	<definition name="tabs" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabs.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabs-includes.jsp"/>					
+	<definition name="tabsStatic" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabsStatic.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsStatic-includes.jsp"/>					
 	</definition>
+	
+	<definition name="tabsAjax" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabsAjax.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsAjax-includes.jsp"/>					
+	</definition>
+	
+	<definition name="tabsMixto" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabsMixto.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsMixto-includes.jsp"/>					
+	</definition>
+	
+	<definition name="maintTab" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/maintTab.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/maintTab-includes.jsp"/>					
+	</definition>
+	
 	<definition name="tabsContent_1" template="/WEB-INF/views/patrones/tabs/tabsContent_1.jsp"/>
 	<definition name="tabsContent_2" template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp"/>
 	<definition name="tabsContent_3" template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp"/>
@@ -169,5 +202,10 @@
     <definition name="mant_clave_compuesta_edlinea" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea-includes.jsp"/>
+    </definition>
+    <definition extends="templateNora" name="nora">
+        <put-attribute name="content" value="/WEB-INF/views/experimental/nora.jsp"/>
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/mantnora-includes.jsp"/>	
+		<put-attribute name="includesNora" value="/WEB-INF/views/experimental/nora-includes.jsp"/>				
     </definition>
 </tiles-definitions>

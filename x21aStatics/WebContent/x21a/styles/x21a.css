@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -120,4 +120,50 @@ input.disabled { background-color: #D3D3D3; }
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
 	background: url("../../rup/custom-theme/images/ui-bg_glass_55_fffeda_1x400.png") repeat-x scroll 50% 50% #FFFEDA;
     border: 1px solid #AAAAAA;
+}
+
+/*Estilos del accordion*/
+
+.section {
+	margin-right: -2px;
+	height: 400px;
+}
+.section2 {
+	margin-right: -2px;
+	height: 200px;
+}
+
+.separator{	
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+}
+
+.sectionh2{
+	padding-top: 0px;	
+	margin-top: 0.2em;
+	padding-bottom: 5px;
+}
+
+.sectionAuto{
+	height: 170px;
+	padding-top: 0px;
+	margin-right: -2px;
+}
+
+.sectionTab{
+	height: 750px;
+	padding-top: 0px;
+	margin-right: -2px;
+}
+
+.sectionUpload{
+	height: 340px;
+	padding-top: 0px;
+	margin-right: -2px;
+}
+
+.sectionMaint{
+	height: 800px;
+	padding-top: 0px;
+	margin-right: -2px;
 }

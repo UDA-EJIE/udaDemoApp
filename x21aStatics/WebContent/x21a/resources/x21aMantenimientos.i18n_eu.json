@@ -2,14 +2,20 @@
 	"x21aMantenimientosWar_menu" : {
 		"inicio"	: "Hasiera",
 		"patrones" 	: "x21aPilotoPatronesWar", 
-		"simple"	: "Selección simple_eu",
-		"multi"		: "Multiselección_eu",
-		"edlinea"	: "Edición en línea_eu"
+		"simple"	: "Soil-sorta",
+		"multi"		: "Multi-sorta",
+		"edlinea"	: "Lerroan edizioa", 
+		"simpleFluido"	: "Soil-sorta likido",
+		"formPropio" : "Form Propio_eu", 
+		"uda":"UDA"
 	},
 	"x21aMantenimientosWar_migas" :{
 		"simple"	: "Soil-sorta",
 		"multi"		: "Multi-sorta",
-		"edlinea"	: "Lerroan edizioa"	
+		"edlinea"	: "Lerroan edizioa", 
+		"simpleFluido"	: "Soil-sorta likido", 
+		"formPropio" : "Form Propio_eu", 
+		"uda":"UDA"
 	},
 	"GRID_simple##ejie" : {
 		"0" : "Ez",
@@ -22,5 +28,12 @@
 	"GRID_edlinea##ejie" : {
 		"0" : "Ez",
 		"1" : "Bai"
+	},
+	"GRID_simpleFluido##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"simpelMaint" : {
+		"actualizar":"Eguneratu Erabiltzaile Botoia"
 	}
 }

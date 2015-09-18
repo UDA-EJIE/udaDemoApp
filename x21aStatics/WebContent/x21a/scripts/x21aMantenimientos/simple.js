@@ -1,5 +1,5 @@
 /*!
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -70,7 +70,21 @@ jQuery(function($){
 		modelObject: "Usuario",
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
-		showMessages: true
+		showMessages: true,
+        toolbar: {
+        	//No creamos el botón de filtro por defecto
+			defaultFilter : false,
+			newButtons : [{
+				obj : {
+					i18nCaption: "actualizar", 
+					css: "rup-maint_filter", 
+					index: 4
+				},
+				json_i18n : $.rup.i18n.app.simpelMaint,
+				click : function(){$("#simple").rup_maint("getFilterBootonDefaultFunction").call();}
+			}]
+			
+		}
 	});
 	
 	

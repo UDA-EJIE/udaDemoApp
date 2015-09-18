@@ -4,6 +4,7 @@
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Patrones",
 			"all" : "[Todos los patrones]",
+			"accordion" : "Accordion",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"combo" : "Combo",
@@ -20,7 +21,14 @@
 				"menuVertical":"Vertical",
 				"menuMixto":"Mixto",
 			"tabs" : "Pestañas",
+				"tabsStatic":"Carga Estática",
+				"tabsAjax":"Carga Ajax",
+				"tabsMixto":"Carga Mixta",
+				"maintTab":"Pestañas con mantenimientos",
 			"grid" : "Tabla",
+				"grid_grupo" : "Tabla Agrupada",
+				"grid_base" : "Tabla Basico",
+				"grid_arbol" : "Tabla Arbol",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 		"experimental": "Experimental",
@@ -30,13 +38,16 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
 			"mant_clave_compuesta_multi":"Multiselección",
-			"mant_clave_compuesta_edlinea":"Edición en línea"
+			"mant_clave_compuesta_edlinea":"Edición en línea",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Inicio",
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Patrones",
 			"all" : "[Todos los patrones]",
+			"accordion" : "Accordion",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"combo" : "Combo",
@@ -53,7 +64,14 @@
 				"menuVertical":"Vertical",
 				"menuMixto":"Mixto",
 			"tabs" : "Pestañas",
+				"tabsStatic":"Carga Estática",
+				"tabsAjax":"Carga Ajax",
+				"tabsMixto":"Carga Mixta",
+				"maintTab":"Pestañas con mantenimientos",
 			"grid" : "Tabla",
+				"grid_grupo" : "Tabla Agrupada",
+				"grid_base" : "Tabla Basico",
+				"grid_arbol" : "Tabla Arbol",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 		"experimental": "Experimental",
@@ -63,11 +81,14 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
 			"mant_clave_compuesta_multi":"Multiselección",
-			"mant_clave_compuesta_edlinea":"Edición en línea"
+			"mant_clave_compuesta_edlinea":"Edición en línea",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Patrones",
 			"all" : "[Todos los patrones]",
+			"accordion" : "Accordion",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botonera",
 			"comboSimple" : "Combo Simple",
@@ -82,7 +103,14 @@
 			"menuVertical":"Menú Vertical",
 			"menuMixto":"Menú Mixto",
 			"tabs" : "Pestañas",
+				"tabsStatic":"Carga Estática",
+				"tabsAjax":"Carga Ajax",
+				"tabsMixto":"Carga Mixta",
+				"maintTab":"Pestañas con mantenimientos",
 			"grid" : "Tabla",
+				"grid_grupo" : "Tabla Agrupada",
+				"grid_base" : "Tabla Basico",
+				"grid_arbol" : "Tabla Arbol",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 			"experimental": "Experimental",
@@ -92,8 +120,9 @@
 			"mant_multi_entidad":"Mantenimiento multi-entidad",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta",
 			"mant_clave_compuesta_multi":"Multiselección",
-			"mant_clave_compuesta_edlinea":"Edición en línea"
-			
+			"mant_clave_compuesta_edlinea":"Edición en línea",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
@@ -209,21 +238,46 @@
 			"bomb":"Bomberos"
 		},
 	"tabs" : {
-		"pestana0" 	: "Tab 0",
-		"sub00" 	: "sub00",
-		"sub000" 	: "sub000",
-		"sub001" 	: "sub001",
-		"sub0010" 	: "sub0010",
-		"sub0011" 	: "sub0011",
-		"sub00110" 	: "sub00110",
-		"sub00111" 	: "sub00111",
-		"sub002" 	: "sub002",
-		"sub01" 	: "sub01",
-		"sub02" 	: "sub02",
-		"pestana1"  : "Tab 1",
-		"sub10" 	: "sub10",
-		"sub11" 	: "sub11",
-		"pestana2" 	: "Tab 2"
+		"pestana0" 		: "Tab 0",
+		"sub00" 		: "sub00",
+		"sub000" 		: "sub000",
+		"sub001" 		: "sub001",
+		"sub0010" 		: "sub0010",
+		"sub0011" 		: "sub0011",
+		"sub00110" 		: "sub00110",
+		"sub00111" 		: "sub00111",
+		"sub002" 		: "sub002",
+		"sub01" 		: "sub01",
+		"sub02" 		: "sub02",
+		"pestana1"  	: "Tab 1",
+		"sub10" 		: "sub10",
+		"sub11" 		: "sub11",
+		"pestana2" 		: "Tab 2",
+		"pestanaAna"   	: "Nueva Pestaña",
+		"nuevaPestaña" 	: "Nuevo Nivel",
+		"PestañasMaint"	: "Pestaña con Mantenimientos"
+	},
+	"pruebaSub3Maint" : {
+		"maint1"		: "Mantenimiento 1",
+		"maint2"		: "Mantenimiento 2",
+		"maint3"		: "Mantenimiento 3"	
+	},
+	"tabsStatic" : {
+		"pestana0" 	: "Pestaña 1",
+		"pestana1"  : "Pestaña 2",
+		"pestana2" 	: "Pestaña 3",
+		"pestanaAna" : "Pestaña Añadida"
+	},
+	"tabsMixta" : {
+		"pestanaUrl" 	: "Pestaña con url",
+		"pestanaHtml"  : "Pestaña con html"
+	},
+	"maintTab" : {
+		"maint1"	: "Mantenimiento Simple 1",
+		"maint2"    : "Mantenimiento Simple 2",
+		"maint3" 	: "Mantenimiento Simple 3",
+		"edit1" 	: "Mantenimiento edición en línea",
+		"multi1" 	: "Mantenimiento múltiple"
 	},
 	"tabsDialog" : {
 		"pestana0" 	: "Tab 0",
@@ -259,6 +313,10 @@
 		"0" : "No",
 		"1" : "Sí"
 	},
+	"GRID_simple##ejie" : {
+		"0" : "No",
+		"1" : "Yes"
+	},
 	"gridDialog##ejie" : {
 		"0" : "No",
 		"1" : "Sí"
@@ -269,5 +327,21 @@
 		"uploadForm" : "Upload form",
 		"uploadFormSimple" : "Upload simple en formulario",
 		"uploadFormMultiple" : "Multiples upload en formulario"
+	},
+	"comboProvincias":{
+		"_blank":"Seleccione un elemento" 	
+	},
+	"comboMunicipios":{
+		"_blank":"Seleccione un elemento" 	
+	},
+	"comboProvinciasAPI":{
+		"_blank":"Seleccione un elemento" 	
+	},
+	"comboMunicipiosAPI":{
+		"_blank":"Seleccione un elemento" 	
+	},
+	"gridTree":{
+		"total":"Total:",
+		"gana":"Gana:"  	
 	}
 }

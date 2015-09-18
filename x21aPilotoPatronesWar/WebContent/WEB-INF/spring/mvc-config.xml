@@ -109,6 +109,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
                 <entry key="com.ejie.x21a.model.DepartamentoProvincia" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.Localidad" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.Provincia" value-ref="customSerializer" />
+                <entry key="com.ejie.x21a.model.NoraProvincia" value-ref="customSerializer" />
+                <entry key="com.ejie.x21a.model.NoraMunicipio" value-ref="customSerializer" />
+                <entry key="com.ejie.x21a.model.NoraCalle" value-ref="customSerializer" />
             </map>
         </property>
     </bean>

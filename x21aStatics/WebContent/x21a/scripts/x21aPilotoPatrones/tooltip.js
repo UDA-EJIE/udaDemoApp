@@ -14,5 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
+	
 	$("[title]").rup_tooltip();
+	
 });

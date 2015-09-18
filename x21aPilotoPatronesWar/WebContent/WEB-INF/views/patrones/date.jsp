@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2012 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -28,11 +28,18 @@
 	&nbsp;&nbsp;<input id="fecha_multi_button" type="button" value="getDates()" />
 	<br/><br/>
 	
-	<!-- Intervalo -->
+	<!-- Intervalo Fecha-->
 	Intervalo desde <label for="desde" id="intervalo-mask"/></label>:
 	<input type="text" id="desde" />
 	hasta: 
 	<input type="text" id="hasta"/>
+	<br/><br/>
+	
+	<!-- Intervalo Fecha y hora -->
+	Intervalo desde <label for="desde" id="intervalo-mask-date-time"/></label>:
+	<input type="text" id="desdeDateTime" />
+	hasta: 
+	<input type="text" id="hastaDateTime"/>
 	<br/><br/>
 		
 	<!-- Fecha desplegada --> 

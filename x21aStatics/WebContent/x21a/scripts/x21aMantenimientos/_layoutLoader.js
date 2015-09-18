@@ -1,5 +1,5 @@
 /*!
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -30,7 +30,9 @@ jQuery(document).ready(function(){
 		breadCrumb: {
 			"simple" : { "i18nCaption" : "simple" },
 			"multi" : { "i18nCaption" : "multi" },
-			"edlinea" : { "i18nCaption" : "edlinea" }
+			"edlinea" : { "i18nCaption" : "edlinea"},
+			"simpleFluido" : { "i18nCaption" : "simpleFluido" },
+			"uda" : {"i18nCaption" : "uda"}
 		}
 	});
 	//idioma
@@ -40,10 +42,12 @@ jQuery(document).ready(function(){
 		display: (vertical ? 'vertical' : 'horizontal'),
 		menu: [
 		       	{"i18nCaption":"patrones", "url": "../x21aPilotoPatronesWar/"},
-				{"i18nCaption":"inicio", "url": "" },
-				{"i18nCaption":"simple", "url": "usuario/simple"},
-				{"i18nCaption":"multi", "url": "usuario/multi"},
-				{"i18nCaption":"edlinea", "url": "usuario/edlinea"}
+				{"i18nCaption":"inicio", "url": ""},
+				{"i18nCaption":"simple", "pathUrl": "/x21aMantenimientosWar/usuario/simple", "forceAbs": true},
+				{"i18nCaption":"multi", "pathUrl": "/x21aMantenimientosWar/usuario/multi"},
+				{"i18nCaption":"edlinea", "pathUrl": "/x21aMantenimientosWar/usuario/edlinea"},
+				{"i18nCaption":"simpleFluido", "url": "usuario/simpleFluido"},
+				{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
 		]
 	});
 	

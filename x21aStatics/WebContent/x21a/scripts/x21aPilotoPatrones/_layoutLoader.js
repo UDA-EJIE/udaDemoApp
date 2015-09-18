@@ -1,5 +1,5 @@
 /*!
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -14,25 +14,26 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
-	$("#rup_dept_logo").attr("src", $.rup.APP_STATICS + "/images/dept_logo_" + $.rup.lang + ".gif");
+	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
-	if ($.rup.LAYOUT === "vertical") {
+	if (jQuery.rup.LAYOUT === "vertical") {
 		vertical = true;
-	} else if ($.rup.LAYOUT === "mixto") {
+	} else if (jQuery.rup.LAYOUT === "mixto") {
 		mixto = true;
 	}
 	
 	//ThemeRoller
-	$('#themeroller').click($.rup.themeRoller);
+	jQuery('#themeroller').click(jQuery.rup.themeRoller);
 	
 	//rastro de migas
-	$("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
+	jQuery("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
 		breadCrumb: {
 			"patrones" : {
 				//Literal
 				"i18nCaption" : "patrones",
 				//Elementos (url)
 				"all" : { "i18nCaption" : "all" },
+				"accordion" : { "i18nCaption" : "accordion" },
 				"autocomplete" : { "i18nCaption" : "autocomplete" }, 
 				"toolbar" : { "i18nCaption" : "toolbar" },
 				"comboSimple" : {"i18nCaption":"comboSimple" },
@@ -52,9 +53,10 @@ jQuery(document).ready(function(){
 				//Submenu
 				"subLevel":[
 				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
+				    {"i18nCaption":"accordion", "url": "/x21aPilotoPatronesWar/patrones/accordion" },
 				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
                     {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
-                  	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple" },
+                  	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple", "newWindow": true },
                   	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
                   	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
                   	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
@@ -65,8 +67,13 @@ jQuery(document).ready(function(){
                    	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
                   	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
                   	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
-                    {"i18nCaption":"tabs", "url": "/x21aPilotoPatronesWar/patrones/tabs" },
-					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
+                  	{"i18nCaption":"tabs", "submenu":[
+                     	{"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
+                    	{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
+                    	{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
+                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
+                    ]},
+                    {"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
 					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" },
 					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" }
 				]
@@ -77,6 +84,7 @@ jQuery(document).ready(function(){
 				//Elementos (url)
 				"generic_object" : { "i18nCaption" : "generic_object" },
 				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" },
+				"nora" : {"i18nCaption" : "nora" },
 				//Submenu
 				"subLevel":[
 				 	{"i18nCaption":"generic_object", "url": "/x21aPilotoPatronesWar/experimental/generic_object" },
@@ -87,23 +95,28 @@ jQuery(document).ready(function(){
 					{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
 					{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
 				]
+			},
+			"uda" : {
+				//Literal
+				"i18nCaption" : "uda"
 			}
 		}
 	});
 	//idioma
-	$("#x21aPilotoPatronesWar_language").rup_language({languages: ["es", "eu", "en", "fr"]});
+	jQuery("#x21aPilotoPatronesWar_language").rup_language({languages: ["es", "eu", "en", "fr"]});
 	
-	$("#x21aPilotoPatronesWar_menu").rup_menu({
+	jQuery("#x21aPilotoPatronesWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal'),
 		menu: [
 		       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
-				{"i18nCaption":"inicio", "url": "" },
+				{"i18nCaption":"inicio", "url": "", "newWindow": true },
 				{"i18nCaption":"patrones", "submenu":[
-				    {"i18nCaption":"all", "url": "patrones/all" },  
+				    {"i18nCaption":"all", "pathUrl": "/x21aPilotoPatronesWar/patrones/all", "newWindow": true },
+				    {"i18nCaption":"accordion", "pathUrl": "/x21aPilotoPatronesWar/patrones/accordion" },
 				    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
                     {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
                     {"i18nCaption":"combo", "submenu":[
-                      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple" },
+                      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple", "newWindow": true },
                       	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
                       	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
                   	]},
@@ -117,7 +130,12 @@ jQuery(document).ready(function(){
                       	{"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
                       	{"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
                     ]}, 
-                    {"i18nCaption":"tabs", "url": "patrones/tabs" },
+                    {"i18nCaption":"tabs", "submenu":[
+                     	{"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
+                    	{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
+                    	{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
+                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
+                    ]},
 					{"i18nCaption":"grid", "url": "patrones/grid" },
 					{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
 					{"i18nCaption":"upload", "url": "patrones/upload" }
@@ -130,19 +148,22 @@ jQuery(document).ready(function(){
 					{"i18nCaption":"mant_clave_compuesta", "submenu":[
                      	{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
                       	{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
-                    ]}
-				]}
+                    ]},
+    				{"i18nCaption":"nora", "url": "experimental/nora"}
+				]},
+				{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
 		]
 	});
 	
 	if (mixto) {
-		$("#x21aPilotoPatronesWar_menu_mixto").rup_menu({
+		jQuery("#x21aPilotoPatronesWar_menu_mixto").rup_menu({
 			display: 'vertical',
 			menu: [
 			       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
 					{"i18nCaption":"inicio", "url": "" },
 					{"i18nCaption":"patrones", "submenu":[
-					    {"i18nCaption":"all", "url": "patrones/all" },                             
+					    {"i18nCaption":"all", "url": "patrones/all" },                  
+					    {"i18nCaption":"accordion", "pathUrl": "/x21aPilotoPatronesWar/patrones/accordion" },
 					    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
 	                    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
 	                    {"i18nCaption":"combo", "submenu":[
@@ -160,7 +181,12 @@ jQuery(document).ready(function(){
 	                      	{"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
 	                    	{"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
 	                    ]}, 
-	                    {"i18nCaption":"tabs", "url": "patrones/tabs" },
+	                    {"i18nCaption":"tabs", "submenu":[
+	                        {"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
+							{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
+							{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
+	                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
+						]},
 						{"i18nCaption":"grid", "url": "patrones/grid" },
 						{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
 						{"i18nCaption":"upload", "url": "patrones/upload" }
@@ -174,10 +200,11 @@ jQuery(document).ready(function(){
                               {"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
                               {"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
                         ]}
-					]}
+					]}, 
+					{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
 			]
 		});
 	};
 	
-	$.rup.i18n.base.rup_combo.blankNotDefined = "----";
+	jQuery.rup.i18n.base.rup_combo.blankNotDefined = "----";
 });

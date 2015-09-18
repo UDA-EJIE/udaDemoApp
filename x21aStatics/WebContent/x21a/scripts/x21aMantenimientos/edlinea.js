@@ -1,5 +1,5 @@
 /*!
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -37,30 +37,38 @@ jQuery(function($){
 			{ name: "apellido2", index: "apellido2", editable: true },
 			
 			//Definición para combo normal
-			{ name: "ejie", index: "ejie", editable: true,
-				editoptions: { //Define parseo 
-					value:{"1":"Sí","0":"No"} 
-				}, 
-				formatter: "select", //Aplicar parseo
-				edittype: "select" //Aplica combo en detalle
-			},
-//			//Definición para rup_combo 
 //			{ name: "ejie", index: "ejie", editable: true,
-//				editoptions: {
-//					source : [
-//			   			{i18nCaption: "0", value:"0"},
-//			   			{i18nCaption: "1", value:"1"}
-//			   		],
-//			   		i18nId:'GRID_edlinea##ejie'
-//				},
-//				formatter: "rup_combo",
-//				rupType: "combo"
+//				editoptions: { //Define parseo 
+//					value:{"1":"Sí","0":"No"} 
+//				}, 
+//				formatter: "select", //Aplicar parseo
+//				edittype: "select" //Aplica combo en detalle
 //			},
-			{ name: "fechaAlta",  index: "fechaAlta", editable: true,
-				rupType: "datepicker"
+			//Definición para rup_combo 
+			{ name: "ejie", index: "ejie", editable: true,
+				editoptions: {
+					source : [
+			   			{i18nCaption: "0", value:"0"},
+			   			{i18nCaption: "1", value:"1"}
+			   		],
+			   		i18nId:'GRID_edlinea##ejie'
+				},
+				formatter: "rup_combo",
+				rupType: "combo"
 			},
-			{ name: "fechaBaja", index: "fechaBaja", editable: true,
-				rupType: "datepicker" 
+			{ name: "fechaAlta",  
+				index: "fechaAlta", 
+				editable: true,
+				rupType: "date",
+				formatter: "date",
+				formatoptions:{newformat:"RupDate"}
+			},
+			{ name: "fechaBaja", 
+				index: "fechaBaja", 
+				editable: true,
+				rupType: "date",
+				formatter: "date",
+				formatoptions:{newformat:"RupDate"}
 			}
         ]
 	});

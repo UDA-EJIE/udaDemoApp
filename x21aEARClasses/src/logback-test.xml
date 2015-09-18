@@ -20,7 +20,7 @@
     	</encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       		<!-- rollover daily -->
-     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
       		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>

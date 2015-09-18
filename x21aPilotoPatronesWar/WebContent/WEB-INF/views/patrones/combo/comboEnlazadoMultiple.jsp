@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
- <h1>Combo Enlazado (multiple)</h1>
+<h1>Combo Enlazado (multiple)</h1>
 
 <div id="local" style="float: left;">
 	<h2>Local (no i18n)</h2>

@@ -1,5 +1,5 @@
 /*!
- * Copyright 2011 E.J.I.E., S.A.
+ * Copyright 2012 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -36,6 +36,25 @@ jQuery(document).ready(function(){
 		//Resto igual que en date
 		labelMaskId : "intervalo-mask",
 		numberOfMonths: 3,
+		onSelect: function(selectedDate){
+			alert("La fecha seleccionada es: " + selectedDate);
+		}
+	});
+	
+	$.rup_date({		
+		from: "desdeDateTime",
+		to: "hastaDateTime",
+		//Resto igual que en date
+		labelMaskId : "intervalo-mask-date-time",
+		numberOfMonths: 3,
+		datetimepicker:true,
+		showButtonPanel : true,
+		showOtherMonths : true,
+		noWeekend : true,
+		mask: "dd/mm/yyyy hh:mm",
+		showSecond: false,
+		dateFormat: "dd/mm/yyyy",
+		timeFormat: 'hh:mm',
 		onSelect: function(selectedDate){
 			alert("La fecha seleccionada es: " + selectedDate);
 		}

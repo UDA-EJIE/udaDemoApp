@@ -16,6 +16,15 @@
 		<put-attribute name="includes" value=""/>				
 	</definition>
 	
+	<definition name="ajaxMaintTemplate" template="/WEB-INF/layouts/ajaxMaintTemplate.jsp">	
+		<put-attribute name="maint" value="" type="string" />
+		<put-attribute name="maintName" value="" type="string" />				
+	</definition>
+	
+	<definition name="ajaxTemplate" template="/WEB-INF/layouts/ajaxTemplate.jsp">	
+		<put-attribute name="js" value="" type="string" />				
+	</definition>
+	
 	<definition name="errorTemplate" template="/WEB-INF/layouts/errorTemplate.jsp"/>
 	
 	<!-- ***************************** -->
@@ -34,6 +43,32 @@
         <put-attribute name="content" value="/WEB-INF/views/welcome.jsp"/>
     </definition>
 
+    <definition extends="ajaxMaintTemplate" name="simpleTable1">
+        <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
+        <put-attribute name="maint" value="ajaxSimple1.js" type="string" /> 
+        <put-attribute name="maintName" value="GRID_ajax_simple1" type="string" /> 
+    </definition>
+    <definition extends="ajaxMaintTemplate" name="simpleTable2">
+        <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
+        <put-attribute name="maint" value="ajaxSimple2.js" type="string" />
+        <put-attribute name="maintName" value="GRID_ajax_simple2" type="string" /> 
+    </definition>
+    <definition extends="ajaxMaintTemplate" name="simpleTable3">
+        <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
+        <put-attribute name="maint" value="ajaxSimple3.js" type="string" /> 
+        <put-attribute name="maintName" value="GRID_ajax_simple3" type="string" />
+    </definition>
+	<definition extends="ajaxMaintTemplate" name="editMaint1">
+        <put-attribute name="maint" value="ajaxEditMaint1.js" type="string" />
+        <put-attribute name="maintName" value="GRID_ajax_edit1" type="string" /> 
+    </definition>
+    <definition extends="ajaxMaintTemplate" name="multiMaint1">
+        <put-attribute name="maint" value="ajaxMultiMaint1.js" type="string" /> 
+        <put-attribute name="maintName" value="GRID_ajax_multi1" type="string" />
+    </definition>    
 	<definition extends="template" name="simple">
         <put-attribute name="content" value="/WEB-INF/views/simple/simple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/simple-includes.jsp"/>
@@ -42,8 +77,16 @@
         <put-attribute name="content" value="/WEB-INF/views/multi/multi.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/multi/multi-includes.jsp"/>
     </definition>
+    <definition extends="ajaxTemplate" name="groupMulti">
+        <put-attribute name="content" value="/WEB-INF/views/multi/groupMulti.jsp"/>
+        <put-attribute name="js" value="groupMulti.js"/>
+    </definition>
 	<definition extends="template" name="edlinea">
         <put-attribute name="content" value="/WEB-INF/views/edlinea/edlinea.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/edlinea/edlinea-includes.jsp"/>
+    </definition>
+   	<definition extends="template" name="simpleFluido">
+        <put-attribute name="content" value="/WEB-INF/views/simpleFluido/simpleFluido.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/simpleFluido/simpleFluido-includes.jsp"/>
     </definition>
 </tiles-definitions>

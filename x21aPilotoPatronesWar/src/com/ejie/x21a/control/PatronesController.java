@@ -1,5 +1,5 @@
 /*
-* Copyright 2011 E.J.I.E., S.A.
+* Copyright 2012 E.J.I.E., S.A.
 *
 * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
 * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -69,6 +69,14 @@ public class PatronesController {
 
 	@Autowired
 	private Properties appConfiguration;
+	
+	//Accordion
+	@RequestMapping(value = "accordion", method = RequestMethod.GET)
+	public ModelAndView getaccordion(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("accordion", "model", model);
+	}
 
 	//Autocomplete
 	@RequestMapping(value = "autocomplete", method = RequestMethod.GET)
@@ -169,12 +177,36 @@ public class PatronesController {
 		return new ModelAndView("message", "model", model);
 	}
 	
-	//Tabs
-	@RequestMapping(value = "tabs", method = RequestMethod.GET)
-	public ModelAndView getTabs(Model model) {
+	//Tabs con carga de la pagina
+	@RequestMapping(value = "tabsStatic", method = RequestMethod.GET)
+	public ModelAndView getTabsStatic(Model model) {
 		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
 		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
-		return new ModelAndView("tabs", "model", model);
+		return new ModelAndView("tabsStatic", "model", model);
+	}
+	
+	//Tabs con carga ajax
+	@RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
+	public ModelAndView getTabsAjax(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("tabsAjax", "model", model);
+	}
+	
+	//Tabs Mixto
+	@RequestMapping(value = "tabsMixto", method = RequestMethod.GET)
+	public ModelAndView getTabsMixto(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("tabsMixto", "model", model);
+	}
+	
+	//Tabs Multiples mantenimientos
+	@RequestMapping(value = "maintTab", method = RequestMethod.GET)
+	public ModelAndView getMaintTab(Model model) {
+		model.addAttribute("defaultLanguage", appConfiguration.get("x21aPilotoPatronesWar.default.language"));
+		model.addAttribute("defaultLayout", appConfiguration.get("x21aPilotoPatronesWar.default.layout"));
+		return new ModelAndView("maintTab", "model", model);
 	}
 	
 	//Time

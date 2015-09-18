@@ -4,12 +4,18 @@
 		"patrones" 	: "x21aPilotoPatronesWar", 		
 		"simple"	: "Selección simple_fr",
 		"multi"		: "Multiselección_fr",
-		"edlinea"	: "Edición en línea_fr"
+		"edlinea"	: "Edición en línea_fr", 		
+		"simpleFluido"	: "Selección simple_fr",
+		"formPropio" : "Form Propio_fr", 
+		"uda":"UDA"
 	},
 	"x21aMantenimientosWar_migas" :{
 		"simple"	: "Selección simple_fr",
 		"multi"		: "Multiselección_fr",
-		"edlinea"	: "Edición en línea_fr"	
+		"edlinea"	: "Edición en línea_fr",
+		"simpleFluido"	: "Selección simple fluído_fr",
+		"formPropio" : "Form Propio_fr", 
+		"uda":"UDA"	
 	},
 	"GRID_simple##ejie" : {
 		"0" : "Non",
@@ -22,5 +28,12 @@
 	"GRID_edlinea##ejie" : {
 		"0" : "Non",
 		"1" : "Oui"
+	},
+	"GRID_simpleFluido##ejie" : {
+		"0" : "Non",
+		"1" : "Oui"
+	},
+	"simpelMaint" : {
+		"actualizar":"Boton Usuario Actualizar_fr"
 	}
 }

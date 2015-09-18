@@ -4,6 +4,7 @@
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Ereduak",
 			"all" : "[Eredu guztiak]",
+			"accordion" : "Accordion_eu",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botoi-lerro",
 			"combo" : "Combo",
@@ -20,7 +21,14 @@
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
 			"tabs" : "Erlaitz",
+				"tabsStatic":"Carga Estática_eu",
+				"tabsAjax":"Carga Ajax_eu",
+				"tabsMixto":"Carga Mixta_eu",
+				"maintTab":"Pestañas con mantenimientos_eu",
 			"grid" : "Taula",
+				"grid_grupo" : "Tabla Agrupada_eu",
+				"grid_base" : "Tabla Basico_eu",
+				"grid_arbol" : "Tabla Arbol_eu",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 		"experimental": "Esperimentala",
@@ -30,13 +38,16 @@
 			"mant_multi_entidad":"Multi-entitate mantenua",
 			"mant_clave_compuesta":"Gako konposatua mantenua",
 				"mant_clave_compuesta_multi":"Multi-sorta",
-				"mant_clave_compuesta_edlinea":"Lerroan edizioa"
+				"mant_clave_compuesta_edlinea":"Lerroan edizioa",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_menu_mixto" : {
 		"inicio" : "Hasiera",
 		"mantenimientos" : "x21aMantenimientosWar",
 		"patrones" : "Ereduak",
 			"all" : "[Eredu guztiak]",
+			"accordion" : "Accordion_eu",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botoi-lerro",
 			"combo" : "Combo",
@@ -53,7 +64,14 @@
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
 			"tabs" : "Erlaitz",
+				"tabsStatic":"Carga Estática_eu",
+				"tabsAjax":"Carga Ajax_eu",
+				"tabsMixto":"Carga Mixta_eu",
+				"maintTab":"Pestañas con mantenimientos_eu",
 			"grid" : "Taula",
+				"grid_grupo" : "Tabla Agrupada_eu",
+				"grid_base" : "Tabla Basico_eu",
+				"grid_arbol" : "Tabla Arbol_eu",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 		"experimental": "Esperimentala",
@@ -63,11 +81,14 @@
 			"mant_multi_entidad":"Multi-entitate mantenua",
 			"mant_clave_compuesta":"Gako konposatua mantenua",
 			"mant_clave_compuesta_multi":"Multi-sorta",
-			"mant_clave_compuesta_edlinea":"Lerroan edizioa"
+			"mant_clave_compuesta_edlinea":"Lerroan edizioa",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" : "Ereduak",
 			"all" : "[Eredu guztiak]",
+			"accordion" : "Accordion_eu",
 			"autocomplete" : "Autocomplete",
 			"toolbar" : "Botoi-lerro",
 			"comboSimple" : "Combo Simple",
@@ -83,7 +104,14 @@
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
 			"tabs" : "Erlaitz",
+				"tabsStatic":"Carga Estática_eu",
+				"tabsAjax":"Carga Ajax_eu",
+				"tabsMixto":"Carga Mixta_eu",
+				"maintTab":"Pestañas con mantenimientos_eu",
 			"grid" : "Taula",
+				"grid_grupo" : "Tabla Agrupada_eu",
+				"grid_base" : "Tabla Basico_eu",
+				"grid_arbol" : "Tabla Arbol_eu",
 			"tooltip" :  "Tooltip",
 			"upload" :  "Upload",
 		"experimental": "Esperimentala",
@@ -93,7 +121,9 @@
 			"mant_multi_entidad":"Multi-entitate mantenua",
 			"mant_clave_compuesta":"Gako konposatua mantenua",
 			"mant_clave_compuesta_multi":"Multi-sorta",
-			"mant_clave_compuesta_edlinea":"Lerroan edizioa"
+			"mant_clave_compuesta_edlinea":"Lerroan edizioa",
+			"nora"	: "NORA", 
+		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
@@ -223,7 +253,32 @@
 		"pestana1"  : "Tab 1_eu",
 		"sub10" 	: "sub10_eu",
 		"sub11" 	: "sub11_eu",
-		"pestana2" 	: "Tab 2_eu"
+		"pestana2" 	: "Tab 2_eu",
+		"pestanaAna"   	: "Nueva Pestaña_eu",
+		"nuevaPestaña" 	: "Nuevo Nivel_eu",
+		"PestañasMaint"	: "Pestaña con Mantenimientos_eu"
+	},
+	"pruebaSub3Maint" : {
+		"maint1"		: "Mantenimiento 1_eu",
+		"maint2"		: "Mantenimiento 2_eu",
+		"maint3"		: "Mantenimiento 3_eu"	
+	},
+	"tabsStatic" : {
+		"pestana0" 	: "Pestaña 1_eu",
+		"pestana1"  : "Pestaña 2_eu",
+		"pestana2" 	: "Pestaña 3_eu",
+		"pestanaAna" : "Pestaña Añadida_eu"
+	},
+	"tabsMixta" : {
+		"pestanaUrl" 	: "Pestaña con url_eu",
+		"pestanaHtml"  : "Pestaña con html_eu"
+	},
+	"maintTab" : {
+		"maint1"	: "Mantenimiento Simple 1_eu",
+		"maint2"    : "Mantenimiento Simple 2_eu",
+		"maint3" 	: "Mantenimiento Simple 3_eu",
+		"edit1" 	: "Mantenimiento edición en línea_eu",
+		"multi1" 	: "Mantenimiento múltiple_eu"
 	},
 	"tabsDialog" : {
 		"pestana0" 	: "Tab 0_eu",
@@ -259,6 +314,10 @@
 		"0" : "Ez",
 		"1" : "Bai"
 	},
+	"GRID_simple##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
 	"gridDialog##ejie" : {
 		"0" : "Ez",
 		"1" : "Bai"
@@ -269,5 +328,21 @@
 		"uploadForm" : "Upload formularioan",
 		"uploadFormSimple" : "Upload soila formularioan",
 		"uploadFormMultiple" : "Upload asko formularioan"
+	},
+	"comboProvincias":{
+		"_blank":"[Elementu bat aukeratu]" 	
+	},
+	"comboMunicipios":{
+		"_blank":"[Elementu bat aukeratu]" 	
+	},
+	"comboProvinciasAPI":{
+		"_blank":"[Elementu bat aukeratu]" 	
+	},
+	"comboMunicipiosAPI":{
+		"_blank":"[Elementu bat aukeratu]" 	
+	},
+	"gridTree":{
+		"total":"Total:_eu",
+		"gana":"Gana:_eu"  	
 	}
 }
