@@ -66,7 +66,6 @@
 				alert("El atributo ID es obligatorio en los MButtons.");
 				boton = null;
 			} else {
-				
 				buttonId = obj.id;
 				// Se comprueba si el id del boton contiene el identificador de la botonera. En caso de no existir se añade al principio.
 				if (buttonId.indexOf($(this).attr("id"))!==0){
@@ -89,7 +88,6 @@
 		
 		addButtonsToMButton : function (buttons, menuButton, json_i18n) { //añade botones al 'mbutton'
 			//Contenedor del menuButton
-			
 			var div = $('<div>')
 					.addClass("ui-widget ui-widget-content rup-toolbar_menuButtonContainer")
 					.attr("id","mbutton_"+menuButton[0].id)
@@ -116,9 +114,14 @@
 				ul.prepend($("<li>").css("display", "block").append(this.addButton(buttons[i],json_i18n).addClass("rup-toolbar_menuButtonElement")));
 			}
 
-			//Añadir elementos al DOM 
-			div.appendTo("body");
-			div.append(ul);
+			//Añadir elementos al DOM
+			if(!$.rup_utils.aplicatioInPortal()){
+				div.appendTo("body");
+				div.append(ul);
+			} else {
+				div.append(ul);
+				$(".r01gContainer").append(div);
+			}
 			
 			//Borrar referencias
 			delete ul;

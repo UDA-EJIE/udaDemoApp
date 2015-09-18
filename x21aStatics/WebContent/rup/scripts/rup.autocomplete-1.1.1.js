@@ -128,7 +128,7 @@
 				} else {
 					//Se recogen y cruzan las paremetrizaciones del objeto
 					var settings = $.extend({}, $.fn.rup_autocomplete.defaults, args[0]),
-						name = $("#"+this.id).attr("name"),
+						name = $(this).attr("name"),
 						selected_value;
 					
 					//Recopilar datos necesarios

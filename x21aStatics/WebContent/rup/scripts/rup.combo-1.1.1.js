@@ -194,7 +194,7 @@
 			//Establece un elemento del combo por posición o valor
 			_setElement : function(selector, param){
 				if (typeof param === "string" ){
-					if ($('option[value='+param+']', selector).length>0){//Controlamos que se intenten seleccionar un valor existente
+					if ($('option[value="'+param+'"]', selector).length>0){//Controlamos que se intenten seleccionar un valor existente
 						$(selector).selectmenu("value", param);
 					} else {
 						return false;

@@ -37,13 +37,21 @@ $.widget("$.rup_tooltip", {
 	},
 	_init: function() {
 		var self = this;
+		var location;
+		
+		if(!$.rup_utils.aplicatioInPortal()){
+			location = document.body;
+		} else {
+			location = ".r01gContainer";
+		}
+		
 		this.rup_tooltip = $("<div></div>")
 			.attr("id", "ui-tooltip-" + increments++)
 			.attr("role", "tooltip")
 			.attr("aria-hidden", "true")
 			.addClass("rup-tooltip ui-widget ui-corner-all")
 			.addClass(this.options.tooltipClass)
-			.appendTo(document.body)
+			.appendTo(location)
 			.hide();
 		this.rup_tooltipContent = $("<div></div>")
 			.addClass("rup-tooltip_content")

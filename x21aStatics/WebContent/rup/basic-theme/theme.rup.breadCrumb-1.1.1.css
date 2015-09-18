@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
  
- .rup-breadCrumb_main LI UL { 
+.rup-breadCrumb_main LI UL { 
 	position: absolute;
 	float: left;
 }
@@ -86,9 +86,7 @@
 	padding: 4px;
 	border-bottom: 1px dotted #666666;
 }
-.rup-breadCrumb_main LI UL LI:last-child A {
-	border-bottom: none;
-}
+
 .rup-breadCrumb_main LI UL LI A:HOVER {
     background: #444444;
 }

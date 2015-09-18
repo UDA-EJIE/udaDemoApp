@@ -64,7 +64,7 @@
 		},
 		//Funcion encargada de actualizar la url de invocacion de una pestaña determinada
 		changeUrlTab : function(args){
-			$("#"+args.idTab).tabs("url",args.position,args.url);
+			$("#"+args.idTab).tabs("url",args.position,$.rup_utils.setNoPortalParam(args.url));
 		},
 		//Funcion encargada de seleccionar una pestaña determinada. El comportamiento es identico al click con el raton del mismo
 		selectTab : function(args){
@@ -75,8 +75,8 @@
 			var nameLiteral= "rup-tabs-";
 			var insertIndex = 0;
 			
-			//Se añade la nieva pestaña
-			$("#"+args.idTab).tabs("add",args.url,args.label,args.position);
+			//Se añade la nueva pestaña
+			$("#"+args.idTab).tabs("add",$.rup_utils.setNoPortalParam(args.url),args.label,args.position);
 			
 			$.each($("#"+args.idTab+" div[id*='"+nameLiteral+"']"), function(index, object) {
 				if(insertIndex < parseFloat(object.id.split(nameLiteral)[1])){
@@ -117,7 +117,6 @@
 					}
 					
 					settings.profun = profun;
-					
 					//Generar estructura
 					this._parseJSON(settings.tabs, $.rup.i18n.app[settings.id], $('#' + settings.id), "", 1, settings);
 					
@@ -143,8 +142,9 @@
 			},
 			//Funcion encargada de crear los distintos tab's
 			_tabify : function (div, settings) {
+				
 				//Se cargan los Setting de cada objeto en su campo "data" correspondiente
-					div.data("settings",settings);
+				div.data("settings",settings);
 
 				//Se especifica el control del evento "select" por parte del patron 					
 				var select = function(event, ui){
@@ -244,7 +244,7 @@
 					if (element.url !== undefined){
 						//URL => Cargar contenido al pulsar
 						tabs.prepend($('<li>').append(
-							$('<a>').attr('href',element.url)
+							$('<a>').attr('href',$.rup_utils.setNoPortalParam(element.url))
 								.attr('rupLevel',rupLevel)
 								.css('padding-left', '1.4em')
 								.css('padding-right', '0.3em')

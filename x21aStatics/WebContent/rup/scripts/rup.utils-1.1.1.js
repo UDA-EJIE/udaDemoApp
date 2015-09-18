@@ -233,6 +233,21 @@
 			}
 			
 			return ""; 
+		},
+		//Función encargada de gestionar las url's de las aplicaciones en portal 
+		setNoPortalParam:function(url){
+			if (url && $.rup_utils.readCookie("r01PortalInfo") !== null && url.match("R01HNoPortal") === null && $("div.r01gContainer").length > 0){
+				return url + (url.match("\\?") === null ? "?" : "&") + "R01HNoPortal=true";
+			}
+			return url;
+		},
+		//Función encargada de detectar si la aplicación esta integrada en portal
+		aplicatioInPortal:function(){
+			if (!($.rup_utils.readCookie("r01PortalInfo") !== null && $("div.r01gContainer").length > 0)){
+				return false;
+			} else {
+				return true;
+			}
 		}
 	});
 	

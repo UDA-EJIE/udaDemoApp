@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 <project name="x21aEAR" default="mavenRunDependencies" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	
+	<!-- Permite el uso de variables de entorno -->
+	<property environment="env" />
+			
+	<!-- Obtener dependencias -->	
 	<target name="mavenRunDependencies" description="Resuelve las dependencias del proyecto desde Maven">
 		<path id="maven-ant-tasks.classpath" path="${ant.home}/lib/maven-ant-tasks-2.1.1.jar" />
-		<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />	
-		<artifact:dependencies settingsFile="C:\Documents and Settings\DGONZACA\.m2\settings.xml"/>
-		<artifact:mvn pom="pom.xml" mavenHome="c:\apache-maven-2.0.9" fork="true">
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />
+		<property environment="env" />
+		<artifact:dependencies settingsFile="${env.M2_HOME}/conf/settings.xml"/>
+		<artifact:mvn pom="pom.xml" mavenHome="${env.M2_HOME}" fork="true">
 			<arg value="package"/>
 		</artifact:mvn>			
 	</target>
+	
+	<!-- Portalizar estilos -->
+	<property name="codApp" value="x21a"/>
+	<property name="srcDir" value="../${codApp}Statics/WebContent"/>
+	<property name="destDir" value="../${codApp}Statics/${codApp}PortalStatics"/>
+
+	<target name="generatePortalStatics" description="Genera directorio x21aPortalStatics para despliegue de en portal">
+		<echo>Regenerando directorio (x21aPortalStatics)</echo>
+		<delete dir="${destDir}/rup" />
+		<delete dir="${destDir}/${codApp}" />
+		<delete dir="${destDir}/WEB-INF" />
+		<copy todir="${destDir}/rup" >
+	 		<fileset dir="${srcDir}/rup" />
+		</copy>
+		<copy todir="${destDir}/${codApp}" >
+			<fileset dir="${srcDir}/${codApp}" />
+		</copy>
+
+		<!-- Desplegar en LOCAL -->
+		<copy todir="${destDir}/WEB-INF" >
+			<fileset dir="${srcDir}/WEB-INF" />
+		</copy>
+		<replace file="${destDir}/WEB-INF/weblogic.xml" token="x21aStatics" value="x21aPortalStatics" />
+		
+		<echo>Parseando ficheros de estilos (.css)</echo>
+		<taskdef name="portalizeCss" classname="com.ejie.uda.UDAPortalizeCss" classpath="${ant.home}/lib/com.ejie.uda.statics.tools.jar" />
+		<portalizeCss codApp="${codApp}" destDir="${destDir}" parserHacks="${ant.home}/lib/com.ejie.uda.statics.tools.style_hacks"/>
+	</target>
+	
+	
+	<target name="generatePortalInclude" description="Genera el fichero que incluye los ficheros de estilos">
+		<mkdir  dir="${destDir}" />
+		<concat destfile="${destDir}/uda-portal.inc">
+			<header><![CDATA[<title>Uda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+]]></header>
+			<filelist 
+				dir="../x21aPilotoPatronesWar/WebContent/WEB-INF/layouts/includes/"
+		    	files="rup.styles.inc,x21a.styles.inc"
+			/>
+		</concat>
+		<replace file="${destDir}/uda-portal.inc" token="${staticsUrl}" value="/appcont/rup-cac" />
+		<replace file="${destDir}/uda-portal.inc" token='&lt;%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%&gt;' value="" />
+	
+	</target>
+		
 </project>

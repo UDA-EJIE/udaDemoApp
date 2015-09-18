@@ -27,7 +27,8 @@ jQuery(document).ready(function(){
 				fadeSpeed: my_fadeSpeed,
 				gotoTop: my_gotoTop,
 				block: my_block,
-				closeLink: my_closeLink
+				closeLink: my_closeLink,
+				message: "Este es un ejemplo de <b>Feedback</b> con message cargado en el create()"
 			}; 
 		return properties;
 	}

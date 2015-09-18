@@ -72,6 +72,13 @@
 	height:18px;
 }
 
+@media \0screen {
+	.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+		z-index: 0;
+	}
+}
+
+
 /******************/
 /* ICONOS TOOLBAR */
 /******************/

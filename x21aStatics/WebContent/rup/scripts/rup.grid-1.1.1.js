@@ -249,21 +249,30 @@
 			onSelectRowUserEvent = settings.onSelectRow;
 			
 			settings.onSelectRow = function (id, selectR) {
+				
+				function executeSelectRow(){
+					if($("body").data("e_click")) {
+		            	
+						if (onSelectRowUserEvent !== null) {
+					        if (onSelectRowUserEvent(xhr) === false) {
+					            return false;
+					        }
+					    }
+						//Comportamiento por defecto del evento
+						onSelectRow_default(id, selectR);
+		                clearTimeout($("body").data("clicktimer"));
+		                $("body").data("clicktimer", null);
+		            }
+				}
+				
+				var  isMultiselect = $(this).jqGrid("getGridParam", "multiselect");
+				
 				$("body").data("e_click", true);
-				$("body").data("clicktimer" , window.setTimeout(function () {
-			            if($("body").data("e_click")) {
-			            	
-							if (onSelectRowUserEvent !== null) {
-						        if (onSelectRowUserEvent(xhr) === false) {
-						            return false;
-						        }
-						    }
-							//Comportamiento por defecto del evento
-							onSelectRow_default(id, selectR);
-			                clearTimeout($("body").data("clicktimer"));
-			                $("body").data("clicktimer", null);
-			            }
-			    }, 0));
+				if(!isMultiselect){
+					$("body").data("clicktimer" , window.setTimeout(executeSelectRow, 0));
+				}else{
+					$(executeSelectRow);
+				}
 			};
 			
 			onSelectAllUserEvent = settings.onSelectAll;
@@ -395,7 +404,13 @@
 				multiboxonly: settings.multiboxonly,
 				loadui: "block",
 				//Eventos
-				beforeRequest: settings.beforeRequest,
+				beforeRequest: function(){
+					var url = $(this).rup_grid("getGridParam","url");
+					$(this).rup_grid("setGridParam",{url:$.rup_utils.setNoPortalParam(url)});
+					if (settings.beforeRequest){
+						settings.beforeRequest.call();
+					}
+				},
 				loadBeforeSend: settings.loadBeforeSend,
 				serializeGridData: settings.serializeGridData,
 				loadError: settings.loadError,

@@ -13,8 +13,12 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
- 
- .rup-language_root {
+
+.rup-language_root {
+        font-family: Arial,Helvetica,sans-serif;
+}
+
+.rup-language_root {
 	position: relative;
 	width:100%;
 	font-size: 0.9em;
@@ -37,6 +41,10 @@
 	list-style-type: none;
 }
 
+.rup-language_root ul {
+        margin: 0px;
+}
+
 .rup-language_change a {
 	background: url("images/rup.dropdown.gif") no-repeat right;
 	padding: .2em 2em .2em .5em;
@@ -44,8 +52,15 @@
 
 .rup-language_close_languages {
 	background: url("images/rup.close_hover.png") no-repeat right;
-	text-decoration: none;
 	float: right;
+}
+
+.rup-language_language_list a:link {
+	text-decoration : none;
+}
+
+.rup-language_language_list ul a:link {
+	text-decoration : underline;
 }
 
 .rup-language_change_option {
@@ -73,7 +88,7 @@
 	/*top: 25px;*/
 	top: 20px;
 	left:28px;
-	left:29px\9;
+	left:29px;
 	width: 170px;
 }
 

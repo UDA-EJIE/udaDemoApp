@@ -14,35 +14,15 @@
  * que establece la Licencia.
  */
  
- .ui-tabs .ui-tabs-panel { border-width: 1px;  }
+/* Autocomplete
+----------------------------------*/
+.ui-autocomplete { position: absolute; cursor: default; z-index: 100 !important;}	
+.ui-autocomplete-loading { background: white url('images/rup.ajaxLoader.gif') right center no-repeat; }
 
-/* Estilo de la imagen de carga de cada pestañas */
-.rup-tabs_loading { 
-	float:left;
-	width: 1.2em;
-	height: 1.2em;
-	margin-left: 0.3em;
-	margin-right: 0em;
-	margin-top: 0em;
-	margin-bottom: 0em;
-	
+.ui-autocomplete ul li, .ui-autocomplete li{
+	list-style-type: none;
 }
 
-.rup-tabs_loading_img { 
-	vertical-align: middle;
-	background-image: url("images/rup.ajaxLoader.gif");
-	background-position:center center;
-	background-repeat:no-repeat;
-	float:right;
-	width: 1.2em;
-	height: 1.2em;
-	margin-left: 0.3em;
-	margin-right: 0em;
-	margin-top: 0em;
-	margin-bottom: 0em;
-	
-}
-
-.rup-tabs_title { 
-	float:left;
-}
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+ 

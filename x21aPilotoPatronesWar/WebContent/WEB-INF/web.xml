@@ -15,7 +15,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/app-config.xml</param-value>
 	</context-param>
-	<!-- Log4j initialization Listener -->
+	<!-- UDA initialization Listener -->
 	<listener>
 		<listener-class>com.ejie.x38.UdaListener</listener-class>
 	</listener>

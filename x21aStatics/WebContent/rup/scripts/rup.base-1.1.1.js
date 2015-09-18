@@ -85,13 +85,8 @@
 			rup_ajax_settings.error=error_default;
 			
 			//Se valida la presencia de portal y, llegados al caso, se adecuan las llamadas ajax para trabajar con portales
-			if ($.rup_utils.readCookie("r01PortalInfo") !== null){
-				if (rup_ajax_settings.url.match("\\?") === null){
-					rup_ajax_settings.url = rup_ajax_settings.url + "?R01HNoPortal=true";
-				} else {
-					rup_ajax_settings.url = rup_ajax_settings.url + "&R01HNoPortal=true";
-				}
-			} 
+			rup_ajax_settings.url=$.rup_utils.setNoPortalParam(rup_ajax_settings.url);
+			
 			// Se realiza la llamada ajax
 			$.ajax(rup_ajax_settings);
 		}

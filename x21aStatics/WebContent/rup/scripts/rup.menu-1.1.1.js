@@ -216,6 +216,10 @@
 						}
 						delete submenu;
 					});
+				//Evitar borde último elemento
+				t.children('.rup_div_menu:last-child').children("a").css("border-style", "none");
+				//Evitar bordes redondeados
+				t.children('.rup_div_menu').children("a").css("border-radius", "0");
 				
 				//Numero de entradas de menu 
 				var menuNumber = t.children('.rup_div_menu').children("a").size() -1;

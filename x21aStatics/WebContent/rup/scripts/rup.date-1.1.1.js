@@ -142,6 +142,11 @@
 						$("#"+settings.id).multiDatesPicker(settings);
 					}
 					
+					//Ajuste para el comportamiento de portales
+					if($.rup_utils.aplicatioInPortal() && !$("#"+settings.id).is("div")){
+		            	$(".r01gContainer").append($(".ui-datepicker:not(.r01gContainer .ui-datepicker)"));
+		            }
+					
 					//Deshabilitar
 					if (settings.disabled){
 						$("#"+settings.id).rup_date("disable");

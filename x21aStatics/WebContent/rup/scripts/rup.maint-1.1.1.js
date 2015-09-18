@@ -189,11 +189,11 @@
 //					
 //					return (Number(p)-1)*rowsXpage+rowIndex;
 				}
-				
 				$.rup_ajax({
 					url: detailURL,
 					dataType: 'json',
 					type: "GET",
+					async: false,
 					contentType: 'application/json',		    
 					success: function (xhr, ajaxOptions) {
 						var rowPos, page = mnt.prop.jQueryGrid.rup_grid("getGridParam", "page"), totalRows, rowsXpage, totalElements;
@@ -884,6 +884,8 @@
 									mant.prop.jQueryGrid.rup_grid("addRowData", rowN, jsonxhr, "first");
 									if (!mant.prop.jQueryGrid.rup_grid("isMultiselect")) {
 										mant.prop.jQueryGrid.rup_grid("setSelection", rowN, true);
+										mant.prop.toolbar.enableButton("edit");
+										mant.prop.toolbar.enableButton("delete");
 									}
 									
 								}else{
@@ -1054,6 +1056,15 @@
 					}
 				}
 			});
+		},
+		getMode : function () {// Devuelve el modo (edit o new) en el que se encuentra el formulario
+			return this[0].prop.MODO;
+		},
+		isEditing : function () {// Devuelve true o false dependiendo si estamos en modo edición o no
+			return (this[0].prop.MODO==='edit' ? true : false);
+		},
+		isAdding : function () {// Devuelve true o false dependiendo si estamos en modo insercion o no
+			return (this[0].prop.MODO==='new' ? true : false);
 		}
 	});
 	//Métodos privados 
@@ -1355,7 +1366,7 @@
 				$.data(t[0].prop.jQueryGrid[0], "detailPagAction",'');
 				
 				//En el caso de no existir un valor conocido para gsr se le asigna el identificador del elemento seleccionado actual
-				if (!gsr || gsr===-1) {
+				if ((!gsr || gsr===-1) && typeof t[0].prop.currentSelectedRow ==='string') {
 					gsr = t[0].prop.currentSelectedRow.split(";")[1].substring(3);
 				}
 				if (t[0].prop.jQueryGrid.rup_grid("isMultiselect")) {
@@ -1405,7 +1416,7 @@
 				t[0].prop.jQueryGrid.rup_grid("reloadGrid");
 				
 				//En el caso de no existir un valor conocido para gsr se le asigna el identificador del elemento seleccionado actual
-				if (!gsr || gsr===-1) {
+				if ((!gsr || gsr===-1) && typeof t[0].prop.currentSelectedRow ==='string') {
 					gsr = t[0].prop.currentSelectedRow.split(";")[1].substring(3);
 				}
 				
@@ -1478,15 +1489,15 @@
 				
 				// En caso de ser necesario realizar una paginacion se realiza
 				if (reloadNewPage){
-					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent = e;
-					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent.parentMaintName = t[0].id;
+//					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent = e;
+//					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent.parentMaintName = t[0].id;
 					t[0].prop.jQueryGrid.rup_grid("setGridParam", {page: intNewPage});
 					t[0].prop.jQueryGrid.rup_grid("reloadGrid");
 				}
 				// Se resetea el formulario de edicion
 				$(t[0]).rup_maint("resetForm", t[0].prop.detailForm);
 				//En el caso de no existir un valor conocido para gsr se le asigna el identificador del elemento seleccionado actual
-				if (!gsr || gsr===-1) {
+				if ((!gsr || gsr===-1) && typeof t[0].prop.currentSelectedRow ==='string') {
 					gsr = t[0].prop.currentSelectedRow.split(";")[1].substring(3);
 				}
 				// Se realiza la edicion del elemento
@@ -1557,8 +1568,8 @@
 				}
 				// En caso de ser necesario realizar una paginacion se realiza
 				if (reloadNewPage){
-					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent = e;
-					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent.parentMaintName = t[0].id;
+//					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent = e;
+//					t[0].prop.jQueryGrid[0].rup_gridProps.sourceEvent.parentMaintName = t[0].id;
 					t[0].prop.jQueryGrid.rup_grid("setGridParam", {page: intNewPage});
 					t[0].prop.jQueryGrid.rup_grid("reloadGrid");
 					$.data(t[0].prop.jQueryGrid[0], "detailPagAction",'');
@@ -1566,7 +1577,7 @@
 				// Se resetea el formulario de edicion
 				$(t[0]).rup_maint("resetForm", t[0].prop.detailForm);
 				//En el caso de no existir un valor conocido para gsr se le asigna el identificador del elemento seleccionado actual
-				if (!gsr || gsr===-1) {
+				if ((!gsr || gsr===-1) && typeof t[0].prop.currentSelectedRow ==='string') {
 					gsr = t[0].prop.currentSelectedRow.split(";")[1].substring(3);
 				}
 				// Se realiza la edicion del elemento
@@ -1597,6 +1608,11 @@
 			 */
 			function createNavigationButtons() {
 				$("#back_" + settings.name).click(function (e) {
+					//Se comprueba si el enlace esta deshabilitado
+					if ($(this).hasClass("ui-state-disabled")){
+						return false;
+					}
+					
 					// Se comprueba si se han realizado cambios en los datos del formulario
 					checkDetailFormModifications(function(){
 						// Se realiza la navegacion al elemento anterior
@@ -1604,6 +1620,11 @@
 					});
 				});	
 				$("#forward_" + settings.name).click(function (e) {
+					//Se comprueba si el enlace esta deshabilitado
+					if ($(this).hasClass("ui-state-disabled")){
+						return false;
+					}
+					
 					// Se comprueba si se han realizado cambios en los datos del formulario
 					checkDetailFormModifications(function(){
 						// Se realiza la navegacion al siguiente elemento
@@ -1611,6 +1632,11 @@
 					});
 				});	
 				$("#first_" + settings.name).click(function (e) { 
+					//Se comprueba si el enlace esta deshabilitado
+					if ($(this).hasClass("ui-state-disabled")){
+						return false;
+					}
+					
 					// Se comprueba si se han realizado cambios en los datos del formulario
 					checkDetailFormModifications(function(){
 						// Se realiza la navegacion al primer elemento
@@ -1618,6 +1644,11 @@
 					});
 				});	
 				$("#last_" + settings.name).click(function (e) { 
+					//Se comprueba si el enlace esta deshabilitado
+					if ($(this).hasClass("ui-state-disabled")){
+						return false;
+					}
+					
 					// Se comprueba si se han realizado cambios en los datos del formulario
 					checkDetailFormModifications(function(){
 						// Se realiza la navegacion al ultimo elemento
@@ -1910,6 +1941,7 @@
 							t.rup_maint("editElement", rowid);
 							
 						}else{
+							t[0].prop.MODO = "edit";
 							t[0].prop.currentSelectedRow = "p_" + page + ";" + "id_" + rowid;
 							t.rup_maint("editElement", rowid);
 						}
@@ -1985,6 +2017,7 @@
 				window.clearTimeout($("body").data("clicktimer_mnt"));
 				//eliminamos la edicion en linea en el doble click y lo dejamos en linea
 				if (!t[0].prop.jQueryGrid.rup_grid("isMultiselect") && !t[0].prop.jQueryGrid.rup_grid("isEditable")) {
+					t[0].prop.MODO = "edit";
 					t.rup_maint("editElement", rowid);
 				}
 			};

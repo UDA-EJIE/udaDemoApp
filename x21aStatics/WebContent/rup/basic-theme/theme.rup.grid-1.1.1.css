@@ -14,9 +14,9 @@
  * que establece la Licencia.
  */
  
- /* 
- * Fila resaltada (HOVER) => .rup-grid_evenRow:hover, .rup-grid_oddRow:hover {...} 
- * Fila seleccionada  => .rup-grid_evenRow.ui-state-highlight, .rup-grid_oddRow.ui-state-highlight {...}
+/* 
+ * Fila resaltada (HOVER) => .rup-grid_evenRow:hover, .rup-grid_oddRow:hover  
+ * Fila seleccionada  => .rup-grid_evenRow.ui-state-highlight, .rup-grid_oddRow.ui-state-highlight
  * NOTA: Si solo se van a usar colores (sin imágenes), sobreescribir el fondo de jQuery UI con:
  * 		background-image: none;
  */
@@ -27,11 +27,14 @@
 	background-color: #D0D0D0;
 	background-image: none; 
 }
+*/
+/*
 .rup-grid_evenRow.ui-state-highlight,
 .rup-grid_oddRow.ui-state-highlight {
 	background-color: #FFFFCC;
 	background-image: none; 
 }
+*/
 
 /* Padding de las celdas [IMPORTANT] */
 .rup-grid_cellPadding_important { 
@@ -58,7 +61,7 @@
 .ui-jqgrid-btable .trAddSeparator{
 /* 	background-color: #929292; */
 /* 	border-color: #929292; */
-	height: .2em;
+	height: 0em;
 }
 .ui-jqgrid-btable .trAddSeparator:HOVER{
 /* 	background-color: #929292; */

@@ -57,6 +57,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
             <map>
                 <entry key="com.ejie.x21a.model.Alumno" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.Comarca" value-ref="customSerializer" />
+                <entry key="com.ejie.x21a.model.Departamento" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.DepartamentoProvincia" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.Localidad" value-ref="customSerializer" />
                 <entry key="com.ejie.x21a.model.Provincia" value-ref="customSerializer" />

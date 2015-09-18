@@ -146,7 +146,7 @@
 		<appender-ref ref="udaTrazasAppender"/>
 	</logger>
 	
-	<logger name="com.ejie.${CONTEXT_NAME}" level="${log.level.aplicTrazas}">
+	<logger name="com.ejie.x21a" level="${log.level.aplicTrazas}">
 		<appender-ref ref="aplicTrazasAppender"/>
 	</logger>
 	

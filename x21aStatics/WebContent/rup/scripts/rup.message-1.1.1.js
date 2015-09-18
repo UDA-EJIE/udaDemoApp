@@ -35,46 +35,39 @@
 	
 	$.rup_messages("extend", {
 		msgError : function (properties) {
+			//Se recogen y cruzan las paremetrizaciones del objeto
+			var settings = $.extend({}, $.rup_messages.defaults, properties), docHeight, docWidth;
+			this._rupProperties(settings, $.rup.i18n.base.rup_message.tituloError);
+			
+			//parámetros específicos de tipo de mensaje
+			settings.buttons = [{
+                text: $.rup.i18n.base.rup_message.aceptar,
+                click: function () { 
+                    self.dialog("close"); 
+                }
+            }];
+			
             var self = this._createDiv().appendTo("body");
-            self.dialog({
-                autoOpen: false,
-                modal: true,
-                resizable: false,
-                closeText: $.rup.i18n.base.rup_message.tituloError.cerrar,
-                title: (properties.title === null || properties.title === "" ? $.rup.i18n.base.rup_message.tituloError: properties.title),
-                close: function () {
-                    self.dialog("destroy");
-                    self.remove();
-                    self = null;
-                },
-                buttons: [{
-                        text: $.rup.i18n.base.rup_message.aceptar,
-                        click: function () { 
-                            self.dialog("close"); 
-                        }
-                    }]
-                });    
+            self.dialog(settings);    
             if ($.isFunction(properties.beforeClose)) {//la funcion recibira dos par?metros event, ui
                 self.bind("dialogbeforeclose", properties.beforeClose);
             }
 			this._createCloseLink(self);
 			this._addStyles(self, "error", properties.message);
+			docHeight = $(document).height();
+			docWidth = $(document).width();
             self.dialog("open");
+            this._dialogInPortal(docWidth, docHeight);
         },
         msgConfirm : function (properties) {    
+        	//Se recogen y cruzan las paremetrizaciones del objeto
+        	var settings = $.extend({}, $.rup_messages.defaults, properties), docHeight, docWidth;
+			this._rupProperties(settings, $.rup.i18n.base.rup_message.confirmacion);
+			
             var self = this._createDiv().appendTo("body"), aceptButton;
-            self.dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    closeText: $.rup.i18n.base.rup_message.tituloError.cerrar,
-                    title: (properties.title === null || properties.title === "" ?$.rup.i18n.base.rup_message.confirmacion: properties.title),
-                    close: function () {
-                        self.dialog("destroy");
-                        self.remove();
-                        self = null;
-                    }
-                });            
+            self.dialog(settings);           
+            
+            //parámetros específicos de tipo de mensaje
             aceptButton = [{
                     text: $.rup.i18n.base.rup_message.aceptar,
                     click: function () { 
@@ -83,69 +76,72 @@
                     }
                 }];
             self.dialog("option", "buttons", aceptButton);
+            
             if ($.isFunction(properties.beforeClose)) {//la funcion recibira dos par?metros event, ui
                 self.bind("dialogbeforeclose", properties.beforeClose);
             }
 			this._createCloseLink(self);
 			this._addStyles(self, "confirm", properties.message);
 			this._createLinkButton(self);
+			docHeight = $(document).height();
+			docWidth = $(document).width();
             self.dialog("open");
+            this._dialogInPortal(docWidth, docHeight);
+            
             //Le ponemos el foco al botón aceptar en vez de al enlace
             $('div[aria-labelledby=ui-dialog-title-' + self[0].id + '] .ui-dialog-buttonpane button:first').focus();
         },
-        msgOK : function (properties) {    
+        msgOK : function (properties) {
+        	//Se recogen y cruzan las paremetrizaciones del objeto
+        	var settings = $.extend({}, $.rup_messages.defaults, properties), docHeight, docWidth;
+			this._rupProperties(settings, $.rup.i18n.base.rup_message.correct);
+			
+			//parámetros específicos de tipo de mensaje
+			settings.buttons = [{ 
+				text: $.rup.i18n.base.rup_message.aceptar,
+				click: function () { 
+					self.dialog("close"); 
+				}
+        	}];
+			
             var self = this._createDiv().appendTo("body");
-            self.dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    closeText: $.rup.i18n.base.rup_message.tituloError.cerrar,
-                    title: (properties.title === null || properties.title === "" ? $.rup.i18n.base.rup_message.correct: properties.title),
-                    close: function () {
-                        self.dialog("destroy");
-                        self.remove();
-                        self = null;
-                    },
-                    buttons: [{ 
-							text: $.rup.i18n.base.rup_message.aceptar,
-							click: function () { 
-								self.dialog("close"); 
-							}
-                    	}]
-                	});    
+            self.dialog(settings);      
+                        
             if ($.isFunction(properties.beforeClose)) {//la funcion recibira dos par?metros event, ui
                 self.bind("dialogbeforeclose", properties.beforeClose);
             }
             this._createCloseLink(self);
 			this._addStyles(self, "ok", properties.message);
+			docHeight = $(document).height();
+			docWidth = $(document).width();
             self.dialog("open");
+            this._dialogInPortal(docWidth, docHeight);
         },
         msgAlert : function (properties) {
+        	//Se recogen y cruzan las paremetrizaciones del objeto
+			var settings = $.extend({}, $.rup_messages.defaults, properties), docHeight, docWidth;
+			this._rupProperties(settings, $.rup.i18n.base.rup_message.alert);
+			
+			//parámetros específicos de tipo de mensaje
+			settings.buttons = [{ 
+				text: $.rup.i18n.base.rup_message.aceptar,
+				click: function () { 
+					self.dialog("close"); 
+				}
+        	}];
+        	
             var self = this._createDiv().appendTo("body");
-            self.dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    closeText: $.rup.i18n.base.rup_global.cerrar,
-                    title: (properties.title === null || properties.title === "" ? $.rup.i18n.base.rup_message.alert: properties.title),
-                    close: function () {
-                        self.dialog("destroy");
-                        self.remove();
-                        self = null;
-                    },
-                    buttons: [{ 
-							text: $.rup.i18n.base.rup_message.aceptar,
-							click: function () { 
-								self.dialog("close"); 
-							}
-                    	}]
-                	});    
+            self.dialog(settings);      
+              
             if ($.isFunction(properties.beforeClose)) {//la funcion recibira dos par?metros event, ui
                 self.bind("dialogbeforeclose", properties.beforeClose);
             }                
             this._createCloseLink(self);
 			this._addStyles(self, "alert", properties.message);
+			docHeight = $(document).height();
+			docWidth = $(document).width();
             self.dialog("open");
+            this._dialogInPortal(docWidth, docHeight);
         }
 	});
 	
@@ -202,12 +198,33 @@
                     return false;
                 });
 				$('div[aria-labelledby=ui-dialog-title-' + self[0].id + '] .ui-dialog-buttonset ').prepend(cancelHREF);
+			},
+			//Ajuste para el comportamiento de portales
+			 _dialogInPortal : function(docWidth, docHeight){
+                  if($.rup_utils.aplicatioInPortal()){
+                	  $(".ui-widget-overlay").css("height",docHeight).css("width",docWidth);
+                	  $(".r01gContainer").append($(".ui-dialog")).append($(".ui-widget-overlay"));
+                	  $(".ui-dialog").css("position","absolute").css("top",(docHeight/2)-($(".ui-dialog").height()/2));
+                  }
+			 },
+			_rupProperties : function(properties, title){
+				properties.autoOpen= false;
+				properties.modal = true,
+				properties.resizable = false,
+				properties.title = (properties.title === null || properties.title === "" ?title: properties.title);
+				properties.closeText = $.rup.i18n.base.rup_message.tituloError.cerrar,
+				properties.close = function () {
+						$(this).remove();
+				};
 			}
 		});
 		
 	//******************************************************
 	// DEFINICIN DE LA CONFIGURACION POR DEFECTO DEL PATRON  
 	//******************************************************
-		
+	
+	$.rup_messages.defaults = {
+		minHeight: 100
+	};
 	
 })(jQuery);

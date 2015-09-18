@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * Copyright 2011 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
@@ -13,6 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
+
 
 (function ($) {
 	$.extend($.rup, {
@@ -75,13 +76,16 @@
 				if (!settings.url || settings.url === null || settings.url === '') {
 					$.rup.msgAlert({title: $.rup.i18n.base.rup_global.error, message: $.rup.i18n.base.rup_dialog.noURL});
 					return false;
+				} else {
+					settings.url = $.rup_utils.setNoPortalParam(settings.url);
 				}
 				var ajaxOptions =  $.extend({},settings.ajaxOptions);
 				ajaxOptions.success = function (data, textStatus, XMLHttpRequest){
 						if (data !== '' || data !== null) {//si nos devuelve datos los mostramos como HTML y desbloqueamos el ui
 							msgDiv.html(data);
 							$.unblockUI();
-							msgDiv.dialog("open");
+							//msgDiv.dialog("open");
+							$("#" + id).rup_dialog("open");
 							//le establecemos el foco
 							$('div[aria-labelledby=ui-dialog-title-' + msgDiv[0].id + '] .ui-dialog-buttonpane button:first').focus();
 						}
@@ -130,6 +134,13 @@
 					settings.zIndex = 9999;
 				}
 			}
+			
+			//Ajuste para portales
+			if($.rup_utils.aplicatioInPortal()){
+                settings.create = function(event, ui) {
+                        $(".r01gContainer").append($(".ui-dialog"));
+                };
+			}
 
 			if (!created) { //si ha sido creado no hace falta volver a añadir el elnace de cierre
 				$("#" + id).dialog(settings);
@@ -175,7 +186,8 @@
 				j = null;
 			}			
 			if (autopen && settings.type !== $.rup.dialog.AJAX) { //si se auto abría lo mostramos
-				$("#" + id).dialog("open");
+				$("#" + id).rup_dialog("open");
+				//$("#" + id).dialog("open");
 				//le establecemos el foco
 				$('div[aria-labelledby=ui-dialog-title-' + id + '] .ui-dialog-buttonpane button:first').focus();
 			}
@@ -184,7 +196,17 @@
 	};
 	$.extend($.fn.rup_dialog, { 
 		open : function () {//abre el dialogo y estable el foco en el primer botón.
+			var docHeight = $(document).height(), docWidth = $(document).width();
+			
 			$(this).dialog("open");
+			
+			//Ajuste para portales
+			if($.rup_utils.aplicatioInPortal()){
+				$(".r01gContainer").append($(".ui-widget-overlay"));
+				$(".ui-widget-overlay").css("height",docHeight).css("width",docWidth);
+				$(".ui-dialog").css("position","absolute").css("top",(docHeight/2)-($('div[aria-labelledby=ui-dialog-title-' + this[0].id + ']').height()/2));
+			}
+			
 			$('div[aria-labelledby=ui-dialog-title-' + this[0].id + '] .ui-dialog-buttonpane button:first').focus();
 		},
 		close : function () {//Cierra el dialogo.
@@ -228,7 +250,7 @@
 		},	
 		createBtnLinks : function (btn, id) {
 			/**
-			 * Función que crea los botones como enlaces y se los añade al panel de botones al final de los botones
+			 * Funci�n que crea los botones como enlaces y se los a�ade al panel de botones al final de los botones
 			 */
 			var buttonHREF = $("<a href='#'></a>")
 			.attr("role", "button")
@@ -244,6 +266,7 @@
 			rupCheckStyle: true,
 			type: $.rup.dialog.DIV,
 			url: null,
-			showLoading: false
+			showLoading: false,
+			minHeight: 100
 		};		
 })(jQuery);
