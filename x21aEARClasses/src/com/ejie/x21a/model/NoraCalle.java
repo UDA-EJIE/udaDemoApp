@@ -28,7 +28,7 @@ public class NoraCalle  implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
     //Clave compuesta
-            private Long id;
+            private BigDecimal id;
             private BigDecimal calleCod;
             private String dsO;
             private String dsE;
@@ -54,7 +54,7 @@ public class NoraCalle  implements java.io.Serializable {
    * @param tipoViaId String
    * @param estado String
    */
-   public NoraCalle(Long id, BigDecimal calleCod, String dsO, String dsE, String provinciaId, String municipioId, String tipoVia, String tipoViaId, String estado  ) {
+   public NoraCalle(BigDecimal id, BigDecimal calleCod, String dsO, String dsE, String provinciaId, String municipioId, String tipoVia, String tipoViaId, String estado  ) {
 
            this.id = id;		
            this.calleCod = calleCod;		
@@ -74,7 +74,7 @@ public class NoraCalle  implements java.io.Serializable {
      */
 	
 	
-	public Long getId() {
+	public BigDecimal getId() {
 		return this.id;
 	}
 	
@@ -85,7 +85,7 @@ public class NoraCalle  implements java.io.Serializable {
 	 * @return
 	 */
 	
-	public void setId(Long id) {
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
 	/**

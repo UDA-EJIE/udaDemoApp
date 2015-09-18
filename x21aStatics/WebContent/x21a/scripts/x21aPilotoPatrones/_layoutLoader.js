@@ -27,6 +27,7 @@ jQuery(document).ready(function(){
 	
 	//rastro de migas
 	jQuery("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
+		logOutUrl: "/x21aPilotoPatronesWar/logout",
 		breadCrumb: {
 			"patrones" : {
 				//Literal
@@ -42,14 +43,24 @@ jQuery(document).ready(function(){
 				"dialog" : { "i18nCaption" : "dialog" },
 				"date" : { "i18nCaption" : "date" },
 				"feedback" : { "i18nCaption" : "feedback" },
+				"form" : { "i18nCaption" : "form" },
 				"time" : { "i18nCaption" : "time" },
 				"message" : { "i18nCaption" : "message" },
 				"menu" : {"i18nCaption":"menu"},	
                 "menuVertical" : {"i18nCaption":"menuVertical"},
                 "menuMixto" : {"i18nCaption":"menuMixto"},
-				"tabs" : { "i18nCaption" : "tabs" },
+                "tabsStatic" : {"i18nCaption":"tabsStatic"},
+            	"tabsAjax" : {"i18nCaption":"tabsAjax"},
+            	"tabsMixto" : {"i18nCaption":"tabsMixto"},
+            	"maintTab" : {"i18nCaption":"maintTab"},
 				"grid" : { "i18nCaption" : "grid" },
 				"tooltip" : { "i18nCaption" : "tooltip" },
+				"upload" : { "i18nCaption" : "upload" },
+				"validate" : { "i18nCaption" : "validate" },
+				"wizard" : {"i18nCaption":"wizardA" },
+				"wizard_includeFile" : {"i18nCaption":"wizardB" },
+				"wizard_jspInclude" : {"i18nCaption":"wizardC" },
+				"wizard_jstlImport" : {"i18nCaption":"wizardD" },
 				//Submenu
 				"subLevel":[
 				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
@@ -62,32 +73,38 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
                   	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
                   	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
+                  	{"i18nCaption":"form", "url": "/x21aPilotoPatronesWar/patrones/form" },
                   	{"i18nCaption":"time", "url": "/x21aPilotoPatronesWar/patrones/time" },
                   	{"i18nCaption":"message", "url": "/x21aPilotoPatronesWar/patrones/message" },
                    	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
                   	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
                   	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
-                  	{"i18nCaption":"tabs", "submenu":[
-                     	{"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
-                    	{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
-                    	{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
-                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
-                    ]},
-                    {"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
+                 	{"i18nCaption":"tabsStatic", "url": "/x21aPilotoPatronesWar/patrones/tabsStatic" },
+                	{"i18nCaption":"tabsAjax", "url": "/x21aPilotoPatronesWar/patrones/tabsAjax" },
+                	{"i18nCaption":"tabsMixto", "url": "/x21aPilotoPatronesWar/patrones/tabsMixto" },
+                	{"i18nCaption":"maintTab", "url": "/x21aPilotoPatronesWar/patrones/maintTab" },
+					{"i18nCaption":"grid", "submenu":[
+					    {"i18nCaption":"grid_grupo", "url": "patrones/gridGroup" },
+						{"i18nCaption":"grid_base", "url": "patrones/grid" },
+						{"i18nCaption":"grid_arbol", "url": "patrones/gridTree" },
+					]},
 					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" },
-					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" }
+					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" },
+					{"i18nCaption":"validate", "url": "/x21aPilotoPatronesWar/patrones/validate" },
+	                {"i18nCaption":"wizardA", "url": "/x21aPilotoPatronesWar/patrones/wizard" },
+	                {"i18nCaption":"wizardB", "url": "/x21aPilotoPatronesWar/patrones/wizard_includeFile" },
+	                {"i18nCaption":"wizardC", "url": "/x21aPilotoPatronesWar/patrones/wizard_jspInclude" },
+	                {"i18nCaption":"wizardD", "url": "/x21aPilotoPatronesWar/patrones/wizard_jstlImport" }
 				]
 			},
 			"experimental" : {
 				//Literal
 				"i18nCaption" : "experimental",
 				//Elementos (url)
-				"generic_object" : { "i18nCaption" : "generic_object" },
 				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" },
 				"nora" : {"i18nCaption" : "nora" },
 				//Submenu
 				"subLevel":[
-				 	{"i18nCaption":"generic_object", "url": "/x21aPilotoPatronesWar/experimental/generic_object" },
 					{"i18nCaption":"maestro_detalle", "url": "/x21aPilotoPatronesWar/experimental/maestro_detalle" },
 					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/experimental/z-index" },
 					{"i18nCaption":"mant_multi_entidad", "url": "/x21aPilotoPatronesWar/experimental/mant_multi_entidad" },
@@ -103,108 +120,84 @@ jQuery(document).ready(function(){
 		}
 	});
 	//idioma
-	jQuery("#x21aPilotoPatronesWar_language").rup_language({languages: ["es", "eu", "en", "fr"]});
+	jQuery("#x21aPilotoPatronesWar_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	jQuery("#x21aPilotoPatronesWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal'),
-		menu: [
-		       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
-				{"i18nCaption":"inicio", "url": "", "newWindow": true },
-				{"i18nCaption":"patrones", "submenu":[
-				    {"i18nCaption":"all", "pathUrl": "/x21aPilotoPatronesWar/patrones/all", "newWindow": true },
-				    {"i18nCaption":"accordion", "pathUrl": "/x21aPilotoPatronesWar/patrones/accordion" },
-				    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
-                    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
-                    {"i18nCaption":"combo", "submenu":[
-                      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple", "newWindow": true },
-                      	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
-                      	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
-                  	]},
-                  	{"i18nCaption":"dialog", "url": "patrones/dialog" },
-                  	{"i18nCaption":"date", "url": "patrones/date" },
-                  	{"i18nCaption":"feedback", "url": "patrones/feedback" },
-                  	{"i18nCaption":"time", "url": "patrones/time" },
-                  	{"i18nCaption":"message", "url": "patrones/message" },
-                    {"i18nCaption":"menu", "submenu":[
-                       	{"i18nCaption":"menuHorizontal", "url": "patrones/menu" },
-                      	{"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
-                      	{"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
-                    ]}, 
-                    {"i18nCaption":"tabs", "submenu":[
-                     	{"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
-                    	{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
-                    	{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
-                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
-                    ]},
-					{"i18nCaption":"grid", "url": "patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
-					{"i18nCaption":"upload", "url": "patrones/upload" }
-				]},
-				{"i18nCaption":"experimental", "submenu":[
-				    {"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
-				    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
-				    {"i18nCaption":"z-index", "url": "experimental/z-index" },
-				    {"i18nCaption":"mant_multi_entidad", "url": "experimental/mant_multi_entidad" },
-					{"i18nCaption":"mant_clave_compuesta", "submenu":[
-                     	{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
-                      	{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
-                    ]},
-    				{"i18nCaption":"nora", "url": "experimental/nora"}
-				]},
-				{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
-		]
+		verticalWidth: "16.5em"
 	});
 	
 	if (mixto) {
 		jQuery("#x21aPilotoPatronesWar_menu_mixto").rup_menu({
 			display: 'vertical',
 			menu: [
-			       	{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
-					{"i18nCaption":"inicio", "url": "" },
+					{"i18nCaption":"mantenimientos", "url": "../x21aMantenimientosWar/"},
+					{"i18nCaption":"inicio", "url": "", "newWindow": true, "disabled": true},
 					{"i18nCaption":"patrones", "submenu":[
-					    {"i18nCaption":"all", "url": "patrones/all" },                  
+					    {"i18nCaption":"all", "pathUrl": "/x21aPilotoPatronesWar/patrones/all", "newWindow": true },
+					    {"divider":true},
+					    {"divider":true, "i18nCaption":"titulo-notifi"},
+					    {"i18nCaption":"feedback", "url": "patrones/feedback" },
+					    {"i18nCaption":"tooltip", "url": "patrones/tooltip" },
+					    {"i18nCaption":"message", "url": "patrones/message" },
+					    {"i18nCaption":"dialog", "url": "patrones/dialog" },
+					  	{"divider":true},
+					  	{"divider":true, "i18nCaption":"titulo-nave"},
+					  	{"i18nCaption":"menu", "submenu":[
+					  	    {"i18nCaption":"menuHorizontal", "url": "patrones/menu" },
+					        {"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
+					        {"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
+					    ]}, 
+					    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
+					  	{"divider":true},
+					  	{"divider":true, "i18nCaption":"titulo-estru"},
 					    {"i18nCaption":"accordion", "pathUrl": "/x21aPilotoPatronesWar/patrones/accordion" },
-					    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
-	                    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
-	                    {"i18nCaption":"combo", "submenu":[
-	                      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple" },
-	                      	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
-	                      	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
-	                  	]},
-	                  	{"i18nCaption":"dialog", "url": "patrones/dialog" },
-	                  	{"i18nCaption":"date", "url": "patrones/date" },
-	                  	{"i18nCaption":"feedback", "url": "patrones/feedback" },
-	                  	{"i18nCaption":"time", "url": "patrones/time" },
-	                  	{"i18nCaption":"message", "url": "patrones/message" },
-	                    {"i18nCaption":"menu", "submenu":[
-	                       	{"i18nCaption":"menuHorizontal", "url": "patrones/menu" },
-	                      	{"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
-	                    	{"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
-	                    ]}, 
-	                    {"i18nCaption":"tabs", "submenu":[
-	                        {"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
-							{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
-							{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
-	                    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
-						]},
-						{"i18nCaption":"grid", "url": "patrones/grid" },
-						{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
-						{"i18nCaption":"upload", "url": "patrones/upload" }
+					    {"i18nCaption":"tabs", "submenu":[
+					     	{"i18nCaption":"tabsStatic", "url": "patrones/tabsStatic" },
+					    	{"i18nCaption":"tabsAjax", "url": "patrones/tabsAjax" },
+					    	{"i18nCaption":"tabsMixto", "url": "patrones/tabsMixto" },
+					    	{"i18nCaption":"maintTab", "url": "patrones/maintTab" }
+					    ]},
+						{"i18nCaption":"grid", "submenu":[
+							    {"i18nCaption":"grid_grupo", "url": "patrones/gridGroup" },
+								{"i18nCaption":"grid_base", "url": "patrones/grid" },
+								{"i18nCaption":"grid_arbol", "url": "patrones/gridTree" }
+							]},
+							{"i18nCaption":"wizard", "submenu":[
+							 	{"i18nCaption":"wizardA", "url": "patrones/wizard" },
+							 	{"i18nCaption":"wizardB", "url": "patrones/wizard_includeFile" },
+							 	{"i18nCaption":"wizardC", "url": "patrones/wizard_jspInclude" },
+							 	{"i18nCaption":"wizardD", "url": "patrones/wizard_jstlImport" }
+							]},
+							{"divider":true},
+							{"divider":true, "i18nCaption":"titulo-inser"},
+							{"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
+					    {"i18nCaption":"combo", "submenu":[
+					      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple", "newWindow": true },
+					      	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
+					      	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
+					  	]},
+							{"i18nCaption":"date", "url": "patrones/date" },
+							{"i18nCaption":"time", "url": "patrones/time" },
+						{"i18nCaption":"upload", "url": "patrones/upload" },
+						{"i18nCaption":"validate", "url": "patrones/validate" }
 					]},
 					{"i18nCaption":"experimental", "submenu":[
-						{"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
-						{"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
-						{"i18nCaption":"z-index", "url": "experimental/z-index" },
-						{"i18nCaption":"mant_multi_entidad", "url": "experimental/mant_multi_entidad" },
+					    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
+					    {"i18nCaption":"z-index", "url": "experimental/z-index" },
+					    {"i18nCaption":"mant_multi_entidad", "url": "experimental/mant_multi_entidad" },
 						{"i18nCaption":"mant_clave_compuesta", "submenu":[
-                              {"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
-                              {"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
-                        ]}
-					]}, 
+					     	{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
+					      	{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
+					    ]},
+						{"i18nCaption":"nora", "url": "experimental/nora"}
+					]},
 					{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
-			]
+			],
+			verticalWidth: "16.5em"
+				
 		});
 	};
 	
-	jQuery.rup.i18n.base.rup_combo.blankNotDefined = "----";
+	jQuery.rup.i18n.base["rup_combo"] = { blankNotDefined : "----" };
 });

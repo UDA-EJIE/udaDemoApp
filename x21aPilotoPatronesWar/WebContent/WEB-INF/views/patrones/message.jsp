@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1><spring:message code="patronMessageTitle" /></h1>
+<h2><spring:message code="patronMessageTitle" /></h2>
 <button id="btnError"><spring:message code="messages.showError" /></button>
 <button id="btnConfirm"><spring:message code="messages.showConfirm" /></button>
 <button id="btnOK"><spring:message code="messages.showOk" /></button>

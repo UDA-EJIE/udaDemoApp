@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h1><spring:message code="tab.mixta" /></h1>
+<h2><spring:message code="tab.mixta" /></h2>
 
 <div id="tabsMixta"></div>
 

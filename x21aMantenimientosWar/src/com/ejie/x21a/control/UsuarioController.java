@@ -19,31 +19,27 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.UsuarioService;
-import com.ejie.x38.control.exception.ControlException;
-import com.ejie.x38.control.exception.MethodFailureException;
-import com.ejie.x38.control.exception.ResourceNotFoundException;
-import com.ejie.x38.control.exception.ServiceUnavailableException;
 import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.util.ObjectConversionManager;
@@ -61,76 +57,48 @@ public class UsuarioController  {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	private Properties appConfiguration;
-	
 	//Selección simple
 	@RequestMapping(value = "simple", method = RequestMethod.GET)
-	public ModelAndView getSimple(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("simple", "model", model);
+	public String getSimple(Model model) {
+		return "simple";
 	}
 	//Multiselección
 	@RequestMapping(value = "multi", method = RequestMethod.GET)
-	public ModelAndView getMulti(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("multi", "model", model);
+	public String getMulti(Model model) {
+		return "multi";
 	}
 	
 	//Llamadas ajax de mantenimientos
 	@RequestMapping(value = "simpleTable1", method = RequestMethod.GET)
-	public ModelAndView getMaintSimple1(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("simpleTable1", "model", model);
+	public String getMaintSimple1(Model model) {
+		return "simpleTable1";
 	}
 	@RequestMapping(value = "simpleTable2", method = RequestMethod.GET)
-	public ModelAndView getMaintSimple2(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("simpleTable2", "model", model);
+	public String getMaintSimple2(Model model) {
+		return "simpleTable2";
 	}
 	@RequestMapping(value = "simpleTable3", method = RequestMethod.GET)
-	public ModelAndView getMaintSimple3(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("simpleTable3", "model", model);
+	public String getMaintSimple3(Model model) {
+		return "simpleTable3";
 	}
 	@RequestMapping(value = "editTable1", method = RequestMethod.GET)
-	public ModelAndView getEditMaint1(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("editMaint1", "model", model);
+	public String getEditMaint1(Model model) {
+		return "editMaint1";
 	}
 	@RequestMapping(value = "multiTable1", method = RequestMethod.GET)
-	public ModelAndView getMultiMaint1(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("multiMaint1", "model", model);
+	public String getMultiMaint1(Model model) {
+		return "multiMaint1";
 	}
 	
 	//Multiselección agrupada
 	@RequestMapping(value = "groupMulti", method = RequestMethod.GET)
-	public ModelAndView getGroupMulti(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("groupMulti", "model", model);
+	public String getGroupMulti(Model model) {
+		return "groupMulti";
 	}
 	//Edición en línea
 	@RequestMapping(value = "edlinea", method = RequestMethod.GET)
-	public ModelAndView getCreateForm(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("edlinea", "model", model);
-	}
-	//Selección simple [diseño líquido]
-	@RequestMapping(value = "simpleFluido", method = RequestMethod.GET)
-	public ModelAndView getSimpleFluido(Model model) {
-		model.addAttribute("defaultLanguage", appConfiguration.get("x21aMantenimientosWar.default.language"));
-		model.addAttribute("defaultLayout", appConfiguration.get("x21aMantenimientosWar.default.layout"));
-		return new ModelAndView("simpleFluido", "model", model);
+	public String getCreateForm(Model model) {
+		return "edlinea";
 	}
 	 /**
 	 * Method 'getById'.
@@ -139,17 +107,26 @@ public class UsuarioController  {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Usuario getById(@PathVariable String id) {
-		try{
-            Usuario usuario = new Usuario();
-			usuario.setId(id);
-            usuario = this.usuarioService.find(usuario);
-            if (usuario == null) {
-                throw new Exception(id.toString());
-            }
-            return usuario;
-		}catch (Exception e){
-		    throw new ResourceNotFoundException(id.toString());
+        Usuario usuario = new Usuario();
+		usuario.setId(id);
+        usuario = this.usuarioService.find(usuario);
+        
+        /*
+         * 
+         */
+        if (usuario.getEjie().equals("0")){
+			usuario.setTipo("0A");
+			usuario.setSubtipo("0_0A_A");
+		}else if (usuario.getEjie().equals("1")){
+			usuario.setTipo("1A");
+			usuario.setSubtipo("1_1A_A");
 		}
+        
+        /*
+         * 
+         */
+        
+        return usuario;
 	}
 
 
@@ -167,204 +144,125 @@ public class UsuarioController  {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Object getAll(
-@RequestParam(value = "id", required = false) String id,
-@RequestParam(value = "nombre", required = false) String nombre,
-@RequestParam(value = "apellido1", required = false) String apellido1,
-@RequestParam(value = "apellido2", required = false) String apellido2,
-@RequestParam(value = "ejie", required = false) String ejie,
-@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
-@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
+			@RequestParam(value = "id", required = false) String id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido1", required = false) String apellido1,
+			@RequestParam(value = "apellido2", required = false) String apellido2,
+			@RequestParam(value = "ejie", required = false) String ejie,
+			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
+			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
 			HttpServletRequest request) {
-			try{
-				Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
-                Pagination pagination = null;
-			    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
-				    pagination = new Pagination();
-				    pagination.setPage(Long.valueOf(request.getParameter("page")));
-				    pagination.setRows(Long.valueOf(request.getParameter("rows")));
-				    pagination.setSort(request.getParameter("sidx"));
-				    pagination.setAscDsc(request.getParameter("sord"));
-                    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
+		Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
+        Pagination pagination = null;
+	    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
+		    pagination = new Pagination();
+		    pagination.setPage(Long.valueOf(request.getParameter("page")));
+		    pagination.setRows(Long.valueOf(request.getParameter("rows")));
+		    pagination.setSort(request.getParameter("sidx"));
+		    pagination.setAscDsc(request.getParameter("sord"));
+            List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
 
-     			    if (usuarios == null) {
-	    	            throw new Exception("No data Found.");
-		            }
+			Long total =  getAllCount(filterUsuario);
+			        
+
+		        /*
+		         * 
+		         */
+		        
+		        for (Iterator<Usuario> iterator = usuarios.iterator(); iterator
+						.hasNext();) {
+					Usuario usuario = (Usuario) iterator.next();
 					
-			        Long total =  getAllCount(filterUsuario, request);
-				    JQGridJSONModel data = new JQGridJSONModel();
-				    data.setPage(request.getParameter("page"));
-				    data.setRecords(total.intValue());
-				    data.setTotal(total, pagination.getRows());
-				    data.setRows(usuarios);
-				    return data;
-				}else{
-				    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
-					if (usuarios == null) {
-	    	            throw new Exception("No data Found.");
-		            }
-				    return usuarios;
+					if (usuario.getEjie().equals("0")){
+						usuario.setTipo("0A");
+						usuario.setSubtipo("0_0A_A");
+					}else if (usuario.getEjie().equals("1")){
+						usuario.setTipo("1A");
+						usuario.setSubtipo("1_1A_A");
+					}
+					
 				}
-            }catch(Exception e){
-			    throw new ResourceNotFoundException("No data Found.");
-			}
+		        
+		        /*
+		         * 
+		         */
+			        
+			        
+	        JQGridJSONModel data = new JQGridJSONModel();
+		    data.setPage(request.getParameter("page"));
+		    data.setRecords(total.intValue());
+		    data.setTotal(total, pagination.getRows());
+		    data.setRows(usuarios);
+		    return data;
+		}else{
+		    return this.usuarioService.findAllLike(filterUsuario, pagination, false);
+		}
 	}
 
 	/**
 	 * Method 'getAllCount'.
 	 * @param filterUsuario Usuario 
-	 * @param request  HttpServletRequest
 	 * @return Long
 	 */
 	@RequestMapping(value = "/count", method = RequestMethod.GET)
-	public @ResponseBody Long getAllCount(
-	@RequestParam(value = "usuario", required = false) Usuario  filterUsuario, HttpServletRequest request) {
-	    try {
-			return usuarioService
-					.findAllLikeCount(filterUsuario != null ? filterUsuario
-							: new Usuario (),false);
-		} catch (Exception e) {
-			throw new ServiceUnavailableException("Count Service is not responding.");
-		}
+	public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
+		return usuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
 	}
 	
 	 /**
 	 * Method 'edit'.
-	 * @param	 usuario Usuario 
-	 * @param response  HttpServletResponse
+	 * @param usuario Usuario 
 	 * @return Usuario
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response) {		
-		try {
-            Usuario usuarioAux  = this.usuarioService.update(usuario);
-			logger.info( "Entity correctly inserted!");
-            return usuarioAux;
-        } catch(Exception e) {
-            throw new MethodFailureException("Method failed");
-        }
+    public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {		
+        Usuario usuarioAux = this.usuarioService.update(usuario);
+		logger.info("Entity correctly updated!");
+        return usuarioAux;
     }
 
 	 /**
 	 * Method 'add'.
-	 * @param	 usuario Usuario 
+	 * @param usuario Usuario 
 	 * @return Usuario
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Usuario add(@RequestBody Usuario usuario) {		
-        try {
-            Usuario usuarioAux = this.usuarioService.add(usuario);
-            logger.info( "Entity correctly inserted!");
-        	return usuarioAux;
-		} catch(Exception e) {
-        	throw new MethodFailureException("Method failed");
-		}
+	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
+        Usuario usuarioAux = this.usuarioService.add(usuario);
+        logger.info("Entity correctly inserted!");
+    	return usuarioAux;
 	}
 
 	 /**
 	 * Method 'remove'.
-	 * @param  id  String
-	 * @param response  HttpServletResponse
+	 * @param id String
 	 *
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void remove(
-				@PathVariable String id,
-					HttpServletResponse  response) {
-        response.setContentType("text/javascript;charset=utf-8");
-        response.setHeader("Pragma", "cache");
-        response.setHeader("Expires", "0");
-        response.setHeader("Cache-Control", "private");
-    	try{
-            Usuario usuario = new Usuario();
-            usuario.setId(id);
-            this.usuarioService.remove(usuario);
-            response.setStatus(HttpServletResponse.SC_OK);
-    	} catch(Exception e) {
-    		logger.error( "Unable to delete " +  id);
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-    		throw new MethodFailureException("Method failed");
-    	}
+	@ResponseStatus(value=HttpStatus.OK)
+    public @ResponseBody Usuario remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+        this.usuarioService.remove(usuario);
+        logger.info("Entity correctly deleted!");
+        return usuario;
     }
 	
 	 /**
 	 * Method 'removeAll'.
 	 * @param  usuarioIds  ArrayList
-	 * @param response  HttpServletResponse
 	 *
 	 */	
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-	public void removeMultiple(@RequestBody ArrayList<ArrayList<String>> usuarioIds,
-			HttpServletResponse response) {
-        response.setContentType("text/javascript;charset=utf-8");
-        response.setHeader("Pragma", "cache");
-        response.setHeader("Expires", "0");
-        response.setHeader("Cache-Control", "private");
+	public void removeMultiple(@RequestBody ArrayList<ArrayList<String>> usuarioIds) {
         ArrayList<Usuario> usuarioList = new ArrayList<Usuario>();
-        try{		    
-            for (ArrayList<String> usuarioId:usuarioIds) {
-			    Iterator<String> iterator = usuarioId.iterator();
-				    Usuario usuario = new Usuario();
-			        usuario.setId(ObjectConversionManager.convert(iterator.next(), String.class));
-				    usuarioList.add(usuario);
-		    }
-            this.usuarioService.removeMultiple(usuarioList);
-			response.setStatus(HttpServletResponse.SC_OK);
-		} catch(Exception e) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			throw new MethodFailureException("Method failed");
-		}
+        for (ArrayList<String> usuarioId:usuarioIds) {
+		    Iterator<String> iterator = usuarioId.iterator();
+			    Usuario usuario = new Usuario();
+		        usuario.setId(ObjectConversionManager.convert(iterator.next(), String.class));
+			    usuarioList.add(usuario);
+	    }
+        this.usuarioService.removeMultiple(usuarioList);
+        logger.info("All entities correctly deleted!");
 	}	
-
-	/**
-	 * Method 'handle'.
-	 * @param e ControlException
-	 * @return String
-	 *
-	 */
-	@ExceptionHandler
-	public @ResponseBody String handle(ControlException e) {
-		logger.warn( e.getMessage());
-		return e.getMessage();
-	}
-
-	/**
-	 * Method 'getUsuarioService'.
-	 *
-	 * @return UsuarioService
-	 *
-	 */
-	protected UsuarioService getUsuarioService() {
-		return this.usuarioService;
-	}
-
-	/**
-	 * Method 'setUsuarioService'.
-	 *
-	 * @param usuarioService  UsuarioService
-	 *
-	 */
-	public void setUsuarioService(UsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
-	}
-	
-	/**
-	 * Method 'getAppConfiguration'.
-	 * 
-	 * @return appConfiguration
-	 * 
-	 */
-	public Properties getAppConfiguration() {
-		return appConfiguration;
-	}
-
-	/**
-	 * Method 'setAppConfiguration'.
-	 * 
-	 * @paramappConfiguration Properties
-	 * 
-	 */
-	public void setAppConfiguration(Properties appConfiguration) {
-		this.appConfiguration = appConfiguration;
-	}
-}	
-	
+}

@@ -23,11 +23,20 @@ jQuery(document).ready(function(){
 	});
 	
 	$("#accordionExample2").rup_accordion("option","change", function(event, ui){
-		//section autocomplite
+		//section autocomplete
 		if(ui.options.active === 0){
 			$("#autocomplete_label").rup_autocomplete("search", "java");
 		//seccion mantenimiento
 		} else if (ui.options.active === 1){
+			
+			//////////////////////////
+			//seccion Mantenimiento
+			//////////////////////////
+			
+			if($("#mockPageContent").length > 0){
+				$("#mockPageContent").remove();
+			}
+			
 			$.rup_ajax({
 				url: "/x21aMantenimientosWar/usuario/groupMulti",
 				//Cabecera RUP
@@ -39,18 +48,61 @@ jQuery(document).ready(function(){
 					alert("Se ha producido un error al recuperar los datos del servidor");
 				}
 			});
+		} else if (ui.options.active === 2){
+			
+			/////////////////////
+			//seccion pestañas
+			/////////////////////
+			
+			if($("#mockPageContent").length > 0){
+				$("#mockPageContent").remove();
+			}
+		
+			if(!$("#maintTab").hasClass("ui-tabs")){
+				$("#maintTab").rup_tabs({
+					tabs:[
+					    {i18nCaption:"maint1", url:"/x21aMantenimientosWar/usuario/simpleTable1"},
+						{i18nCaption:"maint2", url:"/x21aMantenimientosWar/usuario/simpleTable2"},
+						{i18nCaption:"maint3", url:"/x21aMantenimientosWar/usuario/simpleTable3"},
+						{i18nCaption:"edit1", url:"/x21aMantenimientosWar/usuario/editTable1"},
+						{i18nCaption:"multi1", url:"/x21aMantenimientosWar/usuario/multiTable1"}],
+					load: function(event, ui){
+						if($("#mockPageContent").length > 0){
+							$("#maintTab").rup_tabs("disableTabs", {
+								idTab: "maintTab",
+								position: [1,2,3,4]
+							});
+							$("#mockPageContent #loginButtonObject").on("click", function (event){
+								$("#maintTab").rup_tabs("enableTabs", {
+									idTab: "maintTab",
+									position: [1,2,3,4]
+								});
+							});
+						}
+					}
+				});
+			} else {
+				$("#maintTab").rup_tabs("loadTab", {
+						idTab: "maintTab",
+						position: 0
+				});
+				$("#maintTab").rup_tabs("selectTab", {
+					idTab: "maintTab",
+					position: 0
+				});
+			}
 		}
 	});
 	
 	$("#accordionExample2").rup_accordion("option","changestart", function(event, ui){
-		//section autocomplite
+		//section autocomplete
 		if (ui.options.active === 1){
 			$("#maintGroup").html("");
 		}
 	});
 	
 	/////////////////////////
-	//section autocomplite
+	//section autocomplete
 	/////////////////////////
 	
 	$("#autocomplete").rup_autocomplete({
@@ -77,19 +129,6 @@ jQuery(document).ready(function(){
 		source : "autocomplete/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
 		minLength: 4
-	});
-		
-	/////////////////////
-	//seccion pestañas
-	/////////////////////
-	
-	$("#maintTab").rup_tabs({
-        tabs:[
-			{i18nCaption:"maint1", url:"/x21aMantenimientosWar/usuario/simpleTable1"},
-			{i18nCaption:"maint2", url:"/x21aMantenimientosWar/usuario/simpleTable2"},
-			{i18nCaption:"maint3", url:"/x21aMantenimientosWar/usuario/simpleTable3"},
-			{i18nCaption:"edit1", url:"/x21aMantenimientosWar/usuario/editTable1"},
-			{i18nCaption:"multi1", url:"/x21aMantenimientosWar/usuario/multiTable1"}]
 	});
 	
 	///////////////////

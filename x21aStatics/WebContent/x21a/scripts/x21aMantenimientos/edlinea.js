@@ -19,7 +19,8 @@ jQuery(function($){
 		
 		url: "../usuario",
 		hasMaint: true,
-		width: 650,
+		headertitles: true, //tooltip en cabeceras
+		width: 850,
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",
@@ -28,11 +29,13 @@ jQuery(function($){
 		colModel: [
 		    //label: etiqueta del detalle
 		    
-			{ name: "id", index: "id", editable: true, 
-				rupType: "integer", 
-				key: true 
+			{ name: "id", index: "id", editable: true
+//				,validationrules:{required:true,digits:true}
+				,key: true 
 			},
-			{ name: "nombre", index: "nombre", editable: true },
+			{ name: "nombre", index: "nombre", editable: true 
+//				,validationrules:{required:true}
+			},
 			{ name: "apellido1", index: "apellido1", editable: true },
 			{ name: "apellido2", index: "apellido2", editable: true },
 			
@@ -57,7 +60,8 @@ jQuery(function($){
 				rupType: "combo"
 			},
 			{ name: "fechaAlta",  
-				index: "fechaAlta", 
+				index: "fechaAlta",
+//				validationrules:{required:true, date:true},
 				editable: true,
 				rupType: "date",
 				formatter: "date",
@@ -65,6 +69,7 @@ jQuery(function($){
 			},
 			{ name: "fechaBaja", 
 				index: "fechaBaja", 
+//				validationrules:{date:true},
 				editable: true,
 				rupType: "date",
 				formatter: "date",
@@ -81,6 +86,7 @@ jQuery(function($){
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
 		showMessages: true
+		
 	});
 	
 	

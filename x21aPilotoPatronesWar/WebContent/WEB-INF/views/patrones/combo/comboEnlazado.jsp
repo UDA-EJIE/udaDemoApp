@@ -13,60 +13,76 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Combo Enlazado (simple)</h1>
+<h2>Combo Enlazado (simple)</h2>
  
 <div id="local" style="float: left;">
-	<h2>Local</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Provincia</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Local</legend>
+		
+		<label for="comboAbuelo">Provincia</label>
 		<select id="comboAbuelo" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Comarca</h3>
+		<label for="comboPadre">Comarca</label>
 		<select id="comboPadre" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Localidad</h3>
+		<label for="comboHijo">Localidad</label>
 		<select id="comboHijo" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>
 
 <div id="remote" style="float: left; margin-left: 4em;">
-	<h2>Remoto</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Provincia</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Remoto</legend>
+		
+		<label for="comboAbueloRemoto">Provincia</label>
 		<select id="comboAbueloRemoto" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Comarca</h3>
+		<label for="comboPadreRemoto">Comarca</label>
 		<select id="comboPadreRemoto" name="comarca" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Localidad</h3>
+		<label for="comboHijoRemoto">Localidad</label>
 		<select id="comboHijoRemoto" class="rup-combo"><option>&nbsp;</option></select>
-	</div>		
+		<br><br>
+	</fieldset>
 </div>
 
 <div id="mixto" style="float: left; margin-left: 4em;">
-	<h2>Mixto I</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Provincia (remoto)</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Mixto I</legend>
+		
+		<label for="mixto_comboAbueloRemoto">Provincia (remoto)</label>
 		<select id="mixto_comboAbueloRemoto" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Comarca (local)</h3>
+		<label for="mixto_comboPadre">Comarca (local)</label>
 		<select id="mixto_comboPadre" name="comarca" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Localidad (remoto)</h3>
+		<label for="mixto_comboHijoRemoto">Localidad (remoto)</label>
 		<select id="mixto_comboHijoRemoto" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>
 
 <div id="mixto2" style="float: left; margin-left: 4em; margin-bottom: 3em;">
-	<h2>Mixto II</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Provincia (local)</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Mixto II</legend>
+		
+		<label for="mixto2_comboAbuelo">Provincia (local)</label>
 		<select id="mixto2_comboAbuelo" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Comarca (remoto)</h3>
+		<label for="mixto2_comboPadreRemoto">Comarca (remoto)</label>
 		<select id="mixto2_comboPadreRemoto" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Localidad (local)</h3>
+		<label for="mixto2_comboHijo">Localidad (local)</label>
 		<select id="mixto2_comboHijo" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>

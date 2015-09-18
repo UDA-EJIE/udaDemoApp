@@ -26,7 +26,7 @@
 	<!-- Contenidos -->
 	
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<h1>Selección simple</h1>
+	<h2>Selección simple</h2>
 	
 	<div id="error_${maintName}" style="display:none"></div>
 	<div id="simple_${maintName}">

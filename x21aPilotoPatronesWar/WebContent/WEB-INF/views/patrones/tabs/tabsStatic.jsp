@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h1><spring:message code="tab.staticLoad" /></h1>
+<h2><spring:message code="tab.staticLoad" /></h2>
 <div id="tabsStatic"></div>
 
 <div class="estiloo" style="display: none;">

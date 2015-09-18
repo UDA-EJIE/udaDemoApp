@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1>z-index</h1>
+<h2>z-index</h2>
 
 <div id="idioma" class="rup-language_root"></div>
 <div id="menu-horizontal" class="menu"></div>

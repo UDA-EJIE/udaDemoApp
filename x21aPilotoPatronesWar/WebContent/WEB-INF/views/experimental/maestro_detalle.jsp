@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1>Maestro-Detalle</h1>
+<h2>Maestro-Detalle</h2>
 <div id="error" style="display:none"></div>
 
 <h2>Comarca</h2>
@@ -25,23 +25,23 @@
 			<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_comarca">
 				<div class="formulario_columna_cnt">
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">code:</div>
+						<label for="code_search" class="formulario_linea_label">code:</label>
 						<input type="text" name="code" class="formulario_linea_input" id="code_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">codeProvincia:</div>
+						<label for="provincia.codeProvincia_search" class="formulario_linea_label">codeProvincia:</label>
 						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input" id="provincia.codeProvincia_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">descEs:</div>
+						<label for="descEs_search" class="formulario_linea_label">descEs:</label>
 						<input type="text" name="descEs" class="formulario_linea_input" id="descEs_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">descEu:</div>
+						<label for="descEu_search" class="formulario_linea_label">descEu:</label>
 						<input type="text" name="descEu" class="formulario_linea_input" id="descEu_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">css:</div>
+						<label for="css_search" class="formulario_linea_label">css:</label>
 						<input type="text" name="css" class="formulario_linea_input" id="css_search" />
 					</div>
 				</div>
@@ -66,23 +66,23 @@
 			<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_localidad">
 				<div class="formulario_columna_cnt">
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">code:</div>
+						<label for="code_search" class="formulario_linea_label">code:</label>
 						<input type="text" name="code" class="formulario_linea_input" id="code_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">codeComarca:</div>
-						<input type="text" name="comarca.codeComarca" class="formulario_linea_input" id="comarca.codeComarca_search" />
+						<label for="provincia.codeProvincia_search" class="formulario_linea_label">codeProvincia:</label>
+						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input" id="provincia.codeProvincia_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">descEs:</div>
+						<label for="descEs_search" class="formulario_linea_label">descEs:</label>
 						<input type="text" name="descEs" class="formulario_linea_input" id="descEs_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">descEu:</div>
+						<label for="descEu_search" class="formulario_linea_label">descEu:</label>
 						<input type="text" name="descEu" class="formulario_linea_input" id="descEu_search" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<div class="formulario_linea_label">css:</div>
+						<label for="css_search" class="formulario_linea_label">css:</label>
 						<input type="text" name="css" class="formulario_linea_input" id="css_search" />
 					</div>
 				</div>

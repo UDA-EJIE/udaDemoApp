@@ -114,6 +114,7 @@ jQuery(function($){
 	
 	//dialog
 	$("#dialog").bind("click", function () {
+		$("#maint").css("width","auto");
 		$(document).rup_dialog({
 			type: jQuery.rup.dialog.AJAX,
 			url: "../patrones/allDialog" ,
@@ -231,4 +232,5 @@ jQuery(function($){
 		});	
 	});
 	
+	$("#maint").css("width","auto");
 });

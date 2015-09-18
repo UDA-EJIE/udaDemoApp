@@ -27,8 +27,9 @@ a img,:link img,:visited img,form,fieldset {border:none}
 
 /* Hx */
 h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
-h2 { font-size:1.8em; color:#000000; display:block; margin:1.5em 0 0 0; padding:0; }
+h2 { font-size:1.8em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
 h3 { font-size:1.4em; color:#555555; display:block; margin:1.5em 0 0.5em 0; padding:0; }
+.container { font-size:1.8em; color:#000000; display:block; margin:0; padding:0; }
 
 /* Parrafo */
 p { color:#000000; line-height:1.7em; margin:0; }
@@ -36,11 +37,19 @@ p { color:#000000; line-height:1.7em; margin:0; }
 /* Input deshabilitado */
 input.disabled { background-color: #D3D3D3; }
 
+/* Foco general */
+input:focus, textarea:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+	outline: 0 none;
+	filter:"progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=0), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=180), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=270)"; 
+}
+
 /* GENERALES */
 .contenedor { 
 	width:90%; 
 	margin:0 auto; 
-	padding: 2em; 
+	padding:2em; 
 	background:#FFF;  
 }
 .cabecera {
@@ -50,6 +59,14 @@ input.disabled { background-color: #D3D3D3; }
 .menu {
 	margin-top: 1em; 
 	margin-bottom: 1em;
+}
+.gridIcon{
+	background-repeat: no-repeat;
+	padding-bottom:1em;
+	padding-left:4.5em;
+	padding-right:0.5em;
+	padding-top:1em;
+	background-image: url("../images/data_grid.png");
 }
 .footer {
 	border-top:1px solid #DADADA;
@@ -125,11 +142,11 @@ input.disabled { background-color: #D3D3D3; }
 /*Estilos del accordion*/
 
 .section {
-	margin-right: -2px;
+	/*margin-right: -2px;*/
 	height: 400px;
 }
 .section2 {
-	margin-right: -2px;
+	/*margin-right: -2px;*/
 	height: 200px;
 }
 
@@ -167,3 +184,56 @@ input.disabled { background-color: #D3D3D3; }
 	padding-top: 0px;
 	margin-right: -2px;
 }
+
+/* Wizard */
+.wizardLegend { font-size:18px; margin:0px; padding:10px 0px; color:#b0232a; font-weight:bold;}
+
+
+/* Validation, Form, PerfilUsuario */
+.two-col {
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+.two-col .col1 {
+    float: left;
+    margin: 0.5em 1.5em 0em 0em;
+}
+
+.two-col .col2 {
+    float: right;
+}
+
+.two-col label {
+    display: block;
+}
+
+
+.alumnoFieldset{
+	border: solid 1px lightGray;
+	padding: 1em;
+	margin: 0.5em;	
+}
+
+.ui-selectmenu-open { z-index:2000; }
+.ui-selectmenu-menu-dropdown { z-index:2000;}
+a.ui-selectmenu { text-decoration: none; color: black }
+
+
+.rojo{
+	color: red;	
+}
+
+/* Combos */
+.combo_fieldset{
+	margin-left:1.5em;
+	border: solid 1px lightGray;
+	padding: 1em;
+	margin: 0.5em;	
+}
+.combo_legend{
+	color: #555555;
+    display: block;
+    font-size: 1.4em;
+	font-weight: bold;    
+}
+

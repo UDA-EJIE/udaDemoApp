@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
 xmlns:util="http://www.springframework.org/schema/util"
-xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-<!-- Especificar un valor entre 0 (no cacheo - peticiones continuas) y 600 segundos -->
-<!--    <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">-->
-<!--            <property name="xlnetCachingPeriod" value="120" />-->
-<!--    </bean>-->
-    <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperMockImpl">
-        <property name="principal" value="USER_UDA" />
-        <property name="roles">
-            <list>
-                <value>UDA</value>
-            </list>
-        </property>
-        <property name="uidSession" value="1290789636844" />
-    </bean>
+xsi:schemaLocation="http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperMockImpl">
+		<property name="principal">
+			<list>
+				<map>
+					<entry key="userName" value="udaAdministrador"/>
+					<entry key="nif" value="12121212j"/>
+					<entry key="policy" value="1"/>
+					<entry key="position" value="01"/>
+					<entry key="isCertificate" value="no"/>
+					<entry key="roles">
+						<list>
+							<value>ADMIN_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+				</map>
+				<map>
+					<entry key="userName" value="udaUser"/>
+					<entry key="nif" value="17398234h"/>
+					<entry key="policy" value="1"/>
+					<entry key="position" value="02"/>
+					<entry key="isCertificate" value="no"/>
+					<entry key="roles">
+						<list>
+							<value>USER_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+				</map>
+			</list>
+		</property>
+		<property name="userChangeUrl" value="http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/"/>
+	</bean>
+
     <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
         <property name="authenticationManager" ref="authenticationManager" />
         <property name="accessDecisionManager" ref="affirmativeBased" />
         <property name="securityMetadataSource">
-            <security:filter-security-metadata-source use-expressions="true">
-                <security:intercept-url pattern="/" access="isAuthenticated()" />
-                <security:intercept-url pattern="/logout" access="isAuthenticated()" />
-                <security:intercept-url pattern="/**" access="permitAll" />
-                <security:intercept-url pattern="/usuario/**" access="hasRole('ROLE_UDA')" />
+            <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
+                <security:intercept-url pattern="/administracion/.*" access="hasRole('ROLE_ADMIN_UDA')" />
+                <security:intercept-url pattern="/**" access="isAuthenticated()" />
             </security:filter-security-metadata-source>
         </property>
     </bean>

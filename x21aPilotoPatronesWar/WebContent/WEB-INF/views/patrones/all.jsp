@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1>Todos los patrones</h1>
+<h2>Todos los patrones</h2>
 
 <div style="float:left">
 	<!-- Maint (toolbar + grid + maint) -->
@@ -26,32 +26,32 @@
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_maint">
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">id:</div>
-							<input type="text" name="id" class="formulario_linea_input" id="id_search" />
+							<label for="id" class="formulario_linea_label">id:</label>
+							<input type="text" name="id" class="formulario_linea_input" id="dialog_id_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">nombre:</div>
-							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
+							<label for="nombre" class="formulario_linea_label">nombre:</label>
+							<input type="text" name="nombre" class="formulario_linea_input" id="dialog_nombre_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido1:</div>
-							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
+							<label for="apellido1" class="formulario_linea_label">apellido1:</label>
+							<input type="text" name="apellido1" class="formulario_linea_input" id="dialog_apellido1_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido2:</div>
-							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
+							<label for="apellido2" class="formulario_linea_label">apellido2:</label>
+							<input type="text" name="apellido2" class="formulario_linea_input" id="dialog_apellido2_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">ejie:</div>
-							<div style="float: left;"><select id="ejie_search" name="ejie" class="rup-combo" ></select></div>
+							<label for="dialog_ejie_search" class="formulario_linea_label">ejie:</label>
+							<div style="float: left;"><select id="dialog_ejie_search" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">fechaAlta:</div>
-							<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
+							<label for="dialog_fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
+							<input type="text" name="fechaAlta" class="formulario_linea_input" id="dialog_fechaAlta_search" />
 						</div>
 						<div class="formulario_linea_izda_float" style="clear: left;">
-							<div class="formulario_linea_label">fechaBaja:</div>
-							<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
+							<label for="dialog_fechaBaja_search" class="formulario_linea_label">fechaBaja:</label>
+							<input type="text" name="fechaBaja" class="formulario_linea_input" id="dialog_fechaBaja_search" />
 						</div>
 					</div>
 				</fieldset>
@@ -84,7 +84,8 @@
 	</div><br>
 	
 	<!-- Autocomplete / Tooltip -->
-	Autocomplete (lenguaje):<input id="autocomplete" name="autocomplete" />&nbsp; Tooltip: <input id="tooltip" name="tooltip" title="Introduzca su nombre."/><br><br>
+	<label for ="autocomplete">Autocomplete (lenguaje):</label><input id="autocomplete" name="autocomplete" /><br><br>
+	<label for ="tooltip">Tooltip: </label><input id="tooltip" name="tooltip" title="Introduzca su nombre."/><br><br>
 	
 	<!-- Pestañas -->
 	<div id="tabs" style="width: 40em;"></div><br>

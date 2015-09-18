@@ -1,10 +1,11 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2012 E.J.I.E., S.A.
+ --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  -- 
- -- http://ec.europa.eu/idabc/eupl.html
+ -- 	 http://ec.europa.eu/idabc/eupl.html
  -- 
  -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
  -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
@@ -16,14 +17,19 @@
 
 <!-- Include de los elementos comunes -->
 <script type="text/javascript">
-	APP_RESOURCES = 'x21a',
+var	APP_RESOURCES = 'x21a',
 	CTX_PATH = '<%= request.getContextPath()%>/',
-	RUP = '${staticsUrl}/rup',
 	STATICS = '${staticsUrl}',
-	DEFAULT_LANGUAGE = "${defaultLanguage}",
-	LAYOUT = "${defaultLayout}",
+	RUP = '${staticsUrl}/rup',
 	WAR_NAME = "x21aPilotoPatrones",
-	AVAILABLE_LANGS = "es, eu, en, fr";
+	//model
+	LAYOUT = "${defaultLayout}",
+	//mvc-config.xml
+	LOCALE_COOKIE_NAME = "${localeResolver.cookieName}",
+	LOCALE_PARAM_NAME = "${mvcInterceptor.paramName}",
+	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
+	//breadCrumbs
+	LOGGED_USER = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal : sessionScope.userName}";
 </script>
 
 <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>

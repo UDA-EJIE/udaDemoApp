@@ -66,8 +66,8 @@ jQuery(document).ready(function(){
 		numberOfMonths : [2, 3],
 		stepMonths : 6,
 		showWeek: true,
-		minDate: $.rup_utils.createDate(01, 01, 2011),
-		maxDate: $.rup_utils.createDate(31, 12, 2011)		
+		minDate: $.rup_utils.createDate(01, 01, 2012),
+		maxDate: $.rup_utils.createDate(31, 12, 2012)		
 	});
 	
 	$("#fecha_button").click(function() {

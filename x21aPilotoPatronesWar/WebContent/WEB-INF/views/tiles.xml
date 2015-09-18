@@ -2,14 +2,26 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
+
   	<!-- ****************************** -->
   	<!--          PLANTILLAS            -->
   	<!-- ****************************** -->
+  	
 	<definition name="template" template="/WEB-INF/layouts/template.jsp">	
 		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
 		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp"/>
 		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+		<put-attribute name="includes" value=""/>				
+	</definition>
+	
+	<!-- Plantilla de la pagina de login del Mock -->
+	<definition name="templateLogin" template="/WEB-INF/layouts/templateLogin.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
 		<put-attribute name="includes" value=""/>				
@@ -50,18 +62,31 @@
 		<put-attribute name="includesNora" value=""/>				
 	</definition>
 	
-	<definition name="errorTemplate" template="/WEB-INF/layouts/errorTemplate.jsp"/>
+	<definition name="templateError" template="/WEB-INF/layouts/templateError.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+	</definition>
 	
 	<!-- ***************************** -->
   	<!--          PANTALLAS            -->
   	<!-- ***************************** -->
-	<definition name="error" extends="errorTemplate" >
+  	
+	<definition name="error" extends="templateError" >
 		<put-attribute name="content" value="/WEB-INF/views/error.jsp"/>	
 	</definition>
-	<definition name="accessDenied" extends="errorTemplate" >
-		<put-attribute name="content" value="/WEB-INF/views/accessDenied.jsp"/>
-	</definition>	
 	
+	<definition name="accessDenied" extends="templateError" >
+		<put-attribute name="content" value="/WEB-INF/views/accessDenied.jsp"/>
+	</definition>
+	
+	<definition name="mockLoginPage" extends="templateLogin">
+        <put-attribute name="content" value="/WEB-INF/views/mockLogin/mockLoginPage.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/mockLogin/mockLoginPage-includes.jsp"/>
+    </definition>
+    
+    <definition name="mockLoginAjaxPage" template="/WEB-INF/views/mockLogin/mockLoginAjaxPage.jsp"/>		
+    	
 	<!-- cambio de la pagina de inicio (welcome) -->
 	<!-- definition name="welcome" template="/WEB-INF/views/welcome.jsp"/>-->
 	<definition name="welcome" extends="template">
@@ -108,9 +133,24 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/feedback-includes.jsp"/>					
 	</definition>
 	
+	<definition extends="template" name="form">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/form.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/form-includes.jsp"/>					
+	</definition>
+	
 	<definition name="grid" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/grid.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid-includes.jsp"/>					
+		<put-attribute name="content" value="/WEB-INF/views/patrones/grid/grid.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid/grid-includes.jsp"/>					
+	</definition>
+	
+	<definition name="gridGroup" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/grid/gridGroup.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid/gridGroup-includes.jsp"/>					
+	</definition>
+	
+	<definition name="gridTree" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/grid/gridTree.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid/gridTree-includes.jsp"/>					
 	</definition>
 	
 	<definition name="menu" extends="template" >
@@ -144,8 +184,8 @@
 	</definition>
 	
 	<definition name="maintTab" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/maintTab.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/maintTab-includes.jsp"/>					
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabsMaint.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsMaint-includes.jsp"/>					
 	</definition>
 	
 	<definition name="tabsContent_1" template="/WEB-INF/views/patrones/tabs/tabsContent_1.jsp"/>
@@ -172,6 +212,28 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/upload-includes.jsp"/>					
 	</definition>
 	
+	<definition name="validate" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/validate.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/validate-includes.jsp"/>					
+	</definition>
+	
+	<definition name="wizard" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp"/>					
+	</definition>
+	<definition name="wizard_includeFile" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_includeFile.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp"/>									
+	</definition>
+	<definition name="wizard_jspInclude" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_jspInclude.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp"/>									
+	</definition>
+	<definition name="wizard_jstlImport" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_jstlImport.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp"/>									
+	</definition>
+	
 	<definition name="all" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/all.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/all-includes.jsp"/>					
@@ -179,10 +241,6 @@
 	<definition name="allDialog" template="/WEB-INF/views/patrones/allDialog.jsp"/>		
 	
 	<!-- Experimental -->
-	<definition name="generic_object" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/experimental/generic_object.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/experimental/generic_object-includes.jsp"/>
-	</definition>
 	<definition name="maestro_detalle" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp"/>					
@@ -207,5 +265,13 @@
         <put-attribute name="content" value="/WEB-INF/views/experimental/nora.jsp"/>
 		<put-attribute name="includes" value="/WEB-INF/views/experimental/mantnora-includes.jsp"/>	
 		<put-attribute name="includesNora" value="/WEB-INF/views/experimental/nora-includes.jsp"/>				
+    </definition>
+    <definition extends="template" name="jackson">
+        <put-attribute name="content" value="/WEB-INF/views/experimental/jackson.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/experimental/jackson-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="perfilusuario">
+        <put-attribute name="content" value="/WEB-INF/views/perfilusuario/perfilusuario.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/perfilusuario/perfilusuario-includes.jsp"/>
     </definition>
 </tiles-definitions>

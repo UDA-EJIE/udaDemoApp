@@ -145,7 +145,7 @@ public  class UsuarioServiceImpl implements UsuarioService {
      * @param  usuarioDao UsuarioDao
      */
     public void setUsuarioDao(UsuarioDao usuarioDao) {
-        logger.info( "Setting Dependency "+usuarioDao);
+        logger.info("Setting Dependency "+usuarioDao);
         this.usuarioDao = usuarioDao;
     }
 }

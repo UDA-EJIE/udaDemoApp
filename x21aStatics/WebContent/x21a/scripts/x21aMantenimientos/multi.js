@@ -19,7 +19,8 @@ jQuery(function($){
 		
 		url: "../usuario",
 		hasMaint: true,
-		width: 650,
+		headertitles: true, //tooltip en cabeceras
+		width: 850,
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",
@@ -71,7 +72,8 @@ jQuery(function($){
 		modelObject: "Usuario",
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
-		showMessages: true
+		showMessages: true,
+		validationFilter:false
 	});
 	
 	

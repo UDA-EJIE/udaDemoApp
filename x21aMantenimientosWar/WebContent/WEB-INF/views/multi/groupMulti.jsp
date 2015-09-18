@@ -22,31 +22,31 @@
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_multi">
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">id:</div>
+							<label for="id_search"class="formulario_linea_label">id:</label>
 							<input type="text" name="id" class="formulario_linea_input" id="id_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">nombre:</div>
+							<label for="nombre_search"class="formulario_linea_label">nombre:</label>
 							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido1:</div>
+							<label for="apellido1_search"class="formulario_linea_label">apellido1:</label>
 							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido2:</div>
+							<label for="apellido2_search"class="formulario_linea_label">apellido2:</label>
 							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">ejie:</div>
+							<label for="ejie_search"class="formulario_linea_label">ejie:</label>
 							<div style="float: left;"><select id="ejie_search" name="ejie" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">fechaAlta:</div>
+							<label for="fechaAlta_search"class="formulario_linea_label">fechaAlta:</label>
 							<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
 						</div>
 						<div class="formulario_linea_izda_float" style="clear: left;">
-							<div class="formulario_linea_label">fechaBaja:</div>
+							<label for="fechaBaja_search"class="formulario_linea_label">fechaBaja:</label>
 							<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
 						</div>
 					</div>	

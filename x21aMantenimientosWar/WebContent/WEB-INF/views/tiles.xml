@@ -5,12 +5,22 @@
   	<!-- ****************************** -->
   	<!--          PLANTILLAS            -->
   	<!-- ****************************** -->
+  	
 	<definition name="template" template="/WEB-INF/layouts/template.jsp">	
 		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
 		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp"/>
-		
 		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+		<put-attribute name="includes" value=""/>				
+	</definition>
+	
+	<!-- Plantilla de la pagina de login del Mock -->
+	<definition name="templateLogin" template="/WEB-INF/layouts/templateLogin.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
 		<put-attribute name="includes" value=""/>				
@@ -25,17 +35,30 @@
 		<put-attribute name="js" value="" type="string" />				
 	</definition>
 	
-	<definition name="errorTemplate" template="/WEB-INF/layouts/errorTemplate.jsp"/>
+	<definition name="templateError" template="/WEB-INF/layouts/templateError.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+	</definition>
 	
 	<!-- ***************************** -->
   	<!--          PANTALLAS            -->
   	<!-- ***************************** -->
-	<definition extends="errorTemplate" name="error">
+  	
+	<definition name="error" extends="templateError" >
 		<put-attribute name="content" value="/WEB-INF/views/error.jsp"/>	
 	</definition>
-	<definition extends="errorTemplate" name="accessDenied">
+	
+	<definition name="accessDenied" extends="templateError" >
 		<put-attribute name="content" value="/WEB-INF/views/accessDenied.jsp"/>
-	</definition>	
+	</definition>
+	
+	<definition name="mockLoginPage" extends="templateLogin">
+        <put-attribute name="content" value="/WEB-INF/views/mockLogin/mockLoginPage.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/mockLogin/mockLoginPage-includes.jsp"/>
+    </definition>
+    
+   	<definition name="mockLoginAjaxPage" template="/WEB-INF/views/mockLogin/mockLoginAjaxPage.jsp"/>
 	
 	<!-- cambio de la pagina de inicio (welcome) -->
 	<!-- definition name="welcome" template="/WEB-INF/views/welcome.jsp"/>-->
@@ -85,8 +108,8 @@
         <put-attribute name="content" value="/WEB-INF/views/edlinea/edlinea.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/edlinea/edlinea-includes.jsp"/>
     </definition>
-   	<definition extends="template" name="simpleFluido">
-        <put-attribute name="content" value="/WEB-INF/views/simpleFluido/simpleFluido.jsp"/>
-        <put-attribute name="includes" value="/WEB-INF/views/simpleFluido/simpleFluido-includes.jsp"/>
+    <definition extends="template" name="alumno">
+        <put-attribute name="content" value="/WEB-INF/views/alumno/alumno.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/alumno/alumno-includes.jsp"/>
     </definition>
 </tiles-definitions>

@@ -31,25 +31,21 @@ jQuery(document).ready(function(){
 			"simple" : { "i18nCaption" : "simple" },
 			"multi" : { "i18nCaption" : "multi" },
 			"edlinea" : { "i18nCaption" : "edlinea"},
-			"simpleFluido" : { "i18nCaption" : "simpleFluido" },
-			"uda" : {"i18nCaption" : "uda"}
-		}
+			"uda" : {"i18nCaption" : "uda"},
+			"administracion" : {
+				//Literal
+				"i18nCaption" : "administracion",
+				"alumno":{"i18nCaption":"alumno"}
+			}
+		},
+		logOutUrl: "/x21aMantenimientosWar/logout"
 	});
 	//idioma
-	$("#x21aMantenimientosWar_language").rup_language({languages: ["es", "eu", "en", "fr"]});
+	$("#x21aMantenimientosWar_language").rup_language({languages: $.rup.AVAILABLE_LANGS_ARRAY});
 	
 	$("#x21aMantenimientosWar_menu").rup_menu({
-		display: (vertical ? 'vertical' : 'horizontal'),
-		menu: [
-		       	{"i18nCaption":"patrones", "url": "../x21aPilotoPatronesWar/"},
-				{"i18nCaption":"inicio", "url": ""},
-				{"i18nCaption":"simple", "pathUrl": "/x21aMantenimientosWar/usuario/simple", "forceAbs": true},
-				{"i18nCaption":"multi", "pathUrl": "/x21aMantenimientosWar/usuario/multi"},
-				{"i18nCaption":"edlinea", "pathUrl": "/x21aMantenimientosWar/usuario/edlinea"},
-				{"i18nCaption":"simpleFluido", "url": "usuario/simpleFluido"},
-				{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
-		]
+		display: (vertical ? 'vertical' : 'horizontal')
 	});
 	
-	$.rup.i18n.base.rup_combo.blankNotDefined = "----";
+	$.rup.i18n.base["rup_combo"] = { blankNotDefined : "----" };
 });

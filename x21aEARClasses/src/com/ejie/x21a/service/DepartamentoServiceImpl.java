@@ -134,7 +134,7 @@ public  class DepartamentoServiceImpl implements DepartamentoService {
      * @param  departamentoDao DepartamentoDao
      */
     public void setDepartamentoDao(DepartamentoDao departamentoDao) {
-        logger.info( "Setting Dependency "+departamentoDao);
+        logger.info("Setting Dependency "+departamentoDao);
         this.departamentoDao = departamentoDao;
     }
 }

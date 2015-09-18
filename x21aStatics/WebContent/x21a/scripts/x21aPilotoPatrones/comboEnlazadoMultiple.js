@@ -20,11 +20,11 @@ jQuery(document).ready(function(){
 		source: ["Ayuntamiento","Diputación","Policía","Bomberos"],
 		blank:"-1",
 		selected:1,
-		change : function() { console.log("my own change"); }
+		change : function() { alert("my own change"); }
 	});
 	$('#provincia').rup_combo({
 		source: ["Álava","Vizcaya","Gipúzcoa"],
-		change : function() { console.log("my own change2"); }
+		change : function() { alert("my own change2"); }
 	});
 	$('#dptoProv').rup_combo({
 		parent: [ "departamento", "provincia" ],

@@ -23,6 +23,7 @@ jQuery(function($){
 		rowNum: "10",
 		sortorder: "asc",
 		sortname: "code",
+//		editable:true,
 		colNames: [ "code", "descEs", "descEu", "css", "provincia", "comarca"],
 		colModel: [
 		    //label: etiqueta del detalle
@@ -56,7 +57,7 @@ jQuery(function($){
 				rupType: "combo"},
 			{ name:"comarca.code", jsonmap: "comarca.code", index: "comarca.descEs", editable: true,
 				editoptions: {
-					parent: [ "detailForm_localidad_comarca_provincia_code" ],
+					parent: [ "comarca.provincia.code" ],
 					source : "../comarca",
 					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 					i18nId: "GRID_localidad##ejie",

@@ -8,9 +8,10 @@ jQuery(function($){
 		rowNum: "10",
 		sortorder: "asc",
 		sortname: "id",
+//		editable:true,
 		colNames: [
 			"id",
-			"idUsuario",
+//			"idUsuario"
 			"codeLocalidad",
 			"codeComarca",
 			"codeProvincia",
@@ -21,8 +22,8 @@ jQuery(function($){
 			"descripcion",
 			"fechaAlta",
 			"fechaBaja",
-			"horaEntrada",
-			"imagenPerfil"
+			"horaEntrada"
+//			"imagenPerfil"
 		],
 		colModel: [
 			{ name: "id",
@@ -34,24 +35,24 @@ jQuery(function($){
 				key: true 
 				
 			},
-			{ name: "usuario.id",
-				jsonmap:"usuario.id",
-				label: "idUsuario",
-				index: "idUsuario",
-				width: "150",
-				editable: true,
-				editoptions: {
-					source : "../usuario",
-					sourceParam : {label:"nombre", value:"id", style:"css"},
-					valueName: "usuario.id",
-					labelName: "usuario.apellido1"
-				},
-//				formatter : function(value, options, rowData){
-//					return rowData['usuario']['apellido1']+" "+rowData['usuario']['apellido2']+", "+rowData['usuario']['nombre'];
+//			{ name: "usuario.id",
+//				jsonmap:"usuario.id",
+//				label: "idUsuario",
+//				index: "idUsuario",
+//				width: "150",
+//				editable: true,
+//				editoptions: {
+//					source : "../usuario",
+//					sourceParam : {label:"nombre", value:"id", style:"css"},
+//					valueName: "usuario.id",
+//					labelName: "usuario.apellido1"
 //				},
-				formatter: "rup_combo",
-				rupType: "autocomplete"
-			},
+////				formatter : function(value, options, rowData){
+////					return rowData['usuario']['apellido1']+" "+rowData['usuario']['apellido2']+", "+rowData['usuario']['nombre'];
+////				},
+//				formatter: "rup_combo",
+//				rupType: "autocomplete"
+//			},
 			{ name: "provincia.code",
 				jsonmap:"provincia.code",
 				label: "codeProvincia",
@@ -75,6 +76,7 @@ jQuery(function($){
 				editable: true,
 				editoptions: {
 					source : "../comarca",
+					parent: [ "provincia.code"],
 					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 					width: 180,
 					blank: ""
@@ -90,6 +92,7 @@ jQuery(function($){
 				editable: true,
 				editoptions: {
 					source : "../localidad",
+					parent: [ "comarca.code"],
 					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 					width: 180,
 					blank: ""
@@ -181,14 +184,15 @@ jQuery(function($){
 //					showSecond:true,
 					timeFormat: 'hh:mm'
 				}
-			},
-			{ name: "imagenPerfil",
-				label: "imagenPerfil",
-				index: "imagenPerfil",
-				width: "150",
-				editable: true,
-				edittype:"file"
 			}
+//			,
+//			{ name: "imagenPerfil",
+//				label: "imagenPerfil",
+//				index: "imagenPerfil",
+//				width: "150",
+//				editable: true,
+//				edittype:"file"
+//			}
         ]
 		
 	});

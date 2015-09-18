@@ -13,60 +13,76 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Combo Enlazado (multiple)</h1>
+<h2>Combo Enlazado (multiple)</h2>
 
 <div id="local" style="float: left;">
-	<h2>Local (no i18n)</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Departamento</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Local (no i18n)</legend>
+		
+		<label for="departamento">Departamento</label>
 		<select id="departamento" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Provincia</h3>
+		<label for="provincia">Provincia</label>
 		<select id="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Departamento-Provincia</h3>
+		<label for="dptoProv">Departamento-Provincia</label>
 		<select id="dptoProv" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>
 
 <div id="remote" style="float: left; margin-left: 4em;">
-	<h2>Remoto</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Departamento</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Remoto</legend>
+		
+		<label for="departamentoRemote">Departamento</label>
 		<select id="departamentoRemote" name="departamento" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Provincia</h3>
+		<label for="provinciaRemote">Provincia</label>
 		<select id="provinciaRemote" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Departamento-Provincia</h3>
+		<label for="dptoProvRemote">Departamento-Provincia</label>
 		<select id="dptoProvRemote" class="rup-combo"><option>&nbsp;</option></select>
-	</div>		
+		<br><br>
+	</fieldset>		
 </div>
 
 <div id="mixto" style="float: left; margin-left: 4em;">
-	<h2>Mixto I</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Departamento (remoto)</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Mixto I</legend>
+		
+		<label for="mixto_departamentoRemote">Departamento (remoto)</label>
 		<select id="mixto_departamentoRemote" name="departamento" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Provincia (local)</h3>
+		<label for="mixto_provincia">Provincia (local)</label>
 		<select id="mixto_provincia" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Departamento-Provincia (remoto)</h3>
+		<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
 		<select id="mixto_dptoProvRemote" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>
 
 <div id="mixto2" style="float: left; margin-left: 4em; margin-bottom: 3em;">
-	<h2>Mixto II</h2>
-	<div style="margin-left:1.5em;">
-		<h3>Departamento (local)</h3>
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Mixto II</legend>
+		
+		<label for="mixto2_departamento">Departamento (local)</label>
 		<select id="mixto2_departamento" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Provincia (remoto)</h3>
+		<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
 		<select id="mixto2_provinciaRemote" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
 		
-		<h3>Departamento-Provincia (local)</h3>
+		<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 		<select id="mixto2_dptoProv" class="rup-combo"><option>&nbsp;</option></select>
-	</div>
+		<br><br>
+	</fieldset>
 </div>

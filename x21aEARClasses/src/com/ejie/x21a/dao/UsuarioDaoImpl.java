@@ -25,8 +25,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,7 +42,7 @@ import com.ejie.x38.util.PaginationManager;
 @Repository
 @Transactional
 public class UsuarioDaoImpl implements UsuarioDao {
-	private SimpleJdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 	private RowMapper<Usuario> rwMap = new RowMapper<Usuario>() {
 		public Usuario mapRow(ResultSet resultSet, int rowNum)
 				throws SQLException {
@@ -65,7 +65,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	 */
 	@Resource
 	public void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	/**

@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<h1>compuesta</h1>
+	<h2>compuesta</h2>
 	<div id="error" style="display:none"></div>
 	<div id="compuesta">
 		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
@@ -23,27 +23,27 @@
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_compuesta">
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">idA:</div>
+							<label for="idA_search" class="formulario_linea_label">idA:</label>
 							<input type="text" name="idA" class="formulario_linea_input" id="idA_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">idB:</div>
+							<label for="idB_search" class="formulario_linea_label">idB:</label>
 							<input type="text" name="idB" class="formulario_linea_input" id="idB_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">nombre:</div>
+							<label for="nombre_search" class="formulario_linea_label">nombre:</label>
 							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido1:</div>
+							<label for="apellido1_search" class="formulario_linea_label">apellido1:</label>
 							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido2:</div>
+							<label for="apellido2_search" class="formulario_linea_label">apellido2:</label>
 							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">fechaAlta:</div>
+							<label for="fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
 							<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
 						</div>
 					</div>

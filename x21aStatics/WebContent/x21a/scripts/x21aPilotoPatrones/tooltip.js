@@ -15,6 +15,45 @@
  */
 jQuery(document).ready(function(){
 	
-	$("[title]").rup_tooltip();
+	$("[title]").rup_tooltip({"applyToPortal": true});
+	
+	$("#codeTooltip").rup_tooltip({
+		content: {
+			text: "Esto es un ejemplo de tooltip sobre imagen"
+		},
+		position: {
+			my: 'top center',
+			at: 'bottom center',
+			target: $("#code")
+		},
+		show: {
+			event: 'click'
+		}
+	});
+	
+	$("#idTooltip").rup_tooltip({
+		content: {
+			text: 'Esto es un ejemplo de tooltip modal sobre imagen',
+			title: {
+				text: 'Tooltip modal'
+			}
+		},
+		position: {
+			my: 'bottom center',
+			at: 'top center', 
+			target: $("#identificador")
+		},
+		show: {
+			event: 'click',
+			modal: true
+		},
+		hide: {
+			event: 'click'
+		}
+	});
+	
+	$("#button").click(function() {
+		$(".qtip").rup_tooltip('option', 'style.widget', true);
+	});
 	
 });

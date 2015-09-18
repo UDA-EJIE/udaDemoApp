@@ -18,7 +18,8 @@ jQuery(function($){
 		
 		url: "../usuario",
 		hasMaint: true,
-		width: 650,
+		headertitles: true, //tooltip en cabeceras
+		width: 850,
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",
@@ -27,12 +28,13 @@ jQuery(function($){
 		colModel: [
 		    //label: etiqueta del detalle
 		    
-			{ name: "id", index: "id", editable: true, 
-				rupType: "integer", 
-				key: true 
+			{ name: "id", index: "id", editable: true, key: true
+				,validationrules:{required:true,digits:true}
 			},
-			{ name: "nombre", index: "nombre", editable: true },
-			{ name: "apellido1", index: "apellido1", editable: true },
+			{ name: "nombre", index: "nombre", editable: true
+				,validationrules:{required:true}
+			},
+			{ name: "apellido1", index: "apellido1", editable: true, classes:'ui-ellipsis' },
 			{ name: "apellido2", index: "apellido2", editable: true },
 			
 //			//Definición para combo normal
@@ -54,11 +56,77 @@ jQuery(function($){
 				formatter: "rup_combo",
 				rupType: "combo"
 			},
+// 			PRUEBA DE CARGA DE COMBOS DEPENDIENTES LOCALES			
+//			{ name: "tipo", index: "tipo", editable: true,
+//				editoptions: {
+//					i18nId:"GRID_simple##tipo",
+//					parent: [ "ejie" ],
+//					
+//					source : {
+//					   "0":[
+//					         {i18nCaption: "0A", value:"0A"},
+//					         {i18nCaption: "0B", value:"0B"}],
+//					   "1":[
+//							   {i18nCaption: "1A", value:"1A"},
+//							   {i18nCaption: "1B", value:"1B"}]
+//					}
+//				},
+//				formatter: "rup_combo",
+//				rupType: "combo"
+//			},
+//			{ name: "subtipo", index: "subtipo", editable: true,
+//				editoptions: {
+//					i18nId:"GRID_simple##subtipo",
+//					parent: [ "ejie","tipo" ],
+//					source : {
+//					   "0##0A":[
+//					         {i18nCaption: "0_0A_A", value:"0_0A_A"},
+//					         {i18nCaption: "0_0A_B", value:"0_0A_B"}],
+//					   "0##0B":[
+//					         {i18nCaption: "0_0B_A", value:"0_0B_A"},
+//							 {i18nCaption: "0_0B_B", value:"0_0B_B"}],
+//						 "1##0A":[
+//							         {i18nCaption: "1_0A_A", value:"1_0A_A"},
+//							         {i18nCaption: "1_0A_B", value:"1_0A_B"}],
+//					"1##0B":[
+//						         {i18nCaption: "1_0B_A", value:"1_0B_A"},
+//								 {i18nCaption: "1_0B_B", value:"1_0B_B"}],
+//								 "0##1A":[
+//									         {i18nCaption: "0_1A_A", value:"0_1A_A"},
+//									         {i18nCaption: "0_1A_B", value:"0_1A_B"}],
+//									   "0##1B":[
+//									         {i18nCaption: "0_1B_A", value:"0_1B_A"},
+//											 {i18nCaption: "0_1B_B", value:"0_1B_B"}],
+//										 "1##1A":[
+//											         {i18nCaption: "1_1A_A", value:"1_1A_A"},
+//											         {i18nCaption: "1_1A_B", value:"1_1A_B"}],
+//									"1##1B":[
+//										         {i18nCaption: "1_1B_A", value:"1_1B_A"},
+//												 {i18nCaption: "1_1B_B", value:"1_1B_B"}]
+//					}
+//				},
+//				formatter: "rup_combo",
+//				rupType: "combo"
+//			},
 			{ name: "fechaAlta",  index: "fechaAlta", editable: true,
-				rupType: "datepicker"
+				rupType: "date",
+				validationrules:{required:true, date:true},
+				editoptions:{
+					labelMaskId : "fecha-mask",
+					showButtonPanel : true,
+					showOtherMonths : true,
+					noWeekend : true
+				}
 			},
 			{ name: "fechaBaja", index: "fechaBaja", editable: true,
-				rupType: "datepicker" 
+				rupType: "datepicker",
+				validationrules:{date:true},
+				editoptions:{
+					labelMaskId : "fecha-mask",
+					showButtonPanel : true,
+					showOtherMonths : true,
+					noWeekend : true
+				}
 			}
         ]
 	});

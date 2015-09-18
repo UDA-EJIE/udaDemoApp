@@ -134,7 +134,7 @@ public  class ProvinciaServiceImpl implements ProvinciaService {
      * @param  provinciaDao ProvinciaDao
      */
     public void setProvinciaDao(ProvinciaDao provinciaDao) {
-        logger.info( "Setting Dependency "+provinciaDao);
+        logger.info("Setting Dependency "+provinciaDao);
         this.provinciaDao = provinciaDao;
     }
 }

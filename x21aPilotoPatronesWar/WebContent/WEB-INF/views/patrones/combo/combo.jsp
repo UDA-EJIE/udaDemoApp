@@ -13,22 +13,28 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Combo</h1>
+<h2>Combo</h2>
 
-<h2>Combo local</h2>
+<label for="combo">Combo local</label>
 <select id="combo" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>
 
-<h2>Combo remoto</h2>
+<label for="comboRemoto">Combo remoto</label>
 <select id="comboRemoto" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>
 
-<h2>Combo con texto largo</h2>
+<label for="comboLargo">Combo con texto largo</label>
 <select id="comboLargo" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>
 
-<h2>Combo con 'optgroups'</h2>
+<label for="comboGrupos">Combo con 'optgroups'</label>
 <select id="comboGrupos" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>
 
-<h2>Combo con 'optgroups' remoto</h2>
+<label for="comboGruposRemoto">Combo con 'optgroups' remoto</label>
 <select id="comboGruposRemoto" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>
 
-<h2>Combo (no i18n) con imagenes</h2>
+<label for="comboImgs">Combo (no i18n) con imagenes</label>
 <select id="comboImgs" class="rup-combo"><option>&nbsp;</option></select>
+<br><br>

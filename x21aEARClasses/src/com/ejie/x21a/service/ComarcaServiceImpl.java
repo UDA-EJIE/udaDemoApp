@@ -134,7 +134,7 @@ public  class ComarcaServiceImpl implements ComarcaService {
      * @param  comarcaDao ComarcaDao
      */
     public void setComarcaDao(ComarcaDao comarcaDao) {
-        logger.info( "Setting Dependency "+comarcaDao);
+        logger.info("Setting Dependency "+comarcaDao);
         this.comarcaDao = comarcaDao;
     }
 }

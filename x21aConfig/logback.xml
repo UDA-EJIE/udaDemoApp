@@ -24,7 +24,7 @@
     	</encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       		<!-- rollover daily -->
-     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
       		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -46,7 +46,7 @@
 	    </encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/incidencias_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/incidencias_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -66,7 +66,7 @@
 	    </encoder>
 	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/udaTrazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/udaTrazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -86,7 +86,7 @@
 	    </encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -106,7 +106,7 @@
 	    </encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -126,7 +126,7 @@
 	    </encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -146,7 +146,7 @@
 		<appender-ref ref="udaTrazasAppender"/>
 	</logger>
 	
-	<logger name="com.ejie.x21a" level="${log.level.aplicTrazas}">
+	<logger name="com.ejie.${CONTEXT_NAME}" level="${log.level.aplicTrazas}">
 		<appender-ref ref="aplicTrazasAppender"/>
 	</logger>
 	

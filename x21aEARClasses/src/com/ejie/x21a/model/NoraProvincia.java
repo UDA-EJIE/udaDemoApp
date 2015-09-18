@@ -29,7 +29,7 @@ public class NoraProvincia  implements java.io.Serializable {
     //Clave compuesta
             private String id;
             private String dsO;
-            private String autonomiaId;
+            private NoraAutonomia autonomia;
 
 	/** Method 'NoraProvincia'.
 	*
@@ -41,11 +41,11 @@ public class NoraProvincia  implements java.io.Serializable {
    * @param dsO String
    * @param autonomiaId String
    */
-   public NoraProvincia(String id, String dsO, String autonomiaId  ) {
+   public NoraProvincia(String id, String dsO, NoraAutonomia autonomiaId  ) {
 
            this.id = id;		
            this.dsO = dsO;		
-           this.autonomiaId = autonomiaId;		
+           this.autonomia = autonomiaId;		
     }
 
 	/**
@@ -97,8 +97,8 @@ public class NoraProvincia  implements java.io.Serializable {
      */
 	
 	
-	public String getAutonomiaId() {
-		return this.autonomiaId;
+	public NoraAutonomia getAutonomia() {
+		return this.autonomia;
 	}
 	
 	/**
@@ -108,8 +108,8 @@ public class NoraProvincia  implements java.io.Serializable {
 	 * @return
 	 */
 	
-	public void setAutonomiaId(String autonomiaId) {
-		this.autonomiaId = autonomiaId;
+	public void setAutonomia(NoraAutonomia autonomia) {
+		this.autonomia = autonomia;
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class NoraProvincia  implements java.io.Serializable {
 
 		result.append(", [ dsO: ").append(this.dsO).append(" ]");
 
-		result.append(", [ autonomiaId: ").append(this.autonomiaId).append(" ]");
+		result.append(", [ autonomiaId: ").append(this.autonomia).append(" ]");
 		result.append("}");
 		return result.toString();
 	}

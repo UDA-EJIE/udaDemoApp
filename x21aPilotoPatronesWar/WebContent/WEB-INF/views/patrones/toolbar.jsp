@@ -13,5 +13,20 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Toolbar</h1>
+<h2>Toolbar</h2>
+
 <div id=toolbar></div>
+
+<br/>
+<div class="separator"></div>
+<div class="separator"></div>
+<br/>
+
+<div id=toolbarMixta></div>
+
+<br/>
+<div class="separator"></div>
+<div class="separator"></div>
+<br/>
+
+<div id=toolbarRight></div>

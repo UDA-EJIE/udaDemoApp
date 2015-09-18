@@ -26,6 +26,7 @@ jQuery(function($){
 		pagerName: "group_multi_pager",
 		rowNum: "10",
 		sortorder: "asc",
+		pagerInline: false,
 		sortname: "id",
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja" ],
 		colModel: [

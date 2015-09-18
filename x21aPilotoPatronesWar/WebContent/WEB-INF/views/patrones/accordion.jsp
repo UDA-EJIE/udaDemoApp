@@ -16,7 +16,7 @@
  
  <%@include file="/WEB-INF/includeTemplate.inc"%>
  
-<h1>Accordion</h1>
+<h2>Accordion</h2>
 
 <div id="accordionExample1" class="rup_accordion">
 
@@ -48,14 +48,15 @@
 
 	<h1><a><spring:message  code="secAuto" /></a></h1>
 	<div class="sectionAuto">
-		<h2 class="sectionh2">Autocomplete local</h2>
-		Lenguaje:<input id="autocomplete" name="autocomplete" />
+		<h3 class="sectionh2">Autocomplete local</h3>
+		<label for="autocomplete">Lenguaje:</label><input id="autocomplete" name="autocomplete" />
 		[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]
 		<br/>
-
-		<h2>Autocomplete remoto</h2>
-		Departamento-Provincia:<input id="patron" name="patron" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
+		
+		<h3>Autocomplete remoto</h3>
+		<label for="patron">Departamento-Provincia:</label><input id="patron" name="patron" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
 		<br/>
+		
 	</div>
 	<h1><a><spring:message  code="secMaint" /></a></h1>
 	<div class="sectionMaint">
@@ -133,6 +134,4 @@
 			</form>
 		</div>
 	</div>
-	
-</div>
- 
+</div> 

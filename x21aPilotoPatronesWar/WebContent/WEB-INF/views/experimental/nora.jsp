@@ -15,81 +15,67 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1>Nora</h1>
+<h2>Nora</h2>
 <div id="error" style="display: none"></div>
 
 <div id="contenido" style="margin-top: 0.5em; margin-bottom: 0.5em;">
 	<form id="searchForm">
 		<div class="formulario_legend" id="titleSearch_yy">
-			<spring:message code="searchCriteria" />
-			:
+			<spring:message code="searchCriteria" />:
 		</div>
 		<fieldset style="border: 1px solid #DADADA;" id="FIELDSET_SEARCH_yy">
 			<div class="formulario_columna_cnt">
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Autonomía:</div>
-					<input type="text" name="autonomia.codeAutonomia"
-						class="formulario_linea_input" id="autonomia_search" />
+					<label for="autonomia_search" class="formulario_linea_label">Autonomía:</label>
+					<input type="text" name="autonomia.codeAutonomia" class="formulario_linea_input" id="autonomia_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Comarca:</div>
-					<input type="text" name="comarca.codeComarca"
-						class="formulario_linea_input" id="comarca_search" />
+					<label for="comarca_search" class="formulario_linea_label">Comarca:</label>
+					<input type="text" name="comarca.codeComarca" class="formulario_linea_input" id="comarca_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Provincia:</div>
-					<input type="text" name="provincia.codeProvincia"
-						class="formulario_linea_input" id="provincia_search" />
+					<label for="provincia_search" class="formulario_linea_label">Provincia:</label>
+					<input type="text" name="provincia.codeProvincia" class="formulario_linea_input" id="provincia_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Localidad:</div>
-					<input type="text" name="localidad.codeLocalidad"
-						class="formulario_linea_input" id="localidad_search" />
+					<label for="localidad_search" class="formulario_linea_label">Localidad:</label>
+					<input type="text" name="localidad.codeLocalidad" class="formulario_linea_input" id="localidad_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Municipio:</div>
-					<input type="text" name="municipio.codeMunicipio"
-						class="formulario_linea_input" id="municipio_search" />
+					<label for="municipio_search" class="formulario_linea_label">Municipio:</label>
+					<input type="text" name="municipio.codeMunicipio" class="formulario_linea_input" id="municipio_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Calle:</div>
-					<input type="text" name="calle" class="formulario_linea_input"
-						id="calle_search" />
+					<label for="calle_search" class="formulario_linea_label">Calle:</label>
+					<input type="text" name="calle" class="formulario_linea_input" id="calle_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Portal:</div>
-					<input type="text" name="portal" class="formulario_linea_input"
-						id="portal_search" />
+					<label for="portal_search" class="formulario_linea_label">Portal:</label>
+					<input type="text" name="portal" class="formulario_linea_input" id="portal_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">CP:</div>
-					<input type="text" name="cp" class="formulario_linea_input"
-						id="cp_search" />
+					<label for="cp_search" class="formulario_linea_label">CP:</label>
+					<input type="text" name="cp" class="formulario_linea_input" id="cp_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Escalera:</div>
-					<input type="text" name="escalera" class="formulario_linea_input"
-						id="escalera_search" />
+					<label for="escalera_search" class="formulario_linea_label">Escalera:</label>
+					<input type="text" name="escalera" class="formulario_linea_input" id="escalera_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Piso:</div>
-					<input type="text" name="piso" class="formulario_linea_input"
-						id="piso_search" />
+					<label for="piso_search" class="formulario_linea_label">Piso:</label>
+					<input type="text" name="piso" class="formulario_linea_input" id="piso_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Mano:</div>
-					<input type="text" name="mano" class="formulario_linea_input"
-						id="mano_search" />
+					<label for="mano_search" class="formulario_linea_label">Mano:</label>
+					<input type="text" name="mano" class="formulario_linea_input" id="mano_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Puerta:</div>
-					<input type="text" name="puerta" class="formulario_linea_input"
-						id="puerta_search" />
+					<label for="puerta_search" class="formulario_linea_label">Puerta:</label>
+					<input type="text" name="puerta" class="formulario_linea_input" id="puerta_search" />
 				</div>
 				<div class="formulario_linea_izda_float">
-					<div class="formulario_linea_label">Aprox. Postal:</div>
-					<input type="text" name="aprox_postal"
-						class="formulario_linea_input" id="aprox_postal_search" />
+					<label for="aprox_postal_search" class="formulario_linea_label">Aprox. Postal:</label>
+					<input type="text" name="aprox_postal" class="formulario_linea_input" id="aprox_postal_search" />
 				</div>
 			</div>
 			<div>
@@ -106,44 +92,42 @@
 		<div class="formulario_linea_izda_float">NORA - Tablas:</div>
 	</div>
 	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_label">Provincia:</div>
+		<label for="comboProvincias" class="formulario_linea_label">Provincia:</label>
 		<div class="formulario_linea_izda_float">
 			<select name="provincia" class="combo" id="comboProvincias"></select>
 		</div>
-		<div class="formulario_linea_label">Municipio:</div>
+		<label for="comboMunicipios" class="formulario_linea_label">Municipio:</label>
 		<div class="formulario_linea_izda_float">
 			<select class="combo" id="comboMunicipios"></select>
 		</div>
-		<div class="formulario_linea_label">Calle:</div>
+		<label for="autocomplete" class="formulario_linea_label">Calle:</label>
 		<div class="formulario_linea_izda_float">
 			<input id="autocomplete" name="autocomplete" disabled="disabled"/>
 		</div>
 	</div>
 		<div class="formulario_linea_izda_float">
-		<div class="formulario_linea_label">NORA - API JS:</div>
+		<div class="formulario_linea_label">NORA - API JS:</div>	
 	</div>
 	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_label">Provincia:</div>
+		<label for="comboProvinciasAPI" class="formulario_linea_label">Provincia:</label>
 		<div class="formulario_linea_izda_float">
 			<select class="combo" id="comboProvinciasAPI"></select>
 		</div>
-		<div class="formulario_linea_label">Municipio:</div>
+		<label for="comboMunicipiosAPI" class="formulario_linea_label">Municipio:</label>
 		<div class="formulario_linea_izda_float">
 			<select class="combo" id="comboMunicipiosAPI"></select>
 		</div>
-		<div class="formulario_linea_label">Calle:</div>
+		<label for="autocompleteAPI" class="formulario_linea_label">Calle:</label>
 		<div class="formulario_linea_izda_float">
 			<input id="autocompleteAPI" name="autocompleteAPI" disabled="disabled"/>
 		</div>
 	</div>
 	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_label">Visor LT:</div>
 		<div class="formulario_linea_izda_float">
 			<button onclick="mostrarVisor()">Visor LT</button>
 		</div>
 	</div>
 	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_label">Formulario:</div>
 		<div class="formulario_linea_izda_float">
 			<button onclick="mostrarFormulario()">Formulario</button>
 		</div>

@@ -134,7 +134,7 @@ public  class DepartamentoProvinciaServiceImpl implements DepartamentoProvinciaS
      * @param  departamentoProvinciaDao DepartamentoProvinciaDao
      */
     public void setDepartamentoProvinciaDao(DepartamentoProvinciaDao departamentoProvinciaDao) {
-        logger.info( "Setting Dependency "+departamentoProvinciaDao);
+        logger.info("Setting Dependency "+departamentoProvinciaDao);
         this.departamentoProvinciaDao = departamentoProvinciaDao;
     }
 }

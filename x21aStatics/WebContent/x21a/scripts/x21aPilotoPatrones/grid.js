@@ -16,7 +16,8 @@
 jQuery(document).ready(function () {
 	$("#grid_usuarios").rup_grid({
 		url:"../patrones/usuario",
-		width: 650,
+		headertitles: true, //tooltip en cabeceras
+		width: 850,
 		pagerName:"pager",
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja" ],
 		colModel: [

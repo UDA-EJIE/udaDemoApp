@@ -14,66 +14,56 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h1>Feedback</h1>
+<h2>Feedback</h2>
 <hr/>
 Texto pre capa
 <div id="feedback"></div>
 Texto post capa<br/>
 <hr/>
+<div>
+	Valores feedback:
+		<label for="feedback_type">type:</label>
+		<select id="feedback_type" >
+			<option value="">---</option>
+			<option value="ok" selected="selected">ok</option>
+			<option value="alert">alert</option>
+			<option value="error">error</option>
+		</select>
+	<br><br>
+	
+	<label for="feedback_imgClass">imgClass:</label> 
+	<input id="feedback_imgClass" type="text" /> (feedbackImgPruebas) 
+	<br><br>
+	
+	<label for="feedback_delay">delay (ms):</label>
+	<input id="feedback_delay" type="text" />
+	<br><br>
+		
+	<label for="feedback_fadeSpeed">fadeSpeed (ms):</label>
+	<input id="feedback_fadeSpeed" type="text" />
+	<br><br>
+	
+	<label for="feedback_gotoTop">gotoTop:</label>
+	<select id="feedback_gotoTop">
+		<option value="true">true</option>
+		<option value="false">false</option>
+	</select>
+	<br><br>
 
-<table id="feedback_table">
-	<tr>
-		<td colspan="2">Valores feedback:</td>
-	</tr>
-	<tr>
-		<td>type2:</td>
-		<td>
-			<select id="feedback_type" >
-				<option value="">---</option>
-				<option value="ok" selected="selected">ok</option>
-				<option value="alert">alert</option>
-				<option value="error">error</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>imgClass:</td>
-		<td><input id="feedback_imgClass" type="text" /> (feedbackImgPruebas) </td>
-	</tr>
-	<tr>
-		<td>delay (ms):</td><td><input id="feedback_delay" type="text" /></td>
-	</tr>
-	<tr>
-		<td>fadeSpeed (ms):</td><td><input id="feedback_fadeSpeed" type="text" /></td>
-	</tr>
-	<tr>
-		<td>gotoTop:</td>
-		<td>
-			<select id="feedback_gotoTop">
-				<option value="true">true</option>
-				<option value="false">false</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>block:</td>
-		<td>
-			<select id="feedback_block">
-				<option value="true">true</option>
-				<option value="false">false</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>closeLink:</td>
-		<td>
-			<select id="feedback_closeLink">
-				<option value="true">true</option>
-				<option value="false">false</option>
-			</select>
-		</td>
-	</tr>
-</table>
+	<label for="feedback_block">block:</label>
+	<select id="feedback_block">
+		<option value="true">true</option>
+		<option value="false">false</option>
+	</select>
+	<br><br>
+	
+	<label for="feedback_closeLink">closeLink:</label>
+	<select id="feedback_closeLink">
+		<option value="true">true</option>
+		<option value="false">false</option>
+	</select>
+	<br><br>
+</div>
 				
 <input id="boton_create" type="button" value="_Create" />
 <input id="boton_destroy" type="button" value="Destroy" disabled="disabled" />

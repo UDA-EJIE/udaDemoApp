@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Upload</h1>
+<h2>Upload</h2>
 
 <div id="uploadTabs"></div>
 

@@ -134,7 +134,7 @@ public  class LocalidadServiceImpl implements LocalidadService {
      * @param  localidadDao LocalidadDao
      */
     public void setLocalidadDao(LocalidadDao localidadDao) {
-        logger.info( "Setting Dependency "+localidadDao);
+        logger.info("Setting Dependency "+localidadDao);
         this.localidadDao = localidadDao;
     }
 }

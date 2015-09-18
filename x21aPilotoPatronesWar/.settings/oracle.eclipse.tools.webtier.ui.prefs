@@ -1,4 +1,4 @@
-#Fri Dec 03 14:30:10 CET 2010
+#Thu Mar 01 09:05:14 CET 2012
 //_hiddenCategory_\:http\://java.sun.com/jsp/jstl/core=false
 //_hiddenCategory_\:http\://java.sun.com/jsp/jstl/fmt=false
 //_hiddenCategory_\:http\://java.sun.com/jsp/jstl/sql=false
@@ -12,6 +12,7 @@
 //_hiddenCategory_\:http\://java.sun.com/jstl/xml=false
 //_hiddenCategory_\:http\://java.sun.com/jstl/xml_rt=false
 //_hiddenCategory_\:http\://tiles.apache.org/tags-tiles=false
+//_hiddenCategory_\:http\://www.springframework.org/security/tags=false
 //_hiddenCategory_\:http\://www.springframework.org/tags=false
 //_hiddenCategory_\:http\://www.springframework.org/tags/form=false
 _hiddenCategory_\:DataPalette=false

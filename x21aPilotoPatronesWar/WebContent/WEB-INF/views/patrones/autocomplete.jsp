@@ -13,13 +13,13 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Autocomplete</h1>
+<h2>Autocomplete</h2>
 
-<h2>Autocomplete local</h2>
-Lenguaje:<input id="autocomplete" name="autocomplete" />
+<h3>Autocomplete local</h3>
+<label for="autocomplete">Lenguaje:</label><input id="autocomplete" name="autocomplete" />
 [asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]
 <br/>
 
-<h2>Autocomplete remoto</h2>
-Departamento-Provincia:<input id="patron" name="patron" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
+<h3>Autocomplete remoto</h3>
+<label for="patron">Departamento-Provincia:</label><input id="patron" name="patron" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
 <br/>

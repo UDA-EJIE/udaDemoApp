@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h1>Tooltip</h1>
+<h2>Tooltip</h2>
 <fieldset>
 	<div>
 		<label for="nombre">Nombre:</label>
@@ -24,4 +24,16 @@
 		<label for="apellido">Apellido:</label>
 		<input id="apellido" name="apellido" title="Introduzca su apellido."/>
 	</div>
+	<br/>
+	<div>
+		<label for="code">Código:</label>
+		<input id="code" name="code" />&nbsp;<img id="codeTooltip" alt="Imagen Tooltip" src="/<%=pageContext.getServletContext().getInitParameter("webAppName")%>Statics/rup/basic-theme/images/rup.confirm.png" />
+	</div>
+	<br/>
+	<div>
+		<label for="identificador">Identificador:</label>
+		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="/<%=pageContext.getServletContext().getInitParameter("webAppName")%>Statics/rup/basic-theme/images/rup.confirm.png" />
+	</div>
+	<br/>
+	<input id="button" type="button" value="Aplicar ThemeRoller" />
 </fieldset>

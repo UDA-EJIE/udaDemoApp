@@ -25,31 +25,31 @@
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_maintDialog">
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">id:</div>
+							<label for="id" class="formulario_linea_label">id:</label>
 							<input type="text" name="id" class="formulario_linea_input" id="dialog_id_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">nombre:</div>
+							<label for="nombre" class="formulario_linea_label">nombre:</label>
 							<input type="text" name="nombre" class="formulario_linea_input" id="dialog_nombre_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido1:</div>
+							<label for="apellido1" class="formulario_linea_label">apellido1:</label>
 							<input type="text" name="apellido1" class="formulario_linea_input" id="dialog_apellido1_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">apellido2:</div>
+							<label for="apellido2" class="formulario_linea_label">apellido2:</label>
 							<input type="text" name="apellido2" class="formulario_linea_input" id="dialog_apellido2_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">ejie:</div>
+							<label for="dialog_ejie_search" class="formulario_linea_label">ejie:</label>
 							<div style="float: left;"><select id="dialog_ejie_search" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
-							<div class="formulario_linea_label">fechaAlta:</div>
+							<label for="dialog_fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
 							<input type="text" name="fechaAlta" class="formulario_linea_input" id="dialog_fechaAlta_search" />
 						</div>
 						<div class="formulario_linea_izda_float" style="clear: left;">
-							<div class="formulario_linea_label">fechaBaja:</div>
+							<label for="dialog_fechaBaja_search" class="formulario_linea_label">fechaBaja:</label>
 							<input type="text" name="fechaBaja" class="formulario_linea_input" id="dialog_fechaBaja_search" />
 						</div>
 					</div>
@@ -81,7 +81,8 @@
 	</div><br>
 	
 	<!-- Autocomplete / Tooltip -->
-	Autocomplete (lenguaje):<input id="autocompleteDialog" name="autocompleteDialog" />&nbsp; Tooltip: <input id="tooltipDialog" name="tooltipDialog" title="Introduzca su nombre."/><br><br>
+	<label for ="autocompleteDialog">Autocomplete (lenguaje):</label><input id="autocompleteDialog" name="autocompleteDialog" /><br><br>
+	<label for ="tooltipDialog">Tooltip: </label><input id="tooltipDialog" name="tooltipDialog" title="Introduzca su nombre."/><br><br>
 	
 	<!-- Pestañas -->
 	<div id="tabsDialog" style="width: 40em;"></div><br>
