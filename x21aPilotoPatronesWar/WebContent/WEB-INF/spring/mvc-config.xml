@@ -4,20 +4,68 @@ xmlns:context="http://www.springframework.org/schema/context"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 <!-- Scans the classpath of this application for @Components to deploy as beans -->
     <context:component-scan base-package="com.ejie.x21a.control" />
+
+
+<!-- Custom pathMatcher for support dotted urls -->
+	<bean id="pathMatcher" class="com.ejie.x21a.util.CustomPathMatcher" />
+
 <!-- Maps requests to @Controllers based on @RequestMapping("path") annotation values -->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+    	<property name="pathMatcher" ref="pathMatcher" />
         <property name="order" value="1" />
     </bean>
+    
 <!-- Enables annotated @Controllers; responsible for invoking an annotated POJO @Controller when one is mapped. -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="pathMatcher" ref="pathMatcher" />
+     	<property name="webBindingInitializer">
+	        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+	            <property name="conversionService" ref="conversionService" />
+	        </bean>
+      	</property>
         <property name="messageConverters">
             <list>
+            	 <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				    <property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+				</bean>
                 <bean class="com.ejie.x38.serialization.UdaMappingJacksonHttpMessageConverter">
                     <property name="jacksonJsonObjectMapper" ref="jacksonJsonObjectMapper" />
+                    <property name="supportedMediaTypes">
+                        <list>
+                           <bean class="org.springframework.http.MediaType">
+                             <constructor-arg value="text" />
+                             <constructor-arg value="plain" />
+                             <constructor-arg value="#{T(org.springframework.http.converter.json.MappingJacksonHttpMessageConverter).DEFAULT_CHARSET}"/>
+                           </bean>
+                           <bean class="org.springframework.http.MediaType">
+                             <constructor-arg value="application" />
+                             <constructor-arg value="json" />
+							 <constructor-arg value="#{T(org.springframework.http.converter.json.MappingJacksonHttpMessageConverter).DEFAULT_CHARSET}"/>
+                           </bean>
+                        </list>
+                     </property>
                 </bean>
             </list>
         </property>
     </bean>
+    
+<!-- Enables multipart resolver -->
+    <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- Tamano maximo del archivo -->
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
+
+<!-- Define date converter -->
+	<bean id="conversionService"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.ejie.x21a.converter.DateConverter" />
+			</list>
+		</property>
+	</bean>
+    
     <bean id="jacksonJsonObjectMapper" class="com.ejie.x38.serialization.CustomObjectMapper">
         <property name="customSerializerFactory" ref="jacksonJsonCustomSerializerFactory" />
     </bean>

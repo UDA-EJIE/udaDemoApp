@@ -1,3 +1,18 @@
+/*!
+ * Copyright 2011 E.J.I.E., S.A.
+ *
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ *      http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ */
 jQuery(document).ready(function(){
 	$("#rup_dept_logo").attr("src", $.rup.APP_STATICS + "/images/dept_logo_" + $.rup.lang + ".gif");
 	var vertical = false, mixto = false;
@@ -52,7 +67,8 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
                     {"i18nCaption":"tabs", "url": "/x21aPilotoPatronesWar/patrones/tabs" },
 					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" }
+					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" },
+					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" }
 				]
 			},
 			"experimental" : {
@@ -103,7 +119,8 @@ jQuery(document).ready(function(){
                     ]}, 
                     {"i18nCaption":"tabs", "url": "patrones/tabs" },
 					{"i18nCaption":"grid", "url": "patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "patrones/tooltip" }
+					{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
+					{"i18nCaption":"upload", "url": "patrones/upload" }
 				]},
 				{"i18nCaption":"experimental", "submenu":[
 				    {"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             
@@ -145,7 +162,8 @@ jQuery(document).ready(function(){
 	                    ]}, 
 	                    {"i18nCaption":"tabs", "url": "patrones/tabs" },
 						{"i18nCaption":"grid", "url": "patrones/grid" },
-						{"i18nCaption":"tooltip", "url": "patrones/tooltip" }
+						{"i18nCaption":"tooltip", "url": "patrones/tooltip" },
+						{"i18nCaption":"upload", "url": "patrones/upload" }
 					]},
 					{"i18nCaption":"experimental", "submenu":[
 						{"i18nCaption":"generic_object", "url": "experimental/generic_object" },                             

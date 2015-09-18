@@ -22,6 +22,7 @@
 			"tabs" : "Pestañas_fr",
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
+			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
 			"generic_object": "Objeto genérico_fr",
 			"maestro_detalle": "Maestro-Detalle_fr",
@@ -54,6 +55,7 @@
 			"tabs" : "Pestañas_fr",
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
+			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
 			"generic_object": "Objeto genérico_fr",
 			"maestro_detalle": "Maestro-Detalle_fr",
@@ -82,6 +84,7 @@
 			"tabs" : "Pestañas_fr",
 			"grid" : "Tabla_fr",
 			"tooltip" :  "Tooltip_fr",
+			"upload" :  "Upload_fr",
 		"experimental": "Experimental_fr",
 			"generic_object": "Objeto genérico_fr",
 			"maestro_detalle": "Maestro-Detalle_fr",
@@ -258,5 +261,12 @@
 	"gridDialog##ejie" : {
 		"0" : "Non",
 		"1" : "Oui"
+	},
+	"uploadTabs":{
+		"upload" : "Upload_fr",
+		"uploadTable" : "Upload en tabla_fr",
+		"uploadForm" : "Upload form_fr",
+		"uploadFormSimple" : "Upload simple en formulario_fr",
+		"uploadFormMultiple" : "Multiples upload en formulario_fr"
 	}
 }

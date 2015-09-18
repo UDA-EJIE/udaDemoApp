@@ -134,6 +134,11 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/tooltip-includes.jsp"/>					
 	</definition>
 	
+	<definition name="upload" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/upload.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/upload-includes.jsp"/>					
+	</definition>
+	
 	<definition name="all" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/all.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/all-includes.jsp"/>					

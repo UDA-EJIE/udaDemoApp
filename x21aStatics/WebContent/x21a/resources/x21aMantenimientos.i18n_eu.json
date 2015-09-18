@@ -1,15 +1,15 @@
 {
 	"x21aMantenimientosWar_menu" : {
-		"inicio"	: "Inicio_eu",
+		"inicio"	: "Hasiera",
 		"patrones" 	: "x21aPilotoPatronesWar", 
 		"simple"	: "Selección simple_eu",
 		"multi"		: "Multiselección_eu",
 		"edlinea"	: "Edición en línea_eu"
 	},
 	"x21aMantenimientosWar_migas" :{
-		"simple"	: "Selección simple_eu",
-		"multi"		: "Multiselección_eu",
-		"edlinea"	: "Edición en línea_eu"	
+		"simple"	: "Soil-sorta",
+		"multi"		: "Multi-sorta",
+		"edlinea"	: "Lerroan edizioa"	
 	},
 	"GRID_simple##ejie" : {
 		"0" : "Ez",
