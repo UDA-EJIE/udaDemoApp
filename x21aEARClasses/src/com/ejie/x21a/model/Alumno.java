@@ -67,7 +67,6 @@ public class Alumno  implements java.io.Serializable {
             private BigDecimal importeMatricula;
             private byte[] imagen;
             
-            @NotEmpty(message="validacion.required",groups={Default.class, AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo2Validation.class})
             private String gender;
             
 	/** Method 'Alumno'.

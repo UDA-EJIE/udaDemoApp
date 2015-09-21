@@ -114,9 +114,19 @@
 							<spring:message code="tablaMasterDetail" />
 						</a>
 					</li>
+						<li>
+						<a href="/x21aMantenimientosWar/table/tableLoadOnStartUp">
+							<spring:message code="tablaLoadOnStartUp" />
+						</a>
+					</li>
 					<li>
 						<a href="/x21aMantenimientosWar/table/dialog">
 							<spring:message code="tablaDialog" />
+						</a>
+					</li>
+						<li>
+						<a href="/x21aMantenimientosWar/table/tableRadiobutton">
+							<spring:message code="tableRadiobutton" />
 						</a>
 					</li>
 <!-- 					<li> -->
@@ -163,6 +173,7 @@
 							<span class="ui-icon old_icon"></span>
 						</a>
 					</li>
+			
 					<li>
 						<a>
 							<spring:message code="jerarquiaTitle" />
@@ -220,6 +231,7 @@
 		</li>
 		</sec:authorize>
 		
+	
 		<li>
 			<a	href="http://code.google.com/p/uda/" target="_blank">
 				<spring:message code="uda" />

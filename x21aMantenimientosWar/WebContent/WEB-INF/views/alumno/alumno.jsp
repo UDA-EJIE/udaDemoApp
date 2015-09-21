@@ -1,47 +1,55 @@
-	<%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>alumno</h2>
-	<div id="error" style="display:none"></div>
-	<div id="alumno" >
-		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
-			<form id="searchForm" >
-				<div  class="formulario_legend" id="titleSearch_alumno"><spring:message code="searchCriteria" />:</div>
-				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_alumno">
-					<div class="formulario_columna_cnt">
-						<div class="formulario_linea_izda_float">
-							<label for="usuario_search" class="formulario_linea_label"><spring:message code="usuario" />:</label>
-							<input type="text" name="usuario" class="formulario_linea_input" id="usuario_search" />
-						</div>
-						<div class="formulario_linea_izda_float">
-							<label for="nombre_search" class="formulario_linea_label"><spring:message code="nombre" />:</label>
-							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
-						</div>
-						<div class="formulario_linea_izda_float">
-							<label for="apellido1_search" class="formulario_linea_label"><spring:message code="apellido1" />:</label>
-							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
-						</div>
-						<div class="formulario_linea_izda_float">
-							<label for="apellido2_search" class="formulario_linea_label"><spring:message code="apellido2" />:</label>
-							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
-						</div>
-						<div class="formulario_linea_izda_float">
-							<label for="dni_search" class="formulario_linea_label"><spring:message code="dni" />:</label>
-							<input type="text" name="dni" class="formulario_linea_input" id="dni_search" />
-						</div>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
+<h2>alumno</h2> <!-- Titulo pagina -->
+<div id="alumno_div" class="rup-table-container">
+	<div id="alumno_feedback"></div>
+	<div id="alumno_toolbar"></div>
+	<div id="alumno_filter_div" class="rup-table-filter">
+		<form id="alumno_filter_form">
+			<div id="alumno_filter_toolbar" class="formulario_legend"></div>
+			<fieldset id="alumno_filter_fieldset" class="rup-table-filter-fieldset">
+				<div class="formulario_columna_cnt">
+					<div class="formulario_linea_izda_float">
+						<label for="usuario_search" class="formulario_linea_label"><spring:message code="usuario" />:</label>
+						<input type="text" name="usuario" class="formulario_linea_input" id="usuario_search" />
 					</div>
-				</fieldset>
-			</form>
-		</div>
-
-		<div id="RUP_GRID_alumno">
-			<!-- Tabla -->
-			<table id="GRID_alumno" cellpadding="0" cellspacing="0"></table>
-		<!-- Barra de paginaciÃ³n -->
-			<div id="pager" style="text-align:center;"></div>
-		</div>
+					<div class="formulario_linea_izda_float">
+						<label for="nombre_search" class="formulario_linea_label"><spring:message code="nombre" />:</label>
+						<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
+					</div>
+					<div class="formulario_linea_izda_float">
+						<label for="apellido1_search" class="formulario_linea_label"><spring:message code="apellido1" />:</label>
+						<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
+					</div>
+					<div class="formulario_linea_izda_float">
+						<label for="apellido2_search" class="formulario_linea_label"><spring:message code="apellido2" />:</label>
+						<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
+					</div>
+					<div class="formulario_linea_izda_float">
+						<label for="dni_search" class="formulario_linea_label"><spring:message code="dni" />:</label>
+						<input type="text" name="dni" class="formulario_linea_input" id="dni_search" />
+					</div>
+				</div>
+				<div id="alumno_filter_buttonSet" class="right_buttons">
+					<input id="alumno_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
+					<a id="alumno_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	
+	<div id="alumno_grid_div">
+		<!-- Tabla -->
+		<table id="alumno"></table>
+		<!-- Barra de paginación -->
+		<div id="alumno_pager"></div>
+	</div>
+	
+	<div id="alumno_detail_div" class="rup-table-formEdit-detail">
+		<div id ="alumno_detail_navigation"></div>
+		<div class="ui-dialog-content ui-widget-content" >
+			<form:form id="alumno_detail_form" modelAttribute="alumno" >
+				<div id ="alumno_detail_feedback"></div>
 		
-		
-		<div id="detalleAlumno" style="display:none" >
-			<form:form id="detalleAlumnoForm" modelAttribute="alumno" >
 				<fieldset class="alumnoFieldset">
 					<legend><spring:message code="datosPersonales" /></legend>
 					<input type="hidden" name="id" id="id" />
@@ -169,6 +177,7 @@
 						<div class="col1">
 					       <label for="municipio" class="label"><spring:message code="municipio" /></label>
 							<input type="text" name="municipio.id" class="formulario_linea_input" size="30" id="municipio" />
+							<input type="hidden" name="municipio.dsO" id="municipio_dsO" />
 					    </div>
 					     <div class="col1">
 					       <label for="calle" class="label"><spring:message code="calle" /></label>
@@ -199,6 +208,18 @@
 			</form:form>
 		
 		</div>
+		<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+			<div class="ui-dialog-buttonset">
+				<button id="alumno_detail_button_save" >
+					<spring:message code="save" />
+				</button>
+				<button id="alumno_detail_button_save_repeat"  >
+					<spring:message code="saveAndContinue" />
+				</button>
+				<a href="javascript:void(0)" role="button" id="alumno_detail_link_cancel"
+					class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
+			</div>
+		</div>
 		
 	</div>
-	
+</div>

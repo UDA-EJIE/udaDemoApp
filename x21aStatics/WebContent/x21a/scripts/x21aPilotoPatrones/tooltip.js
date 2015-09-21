@@ -52,8 +52,38 @@ jQuery(document).ready(function(){
 		}
 	});
 	
+	$("#htmlTooltip").rup_tooltip({
+		content: {
+			text: $("#accordionExample1")
+//			title: {
+//				text: 'Tooltip modal'
+//			}
+		},
+		style:{
+			width:900
+		},
+		position: {
+			my: 'bottom center',
+			at: 'top center', 
+			target: $("#htmlTooltip")
+		},
+		show: {
+			event: 'click',
+		},
+		hide: {
+			event: 'click'
+		}
+	});
+	
 	$("#button").click(function() {
 		$(".qtip").rup_tooltip('option', 'style.widget', true);
+	});
+	
+	$(".rup_accordion").rup_accordion({
+		animated: "bounceslide",
+		active: false,
+		autoHeight: false,
+		collapsible: true
 	});
 	
 });

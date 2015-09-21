@@ -170,6 +170,16 @@
 	<logger name="org.eclipse.persistence" level="${log.level.auditoriaBBDD}" additivity="false">
 		<appender-ref ref="auditoriaBBDDAppender"/>
 	</logger>
-
+	
+	<!-- Appender para las trazas de las consultas SQL -->
+	<logger name="org.springframework.jdbc.core" level="${log.level.auditoriaBBDD.springJDBC.query}" additivity="false">
+		<appender-ref ref="auditoriaBBDDAppender"/>
+	</logger>
+	
+	<!-- Appender para las trazas de los parámetros de las consultas SQL -->
+	<logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="${log.level.auditoriaBBDD.springJDBC.queryParams}" additivity="false">
+		<appender-ref ref="auditoriaBBDDAppender"/>
+	</logger>
+	
   
 </configuration>

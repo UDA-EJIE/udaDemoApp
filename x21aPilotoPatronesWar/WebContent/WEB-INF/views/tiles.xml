@@ -203,6 +203,12 @@
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsMaint-includes.jsp"/>					
 	</definition>
 	
+		
+	<definition name="tabsScrollable" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tabs/tabsScrollable.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tabs/tabsScrollable-includes.jsp"/>					
+	</definition>
+	
 	<definition name="tabsContent_1" template="/WEB-INF/views/patrones/tabs/tabsContent_1.jsp"/>
 	<definition name="tabsContent_2" template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp"/>
 	<definition name="tabsContent_3" template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp"/>
@@ -299,6 +305,16 @@
         <put-attribute name="includes" value="/WEB-INF/views/experimental/jackson-includes.jsp"/>
     </definition>
     
+    <definition name="tabsPaging" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/experimental/testTabs.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/testTabs-includes.jsp"/>					
+	</definition>
+	
+	 <definition name="xlnetsTest" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/experimental/xlnetsTest.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/experimental/xlnetsTest-includes.jsp"/>					
+	</definition>
+    
     <!-- Integracion -->
     <definition name="z-index" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/integracion/z-index.jsp"/>		
@@ -320,5 +336,5 @@
     <definition name="pif" extends="template" >
         <put-attribute name="content" value="/WEB-INF/views/integracion/pif.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/integracion/pif-includes.jsp"/>
-    </definition>
+    </definition>    
 </tiles-definitions>

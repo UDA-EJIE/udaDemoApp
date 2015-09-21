@@ -8,7 +8,8 @@
 		"httpStatus503":"fr_El servicio solicitado no está disponible"
 	},
 	"rup_autocomplete":{
-		"ajaxError":"fr_Se ha producido un error al recuperar los datos del servidor"
+		"ajaxError":"fr_Se ha producido un error al recuperar los datos del servidor",
+		"showAllItems":"fr_Mostrar todos los resultados"
 	},
 	"rup_grid_jerarquia":{
 	    "errorTitle":"fr_ERROR",

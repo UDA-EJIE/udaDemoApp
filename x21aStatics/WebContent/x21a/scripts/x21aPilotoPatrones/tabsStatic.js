@@ -22,4 +22,6 @@ jQuery(document).ready(function(){
 			{i18nCaption:"pestana1", layer:"#ejemploVisual"},
 			{i18nCaption:"pestana2", layer:".estiloo2"}]
 	});
+	
+	
 });

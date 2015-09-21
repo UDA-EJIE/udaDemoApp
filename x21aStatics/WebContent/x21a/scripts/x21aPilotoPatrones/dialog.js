@@ -40,7 +40,8 @@ $(document).ready(function () {
 				},
 				btnType: $.rup.dialog.LINK
 			}
-		]
+		],
+		position: { my: "left top", at: "left bottom", of: $("#btnAjaxDialogWAR") } 
 	});	
 	$("#btnDialog").bind("click", function () {
 		$("#idDialog").rup_dialog("open");

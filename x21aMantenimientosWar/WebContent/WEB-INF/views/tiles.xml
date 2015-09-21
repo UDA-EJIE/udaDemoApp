@@ -126,6 +126,7 @@
         <put-attribute name="includes" value="/WEB-INF/views/alumno/alumno-includes.jsp"/>
     </definition>
     
+
     <!-- UsuarioJerarquia -->
 	<definition extends="template" name="usuariojerarquia">
         <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
@@ -185,9 +186,13 @@
         <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableMasterDetail-includes.jsp"/>
     </definition>
-     <definition extends="template" name="tableMasterDetailMultiselection">
+    <definition extends="template" name="tableMasterDetailMultiselection">
         <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableMasterDetailMultiselection-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="tableLoadOnStartUp">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableLoadOnStartUp.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableLoadOnStartUp-includes.jsp"/>
     </definition>
     <definition extends="template" name="tableCompositeFormEdit">
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
@@ -200,6 +205,10 @@
      <definition extends="templateDialog" name="tableDialogAjax">
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="tableRadiobutton">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableRadiobutton.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableRadiobutton-includes.jsp"/>
     </definition>
     
 	    <!-- Jerarquia -->

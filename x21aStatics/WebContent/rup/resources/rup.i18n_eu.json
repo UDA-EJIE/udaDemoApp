@@ -8,7 +8,8 @@
 		"httpStatus503":"Zerbitzua ez dago erabilgarri"
 	},
 	"rup_autocomplete":{
-		"ajaxError":"Errorea gertatu da datuak berreskuratzen saiatzean"
+		"ajaxError":"Errorea gertatu da datuak berreskuratzen saiatzean",
+		"showAllItems":"Emaitz guztiak erakutsi"
 	},
 	"rup_grid_jerarquia":{
 		"errorTitle":"AKATS",

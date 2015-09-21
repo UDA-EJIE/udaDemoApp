@@ -76,6 +76,7 @@ jQuery(function($){
 				rupType: "combo",
 				editoptions: {
 					source : [
+					   {label: "---", value:""},
 					   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
 					   {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
 					   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
@@ -98,7 +99,7 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"multiselection",
+//        	"multiselection",
         	"fluid",
         	"filter",
         	"search"

@@ -134,6 +134,11 @@
 								<spring:message code="maintTab" />
 							</a>
 						</li>
+						<li>
+							<a href="/x21aPilotoPatronesWar/patrones/tabsScrollable">
+								<spring:message code="tabsScrollable" />
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li>
@@ -323,6 +328,16 @@
 						</li>
 					</ul>
 				</li>
+				
+				<!--test Tabs Pagind  -->
+				<li>
+					<a href="/x21aPilotoPatronesWar/experimental/tabsPaging">
+						<spring:message code="tabsPaging" />
+					</a>
+				</li>
+				
+				
+				
 			</ul>
 		</li>
 		<li>

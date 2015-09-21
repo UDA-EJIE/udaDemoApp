@@ -22,6 +22,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import n38c.exe.N38API;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
+import weblogic.apache.xpath.XPathAPI;
+
+import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.Provincia;
@@ -322,4 +330,132 @@ public class ExperimentalController {
 				return localidad;
 		}
 			
+		
+		//tabsPaging
+		@RequestMapping(value = "tabsPaging", method = RequestMethod.GET)
+		public String getTabsPaging(Model model) {
+			return "tabsPaging";
+		}
+		
+		//xlnetsTest
+		@RequestMapping(value = "xlnetsTest", method = RequestMethod.GET)
+		public String getXlnetsTest(Model model) {
+					return "xlnetsTest";
+		}
+		
+		/**
+		 * Obtener buzones personas nivel 3 indicado. Todos los buzones de personas
+		 * cuyo nombre contenga el parametro de entrada
+		 * 
+		 * @param request
+		 *            HttpServletRequest
+		 * @param nombre
+		 *            String
+		 * @throws Exception
+		 *             Exception
+		 * @return Buzones Objeto correspondiente al identificador indicado.
+		 */
+		@RequestMapping(value = "/getBuzonesNivel3", method = RequestMethod.GET)
+		public @ResponseBody
+		List<Buzones>  getBuzonesNivel3(HttpServletRequest request,
+				@RequestParam(value = "q", required = true) String nombre)
+				throws Exception {
+
+			 logger.info("[GET - getBuzonesNivel3] start ");
+
+			List<Buzones> buzones =  new ArrayList<Buzones>();
+
+			// Busco las personas cuyo displayname contenga el string introducido
+			buzones = getPersonasNombre(request, nombre);
+
+			 logger.info("[GET - getBuzonesNivel3] end ");
+			return buzones;
+
+		}
+		
+		/**
+		 * Devuelve todos los displayname que contengan parte del nombre
+		 * 
+		 * @param request
+		 *            HttpServletRequest
+		 * 
+		 * @param nombre
+		 *            String
+		 * 
+		 * @return List<Y68bDepartamentos>
+		 * 
+		 * @throws Exception
+		 *             e
+		 */
+		public  List<Buzones> getPersonasNombre(HttpServletRequest request,
+				String nombre) throws Exception {
+
+			logger.info("getPersonasNombre-start:");
+			List<Buzones> buzones=null;
+			try{
+				Document sesion = null;
+				N38API miApi = new N38API(request);
+				buzones = new ArrayList<Buzones>();
+
+				sesion = miApi.n38ItemObtenerPersonas("displayname=*" + nombre + "*");// uid	
+				buzones = obtenerBuzonesPersonasUT(sesion);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			logger.info("getPersonasNombre-end:");
+			return buzones;
+
+		}
+		
+		/**
+		 * Obtiene los buzones personales para el filtro aplicado previamente
+		 * 
+		 * @param sesion
+		 *            Document con los buzones personales para el filtro aplicado
+		 * 
+		 * @return List<Buzon>
+		 */
+		private List<Buzones> obtenerBuzonesPersonasUT(Document sesion) {
+
+			List<Buzones> buzones = new ArrayList<Buzones>();
+
+			try {
+				String lFiltro = "//elementos[@tipo='n38ItemObtenerPersonas']/elemento[@subtipo='n38persona']";
+				NodeList nodeList = XPathAPI.selectNodeList(sesion, lFiltro);
+				Element element = null;
+				NodeList objsegList = null;
+				NodeList cadenaEsList = null;
+				Buzones buzon = null;
+				String nameEs = null;
+				String idbuzon = null;
+				String nameCapsEs = null;
+				for (int j = 0; j < nodeList.getLength(); j++) {
+					element = (Element) nodeList.item(j);
+					lFiltro = "parametro[@id='n38puestouid']/valor/text()";
+					objsegList = XPathAPI.selectNodeList(element, lFiltro);
+					lFiltro = "parametro[@id='displayname']/valor/text()";
+					cadenaEsList = XPathAPI.selectNodeList(element, lFiltro);
+					if (cadenaEsList.getLength() > 0 /* && cadenaEuList.getLength()>0 */) {
+						nameEs = cadenaEsList.item(0).getNodeValue();
+						idbuzon = objsegList.item(0).getNodeValue();
+						nameCapsEs = nameEs.toUpperCase();
+						buzon = new Buzones(); // NOPMD
+						buzon.setIdbuzonT28(idbuzon);
+						buzon.setNomBuzonCastT28(nameCapsEs);
+						buzon.setNomBuzonEuskT28(nameCapsEs);
+						buzones.add(buzon);
+					}
+				}
+			} catch (Exception e) {
+				StringBuffer stbTraza = new StringBuffer("30");
+				stbTraza.append("obtenerBuzonesPersonas: ERROR:");
+				stbTraza.append(e.getMessage());
+			}
+			return buzones;
+		}
+
+
+		
+		
+		
 }

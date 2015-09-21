@@ -728,3 +728,9 @@ a.ui-dialog-title { color: black !important }
 .enlaceContextual{
 	text-decoration: underline;
 }
+
+.ui-widget-overlay 
+{ 
+    position: fixed; 
+}
+

@@ -35,7 +35,8 @@ jQuery(document).ready(function(){
 		selected: "perl_value",
 		width: 300,
 		blank : "0",
-		rowStriping : true
+		rowStriping : true,
+		inputText:true
 	});
 	
 	

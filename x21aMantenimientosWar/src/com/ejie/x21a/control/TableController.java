@@ -113,6 +113,12 @@ public class TableController  {
 		return "tableMasterDetail";
 	}
 	
+	@RequestMapping(value = "tableLoadOnStartUp", method = RequestMethod.GET)
+	public String gettableLoadOnStartUp(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tableLoadOnStartUp", null, LocaleContextHolder.getLocale()));
+		return "tableLoadOnStartUp";
+	}
+	
 	@RequestMapping(value = "dialog", method = RequestMethod.GET)
 	public String getDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaDialog", null, LocaleContextHolder.getLocale()));
@@ -137,6 +143,14 @@ public class TableController  {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaAllFeatures", null, LocaleContextHolder.getLocale()));
 		return "tableAllFeatures";
 	}
+	
+	
+	@RequestMapping(value = "tableRadiobutton", method = RequestMethod.GET)
+	public String getTableRadiobutton(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tableRadiobutton", null, LocaleContextHolder.getLocale()));
+		return "tableRadiobutton";
+	}
+	
 	
 	@RequestMapping(value = "alumnomaint", method = RequestMethod.GET)
 	public String getAlumnoSimple(Model model) {

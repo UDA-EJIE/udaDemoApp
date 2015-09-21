@@ -15,6 +15,28 @@
  --%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>	
 <h2>Tooltip</h2>
+
+<div id="accordionExample1" class="rup_accordion" style="display: none;">
+
+	<h1><a><spring:message  code="seccion1" /></a></h1>
+	<div class="section">
+		<img alt="La primera sección" src="${staticsUrl}/x21a/images/primera_seccion.PNG">
+	</div>
+	<h1><a><spring:message  code="seccion2" /></a></h1>
+	<div class="section2">
+		<img alt="La segunda sección" src="${staticsUrl}/x21a/images/segunda_seccion.PNG">
+	</div>
+	<h1><a><spring:message  code="seccion3" /></a></h1>
+	<div class="section">
+		<img alt="La tercera sección" src="${staticsUrl}/x21a/images/tercera_seccion.PNG">
+	</div>
+	<h1><a><spring:message  code="seccion4" /></a></h1>
+	<div class="section2">
+		<img alt="La cuarta sección" src="${staticsUrl}/x21a/images/cuarta_seccion.PNG">
+	</div>
+	
+</div>
+
 <fieldset>
 	<div>
 		<label for="nombre">Nombre:</label>
@@ -34,6 +56,11 @@
 	<div>
 		<label for="identificador">Identificador:</label>
 		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
+	</div>
+	<br/>
+	<div>
+		<label for="htmlTooltip">HTML:</label>
+		<input id="htmlTooltip" name="htmlTooltip" />&nbsp;<img id="idHtmlTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<input id="button" type="button" value="Aplicar ThemeRoller" />

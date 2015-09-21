@@ -8,7 +8,8 @@
 		"httpStatus503":"en_El servicio solicitado no está disponible"
 	},
 	"rup_autocomplete":{
-		"ajaxError":"en_Se ha producido un error al recuperar los datos del servidor"
+		"ajaxError":"en_Se ha producido un error al recuperar los datos del servidor",
+		"showAllItems":"Show all items"
 	},
 	"rup_grid_jerarquia":{
 	    "errorTitle":"en_ERROR",

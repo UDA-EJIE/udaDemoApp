@@ -70,6 +70,7 @@ import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
+import com.ejie.x21a.service.JQGridUsuarioJerarquiaService;
 import com.ejie.x21a.service.LocalidadService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
@@ -114,6 +115,9 @@ public class PatronesController {
 	
 	@Autowired
 	private UploadService uploadService;
+	
+	@Autowired
+	private JQGridUsuarioJerarquiaService jqGridUsuarioJerarquiaService;
 	
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -255,6 +259,12 @@ public class PatronesController {
 		return "maintTab";
 	}
 	
+	//Tabs Scrollable 
+	@RequestMapping(value = "tabsScrollable", method = RequestMethod.GET)
+	public String geTabsScrollable(Model model) {
+		return "tabsScrollable";
+	}
+	
 	//Time
 	@RequestMapping(value = "time", method = RequestMethod.GET)
 	public String getTime(Model model) {
@@ -319,6 +329,7 @@ public class PatronesController {
 	public String getTreeDragAndDrop(Model model) {
 		return "treeDAD";
 	}
+	
 	
 	@RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
 	public Object getTreeAjax(Model model, HttpServletResponse response) {

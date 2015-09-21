@@ -103,7 +103,7 @@
 					</div>
 					<div class="floating_left_pad_right one-column">
 						<label for="ejie_detail_table"><spring:message code="ejie" />:</label>
-						<input type="checkbox" id="ejie_detail_table" name="ejie" />
+						<input type="checkbox" id="ejie_detail_table" value="1" name="ejie" />
 					</div>
 					<div class="floating_left_pad_right one-column">
 						<label for="fechaAlta_detail_table"><spring:message code="fechaAlta" />:</label>

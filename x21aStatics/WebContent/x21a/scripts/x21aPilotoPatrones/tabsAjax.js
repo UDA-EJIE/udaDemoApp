@@ -56,12 +56,14 @@ jQuery(document).ready(function(){
 		
 		$("#tabs").rup_tabs("loadTab",{
 			idTab: "tabs",
-			position: 0
+			position: 0,
+			close:true
 		});
 	});
 	
 	$("#addSubPestana").bind("click",function(event){
 		$("#tabs").rup_tabs("addTab",{
+			close:true,
 		    idTab: "pestana0",
 		    position: 2,
 		    label: "pestanaAna",

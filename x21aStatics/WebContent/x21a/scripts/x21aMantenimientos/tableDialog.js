@@ -24,6 +24,7 @@ jQuery(function($){
 		colNames: tableColNames,
 		colModel: tableColModels,
         primaryKey:["id"],
+        loadOnStartUp: true,
         usePlugins:[
 			"formEdit",
         	"feedback",
@@ -143,7 +144,7 @@ jQuery(function($){
 	jQuery("#tableDialog_layer_div").rup_dialog({
 		type: $.rup.dialog.DIV,
 		autoOpen: false,
-		width: 800
+		width: 1200
 	});
 	
 	jQuery("#btnTablaDialog_div").on("click", function(event){
@@ -155,7 +156,7 @@ jQuery(function($){
 			type: $.rup.dialog.AJAX,
 			url:"./dialogAjax",
 			autoOpen:true,
-			width: 800
+			width: 1200
 		});
 	});
 	

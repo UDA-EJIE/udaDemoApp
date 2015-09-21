@@ -18,9 +18,7 @@ package com.ejie.x21a.control;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +43,6 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,10 +59,11 @@ import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
 import com.ejie.x21a.validation.group.AlumnoEditValidation;
-import com.ejie.x38.dto.JQGridJSONModel;
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
-import com.ejie.x38.util.ObjectConversionManager;
 import com.ejie.x38.validation.ValidationManager;
 
 /**
@@ -99,6 +97,9 @@ public class AlumnoController  {
 		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, numberFormat, true));
 	}
 	
+	
+	
+	
 	/**
 	 * Method 'getCreateForm'.
 	 *
@@ -127,14 +128,22 @@ public class AlumnoController  {
 		return "alumno";
 	}
 
+	
+	/*
+	 * OPERACIONES CRUD
+	 * 
+	 * Metodos correspondientes a las operaciones CRUD (Create, Read, Update, Delete). 
+	 * 
+	 */
+	
 	/**
-	 * Method 'getById'.
+	 * Method 'get'.
 	 *
 	 * @param id BigDecimal
 	 * @return alumno Alumno
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Alumno getById(final @PathVariable BigDecimal id) {
+	public @ResponseBody Alumno get(final @PathVariable BigDecimal id) {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
         alumno = this.alumnoService.find(alumno);
@@ -154,6 +163,38 @@ public class AlumnoController  {
 	    return this.alumnoService.findAll(filterAlumno, null);
 	}
 
+	/**
+	 * Method 'add'.
+	 * @param alumno Alumno 
+	 * @return Alumno
+	 * @throws IOException 
+	 */
+	@RequestMapping(method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
+			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
+		
+		if (imagen!=null){
+			alumno.setNombreImagen(imagen.getOriginalFilename());
+			alumno.setImagen(imagen.getBytes());
+        }
+		
+        Alumno alumnoAux = this.alumnoService.add(alumno, errors);
+
+        if (errors.hasErrors()){
+			Map<String, List<String>> errorsMap = validationManager.getErrorsAsMap(errors);
+            ServletOutputStream servletOutputStream = response.getOutputStream();
+            response.setStatus(406);
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            servletOutputStream.print(validationManager.getMessageJSON(errorsMap, null, "error").toString());
+            response.flushBuffer();       
+        	return null;
+        }
+        AlumnoController.logger.info("[POST] : Alumno insertado correctamente");
+    	return alumnoAux;
+	}
+	
 	/**
 	 * Method 'edit'.
 	 * @param alumno Alumno 
@@ -215,38 +256,6 @@ public class AlumnoController  {
 	
 
 	/**
-	 * Method 'add'.
-	 * @param alumno Alumno 
-	 * @return Alumno
-	 * @throws IOException 
-	 */
-	@RequestMapping(method = RequestMethod.POST, produces="application/json")
-	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
-			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
-		
-		if (imagen!=null){
-			alumno.setNombreImagen(imagen.getOriginalFilename());
-			alumno.setImagen(imagen.getBytes());
-        }
-		
-        Alumno alumnoAux = this.alumnoService.add(alumno, errors);
-
-        if (errors.hasErrors()){
-			Map<String, List<String>> errorsMap = validationManager.getErrorsAsMap(errors);
-            ServletOutputStream servletOutputStream = response.getOutputStream();
-            response.setStatus(406);
-            response.setContentType("text/plain");
-            response.setCharacterEncoding("UTF-8");
-            servletOutputStream.print(validationManager.getMessageJSON(errorsMap, null, "error").toString());
-            response.flushBuffer();       
-        	return null;
-        }
-        AlumnoController.logger.info("[POST] : Alumno insertado correctamente");
-    	return alumnoAux;
-	}
-
-	/**
 	 * Method 'remove'.
 	 *
 	 * @param id BigDecimal
@@ -262,6 +271,60 @@ public class AlumnoController  {
        	return alumno;
     }
 	
+	
+	
+	/*
+	 * METODOS COMPONENTE RUP_TABLE
+	 * 
+	 */
+	
+	/**
+	 * Operación de filtrado del componente RUP_TABLE.
+	 * 
+	 * @param Alumno
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param JQGridRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en el filtrado.
+	 * @return Dto que contiene el resultado del filtrado realizado por el
+	 *         componente RUP_TABLE.
+	 * 
+	 */
+	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
+	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	public @ResponseBody JQGridResponseDto<Alumno> filter(
+			@RequestJsonBody(param="filter") Alumno filterAlumno,
+			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+		
+		AlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
+		return this.alumnoService.filter(filterAlumno, jqGridRequestDto, false);
+	}
+	
+	/**
+	 * Operación de búsqueda del componente RUP_TABLE.
+	 * 
+	 * @param filterAlumno
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param searchAlumno
+	 *            Bean que contiene los parámetros de búsqueda a emplear.
+	 * @param JQGridRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
+	 * @return Lista de lineas de la tabla que se corresponden con los registros
+	 *         que se ajustan a los parámetros de búsqueda.
+	 * 
+	 */
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public @ResponseBody List<TableRowDto<Alumno>> search(
+			@RequestJsonBody(param="filter") Alumno filterAlumno,
+			@RequestJsonBody(param="search") Alumno searchAlumno,
+			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+		
+		AlumnoController.logger.info("[POST - search] : Buscar Alumnos");
+		return this.alumnoService.search(filterAlumno, searchAlumno, jqGridRequestDto, false);
+	}
+	
+	
 	/**
 	 * Method 'removeAll'.
 	 *
@@ -269,34 +332,16 @@ public class AlumnoController  {
 	 * @return alumnoList
 	 */	
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> alumnoIds) {
-        List<Alumno> alumnoList = new ArrayList<Alumno>();
-        for (List<String> alumnoId:alumnoIds) {
-		    Iterator<String> iterator = alumnoId.iterator();
-		    Alumno alumno = new Alumno(); //NOPMD - Objeto nuevo en la lista (parametro del servicio)
-	        alumno.setId(ObjectConversionManager.convert(iterator.next(), java.math.BigDecimal.class));
-		    alumnoList.add(alumno);
-	    }
-        this.alumnoService.removeMultiple(alumnoList);
-		AlumnoController.logger.info("[POST - DELETE_ALL] : Alumno borrados correctamente");
-		return alumnoIds;
+	@ResponseStatus(value=HttpStatus.OK)
+	public @ResponseBody List<String> removeMultiple(
+			@RequestJsonBody(param="filter") Alumno filterAlumno,
+			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+		AlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
+	    this.alumnoService.removeMultiple(filterAlumno, jqGridRequestDto, false);
+	    AlumnoController.logger.info("All entities correctly deleted!");
+	    
+	    return jqGridRequestDto.getMultiselection().getSelectedIds();
 	}	
-	
-	/**
-	 * Method 'getAllJQGrid'.
-	 *
-	 * @param filterAlumno Alumno
-	 * @param pagination Pagination
-	 * @return JQGridJSONModel
-	 */
-	@RequestMapping(method = RequestMethod.GET, headers={"JQGridModel=true"})
-	public @ResponseBody JQGridJSONModel getAllJQGrid(@ModelAttribute Alumno filterAlumno, @ModelAttribute Pagination pagination) {
-        List<Alumno> alumnos = this.alumnoService.findAll(filterAlumno, pagination);
-        Long recordNum = this.alumnoService.findAllCount(filterAlumno);
-        AlumnoController.logger.info("[GET - jqGrid] : Obtener Alumnos");
-		return new JQGridJSONModel(pagination, recordNum, alumnos);
-	}
 	
 	
 	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
