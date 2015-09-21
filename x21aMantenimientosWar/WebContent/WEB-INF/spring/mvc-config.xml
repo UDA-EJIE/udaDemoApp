@@ -16,6 +16,7 @@
 	<context:component-scan base-package="com.ejie.x21a.control" />
 
 	<!-- Mapeos directos -->
+	<mvc:view-controller path="/sessionInfo" view-name="serSessionTestServlet" />
 	<mvc:view-controller path="/" view-name="welcome" />
 	<mvc:view-controller path="/error" view-name="error" />
 	<mvc:view-controller path="/accessDenied" view-name="accessDenied" />
@@ -103,6 +104,11 @@
 	            	<ref bean="udaMappingJacksonHttpMessageConverter"/>
 	            </list>
        		</property>
+       		<property name="customArgumentResolvers">
+       			<list>
+	            	<bean class="com.ejie.x38.control.method.annotation.RequestJsonBodyMethodArgumentResolver"/>
+	            </list>
+	        </property>
 		</bean>
 	<!-- FIN -->
 		
@@ -120,6 +126,7 @@
         	<list>
         		<value>localeResolver</value>
         		<value>mvcInterceptor</value>
+        		<value>udaAuthenticationProvider</value>
         	</list>
         </property>
     </bean> 

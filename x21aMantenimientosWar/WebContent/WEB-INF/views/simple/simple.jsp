@@ -51,6 +51,10 @@
 							<label for="fechaBaja_search"class="formulario_linea_label">fechaBaja:</label>
 							<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
 						</div>
+						<div class="formulario_linea_izda_float" style="clear: left;">
+							<label for="fechaBaja_search"class="formulario_linea_label">fechaBaja:</label>
+							<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
+						</div>
 					</div>
 				</fieldset>
 			</form>

@@ -38,6 +38,10 @@ public class Localidad  implements java.io.Serializable {
     public Localidad() {
     }
 
+    public Localidad(BigDecimal code) {
+    	 this.code = code;
+    }
+    
     /** Method 'Localidad'.
     * @param  code BigDecimal
     * @param  descEs String

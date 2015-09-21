@@ -39,10 +39,11 @@ input.disabled { background-color: #D3D3D3; }
 
 /* Foco general */
 input:focus, textarea:focus {
+	border: 0.1em solid #52A8EC;
 	border-color: rgba(82, 168, 236, 0.8);
 	box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
 	outline: 0 none;
-	filter:"progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=0), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=180), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=270)"; 
+/* 	filter:"progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=0), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=180), progid:DXImageTransform.Microsoft.Shadow(Color=#52A8EC, Strength=2, Direction=270)";  */
 }
 
 /* GENERALES */
@@ -581,6 +582,17 @@ a.ui-selectmenu { text-decoration: none; color: black }
     color: #000000;
 }
 
+/** ContextMenu **/
+.contextMenu-box {
+    background: none repeat scroll 0 0 #666666;
+    color: #EEEEEE;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 20px;
+    text-align: center;
+}
+
 
 /* ICONOS MENU */
 .accordion_icon{
@@ -591,6 +603,9 @@ a.ui-selectmenu { text-decoration: none; color: black }
 }
 .breadcrumb_icon{
 	background-image: url("../images/icons/breadcrumb.png") !important;
+}
+.contextMenu_icon{
+	background-image: url("../images/icons/contextMenu.png") !important;
 }
 .combo_icon{
 	background-image: url("../images/icons/combo.png") !important;

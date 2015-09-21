@@ -29,12 +29,14 @@ var	APP_RESOURCES = 'x21a',
 	LOCALE_PARAM_NAME = "${mvcInterceptor.paramName}",
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	//breadCrumbs
-	LOGGED_USER = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.fullName : sessionScope.fullName}",
-	DESTROY_XLNETS_SESSION = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.destroySessionSecuritySystem : sessionScope.destroySessionSecuritySystem}";
+	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
+	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
 </script>
 
-<%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
-<!--%@include file="/WEB-INF/layouts/includes/rup.scripts.min.js"%-->
+<%-- Scripts RUP sin minimizar (DESARROLLO) --%>
+<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%> --%>
+<%-- Scripts RUP minimizados (PRODUCCION) --%>
+<%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>
 <%@include file="/WEB-INF/layouts/includes/themeswitcher.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>

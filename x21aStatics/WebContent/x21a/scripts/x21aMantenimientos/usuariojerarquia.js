@@ -174,6 +174,18 @@ jQuery(function($){
 				{ i18nCaption:"CSV", css:"csv",
 					url:"/x21aMantenimientosWar/usuariojerarquia/csvReport", 
 					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"XLS", css:"xls",
+					url:"/x21aMantenimientosWar/usuariojerarquia/xlsReport", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"XLXS", css:"xls",
+					url:"/x21aMantenimientosWar/usuariojerarquia/xlsxReport", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"ODS", css:"ods",
+					url:"/x21aMantenimientosWar/usuariojerarquia/odsReport",
+					columns : { grid : "GRID_usuarioJerarquia" }
 				}
 			 ]}
 		]

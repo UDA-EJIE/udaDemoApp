@@ -9,6 +9,7 @@
 	<bean id="springSecurityFilterChain" 
 	  class="org.springframework.security.web.FilterChainProxy">
 	  <security:filter-chain-map request-matcher="regex">
+	  	<security:filter-chain pattern="/sessionInfo.*" filters="none"/>
 	  	<security:filter-chain pattern="/mockLoginPage.*" filters="none"/>
 	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
 	  	<security:filter-chain pattern="/error.*" filters="none"/>
@@ -44,8 +45,11 @@
 	</bean>
 
 	<!-- Se define el sistema especifico de autenticación aplicado al sistema de seguridad -->
-	<!-- Se define que con cambios de usurio se recargen los datos de seguridad y se mate la session, cual es el "perimetralSecurityWrapper" y el "authenticationManager" -->	
+	<!-- Se define que con cambios de usurio se recargen los datos de seguridad y se mate la session, cual es el "perimetralSecurityWrapper" y el "authenticationManager" -->
+<!-- 	<bean id="stockUdaSecurityPadlocks" class="com.ejie.x38.security.StockUdaSecurityPadlocksImpl"/> -->
+	
 	<bean id="preAuthenticateProcessingFilter" class="com.ejie.x38.security.PreAuthenticateProcessingFilter">
+<!-- 		<property name="stockUdaSecurityPadlocks" ref="stockUdaSecurityPadlocks" /> -->
 		<property name="checkForPrincipalChanges" value="true" />
 		<property name="invalidateSessionOnPrincipalChange" value="true" />
 		<property name="perimetralSecurityWrapper" ref="perimetralSecurityWrapper" />
@@ -55,12 +59,12 @@
 	<!-- El "authenticationManager" es el componente encargado de implementar el proceso de autenticación -->
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider
-			ref="xlnetAuthenticationProvider" />
+			ref="udaAuthenticationProvider" />
 	</security:authentication-manager>
 	
-	<!-- El bean "xlnetAuthenticationProvider" es el "authentication-provider" del sistema de login -->
+	<!-- El bean "udaAuthenticationProvider" es el "authentication-provider" del sistema de login -->
 	<!-- El "authentication-provider" determina el objeto "UserDetail" encargado de recoger y servir los datos de seguridad -->
-	<bean id="xlnetAuthenticationProvider" class="com.ejie.x38.security.XlnetAuthenticationProvider">
+	<bean id="udaAuthenticationProvider" class="com.ejie.x38.security.UdaAuthenticationProvider">
 		<property name="myAuthenticatedUserDetailsService" ref="myAuthenticatedUserDetailsService" />
 	</bean>
 	

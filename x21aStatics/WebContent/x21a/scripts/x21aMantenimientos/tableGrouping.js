@@ -14,9 +14,10 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	$("#GRID_simple").rup_table({
-		url: "../table",
-		colNames: ["id","nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
+	
+	$("#table").rup_table({
+		url: "../jqGridUsuario",
+		colNames: ["id","nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja","rol"],
 		colModel: [
 			{ name: "id", index: "id", editable:true
 				, formoptions:{rowpos:3, colpos:1},
@@ -37,17 +38,13 @@ jQuery(function($){
 //				, formoptions:{colpos:1}
 			},
 			{ name: "ejie", index: "ejie", editable:true,
-				rupType: "combo",
+				edittype: "checkbox",
+				formatter: "checkbox",
+				align: "center",
 				editoptions: {
-					source : [
-					   {label: $.rup.i18n.app["GRID_simple##ejie"]["0"], value:"0"},
-					   {label: $.rup.i18n.app["GRID_simple##ejie"]["1"], value:"1"}
-					]
+					value:"1:0"
 				}
-				, formoptions:{rowpos:3, colpos:2},
-				summaryType:resumenEspecifico,
-				summaryTpl: $.rup.i18nParse($.rup.i18n.app.gridTree,"gana")+" {0}"
-//				, formoptions:{colpos:2}
+				, formoptions:{rowpos:5, colpos:1}
 			},
 			{ name: "fechaAlta",  index: "fechaAlta", editable:true,
 				rupType: "date",
@@ -74,11 +71,24 @@ jQuery(function($){
 				, formoptions:{rowpos:1, colpos:2},
 				summaryType: minFecha 
 //				, formoptions:{colpos:2}
+			},
+			{ name: "rol", index: "rol", editable:true,
+				rupType: "combo",
+				editoptions: {
+					source : [
+					   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
+					   {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
+					   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
+					   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
+					   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
+					]
+				}
+				, formoptions:{rowpos:3, colpos:2}
 			}
         ],
 	    grouping:true,
 	    groupingView : {
-	    	groupField : ['apellido1'],
+	    	groupField : ['nombre'],
 			groupSummary : [true],
 			showSummaryOnHide : [true],
 			groupText : ['<b>{0} - {1} Elemento(s)</b>']
@@ -87,30 +97,8 @@ jQuery(function($){
         editOptions:{
         	fillDataMethod:"clientSide"
         },
-        fluid:{
-        	baseLayer: "#simple"
-        },
-        rowNum:10, 
-        rowList:[10,20,30], 
-        pager: "#pager", 
         primaryKey: "id",
         sortname: 'id',
-//        multiselect: true,
-        feedback:{
-        	id:"#tableFeedback",
-        },
-        filter: {
-        	id:"searchForm",
-        	filterButtonId:"filterButton",
-        	cleanLinkId:"cleanLink",
-        	collapsableLayerId: "FIELDSET_SEARCH_GRID_simple",
-        	collapseButtonId: "toggle_search_form",
-        	collapseLabelId: "toggle_search_form_label",
-        	filterCriteriasId: "filter_params"
-        },
-        toolbar: {
-        	id: "toolbar"
-        },
         validate:{
 			rules:{
 				"nombre":{required:true},
@@ -118,46 +106,6 @@ jQuery(function($){
 			}
 		}
 	});
-	
-//	jQuery("#searchForm").jqGrid('filterGrid','#GRID_simple');
-//	$("#toolbar").rup_toolbar({
-//		width: 1000,
-//		buttons:[
-//			{i18nCaption:"nuevo", css:"nuevo", click: function(){
-//				var gr = jQuery("#GRID_simple").jqGrid('getGridParam','selrow'); 
-//				 if( gr != null ) jQuery("#GRID_simple").jqGrid('editGridRow',gr,{
-//					 height:280,reloadAfterSubmit:false
-//				 }); 
-//			}},
-//			 {i18nCaption:"editar", css:"editar", click: function(){
-//				 var gr = jQuery("#GRID_simple").jqGrid('getGridParam','selrow'); 
-//				 if( gr != null ) jQuery("#GRID_simple").jqGrid('editGridRow',gr,{
-//					 height:280,reloadAfterSubmit:false
-//				 }); 
-//			 }},
-//			 {i18nCaption:"borrar", css:"borrar", click: function(){
-//				 jQuery("#GRID_simple").rup_table("deleteElement");
-//			 }},
-//   			{i18nCaption:"filtrar", css:"filtrar", click: function(){
-//
-//   			}}
-//		]
-//	});
-	
-	
-	//Formulario de filtrado
-	$('#ejie_search').rup_combo({
-		source : [
-		   {i18nCaption: "0", value:"0"},
-		   {i18nCaption: "1", value:"1"}
-		],
-		i18nId: "GRID_simple##ejie",
-		width: 120,
-		blank: ""
-	});
-
-	$("#fechaAlta_search").rup_date();
-	$("#fechaBaja_search").rup_date();
 	
 	
 	//funciones propias asociada al resumen de agrupacion

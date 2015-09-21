@@ -82,6 +82,9 @@
   	<!--          PANTALLAS            -->
   	<!-- ***************************** -->
   	
+  	<!-- Pagina de test para la serializacion y visualizacion de las sesiones de usuario -->
+	<definition name="serSessionTestServlet" template="/WEB-INF/views/serSessionTestServlet.jsp"/>
+  	
 	<definition name="error" extends="templateError" >
 		<put-attribute name="content" value="/WEB-INF/views/error.jsp"/>	
 	</definition>
@@ -269,6 +272,11 @@
 	</definition>
 	<definition name="allDialog" template="/WEB-INF/views/patrones/allDialog.jsp"/>		
 	
+	<definition name="contextMenu" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/contextMenu.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/contextMenu-includes.jsp"/>					
+	</definition>
+	
 	<!-- Experimental -->
 	<definition name="maestro_detalle" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
@@ -304,5 +312,9 @@
     <definition name="tiny" extends="template" >
         <put-attribute name="content" value="/WEB-INF/views/integracion/tiny.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/integracion/tiny-includes.jsp"/>
+    </definition>
+    <definition name="webdav" extends="template" >
+        <put-attribute name="content" value="/WEB-INF/views/integracion/webdav.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/integracion/webdav-includes.jsp"/>
     </definition>
 </tiles-definitions>

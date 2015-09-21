@@ -19,9 +19,12 @@ jQuery(function($){
 		hasMaint: true,
 		headertitles: true, //tooltip en cabeceras
 		pagerName: "pager",
-		rowNum: "10",
+		rowNum: 10,
+//		rowList:[50,100,150,200],
+		rowList:[10,20,30,50,100,150,200], 
 //		fluidBaseLayer: "#simple",
 		sortorder: "asc",
+		gridview:true,
 		sortname: "id",
 		colNames: [ "Identificador", "Nombre", "Apellido 1", "Apellido 2", "Ejie", "Fecha de Alta", "Fecha de Baja" ],
 		colModel: [
@@ -127,16 +130,14 @@ jQuery(function($){
 					noWeekend : true
 				}
 			}
-        ],
-        readOnlyFields :  [ "id" ]
+        ]
 	});
-	
 
 	$("#simple").rup_maint({
 		jQueryGrid: "GRID_simple",
 		primaryKey: "id",
 		modelObject: "Usuario",
-		detailButtons: $.rup.maint.detailButtons.SAVE,
+		detailButtons: $.rup.maint.detailButtons.SAVE_REPEAT,
 		searchForm: "searchForm",
 		showMessages: true,
         toolbar: {
@@ -144,7 +145,7 @@ jQuery(function($){
 			defaultFilter : false,
 			newButtons : [
               	{ 
-              		obj : { i18nCaption: "actualizar", css: "rup-maint_filter", index: 4 }, 
+              		obj : { i18nCaption: "actualizar", css: "rup-icon rup-icon-filter", index: 4 }, 
               		json_i18n : $.rup.i18n.app.simpelMaint,
 					click : function(){$("#simple").rup_maint("getFilterBootonDefaultFunction").call();}
 				}
@@ -158,19 +159,19 @@ jQuery(function($){
 //					{	i18nCaption: "PDF-A",	css: "pdf", 	click: function(){downloadFile($(this),"pdf-A"); }	}
 //				]}
 			]
-		},
-		onbeforeDetailShow: function(rowId){
-			var fieldsArray = jqGrid[0].p.readOnlyFields;
-	        if (this.prop.MODO === 'new'){
-	        	for (var i = 0; i < fieldsArray.length; i++) {
-	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).removeAttr('readonly');
-				}
-	        } else {
-	        	for (var i = 0; i < fieldsArray.length; i++) {
-	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).attr('readonly', true);;
-				}
-	        }
 		}
+//		,onbeforeDetailShow: function(rowId){
+//			var fieldsArray = jqGrid[0].p.readOnlyFields;
+//	        if (this.prop.MODO === 'new'){
+//	        	for (var i = 0; i < fieldsArray.length; i++) {
+//	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).removeAttr('readonly');
+//				}
+//	        } else {
+//	        	for (var i = 0; i < fieldsArray.length; i++) {
+//	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).attr('readonly', true);;
+//				}
+//	        }
+//		}
 	});
 	
 	//Formulario de filtrado
@@ -187,6 +188,11 @@ jQuery(function($){
 	$("#fechaAlta_search").rup_date();
 	$("#fechaBaja_search").rup_date();
 
+	
+	$('#multicombo').rup_combo({
+		// Resto de propiedades de configuración...
+		submitAsString:true
+	});
 	
 	//Imprimir
 	$.rup_report({
@@ -211,7 +217,10 @@ jQuery(function($){
 				},
 				{ i18nCaption:"PDF", css:"pdf", click:fnc,
 					url:"/x21aMantenimientosWar/usuario/pdfReport"
-//					, isInline:true
+				},
+				{ i18nCaption:"PDF_inLine", css:"pdf", click:fnc,
+					url:"/x21aMantenimientosWar/usuario/pdfReport"
+					, isInline:true
 				}
 			 ]}
 		]

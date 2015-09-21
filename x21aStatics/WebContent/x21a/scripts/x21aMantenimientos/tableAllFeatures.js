@@ -85,7 +85,7 @@ jQuery(function($){
         sortname: 'id',
 //        multiselect: true,
         feedback:{
-        	id:"#tableFeedback",
+        	id:"#tableFeedback"
         },
         filter: {
         	id:"searchForm",
@@ -100,7 +100,7 @@ jQuery(function($){
         	newButtons : [{
 				obj : {
 					i18nCaption: "Mostrar/Ocultar columnas", 
-					css: "rup-maint_filter", 
+					css: "rup-icon rup-icon-filter", 
 					index: 7
 				},
 				json_i18n : $.rup.i18n.app.simpelMaint,
@@ -114,7 +114,7 @@ jQuery(function($){
 			},{
 				obj : {
 					i18nCaption: "Reordenar filas", 
-					css: "rup-maint_filter", 
+					css: "rup-icon rup-icon-filter", 
 					index: 7
 				},
 				json_i18n : $.rup.i18n.app.simpelMaint,

@@ -61,6 +61,12 @@ public class IntegracionController {
 		return "tiny";
 	}
 	
+	//Webdav
+	@RequestMapping(value = "webdav", method = RequestMethod.GET)
+	public String getWebdav(Model model) {
+		return "webdav";
+	}
+	
 	/**
 	 * NORA
 	 */

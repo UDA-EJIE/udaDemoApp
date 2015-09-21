@@ -26,6 +26,9 @@ jQuery(document).ready(function(){
 		}, {
 			i18nCaption : "uploadFormMultiple",
 			layer : "#fileupload_form_multiple"
+		}, {
+			i18nCaption : "uploadFormPif",
+			layer : "#fileupload_pif_form"
 		} 
 		]
 	});
@@ -59,6 +62,16 @@ jQuery(document).ready(function(){
 		maxFileSize: 5000000,
 		submitInForm:true
 	});
+	
+	// Upload integrado en formulario
+	$('#fileupload_pif_form').rup_upload({
+		url: "../upload/pifForm",
+		fileInput: $("#file_pif_form"),
+		submitFormButton: $("#sendPifFormButton"),
+		maxFileSize: 5000000,
+		submitInForm:true
+	});
+	
 	 
 	// Dos controles Upload intergrados en un mismo formulario
 	$('#fileupload_file_form_padre').rup_upload({

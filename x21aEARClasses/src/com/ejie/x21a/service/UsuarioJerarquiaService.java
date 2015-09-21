@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import com.ejie.x21a.model.UsuarioJerarquia;
-import com.ejie.x38.dto.Jerarquia;
+import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
 
 /**
@@ -102,7 +102,7 @@ public interface UsuarioJerarquiaService {
 	 * @param pagination Pagination
 	 * @return Jerarquia<UsuarioJerarquia>
 	 */
-	List<Jerarquia<UsuarioJerarquia>> findAllLikeJerarquia (UsuarioJerarquia UsuarioJerarquia, Pagination pagination);
+	List<JerarquiaDto<UsuarioJerarquia>> findAllLikeJerarquia (UsuarioJerarquia UsuarioJerarquia, Pagination pagination);
 
 	/**
 	 * @param UsuarioJerarquia UsuarioJerarquia

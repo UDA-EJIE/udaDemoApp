@@ -170,4 +170,29 @@ jQuery(function($){
 			keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "searchForm" ]
 		}
 	});
+	
+	//Imprimir
+	$.rup_report({
+		appendTo : "rup-maint_toolbar-usuarioJerarquia",
+		buttons:[
+			{id:"reports", i18nCaption:"Informes", buttons:[
+				{ i18nCaption:"CSV", css:"csv",
+					url:"/x21aMantenimientosWar/usuariojerarquia/csvReportGroup", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"XLS", css:"xls",
+					url:"/x21aMantenimientosWar/usuariojerarquia/xlsReportGroup", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"XLXS", css:"xls",
+					url:"/x21aMantenimientosWar/usuariojerarquia/xlsxReportGroup", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				},
+				{ i18nCaption:"ODS", css:"ods",
+					url:"/x21aMantenimientosWar/usuariojerarquia/odsReportGroup",
+					columns : { grid : "GRID_usuarioJerarquia" }
+				}
+			 ]}
+		]
+	});
 });

@@ -170,5 +170,6 @@
 	<logger name="org.eclipse.persistence" level="${log.level.auditoriaBBDD}" additivity="false">
 		<appender-ref ref="auditoriaBBDDAppender"/>
 	</logger>
+
   
 </configuration>

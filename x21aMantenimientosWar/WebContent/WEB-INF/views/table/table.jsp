@@ -14,61 +14,116 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>${tituloPagina}</h2>
-<div id="simple" style="margin-top:0.5em;margin-bottom:0.5em;">
-	<div id="error" style="display:none"></div>
-	<div id="tableFeedback"></div>
-	<div id="toolbar"></div>
-	<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
-		<form id="searchForm">
-			<div  class="formulario_legend" id="titleSearch_GRID_simple">
-				<span id="toggle_search_form" class="collapse_icon ui-icon ui-icon-triangle-1-s"></span>
-				<span id="toggle_search_form_label" class="cursor_pointer"><spring:message code="filterCriteria" />:</span>
-				<span id="filter_params"></span>
-			</div>
-			<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_GRID_simple">
+<h2>${tituloPagina}</h2> <!-- Titulo pagina -->
+
+<div id="table_div" class="rup-table-container">
+	<div id="table_feedback"></div>
+	<div id="table_toolbar"></div>
+	<div id="table_filter_div" class="rup-table-filter">
+		<form id="table_filter_form">
+			<div id="table_filter_toolbar" class="formulario_legend"></div>
+			<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="formulario_columna_cnt">
 					<div class="formulario_linea_izda_float">
-						<label for="id_search"class="formulario_linea_label"><spring:message code="id" />:</label>
-						<input type="text" name="id" class="formulario_linea_input" id="id_search" />
+						<label for="id_filter_table" class="formulario_linea_label"><spring:message code="id" />:</label>
+						<input type="text" name="id" class="formulario_linea_input" id="id_filter_table" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<label for="nombre_search"class="formulario_linea_label"><spring:message code="nombre" />:</label>
-						<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
+						<label for="nombre_filter_table" class="formulario_linea_label"><spring:message code="nombre" />:</label>
+						<input type="text" name="nombre" class="formulario_linea_input" id="nombre_filter_table" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<label for="apellido1_search"class="formulario_linea_label"><spring:message code="apellido1" />:</label>
-						<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
+						<label for="apellido1_filter_table" class="formulario_linea_label"><spring:message code="apellido1" />:</label>
+						<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_filter_table" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<label for="apellido2_search"class="formulario_linea_label"><spring:message code="apellido2" />:</label>
-						<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
+						<label for="apellido2_filter_table" class="formulario_linea_label"><spring:message code="apellido2" />:</label>
+						<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_filter_table" />
 					</div>
 					<div class="formulario_linea_izda_float">
-						<label for="ejie_search"class="formulario_linea_label"><spring:message code="ejie" />:</label>
-						<div style="float: left;"><select id="ejie_search" name="ejie" class="rup-combo" ></select></div>
+						<label for="ejie_filter_table" class="formulario_linea_label"><spring:message code="ejie" />:</label>
+						<div style="float: left;"><select id="ejie_filter_table" name="ejie" class="rup-combo" ></select></div>
 					</div>
 					<div class="formulario_linea_izda_float">
-						<label for="fechaAlta_search"class="formulario_linea_label"><spring:message code="fechaAlta" />:</label>
-						<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
+						<label for="fechaAlta_filter_table" class="formulario_linea_label"><spring:message code="fechaAlta" />:</label>
+						<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_filter_table" />
 					</div>
-					<div class="formulario_linea_izda_float" style="clear: left;">
-						<label for="fechaBaja_search"class="formulario_linea_label"><spring:message code="fechaBaja" />:</label>
-						<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
+					<div class="formulario_linea_izda_float">
+						<label for="fechaBaja_filter_table" class="formulario_linea_label"><spring:message code="fechaBaja" />:</label>
+						<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_filter_table" />
+					</div>
+					<div class="formulario_linea_izda_float"  style="clear:left">
+						<label for="rol_filter_table" class="formulario_linea_label"><spring:message code="rol" />:</label>
+						<input type="text" name="rol" class="formulario_linea_input" id="rol_filter_table" />
 					</div>
 				</div>
-				<div id="filterButtonSet" class="right_buttons">
-					<input id="filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
-					<a id="cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
+				<div id="table_filter_buttonSet" class="right_buttons">
+					<input id="table_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
+					<a id="table_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 
-	<div id="RUP_GRID_simple">
+	<div id="table_grid_div">
 		<!-- Tabla -->
-		<table id="GRID_simple"></table>
+		<table id="table"></table>
 		<!-- Barra de paginación -->
-		<div id="pager" style="text-align:center;"></div>
+		<div id="table_pager"></div>
+	</div>
+</div>	
+
+<div id="table_detail_div" class="rup-table-formEdit-detail">
+	<div id ="table_detail_navigation"></div>
+	<div class="ui-dialog-content ui-widget-content" >
+		<form id="table_detail_form">
+			<div id ="table_detail_feedback"></div>
+			<div class="floating_left_pad_right">
+				<div class="floating_left_pad_right one-column">
+					<label for="id_detailForm_table"><spring:message code="id" />:</label>
+					<input type="text" name="id" class="formulario_linea_input" id="id_detailForm_table" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="nombre_detail_table"><spring:message code="nombre" />:</label>
+					<input type="text" name="nombre" class="formulario_linea_input" id="nombre_detail_table" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="apellido1_detail_table"><spring:message code="apellido1" />:</label>
+					<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_detail_table" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="apellido2_detail_table"><spring:message code="apellido2" />:</label>
+					<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_detail_table" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="ejie_detail_table"><spring:message code="ejie" />:</label>
+					<input type="checkbox" id="ejie_detail_table" name="ejie" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="fechaAlta_detail_table"><spring:message code="fechaAlta" />:</label>
+					<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_detail_table" />
+				</div>
+				<div class="floating_left_pad_right one-column" style="clear: left;">
+					<label for="fechaBaja_detail_table"><spring:message code="fechaBaja" />:</label>
+					<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_detail_table" />
+				</div>
+				<div class="floating_left_pad_right one-column">
+					<label for="rol_detail_table"><spring:message code="rol" />:</label>
+					<select id="rol_detail_table" name="rol" class="formulario_linea_input" ></select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+		<div class="ui-dialog-buttonset">
+			<button id="table_detail_button_save" type="button">
+				<spring:message code="save" />
+			</button>
+			<button id="table_detail_button_save_repeat" type="button">
+				<spring:message code="saveAndContinue" />
+			</button>
+			<a href="javascript:void(0)" role="button" id="table_detail_link_cancel"
+				class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
+		</div>
 	</div>
 </div>

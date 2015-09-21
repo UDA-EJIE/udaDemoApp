@@ -6,6 +6,7 @@
 			"all" :"[Todos los patrones_en]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete_en",
+			"contextMenu" :"Menú contextual_en",
 			"toolbar" :"Botonera_en",
 			"combo" :"Combo_en",
 				"comboSimple" :"Combo Simple_en",
@@ -66,6 +67,7 @@
 			"all" :"[Todos los patrones_en]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete_en",
+			"contextMenu" :"Menú contextual_en",
 			"toolbar" :"Botonera_en",
 			"comboSimple" :"Combo Simple_en",
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)_en",
@@ -369,7 +371,8 @@
 		"uploadTable" :"Upload en tabla_en",
 		"uploadForm" :"Upload form_en",
 		"uploadFormSimple" :"Upload simple en formulario_en",
-		"uploadFormMultiple" :"Multiples upload en formulario_en"
+		"uploadFormMultiple" :"Multiples upload en formulario_en",
+		"uploadFormPif" :"Integración con PIF_en"
 	},
 	"comboProvincias":{
 		"_blank":"Seleccione un elemento_en" 	

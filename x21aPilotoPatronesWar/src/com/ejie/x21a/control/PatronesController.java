@@ -31,6 +31,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,7 @@ import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.UsuarioMixIn;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -77,9 +79,11 @@ import com.ejie.x21a.service.UploadService;
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
+import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.json.JSONObject;
+import com.ejie.x38.json.JsonMixin;
 import com.ejie.x38.json.MessageWriter;
 import com.ejie.x38.validation.ValidationManager;
 
@@ -331,6 +335,12 @@ public class PatronesController {
 		return "allDialog";
 	}
 	
+	//Context menu
+	@RequestMapping(value = "contextMenu", method = RequestMethod.GET)
+	public String getContextMenu(Model model) {
+		return "contextMenu";
+	}
+	
 	/**
 	 * SERVICIOS NECESARIOS:
 	 * 		- Usuario 
@@ -385,6 +395,12 @@ public class PatronesController {
 	/**
 	 * COMBO SIMPLE	
 	 */
+		interface ProvinciaMixIn{
+			@JsonProperty("value") int getCode();
+		    @JsonProperty("label") int getDescEs();
+		}
+		
+		@Json(mixins={@JsonMixin(target=Provincia.class, mixin=ProvinciaMixIn.class)})
 		@RequestMapping(value = "comboSimple/remote", method=RequestMethod.GET)
 		public @ResponseBody List<Provincia> getComboRemote(){
 			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }

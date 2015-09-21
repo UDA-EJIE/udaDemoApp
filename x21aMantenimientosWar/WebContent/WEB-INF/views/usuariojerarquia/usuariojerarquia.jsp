@@ -1,5 +1,5 @@
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<h2><spring:message code="jerarquia" /></h2>
+	<h2>${tituloPagina}</h2>
 	<div id="error" style="display:none"></div>
 	<div id="usuarioJerarquia">
 		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:800px;">

@@ -113,10 +113,12 @@
             </dependency>
 			<!-- Jdbcdslog -->
 			<dependency>
-				<groupId>org</groupId>
-				<artifactId>jdbcdslog</artifactId>
-				<version>1.0.5</version>
+				<groupId>com.googlecode.usc</groupId>
+	    		<artifactId>jdbcdslog</artifactId>
+			    <version>1.0.6.2</version>
 			</dependency>
+			
+			
 
 		<!-- JSR 303 with Hibernate Validator -->
 		<dependency>

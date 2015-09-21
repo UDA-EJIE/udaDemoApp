@@ -80,6 +80,44 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 
+	<servlet>
+		<servlet-name>webdavServlet</servlet-name>
+		<servlet-class>com.ejie.x38.webdav.WebdavServlet</servlet-class>
+		<init-param>
+			<param-name>rootpath</param-name>
+			<param-value>/datos/x21a/tmp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ResourceHandlerImplementation</param-name>
+			<param-value>com.ejie.x21a.webdav.LocalFileSystemStore</param-value>
+		</init-param>
+		<init-param>
+			<param-name>lockingMethod</param-name>
+			<param-value>database</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>webdavServlet</servlet-name>
+		<url-pattern>/webdavServlet/*</url-pattern>
+	</servlet-mapping>
+	 -->
+	<!-- -->
+	<servlet>
+	    <display-name>WebDAVServlet</display-name>
+	    <servlet-name>webdavServlet</servlet-name>
+	    <servlet-class>
+	        org.springframework.web.context.support.HttpRequestHandlerServlet
+	    </servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>webdavServlet</servlet-name>
+	    <url-pattern>/webdavServlet/*</url-pattern>
+	</servlet-mapping>
+	 
+	
 	<!-- General configuration of the JSPs' encoding  -->
 	<jsp-config>
 		<jsp-property-group>

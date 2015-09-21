@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
 		mixto = true;
 	}
 	
-	//ThemeRoller
+	// ThemeRoller
 	jQuery('#themeroller').themeswitcher({
 	     imgpath: jQuery.rup.STATICS + "/themeswitcher/images/"
 	});
@@ -60,6 +60,7 @@ jQuery(document).ready(function(){
 				"menu" : {"i18nCaption":"menu"},	
                 "menuVertical" : {"i18nCaption":"menuVertical"},
                 "menuMixto" : {"i18nCaption":"menuMixto"},
+                "contextMenu" : { "i18nCaption" : "contextMenu" },
                 "tabsStatic" : {"i18nCaption":"tabsStatic"},
             	"tabsAjax" : {"i18nCaption":"tabsAjax"},
             	"tabsMixto" : {"i18nCaption":"tabsMixto"},
@@ -93,6 +94,7 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"form", "url": "/x21aPilotoPatronesWar/patrones/form" },
                   	{"i18nCaption":"time", "url": "/x21aPilotoPatronesWar/patrones/time" },
                   	{"i18nCaption":"message", "url": "/x21aPilotoPatronesWar/patrones/message" },
+                  	{"i18nCaption":"contextMenu", "url": "/x21aPilotoPatronesWar/patrones/contextMenu" },
                    	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
                   	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
                   	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
@@ -177,6 +179,7 @@ jQuery(document).ready(function(){
 					        {"i18nCaption":"menuVertical", "url": "patrones/menuVertical" },
 					        {"i18nCaption":"menuMixto", "url": "patrones/menuMixto" }
 					    ]}, 
+					    {"i18nCaption":"contextMenu", "url": "patrones/contextMenu" },
 					    {"i18nCaption":"toolbar", "url": "patrones/toolbar" },
 					  	{"divider":true},
 					  	{"divider":true, "i18nCaption":"titulo-estru"},

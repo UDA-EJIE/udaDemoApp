@@ -229,7 +229,6 @@ jQuery(document).ready(function(){
 	$("#formValidaciones2").ajaxForm(ajaxForm);
 	$("#formServidor").rup_form(getConfiguracionValServidorEjemplo1());
 	$("#formServidor2").rup_form(getConfiguracionValServidorEjemplo2());
-	
 	$("#botonConfiguracion").bind("click",function(){
 		$("#formValidaciones").rup_validate("destroy");
 		$("#formValidaciones2").rup_validate("destroy");

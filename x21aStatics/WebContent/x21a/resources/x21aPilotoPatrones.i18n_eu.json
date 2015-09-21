@@ -6,6 +6,7 @@
 			"all" :"[Eredu guztiak]",
 			"accordion" :"Accordion_eu",
 			"autocomplete" :"Autocomplete",
+			"contextMenu" :"Menú contextual_eu",
 			"toolbar" :"Botoi-lerro",
 			"combo" :"Combo",
 				"comboSimple" :"Combo Simple",
@@ -66,6 +67,7 @@
 			"all" :"[Eredu guztiak]",
 			"accordion" :"Accordion_eu",
 			"autocomplete" :"Autocomplete",
+			"contextMenu" :"Menú contextual_eu",
 			"toolbar" :"Botoi-lerro",
 			"comboSimple" :"Combo Simple",
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
@@ -370,7 +372,8 @@
 		"uploadTable" :"Upload taulan",
 		"uploadForm" :"Upload formularioan",
 		"uploadFormSimple" :"Upload soila formularioan",
-		"uploadFormMultiple" :"Upload asko formularioan"
+		"uploadFormMultiple" :"Upload asko formularioan",
+		"uploadFormPif" :"PIF-rekiko integrazioa"
 	},
 	"comboProvincias":{
 		"_blank":"[Elementu bat aukeratu]" 	

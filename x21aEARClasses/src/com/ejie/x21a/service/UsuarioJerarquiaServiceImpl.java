@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.UsuarioJerarquiaDao;
 import com.ejie.x21a.model.UsuarioJerarquia;
-import com.ejie.x38.dto.Jerarquia;
+import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
 
 /**
@@ -134,8 +134,8 @@ public class UsuarioJerarquiaServiceImpl implements UsuarioJerarquiaService {
 	 * @return UsuarioJerarquia
 	 * @throws Exception
 	 */
-	public List<Jerarquia<UsuarioJerarquia>> findAllLikeJerarquia(UsuarioJerarquia usuarioJerarquia, Pagination pagination){
-		return (List<Jerarquia<UsuarioJerarquia>>) this.usuarioJerarquiaDao.findAllLikeJerarquia(usuarioJerarquia, pagination);
+	public List<JerarquiaDto<UsuarioJerarquia>> findAllLikeJerarquia(UsuarioJerarquia usuarioJerarquia, Pagination pagination){
+		return (List<JerarquiaDto<UsuarioJerarquia>>) this.usuarioJerarquiaDao.findAllLikeJerarquia(usuarioJerarquia, pagination);
 	}
 
 	/**

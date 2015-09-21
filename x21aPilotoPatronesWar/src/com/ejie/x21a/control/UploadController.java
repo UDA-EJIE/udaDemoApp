@@ -16,6 +16,7 @@
 package com.ejie.x21a.control;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -45,6 +49,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.service.UploadService;
+import com.ejie.x21a.util.PifUtils;
 
 /**
  * UploadController
@@ -54,6 +59,14 @@ import com.ejie.x21a.service.UploadService;
 @RequestMapping (value = "/upload")
 public class UploadController   {
 
+	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
+	
+	/**
+	 * Tiempo que se mantienen, en un directorio temporal, los documentos que se
+	 * quieren fusionar. En segundos.
+	 */
+	public static final Long TIEMPO_TTL_DOCUMENTO_TEMP = Long.valueOf(600);// 10 minutos
+	
 	@Autowired
 	private Properties appConfiguration;
 	
@@ -113,6 +126,59 @@ public class UploadController   {
 		return null;
 	}
 	 
+	
+	@RequestMapping(value="pifForm", method = RequestMethod.POST)
+	public @ResponseBody List<Map<String,Object>> addPifForm(@RequestParam(value="nombre", required=false) String nombre,
+			@RequestParam(value="apellido1", required=false) String apellido1,
+			@RequestParam(value="apellido2", required=false) String apellido2,
+			@RequestParam(value="file", required=false) MultipartFile file,
+			HttpServletRequest httpRequest) {
+	
+		
+		PifUtils.put(file);
+		
+		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
+
+		filesMetaInfo.add(this.getFileReturnMap(file));
+		
+		return filesMetaInfo;
+		
+	}
+	
+	@RequestMapping(value="pifForm", method = RequestMethod.GET)
+	@ResponseStatus( HttpStatus.OK )
+	 public ModelAndView downloadPif(@RequestParam(value="fileName", required=true) String fileName,
+	        HttpServletResponse response) throws Exception {
+	
+//		 	File file = uploadService.getFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+			InputStream inputStream = PifUtils.get(fileName);
+			byte[] fileByteArray = IOUtils.toByteArray(inputStream);
+	
+	        response.setHeader("Content-Disposition","attachment; filename=\"" + fileName +"\"");
+	       
+	        response.setContentLength(fileByteArray.length);
+	        FileCopyUtils.copy(fileByteArray, response.getOutputStream());
+	        
+	        return null;
+	 }
+	
+	@RequestMapping(value="pifForm", method = RequestMethod.DELETE)
+	@ResponseStatus( HttpStatus.OK )
+	 public void removePif(@RequestParam(value="fileName", required=true) String fileName,
+					HttpServletResponse  response) {
+		
+		PifUtils.delete(fileName);
+		
+//		uploadService.deleteFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+		
+		response.setContentType("text/javascript;charset=utf-8");
+        response.setHeader("Pragma", "cache");
+        response.setHeader("Expires", "0");
+        response.setHeader("Cache-Control", "private");
+        
+	}
+	
+	
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseStatus( HttpStatus.OK )
 	 public void remove(@RequestParam(value="fileName", required=true) String fileName,

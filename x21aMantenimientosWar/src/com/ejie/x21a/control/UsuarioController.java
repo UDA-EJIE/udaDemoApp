@@ -155,6 +155,7 @@ public class UsuarioController  {
 			@RequestParam(value = "ejie", required = false) String ejie,
 			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
 			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
+			@RequestParam(value = "multicombo", required = false) String multicombo,
 			HttpServletRequest request) {
 		Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
         Pagination pagination = null;
@@ -326,16 +327,16 @@ public class UsuarioController  {
 				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataAll.setModelData(listUsuarioAll);
-				reportData.add(usuarioExcelDataAll);
+			reportData.add(usuarioExcelDataAll);
 			//Hoja 2
-				ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
+			ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
 				//nombre hoja
 				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
 				//cabeceras hoja
 				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataPage.setModelData(listUsuarioPage);
-				reportData.add(usuarioExcelDataPage);
+			reportData.add(usuarioExcelDataPage);
 		modelMap.put("reportData", reportData);
 		
 		//Generación del XLS o XLSX
@@ -371,16 +372,16 @@ public class UsuarioController  {
 				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataAll.setModelData(listUsuarioAll);
-				reportData.add(usuarioExcelDataAll);
+			reportData.add(usuarioExcelDataAll);
 			//Hoja 2
-				ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
+			ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
 				//nombre hoja
 				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
 				//cabeceras hoja
 				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataPage.setModelData(listUsuarioPage);
-				reportData.add(usuarioExcelDataPage);
+			reportData.add(usuarioExcelDataPage);
 		modelMap.put("reportData", reportData);
 		
 		//Generación del ODS

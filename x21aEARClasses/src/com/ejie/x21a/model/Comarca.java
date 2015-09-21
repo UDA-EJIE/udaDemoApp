@@ -40,6 +40,11 @@ public class Comarca  implements java.io.Serializable {
 	*/
     public Comarca() {
     }
+    
+    public Comarca(BigDecimal code) {
+    	this.code = code;
+    }
+    
     /** Method 'Comarca'.
     * @param code BigDecimal
     * @param descEs String

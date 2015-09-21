@@ -19,12 +19,14 @@ package com.ejie.x21a.model;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.ejie.x21a.validation.group.UsuarioEditValidation;
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
 
@@ -37,8 +39,8 @@ public class Usuario  implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
             
-			@NotBlank(message="validacion.required")
-			@Length(max=25, message="validacion.maxLength")
+			@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
+			@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
             private String id;
             @NotBlank(message="validacion.required")
             @Length(max=25, message="validacion.maxLength")
@@ -47,7 +49,7 @@ public class Usuario  implements java.io.Serializable {
             private String apellido1;
             @Length(max=25, message="validacion.maxLength")
             private String apellido2;
-            @NotBlank(message="validacion.required")
+//            @NotBlank(message="validacion.required")
             private String ejie;
             private String tipo;
             private String subtipo;
@@ -56,13 +58,24 @@ public class Usuario  implements java.io.Serializable {
             private Date fechaBaja;
 //            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
             private Provincia provincia;
+            private String rol;
+            private String idPadre;
 
 	/** Method 'Usuario'.
 	*
 	*/
     public Usuario() {
     }
+    
     /** Method 'Usuario'.
+	 * @param id
+	 */
+	public Usuario(String id) {
+		super();
+		this.id = id;
+	}
+
+	/** Method 'Usuario'.
     * @param id String
     * @param nombre String
     * @param apellido1 String
@@ -70,8 +83,13 @@ public class Usuario  implements java.io.Serializable {
     * @param ejie String
     * @param fechaAlta Date
     * @param fechaBaja Date
+    * @param rol String
     */
-    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja ) {	
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja) {	
+        this(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, null);
+    }
+    
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -79,6 +97,7 @@ public class Usuario  implements java.io.Serializable {
         this.ejie = ejie;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
+        this.rol = rol;
     }
 
     /**
@@ -86,7 +105,7 @@ public class Usuario  implements java.io.Serializable {
 	 *
 	 * @return String
 	 */
-
+    @JsonSerialize()
     public String getId() {
 		return this.id;
 	}
@@ -180,12 +199,31 @@ public class Usuario  implements java.io.Serializable {
 	public void setEjie(String ejie) {
 		this.ejie = ejie;
 	}
+	
+	
+	/**
+	 * Method 'getRol'.
+	 * 
+	 * @return rol String
+	 */
+    public String getRol() {
+		return rol;
+	}
+
     /**
+     * Method 'setRol'.
+     * 
+     * @param rol String
+     */
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
+	/**
 	 * Method 'getFechaAlta'.
 	 *
 	 * @return Date
 	 */
-	
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getFechaAlta() {
 		return this.fechaAlta;
@@ -221,7 +259,13 @@ public class Usuario  implements java.io.Serializable {
 		this.fechaBaja = fechaBaja;
 	}
 	
-	
+	public String getIdPadre() {
+		return idPadre;
+	}
+
+	public void setIdPadre(String idPadre) {
+		this.idPadre = idPadre;
+	}
 	
 	/**
 	 * Method 'getPerfilUsuarios'.
@@ -282,10 +326,9 @@ public class Usuario  implements java.io.Serializable {
 		result.append(", [ ejie: ").append(this.ejie).append(" ]");
 		result.append(", [ fechaAlta: ").append(this.fechaAlta).append(" ]");
 		result.append(", [ fechaBaja: ").append(this.fechaBaja).append(" ]");
+		result.append(", [ rol: ").append(this.rol).append(" ]");
 		result.append("}");
 		return result.toString();
 	}
-
-
 }
 

@@ -89,6 +89,12 @@
 					</ul>
 				</li>
 				<li>
+					<a href="/x21aPilotoPatronesWar/patrones/contextMenu">
+						<spring:message code="contextMenu" />
+						<span class="ui-icon contextMenu_icon"></span>
+					</a>
+				</li>
+				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/toolbar">
 						<spring:message code="toolbar" />
 						<span class="ui-icon toolbar_icon"></span>
@@ -339,6 +345,12 @@
 				<li>
 					<a	href="/x21aPilotoPatronesWar/integracion/tiny">
 						<spring:message code="tiny" />
+						<span class="ui-icon tiny_icon"></span>
+					</a>
+				</li>
+				<li>
+					<a	href="/x21aPilotoPatronesWar/integracion/webdav">
+						<spring:message code="webdav" />
 						<span class="ui-icon tiny_icon"></span>
 					</a>
 				</li>

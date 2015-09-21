@@ -344,7 +344,7 @@
 					data.height = 350;
 					data.params.frameborder = '0';
 					data.type = 'iframe';
-					src = 'http://www.stream.cz/object/' + src.match(/stream.cz\/[^/]+\/([0-9]+)/)[1];
+					src = 'http://www.stream.cz/object/' + src.match(/stream.cz\/[^\/]+\/([0-9]+)/)[1];
 					setVal('src', src);
 					setVal('media_type', data.type);
 				}
