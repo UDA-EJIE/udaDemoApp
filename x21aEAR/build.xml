@@ -25,12 +25,21 @@
 		<echo>Regenerando directorio (x21aPortalStatics)</echo>
 		<delete dir="${destDir}/rup" />
 		<delete dir="${destDir}/${codApp}" />
+		<delete dir="${destDir}/themeswitcher" />
+		<delete dir="${destDir}/tiny_mce" />
 		<delete dir="${destDir}/WEB-INF" />
+		
 		<copy todir="${destDir}/rup" >
 	 		<fileset dir="${srcDir}/rup" />
 		</copy>
 		<copy todir="${destDir}/${codApp}" >
 			<fileset dir="${srcDir}/${codApp}" />
+		</copy>
+		<copy todir="${destDir}/themeswitcher" >
+			<fileset dir="${srcDir}/themeswitcher" />
+		</copy>
+		<copy todir="${destDir}/tiny_mce" >
+			<fileset dir="${srcDir}/tiny_mce" />
 		</copy>
 
 		<!-- Desplegar en LOCAL -->

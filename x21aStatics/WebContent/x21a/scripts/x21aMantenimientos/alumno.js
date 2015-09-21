@@ -5,16 +5,19 @@ jQuery(function($){
 		url: "../alumno",
 		pagerName: "pager",
 		rowNum: "10",
+		width: "auto",
 		sortorder: "asc",
 		sortname: "id",
 		colNames: [
 			$.rup.i18n.app.GRID_alumno.id,
 			$.rup.i18n.app.GRID_alumno.usuario,
 			$.rup.i18n.app.GRID_alumno.nombre,
-			$.rup.i18n.app.GRID_alumno.apellido1,
-			$.rup.i18n.app.GRID_alumno.apellido2,
+//			$.rup.i18n.app.GRID_alumno.apellido1,
+//			$.rup.i18n.app.GRID_alumno.apellido2,
 			$.rup.i18n.app.GRID_alumno.dni,
-			$.rup.i18n.app.GRID_alumno.importeMatricula
+			$.rup.i18n.app.GRID_alumno.importeMatricula,
+			"provincia",
+			"prueba"
 		],
 		colModel: [
 			{ name: "id",
@@ -32,27 +35,40 @@ jQuery(function($){
 				editable: true,
 				edittype: "text"
 			},
-			{ name: "nombre",
-				label: "nombre",
-				index: "nombre",
+			{ name: "nombreCompleto",
+				label: "nombreCompleto",
+				index: "nombreCompleto",
 				width: "150",
 				editable: true,
-				edittype: "text"
+				edittype: "text",
+				formatter:function (cellval, opts, rwd, act) {
+					return rwd.apellido1+" "+rwd.apellido2+", "+rwd.nombre;
+				},
+				formatterOnUpdate:function($form){
+					return $("#apellido1").val()+" "+$("#apellido2").val()+", "+$("#nombre").val();
+				}
 			},
-			{ name: "apellido1",
-				label: "apellido1",
-				index: "apellido1",
-				width: "150",
-				editable: true,
-				edittype: "text"
-			},
-			{ name: "apellido2",
-				label: "apellido2",
-				index: "apellido2",
-				width: "150",
-				editable: true,
-				edittype: "text"
-			},
+//			{ name: "nombre",
+//				label: "nombre",
+//				index: "nombre",
+//				width: "150",
+//				editable: true,
+//				edittype: "text"
+//			},
+//			{ name: "apellido1",
+//				label: "apellido1",
+//				index: "apellido1",
+//				width: "150",
+//				editable: true,
+//				edittype: "text"
+//			},
+//			{ name: "apellido2",
+//				label: "apellido2",
+//				index: "apellido2",
+//				width: "150",
+//				editable: true,
+//				edittype: "text"
+//			},
 			{ name: "dni",
 				label: "dni",
 				index: "dni",
@@ -66,7 +82,35 @@ jQuery(function($){
 				width: "150",
 				editable: true,
 				edittype: "text",
-				formatoptions:{decimalSeparator:",", thousandsSeparator: ".", decimalPlaces: 2, prefix: "$ "}
+				formatoptions:{decimalSeparator:",", thousandsSeparator: ",", decimalPlaces: 2, prefix: "€ "}
+			},
+//			{ name: "municipio.id",
+//				label: "municipio.id",
+//				index: "municipio.id",
+//				width: "150",
+//				editable: true,
+//				edittype: "text",
+//				rupType: "combo",
+//				editoptions:{
+//					source:"",
+//					sourceParam : {label:"dsO", value:"id"}
+//				},
+//				formatoptions:{decimalSeparator:",", thousandsSeparator: ",", decimalPlaces: 2, prefix: "€ "}
+//			},
+			{ name: "municipio.dsO",
+				label: "municipio.dsO",
+				index: "municipio.dsO",
+				width: "150",
+				editable: true,
+				edittype: "text",
+				updateFromDetail:function($form){
+					return $("#municipio").rup_combo("label");
+				},
+				formatoptions:{decimalSeparator:",", thousandsSeparator: ",", decimalPlaces: 2, prefix: "€ "}
+			},
+			{ name: "campo.valor",
+				label: "campo.valor",
+				index: "campo.valor"
 			}
         ]
 		
@@ -81,6 +125,7 @@ jQuery(function($){
 		searchForm: "searchForm",
 		showMessages: true,
 		detailForm:"detalleAlumnoForm",
+//		fluidOffset : 0,
 		validation:{
 			messages:{
 				"password_confirm":$.rup.i18n.app.alumno.password_confirm,
@@ -226,5 +271,5 @@ jQuery(function($){
 		$("#capa4").rup_dialog({type: $.rup.dialog.DIV});
 	});
 	
-	
+	$("#contentLayer").css("opacity","100");
 });

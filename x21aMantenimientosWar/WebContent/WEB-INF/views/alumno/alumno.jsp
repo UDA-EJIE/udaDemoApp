@@ -1,9 +1,9 @@
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>alumno</h2>
 	<div id="error" style="display:none"></div>
-	<div id="alumno">
+	<div id="alumno" >
 		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
-			<form id="searchForm">
+			<form id="searchForm" >
 				<div  class="formulario_legend" id="titleSearch_alumno"><spring:message code="searchCriteria" />:</div>
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_alumno">
 					<div class="formulario_columna_cnt">
@@ -40,7 +40,7 @@
 		</div>
 		
 		
-		<div id="detalleAlumno" >
+		<div id="detalleAlumno" style="display:none" >
 			<form:form id="detalleAlumnoForm" modelAttribute="alumno" >
 				<fieldset class="alumnoFieldset">
 					<legend><spring:message code="datosPersonales" /></legend>

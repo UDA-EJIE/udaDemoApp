@@ -293,6 +293,15 @@ public class PatronesController {
 	public String getWizard_jstlImporte(Model model) {
 		return "wizard_jstlImport";
 	}
+	//Wizard dinamico
+	@RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
+	public String getWizard_dinamico(Model model) {
+		return "wizard_dinamico";
+	}
+	@RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
+	public String getWizard_dinamico_content(Model model) {
+		return "wizard_dinamico_content";
+	}
 	
 	//Validate
 	@RequestMapping(value = "validate", method = RequestMethod.GET)

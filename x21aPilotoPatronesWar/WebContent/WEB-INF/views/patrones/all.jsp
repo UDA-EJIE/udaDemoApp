@@ -27,31 +27,35 @@
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
 							<label for="id" class="formulario_linea_label">id:</label>
-							<input type="text" name="id" class="formulario_linea_input" id="dialog_id_search" />
+							<input type="text" name="id" class="formulario_linea_input" id="id_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="nombre" class="formulario_linea_label">nombre:</label>
-							<input type="text" name="nombre" class="formulario_linea_input" id="dialog_nombre_search" />
+							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="apellido1" class="formulario_linea_label">apellido1:</label>
-							<input type="text" name="apellido1" class="formulario_linea_input" id="dialog_apellido1_search" />
+							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="apellido2" class="formulario_linea_label">apellido2:</label>
-							<input type="text" name="apellido2" class="formulario_linea_input" id="dialog_apellido2_search" />
+							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label for="dialog_ejie_search" class="formulario_linea_label">ejie:</label>
-							<div style="float: left;"><select id="dialog_ejie_search" class="rup-combo" ></select></div>
+							<label for="ejie_search" class="formulario_linea_label">ejie:</label>
+							<div style="float: left;"><select id="ejie_search" name="ejie" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label for="dialog_fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
-							<input type="text" name="fechaAlta" class="formulario_linea_input" id="dialog_fechaAlta_search" />
+							<label for="fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
+							<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
 						</div>
 						<div class="formulario_linea_izda_float" style="clear: left;">
-							<label for="dialog_fechaBaja_search" class="formulario_linea_label">fechaBaja:</label>
-							<input type="text" name="fechaBaja" class="formulario_linea_input" id="dialog_fechaBaja_search" />
+							<label for="fechaBaja_search" class="formulario_linea_label">fechaBaja:</label>
+							<input type="text" name="fechaBaja" class="formulario_linea_input" id="fechaBaja_search" />
+						</div>
+						<div class="formulario_linea_izda_float">
+							<label for="multicombo_search" class="formulario_linea_label">multicombo:</label>
+							<select id="multicombo_search" name="multicombo" class="rup-combo" ></select>
 						</div>
 					</div>
 				</fieldset>
@@ -83,10 +87,30 @@
 		<div style="float: left; margin-left: 2em;"><select id="comboComarca" class="rup-combo"></select></div>
 	</div><br>
 	
+	<!-- Multicombo -->
+	<select id="multicomboGruposRemoto" class="rup-combo" ></select><br><br>
+	
 	<!-- Autocomplete / Tooltip -->
-	<label for ="autocomplete">Autocomplete (lenguaje):</label><input id="autocomplete" name="autocomplete" /><br><br>
+	<label for ="autocomplete">Autocomplete (lenguaje):</label><input id="autocomplete" name="autocomplete" />
 	<label for ="tooltip">Tooltip: </label><input id="tooltip" name="tooltip" title="Introduzca su nombre."/><br><br>
 	
 	<!-- Pestañas -->
-	<div id="tabs" style="width: 40em;"></div><br>
+	<div id="tabs" style="width: 40em;"></div>
+</div>
+
+<!-- Menu contextual -->
+<div id="contextMenu" style="display:none">
+	<ul>
+    	<li id="menu_1">
+        	<span>Opción 1</span>
+    	</li>
+    	<li id="menu_2">
+        	<span class="ui-icon ui-icon-pencil" style="float:left"></span>
+    		<span>Opción 2</span>
+		</li>
+		<li id="menu_3">
+    		<span class="ui-icon ui-icon-trash" style="float:left"></span>
+            <span>Opción 3</span>
+        </li>
+    </ul>
 </div>

@@ -34,7 +34,8 @@ jQuery(document).ready(function(){
 		],
 		selected: "perl_value",
 		width: 300,
-		blank : "0" 
+		blank : "0",
+		rowStriping : true
 	});
 	
 	
@@ -90,7 +91,8 @@ jQuery(document).ready(function(){
 				{i18nCaption: "hamilton", value:"hamilton_value"},
 				{i18nCaption: "vettel", value:"vettel_value"}
 			]}
-		]
+		],
+		rowStriping : true
 	});
 	
 	$('#comboGruposRemoto').rup_combo({
@@ -109,5 +111,17 @@ jQuery(document).ready(function(){
 		]
 	});
 	
+	$('#comboInput').rup_combo({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		width: 300
+	});
+
+	$('#comboLoadFromSelect').rup_combo({
+		source : "comboSimple/remote",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		loadFromSelect: true,
+		width: 300,
+		height: 75
+	});
 	
 });

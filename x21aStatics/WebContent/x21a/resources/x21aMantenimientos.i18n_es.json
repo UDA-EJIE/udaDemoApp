@@ -6,6 +6,12 @@
 		"formPropio" : "Form Propio", 
 		"administracion" : "Administración",
 		"alumno" : "Alumno",
+		"jerarquia" : "Jerarquia",
+		"usuarioJerarquia" : "Normal",
+		"usuarioJerarquiaGroup" : "Agrupado",
+		"usuarioJerarquiaMulti" : "Multiselección",
+		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado",
+		"usuarioJerarquiaCol" : "Columna independiente",
 		"uda":"UDA"
 	},
 	"GRID_simple##ejie" : {
@@ -63,5 +69,9 @@
 	"loginUserMock" : {
 		"logginOk1" : "Usuario '",
 		"logginOk2" : "' Seleccionado correctamente"
+	},
+	"GRID_usuarioJerarquia##ejie" : {
+		"0" : "No",
+		"1" : "Sí"
 	}
 }

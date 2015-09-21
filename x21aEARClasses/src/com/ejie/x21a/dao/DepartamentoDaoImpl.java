@@ -265,6 +265,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
 
 		if (departamento  != null  && departamento.getCode() != null ) {
 			where.append(" AND t1.CODE = ?");
+			params.add(departamento.getCode());
 	     }			
 		if (departamento  != null  && departamento.getDescEs() != null ) {
 			where.append(" AND UPPER(t1.DESC_ES) like ? ESCAPE  '\\'");

@@ -30,9 +30,11 @@ var	APP_RESOURCES = 'x21a',
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	//breadCrumbs
 	LOGGED_USER = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.fullName : sessionScope.fullName}",
-	DESTROY_XLNETS_SESSION = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.destroyXLNetsSession : sessionScope.destroyXLNetsSession}";
+	DESTROY_XLNETS_SESSION = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.destroySessionSecuritySystem : sessionScope.destroySessionSecuritySystem}";
 </script>
 
 <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
 <!--%@include file="/WEB-INF/views/includes/rup.scripts.min.js"%-->
+<%@include file="/WEB-INF/layouts/includes/themeswitcher.inc"%>
+<%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>

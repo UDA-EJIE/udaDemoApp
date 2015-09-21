@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>ERROR</h2> <br>
+<h2 style="float:none;">ERROR</h2> <br>
 <a href="<%= request.getContextPath() %>/"><spring:message code="error.volver" /></a>
 
 <h3>Name: </h3>${(empty param)? exception_name : param.exception_name}<br>

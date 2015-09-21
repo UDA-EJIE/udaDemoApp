@@ -23,22 +23,22 @@
 		</li>
 		<sec:authorize access="hasRole('ROLE_UDAANONYMOUS')">
 			<li>
-				<a class="ui-state-disabled" href="/x21aMantenimientosWar/">
+				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="inicio" />
 				</a>
 			</li>
 			<li>
-				<a class="ui-state-disabled" href="/x21aMantenimientosWar/usuario/simple">
+				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="simple" />
 				</a>
 			</li>
 			<li>
-				<a class="ui-state-disabled" href="/x21aMantenimientosWar/usuario/multi">
+				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="multi" />
 				</a>
 			</li>
 			<li>
-				<a class="ui-state-disabled" href="/x21aMantenimientosWar/usuario/edlinea">
+				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="edlinea" />
 				</a>
 			</li>
@@ -81,6 +81,42 @@
 			</ul>
 		</li>
 		</sec:authorize>
+		
+		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')">
+		<li>
+			<a>
+				<spring:message code="jerarquia" />
+			</a>
+			<ul>
+				<li>
+					<a href="/x21aMantenimientosWar/usuariojerarquia/maint">
+						<spring:message code="usuarioJerarquia" />
+					</a>
+				</li>
+				<li>
+					<a href="/x21aMantenimientosWar/usuariojerarquia/maintgroup">
+						<spring:message code="usuarioJerarquiaGroup" />
+					</a>
+				</li>
+				<li>
+					<a href="/x21aMantenimientosWar/usuariojerarquia/maintmulti">
+						<spring:message code="usuarioJerarquiaMulti" />
+					</a>
+				</li>
+				<li>
+					<a href="/x21aMantenimientosWar/usuariojerarquia/maintmultigroup">
+						<spring:message code="usuarioJerarquiaGroupMulti" />
+					</a>
+				</li>
+				<li>
+					<a href="/x21aMantenimientosWar/usuariojerarquia/maintcol">
+						<spring:message code="usuarioJerarquiaCol" />
+					</a>
+				</li>
+			</ul>
+		</li>
+		</sec:authorize>
+		
 		<li>
 			<a	href="http://code.google.com/p/uda/" target="_blank">
 				<spring:message code="uda" />

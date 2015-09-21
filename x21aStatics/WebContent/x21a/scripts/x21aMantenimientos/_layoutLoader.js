@@ -23,7 +23,13 @@ jQuery(document).ready(function(){
 	}
 
 	//ThemeRoller
-	$('#themeroller').click($.rup.themeRoller);
+	jQuery('#themeroller').themeswitcher({
+	     imgpath: jQuery.rup.STATICS + "/themeswitcher/images/"
+	});
+	jQuery("#borrar_themeroller").show().click(function(){
+		$.rup_utils.setCookie("jquery-ui-theme", "", { path: '/' });
+		window.location.reload();
+	});
 	
 	//rastro de migas
 	$("#x21aMantenimientosWar_migas").rup_breadCrumb({
@@ -35,19 +41,45 @@ jQuery(document).ready(function(){
 			"administracion" : {
 				//Literal
 				"i18nCaption" : "administracion",
-				"alumno":{"i18nCaption":"alumno"}
+				//Elementos (url)
+				"alumno":{"i18nCaption":"alumno"},
+				//Submenu
+				"subLevel":[
+					{"i18nCaption":"alumno", "url": "/x21aMantenimientosWar/administracion/alumno" }
+				]
+			},
+			"usuariojerarquia" : {
+				//Literal
+				"i18nCaption" : "jerarquia",
+				//Elementos (url)
+				"maint":{"i18nCaption":"usuarioJerarquia"},
+				"maintgroup":{"i18nCaption":"usuarioJerarquiaGroup"},
+				"maintmulti":{"i18nCaption":"usuarioJerarquiaMulti"},
+				"maintgroupmulti":{"i18nCaption":"usuarioJerarquiaGroupMulti"},
+				"maintcol":{"i18nCaption":"usuarioJerarquiaCol"},
+				//Submenu
+				"subLevel":[
+					{"i18nCaption":"usuarioJerarquia", "url": "/x21aMantenimientosWar/usuariojerarquia/maint" },
+					{"i18nCaption":"usuarioJerarquiaGroup", "url": "/x21aMantenimientosWar/usuariojerarquia/maintgroup" },
+					{"i18nCaption":"usuarioJerarquiaMulti", "url": "/x21aMantenimientosWar/usuariojerarquia/maintmulti" },
+					{"i18nCaption":"usuarioJerarquiaGroupMulti", "url": "/x21aMantenimientosWar/usuariojerarquia/maintmultigroup" },
+					{"i18nCaption":"usuarioJerarquiaCol", "url": "/x21aMantenimientosWar/usuariojerarquia/maintcol" }
+				]
 			}
 		},
 		logOutUrl: "/x21aMantenimientosWar/logout"
 	});
 	//idioma
-	$("#x21aMantenimientosWar_language").rup_language({languages: $.rup.AVAILABLE_LANGS_ARRAY});
+	$("#x21aMantenimientosWar_language").rup_language({languages: $.rup.AVAILABLE_LANGS_ARRAY, modo: "portal"});
 	
 	$("#x21aMantenimientosWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal')
 	});
 	
 	$.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
+	
+	//pie
+	$(".footer [title]").rup_tooltip();
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){

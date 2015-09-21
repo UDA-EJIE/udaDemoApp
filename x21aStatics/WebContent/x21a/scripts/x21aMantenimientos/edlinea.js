@@ -20,7 +20,6 @@ jQuery(function($){
 		url: "../usuario",
 		hasMaint: true,
 		headertitles: true, //tooltip en cabeceras
-		width: 850,
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",

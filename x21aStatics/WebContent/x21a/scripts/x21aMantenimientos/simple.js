@@ -15,13 +15,12 @@
  */
 jQuery(function($){
 	$("#GRID_simple").rup_grid({
-		
 		url: "../usuario",
 		hasMaint: true,
 		headertitles: true, //tooltip en cabeceras
-		width: 850,
 		pagerName: "pager",
 		rowNum: "10",
+//		fluidBaseLayer: "#simple",
 		sortorder: "asc",
 		sortname: "id",
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja" ],

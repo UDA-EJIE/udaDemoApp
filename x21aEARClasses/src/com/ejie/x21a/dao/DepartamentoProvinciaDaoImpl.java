@@ -315,9 +315,11 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 
 		if (departamentoprovincia  != null  && departamentoprovincia.getCode() != null ) {
 			where.append(" AND t1.CODE = ?");
+			params.add(departamentoprovincia.getCode());
 	     }			
 		if (departamentoprovincia!=null && departamentoprovincia.getProvincia() != null  && departamentoprovincia.getProvincia().getCode() != null ) {
 			where.append(" AND t2.CODE = ?");
+			params.add(departamentoprovincia.getProvincia().getCode());
 	     }			
 		if (departamentoprovincia!=null && departamentoprovincia.getProvincia() != null  && departamentoprovincia.getProvincia().getDescEs() != null ) {
 			where.append(" AND UPPER(t2.DESC_ES) like ? ESCAPE  '\\'");
@@ -348,6 +350,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 	     }			
 		if (departamentoprovincia!=null && departamentoprovincia.getDepartamento() != null  && departamentoprovincia.getDepartamento().getCode() != null ) {
 			where.append(" AND t3.CODE = ?");
+			params.add(departamentoprovincia.getDepartamento().getCode());
 	     }			
 		if (departamentoprovincia!=null && departamentoprovincia.getDepartamento() != null  && departamentoprovincia.getDepartamento().getDescEs() != null ) {
 			where.append(" AND UPPER(t3.DESC_ES) like ? ESCAPE  '\\'");

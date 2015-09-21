@@ -38,15 +38,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
-import com.ejie.x21a.model.NoraCalle;
-import com.ejie.x21a.model.NoraMunicipio;
-import com.ejie.x21a.model.NoraProvincia;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.LocalidadService;
-import com.ejie.x21a.service.NoraCalleService;
-import com.ejie.x21a.service.NoraMunicipioService;
-import com.ejie.x21a.service.NoraProvinciaService;
 import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.util.ObjectConversionManager;
@@ -68,12 +62,6 @@ public class ExperimentalController {
 		return "maestro_detalle";
 	}
 
-	//z-index
-	@RequestMapping(value = "z-index", method = RequestMethod.GET)
-	public String getZIndex(Model model) {
-		return "z-index";
-	}
-	
 	//multi entidad
 	@RequestMapping(value = "mant_multi_entidad", method = RequestMethod.GET)
 	public String getMultiEntidad(Model model) {
@@ -91,11 +79,7 @@ public class ExperimentalController {
 	public String getClaveCompuestaEdlinea(Model model) {
 		return "mant_clave_compuesta_edlinea";
 	}
-	//Nora
-	@RequestMapping(value = "nora", method = RequestMethod.GET)
-	public String getNora(Model model) {
-		return "nora";
-	}
+	
 	
 	/**
 	 * SERVICIOS NECESARIOS:
@@ -112,14 +96,7 @@ public class ExperimentalController {
 		//@Autowired 
 		//private DepartamentoProvinciaService departamentoProvinciaService;
 		
-		@Autowired 
-		private NoraProvinciaService provinciaService;
 		
-		@Autowired 
-		private NoraMunicipioService municipioService;
-		
-		@Autowired 
-		private NoraCalleService calleService;
 		
 	/**
 	 * MAESTRO-DETALLE (Comarca)
@@ -344,47 +321,5 @@ public class ExperimentalController {
 				localidad = this.localidadService.find(localidad);
 				return localidad;
 		}
-			
-			
-		/**
-		 * Multi_Entidad
-		 */
-		
-		@RequestMapping(value = "comboEnlazado/remoteEnlazadoProvincia", method=RequestMethod.GET)
-		public @ResponseBody List<NoraProvincia> getEnlazadoProvincia() {
-			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-			List<NoraProvincia> findAll = provinciaService.findAll(null, null);
-			return findAll;
-		}
-		
-		@RequestMapping(value = "comboEnlazado/remoteEnlazadoMunicipio", method=RequestMethod.GET)
-		public @ResponseBody List<NoraMunicipio> getEnlazadoMunicipio(
-				@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
-			
-			//Convertir parámetros en entidad para búsqueda
-			NoraMunicipio municipio = new NoraMunicipio();
-			municipio.setProvinciaId(provincia_code.toString());
-			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-			return municipioService.findAll(municipio, null);
-		}
-		
-		
-		/**
-		 * AUTOCOMPLETE REMOTO
-		 */
-	@RequestMapping(value = "autocomplete/calleRemote", method = RequestMethod.GET)
-		public @ResponseBody List<NoraCalle> getCalleRemoteAutocomplete(
-			@RequestParam(value = "q", required = true) String q,
-			@RequestParam(value = "c", required = true) Boolean c,
-			@RequestParam(value = "provinciaId", required = false) String provinciaId,
-			@RequestParam(value = "municipioId", required = false) String municipioId) {
-			// Filtro
-			NoraCalle calle = new NoraCalle();
-			calle.setDsO(q);
-			calle.setMunicipioId(municipioId);
-			calle.setProvinciaId(provinciaId);
-			List<NoraCalle> findAllLike = calleService.findAllLike(calle, null, !c);
-			return findAllLike;
-	}
 			
 }

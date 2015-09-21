@@ -14,16 +14,18 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function () {
+	
 	$("#grid_usuarios").rup_grid({
 		url:"../patrones/usuario",
 		headertitles: true, //tooltip en cabeceras
-		width: 850,
 		pagerName:"pager",
+//		fluidBaseLayer: "#grid",
+		autowidth: true,
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja" ],
 		colModel: [
 			{ name: "id", index: "id" },
 			{ name: "nombre", index: "nombre" },
-			{ name: "apellido1", index: "apellido1" },
+			{ name: "apellido1", index: "apellido1", classes : 'ui-ellipsis' },
 			{ name: "apellido2", index: "apellido2" },
 			{ name: "ejie", index: "ejie",
 				editoptions: {

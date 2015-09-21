@@ -290,9 +290,11 @@ public class ComarcaDaoImpl implements ComarcaDao {
 
 		if (comarca  != null  && comarca.getCode() != null ) {
 			where.append(" AND t1.CODE = ?");
+			params.add(comarca.getCode());
 	     }			
 		if (comarca!=null && comarca.getProvincia() != null  && comarca.getProvincia().getCode() != null ) {
 			where.append(" AND t2.CODE = ?");
+			params.add(comarca.getProvincia().getCode());
 	     }			
 		if (comarca!=null && comarca.getProvincia() != null  && comarca.getProvincia().getDescEs() != null ) {
 			where.append(" AND UPPER(t2.DESC_ES) like ? ESCAPE  '\\'");

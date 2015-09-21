@@ -115,6 +115,27 @@ jQuery(document).ready(function(){
 		showButtonPanel: true
 	});
 	
+	$('#dias').rup_combo({
+		source : ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+		ordered: false,
+		width: 320,
+		multiselect: true,
+		summaryInline : true
+	});
+	
+	
+	$('#cliente').rup_combo({
+		sourceGroup : [ 
+			{"Invierno" : ["Enero", "Febrero", "Marzo"]},
+			{"Primavera" : ["Abril", "Mayo", "Junio"]},
+			{"Verano" : [ "Julio", "Agosto", "Septiembre"]},
+			{"Otoño" : [ "Octubre", "Noviembre", "Diciembre"]}
+		],
+		width: 400,
+		height: 300,
+		multiselect: true
+	});
+	
 	$("#meses").rup_accordion({
 		animated: "bounceslide",
 		active: false,

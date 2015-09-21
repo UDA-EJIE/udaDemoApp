@@ -1509,9 +1509,9 @@ $.fn.jqGrid = function( pin ) {
 					for(gin =0, lengrp = grpview.groupField.length; gin< lengrp; gin++) {
 						if( this.name == grpview.groupField[gin]) {
 							var grindex = this.name;
-							if (typeof this.index != 'undefined') {
-								grindex = this.index;
-							}
+//							if (typeof this.index != 'undefined') {
+//								grindex = this.index;
+//							}
 							grtypes[gin] = cmtypes[grindex];
 							grindexes[gin]= grindex;
 						}

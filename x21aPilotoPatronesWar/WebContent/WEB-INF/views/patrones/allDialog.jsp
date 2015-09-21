@@ -42,7 +42,7 @@
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="dialog_ejie_search" class="formulario_linea_label">ejie:</label>
-							<div style="float: left;"><select id="dialog_ejie_search" class="rup-combo" ></select></div>
+							<div style="float: left;"><select id="dialog_ejie_search" name="dialog_ejie" class="rup-combo" ></select></div>
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="dialog_fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
@@ -51,6 +51,10 @@
 						<div class="formulario_linea_izda_float" style="clear: left;">
 							<label for="dialog_fechaBaja_search" class="formulario_linea_label">fechaBaja:</label>
 							<input type="text" name="fechaBaja" class="formulario_linea_input" id="dialog_fechaBaja_search" />
+						</div>
+						<div class="formulario_linea_izda_float">
+							<label for="dialog_multicombo_search" class="formulario_linea_label">multicombo:</label>
+							<select id="dialog_multicombo_search" name="dialog_multicombo" class="rup-combo" ></select>
 						</div>
 					</div>
 				</fieldset>
@@ -80,8 +84,11 @@
 		<div style="float: left; margin-left: 2em;"><select id="comboDialogComarca" class="rup-combo"></select></div>
 	</div><br>
 	
+	<!-- Multicombo -->
+	<select id="multicomboGruposRemotoDialog" class="rup-combo" ></select><br><br>
+	
 	<!-- Autocomplete / Tooltip -->
-	<label for ="autocompleteDialog">Autocomplete (lenguaje):</label><input id="autocompleteDialog" name="autocompleteDialog" /><br><br>
+	<label for ="autocompleteDialog">Autocomplete (lenguaje):</label><input id="autocompleteDialog" name="autocompleteDialog" />
 	<label for ="tooltipDialog">Tooltip: </label><input id="tooltipDialog" name="tooltipDialog" title="Introduzca su nombre."/><br><br>
 	
 	<!-- Pestañas -->

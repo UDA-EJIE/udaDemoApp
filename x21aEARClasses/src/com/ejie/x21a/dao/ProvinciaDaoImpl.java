@@ -265,6 +265,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 
 		if (provincia  != null  && provincia.getCode() != null ) {
 			where.append(" AND t1.CODE = ?");
+			params.add(provincia.getCode());
 	     }			
 		if (provincia  != null  && provincia.getDescEs() != null ) {
 			where.append(" AND UPPER(t1.DESC_ES) like ? ESCAPE  '\\'");

@@ -40,7 +40,7 @@
 		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="menuMixto" />
 			
-		<div id="contentMV" style="margin-left: 20em;">
+		<div id="contentMV">
 			<!-- Migas de pan -->
 			<tiles:insertAttribute name="breadCrumb" /><br/>
 			

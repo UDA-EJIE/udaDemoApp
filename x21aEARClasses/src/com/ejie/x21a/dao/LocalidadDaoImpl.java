@@ -295,12 +295,15 @@ public class LocalidadDaoImpl implements LocalidadDao {
 
 		if (localidad  != null  && localidad.getCode() != null ) {
 			where.append(" AND t1.CODE = ?");
+			params.add(localidad.getCode());
 	     }			
 		if (localidad!=null && localidad.getComarca() != null  && localidad.getComarca().getCode() != null ) {
 			where.append(" AND t2.CODE = ?");
+			params.add(localidad.getComarca().getCode());
 	     }			
 		if (localidad!=null && localidad.getComarca() != null && localidad.getComarca().getProvincia() != null && localidad.getComarca().getProvincia().getCode() != null ) {
 			where.append(" AND t2.CODE_PROVINCIA = ?");
+			params.add(localidad.getComarca().getProvincia().getCode());
 	     }			
 		if (localidad!=null && localidad.getComarca() != null  && localidad.getComarca().getDescEs() != null ) {
 			where.append(" AND UPPER(t2.DESC_ES) like ? ESCAPE  '\\'");

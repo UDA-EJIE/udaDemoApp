@@ -23,7 +23,13 @@ jQuery(document).ready(function(){
 	}
 	
 	//ThemeRoller
-	jQuery('#themeroller').click(jQuery.rup.themeRoller);
+	jQuery('#themeroller').themeswitcher({
+	     imgpath: jQuery.rup.STATICS + "/themeswitcher/images/"
+	});
+	jQuery("#borrar_themeroller").show().click(function(){
+		$.rup_utils.setCookie("jquery-ui-theme", "", { path: '/' });
+		window.location.reload();
+	});
 	
 	//rastro de migas
 	jQuery("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
@@ -40,7 +46,7 @@ jQuery(document).ready(function(){
 				"comboSimple" : {"i18nCaption":"comboSimple" },
                 "comboEnlazadoSimple" : { "i18nCaption":"comboEnlazadoSimple" },
                 "comboEnlazadoMultiple" : { "i18nCaption":"comboEnlazadoMulti" },
-//                "multicombo" : { "i18nCaption":"multicombo" },
+                "multicombo" : { "i18nCaption":"multicombo" },
 				"dialog" : { "i18nCaption" : "dialog" },
 				"date" : { "i18nCaption" : "date" },
 				"feedback" : { "i18nCaption" : "feedback" },
@@ -62,6 +68,7 @@ jQuery(document).ready(function(){
 				"wizard_includeFile" : {"i18nCaption":"wizardB" },
 				"wizard_jspInclude" : {"i18nCaption":"wizardC" },
 				"wizard_jstlImport" : {"i18nCaption":"wizardD" },
+				"wizard_dinamico" : {"i18nCaption":"wizardE" },
 				//Submenu
 				"subLevel":[
 				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
@@ -71,7 +78,7 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple", "newWindow": true },
                   	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
                   	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
-//                  	{"i18nCaption":"multicombo", "url": "/x21aPilotoPatronesWar/patrones/multicombo" },
+                  	{"i18nCaption":"multicombo", "url": "/x21aPilotoPatronesWar/patrones/multicombo" },
                   	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
                   	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
                   	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
@@ -92,7 +99,8 @@ jQuery(document).ready(function(){
 	                {"i18nCaption":"wizardA", "url": "/x21aPilotoPatronesWar/patrones/wizard" },
 	                {"i18nCaption":"wizardB", "url": "/x21aPilotoPatronesWar/patrones/wizard_includeFile" },
 	                {"i18nCaption":"wizardC", "url": "/x21aPilotoPatronesWar/patrones/wizard_jspInclude" },
-	                {"i18nCaption":"wizardD", "url": "/x21aPilotoPatronesWar/patrones/wizard_jstlImport" }
+	                {"i18nCaption":"wizardD", "url": "/x21aPilotoPatronesWar/patrones/wizard_jstlImport" },
+	                {"i18nCaption":"wizardE", "url": "/x21aPilotoPatronesWar/patrones/wizard_dinamico" }
 				]
 			},
 			"experimental" : {
@@ -100,15 +108,29 @@ jQuery(document).ready(function(){
 				"i18nCaption" : "experimental",
 				//Elementos (url)
 				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" },
-				"nora" : {"i18nCaption" : "nora" },
+				"mant_multi_entidad": { "i18nCaption" : "mant_multi_entidad" },
+				"mant_clave_compuesta_multi" : { "i18nCaption" : "mant_clave_compuesta_multi" },
+				"mant_clave_compuesta_edlinea" : { "i18nCaption" : "mant_clave_compuesta_edlinea" },
 				//Submenu
 				"subLevel":[
 					{"i18nCaption":"maestro_detalle", "url": "/x21aPilotoPatronesWar/experimental/maestro_detalle" },
-					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/experimental/z-index" },
 					{"i18nCaption":"mant_multi_entidad", "url": "/x21aPilotoPatronesWar/experimental/mant_multi_entidad" },
-					{"i18nCaption":"mant_clave_compuesta", "url": "/x21aPilotoPatronesWar/experimental/mant_clave_compuesta" },
-					{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
-					{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
+					{"i18nCaption":"mant_clave_compuesta_multi", "url": "/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_multi" },
+					{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_edlinea" }
+				]
+			},
+			"integracion" : {
+				//Literal
+				"i18nCaption" : "integracion",
+				//Elementos (url)
+				"z-index" : {"i18nCaption" : "z-index" },
+				"nora" : {"i18nCaption" : "nora" },
+				"tiny" : {"i18nCaption" : "tiny" },
+				//Submenu
+				"subLevel":[
+					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/integracion/z-index" },
+					{"i18nCaption":"nora", "url": "/x21aPilotoPatronesWar/integracion/nora" },
+					{"i18nCaption":"tiny", "url": "/x21aPilotoPatronesWar/integracion/tiny" }
 				]
 			},
 			"uda" : {
@@ -165,7 +187,8 @@ jQuery(document).ready(function(){
 							 	{"i18nCaption":"wizardA", "url": "patrones/wizard" },
 							 	{"i18nCaption":"wizardB", "url": "patrones/wizard_includeFile" },
 							 	{"i18nCaption":"wizardC", "url": "patrones/wizard_jspInclude" },
-							 	{"i18nCaption":"wizardD", "url": "patrones/wizard_jstlImport" }
+							 	{"i18nCaption":"wizardD", "url": "patrones/wizard_jstlImport" },
+							 	{"i18nCaption":"wizardE", "url": "patrones/wizard_dinamico" }
 							]},
 							{"divider":true},
 							{"divider":true, "i18nCaption":"titulo-inser"},
@@ -174,7 +197,7 @@ jQuery(document).ready(function(){
 					      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple", "newWindow": true },
 					      	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
 					      	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
-//					      	,{"i18nCaption":"multicombo", "url": "patrones/multicombo" }
+					      	,{"i18nCaption":"multicombo", "url": "patrones/multicombo" }
 					  	]},
 							{"i18nCaption":"date", "url": "patrones/date" },
 							{"i18nCaption":"time", "url": "patrones/time" },
@@ -183,13 +206,16 @@ jQuery(document).ready(function(){
 					]},
 					{"i18nCaption":"experimental", "submenu":[
 					    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
-					    {"i18nCaption":"z-index", "url": "experimental/z-index" },
 					    {"i18nCaption":"mant_multi_entidad", "url": "experimental/mant_multi_entidad" },
 						{"i18nCaption":"mant_clave_compuesta", "submenu":[
 					     	{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
 					      	{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
 					    ]},
-						{"i18nCaption":"nora", "url": "experimental/nora"}
+					]},
+					{"i18nCaption":"integracion", "submenu":[
+					    {"i18nCaption":"z-index", "url": "integracion/z-index" },
+						{"i18nCaption":"nora", "url": "integracion/nora"},
+						{"i18nCaption":"tiny", "url": "integracion/tiny"}
 					]},
 					{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
 			],
@@ -199,6 +225,9 @@ jQuery(document).ready(function(){
 	};
 	
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
+
+	//pie
+	$(".footer [title]").rup_tooltip();
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){

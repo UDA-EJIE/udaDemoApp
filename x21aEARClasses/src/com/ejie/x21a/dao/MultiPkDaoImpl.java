@@ -254,9 +254,11 @@ public class MultiPkDaoImpl implements MultiPkDao {
 
 		if (multipk  != null  && multipk.getIda() != null ) {
 			where.append(" AND t1.IDA = ?");
+			params.add(multipk.getIda());
 	     }			
 		if (multipk  != null  && multipk.getIdb() != null ) {
 			where.append(" AND t1.IDB = ?");
+			params.add(multipk.getIdb());
 	     }			
 		if (multipk  != null  && multipk.getNombre() != null ) {
 			where.append(" AND UPPER(t1.NOMBRE) like ? ESCAPE  '\\'");

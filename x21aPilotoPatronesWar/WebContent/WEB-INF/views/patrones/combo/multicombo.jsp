@@ -16,22 +16,30 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2><spring:message code="multicombo" /></h2>
 
-<p>Multicombo local</p>
-<select multiple="multiple">
-<option value="option1">Option 1</option>
-<option value="option2">Option 2</option>
-<option value="option3">Option 3</option>
-<option value="option4">Option 4</option>
-</select>
-<br><br> 
-
-<p>Multicombo local (preselección)</p>
-<select multiple="multiple">
-<option value="option1">Option 1</option>
-<option value="option2" selected="selected">Option 2</option>
-<option value="option3" selected="selected">Option 3</option>
-<option value="option4">Option 4</option>
-</select>
+<label for="multicombo">Multicombo local</label><br>
+<select id="multicombo"></select>
 <br><br>
 
+<label for="multicomboRemoto">MultiCombo remoto</label><br>
+<select id="multicomboRemoto"></select>
+<br><br>
 
+<label for="multicomboGrupos">MultiCombo con 'optgroups'</label><br>
+<select id="multicomboGrupos"></select>
+<br><br>
+
+<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label><br>
+<select id="multicomboGruposRemoto"></select>
+<br><br>
+
+<label for="multicomboInput">MultiCombo sobre <strong>Input</strong></label><br>
+<input type="text" name="multicomboInput" id="multicomboInput" value="coldfusion##python" />
+<br><br>
+
+<label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label><br>
+<select id="multicomboLoadFromSelect">
+	<option value="1">Alava</option>
+	<option value="3">Gipuzcoa</option>
+	<option value="2">Vizcaya</option>
+</select>
+<br><br>

@@ -27,7 +27,7 @@ a img,:link img,:visited img,form,fieldset {border:none}
 
 /* Hx */
 h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
-h2 { font-size:1.8em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
+h2 { font-size:1.8em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%;}
 h3 { font-size:1.4em; color:#555555; display:block; margin:1.5em 0 0.5em 0; padding:0; }
 .container { font-size:1.8em; color:#000000; display:block; margin:0; padding:0; }
 
@@ -46,6 +46,13 @@ input:focus, textarea:focus {
 }
 
 /* GENERALES */
+
+#contentMV{
+	float: right;
+	width: 79%;
+	margin-bottom: 5em;
+}
+
 .contenedor { 
 	width:90%; 
 	margin:0 auto; 
@@ -238,10 +245,14 @@ a.ui-selectmenu { text-decoration: none; color: black }
 }
 
 /** Cabecera **/
-.language_contact {
+.languageHelpContact {
 	float: right;
 	cursor: pointer;
 }
+.languageHelpContact a {
+    color: #000000;
+}
+
 
 /* ICONOS MENU */
 .accordion_icon{
@@ -315,11 +326,17 @@ a.ui-selectmenu { text-decoration: none; color: black }
 .experimental_icon{
 	background-image: url("../images/icons/experimental.gif") !important;
 }
+.integracion_icon{
+	background-image: url("../images/icons/integracion.png") !important;
+}
 .z-index_icon{
 	background-image: url("../images/icons/z-index.png") !important;
 }
 .nora_icon{
 	background-image: url("../images/icons/nora.png") !important;
+}
+.tiny_icon{
+	background-image: url("../images/icons/tiny.png") !important;
 }
 .uda_icon{
 	background-image: url("../images/icons/uda.gif") !important;
@@ -335,3 +352,8 @@ a.ui-selectmenu {
 	color: black !important;	
 }
 a.ui-dialog-title { color: black !important }
+
+
+.tiny_links a {
+	cursor: pointer;
+}

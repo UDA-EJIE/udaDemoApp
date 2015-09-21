@@ -21,6 +21,12 @@
 	<label for="hora_entrada">Horario desde</label><label for="hora_entrada" id="hora-mask"></label>: <input id="hora_entrada" name="hora_entrada" type="text"/>
 	<label for="hora_entrada">hasta: </label><input id="hora_salida" name="hora_salida" type="text"/>
 	<br/><br/>
+	<label for="dias">Días de trabajo</label>
+	<select id="dias"></select>
+	<br/><br/>
+	<label for="cliente">Meses de trabajo en cliente</label>
+	<select id="cliente"></select>
+	<br/><br/>
 	<div id="meses">
 		<h1><a>Jornada reducida</a></h1>
 		<div>

@@ -36,13 +36,13 @@
 		<!-- Idioma -->
 		<tiles:insertAttribute name="language" /><br/>
 		
+		<!-- Migas de pan -->
+		<tiles:insertAttribute name="breadCrumb" /><br/>
+		
 		<!-- Menu -->
 		<tiles:insertAttribute name="menu" />
 			
-		<div id="contentMV" style="margin-left: 20em;">
-			<!-- Migas de pan -->
-			<tiles:insertAttribute name="breadCrumb" /><br/>
-			
+		<div id="contentMV">
 			<!-- Contenidos -->
 			<tiles:insertAttribute name="content" />
 		</div>

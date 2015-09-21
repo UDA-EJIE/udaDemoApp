@@ -235,6 +235,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_jstlImport.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp"/>									
 	</definition>
+	<definition name="wizard_dinamico" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_dinamico.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard_dinamico-includes.jsp"/>					
+	</definition>
+	<definition name="wizard_dinamico_content" template="/WEB-INF/views/patrones/wizard/wizard_dinamico_content.jsp"/>							
 	
 	<definition name="all" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/all.jsp"/>		
@@ -246,10 +251,6 @@
 	<definition name="maestro_detalle" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/experimental/maestro_detalle.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp"/>					
-	</definition>
-	<definition name="z-index" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/experimental/z-index.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/experimental/z-index-includes.jsp"/>					
 	</definition>
 	<definition name="mant_multi_entidad" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/experimental/mant_multi_entidad.jsp"/>		
@@ -263,17 +264,23 @@
         <put-attribute name="content" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea-includes.jsp"/>
     </definition>
-    <definition extends="templateNora" name="nora">
-        <put-attribute name="content" value="/WEB-INF/views/experimental/nora.jsp"/>
-		<put-attribute name="includes" value="/WEB-INF/views/experimental/mantnora-includes.jsp"/>	
-		<put-attribute name="includesNora" value="/WEB-INF/views/experimental/nora-includes.jsp"/>				
-    </definition>
-    <definition extends="template" name="jackson">
+    <definition name="jackson" extends="template" >
         <put-attribute name="content" value="/WEB-INF/views/experimental/jackson.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/experimental/jackson-includes.jsp"/>
     </definition>
-    <definition extends="template" name="perfilusuario">
-        <put-attribute name="content" value="/WEB-INF/views/perfilusuario/perfilusuario.jsp"/>
-        <put-attribute name="includes" value="/WEB-INF/views/perfilusuario/perfilusuario-includes.jsp"/>
+    
+    <!-- Integracion -->
+    <definition name="z-index" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/integracion/z-index.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/integracion/z-index-includes.jsp"/>					
+	</definition>
+	 <definition name="nora" extends="templateNora" >
+        <put-attribute name="content" value="/WEB-INF/views/integracion/nora.jsp"/>
+		<put-attribute name="includes" value="/WEB-INF/views/integracion/mantnora-includes.jsp"/>	
+		<put-attribute name="includesNora" value="/WEB-INF/views/integracion/nora-includes.jsp"/>				
+    </definition>
+    <definition name="tiny" extends="template" >
+        <put-attribute name="content" value="/WEB-INF/views/integracion/tiny.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/integracion/tiny-includes.jsp"/>
     </definition>
 </tiles-definitions>

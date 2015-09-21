@@ -21,7 +21,7 @@ jQuery(function($){
 	$("#menu-horizontal").rup_menu({
 		display: 'horizontal',
 		menu: [
-		       	{"i18nCaption":"", "url": "" },
+		       	{"i18nCaption":"inicio", "url": "" },
 				{"i18nCaption":"patrones", "submenu":[
 				    {"i18nCaption":"all", "url": "patrones/all" },  
 				    {"i18nCaption":"autocomplete", "url": "patrones/autocomplete" },
@@ -50,28 +50,18 @@ jQuery(function($){
 	
 	$("#breadCrumb").rup_breadCrumb({
 		breadCrumb: {
-			"patrones" : {
+			"integracion" : {
 				//Literal
-				"i18nCaption" : "patrones",
+				"i18nCaption" : "integracion",
+				//Elementos (url)
+				"z-index" : {"i18nCaption" : "z-index" },
+				"nora" : {"i18nCaption" : "nora" },
+				"tiny" : {"i18nCaption" : "tiny" },
 				//Submenu
 				"subLevel":[
-				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
-				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
-                    {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
-                  	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple" },
-                  	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
-                  	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
-                  	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
-                  	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
-                  	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
-                  	{"i18nCaption":"time", "url": "/x21aPilotoPatronesWar/patrones/time" },
-                  	{"i18nCaption":"message", "url": "/x21aPilotoPatronesWar/patrones/message" },
-                   	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
-                  	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
-                  	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
-                    {"i18nCaption":"tabs", "url": "/x21aPilotoPatronesWar/patrones/tabs" },
-					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" }
+					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/integracion/z-index" },
+					{"i18nCaption":"nora", "url": "/x21aPilotoPatronesWar/integracion/nora" },
+					{"i18nCaption":"tiny", "url": "/x21aPilotoPatronesWar/integracion/tiny" }
 				]
 			}
 		}
@@ -81,6 +71,7 @@ jQuery(function($){
 	
 	$("#menu-vertical").rup_menu({
 		display: 'vertical',
+		verticalWidth: '13em',
 		menu: [
 				{"i18nCaption":"patrones", "submenu":[
 				    {"i18nCaption":"all", "url": "patrones/all" },  
@@ -110,35 +101,25 @@ jQuery(function($){
 	
 	$("#breadCrumb_2").rup_breadCrumb({
 		breadCrumb: {
-			"patrones" : {
+			"integracion" : {
 				//Literal
-				"i18nCaption" : "patrones",
+				"i18nCaption" : "integracion",
+				//Elementos (url)
+				"z-index" : {"i18nCaption" : "z-index" },
+				"nora" : {"i18nCaption" : "nora" },
+				"tiny" : {"i18nCaption" : "tiny" },
 				//Submenu
 				"subLevel":[
-				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
-				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
-                    {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
-                  	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple" },
-                  	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
-                  	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
-                  	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
-                  	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
-                  	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
-                  	{"i18nCaption":"time", "url": "/x21aPilotoPatronesWar/patrones/time" },
-                  	{"i18nCaption":"message", "url": "/x21aPilotoPatronesWar/patrones/message" },
-                   	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
-                  	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
-                  	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
-                    {"i18nCaption":"tabs", "url": "/x21aPilotoPatronesWar/patrones/tabs" },
-					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" }
+					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/integracion/z-index" },
+					{"i18nCaption":"nora", "url": "/x21aPilotoPatronesWar/integracion/nora" },
+					{"i18nCaption":"tiny", "url": "/x21aPilotoPatronesWar/integracion/tiny" }
 				]
 			}
 		}
 	});
 	//Elimira lo que no es el menú
-	$("#breadCrumb_2 .rup-breadCrumbs_span").remove();
-	$("#breadCrumb_2 li:nth-child(1)").remove();
+//	$("#breadCrumb_2 .rup-breadCrumbs_span").remove();
+//	$("#breadCrumb_2 li:nth-child(1)").remove();
 	
 	$("#date").rup_date({
 		changeMonth : false,

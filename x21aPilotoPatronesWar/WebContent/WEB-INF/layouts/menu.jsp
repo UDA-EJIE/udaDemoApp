@@ -179,6 +179,11 @@
 								<spring:message code="wizardD" htmlEscape="true"/>
 							</a>
 						</li>
+						<li>
+							<a	href="/x21aPilotoPatronesWar/patrones/wizard_dinamico">
+								<spring:message code="wizardE"/>
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li class="ui-widget-content ui-menu-divider"></li>
@@ -210,11 +215,11 @@
 								<spring:message code="comboEnlazadoMulti" />
 							</a>
 						</li>
-<!-- 						<li> -->
-<!-- 							<a href="/x21aPilotoPatronesWar/patrones/multicombo"> -->
-<%-- 								<spring:message code="multicombo" /> --%>
-<!-- 							</a> -->
-<!-- 						</li> -->
+						<li>
+							<a href="/x21aPilotoPatronesWar/patrones/multicombo">
+								<spring:message code="multicombo" />
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li>
@@ -262,12 +267,6 @@
 					</a>
 				</li>
 				<li>
-					<a	href="/x21aPilotoPatronesWar/experimental/z-index">
-						<spring:message code="z-index" />
-						<span class="ui-icon z-index_icon"></span>
-					</a>
-				</li>
-				<li>
 					<a href="/x21aPilotoPatronesWar/experimental/mant_multi_entidad">
 						<spring:message code="mant_multi_entidad" />
 					</a>
@@ -289,10 +288,30 @@
 						</li>
 					</ul>
 				</li>
+			</ul>
+		</li>
+		<li>
+			<a>
+				<spring:message code="integracion" />
+				<span class="ui-icon integracion_icon"></span>
+			</a>
+			<ul>
 				<li>
-					<a	href="/x21aPilotoPatronesWar/experimental/nora">
+					<a	href="/x21aPilotoPatronesWar/integracion/z-index">
+						<spring:message code="z-index" />
+						<span class="ui-icon z-index_icon"></span>
+					</a>
+				</li>
+				<li>
+					<a	href="/x21aPilotoPatronesWar/integracion/nora">
 						<spring:message code="nora" />
 						<span class="ui-icon nora_icon"></span>
+					</a>
+				</li>
+				<li>
+					<a	href="/x21aPilotoPatronesWar/integracion/tiny">
+						<spring:message code="tiny" />
+						<span class="ui-icon tiny_icon"></span>
 					</a>
 				</li>
 			</ul>

@@ -38,3 +38,15 @@
 <label for="comboImgs">Combo (no i18n) con imagenes</label>
 <select id="comboImgs" class="rup-combo"><option>&nbsp;</option></select>
 <br><br>
+
+<label for="comboInput">Combo sobre <strong>Input</strong></label>
+<input type="text" name="comboInput" id="comboInput" value="python" />
+<br><br>
+
+<label for="comboLoadFromSelect">Combo carga inicial desde <strong>HTML</strong></label>
+<select id="comboLoadFromSelect">
+	<option value="1">Alava</option>
+	<option value="3">Gipuzcoa</option>
+	<option value="2">Vizcaya</option>
+</select>
+<br><br>

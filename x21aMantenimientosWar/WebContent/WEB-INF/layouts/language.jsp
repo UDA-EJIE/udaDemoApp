@@ -13,11 +13,17 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <div id="x21aMantenimientosWar_language" class="rup-language_root">
-	<div class="language_contact">
-		<a id="header_contact" href="mailto:uda@ejie.es">
-			<span class="ui-icon mail_icon rup_icon"></span>
-			e-mail<span class='ui-icon ui-icon-extlink rup_external_link'></span>
+	<div class="languageHelpContact">
+		<a target="_blank" title='<spring:message code="language.ayuda" />' href="https://elkarlan.ejgv.euskadi.net/webguneak/jakingune/RecursosDidacticos/Guias/Gaveta/Paginas%20Wiki/Inicio.aspx" id="header_ayuda">
+			<spring:message code="language.ayuda" />
 		</a>
+		<span class="ui-icon ui-icon-extlink rup_external_link">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		&nbsp;&nbsp;&nbsp;
+		<a target="_blank" title='<spring:message code="language.contacto" />' href="mailto:uda@uda.es">
+			<spring:message code="language.contacto" />	
+		</a>
+		<span class="ui-icon ui-icon-extlink rup_external_link">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	</div>
 </div>

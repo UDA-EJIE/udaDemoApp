@@ -322,9 +322,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	     }			
 		if (usuario  != null  && usuario.getFechaAlta() != null ) {
 			where.append(" AND t1.FECHA_ALTA = ?");
+			params.add(usuario.getFechaAlta());
 	     }			
 		if (usuario  != null  && usuario.getFechaBaja() != null ) {
 			where.append(" AND t1.FECHA_BAJA = ?");
+			params.add(usuario.getFechaBaja());
 	     }			
 
 		Map<String,Object> mapWhere = new HashMap<String, Object>();

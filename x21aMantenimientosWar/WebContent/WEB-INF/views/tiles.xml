@@ -20,19 +20,19 @@
 	<definition name="templateLogin" template="/WEB-INF/layouts/templateLogin.jsp">	
 		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
 		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
-		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
 		<put-attribute name="includes" value=""/>				
 	</definition>
 	
 	<definition name="ajaxMaintTemplate" template="/WEB-INF/layouts/ajaxMaintTemplate.jsp">	
-		<put-attribute name="maint" value="" type="string" />
-		<put-attribute name="maintName" value="" type="string" />				
+		<put-attribute name="maint" type="string" value=""/>
+		<put-attribute name="maintName" type="string" value=""/>				
 	</definition>
 	
 	<definition name="ajaxTemplate" template="/WEB-INF/layouts/ajaxTemplate.jsp">	
-		<put-attribute name="js" value="" type="string" />				
+		<put-attribute name="js" type="string" value=""/>				
 	</definition>
 	
 	<definition name="templateError" template="/WEB-INF/layouts/templateError.jsp">	
@@ -45,15 +45,15 @@
   	<!--          PANTALLAS            -->
   	<!-- ***************************** -->
   	
-	<definition name="error" extends="templateError" >
+	<definition extends="templateError" name="error">
 		<put-attribute name="content" value="/WEB-INF/views/error.jsp"/>	
 	</definition>
 	
-	<definition name="accessDenied" extends="templateError" >
+	<definition extends="templateError" name="accessDenied">
 		<put-attribute name="content" value="/WEB-INF/views/accessDenied.jsp"/>
 	</definition>
 	
-	<definition name="mockLoginPage" extends="templateLogin">
+	<definition extends="templateLogin" name="mockLoginPage">
         <put-attribute name="content" value="/WEB-INF/views/mockLogin/mockLoginPage.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/mockLogin/mockLoginPage-includes.jsp"/>
     </definition>
@@ -62,40 +62,40 @@
 	
 	<!-- cambio de la pagina de inicio (welcome) -->
 	<!-- definition name="welcome" template="/WEB-INF/views/welcome.jsp"/>-->
-	<definition name="welcome" extends="template" >
+	<definition extends="template" name="welcome">
         <put-attribute name="content" value="/WEB-INF/views/welcome.jsp"/>
     </definition>
 
     <definition extends="ajaxMaintTemplate" name="simpleTable1">
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
-        <put-attribute name="maint" value="ajaxSimple1.js" type="string" /> 
-        <put-attribute name="maintName" value="GRID_ajax_simple1" type="string" />
-        <put-attribute name="titlePage" value="simple" type="string" />
+        <put-attribute name="maint" type="string" value="ajaxSimple1.js"/> 
+        <put-attribute name="maintName" type="string" value="GRID_ajax_simple1"/>
+        <put-attribute name="titlePage" type="string" value="simple"/>
     </definition>
     <definition extends="ajaxMaintTemplate" name="simpleTable2">
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
-        <put-attribute name="maint" value="ajaxSimple2.js" type="string" />
-        <put-attribute name="maintName" value="GRID_ajax_simple2" type="string" /> 
-        <put-attribute name="titlePage" value="simple" type="string" />
+        <put-attribute name="maint" type="string" value="ajaxSimple2.js"/>
+        <put-attribute name="maintName" type="string" value="GRID_ajax_simple2"/> 
+        <put-attribute name="titlePage" type="string" value="simple"/>
     </definition>
     <definition extends="ajaxMaintTemplate" name="simpleTable3">
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
-        <put-attribute name="maint" value="ajaxSimple3.js" type="string" /> 
-        <put-attribute name="maintName" value="GRID_ajax_simple3" type="string" />
-        <put-attribute name="titlePage" value="simple" type="string" />
+        <put-attribute name="maint" type="string" value="ajaxSimple3.js"/> 
+        <put-attribute name="maintName" type="string" value="GRID_ajax_simple3"/>
+        <put-attribute name="titlePage" type="string" value="simple"/>
     </definition>
 	<definition extends="ajaxMaintTemplate" name="editMaint1">
-        <put-attribute name="maint" value="ajaxEditMaint1.js" type="string" />
-        <put-attribute name="maintName" value="GRID_ajax_edit1" type="string" />
-        <put-attribute name="titlePage" value="edlinea" type="string" /> 
+        <put-attribute name="maint" type="string" value="ajaxEditMaint1.js"/>
+        <put-attribute name="maintName" type="string" value="GRID_ajax_edit1"/>
+        <put-attribute name="titlePage" type="string" value="edlinea"/> 
     </definition>
     <definition extends="ajaxMaintTemplate" name="multiMaint1">
-        <put-attribute name="maint" value="ajaxMultiMaint1.js" type="string" /> 
-        <put-attribute name="maintName" value="GRID_ajax_multi1" type="string" />
-        <put-attribute name="titlePage" value="multi" type="string" />
+        <put-attribute name="maint" type="string" value="ajaxMultiMaint1.js"/> 
+        <put-attribute name="maintName" type="string" value="GRID_ajax_multi1"/>
+        <put-attribute name="titlePage" type="string" value="multi"/>
     </definition>    
 	<definition extends="template" name="simple">
         <put-attribute name="content" value="/WEB-INF/views/simple/simple.jsp"/>
@@ -117,4 +117,27 @@
         <put-attribute name="content" value="/WEB-INF/views/alumno/alumno.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/alumno/alumno-includes.jsp"/>
     </definition>
+    
+    <!-- UsuarioJerarquia -->
+	<definition extends="template" name="usuariojerarquia">
+        <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="usuariojerarquiagroup">
+        <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquiagroup-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="usuariojerarquiamulti">
+        <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquiamulti-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="usuariojerarquiamultigroup">
+        <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquiamultigroup-includes.jsp"/>
+    </definition>
+     <definition extends="template" name="usuariojerarquiacol">
+        <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquiacol-includes.jsp"/>
+    </definition>
+    <!---->
 </tiles-definitions>

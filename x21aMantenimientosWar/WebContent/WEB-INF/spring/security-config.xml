@@ -43,6 +43,37 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 						</list>
 					</entry>
 				</map>
+				<map>
+					<entry key="userName" value="udaEmpresa"/>
+					<entry key="name" value="Uda"/>
+					<entry key="surname" value="Empresa"/>
+					<entry key="fullName" value="Uda Empresa"/>
+					<entry key="nif" value="11111111H"/>
+					<entry key="policy" value="1.3.6.1.4.1.14777.102.7"/>
+					<entry key="position" value="03"/>
+					<entry key="isCertificate" value="si"/>
+					<entry key="roles">
+						<list>
+							<value>USER_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+					<entry key="subjectCert">
+						<map>
+							<entry key="OID.1.3.6.1.4.1.18838.1.1" value="11111111H"/>
+							<entry key="SERIALNUMBER" value="A01017169"/>
+							<entry key="surname" value="Uda"/>
+							<entry key="GIVENNAME" value="Empresa"/>
+							<entry key="CN" value="Uda Empresa"/>
+							<entry key="DNQ" value="-cif A06617169"/>
+							<entry key="OU" value="Condiciones de uso en www.izenpe.com nola erabili jakiteko"/>
+							<entry key="OU" value="Entitatearen ziurtagiria - Certificado de entidad"/>
+							<entry key="OU" value="Ziurtagiri onartua - Certificado reconocido"/>
+							<entry key="O" value="Uda Empresa"/>
+							<entry key="C" value="ES"/>
+						</map>
+					</entry>
+				</map>
 			</list>
 		</property>
 		<property name="userChangeUrl" value="http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/"/>

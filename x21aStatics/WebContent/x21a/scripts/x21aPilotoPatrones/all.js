@@ -26,7 +26,7 @@ jQuery(function($){
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
 		colModel: [
 			{ id:"grid_id", name: "id", label: "id", index: "id", width: "75", editable: true },
-			{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true },
+			{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true, classes: "context-menu_cur" },
 			{ name: "apellido1", label: "apellido1", index: "apellido1", width: "150", editable: true },
 			{ name: "apellido2", label: "apellido2", index: "apellido2", width: "150", editable: true },
 			{ name: "ejie", index: "ejie", editable: true,
@@ -47,7 +47,63 @@ jQuery(function($){
 			}
         ]
 		,pagerInline: false
+		,loadComplete: function() {
+            $("tr.jqgrow", $("#"+$("tr.jqgrow").parents("table").attr("id"))).contextMenu('contextMenu', {
+                bindings: {
+                    'menu_1': function(row, cell) { alert('menu_1'); },
+                    'menu_2': function(row, cell) { alert('menu_2'); },
+                    'menu_3': function(row, cell) { 
+                    	//Gestión opción deshabilitada
+                    	if ($('#menu_3').attr("disabled") === "disabled"){
+                    		$("#jqContextMenu").show(); //Siempre es el mismo ID
+                    		return false;
+                    	}
+                    	//Acción por defecto
+                    	alert('menu_3'); }
+                },
+                onContextMenu: function(event) {
+                	//Gestionar click sobre la fila que se muestra el menú	
+                	var gridID = $(event.target).parents("table").attr("id");
+            			$row = $(event.currentTarget),
+            			rowId = $row.attr("id"),
+                		rowData = $("#"+gridID).jqGrid("getRowData", rowId),
+            			tdData = $(event.target).text(),
+            			//control multiselect
+            			checkbox = $row.find("input[id='jqg_"+gridID+"_"+rowId+"']");
+            			
+            		//Elemento sobre el que se despliega el menú siempre seleccionado
+           			if (checkbox.length<0 || checkbox.attr("checked")===undefined){
+           				$("#"+gridID).setSelection(rowId, true);
+           			}
+
+           			//Solo mostrar menú en columna "nombre"
+                	if (rowData.nombre !== tdData){
+                		$("#jqContextMenu").next().hide();
+                		$("#jqContextMenu").hide();
+                		return false;
+                	}
+                	
+                	//Deshabilitar en filas pares
+                    if ($row.index()%2 === 0) {
+                        $('#menu_3').attr("disabled","disabled").addClass('ui-state-disabled');
+                    } else {
+                        $('#menu_3').removeAttr("disabled").removeClass('ui-state-disabled');
+                    }
+                    
+                    //Gestionar eventos
+                    $("#jqContextMenu").mouseleave (function(){ $(this).next().hide(); $(this).hide(); });
+                    return true;
+                }
+            });
+           	$('[aria-describedby="grid_nombre"]').css("cursor", "url("+$.rup.RUP+"/basic-theme/cursors/context-menu.cur),default" );
+
+           	//Modificar tooltip
+            $.each ($('[aria-describedby="grid_nombre"]'), function(index, object){
+            	$(object).attr("rup_tooltip", $(object).attr("rup_tooltip") + "<br/>Esta columna tiene menú contextual asociado");
+            });
+		}
 	});
+	$('[aria-describedby="grid_nombre"]').rup_tooltip("option", "content.text", "pruebas");
 	
 	$("#maint").rup_maint({
 		jQueryGrid: "grid",
@@ -72,6 +128,12 @@ jQuery(function($){
 	$("#fechaAlta_search").rup_date();
 	$("#fechaBaja_search").rup_date();
 	
+	$('#multicombo_search').rup_combo({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		ordered: false,
+		width: 200,
+		multiselect: true
+	});
 	
 	$("#feedback").rup_feedback({ type: "ok", message:"Este es un ejemplo de <b>Feedback</b>"});
 	
@@ -92,6 +154,13 @@ jQuery(function($){
 		parent: ["comboProvincia"],
 		source : "comboEnlazadoSimple/remoteEnlazadoComarca",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+	});
+	
+	$('#multicomboGruposRemoto').rup_combo({
+		sourceGroup : "comboSimple/remoteGroup",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: 500,
+		multiselect: true
 	});
 	
 	$("#autocomplete").rup_autocomplete({
@@ -122,7 +191,7 @@ jQuery(function($){
 				autoOpen: true,
 				modal: true,
 				width: "1200",
-				height: "720",
+				height: "750",
 				resizable: true,
 				title: "Todos los patrones",
 				buttons: [{
@@ -144,7 +213,7 @@ jQuery(function($){
 					colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
 					colModel: [
 						{ name: "id", label: "id", index: "id", width: "75", editable: true },
-						{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true },
+						{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true, classes: "context-menu_cur" },
 						{ name: "apellido1", label: "apellido1", index: "apellido1", width: "150", editable: true },
 						{ name: "apellido2", label: "apellido2", index: "apellido2", width: "150", editable: true },
 						{ name: "ejie", index: "ejie", editable: true,
@@ -165,6 +234,61 @@ jQuery(function($){
 						}
 			        ]
 					,pagerInline: false
+					,loadComplete: function() {
+			            $("tr.jqgrow", $("#"+$("tr.jqgrow").parents("table").attr("id"))).contextMenu('contextMenu', {
+			                bindings: {
+			                    'menu_1': function(row, cell) { alert('menu_1'); },
+			                    'menu_2': function(row, cell) { alert('menu_2'); },
+			                    'menu_3': function(row, cell) { 
+			                    	//Gestión opción deshabilitada
+			                    	if ($('#menu_3').attr("disabled") === "disabled"){
+			                    		$("#jqContextMenu").show(); //Siempre es el mismo ID
+			                    		return false;
+			                    	}
+			                    	//Acción por defecto
+			                    	alert('menu_3'); }
+			                },
+			                onContextMenu: function(event) {
+			                	//Gestionar click sobre la fila que se muestra el menú	
+			                	var gridID = $(event.target).parents("table").attr("id");
+			            			$row = $(event.currentTarget),
+			            			rowId = $row.attr("id"),
+			                		rowData = $("#"+gridID).jqGrid("getRowData", rowId),
+			            			tdData = $(event.target).text(),
+			            			//control multiselect
+			            			checkbox = $row.find("input[id='jqg_"+gridID+"_"+rowId+"']");
+			            			
+			            		//Elemento sobre el que se despliega el menú siempre seleccionado
+			           			if (checkbox.length<0 || checkbox.attr("checked")===undefined){
+			           				$("#"+gridID).setSelection(rowId, true);
+			           			}
+
+			           			//Solo mostrar menú en columna "nombre"
+			                	if (rowData.nombre !== tdData){
+			                		$("#jqContextMenu").next().hide();
+			                		$("#jqContextMenu").hide();
+			                		return false;
+			                	}
+			                	
+			                	//Deshabilitar en filas pares
+			                    if ($row.index()%2 === 0) {
+			                        $('#menu_3').attr("disabled","disabled").addClass('ui-state-disabled');
+			                    } else {
+			                        $('#menu_3').removeAttr("disabled").removeClass('ui-state-disabled');
+			                    }
+			                    
+			                    //Gestionar eventos
+			                    $("#jqContextMenu").mouseleave (function(){ $(this).next().hide(); $(this).hide(); });
+			                    return true;
+			                }
+			            });
+		            	$('[aria-describedby="grid_nombre"]').css("cursor", "url("+$.rup.RUP+"/basic-theme/cursors/context-menu.cur),default" );
+
+			            //Modificar tooltip
+			            $.each ($('[aria-describedby="grid_nombre"]'), function(index, object){
+			            	$(object).attr("rup_tooltip", $(object).attr("rup_tooltip") + "<br/>Esta columna tiene menú contextual asociado");
+			            });
+					}
 				});
 				
 				$("#maintDialog").rup_maint({
@@ -190,6 +314,12 @@ jQuery(function($){
 				$("#dialog_fechaAlta_search").rup_date();
 				$("#dialog_fechaBaja_search").rup_date();
 				
+				$('#dialog_multicombo_search').rup_combo({
+					source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+					ordered: false,
+					width: 200,
+					multiselect: true
+				});
 				
 				$("#feedbackDialog").rup_feedback({ type: "ok", message:"Este es un ejemplo de <b>Feedback</b>"});
 				
@@ -206,10 +336,18 @@ jQuery(function($){
 					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 					selected: 3
 				});
-				$('#comboDialogComarca').rup_combo({
+				
+				$('#comboDialogComarcaDialog').rup_combo({
 					parent: ["comboDialogProvincia"],
 					source : "comboEnlazadoSimple/remoteEnlazadoComarca",
 					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+				});
+				
+				$('#multicomboGruposRemotoDialog').rup_combo({
+					sourceGroup : "comboSimple/remoteGroup",
+					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+					width: 500,
+					multiselect: true
 				});
 				
 				$("#autocompleteDialog").rup_autocomplete({

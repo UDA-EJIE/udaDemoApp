@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 	<!-- Definicion del Wrapper de seguridad utilizado -->
 	<bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">
         <property name="xlnetCachingPeriod" value="120" />
+        <property name="specificCredentials" ref="aplicationSpecificCredentials"/>
         <property name="userChangeUrl" value="/x21aPilotoPatronesWar/" />
         <property name="alternativeStorageUserCredentials" ref="jdbcUserService"/>
 		<property name="anonymousCredentials">
@@ -21,9 +22,23 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 			</map>
         </property>
 <!--         <property name="excludeFilter" ref="usuariosConCertificado"/> -->
+<!-- 		<property name="alternativeOriginCredentialsApp" value="y52b"></property> -->
+<!-- 		<property name="alternativeOriginCredentialsApp"> -->
+<!-- 			<list> -->
+<!-- 				<value>y52b</value> -->
+<!-- 				<value>y68b</value> -->
+<!--         		<value>o75b</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+		<property name="alternativeOriginCredentialsApp" ref="aplicacionesAceptadas"></property>
 	</bean>
 	
+	<bean id="aplicationSpecificCredentials" class="com.ejie.x21a.security.myUserCredentials"/>
+	
 	<!-- Se especifica un filtro de exclusión sobre los usuarios validados. Esto permite la limitación del acceso aunque se han usuarios validos de XLNets. -->
+	<bean id="aplicacionesAceptadas" class="com.ejie.x21a.security.ObtencionAplicaciones"/>
+
+	<!-- Se especifica un el punto de origen  de exclusión sobre los usuarios validados. Esto permite la limitación del acceso aunque se han usuarios validos de XLNets. -->
 <!-- 	<bean id="usuariosConCertificado" class="com.ejie.x21a.security.UsuariosConCertificado"> -->
 <!-- 		<property name="accessDeniedUrl" value="/x21aPilotoPatronesWar/accessDenied" /> -->
 <!-- 	</bean> -->
@@ -45,8 +60,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
         <property name="securityMetadataSource" >
             <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
                 <security:intercept-url pattern="/**" access="" />
-<!--                 <security:intercept-url pattern="/experimental/.*" access="hasRole('ROLE_X21A-IN-0003')" /> -->
-<!--                 <security:intercept-url pattern="/**" access="isAuthenticated()" /> -->
             </security:filter-security-metadata-source>
         </property>
     </bean>

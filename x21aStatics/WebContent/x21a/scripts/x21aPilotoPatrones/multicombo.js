@@ -15,35 +15,90 @@
  */
 jQuery(document).ready(function(){
 	
-//	$('#multicombo').rup_combo({
-//		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-//		source : [
-//			{i18nCaption: "asp", value:"asp_value"},
-//			{i18nCaption: "c", value:"c_value"},
-//			{i18nCaption: "c++", value:"c++_value"},
-//			{i18nCaption: "coldfusion", value:"coldfusion_value"},
-//			{i18nCaption: "groovy", value:"groovy_value"},
-//			{i18nCaption: "haskell", value:"haskell_value"},
-//			{i18nCaption: "java", value:"java_value"},
-//			{i18nCaption: "javascript", value:"javascript_value"},
-//			{i18nCaption: "perl", value:"perl_value"},
-//			{i18nCaption: "php", value:"php_value"},
-//			{i18nCaption: "python", value:"python_value"},
-//			{i18nCaption: "ruby", value:"ruby_value"},
-//			{i18nCaption: "scala", value:"scala_value"}
-//		],
-//		selected: "perl_value",
-//		width: 300,
-//		blank : "0" 
-//	});
-//	
-//	
-//	$('#multicomboRemoto').rup_combo({
-//		source : "comboSimple/remote",
-//		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-//		selected: "Combo",
-//		width: 300
-//	});
+	$('#multicombo').rup_combo({
+		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		source : [
+		    {i18nCaption: "ruby", value:"ruby_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "scala", value:"scala_value"},
+			{i18nCaption: "javascript", value:"javascript_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "haskell", value:"haskell_value"},
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "java", value:"java_value"},
+			{i18nCaption: "php", value:"php_value"},
+			{i18nCaption: "groovy", value:"groovy_value"},
+			{i18nCaption: "python", value:"python_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "perl", value:"perl_value"}
+		],
+		selected: ["perl_value", "javascript_value", 0], //value && index
+		ordered: false,
+		width: 400,
+		multiselect: true,
+		rowStriping : true
+	});
+	
+	$('#multicomboRemoto').rup_combo({
+		source : "comboSimple/remote",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		selected: [1], //index
+		width: 350,
+		height: 75,
+		multiselect: true
+	});
+	
+	$('#multicomboGrupos').rup_combo({
+		/*sourceGroup : [ 
+			{"Futbol" : ["Alaves", "Athletic", "Real Sociedad"]},
+			{"Baloncesto" : ["Caja Laboral", "BBB", "Lagun Aro"]},
+			{"Formula 1" : [ "Fernando Alonso", "Hamilton", "Vettel"]}
+		],
+		*/
+		sourceGroup : [ 
+			{"futbol" : [
+				{i18nCaption: "alaves", value:"alaves_value", style:"delete"},
+				{i18nCaption: "ath", value:"ath_value", style:"filter"},
+				{i18nCaption: "real", value:"real_value", style:"print"}
+			]},
+			{"baloncesto" : [
+				{i18nCaption: "laboral", value:"laboral_value"},
+				{i18nCaption: "bilbao", value:"bilbao_value"},
+				{i18nCaption: "lagun aro", value:"lagun aro_value"}
+			]},
+			{"formula1" : [
+				{i18nCaption: "falonso", value:"falonso_value"},
+				{i18nCaption: "hamilton", value:"hamilton_value"},
+				{i18nCaption: "vettel", value:"vettel_value"}
+			]}
+		],
+		width: 500,
+		height: 300,
+		multiselect: true,
+		multiOptgroupIconText: false,
+		rowStriping : true
+	});
+	
+	$('#multicomboGruposRemoto').rup_combo({
+		sourceGroup : "comboSimple/remoteGroup",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: 500,
+		multiselect: true
+	});
+	
+	$('#multicomboInput').rup_combo({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		width: 350,
+		multiselect: true
+	});
 
-	$("select").rup_multicombo();
+	$('#multicomboLoadFromSelect').rup_combo({
+		source : "comboSimple/remote",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		loadFromSelect: true,
+		width: 350,
+		height: 75,
+		multiselect: true
+	});
+	
 });
