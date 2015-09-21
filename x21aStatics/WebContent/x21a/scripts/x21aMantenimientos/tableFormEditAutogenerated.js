@@ -113,7 +113,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -162,7 +163,8 @@ jQuery(function($){
 						}
 					 ]}
 			]
-		}
+		},
+		 multifilter:{ idFilter:"generated",labelSize:255}
 	});
 	
 	//Formulario de filtrado

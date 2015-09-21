@@ -33,7 +33,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
@@ -138,7 +139,7 @@ jQuery(function($){
 						}
 					 ]}
 			]
-		}
+		}, multifilter:{ idFilter:"dialog",labelSize:255}
 	});
 	
 	jQuery("#tableDialog_layer_div").rup_dialog({

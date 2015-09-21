@@ -41,6 +41,8 @@ import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.rup.jqgrid.filter.model.Filter;
+import com.ejie.x38.rup.jqgrid.filter.service.FilterService;
 import com.ejie.x38.util.ObjectConversionManager;
 
 /**
@@ -59,6 +61,8 @@ public class JQGridLocalidadController  {
 	@Autowired 
 	private JQGridLocalidadService localidadService;
 	
+	@Autowired
+	private FilterService filterService;
 	
 	/**
 	 * Method 'getById'.
@@ -130,6 +134,44 @@ public class JQGridLocalidadController  {
 			
 			return localidadService.filter(localidad, jqGridRequestDto, false);
 		}
+		
+		
+		@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
+		public @ResponseBody Filter filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
+			JQGridLocalidadController.logger.info("[POST - jqGrid] : add filter");
+			
+			 return filterService.insert(filtro);
+		}	
+		
+
+		
+		@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
+		public @ResponseBody Filter  filterDelete(
+				@RequestJsonBody(param="filtro") Filter filtro) {
+			JQGridLocalidadController.logger.info("[POST - jqGrid] : delete filter");
+			return  filterService.delete(filtro);
+		}
+		
+		
+		@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
+		public @ResponseBody Filter filterGetDefault(
+			@RequestParam(value = "filterSelector", required = true) String filterSelector,
+			@RequestParam(value = "user", required = true) String filterUser) {
+			JQGridLocalidadController.logger.info("[get - jqGrid] : getDefault filter");
+			 return filterService.getDefault(filterSelector, filterUser);
+		}
+		
+		
+		
+		
+		@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
+		public @ResponseBody List<Filter> filterGetAll(
+			@RequestParam(value = "filterSelector", required = true) String filterSelector,
+			@RequestParam(value = "user", required = true) String filterUser) {
+			JQGridLocalidadController.logger.info("[get - jqGrid] : GetAll filter");
+			 return filterService.getAllFilters(filterSelector,filterUser);
+		}
+		
 		
 		@RequestMapping(value = "/search", method = RequestMethod.POST)
 		public @ResponseBody Object search(

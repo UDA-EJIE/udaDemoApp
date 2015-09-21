@@ -15,12 +15,14 @@
  */
 jQuery(function($){
 	
+	
 	var disable=1;
 	$("#table").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
         primaryKey:["id"],
+        
         usePlugins:[
 			"formEdit",
         	"feedback",
@@ -29,7 +31,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
@@ -109,12 +112,12 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	},
-        	fncSearchCriteria: function(searchString){
-    			searchString+="NombreCampo=Valores de filtrado del campo";
-    			//console.log(searchString);
-    			return searchString;
-    		}
+//        	fncSearchCriteria: function(searchString){
+//    			//SsearchString+="NombreCampo=Valores de filtrado del campo";
+//    			return searchString;
+//    		}
         },
+        multifilter:{ idFilter:"formEdit",labelSize:255},
         search:{
         	validate:{
         		rules:{
@@ -123,15 +126,27 @@ jQuery(function($){
     			}
         	}
         },
-        report: options_table_report
+        report: options_table_report//,
+       // loadOnStartUp:false
+        
 	});
 	
+
 	
-	$("#table").on({
-		"rupTable_serializeReportData" : function(event, data){
-			$.extend(true, data, {"campo1":"valorCampo1", "campo2":"valorCampo2"});
-		}
-	});
+//	$("#table").on({
+		//"rupTable_serializeReportData" : function(event, data){
+		//	$.extend(true, data, {"campo1":"valorCampo1", "campo2":"valorCampo2"});
+		//}
+	//});
 	
+
+
+	
+	
+	
+
+	
+	
+
 	
 });

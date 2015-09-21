@@ -102,7 +102,8 @@ jQuery(function($){
 //        	"multiselection",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -114,7 +115,7 @@ jQuery(function($){
 				"nombre":{required:true},
 				"apellido1":{required:true}
 			}
-		}
+		}, multifilter:{ idFilter:"formGrouping",labelSize:255}
 	});
 	
 	

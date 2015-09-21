@@ -28,7 +28,8 @@ jQuery(function($){
         	"filter",
         	"search",
         	"multiselection",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         primaryKey: "id",
         sortname: 'id',
@@ -48,6 +49,7 @@ jQuery(function($){
     			}
         	}
         },
+        multifilter:{ idFilter:"inlineEditMUlti",labelSize:255},
         report: options_table_report
 	});
 	

@@ -100,6 +100,12 @@
 						<span class="ui-icon toolbar_icon"></span>
 					</a>
 				</li>
+				<li>
+					<a href="/x21aPilotoPatronesWar/patrones/button">
+						<spring:message code="button" />
+						<span class="ui-icon toolbar_icon"></span>
+					</a>
+				</li>
 				<li class="ui-widget-content ui-menu-divider"></li>
 				<li><strong><spring:message code="titulo-estru" /></strong></li>
 				<li>
@@ -373,6 +379,12 @@
 				<li>
 					<a	href="/x21aPilotoPatronesWar/integracion/pif">
 						PIF
+						<span class="ui-icon tiny_icon"></span>
+					</a>
+				</li>
+				<li>
+					<a	href="/x21aPilotoPatronesWar/integracion/cache/view">
+						Cache
 						<span class="ui-icon tiny_icon"></span>
 					</a>
 				</li>

@@ -733,6 +733,24 @@
         	"filter":{
         		"filterCriteria":"Criterios de filtrado"
         	},
+        	"multifilter":{
+        		"save":"Guardar",
+        		"apply":"Aplicar",
+        		"remove":"Eliminar",
+        		"tittle":"Administrador de filtros",
+        		"close": "Cerrar",
+        		"filters":"Nombre",
+        		"defaultFilter":"Filtro por defecto",
+        		"cancel":"Cancelar",
+        		"ok":"Acción completada con éxito",
+        		"error":"Error al completar la acción",
+        		"emptyName":"Seleccione un filtro",
+        		"noRecords":"No existe un filtro con ese nombre",
+        		"tooLong":"Nombre demasiado largo",
+        		 "input": "Introduzca un nombre para el filtro",
+        		 "errorNoexiste":"Nombre de filtro inexistente"
+        		
+        	},
         	"search":{
         		"searchCriteria":"Criterios de búsqueda",
         		"matchedRecords":"{0} elementos encontrados",

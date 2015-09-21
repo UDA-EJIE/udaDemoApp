@@ -15,6 +15,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
         <property name="specificCredentials" value="com.ejie.x21a.security.MyUserCredentials"/>
         <property name="userChangeUrl" value="/x21aPilotoPatronesWar/" />
         <property name="alternativeStorageUserCredentials" ref="jdbcUserService"/>
+        <property name="useXlnetProfiles" value="true"/>
 		<property name="anonymousCredentials">
         	<map>
         		<entry key="userProfiles" value="UDA" />

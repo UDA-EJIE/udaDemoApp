@@ -14,6 +14,8 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
+	
+	
 	$("#rup_dept_logo").attr("src", $.rup.APP_STATICS + "/images/dept_logo_" + $.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if ($.rup.LAYOUT === "vertical") {

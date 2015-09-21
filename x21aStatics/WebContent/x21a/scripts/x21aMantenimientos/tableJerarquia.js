@@ -29,7 +29,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"jerarquia"
+        	"jerarquia",
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
@@ -63,6 +64,7 @@ jQuery(function($){
       		click: ["table_filter_filterButton", "table_filter_cleanLink"],
       		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
       	},
+      	 multifilter:{ idFilter:"jerarquiaNormal",labelSize:255},
       	contextMenu : true //(default)
       }
         

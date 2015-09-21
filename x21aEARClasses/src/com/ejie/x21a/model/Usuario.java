@@ -330,5 +330,60 @@ public class Usuario  implements java.io.Serializable {
 		result.append("}");
 		return result.toString();
 	}
+
+//	public int hashCode() {
+//		 int result = 1;
+//		  result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+//		  result = 31 * result + (this.nombre != null ? this.nombre.hashCode() : 0);
+//		  result = 31 * result + (this.apellido1 != null ? this.apellido1.hashCode() : 0);
+//		  result = 31 * result + (this.apellido2 != null ? this.apellido2.hashCode() : 0);
+//		  result = 31 * result + (this.fechaAlta != null ? this.fechaAlta.hashCode() : 0);
+//		  result = 31 * result + (this.fechaBaja != null ? this.fechaBaja.hashCode() : 0);
+//		  result = 31 * result + (this.rol != null ? this.rol.hashCode() : 0);
+//
+//		  return result;
+//	}
+
+//	public boolean equals(Object obj) {
+//		
+//		Usuario user = (Usuario) obj;
+//		
+//		if (this.id == null && user.getId() != null || (this.id == null || !this.id.equals(user.getId()))){
+//			return false;
+//		}
+//		
+//		if (this.nombre == null && user.getNombre() != null || (this.nombre == null || !this.nombre.equals(user.getNombre()))){
+//			return false;
+//		}
+//		
+//		if (this.apellido1 == null && user.getApellido1() != null || (this.apellido1 == null || !this.apellido1.equals(user.getApellido1()))){
+//			return false;
+//		}
+//		
+//		if (this.apellido2 == null && user.getApellido2() != null || (this.apellido2 == null || !this.apellido2.equals(user.getApellido2()))){
+//			return false;
+//		}
+//		
+//		if (this.ejie == null && user.getEjie() != null || (this.ejie == null || !this.ejie.equals(user.getEjie()))){
+//			return false;
+//		}
+//		
+//		if (this.fechaAlta == null && user.getFechaAlta() != null || (this.fechaAlta == null || !this.fechaAlta.equals(user.getFechaAlta()))){
+//			return false;
+//		}
+//		
+//		if (this.fechaBaja == null && user.getFechaBaja() != null || (this.fechaBaja == null || !this.fechaBaja.equals(user.getFechaBaja()))){
+//			return false;
+//		}
+//		
+//		if (this.rol == null && user.getRol() != null || (this.rol == null || !this.rol.equals(user.getRol()))){
+//			return false;
+//		}
+//		
+//		return true;
+//	}
+	
+	
+	
 }
 

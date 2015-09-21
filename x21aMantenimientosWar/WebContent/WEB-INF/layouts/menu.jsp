@@ -57,6 +57,13 @@
 					<spring:message code="tabla" />
 				</a>
 				<ul>
+				
+					<li>
+						<a href="/x21aMantenimientosWar/table/filtroSimple">
+							<spring:message code="filtroSimple" />
+						</a>
+					</li>
+					
 					<li>
 						<a>
 							<spring:message code="jerarquiaTitle" />

@@ -21,5 +21,7 @@ ga('create', 'UA-20902093-7', 'auto');
 ga('send', 'pageview');
 </script>
 
+<!-- Plugin del ivap para la tabla -->
+<script src="${staticsUrl}/x21a/scripts/ivap.rup.table-2.4.4.js" type="text/javascript"></script>
 <!-- Cargador del layout para el idioma, menu y migas -->
 <script src="${staticsUrl}/x21a/scripts/x21aMantenimientos/_layoutLoader.js" type="text/javascript"></script>

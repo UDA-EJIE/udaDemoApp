@@ -27,7 +27,9 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"report"
+        	"report",
+        	"multifilter"
+
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -53,6 +55,7 @@ jQuery(function($){
     			}
         	}
         },
+        multifilter:{ idFilter:"inlineExcelMode",labelSize:255},
         report: options_table_report
 	});
 	

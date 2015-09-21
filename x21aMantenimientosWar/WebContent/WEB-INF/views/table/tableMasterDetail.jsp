@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<div id="comarca_filter_buttonSet" class="right_buttons">
-					<input id="comarca_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
+					<button id="comarca_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all"><spring:message code="filter" /></button>
 					<a id="comarca_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
 				</div>
 			</fieldset>
@@ -96,7 +96,7 @@
 					</div>
 				</div>
 				<div id="localidad_filter_buttonSet" class="right_buttons">
-					<input id="localidad_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
+					<button id="localidad_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all"><spring:message code="filter" /></button>
 					<a id="localidad_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
 				</div>
 			</fieldset>
@@ -106,7 +106,7 @@
 	<div id="localidad_grid_div">
 		<!-- Tabla -->
 		<table id="localidad"></table>
-		<!-- Barra de paginación -->
+		<!-- Barra de paginaciï¿½n -->
 		<div id="localidad_pager" ></div>
 	</div>
 

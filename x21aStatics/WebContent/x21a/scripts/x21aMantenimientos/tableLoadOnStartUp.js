@@ -20,6 +20,7 @@ jQuery(function($){
 		sortorder: "asc",
 		sortname: "code",
 		primaryKey: "code" ,
+		loadOnStartUp:false,
 		colNames: [
 			"code",
 			"descEs",
@@ -89,11 +90,13 @@ jQuery(function($){
         	"contextMenu",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
-        }
+        },
+        multifilter:{ idFilter:"onLoadFalse",labelSize:255}
        
 	});
 

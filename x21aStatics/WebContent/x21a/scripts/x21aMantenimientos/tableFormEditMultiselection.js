@@ -14,6 +14,85 @@
  * que establece la Licencia.
  */
 jQuery(function($){
+//	jQuery.fn.rup_table.defaults.defaultPlugins = ["ivap"];
+//	jQuery.fn.rup_table("extend",{
+//		highlightEditableRow: function($row){
+//			var $self = this, settings = $self.data("settings"), 
+//			page = parseInt($self.rup_table("getGridParam", "page"),10), 
+//			firstSelectedLine, firstSelectedId, $row;
+//			
+//			$self.rup_table("clearHighlightedEditableRows");
+//			
+//			if ($self._hasPageSelectedElements(page)){
+//				firstSelectedLine = $self._getFirstSelectedElementOfPage(page);
+//				firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
+//				settings.multiselection.rowForEditing=firstSelectedId;
+//				$row = jQuery($self.jqGrid("getInd",firstSelectedId, true));
+//				$row.find("td[aria-describedby='"+settings.id+"_rupInfoCol'] span").addClass("ui-icon ui-icon-rupInfoCol ui-icon-pencil");
+//			}
+//		}
+//	});
+//	jQuery(function($){
+//		jQuery.extend(jQuery.fn.rup_table.plugins.multiselection.defaults,{
+//			  onSelectRow: function(){
+//			    var $self = $(this);
+//			    $self.rup_table("highlightFirstEditableRow");
+//			  }		  
+//		});
+//	});
+	
+	
+//	jQuery(function($){
+//		jQuery.fn.rup_table("extend",{
+//			editElement: function (rowId, options){
+//				var $self = this, 
+//				settings = $self.data("settings"),
+//				multiselectionSettings = settings.multiselection,
+//				page = parseInt($self.rup_table("getGridParam", "page"),10),
+//				firstPage, firstSelectedLine, firstSelectedId;
+//				
+//				if (multiselectionSettings.selectedPages.length > 0){
+//					firstPage = multiselectionSettings.selectedPages[0];
+//					
+//					$self.on("jqGridAfterLoadComplete.ivap.editFirstElement",function(event,data){
+//						
+//						firstSelectedLine = $self._getFirstSelectedElementOfPage(firstPage);
+//						firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
+//						settings.multiselection.rowForEditing=firstSelectedId;
+//						$self.rup_table("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
+//						
+//						$self.rup_table("editElement", firstSelectedId);
+//						
+//						$self.off("jqGridAfterLoadComplete.ivap.editFirstElement");
+//					});
+//					
+//					if (firstPage !== page){
+//						
+////						$self.on("jqGridAfterLoadComplete.ivap.editFirstElement",function(event,data){
+////													
+////							firstSelectedLine = $self._getFirstSelectedElementOfPage(firstPage);
+////							firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
+////							settings.multiselection.rowForEditing=firstSelectedId;
+////							$self.rup_table("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
+////							
+////							$self.rup_table("editElement", firstSelectedId);
+////							
+////							$self.off("jqGridAfterLoadComplete.ivap.editFirstElement");
+////						});
+//						
+//						$self.trigger("reloadGrid",[{page: firstPage}]);
+//						
+//					}else{
+//						$self.triggerHandler("jqGridAfterLoadComplete.ivap.editFirstElement");
+//					}
+//				}
+//				
+//				
+//			}
+//			
+//		});
+//	});
+//	
 	
 	$("#table").rup_table({
 		url: "../jqGridUsuario",
@@ -30,7 +109,8 @@ jQuery(function($){
         	"filter",
         	"search",
         	"multiselection",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         primaryKey: ["id"],
         sortname: 'id',
@@ -45,6 +125,7 @@ jQuery(function($){
     			}
     		}
         },
+       
 		multiselection: {
 //			headerContextMenu: {
 //				items: {
@@ -68,7 +149,13 @@ jQuery(function($){
     			}
         	}
         },
+        multifilter:{ idFilter:"formEditMulti",labelSize:255},
         report: options_table_report
 	});
+//	
+//	$("#table").on("jqGridSelectRow.rupTable.multiselection", function(){
+//	
+//	$("#table").rup_table("highlightFirstEditableRow");
+//});
 	
 });

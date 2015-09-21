@@ -66,11 +66,14 @@ jQuery(document).ready(function(){
 		minLength:0
 	});
 
-	$("#comboboxRemoto").rup_autocomplete({
-		source : "autocomplete/remote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
+	$("#autocomplete").rup_autocomplete({
+		//	...	
 		combobox: true
 	});
 	
+	$("#autocomplete").on("rupAutocomplete_loadComplete", function(event, data){
+		
+		
+	});
 	
 });

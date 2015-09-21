@@ -20,18 +20,20 @@
 <head>
 	<title><spring:message code="app.title" /></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<%-- Estilos RUP sin minimizar (DESARROLLO) --%>
-<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
+<%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%> --%>
 	<%-- Estilos RUP sin minimizar (PRODUCCION) --%>
-<%-- 	<%@include file="/WEB-INF/layouts/includes/rup.styles.min.inc" %> --%>
+	<%@include file="/WEB-INF/layouts/includes/rup.styles.min.inc" %>
 	<%-- Estilos Aplicacion --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	
 </head>	
-<body>
-	<div class="contenedor">	
+<body >
+
+
+	<div class="contenedor" >	
 		<!-- Cabecera -->
 		<tiles:insertAttribute name="header" />
 		

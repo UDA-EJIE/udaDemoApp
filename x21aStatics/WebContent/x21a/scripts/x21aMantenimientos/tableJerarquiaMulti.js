@@ -28,7 +28,8 @@ jQuery(function($){
         	"search",
         	"jerarquia",
         	"multiselection",
-        	"formEdit"
+        	"formEdit",
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
@@ -88,6 +89,7 @@ jQuery(function($){
           	},
           	contextMenu : true //(default)
           }
+        , multifilter:{ idFilter:"jerarquiMulti",labelSize:255}
 	});
 	
 	jQuery("#idPadre_detailForm_table").rup_combo({

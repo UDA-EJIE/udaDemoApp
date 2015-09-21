@@ -29,7 +29,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"report"
+        	"report",
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
@@ -109,12 +110,12 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	},
-        	fncSearchCriteria: function(searchString){
-    			searchString+="NombreCampo=Valores de filtrado del campo";
-    			//console.log(searchString);
-    			return searchString;
-    		}
-        },
+//        	fncSearchCriteria: function(searchString){
+//    			searchString+="NombreCampo=Valores de filtrado del campo";
+//    			//console.log(searchString);
+//    			return searchString;
+//    		}
+       },
         search:{
         	validate:{
         		rules:{
@@ -123,6 +124,7 @@ jQuery(function($){
     			}
         	}
         },
+         multifilter:{ idFilter:"formRadio",labelSize:255},
         report: options_table_report
 	});
 	

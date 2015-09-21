@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div id="tableDialog_filter_buttonSet" class="right_buttons">
-						<input id="tableDialog_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
+						<button id="tableDialog_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all"><spring:message code="filter" /></button> 
 						<a id="tableDialog_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
 					</div>
 				</fieldset>

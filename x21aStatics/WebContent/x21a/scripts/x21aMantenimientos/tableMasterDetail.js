@@ -87,7 +87,8 @@ jQuery(function($){
         	"contextMenu",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -95,7 +96,8 @@ jQuery(function($){
         primaryKey: ["code"],
         masterDetail:{
         	detail: "#localidad"
-        }
+        },
+        multifilter:{ idFilter:"maestro",labelSize:255}
 	});
 
 	$("#localidad").rup_table({
@@ -154,7 +156,8 @@ jQuery(function($){
                 	"fluid",
                 	"filter",
                 	"search",
-                	"masterDetail"],
+                	"masterDetail",
+                	"multifilter"],
         loadOnStartUp:false,
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -164,6 +167,7 @@ jQuery(function($){
         masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
-        }
+        },
+        multifilter:{ idFilter:"detalle",labelSize:255}
 	});
 });

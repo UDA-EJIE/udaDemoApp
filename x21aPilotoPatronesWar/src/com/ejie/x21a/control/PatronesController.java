@@ -15,15 +15,20 @@
 */
 package com.ejie.x21a.control;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -146,6 +151,12 @@ public class PatronesController {
 		return "autocomplete";
 	}
 	
+	//Button (
+	@RequestMapping(value = "button", method = RequestMethod.GET)
+	public String buttonJSP(Model model) {
+		return "button";
+	}	
+	
 	//Date
 	@RequestMapping(value = "date", method = RequestMethod.GET)
 	public String getDate(Model model) {
@@ -162,7 +173,7 @@ public class PatronesController {
 	public String dialogJSP(Model model) {
 		return "dialogAjax";
 	}	
-
+	
 	//Combos
 	@RequestMapping(value = "comboSimple", method = RequestMethod.GET)
 	public String getComboSimple(Model model) {
@@ -329,34 +340,26 @@ public class PatronesController {
 	public String getTreeDragAndDrop(Model model) {
 		return "treeDAD";
 	}
-	
-	
+		
 	@RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
 	public Object getTreeAjax(Model model, HttpServletResponse response) {
 		
 		// S
 		JSONArray root = new JSONArray();
 		
-		JSONObject padre1 = new JSONObject();
-		padre1.put("data", "Padre 1");
+		JSONObject padre1 = new JSONObject("{'data':'Padre1', 'attr':{'id':'p1'}, 'metadata':{'nivel':1}}");
 		
-		JSONObject padre11 = new JSONObject();
-		padre11.put("data", "Padre 1.1");
+		JSONObject padre11 = new JSONObject("{'data':'Padre1.1', 'attr':{'id':'p11'}, 'metadata':{'nivel':2}}");
 		
-		JSONObject hoja111 = new JSONObject();
-		hoja111.put("data", "Hoja 1.1.1");
+		JSONObject hoja111 = new JSONObject("{'data':'Padre1.1.1', 'attr':{'id':'p111'}, 'metadata':{'nivel':3}}");
 		
-		JSONObject padre112 = new JSONObject();
-		padre112.put("data", "Padre 1.1.2");
+		JSONObject padre112 = new JSONObject("{'data':'Padre1.1.2', 'attr':{'id':'p112'}, 'metadata':{'nivel':3}}");
 		
-		JSONObject hoja1121 = new JSONObject();
-		hoja1121.put("data", "Hoja 1.1.2.1");
+		JSONObject hoja1121 = new JSONObject("{'data':'Padre1.1.2.1', 'attr':{'id':'p1121'}, 'metadata':{'nivel':4}}");
 		
-		JSONObject hoja1122 = new JSONObject();
-		hoja1122.put("data", "Hoja 1.1.2.2");
+		JSONObject hoja1122 = new JSONObject("{'data':'Padre1.1.2.2', 'attr':{'id':'p1122'}, 'metadata':{'nivel':4}}");
 		
-		JSONObject hoja12 = new JSONObject();
-		hoja12.put("data", "Padre 1.2");
+		JSONObject hoja12 = new JSONObject("{'data':'Padre1.2', 'attr':{'id':'p12'}, 'metadata':{'nivel':2}}");
 		
 		JSONArray padre112Childs = new JSONArray();
 		padre112Childs.put(hoja1121);
@@ -641,7 +644,104 @@ public class PatronesController {
 	/**
 	 * GRID (Usuarios)
 	 */
-		@RequestMapping(value = "usuario", method = RequestMethod.GET)
+		// convert InputStream to String
+		private static String getStringFromInputStream(InputStream is) {
+	 
+			BufferedReader br = null;
+			StringBuilder sb = new StringBuilder();
+	 
+			String line;
+			try {
+	 
+				br = new BufferedReader(new InputStreamReader(is));
+				while ((line = br.readLine()) != null) {
+					sb.append(line);
+				}
+	 
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (br != null) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+	 
+			return sb.toString();
+	 
+		}
+		
+		
+		@SuppressWarnings("rawtypes")
+		private void traceRequest (HttpServletRequest request){
+			
+			logger.info("************************************************************");
+			logger.info("******************INICIO REQUEST LOG********************");
+			logger.info("************************************************************");
+			
+				
+			logger.info("-----> Request content");
+			try {
+				logger.info(getStringFromInputStream(request.getInputStream()));
+			} catch (IOException e) {
+				logger.error("ERROR "+e.getMessage());
+				logger.info("ERROR "+e.getMessage());
+				e.printStackTrace();
+			}
+				
+		
+			logger.info("-----> Protocol : " + request.getProtocol());
+			logger.info("-----> Method : " + request.getMethod());
+			logger.info("-----> RequestURL : " + request.getRequestURL());
+			
+			logger.info("******** ATRIBUTES *************");
+			
+			Enumeration attributeNames = request.getAttributeNames();
+			
+			
+			while(attributeNames.hasMoreElements()){
+				String nextElement = (String) attributeNames.nextElement();
+				logger.info("----->" +nextElement +" : " + request.getAttribute(nextElement).toString());
+			}
+
+			
+			logger.info("******** PARAMETERS *************");
+			
+			Map parameterMap = request.getParameterMap();
+			
+			Set keySet = parameterMap.keySet();
+			
+			for (Object key : keySet) {
+				
+				logger.info("----->" +key +" : " + request.getParameter((String)key));
+				
+//				for (int i = 0; i < array.length; i++) {
+//					logger.info("----->" +key +" : " + ((String[])request.getParameterValues(key).get(key))[0].toString());
+//				}
+//				
+//				logger.info("----->" +key +" : " + ((String[])request.getParameterValues(name).get(key))[0].toString());
+			}
+			
+			logger.info("******** HEADERS *************");
+			Enumeration headerNames = request.getHeaderNames();
+			
+			while(headerNames.hasMoreElements()){
+				String nextElement = (String) headerNames.nextElement();
+				logger.info("----->" +nextElement +" : " + request.getHeader(nextElement));
+			}
+
+			logger.info("************************************************************");
+			logger.info("******************END REQUEST LOG********************");
+			logger.info("************************************************************");
+		}
+		
+			
+		
+		
+		@RequestMapping(value = "usuarioOld", method = RequestMethod.GET)
 		public @ResponseBody Object getAll(
 			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "nombre", required = false) String nombre,
@@ -651,12 +751,11 @@ public class PatronesController {
 			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
 			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
 			HttpServletRequest request) {
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			
+			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> GET");
+			
+			this.traceRequest(request);
+			
 			
 					Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
 	                Pagination pagination = null;
@@ -680,7 +779,7 @@ public class PatronesController {
 			    return this.usuarioService.findAllLike(filterUsuario, pagination, false);
 				}
 		}
-		@RequestMapping(value = "usuario/count", method = RequestMethod.GET)
+		@RequestMapping(value = "usuarioOld/count", method = RequestMethod.GET)
 		public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
 				return usuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (), false);
 		}
@@ -688,26 +787,38 @@ public class PatronesController {
 	/**
 	 * MAINT (Usuarios) [all.jsp]
 	 */
-		@RequestMapping(value = "usuario/{id}", method = RequestMethod.GET)
+		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.GET)
 		public @ResponseBody Usuario getById(@PathVariable String id) {
 	            Usuario usuario = new Usuario();
 				usuario.setId(id);
 	            usuario = this.usuarioService.find(usuario);
 	            return usuario;
 		}
-		@RequestMapping(value = "usuario", method = RequestMethod.PUT)
-	    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response) {		
+		@RequestMapping(value = "usuarioOld", method = RequestMethod.PUT)
+	    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response, HttpServletRequest request) {
+			
+			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> PUT");
+			
+			
+			this.traceRequest(request);
+			
 	            Usuario usuarioAux  = this.usuarioService.update(usuario);
             logger.info("Entity correctly updated!");
 	            return usuarioAux;
 	    }
-		@RequestMapping(value = "usuario", method = RequestMethod.POST)
-		public @ResponseBody Usuario add(@RequestBody Usuario usuario) {		
+		@RequestMapping(value = "usuarioOld", method = RequestMethod.POST)
+		public @ResponseBody Usuario add(@RequestBody Usuario usuario, HttpServletRequest request) {
+			
+			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> POST");
+			
+			
+			this.traceRequest(request);
+			
 	            Usuario usuarioAux = this.usuarioService.add(usuario);
 	        logger.info("Entity correctly inserted!");
 	        	return usuarioAux;
 			}
-		@RequestMapping(value = "usuario/{id}", method = RequestMethod.DELETE)
+		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.DELETE)
 		@ResponseStatus(value=HttpStatus.OK)
 	    public void remove(@PathVariable String id) {
 	            Usuario usuario = new Usuario();

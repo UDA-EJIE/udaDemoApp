@@ -33,7 +33,7 @@ var	APP_RESOURCES = 'x21a',
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
 </script>
 
-<%-- Scripts RUP sin minimizar (DESARROLLO) --%>
+<!-- Scripts RUP sin minimizar (DESARROLLO) -->
 <%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%> --%>
 <%-- Scripts RUP minimizados (PRODUCCION) --%>
 <%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>

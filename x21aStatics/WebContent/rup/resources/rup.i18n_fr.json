@@ -732,6 +732,25 @@
         	"filter":{
         		"filterCriteria":"fr_Criterios de filtrado"
         	},
+        	"multifilter":{
+        		"save":"fr_Guardar",
+        		"apply":"fr_Aplicar",
+        		"remove":"fr_Eliminar",
+        		"tittle":"fr_Administrador de filtros",
+        		"close": "fr_Cerrar",
+        		"filters":"fr_Nombre",
+        		"defaultFilter":"fr_Filtro por defecto",
+        		"cancel":"fr_Cancelar",
+        		"ok":"fr_Acción completada con éxito",
+        		"error":"fr_Error al completar la acción",
+        		"emptyName":"fr_Seleccione un filtro",
+        		"noRecords":"fr_No existe un filtro con ese nombre",
+        		"tooLong":"fr_Nombre demasiado largo",
+        		 "errorNoexiste":"eu_Nombre de filtro inexistente"
+        		
+        		
+        		
+        	},
         	"search":{
         		"searchCriteria":"fr_Criterios de búsqueda",
         		"matchedRecords":"fr_{0} elementos encontrados",

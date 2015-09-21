@@ -126,6 +126,11 @@
 	</definition>
 	<definition name="dialogAjax" template="/WEB-INF/views/patrones/dialogAjax.jsp"/>
 	
+	<definition name="button" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/button.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/button-includes.jsp"/>					
+	</definition>	
+	
 	<definition name="combo" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/combo/combo.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/combo/combo-includes.jsp"/>					
@@ -336,5 +341,14 @@
     <definition name="pif" extends="template" >
         <put-attribute name="content" value="/WEB-INF/views/integracion/pif.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/integracion/pif-includes.jsp"/>
-    </definition>    
+    </definition>   
+    <definition name="cache" extends="template" >
+        <put-attribute name="content" value="/WEB-INF/views/integracion/cache.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/integracion/cache-includes.jsp"/>
+    </definition>  
+    
+      <definition name="y52bdocumentos" extends="template" >
+        <put-attribute name="content" value="/WEB-INF/views/experimental/documentos.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/experimental/documentos-includes.jsp"/>
+    </definition>   
 </tiles-definitions>

@@ -732,6 +732,24 @@
         	"filter":{
         		"filterCriteria":"Iragazketa irizpideak"
         	},
+        	"multifilter":{
+        		"save":"Gorde",
+        		"apply":"Aplikatu",
+        		"remove":"Ezabatu",
+        		"tittle":"Iragazki-kudeatzailea",
+        		"close": "Itxi",
+        		"filters":"Izena",
+        		"defaultFilter":"Gutxiagozko iragazkia",
+        		"cancel":"Ezeztatu",
+        		"ok":"Ekintza ongi burutu da",
+        		"error":"Errorea ekintza burutzean",
+        		"emptyName":"Hautatu iragazki bat",
+        		"noRecords":"Ez da existitzen iragazki bat izen horrekin",
+        		"tooLong":"Izen luzeegia",
+        		"input": "Sartu izen bat iragazkia identifikatzeko",
+        		"errorNoexiste":"Ez da existitzen izen hori"
+        	},
+        	
         	"search":{
         		"searchCriteria":"Bilaketa irizpideak",
         		"matchedRecords":"{0} elementu aurkitu dira",
