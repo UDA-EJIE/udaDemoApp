@@ -1,51 +1,52 @@
 {
-	"x21aPilotoPatronesWar_menu_mixto" : {
-		"inicio" : "Hasiera",
-		"mantenimientos" : "x21aMantenimientosWar",
-		"patrones" : "Ereduak",
-			"all" : "[Eredu guztiak]",
-			"accordion" : "Accordion_eu",
-			"autocomplete" : "Autocomplete",
-			"toolbar" : "Botoi-lerro",
-			"combo" : "Combo",
-				"comboSimple" : "Combo Simple",
-				"comboEnlazadoSimple" : "Combo Enlazado (simple)",
-				"comboEnlazadoMulti" : "Combo Enlazado (múltiple)",
-			"dialog" : "Dialogo",
-			"date" : "Data",
-			"feedback" : "Feedback",
-			"form" : "Inprimakia",
-			"time" : "Ordu",
-			"message" : "Mezu",
-			"menu" : "Menu",
+	"x21aPilotoPatronesWar_menu_mixto":{
+		"inicio" :"Hasiera",
+		"mantenimientos" :"x21aMantenimientosWar",
+		"patrones" :"Ereduak",
+			"all" :"[Eredu guztiak]",
+			"accordion" :"Accordion_eu",
+			"autocomplete" :"Autocomplete",
+			"toolbar" :"Botoi-lerro",
+			"combo" :"Combo",
+				"comboSimple" :"Combo Simple",
+				"comboEnlazadoSimple" :"Combo Enlazado (simple)",
+				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+				"multicombo" :"Combo Mutiselección",
+			"dialog" :"Dialogo",
+			"date" :"Data",
+			"feedback" :"Feedback",
+			"form" :"Inprimakia",
+			"time" :"Ordu",
+			"message" :"Mezu",
+			"menu" :"Menu",
 				"menuHorizontal":"Horizontala",
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
-			"tabs" : "Erlaitz",
-				"tabsStatic":"Erlaitz carga estática_eu",
-				"tabsAjax":"Erlaitz carga Ajax_eu",
-				"tabsMixto":"Erlaitz carga mixta_eu",
-				"maintTab":"Erlaitz con mantenimientos_eu",
-			"grid" : "Taula",
-				"grid_grupo" : "Tabla Agrupada_eu",
-				"grid_base" : "Tabla Basico_eu",
-				"grid_arbol" : "Tabla Arbol_eu",
-			"tooltip" :  "Tooltip",
-			"upload" :  "Upload",
-			"validate" :  "Validación_eu",
-			"wizard" : "Wizard_eu",
-				"wizardA" : "Wizard simple_eu",
-				"wizardB" : "Wizard <%@ include %>_eu",
-				"wizardC" : "Wizard <jsp:include>_eu",
-				"wizardD" : "Wizard <c:import>_eu",
-		"experimental": "Esperimentala",
-			"maestro_detalle": "Maestro-Detalle",
-			"z-index": "z-index",
+			"tabs" :"Erlaitz",
+				"tabsStatic":"Erlaitz carga estática",
+				"tabsAjax":"Erlaitz carga Ajax",
+				"tabsMixto":"Erlaitz carga mixta",
+				"maintTab":"Erlaitz con mantenimientos",
+			"grid" :"Taula",
+				"grid_grupo" :"Tabla Agrupada_eu",
+				"grid_base" :"Tabla Basico_eu",
+				"grid_arbol" :"Tabla Arbol_eu",
+			"tooltip" : "Tooltip",
+			"upload" : "Upload",
+			"validate" : "Validación_eu",
+			"wizard" :"Wizard_eu",
+				"wizardA" :"Wizard simple_eu",
+				"wizardB" :"Wizard <%@ include %>_eu",
+				"wizardC" :"Wizard <jsp:include>_eu",
+				"wizardD" :"Wizard <c:import>_eu",
+		"experimental":"Esperimentala",
+			"maestro_detalle":"Maestro-Detalle",
+			"z-index":"z-index",
 			"mant_multi_entidad":"Multi-entitate mantenua",
 			"mant_clave_compuesta":"Gako konposatua mantenua",
 			"mant_clave_compuesta_multi":"Multi-sorta",
 			"mant_clave_compuesta_edlinea":"Lerroan edizioa",
-			"nora"	: "NORA", 
+			"nora"	:"NORA", 
 		"uda":"UDA",
 		"titulo-notifi":"Notificaciones_eu",
 		"titulo-nave":"Navegación_eu",
@@ -53,54 +54,55 @@
 		"titulo-inser":"Inserción de datos_eu"
 	},
 	"x21aPilotoPatronesWar_migas" :{
-		"patrones" : "Ereduak",
-			"all" : "[Eredu guztiak]",
-			"accordion" : "Accordion_eu",
-			"autocomplete" : "Autocomplete",
-			"toolbar" : "Botoi-lerro",
-			"comboSimple" : "Combo Simple",
-			"comboEnlazadoSimple" : "Combo Enlazado (simple)",
-			"comboEnlazadoMulti" : "Combo Enlazado (múltiple)",
-			"dialog" : "Dialogo",
-			"date" : "Data",
-			"feedback" : "Feedback",
-			"form" : "Inprimakia",
-			"time" : "Ordu",
-			"message" : "Mezu",
-			"menu" : "Menu",
-				"menuHorizontal" : "Horizontala",
+		"patrones" :"Ereduak",
+			"all" :"[Eredu guztiak]",
+			"accordion" :"Accordion_eu",
+			"autocomplete" :"Autocomplete",
+			"toolbar" :"Botoi-lerro",
+			"comboSimple" :"Combo Simple",
+			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
+			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+			"multicombo" :"Combo Mutiselección",
+			"dialog" :"Dialogo",
+			"date" :"Data",
+			"feedback" :"Feedback",
+			"form" :"Inprimakia",
+			"time" :"Ordu",
+			"message" :"Mezu",
+			"menu" :"Menu",
+				"menuHorizontal" :"Horizontala",
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
-			"tabs" : "Erlaitz",
+			"tabs" :"Erlaitz",
 				"tabsStatic":"Erlaitz carga estática_eu",
 				"tabsAjax":"Erlaitz carga Ajax_eu",
 				"tabsMixto":"Erlaitz carga mixta_eu",
 				"maintTab":"Erlaitz con mantenimientos_eu",
-			"grid" : "Taula",
-				"grid_grupo" : "Tabla Agrupada_eu",
-				"grid_base" : "Tabla Basico_eu",
-				"grid_arbol" : "Tabla Arbol_eu",
-			"tooltip" :  "Tooltip",
-			"upload" :  "Upload",
-			"validate" :  "Validación_eu",
-			"wizard" : "Wizard_eu",
-				"wizardA" : "Wizard simple_eu",
-				"wizardB" : "Wizard <%@ include %>_eu",
-				"wizardC" : "Wizard <jsp:include>_eu",
-				"wizardD" : "Wizard <c:import>_eu",
-		"experimental": "Esperimentala",
-			"maestro_detalle": "Maestro-Detalle",
-			"z-index": "z-index",
+			"grid" :"Taula",
+				"grid_grupo" :"Tabla Agrupada_eu",
+				"grid_base" :"Tabla Basico_eu",
+				"grid_arbol" :"Tabla Arbol_eu",
+			"tooltip" : "Tooltip",
+			"upload" : "Upload",
+			"validate" : "Validación_eu",
+			"wizard" :"Wizard_eu",
+				"wizardA" :"Wizard simple_eu",
+				"wizardB" :"Wizard <%@ include %>_eu",
+				"wizardC" :"Wizard <jsp:include>_eu",
+				"wizardD" :"Wizard <c:import>_eu",
+		"experimental":"Esperimentala",
+			"maestro_detalle":"Maestro-Detalle",
+			"z-index":"z-index",
 			"mant_multi_entidad":"Multi-entitate mantenua",
 			"mant_clave_compuesta":"Gako konposatua mantenua",
 			"mant_clave_compuesta_multi":"Multi-sorta",
 			"mant_clave_compuesta_edlinea":"Lerroan edizioa",
-			"nora"	: "NORA", 
+			"nora"	:"NORA", 
 		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
-	"autocomplete" : { 
+	"autocomplete" :{ 
 		"asp":"asp_eu",
 		"c":"c_eu",
 		"c++":"c++_eu",
@@ -116,7 +118,7 @@
 		"scala":"scala_eu"
 	},
 	"_comment":"COMBO_SIMPLE",	
-		"combo" : { 
+		"combo" :{ 
 			"_blank":"[Elementu bat aukeratu]",
 			"asp":"asp_eu",
 			"c":"c_eu",
@@ -132,7 +134,7 @@
 			"ruby":"ruby_eu",
 			"scala":"scala_eu"
 		},
-		"comboGrupos" : { 
+		"comboGrupos" :{ 
 			"futbol":"Futbola",
 			"alaves":"Alaves_eu",
 			"ath":"Athletic_eu",
@@ -146,7 +148,7 @@
 			"hamilton":"Lewis Hamilton_eu",
 			"vettel":"Sebastian Vettel_eu"
 		},
-		"comboLargo": {
+		"comboLargo":{
 			"jon_doe":"John Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)",
 			"jane_doe":"Jane Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
 			"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
@@ -160,32 +162,32 @@
 			"g":"Gipúzcoa_eu"
 		},
 		"comboPadre":{
-			"a1": "A-Zona1_eu",
-			"a2": "A-Zona2_eu",
-			"a3": "A-Zona3_eu",
-			"b1": "Gran Bilbao_eu",
-			"b2": "Margen Derecha_eu",
-			"b3": "Margen Izquierda_eu",
-			"g1": "G-Zona1_eu",
-			"g2": "G-Zona2_eu",
-			"g3": "G-Zona3_eu"
+			"a1":"A-Zona1_eu",
+			"a2":"A-Zona2_eu",
+			"a3":"A-Zona3_eu",
+			"b1":"Gran Bilbao_eu",
+			"b2":"Margen Derecha_eu",
+			"b3":"Margen Izquierda_eu",
+			"g1":"G-Zona1_eu",
+			"g2":"G-Zona2_eu",
+			"g3":"G-Zona3_eu"
 		},
 		"comboHijo":{
 			"_blank":"[Selecciona Hijo_eu]"
 		},
-		"comboAbueloRemoto": {
+		"comboAbueloRemoto":{
 			"_blank":"[Selecciona Abuelo Remoto_eu]"
 		},
 		"mixto_comboPadre":{
-			"a1": "A-Zona1_eu",
-			"a2": "A-Zona2_eu",
-			"a3": "A-Zona3_eu",
-			"b1": "Gran Bilbao_eu",
-			"b2": "Margen Derecha_eu",
-			"b3": "Margen Izquierda_eu",
-			"g1": "G-Zona1_eu",
-			"g2": "G-Zona2_eu",
-			"g3": "G-Zona3_eu"
+			"a1":"A-Zona1_eu",
+			"a2":"A-Zona2_eu",
+			"a3":"A-Zona3_eu",
+			"b1":"Gran Bilbao_eu",
+			"b2":"Margen Derecha_eu",
+			"b3":"Margen Izquierda_eu",
+			"g1":"G-Zona1_eu",
+			"g2":"G-Zona2_eu",
+			"g3":"G-Zona3_eu"
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo_eu]",
@@ -194,10 +196,10 @@
 			"g":"Gipúzcoa_eu"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
-		"departamentoRemote": {
+		"departamentoRemote":{
 			"_blank":"[Selecciona Dpto._eu]"
 		},
-		"provinciaRemote": {
+		"provinciaRemote":{
 			"_blank":"[Selecciona Prov._eu]"
 		},
 		"mixto_provincia":{
@@ -211,118 +213,118 @@
 			"poli":"Policía_eu",
 			"bomb":"Bomberos_eu"
 		},
-	"tabs" : {
-		"pestana0" 	: "Tab 0_eu",
-		"sub00" 	: "sub00_eu",
-		"sub000" 	: "sub000_eu",
-		"sub001" 	: "sub001_eu",
-		"sub0010" 	: "sub0010_eu",
-		"sub0011" 	: "sub0011_eu",
-		"sub00110" 	: "sub00110_eu",
-		"sub00111" 	: "sub00111_eu",
-		"sub002" 	: "sub002_eu",
-		"sub01" 	: "sub01_eu",
-		"sub02" 	: "sub02_eu",
-		"pestana1"  : "Tab 1_eu",
-		"sub10" 	: "sub10_eu",
-		"sub11" 	: "sub11_eu",
-		"pestana2" 	: "Tab 2_eu",
-		"pestanaAna"   	: "Nueva Pestaña_eu",
-		"nuevaPestaña" 	: "Nuevo Nivel_eu",
-		"PestañasMaint"	: "Pestaña con Mantenimientos_eu"
+	"tabs" :{
+		"pestana0" 	:"Tab 0_eu",
+		"sub00" 	:"sub00_eu",
+		"sub000" 	:"sub000_eu",
+		"sub001" 	:"sub001_eu",
+		"sub0010" 	:"sub0010_eu",
+		"sub0011" 	:"sub0011_eu",
+		"sub00110" 	:"sub00110_eu",
+		"sub00111" 	:"sub00111_eu",
+		"sub002" 	:"sub002_eu",
+		"sub01" 	:"sub01_eu",
+		"sub02" 	:"sub02_eu",
+		"pestana1"  :"Tab 1_eu",
+		"sub10" 	:"sub10_eu",
+		"sub11" 	:"sub11_eu",
+		"pestana2" 	:"Tab 2_eu",
+		"pestanaAna"   	:"Nueva Pestaña_eu",
+		"nuevaPestaña" 	:"Nuevo Nivel_eu",
+		"PestañasMaint"	:"Pestaña con Mantenimientos_eu"
 	},
-	"pruebaSub3Maint" : {
-		"maint1"		: "Mantenimiento 1_eu",
-		"maint2"		: "Mantenimiento 2_eu",
-		"maint3"		: "Mantenimiento 3_eu"	
+	"pruebaSub3Maint" :{
+		"maint1"		:"Mantenimiento 1_eu",
+		"maint2"		:"Mantenimiento 2_eu",
+		"maint3"		:"Mantenimiento 3_eu"	
 	},
-	"tabsStatic" : {
-		"pestana0" 	: "Pestaña 1_eu",
-		"pestana1"  : "Pestaña 2_eu",
-		"pestana2" 	: "Pestaña 3_eu",
-		"pestanaAna" : "Pestaña Añadida_eu"
+	"tabsStatic" :{
+		"pestana0" 	:"Pestaña 1_eu",
+		"pestana1"  :"Pestaña 2_eu",
+		"pestana2" 	:"Pestaña 3_eu",
+		"pestanaAna" :"Pestaña Añadida_eu"
 	},
-	"tabsMixta" : {
-		"pestanaUrl" 	: "Pestaña con url_eu",
-		"pestanaHtml"  : "Pestaña con html_eu"
+	"tabsMixta" :{
+		"pestanaUrl" 	:"Pestaña con url_eu",
+		"pestanaHtml"  :"Pestaña con html_eu"
 	},
-	"maintTab" : {
-		"maint1"	: "Mantenimiento Simple 1_eu",
-		"maint2"    : "Mantenimiento Simple 2_eu",
-		"maint3" 	: "Mantenimiento Simple 3_eu",
-		"edit1" 	: "Mantenimiento edición en línea_eu",
-		"multi1" 	: "Mantenimiento múltiple_eu"
+	"tabsMaint" :{
+		"maint1"	:"Mantenimiento Simple 1_eu",
+		"maint2"    :"Mantenimiento Simple 2_eu",
+		"maint3" 	:"Mantenimiento Simple 3_eu",
+		"edit1" 	:"Mantenimiento edición en línea_eu",
+		"multi1" 	:"Mantenimiento múltiple_eu"
 	},
-	"tabsDialog" : {
-		"pestana0" 	: "Tab 0_eu",
-		"sub01" 	: "sub01_eu",
-		"sub02" 	: "sub02_eu",
-		"pestana1"  : "Tab 1_eu",
-		"sub10" 	: "sub10_eu",
-		"sub11" 	: "sub11_eu"
+	"tabsDialog" :{
+		"pestana0" 	:"Tab 0_eu",
+		"sub01" 	:"sub01_eu",
+		"sub02" 	:"sub02_eu",
+		"pestana1"  :"Tab 1_eu",
+		"sub10" 	:"sub10_eu",
+		"sub11" 	:"sub11_eu"
 	},
-	"toolbar" : {
-		"buscar"  	: "Bilatu",
-		"otros"	  	: "Beste botoi",
-		"nuevo"	  	: "Berria",
-		"editar"	: "Aldatu",
-		"cancelar"	: "Ezeztatu",
-		"borrar"	: "Ezabatu",
-		"filtrar"	: "Iragazi",
-		"imprimir"	: "Inprimatu",
-		"ficheros"	: "Fitxategiak",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbar" :{
+		"buscar"  	:"Bilatu",
+		"otros"	  	:"Beste botoi",
+		"nuevo"	  	:"Berria",
+		"editar"	:"Aldatu",
+		"cancelar"	:"Ezeztatu",
+		"borrar"	:"Ezabatu",
+		"filtrar"	:"Iragazi",
+		"imprimir"	:"Inprimatu",
+		"ficheros"	:"Fitxategiak",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"toolbarRight" : {
-		"buscar"  	: "Bilatu",
-		"otros"	  	: "Beste botoi",
-		"nuevo"	  	: "Berria",
-		"editar"	: "Aldatu",
-		"cancelar"	: "Ezeztatu",
-		"borrar"	: "Ezabatu",
-		"filtrar"	: "Iragazi",
-		"imprimir"	: "Inprimatu",
-		"ficheros"	: "Fitxategiak",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbarRight" :{
+		"buscar"  	:"Bilatu",
+		"otros"	  	:"Beste botoi",
+		"nuevo"	  	:"Berria",
+		"editar"	:"Aldatu",
+		"cancelar"	:"Ezeztatu",
+		"borrar"	:"Ezabatu",
+		"filtrar"	:"Iragazi",
+		"imprimir"	:"Inprimatu",
+		"ficheros"	:"Fitxategiak",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"grid##ejie" : {
-		"0" : "Ez",
-		"1" : "Bai"
+	"grid##ejie" :{
+		"0" :"Ez",
+		"1" :"Bai"
 	},
-	"GRID_simple##ejie" : {
-		"0" : "Ez",
-		"1" : "Bai"
+	"GRID_simple##ejie" :{
+		"0" :"Ez",
+		"1" :"Bai"
 	},
-	"gridDialog##ejie" : {
-		"0" : "Ez",
-		"1" : "Bai"
+	"gridDialog##ejie" :{
+		"0" :"Ez",
+		"1" :"Bai"
 	},
 	"uploadTabs":{
-		"upload" : "Upload",
-		"uploadTable" : "Upload taulan",
-		"uploadForm" : "Upload formularioan",
-		"uploadFormSimple" : "Upload soila formularioan",
-		"uploadFormMultiple" : "Upload asko formularioan"
+		"upload" :"Upload",
+		"uploadTable" :"Upload taulan",
+		"uploadForm" :"Upload formularioan",
+		"uploadFormSimple" :"Upload soila formularioan",
+		"uploadFormMultiple" :"Upload asko formularioan"
 	},
 	"comboProvincias":{
 		"_blank":"[Elementu bat aukeratu]" 	
@@ -368,8 +370,15 @@
 		"ejemploYFunciones":"Ejemplo y métodos_eu",
 		"multiplesEntidades":"Envío de varias entidades_eu"
 	},
-	"loginUserMock" : {
-		"logginOk1" : "Usuario _eu'",
-		"logginOk2" : "' Seleccionado correctamente_eu"
+	"loginUserMock" :{
+		"logginOk1" :"Usuario _eu'",
+		"logginOk2" :"' Seleccionado correctamente_eu"
+	},
+	"maintTab" :{
+		"maint1"	:"Mantenimiento Simple 1_eu",
+		"maint2"    :"Mantenimiento Simple 2_eu",
+		"maint3" 	:"Mantenimiento Simple 3_eu",
+		"edit1" 	:"Mantenimiento edición en línea_eu",
+		"multi1" 	:"Mantenimiento múltiple_eu"
 	}
 }

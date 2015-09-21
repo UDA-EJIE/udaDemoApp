@@ -1,7 +1,6 @@
 package com.ejie.x21a.service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.validation.Errors;
@@ -90,7 +89,7 @@ public interface AlumnoService {
 	 * @param alumnoList  ArrayList
 	 * @return 
 	 */	
-	void removeMultiple(ArrayList<Alumno> alumnoList);
+	void removeMultiple(List<Alumno> alumnoList);
 	
 	/**
 	 * Inserts a single row in the Alumno table.

@@ -22,7 +22,7 @@ jQuery(function($){
 		
 		url: "/x21aMantenimientosWar/usuario",
 		hasMaint: true,
-		width: 650,
+		width: 850,
 		pagerName: "group_multi_pager",
 		rowNum: "10",
 		sortorder: "asc",
@@ -127,6 +127,10 @@ jQuery(function($){
 	}
 		
 	function maxFecha(val, name, record){
+		//Controlar valores nulos
+		if (record[name] === null){
+			return val;
+		} 
 		if(val !== undefined && val !==""){
 			return(compFechas(val,record[name],true));
 		} else {
@@ -135,6 +139,10 @@ jQuery(function($){
 	}
 	
 	function minFecha(val, name, record){
+		//Controlar valores nulos
+		if (record[name] === null){
+			return val;
+		} 
 		if(val !== undefined && val !==""){
 			return(compFechas(val,record[name],false));
 		} else {

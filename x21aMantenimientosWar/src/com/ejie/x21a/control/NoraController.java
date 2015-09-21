@@ -69,14 +69,24 @@ public class NoraController {
 	
 	@RequestMapping(value = "municipio", method=RequestMethod.GET)
 	public @ResponseBody List<NoraMunicipio> getMunicipios(
-			@RequestParam(value = "q", required = true) String q,
-			@RequestParam(value = "c", required = true) Boolean c) {
+			@RequestParam(value="provincia.id", required=false) String provinciaId) {
 		
 		NoraMunicipio filterMunicipio = new NoraMunicipio();
-		filterMunicipio.setDsO(q);
-		List<NoraMunicipio> findAll = municipioService.findAllLike(filterMunicipio, null, !c);
+		filterMunicipio.setProvinciaId(provinciaId);
+		List<NoraMunicipio> findAll = municipioService.findAll(filterMunicipio, null);
 		return findAll;
 	}
+	
+//	@RequestMapping(value = "municipio", method=RequestMethod.GET)
+//	public @ResponseBody List<NoraMunicipio> getMunicipios(
+//			@RequestParam(value = "q", required = true) String q,
+//			@RequestParam(value = "c", required = true) Boolean c) {
+//		
+//		NoraMunicipio filterMunicipio = new NoraMunicipio();
+//		filterMunicipio.setDsO(q);
+//		List<NoraMunicipio> findAll = municipioService.findAllLike(filterMunicipio, null, !c);
+//		return findAll;
+//	}
 	
 	@RequestMapping(value = "calle", method=RequestMethod.GET)
 	public @ResponseBody List<NoraCalle> getCalles(

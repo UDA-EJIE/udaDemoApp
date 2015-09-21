@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
@@ -200,6 +202,7 @@ public class ExperimentalController {
 		 *
 		 */
 		@RequestMapping(value = "comarca/{code}", method = RequestMethod.DELETE)
+		@ResponseStatus(value=HttpStatus.OK)
 	    public void remove(@PathVariable BigDecimal code) {
 	            Comarca comarca = new Comarca();
 	            comarca.setCode(code);
@@ -214,6 +217,7 @@ public class ExperimentalController {
 		 *
 		 */	
 		@RequestMapping(value = "comarca/deleteAll", method = RequestMethod.POST)
+		@ResponseStatus(value=HttpStatus.OK)
 		public void removeMultiple(@RequestBody ArrayList<ArrayList<String>> comarcaIds) {
 	        ArrayList<Comarca> comarcaList = new ArrayList<Comarca>();
 	            for (ArrayList<String> comarcaId:comarcaIds) {
@@ -237,7 +241,7 @@ public class ExperimentalController {
 			@RequestParam(value = "descEu", required = false) String descEu,
 			@RequestParam(value = "css", required = false) String css,
 			HttpServletRequest request) {
-					Localidad filterLocalidad = new Localidad(code, descEs, descEu, css, new Comarca(comarcaCode, null, null, null, null, null, null));
+					Localidad filterLocalidad = new Localidad(code, descEs, descEu, css, new Comarca(comarcaCode, null, null, null, null));
 	                Pagination pagination = null;
 				    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
 					    pagination = new Pagination();
@@ -299,6 +303,7 @@ public class ExperimentalController {
 		 * 
 		 */
 		@RequestMapping(value = "localidad/{code}", method = RequestMethod.DELETE)
+		@ResponseStatus(value=HttpStatus.OK)
 		public void removeLocalidad(@PathVariable BigDecimal code) {
 				Localidad localidad = new Localidad();
 				localidad.setCode(code);
@@ -312,6 +317,7 @@ public class ExperimentalController {
 		 * @param localidadIds ArrayList
 		 */
 		@RequestMapping(value = "localidad/deleteAll", method = RequestMethod.POST)
+		@ResponseStatus(value=HttpStatus.OK)
 		public void removeMultipleLocalidad(@RequestBody ArrayList<ArrayList<String>> localidadIds) {
 			ArrayList<Localidad> localidadList = new ArrayList<Localidad>();
 				for (ArrayList<String> localidadId : localidadIds) {

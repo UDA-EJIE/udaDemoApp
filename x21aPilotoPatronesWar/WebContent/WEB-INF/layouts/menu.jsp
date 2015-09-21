@@ -13,7 +13,7 @@
  -- que establece la Licencia. 
  --%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>
-
+ 
 	<ul id="x21aPilotoPatronesWar_menu"	class="rup_invisible_menu">
 		<li>
 			<a href="/x21aPilotoPatronesWar/../x21aMantenimientosWar/">
@@ -21,13 +21,15 @@
 			</a>
 		</li>
 		<li>
-			<a href="/x21aPilotoPatronesWar/">
+			<a href="/x21aPilotoPatronesWar/" >
 				<spring:message code="inicio" />
+				<span class="ui-icon home_icon"></span>
 			</a>
 		</li>
 		<li>
 			<a>
 				<spring:message code="patrones" />
+				<span class="ui-icon patrones_icon"></span>
 			</a>
 			<ul>
 				<li>
@@ -40,21 +42,25 @@
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/feedback">
 						<spring:message code="feedback" />
+						<span class="ui-icon feedback_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/tooltip">
 						<spring:message code="tooltip" />
+						<span class="ui-icon tooltip_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/message">
 						<spring:message code="message" />
+						<span class="ui-icon message_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/dialog">
 						<spring:message code="dialog" />
+						<span class="ui-icon dialog_icon"></span>
 					</a>
 				</li>
 				<li class="ui-widget-content ui-menu-divider"></li>
@@ -62,6 +68,7 @@
 				<li>
 					<a>
 						<spring:message code="menu" />
+						<span class="ui-icon menu_icon"></span>
 					</a>
 					<ul>
 						<li>
@@ -84,6 +91,7 @@
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/toolbar">
 						<spring:message code="toolbar" />
+						<span class="ui-icon toolbar_icon"></span>
 					</a>
 				</li>
 				<li class="ui-widget-content ui-menu-divider"></li>
@@ -91,11 +99,13 @@
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/accordion">
 						<spring:message code="accordion" />
+						<span class="ui-icon accordion_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a>
 						<spring:message code="tabs" />
+						<span class="ui-icon tab_icon"></span>
 					</a>
 					<ul>
 						<li>
@@ -123,6 +133,7 @@
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/grid">
 						<spring:message code="grid" />
+						<span class="ui-icon grid_icon"></span>
 					</a>
 <!-- 					<ul> -->
 <!-- 						<li> -->
@@ -145,6 +156,7 @@
 				<li>
 					<a>
 						<spring:message code="wizard" />
+						<span class="ui-icon wizard_icon"></span>
 					</a>
 					<ul>
 						<li>
@@ -174,11 +186,13 @@
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/autocomplete">
 						<spring:message code="autocomplete" />
+						<span class="ui-icon autocomplete_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a>
 						<spring:message code="combo" />
+						<span class="ui-icon combo_icon"></span>
 					</a>
 					<ul>
 						<li>
@@ -196,39 +210,50 @@
 								<spring:message code="comboEnlazadoMulti" />
 							</a>
 						</li>
+<!-- 						<li> -->
+<!-- 							<a href="/x21aPilotoPatronesWar/patrones/multicombo"> -->
+<%-- 								<spring:message code="multicombo" /> --%>
+<!-- 							</a> -->
+<!-- 						</li> -->
 					</ul>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/date">
 						<spring:message code="date" />
+						<span class="ui-icon date_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/form">
 						<spring:message code="form" />
+						<span class="ui-icon form_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/time">
 						<spring:message code="time" />
+						<span class="ui-icon time_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/upload">
 						<spring:message code="upload" />
+						<span class="ui-icon upload_icon"></span>
 					</a>
 				</li>
 				<li>
 					<a href="/x21aPilotoPatronesWar/patrones/validate">
 						<spring:message code="validate" />
+						<span class="ui-icon validate_icon"></span>
 					</a>
 				</li>
 			</ul>
 		</li>
-		<sec:authorize access="hasRole('ROLE_X21A-IN-0003')">
+<%-- 		<sec:authorize access="hasRole('ROLE_X21A-IN-0003')"> --%>
 		<li>
 			<a>
 				<spring:message code="experimental" />
+				<span class="ui-icon experimental_icon"></span>
 			</a>
 			<ul>
 				<li>
@@ -239,6 +264,7 @@
 				<li>
 					<a	href="/x21aPilotoPatronesWar/experimental/z-index">
 						<spring:message code="z-index" />
+						<span class="ui-icon z-index_icon"></span>
 					</a>
 				</li>
 				<li>
@@ -266,14 +292,16 @@
 				<li>
 					<a	href="/x21aPilotoPatronesWar/experimental/nora">
 						<spring:message code="nora" />
+						<span class="ui-icon nora_icon"></span>
 					</a>
 				</li>
 			</ul>
 		</li>
-		</sec:authorize>
+<%-- 		</sec:authorize> --%>
 		<li>
 			<a	href="http://code.google.com/p/uda/" target="_blank">
 				<spring:message code="uda" />
+				<span class="ui-icon uda_icon"></span>
 			</a>
 		</li>
 	</ul>

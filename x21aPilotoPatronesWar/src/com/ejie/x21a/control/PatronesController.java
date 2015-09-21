@@ -27,6 +27,7 @@ import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,6 +36,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -50,6 +52,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
@@ -114,6 +117,13 @@ public class PatronesController {
 		binder.registerCustomEditor(byte[].class,new ByteArrayMultipartFileEditor());
 	}
 	
+	//Sleep
+	@RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
+	public String getSleep(Model model, @PathVariable Integer ms) throws InterruptedException {
+		Thread.sleep(ms);
+		return "accordion";
+	}
+	
 	//Accordion
 	@RequestMapping(value = "accordion", method = RequestMethod.GET)
 	public String getAccordion(Model model) {
@@ -157,6 +167,11 @@ public class PatronesController {
 	@RequestMapping(value = "comboEnlazadoMultiple", method = RequestMethod.GET)
 	public String getEnlazadoMultiple(Model model) {
 		return "comboEnlazadoMultiple";
+	}
+	//Multicombo
+	@RequestMapping(value = "multicombo", method = RequestMethod.GET)
+	public String getMulticombo(Model model) {
+		return "multicombo";
 	}
 
 	//Feedback
@@ -551,6 +566,7 @@ public class PatronesController {
 	        	return usuarioAux;
 			}
 		@RequestMapping(value = "usuario/{id}", method = RequestMethod.DELETE)
+		@ResponseStatus(value=HttpStatus.OK)
 	    public void remove(@PathVariable String id) {
 	            Usuario usuario = new Usuario();
 	            usuario.setId(id);
@@ -628,11 +644,12 @@ public class PatronesController {
 			
 		}
 		
-		@RequestMapping(value="form/subidaArchivos", method = RequestMethod.POST)
-		public @ResponseBody List<Map<String,Object>> addFormSimple(
+		@RequestMapping(value="form/subidaArchivos", method = RequestMethod.POST, produces="application/json")
+		public @ResponseBody Object addFormSimple(
 				@ModelAttribute UploadBean uploadBean,
 				@RequestParam(value="fotoPadre", required=false) MultipartFile fotoPadre,
-				@RequestParam(value="fotoMadre", required=false) MultipartFile fotoMadre) {
+				@RequestParam(value="fotoMadre", required=false) MultipartFile fotoMadre,
+				HttpServletResponse response) throws IOException {
 			
 			if(fotoPadre!=null && !fotoPadre.isEmpty()){
 				uploadService.saveToDisk(fotoPadre, appConfiguration.getProperty("fileUpload.path"));
@@ -640,6 +657,19 @@ public class PatronesController {
 			if(fotoMadre!=null && !fotoMadre.isEmpty()){
 				uploadService.saveToDisk(fotoMadre, appConfiguration.getProperty("fileUpload.path"));
 			}
+			
+			MessageWriter messageWriter = new MessageWriter();
+			
+			messageWriter.startMessageList();
+			messageWriter.addMessage("Las entidades se han enviado correctamente");
+			messageWriter.endMessageList();
+			
+			ServletOutputStream servletOutputStream = response.getOutputStream();
+			
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			servletOutputStream.print(messageWriter.toString());
+			response.flushBuffer();
 			
 			return null;
 		}
@@ -665,7 +695,7 @@ public class PatronesController {
 		 */
 		
 		@RequestMapping(value = "validacion/servidor", method = RequestMethod.POST)
-		public @ResponseBody Object validacion(@Validated(value={AlumnoEjemplo1Validation.class}) @ModelAttribute Alumno alumno, Model model) {
+		public @ResponseBody Object validacion(@Validated(value={AlumnoEjemplo1Validation.class}) @RequestBody Alumno alumno, Model model) {
 			
 			Map<String, Object> mapaRespuesta = new HashMap<String, Object>();
 			
@@ -676,10 +706,11 @@ public class PatronesController {
 		
 		/**
 		 * Validacion 
+		 * @throws IOException 
 		 */
 		
 		@RequestMapping(value = "validacion/servidor2", method = RequestMethod.POST, produces="application/json")
-		public @ResponseBody Object validacion2(@RequestBody Alumno alumno, Model model, HttpServletRequest request, HttpServletResponse response) {
+		public @ResponseBody Object validacion2(@RequestBody Alumno alumno, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 			
 			Errors errors = new BeanPropertyBindingResult(alumno, "alumno");
 			validationManager.validate(errors, alumno, AlumnoEjemplo2Validation.class);
@@ -690,7 +721,6 @@ public class PatronesController {
 			 */
 			UserNameValidator usuarioValidator = new UserNameValidator();
 			usuarioValidator.validate(alumno, errors);
-
 			
 			/*
 			 * EJEMPLO DE ENVIO DE MENSAJES DESDE EL SERVIDOR 
@@ -698,20 +728,10 @@ public class PatronesController {
 			if (errors.hasErrors()){
 				try {
 					
-					
-//					Map<String, List<String>> fieldErrors = null;
-//					if (bindingResult.hasErrors()){
 					Map<String, List<String>> fieldErrors = validationManager.getErrorsAsMap(errors);
-//					}
-					
-//					JSONArray usuarioErrorsJson = null;
-//					if (errors.hasErrors()){
-//						List<String> usuarioErrors = validationManager.getErrorsAsList(errors);
-//						usuarioErrorsJson = new JSONArray(usuarioErrors);
-//					}
-					
 					
 					response.sendError(406, validationManager.getMessageJSON(fieldErrors).toString());
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -722,14 +742,19 @@ public class PatronesController {
 			
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Este es un ejemplo de errores enviados desde el servidor");
-			messageWriter.addMessage(messageSource, "validacion.required");
+			messageWriter.addMessage(messageSource, "patron.validacion.required");
 			messageWriter.addComplexMessage("Prueba de estilos", "rojo");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage("Nivel 1.1","Nivel 1.2","Nivel 1.3");
 			messageWriter.endSubLevel();
 			messageWriter.endMessageList();
 			
-			return messageWriter.toString();
+			ServletOutputStream servletOutputStream = response.getOutputStream();
+			response.setContentType("application/json") ;
+			servletOutputStream.print(messageWriter.toString());
+			response.flushBuffer();
+			
+			return null;
 		}
 		
 		
@@ -747,7 +772,7 @@ public class PatronesController {
 		        
 		        if (a!=null && a.getUsuario()!=null){
 		        	if ("ADMIN".equals(a.getUsuario().toUpperCase())){
-		        		e.rejectValue("usuario", "validacion.required");
+		        		e.rejectValue("usuario", "patron.validacion.required");
 		        	}
 		        }
 		    }

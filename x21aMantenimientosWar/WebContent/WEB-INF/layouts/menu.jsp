@@ -84,6 +84,7 @@
 		<li>
 			<a	href="http://code.google.com/p/uda/" target="_blank">
 				<spring:message code="uda" />
+				<span class="ui-icon uda_icon"></span>
 			</a>
 		</li>
 	</ul>

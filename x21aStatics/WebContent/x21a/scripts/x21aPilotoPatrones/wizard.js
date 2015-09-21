@@ -30,6 +30,7 @@ jQuery(document).ready(function(){
 			submitFnc : function(){
 				//Función que se ejecuta antes de enviar el formulario
 				//console.log("Enviando formulario...");
+				alert("Enviando formulario...");
 			},
 			//parseJSON para convertir String en Boolean
 			summary: $.parseJSON($('[name=summary]:checked').val()),
@@ -56,8 +57,8 @@ jQuery(document).ready(function(){
 //						console.log("Ir al paso "+$("#stepDesc1").children("a").text());
 				},
 				2 : function (){
-						if ($("#wizardForm").rup_wizard("getStep")==0 && $("#username").val()!=="uda"){
-							alert("Username deber contener 'uda'");
+						if ($("#wizardForm").rup_wizard("getCurrentStep")==0 && $("#username").val()!=="uda"){
+							alert("El campo 'Usuario' deber contener 'uda'");
 							return false;
 						}
 //						console.log("Ir al paso "+$("#stepDesc2").children("a").text());

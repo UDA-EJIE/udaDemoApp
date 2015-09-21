@@ -128,7 +128,8 @@ jQuery(function($){
 					noWeekend : true
 				}
 			}
-        ]
+        ],
+        readOnlyFields :  [ "id" ]
 	});
 	
 
@@ -152,6 +153,18 @@ jQuery(function($){
 				click : function(){$("#simple").rup_maint("getFilterBootonDefaultFunction").call();}
 			}]
 			
+		},
+		onbeforeDetailShow: function(rowId){
+			var fieldsArray = jqGrid[0].p.readOnlyFields;
+	        if (this.prop.MODO === 'new'){
+	        	for (var i = 0; i < fieldsArray.length; i++) {
+	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).removeAttr('readonly');
+				}
+	        } else {
+	        	for (var i = 0; i < fieldsArray.length; i++) {
+	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).attr('readonly', true);;
+				}
+	        }
 		}
 	});
 	

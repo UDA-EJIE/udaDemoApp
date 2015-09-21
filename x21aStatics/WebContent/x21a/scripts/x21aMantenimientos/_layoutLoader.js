@@ -47,5 +47,11 @@ jQuery(document).ready(function(){
 		display: (vertical ? 'vertical' : 'horizontal')
 	});
 	
-	$.rup.i18n.base["rup_combo"] = { blankNotDefined : "----" };
+	$.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
+	
+	//Evitar CABECERA y PIE en PORTAL
+	if (jQuery.rup_utils.aplicatioInPortal()){
+		jQuery(".cabecera").remove();
+		jQuery(".footer").remove();
+	}
 });

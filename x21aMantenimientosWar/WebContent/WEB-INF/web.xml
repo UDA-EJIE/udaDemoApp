@@ -28,6 +28,34 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
+	
+	<!-- Filtro encargado de resolver las peticiones mutipart.  -->
+	<filter>
+	    <filter-name>multipartFilter</filter-name>
+	    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+	    <init-param>
+	    	<param-name>multipartResolverBeanName</param-name>
+	    	<param-value>multipartResolver</param-value>
+	    </init-param>
+	</filter>
+	
+	<filter-mapping>
+    	<filter-name>multipartFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Filtro encargado de mapear correctamente peticiones que no sean GET 
+		y POST, al tipo indicado en el parametro _method -->
+	<filter>
+		<filter-name>httpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>httpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- Here's were some of the fundamental AOP Aspects are applied -->
 	<filter>
 		<filter-name>udaFilter</filter-name>
@@ -37,6 +65,19 @@
 		<filter-name>udaFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>	
+	
+	<!-- Filtro utilizado para emular el comportamiento de los mensajes de error 
+		http en peticiones realizadas desde iframes -->
+	<filter>
+		<filter-name>iframeXHREmulationFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>iframeXHREmulationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
 	<!-- Handles Security -->
 	<filter>
 		<display-name>springSecurityFilterChain</display-name>
@@ -65,6 +106,8 @@
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+
 	<!-- Handles all requests into the application -->
 	<servlet>
 		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>

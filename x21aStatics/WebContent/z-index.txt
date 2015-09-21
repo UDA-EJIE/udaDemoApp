@@ -17,7 +17,7 @@
 * Combos 
 	theme.rup.combo-1.0.0.css
 	
-	.ui-selectmenu-menu-dropdown:  z-index: 800 !important; 	
+	.ui-selectmenu-menu-dropdown:  z-index: 8000 !important; 	
 
 * autocomplete:
 	theme.rup.autocomplete-1.0.0.css

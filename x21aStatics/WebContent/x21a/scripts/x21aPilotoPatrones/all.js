@@ -46,6 +46,7 @@ jQuery(function($){
 				rupType: "datepicker" 
 			}
         ]
+		,pagerInline: false
 	});
 	
 	$("#maint").rup_maint({
@@ -163,6 +164,7 @@ jQuery(function($){
 							rupType: "datepicker" 
 						}
 			        ]
+					,pagerInline: false
 				});
 				
 				$("#maintDialog").rup_maint({

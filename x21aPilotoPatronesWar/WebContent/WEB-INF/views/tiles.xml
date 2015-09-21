@@ -87,8 +87,6 @@
     
     <definition name="mockLoginAjaxPage" template="/WEB-INF/views/mockLogin/mockLoginAjaxPage.jsp"/>		
     	
-	<!-- cambio de la pagina de inicio (welcome) -->
-	<!-- definition name="welcome" template="/WEB-INF/views/welcome.jsp"/>-->
 	<definition name="welcome" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/welcome.jsp"/>
     </definition>
@@ -127,20 +125,24 @@
 		<put-attribute name="content" value="/WEB-INF/views/patrones/combo/comboEnlazadoMultiple.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/combo/comboEnlazadoMultiple-includes.jsp"/>					
 	</definition>
+	<definition name="multicombo" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/combo/multicombo.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/combo/multicombo-includes.jsp"/>					
+	</definition>
 	
 	<definition name="feedback" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/feedback.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/feedback-includes.jsp"/>					
 	</definition>
 	
-	<definition extends="template" name="form">
+	<definition name="form" extends="template" >
 		<put-attribute name="content" value="/WEB-INF/views/patrones/form.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/form-includes.jsp"/>					
 	</definition>
 	
 	<definition name="grid" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/grid/grid.jsp"/>		
-		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid/grid-includes.jsp"/>					
+		<put-attribute name="content" value="/WEB-INF/views/patrones/grid.jsp"/>
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/grid-includes.jsp"/>	
 	</definition>
 	
 	<definition name="gridGroup" extends="template">

@@ -144,14 +144,12 @@
 					       <form:select path="pais.id" class="formulario_linea_input" id="pais" >
 						       <form:options items="${paises}" itemLabel="dsO" itemValue="id"/>
 					       </form:select>
-<!-- 						   <input type="text" name="pais.id" class="formulario_linea_input" id="pais" /> -->
 					    </div>
 					    <div class="col1" id="divAutonomia">
 					       <label for="autonomia" class="label"><spring:message code="autonomia" /></label>
 					       <form:select path="autonomia.id" class="formulario_linea_input" id="autonomia" >
 						       <form:options items="${autonomias}" itemLabel="dsO" itemValue="id"/>
 					       </form:select>
-<!-- 							<input type="text" name="autonomia.id" class="formulario_linea_input" id="autonomia" /> -->
 					    </div>
 					     
 					</div>
@@ -172,15 +170,35 @@
 					       <label for="municipio" class="label"><spring:message code="municipio" /></label>
 							<input type="text" name="municipio.id" class="formulario_linea_input" size="30" id="municipio" />
 					    </div>
-<!-- 					     <div class="col1"> -->
-<%-- 					       <label for="calle" class="label"><spring:message code="calle" /></label> --%>
-<!-- 							<input type="text" name="calle.id" class="formulario_linea_input" size="50" id="calle" /> -->
-<!-- 					    </div> -->
+					     <div class="col1">
+					       <label for="calle" class="label"><spring:message code="calle" /></label>
+							<input type="text" name="calle.id" class="formulario_linea_input" size="50" id="calle" />
+					    </div>
 					</div>
 					
 				</fieldset>
+<!-- 				<button id="botonCapa">Abrir</button> -->
+	
+<!-- 		<div id="capa1" style="display:none;"> -->
+<!-- 			<button id="botonCapa1">Abrir</button> -->
+<!-- 		</div> -->
+<!-- 		<div id="capa2" style="display:none;"> -->
+<!-- 			<button id="botonCapa2">Abrir</button>	 -->
+<!-- 		</div> -->
+<!-- 		<div id="capa3" style="display:none;"> -->
+<!-- 			<button id="botonCapa3">Abrir</button> -->
+<!-- 		</div> -->
+<!-- 		<div id="capa4" > -->
+<%-- 			<label for="pais" class="label"><spring:message code="pais" /></label> --%>
+<%-- 					       <form:select path="pais.id" class="formulario_linea_input" id="pais" > --%>
+<%-- 						       <form:options items="${paises}" itemLabel="dsO" itemValue="id"/> --%>
+<%-- 					       </form:select> --%>
+<%-- 					       <label for="municipio" class="label"><spring:message code="municipio" /></label> --%>
+<!-- 							<input type="text" name="municipio.id" class="formulario_linea_input" size="30" id="municipio" /> -->
+<!-- 			</div> -->
 			</form:form>
 		
 		</div>
 		
 	</div>
+	

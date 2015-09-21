@@ -17,31 +17,30 @@ jQuery(function($){
 	$("#GRID_compuesta").rup_grid({
 		editable:true,
 		hasMaint: true,
-		width: "600",
-		url: "../alumno",
+		width: 950,
+		url: "../multipk",
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",
-		sortname: "idA",
+		sortname: "ida",
 		colNames: [
-			"idA",
-			"idB",
+			"ida",
+			"idb",
 			"nombre",
 			"apellido1",
-			"apellido2",
-			"fechaAlta"
+			"apellido2"
 		],
 		colModel: [
-			{ name: "idA",
-				label: "idA",
-				index: "idA",
+			{ name: "ida",
+				label: "ida",
+				index: "ida",
 				width: "150",
 				editable: true,
 				edittype: "text"
 			},
-			{ name: "idB",
-				label: "idB",
-				index: "idB",
+			{ name: "idb",
+				label: "idb",
+				index: "idb",
 				width: "150",
 				editable: true,
 				edittype: "text"
@@ -66,13 +65,6 @@ jQuery(function($){
 				width: "150",
 				editable: true,
 				edittype: "text"
-			},
-			{ name: "fechaAlta",
-				label: "fechaAlta",
-				index: "fechaAlta",
-				width: "150",
-				editable: true,
-				edittype: "text"
 			}
         ]
 		
@@ -81,8 +73,8 @@ jQuery(function($){
 
 	$("#compuesta").rup_maint({
 		jQueryGrid: "GRID_compuesta",
-		primaryKey: "idA;idB",
-		modelObject: "Alumno",
+		primaryKey: "ida;idb",
+		modelObject: "MultiPk",
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
 		showMessages: true

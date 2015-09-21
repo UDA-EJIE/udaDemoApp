@@ -40,6 +40,7 @@ jQuery(document).ready(function(){
 				"comboSimple" : {"i18nCaption":"comboSimple" },
                 "comboEnlazadoSimple" : { "i18nCaption":"comboEnlazadoSimple" },
                 "comboEnlazadoMultiple" : { "i18nCaption":"comboEnlazadoMulti" },
+//                "multicombo" : { "i18nCaption":"multicombo" },
 				"dialog" : { "i18nCaption" : "dialog" },
 				"date" : { "i18nCaption" : "date" },
 				"feedback" : { "i18nCaption" : "feedback" },
@@ -70,6 +71,7 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple", "newWindow": true },
                   	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
                   	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
+//                  	{"i18nCaption":"multicombo", "url": "/x21aPilotoPatronesWar/patrones/multicombo" },
                   	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
                   	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
                   	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
@@ -83,11 +85,7 @@ jQuery(document).ready(function(){
                 	{"i18nCaption":"tabsAjax", "url": "/x21aPilotoPatronesWar/patrones/tabsAjax" },
                 	{"i18nCaption":"tabsMixto", "url": "/x21aPilotoPatronesWar/patrones/tabsMixto" },
                 	{"i18nCaption":"maintTab", "url": "/x21aPilotoPatronesWar/patrones/maintTab" },
-					{"i18nCaption":"grid", "submenu":[
-					    {"i18nCaption":"grid_grupo", "url": "patrones/gridGroup" },
-						{"i18nCaption":"grid_base", "url": "patrones/grid" },
-						{"i18nCaption":"grid_arbol", "url": "patrones/gridTree" },
-					]},
+					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
 					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" },
 					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" },
 					{"i18nCaption":"validate", "url": "/x21aPilotoPatronesWar/patrones/validate" },
@@ -176,6 +174,7 @@ jQuery(document).ready(function(){
 					      	{"i18nCaption":"comboSimple", "url": "patrones/comboSimple", "newWindow": true },
 					      	{"i18nCaption":"comboEnlazadoSimple", "url": "patrones/comboEnlazadoSimple" },
 					      	{"i18nCaption":"comboEnlazadoMulti", "url": "patrones/comboEnlazadoMultiple" }
+//					      	,{"i18nCaption":"multicombo", "url": "patrones/multicombo" }
 					  	]},
 							{"i18nCaption":"date", "url": "patrones/date" },
 							{"i18nCaption":"time", "url": "patrones/time" },
@@ -199,5 +198,11 @@ jQuery(document).ready(function(){
 		});
 	};
 	
-	jQuery.rup.i18n.base["rup_combo"] = { blankNotDefined : "----" };
+	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
+	
+	//Evitar CABECERA y PIE en PORTAL
+	if (jQuery.rup_utils.aplicatioInPortal()){
+		jQuery(".cabecera").remove();
+		jQuery(".footer").remove();
+	}
 });

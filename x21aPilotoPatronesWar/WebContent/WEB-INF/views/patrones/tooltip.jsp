@@ -13,6 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ <%@include file="/WEB-INF/includeTemplate.inc"%>	
 <h2>Tooltip</h2>
 <fieldset>
 	<div>
@@ -27,12 +28,12 @@
 	<br/>
 	<div>
 		<label for="code">Código:</label>
-		<input id="code" name="code" />&nbsp;<img id="codeTooltip" alt="Imagen Tooltip" src="/<%=pageContext.getServletContext().getInitParameter("webAppName")%>Statics/rup/basic-theme/images/rup.confirm.png" />
+		<input id="code" name="code" />&nbsp;<img id="codeTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<div>
 		<label for="identificador">Identificador:</label>
-		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="/<%=pageContext.getServletContext().getInitParameter("webAppName")%>Statics/rup/basic-theme/images/rup.confirm.png" />
+		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<input id="button" type="button" value="Aplicar ThemeRoller" />

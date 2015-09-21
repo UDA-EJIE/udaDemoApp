@@ -23,13 +23,14 @@ var	APP_RESOURCES = 'x21a',
 	RUP = '${staticsUrl}/rup',
 	WAR_NAME = "x21aMantenimientos",
 	//model
-	LAYOUT = "${defaultLayout}",
+	LAYOUT = "${empty defaultLayout ?  mvcInterceptor.defaultLayout : defaultLayout}",
 	//mvc-config.xml
 	LOCALE_COOKIE_NAME = "${localeResolver.cookieName}",
 	LOCALE_PARAM_NAME = "${mvcInterceptor.paramName}",
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	//breadCrumbs
-	LOGGED_USER = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal : sessionScope.userName}";
+	LOGGED_USER = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.fullName : sessionScope.fullName}",
+	DESTROY_XLNETS_SESSION = "${!empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal ? sessionScope.SPRING_SECURITY_CONTEXT.authentication.credentials.destroyXLNetsSession : sessionScope.destroyXLNetsSession}";
 </script>
 
 <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>

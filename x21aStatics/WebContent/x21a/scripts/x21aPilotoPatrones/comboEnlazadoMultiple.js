@@ -15,6 +15,9 @@
  */
 jQuery(document).ready(function(){
 
+	//Feedback
+	$("#x21aPilotoPatronesWar_feedback").rup_feedback({block:false});
+	
 	//LOCAL
 	$('#departamento').rup_combo({
 		source: ["Ayuntamiento","Diputación","Policía","Bomberos"],

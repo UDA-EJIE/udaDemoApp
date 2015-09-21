@@ -254,9 +254,10 @@ public class UsuarioController  {
 	 *
 	 */	
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-	public void removeMultiple(@RequestBody ArrayList<ArrayList<String>> usuarioIds) {
-        ArrayList<Usuario> usuarioList = new ArrayList<Usuario>();
-        for (ArrayList<String> usuarioId:usuarioIds) {
+	@ResponseStatus(value=HttpStatus.OK)
+	public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> usuarioIds) {
+		List<Usuario> usuarioList = new ArrayList<Usuario>();
+        for (List<String> usuarioId:usuarioIds) {
 		    Iterator<String> iterator = usuarioId.iterator();
 			    Usuario usuario = new Usuario();
 		        usuario.setId(ObjectConversionManager.convert(iterator.next(), String.class));
@@ -264,5 +265,6 @@ public class UsuarioController  {
 	    }
         this.usuarioService.removeMultiple(usuarioList);
         logger.info("All entities correctly deleted!");
+        return usuarioIds;
 	}	
 }

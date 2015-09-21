@@ -9,6 +9,8 @@
 <div id="respuesta_ajaxMultiEntidad"></div>
 <button id="btnAjaxMultiModel">ModelMap</button>
 <div id="respuesta_ajaxMultiModel"></div>
+<button id="btnAjaxPruebaArray">PruebaArray</button>
+<div id="respuesta_ajaxPruebaArray"></div>
 
 <div id="grid">
 	<table id="jacksonLocalidades" cellpadding="0" cellspacing="0">

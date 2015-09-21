@@ -18,8 +18,8 @@
 <h2>Nora</h2>
 <div id="error" style="display: none"></div>
 
-<div id="contenido" style="margin-top: 0.5em; margin-bottom: 0.5em;">
-	<form id="searchForm">
+<div id="contenido">
+	<form id="searchForm" style="margin: 0 0.5em 0 0.5em;">
 		<div class="formulario_legend" id="titleSearch_yy">
 			<spring:message code="searchCriteria" />:
 		</div>
@@ -77,79 +77,69 @@
 					<label for="aprox_postal_search" class="formulario_linea_label">Aprox. Postal:</label>
 					<input type="text" name="aprox_postal" class="formulario_linea_input" id="aprox_postal_search" />
 				</div>
-			</div>
-			<div>
-				<a href="#" onclick="limpiarFiltros()">Limpiar</a>
+				<div class="formulario_columna_cnt">&nbsp;</div>
+				<div style="float: right; margin-right: 3em;">
+					<button id="visorLT">Visor LT</button>
+					<button id="visorFormulario" >Formulario</button>
+					<a id="limpiar" href="#">Limpiar</a>
+				</div>
+				<div class="formulario_columna_cnt">&nbsp;</div>
 			</div>
 
 		</fieldset>
 	</form>
-</div>
-<div class="formulario_linea_label">&nbsp;</div>
-
-<div id="combosNora">
-	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_izda_float">NORA - Tablas:</div>
-	</div>
-	<div class="formulario_columna_cnt">
-		<label for="comboProvincias" class="formulario_linea_label">Provincia:</label>
-		<div class="formulario_linea_izda_float">
+	
+	<div id="nora_tablas" style="float: left; width: 50%;">
+		<fieldset class="combo_fieldset">
+		<legend class="combo_legend">NORA - Tablas:</legend>
+			<label for="comboProvincias" class="formulario_linea_label">Provincia:</label>
 			<select name="provincia" class="combo" id="comboProvincias"></select>
-		</div>
-		<label for="comboMunicipios" class="formulario_linea_label">Municipio:</label>
-		<div class="formulario_linea_izda_float">
+			<br><br>
+			
+			<label for="comboMunicipios" class="formulario_linea_label">Municipio:</label>
 			<select class="combo" id="comboMunicipios"></select>
-		</div>
-		<label for="autocomplete" class="formulario_linea_label">Calle:</label>
-		<div class="formulario_linea_izda_float">
+			<br><br>
+			
+			<label for="autocomplete" class="formulario_linea_label">Calle:</label>
 			<input id="autocomplete" name="autocomplete" disabled="disabled"/>
-		</div>
+			<br><br>
+		</fieldset>
 	</div>
-		<div class="formulario_linea_izda_float">
-		<div class="formulario_linea_label">NORA - API JS:</div>	
+	
+	<div id="nora_api" style="float: left; width: 50%;">
+		<fieldset class="combo_fieldset">
+			<legend class="combo_legend">NORA - API JS:</legend>	
+				<label for="comboProvinciasAPI" class="formulario_linea_label">Provincia:</label>
+				<select class="combo" id="comboProvinciasAPI"></select>
+				<br><br>
+				
+				<label for="comboMunicipiosAPI" class="formulario_linea_label">Municipio:</label>
+				<select class="combo" id="comboMunicipiosAPI"></select>
+				<br><br>
+				
+				<label for="autocompleteAPI" class="formulario_linea_label">Calle:</label>
+				<input id="autocompleteAPI" name="autocompleteAPI" disabled="disabled"/>
+				<br><br>
+		</fieldset>
 	</div>
-	<div class="formulario_columna_cnt">
-		<label for="comboProvinciasAPI" class="formulario_linea_label">Provincia:</label>
-		<div class="formulario_linea_izda_float">
-			<select class="combo" id="comboProvinciasAPI"></select>
-		</div>
-		<label for="comboMunicipiosAPI" class="formulario_linea_label">Municipio:</label>
-		<div class="formulario_linea_izda_float">
-			<select class="combo" id="comboMunicipiosAPI"></select>
-		</div>
-		<label for="autocompleteAPI" class="formulario_linea_label">Calle:</label>
-		<div class="formulario_linea_izda_float">
-			<input id="autocompleteAPI" name="autocompleteAPI" disabled="disabled"/>
-		</div>
-	</div>
-	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_izda_float">
-			<button onclick="mostrarVisor()">Visor LT</button>
-		</div>
-	</div>
-	<div class="formulario_columna_cnt">
-		<div class="formulario_linea_izda_float">
-			<button onclick="mostrarFormulario()">Formulario</button>
-		</div>
-	</div>
-	<div class="formulario_columna_cnt">&nbsp;</div>
 </div>
+
 
 <div id="id_capaVisor" style="visibility: hidden;">
 	<div id="overlay_modal"
-		style="position: absolute; top: 0pt; left: 0pt; z-index: 1; width: 100%; height: 841px; opacity: 0.6; background-color: #000000;"></div>
+		style="position: absolute; top: 0pt; left: 0pt; z-index: 1000; width: 100%; height: 841px; opacity: 0.6; background-color: #000000;"></div>
 	<iframe src="${staticsUrl}/x21a/resources/visor.html" width=1100
 		height=800
-		style="position: absolute; top: 1%; left: 1%; opacity: 0.999999; z-index: 2; background-color: white;">Servicio
+		style="position: absolute; top: 1%; left: 1%; opacity: 0.999999; z-index: 2000; background-color: white;">Servicio
 		NORA</iframe>
 </div>
 
 <div id="id_capaFormulario" style="visibility: hidden;">
 	<div id="overlay_modal"
-		style="position: absolute; top: 0pt; left: 0pt; z-index: 1; width: 100%; height: 841px; opacity: 0.6; background-color: #000000;"></div>
+		style="position: absolute; top: 0pt; left: 0pt; z-index: 1000; width: 100%; height: 841px; opacity: 0.6; background-color: #000000;"></div>
 	<iframe src="${staticsUrl}/x21a/resources/formularioNora.html"
 		width=1100 height=800
-		style="position: absolute; top: 1%; left: 1%; opacity: 0.999999; z-index: 2; background-color: white;">Formulario
+		style="position: absolute; top: 1%; left: 1%; opacity: 0.999999; z-index: 2000; background-color: white;">Formulario
 		NORA</iframe>
 </div>
 

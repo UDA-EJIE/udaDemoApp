@@ -17,7 +17,6 @@ package com.ejie.x21a.model;
 
 
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -81,36 +80,13 @@ public class Usuario  implements java.io.Serializable {
         this.fechaBaja = fechaBaja;
     }
 
-    /** Method 'Usuario'.
-    * @param id String
-    * @param nombre String
-    * @param apellido1 String
-    * @param apellido2 String
-    * @param ejie String
-    * @param fechaAlta Date
-    * @param fechaBaja Date
-    * @param perfilUsuarios List<PerfilUsuario>
-    */
-   public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, List<PerfilUsuario> perfilUsuarios) {	
-
-           this.id = id;
-           this.nombre = nombre;
-           this.apellido1 = apellido1;
-           this.apellido2 = apellido2;
-           this.ejie = ejie;
-           this.fechaAlta = fechaAlta;
-           this.fechaBaja = fechaBaja;
-//           this.perfilUsuarios = perfilUsuarios;
-    }
-
     /**
 	 * Method 'getId'.
 	 *
 	 * @return String
 	 */
-	
-	
-	public String getId() {
+
+    public String getId() {
 		return this.id;
 	}
 

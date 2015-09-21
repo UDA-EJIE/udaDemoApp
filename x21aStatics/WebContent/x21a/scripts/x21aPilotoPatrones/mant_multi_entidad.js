@@ -18,7 +18,7 @@ jQuery(function($){
 		
 		url: "../localidad",
 		hasMaint: true,
-		width: 650,
+		width: 950,
 		pagerName: "pager",
 		rowNum: "10",
 		sortorder: "asc",

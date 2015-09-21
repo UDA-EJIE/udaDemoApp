@@ -1,51 +1,52 @@
 {
-	"x21aPilotoPatronesWar_menu_mixto" : {
-		"inicio" : "Inicio_en",
-		"mantenimientos" : "x21aMantenimientosWar_en",
-		"patrones" : "Patrones_en",
-			"all" : "[Todos los patrones_en]",
-			"accordion" : "Accordion",
-			"autocomplete" : "Autocomplete_en",
-			"toolbar" : "Botonera_en",
-			"combo" : "Combo_en",
-				"comboSimple" : "Combo Simple_en",
-				"comboEnlazadoSimple" : "Combo Enlazado (simple)_en",
-				"comboEnlazadoMulti" : "Combo Enlazado (múltiple)_en",
-			"dialog" : "Diálogos_en",
-			"date" : "Fecha_en",
-			"feedback" : "Feedback_en",
-			"form" : "Formulario_en",
-			"time" : "Hora_en",
-			"message" : "Mensajes_en",
-			"menu" : "Menú_en",
+	"x21aPilotoPatronesWar_menu_mixto" :{
+		"inicio" :"Inicio_en",
+		"mantenimientos" :"x21aMantenimientosWar_en",
+		"patrones" :"Patrones_en",
+			"all" :"[Todos los patrones_en]",
+			"accordion" :"Accordion",
+			"autocomplete" :"Autocomplete_en",
+			"toolbar" :"Botonera_en",
+			"combo" :"Combo_en",
+				"comboSimple" :"Combo Simple_en",
+				"comboEnlazadoSimple" :"Combo Enlazado (simple)_en",
+				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)_en",
+				"multicombo" :"Combo Mutiselección_en",
+			"dialog" :"Diálogos_en",
+			"date" :"Fecha_en",
+			"feedback" :"Feedback_en",
+			"form" :"Formulario_en",
+			"time" :"Hora_en",
+			"message" :"Mensajes_en",
+			"menu" :"Menú_en",
 				"menuHorizontal":"Horizontal_en",
 				"menuVertical":"Vertical_en",
 				"menuMixto":"Mixto_en",
-			"tabs" : "Pestañas_en",
+			"tabs" :"Pestañas_en",
 				"tabsStatic":"Pestañas carga estática_en",
 				"tabsAjax":"Pestañas carga Ajax_en",
 				"tabsMixto":"Pestañas carga mixta_en",
 				"maintTab":"Pestañas con mantenimientos_en",
-			"grid" : "Tabla_en",
-				"grid_grupo" : "Tabla Agrupada_en",
-				"grid_base" : "Tabla Basico_en",
-				"grid_arbol" : "Tabla Arbol_en",
-			"tooltip" :  "Tooltip_en",
-			"upload" :  "Upload_en",
-			"validate" :  "Validación_en",
-			"wizard" : "Wizard_en",
-				"wizardA" : "Wizard simple_en",
-				"wizardB" : "Wizard <%@ include %>_en",
-				"wizardC" : "Wizard <jsp:include>_en",
-				"wizardD" : "Wizard <c:import>_en",
-		"experimental": "Experimental_en",
-			"maestro_detalle": "Maestro-Detalle_en",
-			"z-index": "z-index",
+			"grid" :"Tabla_en",
+				"grid_grupo" :"Tabla Agrupada_en",
+				"grid_base" :"Tabla Basico_en",
+				"grid_arbol" :"Tabla Arbol_en",
+			"tooltip" : "Tooltip_en",
+			"upload" : "Upload_en",
+			"validate" : "Validación_en",
+			"wizard" :"Wizard_en",
+				"wizardA" :"Wizard simple_en",
+				"wizardB" :"Wizard <%@ include %>_en",
+				"wizardC" :"Wizard <jsp:include>_en",
+				"wizardD" :"Wizard <c:import>_en",
+		"experimental":"Experimental_en",
+			"maestro_detalle":"Maestro-Detalle_en",
+			"z-index":"z-index",
 			"mant_multi_entidad":"Mantenimiento multi-entidad_en",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta_en",
 			"mant_clave_compuesta_multi":"Multiselección_en",
 			"mant_clave_compuesta_edlinea":"Edición en línea_en",
-			"nora"	: "NORA", 
+			"nora"	:"NORA", 
 		"uda":"UDA",
 		"titulo-notifi":"Notificaciones_en",
 		"titulo-nave":"Navegación_en",
@@ -53,53 +54,54 @@
 		"titulo-inser":"Inserción de datos_en"
 	},
 	"x21aPilotoPatronesWar_migas" :{
-		"patrones" : "Patrones_en",
-			"all" : "[Todos los patrones_en]",
-			"accordion" : "Accordion",
-			"autocomplete" : "Autocomplete_en",
-			"toolbar" : "Botonera_en",
-			"comboSimple" : "Combo Simple_en",
-			"comboEnlazadoSimple" : "Combo Enlazado (simple)_en",
-			"comboEnlazadoMulti" : "Combo Enlazado (múltiple)_en",
-			"dialog" : "Diálogos_en",
-			"date" : "Fecha_en",
-			"feedback" : "Feedback_en",
-			"form" : "Formulario_en",
-			"time" : "Hora_en",
-			"message" : "Mensajes_en",
-			"menu" : "Menú Horizontal_en",
+		"patrones" :"Patrones_en",
+			"all" :"[Todos los patrones_en]",
+			"accordion" :"Accordion",
+			"autocomplete" :"Autocomplete_en",
+			"toolbar" :"Botonera_en",
+			"comboSimple" :"Combo Simple_en",
+			"comboEnlazadoSimple" :"Combo Enlazado (simple)_en",
+			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)_en",
+			"multicombo" :"Combo Mutiselección_en",
+			"dialog" :"Diálogos_en",
+			"date" :"Fecha_en",
+			"feedback" :"Feedback_en",
+			"form" :"Formulario_en",
+			"time" :"Hora_en",
+			"message" :"Mensajes_en",
+			"menu" :"Menú Horizontal_en",
 			"menuVertical":"Menú Vertical_en",
 			"menuMixto":"Menú Mixto_en",
-			"tabs" : "Pestañas_en",
+			"tabs" :"Pestañas_en",
 				"tabsStatic":"Pestañas carga estática_en",
 				"tabsAjax":"Pestañas carga Ajax_en",
 				"tabsMixto":"Pestañas carga mixta_en",
 				"maintTab":"Pestañas con mantenimientos_en",
-			"grid" : "Tabla_en",
-				"grid_grupo" : "Tabla Agrupada_en",
-				"grid_base" : "Tabla Basico_en",
-				"grid_arbol" : "Tabla Arbol_en",
-			"tooltip" :  "Tooltip_en",
-			"upload" :  "Upload_en",
-			"validate" :  "Validación_en",
-			"wizard" : "Wizard_en",
-				"wizardA" : "Wizard simple_en",
-				"wizardB" : "Wizard <%@ include %>_en",
-				"wizardC" : "Wizard <jsp:include>_en",
-				"wizardD" : "Wizard <c:import>_en",
-		"experimental": "Experimental_en",
-			"maestro_detalle": "Maestro-Detalle_en",
-			"z-index": "z-index",
+			"grid" :"Tabla_en",
+				"grid_grupo" :"Tabla Agrupada_en",
+				"grid_base" :"Tabla Basico_en",
+				"grid_arbol" :"Tabla Arbol_en",
+			"tooltip" : "Tooltip_en",
+			"upload" : "Upload_en",
+			"validate" : "Validación_en",
+			"wizard" :"Wizard_en",
+				"wizardA" :"Wizard simple_en",
+				"wizardB" :"Wizard <%@ include %>_en",
+				"wizardC" :"Wizard <jsp:include>_en",
+				"wizardD" :"Wizard <c:import>_en",
+		"experimental":"Experimental_en",
+			"maestro_detalle":"Maestro-Detalle_en",
+			"z-index":"z-index",
 			"mant_multi_entidad":"Mantenimiento multi-entidad_en",
 			"mant_clave_compuesta":"Mantenimiento clave-compuesta_en",
 			"mant_clave_compuesta_multi":"Multiselección_en",
 			"mant_clave_compuesta_edlinea":"Edición en línea_en",
-			"nora"	: "NORA", 
+			"nora"	:"NORA", 
 		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
-	"autocomplete" : { 
+	"autocomplete" :{ 
 		"asp":"asp_en",
 		"c":"c_en",
 		"c++":"c++_en",
@@ -115,7 +117,7 @@
 		"scala":"scala_en"
 	},
 	"_comment":"COMBO_SIMPLE",	
-		"combo" : { 
+		"combo" :{ 
 			"_blank":"[Seleccione un elemento_en]",
 			"asp":"asp_en",
 			"c":"c_en",
@@ -131,7 +133,7 @@
 			"ruby":"ruby_en",
 			"scala":"scala_en"
 		},
-		"comboGrupos" : { 
+		"comboGrupos" :{ 
 			"futbol":"Futbol_en",
 			"alaves":"Alaves_en",
 			"ath":"Athletic_en",
@@ -145,7 +147,7 @@
 			"hamilton":"Lewis Hamilton_en",
 			"vettel":"Sebastian Vettel_en"
 		},
-		"comboLargo": {
+		"comboLargo":{
 			"jon_doe":"John Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)",
 			"jane_doe":"Jane Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
 			"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
@@ -159,32 +161,32 @@
 			"g":"Gipúzcoa_en"
 		},
 		"comboPadre":{
-			"a1": "A-Zona1_en",
-			"a2": "A-Zona2_en",
-			"a3": "A-Zona3_en",
-			"b1": "Gran Bilbao_en",
-			"b2": "Margen Derecha_en",
-			"b3": "Margen Izquierda_en",
-			"g1": "G-Zona1_en",
-			"g2": "G-Zona2_en",
-			"g3": "G-Zona3_en"
+			"a1":"A-Zona1_en",
+			"a2":"A-Zona2_en",
+			"a3":"A-Zona3_en",
+			"b1":"Gran Bilbao_en",
+			"b2":"Margen Derecha_en",
+			"b3":"Margen Izquierda_en",
+			"g1":"G-Zona1_en",
+			"g2":"G-Zona2_en",
+			"g3":"G-Zona3_en"
 		},
 		"comboHijo":{
 			"_blank":"[Selecciona Hijo_en]"
 		},
-		"comboAbueloRemoto": {
+		"comboAbueloRemoto":{
 			"_blank":"[Selecciona Abuelo Remoto_en]"
 		},
 		"mixto_comboPadre":{
-			"a1": "A-Zona1_en",
-			"a2": "A-Zona2_en",
-			"a3": "A-Zona3_en",
-			"b1": "Gran Bilbao_en",
-			"b2": "Margen Derecha_en",
-			"b3": "Margen Izquierda_en",
-			"g1": "G-Zona1_en",
-			"g2": "G-Zona2_en",
-			"g3": "G-Zona3_en"
+			"a1":"A-Zona1_en",
+			"a2":"A-Zona2_en",
+			"a3":"A-Zona3_en",
+			"b1":"Gran Bilbao_en",
+			"b2":"Margen Derecha_en",
+			"b3":"Margen Izquierda_en",
+			"g1":"G-Zona1_en",
+			"g2":"G-Zona2_en",
+			"g3":"G-Zona3_en"
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo_en]",
@@ -193,10 +195,10 @@
 			"g":"Gipúzcoa_en"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
-		"departamentoRemote": {
+		"departamentoRemote":{
 			"_blank":"[Selecciona Dpto._en]"
 		},
-		"provinciaRemote": {
+		"provinciaRemote":{
 			"_blank":"[Selecciona Prov._en]"
 		},
 		"mixto_provincia":{
@@ -210,118 +212,118 @@
 			"poli":"Policía_en",
 			"bomb":"Bomberos_en"
 		},
-	"tabs" : {
-		"pestana0" 	: "Tab 0_en",
-		"sub00" 	: "sub00_en",
-		"sub000" 	: "sub000_en",
-		"sub001" 	: "sub001_en",
-		"sub0010" 	: "sub0010_en",
-		"sub0011" 	: "sub0011_en",
-		"sub00110" 	: "sub00110_en",
-		"sub00111" 	: "sub00111_en",
-		"sub002" 	: "sub002_en",
-		"sub01" 	: "sub01_en",
-		"sub02" 	: "sub02_en",
-		"pestana1"  : "Tab 1_en",
-		"sub10" 	: "sub10_en",
-		"sub11" 	: "sub11_en",
-		"pestana2" 	: "Tab 2_en",
-		"pestanaAna"   	: "Nueva Pestaña_en",
-		"nuevaPestaña" 	: "Nuevo Nivel_en",
-		"PestañasMaint"	: "Pestaña con Mantenimientos_en"
+	"tabs" :{
+		"pestana0" 	:"Tab 0_en",
+		"sub00" 	:"sub00_en",
+		"sub000" 	:"sub000_en",
+		"sub001" 	:"sub001_en",
+		"sub0010" 	:"sub0010_en",
+		"sub0011" 	:"sub0011_en",
+		"sub00110" 	:"sub00110_en",
+		"sub00111" 	:"sub00111_en",
+		"sub002" 	:"sub002_en",
+		"sub01" 	:"sub01_en",
+		"sub02" 	:"sub02_en",
+		"pestana1"  :"Tab 1_en",
+		"sub10" 	:"sub10_en",
+		"sub11" 	:"sub11_en",
+		"pestana2" 	:"Tab 2_en",
+		"pestanaAna"   	:"Nueva Pestaña_en",
+		"nuevaPestaña" 	:"Nuevo Nivel_en",
+		"PestañasMaint"	:"Pestaña con Mantenimientos_en"
 	},
-	"pruebaSub3Maint" : {
-		"maint1"		: "Mantenimiento 1_en",
-		"maint2"		: "Mantenimiento 2_en",
-		"maint3"		: "Mantenimiento 3_en"	
+	"pruebaSub3Maint" :{
+		"maint1"		:"Mantenimiento 1_en",
+		"maint2"		:"Mantenimiento 2_en",
+		"maint3"		:"Mantenimiento 3_en"	
 	},
-	"tabsStatic" : {
-		"pestana0" 	: "Pestaña 1_en",
-		"pestana1"  : "Pestaña 2_en",
-		"pestana2" 	: "Pestaña 3_en",
-		"pestanaAna" : "Pestaña Añadida_en"
+	"tabsStatic" :{
+		"pestana0" 	:"Pestaña 1_en",
+		"pestana1"  :"Pestaña 2_en",
+		"pestana2" 	:"Pestaña 3_en",
+		"pestanaAna" :"Pestaña Añadida_en"
 	},
-	"tabsMixta" : {
-		"pestanaUrl" 	: "Pestaña con url_en",
-		"pestanaHtml"  : "Pestaña con html_en"
+	"tabsMixta" :{
+		"pestanaUrl" 	:"Pestaña con url_en",
+		"pestanaHtml"  :"Pestaña con html_en"
 	},
-	"maintTab" : {
-		"maint1"	: "Mantenimiento Simple 1_en",
-		"maint2"    : "Mantenimiento Simple 2_en",
-		"maint3" 	: "Mantenimiento Simple 3_en",
-		"edit1" 	: "Mantenimiento edición en línea_en",
-		"multi1" 	: "Mantenimiento múltiple_en"
+	"tabsMaint" :{
+		"maint1"	:"Mantenimiento Simple 1_en",
+		"maint2"    :"Mantenimiento Simple 2_en",
+		"maint3" 	:"Mantenimiento Simple 3_en",
+		"edit1" 	:"Mantenimiento edición en línea_en",
+		"multi1" 	:"Mantenimiento múltiple_en"
 	},
-	"tabsDialog" : {
-		"pestana0" 	: "Tab 0_en",
-		"sub01" 	: "sub01_en",
-		"sub02" 	: "sub02_en",
-		"pestana1"  : "Tab 1_en",
-		"sub10" 	: "sub10_en",
-		"sub11" 	: "sub11_en"
+	"tabsDialog" :{
+		"pestana0" 	:"Tab 0_en",
+		"sub01" 	:"sub01_en",
+		"sub02" 	:"sub02_en",
+		"pestana1"  :"Tab 1_en",
+		"sub10" 	:"sub10_en",
+		"sub11" 	:"sub11_en"
 	},
-	"toolbar" : {
-		"buscar"  	: "Buscar_en",
-		"otros"	  	: "Otros botones_en",
-		"nuevo"	  	: "Nuevo_en",
-		"editar"	: "Editar_en",
-		"cancelar"	: "Cancelar_en",
-		"borrar"	: "Borrar_en",
-		"filtrar"	: "Filtrar_en",
-		"imprimir"	: "Imprimir_en",
-		"ficheros"	: "Ficheros_en",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbar" :{
+		"buscar"  	:"Buscar_en",
+		"otros"	  	:"Otros botones_en",
+		"nuevo"	  	:"Nuevo_en",
+		"editar"	:"Editar_en",
+		"cancelar"	:"Cancelar_en",
+		"borrar"	:"Borrar_en",
+		"filtrar"	:"Filtrar_en",
+		"imprimir"	:"Imprimir_en",
+		"ficheros"	:"Ficheros_en",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"toolbarRight" : {
-		"buscar"  	: "Buscar_en",
-		"otros"	  	: "Otros botones_en",
-		"nuevo"	  	: "Nuevo_en",
-		"editar"	: "Editar_en",
-		"cancelar"	: "Cancelar_en",
-		"borrar"	: "Borrar_en",
-		"filtrar"	: "Filtrar_en",
-		"imprimir"	: "Imprimir_en",
-		"ficheros"	: "Ficheros_en",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbarRight" :{
+		"buscar"  	:"Buscar_en",
+		"otros"	  	:"Otros botones_en",
+		"nuevo"	  	:"Nuevo_en",
+		"editar"	:"Editar_en",
+		"cancelar"	:"Cancelar_en",
+		"borrar"	:"Borrar_en",
+		"filtrar"	:"Filtrar_en",
+		"imprimir"	:"Imprimir_en",
+		"ficheros"	:"Ficheros_en",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"grid##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
+	"grid##ejie" :{
+		"0" :"No",
+		"1" :"Yes"
 	},
-	"GRID_simple##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
+	"GRID_simple##ejie" :{
+		"0" :"No",
+		"1" :"Yes"
 	},
-	"gridDialog##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
+	"gridDialog##ejie" :{
+		"0" :"No",
+		"1" :"Yes"
 	},
 	"uploadTabs":{
-		"upload" : "Upload_en",
-		"uploadTable" : "Upload en tabla_en",
-		"uploadForm" : "Upload form_en",
-		"uploadFormSimple" : "Upload simple en formulario_en",
-		"uploadFormMultiple" : "Multiples upload en formulario_en"
+		"upload" :"Upload_en",
+		"uploadTable" :"Upload en tabla_en",
+		"uploadForm" :"Upload form_en",
+		"uploadFormSimple" :"Upload simple en formulario_en",
+		"uploadFormMultiple" :"Multiples upload en formulario_en"
 	},
 	"comboProvincias":{
 		"_blank":"Seleccione un elemento_en" 	
@@ -367,8 +369,15 @@
 		"ejemploYFunciones":"Ejemplo y métodos_en",
 		"multiplesEntidades":"Envío de varias entidades_en"
 	},
-	"loginUserMock" : {
-		"logginOk1" : "Usuario _en'",
-		"logginOk2" : "' Seleccionado correctamente_en"
+	"loginUserMock" :{
+		"logginOk1" :"Usuario _en'",
+		"logginOk2" :"' Seleccionado correctamente_en"
+	},
+	"maintTab" :{
+		"maint1"	:"Mantenimiento Simple 1_en",
+		"maint2"    :"Mantenimiento Simple 2_en",
+		"maint3" 	:"Mantenimiento Simple 3_en",
+		"edit1" 	:"Mantenimiento edición en línea_en",
+		"multi1" 	:"Mantenimiento múltiple_en"
 	}
 }

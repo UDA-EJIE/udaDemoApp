@@ -16,7 +16,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>Todos los patrones</h2>
 
-<div style="float:left">
+<div style="float:left; width: 48%;">
 	<!-- Maint (toolbar + grid + maint) -->
 	<div id="error" style="display:none"></div>
 	<div id="maint">
@@ -66,7 +66,7 @@
 	<button id="dialog">Dialog</button>
 </div>
 
-<div style="float: right; margin-right: 2em;">
+<div style="float: right; width: 48%; margin-right: 2em;">
 	<!-- Feedback -->
 	<div id="feedback"></div><br>
 

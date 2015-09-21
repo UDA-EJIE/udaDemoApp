@@ -15,6 +15,9 @@
  --%>
 <h2>Combo Enlazado (multiple)</h2>
 
+<!-- Feedback -->
+<div id="x21aPilotoPatronesWar_feedback"></div><br/>
+ 
 <div id="local" style="float: left;">
 	<fieldset class="combo_fieldset">
 		<legend class="combo_legend">Local (no i18n)</legend>

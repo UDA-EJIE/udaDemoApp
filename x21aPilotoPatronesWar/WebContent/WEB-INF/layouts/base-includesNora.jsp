@@ -14,9 +14,7 @@
  --%>
  
 <script type="text/javascript">
-<!--
 	jQuery.noConflict();
-//-->
 </script>
 
 <%@include file="/WEB-INF/layouts/includes/nora.scripts.inc"%>

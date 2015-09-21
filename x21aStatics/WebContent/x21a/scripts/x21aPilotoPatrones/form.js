@@ -271,8 +271,9 @@ jQuery(document).ready(function(){
 	$("#formSubidaArchivos").rup_form({
 		url:$.rup.CTX_PATH+"/patrones/form/subidaArchivos",
 		feedback:$("#feedbackMensajes"),
+		dataType: 'json',
 		success:function(xhr){
-			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
+			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg(xhr),"ok");
 		}
 	});
 	

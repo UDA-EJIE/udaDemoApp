@@ -70,27 +70,32 @@
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
         <put-attribute name="maint" value="ajaxSimple1.js" type="string" /> 
-        <put-attribute name="maintName" value="GRID_ajax_simple1" type="string" /> 
+        <put-attribute name="maintName" value="GRID_ajax_simple1" type="string" />
+        <put-attribute name="titlePage" value="simple" type="string" />
     </definition>
     <definition extends="ajaxMaintTemplate" name="simpleTable2">
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
         <put-attribute name="maint" value="ajaxSimple2.js" type="string" />
         <put-attribute name="maintName" value="GRID_ajax_simple2" type="string" /> 
+        <put-attribute name="titlePage" value="simple" type="string" />
     </definition>
     <definition extends="ajaxMaintTemplate" name="simpleTable3">
         <put-attribute name="content" value="/WEB-INF/views/simple/ajaxSimple.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/simple/ajaxSimple-includes.jsp"/>
         <put-attribute name="maint" value="ajaxSimple3.js" type="string" /> 
         <put-attribute name="maintName" value="GRID_ajax_simple3" type="string" />
+        <put-attribute name="titlePage" value="simple" type="string" />
     </definition>
 	<definition extends="ajaxMaintTemplate" name="editMaint1">
         <put-attribute name="maint" value="ajaxEditMaint1.js" type="string" />
-        <put-attribute name="maintName" value="GRID_ajax_edit1" type="string" /> 
+        <put-attribute name="maintName" value="GRID_ajax_edit1" type="string" />
+        <put-attribute name="titlePage" value="edlinea" type="string" /> 
     </definition>
     <definition extends="ajaxMaintTemplate" name="multiMaint1">
         <put-attribute name="maint" value="ajaxMultiMaint1.js" type="string" /> 
         <put-attribute name="maintName" value="GRID_ajax_multi1" type="string" />
+        <put-attribute name="titlePage" value="multi" type="string" />
     </definition>    
 	<definition extends="template" name="simple">
         <put-attribute name="content" value="/WEB-INF/views/simple/simple.jsp"/>

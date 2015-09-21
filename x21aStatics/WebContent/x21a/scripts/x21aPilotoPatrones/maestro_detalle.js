@@ -17,7 +17,7 @@ jQuery(function($){
 	
 	$("#GRID_comarca").rup_grid({
 		hasMaint: true,
-		width: "600",
+		width: 950,
 		url: "../experimental/comarca",
 		pagerName: "pager_comarca",
 		rowNum: "10",
@@ -71,7 +71,7 @@ jQuery(function($){
 
 	$("#GRID_localidad").rup_grid({
 		hasMaint: true,
-		width: "600",
+		width: 950,
 		url: "../experimental/localidad",
 		pagerName: "pager_localidad",
 		rowNum: "10",

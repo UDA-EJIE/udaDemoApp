@@ -13,4 +13,11 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<div id="x21aMantenimientosWar_language" class="rup-language_root"></div>
+<div id="x21aMantenimientosWar_language" class="rup-language_root">
+	<div class="language_contact">
+		<a id="header_contact" href="mailto:uda@ejie.es">
+			<span class="ui-icon mail_icon rup_icon"></span>
+			e-mail<span class='ui-icon ui-icon-extlink rup_external_link'></span>
+		</a>
+	</div>
+</div>

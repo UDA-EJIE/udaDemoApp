@@ -139,11 +139,46 @@ jQuery(function($){
 		
 	});
 	
+	
+	$("#btnAjaxPruebaArray").click(function(){
+		var dataPruebaArray = {
+				code:"1",
+				descEs:"Encartaciones",
+				descEs:"Enkarterri",
+				provincia:{
+					code:"48",
+					descEs:"Bizkaia",
+					descEu:"Bizkaia"
+				},
+				localidads:[
+				    {code:"192",descEs:"Gordexola",descEu:"Gordexola"},
+				    {code:"830",descEs:"Zalla",descEu:"Zalla"}
+				]
+		};
+		
+		$.rup_ajax({
+			url: "../jackson/pruebaArray",
+			dataType: 'json',
+			type: "PUT",
+			async: false,
+			data: $.toJSON(dataPruebaArray),	
+			contentType: 'application/json',		    
+			success: function (xhr, ajaxOptions) {
+				$("#respuesta_ajaxPruebaArray").text(JSON.stringify(xhr));
+			},beforeSend: function (xhr) {
+				xhr.setRequestHeader("RUP_MULTI_MODEL", $.toJSON({Comarca:"com.ejie.x21a.model.Comarca",Localidad:"com.ejie.x21a.model.Localidad"}));
+			}
+		});
+		
+	});
+	
 	$('#combosLocalidades').rup_combo({
 		source : "../jackson/localidades/combo",
 		sourceParam : {label:"comarca.desc"+$.rup_utils.capitalizedLang(), value:"comarca.code"},
 		width: 300
 	});
+	
+	
 	
 
 //	$('#combosLocalidades').rup_combo({

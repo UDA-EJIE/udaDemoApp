@@ -13,6 +13,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 			<list>
 				<map>
 					<entry key="userName" value="udaAdministrador"/>
+					<entry key="name" value="Uda"/>
+					<entry key="surname" value="Administrador"/>
+					<entry key="fullName" value="Uda Administrador"/>
 					<entry key="nif" value="12121212j"/>
 					<entry key="policy" value="1"/>
 					<entry key="position" value="01"/>
@@ -26,6 +29,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 				</map>
 				<map>
 					<entry key="userName" value="udaUser"/>
+					<entry key="name" value="Uda"/>
+					<entry key="surname" value="User"/>
+					<entry key="fullName" value="Uda User"/>
 					<entry key="nif" value="17398234h"/>
 					<entry key="policy" value="1"/>
 					<entry key="position" value="02"/>

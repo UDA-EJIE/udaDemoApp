@@ -23,12 +23,12 @@
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_compuesta">
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<label for="idA_search" class="formulario_linea_label">idA:</label>
-							<input type="text" name="idA" class="formulario_linea_input" id="idA_search" />
+							<label for="ida_search" class="formulario_linea_label">ida:</label>
+							<input type="text" name="ida" class="formulario_linea_input" id="ida_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label for="idB_search" class="formulario_linea_label">idB:</label>
-							<input type="text" name="idB" class="formulario_linea_input" id="idB_search" />
+							<label for="idb_search" class="formulario_linea_label">idb:</label>
+							<input type="text" name="idb" class="formulario_linea_input" id="idb_search" />
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label for="nombre_search" class="formulario_linea_label">nombre:</label>
@@ -41,10 +41,6 @@
 						<div class="formulario_linea_izda_float">
 							<label for="apellido2_search" class="formulario_linea_label">apellido2:</label>
 							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_search" />
-						</div>
-						<div class="formulario_linea_izda_float">
-							<label for="fechaAlta_search" class="formulario_linea_label">fechaAlta:</label>
-							<input type="text" name="fechaAlta" class="formulario_linea_input" id="fechaAlta_search" />
 						</div>
 					</div>
 					<!-- Botones -->	

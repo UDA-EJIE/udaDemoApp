@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd>
     <useProjectRuleSet>false</useProjectRuleSet>
-    <ruleSetFile>.ruleset</ruleSetFile>
     <rules>
         <rule>
             <name>AccessorClassGeneration</name>
@@ -65,7 +64,7 @@
         </rule>
         <rule>
             <name>CloneMethodMustImplementCloneable</name>
-            <ruleset>Type Resolution Rules</ruleset>
+            <ruleset>Clone Implementation Rules</ruleset>
         </rule>
         <rule>
             <name>CloneThrowsCloneNotSupportedException</name>
@@ -237,7 +236,7 @@
         </rule>
         <rule>
             <name>UnusedImports</name>
-            <ruleset>Type Resolution Rules</ruleset>
+            <ruleset>Import Statement Rules</ruleset>
         </rule>
         <rule>
             <name>UnusedLocalVariable</name>
@@ -265,5 +264,4 @@
         </rule>
     </rules>
     <includeDerivedFiles>false</includeDerivedFiles>
-    <violationsAsErrors>true</violationsAsErrors>
 </pmd>

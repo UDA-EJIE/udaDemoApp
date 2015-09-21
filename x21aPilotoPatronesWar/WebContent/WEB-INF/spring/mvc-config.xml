@@ -84,7 +84,7 @@
 	    
 		<!-- Permite la subida de ficheros -->	
 		<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" >
-			<property name="maxUploadSize" value="10000" />
+			<property name="maxUploadSize" value="1000" />
 		</bean>
 
 	    <!-- Bean encargado de las peticiones -->

@@ -189,12 +189,42 @@ jQuery(function($){
 		blank : ""
 	});
 	
-	jQuery("#municipio").rup_autocomplete({
+	jQuery("#municipio").rup_combo({
 		source : "../../nora/municipio",
+		sourceParam : {label:"dsO", value:"id"},
+		parent: ["provincia"],
+		width : 400,
+		blank : ""
+	});
+	
+	jQuery("#calle").rup_autocomplete({
+		source : "../../nora/calle",
 		sourceParam : {label:"dsO", value:"id"},
 		minLength: 4
 	});
 	
 	$("#fechaNacimiento").rup_date();
+	
+//	$("#capa1").rup_dialog({type: $.rup.dialog.DIV});
+//	$("#capa2").rup_dialog({type: $.rup.dialog.DIV});
+//	$("#capa3").rup_dialog({type: $.rup.dialog.DIV});
+//	$("#capa4").rup_dialog({type: $.rup.dialog.DIV});
+	
+	$("#botonCapa").bind("click",function(){
+		$("#capa1").rup_dialog({type: $.rup.dialog.DIV});
+	});
+	
+	$("#botonCapa1").bind("click",function(){
+		$("#capa2").rup_dialog({type: $.rup.dialog.DIV});
+	});
+	
+	$("#botonCapa2").bind("click",function(){
+		$("#capa3").rup_dialog({type: $.rup.dialog.DIV});
+	});
+	
+	$("#botonCapa3").bind("click",function(){
+		$("#capa4").rup_dialog({type: $.rup.dialog.DIV});
+	});
+	
 	
 });

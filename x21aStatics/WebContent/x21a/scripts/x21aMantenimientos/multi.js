@@ -62,7 +62,8 @@ jQuery(function($){
 			{ name: "fechaBaja", index: "fechaBaja", editable: true,
 				rupType: "datepicker" 
 			}
-        ]
+        ],
+        readOnlyFields :  [ "id" ]
 	});
 	
 
@@ -73,7 +74,19 @@ jQuery(function($){
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
 		showMessages: true,
-		validationFilter:false
+		validationFilter:false,
+		onbeforeDetailShow: function(rowId){
+			var fieldsArray = jqGrid[0].p.readOnlyFields;
+	        if (this.prop.MODO === 'new'){
+	        	for (var i = 0; i < fieldsArray.length; i++) {
+	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).removeAttr('readonly');
+				}
+	        } else {
+	        	for (var i = 0; i < fieldsArray.length; i++) {
+	        		$("#" + this.prop.detailForm.attr("id") + "_" + fieldsArray[i], this.prop.detailForm).attr('readonly', true);;
+				}
+	        }
+		}
 	});
 	
 	

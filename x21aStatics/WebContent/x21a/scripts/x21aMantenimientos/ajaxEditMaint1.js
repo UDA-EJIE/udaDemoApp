@@ -20,7 +20,7 @@ jQuery(function($){
 		
 		url: "/x21aMantenimientosWar/usuario",
 		hasMaint: true,
-		width: 650,
+		width: 950,
 		pagerName: "pager_GRID_ajax_edit1",
 		rowNum: "10",
 		sortorder: "asc",

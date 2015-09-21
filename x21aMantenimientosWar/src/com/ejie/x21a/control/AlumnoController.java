@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -48,6 +50,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
@@ -157,7 +160,7 @@ public class AlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT, produces="application/json")
 	public @ResponseBody Alumno edit(
 			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,
@@ -174,7 +177,15 @@ public class AlumnoController  {
 		
 		if (errors.hasErrors()){
 			Map<String, List<String>> errorsMap = validationManager.getErrorsAsMap(errors);
-        	response.sendError(406, validationManager.getMessageJSON(errorsMap, null, "error").toString());
+			
+			ServletOutputStream servletOutputStream = response.getOutputStream();
+			
+			response.setStatus(406);
+			response.setContentType("text/plain");
+			response.setCharacterEncoding("UTF-8");
+			servletOutputStream.print(validationManager.getMessageJSON(errorsMap, null, "error").toString());
+			response.flushBuffer();
+            
         	return null;
         }
 		AlumnoController.logger.info("[PUT] : Alumno actualizado correctamente");
@@ -209,9 +220,9 @@ public class AlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Alumno add(@Validated(AlumnoAddValidation.class) 
-			@ModelAttribute Alumno alumno, Errors errors, HttpServletResponse response,
+	@RequestMapping(method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
+			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
 		
 		if (imagen!=null){
@@ -220,10 +231,15 @@ public class AlumnoController  {
         }
 		
         Alumno alumnoAux = this.alumnoService.add(alumno, errors);
-        
+
         if (errors.hasErrors()){
 			Map<String, List<String>> errorsMap = validationManager.getErrorsAsMap(errors);
-        	response.sendError(406, validationManager.getMessageJSON(errorsMap, null, "error").toString());
+            ServletOutputStream servletOutputStream = response.getOutputStream();
+            response.setStatus(406);
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            servletOutputStream.print(validationManager.getMessageJSON(errorsMap, null, "error").toString());
+            response.flushBuffer();       
         	return null;
         }
         AlumnoController.logger.info("[POST] : Alumno insertado correctamente");
@@ -237,6 +253,7 @@ public class AlumnoController  {
 	 * @return alumno
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Alumno remove(@PathVariable BigDecimal id) {
         Alumno alumno = new Alumno();
         alumno.setId(id);
@@ -248,21 +265,22 @@ public class AlumnoController  {
 	/**
 	 * Method 'removeAll'.
 	 *
-	 * @param alumnoIds ArrayList
+	 * @param alumnoIds List
 	 * @return alumnoList
 	 */	
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-	public @ResponseBody ArrayList<Alumno> removeMultiple(@RequestBody ArrayList<ArrayList<String>> alumnoIds) {
-        ArrayList<Alumno> alumnoList = new ArrayList<Alumno>();
-        for (ArrayList<String> alumnoId:alumnoIds) {
+	@ResponseStatus(value = HttpStatus.OK)
+	public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> alumnoIds) {
+        List<Alumno> alumnoList = new ArrayList<Alumno>();
+        for (List<String> alumnoId:alumnoIds) {
 		    Iterator<String> iterator = alumnoId.iterator();
 		    Alumno alumno = new Alumno(); //NOPMD - Objeto nuevo en la lista (parametro del servicio)
 	        alumno.setId(ObjectConversionManager.convert(iterator.next(), java.math.BigDecimal.class));
 		    alumnoList.add(alumno);
 	    }
         this.alumnoService.removeMultiple(alumnoList);
-		AlumnoController.logger.info("[POST - DELETE_ALL] : Alumnos borrados correctamente");
-		return alumnoList;
+		AlumnoController.logger.info("[POST - DELETE_ALL] : Alumno borrados correctamente");
+		return alumnoIds;
 	}	
 	
 	/**

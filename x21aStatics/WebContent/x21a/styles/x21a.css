@@ -237,3 +237,101 @@ a.ui-selectmenu { text-decoration: none; color: black }
 	font-weight: bold;    
 }
 
+/** Cabecera **/
+.language_contact {
+	float: right;
+	cursor: pointer;
+}
+
+/* ICONOS MENU */
+.accordion_icon{
+	background-image: url("../images/icons/accordion.png") !important;
+}
+.autocomplete_icon{
+	background-image: url("../images/icons/autocomplete.png") !important;
+}
+.breadcrumb_icon{
+	background-image: url("../images/icons/breadcrumb.png") !important;
+}
+.combo_icon{
+	background-image: url("../images/icons/combo.png") !important;
+}
+.date_icon{
+	background-image: url("../images/icons/date.png") !important;
+}
+.dialog_icon{
+	background-image: url("../images/icons/dialog.png") !important;
+}
+.feedback_icon{
+	background-image: url("../images/icons/feedback.png") !important;
+}
+.form_icon{
+	background-image: url("../images/icons/form.png") !important;
+}
+.grid_icon{
+	background-image: url("../images/icons/grid.png") !important;
+}
+.language_icon{
+	background-image: url("../images/icons/language.png") !important;
+}
+.menu_icon{
+	background-image: url("../images/icons/menu.png") !important;
+}
+.message_icon{
+	background-image: url("../images/icons/message.png") !important;
+}
+.tab_icon{
+	background-image: url("../images/icons/tab.png") !important;
+}
+.time_icon{
+	background-image: url("../images/icons/time.png") !important;
+}
+.toolbar_icon{
+	background-image: url("../images/icons/toolbar.png") !important;
+}
+.tooltip_icon{
+	background-image: url("../images/icons/tooltip.png") !important;
+}
+.upload_icon{
+	background-image: url("../images/icons/upload.png") !important;
+}
+.validate_icon{
+	background-image: url("../images/icons/validate.png") !important;
+}
+.wizard_icon{
+	background-image: url("../images/icons/wizard.png") !important;
+}
+
+.mail_icon{
+	background-image: url("../images/icons/mail.png") !important;
+	margin-top: 0.3em;
+}
+.home_icon{
+	background-image: url("../images/icons/home.png") !important;
+}
+.patrones_icon{
+	background-image: url("../images/icons/patrones.png") !important;
+}
+.experimental_icon{
+	background-image: url("../images/icons/experimental.gif") !important;
+}
+.z-index_icon{
+	background-image: url("../images/icons/z-index.png") !important;
+}
+.nora_icon{
+	background-image: url("../images/icons/nora.png") !important;
+}
+.uda_icon{
+	background-image: url("../images/icons/uda.gif") !important;
+}
+
+/* VISUALIZAR CORRECTAMENTE IE-PORTALES */
+.ui-menu .ui-menu-item a { 
+	color: black !important;
+}
+ul.ui-selectmenu-menu li a, 
+a.ui-selectmenu {
+	text-decoration: none !important;
+	color: black !important;	
+}
+a.ui-dialog-title { color: black !important }

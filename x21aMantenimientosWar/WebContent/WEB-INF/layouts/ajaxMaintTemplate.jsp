@@ -22,11 +22,12 @@
 	<!-- Datos asociados a las llamadas variables de mantenimientos -->
 	<tiles:importAttribute name="maint" />
 	<tiles:importAttribute name="maintName"/>
+	<tiles:importAttribute name="titlePage"/>
 	
 	<!-- Contenidos -->
 	
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<h2>Selección simple</h2>
+	<h2><spring:message code="${titlePage}" /></h2>
 	
 	<div id="error_${maintName}" style="display:none"></div>
 	<div id="simple_${maintName}">

@@ -13,7 +13,8 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>	
 <div class="container" style="margin-top: 2em;"> 
-	<img alt="El contenido estático no está correctamente desplegado." src="/<%=pageContext.getServletContext().getInitParameter("webAppName")%>Statics/rup/basic-theme/images/uda_logo.png"/>
+	<img alt="El contenido estático no está correctamente desplegado." src="${staticsUrl}/rup/basic-theme/images/uda_logo.png"/>
 	<br>¡Hola UDA!
 </div>

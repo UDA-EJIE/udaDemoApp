@@ -20,6 +20,6 @@ jQuery(document).ready(function(){
 		tabs : [
 			{i18nCaption:"pestanaUrl", url:"tab2Fragment"},
 			{i18nCaption:"pestanaHtml", layer:".estiloMixto"},
-			{i18nCaption:"pestana2Url", url:"tab3Fragment"}]
+			{i18nCaption:"pestanaUrl", url:"tab3Fragment"}]
 	});
 });

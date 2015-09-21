@@ -36,6 +36,7 @@
                 <entry key="#{T(com.ejie.x21a.model.NoraProvincia)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.NoraMunicipio)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.NoraCalle)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.MultiPk)}" value-ref="customSerializer" />
              </util:map>
       	</property>
       	<property name="serializationInclusions" ref="serializationInclusions" />

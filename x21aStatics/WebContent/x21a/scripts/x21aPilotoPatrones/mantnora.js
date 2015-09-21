@@ -48,7 +48,14 @@ jQuery("#autocomplete").rup_autocomplete({
 
 jQuery("#comboProvinciasAPI").rup_combo({
 	source : [],
-	blank : "0"
+	blank : "0",
+	select : function(event, value) {
+		jQuery("#autocompleteAPI_label").val("");
+		jQuery("#autocompleteAPI_label").rup_autocomplete('disable');
+		if (value.index !== 0){
+			jQuery("#comboMunicipiosAPI").rup_combo("enable");
+		}
+	}
 });
 
 jQuery("#comboMunicipiosAPI").rup_combo({
@@ -61,10 +68,14 @@ jQuery("#comboMunicipiosAPI").rup_combo({
 		value : "id"
 	},
 	blank : "0",
-	select : function() {
-		jQuery("#autocompleteAPI_label").val("");
-		jQuery("#autocompleteAPI_label").rup_autocomplete('disable');
-		return findByNameCalle(jQuery("#autocompleteAPI_label").val());
+	select : function(event, value) {
+		if (value.index !== 0){
+			jQuery("#autocompleteAPI_label").val("");
+			findByNameCalle(jQuery("#autocompleteAPI_label").val());
+		} else {
+			jQuery("#autocompleteAPI_label").val("");
+			jQuery("#autocompleteAPI_label").rup_autocomplete('disable');
+		}
 	}
 });
 
@@ -121,15 +132,15 @@ function loadData(address) {
 }
 
 function mostrarVisor() {
-	$('id_capaVisor').style.visibility = '';
+	jQuery("#id_capaVisor").css("visibility", "visible");
 }
 function esconderVisor() {
-	$('id_capaVisor').style.visibility = 'hidden';
+	jQuery("#id_capaVisor").css("visibility", "hidden");
 }
 function mostrarFormulario() {
-	$('id_capaFormulario').style.visibility = '';
+	jQuery("#id_capaFormulario").css("visibility", "visible");
 }
 function esconderFormulario() {
-	$('id_capaFormulario').style.visibility = 'hidden';
+	jQuery("#id_capaFormulario").css("visibility", "hidden");
 }
 

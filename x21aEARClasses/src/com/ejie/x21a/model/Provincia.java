@@ -34,7 +34,6 @@ public class Provincia  implements java.io.Serializable {
             private String descEu;
             private String css;
             private List<Comarca> comarcas = new ArrayList<Comarca>();
-            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
 
 	/** Method 'Provincia'.
 	*
@@ -52,24 +51,6 @@ public class Provincia  implements java.io.Serializable {
         this.descEs = descEs;
         this.descEu = descEu;
         this.css = css;
-    }
-
-    /** Method 'Provincia'.
-    * @param code BigDecimal
-    * @param descEs String
-    * @param descEu String
-    * @param css String
-    * @param comarcas List<Comarca>
-    * @param perfilUsuarios List<PerfilUsuario>
-    */
-   public Provincia(BigDecimal code, String descEs, String descEu, String css, List<Comarca> comarcas, List<PerfilUsuario> perfilUsuarios) {	
-
-           this.code = code;
-           this.descEs = descEs;
-           this.descEu = descEu;
-           this.css = css;
-           this.comarcas = comarcas;
-           this.perfilUsuarios = perfilUsuarios;
     }
 
     /**
@@ -170,25 +151,6 @@ public class Provincia  implements java.io.Serializable {
 	 */
 	public void setComarcas(List<Comarca> comarcas) {
 		this.comarcas = comarcas;
-	}
-	/**
-	 * Method 'getPerfilUsuarios'.
-	 *
-	 * @return List
-	 */
-	@JsonIgnore
-	public List<PerfilUsuario> getPerfilUsuarios() {
-		return this.perfilUsuarios;
-	}
-	
-	/**
-	 * Method 'setPerfilUsuarios'.
-	 *
-	 * @param perfilUsuarios List
-	 * @return
-	 */
-	public void setPerfilUsuarios(List<PerfilUsuario> perfilUsuarios) {
-		this.perfilUsuarios = perfilUsuarios;
 	}
 
 	/**

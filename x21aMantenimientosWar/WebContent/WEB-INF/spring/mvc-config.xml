@@ -22,6 +22,10 @@
 	<mvc:view-controller path="/mockLoginPage" view-name="mockLoginPage" />
 	<mvc:view-controller path="/mockLoginAjaxPage" view-name="mockLoginAjaxPage" />
 
+	<!-- Filtro utilizado para emular el comportamiento de los mensajes de error 
+		http en peticiones realizadas desde iframes -->
+	<bean id="iframeXHREmulationFilter" class="com.ejie.x38.IframeXHREmulationFilter" />
+
  	<!-- Recursos idiomáticos (i18n) -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="parentMessageSource" ref="appMessageSource" />

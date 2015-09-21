@@ -30,7 +30,7 @@ jQuery(function($){
 		    //label: etiqueta del detalle
 		    
 			{ name: "id", index: "id", editable: true
-//				,validationrules:{required:true,digits:true}
+				,validationrules:{required:true,digits:true}
 				,key: true 
 			},
 			{ name: "nombre", index: "nombre", editable: true 
@@ -64,7 +64,6 @@ jQuery(function($){
 //				validationrules:{required:true, date:true},
 				editable: true,
 				rupType: "date",
-				formatter: "date",
 				formatoptions:{newformat:"RupDate"}
 			},
 			{ name: "fechaBaja", 
@@ -72,10 +71,10 @@ jQuery(function($){
 //				validationrules:{date:true},
 				editable: true,
 				rupType: "date",
-				formatter: "date",
 				formatoptions:{newformat:"RupDate"}
 			}
-        ]
+        ],
+        readOnlyFields :  [ "id" ]
 	});
 	
 
@@ -85,7 +84,22 @@ jQuery(function($){
 		modelObject: "Usuario",
 		detailButtons: $.rup.maint.detailButtons.SAVE,
 		searchForm: "searchForm",
-		showMessages: true
+		showMessages: true,
+		onbeforeDetailShow: function(rowId){
+			var fieldsArray = jqGrid[0].p.readOnlyFields,
+				row = $(jqGrid).find("#"+rowId);
+	        if (row.hasClass("addElement")){
+	        	//NEW
+	        	for (var i = 0; i < fieldsArray.length; i++) {
+	        		field = row.find("#"+rowId+ "_" + fieldsArray[i]).removeAttr('readonly');
+				}
+	        } else {
+	        	//EDIT
+	           	for (var i = 0; i < fieldsArray.length; i++) {
+	           		field = row.find("#"+rowId+ "_" + fieldsArray[i]).attr('readonly', true);
+	           	}
+	        }
+		}
 		
 	});
 	

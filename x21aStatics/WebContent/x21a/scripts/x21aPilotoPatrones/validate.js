@@ -211,7 +211,7 @@ jQuery(document).ready(function(){
 			validate:getConfiguracionBasicaValidate(),
 			url:$.rup.CTX_PATH+"/patrones/validacion/servidor2",
 			success:function(json,b,c,d){
-				$("#feedbackErroresValidaciones").rup_feedback("set",$.rup_utils.printMsg($.parseJSON(json)), "ok");
+				$("#feedbackErroresValidaciones").rup_feedback("set",$.rup_utils.printMsg(json), "ok");
 			}
 		};
 		

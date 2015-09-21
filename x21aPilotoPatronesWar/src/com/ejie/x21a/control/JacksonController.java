@@ -115,6 +115,12 @@ public class JacksonController  {
         return null;
 	}
 	
+	@RequestMapping(value = "/pruebaArray", method = RequestMethod.PUT)
+	public @ResponseBody Comarca setPruebaArray(@RequestBody Comarca comarca) {
+		
+        return comarca;
+	}
+	
 	/**
 	 * Method 'getProvinciaService'.
 	 *

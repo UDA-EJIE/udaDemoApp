@@ -1,105 +1,107 @@
 {
-	"x21aPilotoPatronesWar_menu_mixto" : {
-		"inicio" : "Inicio",
-		"mantenimientos" : "x21aMantenimientosWar",
-		"patrones" : "Patrones",
-			"all" : "[Todos los patrones]",
-			"accordion" : "Accordion",
-			"autocomplete" : "Autocomplete",
-			"toolbar" : "Botonera",
-			"combo" : "Combo",
-				"comboSimple" : "Combo Simple",
-				"comboEnlazadoSimple" : "Combo Enlazado (simple)",
-				"comboEnlazadoMulti" : "Combo Enlazado (múltiple)",
-			"dialog" : "Diálogos",
-			"date" : "Fecha",
-			"feedback" : "Feedback",
-			"form" : "Formulario",
-			"time" : "Hora",
-			"message" : "Mensajes",
-			"menu" : "Menú",
-				"menuHorizontal" : "Horizontal",
-				"menuVertical" : "Vertical",
-				"menuMixto" : "Mixto",
-			"tabs" : "Pestañas",
-				"tabsStatic" : "Pestañas carga estática",
-				"tabsAjax" : "Pestañas carga Ajax",
-				"tabsMixto" : "Pestañas carga mixta",
-				"maintTab" : "Pestañas con mantenimientos",
-			"grid" : "Tabla",
-				"grid_grupo" : "Tabla Agrupada",
-				"grid_base" : "Tabla Basico",
-				"grid_arbol" : "Tabla Arbol",
-			"tooltip" : "Tooltip",
-			"upload" : "Upload",
-			"validate" :  "Validación",
-			"wizard" : "Wizard",
-				"wizardA" : "Wizard simple",
-				"wizardB" : "Wizard <%@ include %>",
-				"wizardC" : "Wizard <jsp:include>",
-				"wizardD" : "Wizard <c:import>",
-		"experimental" : "Experimental",
-			"maestro_detalle" : "Maestro-Detalle",
-			"z-index" : "z-index",
-			"mant_multi_entidad" : "Mantenimiento multi-entidad",
-			"mant_clave_compuesta" : "Mantenimiento clave-compuesta",
-			"mant_clave_compuesta_multi" : "Multiselección",
-			"mant_clave_compuesta_edlinea" : "Edición en línea",
-			"nora"	: "NORA", 
-		"uda" : "UDA",
-		"titulo-notifi" : "Notificaciones",
-		"titulo-nave" : "Navegación",
-		"titulo-estru" : "Estructuración de pantalla",
-		"titulo-inser" : "Inserción de datos"
+	"x21aPilotoPatronesWar_menu_mixto" :{
+		"inicio" :"Inicio",
+		"mantenimientos" :"x21aMantenimientosWar",
+		"patrones" :"Patrones",
+			"all" :"[Todos los patrones]",
+			"accordion" :"Accordion",
+			"autocomplete" :"Autocomplete",
+			"toolbar" :"Botonera",
+			"combo" :"Combo",
+				"comboSimple" :"Combo Simple",
+				"comboEnlazadoSimple" :"Combo Enlazado (simple)",
+				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+				"multicombo" :"Combo Mutiselección",
+			"dialog" :"Diálogos",
+			"date" :"Fecha",
+			"feedback" :"Feedback",
+			"form" :"Formulario",
+			"time" :"Hora",
+			"message" :"Mensajes",
+			"menu" :"Menú",
+				"menuHorizontal" :"Horizontal",
+				"menuVertical" :"Vertical",
+				"menuMixto" :"Mixto",
+			"tabs" :"Pestañas",
+				"tabsStatic" :"Pestañas carga estática",
+				"tabsAjax" :"Pestañas carga Ajax",
+				"tabsMixto" :"Pestañas carga mixta",
+				"maintTab" :"Pestañas con mantenimientos",
+			"grid" :"Tabla",
+				"grid_grupo" :"Tabla Agrupada",
+				"grid_base" :"Tabla Basico",
+				"grid_arbol" :"Tabla Arbol",
+			"tooltip" :"Tooltip",
+			"upload" :"Upload",
+			"validate" : "Validación",
+			"wizard" :"Wizard",
+				"wizardA" :"Wizard simple",
+				"wizardB" :"Wizard <%@ include %>",
+				"wizardC" :"Wizard <jsp:include>",
+				"wizardD" :"Wizard <c:import>",
+		"experimental" :"Experimental",
+			"maestro_detalle" :"Maestro-Detalle",
+			"z-index" :"z-index",
+			"mant_multi_entidad" :"Mantenimiento multi-entidad",
+			"mant_clave_compuesta" :"Mantenimiento clave-compuesta",
+			"mant_clave_compuesta_multi" :"Multiselección",
+			"mant_clave_compuesta_edlinea" :"Edición en línea",
+			"nora"	:"NORA", 
+		"uda" :"UDA",
+		"titulo-notifi" :"Notificaciones",
+		"titulo-nave" :"Navegación",
+		"titulo-estru" :"Estructuración de pantalla",
+		"titulo-inser" :"Inserción de datos"
 	},
 	"x21aPilotoPatronesWar_migas" :{
-		"patrones" : "Patrones",
-			"all" : "[Todos los patrones]",
-			"accordion" : "Accordion",
-			"autocomplete" : "Autocomplete",
-			"toolbar" : "Botonera",
-			"comboSimple" : "Combo Simple",
-			"comboEnlazadoSimple" : "Combo Enlazado (simple)",
-			"comboEnlazadoMulti" : "Combo Enlazado (múltiple)",
-			"dialog" : "Diálogos",
-			"date" : "Fecha",
-			"feedback" : "Feedback",
-			"form" : "Formulario",
-			"time" : "Hora",
-			"message" : "Mensajes",
-			"menu" : "Menú Horizontal",
+		"patrones" :"Patrones",
+			"all" :"[Todos los patrones]",
+			"accordion" :"Accordion",
+			"autocomplete" :"Autocomplete",
+			"toolbar" :"Botonera",
+			"comboSimple" :"Combo Simple",
+			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
+			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+			"multicombo" :"Combo Mutiselección",
+			"dialog" :"Diálogos",
+			"date" :"Fecha",
+			"feedback" :"Feedback",
+			"form" :"Formulario",
+			"time" :"Hora",
+			"message" :"Mensajes",
+			"menu" :"Menú Horizontal",
 			"menuVertical":"Menú Vertical",
 			"menuMixto":"Menú Mixto",
-			"tabs" : "Pestañas",
+			"tabs" :"Pestañas",
 				"tabsStatic":"Pestañas carga estática",
 				"tabsAjax":"Pestañas carga Ajax",
 				"tabsMixto":"Pestañas carga mixta",
 				"maintTab":"Pestañas con mantenimientos",
-			"grid" : "Tabla",
-				"grid_grupo" : "Tabla Agrupada",
-				"grid_base" : "Tabla Basico",
-				"grid_arbol" : "Tabla Arbol",
-			"tooltip" :  "Tooltip",
-			"upload" :  "Upload",
-			"validate" :  "Validación",
-			"wizard" : "Wizard",
-				"wizardA" : "Wizard simple",
-				"wizardB" : "Wizard <%@ include %>",
-				"wizardC" : "Wizard <jsp:include>",
-				"wizardD" : "Wizard <c:import>",
-			"experimental": "Experimental",
-				"maestro_detalle": "Maestro-Detalle",
-				"z-index": "z-index",
+			"grid" :"Tabla",
+				"grid_grupo" :"Tabla Agrupada",
+				"grid_base" :"Tabla Basico",
+				"grid_arbol" :"Tabla Arbol",
+			"tooltip" : "Tooltip",
+			"upload" : "Upload",
+			"validate" : "Validación",
+			"wizard" :"Wizard",
+				"wizardA" :"Wizard simple",
+				"wizardB" :"Wizard <%@ include %>",
+				"wizardC" :"Wizard <jsp:include>",
+				"wizardD" :"Wizard <c:import>",
+			"experimental":"Experimental",
+				"maestro_detalle":"Maestro-Detalle",
+				"z-index":"z-index",
 				"mant_multi_entidad":"Mantenimiento multi-entidad",
 				"mant_clave_compuesta":"Mantenimiento clave-compuesta",
 				"mant_clave_compuesta_multi":"Multiselección",
 				"mant_clave_compuesta_edlinea":"Edición en línea",
-				"nora"	: "NORA", 
+				"nora"	:"NORA", 
 		"uda":"UDA"
 	},
 	
 "_comment":"PATRONES",	
-	"autocomplete" : { 
+	"autocomplete" :{ 
 		"asp":"asp",
 		"c":"c",
 		"c++":"c++",
@@ -115,7 +117,7 @@
 		"scala":"scala"
 	},
 	"_comment":"COMBO_SIMPLE",	
-		"combo" : { 
+		"combo" :{ 
 			"_blank":"[Seleccione un elemento]",
 			"asp":"asp",
 			"c":"c",
@@ -131,7 +133,7 @@
 			"ruby":"ruby",
 			"scala":"scala"
 		},
-		"comboGrupos" : { 
+		"comboGrupos" :{ 
 			"futbol":"Futbol",
 			"alaves":"Alaves",
 			"ath":"Athletic",
@@ -145,7 +147,7 @@
 			"hamilton":"Lewis Hamilton",
 			"vettel":"Sebastian Vettel"
 		},
-		"comboLargo": {
+		"comboLargo":{
 			"jon_doe":"John Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)",
 			"jane_doe":"Jane Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
 			"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
@@ -159,32 +161,32 @@
 			"g":"Gipúzcoa"
 		},
 		"comboPadre":{
-			"a1": "A-Zona1",
-			"a2": "A-Zona2",
-			"a3": "A-Zona3",
-			"b1": "Gran Bilbao",
-			"b2": "Margen Derecha",
-			"b3": "Margen Izquierda",
-			"g1": "G-Zona1",
-			"g2": "G-Zona2",
-			"g3": "G-Zona3"
+			"a1":"A-Zona1",
+			"a2":"A-Zona2",
+			"a3":"A-Zona3",
+			"b1":"Gran Bilbao",
+			"b2":"Margen Derecha",
+			"b3":"Margen Izquierda",
+			"g1":"G-Zona1",
+			"g2":"G-Zona2",
+			"g3":"G-Zona3"
 		},
 		"comboHijo":{
 			"_blank":"[Selecciona Hijo]"
 		},
-		"comboAbueloRemoto": {
+		"comboAbueloRemoto":{
 			"_blank":"[Selecciona Abuelo Remoto]"
 		},
 		"mixto_comboPadre":{
-			"a1": "A-Zona1",
-			"a2": "A-Zona2",
-			"a3": "A-Zona3",
-			"b1": "Gran Bilbao",
-			"b2": "Margen Derecha",
-			"b3": "Margen Izquierda",
-			"g1": "G-Zona1",
-			"g2": "G-Zona2",
-			"g3": "G-Zona3"
+			"a1":"A-Zona1",
+			"a2":"A-Zona2",
+			"a3":"A-Zona3",
+			"b1":"Gran Bilbao",
+			"b2":"Margen Derecha",
+			"b3":"Margen Izquierda",
+			"g1":"G-Zona1",
+			"g2":"G-Zona2",
+			"g3":"G-Zona3"
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo]",
@@ -193,10 +195,10 @@
 			"g":"Gipúzcoa"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
-		"departamentoRemote": {
+		"departamentoRemote":{
 			"_blank":"[Selecciona Dpto.]"
 		},
-		"provinciaRemote": {
+		"provinciaRemote":{
 			"_blank":"[Selecciona Prov.]"
 		},
 		"mixto_provincia":{
@@ -210,118 +212,118 @@
 			"poli":"Policía",
 			"bomb":"Bomberos"
 		},
-	"tabs" : {
-		"pestana0" 		: "Tab 0",
-		"sub00" 		: "sub00",
-		"sub000" 		: "sub000",
-		"sub001" 		: "sub001",
-		"sub0010" 		: "sub0010",
-		"sub0011" 		: "sub0011",
-		"sub00110" 		: "sub00110",
-		"sub00111" 		: "sub00111",
-		"sub002" 		: "sub002",
-		"sub01" 		: "sub01",
-		"sub02" 		: "sub02",
-		"pestana1"  	: "Tab 1",
-		"sub10" 		: "sub10",
-		"sub11" 		: "sub11",
-		"pestana2" 		: "Tab 2",
-		"pestanaAna"   	: "Nueva Pestaña",
-		"nuevaPestaña" 	: "Nuevo Nivel",
-		"PestañasMaint"	: "Pestaña con Mantenimientos"
+	"tabs" :{
+		"pestana0" 		:"Tab 0",
+		"sub00" 		:"sub00",
+		"sub000" 		:"sub000",
+		"sub001" 		:"sub001",
+		"sub0010" 		:"sub0010",
+		"sub0011" 		:"sub0011",
+		"sub00110" 		:"sub00110",
+		"sub00111" 		:"sub00111",
+		"sub002" 		:"sub002",
+		"sub01" 		:"sub01",
+		"sub02" 		:"sub02",
+		"pestana1"  	:"Tab 1",
+		"sub10" 		:"sub10",
+		"sub11" 		:"sub11",
+		"pestana2" 		:"Tab 2",
+		"pestanaAna"   	:"Nueva Pestaña",
+		"nuevaPestaña" 	:"Nuevo Nivel",
+		"PestañasMaint"	:"Pestaña con Mantenimientos"
 	},
-	"pruebaSub3Maint" : {
-		"maint1"		: "Mantenimiento 1",
-		"maint2"		: "Mantenimiento 2",
-		"maint3"		: "Mantenimiento 3"	
+	"pruebaSub3Maint" :{
+		"maint1"		:"Mantenimiento 1",
+		"maint2"		:"Mantenimiento 2",
+		"maint3"		:"Mantenimiento 3"	
 	},
-	"tabsStatic" : {
-		"pestana0" 	: "Pestaña 1",
-		"pestana1"  : "Pestaña 2",
-		"pestana2" 	: "Pestaña 3",
-		"pestanaAna" : "Pestaña Añadida"
+	"tabsStatic" :{
+		"pestana0" 	:"Pestaña 1",
+		"pestana1"  :"Pestaña 2",
+		"pestana2" 	:"Pestaña 3",
+		"pestanaAna" :"Pestaña Añadida"
 	},
-	"tabsMixta" : {
-		"pestanaUrl" 	: "Pestaña con url",
-		"pestanaHtml"  : "Pestaña con html"
+	"tabsMixta" :{
+		"pestanaUrl" 	:"Pestaña con url",
+		"pestanaHtml"  :"Pestaña con html"
 	},
-	"maintTab" : {
-		"maint1"	: "Mantenimiento Simple 1",
-		"maint2"    : "Mantenimiento Simple 2",
-		"maint3" 	: "Mantenimiento Simple 3",
-		"edit1" 	: "Mantenimiento edición en línea",
-		"multi1" 	: "Mantenimiento múltiple"
+	"tabsMaint" :{
+		"maint1"	:"Mantenimiento Simple 1",
+		"maint2"    :"Mantenimiento Simple 2",
+		"maint3" 	:"Mantenimiento Simple 3",
+		"edit1" 	:"Mantenimiento edición en línea",
+		"multi1" 	:"Mantenimiento múltiple"
 	},
-	"tabsDialog" : {
-		"pestana0" 	: "Tab 0",
-		"sub01" 	: "sub01",
-		"sub02" 	: "sub02",
-		"pestana1"  : "Tab 1",
-		"sub10" 	: "sub10",
-		"sub11" 	: "sub11"
+	"tabsDialog" :{
+		"pestana0" 	:"Tab 0",
+		"sub01" 	:"sub01",
+		"sub02" 	:"sub02",
+		"pestana1"  :"Tab 1",
+		"sub10" 	:"sub10",
+		"sub11" 	:"sub11"
 	},
-	"toolbar" : {
-		"buscar"  	: "Buscar",
-		"otros"	  	: "Otros botones",
-		"nuevo"	  	: "Nuevo",
-		"editar"	: "Editar",
-		"cancelar"	: "Cancelar",
-		"borrar"	: "Borrar",
-		"filtrar"	: "Filtrar",
-		"imprimir"	: "Imprimir",
-		"ficheros"	: "Ficheros",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbar" :{
+		"buscar"  	:"Buscar",
+		"otros"	  	:"Otros botones",
+		"nuevo"	  	:"Nuevo",
+		"editar"	:"Editar",
+		"cancelar"	:"Cancelar",
+		"borrar"	:"Borrar",
+		"filtrar"	:"Filtrar",
+		"imprimir"	:"Imprimir",
+		"ficheros"	:"Ficheros",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"toolbarRight" : {
-		"buscar"  	: "Buscar",
-		"otros"	  	: "Otros botones",
-		"nuevo"	  	: "Nuevo",
-		"editar"	: "Editar",
-		"cancelar"	: "Cancelar",
-		"borrar"	: "Borrar",
-		"filtrar"	: "Filtrar",
-		"imprimir"	: "Imprimir",
-		"ficheros"	: "Ficheros",
-		"DLL"		: "DLL",
-		"DOC"		: "DOC",
-		"EXE"		: "EXE",
-		"GIF"		: "GIF",
-		"JPG"		: "JPG",
-		"JS"		: "JS",
-		"PDF"		: "PDF",
-		"PPT"		: "PPT",
-		"TXT"		: "TXT",
-		"XLS"		: "XLS",
-		"ZIP"		: "ZIP"
+	"toolbarRight" :{
+		"buscar"  	:"Buscar",
+		"otros"	  	:"Otros botones",
+		"nuevo"	  	:"Nuevo",
+		"editar"	:"Editar",
+		"cancelar"	:"Cancelar",
+		"borrar"	:"Borrar",
+		"filtrar"	:"Filtrar",
+		"imprimir"	:"Imprimir",
+		"ficheros"	:"Ficheros",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
 	},
-	"grid##ejie" : {
-		"0" : "No",
-		"1" : "Sí"
+	"grid##ejie" :{
+		"0" :"No",
+		"1" :"Sí"
 	},
-	"GRID_simple##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
+	"GRID_simple##ejie" :{
+		"0" :"No",
+		"1" :"Yes"
 	},
-	"gridDialog##ejie" : {
-		"0" : "No",
-		"1" : "Sí"
+	"gridDialog##ejie" :{
+		"0" :"No",
+		"1" :"Sí"
 	},
 	"uploadTabs":{
-		"upload" : "Upload",
-		"uploadTable" : "Upload en tabla",
-		"uploadForm" : "Upload form",
-		"uploadFormSimple" : "Upload simple en formulario",
-		"uploadFormMultiple" : "Multiples upload en formulario"
+		"upload" :"Upload",
+		"uploadTable" :"Upload en tabla",
+		"uploadForm" :"Upload form",
+		"uploadFormSimple" :"Upload simple en formulario",
+		"uploadFormMultiple" :"Multiples upload en formulario"
 	},
 	"comboProvincias":{
 		"_blank":"Seleccione un elemento" 	
@@ -367,8 +369,15 @@
 		"ejemploYFunciones":"Ejemplo y métodos",
 		"multiplesEntidades":"Envío de varias entidades"
 	},
-	"loginUserMock" : {
-		"logginOk1" : "Usuario '",
-		"logginOk2" : "' Seleccionado correctamente"
+	"loginUserMock" :{
+		"logginOk1" :"Usuario '",
+		"logginOk2" :"' Seleccionado correctamente"
+	},
+	"maintTab" :{
+		"maint1"	:"Mantenimiento Simple 1",
+		"maint2"    :"Mantenimiento Simple 2",
+		"maint3" 	:"Mantenimiento Simple 3",
+		"edit1" 	:"Mantenimiento edición en línea",
+		"multi1" 	:"Mantenimiento múltiple"
 	}
 }

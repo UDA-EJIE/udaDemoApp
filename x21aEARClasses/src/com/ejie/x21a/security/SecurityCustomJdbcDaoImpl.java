@@ -24,9 +24,10 @@ import n38c.exe.N38API;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.w3c.dom.Document;
 
+import com.ejie.x38.security.PerimetralSecurityWrapperN38Impl;
 import com.ejie.x38.security.UdaCustomJdbcDaoImpl;
 
 
@@ -37,10 +38,13 @@ import com.ejie.x38.security.UdaCustomJdbcDaoImpl;
  */
 public class SecurityCustomJdbcDaoImpl extends UdaCustomJdbcDaoImpl {	
 	
+	@Autowired
+	PerimetralSecurityWrapperN38Impl  WrapperN38;
+	
 	private static final Logger logger = LoggerFactory
 	.getLogger(SecurityCustomJdbcDaoImpl.class);
 	
-	protected String loadUserPosition(String userName, String dni, N38API n38Api, Document xmlSesion){
+	protected String loadUserPosition(String userName, String dni, N38API n38Api){
 		
 		List<String> result = getJdbcTemplate().query(this.getPositionByUserdataQuery(), new String[] { userName.toUpperCase(), dni.toUpperCase() }, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -48,7 +52,9 @@ public class SecurityCustomJdbcDaoImpl extends UdaCustomJdbcDaoImpl {
 			}
 		});
 		
-		if(!(result.size() == 1)){
+		if(result.size() == 0){
+			return(WrapperN38.getAnonymousProfile().get("position"));
+		} else if(!(result.size() == 1)){
 			IllegalArgumentException exc = new IllegalArgumentException("loadUserPosition(): Revise su base de datos. El valor de puesto, asociado a un usuario, debe ser único.");
 			logger.error("loadUserPosition(): Revise su base de datos. El valor de puesto, asociado a un usuario, debe ser único.", exc);
 			throw exc;
@@ -57,7 +63,7 @@ public class SecurityCustomJdbcDaoImpl extends UdaCustomJdbcDaoImpl {
 		return result.get(0);
 	}
 	
-	protected Vector<String> loadUserAuthorities(String userName, String dni, N38API n38Api, Document xmlSesion){
+	protected Vector<String> loadUserAuthorities(String userName, String dni, N38API n38Api){
 		
 		return new Vector<String>(getJdbcTemplate().query(this.getAuthoritiesByUserdataQuery(), new String[] { userName.toUpperCase(), dni.toUpperCase() }, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
