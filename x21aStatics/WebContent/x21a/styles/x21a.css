@@ -27,7 +27,16 @@ a img,:link img,:visited img,form,fieldset {border:none}
 
 /* Hx */
 h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%}
-h2 { font-size:1.8em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%;}
+
+ h2 { font-size:1.8em; color:#000000; display:block; margin:0 0 0.5em 0; padding:0 0 0.3em 0; border-bottom:1px solid #cccccc;width: 100%;}
+
+.titulo {
+	color:#000000;
+	font-size:1.8em;
+	margin:0 0 0.5em 0;
+	padding:0 0 0.3em 0;
+	border-bottom:1px solid #cccccc;
+}
 h3 { font-size:1.4em; color:#555555; display:block; margin:1.5em 0 0.5em 0; padding:0; }
 .container { font-size:1.8em; color:#000000; display:block; margin:0; padding:0; }
 
@@ -685,6 +694,9 @@ a.ui-selectmenu { text-decoration: none; color: black }
 }
 .uda_icon{
 	background-image: url("../images/icons/uda.gif") !important;
+}
+.old_icon{
+	background-image: url("../images/icons/old.16.png") !important;
 }
 
 /* VISUALIZAR CORRECTAMENTE IE-PORTALES */

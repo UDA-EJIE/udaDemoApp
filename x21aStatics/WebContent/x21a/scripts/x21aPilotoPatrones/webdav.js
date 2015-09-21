@@ -17,37 +17,56 @@ jQuery(document).ready(function(){
 	
 	jQuery('#webdavEdit').bind("click", function() {
 		
-		var url = location.protocol + "//" + location.host+CTX_PATH+"webdavServlet/webdav.doc", obj;
+		jQuery.rup_dav.editOnline({
+			url:"webdavServlet/webdav.doc",
+			xlnetsAuth:true,
+			downloadOnError:true,
+			alternateDownloadURL:"../upload?fileName=webdav.doc"
+		});
 		
-		if ($.browser.msie === true){
-			// Gestión para Internet Explorer
-			try{
-				// Microsoft Office 2007 y superiores
-				obj = new ActiveXObject("SharePoint.OpenDocuments.3");
-				obj.EditDocument(url);
-			}catch(e){
-				try{
-					// Microsoft Office 2003 e inferiores
-					obj = new ActiveXObject('Word.Application');
-					obj.Visible = true;
-					obj.Documents.Open(encodeURI(url));
-				}catch(e){
-					// No se puede editar en línea, se descarga el archivo
-					window.open(encodeURI("../upload?fileName=webdav.doc"), '_blank');
-				}
-			}
-		} else {
-			// Gestión para Firefox y Chrome
-			try{
-				// Microsoft Office 2007 y superiores
-				hownowPlugin = document.getElementById("winFirefoxPlugin");
-			    version = hownowPlugin.GetOfficeVersion();
-			    hownowPlugin.EditDocument(url, version);
-			}catch(e){
-				// No se puede editar en línea, se descarga el archivo
-				window.open(encodeURI("../upload?fileName=webdav.doc"), '_blank');
-			}
-		} 
+//		var url, urlParams, obj, n38UidSesionCookie = $.rup_utils.readCookie("n38UidSesion"), n38DominioUidCookie = $.rup_utils.readCookie("n38DominioUid");
+//		
+//		urlParams = {
+//				n38UidSesion: $.rup_utils.readCookie("n38UidSesion"),
+//				n38DominioUid: $.rup_utils.readCookie("n38DominioUid")
+//		};
+//		
+//		url = location.protocol + "//" + location.host+CTX_PATH+"webdavServlet/webdav.doc";
+//		
+//		if (n38UidSesionCookie !== undefined && n38UidSesionCookie !=='' && n38DominioUidCookie !== undefined && n38DominioUidCookie !==''){
+//			url += "?c="+jQuery.rup_utils.base64.encode(jQuery.param(urlParams));
+//		}
+//		
+//		
+//		if ($.browser.msie === true){
+//			// Gestión para Internet Explorer
+//			try{
+//				// Microsoft Office 2007 y superiores
+//				obj = new ActiveXObject("SharePoint.OpenDocuments.3");
+//				obj.EditDocument(encodeURI(url));
+//			}catch(e){
+//				try{
+//					// Microsoft Office 2003 e inferiores
+//					obj = new ActiveXObject('Word.Application');
+//					obj.Visible = true;
+//					obj.Documents.Open(encodeURI(url));
+//				}catch(e){
+//					// No se puede editar en línea, se descarga el archivo
+//					window.open(encodeURI("../upload?fileName=webdav.doc"), '_blank');
+//				}
+//			}
+//		} else {
+//			// Gestión para Firefox y Chrome
+//			try{
+//				// Microsoft Office 2007 y superiores
+//				hownowPlugin = document.getElementById("winFirefoxPlugin");
+//			    version = hownowPlugin.GetOfficeVersion();
+//			    hownowPlugin.EditDocument(url, version);
+//			}catch(e){
+//				// No se puede editar en línea, se descarga el archivo
+//				window.open(encodeURI("../upload?fileName=webdav.doc"), '_blank');
+//			}
+//		} 
 	});
 	
 });	

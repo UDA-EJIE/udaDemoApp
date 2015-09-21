@@ -100,6 +100,11 @@
 	            	<ref bean="udaMappingJacksonHttpMessageConverter"/>
 	            </list>
        		</property>
+       		<property name="customArgumentResolvers">
+       			<list>
+	            	<bean class="com.ejie.x38.control.method.annotation.RequestJsonBodyMethodArgumentResolver"/>
+	            </list>
+	        </property>
 		</bean>
 	<!-- FIN -->
 		

@@ -232,10 +232,6 @@ jQuery(document).ready(function(){
 	$("#formMultientidades").rup_form({
 		url:$.rup.CTX_PATH+"/patrones/form/multientidades",
 		feedback:$("#feedbackMensajes"),
-		multimodel:{
-			"alumno":"com.ejie.x21a.model.Alumno",
-			"departamento":"com.ejie.x21a.model.Departamento"
-		},
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
 		},
@@ -250,11 +246,6 @@ jQuery(document).ready(function(){
 	$("#formMultientidadesMismoTipo").rup_form({
 		url:$.rup.CTX_PATH+"/patrones/form/multientidadesMismoTipo",
 		feedback:$("#feedbackMensajes"),
-		multimodel:{
-			"comarca1":"com.ejie.x21a.model.Comarca",
-			"comarca2":"com.ejie.x21a.model.Comarca",
-			"comarca3":"com.ejie.x21a.model.Comarca"
-		},
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
 		},

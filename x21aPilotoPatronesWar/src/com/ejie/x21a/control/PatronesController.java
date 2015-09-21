@@ -67,7 +67,6 @@ import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.model.UsuarioMixIn;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -80,11 +79,14 @@ import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
 import com.ejie.x38.control.bind.annotation.Json;
+import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
 import com.ejie.x38.json.MessageWriter;
+import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.validation.ValidationManager;
 
 /**
@@ -316,6 +318,64 @@ public class PatronesController {
 	@RequestMapping(value = "treeDAD", method = RequestMethod.GET)
 	public String getTreeDragAndDrop(Model model) {
 		return "treeDAD";
+	}
+	
+	@RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
+	public Object getTreeAjax(Model model, HttpServletResponse response) {
+		
+		// S
+		JSONArray root = new JSONArray();
+		
+		JSONObject padre1 = new JSONObject();
+		padre1.put("data", "Padre 1");
+		
+		JSONObject padre11 = new JSONObject();
+		padre11.put("data", "Padre 1.1");
+		
+		JSONObject hoja111 = new JSONObject();
+		hoja111.put("data", "Hoja 1.1.1");
+		
+		JSONObject padre112 = new JSONObject();
+		padre112.put("data", "Padre 1.1.2");
+		
+		JSONObject hoja1121 = new JSONObject();
+		hoja1121.put("data", "Hoja 1.1.2.1");
+		
+		JSONObject hoja1122 = new JSONObject();
+		hoja1122.put("data", "Hoja 1.1.2.2");
+		
+		JSONObject hoja12 = new JSONObject();
+		hoja12.put("data", "Padre 1.2");
+		
+		JSONArray padre112Childs = new JSONArray();
+		padre112Childs.put(hoja1121);
+		padre112Childs.put(hoja1122);
+		padre112.put("children", padre112Childs);
+		
+		JSONArray padre11Childs = new JSONArray();
+		padre11Childs.put(hoja111);
+		padre11Childs.put(padre112);
+		padre11.put("children", padre11Childs);
+		
+		JSONArray padre1Childs = new JSONArray();
+		padre1Childs.put(padre11);
+		padre1Childs.put(hoja12);
+		padre1.put("children", padre1Childs);
+		
+		root.put(padre1);
+		
+		response.setContentType("text/javascript;charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Expires", DateTimeManager.getHttpExpiredDate());
+		response.setStatus(HttpServletResponse.SC_OK);		
+		try {
+			response.getWriter().write(root.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	//Validate
@@ -647,15 +707,17 @@ public class PatronesController {
 		
 		//Form ajax submit
 		@RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
-		public @ResponseBody Object getFormmMultientidades(@RequestBody Map<String, Object> multiModelMap) {
+		public @ResponseBody Object getFormmMultientidades(
+				@RequestJsonBody(param="alumno") Alumno alumno,
+				@RequestJsonBody(param="departamento") Departamento departamento) {
 			
 			MessageWriter messageWriter = new MessageWriter();
-			
+
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
 			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
 			messageWriter.startSubLevel();
-			messageWriter.addMessage(new JSONObject(multiModelMap).toString());
+			messageWriter.addMessage(new JSONObject(alumno).toString());
 			messageWriter.endSubLevel();
 			messageWriter.endMessageList();
 			
@@ -664,7 +726,11 @@ public class PatronesController {
 		
 		//Form ajax submit
 		@RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
-		public @ResponseBody Object getFormmMultientidadesMismoTipo(@RequestBody Map<String, Object> multiModelMap) {
+		public @ResponseBody Object getFormmMultientidadesMismoTipo(
+				@RequestJsonBody(param="comarca1") Comarca comarca1,
+				@RequestJsonBody(param="comarca2") Comarca comarca2,
+				@RequestJsonBody(param="comarca3") Comarca comarca3
+				) {
 			
 			MessageWriter messageWriter = new MessageWriter();
 			
@@ -672,7 +738,7 @@ public class PatronesController {
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
 			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
 			messageWriter.startSubLevel();
-			messageWriter.addMessage(new JSONObject(multiModelMap).toString());
+			messageWriter.addMessage(new JSONObject(comarca1).toString());
 			messageWriter.endSubLevel();
 			messageWriter.endMessageList();
 			

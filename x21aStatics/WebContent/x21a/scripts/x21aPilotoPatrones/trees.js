@@ -157,6 +157,13 @@ jQuery(document).ready(function(){
 		codeDialogSelector.rup_dialog("open");
 	});
 	
+	$("#tree_example").rup_tree({
+		"json_data":{
+			
+		}
+		
+	});
+	
 	
 	/* Ejemplo de un árbol con cambios en el modo de selección */
 	//Copia del código del árbol utilizado
@@ -368,4 +375,80 @@ jQuery(document).ready(function(){
 		codeCleanLoad("uniqueDemoCode");
 		codeDialogSelector.rup_dialog("open");
 	});
+	
+	/* Ejemplo de carga de datos mediante json */
+	
+
+
+$("#jsonTreeDemo").rup_tree({
+	"core" : {
+		"initially_open" : ["Padre 1" ]
+	},
+	"json_data" : {
+		"data" : [ {
+			"data" : "Padre 1",
+			"children" : [
+			  {
+            	  "data":"Padre 1.1",
+            	  "children" : [{
+            		  "data":"Hoja 1.1.1"
+            	  },
+            	  {
+            		  "data":"Padre 1.1.2",
+            		  "children" : ["Hoja 1.1.2.1","Hoja 1.1.2.2"]
+            	  }]
+			},
+			{
+				"data":"Hoja 1.2"
+			}]
+		}]
+	}
+});
+	
+/* Ejemplo de carga de datos mediante xml */
+
+
+
+$("#xmlTreeDemo").rup_tree({
+	"core" : {
+		"initially_open" : ["padre_1" ]
+	},
+	"xml_data" : {
+		"data" : ""+
+			"<root>"+
+				"<item id='padre_1'>"+
+					"<content><name><![CDATA[Padre 1]]></name></content>"+
+					"<item id='padre_1_1' parent_id='padre_1'>"+
+						"<content><name><![CDATA[Padre 1.1]]></name></content>"+
+						"<item id='hoja_1_1_1' parent_id='padre_1_1'>"+
+							"<content><name><![CDATA[Hoja 1.1.1]]></name></content>"+
+						"</item>"+
+						"<item id='padre_1_1_2' parent_id='padre_1_1'>"+
+							"<content><name><![CDATA[Padre 1.1.2]]></name></content>"+
+							"<item id='hoja_1_1_2_1' parent_id='padre_1_1_2'>"+
+								"<content><name><![CDATA[Hoja 1.1.2.1]]></name></content>"+
+							"</item>"+
+							"<item id='hoja_1_1_2_2' parent_id='padre_1_1_2'>"+
+								"<content><name><![CDATA[Hoja 1.1.2.2]]></name></content>"+
+							"</item>"+
+						"</item>"+
+					"</item>"+
+					"<item id='hoja_1_2' parent_id='padre_1'>"+
+						"<content><name><![CDATA[Hoja 1.2]]></name></content>"+
+					"</item>"+
+				"</item>"+
+			"</root>"
+	}
+});
+
+
+$("#ajaxTreeDemo").rup_tree({
+	"json_data" : {
+		"ajax" : {
+			"url":"ajaxTree"
+		}
+	}
+});
+
+
 });

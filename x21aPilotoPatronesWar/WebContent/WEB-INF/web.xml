@@ -28,7 +28,17 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-	<!-- Here's were some of the fundamental AOP Aspects are applied -->
+	<!-- Here's were some of the fundamental AOP Aspects are applied 
+	
+	<filter>
+		<filter-name>webdavFilter</filter-name>
+		<filter-class>com.ejie.x21a.webdav.HttpBasicAuthenticationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>webdavFilter</filter-name>
+		<url-pattern>/webdavServlet/*</url-pattern>
+	</filter-mapping>
+	-->
 	<filter>
 		<filter-name>udaFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -47,7 +57,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 	<!-- Reads request input using UTF-8 encoding -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>

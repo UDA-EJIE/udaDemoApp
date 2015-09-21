@@ -23,6 +23,38 @@
 	<div id="javaScriptCode" class="codePanel codePanelRight"></div>
 </div>
 
+<div id="tree_example" class="tree_example_code">
+	<ul>
+		<li id="node1">
+			<a href="#">Padre 1</a>
+			<ul>
+				<li id="node11">
+					<a href="#">Padre 1.1</a>
+					<ul>
+						<li id="node111">
+							<a href="#">Hoja 1.1.1</a>
+						</li>
+						<li id="node112">
+							<a href="#">Padre 1.1.2</a>
+							<ul>
+								<li id="node1121">
+									<a href="#">Hoja 1.1.2.1</a>
+								</li>
+								<li id="node1122">
+									<a href="#">Hoja 1.1.2.2</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li id="node12">
+					<a href="#">Hoja 1.2></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
 <div id="model_example_1" class="model_example_1_code">
 	<ul>
 		<li id="node1">
@@ -250,5 +282,32 @@
 		
 	<div id="uniqueControl" class="controlsMainCode">		
 		<button id="btnUniqueDemo"><spring:message code="tree.verCodigo" /></button>
+	</div>
+</div>
+
+<div class="rup_tree_panel">
+	<h3 class="rup_tree_h3">Carga datos json</h3>
+	<div id="jsonTreeDemo" class="rup_tree model_example_1"></div>
+		
+	<div id="codeJsonTreeControl" class="controlsMainCode">		
+		<button id="btnJsonTreeDemo"><spring:message code="tree.verCodigo" /></button>
+	</div>
+</div>
+
+<div class="rup_tree_panel">
+	<h3 class="rup_tree_h3">Carga datos xml</h3>
+	<div id="xmlTreeDemo" class="xml_tree model_example_1"></div>
+		
+	<div id="codeXmlTreeControl" class="controlsMainCode">		
+		<button id="btnXmlTreeDemo"><spring:message code="tree.verCodigo" /></button>
+	</div>
+</div>
+
+<div class="rup_tree_panel">
+	<h3 class="rup_tree_h3">Carga datos mediante AJAX (json)</h3>
+	<div id="ajaxTreeDemo" class="ajax_tree model_example_1"></div>
+		
+	<div id="codeAjaxTreeControl" class="controlsMainCode">		
+		<button id="btnAjaxTreeDemo"><spring:message code="tree.verCodigo" /></button>
 	</div>
 </div>

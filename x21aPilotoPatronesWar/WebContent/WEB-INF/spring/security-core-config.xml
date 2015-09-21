@@ -14,6 +14,13 @@
 	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
 	  	<security:filter-chain pattern="/error.*" filters="none"/>
 		<security:filter-chain pattern="/accessDenied.*" filters="none"/>
+		<security:filter-chain pattern="/webdavServlet/.*" filters=" 
+			webDAVXLNetsAuthenticationFilter,	    	
+	    	exceptionTranslationFilter,
+	    	securityContextPersistenceFilter,
+	    	logoutFilter,
+	    	preAuthenticateProcessingFilter,
+	    	filterSecurityInterceptor" />
 		<security:filter-chain pattern="**" filters="	    	
 	    	exceptionTranslationFilter,
 	    	securityContextPersistenceFilter,
@@ -22,6 +29,8 @@
 	    	filterSecurityInterceptor" />
 	  </security:filter-chain-map>
 	</bean>
+
+	<bean id="webDAVXLNetsAuthenticationFilter" class="com.ejie.x38.webdav.security.WebDAVXLNetsAuthenticationFilter"/>
 
 	<bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
 	

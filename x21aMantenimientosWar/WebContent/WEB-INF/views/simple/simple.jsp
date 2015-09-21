@@ -14,7 +14,11 @@
  -- que establece la Licencia.
  --%>
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<h2>Selección simple</h2>
+	<div class="titulo"><spring:message code="simple"/>&nbsp;<img src="${staticsUrl}/x21a/images/icons/old.16.png"></div>
+<!-- 	<div class="titulo"> -->
+<%-- 		<img src="${staticsUrl}/x21a/images/icons/old.16.png" style="border:0, float:left, margin-right: 1px"> --%>
+<!-- 		<h2>Selección simple</h2> -->
+<!-- 	</div> -->
 	<div id="error" style="display:none"></div>
 	<div id="simple">
 		<div id="toolbar"></div>

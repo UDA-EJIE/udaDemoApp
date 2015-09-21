@@ -42,6 +42,22 @@ jQuery(document).ready(function(){
 		blank: ""
 	});
 	
+	$('#multicombo').rup_combo({
+		source : [
+			{i18nCaption: "lunes", value:"1"},
+			{i18nCaption: "martes", value:"2"},
+			{i18nCaption: "miercoles", value:"3"},
+			{i18nCaption: "jueves", value:"4"},
+			{i18nCaption: "viernes", value:"5"},
+			{i18nCaption: "sabado", value:"6"},
+			{i18nCaption: "domingo", value:"7"}
+		],
+		width: 400,
+		ordered:false,
+		loadFromSelect:true,
+		multiselect:true
+	});
+	
 	$("#fecha").rup_date({
 		labelMaskId : "fecha-mask",
 		showButtonPanel : true,
@@ -182,6 +198,7 @@ jQuery(document).ready(function(){
 				"gender":{required:true},
 				"agree":{required:true},
 				"notificacion[]":{required:true, minlength:2},
+				"multicombo":{required:true},
 				"lenguaje":{required:true},
 				"lenguajeMulti":{required:true, rangelength:[2,3]}
 			}

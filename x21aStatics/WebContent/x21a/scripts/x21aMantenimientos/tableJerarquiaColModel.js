@@ -48,7 +48,6 @@
 				}
 			},
 			{ name: "fechaAlta",  index: "fechaAlta",
-				rupType: "date",
 				editoptions:{
 					labelMaskId : "fecha-mask",
 					showButtonPanel : true,
@@ -57,7 +56,6 @@
 				}
 			},
 			{ name: "fechaBaja", index: "fechaBaja",
-				rupType: "date",
 				editoptions:{
 					labelMaskId : "fecha-mask",
 					showButtonPanel : true,
@@ -66,7 +64,6 @@
 				}
 			},
 			{ name: "rol", index: "rol",
-				rupType: "combo",
 				editoptions: {
 					source : [
 					   {label: "---", value:""},

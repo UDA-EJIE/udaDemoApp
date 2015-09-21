@@ -26,7 +26,8 @@ jQuery(function($){
         	"contextMenu",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"report"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -48,7 +49,8 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	}
-        }
+        },
+        report: options_table_report
 	});
 	
 });

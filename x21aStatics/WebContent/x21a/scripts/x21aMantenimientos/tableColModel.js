@@ -90,6 +90,32 @@
 				, formoptions:{rowpos:3, colpos:2}
 			}
         ],
+        options_table_report = {
+			buttons:[
+				{id:"reports", i18nCaption:"Informes", right:true,
+					buttons:[
+						{ i18nCaption:"CSV", css:"csv", 
+							url: "../jqGridUsuario/csvReport"
+						},
+						{ i18nCaption:"XLS", css:"xls", 
+							url: "../jqGridUsuario/xlsReport"
+						},
+						{ i18nCaption:"XLXS", css:"xls",
+							url: "../jqGridUsuario/xlsxReport" 
+						},
+						{ i18nCaption:"ODS", css:"ods", 
+							url: "../jqGridUsuario/odsReport"
+						},
+						{ i18nCaption:"PDF", css:"pdf", 
+							url: "../jqGridUsuario/pdfReport"
+						},
+						{ i18nCaption:"PDF_inLine", css:"pdf", 
+							url: "../jqGridUsuario/pdfReport"
+							, isInline:true
+						}
+					 ]}
+			]
+		},
         options_ejie_combo = {
 			source : [
 			   {label: "---", value:""},

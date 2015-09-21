@@ -35,6 +35,11 @@
 		<put-attribute name="js" type="string" value=""/>				
 	</definition>
 	
+	<definition name="templateDialog" template="/WEB-INF/layouts/templateDialog.jsp">
+		<put-attribute name="content" value=""/>		
+		<put-attribute name="includes" value=""/>				
+	</definition>
+	
 	<definition name="templateError" template="/WEB-INF/layouts/templateError.jsp">	
 		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
@@ -188,6 +193,15 @@
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableCompositeFormEdit-includes.jsp"/>
     </definition>
+    <definition extends="template" name="tableDialog">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableDialog.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableDialog-includes.jsp"/>
+    </definition>
+     <definition extends="templateDialog" name="tableDialogAjax">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
+    </definition>
+    
 	    <!-- Jerarquia -->
 	     <definition extends="template" name="tableJerarquia">
 	        <put-attribute name="content" value="/WEB-INF/views/table/tableJerarquia.jsp"/>

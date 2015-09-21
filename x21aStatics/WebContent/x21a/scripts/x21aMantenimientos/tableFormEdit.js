@@ -15,6 +15,7 @@
  */
 jQuery(function($){
 	
+	
 	$("#table").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
@@ -27,11 +28,41 @@ jQuery(function($){
         	"contextMenu",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"report"
         ],
         rowNum:10, 
         rowList:[10,20,30], 
         sortname: 'id',
+        core:{
+        	operations:{
+                "operacion1": {
+                            name: "Operación 1", 
+                            icon: "rup-icon rup-icon-new", 
+                            enabled: function(){
+                                 return true;
+                            },
+                            callback: function(key, options){
+                                 alert("Operación 1");           
+                            }
+	              },
+	              "operacion2": {
+	                    name: "Operación 2", 
+	                    icon: "rup-icon rup-icon-new", 
+	                    enabled: function(){
+	                         return true;
+	                    },
+	                    callback: function(key, options){
+	                         alert("Operación 1");           
+	                    }
+	              }
+          }
+        },
+        toolbar:{
+        	showOperations:{
+	    		operacion2:false
+        	}
+        },
         formEdit:{
         	detailForm: "#table_detail_div",
         	validate:{
@@ -58,7 +89,8 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	}
-        }
+        },
+        report: options_table_report
 	});
 	
 });

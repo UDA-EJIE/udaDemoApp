@@ -112,7 +112,8 @@ jQuery(function($){
         	"contextMenu",
         	"fluid",
         	"filter",
-        	"search"
+        	"search",
+        	"report"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -135,7 +136,33 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	}
-        }
+        },
+        report: {
+			buttons:[
+				{id:"reports", i18nCaption:"Informes", right:true,
+					buttons:[
+						{ i18nCaption:"CSV", css:"csv", 
+							url: "../jqGridUsuario/csvReport"
+						},
+						{ i18nCaption:"XLS", css:"xls", 
+							url: "../jqGridUsuario/xlsReport"
+						},
+						{ i18nCaption:"XLXS", css:"xls",
+							url: "../jqGridUsuario/xlsxReport" 
+						},
+						{ i18nCaption:"ODS", css:"ods", 
+							url: "../jqGridUsuario/odsReport"
+						},
+						{ i18nCaption:"PDF", css:"pdf", 
+							url: "../jqGridUsuario/pdfReport"
+						},
+						{ i18nCaption:"PDF_inLine", css:"pdf", 
+							url: "../jqGridUsuario/pdfReport"
+							, isInline:true
+						}
+					 ]}
+			]
+		}
 	});
 	
 	//Formulario de filtrado

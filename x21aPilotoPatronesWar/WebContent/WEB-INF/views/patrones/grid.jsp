@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Grid</h2>		
+<h2>Grid<span class="ui-icon old_icon"></span></h2>		
 <div id="grid">
 	<table id="grid_usuarios" cellpadding="0" cellspacing="0">
 		<tbody><tr><td>&nbsp;</td></tr></tbody>

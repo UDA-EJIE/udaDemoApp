@@ -141,6 +141,7 @@
 						<spring:message code="grid" />
 						<span class="ui-icon grid_icon"></span>
 					</a>
+					<span class="ui-icon old_icon"></span>
 <!-- 					<ul> -->
 <!-- 						<li> -->
 <!-- 							<a	href="/x21aPilotoPatronesWar/patrones/gridGroup"> -->

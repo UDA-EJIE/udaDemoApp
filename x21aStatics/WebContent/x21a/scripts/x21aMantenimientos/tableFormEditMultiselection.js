@@ -28,7 +28,8 @@ jQuery(function($){
         	"fluid",
         	"filter",
         	"search",
-        	"multiselection"
+        	"multiselection",
+        	"report"
         ],
         primaryKey: ["id"],
         sortname: 'id',
@@ -65,7 +66,8 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	}
-        }
+        },
+        report: options_table_report
 	});
 	
 });

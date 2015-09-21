@@ -113,6 +113,19 @@ public class TableController  {
 		return "tableMasterDetail";
 	}
 	
+	@RequestMapping(value = "dialog", method = RequestMethod.GET)
+	public String getDialog(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tablaDialog", null, LocaleContextHolder.getLocale()));
+		return "tableDialog";
+	}
+	
+	@RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
+	public String getDialogAjax(Model model) {
+//		model.addAttribute("tituloPagina", messageSource.getMessage("tablaDialog", null, LocaleContextHolder.getLocale()));
+		return "tableDialogAjax";
+	}
+	
+	
 	@RequestMapping(value = "masterDetailMultiselection", method = RequestMethod.GET)
 	public String getMasterDetailMultiselection(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));

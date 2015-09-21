@@ -93,7 +93,15 @@ jQuery(function($){
 			showSummaryOnHide : [true],
 			groupText : ['<b>{0} - {1} Elemento(s)</b>']
 	    },
-        usePlugins:["formEdit", "multiselection"],
+	    usePlugins:[
+			"formEdit",
+        	"feedback",
+			"toolbar",
+        	"contextMenu",
+        	"fluid",
+        	"filter",
+        	"search"
+        ],
         editOptions:{
         	fillDataMethod:"clientSide"
         },

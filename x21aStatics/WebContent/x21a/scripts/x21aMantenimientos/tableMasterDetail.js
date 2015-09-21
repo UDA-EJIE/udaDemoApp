@@ -147,7 +147,14 @@ jQuery(function($){
 				edittype: "text"
 			}
         ],
-        usePlugins:["search", "formEdit", "masterDetail"],
+        usePlugins:["formEdit",
+                	"feedback",
+        			"toolbar",
+                	"contextMenu",
+                	"fluid",
+                	"filter",
+                	"search",
+                	"masterDetail"],
         loadOnStartUp:false,
         editOptions:{
         	fillDataMethod:"clientSide"

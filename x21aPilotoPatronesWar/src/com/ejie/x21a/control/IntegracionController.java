@@ -90,10 +90,10 @@ public class IntegracionController {
 	
 	@RequestMapping(value = "comboEnlazado/remoteEnlazadoMunicipio", method=RequestMethod.GET)
 	public @ResponseBody List<NoraMunicipio> getEnlazadoMunicipio(
-			@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+			@RequestParam(value = "provincia", required = false) String provincia_code) {
 		//Convertir parámetros en entidad para búsqueda
 		NoraMunicipio municipio = new NoraMunicipio();
-		municipio.setProvinciaId(provincia_code.toString());
+		municipio.setProvinciaId(provincia_code);
 		try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
 		return municipioService.findAll(municipio, null);
 	}	

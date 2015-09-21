@@ -657,8 +657,6 @@
 					//Comportamiento por defecto del evento
 					//return($("#"+$(this).attr("id")).data("defaultEventFunctions").onPaging_default(pgButton));
  					window.setTimeout(function(){
-						$("#lui_"+self.attr("id")).hide();
-						$("#load_"+self.attr("id")).hide();
 						self.trigger("reloadGrid");
 					}, 0);
 					
@@ -1548,7 +1546,7 @@
 			groupText : ['<b>{0} - {1} '+$.rup.i18nParse($.rup.i18n.base,"rup_maint.elements")+'</b>']
 		},
 		hasMaint: false,
-		height: 'auto',
+		height: "auto",
 		imgpath: '',
 		loadOnStartUp: true,
 		maxWidth: null,

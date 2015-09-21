@@ -18,6 +18,13 @@
 		"0" : "No",
 		"1" : "Yes"
 	},
+	"GRID_simple##rol" : {
+		"administrador" : "administrador",
+		"desarrollador" : "desarrollador",
+		"espectador" : "espectador",
+		"informador" : "informador",
+		"manager" : "manager"
+	},
 	"GRID_simple##tipo" : {
 		"0A" : "Tipo_No_A_en",
 		"0B" : "Tipo_No_B_en",
@@ -73,5 +80,15 @@
 	"GRID_usuarioJerarquia#ejie" : {
 		"0" : "No",
 		"1" : "Yes"
+	},
+	"table":{
+		"id": "Id_en",
+		"nombre" : "Nombre_en",
+		"apellido1" : "Primer apellido_en",
+		"apellido2" : "Segundo apellido_en",
+		"ejie" : "Ejie_en",
+		"fechaAlta":"Fecha de alta_en",
+		"fechaBaja":"Fecha de baja_en",
+		"rol":"Rol_en"
 	}
 }

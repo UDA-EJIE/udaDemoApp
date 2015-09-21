@@ -16,60 +16,10 @@
 jQuery(function($){
 	$("#table").rup_table({
 		url: "../jqGridUsuarioJerarquia",
-		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
-		colModel: [
-			{ name: "id", index: "id", editable:true, hidden: true
-				, formoptions:{rowpos:3, colpos:1}
-			},
-			{ name: "nombre", index: "nombre", editable:true
-				, formoptions:{rowpos:4, colpos:1}
-			},
-			{ name: "apellido1", index: "apellido1", editable:true
-				, formoptions:{rowpos:2, colpos:1}
-			},
-			{ name: "apellido2", index: "apellido2", editable:true
-				, formoptions:{rowpos:1, colpos:1}
-			},
-			{ name: "ejie", index: "ejie", editable:true, width: 60,
-				edittype: "checkbox",
-				formatter: "checkbox",
-				align: "center",
-				editoptions: {
-					value:"1:0"
-				},
-//				searchoptions:{
-//					rupType: "combo",
-//					source : [
-//					   {label: "---", value:""},
-//					   {label: "Si", value:"1"},
-//					   {label: "No", value:"0"}
-//					]
-//				},
-				formoptions:{rowpos:5, colpos:1}
-			},
-			{ name: "fechaAlta",  index: "fechaAlta", editable:true,
-				rupType: "date",
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:2, colpos:2}
-			},
-			{ name: "fechaBaja", index: "fechaBaja", editable:true,
-				rupType: "date",
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:1, colpos:2}
-			}
-        ],
+		colNames: tableColNames,
+		colModel: tableColModels,
+        primaryKey:["id"],
         usePlugins:[
- 			"formEdit",
         	"feedback",
 			"toolbar",
         	"contextMenu",
@@ -77,11 +27,12 @@ jQuery(function($){
         	"filter",
         	"search",
         	"jerarquia",
-        	"multiselection"
+        	"multiselection",
+        	"formEdit"
         ],
-        editOptions:{ fillDataMethod:"clientSide" },
-        primaryKey: ["id"],
-        sortname: 'nombre',
+        rowNum:10, 
+        rowList:[10,20,30], 
+        sortname: 'id',
         filter: {
         	url:"../jqGridUsuarioJerarquia/jerarquia/filter",
         	childrenUrl:"../jqGridUsuarioJerarquia/jerarquiaChildren",
@@ -91,39 +42,59 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
         	}
-        }
-        , jerarquia: {
-        	//token: '###',
-        	column: 'nombre',
-        	resetEvents: {
-        		click: ["table_filter_filterButton", "table_filter_cleanLink"],
-        		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
-        	},
-        	contextMenu : true //(default)
-        }
-        , multiselection: {
+        },
+	formEdit:{
+    	detailForm: "#table_detail_div",
+    	validate:{
+			rules:{
+				"nombre":{required:true},
+				"apellido1":{required:true},
+				"fechaAlta":{date:true},
+				"fechaBaja":{date:true}
+			}
+		}
+    },
+       multiselection: {
         	headerContextMenu: { 
-//        		deselectAll : false,
-//        		items : {
-//        			"aaa" : {name: "custom_a"},
-//        			"bbb" : {name: "custom_b"}
-//        		}
-//        		,
-//        		callback : function(){
-//        			alert('customHeader');
-//        		}
+        		deselectAll : false,
+        		items : {
+        			"aaa" : {name: "custom_a"},
+        			"bbb" : {name: "custom_b"}
+        		}
+        		,
+        		callback : function(){
+        			alert('customHeader');
+        		}
         	},
         	rowContextMenu: { 
-//        		select_child : false,
-//        		items : {
-//        			"ccc" : {name: "custom_c"},
-//        			"ddd" : {name: "custom_d"}
-//        		}
-//        		,
-//        		callback : function(){
-//        			alert('customRow');
-//        		}
+        		select_child : false,
+        		items : {
+        			"ccc" : {name: "custom_c"},
+        			"ddd" : {name: "custom_d"}
+        		}
+        		,
+        		callback : function(){
+        			alert('customRow');
+        		}
         	}
-        }
+        },
+        jerarquia: {
+          	//token: '###',
+          	parentProp: "idPadre",
+          	column: 'nombre',
+          	resetEvents: {
+          		click: ["table_filter_filterButton", "table_filter_cleanLink"],
+          		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
+          	},
+          	contextMenu : true //(default)
+          }
 	});
+	
+	jQuery("#idPadre_detailForm_table").rup_combo({
+		source : "../jqGridUsuarioJerarquia",
+		sourceParam: {label:"nombre", value:"id"},
+		blank:""
+	
+	});
+	
 });

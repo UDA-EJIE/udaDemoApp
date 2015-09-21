@@ -46,25 +46,12 @@
 		
 		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')">
 			<li>
-			<a href="/x21aMantenimientosWar/">
-				<spring:message code="inicio" />
+				<a href="/x21aMantenimientosWar/">
+					<spring:message code="inicio" />
 				</a>
 			</li>
-			<li>
-				<a href="/x21aMantenimientosWar/usuario/simple">
-					<spring:message code="simple" />
-				</a>
-			</li>
-			<li>
-				<a href="/x21aMantenimientosWar/usuario/multi">
-					<spring:message code="multi" />
-				</a>
-			</li>
-			<li>
-				<a href="/x21aMantenimientosWar/usuario/edlinea">
-					<spring:message code="edlinea" />
-				</a>
-			</li>
+			
+			<!-- 			rup.table based			 -->
 			<li>
 				<a>
 					<spring:message code="tabla" />
@@ -127,6 +114,11 @@
 							<spring:message code="tablaMasterDetail" />
 						</a>
 					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/dialog">
+							<spring:message code="tablaDialog" />
+						</a>
+					</li>
 <!-- 					<li> -->
 <!-- 						<a href="/x21aMantenimientosWar/table/masterDetailMultiselection"> -->
 <%-- 							<spring:message code="tablaMasterDetail" /> --%>
@@ -145,6 +137,72 @@
 					</li>-->
 				</ul>
 			</li>
+			
+			<!-- 			rup.maint & rup.grid based			 -->
+			<li>
+				<a>
+					<spring:message code="maint_deprecado" />
+					<span class="ui-icon old_icon"></span>
+				</a>
+				<ul>
+					<li>
+						<a href="/x21aMantenimientosWar/usuario/simple">
+							<spring:message code="simple" />
+							<span class="ui-icon old_icon"></span>
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/usuario/multi">
+							<spring:message code="multi" />
+							<span class="ui-icon old_icon"></span>
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/usuario/edlinea">
+							<spring:message code="edlinea" />
+							<span class="ui-icon old_icon"></span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<spring:message code="jerarquiaTitle" />
+							<span class="ui-icon old_icon"></span>
+						</a>
+						<ul>
+							<li>
+								<a href="/x21aMantenimientosWar/usuariojerarquia/maint">
+									<spring:message code="jerarquia" />
+									<span class="ui-icon old_icon"></span>
+								</a>
+							</li>
+							<li>
+								<a href="/x21aMantenimientosWar/usuariojerarquia/maintgroup">
+									<spring:message code="jerarquiaGroup" />
+									<span class="ui-icon old_icon"></span>
+								</a>
+							</li>
+							<li>
+								<a href="/x21aMantenimientosWar/usuariojerarquia/maintmulti">
+									<spring:message code="jerarquiaMulti" />
+									<span class="ui-icon old_icon"></span>
+								</a>
+							</li>
+							<li>
+								<a href="/x21aMantenimientosWar/usuariojerarquia/maintmultigroup">
+									<spring:message code="jerarquiaGroupMulti" />
+									<span class="ui-icon old_icon"></span>
+								</a>
+							</li>
+							<li>
+								<a href="/x21aMantenimientosWar/usuariojerarquia/maintcol">
+									<spring:message code="jerarquiaCol" />
+									<span class="ui-icon old_icon"></span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</sec:authorize>
 		
 		<sec:authorize access="hasRole('ROLE_ADMIN_UDA')">
@@ -156,41 +214,6 @@
 				<li>
 					<a href="/x21aMantenimientosWar/administracion/alumno/maint">
 						<spring:message code="Alumno" />
-					</a>
-				</li>
-			</ul>
-		</li>
-		</sec:authorize>
-		
-		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')">
-		<li>
-			<a>
-				<spring:message code="jerarquiaTitle" />
-			</a>
-			<ul>
-				<li>
-					<a href="/x21aMantenimientosWar/usuariojerarquia/maint">
-						<spring:message code="jerarquia" />
-					</a>
-				</li>
-				<li>
-					<a href="/x21aMantenimientosWar/usuariojerarquia/maintgroup">
-						<spring:message code="jerarquiaGroup" />
-					</a>
-				</li>
-				<li>
-					<a href="/x21aMantenimientosWar/usuariojerarquia/maintmulti">
-						<spring:message code="jerarquiaMulti" />
-					</a>
-				</li>
-				<li>
-					<a href="/x21aMantenimientosWar/usuariojerarquia/maintmultigroup">
-						<spring:message code="jerarquiaGroupMulti" />
-					</a>
-				</li>
-				<li>
-					<a href="/x21aMantenimientosWar/usuariojerarquia/maintcol">
-						<spring:message code="jerarquiaCol" />
 					</a>
 				</li>
 			</ul>
