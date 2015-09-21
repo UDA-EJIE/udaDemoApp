@@ -355,6 +355,12 @@
 						<span class="ui-icon tiny_icon"></span>
 					</a>
 				</li>
+				<li>
+					<a	href="/x21aPilotoPatronesWar/integracion/pif">
+						PIF
+						<span class="ui-icon tiny_icon"></span>
+					</a>
+				</li>
 			</ul>
 		</li>
 <%-- 		</sec:authorize> --%>

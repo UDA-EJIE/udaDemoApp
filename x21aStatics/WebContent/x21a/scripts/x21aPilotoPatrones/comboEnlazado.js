@@ -116,4 +116,22 @@ jQuery(document).ready(function(){
 				 "9":["Sestao","Barakaldo","Portu"]
 		}
 	});
+	
+	
+	// Remote group
+	
+	$('#remoteGroup_comboPadre').rup_combo({
+		source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		selected: 2,
+		blank: "0"
+	});
+	
+	$('#remoteGroup_comboHijo').rup_combo({
+		sourceGroup : "comboSimple/remoteGroupEnlazado",
+		parent: [ "remoteGroup_comboPadre"],
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: 500,
+		multiselect: true
+	});
 });

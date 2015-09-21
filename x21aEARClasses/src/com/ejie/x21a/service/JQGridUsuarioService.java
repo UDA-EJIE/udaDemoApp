@@ -19,6 +19,7 @@ package com.ejie.x21a.service;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x38.rss.RssContent;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -121,7 +122,12 @@ public interface JQGridUsuarioService {
 	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
 	
 	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto);
+
 	
+	/*
+	 * RSS
+	 */
+	List<RssContent> getRssFeed();
 }
 
 

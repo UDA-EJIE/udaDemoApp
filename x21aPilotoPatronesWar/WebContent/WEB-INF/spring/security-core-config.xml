@@ -14,6 +14,10 @@
 	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
 	  	<security:filter-chain pattern="/error.*" filters="none"/>
 		<security:filter-chain pattern="/accessDenied.*" filters="none"/>
+		<security:filter-chain pattern="/rssfeed" filters=" 
+			rssBasicAuthenticationFilter,
+			rssExceptionTranslationFilter,
+			filterSecurityInterceptor" />
 		<security:filter-chain pattern="/webdavServlet/.*" filters=" 
 			webDAVXLNetsAuthenticationFilter,	    	
 	    	exceptionTranslationFilter,
@@ -66,9 +70,11 @@
 	</bean>
 	
 	<!-- El "authenticationManager" es el componente encargado de implementar el proceso de autenticación -->
-	<security:authentication-manager alias="authenticationManager">
+	<security:authentication-manager id="authenticationManager" alias="authenticationManager">
 		<security:authentication-provider
 			ref="udaAuthenticationProvider" />
+		<security:authentication-provider
+			ref="rssAuthenticationProvider" />
 	</security:authentication-manager>
 	
 	<!-- El bean "udaAuthenticationProvider" es el "authentication-provider" del sistema de login -->

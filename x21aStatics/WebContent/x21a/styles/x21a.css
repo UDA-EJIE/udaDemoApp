@@ -37,6 +37,7 @@ h1 { font-size:2.2em; color:#000000; display:block; margin:0 0 0.5em 0; padding:
 	padding:0 0 0.3em 0;
 	border-bottom:1px solid #cccccc;
 }
+
 h3 { font-size:1.4em; color:#555555; display:block; margin:1.5em 0 0.5em 0; padding:0; }
 .container { font-size:1.8em; color:#000000; display:block; margin:0; padding:0; }
 
@@ -713,4 +714,17 @@ a.ui-dialog-title { color: black !important }
 
 .tiny_links a {
 	cursor: pointer;
+}
+
+.rup-maint_info {
+    background: url("../images/toolbar/ayuda.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    border: 0 none !important;
+    cursor: pointer;
+    height: 20px;
+    margin-top: 0.4em;
+    width: 20px;
+}
+
+.enlaceContextual{
+	text-decoration: underline;
 }

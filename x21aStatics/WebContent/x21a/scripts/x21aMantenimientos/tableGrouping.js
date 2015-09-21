@@ -98,6 +98,7 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
+        	"multiselection",
         	"fluid",
         	"filter",
         	"search"

@@ -15,6 +15,9 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/app-config.xml</param-value>
 	</context-param>
+	<login-config>
+		<auth-method>CLIENT-CERT</auth-method>
+	</login-config>
 	<!-- UDA initialization Listener -->
 	<listener>
 		<listener-class>com.ejie.x38.UdaListener</listener-class>
@@ -28,7 +31,15 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-	
+<!-- 	 <filter> -->
+<!--     <display-name>RssHttpBasicAuthenticationFilter</display-name> -->
+<!--     <filter-name>RssHttpBasicAuthenticationFilter</filter-name> -->
+<!--     <filter-class>com.ejie.x21a.rss.RssHttpBasicAuthenticationFilter</filter-class> -->
+<!--   </filter> -->
+<!--   <filter-mapping> -->
+<!--     <filter-name>RssHttpBasicAuthenticationFilter</filter-name> -->
+<!--     <url-pattern>/rssfeed</url-pattern> -->
+<!--   </filter-mapping> -->
 	<!-- Filtro encargado de resolver las peticiones mutipart.  -->
 <!-- 	<filter> -->
 <!-- 	    <filter-name>multipartFilter</filter-name> -->

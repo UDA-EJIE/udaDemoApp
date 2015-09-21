@@ -80,7 +80,7 @@ jQuery(document).ready(function(){
 	});
 	
 	$('#multicomboGruposRemoto').rup_combo({
-		sourceGroup : "comboSimple/remoteGroup",
+		sourceGroup : "comboSimple/remoteGroupEnlazado",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		width: 500,
 		multiselect: true

@@ -54,6 +54,7 @@ jQuery(document).ready(function(){
 		fileInput: $("#file_only"),
 		maxFileSize: 5000000
 	});
+	
 	 
 	// Upload integrado en formulario
 	$('#fileupload_form').rup_upload({
@@ -65,11 +66,13 @@ jQuery(document).ready(function(){
 	
 	// Upload integrado en formulario
 	$('#fileupload_pif_form').rup_upload({
-		url: "../upload/pifForm",
 		fileInput: $("#file_pif_form"),
-		submitFormButton: $("#sendPifFormButton"),
-		maxFileSize: 5000000,
-		submitInForm:true
+		url: "../pifServlet",
+		pif:{
+			folderPath: "/x21a",
+			fileTtl: 60,
+			preserveName:true
+		}
 	});
 	
 	 

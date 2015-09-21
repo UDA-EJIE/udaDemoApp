@@ -20,4 +20,7 @@
 	<import resource="security-config.xml"/>
 	<import resource="reports-config.xml"/>
 	<import resource="webdav-config.xml"/>
+	<import resource="rss-config.xml"/>
+	<import resource="pif-config.xml"/>
+	
 </beans>

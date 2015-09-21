@@ -60,6 +60,36 @@ public class PifUtils {
 		}
 	}
 	
+	public static Y31AttachmentBean putPif (String filename, InputStream inputStream){
+		
+		Y31JanoService service = null;
+		try {
+			service = Y31JanoServiceAbstractFactory.getInstance();
+			StringBuilder rutaFichTmp = new StringBuilder(PATH).append(filename);
+	
+			Y31AttachmentBean result = service.put(PifUtils.getTokenAppDocument(), inputStream, rutaFichTmp.toString(),
+					false, PifUtils.TIEMPO_TTL_DOCUMENTO_TEMP);
+			
+			PifUtils.logger.debug("guardaDocTmpPif result: " + result);
+			
+			return result;
+			
+		} catch (Exception e) {
+			PifUtils.logger.error("Se ha producido un error al guardar el temporal en PIF:",e);
+			throw new RuntimeException("ERR!! Servicio PIF no disponible", e);
+		} finally {
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					PifUtils.logger
+							.warn("Se ha producido un error al cerrar el stream de lectura: "
+									+ e.getMessage());
+				}
+			}
+		}
+	}
+	
 	public static InputStream get (String filename){
 		
 		Y31JanoService service = null;

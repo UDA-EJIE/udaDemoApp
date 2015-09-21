@@ -163,40 +163,16 @@
 <div id="fileupload_pif_form">
 	<form action="../upload/pifForm" id="usuarioForm" enctype="multipart/form-data" method="POST">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
-			<div id="feedback_fileupload_form"></div>
-			<div class="formulario_columna_cnt">
-				<div class="formulario_linea_izda_float">
-					<label id="label_nombre"  for="nombre" >Nombre :</label>
-					<input id="nombre" name="nombre" />
-				</div>
-				<div class="formulario_linea_izda_float">
-					<label id="label_apellido1"  for="apellido1" >Apellido 1:</label>
-					<input id="apellido1" name="apellido1" />
-				</div>
-				<div class="formulario_linea_izda_float">
-					<label id="label_apellido2"  for="apellido2" >Apellido 2:</label>
-					<input id="apellido2" name="apellido2" />
-				</div>
-				<div class="formulario_linea_izda_float">
-					<label id="label_ejie"  for="ejie" >EJIE:</label>
-					<input type="checkbox" id="ejie" name="ejie" value="1" />
-				</div>
-			</div>
-			<div class="formulario_columna_cnt">
-			&nbsp;
-			</div>
-			<div class="formulario_columna_cnt">
-				<div class="formulario_linea_izda_float">
-					Archivos adjuntos:
-				</div>
-			</div>
 			<div class="formulario_columna_cnt">
 				<div class="formulario_linea_izda_float">
 			        <div class="fileupload-buttonbar">
-			        <div>
-			            <label for="file">Fichero: </label>
-			            <input id="file_pif_form" type="file" name="file">
-					</div>
+				        <div>
+				            <label for="file">Ficheros: </label>
+				            <input id="file_pif_form" type="file" name="files[]" multiple="multiple">
+				            <button type="submit" class="start">Subir todos</button>
+				            <button type="reset" class="cancel">Cancelar todos</button>
+				            <button type="button" class="delete">Eliminar todos</button>
+						</div>
 			        </div>
 			      
 				    <div class="fileupload-content">
@@ -205,11 +181,60 @@
 				    </div>
 			    </div>
 			  </div>
-			  <div class="formulario_columna_cnt">
-			 	 <div class="formulario_linea_izda_float fileupload-buttonbar"  >
-					<button id="sendPifFormButton" type="submit" class="start">Enviar formulario</button>
-				</div>
-			</div>
 		</fieldset>
 	</form>
 </div>
+
+<!-- <div id="fileupload_pif_form"> -->
+<!-- 	<form action="../upload/pifForm" id="usuarioForm" enctype="multipart/form-data" method="POST"> -->
+<!-- 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario"> -->
+<!-- 			<div id="feedback_fileupload_form"></div> -->
+<!-- 			<div class="formulario_columna_cnt"> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 					<label id="label_nombre"  for="nombre" >Nombre :</label> -->
+<!-- 					<input id="nombre" name="nombre" /> -->
+<!-- 				</div> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 					<label id="label_apellido1"  for="apellido1" >Apellido 1:</label> -->
+<!-- 					<input id="apellido1" name="apellido1" /> -->
+<!-- 				</div> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 					<label id="label_apellido2"  for="apellido2" >Apellido 2:</label> -->
+<!-- 					<input id="apellido2" name="apellido2" /> -->
+<!-- 				</div> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 					<label id="label_ejie"  for="ejie" >EJIE:</label> -->
+<!-- 					<input type="checkbox" id="ejie" name="ejie" value="1" /> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="formulario_columna_cnt"> -->
+<!-- 			&nbsp; -->
+<!-- 			</div> -->
+<!-- 			<div class="formulario_columna_cnt"> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 					Archivos adjuntos: -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="formulario_columna_cnt"> -->
+<!-- 				<div class="formulario_linea_izda_float"> -->
+<!-- 			        <div class="fileupload-buttonbar"> -->
+<!-- 			        <div> -->
+<!-- 			            <label for="file">Fichero: </label> -->
+<!-- 			            <input id="file_pif_form" type="file" name="file"> -->
+<!-- 					</div> -->
+<!-- 			        </div> -->
+			      
+<!-- 				    <div class="fileupload-content"> -->
+<!-- 				        <table class="files"></table> -->
+<!-- 				        <div id="fileupload-progressbar" class="fileupload-progressbar"></div> -->
+<!-- 				    </div> -->
+<!-- 			    </div> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="formulario_columna_cnt"> -->
+<!-- 			 	 <div class="formulario_linea_izda_float fileupload-buttonbar"  > -->
+<!-- 					<button id="sendPifFormButton" type="submit" class="start">Enviar formulario</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</fieldset> -->
+<!-- 	</form> -->
+<!-- </div> -->

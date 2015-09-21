@@ -19,6 +19,7 @@ jQuery(function($){
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
+		multiboxonly: true,
         model:"Usuario",
         usePlugins:[
 			"formEdit",

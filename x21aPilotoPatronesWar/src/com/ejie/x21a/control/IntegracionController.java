@@ -67,6 +67,12 @@ public class IntegracionController {
 		return "webdav";
 	}
 	
+	//PIF
+	@RequestMapping(value = "pif", method = RequestMethod.GET)
+	public String getPIf(Model model) {
+		return "pif";
+	}
+	
 	/**
 	 * NORA
 	 */

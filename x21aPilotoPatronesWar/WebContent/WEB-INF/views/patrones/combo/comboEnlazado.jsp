@@ -37,6 +37,7 @@
 	<fieldset class="combo_fieldset">
 		<legend class="combo_legend">Remoto</legend>
 		
+		<input type="hidden" id="hiddenAbueloRemoto" name="provincia" value="02" />
 		<label for="comboAbueloRemoto">Provincia</label>
 		<select id="comboAbueloRemoto" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
 		<br><br>
@@ -84,5 +85,22 @@
 		<label for="mixto2_comboHijo">Localidad (local)</label>
 		<select id="mixto2_comboHijo" class="rup-combo"><option>&nbsp;</option></select>
 		<br><br>
+	</fieldset>
+</div>
+
+<div id="remoteGroup" style="float: left; margin-left: 4em; margin-bottom: 3em;">
+	<fieldset class="combo_fieldset">
+		<legend class="combo_legend">Remoto agrupado</legend>
+		
+<!-- 		<label for="mixto2_comboAbuelo">Provincia (local)</label> -->
+<!-- 		<select id="mixto2_comboAbuelo" name="provincia" class="rup-combo"><option>&nbsp;</option></select> -->
+<!-- 		<br><br> -->
+		<label for="remoteGroup_comboPadre">Provincia</label>
+		<select id="remoteGroup_comboPadre" class="rup-combo" name="provincia"><option>&nbsp;</option></select>
+		<br><br>
+		<label for="remoteGroup_comboHijo">Comarca y Localidades</label>
+		<select id="remoteGroup_comboHijo" class="rup-combo"><option>&nbsp;</option></select>
+		<br><br>
+		
 	</fieldset>
 </div>

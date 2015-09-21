@@ -466,8 +466,14 @@ public class PatronesController {
 			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
 			return provinciaService.findAll(null, null);
 		}
+		
 		@RequestMapping(value = "comboSimple/remoteGroup", method=RequestMethod.GET)
 		public @ResponseBody List<HashMap<String, List<?>>> getRemoteComboGrupos(){
+			return this.getRemoteComboGruposEnlazado(null);
+		}
+		
+		@RequestMapping(value = "comboSimple/remoteGroupEnlazado", method=RequestMethod.GET)
+		public @ResponseBody List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code){
 			
 			//Idioma
 			Locale locale = LocaleContextHolder.getLocale();
@@ -491,17 +497,39 @@ public class PatronesController {
 			
 			//Provincia
 			HashMap<String, List<?>> group = new HashMap<String, List<?>>();
-			group.put(provincia, provinciaService.findAll(null, null));
-			retorno.add(group);
+			
+			Provincia provinciaFilter = null;
+			
+			if (provincia_code==null){
+				group.put(provincia, provinciaService.findAll(null, null));
+				retorno.add(group);
+			}else{
+				provinciaFilter = new Provincia();
+				provinciaFilter.setCode(provincia_code);
+			}
 			
 			//Comarca
 			group = new HashMap<String, List<?>>();
-			group.put(comarca, comarcaService.findAll(null, null));
+			if (provincia_code!=null){
+				Comarca comarcaFilter = new Comarca();
+				comarcaFilter.setProvincia(provinciaFilter);
+				group.put(comarca, comarcaService.findAll(comarcaFilter, null));
+			}else{
+				group.put(comarca, comarcaService.findAll(null, null));
+			}
 			retorno.add(group);
 			
 			//Localidad
 			group = new HashMap<String, List<?>>();
-			group.put(localidad, localidadService.findAll(null, null));
+			if (provincia_code!=null){
+				Localidad localidadFilter = new Localidad();
+				Comarca comarcaFilter = new Comarca();
+				comarcaFilter.setProvincia(provinciaFilter);
+				localidadFilter.setComarca(comarcaFilter);
+				group.put(localidad, localidadService.findAll(localidadFilter, null));
+			}else{
+				group.put(localidad, localidadService.findAll(null, null));
+			}
 			retorno.add(group);
 			
 			return retorno;
@@ -612,6 +640,13 @@ public class PatronesController {
 			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
 			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
 			HttpServletRequest request) {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 					Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
 	                Pagination pagination = null;
 				    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
