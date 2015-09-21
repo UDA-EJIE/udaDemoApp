@@ -16,27 +16,27 @@
 <h2>Combo</h2>
 
 <label for="combo">Combo local</label>
-<select id="combo" class="rup-combo"><option>&nbsp;</option></select>
+<select id="combo" class="rup-combo"></select>
 <br><br>
 
 <label for="comboRemoto">Combo remoto</label>
-<select id="comboRemoto" class="rup-combo"><option>&nbsp;</option></select>
+<select id="comboRemoto" class="rup-combo"></select>
 <br><br>
 
 <label for="comboLargo">Combo con texto largo</label>
-<select id="comboLargo" class="rup-combo"><option>&nbsp;</option></select>
+<select id="comboLargo" class="rup-combo"></select>
 <br><br>
 
 <label for="comboGrupos">Combo con 'optgroups'</label>
-<select id="comboGrupos" class="rup-combo"><option>&nbsp;</option></select>
+<select id="comboGrupos" class="rup-combo"></select>
 <br><br>
 
 <label for="comboGruposRemoto">Combo con 'optgroups' remoto</label>
-<select id="comboGruposRemoto" class="rup-combo"><option>&nbsp;</option></select>
+<select id="comboGruposRemoto" class="rup-combo"></select>
 <br><br>
 
 <label for="comboImgs">Combo (no i18n) con imagenes</label>
-<select id="comboImgs" class="rup-combo"><option>&nbsp;</option></select>
+<select id="comboImgs" class="rup-combo"></select>
 <br><br>
 
 <label for="comboInput">Combo sobre <strong>Input</strong></label>

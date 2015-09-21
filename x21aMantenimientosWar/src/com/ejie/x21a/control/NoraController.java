@@ -41,7 +41,6 @@ public class NoraController {
 	private NoraCalleService calleService;
 	
 	
-	
 	@RequestMapping(value = "pais", method=RequestMethod.GET)
 	public @ResponseBody List<NoraPais> getPaises() {
 		List<NoraPais> findAll = paisService.findAll(null, null);

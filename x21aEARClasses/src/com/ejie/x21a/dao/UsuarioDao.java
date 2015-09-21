@@ -16,6 +16,8 @@
 package com.ejie.x21a.dao;
 
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRow;
+
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
@@ -94,5 +96,10 @@ public interface UsuarioDao {
      * @return Long
      */
     Long findAllLikeCount(Usuario usuario, Boolean startsWith);
+    
+    Object reorderSelection(Usuario usuario, Pagination pagination, Boolean startsWith);
+    
+    
+    List<TableRow<Usuario>> search(Usuario filterParams, Usuario searchParams, Pagination pagination, Boolean startsWith);
 }
 

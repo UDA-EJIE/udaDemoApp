@@ -40,6 +40,11 @@
 				"wizardC" :"Wizard <jsp:include>_fr",
 				"wizardD" :"Wizard <c:import>_fr",
 				"wizardE" :"Wizard dinámico_fr",
+			"tree" : "Árbol_fr",
+				"trees" :"Árboles con diferentes configuraciones_fr",
+				"treeDAD" :"Árboles con interaccion mediante Drag & Drop_fr",
+				"trees_formats" :"Árboles con diferentes formatos de datos_fr",
+				"tree_panel" :"Árbol con panel de detalle_fr",
 		"experimental" :"Experimental_fr",
 			"maestro_detalle" :"Maestro-Detalle_fr",
 			"mant_multi_entidad" :"Mantenimiento multi-entidad_fr",
@@ -93,6 +98,11 @@
 				"wizardC" :"Wizard <jsp:include>_fr",
 				"wizardD" :"Wizard <c:import>_fr",
 				"wizardE" :"Wizard dinámico_fr",
+			"tree" : "Árbol_fr",
+				"trees" :"Árboles_fr",
+				"treeDAD" : "Árbol con D&D_fr",
+				"treesFormats" :"Árboles formateados_fr",
+				"treePanel" :"Árbol con panel_fr",
 		"experimental" :"Experimental_fr",
 			"maestro_detalle" :"Maestro-Detalle_fr",
 			"mant_multi_entidad" :"Mantenimiento multi-entidad_fr",
@@ -414,5 +424,72 @@
 		"maint3" 	:"Mantenimiento Simple 3_fr",
 		"edit1" 	:"Mantenimiento edición en línea_fr",
 		"multi1" 	:"Mantenimiento múltiple_fr"
+	},
+	"breadCrumb": {
+		"integracion" :"Integración_fr",
+			"z-index" :"Capas RUP (z-index)_fr",
+			"nora"	:"NORA",
+			"tiny" :"TinyMCE"
+	},
+	"breadCrumb_2": {
+		"integracion" :"Integración_fr",
+			"z-index" :"Capas RUP (z-index)_fr",
+			"nora"	:"NORA",
+			"tiny" :"TinyMCE"
+	},
+	"treeCodeDialog": {
+		"title" : "Código usado para generar el árbol_fr",
+		"javascript" : "JavaScript",
+		"html" : "HTML"
+	},
+	"contextmenuDemo": {
+		"exampleEntry" : "Ejemplo de entrada(rename)_fr",
+		"udaRename" : "udaRename"
+	},
+	"uniqueDemo": {
+		"duplicateKey" : "Clave duplicada_fr",
+		"duplicateNodes" : "Se ha producido una duplicidad del nodo _fr",
+		"inFunction" : " con la función _fr"
+	},
+	"tasksTree": {
+		"raiz" : "Tareas Pendientes_fr",
+		"informes" : "Informes_fr",
+		"transportes" : "Portes en espera_fr",
+		"reparaciones" : "Reparaciones_fr",
+		"suministros" : "Pedidos de suministros_fr",
+		"facturas" : "Facturas por cobrar_fr",
+		"informe_trimestral" : "Informe general (1º trimestre)_fr",
+		"informe_gastos_generales" : "Gastos generales (oficina)_fr",
+		"informe_desperfectos" : "Desperfectos Granizada_fr",
+		"informe_deudas" : "Deudas pendientes de pagar_fr",
+		"informe_calidad" : "Calidad de servicio_fr",
+		"informe_perdidas" : "Material extraviado_fr",
+		"pedido_lujua" : "Ladrillos para Loiu_fr",
+		"pedido_cemento" : "Abastecimiento de cemento Andoain_fr",
+		"pedido_martillo" : "Martillo nuevo a Donosti_fr",
+		"reparacion_fachada" : "Arreglos en fachadas_fr",
+		"reparacion_indundacion" : "Limpieza por anegación_fr",
+		"reparacion_suelo" : "Reparación de la tarima_fr",
+		"reparacion_ratas" : "Revisión de desratización_fr",
+		"mp_ladrillos" : "3ton ladrillos_fr",
+		"mp_clavos" : "Clavos del 5cm_fr",
+		"mp_cemento" : "3 camiones de cemento_fr",
+		"mp_recambios" : "ruedas_fr",
+		"mp_jabon" : "Jabón de manos (8 cajas)_fr",
+		"mp_botas" : "40 pares de botas de seguridad_fr",
+		"mp_cascos" : "40 cascos de obra_fr",
+		"factura_VH" : "Cobros Valle Hermoso_fr",
+		"factura_Lindo" : "Cobros Lindo S.A._fr",
+		"factura_devolucion" : "Revisar devolución de cobro IT_fr",
+		"factura_OM" : "Cobro Oscar Mayer_fr",
+		"workers" : "Trabajadores_fr",
+		"depAdmin" : "DEP de Administración_fr",
+		"depReparaciones" : "DEP de Suministros_fr",
+		"depClientes" : "DEP de Clientes_fr",
+		"depSuministros" : "DEP de Suministros_fr"
+	},
+	"treeNodesExchangePanel_center" : {
+		"errorOp" : "Operación errónea_fr",
+		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"._fr"
 	}
 }

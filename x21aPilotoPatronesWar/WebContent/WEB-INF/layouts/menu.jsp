@@ -186,6 +186,34 @@
 						</li>
 					</ul>
 				</li>
+				<li>
+					<a>
+						<spring:message code="tree" />
+						<span class="ui-icon tree_icon"></span>
+					</a>
+					<ul>
+						<li>
+							<a	href="/x21aPilotoPatronesWar/patrones/trees">
+								<spring:message code="tree_multiple_configuraciones" />
+							</a>
+						</li>
+<!-- 						<li> -->
+<!-- 							<a href="/x21aPilotoPatronesWar/patrones/trees"> -->
+<%-- 								<spring:message code="tree_multiple_formatoDatos"/> --%>
+<!-- 							</a> -->
+<!-- 						</li> -->
+						<li>
+							<a href="/x21aPilotoPatronesWar/patrones/treeDAD">
+								<spring:message code="tree_multiple_d&d"/>
+							</a>
+						</li>
+<!-- 						<li> -->
+<!-- 							<a href="/x21aPilotoPatronesWar/patrones/trees"> -->
+<%-- 								<spring:message code="tree_panel" htmlEscape="true"/> --%>
+<!-- 							</a> -->
+<!-- 						</li> -->
+					</ul>
+				</li>
 				<li class="ui-widget-content ui-menu-divider"></li>
 				<li><strong><spring:message code="titulo-inser" /></strong></li>
 				<li>

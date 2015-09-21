@@ -404,6 +404,10 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		List<String> from_alias = new ArrayList<String>();
 		from_alias.add("t1");
 		
+		//JOINS TABLAS
+		StringBuilder joins = new StringBuilder("");
+		joins.append("AND 666=666");
+		
 		//CONDICIONES (negocio)
 		StringBuilder businessFilters = new StringBuilder();
 		List<Object> businessParams = new ArrayList<Object>();
@@ -417,18 +421,14 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		
 		//JERARQUIA
 		sbSQL = pagination.getQueryJerarquia(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias);
-//		sbSQL = pagination.getQueryJerarquia(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias, new StringBuilder("AND 666=666"), businessFilters, businessParams);
+//		sbSQL = pagination.getQueryJerarquia(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias, joins, businessFilters, businessParams);
 
 		//PAGINACIÓN
 		if (pagination != null) {
 			sbSQL = pagination.getPaginationQueryJerarquia(sbSQL);
 		}
 
-		System.out.println(sbSQL);
-		
 		List<?> params = (List<?>) mapaWhere.get("params");
-		
-		System.out.println(params);
 		
 		return this.jdbcTemplate.query(sbSQL.toString(), this.rwMapJerarquia, params.toArray());
 	}
@@ -450,6 +450,10 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		List<String> from_alias = new ArrayList<String>();
 		from_alias.add("t1");
 		
+		//JOINS TABLAS
+		StringBuilder joins = new StringBuilder("");
+		joins.append("AND 666=666");
+		
 		//CONDICIONES (negocio)
 		StringBuilder businessFilters = new StringBuilder();
 		List<Object> businessParams = new ArrayList<Object>();
@@ -463,7 +467,7 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		
 		//JERARQUIA
 		sbSQL = pagination.getQueryJerarquiaCount(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias);
-//		sbSQL = pagination.getQueryJerarquiaCount(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias, new StringBuilder("AND 666=666"), businessFilters, businessParams);
+//		sbSQL = pagination.getQueryJerarquiaCount(sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias, joins, businessFilters, businessParams);
 	
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
@@ -484,6 +488,10 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		//TABLAS_ALIAS
 		List<String> from_alias = new ArrayList<String>();
 		from_alias.add("t1");
+		
+		//JOINS TABLAS
+		StringBuilder joins = new StringBuilder("");
+		joins.append("AND 666=666");
 
 		//CONDICIONES (negocio)
 		StringBuilder businessFilters = new StringBuilder();
@@ -500,14 +508,10 @@ public class UsuarioJerarquiaDaoImpl implements UsuarioJerarquiaDao {
 		
 		//SELECTED
 		sbSQL = pagination.getQuerySelectedGrid(sbSQL, mapaWhere, usuarioJerarquia, "ID", "ID_PADRE", from, from_alias);
-//		sbSQL = pagination.getQuerySelectedGrid(sbSQL, mapaWhere, usuarioJerarquia, "ID", "ID_PADRE", from, from_alias, "t1", businessFilters, businessParams, businessNames);
-		
-		System.out.println(sbSQL);
+//		sbSQL = pagination.getQuerySelectedGrid(sbSQL, mapaWhere, usuarioJerarquia, "ID", "ID_PADRE", from, from_alias, joins, businessFilters, businessParams, businessNames);
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		System.out.println(params);
-		
 		return this.jdbcTemplate.query(sbSQL.toString(), pagination.selectedExtractorGrid, params.toArray());
 	}
 }

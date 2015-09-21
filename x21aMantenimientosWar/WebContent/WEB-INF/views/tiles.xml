@@ -139,5 +139,45 @@
         <put-attribute name="content" value="/WEB-INF/views/usuariojerarquia/usuariojerarquia.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/usuariojerarquia/usuariojerarquiacol-includes.jsp"/>
     </definition>
-    <!---->
+    
+    <!-- TABLE -->
+    <definition extends="template" name="tableFormEdit">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="tableFormEditMultiselection">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEditMultiselection-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="tableInlineEdit">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableInlineEdit-includes.jsp"/>
+    </definition>
+     <definition extends="template" name="tableInlineEditExcelMode">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableInlineEditExcelMode-includes.jsp"/>
+    </definition>
+     <definition extends="template" name="tableGrouping">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableGrouping-includes.jsp"/>
+    </definition>
+    <definition extends="template" name="tableInlineEditMultiselection">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableInlineEditMultiselection-includes.jsp"/>
+    </definition>
+     <definition extends="template" name="tableAllFeatures">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableAllFeatures-includes.jsp"/>
+    </definition>
+     <definition extends="template" name="tableMasterDetail">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableMasterDetail-includes.jsp"/>
+    </definition>
+    <!-- FIN TABLE -->
+    
+    <definition extends="template" name="tablealumno">
+        <put-attribute name="content" value="/WEB-INF/views/table/tablealumno.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tablealumno-includes.jsp"/>
+    </definition>
+    
 </tiles-definitions>

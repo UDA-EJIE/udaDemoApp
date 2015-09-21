@@ -98,8 +98,12 @@ jQuery(function($){
 	           		field = row.find("#"+rowId+ "_" + fieldsArray[i]).attr('readonly', true);
 	           	}
 	        }
+		},
+		validation:{
+			rules:{
+				"nombre":{required:true}
+			}
 		}
-		
 	});
 	
 	

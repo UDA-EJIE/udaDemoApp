@@ -41,6 +41,10 @@ jQuery(document).ready(function(){
 				//Elementos (url)
 				"all" : { "i18nCaption" : "all" },
 				"accordion" : { "i18nCaption" : "accordion" },
+				"treeDAD" : {"i18nCaption":"treeDAD" },
+//				"treePanel" : {"i18nCaption":"treePanel" },
+				"trees" : {"i18nCaption":"trees" },
+//				"treesFormats" : {"i18nCaption":"treesFormats" },
 				"autocomplete" : { "i18nCaption" : "autocomplete" }, 
 				"toolbar" : { "i18nCaption" : "toolbar" },
 				"comboSimple" : {"i18nCaption":"comboSimple" },
@@ -73,6 +77,10 @@ jQuery(document).ready(function(){
 				"subLevel":[
 				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
 				    {"i18nCaption":"accordion", "url": "/x21aPilotoPatronesWar/patrones/accordion" },
+	                {"i18nCaption":"treeDAD", "url": "/x21aPilotoPatronesWar/patrones/treeDAD" },
+//	                {"i18nCaption":"treePanel", "url": "/x21aPilotoPatronesWar/patrones/trees" },
+	                {"i18nCaption":"trees", "url": "/x21aPilotoPatronesWar/patrones/trees" },
+//	                {"i18nCaption":"treesFormats", "url": "/x21aPilotoPatronesWar/patrones/trees" },
 				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
                     {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
                   	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple", "newWindow": true },
@@ -144,7 +152,8 @@ jQuery(document).ready(function(){
 	
 	jQuery("#x21aPilotoPatronesWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal'),
-		verticalWidth: "16.5em"
+		verticalWidth: "16.5em",
+		position : {"within" : $(".contenedor")}
 	});
 	
 	if (mixto) {
@@ -189,6 +198,12 @@ jQuery(document).ready(function(){
 							 	{"i18nCaption":"wizardC", "url": "patrones/wizard_jspInclude" },
 							 	{"i18nCaption":"wizardD", "url": "patrones/wizard_jstlImport" },
 							 	{"i18nCaption":"wizardE", "url": "patrones/wizard_dinamico" }
+							]},
+							{"i18nCaption":"tree", "submenu":[
+							 	{"i18nCaption":"trees", "url": "patrones/trees" },
+//							 	{"i18nCaption":"trees_formats", "url": "patrones/trees" },
+							 	{"i18nCaption":"treeDAD", "url": "patrones/treeDAD" },
+//							 	{"i18nCaption":"tree_panel", "url": "patrones/trees" },
 							]},
 							{"divider":true},
 							{"divider":true, "i18nCaption":"titulo-inser"},

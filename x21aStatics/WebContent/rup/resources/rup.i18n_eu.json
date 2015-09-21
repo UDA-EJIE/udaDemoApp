@@ -116,7 +116,8 @@
 		"parameterError":"Funtzioaren parametroak zehaztean akats bat gertatu da. Edozein parametro txarto zehaztu da ala derrigorrezkoa izanez gero ez da zehaztu egin.",
 		"developerError":"Errorea garapenean",
 		"metodError":"Metodoan Errorea:",
-		"selectorError":"Zehaztutako selektorea ez da zuzena (ez da ezer bueltatu)" 		
+		"selectorError":"Zehaztutako selektorea ez da zuzena (ez da ezer bueltatu)",
+		"parametro":"eu_Parametro: " 		
     },
     "rup_menu":{
     	"developerError":"Errorea garapenean",
@@ -483,5 +484,24 @@
 		"regexp":{
 			"decimal":"^-?(?:\\d+|\\d{1,3}(?:.\\d{3})+)(?:\\,\\d+)?$"
 		}
-    }
+    },
+	"rup_report":{
+		"waitTitle":"Behera kargatu txostena",
+        "waitMsg":"Agiria sortzen, itxaron, mesedez...",
+        "errorTitle":"Errorea agiria sortzean",
+        "errorMsg":"Errorea gertatu da agiria sortzean, saiatu berriro mesedez."
+	},
+	"rup_tree":{
+		"loading":"Cargando ..._eu",
+		"new_node":"Nuevo nodo_eu",
+		"create":"Nuevo_eu",
+		"rename":"Cambiar nombre_eu",
+		"remove":"Eliminar_eu",
+		"ccp":{
+			"label":"Edición_eu",
+			"copy":"Copiar_eu",
+			"paste":"Pegar_eu",
+			"cut":"Cortar_eu"
+		}
+	}
 }

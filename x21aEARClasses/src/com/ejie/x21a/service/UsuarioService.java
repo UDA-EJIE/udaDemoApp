@@ -17,6 +17,8 @@ package com.ejie.x21a.service;
 
 
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRow;
+
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
@@ -103,7 +105,12 @@ public interface UsuarioService {
 	 * @return 
 	 */	
 	void removeMultiple(List<Usuario> usuarioList);
+	
+	Object reorderSelection(Usuario usuario, Pagination pagination, Boolean startsWith);
     
+	List<TableRow<Usuario>> search(Usuario filterParams, Usuario searchParams, Pagination pagination, Boolean startsWith);
+	
+	
 }
 
 

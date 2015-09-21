@@ -303,6 +303,17 @@ public class PatronesController {
 		return "wizard_dinamico_content";
 	}
 	
+	//Tree
+	@RequestMapping(value = "trees", method = RequestMethod.GET)
+	public String getTrees(Model model) {
+		return "trees";
+	}
+	
+	@RequestMapping(value = "treeDAD", method = RequestMethod.GET)
+	public String getTreeDragAndDrop(Model model) {
+		return "treeDAD";
+	}
+	
 	//Validate
 	@RequestMapping(value = "validate", method = RequestMethod.GET)
 	public String getValidate(Model model) {

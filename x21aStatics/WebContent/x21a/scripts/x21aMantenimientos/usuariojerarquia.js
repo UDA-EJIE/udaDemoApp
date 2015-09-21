@@ -1,3 +1,18 @@
+/*!
+ * Copyright 2012 E.J.I.E., S.A.
+ *
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ *      http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ */
 jQuery(function($){
 	$("#GRID_usuarioJerarquia").rup_grid({
 		url: "../usuariojerarquia",
@@ -149,5 +164,18 @@ jQuery(function($){
 			click: ["bt_search_usuarioJerarquia", "clean_search_usuarioJerarquia"],
 			keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "searchForm" ]
 		}
+	});
+	
+	//Imprimir
+	$.rup_report({
+		appendTo : "rup-maint_toolbar-usuarioJerarquia",
+		buttons:[
+			{id:"reports", i18nCaption:"Informes", buttons:[
+				{ i18nCaption:"CSV", css:"csv",
+					url:"/x21aMantenimientosWar/usuariojerarquia/csvReport", 
+					columns : { grid : "GRID_usuarioJerarquia" }
+				}
+			 ]}
+		]
 	});
 });

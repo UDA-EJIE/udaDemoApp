@@ -55,6 +55,7 @@ public class Usuario  implements java.io.Serializable {
             private Date fechaAlta;
             private Date fechaBaja;
 //            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
+            private Provincia provincia;
 
 	/** Method 'Usuario'.
 	*
@@ -255,6 +256,14 @@ public class Usuario  implements java.io.Serializable {
 	}
 	public void setSubtipo(String subtipo) {
 		this.subtipo = subtipo;
+	}
+	
+	
+	public Provincia getProvincia() {
+		return provincia;
+	}
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 	/**
 	 * Intended only for logging and debugging.

@@ -1,3 +1,18 @@
+/*!
+ * Copyright 2012 E.J.I.E., S.A.
+ *
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ *      http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ */
 jQuery(function($){
 	$("#GRID_usuarioJerarquia").rup_grid({
 		url: "../usuariojerarquia",
@@ -120,8 +135,50 @@ jQuery(function($){
 				}
 			}
         ]
+//		, multiboxonly: true
+//		, onCellSelect: function (rowid, iCol, cellcontent, e){
+//			if (iCol !== 0){
+//				//Si no es columna del check, resetear selección (y pie de de tabla)
+//				$("#GRID_usuarioJerarquia").rup_grid_jerarquia("resetMultiselect");
+//			} else {
+//				//Si es la columna del check, sobre el TD
+//				if (e.target.localName === 'td'){
+//
+//					//Fila checkeada?
+//					var checkRow = $("#jqg_GRID_usuarioJerarquia_"+rowid).attr("checked")==="checked"?false:true,
+//						rowData = $("#GRID_usuarioJerarquia").rup_grid("getRowData",rowid);
+//					
+//					//Añadir a elementos seleccionados de la jerarquía
+//					$("#GRID_usuarioJerarquia").rup_grid_jerarquia("addMultiselectNode", rowData.treeNodes);
+//					
+//					//Reseleccionar elementos
+//					setTimeout(function(){
+//						var multiselected = $("#GRID_usuarioJerarquia").rup_grid_jerarquia("getMultiselect");
+//						for (var i=0; i<multiselected.length; i++){
+//							if (multiselected[i] === rowid && checkRow) {
+//								continue; //evitar deseleccionar la fila sobre la que se pincha  
+//							}  
+//							$("#GRID_usuarioJerarquia").rup_grid("setSelection", multiselected[i]);
+//						}
+//						
+//						//Llamada a lo que toque
+//						funcion_joseba();
+//					}, 0.001);
+//					
+//				//Si es la columna del check, sobre el INPUT
+//				} else {
+//					//Llamada a lo que toque
+//					setTimeout(funcion_joseba, 0.001); 
+//				}
+//			}
+//		}
 	});
-
+	
+//	function funcion_joseba(){
+//		var numSelected = $("#GRID_usuarioJerarquia").rup_grid_jerarquia("getMultiselect").length;
+//		//...
+//	}
+	
 	$("#usuarioJerarquia").rup_maint({
 		jQueryGrid: "GRID_usuarioJerarquia",
 		primaryKey: "id",

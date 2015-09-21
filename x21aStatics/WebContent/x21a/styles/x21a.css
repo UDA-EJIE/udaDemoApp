@@ -149,11 +149,9 @@ input:focus, textarea:focus {
 /*Estilos del accordion*/
 
 .section {
-	/*margin-right: -2px;*/
 	height: 400px;
 }
 .section2 {
-	/*margin-right: -2px;*/
 	height: 200px;
 }
 
@@ -171,25 +169,21 @@ input:focus, textarea:focus {
 .sectionAuto{
 	height: 170px;
 	padding-top: 0px;
-	margin-right: -2px;
 }
 
 .sectionTab{
 	height: 750px;
 	padding-top: 0px;
-	margin-right: -2px;
 }
 
 .sectionUpload{
 	height: 340px;
 	padding-top: 0px;
-	margin-right: -2px;
 }
 
 .sectionMaint{
 	height: 800px;
 	padding-top: 0px;
-	margin-right: -2px;
 }
 
 /* Wizard */
@@ -243,6 +237,340 @@ a.ui-selectmenu { text-decoration: none; color: black }
     font-size: 1.4em;
 	font-weight: bold;    
 }
+
+/* Árbol */
+.rup_tree_panel_first{
+	float: left;
+	width: 19.4%;
+	border: 2px black solid;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	margin-bottom: 0.50em;
+}
+
+.rup_tree_panel{
+	float: left;
+	width: 19.4%;
+	border: 2px black solid;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	margin-left: 0.20em;
+	margin-bottom: 0.50em;
+}
+
+.rup_tree_h3{
+	margin: 0em 0em 0.6em 0.1em;
+	padding-left: 0.20em;
+	font-weight: bold;
+	text-decoration: underline;
+	color: black;
+}
+
+.rup_tree_example{
+	margin: 0em 0em 0em 0.1em;
+}
+
+.treeAccordionCode{
+	display: none;
+}
+
+.treeAccordionCodeObject{
+	width: 75em;
+}
+
+.treeAccordionCodeSecction{
+	height: 500px;
+	border-top: 1px solid #BABABA !important;
+	white-space: nowrap;
+	background: none;
+	background-color: rgba(193, 193, 193, 0.42);
+}
+
+.treeNodesExchangePanel{
+	border: 4px #A7A5A5 double;
+	width: 68%;
+	float: right;
+	padding-bottom: 0.75em;
+    padding-top: 0.75em;
+    margin-bottom: 1.75em;
+    height: 612px;
+}
+
+.ExchangePanel_tree{
+	height: 565px;
+}
+
+.treeNodesExchangePanel_legend{
+    font-size: 1.5em;
+    margin-left: 32%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: #D0D0D0;
+}
+
+.promotionsDismissalsExchangePanel{
+	width: 100%;
+	height: 100%;
+}
+
+.promotionsDismissalsExchangePanel_left{
+	float:left;
+	width: 30%;
+}
+
+.promotionsDismissalsExchangePanel_right{
+	padding-top: 6px;
+	float: right;
+	height: 210px;
+	width: 67.35%;
+}
+
+.promotionsDismissalsExchangePanel_center{
+	float: left;
+	width: 2.65%;
+}
+
+.DADcontrolsMainCode{
+	border-top: 4px #A7A5A5 double;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
+.PromotionsDismissalsMainCode{
+	float: left;
+	width: 100%;
+	padding-left: 0px;	
+}
+
+.PromotionsDismissalsMainCode button{
+	margin-left: 5px;	
+}
+
+.promotionsDismissalsExchangePanel_center_line{
+	border-left: 4px #A7A5A5 dashed;
+	width: 4px;
+	margin-left: -2px;
+	height: 216px;
+	float: left;
+}
+
+.promotionsDismissalsExchangePanel_center_img_div{
+	float: right;
+	height: 176px;
+    padding-top: 40px;
+}
+
+.promotionsDismissalsExchangePanel_center_img{
+	width: 24px;
+	height: 150px;
+	opacity: 0.7;
+}
+
+.promotionsDismissals_tree{
+	height: 216px;
+	overflow: auto;
+	margin-bottom: 6px;
+	margin-right: 7px;
+}
+
+.treePromotionsDismissalsPanel_legend{
+    font-size: 1.5em;
+    margin-left: 38.25%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: #D0D0D0;
+}
+
+.promotionsDismissalsActionPanel{
+	float: left;
+    height: 100%;
+    margin-left: 8px;
+    width: 30%;
+}
+
+.promotionsDismissalsActionPanelCenter{
+	width: 34%;
+}
+
+.promotionsDismissalsDestiny{
+	margin: 0px;
+	text-align: center;
+}
+
+.promotionsDismissalsActionPanel_line{
+	float: left;
+	height: 90%;
+    margin-top: 2%;
+    width: 4px;
+    background-color: #BCBCBC;
+}
+
+.promotionsDismissalsActionPanel_list{
+	width: 100%;
+	height: 88%;
+	overflow: auto;
+}
+
+.promotionsDismissalsActionPanel_list .jstree-icon{
+	display: none;
+}
+
+.promotionsDismissalsActionPanel_list li[rel="worker"] > a > .jstree-icon {
+	background-image: url("../images/worker.png");
+	background-position: 0 0;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+
+.promotionsDismissalsActionPanel_list a {
+    color: black;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    margin: 0;
+    padding: 1px 2px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.treeAreaExchangePanel{
+	border: 4px #A7A5A5 double;
+	width: 30%;
+	float: left;
+	padding-bottom: 0.75em;
+    padding-top: 0.75em;
+    margin-bottom: 1.75em;
+    height: 612px;
+}
+
+.treeAreaExchangePanel_legend{
+    font-size: 1.5em;
+    margin-left: 7%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: #D0D0D0;
+}
+
+.treeNodesExchangePanel_right{
+	width: 42%;
+	float: right;
+}
+
+.treeNodesExchangePanel_center{
+	float: left;
+	padding-left: 7.5%;
+	width: 8.5%;
+/* 	text-align: center; */
+/* 	text-align: -moz-center; */
+	visibility: hidden;
+	height: 565px;
+	border-bottom: 4px #A7A5A5 double;
+}
+
+.treeNodesExchangePanel_center_line{
+	border-left: 4px #A7A5A5 dashed;
+	width: 4px;
+	margin-left: -2px;
+	height: 560px;
+}
+
+.treeNodesExchangePanel_center_img{
+	width: 90px;
+	position: absolute;
+}
+
+.treeNodesExchangePanel_left{
+	width: 42%;
+	float: left;
+}
+
+.treeNodeAreaExchangePanel{
+	border: 4px #A7A5A5 double;
+	width: 100%;
+}
+
+.controlsMainExample{
+	width: 100%;
+	padding-bottom: 2px;
+	padding-bottom: 4px\9;
+}
+
+.controlsMainCode{
+	border-top: solid 1px black;
+	padding-top: 2px;
+	padding-left: 2px;
+	margin-top: 1px; 
+}
+
+.model_example_1_code{
+	display: none;
+}
+
+.model_example_2_code{
+	display: none;
+}
+
+.model_example_1{
+	height: 336px;
+	padding-left: 0.20em;
+}
+
+.model_example_1_jqueryui{
+	height: 334px;
+	padding-left: 0.20em;
+}
+
+.model_example_1_button{
+	height: 310px;
+	height: 308px\9;
+	padding-left: 0.20em;
+}
+
+.treeCode{
+	visibility: hidden;
+	display: none;
+}
+
+.codePanel{
+	white-space: nowrap;
+}
+
+.codePanelLeft{
+	float: left;
+}
+
+.codePanelRight{
+	float: right;
+}
+
+.codePanelObject{
+	border: black solid 1.5px;
+	padding-top: 0.05em;
+	padding-bottom: 0.75em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-top: 0.4em;
+	margin-bottom: 0.3em;
+	background-color: rgba(193, 193, 193, 0.42);
+}
+
+.codePanelObject legend{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.codePanelObjectRight{
+	margin-left: 0.5em;
+}
+
+.codePanelObjectLeft{
+	margin-right: 0.5em;
+}
+
 
 /** Cabecera **/
 .languageHelpContact {
@@ -312,7 +640,9 @@ a.ui-selectmenu { text-decoration: none; color: black }
 .wizard_icon{
 	background-image: url("../images/icons/wizard.png") !important;
 }
-
+.tree_icon{
+	background-image: url("../images/icons/tree.png") !important;
+}
 .mail_icon{
 	background-image: url("../images/icons/mail.png") !important;
 	margin-top: 0.3em;

@@ -60,7 +60,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 				throws SQLException {
 
 			Alumno alumno = new Alumno();
-
+			NoraMunicipio municipio = new NoraMunicipio();
+			
 			alumno.setId(resultSet.getBigDecimal("ID"));
 			alumno.setUsuario(resultSet.getString("USUARIO"));
 			alumno.setNombre(resultSet.getString("NOMBRE"));
@@ -68,6 +69,11 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			alumno.setApellido2(resultSet.getString("APELLIDO2"));
 			alumno.setDni(resultSet.getString("DNI"));
 			alumno.setImporteMatricula(resultSet.getBigDecimal("IMPORTE_MATRICULA"));
+
+			municipio.setId(resultSet.getString("MunicipioID"));
+			municipio.setDsO(resultSet.getString("MunicipioDSO"));
+			
+			alumno.setMunicipio(municipio);
 
 			return alumno;
 		}
@@ -376,11 +382,11 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	public List<Alumno> findAll(Alumno alumno, Pagination pagination) {
 		StringBuffer where = new StringBuffer(3000);
 		List<Object> params = new ArrayList<Object>();
-		where.append(" WHERE 1=1 	");
+		where.append(" WHERE t1.MUNICIPIO_ID=t2.ID and T1.PROVINCIA_ID=t2.PROVINCIA_ID	");
 
 		StringBuilder query = new StringBuilder(
-				"SELECT  t1.ID ID,t1.USUARIO USUARIO,t1.PASSWORD PASSWORD,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.DNI DNI, t1.IMPORTE_MATRICULA IMPORTE_MATRICULA "
-						+ "FROM ALUMNO t1 ");
+				"SELECT  t1.ID ID,t1.USUARIO USUARIO,t1.PASSWORD PASSWORD,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.DNI DNI, t1.IMPORTE_MATRICULA IMPORTE_MATRICULA, t2.ID MunicipioID, t2.DS_O MunicipioDSO "
+						+ "FROM ALUMNO t1, T17_MUNICIPIO t2 ");
 
 		if (alumno != null && alumno.getId() != null) {
 			where.append(" AND t1.ID = ?");
@@ -517,12 +523,17 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	}
 
 	@Override
-	public Boolean isUsernameValid(String username) {
+	public Boolean isUsernameValid(Alumno alumno) {
 		StringBuffer query = new StringBuffer(100);
 		List<Object> params = new ArrayList<Object>();
 
-		query.append("SELECT COUNT(1) FROM ALUMNO WHERE USUARIO=?");
-		params.add(username);
+		query.append("SELECT COUNT(1) FROM ALUMNO WHERE USUARIO=? ");
+		params.add(alumno.getUsuario());
+		
+		if (alumno.getId()!=null){
+			query.append(" AND ID<>? ");
+			params.add(alumno.getId());
+		}
 
 		return (this.jdbcTemplate.queryForLong(query.toString(),
 				params.toArray()) == 0);

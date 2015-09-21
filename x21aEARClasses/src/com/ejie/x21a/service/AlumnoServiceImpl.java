@@ -168,7 +168,7 @@ public  class AlumnoServiceImpl implements AlumnoService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Alumno add(Alumno alumno, Errors errors) {
-		this.checkUsernameValid(alumno.getUsuario(), errors);
+		this.checkUsernameValid(alumno, errors);
 		
 		if (!errors.hasErrors()){
 			return this.alumnoDao.add(alumno);
@@ -186,7 +186,7 @@ public  class AlumnoServiceImpl implements AlumnoService {
 	@Transactional(rollbackFor = Throwable.class)
 	public Alumno update(Alumno alumno, String oldPassword, Errors errors) {
 		this.checkOldPasswordValid(alumno, oldPassword, errors);
-		this.checkUsernameValid(alumno.getUsuario(), errors);
+		this.checkUsernameValid(alumno, errors);
 		
 		if (!errors.hasErrors()){
 			return this.alumnoDao.update(alumno);
@@ -205,8 +205,8 @@ public  class AlumnoServiceImpl implements AlumnoService {
 		}
 	}
 	
-	private void checkUsernameValid(String username, Errors errors) {
-		if(!alumnoDao.isUsernameValid(username)){
+	private void checkUsernameValid(Alumno alumno, Errors errors) {
+		if(!alumnoDao.isUsernameValid(alumno)){
 			errors.rejectValue("usuario", "usuarioYaExistente");
 		}
 	}

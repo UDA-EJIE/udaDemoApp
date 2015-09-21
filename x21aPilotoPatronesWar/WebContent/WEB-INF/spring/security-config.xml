@@ -33,7 +33,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 		<property name="alternativeOriginCredentialsApp" ref="aplicacionesAceptadas"></property>
 	</bean>
 	
-	<bean id="aplicationSpecificCredentials" class="com.ejie.x21a.security.myUserCredentials"/>
+	<bean id="aplicationSpecificCredentials" class="com.ejie.x21a.security.MyUserCredentials"/>
 	
 	<!-- Se especifica un filtro de exclusión sobre los usuarios validados. Esto permite la limitación del acceso aunque se han usuarios validos de XLNets. -->
 	<bean id="aplicacionesAceptadas" class="com.ejie.x21a.security.ObtencionAplicaciones"/>

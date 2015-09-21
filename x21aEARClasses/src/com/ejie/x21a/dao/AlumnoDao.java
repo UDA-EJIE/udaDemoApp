@@ -85,7 +85,7 @@ public interface AlumnoDao {
 	 * @param errors
 	 * @return
 	 */
-	Boolean isUsernameValid(String username);
+	Boolean isUsernameValid(Alumno alumno);
 	
 	
 	/**

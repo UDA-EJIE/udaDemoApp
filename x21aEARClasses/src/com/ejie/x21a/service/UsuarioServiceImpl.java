@@ -16,6 +16,8 @@
 package com.ejie.x21a.service;
 import com.ejie.x21a.dao.UsuarioDao;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRow;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -133,6 +135,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 			this.usuarioDao.remove(usuarioAux);
 		}
 	}
+
+	@Override
+	public Object reorderSelection(Usuario usuario, Pagination pagination,
+			Boolean startsWith) {
+		return this.usuarioDao.reorderSelection(usuario, pagination, startsWith);
+	}
+
+	@Override
+	public List<TableRow<Usuario>> search(Usuario filterParams, Usuario searchParams, Pagination pagination, Boolean startsWith) {
+		// TODO Auto-generated method stub
+		return this.usuarioDao.search(filterParams, searchParams, pagination, startsWith);
+	}
+	
+	
+	
 	
 }
 

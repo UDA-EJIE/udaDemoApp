@@ -11,19 +11,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.UsuarioJerarquia;
 import com.ejie.x21a.service.UsuarioJerarquiaService;
 import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Jerarquia;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.reports.JerarquiaMetadata;
+import com.ejie.x38.reports.ReportData;
 import com.ejie.x38.util.ObjectConversionManager;
 
 /**
@@ -218,4 +223,54 @@ public class UsuarioJerarquiaController  {
 		return this.usuarioJerarquiaService.findAllLikeSelected(filterUsuarioJerarquia, pagination);
 	}
 	
+	/**
+	 * EXPORTERS
+	 */
+	@RequestMapping(value = "csvReport", method = RequestMethod.POST)
+	protected ModelAndView getCSVReport(@ModelAttribute UsuarioJerarquia filterUsuarioJerarquia, @ModelAttribute Pagination pagination,
+			ModelMap modelMap,
+			@RequestParam(value = "columns", required = false) String columns){
+		
+		//Acceso a BD para recuperar datos
+		pagination.setPage(null);
+		pagination.setRows(null);
+		List<Jerarquia<UsuarioJerarquia>> listUsuarioAll = this.usuarioJerarquiaService.findAllLikeJerarquia(filterUsuarioJerarquia, pagination);
+		
+		//Nombre fichero
+		modelMap.put("fileName", "datosCSV");
+			
+		//Datos
+		ReportData<UsuarioJerarquia> reportData = new ReportData<UsuarioJerarquia>();
+			//cabeceras hoja
+			reportData.setHeaderNames(ReportData.parseColumns(columns));
+			//datos hoja
+			reportData.setModelData(listUsuarioAll);
+			
+			//Metadatos de Jerarquia
+			JerarquiaMetadata jmd = new JerarquiaMetadata();
+				//Filtro
+//				jmd.setShowFiltered(true);						//Mostrar (default)
+//				jmd.setFilterToken("*");						//Token * (default)
+				jmd.setFilterHeaderName("Filtrados"); 			//Cabecera filtrados
+				
+				//Tabulacion
+				jmd.setShowTabbed(true); 						//Tabular filtrados
+//				jmd.setTabToken("   ");							//Toleken '   ' (default)
+				jmd.setTabColumnName("nombre");					//Campo a tabular
+				
+				//Iconos
+				jmd.setShowIcon(true);							//Mostrar
+//				jmd.setIconExpanded("[-]");						//Icono expandido (default)
+//				jmd.setIconUnexpanded("[+]");					//Icono contraido (default)
+//				jmd.setIconExpanded("[ ]");						//Icono sin hijos (default)
+				jmd.setIconColumnName("nombre");				//Campo a tabular
+				jmd.setIconBeanAtribute("id");					//Campo referencia
+				jmd.setIconCollapsedList(pagination.getTree()); //Listado de elementos colapsados
+			reportData.setJerarquiaMetadada(jmd);
+	
+		modelMap.put("reportData", reportData);
+		
+		//Generación del CVS
+		return new ModelAndView("csvReport", modelMap);
+	}
 }

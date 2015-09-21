@@ -17,6 +17,7 @@
 	<h2>Selección simple</h2>
 	<div id="error" style="display:none"></div>
 	<div id="simple">
+		<div id="toolbar"></div>
 		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
 			<form id="searchForm">
 				<div  class="formulario_legend" id="titleSearch_simple"><spring:message code="searchCriteria" />:</div>

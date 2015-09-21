@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
 	$('#comboRemoto').rup_combo({
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-		selected: "Combo",
+		selected: "3",
 		width: 300
 	});
 
@@ -59,6 +59,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "joseph_doe", value:"joseph"},
 			{i18nCaption: "mad_doe", value:"mad"}
 		],
+		selected: "joseph",
 		width: 400,
 		format: "default"
 	});
@@ -92,12 +93,14 @@ jQuery(document).ready(function(){
 				{i18nCaption: "vettel", value:"vettel_value"}
 			]}
 		],
+		selected: "real_value",
 		rowStriping : true
 	});
 	
 	$('#comboGruposRemoto').rup_combo({
 		sourceGroup : "comboSimple/remoteGroup",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		selected: "7",
 		width: 300
 	});
 		 
@@ -108,7 +111,8 @@ jQuery(document).ready(function(){
 			{Borrar: "delete"},
 			{Filtrar: "filter"},
 			{Imprimir: "print"}
-		]
+		],
+		selected: "Filtrar"
 	});
 	
 	$('#comboInput').rup_combo({
@@ -120,6 +124,7 @@ jQuery(document).ready(function(){
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		loadFromSelect: true,
+//		selected: "2",
 		width: 300,
 		height: 75
 	});

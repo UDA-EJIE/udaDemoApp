@@ -65,6 +65,53 @@
 					<spring:message code="edlinea" />
 				</a>
 			</li>
+			<li>
+				<a>
+					<spring:message code="tabla" />
+				</a>
+				<ul>
+					<li>
+						<a href="/x21aMantenimientosWar/table/formEdit">
+							<spring:message code="tablaFormEdit" />
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/formEditMultiselection">
+							<spring:message code="tablaFormEditMultiselection" />
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/inlineEditExcelMode">
+							<spring:message code="tablaInlineEditExcelMode" />
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/inlineEdit">
+							<spring:message code="tablaInlineEdit" />
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/inlineEditMultiselection">
+							<spring:message code="tablaInlineEditMultiselection" />
+						</a>
+					</li>
+					<li>
+						<a href="/x21aMantenimientosWar/table/grouping">
+							<spring:message code="tablaGrouping" />
+						</a>
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="/x21aMantenimientosWar/table/masterDetail"> -->
+<%-- 							<spring:message code="tablaMasterDetail" /> --%>
+<!-- 						</a> -->
+<!-- 					</li> -->
+					<li>
+						<a href="/x21aMantenimientosWar/table/allFeatures">
+							<spring:message code="tablaAllFeatures" />
+						</a>
+					</li>
+				</ul>
+			</li>
 		</sec:authorize>
 		
 		<sec:authorize access="hasRole('ROLE_ADMIN_UDA')">

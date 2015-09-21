@@ -68,6 +68,16 @@
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
 	</definition>
 	
+	<definition name="templateCode" template="/WEB-INF/layouts/templateCode.jsp">	
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp"/>
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp"/>
+		<put-attribute name="includes" value=""/>				
+	</definition>
+	
 	<!-- ***************************** -->
   	<!--          PANTALLAS            -->
   	<!-- ***************************** -->
@@ -239,7 +249,19 @@
 		<put-attribute name="content" value="/WEB-INF/views/patrones/wizard/wizard_dinamico.jsp"/>		
 		<put-attribute name="includes" value="/WEB-INF/views/patrones/wizard/wizard_dinamico-includes.jsp"/>					
 	</definition>
-	<definition name="wizard_dinamico_content" template="/WEB-INF/views/patrones/wizard/wizard_dinamico_content.jsp"/>							
+	<definition name="wizard_dinamico_content" template="/WEB-INF/views/patrones/wizard/wizard_dinamico_content.jsp"/>
+	
+	<definition name="trees" extends="templateCode">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tree/trees.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tree/trees-includes.jsp"/>
+		<put-attribute name="code" value="/WEB-INF/views/patrones/tree/codigo-trees.jsp"/>
+	</definition>
+	
+	<definition name="treeDAD" extends="templateCode">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/tree/treeDAD.jsp"/>		
+		<put-attribute name="includes" value="/WEB-INF/views/patrones/tree/treeDAD-includes.jsp"/>
+		<put-attribute name="code" value="/WEB-INF/views/patrones/tree/codigo-treeDAD.jsp"/>
+	</definition>							
 	
 	<definition name="all" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/all.jsp"/>		

@@ -1,16 +1,16 @@
-ï»¿<%--  
+<%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
- -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
- -- SIN GARANTÃAS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
- -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
@@ -34,7 +34,7 @@
 					</div>
 					<div class="formulario_linea_izda_float">
 						<label for="descEs_search" class="formulario_linea_label">descEs:</label>
-						<input type="text" name="descEs" class="formulario_linea_input" id="descEs_search" />
+						<input type="text" name="descEs" class="formulario_linea_input" id="descEs_search" value="sadasds" />
 					</div>
 					<div class="formulario_linea_izda_float">
 						<label for="descEu_search" class="formulario_linea_label">descEu:</label>
@@ -53,7 +53,7 @@
 	<div id="RUP_GRID_comarca">
 		<!-- Tabla -->
 		<table id="GRID_comarca" cellpadding="0" cellspacing="0"></table>
-		<!-- Barra de paginaciÃ³n -->
+		<!-- Barra de paginación -->
 		<div id="pager_comarca" style="text-align:center;"></div>
 	</div>
 </div>
@@ -94,7 +94,7 @@
 	<div id="RUP_GRID_localidad">
 		<!-- Tabla -->
 		<table id="GRID_localidad" cellpadding="0" cellspacing="0"></table>
-		<!-- Barra de paginaciÃ³n -->
+		<!-- Barra de paginación -->
 		<div id="pager_localidad" style="text-align:center;"></div>
 	</div>
 

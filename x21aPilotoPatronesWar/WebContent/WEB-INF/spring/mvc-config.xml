@@ -84,7 +84,6 @@
 	    
 		<!-- Permite la subida de ficheros -->	
 		<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" >
-			<property name="maxUploadSize" value="1000" />
 		</bean>
 
 	    <!-- Bean encargado de las peticiones -->
@@ -121,4 +120,11 @@
         </property>
     </bean> 
 	
+	<!-- Reports -->	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	   <property name="location">
+	       <value>/WEB-INF/spring/reports-config.xml</value>
+	   </property>
+	   <property name="order" value="0" />
+	</bean>
 </beans>
