@@ -235,7 +235,7 @@ jQuery(document).ready(function(){
 						{"i18nCaption":"nora", "url": "integracion/nora"},
 						{"i18nCaption":"tiny", "url": "integracion/tiny"}
 					]},
-					{"i18nCaption":"uda", "pathUrl": "http://code.google.com/p/uda/", "newWindow": true}
+					{"i18nCaption":"uda", "pathUrl": "http://uda-ejie.github.io/index.html", "newWindow": true}
 			],
 			verticalWidth: "16.5em"
 				
