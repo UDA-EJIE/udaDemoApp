@@ -30,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import weblogic.apache.xpath.XPathAPI;
+import ch.qos.logback.classic.LoggerContext;
 
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.Comarca;
@@ -49,8 +51,14 @@ import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.LocalidadService;
+import com.ejie.x21a.util.JmsUtils;
+import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridJSONModel;
+import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.log.LoggingEditor;
+import com.ejie.x38.log.model.LogModel;
 import com.ejie.x38.util.ObjectConversionManager;
 
 /**
@@ -337,6 +345,62 @@ public class ExperimentalController {
 			return "tabsPaging";
 		}
 		
+		
+		//logLevel
+		@RequestMapping(value = "logLevel", method = RequestMethod.GET)
+		public String getLogLevel(Model model) {
+	
+			return "logLevel";
+		}
+
+		//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
+		@RequestMapping(value = "/filter", method = RequestMethod.POST)
+		public @ResponseBody JQGridResponseDto<LogModel> filter(
+				@RequestJsonBody(param="filter") LogModel filterLogModel,
+				@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			
+			JQGridResponseDto<LogModel> resultado= new JQGridResponseDto<LogModel>();
+			resultado= LoggingEditor.getLoggersFiltered(filterLogModel);
+
+		
+			return resultado;
+		}
+		
+		
+		@RequestMapping(value = "/{nameLog}", method = RequestMethod.GET)
+		public @ResponseBody LogModel get(@PathVariable String nameLog) {
+	        LogModel log= new LogModel();
+	        LogModel logAux= LoggingEditor.getLogger(nameLog);
+			
+
+	        
+	        
+	        return logAux;
+		}
+		
+		
+		@RequestMapping(method = RequestMethod.PUT)
+	    public @ResponseBody LogModel edit(@Validated @RequestBody LogModel log) {
+			
+			
+			logger.info("logModel edit-init");
+			JmsUtils.enviarJMS(log, "x21a.x21aConnectionFactory", "x21a.x21aJMSCacheTopic", null);
+//			LoggingEditor.setLogLevel(log.getNameLog(), log.getLevelLog());
+//			logger.info("Entity correctly updated!");
+//			
+
+//			logger.trace("logLevel trace");
+//			logger.debug("logLevel debug");
+//			logger.info("logLevel info");
+//			logger.warn("logLevel warn");
+//			logger.error("logLevel error");
+			logger.info("logModel edit-end");
+
+	        return log;
+	    }
+		
+		
+
 		//xlnetsTest
 		@RequestMapping(value = "xlnetsTest", method = RequestMethod.GET)
 		public String getXlnetsTest(Model model) {

@@ -342,6 +342,12 @@
 					</a>
 				</li>
 				
+						<!--test logLevel -->
+				<li>
+					<a href="/x21aPilotoPatronesWar/experimental/logLevel">
+						<spring:message code="logLevel" />
+					</a>
+				</li>
 				
 				
 			</ul>
