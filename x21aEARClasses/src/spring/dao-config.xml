@@ -14,6 +14,25 @@
 	      <property name="targetDSDirect" ref="aplicDataSource" />
 	</bean>
 	
+	
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler">
+	  <property name="nativeJdbcExtractor">
+	  	<ref local="nativeJdbcExtractor"/>
+	  </property>
+	</bean>
+	
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"/>
+	
 	<!-- Scans the classpath of this application for @Repository to deploy as beans -->
     <context:component-scan base-package="com.ejie.x21a.dao" />
+    
+    
+    <bean id="afterReturningConnectionAdvice"
+		class="com.ejie.x21a.util.AfterReturningConnectionAdvice" >
+		<property name="sqls">
+			<list>
+				<value>ALTER SESSION SET NLS_SORT='SPANISH_AI'</value>
+			</list>
+		</property>
+	</bean>
 </beans>

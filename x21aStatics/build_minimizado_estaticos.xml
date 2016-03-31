@@ -8,7 +8,7 @@
 	
 	
 	<!-- MINIMIZAR -->
-	<property name="version" value="2.4.5"/>
+	<property name="version" value="2.4.6"/>
 	<property name="codApp" value="x21a"/>
 	
 	<property name="srcDir" value="./WebContent"/>
@@ -84,8 +84,8 @@
             <mapper type="glob" from="${targetConcatFile}" to="${targetMinFile}" />
         </apply>
         <echo message="Generado el fichero minimizado: ${destDirParam}/${targetMinFile}" />
-		<delete file="${destDirParam}/${targetConcatFile}"/>
-		<echo message="Se elimina el fichero temporal unificado: ${destDirParam}/${targetMinFile}" />
+<!-- 		<delete file="${destDirParam}/${targetConcatFile}"/> -->
+<!-- 		<echo message="Se elimina el fichero temporal unificado: ${destDirParam}/${targetMinFile}" /> -->
 	</target>
 	
 	<target name="generateAppScriptsMin" description="Generar las versiones minimizadas de los ficheros js de la aplicación">

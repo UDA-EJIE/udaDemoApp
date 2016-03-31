@@ -2,25 +2,26 @@
 
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 		xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+		updateCheck="false"	
 		maxBytesLocalHeap="100M">
     
-<!--     <cacheManagerPeerProviderFactory -->
-<!-- 	    class="net.sf.ehcache.distribution.jms.JMSCacheManagerPeerProviderFactory"  -->
-<!-- 	    properties="initialContextFactoryName=com.ejie.x38.cache.CacheInitialContextFactory, -->
-<!-- 	        providerURL=provided, -->
-<!-- 	        replicationTopicConnectionFactoryBindingName=x21a.x21aConnectionFactory, -->
-<!-- 	        getQueueConnectionFactoryBindingName=x21a.x21aConnectionFactory, -->
-<!-- 	        getQueueBindingName=x21a.x21aJMSCacheQueue, -->
-<!-- 	        listenToTopic=true, -->
-<!-- 	        replicationTopicBindingName=x21a.x21aJMSCacheTopic" -->
-<!-- 	    propertySeparator="," /> -->
+    <cacheManagerPeerProviderFactory
+	    class="net.sf.ehcache.distribution.jms.JMSCacheManagerPeerProviderFactory" 
+	    properties="initialContextFactoryName=com.ejie.x38.cache.CacheInitialContextFactory,
+ 	        providerURL=provided, 
+ 	        replicationTopicConnectionFactoryBindingName=x21a.x21aConnectionFactory, 
+ 	        getQueueConnectionFactoryBindingName=x21a.x21aConnectionFactory, 
+ 	        getQueueBindingName=x21a.x21aJMSCacheQueue, 
+ 	        listenToTopic=true, 
+ 	        replicationTopicBindingName=x21a.x21aJMSCacheTopic" 
+	    propertySeparator="," />
   
-    <cache name="listaUsuarios" maxBytesLocalHeap="40%" eternal="false" timeToLiveSeconds="30" >
-<!--    	    <cacheEventListenerFactory class="net.sf.ehcache.distribution.jms.JMSCacheReplicatorFactory" -->
-<!--                 properties="replicateAsynchronously=true, replicatePuts=true, -->
-<!--                 replicateUpdates=true, replicateUpdatesViaCopy=true, -->
-<!--                 replicateRemovals=true, loaderArgument=sampleCacheNorep" -->
-<!--                 propertySeparator=","/> -->
+    <cache name="listaUsuarios" maxBytesLocalHeap="40%" eternal="false" timeToLiveSeconds="30" overflowToOffHeap="false">
+   	    <cacheEventListenerFactory class="net.sf.ehcache.distribution.jms.JMSCacheReplicatorFactory"
+                properties="replicateAsynchronously=true, replicatePuts=true,
+                 replicateUpdates=true, replicateUpdatesViaCopy=true, 
+                 replicateRemovals=true, loaderArgument=sampleCacheNorep" 
+                propertySeparator=","/>
 		<sizeOfPolicy maxDepth="1000000" />
     </cache>
     

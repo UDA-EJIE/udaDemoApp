@@ -29,7 +29,7 @@ jQuery(function($){
 					},
 					{ name: "nombreCompleto",
 						label: "nombreCompleto",
-						index: "nombreCompleto",
+						index: "apellido1",
 						width: "150",
 						formatter:function (cellval, opts, rwd, act) {
 							return rwd.apellido1+" "+rwd.apellido2+", "+rwd.nombre;
@@ -45,7 +45,7 @@ jQuery(function($){
 					},
 					{ name: "importeMatricula",
 						label: "importeMatricula",
-						index: "importeMatricula",
+						index: "importe_matricula",
 						width: "150",
 						formatter:'currency',
 						formatoptions:{decimalSeparator:",", thousandsSeparator: ",", decimalPlaces: 2, suffix: " € "}
@@ -67,11 +67,13 @@ jQuery(function($){
 						label: "municipio.dsO",
 						index: "municipio.dsO",
 						width: "150",
+						sortable:false,
 						updateFromDetail:function($form){
 							return $("#municipio").rup_combo("label");
 						},
 					},
 					{ name: "campo.valor",
+						sortable:false,
 						label: "campo.valor",
 						index: "campo.valor"
 					}
@@ -88,7 +90,6 @@ jQuery(function($){
 //        	,"report"
         ],
         rowNum:10, 
-        loadOnStartUp : false,
         rowList:[10,20,30], 
         sortname: 'id',
         formEdit:{

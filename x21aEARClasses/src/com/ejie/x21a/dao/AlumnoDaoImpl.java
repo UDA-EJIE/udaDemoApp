@@ -25,11 +25,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.lob.DefaultLobHandler;
+import org.springframework.jdbc.support.lob.LobHandler;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,13 +50,16 @@ import com.ejie.x38.dto.TableRowDto;
  * @author UDA
  */
 
+// Prueba de tildes áéíóú
+
 @Repository
 @Transactional
 public class AlumnoDaoImpl implements AlumnoDao {
 
 	private JdbcTemplate jdbcTemplate;
 
-	private DefaultLobHandler defaultLobHandler;
+	@Autowired
+	private LobHandler lobHandler;
 
 	private RowMapper<Alumno> findAllRowMapper = new RowMapper<Alumno>() {
 		public Alumno mapRow(ResultSet resultSet, int rowNum)
@@ -145,7 +149,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			Alumno alumno = new Alumno();
 
 			alumno.setNombreImagen(resultSet.getString("NOMBRE_IMAGEN"));
-			alumno.setImagen(defaultLobHandler.getBlobAsBytes(resultSet,
+			alumno.setImagen(lobHandler.getBlobAsBytes(resultSet,
 					"IMAGEN"));
 
 			return alumno;
@@ -162,9 +166,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	@Resource
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-
-		// TODO: Sacar esto de aqui
-		this.defaultLobHandler = new DefaultLobHandler();
+//		this.defaultLobHandler = new DefaultLobHandler();
 	}
 
 	/**
@@ -240,7 +242,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 					ps.setNull(index++, java.sql.Types.INTEGER);
 				}
 
-				defaultLobHandler.getLobCreator().setBlobAsBytes(ps, index++,
+				lobHandler.getLobCreator().setBlobAsBytes(ps, index++,
 						alumno.getImagen());
 				ps.setString(index++, alumno.getDireccion());
 				ps.setBigDecimal(index++, alumno.getImporteMatricula());
@@ -332,7 +334,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 				}
 				if (alumno.getImagen()!=null) {
 					ps.setString(index++, alumno.getNombreImagen());
-					defaultLobHandler.getLobCreator().setBlobAsBytes(ps, index++,
+					lobHandler.getLobCreator().setBlobAsBytes(ps, index++,
 							alumno.getImagen());
 				}
 				
