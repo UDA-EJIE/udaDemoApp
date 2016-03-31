@@ -21,7 +21,7 @@
 <head>
 	<title><spring:message code="app.title" /></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
 	<%-- Estilos RUP sin minimizar (DESARROLLO) --%>
 <%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%> --%>

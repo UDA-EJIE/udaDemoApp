@@ -68,16 +68,16 @@
   </filter-mapping>
   
   
-  <servlet>
-    <description></description>
-    <display-name>restServlet</display-name>
-    <servlet-name>restServlet</servlet-name>
-    <servlet-class>com.ejie.x21a.control.RestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>restServlet</servlet-name>
-    <url-pattern>/patrones/usuario/*</url-pattern>
-  </servlet-mapping>
+<!--   <servlet> -->
+<!--     <description></description> -->
+<!--     <display-name>restServlet</display-name> -->
+<!--     <servlet-name>restServlet</servlet-name> -->
+<!--     <servlet-class>com.ejie.x21a.control.RestServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>restServlet</servlet-name> -->
+<!--     <url-pattern>/patrones/usuario/*</url-pattern> -->
+<!--   </servlet-mapping> -->
   
   
   <servlet>
