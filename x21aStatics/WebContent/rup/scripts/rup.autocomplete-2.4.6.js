@@ -60,8 +60,28 @@
 		getRupValue : function(){
 			return $(this).val();
 		},
-		setRupValue : function(param){
-			$(this).val(param);
+		setRupValue : function(value){
+			var $self = this, data = $self.data("rup.autocomplete"), $hidden, loadObjects, newObject = {};
+			
+			if(data){
+				
+				// Comprobamos si tiene la referencia al campo hidden
+				if (data.$hiddenField){
+					data.$hiddenField.attr("rup_autocomplete_label",value);
+					
+					loadObjects = $self.data("loadObjects");
+					newObject[value]=data.$hiddenField.val();
+					$self.data("loadObjects", jQuery.extend(true, {}, loadObjects, newObject));
+				}
+				
+				if (data.$labelField){
+					loadObjects = data.$labelField.data("loadObjects");
+					newObject[$self.attr("rup_autocomplete_label")]=value;
+					data.$labelField.data("loadObjects", jQuery.extend(true, {}, loadObjects, newObject));
+				}
+			}
+			
+			$(this).val(value);
 		},
 		destroy:function(){
 			var self;
@@ -457,14 +477,18 @@
 
 
 					//Generación de campo oculto para almacenar 'value' (en el input definido se guarda el 'label')
-					$("#"+settings.id).after($("<input>").attr({
+					var $hidden = $("<input>").attr({
 						type:"hidden",
 						id: settings.id+"_value",
 						name: (settings.valueName===null?name:settings.valueName),
 						ruptype:"autocomplete"
-										}))
+					});
+					
+					$("#"+settings.id).after($hidden)
 									  .attr("name", (settings.labelName===null?name+"_label":settings.labelName))
 									  .addClass("rup-autocomplete_label");
+					
+//					settings.$hidden = $hidden;
 					
 					if (typeof settings.source === "object"){
 						//LOCAL						
@@ -630,6 +654,13 @@
 					
 					//se guarda la configuracion general (settings) del componente
 					$("#"+settings.id+"_label").data("settings",settings);
+					$("#"+settings.id+"_label").data("rup.autocomplete",{
+						$hiddenField: $("#"+settings.id)
+					});
+					$("#"+settings.id).data("rup.autocomplete",{
+						$labelField: $("#"+settings.id+"_label")
+					});
+					
 					
 					//Deshabilitar
 					if (settings.disabled===true) { 
