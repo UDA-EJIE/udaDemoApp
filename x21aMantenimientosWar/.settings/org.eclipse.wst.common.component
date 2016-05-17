@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="x21aMantenimientosWar">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-integration"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-system"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-unit"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-source"/>
         <property name="context-root" value="x21aMantenimientosWar"/>
         <property name="java-output-path" value="/x21aMantenimientosWar/build/classes"/>
     </wb-module>
