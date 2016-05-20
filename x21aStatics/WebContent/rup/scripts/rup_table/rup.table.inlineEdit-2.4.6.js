@@ -234,10 +234,10 @@
 					enabled: function(){
 						var $self = this,
 						selrow=$self.jqGrid('getGridParam','selrow');
-						
-						selrow = (selrow===null?false:selrow);
+												
+						selrow = (selrow===null || selrow.indexOf("jqg")!==-1?false:selrow);
 
-						return jQuery("tr[editable='1']", $self).length>0 || selrow;
+						return jQuery("tr[editable='1']:not(.jqgrid-new-row)", $self).length>0 || selrow;
 					},
 					callback: function(key, options){
 						$self.rup_table("deleteRow");			
@@ -802,9 +802,13 @@
 				};
 			}
 			
-			deleteOptions.afterSubmit = function(){
-				$self.triggerHandler("rupTable_deleteAfterSubmit");
-				return true;
+			deleteOptions.afterSubmit = function(data, postd){
+				$self.triggerHandler("rupTable_deleteAfterSubmit", [data, postd]);
+				return [true];
+			};
+			
+			deleteOptions.afterComplete = function(data, postd){
+				$self.triggerHandler("rupTable_deleteAfterComplete", [data, postd]);
 			};
 			
 			if ($self.triggerHandler("rupTable_beforeDeleteRow",[deleteOptions, selectedRow])!==false){
