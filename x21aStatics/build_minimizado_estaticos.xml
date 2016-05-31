@@ -8,7 +8,7 @@
 	
 	
 	<!-- MINIMIZAR -->
-	<property name="version" value="2.4.6"/>
+	<property name="version" value="2.4.7"/>
 	<property name="codApp" value="x21a"/>
 	
 	<property name="srcDir" value="./WebContent"/>
