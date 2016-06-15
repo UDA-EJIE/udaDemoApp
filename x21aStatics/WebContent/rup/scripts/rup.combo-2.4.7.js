@@ -1072,7 +1072,8 @@
 					if (!settings.i18nId){ settings.i18nId = settings.id; }
 					
 					//Guardar valor del INPUT
-					settings.inputValue = $("#"+settings.id).attr('value');
+					
+					settings.inputValue = $("#"+settings.id).val()===null?$("#"+settings.id).prop("value"):$("#"+settings.id).val();
 					
 				    attrs = $(this).prop("attributes");
 

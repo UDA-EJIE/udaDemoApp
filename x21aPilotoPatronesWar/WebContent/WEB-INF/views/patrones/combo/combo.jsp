@@ -47,6 +47,6 @@
 <select id="comboLoadFromSelect">
 	<option value="1">Alava</option>
 	<option value="3">Gipuzcoa</option>
-	<option value="2">Vizcaya</option>
+	<option value="2" selected="selected">Vizcaya</option>
 </select>
 <br><br>

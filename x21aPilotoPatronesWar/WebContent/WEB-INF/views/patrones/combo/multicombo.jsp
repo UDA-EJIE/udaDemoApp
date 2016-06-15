@@ -37,9 +37,9 @@
 <br><br>
 
 <label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label><br>
-<select id="multicomboLoadFromSelect">
-	<option value="1">Alava</option>
+<select id="multicomboLoadFromSelect" multiple="multiple">
+	<option value="1" selected="selected">Alava</option>
 	<option value="3">Gipuzcoa</option>
-	<option value="2">Vizcaya</option>
+	<option value="2" selected="selected">Vizcaya</option>
 </select>
 <br><br>
