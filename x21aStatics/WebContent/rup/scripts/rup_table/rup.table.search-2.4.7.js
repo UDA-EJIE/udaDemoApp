@@ -95,7 +95,7 @@
 				"jqGridGridComplete.rup_table.search": function(event){
 					var $self = $(this), settings = $self.data("settings");
 					
-					if ($self.rup_grid("getGridParam","records")===0){
+					if ($self.rup_table("getGridParam","records")===0){
 						settings.search.$searchRow.hide();
 					}else{
 						settings.search.$searchRow.show();

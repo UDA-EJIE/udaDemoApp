@@ -507,7 +507,7 @@
 				 "jqGridGridComplete.rup_table.multiselection": function(event){
 					var $self = $(this), settings = $self.data("settings");
 					
-					if ($self.rup_grid("getGridParam","records")===0){
+					if ($self.rup_table("getGridParam","records")===0){
 						jQuery(jQuery("#cb_"+$self.attr("id"),settings.core.$tableDiv)[0]).attr("disabled", "disabled");
 					}else{
 						jQuery(jQuery("#cb_"+$self.attr("id"),settings.core.$tableDiv)[0]).removeAttr("disabled");

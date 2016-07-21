@@ -355,7 +355,7 @@
 			settings.serializeGridData = function(postData){
 				var newPostData,
 				pageNum = parseInt(postData.page),
-				lastpage = parseInt($self.rup_grid("getGridParam","lastpage"));
+				lastpage = parseInt($self.rup_table("getGridParam","lastpage"));
 				
 				if (lastpage!==0 && pageNum>lastpage){
 					postData.page = lastpage;
@@ -487,7 +487,7 @@
 				"jqGridGridComplete.rup_table.core": function(event){
 					var $self = $(this), $tbody;
 					
-					if ($self.rup_grid("getGridParam","records")===0){
+					if ($self.rup_table("getGridParam","records")===0){
 						// No se han encontrado registros
 						
 						$self.prev().remove(); //Borrar div vacío
@@ -849,7 +849,7 @@
 				// Evento de control de página máxima
 				jQuery(".pagControls input.ui-pg-input", $pagerCenter).on("change", function(){
 					var pageNum = parseInt($(this).val()),
-					totalNum = parseInt($self.rup_grid("getGridParam","lastpage"));
+					totalNum = parseInt($self.rup_table("getGridParam","lastpage"));
 					
 					if (isNaN(pageNum)===false && pageNum>totalNum){
 						$(this).val(totalNum);
