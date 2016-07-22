@@ -93,12 +93,11 @@ jQuery(document).ready(function(){
 	});
 
 	$('#multicomboLoadFromSelect').rup_combo({
-		source : "comboSimple/remote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		loadFromSelect: true,
 		width: 350,
 		height: 75,
 		multiselect: true
 	});
+	
 	
 });
