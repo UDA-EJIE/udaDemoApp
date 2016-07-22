@@ -1,4 +1,4 @@
-﻿(function ($) {
+(function ($) {
 	$.widget("ui.rcarousel", {
 		_create: function() {
 			var data,
