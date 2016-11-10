@@ -8,10 +8,10 @@
 	<name>x21aEAR</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<org.springframework.version>3.1.2.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.1.2.RELEASE</org.springframework.security.version>
-		<org.logback.version>1.0.6</org.logback.version>
-		<org.slf4j.version>1.6.6</org.slf4j.version>
+		<org.springframework.version>3.2.17.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.2.9.RELEASE</org.springframework.security.version>
+		<org.logback.version>1.1.7</org.logback.version>
+		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<com.ejie.x38.version>2.4.7-RELEASE</com.ejie.x38.version>
 	</properties>
 	
@@ -114,14 +114,24 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.Final</version>
+			<version>4.3.2.Final</version>
 		</dependency>
 		
 		<!-- Jackson JSON Mapper -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.7</version>
+			<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+			<dependency>
+					<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.5</version>
+		</dependency>
+	<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.6.5</version>
 		</dependency>
 
 		<!-- AspectJ -->

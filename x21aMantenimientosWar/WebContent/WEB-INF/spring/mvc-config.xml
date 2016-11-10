@@ -101,7 +101,7 @@
 		    </property>
 	       	<property name="messageConverters">
 	            <list>
-	            	<ref bean="udaMappingJacksonHttpMessageConverter"/>
+	            	<ref bean="udaMappingJackson2HttpMessageConverter"/>
 	            </list>
        		</property>
        		<property name="customArgumentResolvers">

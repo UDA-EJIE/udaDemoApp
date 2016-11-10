@@ -1,16 +1,16 @@
 /*
 * Copyright 2012 E.J.I.E., S.A.
 *
-* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
-* Solo podrá usarse esta obra si se respeta la Licencia.
+* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
 * Puede obtenerse una copia de la Licencia en
 *
 * http://ec.europa.eu/idabc/eupl.html
 *
-* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
-* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
 package com.ejie.x21a.control;
@@ -36,7 +36,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,6 +93,7 @@ import com.ejie.x38.json.JsonMixin;
 import com.ejie.x38.json.MessageWriter;
 import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.validation.ValidationManager;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * PatronesController
@@ -168,7 +168,7 @@ public class PatronesController {
 	public String getDialog(Model model) {
 		return "dialog";
 	}
-	//Dialog (petición Ajax)
+	//Dialog (peticiÃ³n Ajax)
 	@RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
 	public String dialogJSP(Model model) {
 		return "dialogAjax";
@@ -492,10 +492,10 @@ public class PatronesController {
 			//Idioma
 			Locale locale = LocaleContextHolder.getLocale();
 			
-			//Retorno del método
+			//Retorno del mÃ©todo
 			List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
 			
-			//Nombres de los grupos según idioma
+			//Nombres de los grupos segÃºn idioma
 		   	String provincia = null, comarca = null, localidad = null;
 		   	if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())){
 				provincia = "Provincia_eu";
@@ -563,7 +563,7 @@ public class PatronesController {
 		public @ResponseBody List<Comarca> getEnlazadoComarca(
 				@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Provincia provincia = new Provincia();
 			provincia.setCode(provincia_code);
 			Comarca comarca = new Comarca();
@@ -576,7 +576,7 @@ public class PatronesController {
 		public @ResponseBody List<Localidad> getEnlazadoLocalidad(
 				@RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Comarca comarca = new Comarca();
 			comarca.setCode(comarca_code);
 			Localidad localidad = new Localidad();
@@ -591,7 +591,7 @@ public class PatronesController {
 	 * COMBO ENLAZADO MULTIPLE	
 	 */			
 		/**
-		 * Combos Enlazados (múltiple)
+		 * Combos Enlazados (mÃºltiple)
 		 */
 		@RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method=RequestMethod.GET)
 		public @ResponseBody List<Departamento> getEnlMultDpto() {
@@ -610,7 +610,7 @@ public class PatronesController {
 				@RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
 				@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Departamento departamento = new Departamento();
 			departamento.setCode(departamento_code);
 			Provincia provincia = new Provincia();
@@ -838,7 +838,7 @@ public class PatronesController {
 			
 			messageWriter.startMessageList();
 			messageWriter.addMessage("El formulario se ha enviado correctamente.");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(alumno).toString());
 			messageWriter.endSubLevel();
@@ -872,7 +872,7 @@ public class PatronesController {
 
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(alumno).toString());
 			messageWriter.endSubLevel();
@@ -893,7 +893,7 @@ public class PatronesController {
 			
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(comarca1).toString());
 			messageWriter.endSubLevel();
