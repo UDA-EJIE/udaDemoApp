@@ -735,4 +735,71 @@ a.ui-dialog-title { color: black !important }
 { 
     position: fixed; 
 }
+.enLinea {
+	display: table-cell;
+}
 
+.bloqueIberdok {
+	margin-bottom: 40px;
+	padding: 20px 20px;
+	background: #fff;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-left: 1px solid #efefef;
+	/* border-right: 1px solid #efefef; */
+	border-bottom: 1px solid #e2e2e2;
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.04);
+}
+
+.header {
+	border-bottom: 1px solid #dadada;
+	margin-bottom: 3em;
+}
+
+.labelsIberdok {
+	width: 8em;
+	padding-left: 3em;
+}
+
+.label100 {
+	width: 100%;
+	padding-left: 3em;
+}
+
+.componentsIberdok {
+	width: 8em;
+	padding-left: 1em;
+}
+
+.componentsIberdokGrande {
+	width: 10em;
+	padding-left: 1em;
+}
+
+.componentsIberdokGrande input {
+		width:45em;
+	
+}
+
+.espaciodo {
+	margin-top: 1.5em;
+}
+
+.espaciodoEjemplo {
+	margin-top: 1em;
+	padding-left: 9em;
+    font-size: 1em;
+}
+
+.espaciodoSubmit{
+	margin-top: 4em;
+	float:right;
+}
+
+.widthFijo {
+	width: 30em;
+}
+
+.widthFijoFila {
+	width:60em;
+}
