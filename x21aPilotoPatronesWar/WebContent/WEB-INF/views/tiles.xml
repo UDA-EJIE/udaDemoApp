@@ -414,6 +414,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/experimental/logLevel-includes.jsp" />
 	</definition>
+	
+		<definition name="iberdok" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/iberdok.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/experimental/iberdok-includes.jsp" />
+	</definition>
 
 
 

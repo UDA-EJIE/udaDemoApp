@@ -1,5 +1,6 @@
 .svn
 .metadata/.lock
+.metadata/*
 .metadata/.mylyn/.repositories.xml.zip
 .metadata/.mylyn/repositories.xml.zip
 .metadata/.plugins/oracle.eclipse.tools.cloud/RemoteData/oracle.eclipse.tools.weblogic.server.internal.DeploymentTargets/1
@@ -814,3 +815,5 @@
 .metadata/version.ini
 RemoteSystemsTempFiles/.project
 *.launch
+.project
+.classpath

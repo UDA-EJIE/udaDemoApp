@@ -12,6 +12,7 @@
 	  	<security:filter-chain pattern="/sessionInfo.*" filters="none"/>
 	  	<security:filter-chain pattern="/mockLoginPage.*" filters="none"/>
 	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
+<!-- 	  	<security:filter-chain pattern="/experimental/.*" filters="none"/> -->
 	  	<security:filter-chain pattern="/error.*" filters="none"/>
 		<security:filter-chain pattern="/accessDenied.*" filters="none"/>
 		<security:filter-chain pattern="/rssfeed" filters=" 

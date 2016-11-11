@@ -348,7 +348,10 @@
 						<spring:message code="logLevel" />
 					</a>
 				</li>
-				
+					<!--iberdok -->
+			<li><a href="/x21aPilotoPatronesWar/iberdok/view"> <spring:message
+						code="iberdok" />
+			</a></li>	
 				
 			</ul>
 		</li>
