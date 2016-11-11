@@ -401,6 +401,7 @@ function ocultarDivsModos() {
 	$('#divModo2').hide();
 	$('#divModo3').hide();
 	$('#divModo7').hide();
+	$('#semillas').hide();
 }
 
 /**
@@ -471,16 +472,21 @@ function gestionarVisibilidadDivs(modo) {
 	case 1:
 
 		$('#divModo1').show();
+		$('#semillas').show();
 
 		break;
 	case 2:
+		
 		$('#divModo2').show();
+		$('#semillas').show();
+		
 
 		break;
 	// case 3:
 	// $('#divModo3').show();
 	// break;
 	case 7:
+		$('#semillas').show();
 	case 8:
 		// ambos requieren los mismos datos
 		$('#divModo7').show();
