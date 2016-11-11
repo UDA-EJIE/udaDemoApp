@@ -1,3 +1,4 @@
+
 {
 	"x21aPilotoPatronesWar_menu_mixto" :{
 		"inicio" :"Inicio",
@@ -525,5 +526,50 @@
 		"pestana17" : "tab17",
 		"pestana18" : "sub18",
 		"pestana19" : "sub19"
-	}
+	},
+	 "iberdokTable":{
+	 	"abrirDocumento": "Abrir documento",
+	 	"editarEnIberdok":"Editar en Iberdok",
+	 	"id":"id",
+	 	"nombre":"nombre",
+	 	"idModelo":"idModelo",
+	 	"idDocumento":"idDocumento",
+	 	"estado":"estado",
+	 	"nuevo":"Nuevo",
+	 	"copiar":"Copiar",
+	 	"editar":"Editar",
+	 	"ver":"Visualizar",
+	 	"finalizado":"Finalizado",
+	 	"elaboracion":"Elaboración",
+	 	"es":"Castellano",
+	 	"eu":"Euskera",
+	 	"en":"Inglés",
+	 	"modo1":"Crear documento",
+	 	"modo2":"Editar documento finalizado",
+	 	"modo7":"Editar documento no finalizado",
+	 	"modo8":"Copiar documento",
+	 	"dialog":"Lanzar Iberdok",
+	 	"errorFichero":"No se ha definido el fichero a cargar",
+	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación => ",
+	 	"errorParseo2":".<br> Error devuelto:<br>"
+	 },
+	   "charts": {
+        "charts": "Gráficos",
+        "line": "Líneas",
+        "bar": "Barras",
+        "radar": "Radar",
+        "polar": "Polar",
+        "pie": "Tarta",
+        "doughnut": "Donut",
+        "bubble": "Burbuja",
+        "datasetRadar": {
+            "dataset1": "dataset 1",
+            "dataset2": "dataset 2"
+        },
+        "colorLabels": ["rojo", "azul", "amarillo"],
+        "radarLabels": ["Comida", "Bebida", "Dormir", "Diseño", "Programacion", "Bicicleta", "Correr"],
+        "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
+    }
+
+	
 }
