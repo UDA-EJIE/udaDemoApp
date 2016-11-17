@@ -1,7 +1,8 @@
 package com.ejie.x21a.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+
 
 
 /**
