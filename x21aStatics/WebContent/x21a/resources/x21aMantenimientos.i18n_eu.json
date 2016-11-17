@@ -2,16 +2,9 @@
 	"x21aMantenimientosWar_migas" :{
 		"simple"	: "Soil-sorta",
 		"multi"		: "Multi-sorta",
-		"edlinea"	: "Lerroan edizioa", 
 		"formPropio" : "Form Propio_eu", 
 		"administracion" : "Administración_eu",
 		"alumno" : "Alumno_eu",
-		"jerarquia" : "Jerarquia_eu",
-		"usuarioJerarquia" : "Normal_eu",
-		"usuarioJerarquiaGroup" : "Agrupado_eu",
-		"usuarioJerarquiaMulti" : "Multiselección_eu",
-		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado_eu",
-		"usuarioJerarquiaCol" : "Columna independiente_eu",
 		"uda":"UDA"
 	},
 	"GRID_simple##ejie" : {
@@ -53,10 +46,7 @@
 		"0" : "Ez",
 		"1" : "Bai"
 	},
-	"GRID_edlinea##ejie" : {
-		"0" : "Ez",
-		"1" : "Bai"
-	},
+	
 	"simpelMaint" : {
 		"actualizar":"Botoi pertsonalizatuen adibidea"
 	},
@@ -76,10 +66,6 @@
 	"loginUserMock" : {
 		"logginOk1" : "Usuario _eu'",
 		"logginOk2" : "' Seleccionado correctamente_eu"
-	},
-	"GRID_usuarioJerarquia##ejie" : {
-		"0" : "Ez",
-		"1" : "Bai"
 	},
 	"table":{
 		"id": "Id_eu",

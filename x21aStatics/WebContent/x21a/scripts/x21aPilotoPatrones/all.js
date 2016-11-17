@@ -15,125 +15,87 @@
  */
 jQuery(function($){
 	
-	$("#grid").rup_grid({
-		hasMaint: true,
-		width: 550,
-		url: "../patrones/usuario",
-		pagerName: "pager",
-		rowNum: "10",
-		sortorder: "asc",
-		sortname: "id",
-		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
-		colModel: [
-			{ id:"grid_id", name: "id", label: "id", index: "id", width: "75", editable: true },
-			{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true, classes: "context-menu_cur" },
-			{ name: "apellido1", label: "apellido1", index: "apellido1", width: "150", editable: true },
-			{ name: "apellido2", label: "apellido2", index: "apellido2", width: "150", editable: true },
-			{ name: "ejie", index: "ejie", editable: true,
-				editoptions: {
-					source : [
-					   {i18nCaption: "0", value:"0"},
-					   {i18nCaption: "1", value:"1"}
-					]
-				},
-				formatter: "rup_combo",
-				rupType: "combo"
-			},
-			{ name: "fechaAlta",  index: "fechaAlta", editable: true,
-				rupType: "datepicker"
-			},
-			{ name: "fechaBaja", index: "fechaBaja", editable: true,
-				rupType: "datepicker" 
-			}
-        ]
-		,pagerInline: false
-		,loadComplete: function() {
-            $("tr.jqgrow", $("#"+$("tr.jqgrow").parents("table").attr("id"))).contextMenu('contextMenu', {
-                bindings: {
-                    'menu_1': function(row, cell) { alert('menu_1'); },
-                    'menu_2': function(row, cell) { alert('menu_2'); },
-                    'menu_3': function(row, cell) { 
-                    	//Gestión opción deshabilitada
-                    	if ($('#menu_3').attr("disabled") === "disabled"){
-                    		$("#jqContextMenu").show(); //Siempre es el mismo ID
-                    		return false;
-                    	}
-                    	//Acción por defecto
-                    	alert('menu_3'); }
-                },
-                onContextMenu: function(event) {
-                	//Gestionar click sobre la fila que se muestra el menú	
-                	var gridID = $(event.target).parents("table").attr("id");
-            			$row = $(event.currentTarget),
-            			rowId = $row.attr("id"),
-                		rowData = $("#"+gridID).jqGrid("getRowData", rowId),
-            			tdData = $(event.target).text(),
-            			//control multiselect
-            			checkbox = $row.find("input[id='jqg_"+gridID+"_"+rowId+"']");
-            			
-            		//Elemento sobre el que se despliega el menú siempre seleccionado
-           			if (checkbox.length<0 || checkbox.attr("checked")===undefined){
-           				$("#"+gridID).setSelection(rowId, true);
-           			}
+	
+	$("#table").rup_table({
+		url: "../jqGridUsuario",
+		colNames: tableColNames,
+		colModel: tableColModels,
+        primaryKey:["id"],
+        
+        usePlugins:[
+			"formEdit",
+        	"feedback",
+			"toolbar",
+        	"contextMenu",
+        	"fluid",
+        	"filter",
+        	"search",
+        	"report",
+        ],
+        rowNum:10, 
+        rowList:[10,20,30], 
+        sortname: 'id',
+        core:{
+        	operations:{
+             
+          }
+        },
+        toolbar:{
+        	
 
-           			//Solo mostrar menú en columna "nombre"
-                	if (rowData.nombre !== tdData){
-                		$("#jqContextMenu").next().hide();
-                		$("#jqContextMenu").hide();
-                		return false;
-                	}
-                	
-                	//Deshabilitar en filas pares
-                    if ($row.index()%2 === 0) {
-                        $('#menu_3').attr("disabled","disabled").addClass('ui-state-disabled');
-                    } else {
-                        $('#menu_3').removeAttr("disabled").removeClass('ui-state-disabled');
-                    }
-                    
-                    //Gestionar eventos
-                    $("#jqContextMenu").mouseleave (function(){ $(this).next().hide(); $(this).hide(); });
-                    return true;
-                }
-            });
-           	$('[aria-describedby="grid_nombre"]').css("cursor", "url("+$.rup.RUP+"/basic-theme/cursors/context-menu.cur),default" );
-
-           	//Modificar tooltip
-            $.each ($('[aria-describedby="grid_nombre"]'), function(index, object){
-            	$(object).attr("rup_tooltip", $(object).attr("rup_tooltip") + "<br/>Esta columna tiene menú contextual asociado");
-            });
-		}
+        },
+		contextMenu:{
+			colNames:["nombre","apellido1","apellido2","ejie","fechaAlta"],
+			items: {
+				"sep1": "---------",
+		        "opContextual1": {name: "Op. contextual 1", icon: "edit", disabled: false, colNames:["fechaAlta","fechaBaja","rol"]},
+		        "opContextual2": {name: "Op. contextual 2", icon: "cut", disabled: true},
+		        "opContextual3" :{name: "Op. contextual 3", icon: "cut", colNames:["nombre","apellido1"], items:{
+		        	"subOpContextual1": {name: "Sub Op. contextual 1", icon: "edit", disabled: false},
+		            "opContextual2": {name: "Sub Op. contextual 2", icon: "cut", disabled: true}
+		        	}
+		        }
+		    }
+			
+		},
+        formEdit:{
+        	detailForm: "#table_detail_div",
+        	validate:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true},
+    				"fechaAlta":{date:true},
+    				"fechaBaja":{date:true}
+    			}
+    		}
+        },
+        filter:{
+        	validate:{
+        		rules:{
+    				"fechaAlta":{date:true},
+    				"fechaBaja":{date:true}
+    			}
+        	},
+//        	fncSearchCriteria: function(searchString){
+//    			//SsearchString+="NombreCampo=Valores de filtrado del campo";
+//    			return searchString;
+//    		}
+        },
+        search:{
+        	validate:{
+        		rules:{
+    				"fechaAlta":{date:true},
+    				"fechaBaja":{date:true}
+    			}
+        	}
+        },
+        report: options_table_report//,
+       // loadOnStartUp:false
+        
 	});
-	$('[aria-describedby="grid_nombre"]').rup_tooltip("option", "content.text", "pruebas");
 	
-	$("#maint").rup_maint({
-		jQueryGrid: "grid",
-		primaryKey: "id",
-		modelObject: "Usuario",
-		detailButtons: $.rup.maint.detailButtons.SAVE,
-		searchForm: "searchForm",
-		showMessages: true,
-		showFeedback: false
-	});
 	
-	//Formulario de filtrado
-	$('#ejie_search').rup_combo({
-		source : [
-		   {i18nCaption: "0", value:"0"},
-		   {i18nCaption: "1", value:"1"}
-		],
-		i18nId: "grid##ejie",
-		width: 120,
-		blank:""
-	});
-	$("#fechaAlta_search").rup_date();
-	$("#fechaBaja_search").rup_date();
 	
-	$('#multicombo_search').rup_combo({
-		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		ordered: false,
-		width: 200,
-		multiselect: true
-	});
 	
 	$("#feedback").rup_feedback({ type: "ok", message:"Este es un ejemplo de <b>Feedback</b>"});
 	
@@ -184,7 +146,6 @@ jQuery(function($){
 	
 	//dialog
 	$("#dialog").bind("click", function () {
-		$("#maint").css("width","auto");
 		$(document).rup_dialog({
 			type: jQuery.rup.dialog.AJAX,
 			url: "../patrones/allDialog" ,
@@ -202,124 +163,89 @@ jQuery(function($){
 				}],
 			open : function(event, ui) { 
 				//Configurar dialog
-				$("#gridDialog").rup_grid({
-					hasMaint: true,
-					width: "550",
-					url: "../patrones/usuario",
-					pagerName: "pagerDialog",
-					rowNum: "10",
-					sortorder: "asc",
-					sortname: "id",
-					colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
-					colModel: [
-						{ name: "id", label: "id", index: "id", width: "75", editable: true },
-						{ name: "nombre", label: "nombre", index: "nombre", width: "150", editable: true, classes: "context-menu_cur" },
-						{ name: "apellido1", label: "apellido1", index: "apellido1", width: "150", editable: true },
-						{ name: "apellido2", label: "apellido2", index: "apellido2", width: "150", editable: true },
-						{ name: "ejie", index: "ejie", editable: true,
-							editoptions: {
-								source : [
-								   {i18nCaption: "0", value:"0"},
-								   {i18nCaption: "1", value:"1"}
-								]
-							},
-							formatter: "rup_combo",
-							rupType: "combo"
-						},
-						{ name: "fechaAlta",  index: "fechaAlta", editable: true,
-							rupType: "datepicker"
-						},
-						{ name: "fechaBaja", index: "fechaBaja", editable: true,
-							rupType: "datepicker" 
-						}
-			        ]
-					,pagerInline: false
-					,loadComplete: function() {
-			            $("tr.jqgrow", $("#"+$("tr.jqgrow").parents("table").attr("id"))).contextMenu('contextMenu', {
-			                bindings: {
-			                    'menu_1': function(row, cell) { alert('menu_1'); },
-			                    'menu_2': function(row, cell) { alert('menu_2'); },
-			                    'menu_3': function(row, cell) { 
-			                    	//Gestión opción deshabilitada
-			                    	if ($('#menu_3').attr("disabled") === "disabled"){
-			                    		$("#jqContextMenu").show(); //Siempre es el mismo ID
-			                    		return false;
-			                    	}
-			                    	//Acción por defecto
-			                    	alert('menu_3'); }
-			                },
-			                onContextMenu: function(event) {
-			                	//Gestionar click sobre la fila que se muestra el menú	
-			                	var gridID = $(event.target).parents("table").attr("id");
-			            			$row = $(event.currentTarget),
-			            			rowId = $row.attr("id"),
-			                		rowData = $("#"+gridID).jqGrid("getRowData", rowId),
-			            			tdData = $(event.target).text(),
-			            			//control multiselect
-			            			checkbox = $row.find("input[id='jqg_"+gridID+"_"+rowId+"']");
-			            			
-			            		//Elemento sobre el que se despliega el menú siempre seleccionado
-			           			if (checkbox.length<0 || checkbox.attr("checked")===undefined){
-			           				$("#"+gridID).setSelection(rowId, true);
-			           			}
+				
+				$("#tableDialog").rup_table({
+					url: "../jqGridUsuario",
+					colNames: tableColNames,
+					colModel: tableColModels,
+			        primaryKey:["id"],
+			        
+			        usePlugins:[
+						"formEdit",
+			        	"feedback",
+						"toolbar",
+			        	"contextMenu",
+			        	"fluid",
+			        	"filter",
+			        	"search",
+			        	"report",
+			        ],
+			        rowNum:10, 
+			        rowList:[10,20,30], 
+			        sortname: 'id',
+			        core:{
+			        	operations:{
+			             
+			          }
+			        },
+			        toolbar:{
+			        	
 
-			           			//Solo mostrar menú en columna "nombre"
-			                	if (rowData.nombre !== tdData){
-			                		$("#jqContextMenu").next().hide();
-			                		$("#jqContextMenu").hide();
-			                		return false;
-			                	}
-			                	
-			                	//Deshabilitar en filas pares
-			                    if ($row.index()%2 === 0) {
-			                        $('#menu_3').attr("disabled","disabled").addClass('ui-state-disabled');
-			                    } else {
-			                        $('#menu_3').removeAttr("disabled").removeClass('ui-state-disabled');
-			                    }
-			                    
-			                    //Gestionar eventos
-			                    $("#jqContextMenu").mouseleave (function(){ $(this).next().hide(); $(this).hide(); });
-			                    return true;
-			                }
-			            });
-		            	$('[aria-describedby="grid_nombre"]').css("cursor", "url("+$.rup.RUP+"/basic-theme/cursors/context-menu.cur),default" );
-
-			            //Modificar tooltip
-			            $.each ($('[aria-describedby="grid_nombre"]'), function(index, object){
-			            	$(object).attr("rup_tooltip", $(object).attr("rup_tooltip") + "<br/>Esta columna tiene menú contextual asociado");
-			            });
-					}
+			        },
+					contextMenu:{
+						colNames:["nombre","apellido1","apellido2","ejie","fechaAlta"],
+						items: {
+							"sep1": "---------",
+					        "opContextual1": {name: "Op. contextual 1", icon: "edit", disabled: false, colNames:["fechaAlta","fechaBaja","rol"]},
+					        "opContextual2": {name: "Op. contextual 2", icon: "cut", disabled: true},
+					        "opContextual3" :{name: "Op. contextual 3", icon: "cut", colNames:["nombre","apellido1"], items:{
+					        	"subOpContextual1": {name: "Sub Op. contextual 1", icon: "edit", disabled: false},
+					            "opContextual2": {name: "Sub Op. contextual 2", icon: "cut", disabled: true}
+					        	}
+					        }
+					    }
+						
+					},
+			        formEdit:{
+			        	detailForm: "#tableDialog_detail_div",
+			        	validate:{
+			    			rules:{
+			    				"nombre":{required:true},
+			    				"apellido1":{required:true},
+			    				"fechaAlta":{date:true},
+			    				"fechaBaja":{date:true}
+			    			}
+			    		}
+			        },
+			        filter:{
+			        	validate:{
+			        		rules:{
+			    				"fechaAlta":{date:true},
+			    				"fechaBaja":{date:true}
+			    			}
+			        	},
+//			        	fncSearchCriteria: function(searchString){
+//			    			//SsearchString+="NombreCampo=Valores de filtrado del campo";
+//			    			return searchString;
+//			    		}
+			        },
+			        search:{
+			        	validate:{
+			        		rules:{
+			    				"fechaAlta":{date:true},
+			    				"fechaBaja":{date:true}
+			    			}
+			        	}
+			        },
+			        report: options_table_report//,
+			       // loadOnStartUp:false
+			        
 				});
+			
 				
-				$("#maintDialog").rup_maint({
-					jQueryGrid: "gridDialog",
-					primaryKey: "id",
-					modelObject: "Usuario",
-					detailButtons: $.rup.maint.detailButtons.SAVE,
-					searchForm: "searchFormDialog",
-					showMessages: true,
-					showFeedback: false
-				});
 				
-				//Formulario de filtrado
-				$('#dialog_ejie_search').rup_combo({
-					source : [
-					   {i18nCaption: "0", value:"0"},
-					   {i18nCaption: "1", value:"1"}
-					],
-					i18nId: "gridDialog##ejie",
-					width: 155,
-					blank:""
-				});
-				$("#dialog_fechaAlta_search").rup_date();
-				$("#dialog_fechaBaja_search").rup_date();
 				
-				$('#dialog_multicombo_search').rup_combo({
-					source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-					ordered: false,
-					width: 200,
-					multiselect: true
-				});
+			
 				
 				$("#feedbackDialog").rup_feedback({ type: "ok", message:"Este es un ejemplo de <b>Feedback</b>"});
 				
@@ -372,5 +298,4 @@ jQuery(function($){
 		});	
 	});
 	
-	$("#maint").css("width","auto");
 });

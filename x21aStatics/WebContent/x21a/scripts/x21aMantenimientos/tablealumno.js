@@ -148,77 +148,7 @@ jQuery(function($){
     });
 	
 
-//	$("#alumno").rup_maint({
-//		jQueryGrid: "GRID_alumno",
-//		primaryKey: "id",
-//		modelObject: "Alumno",
-//		detailButtons: $.rup.maint.detailButtons.SAVE,
-//		searchForm: "searchForm",
-//		showMessages: true,
-//		detailForm:"detalleAlumnoForm",
-////		fluidOffset : 0,
-//		validation:{
-//			messages:{
-//				"password_confirm":$.rup.i18n.app.alumno.password_confirm,
-//				"email_confirm":$.rup.i18n.app.alumno.email_confirm
-//			},
-//			rules:{
-//				"nombre":{required:true},
-//				"apellido1":{required:true},
-//				"usuario":{required:true},
-//				"password":{required:function(){
-//					if ($("#divOldPassword").is(":hidden")) {
-//						return true;
-//					}else{
-//						if ($("#oldPassword").val()!==''){
-//							return true;
-//						}else{
-//							return false;
-//						}
-//					}
-//				}},
-////				"password":{required:true},
-//				"importeMatricula":{number:true},
-//				"password_confirm":{equalTo:"#password"},
-//				"dni":{required:true, dni:true},
-//				"email":{email:true},
-//				"email_confirm":{equalTo:"#email"},
-//				"pais":{required:true},
-//				"autonomia":{required:true},
-//				"provincia":{required:true}
-//			}
-//		},
-//		detailDivWidth:"1100",
-//		onbeforeDetailShow:function(mnt, xhr) {
-//			if (this.prop.MODO === 'new') {
-//				$("#pais").rup_combo("select","108");
-//				$("#divDireccionExtranjera").hide();
-//				$("#divDireccionPais").show();
-//				$("#divOldPassword").hide();
-//				$("#imagen").attr("src",$.rup.STATICS+"/x21a/images/no_picture.gif");
-//            }else{
-//            	$("#divOldPassword").show();
-//            	
-//            	if($("#pais").rup_combo("getRupValue")==="108"){
-//    				$("#divDireccionExtranjera").hide();
-//    				$("#divDireccionPais").show();
-//    				$("#divAutonomia").show();
-//    			}else{
-//    				$("#divDireccionExtranjera").show();
-//    				$("#divDireccionPais").hide();
-//    				$("#divAutonomia").hide();
-//    			}
-//            	
-//            	            	
-//            	if (xhr.nombreImagen!==undefined && xhr.nombreImagen!==null && xhr.imagen!==''){
-//    				$("#imagen").attr("src","http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/administracion/alumno/imagen/"+xhr.id+"?" + new Date());
-//    			}else{
-//    				$("#imagen").attr("src",$.rup.STATICS+"/x21a/images/no_picture.gif");
-//    			}
-//            }
-//			
-//		}
-//	});
+
 	
 	$('#sexo').rup_combo({
 		source : [

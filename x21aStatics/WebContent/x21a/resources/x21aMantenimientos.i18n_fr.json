@@ -1,17 +1,9 @@
 {
 	"x21aMantenimientosWar_migas" :{
-		"simple"	: "Selección simple_fr",
 		"multi"		: "Multiselección_fr",
-		"edlinea"	: "Edición en línea_fr",
 		"formPropio" : "Form Propio_fr", 
 		"administracion" : "Administración_fr",
 		"alumno" : "Alumno_fr",
-		"jerarquia" : "Jerarquia_fr",
-		"usuarioJerarquia" : "Normal_fr",
-		"usuarioJerarquiaGroup" : "Agrupado_fr",
-		"usuarioJerarquiaMulti" : "Multiselección_fr",
-		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado_fr",
-		"usuarioJerarquiaCol" : "Columna independiente_fr",
 		"uda":"UDA"	
 	},
 	"GRID_simple##ejie" : {
@@ -53,10 +45,7 @@
 		"0" : "Non",
 		"1" : "Oui"
 	},
-	"GRID_edlinea##ejie" : {
-		"0" : "Non",
-		"1" : "Oui"
-	},
+	
 	"simpelMaint" : {
 		"actualizar":"Ejemplo de botón personalizado_fr"
 	},
@@ -76,10 +65,6 @@
 	"loginUserMock" : {
 		"logginOk1" : "Usuario _fr'",
 		"logginOk2" : "' Seleccionado correctamente_fr"
-	},
-	"GRID_usuarioJerarquia##ejie" : {
-		"0" : "Non",
-		"1" : "Oui"
 	},
 	"table":{
 		"id": "Id",

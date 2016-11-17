@@ -181,25 +181,9 @@
 			value="/WEB-INF/views/patrones/form-includes.jsp" />
 	</definition>
 
-	<definition name="grid" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/grid.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/grid-includes.jsp" />
-	</definition>
 
-	<definition name="gridGroup" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/grid/gridGroup.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/grid/gridGroup-includes.jsp" />
-	</definition>
 
-	<definition name="gridTree" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/grid/gridTree.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/grid/gridTree-includes.jsp" />
-	</definition>
+
 
 	<definition name="menu" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/menu.jsp" />
@@ -361,43 +345,10 @@
 	
 
 	<!-- Experimental -->
-	<definition name="maestro_detalle" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/maestro_detalle.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/maestro_detalle-includes.jsp" />
-	</definition>
-	<definition name="mant_multi_entidad" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/mant_multi_entidad.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/mant_multi_entidad-includes.jsp" />
-	</definition>
-	<definition name="mant_clave_compuesta_multi" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/mant_clave_compuesta_multi.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/mant_clave_compuesta_multi-includes.jsp" />
-	</definition>
-	<definition name="mant_clave_compuesta_edlinea" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/mant_clave_compuesta_edlinea-includes.jsp" />
-	</definition>
-	<definition name="jackson" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/jackson.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/jackson-includes.jsp" />
-	</definition>
-
-	<definition name="tabsPaging" extends="template">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/testTabs.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/testTabs-includes.jsp" />
-	</definition>
+	
+	
+	
+	
 
 	
 

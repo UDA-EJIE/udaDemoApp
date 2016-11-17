@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +40,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -57,7 +55,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
@@ -70,23 +67,18 @@ import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.UploadBean;
-import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
-import com.ejie.x21a.service.JQGridUsuarioJerarquiaService;
 import com.ejie.x21a.service.LocalidadService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.service.ProvinciaService;
 import com.ejie.x21a.service.UploadService;
-import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
 import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridJSONModel;
-import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
@@ -121,8 +113,7 @@ public class PatronesController {
 	@Autowired
 	private UploadService uploadService;
 	
-	@Autowired
-	private JQGridUsuarioJerarquiaService jqGridUsuarioJerarquiaService;
+
 	
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -424,8 +415,7 @@ public class PatronesController {
 	 * 		- Departamento
 	 * 		- DepartamentoProvincia
 	 */
-		@Autowired 
-		private UsuarioService usuarioService;
+
 		
 		@Autowired 
 		private ProvinciaService provinciaService;
@@ -741,92 +731,11 @@ public class PatronesController {
 			
 		
 		
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.GET)
-		public @ResponseBody Object getAll(
-			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "apellido1", required = false) String apellido1,
-			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "ejie", required = false) String ejie,
-			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
-			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
-			HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> GET");
-			
-			this.traceRequest(request);
-			
-			
-					Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
-	                Pagination pagination = null;
-				    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
-					    pagination = new Pagination();
-					    pagination.setPage(Long.valueOf(request.getParameter("page")));
-					    pagination.setRows(Long.valueOf(request.getParameter("rows")));
-					    pagination.setSort(request.getParameter("sidx"));
-					    pagination.setAscDsc(request.getParameter("sord"));
-	                    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
+
 	
-						
-		        Long total = getAllCount(filterUsuario);
-					    JQGridJSONModel data = new JQGridJSONModel();
-					    data.setPage(request.getParameter("page"));
-					    data.setRecords(total.intValue());
-					    data.setTotal(total, pagination.getRows());
-					    data.setRows(usuarios);
-					    return data;
-					}else{
-			    return this.usuarioService.findAllLike(filterUsuario, pagination, false);
-				}
-		}
-		@RequestMapping(value = "usuarioOld/count", method = RequestMethod.GET)
-		public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
-				return usuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (), false);
-		}
 		
-	/**
-	 * MAINT (Usuarios) [all.jsp]
-	 */
-		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.GET)
-		public @ResponseBody Usuario getById(@PathVariable String id) {
-	            Usuario usuario = new Usuario();
-				usuario.setId(id);
-	            usuario = this.usuarioService.find(usuario);
-	            return usuario;
-		}
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.PUT)
-	    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response, HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> PUT");
-			
-			
-			this.traceRequest(request);
-			
-	            Usuario usuarioAux  = this.usuarioService.update(usuario);
-            logger.info("Entity correctly updated!");
-	            return usuarioAux;
-	    }
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.POST)
-		public @ResponseBody Usuario add(@RequestBody Usuario usuario, HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> POST");
-			
-			
-			this.traceRequest(request);
-			
-	            Usuario usuarioAux = this.usuarioService.add(usuario);
-	        logger.info("Entity correctly inserted!");
-	        	return usuarioAux;
-			}
-		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.DELETE)
-		@ResponseStatus(value=HttpStatus.OK)
-	    public void remove(@PathVariable String id) {
-	            Usuario usuario = new Usuario();
-	            usuario.setId(id);
-	            this.usuarioService.remove(usuario);
-            logger.info("Entity correctly deleted!");
-	    }
 		
+	
 		/**
 		 * MAINT (Usuarios) [form.jsp]
 		 */
