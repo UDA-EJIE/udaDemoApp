@@ -42,10 +42,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.service.ComarcaService;
-import com.ejie.x21a.service.LocalidadService;
-import com.ejie.x21a.service.NoraAutonomiaService;
-import com.ejie.x21a.service.NoraPaisService;
+
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.dto.JQGridDto;
 import com.ejie.x38.dto.Pagination;
@@ -68,17 +65,11 @@ public class TableCompositeController  {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	private NoraPaisService noraPaisService;
+
 	
-	@Autowired
-	private NoraAutonomiaService noraAutonomiaService;
-	
-	@Autowired 
-	private ComarcaService comarcaService;
-	
-	@Autowired 
-	private LocalidadService localidadService;
+
+
+
 	
 	
 	@RequestMapping(value = "formEdit", method = RequestMethod.GET)

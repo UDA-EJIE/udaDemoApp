@@ -1,16 +1,16 @@
 /*
 * Copyright 2012 E.J.I.E., S.A.
 *
-* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
-* Solo podrá usarse esta obra si se respeta la Licencia.
+* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
 * Puede obtenerse una copia de la Licencia en
 *
 * http://ec.europa.eu/idabc/eupl.html
 *
-* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
-* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
 package com.ejie.x21a.control;
@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -36,13 +35,11 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jackson.annotate.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -58,7 +55,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
@@ -71,29 +67,25 @@ import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.UploadBean;
-import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
-import com.ejie.x21a.service.JQGridUsuarioJerarquiaService;
 import com.ejie.x21a.service.LocalidadService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.service.ProvinciaService;
 import com.ejie.x21a.service.UploadService;
-import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
 import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridJSONModel;
-import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
 import com.ejie.x38.json.MessageWriter;
 import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.validation.ValidationManager;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * PatronesController
@@ -121,8 +113,7 @@ public class PatronesController {
 	@Autowired
 	private UploadService uploadService;
 	
-	@Autowired
-	private JQGridUsuarioJerarquiaService jqGridUsuarioJerarquiaService;
+
 	
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -168,7 +159,7 @@ public class PatronesController {
 	public String getDialog(Model model) {
 		return "dialog";
 	}
-	//Dialog (petición Ajax)
+	//Dialog (peticiÃ³n Ajax)
 	@RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
 	public String dialogJSP(Model model) {
 		return "dialogAjax";
@@ -424,8 +415,7 @@ public class PatronesController {
 	 * 		- Departamento
 	 * 		- DepartamentoProvincia
 	 */
-		@Autowired 
-		private UsuarioService usuarioService;
+
 		
 		@Autowired 
 		private ProvinciaService provinciaService;
@@ -492,10 +482,10 @@ public class PatronesController {
 			//Idioma
 			Locale locale = LocaleContextHolder.getLocale();
 			
-			//Retorno del método
+			//Retorno del mÃ©todo
 			List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
 			
-			//Nombres de los grupos según idioma
+			//Nombres de los grupos segÃºn idioma
 		   	String provincia = null, comarca = null, localidad = null;
 		   	if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())){
 				provincia = "Provincia_eu";
@@ -563,7 +553,7 @@ public class PatronesController {
 		public @ResponseBody List<Comarca> getEnlazadoComarca(
 				@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Provincia provincia = new Provincia();
 			provincia.setCode(provincia_code);
 			Comarca comarca = new Comarca();
@@ -576,7 +566,7 @@ public class PatronesController {
 		public @ResponseBody List<Localidad> getEnlazadoLocalidad(
 				@RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Comarca comarca = new Comarca();
 			comarca.setCode(comarca_code);
 			Localidad localidad = new Localidad();
@@ -591,7 +581,7 @@ public class PatronesController {
 	 * COMBO ENLAZADO MULTIPLE	
 	 */			
 		/**
-		 * Combos Enlazados (múltiple)
+		 * Combos Enlazados (mÃºltiple)
 		 */
 		@RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method=RequestMethod.GET)
 		public @ResponseBody List<Departamento> getEnlMultDpto() {
@@ -610,7 +600,7 @@ public class PatronesController {
 				@RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
 				@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 			
-			//Convertir parámetros en entidad para búsqueda
+			//Convertir parÃ¡metros en entidad para bÃºsqueda
 			Departamento departamento = new Departamento();
 			departamento.setCode(departamento_code);
 			Provincia provincia = new Provincia();
@@ -639,6 +629,12 @@ public class PatronesController {
 		@RequestMapping(value = { "tab3Fragment" }, method = RequestMethod.GET)
 		public String tabs3Content(Model model) {
 			return "tabsContent_3";
+		}
+		
+		// rupCharts
+		@RequestMapping(value = "charts", method = RequestMethod.GET)
+		public String getCharts(Model model) {
+			return "charts";
 		}
 	
 	/**
@@ -741,92 +737,11 @@ public class PatronesController {
 			
 		
 		
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.GET)
-		public @ResponseBody Object getAll(
-			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "apellido1", required = false) String apellido1,
-			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "ejie", required = false) String ejie,
-			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
-			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
-			HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> GET");
-			
-			this.traceRequest(request);
-			
-			
-					Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
-	                Pagination pagination = null;
-				    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
-					    pagination = new Pagination();
-					    pagination.setPage(Long.valueOf(request.getParameter("page")));
-					    pagination.setRows(Long.valueOf(request.getParameter("rows")));
-					    pagination.setSort(request.getParameter("sidx"));
-					    pagination.setAscDsc(request.getParameter("sord"));
-	                    List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
+
 	
-						
-		        Long total = getAllCount(filterUsuario);
-					    JQGridJSONModel data = new JQGridJSONModel();
-					    data.setPage(request.getParameter("page"));
-					    data.setRecords(total.intValue());
-					    data.setTotal(total, pagination.getRows());
-					    data.setRows(usuarios);
-					    return data;
-					}else{
-			    return this.usuarioService.findAllLike(filterUsuario, pagination, false);
-				}
-		}
-		@RequestMapping(value = "usuarioOld/count", method = RequestMethod.GET)
-		public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
-				return usuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (), false);
-		}
 		
-	/**
-	 * MAINT (Usuarios) [all.jsp]
-	 */
-		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.GET)
-		public @ResponseBody Usuario getById(@PathVariable String id) {
-	            Usuario usuario = new Usuario();
-				usuario.setId(id);
-	            usuario = this.usuarioService.find(usuario);
-	            return usuario;
-		}
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.PUT)
-	    public @ResponseBody Usuario edit(@RequestBody Usuario usuario, HttpServletResponse response, HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> PUT");
-			
-			
-			this.traceRequest(request);
-			
-	            Usuario usuarioAux  = this.usuarioService.update(usuario);
-            logger.info("Entity correctly updated!");
-	            return usuarioAux;
-	    }
-		@RequestMapping(value = "usuarioOld", method = RequestMethod.POST)
-		public @ResponseBody Usuario add(@RequestBody Usuario usuario, HttpServletRequest request) {
-			
-			logger.info("********x21aPilotoPatronesWar/patrones/usuario -> POST");
-			
-			
-			this.traceRequest(request);
-			
-	            Usuario usuarioAux = this.usuarioService.add(usuario);
-	        logger.info("Entity correctly inserted!");
-	        	return usuarioAux;
-			}
-		@RequestMapping(value = "usuarioOld/{id}", method = RequestMethod.DELETE)
-		@ResponseStatus(value=HttpStatus.OK)
-	    public void remove(@PathVariable String id) {
-	            Usuario usuario = new Usuario();
-	            usuario.setId(id);
-	            this.usuarioService.remove(usuario);
-            logger.info("Entity correctly deleted!");
-	    }
 		
+	
 		/**
 		 * MAINT (Usuarios) [form.jsp]
 		 */
@@ -838,7 +753,7 @@ public class PatronesController {
 			
 			messageWriter.startMessageList();
 			messageWriter.addMessage("El formulario se ha enviado correctamente.");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(alumno).toString());
 			messageWriter.endSubLevel();
@@ -872,7 +787,7 @@ public class PatronesController {
 
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(alumno).toString());
 			messageWriter.endSubLevel();
@@ -893,7 +808,7 @@ public class PatronesController {
 			
 			messageWriter.startMessageList();
 			messageWriter.addMessage("Las entidades se han enviado correctamente");
-			messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+			messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
 			messageWriter.startSubLevel();
 			messageWriter.addMessage(new JSONObject(comarca1).toString());
 			messageWriter.endSubLevel();

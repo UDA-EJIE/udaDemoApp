@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.service.MultiPkService;
-import com.ejie.x38.dto.JQGridJSONModel;
-import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.util.ObjectConversionManager;
 
 /**
@@ -147,19 +145,5 @@ public class MultiPkController  {
 		return multiPkIds;
 	}	
 
-	/**
-	 * Method 'getAllJQGrid'.
-	 *
-	 * @param filterMultiPk MultiPk
-	 * @param pagination Pagination
-	 * @return JQGridJSONModel
-	 */
-	@RequestMapping(method = RequestMethod.GET, headers={"JQGridModel=true"})
-	public @ResponseBody JQGridJSONModel getAllJQGrid(@ModelAttribute MultiPk filterMultiPk, @ModelAttribute Pagination pagination) {
-        List<MultiPk> multiPks = this.multiPkService.findAll(filterMultiPk, pagination);
-        Long recordNum = this.multiPkService.findAllCount(filterMultiPk);
-        MultiPkController.logger.info("[GET - jqGrid] : Obtener MultiPk");
-		return new JQGridJSONModel(pagination, recordNum, multiPks);
-	}
-	
+
 }	

@@ -1,4 +1,4 @@
-<%--  
+﻿<%--  
  -- Copyright 2012 E.J.I.E., S.A.
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -54,6 +54,8 @@
 <script src="${staticsUrl}/rup/scripts/core/utils/jquery.jstree.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/core/utils/jquery.hotkeys.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/core/utils/jquery.contextMenu.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/scripts/core/utils/Chart.min.js" type="text/javascript"></script>
+
 
 <!-- Patrones RUP -->
 <script src="${staticsUrl}/rup/scripts/rup.accordion-2.4.8.js" type="text/javascript"></script>
@@ -96,6 +98,8 @@
 <script src="${staticsUrl}/rup/scripts/rup.validate-2.4.8.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.wizard-2.4.8.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.tree-2.4.8.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/scripts/rup.chart-2.4.8.js" type="text/javascript"></script>
+
 
 <!-- Ajustes de compatibilidad de menú -->
 <script src="${staticsUrl}/rup/scripts/core/jquery-1.7.2.js" type="text/javascript"></script>

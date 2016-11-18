@@ -16,7 +16,6 @@
 package com.ejie.x21a.control;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,7 +42,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.UsuarioService;
-import com.ejie.x38.dto.JQGridJSONModel;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.reports.ReportData;
 import com.ejie.x38.util.ObjectConversionManager;
@@ -134,75 +132,7 @@ public class UsuarioController  {
 	}
 
 
-	 /**
-	 * Method 'getAll'.
-	*@param	  id String
-	*@param	  nombre String
-	*@param	  apellido1 String
-	*@param	  apellido2 String
-	*@param	  ejie String
-	*@param	  fechaAlta Date
-	*@param	  fechaBaja Date
-	*@param request HttpServletRequest
-	 * @return String
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody Object getAll(
-			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "apellido1", required = false) String apellido1,
-			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "ejie", required = false) String ejie,
-			@RequestParam(value = "fechaAlta", required = false) Date fechaAlta,
-			@RequestParam(value = "fechaBaja", required = false) Date fechaBaja,
-			@RequestParam(value = "multicombo", required = false) String multicombo,
-			HttpServletRequest request) {
-		Usuario filterUsuario = new Usuario(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja);
-        Pagination pagination = null;
-	    if (request.getHeader("JQGridModel") != null &&  request.getHeader("JQGridModel").equals("true")) {
-		    pagination = new Pagination();
-		    pagination.setPage(Long.valueOf(request.getParameter("page")));
-		    pagination.setRows(Long.valueOf(request.getParameter("rows")));
-		    pagination.setSort(request.getParameter("sidx"));
-		    pagination.setAscDsc(request.getParameter("sord"));
-            List<Usuario> usuarios =  this.usuarioService.findAllLike(filterUsuario, pagination, false);
 
-			Long total =  getAllCount(filterUsuario);
-			        
-
-		        /*
-		         * 
-		         */
-		        
-		        for (Iterator<Usuario> iterator = usuarios.iterator(); iterator
-						.hasNext();) {
-					Usuario usuario = (Usuario) iterator.next();
-					
-					if (usuario.getEjie().equals("0")){
-						usuario.setTipo("0A");
-						usuario.setSubtipo("0_0A_A");
-					}else if (usuario.getEjie().equals("1")){
-						usuario.setTipo("1A");
-						usuario.setSubtipo("1_1A_A");
-					}
-					
-				}
-		        
-		        /*
-		         * 
-		         */
-			        
-			        
-	        JQGridJSONModel data = new JQGridJSONModel();
-		    data.setPage(request.getParameter("page"));
-		    data.setRecords(total.intValue());
-		    data.setTotal(total, pagination.getRows());
-		    data.setRows(usuarios);
-		    return data;
-		}else{
-		    return this.usuarioService.findAllLike(filterUsuario, pagination, false);
-		}
-	}
 
 	/**
 	 * Method 'getAllCount'.
