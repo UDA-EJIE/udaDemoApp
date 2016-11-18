@@ -865,3 +865,8 @@ a.ui-dialog-title { color: black !important }
 .chart_icon{
 	background-image: url("../images/icons/chart_16.png") !important;
 }
+/*iberok*/
+.labelsIberdok {
+	width: 8em;
+	padding-left: 3em;
+}
