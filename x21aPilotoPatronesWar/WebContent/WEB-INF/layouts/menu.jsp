@@ -298,6 +298,15 @@
 						<span class="ui-icon validate_icon"></span>
 					</a>
 				</li>
+				
+				<li class="ui-widget-content ui-menu-divider"></li>
+				<li><strong><spring:message code="repDatos" /></strong></li>
+				<li>
+					<a href="/x21aPilotoPatronesWar/patrones/charts">
+						<spring:message code="charts" />
+						<span class="ui-icon chart_icon"></span>
+					</a>
+				</li>
 			</ul>
 		</li>
 <%-- 		<sec:authorize access="hasRole('ROLE_X21A-IN-0003')"> --%>
@@ -319,6 +328,9 @@
 						<spring:message code="logLevel" />
 					</a>
 				</li>
+				
+		
+		
 				
 				
 			</ul>

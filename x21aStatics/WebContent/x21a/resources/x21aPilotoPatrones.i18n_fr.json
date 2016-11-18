@@ -501,5 +501,23 @@
 		"espectador" : "espectador_fr",
 		"informador" : "informador_fr",
 		"manager" : "manager_fr"
-	}
+	},
+	
+	   "charts": {
+        "charts": "Gráficos_fr",
+        "line": "Líneas_fr",
+        "bar": "Barras_fr",
+        "radar": "Radar_fr",
+        "polar": "Polar_fr",
+        "pie": "Tarta_fr",
+        "doughnut": "Donut_fr",
+        "bubble": "Burbuja_fr",
+        "datasetRadar": {
+            "dataset1": "dataset 1_fr",
+            "dataset2": "dataset 2_fr"
+        },
+        "colorLabels": ["rojo_fr", "azul_fr", "amarillo_fr"],
+        "radarLabels": ["Comida_fr", "Bebida_fr", "Dormir_fr", "Diseño_fr", "Programacion_fr", "Bicicleta_fr", "Correr_fr"],
+        "mesesLabels": ["Enero_fr", "Febrero_fr", "Marzo_fr", "Abril_fr", "Mayo_fr", "Junio_fr", "Julio_fr"]
+    }
 }

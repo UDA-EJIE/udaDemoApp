@@ -277,6 +277,12 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/validate-includes.jsp" />
 	</definition>
+	
+	<definition name="charts" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/patrones/graficos.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/graficos-includes.jsp" />
+	</definition>
 
 	<definition name="wizard" extends="template">
 		<put-attribute name="content"

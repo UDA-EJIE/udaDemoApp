@@ -630,6 +630,12 @@ public class PatronesController {
 		public String tabs3Content(Model model) {
 			return "tabsContent_3";
 		}
+		
+		// rupCharts
+		@RequestMapping(value = "charts", method = RequestMethod.GET)
+		public String getCharts(Model model) {
+			return "charts";
+		}
 	
 	/**
 	 * GRID (Usuarios)
