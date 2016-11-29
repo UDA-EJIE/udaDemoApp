@@ -12,7 +12,7 @@
 		<org.springframework.security.version>3.2.9.RELEASE</org.springframework.security.version>
 		<org.logback.version>1.1.7</org.logback.version>
 		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<com.ejie.x38.version>2.4.7-RELEASE</com.ejie.x38.version>
+		<com.ejie.x38.version>3.0.0-RELEASE</com.ejie.x38.version>
 	</properties>
 	
 	<dependencies>
@@ -38,6 +38,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework.version}</version>
 		</dependency>
 		
 		<!-- Spring Security -->
@@ -66,6 +71,7 @@
 			<artifactId>spring-security-taglibs</artifactId>
         	<version>${org.springframework.security.version}</version>
 		</dependency>
+		
 		
 		<!-- Logging -->
             <!-- SLF4J -->
