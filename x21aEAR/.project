@@ -4,9 +4,10 @@
 	<comment></comment>
 	<projects>
 		<project>x21aMantenimientosWar</project>
-		<project>x21aPilotoPatronesWar</project>
 		<project>x21aEARClasses</project>
 		<project>x38ShLibClasses</project>
+		<project>x21aPilotoPatronesWar</project>
+		<project>x21aAppWar</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
