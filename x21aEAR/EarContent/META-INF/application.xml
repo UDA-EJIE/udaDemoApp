@@ -9,14 +9,14 @@
   </module>
   <module>
     <web>
-      <web-uri>x21aAppWar.war</web-uri>
-      <context-root>x21aAppWar</context-root>
+      <web-uri>x21aPilotoPatronesWar.war</web-uri>
+      <context-root>x21aPilotoPatronesWar</context-root>
     </web>
   </module>
   <module>
     <web>
-      <web-uri>x21aPilotoPatronesWar.war</web-uri>
-      <context-root>x21aPilotoPatronesWar</context-root>
+      <web-uri>x21aAppWar.war</web-uri>
+      <context-root>x21aAppWar</context-root>
     </web>
   </module>
 </application>

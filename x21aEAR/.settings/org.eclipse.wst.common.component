@@ -10,11 +10,11 @@
         <dependent-module archiveName="x38ShLibClasses.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses/x38ShLibClasses">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
+        <dependent-module archiveName="x21aPilotoPatronesWar.war" deploy-path="/" handle="module:/resource/x21aPilotoPatronesWar/x21aPilotoPatronesWar">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="x21aPilotoPatronesWar.war" deploy-path="/" handle="module:/resource/x21aPilotoPatronesWar/x21aPilotoPatronesWar">
+        <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
