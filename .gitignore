@@ -1,8 +1,5 @@
 .svn
 .metadata
 .metadata/*
-.settings
 RemoteSystemsTempFiles/.project
 *.launch
-.project
-.classpath
