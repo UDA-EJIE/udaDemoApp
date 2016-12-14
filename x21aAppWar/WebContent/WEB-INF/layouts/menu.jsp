@@ -88,7 +88,7 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/upload"><spring:message code="upload" /></a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/validate"><spring:message code="validate" /></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/x21aAppWar/patrones/charts"><spring:message code="validate" /></a>
+            <a class="dropdown-item" href="/x21aAppWar/patrones/charts"><i class="fa fa-bar-chart" aria-hidden="true"></i><spring:message code="charts.charts" /></a>
         </div>
       </li>
       <li class="nav-item dropdown">

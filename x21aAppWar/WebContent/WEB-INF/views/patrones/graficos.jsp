@@ -15,71 +15,72 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+<section class="">
 <h2>
 	<spring:message code="charts.charts" />
 </h2>
-<div>
-	<!--LINEA-->
-	<div class="espacioLinea">
-		<div class="enLinea butstyle celdaGrafico">
-			<h3>
-				<spring:message code="charts.line" />
-			</h3>
-			<canvas id="graficoLine"></canvas>
-		</div>
-		<div class="enLinea celdaEspacio"></div>
-		<div class="enLinea butstyle celdaGrafico">
-			<h3>
-				<spring:message code="charts.bar" />
-			</h3>
-			<canvas id="graficoBar"></canvas>
+<p>
+	<spring:message code="charts.descript" />
+</p>
 
+<section class="espacioLinea">
+	<!--LINEA-->
+	<div class=" row">
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.line" /></h3>
+				<canvas id="graficoLine" ></canvas>
+			</div>
+		</div>
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.bar" /></h3>
+				<canvas id="graficoBar" ></canvas>
+			</div>
 		</div>
 	</div>
 	<!--FIN LINEA-->
 	<!--LINEA-->
-	<div class="espacioLinea">
-		<div class="enLinea butstyle celdaGrafico">
-			<h3>
-				<spring:message code="charts.radar" />
-			</h3>
-			<canvas id="graficoRadar"></canvas>
+	<div class=" row">
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.radar"/></h3>
+				<canvas id="graficoRadar" ></canvas>
+			</div>
 		</div>
-		<div class="enLinea celdaEspacio"></div>
-		<div class="enLinea butstyle celdaGrafico">
-			<h3>
-				<spring:message code="charts.polar" />
-			</h3>
-			<canvas id="graficoPolar"></canvas>
-		</div>
-	</div>
-	<!--FIN LINEA-->
-	<!--LINEA-->
-	<div class="espacioLinea">
-		<div class=" butstyle  enLinea celdaGrafico">
-			<h3>
-				<spring:message code="charts.pie" />
-			</h3>
-			<canvas id="graficoPie"></canvas>
-		</div>
-		<div class="enLinea celdaEspacio"></div>
-		<div class="enLinea butstyle celdaGrafico ">
-			<h3>
-				<spring:message code="charts.doughnut" />
-			</h3>
-			<canvas id="graficoDoughnut"></canvas>
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.polar"/></h3>
+				<canvas id="graficoPolar" ></canvas>
+			</div>
 		</div>
 	</div>
 	<!--FIN LINEA-->
 	<!--LINEA-->
-	<div class="espacioLinea">
-		<div class="enLinea butstyle celdaGrafico">
-			<h3>
-				<spring:message code="charts.bubble" />
-			</h3>
-			<canvas id="graficoBubble"></canvas>
+	<div class=" row">
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.pie"/></h3>
+				<canvas id="graficoPie" ></canvas>
+			</div>
 		</div>
-		<div class="enLinea"></div>
-		<div class="enLinea"></div>
+		<div class="col-xl-6 col-xs-12  col-sm-5 ">
+			<div class="butstyle">
+				<h3><spring:message code="charts.doughnut"/></h3>
+				<canvas id="graficoDoughnut"></canvas>
+			</div>
+		</div>
 	</div>
-</div>
+	<!--FIN LINEA-->
+	<!--LINEA-->
+	<div class="row">
+		<div class="col-xl-6  col-xs-12  col-sm-5">
+			<div class="butstyle">
+				<h3><spring:message code="charts.bubble"/></h3>
+				<canvas id="graficoBubble" ></canvas>
+			</div>
+		</div>
+		<div class=""></div>
+	</div>
+</section>
+</section>
