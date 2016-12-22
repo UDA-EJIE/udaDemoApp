@@ -31,9 +31,10 @@ var	APP_RESOURCES = 'x21a',
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
+	RUP_ADAPTERS = {
+		upload: "UploadJQueryUIAdapter"
+	};
 </script>
-
-TRAZA : ${appVersion}
 
 <!-- Scripts RUP sin minimizar (DESARROLLO) -->
 <%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%> --%>

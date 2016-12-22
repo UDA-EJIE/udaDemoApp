@@ -1,31 +1,33 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÛn 1.1 exclusivamente (la ´Licenciaª);
- -- Solo podr· usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versi√≥n 1.1 exclusivamente (la ¬´Licencia¬ª);
+ -- Solo podr√° usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÛn aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye ´TAL CUALª,
- -- SIN GARANTÕAS NI CONDICIONES DE NING⁄N TIPO, ni expresas ni implÌcitas.
- -- VÈase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaci√≥n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye ¬´TAL CUAL¬ª,
+ -- SIN GARANT√çAS NI CONDICIONES DE NING√öN TIPO, ni expresas ni impl√≠citas.
+ -- V√©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
+
   <section>
-    <h2 class="page-header">TipografÌa</h2>
+    <h2 class="page-header">Tipograf√≠a</h2>
 
 
     <p>El tema por defecto de UDA define una serie de estilos predeterminados para las aplicaciones.</p>
 
-    <p>AsÌ pues, se consideran los siguientes valores:</p>
+    <p>As√≠ pues, se consideran los siguientes valores:</p>
 
     <ul>
       <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
-      <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tamaÒo de letra</li>
+      <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tama√±o de letra</li>
     </ul>
 
     <div class="example">
@@ -44,20 +46,20 @@
 
     <p>Se determina una misma apariencia para los botones nativos HTML, de bootstrap y UDA.</p>
 
-    <p>AsÌ pues la apariencia de los botones nativos <code>button</code>, <code>&lt;input type="text" /&gt;</code> y <code>&lt;input type="submit" /&gt;</code>serÌa:</p>
+    <p>As√≠ pues la apariencia de los botones nativos <code>button</code>, <code>&lt;input type="text" /&gt;</code> y <code>&lt;input type="submit" /&gt;</code>ser√≠a:</p>
 
     <div class="example">
       <div class="row">
         <div class="col-md-12">
           <button class="" type="submit">Submit</button>
-          <button class="" >BotÛn defecto</button>
+          <button class="" >Bot√≥n defecto</button>
           <input type="button" value="Input button" />
           <input type="submit" value="Input submit" />
         </div>
       </div>
     </div>
 
-    <p>Los botones de bootstrap <code>.btn</code> se visualizarÌan del siguiente modo:</p>
+    <p>Los botones de bootstrap <code>.btn</code> se visualizar√≠an del siguiente modo:</p>
 
     <div class="example">
       <div class="row">
@@ -86,7 +88,7 @@
       </div>
     </div>
 
-    <p>Este serÌa el aspecto de los botones <code>rup_button</code> de UDA:</p>
+    <p>Este ser√≠a el aspecto de los botones <code>rup_button</code> de UDA:</p>
 
     <div class="example">
       <div class="row">
@@ -114,13 +116,13 @@
 
     <h3>Campos de texto</h3>
 
-    <p>Se busca normalizar la apariencia de los campos de texto por defecto asÌ como de los que hacen uso de los estilos de bootstrap.</p>
+    <p>Se busca normalizar la apariencia de los campos de texto por defecto as√≠ como de los que hacen uso de los estilos de bootstrap.</p>
     <p>Un campo de texto por defecto hace uso de las siguientes propiedades de css:</p>
 
     <ul>
       <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
-      <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tamaÒo de letra. Como es relativo al tamaÒo base definido para <code>html</code> el valor por defecto ser· de <strong>12px</strong>.</li>
-      <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del campo de texto. Como es relativo al tamaÒo base definido para <code>html</code> el valor por defecto ser· de <strong>24px</strong>.</li>
+      <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tama√±o de letra. Como es relativo al tama√±o base definido para <code>html</code> el valor por defecto ser√° de <strong>12px</strong>.</li>
+      <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del campo de texto. Como es relativo al tama√±o base definido para <code>html</code> el valor por defecto ser√° de <strong>24px</strong>.</li>
     </ul>
 
     <div class="example">
@@ -128,7 +130,7 @@
       <input type="text" id="textFieldDefault" placeholder="default"/>
     </div>
 
-    <p>En caso de utilizar los estilos de bootstrap a la hora de diseÒar los campos de los formularios el estilo ser· similar.</p>
+    <p>En caso de utilizar los estilos de bootstrap a la hora de dise√±ar los campos de los formularios el estilo ser√° similar.</p>
 
     <div class="example">
       <div class="form-group">
@@ -149,21 +151,21 @@
 
     <ul>
       <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
-      <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tamaÒo de letra. Como es relativo al tamaÒo base definido para <code>html</code> el valor por defecto ser· de <strong>12px</strong>.</li>
-      <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del combo. Como es relativo al tamaÒo base definido para <code>html</code> el valor por defecto ser· de <strong>24px</strong>.</li>
+      <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tama√±o de letra. Como es relativo al tama√±o base definido para <code>html</code> el valor por defecto ser√° de <strong>12px</strong>.</li>
+      <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del combo. Como es relativo al tama√±o base definido para <code>html</code> el valor por defecto ser√° de <strong>24px</strong>.</li>
     </ul>
 
-    <p>AsÌ puÈs la apariencia de los diferentes combos que pueden ser incluidos en el formulario es la siguiente:</p>
+    <p>As√≠ pu√©s la apariencia de los diferentes combos que pueden ser incluidos en el formulario es la siguiente:</p>
 
     <p>Combo por defecto:</p>
 
     <div class="example">
       <select  id="selectDefault">
-        <option>OpciÛn 1</option>
-        <option>OpciÛn 2</option>
-        <option>OpciÛn 3</option>
-        <option>OpciÛn 4</option>
-        <option>OpciÛn 5</option>
+        <option>Opci√≥n 1</option>
+        <option>Opci√≥n 2</option>
+        <option>Opci√≥n 3</option>
+        <option>Opci√≥n 4</option>
+        <option>Opci√≥n 5</option>
       </select>
     </div>
 
@@ -171,11 +173,11 @@
 
     <div class="example">
       <select  id="selectBootstrap" class="form-control">
-        <option>OpciÛn 1</option>
-        <option>OpciÛn 2</option>
-        <option>OpciÛn 3</option>
-        <option>OpciÛn 4</option>
-        <option>OpciÛn 5</option>
+        <option>Opci√≥n 1</option>
+        <option>Opci√≥n 2</option>
+        <option>Opci√≥n 3</option>
+        <option>Opci√≥n 4</option>
+        <option>Opci√≥n 5</option>
       </select>
     </div>
 
@@ -183,11 +185,11 @@
 
     <div class="example">
       <select  id="rupCombo">
-        <option>OpciÛn 1</option>
-        <option>OpciÛn 2</option>
-        <option>OpciÛn 3</option>
-        <option>OpciÛn 4</option>
-        <option>OpciÛn 5</option>
+        <option>Opci√≥n 1</option>
+        <option>Opci√≥n 2</option>
+        <option>Opci√≥n 3</option>
+        <option>Opci√≥n 4</option>
+        <option>Opci√≥n 5</option>
       </select>
     </div>
   </section>

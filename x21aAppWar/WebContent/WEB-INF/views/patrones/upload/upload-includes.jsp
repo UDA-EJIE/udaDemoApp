@@ -14,4 +14,4 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/upload.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/upload.js" type="text/javascript"></script>
