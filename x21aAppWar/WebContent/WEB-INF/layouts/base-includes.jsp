@@ -31,6 +31,9 @@ var	APP_RESOURCES = 'x21a',
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
+	RUP_ADAPTERS = {
+			upload: "UploadBootstrapAdapter"
+		};
 </script>
 
 <!-- Scripts RUP sin minimizar (DESARROLLO) -->

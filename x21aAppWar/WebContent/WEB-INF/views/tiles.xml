@@ -287,9 +287,9 @@
 	</definition>
 
 	<definition name="upload" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/patrones/upload.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/patrones/upload/upload.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/upload-includes.jsp" />
+			value="/WEB-INF/views/patrones/upload/upload-includes.jsp" />
 	</definition>
 
 	<definition name="validate" extends="template">

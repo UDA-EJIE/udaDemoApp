@@ -64,6 +64,21 @@ $(document).ready(function () {
 				}					
 			}]
 		});	
+		
+
+		$('#combo').rup_combo({
+			//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+			source : [
+				{i18nCaption: "asp", value:"asp_value"},
+				{i18nCaption: "c", value:"c_value"},
+				
+			],
+			selected: "perl_value",
+			width: 300,
+			blank : "0",
+			rowStriping : true,
+			inputText:true
+		});
 	});
 	
 	$("#btnAjaxDialogStatics").bind("click", function () {

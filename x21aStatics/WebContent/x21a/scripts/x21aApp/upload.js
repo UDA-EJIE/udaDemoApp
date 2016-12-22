@@ -16,49 +16,71 @@
 jQuery(document).ready(function(){
 	
 	// Definicion de las pestanas
-	$("#uploadTabs").rup_tabs({
-		tabs : [ {
-			i18nCaption : "upload",
-			layer : "#fileupload_only"
-		}, {
-			i18nCaption : "uploadFormSimple",
-			layer : "#fileupload_form"
-		}, {
-			i18nCaption : "uploadFormMultiple",
-			layer : "#fileupload_form_multiple"
-		}, {
-			i18nCaption : "uploadFormPif",
-			layer : "#fileupload_pif_form"
-		} 
-		]
-	});
-	
+//	$("#uploadTabs").rup_tabs({
+//		tabs : [ {
+//			i18nCaption : "upload",
+//			layer : "#fileupload_only"
+//		}, {
+//			i18nCaption : "uploadFormSimple",
+//			layer : "#fileupload_form"
+//		}, {
+//			i18nCaption : "uploadFormMultiple",
+//			layer : "#fileupload_form_multiple"
+//		}, {
+//			i18nCaption : "uploadFormPif",
+//			layer : "#fileupload_pif_form"
+//		} 
+//		]
+//	});
+//	
 	// Creacion de los componentes feedback
 	$("#feedback_fileupload_form").rup_feedback();
 	$("#feedback_fileupload_form_multiple").rup_feedback();
 	
 	
 	// Se utiliza jquery.form para realizar el submit de los formularios por AJAX
-	$("#usuarioForm").ajaxForm(function(){
+	$("#uploadForm").ajaxForm(function(){
 		$("#feedback_fileupload_form").rup_feedback("set","Los datos se han enviado correctamente");
 	});
-	 
-	$("#usuarioFormSimple").ajaxForm(function(){
+
+//	 
+	$("#uploadFormMultiple").ajaxForm(function(){
 		$("#feedback_fileupload_form_multiple").rup_feedback("set","Los datos se han enviado correctamente");
 	});
-	
+//	
 	// Creacion de los diferentes componentes Upload
 	
 
+	// Upload basic
+//	$('#basicFileupload').rup_upload({
+////		fileInput: $("#file_only"),
+//		maxFileSize: 5000000
+//	});
 	
-	// Upload simple
+	
+	$('#basicFileupload').fileupload({
+        dataType: 'json',
+        uploadTemplateId:false,
+        downloadTemplateId:false,
+        add: function (e, data) {
+            $("#basicFileuploadContext").text("Subiendo archivos...");
+            data.submit();
+        },
+        done: function (e, data) {
+          $.each(data.result, function (index, file) {
+        	  $("#basicFileuploadContext").text(file.name);
+          });
+        }
+    });
+	
+//	// Upload simple
 	$('#fileupload_only').rup_upload({
 		fileInput: $("#file_only"),
 		maxFileSize: 5000000
 	});
-	
-	 
-	// Upload integrado en formulario
+//	
+//	 
+//	// Upload integrado en formulario
 	$('#fileupload_form').rup_upload({
 		fileInput: $("#file_form"),
 		submitFormButton: $("#sendButton"),
@@ -76,7 +98,7 @@ jQuery(document).ready(function(){
 //			preserveName:true
 //		}
 //	});
-	
+//	
 //	$('#fileupload_pif_form').rup_upload({
 //		fileInput: $("#file_pif_form"),
 //		url: "../pifServlet",
@@ -90,18 +112,18 @@ jQuery(document).ready(function(){
 //	});
 //	
 	
-	$('#fileupload_pif_form').rup_upload({
-		fileInput: $("#file_pif_form"),
-		url: "../pifServlet",
-		pif:{
-			folderPath: "/x21a",
-			fileTtl: 60,
-			preserveName:true
-		}
-	});
-	
-	 
-	// Dos controles Upload intergrados en un mismo formulario
+//	$('#fileupload_pif_form').rup_upload({
+//		fileInput: $("#file_pif_form"),
+//		url: "../pifServlet",
+//		pif:{
+//			folderPath: "/x21a",
+//			fileTtl: 60,
+//			preserveName:true
+//		}
+//	});
+//	
+//	 
+//	// Dos controles Upload intergrados en un mismo formulario
 	$('#fileupload_file_form_padre').rup_upload({
 		form:"fileupload_form_multiple",
 		fileInput: $("#file_form_padre"),

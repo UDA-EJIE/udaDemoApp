@@ -1,17 +1,18 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
- -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- -- Solo podrá usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+ -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  -- 
  -- http://ec.europa.eu/idabc/eupl.html
  -- 
- -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
- -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+ -- el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+ -- SIN GARANTÃAS NI CONDICIONES DE NINGÃN TIPO, ni expresas ni implÃ­citas.
+ -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia. 
  --%>
+ <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>
  
 <nav class="rup-navbar navbar">
@@ -36,7 +37,7 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/accordion"><spring:message code="accordion" /></a>
 
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#">Pesta�as</a>
+              <a class="dropdown-item" href="#">Pestañas</a>
               <div class="dropdown-menu menu-right" >
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic"><spring:message code="tabsStatic" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax"><spring:message code="tabsAjax" /></a>
@@ -94,7 +95,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="tableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tabla</a>
         <div class="dropdown-menu" aria-labelledby="tableDropdown">
-          <a class="dropdown-item" href="#tableFilter">Edici�n en formulario</a>
+          <a class="dropdown-item" href="#tableFilter">Edición en formulario</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -112,9 +113,9 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="styleGuideDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gu�a de estilos</a>
+        <a class="nav-link dropdown-toggle" href="#" id="styleGuideDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guía de estilos</a>
         <div class="dropdown-menu" aria-labelledby="styleGuideDropdown">
-          <a class="dropdown-item" href="/x21aAppWar/styleGuide">Gu�a de estilos</a>
+          <a class="dropdown-item" href="/x21aAppWar/styleGuide">Guía de estilos</a>
         </div>
       </li>
     </ul>
