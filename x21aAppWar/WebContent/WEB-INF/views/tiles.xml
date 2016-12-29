@@ -556,6 +556,20 @@
         <put-attribute name="includes" value="/WEB-INF/views/dashboard/dashboard-includes.jsp"/>
     </definition>  
 
+	<!-- Bootstrap -->
+	<definition extends="template" name="stackedHorizontal">
+        <put-attribute name="content" value="/WEB-INF/views/bootstrap/stackedHorizontal.jsp"/>
+    </definition>  
+    <definition extends="template" name="mobileDesktop">
+        <put-attribute name="content" value="/WEB-INF/views/bootstrap/mobileDesktop.jsp"/>
+    </definition>
+    <definition extends="template" name="mobileTabletDesktop">
+        <put-attribute name="content" value="/WEB-INF/views/bootstrap/mobileTabletDesktop.jsp"/>
+    </definition>
+    <definition extends="template" name="exampleForm">
+        <put-attribute name="content" value="/WEB-INF/views/bootstrap/exampleForm.jsp"/>
+    </definition>
+
 	<definition name="y52bdocumentos" extends="template">
 		<put-attribute name="content"
 			value="/WEB-INF/views/experimental/documentos.jsp" />
