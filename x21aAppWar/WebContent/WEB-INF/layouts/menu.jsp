@@ -95,15 +95,16 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="tableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tabla</a>
         <div class="dropdown-menu" aria-labelledby="tableDropdown">
-          <a class="dropdown-item" href="#tableFilter">Edición en formulario</a>
+          <a class="dropdown-item" href="/x21aAppWar/table/filtroSimple">Edición en formulario</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="gridResponsiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grid responsive</a>
         <div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
-          <a class="dropdown-item" href="#stackedHorizontal">Stacked to horizontal</a>
-          <a class="dropdown-item" href="#mobileDesktop">Mobile and desktop</a>
-          <a class="dropdown-item" href="#mobileTabletDesktop">Mobile, Tablet and desktop</a>
+          <a class="dropdown-item" href="/x21aAppWar/bootstrap/stackedHorizontal">Stacked to horizontal</a>
+          <a class="dropdown-item" href="/x21aAppWar/bootstrap/mobileDesktop">Mobile and desktop</a>
+          <a class="dropdown-item" href="/x21aAppWar/bootstrap/mobileTabletDesktop">Mobile, Tablet and desktop</a>
+          <a class="dropdown-item" href="/x21aAppWar/bootstrap/exampleForm">Formulario ejemplo</a>
         </div>
       </li>
       <li class="nav-item dropdown">
