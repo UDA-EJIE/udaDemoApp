@@ -41,6 +41,7 @@
 			{ name: "ejie", index: "ejie", editable:true, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
+				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				align: "center",
 				editoptions: {
 					value:"1:0"
@@ -57,6 +58,7 @@
 			},
 			{ name: "fechaAlta",  index: "fecha_alta", editable:true, width: 120,
 				rupType: "date",
+				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
 					labelMaskId : "fecha-mask",
 					showButtonPanel : true,
@@ -67,6 +69,7 @@
 			},
 			{ name: "fechaBaja", index: "fecha_baja", editable:true, width: 120,
 				rupType: "date",
+				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
 					labelMaskId : "fecha-mask",
 					showButtonPanel : true,
@@ -77,6 +80,7 @@
 			},
 			{ name: "rol", index: "rol", editable:true, width: 140,
 				rupType: "combo",
+				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions: {
 					source : [
 					   {label: "---", value:""},
