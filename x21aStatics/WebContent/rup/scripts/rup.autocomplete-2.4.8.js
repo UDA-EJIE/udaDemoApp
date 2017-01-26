@@ -224,7 +224,7 @@ el resto de componentes RUP para estandarizar la asignación del valor al Autoco
 			settings = self.data("settings");
 
 			if (settings.combobox){
-				settings.$comboboxToogle.button("enable")
+				settings.$comboboxToogle.button("enable");
 			}
 
 			self.removeAttr("disabled");

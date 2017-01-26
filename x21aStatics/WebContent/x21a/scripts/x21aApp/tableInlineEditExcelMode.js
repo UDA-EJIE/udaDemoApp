@@ -24,11 +24,11 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
         	"search",
-        	"report",
-        	"multifilter"
+        	"report"
+//        	,"multifilter"
 
         ],
         editOptions:{

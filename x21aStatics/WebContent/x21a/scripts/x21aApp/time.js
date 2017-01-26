@@ -22,7 +22,15 @@ jQuery(document).ready(function(){
 		showButtonPanel: true
 	});
 	
+	$("#horaPlaceholder").rup_time({
+		placeholderMask: true,
+		showSecond : true,
+		timeFormat: 'hh:mm:ss',
+		showButtonPanel: true
+	});
+	
 	$("#hora2").rup_time({
+		placeholderMask: true,
 		showTime: false,
 		ampm : true,
 		hour: 8,

@@ -36,6 +36,7 @@
 	<div class="ui-dialog-content ui-widget-content" >
 		<form id="table_detail_form">
 			<div id ="table_detail_feedback"></div>
+			
 			<div class="floating_left_pad_right">
 				<div class="floating_left_pad_right one-column">
 					<label for="id_detailForm_table"><spring:message code="id" />:</label>
@@ -70,6 +71,7 @@
 					<select id="rol_detail_table" name="rol" class="formulario_linea_input" ></select>
 				</div>
 			</div>
+			
 		</form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">

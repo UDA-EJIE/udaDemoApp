@@ -21,7 +21,7 @@
 				<spring:message code="patrones" />
 			</a>
 		</li>
-		<sec:authorize access="hasRole('ROLE_UDAANONYMOUS')">
+<%-- 		<sec:authorize access="hasRole('ROLE_UDAANONYMOUS')"> --%>
 			<li>
 				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="inicio" />
@@ -38,9 +38,9 @@
 				</a>
 			</li>
 		
-		</sec:authorize>
+<%-- 		</sec:authorize> --%>
 		
-		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')">
+<%-- 		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')"> --%>
 			<li>
 				<a href="/x21aMantenimientosWar/">
 					<spring:message code="inicio" />
@@ -152,7 +152,7 @@
 			</li>
 			
 		
-		</sec:authorize>
+<%-- 		</sec:authorize> --%>
 		
 		<sec:authorize access="hasRole('ROLE_ADMIN_UDA')">
 		<li>

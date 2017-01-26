@@ -14,6 +14,6 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aMantenimientos/tableColModelRadio.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/tableColModelRadio.js" type="text/javascript"></script>
 
-<script src="${staticsUrl}/x21a/scripts/x21aMantenimientos/tableRadiobutton.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/tableRadiobutton.js" type="text/javascript"></script>

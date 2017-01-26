@@ -1127,7 +1127,10 @@
 
 
 				jQuery.rup_utils.sortArray(configuredPlugins, function(obj1,obj2){
-					return rup_table.plugins[obj2].loadOrder - rup_table.plugins[obj1].loadOrder;
+					
+					if (rup_table.plugins[obj2] && rup_table.plugins[obj1]){
+						return rup_table.plugins[obj2].loadOrder - rup_table.plugins[obj1].loadOrder;
+					}
 				});
 
 
@@ -1164,7 +1167,7 @@
 				 */
 
 				$.each(configuredPlugins, function(index, name){
-					if (jQuery.isFunction(rup_table.plugins[name].preConfiguration)){
+					if (rup_table.plugins[name] && jQuery.isFunction(rup_table.plugins[name].preConfiguration)){
 						jQuery.proxy(rup_table.plugins[name].preConfiguration, $self)(settings);
 					}
 				});
@@ -1184,7 +1187,7 @@
 				 * EJECUCION DE FUNCIONES DE POSTCONFIGURACION DE LOS PLUGINS
 				 * *********************************************************/
 				$.each(configuredPlugins, function(index, name){
-					if (jQuery.isFunction(rup_table.plugins[name].postConfiguration)){
+					if (rup_table.plugins[name] && jQuery.isFunction(rup_table.plugins[name].postConfiguration)){
 						jQuery.proxy(rup_table.plugins[name].postConfiguration, $self)(settings);
 					}
 				});

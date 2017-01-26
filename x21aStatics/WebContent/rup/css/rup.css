@@ -5552,77 +5552,7 @@ label {
 .ui-state-hover, .ui-widget-content .ui-state-hover {
   background: #b9d4ec; }
 
-.btn, button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"] {
-  font-size: 1.1rem;
-  padding: 6px 12px;
-  border-radius: 4px;
-  line-height: 1.42857;
-  font-weight: normal;
-  margin-bottom: 0; }
-
-button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"] {
-  -moz-user-select: none;
-  background-image: none;
-  border: 1px solid #ccc;
-  /*border-radius: 4px;*/
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-shadow: none; }
-
-.form-control {
-  height: 2rem;
-  font-size: 1rem; }
-
-.input-lg {
-  font-size: 1.25rem;
-  height: 2.5rem; }
-
-.dropdown-menu {
-  font-size: 1rem; }
-
-.form-control {
-  font-size: 1rem; }
-
-.form-group-sm, .form-group-sm .form-control {
-  font-size: 0.875rem; }
-
-.form-control-lg {
-  font-size: 1.25rem; }
-
-.form-group-sm, .form-group-sm .form-control {
-  font-size: 0.875rem; }
-
-select.form-control:not([size]):not([multiple]), .form-control.ui-selectmenu-dropdown:not([size]):not([multiple]) {
-  height: 2rem; }
-
-.card {
-  background: #fff;
-  border-radius: 2px;
-  margin: 1rem;
-  position: relative; }
-
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-  display: inline-block;
-  background-image: none;
-  overflow: visible;
-  text-indent: 0;
-  padding-right: 0.5rem; }
-
-.ui-accordion .ui-accordion-header.ui-accordion-header-active {
-  border: 1px solid #337ab7;
-  color: #fffcfb;
-  background: #337ab7; }
-
-.rup-breadCrumb_root {
-  background: #fff;
-  height: 3rem;
-  display: inline-flex; }
-
-.btn, button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"] {
+button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"], .btn {
   font-size: 1.1rem;
   padding: 6px 12px;
   border-radius: 4px;
@@ -5667,18 +5597,6 @@ input, textarea {
   padding: 2px 12px;
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s; }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="search"],
-input[type="url"],
-input[type="password"],
-.ui-autocomplete-input,
-textarea,
-.uneditable-input {
-  font-size: 1rem;
-  height: 2rem; }
-
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
@@ -5693,6 +5611,79 @@ legend {
 
 .form-group-sm .form-control, .form-group-sm select.form-control, .form-group-sm .form-control.ui-selectmenu-dropdown {
   height: 25px; }
+
+button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"], .btn {
+  font-size: 1.1rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  line-height: 1.42857;
+  font-weight: normal;
+  margin-bottom: 0; }
+
+button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dropdown-button, a.rup-toolbar_menuButton.ui-button, .rup-wizard a.rup-wizard_next, .rup-wizard a.rup-wizard_prev, .rup-wizard .rup-wizard_submitButton, input[type="button"], input[type="submit"] {
+  -moz-user-select: none;
+  background-image: none;
+  border: 1px solid #ccc;
+  /*border-radius: 4px;*/
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-shadow: none; }
+
+.form-control {
+  height: 2rem;
+  font-size: 1rem; }
+
+.input-lg {
+  font-size: 1.25rem;
+  height: 2.5rem; }
+
+.dropdown-menu {
+  font-size: 1rem; }
+
+.form-control {
+  font-size: 1rem; }
+
+.form-group-sm, .form-group-sm .form-control {
+  font-size: 0.875rem; }
+
+.form-control-lg {
+  font-size: 1.25rem; }
+
+.form-control-sm, select.form-control-sm, .form-control-sm.ui-selectmenu-dropdown {
+  font-size: 0.875rem; }
+
+.form-group-sm, .form-group-sm .form-control {
+  font-size: 0.875rem; }
+
+select.form-control:not([size]):not([multiple]), .form-control.ui-selectmenu-dropdown:not([size]):not([multiple]) {
+  height: 2rem; }
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  margin: 1rem;
+  position: relative; }
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+  display: inline-block;
+  background-image: none;
+  overflow: visible;
+  text-indent: 0;
+  padding-right: 0.5rem; }
+
+.ui-accordion .ui-accordion-header.ui-accordion-header-active {
+  border: 1px solid #337ab7;
+  color: #fffcfb;
+  background: #337ab7; }
+
+.rup-breadCrumb_root {
+  background: #fff;
+  height: 3rem;
+  display: inline-flex; }
 
 .rup-feedback.rup-feedback_image.rup-feedback_image_ok span.rup-feedback-icon, .rup-feedback.rup-feedback_image.rup-feedback_image_alert span.rup-feedback-icon, .rup-feedback.rup-feedback_image.rup-feedback_image_error span.rup-feedback-icon, .rup-feedback.rup-feedback_image div.rup-feedback_closeLink {
   height: auto;
@@ -5871,7 +5862,7 @@ legend {
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
-select.form-control, .form-control.ui-selectmenu-dropdown, select.form-control-sm, .form-control-sm.ui-selectmenu-dropdown, select, .ui-selectmenu-dropdown {
+select, select.form-control, .ui-selectmenu-dropdown, .form-control.ui-selectmenu-dropdown, select.form-control-sm, .form-control-sm.ui-selectmenu-dropdown {
   font-size: 1rem;
   height: 2rem;
   padding: 0;
@@ -5904,6 +5895,19 @@ select.form-control, .form-control.ui-selectmenu-dropdown, select.form-control-s
 
 .context-menu-item {
   background-color: #fff; }
+
+.rup-date-input-group {
+  display: inline-flex; }
+  .rup-date-input-group .hasDatepicker {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  .rup-date-input-group .ui-datepicker-trigger {
+    padding: 0 0.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+    .rup-date-input-group .ui-datepicker-trigger * {
+      display: block; }
 
 .ui-datepicker {
   background: #fff; }
@@ -5941,7 +5945,9 @@ select.form-control, .form-control.ui-selectmenu-dropdown, select.form-control-s
 
 .ui-dialog {
   padding: 0;
-  color: #333333; }
+  color: #333333;
+  border-radius: 0px;
+  max-width: 800px; }
   .ui-dialog .ui-dialog-titlebar {
     border: none;
     border-radius: 0;
@@ -5979,8 +5985,7 @@ select.form-control, .form-control.ui-selectmenu-dropdown, select.form-control-s
             top: 0; }
   .ui-dialog .ui-dialog-buttonset,
   .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-    display: inline-flex;
-    flex-direction: row-reverse; }
+    display: inline-block; }
     .ui-dialog .ui-dialog-buttonset button.ui-button, .ui-dialog .ui-dialog-buttonset .ui-button.rup-button, .ui-dialog .rup-dropdown-btn-group .ui-dialog-buttonset .ui-button.rup-dropdown-button, .ui-dialog .ui-dialog-buttonset a.ui-button.rup-toolbar_menuButton, .ui-dialog .rup-wizard .ui-dialog-buttonset a.ui-button.rup-wizard_next, .ui-dialog .rup-wizard .ui-dialog-buttonset a.ui-button.rup-wizard_prev, .ui-dialog .rup-wizard .ui-dialog-buttonset .ui-button.rup-wizard_submitButton,
     .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button.ui-button,
     .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .ui-button.rup-button,
@@ -6241,15 +6246,64 @@ input.rup_spinner {
 div.right_buttons > button, div.right_buttons > .ui-button.rup-button, .rup-dropdown-btn-group div.right_buttons > .rup-dropdown-button, div.right_buttons > a.rup-toolbar_menuButton.ui-button, .rup-wizard div.right_buttons > a.rup-wizard_next, .rup-wizard div.right_buttons > a.rup-wizard_prev, .rup-wizard div.right_buttons > .rup-wizard_submitButton {
   float: right; }
 
+div.right_buttons .rup-dropdown-btn-group {
+  float: right; }
+
 .rup-table-filter .collapse_icon {
   margin-top: 0; }
 
 .rup-table-filter .collapse_icon_right {
   margin-top: 0; }
 
-.ui-jqgrid .ui-jqgrid-view {
-  font-size: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+.ui-jqgrid {
+  border-radius: 0; }
+  .ui-jqgrid .ui-jqgrid-hbox {
+    padding-right: 0; }
+    .ui-jqgrid .ui-jqgrid-hbox .ui-jqgrid-htable {
+      border-collapse: inherit; }
+      .ui-jqgrid .ui-jqgrid-hbox .ui-jqgrid-htable th.ui-th-column:last-child {
+        border-right: none; }
+  .ui-jqgrid .ui-jqgrid-view {
+    font-size: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+    .ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv .ui-jqgrid-btable {
+      border-collapse: inherit; }
+  .ui-jqgrid .ui-jqgrid-pager {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+    .ui-jqgrid .ui-jqgrid-pager .ui-pager-control {
+      height: 3rem; }
+      .ui-jqgrid .ui-jqgrid-pager .ui-pager-control .ui-pg-table td {
+        vertical-align: baseline; }
+    .ui-jqgrid .ui-jqgrid-pager .ui-pg-selbox, .ui-jqgrid .ui-jqgrid-pager .ui-pg-input {
+      height: inherit;
+      font-size: inherit;
+      padding: 0.17rem 0.4rem; }
+    .ui-jqgrid .ui-jqgrid-pager .iconPaginacion {
+      vertical-align: middle;
+      font-size: 2rem; }
+    .ui-jqgrid .ui-jqgrid-pager .linkPaginacion {
+      font-size: 1rem; }
+  @media (min-width: 993px) {
+    .ui-jqgrid .ui-jqgrid-pager .iconPaginacion {
+      display: none; } }
+  @media (max-width: 992px) {
+    .ui-jqgrid .ui-jqgrid-pager .linkPaginacion {
+      display: none; } }
+
+.rup-dialog .rup-table-detail-info {
+  float: left; }
+
+.rup-dialog .rup-table-detail-currentElement {
+  margin-left: 3px;
+  margin-top: 2px;
+  position: relative; }
+
+.rup-dialog .rup-table-detail-navigation {
+  float: right; }
+
+.rup-dialog .rup-table-detail-separator {
+  border-bottom: 1px solid #D1D1D1;
+  clear: both; }
 
 .rup-tabs_container.ui-tabs {
   padding: 0;
@@ -6276,6 +6330,19 @@ div.right_buttons > button, div.right_buttons > .ui-button.rup-button, .rup-drop
         border-top-right-radius: 4px;
         border-top-left-radius: 4px;
         border-bottom-width: 1; }
+
+.rup-time-input-group {
+  display: inline-flex; }
+  .rup-time-input-group .hasDatepicker {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  .rup-time-input-group .ui-timepicker-trigger {
+    padding: 0 0.5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+    .rup-time-input-group .ui-timepicker-trigger * {
+      display: block; }
 
 .rup-toolbar {
   padding-top: 2px;
@@ -6540,12 +6607,61 @@ a.rup-toolbar_menuButton.ui-button span {
 div.right_buttons > button, div.right_buttons > .ui-button.rup-button, .rup-dropdown-btn-group div.right_buttons > .rup-dropdown-button, div.right_buttons > a.rup-toolbar_menuButton.ui-button, .rup-wizard div.right_buttons > a.rup-wizard_next, .rup-wizard div.right_buttons > a.rup-wizard_prev, .rup-wizard div.right_buttons > .rup-wizard_submitButton {
   float: right; }
 
+div.right_buttons .rup-dropdown-btn-group {
+  float: right; }
+
 .rup-table-filter .collapse_icon {
   margin-top: 0; }
 
 .rup-table-filter .collapse_icon_right {
   margin-top: 0; }
 
-.ui-jqgrid .ui-jqgrid-view {
-  font-size: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+.ui-jqgrid {
+  border-radius: 0; }
+  .ui-jqgrid .ui-jqgrid-hbox {
+    padding-right: 0; }
+    .ui-jqgrid .ui-jqgrid-hbox .ui-jqgrid-htable {
+      border-collapse: inherit; }
+      .ui-jqgrid .ui-jqgrid-hbox .ui-jqgrid-htable th.ui-th-column:last-child {
+        border-right: none; }
+  .ui-jqgrid .ui-jqgrid-view {
+    font-size: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+    .ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv .ui-jqgrid-btable {
+      border-collapse: inherit; }
+  .ui-jqgrid .ui-jqgrid-pager {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", sans-serif; }
+    .ui-jqgrid .ui-jqgrid-pager .ui-pager-control {
+      height: 3rem; }
+      .ui-jqgrid .ui-jqgrid-pager .ui-pager-control .ui-pg-table td {
+        vertical-align: baseline; }
+    .ui-jqgrid .ui-jqgrid-pager .ui-pg-selbox, .ui-jqgrid .ui-jqgrid-pager .ui-pg-input {
+      height: inherit;
+      font-size: inherit;
+      padding: 0.17rem 0.4rem; }
+    .ui-jqgrid .ui-jqgrid-pager .iconPaginacion {
+      vertical-align: middle;
+      font-size: 2rem; }
+    .ui-jqgrid .ui-jqgrid-pager .linkPaginacion {
+      font-size: 1rem; }
+  @media (min-width: 993px) {
+    .ui-jqgrid .ui-jqgrid-pager .iconPaginacion {
+      display: none; } }
+  @media (max-width: 992px) {
+    .ui-jqgrid .ui-jqgrid-pager .linkPaginacion {
+      display: none; } }
+
+.rup-dialog .rup-table-detail-info {
+  float: left; }
+
+.rup-dialog .rup-table-detail-currentElement {
+  margin-left: 3px;
+  margin-top: 2px;
+  position: relative; }
+
+.rup-dialog .rup-table-detail-navigation {
+  float: right; }
+
+.rup-dialog .rup-table-detail-separator {
+  border-bottom: 1px solid #D1D1D1;
+  clear: both; }

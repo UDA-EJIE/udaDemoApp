@@ -15,14 +15,67 @@
  */
 jQuery(document).ready(function () {
 
-	jQuery("#boton").rup_button({});
-	
-	jQuery("#dropdownHtmlListButton").rup_button({
-		dropdown:{
-			dropdownListId:"dropdownHtmlList"
-		}
-		
-	});
+	$("#btnDefault").rup_button({});
+
+    //Botón con icono HTML
+	$("#btnIconHtml").rup_button();
+
+    //Botón con icono JS
+	$("#btnIconJs.rup_button({
+      iconCss: "fa fa-cog"
+    });
+
+    // Botón Rwd HTML Sd
+	$("#btnRwdHtmlSm").rup_button();
+	$("#btnRwdHtmlMd").rup_button();
+	$("#btnRwdJsSm").rup_button({
+      iconCss: "fa fa-cog",
+      labelCss: "hidden-sm-down"
+    });
+	$("#btnRwdJsMd").rup_button({
+      iconCss: "fa fa-cog",
+      labelCss: "hidden-md-down"
+    });
+
+    // MButton
+
+    $("#btnMButton").rup_button({});
+
+
+    $("#btnFab").rup_button({
+      //fab: true
+    });
+
+	$("#fabButtonLayer").rup_button({
+      //fab: true
+    });
+
+	$("#btnFabFixed").rup_button({
+      //fab: true
+    });
+
+	$("#btnDropdownList").rup_button({
+  		dropdown:{
+  			dropdownListId:"dropdownHtmlList"
+  		}
+  	});
+
+    // Eventos click
+	$("#btnClickJQuery").rup_button().on("click", function(){
+      $.rup_messages("msgOK", {
+        title: "Evento Click",
+        message: "Se ha capturado el evento click mediante un handler de jQuery."
+      });
+    });
+	$("#btnClickRup").rup_button({
+      iconCss: "fa fa-cog",
+      click: function(){
+        $.rup_messages("msgOK", {
+          title: "Evento Click",
+          message: "Se ha capturado el evento click mediante un handler especificado en la propiedad click."
+        });
+      }
+    });
 	
 	$("#dropdownElem1").on("click", function(){
 		alert("Seleccionado elemento 1");

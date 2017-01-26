@@ -87,10 +87,10 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
-        	"search",
-        	"multiselection"
+        	"search"
+//        	,"multiselection"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"

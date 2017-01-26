@@ -28,11 +28,11 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
         	"search",
-        	"report",
-        	"multifilter"
+        	"report"
+        	//,"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 

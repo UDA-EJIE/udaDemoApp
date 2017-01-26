@@ -24,12 +24,12 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
         	"search",
         	"multiselection",
-        	"report",
-        	"multifilter"
+        	"report"
+//        	,"multifilter"
         ],
         primaryKey: "id",
         sortname: 'id',

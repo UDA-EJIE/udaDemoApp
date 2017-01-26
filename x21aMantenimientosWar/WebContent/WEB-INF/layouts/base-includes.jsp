@@ -30,7 +30,15 @@ var	APP_RESOURCES = 'x21a',
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
-	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
+	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}",
+	RUP_ADAPTERS = {
+	    	upload: "UploadJQueryUIAdapter",
+	        button: "ButtonBootstrapAdapter",
+	        toolbar_jqueryui: "ToolbarJQueryUIAdapter",
+	        toolbar_bootstrap: "ToolbarBootstrapAdapter",
+	        table_jqueryui: "TableJQueryUIAdapter",
+	        table_bootstrap: "TableBootstrapAdapter"
+	    };
 </script>
 
 <%-- Scripts RUP sin minimizar (DESARROLLO) --%>

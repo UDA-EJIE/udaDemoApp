@@ -1,5 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
+
 <form id="table_filter_form">
   <div id="table_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">

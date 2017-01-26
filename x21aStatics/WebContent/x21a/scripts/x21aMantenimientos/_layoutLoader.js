@@ -47,7 +47,7 @@ jQuery(document).ready(function(){
 				"subLevel":[
 					{"i18nCaption":"alumno", "url": "/x21aMantenimientosWar/administracion/alumno" }
 				]
-			},
+			}
 			
 		},
 		logOutUrl: "/x21aMantenimientosWar/logout"

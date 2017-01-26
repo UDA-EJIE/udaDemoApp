@@ -23,29 +23,42 @@ jQuery(document).ready(function(){
 		//, buttonImage : "/rup/basic-theme/images/exclamation.png"
 	});
 	
+	$("#fechaPlaceholder").rup_date({
+		placeholderMask : true,
+		showButtonPanel : true,
+		showOtherMonths : true,
+		noWeekend : true
+		//, buttonImage : "/rup/basic-theme/images/exclamation.png"
+	});
+	
+	
+	
 	$("#fecha_multi").rup_date({
 		multiSelect: 3,
+		placeholderMask : true,
 		//multiSelect: [0,5],
-		labelMaskId : "fecha_multi-mask",
-		buttonImage : "/rup/basic-theme/images/exclamation.png"
+//		labelMaskId : "fecha_multi-mask",
+//		buttonImage : "/rup/basic-theme/images/exclamation.png"
 	});
 	
 	$.rup_date({		
 		from: "desde",
 		to: "hasta",
+		placeholderMask : true,
 		//Resto igual que en date
-		labelMaskId : "intervalo-mask",
-		numberOfMonths: 3,
-		onSelect: function(selectedDate){
-			alert("La fecha seleccionada es: " + selectedDate);
-		}
+//		labelMaskId : "intervalo-mask",
+		numberOfMonths: 3
+//		onSelect: function(selectedDate){
+//			alert("La fecha seleccionada es: " + selectedDate);
+//		}
 	});
 	
 	$.rup_date({		
 		from: "desdeDateTime",
 		to: "hastaDateTime",
 		//Resto igual que en date
-		labelMaskId : "intervalo-mask-date-time",
+		placeholderMask : true,
+//		labelMaskId : "intervalo-mask-date-time",
 		numberOfMonths: 3,
 		datetimepicker:true,
 		showButtonPanel : true,
@@ -54,10 +67,10 @@ jQuery(document).ready(function(){
 		mask: "dd/mm/yyyy hh:mm",
 		showSecond: false,
 		dateFormat: "dd/mm/yyyy",
-		timeFormat: 'hh:mm',
-		onSelect: function(selectedDate){
-			alert("La fecha seleccionada es: " + selectedDate);
-		}
+		timeFormat: 'hh:mm'
+//		onSelect: function(selectedDate){
+//			alert("La fecha seleccionada es: " + selectedDate);
+//		}
 	});
 	
 	$("#fecha_inline").rup_date({
@@ -70,13 +83,13 @@ jQuery(document).ready(function(){
 		maxDate: $.rup_utils.createDate(31, 12, 2012)		
 	});
 	
-	$("#fecha_button").click(function() {
-		alert("Fecha: "+$("#fecha").rup_date("getDate"));
-	});
-	$("#fecha_multi_button").click(function() {
-		alert("Fechas: "+$("#fecha_multi").rup_date("getDate"));
-	});
-	$("#fecha_inline_button").click(function() {
-		alert("Fecha: "+$("#fecha_inline").rup_date("getDate"));
-	});
+//	$("#fecha_button").click(function() {
+//		alert("Fecha: "+$("#fecha").rup_date("getDate"));
+//	});
+//	$("#fecha_multi_button").click(function() {
+//		alert("Fechas: "+$("#fecha_multi").rup_date("getDate"));
+//	});
+//	$("#fecha_inline_button").click(function() {
+//		alert("Fecha: "+$("#fecha_inline").rup_date("getDate"));
+//	});
 });

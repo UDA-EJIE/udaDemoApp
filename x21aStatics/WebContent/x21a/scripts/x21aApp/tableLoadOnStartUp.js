@@ -88,10 +88,10 @@ jQuery(function($){
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
-        	"search",
-        	"multifilter"
+        	"search"
+//        	,"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"

@@ -20,7 +20,7 @@ $(document).ready(function () {
 		autoOpen: false,
 		modal: true,
 		resizable: true,
-		title: "Título del dialog (div)",
+		title: "<i>Título del dialog (div)</i>",
 		buttons: [{
 				text: "Aceptar",
 				click: function () { 

@@ -106,15 +106,15 @@ jQuery(function($){
         ],
         primaryKey:["id"],
         usePlugins:[
-			"formEdit",
+            "formEdit",
         	"feedback",
 			"toolbar",
         	"contextMenu",
-        	"fluid",
+        	"responsive",
         	"filter",
         	"search",
-        	"report",
-        	"multifilter"
+        	"report"
+//        	,"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
