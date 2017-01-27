@@ -1,22 +1,64 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÛn 1.1 exclusivamente (la ´Licenciaª);
- -- Solo podr· usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versi√≥n 1.1 exclusivamente (la ¬´Licencia¬ª);
+ -- Solo podr√° usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÛn aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye ´TAL CUALª,
- -- SIN GARANTÕAS NI CONDICIONES DE NING⁄N TIPO, ni expresas ni implÌcitas.
- -- VÈase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaci√≥n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye ¬´TAL CUAL¬ª,
+ -- SIN GARANT√çAS NI CONDICIONES DE NING√öN TIPO, ni expresas ni impl√≠citas.
+ -- V√©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2><spring:message code="patronMessageTitle" /></h2>
-<button id="btnError"><spring:message code="messages.showError" /></button>
-<button id="btnConfirm"><spring:message code="messages.showConfirm" /></button>
-<button id="btnOK"><spring:message code="messages.showOk" /></button>
-<button id="btnAlert"><spring:message code="messages.showAlert" /></button>
-<button id="btnAlertJS"><spring:message code="messages.showJSAlert" /></button>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>	
+
+<section>
+	<h2>
+		Mensaje
+	</h2>
+	<p>
+		El componente tiene como objetivo mostrar al usuario de forma homog√©nea, clara y llamativa, los posibles mensajes que pueden desencadenar las acciones en la aplicaci√≥n. 
+	</p>
+	<p>
+		Estos mensajes predefinidos pueden ser de diferente tipolog√≠a: error, confirmaci√≥n, aviso o alerta.
+	</p>
+	<div class="example">
+		<div class="row">
+		    <div class="col-md-3">
+		    	<button id="btnError" class="btn btn-block btn-secondary"><spring:message code="messages.showError" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnConfirm" class="btn btn-block btn-secondary"><spring:message code="messages.showConfirm" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnOK" class="btn btn-block btn-secondary"><spring:message code="messages.showOk" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnAlert" class="btn btn-block btn-secondary"><spring:message code="messages.showAlert" /></button>
+		    </div>
+	  	</div>
+	</div>
+	
+	<p>
+		Por defecto tambi√©n se modifica el estilo del alert nativo de JavaScript.
+	</p>
+	
+	<div class="example">
+		<div class="row">
+		    <div class="col-md-3">
+		    	<button id="btnAlertJS" class="btn btn-block btn-secondary"><spring:message code="messages.showJSAlert" /></button>
+		    </div>
+		    <div class="col-md-9">
+		    	
+		    </div>	
+	  	</div>
+	</div>
+</section>
+
+
+
+

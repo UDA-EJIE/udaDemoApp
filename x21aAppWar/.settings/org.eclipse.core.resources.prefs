@@ -7,5 +7,5 @@ encoding//WebContent/WEB-INF/resources/x21aPilotoPatrones.i18n_en.properties=UTF
 encoding//WebContent/WEB-INF/resources/x21aPilotoPatrones.i18n_es.properties=UTF-8
 encoding//WebContent/WEB-INF/resources/x21aPilotoPatrones.i18n_eu.properties=UTF-8
 encoding//WebContent/WEB-INF/resources/x21aPilotoPatrones.i18n_fr.properties=UTF-8
-encoding//WebContent/WEB-INF/views/patrones/validate.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/patrones/validate/validate.jsp=UTF-8
 encoding//src/com/ejie/x21a/control/ExperimentalController.java=UTF-8

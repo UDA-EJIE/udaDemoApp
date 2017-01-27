@@ -1,27 +1,60 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÛn 1.1 exclusivamente (la ´Licenciaª);
- -- Solo podr· usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versi√≥n 1.1 exclusivamente (la ¬´Licencia¬ª);
+ -- Solo podr√° usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÛn aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye ´TAL CUALª,
- -- SIN GARANTÕAS NI CONDICIONES DE NING⁄N TIPO, ni expresas ni implÌcitas.
- -- VÈase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaci√≥n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye ¬´TAL CUAL¬ª,
+ -- SIN GARANT√çAS NI CONDICIONES DE NING√öN TIPO, ni expresas ni impl√≠citas.
+ -- V√©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2><spring:message  code="patronDialogTitle" /></h2>		
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>	
+
+<section>
+	<h2>
+		Di√°logo
+	</h2>
+	<p>
+		Permite lanzar un subproceso o un mensaje de confirmaci√≥n dentro de un proceso principal sin salirse de este. Es una evoluci√≥n del patr√≥n mensaje.
+	</p>
+	
+	<p>
+		El componente permite varios modos de indicar el contenido del di√°logo: 
+	</p>
+	<ul>
+		<li><code>$.rup.dialog.DIV</code> : El contenido del di√°logo se especifica dentro del propio <code>&lt;div&gt;</code>.</li>
+		<li><code>$.rup.dialog.AJAX</code> : El contenido del di√°logo se obtine a partir de la respuesta de una petici√≥n <b>XHR</b>.</li>
+		<li><code>$.rup.dialog.TEXT</code> : El contenido del di√°logo se especifica mediante la propiedad <code>message</code>.</li>
+	</ul>
+	<p>
+		Estos ser√≠an unos ejemplos de las diferentes configuraciones: 
+	</p>
+	<div class="example">
+		
+		<div class="row">
+		    <div class="col-md-3">
+		    	<button id="btnDialog" class="btn btn-block btn-secondary"><spring:message code="dialogNormal" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnAjaxDialogWAR" class="btn btn-block btn-secondary"><spring:message code="dialogAjaxWAR" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnAjaxDialogStatics" class="btn btn-block btn-secondary"><spring:message code="dialogAjaxStatics" /></button>
+		    </div>
+		    <div class="col-md-3">
+		    	<button id="btnTextDialog" class="btn btn-block btn-secondary"><spring:message  code="dialogText" /></button>
+		    </div>
+	  	</div>
+	</div>
+</section>
+
 <div id="idDialog" style="display:none"><spring:message code="divDialogContent" /></div>
 <div id="idDialogAjaxWar" style="display:none"></div>
 <div id="idDialogAjaxStatics" style="display:none"></div>
 <div id="idDialogText" style="display:none"></div>
-<div id="pruebas">
-	<button id="btnDialog"><spring:message code="dialogNormal" /></button>
-	<button id="btnAjaxDialogWAR"><spring:message code="dialogAjaxWAR" /></button>
-	<button id="btnAjaxDialogStatics"><spring:message code="dialogAjaxStatics" /></button>
-	<button id="btnTextDialog"><spring:message  code="dialogText" /></button>
-</div>

@@ -41,7 +41,9 @@ var	APP_RESOURCES = 'x21a',
         toolbar_jqueryui: "ToolbarJQueryUIAdapter",
         toolbar_bootstrap: "ToolbarBootstrapAdapter",
         table_jqueryui: "TableJQueryUIAdapter",
-        table_bootstrap: "TableBootstrapAdapter"
+        table_bootstrap: "TableBootstrapAdapter",
+        validate_jqueryui: "ValidateJQueryUIAdapter",
+        validate_bootstrap: "ValidateBootstrapAdapter"
     };
 </script>
 

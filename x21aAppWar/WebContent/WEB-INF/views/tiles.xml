@@ -294,9 +294,9 @@
 
 	<definition name="validate" extends="template">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/validate.jsp" />
+			value="/WEB-INF/views/patrones/validate/validate.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/validate-includes.jsp" />
+			value="/WEB-INF/views/patrones/validate/validate-includes.jsp" />
 	</definition>
 	
 	<definition name="charts" extends="template">
