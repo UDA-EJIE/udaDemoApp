@@ -1,20 +1,129 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÛn 1.1 exclusivamente (la ´Licenciaª);
- -- Solo podr· usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versi√≥n 1.1 exclusivamente (la ¬´Licencia¬ª);
+ -- Solo podr√° usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÛn aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye ´TAL CUALª,
- -- SIN GARANTÕAS NI CONDICIONES DE NING⁄N TIPO, ni expresas ni implÌcitas.
- -- VÈase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaci√≥n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye ¬´TAL CUAL¬ª,
+ -- SIN GARANT√çAS NI CONDICIONES DE NING√öN TIPO, ni expresas ni impl√≠citas.
+ -- V√©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-  <section>
-    <h2 class="page-header">Dashboard</h2>
-</section>
+<div class="container-fluid dashboard-container">
+
+
+  <!-- New Dashboard dialog -->
+  <div id="newDashboardDialog" style="display:none">
+    <div class="row col-md-12">
+      <p>Se va a crear un nuevo escritorio.</p>
+      <p>Para ello, debe de introducir un nombre con el que se identificar√°.</p>
+    </div>
+    <div class="row col-md-12">
+      <div class="form-group">
+			     <label for="feedback_type">Nombre:</label>
+					 <input id="feedback_imgClass" class="form-control" type="text" placeholder="feedbackImgPruebas" />
+      </div>
+    </div>
+  </div>
+
+  <!-- New Dashboard dialog -->
+  <div id="addWidgetDialog">
+    <div class="row col-md-12">
+      <p>Se va a a√±adir un widget al escritorio.</p>
+      <p>Por fevor, seleccione el widget que desea a√±adir:</p>
+    </div>
+    <div class="row col-md-12">
+      <div class="form-group">
+        <ul class="list-group">
+          <a id="newWidgetHtmlInline" class="list-group-item" >
+            <h5 class="list-group-item-heading">Widget HTML inline</h5>
+            <p class="list-group-item-text">El contenido del widget consiste en c√≥digo HTML indicado como par√°metro en la declaraci√≥n del mismo.</p>
+          </a>
+          <a  id="newWidgetTemplateInline" class="list-group-item">
+            <h5 class="list-group-item-heading">Widget HTML Inline</h5>
+            <p class="list-group-item-text">El contenido del widget se define en un <code>div</code> existente en la propia p√°gina.</p>
+          </a>
+          <a  id="newWidgetTemplateXhr" class="list-group-item">
+            <h5 class="list-group-item-heading">Widget HTML Remoto</h5>
+            <p class="list-group-item-text">El contenido del widget se obtiene a partir de la respuesta HTML realizada a la <code>url</code> especificada en la definici√≥n del widget.</p>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB Button -->
+  <button type="button" id="fabButton" data-fab="true" data-fixed="true" data-layer="fabButtonDiv"><span class="glyphicon glyphicon-cog" /></button>
+  <div id="fabButtonDiv">
+
+	</div>
+  <div class="dashboard-aside">
+    <div class="dashboard-menu-title">
+      <a id="currentDashboardLink">
+        <i class="fa fa-tachometer" aria-hidden="true"></i><span class="current-dashboard" id="currentDashboard"></span>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a data-toggle="collapse" href="#dashboardList" aria-expanded="false" aria-controls="dashboardList">
+          <i class="fa fa-desktop" aria-hidden="true"></i><span>Escritorios</span>
+        </a>
+        <div class="collapse" id="dashboardList">
+          <ul>
+
+          </ul>
+        </div>
+
+      </li>
+      <li>
+        <a data-toggle="collapse" href="#toolsList" aria-expanded="false" aria-controls="toolsList">
+          <i class="fa fa-cog" aria-hidden="true"></i><span>Acciones</span>
+        </a>
+        <div class="collapse" id="toolsList">
+          <ul>
+            <li><a id="addWidget">A√±adir widget</a></li>
+            <li><a id="newDashboard">Nuevo Escritorio</a></li>
+            <li><a id="deleteDashboard">Eliminar Escritorio</a></li>
+            <li><a id="saveDashboard">Guardar Escritorio</a></li>
+          </ul>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+  <div class="dashboard-main">
+    <div class="">
+
+      <section>
+        <div class="row">
+          <div class="col-md-12">
+            <br/>
+          </div>
+        </div>
+      </section>
+
+      <div id="dashboard" class="grid-stack" >
+
+      </div>
+    </div>
+
+
+    <script type="text/template" id="templateInline">
+
+    Prueba de template
+    </script>
+
+
+    <script type="text/template" id="templateConfig">
+
+    Dialogo de configuraci√≥n
+    </script>
+  </div>
+</div>

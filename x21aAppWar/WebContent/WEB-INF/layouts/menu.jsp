@@ -72,12 +72,11 @@
 
             <div class="dropdown-submenu" >
               <a class="dropdown-item" href="#">Combo</a>
-              <div class="dropdown-menu menu-right" >
+              <div class="dropdown-menu menu-right">
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboSimple"><spring:message code="comboSimple" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboEnlazadoSimple"><spring:message code="comboEnlazadoSimple" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboEnlazadoMultiple"><spring:message code="comboEnlazadoMulti" /></a>
                 <a class="dropdown-item" href=/x21aAppWar/patrones/multicombo><spring:message code="multicombo" /></a>
-                
               </div>
             </div>
 
@@ -87,7 +86,15 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/time"><i class="fa fa-clock-o" aria-hidden="true"></i><spring:message code="time" /></a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/spinner">Spinner</a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/upload"><spring:message code="upload" /></a>
-            <a class="dropdown-item" href="/x21aAppWar/patrones/validate"><spring:message code="validate" /></a>
+            <div class="dropdown-submenu" >
+              <a class="dropdown-item" href="#"><spring:message code="validate" /></a>
+              <div class="dropdown-menu menu-right">
+              	<a class="dropdown-item" href="/x21aAppWar/patrones/validate">Configuración</a>
+                <a class="dropdown-item" href="/x21aAppWar/patrones/validateRules">Reglas de validación</a>
+                
+              </div>
+            </div>
+            
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/x21aAppWar/patrones/charts"><i class="fa fa-bar-chart" aria-hidden="true"></i><spring:message code="charts.charts" /></a>
         </div>

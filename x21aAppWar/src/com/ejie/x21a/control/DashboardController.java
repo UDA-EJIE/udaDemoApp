@@ -15,20 +15,29 @@
 */
 package com.ejie.x21a.control;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+
+import com.ejie.x21a.model.Dashboard;
+import com.ejie.x21a.service.DashboardService;
 
 /**
  * PatronesController
@@ -41,8 +50,9 @@ public class DashboardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(DashboardController.class);
 	
+	@Autowired
+	private DashboardService dashboardService;
 	
-
 	
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -58,4 +68,22 @@ public class DashboardController {
 	public String getDashboardSimple(Model model) {
 		return "dashboardSimple";
 	}
+	
+	
+	@RequestMapping(value = "getAll", method = RequestMethod.GET)
+	public @ResponseBody List<Dashboard> getAll(Model model) {
+		return dashboardService.getAll();
+	}
+	
+	@RequestMapping(value = "get/{id}", method = RequestMethod.GET)
+	public @ResponseBody Dashboard get(@PathVariable String id) {
+		return dashboardService.get(new Dashboard(id));
+	}
+	
+	@RequestMapping(value = "put", method = RequestMethod.PUT)
+	public @ResponseBody Dashboard get(@RequestBody Dashboard dashboard) {
+		return dashboardService.put(dashboard);
+	}
+	
+	
 }

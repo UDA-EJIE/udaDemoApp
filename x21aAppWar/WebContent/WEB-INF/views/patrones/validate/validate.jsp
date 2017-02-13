@@ -14,45 +14,138 @@
  -- que establece la Licencia.
  --%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Validacion</h2>
-
-
-<div id="feedbackErroresValidaciones"></div>
-<div>
-<fieldset class="alumnoFieldset">
-	<legend><spring:message code="configuracion" /></legend>
-	<span><spring:message code="patron.validacion.configuracion.texto" /></span>
-	<br/><br/>
+<section>
+	<h2>Validacion de formularios</h2>
+	<p>
+		Ejemplos de validación de formularios en distintas disposiciones.
+	<p>
 	
-	<input type="checkbox" id="liveCheckingErrors" /><label for="liveCheckingErrors"><spring:message code="patron.validacion.configuracion.liveCheckingErrors" /></label><br/>
-	<input type="checkbox" id="checkFeedbackError" checked="checked" /><label for="checkFeedbackError"><spring:message code="patron.validacion.configuracion.checkFeedbackError" /></label><br/>
-	<input type="checkbox" id="checkShowErrorsFeedback" checked="checked"/><label for="checkShowErrorsFeedback"><spring:message code="patron.validacion.configuracion.checkShowErrorsFeedback" /></label><br/>
-	<input type="checkbox" id="checkShowFieldErrorsTip" checked="checked"/><label for="checkShowFieldErrorsTip"><spring:message code="patron.validacion.configuracion.checkShowFieldErrorsTip" /></label><br/> 
-	<br/>
-	<form:errors></form:errors>
-	<button id="botonConfiguracion"><spring:message code="aplicarConfiguracion" /></button>
-</fieldset>
-</div>
-
-<div id="tabsValidacion"></div>
-<div id="validacionesServidor"></div>
-<div id="validacionesCliente"></div>
+	<h3>Formulario alineado a la derecha</h3>
+	<p>
+		Lso textos 
+	<p>
+	<div class="example">
+		<div id="feedbackLeftAligned"></div>
+		<form id="formLeftAligned" >
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+				     	<label for="nombre" class="label"><spring:message code="nombre" /></label>
+					  	<input type="text" name="nombre" class="form-control" id="nombre" />
+				    </div>
+				</div>
+				<div class="col-md-4">
+				    <div class="form-group">
+				     	<label for="apellido1" class="label"><spring:message code="apellido1" /></label>
+					  	<input type="text" name="apellido1" class="form-control" id="apellido1" />
+				    </div>
+				</div>
+				<div class="col-md-4">
+				    <div class="form-group">
+				     	<label for="apellido2" class="label"><spring:message code="apellido2" /></label>
+					  	<input type="text" name="apellido2" class="form-control" id="apellido2" />
+				    </div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-3">
+					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+				</div>
+			</div>
+		
+		</form>
+		
 	
-<div id="divValidaciones">
-	<jsp:include page="includes/clientRules.jsp"></jsp:include>
-</div>
-
-<div id="divValidaciones2">
-	<jsp:include page="includes/clientComponents.jsp"></jsp:include>
-</div>
-
-<div id="divValidaciones3">
-	<jsp:include page="includes/serverForm1.jsp"></jsp:include>
+	</div>
 	
-</div>
+	<h3>Formulario horizontal</h3>
+	<p>
+		Lso textos 
+	<p>
+	<div class="example">
+		<div id="feedbackHorizontal"></div>
+		<form id="formHorizontal" >
+			
+				
+			<div class="form-group row">
+		     	<label for="nombre" class="col-sm-2 col-form-label"><spring:message code="nombre" /></label>
+		     	<div class="col-sm-10">
+			  		<input type="text" name="nombre" class="form-control" id="nombre" />
+			  	</div>
+		    </div>
 
-<div id="divValidaciones4">
-	<jsp:include page="includes/serverForm2.jsp"></jsp:include>
+
+		    <div class="form-group row">
+		     	<label for="apellido1" class="col-sm-2 col-form-label"><spring:message code="apellido1" /></label>
+		     	<div class="col-sm-10">
+			  		<input type="text" name="apellido1" class="form-control" id="apellido1" />
+			  	</div>
+		    </div>
+
+		    <div class="form-group row">
+		     	<label for="apellido2" class="col-sm-2 col-form-label"><spring:message code="apellido2" /></label>
+		     	<div class="col-sm-10">
+			  		<input type="text" name="apellido2" class="form-control" id="apellido2" />
+			  	</div>
+		    </div>
+			    
+		    <div class="form-group">
+		        <label id="alertDayErrorLabel">Alert on</label>
+		    </div>
+			    
+		  	<div class="row">
+				    
+	            <div class="col-xs-6">
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="0" name="alertDay[]" > Lunes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="1" name="alertDay[]" > Martes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="2" name="alertDay[]" > Miércoles
+	                    </label>
+	                </div>
+				</div>
+						
+	            <div class="col-xs-6">
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="3" name="alertDay[]" > Jueves
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="4" name="alertDay[]" > Viernes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="5" name="alertDay[]" > Fín de semana
+	                    </label>
+	                </div>
+				</div>
+			 		
+			</div>
+			<span id="alertDayError"></span>
+        
+
+			
+			<div class="row justify-content-center">
+				<div class="col-md-3">
+					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+				</div>
+			</div>
+		
+		</form>
+		
 	
-</div>
+	</div>
+	
+</section>
 

@@ -16,6 +16,16 @@
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp" />
 		<put-attribute name="includes" value="" />
 	</definition>
+	
+	<definition name="templateDashboard" template="/WEB-INF/layouts/templateDashboard.jsp">
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb" value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
 
 	<!-- Plantilla de la pagina de login del Mock -->
 	<definition name="templateLogin" template="/WEB-INF/layouts/templateLogin.jsp">
@@ -299,6 +309,13 @@
 			value="/WEB-INF/views/patrones/validate/validate-includes.jsp" />
 	</definition>
 	
+	<definition name="validateRules" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validateRules.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validateRules-includes.jsp" />
+	</definition>
+	
 	<definition name="charts" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/graficos.jsp" />
 		<put-attribute name="includes"
@@ -557,7 +574,7 @@
 <!--     </definition> -->
 
 	<!-- TABLE -->
-    <definition extends="template" name="dashboardSimple">
+    <definition extends="templateDashboard" name="dashboardSimple">
         <put-attribute name="content" value="/WEB-INF/views/dashboard/dashboard.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/dashboard/dashboard-includes.jsp"/>
     </definition>  

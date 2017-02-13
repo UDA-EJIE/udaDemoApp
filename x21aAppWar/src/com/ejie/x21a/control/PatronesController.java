@@ -407,6 +407,12 @@ public class PatronesController {
 		return "validate";
 	}
 	
+	//Validate
+	@RequestMapping(value = "validateRules", method = RequestMethod.GET)
+	public String getValidateRules(Model model) {
+		return "validateRules";
+	}
+	
 	
 	
 	//All (todos los patrones en una pagina)

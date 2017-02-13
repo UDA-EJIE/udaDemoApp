@@ -14,4 +14,8 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/dashboard/widget/dashboard.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/dashboard/widget/dashboardModel.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/dashboard/widget/dashboardService.js" type="text/javascript"></script>
 <script src="${staticsUrl}/x21a/scripts/x21aApp/dashboard/dashboard.js" type="text/javascript"></script>
+
