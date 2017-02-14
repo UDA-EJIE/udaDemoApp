@@ -36,9 +36,7 @@ jQuery(document).ready(function(){
 	//rastro de migas
 	$("#x21aMantenimientosWar_migas").rup_breadCrumb({
 		breadCrumb: {
-			"simple" : { "i18nCaption" : "simple" },
 			"multi" : { "i18nCaption" : "multi" },
-			"edlinea" : { "i18nCaption" : "edlinea"},
 			"uda" : {"i18nCaption" : "uda"},
 			"administracion" : {
 				//Literal
@@ -49,25 +47,8 @@ jQuery(document).ready(function(){
 				"subLevel":[
 					{"i18nCaption":"alumno", "url": "/x21aMantenimientosWar/administracion/alumno" }
 				]
-			},
-			"usuariojerarquia" : {
-				//Literal
-				"i18nCaption" : "jerarquia",
-				//Elementos (url)
-				"maint":{"i18nCaption":"usuarioJerarquia"},
-				"maintgroup":{"i18nCaption":"usuarioJerarquiaGroup"},
-				"maintmulti":{"i18nCaption":"usuarioJerarquiaMulti"},
-				"maintgroupmulti":{"i18nCaption":"usuarioJerarquiaGroupMulti"},
-				"maintcol":{"i18nCaption":"usuarioJerarquiaCol"},
-				//Submenu
-				"subLevel":[
-					{"i18nCaption":"usuarioJerarquia", "url": "/x21aMantenimientosWar/usuariojerarquia/maint" },
-					{"i18nCaption":"usuarioJerarquiaGroup", "url": "/x21aMantenimientosWar/usuariojerarquia/maintgroup" },
-					{"i18nCaption":"usuarioJerarquiaMulti", "url": "/x21aMantenimientosWar/usuariojerarquia/maintmulti" },
-					{"i18nCaption":"usuarioJerarquiaGroupMulti", "url": "/x21aMantenimientosWar/usuariojerarquia/maintmultigroup" },
-					{"i18nCaption":"usuarioJerarquiaCol", "url": "/x21aMantenimientosWar/usuariojerarquia/maintcol" }
-				]
 			}
+			
 		},
 		logOutUrl: "/x21aMantenimientosWar/logout"
 	});

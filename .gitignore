@@ -1,2 +1,7 @@
 .svn
 x21aStatics/\.externalToolBuilders/
+
+.metadata
+.metadata/*
+RemoteSystemsTempFiles/.project
+*.launch

@@ -1,3 +1,4 @@
+
 {
 	"x21aPilotoPatronesWar_menu_mixto" :{
 		"inicio" :"Inicio",
@@ -6,112 +7,102 @@
 			"all" :"[Todos los patrones]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"Menú contextual",
+			"contextMenu" :"MenÃº contextual",
 			"toolbar" :"Botonera",
 			"combo" :"Combo",
 				"comboSimple" :"Combo Simple",
 				"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
-				"multicombo" :"Combo Multiselección",
-			"dialog" :"Diálogos",
+				"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
+				"multicombo" :"Combo MultiselecciÃ³n",
+			"dialog" :"DiÃ¡logos",
 			"date" :"Fecha",
 			"feedback" :"Feedback",
 			"form" :"Formulario",
 			"time" :"Hora",
 			"message" :"Mensajes",
-			"menu" :"Menú",
+			"menu" :"MenÃº",
 				"menuHorizontal" :"Horizontal",
 				"menuVertical" :"Vertical",
 				"menuMixto" :"Mixto",
-			"tabs" :"Pestañas",
-				"tabsStatic" :"Pestañas carga estática",
-				"tabsAjax" :"Pestañas carga Ajax",
-				"tabsMixto" :"Pestañas carga mixta",
-				"maintTab" :"Pestañas con mantenimientos",
+			"tabs" :"PestaÃ±as",
+				"tabsStatic" :"PestaÃ±as carga estÃ¡tica",
+				"tabsAjax" :"PestaÃ±as carga Ajax",
+				"tabsMixto" :"PestaÃ±as carga mixta",
+				"maintTab" :"PestaÃ±as con mantenimientos",
 			"grid" :"Tabla",
 				"grid_grupo" :"Tabla Agrupada",
 				"grid_base" :"Tabla Basico",
 				"grid_arbol" :"Tabla Arbol",
 			"tooltip" :"Tooltip",
 			"upload" :"Upload",
-			"validate" : "Validación",
+			"validate" : "ValidaciÃ³n",
 			"wizard" :"Wizard",
 				"wizardA" :"Wizard simple",
 				"wizardB" :"Wizard <%@ include %>",
 				"wizardC" :"Wizard <jsp:include>",
 				"wizardD" :"Wizard <c:import>",
-				"wizardE" :"Wizard dinámico",
-			"tree" : "Árbol",
-				"trees" :"Árboles con diferentes configuraciones",
-				"treeDAD" :"Árboles con interaccion mediante Drag & Drop",
-				"trees_formats" :"Árboles con diferentes formatos de datos",
-				"tree_panel" :"Árbol con panel de detalle",
+				"wizardE" :"Wizard dinÃ¡mico",
+			"tree" : "Ã�rbol",
+				"trees" :"Ã�rboles con diferentes configuraciones",
+				"treeDAD" :"Ã�rboles con interaccion mediante Drag & Drop",
+				"trees_formats" :"Ã�rboles con diferentes formatos de datos",
+				"tree_panel" :"Ã�rbol con panel de detalle",
 		"experimental" :"Experimental",
-			"maestro_detalle" :"Maestro-Detalle",
-			"mant_multi_entidad" :"Mantenimiento multi-entidad",
-			"mant_clave_compuesta" :"Mantenimiento clave-compuesta",
-			"mant_clave_compuesta_multi" :"Multiselección",
-			"mant_clave_compuesta_edlinea" :"Edición en línea",
-		"integracion" :"Integración",
+		"integracion" :"IntegraciÃ³n",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE", 
 		"uda" :"UDA",
 		"titulo-notifi" :"Notificaciones",
-		"titulo-nave" :"Navegación",
-		"titulo-estru" :"Estructuración de pantalla",
-		"titulo-inser" :"Inserción de datos"
+		"titulo-nave" :"NavegaciÃ³n",
+		"titulo-estru" :"EstructuraciÃ³n de pantalla",
+		"titulo-inser" :"InserciÃ³n de datos"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" :"Patrones",
 			"all" :"[Todos los patrones]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"Menú contextual",
+			"contextMenu" :"MenÃº contextual",
 			"toolbar" :"Botonera",
 			"comboSimple" :"Combo Simple",
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
-			"multicombo" :"Combo Multiselección",
-			"dialog" :"Diálogos",
+			"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
+			"multicombo" :"Combo MultiselecciÃ³n",
+			"dialog" :"DiÃ¡logos",
 			"date" :"Fecha",
 			"feedback" :"Feedback",
 			"form" :"Formulario",
 			"time" :"Hora",
 			"message" :"Mensajes",
-			"menu" :"Menú Horizontal",
-			"menuVertical":"Menú Vertical",
-			"menuMixto":"Menú Mixto",
-			"tabs" :"Pestañas",
-				"tabsStatic":"Pestañas carga estática",
-				"tabsAjax":"Pestañas carga Ajax",
-				"tabsMixto":"Pestañas carga mixta",
-				"maintTab":"Pestañas con mantenimientos",
+			"menu" :"MenÃº Horizontal",
+			"menuVertical":"MenÃº Vertical",
+			"menuMixto":"MenÃº Mixto",
+			"tabs" :"PestaÃ±as",
+				"tabsStatic":"PestaÃ±as carga estÃ¡tica",
+				"tabsAjax":"PestaÃ±as carga Ajax",
+				"tabsMixto":"PestaÃ±as carga mixta",
+				"maintTab":"PestaÃ±as con mantenimientos",
 			"grid" :"Tabla",
 				"grid_grupo" :"Tabla Agrupada",
 				"grid_base" :"Tabla Basico",
 				"grid_arbol" :"Tabla Arbol",
 			"tooltip" : "Tooltip",
 			"upload" : "Upload",
-			"validate" : "Validación",
+			"validate" : "ValidaciÃ³n",
 			"wizard" :"Wizard",
 				"wizardA" :"Wizard simple",
 				"wizardB" :"Wizard <%@ include %>",
 				"wizardC" :"Wizard <jsp:include>",
 				"wizardD" :"Wizard <c:import>",
-				"wizardE" :"Wizard dinámico",
-			"tree" : "Árbol",
-				"trees" :"Árboles",
-				"treeDAD" : "Árbol con D&D",
-				"treesFormats" :"Árboles formateados",
-				"treePanel" :"Árbol con panel",
+				"wizardE" :"Wizard dinÃ¡mico",
+			"tree" : "Ã�rbol",
+				"trees" :"Ã�rboles",
+				"treeDAD" : "Ã�rbol con D&D",
+				"treesFormats" :"Ã�rboles formateados",
+				"treePanel" :"Ã�rbol con panel",
 		"experimental" :"Experimental",
-			"maestro_detalle" :"Maestro-Detalle",
-			"mant_multi_entidad" :"Mantenimiento multi-entidad",
-			"mant_clave_compuesta" :"Mantenimiento clave-compuesta",
-			"mant_clave_compuesta_multi" :"Multiselección",
-			"mant_clave_compuesta_edlinea" :"Edición en línea",
-		"integracion" :"Integración",
+		"integracion" :"IntegraciÃ³n",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE", 
@@ -174,9 +165,9 @@
 	"_coment":"COMBO_ENLAZADO",
 		"comboAbuelo":{
 			"_blank":"[Selecciona Abuelo]",
-			"a":"Álava",
+			"a":"Ã�lava",
 			"b":"Vizcaya",
-			"g":"Gipúzcoa"
+			"g":"GipÃºzcoa"
 		},
 		"comboPadre":{
 			"a1":"A-Zona1",
@@ -208,9 +199,9 @@
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo]",
-			"a":"Álava",
+			"a":"Ã�lava",
 			"b":"Vizcaya",
-			"g":"Gipúzcoa"
+			"g":"GipÃºzcoa"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
 		"departamentoRemote":{
@@ -220,14 +211,14 @@
 			"_blank":"[Selecciona Prov.]"
 		},
 		"mixto_provincia":{
-			"a":"Álava",
+			"a":"Ã�lava",
 			"b":"Vizcaya",
-			"g":"Gipúzcoa"
+			"g":"GipÃºzcoa"
 		},
 		"mixto2_departamento":{
 			"ayto":"Ayuntamiento",
-			"dipu":"Diputación",
-			"poli":"Policía",
+			"dipu":"DiputaciÃ³n",
+			"poli":"PolicÃ­a",
 			"bomb":"Bomberos"
 		},
 	"_comment":"MULTI_COMBO",	
@@ -276,9 +267,9 @@
 		"sub10" 		:"sub10",
 		"sub11" 		:"sub11",
 		"pestana2" 		:"Tab 2",
-		"pestanaAna"   	:"Nueva Pestaña",
-		"nuevaPestaña" 	:"Nuevo Nivel",
-		"PestañasMaint"	:"Pestaña con Mantenimientos"
+		"pestanaAna"   	:"Nueva PestaÃ±a",
+		"nuevaPestaÃ±a" 	:"Nuevo Nivel",
+		"PestaÃ±asMaint"	:"PestaÃ±a con Mantenimientos"
 	},
 	"pruebaSub3Maint" :{
 		"maint1"		:"Mantenimiento 1",
@@ -286,21 +277,21 @@
 		"maint3"		:"Mantenimiento 3"	
 	},
 	"tabsStatic" :{
-		"pestana0" 	:"Pestaña 1",
-		"pestana1"  :"Pestaña 2",
-		"pestana2" 	:"Pestaña 3",
-		"pestanaAna" :"Pestaña Añadida"
+		"pestana0" 	:"PestaÃ±a 1",
+		"pestana1"  :"PestaÃ±a 2",
+		"pestana2" 	:"PestaÃ±a 3",
+		"pestanaAna" :"PestaÃ±a AÃ±adida"
 	},
 	"tabsMixta" :{
-		"pestanaUrl" 	:"Pestaña con url",
-		"pestanaHtml"  :"Pestaña con html"
+		"pestanaUrl" 	:"PestaÃ±a con url",
+		"pestanaHtml"  :"PestaÃ±a con html"
 	},
 	"tabsMaint" :{
 		"maint1"	:"Mantenimiento Simple 1",
 		"maint2"    :"Mantenimiento Simple 2",
 		"maint3" 	:"Mantenimiento Simple 3",
-		"edit1" 	:"Mantenimiento edición en línea",
-		"multi1" 	:"Mantenimiento múltiple"
+		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea",
+		"multi1" 	:"Mantenimiento mÃºltiple"
 	},
 	"tabsDialog" :{
 		"pestana0" 	:"Tab 0",
@@ -356,7 +347,7 @@
 	},
 	"grid##ejie" :{
 		"0" :"No",
-		"1" :"Sí"
+		"1" :"SÃ­"
 	},
 	"GRID_simple##ejie" :{
 		"0" :"No",
@@ -364,7 +355,7 @@
 	},
 	"gridDialog##ejie" :{
 		"0" :"No",
-		"1" :"Sí"
+		"1" :"SÃ­"
 	},
 	"uploadTabs":{
 		"upload" :"Upload",
@@ -372,7 +363,7 @@
 		"uploadForm" :"Upload form",
 		"uploadFormSimple" :"Upload simple en formulario",
 		"uploadFormMultiple" :"Multiples upload en formulario",
-		"uploadFormPif" :"Integración con PIF"
+		"uploadFormPif" :"IntegraciÃ³n con PIF"
 	},
 	"comboProvincias":{
 		"_blank":"Seleccione un elemento" 	
@@ -389,7 +380,7 @@
 	"diaObligatorio":{
 		"lunes":"Lunes",
 		"martes":"Martes",
-		"miercoles":"Miércoles",
+		"miercoles":"MiÃ©rcoles",
 		"jueves":"Jueves",
 		"viernes":"Viernes",
 		"sabado":"Sabado",
@@ -404,19 +395,19 @@
 		"femenino":"Femenino"  	
 	},
 	"validaciones":{
-		"password_confirm":"Las contraseñas no coinciden",
+		"password_confirm":"Las contraseÃ±as no coinciden",
 		"email_confirm":"Los correos introducidos no coinciden"
 	},
 	"tabsValidacion":{
 		"validacionesCliente":"Validaciones en cliente",
 		"validacionesServidor":"Validaciones en servidor",
-		"reglasValidacion":"Reglas de validación",
-		"validacionComponentes":"Validación de componentes"
+		"reglasValidacion":"Reglas de validaciÃ³n",
+		"validacionComponentes":"ValidaciÃ³n de componentes"
 		 
 	},
 	"tabsFormulario":{
-		"ejemploYFunciones":"Ejemplo y métodos",
-		"multiplesEntidades":"Envío de varias entidades"
+		"ejemploYFunciones":"Ejemplo y mÃ©todos",
+		"multiplesEntidades":"EnvÃ­o de varias entidades"
 	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario '",
@@ -426,32 +417,32 @@
 		"maint1"	:"Mantenimiento Simple 1",
 		"maint2"    :"Mantenimiento Simple 2",
 		"maint3" 	:"Mantenimiento Simple 3",
-		"edit1" 	:"Mantenimiento edición en línea",
-		"multi1" 	:"Mantenimiento múltiple"
+		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea",
+		"multi1" 	:"Mantenimiento mÃºltiple"
 	},
 	"Tiny": {
 		"limpiar"			:	"Limpiar",
 		"insert_variable"	:	"Insertar variables",
 		"insert_bloque"		:	"Insertar bloques",
-		"insert_page"		:	"Insertar número de página",
-		"insert_pageCount"	:	"Insertar número total de páginas",
-		"ver_html"			:	"Ver código HTML",
-		"aviso_ver_html"	:	"¿Está seguro de que desea cambiar el código HTML?<br/>Esto puede acarrear comportamientos inesperados en el tratamiento del bloque."
+		"insert_page"		:	"Insertar nÃºmero de pÃ¡gina",
+		"insert_pageCount"	:	"Insertar nÃºmero total de pÃ¡ginas",
+		"ver_html"			:	"Ver cÃ³digo HTML",
+		"aviso_ver_html"	:	"Â¿EstÃ¡ seguro de que desea cambiar el cÃ³digo HTML?<br/>Esto puede acarrear comportamientos inesperados en el tratamiento del bloque."
 	},
 	"breadCrumb": {
-		"integracion" :"Integración",
+		"integracion" :"IntegraciÃ³n",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"breadCrumb_2": {
-		"integracion" :"Integración",
+		"integracion" :"IntegraciÃ³n",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"treeCodeDialog": {
-		"title" : "Código usado para generar el árbol",
+		"title" : "CÃ³digo usado para generar el Ã¡rbol",
 		"javascript" : "JavaScript",
 		"html" : "HTML"
 	},
@@ -462,7 +453,7 @@
 	"uniqueDemo": {
 		"duplicateKey" : "Clave duplicada",
 		"duplicateNodes" : "Se ha producido una duplicidad del nodo ",
-		"inFunction" : " con la función "
+		"inFunction" : " con la funciÃ³n "
 	},
 	"tasksTree": {
 		"raiz" : "Tareas Pendientes",
@@ -471,7 +462,7 @@
 		"reparaciones" : "Reparaciones",
 		"suministros" : "Pedidos de suministros",
 		"facturas" : "Facturas por cobrar",
-		"informe_trimestral" : "Informe general (1º trimestre)",
+		"informe_trimestral" : "Informe general (1Âº trimestre)",
 		"informe_gastos_generales" : "Gastos generales (oficina)",
 		"informe_desperfectos" : "Desperfectos Granizada",
 		"informe_deudas" : "Deudas pendientes de pagar",
@@ -481,30 +472,48 @@
 		"pedido_cemento" : "Abastecimiento de cemento Andoain",
 		"pedido_martillo" : "Martillo nuevo a Donosti",
 		"reparacion_fachada" : "Arreglos en fachadas",
-		"reparacion_indundacion" : "Limpieza por anegación",
-		"reparacion_suelo" : "Reparación de la tarima",
-		"reparacion_ratas" : "Revisión de desratización",
+		"reparacion_indundacion" : "Limpieza por anegaciÃ³n",
+		"reparacion_suelo" : "ReparaciÃ³n de la tarima",
+		"reparacion_ratas" : "RevisiÃ³n de desratizaciÃ³n",
 		"mp_ladrillos" : "3ton ladrillos",
 		"mp_clavos" : "Clavos del 5cm",
 		"mp_cemento" : "3 camiones de cemento",
 		"mp_recambios" : "ruedas",
-		"mp_jabon" : "Jabón de manos (8 cajas)",
+		"mp_jabon" : "JabÃ³n de manos (8 cajas)",
 		"mp_botas" : "40 pares de botas de seguridad",
 		"mp_cascos" : "40 cascos de obra",
 		"factura_VH" : "Cobros Valle Hermoso",
 		"factura_Lindo" : "Cobros Lindo S.A.",
-		"factura_devolucion" : "Revisar devolución de cobro IT",
+		"factura_devolucion" : "Revisar devoluciÃ³n de cobro IT",
 		"factura_OM" : "Cobro Oscar Mayer",
 		"workers" : "Trabajadores",
-		"depAdmin" : "DEP de Administración",
+		"depAdmin" : "DEP de AdministraciÃ³n",
 		"depReparaciones" : "DEP de Suministros",
 		"depClientes" : "DEP de Clientes",
 		"depSuministros" : "DEP de Suministros"
 	},
 	"treeNodesExchangePanel_center" : {
-		"errorOp" : "Operación errónea",
-		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"."
+		"errorOp" : "OperaciÃ³n errÃ³nea",
+		"funtError" : "La imagen no es un botÃ³n. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un Ã¡rbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"."
 	},
+	
+	"table":{
+		"id": "Id",
+		"nombre" : "Nombre",
+		"apellido1" : "Primer apellido",
+		"apellido2" : "Segundo apellido",
+		"ejie" : "Ejie",
+		"fechaAlta":"Fecha de alta",
+		"fechaBaja":"Fecha de baja",
+		"rol":"Rol"
+	},
+	"GRID_simple##rol" : {
+		"administrador" : "administrador",
+		"desarrollador" : "desarrollador",
+		"espectador" : "espectador",
+		"informador" : "informador",
+		"manager" : "manager"
+	},	
 	"tabsScrollableExample" : {
 		"pestana1" : "Tab 1",
 		"pestana2" : "Tab 2",
@@ -525,5 +534,50 @@
 		"pestana17" : "tab17",
 		"pestana18" : "sub18",
 		"pestana19" : "sub19"
-	}
+	},
+	 "iberdokTable":{
+	 	"abrirDocumento": "Abrir documento",
+	 	"editarEnIberdok":"Editar en Iberdok",
+	 	"id":"id",
+	 	"nombre":"nombre",
+	 	"idModelo":"idModelo",
+	 	"idDocumento":"idDocumento",
+	 	"estado":"estado",
+	 	"nuevo":"Nuevo",
+	 	"copiar":"Copiar",
+	 	"editar":"Editar",
+	 	"ver":"Visualizar",
+	 	"finalizado":"Finalizado",
+	 	"elaboracion":"Elaboración",
+	 	"es":"Castellano",
+	 	"eu":"Euskera",
+	 	"en":"Inglés",
+	 	"modo1":"Crear documento",
+	 	"modo2":"Editar documento finalizado",
+	 	"modo7":"Editar documento no finalizado",
+	 	"modo8":"Copiar documento",
+	 	"dialog":"Lanzar Iberdok",
+	 	"errorFichero":"No se ha definido el fichero a cargar",
+	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación => ",
+	 	"errorParseo2":".<br> Error devuelto:<br>"
+	 },
+	   "charts": {
+        "charts": "Gráficos",
+        "line": "Líneas",
+        "bar": "Barras",
+        "radar": "Radar",
+        "polar": "Polar",
+        "pie": "Tarta",
+        "doughnut": "Donut",
+        "bubble": "Burbuja",
+        "datasetRadar": {
+            "dataset1": "dataset 1",
+            "dataset2": "dataset 2"
+        },
+        "colorLabels": ["rojo", "azul", "amarillo"],
+        "radarLabels": ["Comida", "Bebida", "Dormir", "Diseño", "Programacion", "Bicicleta", "Correr"],
+        "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
+    }
+
+	
 }
