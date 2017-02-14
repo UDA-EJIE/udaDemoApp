@@ -168,7 +168,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
      * @param usuario Usuario
      * @param pagination Pagination
      * @param startsWith Boolean
-     * @return List ENZAMORA	78908954Ej	
+     * @return List	
      * 
      * 
      */
