@@ -7,102 +7,102 @@
 			"all" :"[Todos los patrones]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"MenÃº contextual",
+			"contextMenu" :"Menú contextual",
 			"toolbar" :"Botonera",
 			"combo" :"Combo",
 				"comboSimple" :"Combo Simple",
 				"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-				"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
-				"multicombo" :"Combo MultiselecciÃ³n",
-			"dialog" :"DiÃ¡logos",
+				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+				"multicombo" :"Combo Multiselección",
+			"dialog" :"Diálogos",
 			"date" :"Fecha",
 			"feedback" :"Feedback",
 			"form" :"Formulario",
 			"time" :"Hora",
 			"message" :"Mensajes",
-			"menu" :"MenÃº",
+			"menu" :"Menú",
 				"menuHorizontal" :"Horizontal",
 				"menuVertical" :"Vertical",
 				"menuMixto" :"Mixto",
-			"tabs" :"PestaÃ±as",
-				"tabsStatic" :"PestaÃ±as carga estÃ¡tica",
-				"tabsAjax" :"PestaÃ±as carga Ajax",
-				"tabsMixto" :"PestaÃ±as carga mixta",
-				"maintTab" :"PestaÃ±as con mantenimientos",
+			"tabs" :"Pestañas",
+				"tabsStatic" :"Pestañas carga estática",
+				"tabsAjax" :"Pestañas carga Ajax",
+				"tabsMixto" :"Pestañas carga mixta",
+				"maintTab" :"Pestañas con mantenimientos",
 			"grid" :"Tabla",
 				"grid_grupo" :"Tabla Agrupada",
 				"grid_base" :"Tabla Basico",
 				"grid_arbol" :"Tabla Arbol",
 			"tooltip" :"Tooltip",
 			"upload" :"Upload",
-			"validate" : "ValidaciÃ³n",
+			"validate" : "Validación",
 			"wizard" :"Wizard",
 				"wizardA" :"Wizard simple",
 				"wizardB" :"Wizard <%@ include %>",
 				"wizardC" :"Wizard <jsp:include>",
 				"wizardD" :"Wizard <c:import>",
-				"wizardE" :"Wizard dinÃ¡mico",
-			"tree" : "Ã�rbol",
-				"trees" :"Ã�rboles con diferentes configuraciones",
-				"treeDAD" :"Ã�rboles con interaccion mediante Drag & Drop",
-				"trees_formats" :"Ã�rboles con diferentes formatos de datos",
-				"tree_panel" :"Ã�rbol con panel de detalle",
+				"wizardE" :"Wizard dinámico",
+			"tree" : "Árbol",
+				"trees" :"Árboles con diferentes configuraciones",
+				"treeDAD" :"Árboles con interaccion mediante Drag & Drop",
+				"trees_formats" :"Árboles con diferentes formatos de datos",
+				"tree_panel" :"Árbol con panel de detalle",
 		"experimental" :"Experimental",
-		"integracion" :"IntegraciÃ³n",
+		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE", 
 		"uda" :"UDA",
 		"titulo-notifi" :"Notificaciones",
-		"titulo-nave" :"NavegaciÃ³n",
-		"titulo-estru" :"EstructuraciÃ³n de pantalla",
-		"titulo-inser" :"InserciÃ³n de datos"
+		"titulo-nave" :"Navegación",
+		"titulo-estru" :"Estructuración de pantalla",
+		"titulo-inser" :"Inserción de datos"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" :"Patrones",
 			"all" :"[Todos los patrones]",
 			"accordion" :"Accordion",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"MenÃº contextual",
+			"contextMenu" :"Menú contextual",
 			"toolbar" :"Botonera",
 			"comboSimple" :"Combo Simple",
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-			"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
-			"multicombo" :"Combo MultiselecciÃ³n",
-			"dialog" :"DiÃ¡logos",
+			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+			"multicombo" :"Combo Multiselección",
+			"dialog" :"Diálogos",
 			"date" :"Fecha",
 			"feedback" :"Feedback",
 			"form" :"Formulario",
 			"time" :"Hora",
 			"message" :"Mensajes",
-			"menu" :"MenÃº Horizontal",
-			"menuVertical":"MenÃº Vertical",
-			"menuMixto":"MenÃº Mixto",
-			"tabs" :"PestaÃ±as",
-				"tabsStatic":"PestaÃ±as carga estÃ¡tica",
-				"tabsAjax":"PestaÃ±as carga Ajax",
-				"tabsMixto":"PestaÃ±as carga mixta",
-				"maintTab":"PestaÃ±as con mantenimientos",
+			"menu" :"Menú Horizontal",
+			"menuVertical":"Menú Vertical",
+			"menuMixto":"Menú Mixto",
+			"tabs" :"Pestañas",
+				"tabsStatic":"Pestañas carga estática",
+				"tabsAjax":"Pestañas carga Ajax",
+				"tabsMixto":"Pestañas carga mixta",
+				"maintTab":"Pestañas con mantenimientos",
 			"grid" :"Tabla",
 				"grid_grupo" :"Tabla Agrupada",
 				"grid_base" :"Tabla Basico",
 				"grid_arbol" :"Tabla Arbol",
 			"tooltip" : "Tooltip",
 			"upload" : "Upload",
-			"validate" : "ValidaciÃ³n",
+			"validate" : "Validación",
 			"wizard" :"Wizard",
 				"wizardA" :"Wizard simple",
 				"wizardB" :"Wizard <%@ include %>",
 				"wizardC" :"Wizard <jsp:include>",
 				"wizardD" :"Wizard <c:import>",
-				"wizardE" :"Wizard dinÃ¡mico",
-			"tree" : "Ã�rbol",
-				"trees" :"Ã�rboles",
-				"treeDAD" : "Ã�rbol con D&D",
-				"treesFormats" :"Ã�rboles formateados",
-				"treePanel" :"Ã�rbol con panel",
+				"wizardE" :"Wizard dinámico",
+			"tree" : "Árbol",
+				"trees" :"Árboles",
+				"treeDAD" : "Árbol con D&D",
+				"treesFormats" :"Árboles formateados",
+				"treePanel" :"Árbol con panel",
 		"experimental" :"Experimental",
-		"integracion" :"IntegraciÃ³n",
+		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE", 
@@ -165,9 +165,9 @@
 	"_coment":"COMBO_ENLAZADO",
 		"comboAbuelo":{
 			"_blank":"[Selecciona Abuelo]",
-			"a":"Ã�lava",
+			"a":"Álava",
 			"b":"Vizcaya",
-			"g":"GipÃºzcoa"
+			"g":"Gipúzcoa"
 		},
 		"comboPadre":{
 			"a1":"A-Zona1",
@@ -199,9 +199,9 @@
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo]",
-			"a":"Ã�lava",
+			"a":"Álava",
 			"b":"Vizcaya",
-			"g":"GipÃºzcoa"
+			"g":"Gipúzcoa"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
 		"departamentoRemote":{
@@ -211,14 +211,14 @@
 			"_blank":"[Selecciona Prov.]"
 		},
 		"mixto_provincia":{
-			"a":"Ã�lava",
+			"a":"Álava",
 			"b":"Vizcaya",
-			"g":"GipÃºzcoa"
+			"g":"Gipúzcoa"
 		},
 		"mixto2_departamento":{
 			"ayto":"Ayuntamiento",
-			"dipu":"DiputaciÃ³n",
-			"poli":"PolicÃ­a",
+			"dipu":"Diputación",
+			"poli":"Policía",
 			"bomb":"Bomberos"
 		},
 	"_comment":"MULTI_COMBO",	
@@ -267,9 +267,9 @@
 		"sub10" 		:"sub10",
 		"sub11" 		:"sub11",
 		"pestana2" 		:"Tab 2",
-		"pestanaAna"   	:"Nueva PestaÃ±a",
-		"nuevaPestaÃ±a" 	:"Nuevo Nivel",
-		"PestaÃ±asMaint"	:"PestaÃ±a con Mantenimientos"
+		"pestanaAna"   	:"Nueva Pestaña",
+		"nuevaPestaña" 	:"Nuevo Nivel",
+		"PestañasMaint"	:"Pestaña con Mantenimientos"
 	},
 	"pruebaSub3Maint" :{
 		"maint1"		:"Mantenimiento 1",
@@ -277,21 +277,21 @@
 		"maint3"		:"Mantenimiento 3"	
 	},
 	"tabsStatic" :{
-		"pestana0" 	:"PestaÃ±a 1",
-		"pestana1"  :"PestaÃ±a 2",
-		"pestana2" 	:"PestaÃ±a 3",
-		"pestanaAna" :"PestaÃ±a AÃ±adida"
+		"pestana0" 	:"Pestaña 1",
+		"pestana1"  :"Pestaña 2",
+		"pestana2" 	:"Pestaña 3",
+		"pestanaAna" :"Pestaña Añadida"
 	},
 	"tabsMixta" :{
-		"pestanaUrl" 	:"PestaÃ±a con url",
-		"pestanaHtml"  :"PestaÃ±a con html"
+		"pestanaUrl" 	:"Pestaña con url",
+		"pestanaHtml"  :"Pestaña con html"
 	},
 	"tabsMaint" :{
 		"maint1"	:"Mantenimiento Simple 1",
 		"maint2"    :"Mantenimiento Simple 2",
 		"maint3" 	:"Mantenimiento Simple 3",
-		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea",
-		"multi1" 	:"Mantenimiento mÃºltiple"
+		"edit1" 	:"Mantenimiento edición en línea",
+		"multi1" 	:"Mantenimiento múltiple"
 	},
 	"tabsDialog" :{
 		"pestana0" 	:"Tab 0",
@@ -347,7 +347,7 @@
 	},
 	"grid##ejie" :{
 		"0" :"No",
-		"1" :"SÃ­"
+		"1" :"Sí"
 	},
 	"GRID_simple##ejie" :{
 		"0" :"No",
@@ -355,7 +355,7 @@
 	},
 	"gridDialog##ejie" :{
 		"0" :"No",
-		"1" :"SÃ­"
+		"1" :"Sí"
 	},
 	"uploadTabs":{
 		"upload" :"Upload",
@@ -363,7 +363,7 @@
 		"uploadForm" :"Upload form",
 		"uploadFormSimple" :"Upload simple en formulario",
 		"uploadFormMultiple" :"Multiples upload en formulario",
-		"uploadFormPif" :"IntegraciÃ³n con PIF"
+		"uploadFormPif" :"Integración con PIF"
 	},
 	"comboProvincias":{
 		"_blank":"Seleccione un elemento" 	
@@ -380,7 +380,7 @@
 	"diaObligatorio":{
 		"lunes":"Lunes",
 		"martes":"Martes",
-		"miercoles":"MiÃ©rcoles",
+		"miercoles":"Miércoles",
 		"jueves":"Jueves",
 		"viernes":"Viernes",
 		"sabado":"Sabado",
@@ -395,19 +395,19 @@
 		"femenino":"Femenino"  	
 	},
 	"validaciones":{
-		"password_confirm":"Las contraseÃ±as no coinciden",
+		"password_confirm":"Las contraseñas no coinciden",
 		"email_confirm":"Los correos introducidos no coinciden"
 	},
 	"tabsValidacion":{
 		"validacionesCliente":"Validaciones en cliente",
 		"validacionesServidor":"Validaciones en servidor",
-		"reglasValidacion":"Reglas de validaciÃ³n",
-		"validacionComponentes":"ValidaciÃ³n de componentes"
+		"reglasValidacion":"Reglas de validación",
+		"validacionComponentes":"Validación de componentes"
 		 
 	},
 	"tabsFormulario":{
-		"ejemploYFunciones":"Ejemplo y mÃ©todos",
-		"multiplesEntidades":"EnvÃ­o de varias entidades"
+		"ejemploYFunciones":"Ejemplo y métodos",
+		"multiplesEntidades":"Envío de varias entidades"
 	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario '",
@@ -417,32 +417,32 @@
 		"maint1"	:"Mantenimiento Simple 1",
 		"maint2"    :"Mantenimiento Simple 2",
 		"maint3" 	:"Mantenimiento Simple 3",
-		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea",
-		"multi1" 	:"Mantenimiento mÃºltiple"
+		"edit1" 	:"Mantenimiento edición en línea",
+		"multi1" 	:"Mantenimiento múltiple"
 	},
 	"Tiny": {
 		"limpiar"			:	"Limpiar",
 		"insert_variable"	:	"Insertar variables",
 		"insert_bloque"		:	"Insertar bloques",
-		"insert_page"		:	"Insertar nÃºmero de pÃ¡gina",
-		"insert_pageCount"	:	"Insertar nÃºmero total de pÃ¡ginas",
-		"ver_html"			:	"Ver cÃ³digo HTML",
-		"aviso_ver_html"	:	"Â¿EstÃ¡ seguro de que desea cambiar el cÃ³digo HTML?<br/>Esto puede acarrear comportamientos inesperados en el tratamiento del bloque."
+		"insert_page"		:	"Insertar número de página",
+		"insert_pageCount"	:	"Insertar número total de páginas",
+		"ver_html"			:	"Ver código HTML",
+		"aviso_ver_html"	:	"¿Está seguro de que desea cambiar el código HTML?<br/>Esto puede acarrear comportamientos inesperados en el tratamiento del bloque."
 	},
 	"breadCrumb": {
-		"integracion" :"IntegraciÃ³n",
+		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"breadCrumb_2": {
-		"integracion" :"IntegraciÃ³n",
+		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"treeCodeDialog": {
-		"title" : "CÃ³digo usado para generar el Ã¡rbol",
+		"title" : "Código usado para generar el árbol",
 		"javascript" : "JavaScript",
 		"html" : "HTML"
 	},
@@ -453,7 +453,7 @@
 	"uniqueDemo": {
 		"duplicateKey" : "Clave duplicada",
 		"duplicateNodes" : "Se ha producido una duplicidad del nodo ",
-		"inFunction" : " con la funciÃ³n "
+		"inFunction" : " con la función "
 	},
 	"tasksTree": {
 		"raiz" : "Tareas Pendientes",
@@ -462,7 +462,7 @@
 		"reparaciones" : "Reparaciones",
 		"suministros" : "Pedidos de suministros",
 		"facturas" : "Facturas por cobrar",
-		"informe_trimestral" : "Informe general (1Âº trimestre)",
+		"informe_trimestral" : "Informe general (1º trimestre)",
 		"informe_gastos_generales" : "Gastos generales (oficina)",
 		"informe_desperfectos" : "Desperfectos Granizada",
 		"informe_deudas" : "Deudas pendientes de pagar",
@@ -472,29 +472,29 @@
 		"pedido_cemento" : "Abastecimiento de cemento Andoain",
 		"pedido_martillo" : "Martillo nuevo a Donosti",
 		"reparacion_fachada" : "Arreglos en fachadas",
-		"reparacion_indundacion" : "Limpieza por anegaciÃ³n",
-		"reparacion_suelo" : "ReparaciÃ³n de la tarima",
-		"reparacion_ratas" : "RevisiÃ³n de desratizaciÃ³n",
+		"reparacion_indundacion" : "Limpieza por anegación",
+		"reparacion_suelo" : "Reparación de la tarima",
+		"reparacion_ratas" : "Revisión de desratización",
 		"mp_ladrillos" : "3ton ladrillos",
 		"mp_clavos" : "Clavos del 5cm",
 		"mp_cemento" : "3 camiones de cemento",
 		"mp_recambios" : "ruedas",
-		"mp_jabon" : "JabÃ³n de manos (8 cajas)",
+		"mp_jabon" : "Jabón de manos (8 cajas)",
 		"mp_botas" : "40 pares de botas de seguridad",
 		"mp_cascos" : "40 cascos de obra",
 		"factura_VH" : "Cobros Valle Hermoso",
 		"factura_Lindo" : "Cobros Lindo S.A.",
-		"factura_devolucion" : "Revisar devoluciÃ³n de cobro IT",
+		"factura_devolucion" : "Revisar devolución de cobro IT",
 		"factura_OM" : "Cobro Oscar Mayer",
 		"workers" : "Trabajadores",
-		"depAdmin" : "DEP de AdministraciÃ³n",
+		"depAdmin" : "DEP de Administración",
 		"depReparaciones" : "DEP de Suministros",
 		"depClientes" : "DEP de Clientes",
 		"depSuministros" : "DEP de Suministros"
 	},
 	"treeNodesExchangePanel_center" : {
-		"errorOp" : "OperaciÃ³n errÃ³nea",
-		"funtError" : "La imagen no es un botÃ³n. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un Ã¡rbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"."
+		"errorOp" : "Operación errónea",
+		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"."
 	},
 	
 	"table":{
