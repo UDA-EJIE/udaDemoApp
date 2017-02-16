@@ -2,24 +2,24 @@ body{
   background-color: #e2e1e0;
 }
 
-header{
-  background-color: #ffffff;
-  height: 6em;
-  display: none;
+header {
+	background-color: #ffffff;
+	height: 0px;
+	overflow: hidden;
+	position: relative;
+	z-index: 99;
 }
 
-header div.cabecera > a{
-  padding-top: 1.3em;
-  padding-right: 1em;
-
+header div.cabecera>a {
+	padding-top: 1.3em;
+	padding-right: 1em;
 }
 
-@media (min-width: 768px) {
-  header{
-    display: block;
-  }
+@media ( min-width : 768px) {
+	header {
+		height: 6em;
+	}
 }
-
 
 /* .contenedor section{ */
 /*   background-color: #ffffff; */
@@ -31,7 +31,6 @@ header div.cabecera > a{
   margin-left: 0;
   margin-right: 0;
 }*/
-
 footer{
   clear: both;
 
