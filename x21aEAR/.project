@@ -7,6 +7,7 @@
 		<project>x21aEARClasses</project>
 		<project>x21aPilotoPatronesWar</project>
 		<project>x21aAppWar</project>
+		<project>x38ShLibClasses</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
