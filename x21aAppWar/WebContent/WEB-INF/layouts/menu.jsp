@@ -1,15 +1,15 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
- -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
- -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  -- 
  -- http://ec.europa.eu/idabc/eupl.html
  -- 
- -- Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
- -- el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
- -- SIN GARANTÃAS NI CONDICIONES DE NINGÃN TIPO, ni expresas ni implÃ­citas.
- -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia. 
  --%>
  <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
@@ -37,7 +37,7 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/accordion"><i class="fa fa-list" aria-hidden="true"></i><spring:message code="accordion" /></a>
 
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#">Pestañas</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Pestañas</a>
               <div class="dropdown-menu menu-right" >
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic"><spring:message code="tabsStatic" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax"><spring:message code="tabsAjax" /></a>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#">Wizard</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Wizard</a>
               <div class="dropdown-menu menu-right" >
                 <a class="dropdown-item" href="/x21aAppWar/patrones/wizard"><spring:message code="wizardA" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/wizard_includeFile"><spring:message code="wizardB" htmlEscape="true"/></a>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#">Arbol</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Arbol</a>
               <div class="dropdown-menu menu-right" >
                 <a class="dropdown-item" href="/x21aAppWar/patrones/trees"><spring:message code="tree_multiple_configuraciones" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/treeDAD"><spring:message code="tree_multiple_d&d"/></a>
@@ -71,7 +71,7 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/autocomplete"><spring:message code="autocomplete" /></a>
 
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#">Combo</a>
+              <a class="dropdown-item dropdown-toggle" href="#">Combo</a>
               <div class="dropdown-menu menu-right">
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboSimple"><spring:message code="comboSimple" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboEnlazadoSimple"><spring:message code="comboEnlazadoSimple" /></a>
@@ -87,7 +87,7 @@
             <a class="dropdown-item" href="/x21aAppWar/patrones/spinner">Spinner</a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/upload"><spring:message code="upload" /></a>
             <div class="dropdown-submenu" >
-              <a class="dropdown-item" href="#"><spring:message code="validate" /></a>
+              <a class="dropdown-item dropdown-toggle" href="#"><spring:message code="validate" /></a>
               <div class="dropdown-menu menu-right">
               	<a class="dropdown-item" href="/x21aAppWar/patrones/validate">Configuración</a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/validateRules">Reglas de validación</a>
@@ -150,7 +150,12 @@
       <li class="nav-item">
         <a class="nav-link rup-nav-user rup-nav-tool-icon" href="#"><i class="fa fa-user-circle-o " aria-hidden="true"></i></a>
       </li>
+      <li class="nav-item scrollTop">
+        <a class="nav-link rup-nav-user rup-nav-tool-icon" href="#"><i class="fa fa-arrow-circle-up " aria-hidden="true"></i></a>
+      </li>
     </ul>
   </div><!--/.navbar-collapse -->
 
 </nav>
+
+<div id="overlay"></div>

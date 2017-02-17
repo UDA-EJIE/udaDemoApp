@@ -115,7 +115,7 @@ jQuery(document).ready(function(){
 			},
 			"experimental" : {
 				//Literal
-				"i18nCaption" : "experimental",
+				"i18nCaption" : "experimental"
 				//Elementos (url)
 
 			},
