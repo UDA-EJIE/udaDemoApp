@@ -39,9 +39,9 @@
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	
 </head>	
-<body >
-
-
+	<body>
+	
+	
 		<div class="contenedor" >
 			<!-- Cabecera -->
 			<tiles:insertAttribute name="header" />
@@ -66,6 +66,6 @@
 			<tiles:insertAttribute name="base-includes" />
 			<tiles:insertAttribute name="includes" />
 		</div>
-	
-</body>
+		
+	</body>
 </html>
