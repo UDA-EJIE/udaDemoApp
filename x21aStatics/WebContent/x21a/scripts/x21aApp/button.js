@@ -17,11 +17,11 @@ jQuery(document).ready(function () {
 
 	$("#btnDefault").rup_button({});
 
-    //Botón con icono HTML
+    // Botón con icono HTML
 	$("#btnIconHtml").rup_button();
 
-    //Botón con icono JS
-	$("#btnIconJs.rup_button({
+    // Botón con icono JS
+	$("#btnIconJs").rup_button({
       iconCss: "fa fa-cog"
     });
 
@@ -41,17 +41,16 @@ jQuery(document).ready(function () {
 
     $("#btnMButton").rup_button({});
 
-
-    $("#btnFab").rup_button({
-      //fab: true
+    $("#fabButton").rup_button({
+      // fab: true
     });
 
 	$("#fabButtonLayer").rup_button({
-      //fab: true
+      // fab: true
     });
 
-	$("#btnFabFixed").rup_button({
-      //fab: true
+	$("#fabButtonFixed").rup_button({
+      // fab: true
     });
 
 	$("#btnDropdownList").rup_button({

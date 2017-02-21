@@ -554,7 +554,7 @@ section>h1, section>h2, section>h3, section>h4, section>h5, section>h6 {
 .example {
 	border: 1px solid #ddd;
 	border-radius: 4px;
-	margin: 0.5rem 0rem;
+	margin: 1rem 0rem;
 	padding: 1rem;
 	position: relative;
 }

@@ -13,11 +13,53 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Context Menu</h2>
 
-<div id="contextMenu" class="contextMenu-box">Right click + Opciones desabilitadas</div><br>
-<div class="contextMenu-left contextMenu-box">Left click + Atajos de teclado</div><br>
-<div id="contextMenu-hover" class="contextMenu-box">Hover + submenus</div><br>
-<div class="contextMenu-other contextMenu-box">Abrir desde otro elemento + bajo demanda
-	<button type="button" id="activate-menu">click me</button>
-</div><br>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
+
+<section class="row">
+	<div class="col-xs-12">
+		<h2>Context Menu</h2>
+		<hr>
+
+		<div id="contextMenu" class="card card-inverse"
+			style="background-color: #333; border-color: #333;">
+			<div class="card-block">
+				<h2 class="card-blockquote">
+					<center>Right click + Opciones desabilitadas</center>
+				</h2>
+			</div>
+		</div>
+
+		<div id="contextMenu-left" class="card card-inverse contextMenu-left"
+			style="background-color: #333; border-color: #333;">
+			<div class="card-block">
+				<h2 class="card-blockquote">
+					<center>Left click + Atajos de teclado</center>
+				</h2>
+			</div>
+		</div>
+
+		<div id="contextMenu-hover" class="card card-inverse"
+			style="background-color: #333; border-color: #333;">
+			<div class="card-block">
+				<h2 class="card-blockquote">
+					<center>Hover + submenus</center>
+				</h2>
+			</div>
+		</div>
+
+		<div id="contextMenu-other"
+			class="card card-inverse contextMenu-other"
+			style="background-color: #333; border-color: #333;">
+			<div class="card-block">
+				<h2 class="card-blockquote">
+					<center>
+						Abrir desde otro elemento + bajo demanda
+						<button type="button" id="activate-menu">click me</button>
+					</center>
+				</h2>
+			</div>
+		</div>
+	</div>
+</section>

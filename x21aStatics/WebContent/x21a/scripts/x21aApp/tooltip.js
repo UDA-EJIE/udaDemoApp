@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
 		}
 	});
 	
-	$("#htmlTooltip").rup_tooltip({
+	$("#idHtmlTooltip").rup_tooltip({
 		content: {
 			text: $("#accordionExample1")
 //			title: {
