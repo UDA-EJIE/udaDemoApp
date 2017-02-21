@@ -15,4 +15,4 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <script src="${staticsUrl}/x21a/scripts/x21aMantenimientos/tableColModel.js" type="text/javascript"></script>
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/all.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/all.js" type="text/javascript"></script>

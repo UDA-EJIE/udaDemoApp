@@ -17,4 +17,4 @@
 <script>
 	var respuesta = "${model.respuesta}";
 </script>
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/form.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/form.js" type="text/javascript"></script>

@@ -14,47 +14,91 @@
  -- que establece la Licencia.
  --%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@include file="/WEB-INF/includeTemplate.inc"%>	
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<section>
-	<h2>
-		Diálogo
-	</h2>
-	<p>
-		Permite lanzar un subproceso o un mensaje de confirmación dentro de un proceso principal sin salirse de este. Es una evolución del patrón mensaje.
-	</p>
-	
-	<p>
-		El componente permite varios modos de indicar el contenido del diálogo: 
-	</p>
-	<ul>
-		<li><code>$.rup.dialog.DIV</code> : El contenido del diálogo se especifica dentro del propio <code>&lt;div&gt;</code>.</li>
-		<li><code>$.rup.dialog.AJAX</code> : El contenido del diálogo se obtine a partir de la respuesta de una petición <b>XHR</b>.</li>
-		<li><code>$.rup.dialog.TEXT</code> : El contenido del diálogo se especifica mediante la propiedad <code>message</code>.</li>
-	</ul>
-	<p>
-		Estos serían unos ejemplos de las diferentes configuraciones: 
-	</p>
-	<div class="example">
-		
-		<div class="row">
-		    <div class="col-md-3">
-		    	<button id="btnDialog" class="btn btn-block btn-secondary"><spring:message code="dialogNormal" /></button>
-		    </div>
-		    <div class="col-md-3">
-		    	<button id="btnAjaxDialogWAR" class="btn btn-block btn-secondary"><spring:message code="dialogAjaxWAR" /></button>
-		    </div>
-		    <div class="col-md-3">
-		    	<button id="btnAjaxDialogStatics" class="btn btn-block btn-secondary"><spring:message code="dialogAjaxStatics" /></button>
-		    </div>
-		    <div class="col-md-3">
-		    	<button id="btnTextDialog" class="btn btn-block btn-secondary"><spring:message  code="dialogText" /></button>
-		    </div>
-	  	</div>
-	</div>
+<section class="row">
+	<div class="col-xs-12">
+		<h2>Diálogo</h2>
+		<hr>
+		<p>Permite lanzar un subproceso o un mensaje de confirmación
+			dentro de un proceso principal sin salirse de este. Es una evolución
+			del patrón mensaje.</p>
+
+		<p>El componente permite varios modos de indicar el contenido del
+			diálogo:</p>
+
+		<div class="list-group">
+			<div
+				class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">
+						<code>$.rup.dialog.DIV</code>
+					</h5>
+				</div>
+				<p class="mb-1">
+					El contenido del diálogo se especifica dentro del propio
+					<code>&lt;div&gt;</code>
+				</p>
+			</div>
+			<div
+				class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">
+						<code>$.rup.dialog.AJAX</code>
+					</h5>
+				</div>
+				<p class="mb-1">
+					El contenido del diálogo se obtine a partir de la respuesta de una
+					petición <b>XHR</b>.
+				</p>
+			</div>
+			<div
+				class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1">
+						<code>$.rup.dialog.TEXT</code>
+					</h5>
+				</div>
+				<p class="mb-1">
+					El contenido del diálogo se especifica mediante la propiedad
+					<code>message</code>
+					.
+				</p>
+			</div>
+		</div>
+
+		<p>Estos serían unos ejemplos de las diferentes configuraciones:</p>
+
+		<div class="example">
+			<div class="row">
+				<div class="col-md-3">
+					<button id="btnDialog" class="btn btn-block btn-secondary">
+						<spring:message code="dialogNormal" />
+					</button>
+				</div>
+				<div class="col-md-3">
+					<button id="btnAjaxDialogWAR" class="btn btn-block btn-secondary">
+						<spring:message code="dialogAjaxWAR" />
+					</button>
+				</div>
+				<div class="col-md-3">
+					<button id="btnAjaxDialogStatics"
+						class="btn btn-block btn-secondary">
+						<spring:message code="dialogAjaxStatics" />
+					</button>
+				</div>
+				<div class="col-md-3">
+					<button id="btnTextDialog" class="btn btn-block btn-secondary">
+						<spring:message code="dialogText" />
+					</button>
+				</div>
+			</div>
+		</div>
 </section>
 
-<div id="idDialog" style="display:none"><spring:message code="divDialogContent" /></div>
-<div id="idDialogAjaxWar" style="display:none"></div>
-<div id="idDialogAjaxStatics" style="display:none"></div>
-<div id="idDialogText" style="display:none"></div>
+<div id="idDialog" style="display: none">
+	<spring:message code="divDialogContent" />
+</div>
+<div id="idDialogAjaxWar" style="display: none"></div>
+<div id="idDialogAjaxStatics" style="display: none"></div>
+<div id="idDialogText" style="display: none"></div>

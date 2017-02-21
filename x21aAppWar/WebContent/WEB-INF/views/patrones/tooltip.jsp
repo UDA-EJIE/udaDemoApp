@@ -13,12 +13,16 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
 <section class="row">
 	<div class="col-xs-12">
 		<h2>
 			<spring:message code="tooltip.title" />
 		</h2>
+		<hr>
+
 		<p>
 			<spring:message code="tooltip.paragraph.line1" />
 		</p>
@@ -99,7 +103,8 @@
 					<div class="input-group">
 						<input id="htmlTooltip" name="htmlTooltip" type="text"
 							class="form-control"> <span class="input-group-btn">
-							<button id="idHtmlTooltip" class="btn btn-secondary" type="button">
+							<button id="idHtmlTooltip" class="btn btn-secondary"
+								type="button">
 								<i class="fa fa-question-circle" aria-hidden="true"></i>
 							</button>
 						</span>

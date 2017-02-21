@@ -20,6 +20,7 @@
 		<h2>
 			<spring:message code="feedback.title" />
 		</h2>
+		<hr>
 		<p>
 			<spring:message code="feedback.paragraph.line1" />
 		</p>
