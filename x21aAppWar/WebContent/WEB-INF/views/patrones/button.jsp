@@ -126,7 +126,7 @@
 
 		<div class="example">
 			<div class="rup-mbutton rup-collapsed-md">
-				<a type="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> <i
+				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> <i
 					class="fa fa-cog" aria-hidden="true"></i> <span
 					class="rup-ui-button-text hidden-xs-down">MButton</span>
 				</a>
