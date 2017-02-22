@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS11Classpath"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x21aEARClasses"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
