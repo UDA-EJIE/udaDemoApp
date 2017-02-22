@@ -197,25 +197,25 @@
 			</button>
 
 			<div class="rup-button-fab-group">
-				<button type="button" id="fabButtonFixed" data-fab="true"
-					data-fixed="true" data-list="fabButtonFixedList"
-					class="rup-button-fab rup-button-fixed ui-button ui-corner-all ui-widget rup-button">
-					<span class="glyphicon glyphicon-cog"></span>
-				</button>
 				<ul id="fabButtonFixedList" class="rup-button-fab-list">
 					<li><button type="button" id="fabButtonList1" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<span class="glyphicon glyphicon-plus"></span>
+							<i class="fa fa-print" aria-hidden="true"></i>
 						</button></li>
 					<li><button type="button" id="fabButtonList2" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<span class="glyphicon glyphicon-pencil"></span>
+							<i class="fa fa-trash" aria-hidden="true"></i>
 						</button></li>
 					<li><button type="button" id="fabButtonList3" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<span class="glyphicon glyphicon-trash"></span>
+							<i class="fa fa-pencil" aria-hidden="true"></i>
 						</button></li>
 				</ul>
+				<button type="button" id="fabButtonFixed" data-fab="true"
+					data-fixed="true" data-list="fabButtonFixedList"
+					class="rup-button-fab rup-button-fixed ui-button ui-corner-all ui-widget rup-button">
+					<i class="fa fa-plus" aria-hidden="true"></i>
+				</button>
 			</div>
 
 		</div>
