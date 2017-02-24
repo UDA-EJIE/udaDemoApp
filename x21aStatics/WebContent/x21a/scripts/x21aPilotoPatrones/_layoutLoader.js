@@ -117,17 +117,7 @@ jQuery(document).ready(function(){
 				//Literal
 				"i18nCaption" : "experimental",
 				//Elementos (url)
-				"maestro_detalle" : { "i18nCaption" : "maestro_detalle" },
-				"mant_multi_entidad": { "i18nCaption" : "mant_multi_entidad" },
-				"mant_clave_compuesta_multi" : { "i18nCaption" : "mant_clave_compuesta_multi" },
-				"mant_clave_compuesta_edlinea" : { "i18nCaption" : "mant_clave_compuesta_edlinea" },
-				//Submenu
-				"subLevel":[
-					{"i18nCaption":"maestro_detalle", "url": "/x21aPilotoPatronesWar/experimental/maestro_detalle" },
-					{"i18nCaption":"mant_multi_entidad", "url": "/x21aPilotoPatronesWar/experimental/mant_multi_entidad" },
-					{"i18nCaption":"mant_clave_compuesta_multi", "url": "/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_multi" },
-					{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_edlinea" }
-				]
+
 			},
 			"integracion" : {
 				//Literal
@@ -222,14 +212,7 @@ jQuery(document).ready(function(){
 						{"i18nCaption":"upload", "url": "patrones/upload" },
 						{"i18nCaption":"validate", "url": "patrones/validate" }
 					]},
-					{"i18nCaption":"experimental", "submenu":[
-					    {"i18nCaption":"maestro_detalle", "url": "experimental/maestro_detalle" },
-					    {"i18nCaption":"mant_multi_entidad", "url": "experimental/mant_multi_entidad" },
-						{"i18nCaption":"mant_clave_compuesta", "submenu":[
-					     	{"i18nCaption":"mant_clave_compuesta_multi", "url": "experimental/mant_clave_compuesta_multi" },
-					      	{"i18nCaption":"mant_clave_compuesta_edlinea", "url": "experimental/mant_clave_compuesta_edlinea" }
-					    ]},
-					]},
+
 					{"i18nCaption":"integracion", "submenu":[
 					    {"i18nCaption":"z-index", "url": "integracion/z-index" },
 						{"i18nCaption":"nora", "url": "integracion/nora"},

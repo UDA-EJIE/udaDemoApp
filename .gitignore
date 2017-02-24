@@ -1,2 +1,8 @@
 .svn
 x21aStatics/\.externalToolBuilders/
+
+.metadata
+.metadata/*
+RemoteSystemsTempFiles/.project
+*.class
+x21aEARClasses/bin/

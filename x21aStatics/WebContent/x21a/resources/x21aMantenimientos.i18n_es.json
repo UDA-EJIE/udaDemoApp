@@ -1,17 +1,9 @@
 {
 	"x21aMantenimientosWar_migas" :{
-		"simple"	: "Selección simple",
 		"multi"		: "Multiselección",
-		"edlinea"	: "Edición en línea",
 		"formPropio" : "Form Propio", 
 		"administracion" : "Administración",
 		"alumno" : "Alumno",
-		"jerarquia" : "Jerarquia",
-		"usuarioJerarquia" : "Normal",
-		"usuarioJerarquiaGroup" : "Agrupado",
-		"usuarioJerarquiaMulti" : "Multiselección",
-		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado",
-		"usuarioJerarquiaCol" : "Columna independiente",
 		"uda":"UDA"
 	},
 	"GRID_simple##ejie" : {
@@ -53,13 +45,6 @@
 		"0" : "No",
 		"1" : "Sí"
 	},
-	"GRID_edlinea##ejie" : {
-		"0" : "No",
-		"1" : "Sí"
-	},
-	"simpelMaint" : {
-		"actualizar":"Ejemplo de botón personalizado"
-	},
 	"alumno":{
 		"password_confirm":"Las contraseñas no coinciden",
 		"email_confirm":"Los correos introducidos no coinciden"
@@ -76,10 +61,6 @@
 	"loginUserMock" : {
 		"logginOk1" : "Usuario '",
 		"logginOk2" : "' Seleccionado correctamente"
-	},
-	"GRID_usuarioJerarquia##ejie" : {
-		"0" : "No",
-		"1" : "Sí"
 	},
 	"table":{
 		"id": "Id",

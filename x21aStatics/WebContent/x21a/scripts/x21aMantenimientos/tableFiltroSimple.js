@@ -110,7 +110,7 @@ jQuery(function($){
     				"fechaAlta":{date:true},
     				"fechaBaja":{date:true}
     			}
-        	},
+        	}
 //        	fncSearchCriteria: function(searchString){
 //    			//SsearchString+="NombreCampo=Valores de filtrado del campo";
 //    			return searchString;

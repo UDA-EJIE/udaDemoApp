@@ -23,6 +23,6 @@
 <!-- 	</div> -->
 	<span style="font-size: 2em;color: #000000;margin-left: 1em; "><spring:message code="cabeceraPortal"/></span>
 	<a href="<%= request.getContextPath()%>/" style="float: right; margin-top:-2em;">
-		<img src="${staticsUrl}/rup/basic-theme/images/euskadi_net.gif" alt="Euskadi Net"/>
+		<img src="${staticsUrl}/rup/css/images/euskadi_net.gif" alt="Euskadi Net"/>
 	</a>
 </div>

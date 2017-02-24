@@ -21,7 +21,7 @@
 				<spring:message code="patrones" />
 			</a>
 		</li>
-		<sec:authorize access="hasRole('ROLE_UDAANONYMOUS')">
+<%-- 		<sec:authorize access="hasRole('ROLE_UDAANONYMOUS')"> --%>
 			<li>
 				<a class="ui-state-disabled" href="javascript:void(0)">
 					<spring:message code="inicio" />
@@ -37,14 +37,10 @@
 					<spring:message code="multi" />
 				</a>
 			</li>
-			<li>
-				<a class="ui-state-disabled" href="javascript:void(0)">
-					<spring:message code="edlinea" />
-				</a>
-			</li>
-		</sec:authorize>
 		
-		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')">
+<%-- 		</sec:authorize> --%>
+		
+<%-- 		<sec:authorize access="!hasRole('ROLE_UDAANONYMOUS')"> --%>
 			<li>
 				<a href="/x21aMantenimientosWar/">
 					<spring:message code="inicio" />
@@ -155,73 +151,8 @@
 				</ul>
 			</li>
 			
-			<!-- 			rup.maint & rup.grid based			 -->
-			<li>
-				<a>
-					<spring:message code="maint_deprecado" />
-					<span class="ui-icon old_icon"></span>
-				</a>
-				<ul>
-					<li>
-						<a href="/x21aMantenimientosWar/usuario/simple">
-							<spring:message code="simple" />
-							<span class="ui-icon old_icon"></span>
-						</a>
-					</li>
-					<li>
-						<a href="/x21aMantenimientosWar/usuario/multi">
-							<spring:message code="multi" />
-							<span class="ui-icon old_icon"></span>
-						</a>
-					</li>
-					<li>
-						<a href="/x21aMantenimientosWar/usuario/edlinea">
-							<spring:message code="edlinea" />
-							<span class="ui-icon old_icon"></span>
-						</a>
-					</li>
-			
-					<li>
-						<a>
-							<spring:message code="jerarquiaTitle" />
-							<span class="ui-icon old_icon"></span>
-						</a>
-						<ul>
-							<li>
-								<a href="/x21aMantenimientosWar/usuariojerarquia/maint">
-									<spring:message code="jerarquia" />
-									<span class="ui-icon old_icon"></span>
-								</a>
-							</li>
-							<li>
-								<a href="/x21aMantenimientosWar/usuariojerarquia/maintgroup">
-									<spring:message code="jerarquiaGroup" />
-									<span class="ui-icon old_icon"></span>
-								</a>
-							</li>
-							<li>
-								<a href="/x21aMantenimientosWar/usuariojerarquia/maintmulti">
-									<spring:message code="jerarquiaMulti" />
-									<span class="ui-icon old_icon"></span>
-								</a>
-							</li>
-							<li>
-								<a href="/x21aMantenimientosWar/usuariojerarquia/maintmultigroup">
-									<spring:message code="jerarquiaGroupMulti" />
-									<span class="ui-icon old_icon"></span>
-								</a>
-							</li>
-							<li>
-								<a href="/x21aMantenimientosWar/usuariojerarquia/maintcol">
-									<spring:message code="jerarquiaCol" />
-									<span class="ui-icon old_icon"></span>
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</sec:authorize>
+		
+<%-- 		</sec:authorize> --%>
 		
 		<sec:authorize access="hasRole('ROLE_ADMIN_UDA')">
 		<li>

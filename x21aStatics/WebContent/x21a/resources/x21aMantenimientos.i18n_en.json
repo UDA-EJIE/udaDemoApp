@@ -1,17 +1,9 @@
 {
 	"x21aMantenimientosWar_migas" :{
-		"simple"	: "Selección simple_en",
 		"multi"		: "Multiselección_en",
-		"edlinea"	: "Edición en línea_en",
 		"formPropio" : "Form Propio_en", 
 		"administracion" : "Administración_en",
 		"alumno" : "Alumno_en",
-		"jerarquia" : "Jerarquia_en",
-		"usuarioJerarquia" : "Normal_en",
-		"usuarioJerarquiaGroup" : "Agrupado_en",
-		"usuarioJerarquiaMulti" : "Multiselección_en",
-		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado_en",
-		"usuarioJerarquiaCol" : "Columna independiente_en",
 		"uda":"UDA"
 	},
 	"GRID_simple##ejie" : {
@@ -49,37 +41,13 @@
 		"1_1A_A" : "Subtipo_Si_TipoB_A_en",
 		"1_1A_B" : "Subtipo_Si_TipoB_B_en"
 	},
-	"GRID_multi##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
-	},
-	"GRID_edlinea##ejie" : {
-		"0" : "No",
-		"1" : "Yes"
-	},
-	"simpelMaint" : {
-		"actualizar":"Ejemplo de botón personalizado_en"
-	},
 	"alumno":{
 		"password_confirm":"Las contraseñas no coinciden_en",
 		"email_confirm":"Los correos introducidos no coinciden_en"
 	},
-	"GRID_alumno":{
-		"id": "Id_en",
-		"usuario" : "Usuario_en",
-		"nombre" : "Nombre_en",
-		"apellido1" : "Primer apellido_en",
-		"apellido2" : "Segundo apellido_en",
-		"dni" : "DNI_en",
-		"importeMatricula":"Importe matrícula_en"
-	},
 	"loginUserMock" : {
 		"logginOk1" : "Usuario _en'",
 		"logginOk2" : "' Seleccionado correctamente_en"
-	},
-	"GRID_usuarioJerarquia#ejie" : {
-		"0" : "No",
-		"1" : "Yes"
 	},
 	"table":{
 		"id": "Id_en",

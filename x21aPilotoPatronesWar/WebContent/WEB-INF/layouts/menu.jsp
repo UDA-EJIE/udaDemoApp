@@ -298,6 +298,15 @@
 						<span class="ui-icon validate_icon"></span>
 					</a>
 				</li>
+				
+				<li class="ui-widget-content ui-menu-divider"></li>
+				<li><strong><spring:message code="repDatos" /></strong></li>
+				<li>
+					<a href="/x21aPilotoPatronesWar/patrones/charts">
+						<spring:message code="charts" />
+						<span class="ui-icon chart_icon"></span>
+					</a>
+				</li>
 			</ul>
 		</li>
 <%-- 		<sec:authorize access="hasRole('ROLE_X21A-IN-0003')"> --%>
@@ -307,40 +316,11 @@
 				<span class="ui-icon experimental_icon"></span>
 			</a>
 			<ul>
-				<li>
-					<a href="/x21aPilotoPatronesWar/experimental/maestro_detalle">
-						<spring:message code="maestro_detalle" />
-					</a>
-				</li>
-				<li>
-					<a href="/x21aPilotoPatronesWar/experimental/mant_multi_entidad">
-						<spring:message code="mant_multi_entidad" />
-					</a>
-				</li>
-				<li>
-					<a>
-						<spring:message code="mant_clave_compuesta" />
-					</a>
-					<ul>
-						<li>
-							<a	href="/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_multi">
-								<spring:message code="mant_clave_compuesta_multi" />
-							</a>
-						</li>
-						<li>
-							<a	href="/x21aPilotoPatronesWar/experimental/mant_clave_compuesta_edlinea">
-								<spring:message code="mant_clave_compuesta_edlinea" />
-							</a>
-						</li>
-					</ul>
-				</li>
+			
+			
 				
-				<!--test Tabs Pagind  -->
-				<li>
-					<a href="/x21aPilotoPatronesWar/experimental/tabsPaging">
-						<spring:message code="tabsPaging" />
-					</a>
-				</li>
+				
+				
 				
 						<!--test logLevel -->
 				<li>
@@ -348,7 +328,10 @@
 						<spring:message code="logLevel" />
 					</a>
 				</li>
-				
+					<!--iberdok -->
+			<li><a href="/x21aPilotoPatronesWar/iberdok/view"> <spring:message
+						code="iberdok" />
+			</a></li>	
 				
 			</ul>
 		</li>

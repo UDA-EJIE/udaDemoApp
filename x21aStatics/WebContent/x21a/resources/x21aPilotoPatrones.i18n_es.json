@@ -1,3 +1,4 @@
+
 {
 	"x21aPilotoPatronesWar_menu_mixto" :{
 		"inicio" :"Inicio",
@@ -47,11 +48,6 @@
 				"trees_formats" :"Árboles con diferentes formatos de datos",
 				"tree_panel" :"Árbol con panel de detalle",
 		"experimental" :"Experimental",
-			"maestro_detalle" :"Maestro-Detalle",
-			"mant_multi_entidad" :"Mantenimiento multi-entidad",
-			"mant_clave_compuesta" :"Mantenimiento clave-compuesta",
-			"mant_clave_compuesta_multi" :"Multiselección",
-			"mant_clave_compuesta_edlinea" :"Edición en línea",
 		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
@@ -106,11 +102,6 @@
 				"treesFormats" :"Árboles formateados",
 				"treePanel" :"Árbol con panel",
 		"experimental" :"Experimental",
-			"maestro_detalle" :"Maestro-Detalle",
-			"mant_multi_entidad" :"Mantenimiento multi-entidad",
-			"mant_clave_compuesta" :"Mantenimiento clave-compuesta",
-			"mant_clave_compuesta_multi" :"Multiselección",
-			"mant_clave_compuesta_edlinea" :"Edición en línea",
 		"integracion" :"Integración",
 			"z-index" :"Capas RUP (z-index)",
 			"nora"	:"NORA",
@@ -505,6 +496,24 @@
 		"errorOp" : "Operación errónea",
 		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"."
 	},
+	
+	"table":{
+		"id": "Id",
+		"nombre" : "Nombre",
+		"apellido1" : "Primer apellido",
+		"apellido2" : "Segundo apellido",
+		"ejie" : "Ejie",
+		"fechaAlta":"Fecha de alta",
+		"fechaBaja":"Fecha de baja",
+		"rol":"Rol"
+	},
+	"GRID_simple##rol" : {
+		"administrador" : "administrador",
+		"desarrollador" : "desarrollador",
+		"espectador" : "espectador",
+		"informador" : "informador",
+		"manager" : "manager"
+	},	
 	"tabsScrollableExample" : {
 		"pestana1" : "Tab 1",
 		"pestana2" : "Tab 2",
@@ -525,5 +534,50 @@
 		"pestana17" : "tab17",
 		"pestana18" : "sub18",
 		"pestana19" : "sub19"
-	}
+	},
+	 "iberdokTable":{
+	 	"abrirDocumento": "Abrir documento",
+	 	"editarEnIberdok":"Editar en Iberdok",
+	 	"id":"id",
+	 	"nombre":"nombre",
+	 	"idModelo":"idModelo",
+	 	"idDocumento":"idDocumento",
+	 	"estado":"estado",
+	 	"nuevo":"Nuevo",
+	 	"copiar":"Copiar",
+	 	"editar":"Editar",
+	 	"ver":"Visualizar",
+	 	"finalizado":"Finalizado",
+	 	"elaboracion":"Elaboración",
+	 	"es":"Castellano",
+	 	"eu":"Euskera",
+	 	"en":"Inglés",
+	 	"modo1":"Crear documento",
+	 	"modo2":"Editar documento finalizado",
+	 	"modo7":"Editar documento no finalizado",
+	 	"modo8":"Copiar documento",
+	 	"dialog":"Lanzar Iberdok",
+	 	"errorFichero":"No se ha definido el fichero a cargar",
+	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación => ",
+	 	"errorParseo2":".<br> Error devuelto:<br>"
+	 },
+	   "charts": {
+        "charts": "Gráficos",
+        "line": "Líneas",
+        "bar": "Barras",
+        "radar": "Radar",
+        "polar": "Polar",
+        "pie": "Tarta",
+        "doughnut": "Donut",
+        "bubble": "Burbuja",
+        "datasetRadar": {
+            "dataset1": "dataset 1",
+            "dataset2": "dataset 2"
+        },
+        "colorLabels": ["rojo", "azul", "amarillo"],
+        "radarLabels": ["Comida", "Bebida", "Dormir", "Diseño", "Programacion", "Bicicleta", "Correr"],
+        "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
+    }
+
+	
 }
