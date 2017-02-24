@@ -209,13 +209,13 @@ jQuery(document).ready(function () {
 	  }
 
 	  function fncConfirmDelete (){
-	    DashboardService.delete($view.currentDashboard);
+	    DashboardService["delete"]($view.currentDashboard);
 	  }
 
 	  function fncConfirmNewDashboard (name){
 
 	    var newDashboard = new Dashboard({
-	      name
+	      
 	    });
 
 	    DashboardService.ass($view.currentDashboard);

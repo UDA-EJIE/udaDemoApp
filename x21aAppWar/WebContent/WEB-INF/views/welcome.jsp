@@ -20,7 +20,7 @@
 		<div class="col-xs-12">
 			<h1>
 				<img alt="El contenido estático no está correctamente desplegado."
-					src="${staticsUrl}/rup/basic-theme/images/uda_logo.png" /> v3.0.0
+					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v3.0.0
 				<small>(Portal demostrativo)</small>
 			</h1>
 			<hr>
@@ -31,9 +31,9 @@
 			<section id="mainContent">
 				<p>
 					<a target="_blank"
-						href="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"><img
+						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
 						style="max-width: 100%;"
-						src="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"></a>
+						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 					es el conjunto de <a
 						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes">utilidades,
 						herramientas, librerías, plugins, guías, y recomendaciones
@@ -43,9 +43,9 @@
 					aumentar la productividad del desarrollador, sin coartar por ello
 					su imaginación ni su libertad para crear software. <a
 						target="_blank"
-						href="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"><img
+						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
 						style="max-width: 100%;"
-						src="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"></a>
+						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 					ayuda y colabora en las tareas repetitivas y de poco (o nulo) valor
 					añadido, pero que sin embargo, son imprescindibles. Pero también
 					persigue otros fines:<br> <br>
@@ -53,9 +53,9 @@
 				<ul>
 					<li>Minimizar la curva de aprendizaje. No pretende ser un
 						framework más, <a target="_blank"
-						href="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"><img
+						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
 							style="max-width: 100%;"
-							src="${staticsUrl}/rup/basic-theme/images/uda-mini-micro2.png"></a>
+							src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 						adopta y explota los ya consolidados y de uso extendido y se
 						aprovecha del conocimiento compartido por sus creadores y
 						usuarios.

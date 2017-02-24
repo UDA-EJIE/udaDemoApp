@@ -54,7 +54,7 @@
           id: dashboard.getId(),
           serializedArray: dashboard.getDataJson(),
           nombre:dashboard.getName(),
-          default:dashboard.getDefault()
+          "default":dashboard.getDefault()
         })
 
       }).pipe(function(data){
@@ -74,7 +74,7 @@
           id: dashboard.getId(),
           serializedArray: dashboard.getDataJson(),
           nombre:dashboard.getName(),
-          default:dashboard.getDefault()
+          "default":dashboard.getDefault()
         })
 
       }).pipe(function(data){
@@ -105,7 +105,7 @@
       getAll : getAll,
       get: get,
       save: save,
-      delete: fncDelete,
+      "delete": fncDelete,
       add: add
   }
 }));

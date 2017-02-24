@@ -21,7 +21,7 @@
     this.num = json.nombre?json.num:"";
     this.serializedArray = json.serializedArray?json.serializedArray:"";
     this.datajson = json.datajson?json.datajson:"";
-    this.default = json.default?json.default:"";
+    this.def = json["default"]?json["default"]:"";
   }
 
   Dashboard.prototype = {
@@ -44,7 +44,7 @@
       return this.datajson;
     },
     getDefault: function(){
-      return this.default;
+      return this["default"];
     },
     setSerializedArray: function(serializedArray){
       this.serializedArray = serializedArray;
@@ -53,7 +53,7 @@
       this.datajson = datajson;
     },
     setDefault: function(argDefault){
-      this.default = argDefault;
+      this["default"] = argDefault;
     }
 
   }
