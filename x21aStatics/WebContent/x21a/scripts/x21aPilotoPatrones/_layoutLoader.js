@@ -14,6 +14,16 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
+	
+	// compatibilidad RUP v2.x
+	$.fn.rup_button.defaults.adapter = "button_jqueryui";
+	$.fn.rup_date.defaults.adapter = "date_jqueryui";
+	$.fn.rup_table.plugins.core.defaults.adapter = "table_jqueryui";
+	$.fn.rup_time.defaults.adapter = "time_jqueryui";
+	$.fn.rup_toolbar.defaults.adapter = "toolbar_jqueryui";
+	$.fn.rup_upload.defaults.adapter = "upload_jqueryui";
+	$.fn.rup_validate.defaults.adapter = "validate_jqueryui";
+	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if (jQuery.rup.LAYOUT === "vertical") {

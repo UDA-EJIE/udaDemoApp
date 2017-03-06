@@ -5,7 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS11Classpath"/>
 	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system"/>
 	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/x21aEARClasses"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
