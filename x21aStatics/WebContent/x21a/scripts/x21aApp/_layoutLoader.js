@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
 	
 	//rastro de migas
 	jQuery("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
-		logOutUrl: "/x21aPilotoPatronesWar/logout",
+		logOutUrl: "/x21aAppWar/logout",
 		breadCrumb: {
 			"patrones" : {
 				//Literal
@@ -76,41 +76,41 @@ jQuery(document).ready(function(){
 				"wizard_dinamico" : {"i18nCaption":"wizardE" },
 				//Submenu
 				"subLevel":[
-				    {"i18nCaption":"all", "url": "/x21aPilotoPatronesWar/patrones/all" },
-				    {"i18nCaption":"accordion", "url": "/x21aPilotoPatronesWar/patrones/accordion" },
-	                {"i18nCaption":"treeDAD", "url": "/x21aPilotoPatronesWar/patrones/treeDAD" },
-//	                {"i18nCaption":"treePanel", "url": "/x21aPilotoPatronesWar/patrones/trees" },
-	                {"i18nCaption":"trees", "url": "/x21aPilotoPatronesWar/patrones/trees" },
-//	                {"i18nCaption":"treesFormats", "url": "/x21aPilotoPatronesWar/patrones/trees" },
-				    {"i18nCaption":"autocomplete", "url": "/x21aPilotoPatronesWar/patrones/autocomplete" },
-                    {"i18nCaption":"toolbar", "url": "/x21aPilotoPatronesWar/patrones/toolbar" },
-                  	{"i18nCaption":"comboSimple", "url": "/x21aPilotoPatronesWar/patrones/comboSimple", "newWindow": true },
-                  	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoSimple" },
-                  	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aPilotoPatronesWar/patrones/comboEnlazadoMultiple" },
-                  	{"i18nCaption":"multicombo", "url": "/x21aPilotoPatronesWar/patrones/multicombo" },
-                  	{"i18nCaption":"dialog", "url": "/x21aPilotoPatronesWar/patrones/dialog" },
-                  	{"i18nCaption":"date", "url": "/x21aPilotoPatronesWar/patrones/date" },
-                  	{"i18nCaption":"feedback", "url": "/x21aPilotoPatronesWar/patrones/feedback" },
-                  	{"i18nCaption":"form", "url": "/x21aPilotoPatronesWar/patrones/form" },
-                  	{"i18nCaption":"time", "url": "/x21aPilotoPatronesWar/patrones/time" },
-                  	{"i18nCaption":"message", "url": "/x21aPilotoPatronesWar/patrones/message" },
-                  	{"i18nCaption":"contextMenu", "url": "/x21aPilotoPatronesWar/patrones/contextMenu" },
-                   	{"i18nCaption":"menu", "url": "/x21aPilotoPatronesWar/patrones/menu" },
-                  	{"i18nCaption":"menuVertical", "url": "/x21aPilotoPatronesWar/patrones/menuVertical" },
-                  	{"i18nCaption":"menuMixto", "url": "/x21aPilotoPatronesWar/patrones/menuMixto" },
-                 	{"i18nCaption":"tabsStatic", "url": "/x21aPilotoPatronesWar/patrones/tabsStatic" },
-                	{"i18nCaption":"tabsAjax", "url": "/x21aPilotoPatronesWar/patrones/tabsAjax" },
-                	{"i18nCaption":"tabsMixto", "url": "/x21aPilotoPatronesWar/patrones/tabsMixto" },
-                	{"i18nCaption":"maintTab", "url": "/x21aPilotoPatronesWar/patrones/maintTab" },
-					{"i18nCaption":"grid", "url": "/x21aPilotoPatronesWar/patrones/grid" },
-					{"i18nCaption":"tooltip", "url": "/x21aPilotoPatronesWar/patrones/tooltip" },
-					{"i18nCaption":"upload", "url": "/x21aPilotoPatronesWar/patrones/upload" },
-					{"i18nCaption":"validate", "url": "/x21aPilotoPatronesWar/patrones/validate" },
-	                {"i18nCaption":"wizardA", "url": "/x21aPilotoPatronesWar/patrones/wizard" },
-	                {"i18nCaption":"wizardB", "url": "/x21aPilotoPatronesWar/patrones/wizard_includeFile" },
-	                {"i18nCaption":"wizardC", "url": "/x21aPilotoPatronesWar/patrones/wizard_jspInclude" },
-	                {"i18nCaption":"wizardD", "url": "/x21aPilotoPatronesWar/patrones/wizard_jstlImport" },
-	                {"i18nCaption":"wizardE", "url": "/x21aPilotoPatronesWar/patrones/wizard_dinamico" }
+				    {"i18nCaption":"all", "url": "/x21aAppWar/patrones/all" },
+				    {"i18nCaption":"accordion", "url": "/x21aAppWar/patrones/accordion" },
+	                {"i18nCaption":"treeDAD", "url": "/x21aAppWar/patrones/treeDAD" },
+//	                {"i18nCaption":"treePanel", "url": "/x21aAppWar/patrones/trees" },
+	                {"i18nCaption":"trees", "url": "/x21aAppWar/patrones/trees" },
+//	                {"i18nCaption":"treesFormats", "url": "/x21aAppWar/patrones/trees" },
+				    {"i18nCaption":"autocomplete", "url": "/x21aAppWar/patrones/autocomplete" },
+                    {"i18nCaption":"toolbar", "url": "/x21aAppWar/patrones/toolbar" },
+                  	{"i18nCaption":"comboSimple", "url": "/x21aAppWar/patrones/comboSimple", "newWindow": true },
+                  	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aAppWar/patrones/comboEnlazadoSimple" },
+                  	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aAppWar/patrones/comboEnlazadoMultiple" },
+                  	{"i18nCaption":"multicombo", "url": "/x21aAppWar/patrones/multicombo" },
+                  	{"i18nCaption":"dialog", "url": "/x21aAppWar/patrones/dialog" },
+                  	{"i18nCaption":"date", "url": "/x21aAppWar/patrones/date" },
+                  	{"i18nCaption":"feedback", "url": "/x21aAppWar/patrones/feedback" },
+                  	{"i18nCaption":"form", "url": "/x21aAppWar/patrones/form" },
+                  	{"i18nCaption":"time", "url": "/x21aAppWar/patrones/time" },
+                  	{"i18nCaption":"message", "url": "/x21aAppWar/patrones/message" },
+                  	{"i18nCaption":"contextMenu", "url": "/x21aAppWar/patrones/contextMenu" },
+                   	{"i18nCaption":"menu", "url": "/x21aAppWar/patrones/menu" },
+                  	{"i18nCaption":"menuVertical", "url": "/x21aAppWar/patrones/menuVertical" },
+                  	{"i18nCaption":"menuMixto", "url": "/x21aAppWar/patrones/menuMixto" },
+                 	{"i18nCaption":"tabsStatic", "url": "/x21aAppWar/patrones/tabsStatic" },
+                	{"i18nCaption":"tabsAjax", "url": "/x21aAppWar/patrones/tabsAjax" },
+                	{"i18nCaption":"tabsMixto", "url": "/x21aAppWar/patrones/tabsMixto" },
+                	{"i18nCaption":"maintTab", "url": "/x21aAppWar/patrones/maintTab" },
+					{"i18nCaption":"grid", "url": "/x21aAppWar/patrones/grid" },
+					{"i18nCaption":"tooltip", "url": "/x21aAppWar/patrones/tooltip" },
+					{"i18nCaption":"upload", "url": "/x21aAppWar/patrones/upload" },
+					{"i18nCaption":"validate", "url": "/x21aAppWar/patrones/validate" },
+	                {"i18nCaption":"wizardA", "url": "/x21aAppWar/patrones/wizard" },
+	                {"i18nCaption":"wizardB", "url": "/x21aAppWar/patrones/wizard_includeFile" },
+	                {"i18nCaption":"wizardC", "url": "/x21aAppWar/patrones/wizard_jspInclude" },
+	                {"i18nCaption":"wizardD", "url": "/x21aAppWar/patrones/wizard_jstlImport" },
+	                {"i18nCaption":"wizardE", "url": "/x21aAppWar/patrones/wizard_dinamico" }
 				]
 			},
 			"experimental" : {
@@ -128,9 +128,9 @@ jQuery(document).ready(function(){
 				"tiny" : {"i18nCaption" : "tiny" },
 				//Submenu
 				"subLevel":[
-					{"i18nCaption":"z-index", "url": "/x21aPilotoPatronesWar/integracion/z-index" },
-					{"i18nCaption":"nora", "url": "/x21aPilotoPatronesWar/integracion/nora" },
-					{"i18nCaption":"tiny", "url": "/x21aPilotoPatronesWar/integracion/tiny" }
+					{"i18nCaption":"z-index", "url": "/x21aAppWar/integracion/z-index" },
+					{"i18nCaption":"nora", "url": "/x21aAppWar/integracion/nora" },
+					{"i18nCaption":"tiny", "url": "/x21aAppWar/integracion/tiny" }
 				]
 			},
 			"uda" : {
