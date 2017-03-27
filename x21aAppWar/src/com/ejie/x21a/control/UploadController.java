@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.FileUtils;
@@ -152,12 +153,15 @@ public class UploadController   {
 //	}
 	
 	@RequestMapping(value="pifForm", method = RequestMethod.POST)
-	public @ResponseBody List<Map<String,Object>> addPifForm(@RequestParam(value="nombre", required=false) String nombre,
-			@RequestParam(value="apellido1", required=false) String apellido1,
-			@RequestParam(value="apellido2", required=false) String apellido2,
+	public @ResponseBody List<Map<String,Object>> addPifForm(
+//			@RequestParam(value="nombre", required=false) String nombre,
+//			@RequestParam(value="apellido1", required=false) String apellido1,
+//			@RequestParam(value="apellido2", required=false) String apellido2,
 //			@RequestParam(value="file", required=false) MultipartFile file,
-			HttpServletRequest httpRequest) {
+			HttpServletRequest httpRequest
+			) {
 	
+		
 		ServletFileUpload upload = new ServletFileUpload();
 		FileItemIterator iter;
 		try {

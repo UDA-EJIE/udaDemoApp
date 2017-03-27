@@ -87,4 +87,13 @@
 	</div>
     
     
+    <h3>Integración con PIF</h3>
+    
+    <p>
+    	A continuación se muestra un ejemplo de como integrar el componente Upload con PIF.
+    </p>
+    
+    <div class="example">
+		<jsp:include page="includes/uploadPif.jsp"></jsp:include>
+	</div>
 </section>

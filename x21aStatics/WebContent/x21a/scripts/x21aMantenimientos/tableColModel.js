@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-	
+
 	var tableColNames = [
 	                     $.rup.i18n.app.table.id,
 			           $.rup.i18n.app.table.nombre,
@@ -136,7 +136,8 @@
 			]
 		};
 	
-
+	
+jQuery(function($){
 	//Formulario de filtrado
 	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
 	jQuery('#rol_filter_table').rup_combo(options_role_combo);
@@ -149,4 +150,6 @@
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	
+});
 	

@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 	
 	$("#btnAjaxDialogWAR").bind("click", function () {
-		$(document).rup_dialog({
+		$("#idDialogAjaxWar").rup_dialog({
 			type: $.rup.dialog.AJAX,
 			url: "../patrones/dialogAjax" ,
 			autoOpen: true,
@@ -64,25 +64,10 @@ $(document).ready(function () {
 				}					
 			}]
 		});	
-		
-
-		$('#combo').rup_combo({
-			//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-			source : [
-				{i18nCaption: "asp", value:"asp_value"},
-				{i18nCaption: "c", value:"c_value"},
-				
-			],
-			selected: "perl_value",
-			width: 300,
-			blank : "0",
-			rowStriping : true,
-			inputText:true
-		});
 	});
 	
 	$("#btnAjaxDialogStatics").bind("click", function () {
-		$(document).rup_dialog({
+		$("#idDialogAjaxStatics").rup_dialog({
 			type: $.rup.dialog.AJAX,
 			url: $.rup.APP_STATICS + "/resources/ajaxDiv.htm",
 			autoOpen: true,
@@ -100,7 +85,7 @@ $(document).ready(function () {
 	});
 	
 	$("#btnTextDialog").bind("click", function () {
-		$(document).rup_dialog({
+		$("#idDialogText").rup_dialog({
 			type: $.rup.dialog.TEXT,
 			autoOpen: true,
 			modal: true,

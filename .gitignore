@@ -6,3 +6,7 @@ x21aStatics/\.externalToolBuilders/
 RemoteSystemsTempFiles/.project
 *.class
 x21aEARClasses/bin/
+
+.svn
+
+.settings
