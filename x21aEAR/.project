@@ -7,7 +7,6 @@
 		<project>x21aMantenimientosWar</project>
 		<project>x21aPilotoPatronesWar</project>
 		<project>x21aEARClasses</project>
-		<project>x38ShLibClasses</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

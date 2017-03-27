@@ -6,6 +6,5 @@
 	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
