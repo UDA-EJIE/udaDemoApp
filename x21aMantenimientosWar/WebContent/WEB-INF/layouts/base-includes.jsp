@@ -30,21 +30,13 @@ var	APP_RESOURCES = 'x21a',
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
-	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}",
-	RUP_ADAPTERS = {
-	    	upload: "UploadJQueryUIAdapter",
-	        button: "ButtonBootstrapAdapter",
-	        toolbar_jqueryui: "ToolbarJQueryUIAdapter",
-	        toolbar_bootstrap: "ToolbarBootstrapAdapter",
-	        table_jqueryui: "TableJQueryUIAdapter",
-	        table_bootstrap: "TableBootstrapAdapter"
-	    };
+	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
 </script>
 
 <%-- Scripts RUP sin minimizar (DESARROLLO) --%>
-<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%> --%>
+<%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
 <%-- Scripts RUP minimizados (PRODUCCION) --%>
-<%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>
+<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%> --%>
 <%@include file="/WEB-INF/layouts/includes/themeswitcher.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>

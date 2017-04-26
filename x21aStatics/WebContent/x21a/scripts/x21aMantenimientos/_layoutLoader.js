@@ -61,7 +61,11 @@ jQuery(document).ready(function(){
 		logOutUrl: "/x21aMantenimientosWar/logout"
 	});
 	//idioma
-	$("#x21aMantenimientosWar_language").rup_language({languages: $.rup.AVAILABLE_LANGS_ARRAY, modo: "portal"});
+	$("#x21aMantenimientosWar_language").rup_language({
+		languages: $.rup.AVAILABLE_LANGS_ARRAY,
+		modo: "portal"
+	});
+	
 	
 	$("#x21aMantenimientosWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal')

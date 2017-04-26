@@ -150,7 +150,10 @@ jQuery(document).ready(function(){
 		}
 	});
 	//idioma
-	jQuery("#x21aPilotoPatronesWar_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
+	jQuery("#x21aPilotoPatronesWar_language").rup_language({
+		languages: jQuery.rup.AVAILABLE_LANGS_ARRAY,
+		modo: "jquery-ui"
+	});
 	
 	jQuery("#x21aPilotoPatronesWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal'),

@@ -14,5 +14,5 @@
  --%>
  
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<script src="${staticsUrl}/rup/js/rup.classic.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/js/rup.js" type="text/javascript"></script>
 
