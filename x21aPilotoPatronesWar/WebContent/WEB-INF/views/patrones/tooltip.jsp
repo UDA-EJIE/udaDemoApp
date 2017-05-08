@@ -50,17 +50,17 @@
 	<br/>
 	<div>
 		<label for="code">Código:</label>
-		<input id="code" name="code" />&nbsp;<img id="codeTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
+		<input id="code" name="code" />&nbsp;<img id="codeTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/css/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<div>
 		<label for="identificador">Identificador:</label>
-		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
+		<input id="identificador" name="identificador" />&nbsp;<img id="idTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/css/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<div>
 		<label for="htmlTooltip">HTML:</label>
-		<input id="htmlTooltip" name="htmlTooltip" />&nbsp;<img id="idHtmlTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/basic-theme/images/rup.confirm.png" />
+		<input id="htmlTooltip" name="htmlTooltip" />&nbsp;<img id="idHtmlTooltip" alt="Imagen Tooltip" src="${staticsUrl}/rup/css/images/rup.confirm.png" />
 	</div>
 	<br/>
 	<input id="button" type="button" value="Aplicar ThemeRoller" />

@@ -2192,6 +2192,28 @@ tr.ui-search-toolbar select {
 .qtipmodal-ie6fix {
   position: absolute !important; }
 
+.ui-carousel {
+  height: 100px;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+  /*for ie7 to work e.g in html carousels*/
+  width: 300px; }
+
+.ui-carousel > .wrapper {
+  margin: 0;
+  padding: 0;
+  width: 9999px; }
+
+.ui-carousel > .wrapper > * {
+  border: 0;
+  display: block;
+  float: left;
+  height: 100px;
+  overflow: hidden;
+  width: 100px; }
+
 /*!
  * Copyright 2013 E.J.I.E., S.A.
  *
@@ -3010,6 +3032,16 @@ button.ui-button-icon-only.rup-dropdown-button {
 .rup-dropdown-btn-group .rup-toolbar_button.rup-dropdown {
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px; }
+
+.rup-button .ui-icon.fa {
+  background-image: none;
+  text-indent: inherit;
+  height: 15px;
+  padding-top: 2px; }
+
+.rup-button:hover .ui-icon.fa {
+  background-image: none;
+  text-indent: inherit; }
 
 /*!
  * Copyright 2015 E.J.I.E., S.A.
