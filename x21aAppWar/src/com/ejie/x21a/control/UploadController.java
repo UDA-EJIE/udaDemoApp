@@ -154,9 +154,9 @@ public class UploadController   {
 	
 	@RequestMapping(value="pifForm", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String,Object>> addPifForm(
-//			@RequestParam(value="nombre", required=false) String nombre,
-//			@RequestParam(value="apellido1", required=false) String apellido1,
-//			@RequestParam(value="apellido2", required=false) String apellido2,
+			@RequestParam(value="nombre", required=false) String nombre,
+			@RequestParam(value="apellido1", required=false) String apellido1,
+			@RequestParam(value="apellido2", required=false) String apellido2,
 //			@RequestParam(value="file", required=false) MultipartFile file,
 			HttpServletRequest httpRequest
 			) {
