@@ -143,7 +143,9 @@ jQuery(document).ready(function(){
 	jQuery("#x21aApp_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	//NAVBAR Menu
-	$.fn.rup_navbar();
+	$.fn.rup_navbar({
+		sticky:false
+	});
 	
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
 
@@ -152,7 +154,7 @@ jQuery(document).ready(function(){
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){
-		jQuery(".cabecera").remove();
-		jQuery(".footer").remove();
+		jQuery("header").remove();
+		jQuery("footer").remove();
 	}
 });

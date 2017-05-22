@@ -127,7 +127,7 @@ section>h1, section>h2, section>h3, section>h4, section>h5, section>h6 {
 
 /* TREE */
 
-/* Árbol */
+/* ï¿½rbol */
 .rup_tree_panel_first {
 	float: left;
 	width: 19.4%;
@@ -557,6 +557,7 @@ section>h1, section>h2, section>h3, section>h4, section>h5, section>h6 {
 	margin: 1rem 0rem;
 	padding: 1rem;
 	position: relative;
+	clear: both;
 }
 
 /* graficos*/
