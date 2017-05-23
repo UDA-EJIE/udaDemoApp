@@ -14,6 +14,11 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
+	
+	
+	// Evitar conflictos entre Bootstrap y jQueryUI
+	$.fn.bootstrapBtn = $.fn.button.noConflict();
+	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if (jQuery.rup.LAYOUT === "vertical") {
