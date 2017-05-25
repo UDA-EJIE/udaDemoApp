@@ -27,8 +27,8 @@ jQuery(function($){
         	"responsive",
         	"filter",
         	"search",
-        	"report"
-//        	,"multifilter"
+        	"report",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
@@ -51,7 +51,7 @@ jQuery(function($){
     			}
         	}
         },
-        multifilter:{ idFilter:"formEdit",labelSize:255},
+        multifilter:{ idFilter:"inlineEdit",labelSize:255},
         report: options_table_report
 	});
 	

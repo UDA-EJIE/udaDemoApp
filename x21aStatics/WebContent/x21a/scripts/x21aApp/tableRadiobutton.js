@@ -30,7 +30,7 @@ jQuery(function($){
         	"filter",
         	"search",
         	"report",
-//        	,"multifilter"
+        	"multifilter"
         ],
         rowNum:10, 
         rowList:[10,20,30], 

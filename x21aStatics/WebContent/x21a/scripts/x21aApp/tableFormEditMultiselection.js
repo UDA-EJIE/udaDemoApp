@@ -109,8 +109,8 @@ jQuery(function($){
         	"filter",
         	"search",
         	"multiselection",
-        	"report"
-        	//,"multifilter"
+        	"report",
+        	"multifilter"
         ],
         primaryKey: ["id"],
         sortname: 'id',

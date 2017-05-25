@@ -27,8 +27,8 @@ jQuery(function($){
         	"responsive",
         	"filter",
         	"search",
-        	"report"
-//        	,"multifilter"
+        	"report",
+        	"multifilter"
 
         ],
         editOptions:{

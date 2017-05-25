@@ -18,11 +18,11 @@
 	                     $.rup.i18n.app.table.id,
 			           $.rup.i18n.app.table.nombre,
 			           $.rup.i18n.app.table.apellido1,
-			           $.rup.i18n.app.table.apellido2,
-			           $.rup.i18n.app.table.ejie,
-			           $.rup.i18n.app.table.fechaAlta,
-			           $.rup.i18n.app.table.fechaBaja,
-			           $.rup.i18n.app.table.rol
+			           //$.rup.i18n.app.table.apellido2
+			           //$.rup.i18n.app.table.ejie,
+			           //$.rup.i18n.app.table.fechaAlta,
+			           //$.rup.i18n.app.table.fechaBaja,
+			           //$.rup.i18n.app.table.rol
 			],
 		tableColModels = [
 			{ name: "id", index: "id", editable:true, width: 80
@@ -35,10 +35,10 @@
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
-			{ name: "apellido2", index: "apellido2", editable:true
+			/*{ name: "apellido2", index: "apellido2", editable:true
 				, formoptions:{rowpos:4, colpos:1}
-			},
-			{ name: "ejie", index: "ejie", editable:true, width: 60,
+			},*/
+			/*{ name: "ejie", index: "ejie", editable:true, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
@@ -92,7 +92,7 @@
 					]
 				}
 				, formoptions:{rowpos:3, colpos:2}
-			}
+			}*/
         ],
         options_table_report = {
 			buttons:[
