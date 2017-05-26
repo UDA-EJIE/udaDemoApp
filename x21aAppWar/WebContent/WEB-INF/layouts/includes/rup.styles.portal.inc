@@ -6,6 +6,5 @@
 <link href="${staticsUrl}/rup/portal/rup-base.css" rel="stylesheet" type="text/css" />
 <link href="${staticsUrl}/rup/portal/rup-theme.css" rel="stylesheet" type="text/css" />
 
-<link href="${staticsUrl}/rup/portal/app.css" rel="stylesheet" type="text/css" />
 
 

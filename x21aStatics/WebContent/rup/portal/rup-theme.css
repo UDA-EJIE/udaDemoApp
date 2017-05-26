@@ -1823,7 +1823,7 @@
 }
 
 .r01gContainer .rup-feedback.rup-feedback_image div.rup-feedback_closeLink {
-  visibility: hidden;
+  text-decoration: none;
   float: right;
   padding-right: 0.5rem;
   margin: 0;

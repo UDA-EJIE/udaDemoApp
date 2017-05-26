@@ -1310,7 +1310,7 @@ select.form-control:not([size]):not([multiple]), .form-control.ui-multiselect:no
       .rup-feedback.rup-feedback_image.rup-feedback_image_error span.rup-feedback-icon {
         color: #8b211e; }
     .rup-feedback.rup-feedback_image div.rup-feedback_closeLink {
-      visibility: hidden;
+      text-decoration: none;
       float: right;
       padding-right: 0.5rem;
       margin: 0;
