@@ -89,15 +89,15 @@ jQuery(document).ready(function(){
 	});
 	
 	// Upload integrado en formulario
-//	$('#fileupload_pif_form').rup_upload({
-//		fileInput: $("#file_pif_form"),
-//		url: "../pifServlet",
-//		pif:{
-//			folderPath: "/x21a",
-//			fileTtl: 60,
-//			preserveName:true
-//		}
-//	});
+	$('#fileupload_pif_form').rup_upload({
+		fileInput: $("#file_pif_form"),
+		url: "../pifServlet",
+		pif:{
+			folderPath: "/x21a",
+			fileTtl: 60,
+			preserveName:true
+		}
+	});
 //	
 //	$('#fileupload_pif_form').rup_upload({
 //		fileInput: $("#file_pif_form"),

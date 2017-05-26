@@ -14,6 +14,11 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
+	
+	
+	// Evitar conflictos entre Bootstrap y jQueryUI
+	$.fn.bootstrapBtn = $.fn.button.noConflict();
+	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if (jQuery.rup.LAYOUT === "vertical") {
@@ -143,7 +148,9 @@ jQuery(document).ready(function(){
 	jQuery("#x21aApp_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	//NAVBAR Menu
-	$.fn.rup_navbar();
+	$.fn.rup_navbar({
+		sticky:false
+	});
 	
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
 
@@ -152,7 +159,7 @@ jQuery(document).ready(function(){
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){
-		jQuery(".cabecera").remove();
-		jQuery(".footer").remove();
+		jQuery("header").remove();
+		jQuery("footer").remove();
 	}
 });

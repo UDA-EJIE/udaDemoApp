@@ -33,6 +33,7 @@
 <%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%> --%>
 	<%-- Estilos RUP sin minimizar (PRODUCCION) --%>
 	<%@include file="/WEB-INF/layouts/includes/rup.styles.min.inc" %>
+<%-- 	<%@include file="/WEB-INF/layouts/includes/rup.styles.portal.inc" %> --%>
 	<%-- Estilos Aplicacion --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	
