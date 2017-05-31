@@ -1715,8 +1715,8 @@
 }
 
 .r01gContainer .rup-breadCrumb_root .rup-breadCrumb_main > li span.rup-icon {
-  margin: 0 0.5rem;
   padding: 0;
+  top: 0.4rem;
 }
 
 .r01gContainer .rup-breadCrumb_root .rup-breadCrumb_main > li a {
@@ -3502,6 +3502,9 @@
 
 .r01gContainer .navbar-nav.rup-nav-tools .rup-nav-tool-icon {
   font-size: 2rem;
+  vertical-align: initial;
+  display: inherit;
+  height: inherit;
 }
 
 .r01gContainer .navbar-nav.rup-nav-tools .rup-nav-tool-icon:after {
