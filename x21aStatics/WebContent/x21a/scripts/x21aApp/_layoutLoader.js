@@ -128,11 +128,13 @@ jQuery(document).ready(function(){
 				//Literal
 				"i18nCaption" : "integracion",
 				//Elementos (url)
+				"geoEuskadi" : {"i18nCaption" : "Visor geoEuskadi" },
 				"z-index" : {"i18nCaption" : "z-index" },
 				"nora" : {"i18nCaption" : "nora" },
 				"tiny" : {"i18nCaption" : "tiny" },
 				//Submenu
 				"subLevel":[
+					{"i18nCaption":"geoEuskadi", "url": "/x21aAppWar/integracion/geoEuskadi" },
 					{"i18nCaption":"z-index", "url": "/x21aAppWar/integracion/z-index" },
 					{"i18nCaption":"nora", "url": "/x21aAppWar/integracion/nora" },
 					{"i18nCaption":"tiny", "url": "/x21aAppWar/integracion/tiny" }

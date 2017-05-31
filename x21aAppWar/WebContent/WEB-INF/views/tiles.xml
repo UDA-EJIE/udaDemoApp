@@ -420,6 +420,12 @@
 
 
 	<!-- Integracion -->
+	<definition name="geoEuskadi" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/geoEuskadi.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/geoEuskadi-includes.jsp" />
+	</definition>
 	<definition name="z-index" extends="template">
 		<put-attribute name="content"
 			value="/WEB-INF/views/integracion/z-index.jsp" />

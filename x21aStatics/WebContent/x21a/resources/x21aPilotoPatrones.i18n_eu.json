@@ -48,6 +48,7 @@
 				"tree_panel" :"Ã�rbol con panel de detalle_eu",
 		"experimental" :"Experimental_eu",
 		"integracion" :"IntegraciÃ³n_eu",
+			"geoEuskadi":"Visor GeoEuskadi_eu",
 			"z-index" :"Capas RUP (z-index)_eu",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE",  
