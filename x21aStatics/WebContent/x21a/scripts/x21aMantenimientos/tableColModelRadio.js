@@ -123,7 +123,7 @@ var tableColNames = [
 			]
 		};
 	
-
+jQuery(function($){
 	//Formulario de filtrado
 	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
 	jQuery('#rol_filter_table').rup_combo(options_role_combo);
@@ -136,4 +136,5 @@ var tableColNames = [
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+});
 	

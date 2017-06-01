@@ -85,7 +85,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
         <property name="securityMetadataSource">
             <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
                 <security:intercept-url pattern="/administracion/.*" access="hasRole('ROLE_ADMIN_UDA')" />
-                <security:intercept-url pattern="/**" access="" />
+                <security:intercept-url pattern="/**" access="isAuthenticated()" />
             </security:filter-security-metadata-source>
         </property>
     </bean>

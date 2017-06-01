@@ -29,6 +29,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<section id="mainContent">
+			
 				<p>
 					<a target="_blank"
 						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img

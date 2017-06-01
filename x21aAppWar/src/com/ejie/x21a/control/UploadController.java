@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.FileUtils;
@@ -151,49 +152,71 @@ public class UploadController   {
 //		
 //	}
 	
+//	@RequestMapping(value="pifForm", method = RequestMethod.POST)
+//	public @ResponseBody List<Map<String,Object>> addPifForm(
+//			@RequestParam(value="nombre", required=false) String nombre,
+//			@RequestParam(value="apellido1", required=false) String apellido1,
+//			@RequestParam(value="apellido2", required=false) String apellido2,
+////			@RequestParam(value="file", required=false) MultipartFile file,
+//			HttpServletRequest httpRequest
+//			) {
+//	
+//		
+//		ServletFileUpload upload = new ServletFileUpload();
+//		FileItemIterator iter;
+//		try {
+//			iter = upload.getItemIterator(httpRequest);
+//			while (iter.hasNext()) {
+//				
+//				FileItemStream item = iter.next();
+//				String name = item.getFieldName();
+//				InputStream stream = item.openStream();
+//				if (item.isFormField()) {
+//					System.out.println("Form field " + name + " with value "
+//							+ Streams.asString(stream) + " detected.");
+//				} else {
+//					System.out.println("File field " + name + " with file name "
+//							+ item.getName() + " detected.");
+//					// Process the input stream
+//					PifUtils.put(item.getName(), stream);
+//					
+//				}
+//				
+//			}
+//		} catch (FileUploadException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//
+//		
+////		PifUtils.put(file);
+//		
+//		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
+//
+////		filesMetaInfo.add(this.getFileReturnMap(file));
+//		
+//		return filesMetaInfo;
+//	}
+	
 	@RequestMapping(value="pifForm", method = RequestMethod.POST)
-	public @ResponseBody List<Map<String,Object>> addPifForm(@RequestParam(value="nombre", required=false) String nombre,
+	public @ResponseBody List<Map<String,Object>> addPifFormFile(
+			@RequestParam(value="nombre", required=false) String nombre,
 			@RequestParam(value="apellido1", required=false) String apellido1,
 			@RequestParam(value="apellido2", required=false) String apellido2,
-//			@RequestParam(value="file", required=false) MultipartFile file,
-			HttpServletRequest httpRequest) {
+			@RequestParam(value="file", required=false) MultipartFile file,
+			HttpServletRequest httpRequest
+			) {
 	
-		ServletFileUpload upload = new ServletFileUpload();
-		FileItemIterator iter;
-		try {
-			iter = upload.getItemIterator(httpRequest);
-			while (iter.hasNext()) {
 				
-				FileItemStream item = iter.next();
-				String name = item.getFieldName();
-				InputStream stream = item.openStream();
-				if (item.isFormField()) {
-					System.out.println("Form field " + name + " with value "
-							+ Streams.asString(stream) + " detected.");
-				} else {
-					System.out.println("File field " + name + " with file name "
-							+ item.getName() + " detected.");
-					// Process the input stream
-					PifUtils.put(item.getName(), stream);
-					
-				}
-				
-			}
-		} catch (FileUploadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		
-//		PifUtils.put(file);
+		PifUtils.put(file);
 		
 		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
 
-//		filesMetaInfo.add(this.getFileReturnMap(file));
+		filesMetaInfo.add(this.getFileReturnMap(file));
 		
 		return filesMetaInfo;
 	}

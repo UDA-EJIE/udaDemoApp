@@ -48,8 +48,9 @@
 		<tiles:insertAttribute name="breadCrumb" /><br/>
 		
 		<!-- Contenidos -->
-		<tiles:insertAttribute name="content"/>
-		
+		<div class="content">
+			<tiles:insertAttribute name="content"/>
+		</div>
 		<!-- Pie -->
 		<tiles:insertAttribute name="footer" />
 		

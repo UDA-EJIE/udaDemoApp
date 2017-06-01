@@ -57,6 +57,8 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 	 */
 	public static final int STRING_BUILDER_INIT = 4096;
 	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "NOMBRE", "APELLIDO1", "APELLIDO2", "EJIE", "FECHA_ALTA", "FECHA_BAJA", "ROL", "FECHA_MODIF"};
+	
     private JdbcTemplate jdbcTemplate;
     
     @Autowired
@@ -148,7 +150,7 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query, JQGridUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<Usuario>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -176,12 +178,14 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 		where.append(mapaWhere.get("query"));
 		query.append(where);
 
-		List<?> params = (List<?>) mapaWhere.get("params");
+		List<Object> params = (List<Object>) mapaWhere.get("params");
 
 		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+//			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query, JQGridUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
+				
 		return (List<Usuario>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
 	}
 	
@@ -356,7 +360,7 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 
 		//PAGINACIÓN
 		if (jqGridRequestDto != null) {
-			sbSQL = JQGridManagerJerarquia.getPaginationQuery(jqGridRequestDto, sbSQL);
+			sbSQL = JQGridManagerJerarquia.getPaginationQuery(jqGridRequestDto, sbSQL, JQGridUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		List<?> params = (List<?>) mapaWhere.get("params");

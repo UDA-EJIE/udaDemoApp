@@ -23,6 +23,7 @@ jQuery(document).ready(function(){
 	$.fn.rup_toolbar.defaults.adapter = "toolbar_jqueryui";
 	$.fn.rup_upload.defaults.adapter = "upload_jqueryui";
 	$.fn.rup_validate.defaults.adapter = "validate_jqueryui";
+	$.fn.rup_feedback.defaults.adapter = "feedback_jqueryui";
 	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
@@ -150,7 +151,10 @@ jQuery(document).ready(function(){
 		}
 	});
 	//idioma
-	jQuery("#x21aPilotoPatronesWar_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
+	jQuery("#x21aPilotoPatronesWar_language").rup_language({
+		languages: jQuery.rup.AVAILABLE_LANGS_ARRAY,
+		modo: "jquery-ui"
+	});
 	
 	jQuery("#x21aPilotoPatronesWar_menu").rup_menu({
 		display: (vertical ? 'vertical' : 'horizontal'),

@@ -20,14 +20,14 @@ jQuery(document).ready(function(){
 		showButtonPanel : true,
 		showOtherMonths : true,
 		noWeekend : true
-		//, buttonImage : "/rup/basic-theme/images/exclamation.png"
+		//, buttonImage : "/rup/css/images/exclamation.png"
 	});
 	
 	$("#fecha_multi").rup_date({
 		multiSelect: 3,
 		//multiSelect: [0,5],
 		labelMaskId : "fecha_multi-mask",
-		buttonImage : "/rup/basic-theme/images/exclamation.png"
+		buttonImage : "/rup/css/images/exclamation.png"
 	});
 	
 	$.rup_date({		

@@ -89,8 +89,8 @@ jQuery(function($){
         	"contextMenu",
         	"responsive",
         	"filter",
-        	"search"
-//        	,"multiselection"
+        	"search",
+        	"multifilter"
         ],
         editOptions:{
         	fillDataMethod:"clientSide"
