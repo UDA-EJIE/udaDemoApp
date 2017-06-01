@@ -11,13 +11,5 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="x38ShLibClasses.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses/x38ShLibClasses">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-       
-        <dependent-module archiveName="x21aMdbEJB.jar" deploy-path="/" handle="module:/resource/x21aMdbEJB/x21aMdbEJB">
-            <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>
