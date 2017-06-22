@@ -19,3 +19,10 @@
  
  
  <div id="mi_mapa" style="width: 100%; height: 100%; position:relative;"></div>
+ 
+ <div class="example">
+			<button type="button" id="marcador"> <spring:message code="integracion.geoeuskadi.marcador" /></button>
+			<button type="button" id="centrar"> <spring:message code="integracion.geoeuskadi.centrar" /></button>
+			
+		</div>
+ 
