@@ -177,30 +177,26 @@
                                 <a class="dropdown-item" href="/x21aAppWar/integracion/geoEuskadi">
                                     <spring:message code="geoEuskadi" />
 
-                                </a>
-                               	
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/z-index">
-                                    <spring:message code="z-index" />
+                                </a>                          	
+                       
 
-                                </a>
-
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/nora">
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/nora">
                                     <spring:message code="nora" />
 
                                 </a>
 
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/tiny">
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/tiny">
                                     <spring:message code="tiny" />
                                 </a>
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/webdav">
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/webdav">
                                     <spring:message code="webdav" />
                                 </a>
 
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/pif">
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/pif">
                                      PIF
                                 </a>
 
-                                <a class="dropdown-item" href="/x21aPilotoPatronesWar/integracion/cache/view">
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/cache/view">
                                    Cache
                                 </a>
 
