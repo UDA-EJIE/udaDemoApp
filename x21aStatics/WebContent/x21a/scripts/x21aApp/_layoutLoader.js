@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
 	
 	
 	// Evitar conflictos entre Bootstrap y jQueryUI
-	$.fn.bootstrapBtn = $.fn.button.noConflict();
+	jQuery.fn.bootstrapBtn = jQuery.fn.button.noConflict();
 	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
@@ -150,14 +150,14 @@ jQuery(document).ready(function(){
 	jQuery("#x21aApp_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	//NAVBAR Menu
-	$.fn.rup_navbar({
+	jQuery.fn.rup_navbar({
 		sticky:false
 	});
 	
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
 
 	//pie
-	$(".footer [title]").rup_tooltip();
+	jQuery(".footer [title]").rup_tooltip();
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){

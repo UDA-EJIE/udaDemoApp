@@ -15,76 +15,93 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Nora</h2>
-<div id="error" style="display: none"></div>
 
-<div id="contenido">
+
+<section id="row">
+	<div class="col-xs-12">
+
+<h2>Nora</h2>
+	<hr>
+<div id="error" style="display: none"></div>
 	<form id="searchForm" style="margin: 0 0.5em 0 0.5em;">
+		
+		
 		<div class="formulario_legend" id="titleSearch_yy">
 			<spring:message code="searchCriteria" />:
 		</div>
+		
+		
 		<fieldset style="border: 1px solid #DADADA;" id="FIELDSET_SEARCH_yy">
-			<div class="formulario_columna_cnt">
-				<div class="formulario_linea_izda_float">
+			<div class="two-col">
+				<div class="col1">
 					<label for="autonomia_search" class="formulario_linea_label">Autonomía:</label>
 					<input type="text" name="autonomia.codeAutonomia" class="formulario_linea_input" id="autonomia_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="comarca_search" class="formulario_linea_label">Comarca:</label>
 					<input type="text" name="comarca.codeComarca" class="formulario_linea_input" id="comarca_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="provincia_search" class="formulario_linea_label">Provincia:</label>
 					<input type="text" name="provincia.codeProvincia" class="formulario_linea_input" id="provincia_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+			</div>
+			<div class="two-col">
+				<div class="col1">
 					<label for="localidad_search" class="formulario_linea_label">Localidad:</label>
 					<input type="text" name="localidad.codeLocalidad" class="formulario_linea_input" id="localidad_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="municipio_search" class="formulario_linea_label">Municipio:</label>
 					<input type="text" name="municipio.codeMunicipio" class="formulario_linea_input" id="municipio_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="calle_search" class="formulario_linea_label">Calle:</label>
 					<input type="text" name="calle" class="formulario_linea_input" id="calle_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+			</div>
+			<div class="two-col">
+				<div class="col1">
 					<label for="portal_search" class="formulario_linea_label">Portal:</label>
 					<input type="text" name="portal" class="formulario_linea_input" id="portal_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="cp_search" class="formulario_linea_label">CP:</label>
 					<input type="text" name="cp" class="formulario_linea_input" id="cp_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="escalera_search" class="formulario_linea_label">Escalera:</label>
 					<input type="text" name="escalera" class="formulario_linea_input" id="escalera_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+			</div>
+			<div class="two-col">
+				<div class="col1">
 					<label for="piso_search" class="formulario_linea_label">Piso:</label>
 					<input type="text" name="piso" class="formulario_linea_input" id="piso_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="mano_search" class="formulario_linea_label">Mano:</label>
 					<input type="text" name="mano" class="formulario_linea_input" id="mano_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+				<div class="col1">
 					<label for="puerta_search" class="formulario_linea_label">Puerta:</label>
 					<input type="text" name="puerta" class="formulario_linea_input" id="puerta_search" />
 				</div>
-				<div class="formulario_linea_izda_float">
+			</div>
+			<div class="two-col">
+				<div class="col1">
 					<label for="aprox_postal_search" class="formulario_linea_label">Aprox. Postal:</label>
 					<input type="text" name="aprox_postal" class="formulario_linea_input" id="aprox_postal_search" />
 				</div>
-				<div class="formulario_columna_cnt">&nbsp;</div>
-				<div style="float: right; margin-right: 3em;">
+			</div>
+			<div class="formulario_columna_cnt">&nbsp;</div>
+			<div style="float: right; margin-right: 3em;">
 					<button id="visorLT">Visor LT</button>
 					<button id="visorFormulario" >Formulario</button>
 					<a id="limpiar" href="#">Limpiar</a>
 				</div>
 				<div class="formulario_columna_cnt">&nbsp;</div>
-			</div>
+		
 
 		</fieldset>
 	</form>
@@ -92,37 +109,41 @@
 	<div id="nora_tablas" style="float: left; width: 50%;">
 		<fieldset class="combo_fieldset">
 		<legend class="combo_legend">NORA - Tablas:</legend>
+		<div class="two-col">	
 			<label for="comboProvincias" class="formulario_linea_label">Provincia:</label>
 			<select name="provincia" class="combo" id="comboProvincias"></select>
-			<br><br>
-			
+		</div>
+		<div class="two-col">
 			<label for="comboMunicipios" class="formulario_linea_label">Municipio:</label>
 			<select class="combo" id="comboMunicipios"></select>
-			<br><br>
-			
+			</div>
+			<div class="two-col">
 			<label for="autocomplete" class="formulario_linea_label">Calle:</label>
 			<input id="autocomplete" name="autocomplete" disabled="disabled"/>
-			<br><br>
+			</div>
 		</fieldset>
 	</div>
 	
 	<div id="nora_api" style="float: left; width: 50%;">
 		<fieldset class="combo_fieldset">
 			<legend class="combo_legend">NORA - API JS:</legend>	
+			<div class="two-col">
+				
 				<label for="comboProvinciasAPI" class="formulario_linea_label">Provincia:</label>
 				<select class="combo" id="comboProvinciasAPI"></select>
-				<br><br>
-				
+			</div>
+			<div class="two-col">	
 				<label for="comboMunicipiosAPI" class="formulario_linea_label">Municipio:</label>
 				<select class="combo" id="comboMunicipiosAPI"></select>
-				<br><br>
-				
+			</div>
+			<div class="two-col">	
 				<label for="autocompleteAPI" class="formulario_linea_label">Calle:</label>
 				<input id="autocompleteAPI" name="autocompleteAPI" disabled="disabled"/>
-				<br><br>
+			</div>
 		</fieldset>
 	</div>
-</div>
+	</div>
+</section>
 
 
 <div id="id_capaVisor" style="visibility: hidden;">

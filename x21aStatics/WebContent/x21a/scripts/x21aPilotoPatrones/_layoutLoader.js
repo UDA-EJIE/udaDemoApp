@@ -16,14 +16,14 @@
 jQuery(document).ready(function(){
 	
 	// compatibilidad RUP v2.x
-	$.fn.rup_button.defaults.adapter = "button_jqueryui";
-	$.fn.rup_date.defaults.adapter = "date_jqueryui";
-	$.fn.rup_table.plugins.core.defaults.adapter = "table_jqueryui";
-	$.fn.rup_time.defaults.adapter = "time_jqueryui";
-	$.fn.rup_toolbar.defaults.adapter = "toolbar_jqueryui";
-	$.fn.rup_upload.defaults.adapter = "upload_jqueryui";
-	$.fn.rup_validate.defaults.adapter = "validate_jqueryui";
-	$.fn.rup_feedback.defaults.adapter = "feedback_jqueryui";
+	jQuery.fn.rup_button.defaults.adapter = "button_jqueryui";
+	jQuery.fn.rup_date.defaults.adapter = "date_jqueryui";
+	jQuery.fn.rup_table.plugins.core.defaults.adapter = "table_jqueryui";
+	jQuery.fn.rup_time.defaults.adapter = "time_jqueryui";
+	jQuery.fn.rup_toolbar.defaults.adapter = "toolbar_jqueryui";
+	jQuery.fn.rup_upload.defaults.adapter = "upload_jqueryui";
+	jQuery.fn.rup_validate.defaults.adapter = "validate_jqueryui";
+	jQuery.fn.rup_feedback.defaults.adapter = "feedback_jqueryui";
 	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
@@ -242,7 +242,7 @@ jQuery(document).ready(function(){
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
 
 	//pie
-	$(".footer [title]").rup_tooltip();
+	jQuery(".footer [title]").rup_tooltip();
 	
 	//Evitar CABECERA y PIE en PORTAL
 	if (jQuery.rup_utils.aplicatioInPortal()){
