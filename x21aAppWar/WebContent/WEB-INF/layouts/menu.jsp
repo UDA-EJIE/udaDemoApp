@@ -16,7 +16,7 @@
  <%@include file="/WEB-INF/includeTemplate.inc"%>
  
 <nav class="rup-navbar navbar">
-  <button type="button" class="navbar-toggler hidden-lg-up"  type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <button type="button" class="navbar-toggler hidden-lg-up"  type="button" data-toggle="rup-collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div id="navbarResponsive" class="collapse navbar-toggleable-md">
     <a class="navbar-brand" href="#">Uda</a>
     <ul class="nav navbar-nav">
@@ -116,6 +116,12 @@
           <a class="dropdown-item" href="/x21aAppWar/table/tableRadiobutton">tableRadiobutton</a>
         </div>
       </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a>
+        <div class="dropdown-menu" aria-labelledby="datatableDropdown">
+          <a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="gridResponsiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grid responsive</a>
         <div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
@@ -125,12 +131,7 @@
           <a class="dropdown-item" href="/x21aAppWar/bootstrap/exampleForm">Formulario ejemplo</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><spring:message code="dashboard" /></a>
-        <div class="dropdown-menu" aria-labelledby="dashboardDropdown">
-          <a class="dropdown-item" href="/x21aAppWar/dashboard/dashboardSimple"><spring:message code="dashboard.simple.title" /></a>
-        </div>
-      </li>
+    
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="styleGuideDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guía de estilos</a>
         <div class="dropdown-menu" aria-labelledby="styleGuideDropdown">

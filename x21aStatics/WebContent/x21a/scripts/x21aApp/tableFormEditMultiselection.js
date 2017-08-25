@@ -101,16 +101,16 @@ jQuery(function($){
 		multiboxonly: true,
         model:"Usuario",
         usePlugins:[
-			"formEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
+//			"formEdit",
+//        	"feedback",
+//			"toolbar",
+//        	"contextMenu",
         	"responsive",
         	"filter",
-        	"search",
+//        	"search",
         	"multiselection",
-        	"report",
-        	"multifilter"
+//        	"report",
+//        	"multifilter"
         ],
         primaryKey: ["id"],
         sortname: 'id',
