@@ -148,7 +148,7 @@ jQuery(document).ready(function(){
 	jQuery("#x21aApp_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	//NAVBAR Menu
-	$.fn.rup_navbar({
+	$("#navbarResponsive").rup_navbar({
 		sticky:false
 	});
 	
