@@ -24,19 +24,19 @@ $(document).ready(function () {
 		buttons: [{
 				text: "Aceptar",
 				click: function () { 
-					$("#idDialog").dialog("close"); 
+					$("#idDialog").rup_dialog("close"); 
 				}
 			},
 			{
 				text: "Enviar",
 				click: function () { 
-					$("#idDialog").dialog("close"); 
+					$("#idDialog").rup_dialog("close"); 
 				}
 			},
 			{
 				text: "Abandonar",
 				click: function () { 
-					$("#idDialog").dialog("close"); 
+					$("#idDialog").rup_dialog("close"); 
 				},
 				btnType: $.rup.dialog.LINK
 			}
@@ -60,8 +60,21 @@ $(document).ready(function () {
 			buttons: [{
 				text: "Aceptar",
 				click: function () { 
-					$(this).dialog("close");
+					$("#idDialogAjaxWar").rup_dialog("close");
 				}					
+			},
+			{
+				text: "Enviar",
+				click: function () { 
+					$("#idDialogAjaxWar").rup_dialog("close"); 
+				}
+			},
+			{
+				text: "Abandonar",
+				click: function () { 
+					$("#idDialogAjaxWar").rup_dialog("close");
+				},
+				btnType: $.rup.dialog.LINK
 			}]
 		});	
 	});
