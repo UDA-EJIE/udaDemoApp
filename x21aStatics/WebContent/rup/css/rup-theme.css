@@ -1211,13 +1211,14 @@ select.form-control:not([size]):not([multiple]), .form-control.ui-multiselect:no
   color: #fffcfb;
   background: #337ab7; }
 
-.rup-combobox .rup-combobox-input {
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px; }
-
-.rup-combobox .rup-combobox-toggle {
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px; }
+.rup-combobox {
+  margin-right: 2.5rem; }
+  .rup-combobox .rup-combobox-input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px; }
+  .rup-combobox .rup-combobox-toggle {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px; }
 
 .rup-breadCrumb_root {
   background: lightgray;
@@ -2747,17 +2748,20 @@ div.right_buttons .rup-dropdown-btn-group {
         border-bottom-width: 1; }
 
 .rup-time-input-group {
-  display: inline-flex; }
+  display: inline-table;
+  vertical-align: middle; }
   .rup-time-input-group .hasDatepicker {
     border-right: none;
     border-top-right-radius: 0;
-    border-bottom-right-radius: 0; }
+    border-bottom-right-radius: 0;
+    display: table-cell; }
   .rup-time-input-group .ui-timepicker-trigger {
     padding: 0 0.5rem;
     border-top-left-radius: 0;
-    border-bottom-left-radius: 0; }
+    border-bottom-left-radius: 0;
+    display: table-cell; }
     .rup-time-input-group .ui-timepicker-trigger * {
-      display: block; }
+      display: table-cell; }
 
 .rup-toolbar {
   padding-top: 2px;
@@ -2956,6 +2960,21 @@ a.rup-toolbar_menuButton.ui-button span {
 
 .fileupload-buttonbar a {
   text-decoration: none; }
+
+.template-upload.error {
+  background-color: #fdf7f7;
+  border-color: #8b211e; }
+
+.template-upload .error-text {
+  color: #d9534f;
+  font-weight: bold; }
+
+.template-upload .type-text {
+  font-style: italic; }
+
+.template-upload .size-text {
+  font-style: italic;
+  padding-left: .5rem; }
 
 input.error {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");

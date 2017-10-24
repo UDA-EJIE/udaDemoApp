@@ -91,6 +91,7 @@
               <div class="dropdown-menu menu-right">
               	<a class="dropdown-item" href="/x21aAppWar/patrones/validate">Configuración</a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/validateRules">Reglas de validación</a>
+                <a class="dropdown-item" href="/x21aAppWar/patrones/validateRup">Componentes RUP</a>
                 
               </div>
             </div>

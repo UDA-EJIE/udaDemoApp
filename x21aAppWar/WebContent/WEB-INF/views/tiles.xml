@@ -316,6 +316,13 @@
 			value="/WEB-INF/views/patrones/validate/validateRules-includes.jsp" />
 	</definition>
 	
+	<definition name="validateRup" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validateRup.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validateRup-includes.jsp" />
+	</definition>
+	
 	<definition name="charts" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/graficos.jsp" />
 		<put-attribute name="includes"
