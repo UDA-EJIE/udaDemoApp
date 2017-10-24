@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2012 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -13,5 +13,16 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/z-index.js" type="text/javascript"></script>
+<h2>Visor geoeuskadi</h2>
+ 
+ 
+ <div id="mi_mapa" style="width: 100%; height: 100%; position:relative;"></div>
+ 
+ <div class="example">
+			<button type="button" id="marcador"> <spring:message code="integracion.geoeuskadi.marcador" /></button>
+			<button type="button" id="centrar"> <spring:message code="integracion.geoeuskadi.centrar" /></button>
+			
+		</div>
+ 

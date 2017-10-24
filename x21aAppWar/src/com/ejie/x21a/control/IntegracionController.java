@@ -43,6 +43,13 @@ public class IntegracionController {
 
 	//private static final Logger logger = LoggerFactory.getLogger(IntegracionController.class);
 
+	
+	//visor geoEuskadi
+	@RequestMapping(value = "geoEuskadi", method = RequestMethod.GET)
+	public String getVisorGeoEuskadi(Model model) {
+		return "geoEuskadi";
+	}
+	
 	//z-index
 	@RequestMapping(value = "z-index", method = RequestMethod.GET)
 	public String getZIndex(Model model) {

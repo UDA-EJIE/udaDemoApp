@@ -91,7 +91,6 @@
               <div class="dropdown-menu menu-right">
               	<a class="dropdown-item" href="/x21aAppWar/patrones/validate">Configuración</a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/validateRules">Reglas de validación</a>
-                <a class="dropdown-item" href="/x21aAppWar/patrones/validateRup">Componentes RUP</a>
                 
               </div>
             </div>
@@ -115,14 +114,15 @@
           <a class="dropdown-item" href="/x21aAppWar/table/tableLoadOnStartUp">LoadOnStartUp = false</a>
           <a class="dropdown-item" href="/x21aAppWar/table/dialog">Tabla en diálogo</a>
           <a class="dropdown-item" href="/x21aAppWar/table/tableRadiobutton">tableRadiobutton</a>
+          <a class="dropdown-item" href="/x21aAppWar/table/tabs">Tabla en pestañas</a>
         </div>
       </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a>
-        <div class="dropdown-menu" aria-labelledby="datatableDropdown">
-          <a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a>
-        </div>
-      </li>
+<!--         <li class="nav-item dropdown"> -->
+<!--         <a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a> -->
+<!--         <div class="dropdown-menu" aria-labelledby="datatableDropdown"> -->
+<!--           <a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a> -->
+<!--         </div> -->
+<!--       </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="gridResponsiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grid responsive</a>
         <div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
@@ -139,6 +139,44 @@
           <a class="dropdown-item" href="/x21aAppWar/styleGuide">Guía de estilos</a>
         </div>
       </li>
+      
+      
+      <!-- Integración -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="integrationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <spring:message code="integracion" /></a>
+                        <div class="dropdown-menu" aria-labelledby="integrationDropdown">
+                               
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/geoEuskadi">
+                                    <spring:message code="geoEuskadi" />
+
+                                </a>                          	
+                       
+
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/nora">
+                                    <spring:message code="nora" />
+
+                                </a>
+
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/tiny">
+                                    <spring:message code="tiny" />
+                                </a>
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/webdav">
+                                    <spring:message code="webdav" />
+                                </a>
+
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/pif">
+                                     PIF
+                                </a>
+
+                                <a class="dropdown-item" href="/x21aAppWar/integracion/cache/view">
+                                   Cache
+                                </a>
+
+
+                            </div>
+                        </li>
+      
+      
     </ul>
     <ul class="nav navbar-nav float-md-right rup-nav-tools">
       <li class="nav-item">
