@@ -89,38 +89,38 @@
 				}
 				, formoptions:{rowpos:3, colpos:2}
 			},
-//			{ name: "rol", index: "rol", editable:true, width: 140,
-//				rupType: "combo",
-//				rwdClasses:"hidden-xs hidden-sm hidden-md",
-//				formatter: "rup_combo",
-//				editoptions: {
-//					source: $.map(combo, function(elem){
-//						return {
-//							label: elem.rol,
-//							value: elem.codTipoSubsanacion
-//						};
-//						
-//					})
-//				}
-//				, formoptions:{rowpos:3, colpos:2}
-//			}
 			{ name: "rol", index: "rol", editable:true, width: 140,
-				rupType: "autocomplete",
+				rupType: "combo",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
-				formatter: "rup_autocomplete",
+				formatter: "rup_combo",
 				editoptions: {
-					source : $.map(combo, function(elem){
+					source: $.map(combo, function(elem){
 						return {
 							label: elem.rol,
 							value: elem.codTipoSubsanacion
 						};
 						
 					})
-//					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"id"}
-	                 
 				}
 				, formoptions:{rowpos:3, colpos:2}
 			}
+//			{ name: "rol", index: "rol", editable:true, width: 140,
+//				rupType: "autocomplete",
+//				rwdClasses:"hidden-xs hidden-sm hidden-md",
+//				formatter: "rup_autocomplete",
+//				editoptions: {
+//					source : $.map(combo, function(elem){
+//						return {
+//							label: elem.rol,
+//							value: elem.codTipoSubsanacion
+//						};
+//						
+//					})
+////					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"id"}
+//	                 
+//				}
+//				, formoptions:{rowpos:3, colpos:2}
+//			}
         ],
         options_table_report = {
 			buttons:[
