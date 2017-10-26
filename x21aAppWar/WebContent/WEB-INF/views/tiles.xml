@@ -316,6 +316,13 @@
 			value="/WEB-INF/views/patrones/validate/validateRules-includes.jsp" />
 	</definition>
 	
+	<definition name="validateRup" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validateRup.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validateRup-includes.jsp" />
+	</definition>
+	
 	<definition name="charts" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/patrones/graficos.jsp" />
 		<put-attribute name="includes"
@@ -420,6 +427,12 @@
 
 
 	<!-- Integracion -->
+	<definition name="geoEuskadi" extends="template">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/geoEuskadi.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/geoEuskadi-includes.jsp" />
+	</definition>
 	<definition name="z-index" extends="template">
 		<put-attribute name="content"
 			value="/WEB-INF/views/integracion/z-index.jsp" />
@@ -592,6 +605,11 @@
     <definition extends="template" name="exampleForm">
         <put-attribute name="content" value="/WEB-INF/views/bootstrap/exampleForm.jsp"/>
     </definition>
+
+	<definition extends="template" name="datatable">
+        <put-attribute name="content" value="/WEB-INF/views/datatable/datatable.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/datatable/datatable-includes.jsp"/>
+    </definition> 
 
 	<definition name="y52bdocumentos" extends="template">
 		<put-attribute name="content"

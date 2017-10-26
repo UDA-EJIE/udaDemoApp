@@ -14,15 +14,26 @@
  * que establece la Licencia.
  */
 	
+
+	var combo = [
+		   {rol: "---", codTipoSubsanacion:""},
+		   {rol: "Administrador", codTipoSubsanacion:"administrador"},
+		   {rol: "Desarrollador", codTipoSubsanacion:"desarrollador"},
+		   {rol: "Espectador", codTipoSubsanacion:"espectador"},
+		   {rol: "Informador", codTipoSubsanacion:"informador"},
+		   {rol: "Manager", codTipoSubsanacion:"manager"}
+		];
+
 	var tableColNames = [
 	                     $.rup.i18n.app.table.id,
 			           $.rup.i18n.app.table.nombre,
 			           $.rup.i18n.app.table.apellido1,
-			           //$.rup.i18n.app.table.apellido2
-			           //$.rup.i18n.app.table.ejie,
-			           //$.rup.i18n.app.table.fechaAlta,
-			           //$.rup.i18n.app.table.fechaBaja,
-			           //$.rup.i18n.app.table.rol
+			           $.rup.i18n.app.table.apellido2,
+			           $.rup.i18n.app.table.ejie,
+			           $.rup.i18n.app.table.fechaAlta,
+			           $.rup.i18n.app.table.fechaBaja,
+			           $.rup.i18n.app.table.rol
+			           
 			],
 		tableColModels = [
 			{ name: "id", index: "id", editable:true, width: 80
@@ -35,10 +46,10 @@
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
-			/*{ name: "apellido2", index: "apellido2", editable:true
+			{ name: "apellido2", index: "apellido2", editable:true
 				, formoptions:{rowpos:4, colpos:1}
-			},*/
-			/*{ name: "ejie", index: "ejie", editable:true, width: 60,
+			},
+			{ name: "ejie", index: "ejie", editable:true, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
@@ -81,18 +92,35 @@
 			{ name: "rol", index: "rol", editable:true, width: 140,
 				rupType: "combo",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
+				formatter: "rup_combo",
 				editoptions: {
-					source : [
-					   {label: "---", value:""},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
-					]
+					source: $.map(combo, function(elem){
+						return {
+							label: elem.rol,
+							value: elem.codTipoSubsanacion
+						};
+						
+					})
 				}
 				, formoptions:{rowpos:3, colpos:2}
-			}*/
+			}
+//			{ name: "rol", index: "rol", editable:true, width: 140,
+//				rupType: "autocomplete",
+//				rwdClasses:"hidden-xs hidden-sm hidden-md",
+//				formatter: "rup_autocomplete",
+//				editoptions: {
+//					source : $.map(combo, function(elem){
+//						return {
+//							label: elem.rol,
+//							value: elem.codTipoSubsanacion
+//						};
+//						
+//					})
+////					sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"id"}
+//	                 
+//				}
+//				, formoptions:{rowpos:3, colpos:2}
+//			}
         ],
         options_table_report = {
 			buttons:[
@@ -153,4 +181,7 @@
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	
+	
+	
 	

@@ -1,0 +1,18 @@
+<div class="card-block" [attr.data-value]="list.id">
+        <div class="card-title">
+          <h4>{{list.name}}
+
+
+
+    			<div class="align-right">
+            <span class="list-modify" (click)="modifyList()" [attr.data-listId]="list.id"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+            <span class="list-delete" (click)="deleteList()" [attr.data-listId]="list.id"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+          </div>
+          </h4>
+        </div>
+
+		<h6 class="card-subtitle mb-2 text-muted">{{list.taskNum}} Tareas</h6>
+		<p class="card-text">{{list.description}}</p>
+	  	<a class="card-link" id=""><span>Mostrar tareas</span></a>
+      	<a class="card-link" href="/detail/{{list.id}}"><span>Ir detalle</span></a>
+      </div>

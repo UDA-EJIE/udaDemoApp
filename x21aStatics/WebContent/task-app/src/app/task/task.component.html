@@ -1,0 +1,12 @@
+<li class="task-list-item list-group-item" [ngClass]="{'task-done': task.done}">
+				<label class="custom-control custom-checkbox ">
+  <input #doneCheck type="checkbox"
+		[attr.checked]="task.done ? 'checked' : null"
+		(change)="done()"
+		class="task-done-checkbox custom-control-input">
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">{{task.name}}</span>
+
+  </label>
+	<span class="delete-task align-right" (click)="deleteTask()"> <i class="fa fa-trash " aria-hidden="true"></i></span>
+</li>

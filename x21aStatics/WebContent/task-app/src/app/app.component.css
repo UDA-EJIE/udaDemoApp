@@ -1,0 +1,15 @@
+/** CONTAINER */
+.content {
+  margin: 1rem;
+  clear: both;
+  background: #ffffff;
+  display: block;
+  padding: 2rem; }
+
+@media (max-width: 767px) {
+  .content {
+    margin: 0em; } }
+
+section > h1, section > h2, section > h3, section > h4, section > h5, section > h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem; }

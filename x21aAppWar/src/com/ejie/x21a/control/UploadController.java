@@ -16,7 +16,6 @@
 package com.ejie.x21a.control;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,12 +27,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -257,7 +250,7 @@ public class UploadController   {
 	
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseStatus( HttpStatus.OK )
-	 public void remove(@RequestParam(value="fileName", required=true) String fileName,
+	 public @ResponseBody Map<String, Object> remove(@RequestParam(value="fileName", required=true) String fileName,
 					HttpServletResponse  response) {
 		
 		uploadService.deleteFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
@@ -266,6 +259,8 @@ public class UploadController   {
         response.setHeader("Pragma", "cache");
         response.setHeader("Expires", "0");
         response.setHeader("Cache-Control", "private");
+        
+        return this.getDeleteFileReturnMap(fileName);
         
 	}
 	
@@ -296,6 +291,17 @@ public class UploadController   {
 		mapaRetorno.put("size", file.getSize());
 		mapaRetorno.put("delete_url", "../upload?fileName="+file.getOriginalFilename());
 		mapaRetorno.put("delete_type", "DELETE");
+		
+		return mapaRetorno;
+		
+	}
+	
+	private Map<String,Object> getDeleteFileReturnMap(String fileName){
+		
+		Map<String,Object> mapaRetorno = new HashMap<String, Object>();
+		
+		mapaRetorno.put("fileName", Boolean.TRUE);
+		
 		
 		return mapaRetorno;
 		
