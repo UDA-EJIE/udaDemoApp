@@ -1,0 +1,35 @@
+<rup-feedback options></rup-feedback>
+
+
+
+	<div class="row">
+
+	   <input type="hidden" id="idTaskList" [(ngModel)]="list.id"/>
+	    <section>
+  	  	<div class="col-md-2"></div>
+  	  	<div class="col-md-8">
+  	  	    <h2 class="page-header"><a href="/board">Listas de tareas</a> > {{list.name}}</h2>
+
+            <div class="col-md-4">
+							<ul class="list-group">
+              <!-- <div  > -->
+                <app-task
+									*ngFor="let task of tasks"
+									(deleteTaskEvent)="deleteTask($event)"
+									[task]="task"></app-task>
+              <!-- </div> -->
+							<li class="list-group-item">
+								<div class="input-group">
+									<input type="text" id="newTask" name="taskName"  [(ngModel)]="task.name" class="form-control"/>
+
+									<button id="addTask"  (click)="addTask()"  class="btn btn-secondary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+								</div>
+							</li>
+							</ul>
+      	    </div>
+        </div>
+  	    <div class="col-md-2"></div>
+
+	   </section>
+
+	</div>
