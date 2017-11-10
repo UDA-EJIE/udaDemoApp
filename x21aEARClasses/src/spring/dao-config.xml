@@ -27,12 +27,12 @@
     <context:component-scan base-package="com.ejie.x21a.dao" />
     
     
-    <bean id="afterReturningConnectionAdvice"
-		class="com.ejie.x21a.util.AfterReturningConnectionAdvice" >
-		<property name="sqls">
-			<list>
-				<value>ALTER SESSION SET NLS_SORT='SPANISH_AI'</value>
-			</list>
-		</property>
-	</bean>
+<!--     <bean id="afterReturningConnectionAdvice" -->
+<!-- 		class="com.ejie.x21a.util.AfterReturningConnectionAdvice" > -->
+<!-- 		<property name="sqls"> -->
+<!-- 			<list> -->
+<!-- 				<value>ALTER SESSION SET NLS_SORT='SPANISH_AI'</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 </beans>

@@ -22,7 +22,7 @@ jQuery(function($){
         usePlugins:[
         	"feedback",
 			"toolbar",
-        	"contextMenu",
+//        	"contextMenu",
         	"fluid",
         	"filter",
         	"search",
