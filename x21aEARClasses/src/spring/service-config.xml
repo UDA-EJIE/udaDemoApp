@@ -15,5 +15,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
         <property name="fileEncoding" value="UTF-8" />
     </bean>
 <!-- Scans the classpath of this application for @Service to deploy as beans -->
-    <context:component-scan base-package="com.ejie.x21a.service" />
+    <context:component-scan base-package="com.ejie.x21a.service, com.ejie.w63.censoNacionalVertidos.dao, com.ejie.w63.censoNacionalVertidos.service" />
+<!--     <context:component-scan base-package="com.ejie.x21a.service" /> -->
+    
+   
 </beans>

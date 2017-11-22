@@ -474,9 +474,9 @@
 				});
 				$(this).bind('fileuploadsend', function (e, data) {
 					data.url=$.rup_utils.setNoPortalParam(data.url);
-//					if (!$.rup.browser.xhrFileUploadSupport || settings.forceIframeTransport===true){
-//						data.url = data.url + (data.url.match("\\?") === null ? "?" : "&") + "_emulate_iframe_http_status=true";
-//					}
+					if (!$.rup.browser.xhrFileUploadSupport || settings.forceIframeTransport===true){
+						data.url = data.url + (data.url.match("\\?") === null ? "?" : "&") + "_emulate_iframe_http_status=true";
+					}
 				});
 			},
 			_private : function(settings){

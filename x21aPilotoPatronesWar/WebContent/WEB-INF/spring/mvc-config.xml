@@ -13,7 +13,9 @@
 		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<!-- Crea un bean por cada clase anotada con @Component en el paquete 'com.ejie.x21a.control' -->
+<!-- 	<context:component-scan base-package="com.ejie.x21a.control, com.ejie.w63.censoNacionalVertidos.webService" /> -->
 	<context:component-scan base-package="com.ejie.x21a.control" />
+	 
 
 	<!-- Mapeos directos -->
 	<mvc:view-controller path="/sessionInfo" view-name="serSessionTestServlet" />
@@ -51,17 +53,22 @@
        	<property name="availableLangs" value="es,eu,en,fr" />
 		<!-- <property name="portalCookie" value="r01euskadiCookie" /> -->
      </bean>
+     
+<!--      <bean id="iframeXHREmulationInterceptor" class="com.ejie.x38.IframeXHREmulationInterceptor" > -->
+	
+<!--      </bean> -->
 
 	<!-- Declaración del interceptor (Gestión idomática) -->
     <mvc:interceptors>
          <ref bean="mvcInterceptor"/>
+<!--          <ref bean="iframeXHREmulationInterceptor"/> -->
     </mvc:interceptors>
 
      <!-- Configurar Excepciones propagadas en los Controller -->
 	<bean class="com.ejie.x38.control.exception.MvcExceptionResolverConfig">
 <!-- 		<property name="handlers"> -->
 <!-- 			<list> -->
-<!-- 				<bean class="MyExceptionHandler" /> -->
+<!-- 				<ref bean="fileExceedsFileSizeLimitHandler"></ref> -->
 <!-- 			</list> -->
 <!-- 		</property> -->
 	</bean>
@@ -90,7 +97,9 @@
 	    </bean>
 	    
 		<!-- Permite la subida de ficheros -->	
-		<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" />
+		<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" >
+			<property name="maxUploadSize" value="700000"></property>
+		</bean>
 
 	    <!-- Bean encargado de las peticiones -->
 	    <bean id="requestMappingHandlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">

@@ -265,7 +265,12 @@ jQuery(document).ready(function(){
 		dataType: 'json',
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg(xhr),"ok");
-		}
+		},
+		validate: {}
+//		error: function(xhr){
+//				$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON(xhr.responseText)), "error");
+//		}
+		,iframe:true
 	});
 	
 });

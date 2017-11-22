@@ -55,6 +55,7 @@ jQuery(document).ready(function(){
 	$('#fileupload_only').rup_upload({
 		fileInput: $("#file_only"),
 		maxFileSize: 5000000
+//		,forceIframeTransport: true
 	});
 	
 	 

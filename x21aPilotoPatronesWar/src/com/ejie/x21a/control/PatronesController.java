@@ -905,7 +905,8 @@ public class PatronesController {
 		
 		@RequestMapping(value="form/subidaArchivos", method = RequestMethod.POST, produces="application/json")
 		public @ResponseBody Object addFormSimple(
-				@ModelAttribute UploadBean uploadBean,
+				@Validated @ModelAttribute UploadBean uploadBean,
+//				@ModelAttribute UploadBean uploadBean,
 				@RequestParam(value="fotoPadre", required=false) MultipartFile fotoPadre,
 				@RequestParam(value="fotoMadre", required=false) MultipartFile fotoMadre,
 				HttpServletResponse response) throws IOException {
@@ -917,6 +918,7 @@ public class PatronesController {
 				uploadService.saveToDisk(fotoMadre, appConfiguration.getProperty("fileUpload.path"));
 			}
 			
+					
 			MessageWriter messageWriter = new MessageWriter();
 			
 			messageWriter.startMessageList();
