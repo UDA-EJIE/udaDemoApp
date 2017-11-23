@@ -37,12 +37,12 @@
                     // IE versions below IE8 cannot set the name property of
                     // elements that have already been added to the DOM,
                     // so we set the name along with the iframe HTML markup:
-                    
+
                     if (options.url.indexOf('emulate_iframe_http_status') !==-1 && options.dataType.indexOf('iframe') !== -1){
                     	options.dataType = options.dataType.split(' ')[1];
                     	options.dataTypes = options.dataTypes.slice(1);
                     }
-                    
+
                     var xhr = { // mock object
                 			aborted: 0,
                 			responseText: null,
@@ -63,8 +63,8 @@
                 				s.complete && s.complete.call(s.context, xhr, e);
                 			}
                 		};
-                    
-                    
+
+
                     iframe = $(
                         '<iframe src="javascript:false;" name="iframe-transport-' +
                             (counter += 1) + '"></iframe>'
@@ -77,16 +77,16 @@
                                 // Wrap in a try/catch block to catch exceptions thrown
                                 // when trying to access cross-domain iframe contents:
                                 try {
-                                	
-                                	                                	
+
+
                                 	response = iframe.contents();
-                                	
-                                	
-                                	
-                                	
-                                	
+
+
+
+
+
                                 	var frame = response;
-                                	
+
                                 	var doc = frame;
                                 	var docRoot = $(document).find("body");
                                 	var documentContent, isTextArea;
@@ -101,12 +101,12 @@
 //                						xhr.responseText = documentContent.text();
                 						// support for XHR 'status' & 'statusText' emulation :
                 						xhr.status = Number( documentContent.attr('status') ) || xhr.status;
-                						
+
                 						xhr.statusText = documentContent.attr('statusText') || xhr.statusText;
-                						
+
                 						xhr.responseText = {'text': documentContent.text()};
                 					}else{
-                						
+
                 						xhr.responseText = {'iframe': response};
                                         // Google Chrome and Firefox do not throw an
                                         // exception when calling iframe.contents() on
@@ -115,10 +115,10 @@
                                             throw new Error();
                                         }
                 					}
-                					
-                					
-                                	
-                                    
+
+
+
+
                                 } catch (e) {
                                     response = undefined;
                                 }

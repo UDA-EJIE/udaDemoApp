@@ -270,7 +270,7 @@ jQuery(document).ready(function(){
 //		error: function(xhr){
 //				$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON(xhr.responseText)), "error");
 //		}
-		,iframe:true
+//		,iframe:true
 	});
 	
 });
