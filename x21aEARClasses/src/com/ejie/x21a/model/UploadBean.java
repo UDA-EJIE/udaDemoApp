@@ -1,7 +1,20 @@
 package com.ejie.x21a.model;
 
+import javax.validation.groups.Default;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.ejie.x21a.validation.group.AlumnoAddValidation;
+import com.ejie.x21a.validation.group.AlumnoEditValidation;
+import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
+
 public class UploadBean {
+	
+	@NotEmpty(message="validacion.required")
+	private String nombre;
+	@NotEmpty(message="validacion.required")
 	private String apellido1;
+	@NotEmpty(message="validacion.required")
 	private String apellido2;
 	private byte[] fotoPadre;
 	private String nombreFotoPadre;
@@ -14,9 +27,10 @@ public class UploadBean {
 	
 	
 
-	public UploadBean(String apellido1, String apellido2, byte[] fotoPadre,
+	public UploadBean(String nombre, String apellido1, String apellido2, byte[] fotoPadre,
 			String nombreFotoPadre, byte[] fotoMadre, String nombreFotoMadre) {
 		super();
+		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.fotoPadre = fotoPadre;
@@ -27,6 +41,12 @@ public class UploadBean {
 
 
 
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	public String getApellido1() {
 		return apellido1;
 	}
