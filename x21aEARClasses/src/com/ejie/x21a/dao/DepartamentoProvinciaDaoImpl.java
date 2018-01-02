@@ -1,16 +1,16 @@
 /*
 * Copyright 2012 E.J.I.E., S.A.
 *
-* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
-* Solo podrá usarse esta obra si se respeta la Licencia.
+* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
 * Puede obtenerse una copia de la Licencia en
 *
 * http://ec.europa.eu/idabc/eupl.html
 *
-* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
-* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
 package com.ejie.x21a.dao;
@@ -233,7 +233,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 	 *         key query stores the sql query syntax
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
-	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:OFF CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	private Map<String, ?> getWhereMap (DepartamentoProvincia departamentoprovincia){
 		
 		StringBuffer where = new StringBuffer(DepartamentoProvinciaDaoImpl.STRING_BUILDER_INIT);
@@ -294,7 +294,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 		
 		return mapWhere;		
 	}
-	// CHECKSTYLE:ON CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:ON CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	
 	/**
 	 * Returns a map with the needed value to create the conditions to filter by  
@@ -307,8 +307,10 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 	 *         key query stores the sql query syntax
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
-	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:OFF CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	private Map<String, ?> getWhereLikeMap (DepartamentoProvincia departamentoprovincia, Boolean startsWith){
+		String translate = "TRANSLATE(";
+		String caracteres = ",'ÁÉÍÓÚ','AEIOU')";
 		
 		StringBuffer where = new StringBuffer(DepartamentoProvinciaDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
@@ -322,7 +324,8 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 			params.add(departamentoprovincia.getProvincia().getCode());
 	     }			
 		if (departamentoprovincia!=null && departamentoprovincia.getProvincia() != null  && departamentoprovincia.getProvincia().getDescEs() != null ) {
-			where.append(" AND UPPER(t2.DESC_ES) like ? ESCAPE  '\\'");
+			where.append(" AND "+translate+"UPPER(t2.DESC_ES)"+caracteres+" "
+					+ "like "+translate+"?"+caracteres+" ESCAPE  '\\'");
 			if (startsWith){
 				params.add(departamentoprovincia.getProvincia().getDescEs().toUpperCase() +"%");
 			}else{
@@ -380,7 +383,9 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 			where.append(" AND t3.CSS IS NOT NULL");
 	     }			
 		if (departamentoprovincia  != null  && departamentoprovincia.getDescEs() != null ) {
-			where.append(" AND UPPER(t1.DESC_ES) like ? ESCAPE  '\\'");
+
+			where.append(" AND "+translate+"UPPER(t1.DESC_ES)"+caracteres+" "
+					+ "like "+translate+"?"+caracteres+" ESCAPE  '\\'");
 			if (startsWith){
 				params.add(departamentoprovincia.getDescEs().toUpperCase() +"%");
 			}else{
@@ -413,7 +418,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 		
 		return mapWhere;		
 	}
-	// CHECKSTYLE:ON CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:ON CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	
 	/**
 	 * StringBuilder initilization value
