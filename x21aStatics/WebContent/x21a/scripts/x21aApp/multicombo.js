@@ -18,7 +18,7 @@ jQuery(document).ready(function(){
 	$('#multicombo').rup_combo({
 		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
 		source : [
-		    {i18nCaption: "ruby", value:"ruby_value"},
+		    {i18nCaption: "rubya", value:"ruby_value"},
 			{i18nCaption: "c", value:"c_value"},
 			{i18nCaption: "scala", value:"scala_value"},
 			{i18nCaption: "javascript", value:"javascript_value"},
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "perl", value:"perl_value"}
 		],
-		selected: ["perl_value", "javascript_value", 0], //value && index
+		selected: ["perl_value", "javascript_value", "ruby_value"], //value && index
 		ordered: false,
 		width: 400,
 		multiselect: true,
