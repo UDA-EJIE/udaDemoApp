@@ -521,7 +521,13 @@
         "colorLabels": ["rojo_en", "azul_en", "amarillo_en"],
         "radarLabels": ["Comida_en", "Bebida_en", "Dormir_en", "DiseÃ±o_en", "Programacion_en", "Bicicleta_en", "Correr_en"],
         "mesesLabels": ["Enero_en", "Febrero_en", "Marzo_en", "Abril_en", "Mayo_en", "Junio_en", "Julio_en"]
-    }
+    },
+	"validacion":{
+		"nombre":"Debe de especificar un nombre obligatoriamente._en",
+		"apellido1":"Debe de especificar un primer apellido obligatoriamente._en",
+		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._en",
+		"alertDay": "Debe de especificar al menos una opción entre las mostradas._en"
+	} 
 	
 	
 }

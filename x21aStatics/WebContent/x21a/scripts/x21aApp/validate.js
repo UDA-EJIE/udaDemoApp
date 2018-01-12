@@ -74,16 +74,16 @@ jQuery(document).ready(function(){
 		},
 		messages:{
 			"nombre": {
-				required: "Debe de especificar un nombre obligatoriamente."
+				required: $.rup.i18n.app.validacion.nombre
 			},
 			"apellido1": {
-				required: "Debe de especificar un primer apellido obligatoriamente."
+				required: $.rup.i18n.app.validacion.apellido1
 			},
 			"apellido2": {
-				required: "Debe de especificar un segundo apellido obligatoriamente."
+				required: $.rup.i18n.app.validacion.apellido2
 			},
 			"alertDay[]": {
-				required: "Debe de especificar al menos una opción entre las mostradas."
+				required: $.rup.i18n.app.validacion.alertDay
 			}
 		},
 		labels:{
@@ -147,10 +147,10 @@ jQuery(document).ready(function(){
 		},
 		messages:{
 			"nombreJqueryui": {
-				required: "Debe de especificar un nombre obligatoriamente."
+				required: $.rup.i18n.app.validacion.nombre
 			},
 			"alertDayJqueryui[]": {
-				required: "Debe de especificar al menos una opción entre las mostradas."
+				required: $.rup.i18n.app.validacion.alertDay
 			}
 		},
 		labels:{
@@ -170,14 +170,14 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
-		selected: "coldfusion",
+		selected: "coldfusion_value",
 		width: 300,
 		blank : "",
 		rowStriping : true,
 		inputText:true
 	});
 	
-	$("#rol_detail_table").rup_combo("disable");
+	//$("#rol_detail_table").rup_combo("disable");
 	
 	$("#autocomplete").rup_autocomplete({
 		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
@@ -230,7 +230,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
-		selected: "coldfusion",
+		selected: "coldfusion_value",
 		width: 300,
 		blank : "",
 		rowStriping : true,

@@ -554,5 +554,11 @@
 					"dataset1": "dataset 1_eu",
 					"dataset2": "dataset 2_eu"
 			}
-	}
+	},
+	"validacion":{
+		"nombre":"Debe de especificar un nombre obligatoriamente._eu",
+		"apellido1":"Debe de especificar un primer apellido obligatoriamente._eu",
+		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._eu",
+		"alertDay": "Debe de especificar al menos una opción entre las mostradas._eu"
+	} 
 }
