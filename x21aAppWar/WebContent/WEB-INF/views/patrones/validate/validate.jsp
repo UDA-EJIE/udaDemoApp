@@ -60,7 +60,7 @@
 	
 	<h3>Formulario horizontal</h3>
 	<p>
-		Lso textos 
+		Los textos 
 	<p>
 	<div class="example">
 		<div id="feedbackHorizontal"></div>
@@ -90,7 +90,7 @@
 		    </div>
 			    
 		    <div class="form-group">
-		        <label id="alertDayErrorLabel">Alert on</label>
+		        <label id="alertDayErrorLabel" for="alertDay[]">Alert on</label>
 		    </div>
 			    
 		  	<div class="row">
@@ -133,8 +133,140 @@
 			 		
 			</div>
 			<span id="alertDayError"></span>
-        
-
+        	
+        	<p>
+				Componentes Rup:: select by id, autocomplete by id, select by name, autocomplete by name 
+			<p>
+        	<div class="form-group row">
+				<label for="rol_detail_table" class="col-sm-2 col-form-label">Select by Id:</label>
+				<div class="col-sm-10">
+					<select id="rol_detail_table" name="rol" class="formulario_linea_input" ></select>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="autocomplete" class="col-sm-2 col-form-label">Autocomplete by Id:</label>
+				<div class="col-sm-10">
+					<input id="autocomplete" name="autocomplete" /> 
+				</div>	
+			</div>
+			
+			 <div class="form-group row">
+				<label for="rolName2" class="col-sm-2 col-form-label">Select by Name:</label>
+				<div class="col-sm-10">
+					<select name="rolName2" class="formulario_linea_input" id="rolName"></select>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="autocompleteName2" class="col-sm-2 col-form-label">Autocomplete by Name:</label>
+				<div class="col-sm-10">
+					<input name="autocompleteName2" id="autocompleteName"/> 
+				</div>	
+			</div>
+			
+			<div class="row justify-content-center">
+				<div class="col-md-3">
+					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+				</div>
+			</div>
+		
+		</form>
+		
+	
+	</div>
+	
+		<h3>Formulario horizontal Jqueryui, no bootstrap</h3>
+	<p>
+		Los textos 
+	<p>
+	<div class="example">
+		<div id="feedbackHorizontalJqueryui"></div>
+		<form id="formHorizontalJqueryui" >
+			
+				
+			<div class="form-group row">
+		     	<label for="nombreJqueryui" class="col-sm-2 col-form-label"><spring:message code="nombre" /></label>
+		     	<div class="col-sm-10">
+			  		<input type="text" name="nombreJqueryui" class="form-control" id="nombre" />
+			  	</div>
+		    </div>
+			    
+		    <div class="form-group">
+		        <label id="alertDayErrorLabel" for="alertDayJqueryui[]">Alert on</label>
+		    </div>
+			    
+		  	<div class="row">
+				    
+	            <div class="col-xs-6">
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="0" name="alertDayJqueryui[]" > Lunes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="1" name="alertDayJqueryui[]" > Martes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="2" name="alertDayJqueryui[]" > Miércoles
+	                    </label>
+	                </div>
+				</div>
+						
+	            <div class="col-xs-6">
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="3" name="alertDayJqueryui[]" > Jueves
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="4" name="alertDayJqueryui[]" > Viernes
+	                    </label>
+	                </div>
+	                <div class="checkbox">
+	                    <label>
+	                        <input type="checkbox" value="5" name="alertDayJqueryui[]" > Fín de semana
+	                    </label>
+	                </div>
+				</div>
+			 		
+			</div>
+			<span id="alertDayError"></span>
+        	
+        	<p>
+				Componentes Rup:: select by id, autocomplete by id, select by name, autocomplete by name 
+			<p>
+        	<div class="form-group row">
+				<label for="rol_detail_tableJqueryui" class="col-sm-2 col-form-label">Select by Id:</label>
+				<div class="col-sm-10">
+					<select id="rol_detail_tableJqueryui" name="rolJqueryui" class="formulario_linea_input" ></select>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="autocompleteJqueryui" class="col-sm-2 col-form-label">Autocomplete by Id:</label>
+				<div class="col-sm-10">
+					<input id="autocompleteJqueryui" name="autocompleteJqueryui" /> 
+				</div>	
+			</div>
+			
+			 <div class="form-group row">
+				<label for="rolName2Jqueryui" class="col-sm-2 col-form-label">Select by Name:</label>
+				<div class="col-sm-10">
+					<select name="rolName2Jqueryui" class="formulario_linea_input" id="rolNameJqueryui"></select>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="autocompleteName2Jqueryui" class="col-sm-2 col-form-label">Autocomplete by Name:</label>
+				<div class="col-sm-10">
+					<input name="autocompleteName2Jqueryui" id="autocompleteNameJqueryui"/> 
+				</div>	
+			</div>
 			
 			<div class="row justify-content-center">
 				<div class="col-md-3">

@@ -29,6 +29,11 @@
 			name="autocomplete" /> [asp, c, c++, coldfusion, groovy, haskell,
 		java, javascript, perl, php, python, ruby, scala] <br />
 		<!-- </div> -->
+		
+		<h3>Autocomplete local sin acentos</h3>
+		<label for="autocompleteNotAccent">Lenguaje:</label><input id="autocompleteNotAccent"
+			name="autocompleteNotAccent" /> [asp, c, c++, coldfusion, groovy, haskell,
+		java, javascript, perl, php, python, ruby, scala] <br />
 
 		<h3>Autocomplete remoto</h3>
 		<label for="patron">Departamento-Provincia:</label><input id="patron"

@@ -58,20 +58,32 @@ jQuery(document).ready(function(){
 			},
 			"alertDay[]": {
 				required: true
+			},
+			"rol": {
+				required: true
+			},
+			"autocomplete": {
+				required: true
+			},
+			"rolName2": {
+				required: true
+			},
+			"autocompleteName2": {
+				required: true
 			}
 		},
 		messages:{
 			"nombre": {
-				required: "Debe de especificar un nombre obligatoriamente."
+				required: $.rup.i18n.app.validacion.nombre
 			},
 			"apellido1": {
-				required: "Debe de especificar un primer apellido obligatoriamente."
+				required: $.rup.i18n.app.validacion.apellido1
 			},
 			"apellido2": {
-				required: "Debe de especificar un segundo apellido obligatoriamente."
+				required: $.rup.i18n.app.validacion.apellido2
 			},
 			"alertDay[]": {
-				required: "Debe de especificar al menos una opción entre las mostradas."
+				required: $.rup.i18n.app.validacion.alertDay
 			}
 		},
 		labels:{
@@ -98,6 +110,174 @@ jQuery(document).ready(function(){
 //			},
 			"alertDay[]": "#alertDayErrorLabel"
 		}
+	});
+	
+	var $feedbackHorizontalJqueryui = jQuery("#feedbackHorizontalJqueryui").rup_feedback({ 
+		type: "ok",
+		closeLink: true,
+		block:false
+	});
+	
+	$("#formHorizontalJqueryui").rup_validate({
+		adapter: 'validate_jqueryui',
+		feedback: $feedbackHorizontalJqueryui,
+		liveCheckingErrors: false,
+		showFieldErrorAsDefault: true,
+		showErrorsInFeedback: true,
+		showFieldErrorsInFeedback:true, 
+		rules:{
+			"nombreJqueryui": {
+				required: true
+			},
+			"alertDayJqueryui[]": {
+				required: true
+			},
+			"rolJqueryui": {
+				required: true
+			},
+			"autocompleteJqueryui": {
+				required: true
+			},
+			"rolName2Jqueryui": {
+				required: true
+			},
+			"autocompleteName2Jqueryui": {
+				required: true
+			}
+		},
+		messages:{
+			"nombreJqueryui": {
+				required: $.rup.i18n.app.validacion.nombre
+			},
+			"alertDayJqueryui[]": {
+				required: $.rup.i18n.app.validacion.alertDay
+			}
+		},
+		labels:{
+			"alertDayJqueryui[]": "#alertDayError"
+		},
+		icons:{
+			"alertDayJqueryui[]": "#alertDayErrorLabel"
+		}
+	});
+	
+	$('#rol_detail_table').rup_combo({
+		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		selected: "coldfusion_value",
+		width: 300,
+		blank : "",
+		rowStriping : true,
+		inputText:true
+	});
+	
+	//$("#rol_detail_table").rup_combo("disable");
+	
+	$("#autocomplete").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		contains : false
+	});
+
+	$('#rolName').rup_combo({
+		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		selected: "c_value",
+		width: 300,
+		blank : "",
+		rowStriping : true,
+		inputText:true
+	});
+	
+	$("#autocompleteName").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		contains : false
+	});
+	
+	$('#rol_detail_tableJqueryui').rup_combo({
+		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		selected: "coldfusion_value",
+		width: 300,
+		blank : "",
+		rowStriping : true,
+		inputText:true
+	});
+	
+	
+	$("#autocompleteJqueryui").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		contains : false
+	});
+
+	$('#rolNameJqueryui').rup_combo({
+		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		selected: "c_value",
+		width: 300,
+		blank : "",
+		rowStriping : true,
+		inputText:true
+	});
+	
+	$("#autocompleteNameJqueryui").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		contains : false
 	});
 	
 });

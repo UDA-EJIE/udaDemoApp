@@ -578,7 +578,12 @@
         "colorLabels": ["rojo", "azul", "amarillo"],
         "radarLabels": ["Comida", "Bebida", "Dormir", "DiseÃ±o", "Programacion", "Bicicleta", "Correr"],
         "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
-    }
-
+    },
+	"validacion":{
+		"nombre":"Debe de especificar un nombre obligatoriamente.",
+		"apellido1":"Debe de especificar un primer apellido obligatoriamente.",
+		"apellido2":"Debe de especificar un segundo apellido obligatoriamente.",
+		"alertDay": "Debe de especificar al menos una opci�n entre las mostradas."
+	} 
 	
 }

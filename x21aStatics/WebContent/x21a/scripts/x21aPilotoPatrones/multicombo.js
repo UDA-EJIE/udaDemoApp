@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "perl", value:"perl_value"}
 		],
-		selected: ["perl_value", "javascript_value", 0], //value && index
+		selected: ["perl_value", "javascript_value", "ruby_value",5], //value && index
 		ordered: false,
 		width: 400,
 		multiselect: true,
