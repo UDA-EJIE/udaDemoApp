@@ -18,7 +18,10 @@
 
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
-<table id="example" class="table table-striped table-bordered" data-url-base="./jqGridUsuario" cellspacing="0" width="100%">
+<table id="example" class="table table-striped table-bordered" 
+	data-url-base="./jqGridUsuario"
+	data-filter-form="#table_filter_form" 
+	cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th data-col-prop="id">Id</th>

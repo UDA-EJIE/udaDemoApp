@@ -15,5 +15,5 @@
  */
 jQuery(function($){
 	
-	$('#example').rup_datatable();
+	$('#example').rup_datatable({});
 });
