@@ -15,5 +15,11 @@
  */
 jQuery(function($){
 	
-	$('#example').rup_datatable({});
+	$('#example').rup_datatable({
+
+        multiSelect: {
+            style:    'multi'
+        },
+        order: [[ 1, 'asc' ]]
+    } );
 });
