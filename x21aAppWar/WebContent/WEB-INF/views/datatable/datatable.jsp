@@ -28,7 +28,7 @@
                 <th data-col-prop="nombre">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
                 <th data-col-prop="ejie">Ejie</th>
-                <th data-col-prop="fechaAlta">Fecha alta</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta">Fecha alta</th>
                 <th data-col-prop="fechaBaja">Fecha baja</th>
                 <th data-col-prop="rol">Rol</th>
             </tr>

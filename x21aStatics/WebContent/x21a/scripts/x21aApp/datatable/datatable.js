@@ -20,6 +20,11 @@ jQuery(function($){
         multiSelect: {
             style:    'multi'
         },
-        order: [[ 1, 'asc' ]]
+        order: [[ 1, 'asc' ]],
+        columnDefs: [ {
+            orderable: true,
+            className: 'select-checkbox',
+            targets:   0
+        } ]
     } );
 });
