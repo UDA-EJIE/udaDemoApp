@@ -25,6 +25,10 @@ jQuery(function($){
             orderable: true,
             className: 'select-checkbox',
             targets:   0
-        } ]
+        } ],
+        fixedHeader: {
+            footer: false,
+            header:true
+        }
     } );
 });
