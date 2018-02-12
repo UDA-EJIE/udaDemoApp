@@ -27,8 +27,8 @@
                 <th data-col-prop="id">Id</th>
                 <th data-col-prop="nombre">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
-                <th data-col-prop="ejie">Ejie</th>
-                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta">Fecha alta</th>
+                <th data-col-prop="ejie" data-col-type="checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="date">Fecha alta</th>
                 <th data-col-prop="fechaBaja">Fecha baja</th>
                 <th data-col-prop="rol">Rol</th>
             </tr>
@@ -45,3 +45,5 @@
           </tr>
         </tfoot>
 </table>
+
+<jsp:include page="includes/datatableEdit.jsp"></jsp:include>

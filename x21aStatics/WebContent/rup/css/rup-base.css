@@ -5828,6 +5828,10 @@ table.dataTable thead th:hover, table.dataTable tfoot th:hover {
   pointer-events: none;
   opacity: 0.6; }
 
+.searchPaginator {
+  float: left;
+  margin-top: 10px; }
+
 @keyframes dtb-spinner {
   100% {
     transform: rotate(360deg); } }
