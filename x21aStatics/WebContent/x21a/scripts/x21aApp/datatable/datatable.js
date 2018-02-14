@@ -144,5 +144,5 @@ jQuery(function($){
 	jQuery("#fechaAlta_detail_table").rup_date();
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
-	//jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	jQuery("#rol_detail_table").rup_combo(options_role_combo);
 });
