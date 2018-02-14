@@ -29,8 +29,8 @@
                 <th data-col-prop="apellido1">Primer apellido</th>
                 <th data-col-prop="ejie" data-col-type="checkbox">Ejie</th>
                 <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="date">Fecha alta</th>
-                <th data-col-prop="fechaBaja">Fecha baja</th>
-                <th data-col-prop="rol">Rol</th>
+                <th data-col-prop="fechaBaja" data-col-type="date">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
         <tfoot>
