@@ -29,6 +29,17 @@ jQuery(function($){
         fixedHeader: {
             footer: false,
             header:true
+        },
+        formEdit:{
+        	detailForm: "#table_detail_div",
+        	validate:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true},
+    				"fechaAlta":{date:true},
+    				"fechaBaja":{date:true}
+    			}
+    		}
         }
     } );
 	
