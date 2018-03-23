@@ -15,34 +15,6 @@
  */
 jQuery(function($){
 	
-	$('#example').rup_datatable({
-
-        multiSelect: {
-            style:    'multi'
-        },
-        order: [[ 1, 'asc' ]],
-        columnDefs: [ {
-            orderable: true,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
-        fixedHeader: {
-            footer: false,
-            header:true
-        },
-        formEdit:{
-        	detailForm: "#table_detail_div",
-        	validate:{
-    			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-    		}
-        }
-    } );
-	
 	//FILTRO Y DETALLE
 	var combo = [
 		   {rol: "---", codTipoSubsanacion:""},
@@ -156,4 +128,33 @@ jQuery(function($){
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	
+	$('#example').rup_datatable({
+
+        multiSelect: {
+            style:    'multi'
+        },
+        order: [[ 1, 'asc' ]],
+        columnDefs: [ {
+            orderable: true,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        fixedHeader: {
+            footer: false,
+            header:true
+        },
+        formEdit:{
+        	detailForm: "#table_detail_div",
+        	validate:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true},
+    				"fechaAlta":{date:true},
+    				"fechaBaja":{date:true}
+    			}
+    		},
+    		colModel: tableColModels
+        }
+    } );
 });
