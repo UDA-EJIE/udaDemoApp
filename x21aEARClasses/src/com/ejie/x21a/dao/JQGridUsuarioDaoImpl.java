@@ -326,6 +326,23 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 	}
 	
 	@Override
+	public List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+		
+		//Where clause & Params
+		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
+		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+		where.append(mapaWhere.get("query"));
+		
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhere.get("params");
+		
+		StringBuilder sbRemoveMultipleSQL = JQGridManager.getSelectMultipleQuery(jqGridRequestDto, Usuario.class, params, "ID");
+		
+		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
+		
+	}
+	
+	@Override
 	public List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto) {
 		
 		//SELECT

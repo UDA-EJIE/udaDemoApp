@@ -125,6 +125,11 @@ public class JQGridUsuarioServiceImpl implements JQGridUsuarioService {
 	public void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
 		this.jqGridUsuarioDao.removeMultiple(filterUsuario, jqGridRequestDto, startsWith);
 	}
+	
+	@Transactional(rollbackFor = Throwable.class)
+	public List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+		return this.jqGridUsuarioDao.getMultiple(filterUsuario, jqGridRequestDto, startsWith);
+	}
 
 	@Override
 	public Object reorderSelection(Usuario usuario, JQGridRequestDto jqGridRequestDto,

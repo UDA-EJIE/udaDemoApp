@@ -93,6 +93,8 @@ public interface JQGridUsuarioDao {
 	
 	void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
 	
+	List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	
     /**
      * Counts rows in the Usuario table using like.
      *
