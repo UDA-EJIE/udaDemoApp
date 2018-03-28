@@ -136,7 +136,7 @@ jQuery(function($){
         },
         order: [[ 1, 'asc' ]],
         columnDefs: [ {
-            orderable: true,
+            orderable: false,
             className: 'select-checkbox',
             targets:   0
         } ],
