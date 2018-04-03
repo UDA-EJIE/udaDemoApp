@@ -18,7 +18,7 @@
 <nav class="rup-navbar navbar">
   <button type="button" class="navbar-toggler hidden-lg-up"  type="button" data-toggle="rup-collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div id="navbarResponsive" class="collapse navbar-toggleable-md">
-    <a class="navbar-brand" href="#">Uda</a>
+    <a class="navbar-brand" href="/x21aAppWar/">Uda</a>
     <ul class="nav navbar-nav">
       <li class="nav-item dropdown">
         <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Componentes <span class="caret"></span></a> -->
@@ -42,7 +42,7 @@
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic"><spring:message code="tabsStatic" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax"><spring:message code="tabsAjax" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsMixto"><spring:message code="tabsMixto" /></a>
-                <a class="dropdown-item" href="/x21aAppWar/patrones/maintTab"><spring:message code="maintTab" /></a>
+                <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/patrones/maintTab"><spring:message code="maintTab" /></a> -->
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsScrollable"><spring:message code="tabsScrollable" /></a>
                 
               </div>
@@ -109,20 +109,20 @@
           <a class="dropdown-item" href="/x21aAppWar/table/inlineEditExcelMode">Edición en línea (Modo Excel)</a>
           <a class="dropdown-item" href="/x21aAppWar/table/inlineEdit">Edición en línea</a>
           <a class="dropdown-item" href="/x21aAppWar/table/inlineEditMultiselection">Edición en línea con multiselección</a>
-          <a class="dropdown-item" href="/x21aAppWar/table/grouping">Tabla con agrupamiento</a>
+          <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/table/grouping">Tabla con agrupamiento</a> -->
           <a class="dropdown-item" href="/x21aAppWar/table/masterDetail">Maestro - Detalle</a>
           <a class="dropdown-item" href="/x21aAppWar/table/tableLoadOnStartUp">LoadOnStartUp = false</a>
           <a class="dropdown-item" href="/x21aAppWar/table/dialog">Tabla en diálogo</a>
           <a class="dropdown-item" href="/x21aAppWar/table/tableRadiobutton">tableRadiobutton</a>
-          <a class="dropdown-item" href="/x21aAppWar/table/tabs">Tabla en pestañas</a>
+          <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/table/tabs">Tabla en pestañas</a> -->
         </div>
       </li>
-<!--         <li class="nav-item dropdown"> -->
-<!--         <a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="datatableDropdown"> -->
-<!--           <a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a> -->
-<!--         </div> -->
-<!--       </li> -->
+<!--  <li class="nav-item dropdown"> -->
+<!--  	<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a> -->
+<!--    <div class="dropdown-menu" aria-labelledby="datatableDropdown"> -->
+<!--    	<a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a> -->
+<!--    </div> -->
+<!--  </li> -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="gridResponsiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grid responsive</a>
         <div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
@@ -149,13 +149,13 @@
                                 <a class="dropdown-item" href="/x21aAppWar/integracion/geoEuskadi">
                                     <spring:message code="geoEuskadi" />
 
-                                </a>                          	
+                                </a>                        	
                        
 
-                                <a class="dropdown-item" href="/x21aAppWar/integracion/nora">
+                                <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/integracion/nora">
                                     <spring:message code="nora" />
 
-                                </a>
+                                </a> -->
 
                                 <a class="dropdown-item" href="/x21aAppWar/integracion/tiny">
                                     <spring:message code="tiny" />
@@ -164,9 +164,9 @@
                                     <spring:message code="webdav" />
                                 </a>
 
-                                <a class="dropdown-item" href="/x21aAppWar/integracion/pif">
+                                <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/integracion/pif">
                                      PIF
-                                </a>
+                                </a> -->
 
                                 <a class="dropdown-item" href="/x21aAppWar/integracion/cache/view">
                                    Cache
@@ -185,7 +185,13 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link rup-nav-tool-icon" href="#"><i class="fa fa-cog " aria-hidden="true"></i></a>
+        <a class="nav-link rup-nav-tool-icon" href="http://uda-ejie.github.io/" id="uda_github"><i class="fa fa-github" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#" id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog " aria-hidden="true"></i></a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="x21aApp_releases">
+          <a class="dropdown-item" href="/x21aPilotoPatronesWar/">UDA Legacy (v2.4.11)</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link rup-nav-user rup-nav-tool-icon" href="#"><i class="fa fa-user-circle-o " aria-hidden="true"></i></a>
