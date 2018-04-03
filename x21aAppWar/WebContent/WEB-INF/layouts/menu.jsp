@@ -117,12 +117,12 @@
           <a class="dropdown-item" href="/x21aAppWar/table/tabs">Tabla en pestañas</a>
         </div>
       </li>
-<!--         <li class="nav-item dropdown"> -->
-<!--         <a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a> -->
-<!--         <div class="dropdown-menu" aria-labelledby="datatableDropdown"> -->
-<!--           <a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a> -->
-<!--         </div> -->
-<!--       </li> -->
+	  <li class="nav-item dropdown">
+	  	<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a>
+	    <div class="dropdown-menu" aria-labelledby="datatableDropdown">
+	    	<a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a>
+	    </div>
+	  </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="gridResponsiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grid responsive</a>
         <div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
