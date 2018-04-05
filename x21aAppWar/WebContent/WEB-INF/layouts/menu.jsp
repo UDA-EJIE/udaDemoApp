@@ -118,9 +118,9 @@
         </div>
       </li>
 	  <li class="nav-item dropdown">
-	  	<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a>
-	    <div class="dropdown-menu" aria-labelledby="datatableDropdown">
-	    	<a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a>
+	  	<a class="nav-link dropdown-toggle" href="#" id="dataTableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DataTable</a>
+	    <div class="dropdown-menu" aria-labelledby="dataTableDropdown">
+	    	<a class="dropdown-item" href="/x21aAppWar/dataTable">Formulario de filtrado</a>
 	    </div>
 	  </li>
       <li class="nav-item dropdown">
