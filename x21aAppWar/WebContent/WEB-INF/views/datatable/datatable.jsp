@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>DataTable</h2> <!-- Titulo pagina -->
+<h2>Datatable</h2> <!-- Titulo pagina -->
 
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
@@ -46,4 +46,4 @@
         </tfoot>
 </table>
 
-<jsp:include page="includes/dataTableEdit.jsp"></jsp:include>
+<jsp:include page="includes/datatableEdit.jsp"></jsp:include>
