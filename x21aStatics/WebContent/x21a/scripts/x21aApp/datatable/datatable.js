@@ -154,7 +154,8 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
     		},
-    		colModel: tableColModels
+    		colModel: tableColModels,
+    		tittleForm: "Edición"
         }
     } );
 });
