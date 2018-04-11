@@ -135,11 +135,6 @@ jQuery(function($){
             style:    'multi'
         },
         order: [[ 1, 'asc' ]],
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
         fixedHeader: {
             footer: false,
             header:true
