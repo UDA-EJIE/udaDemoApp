@@ -151,6 +151,15 @@ jQuery(function($){
     		},
     		colModel: tableColModels,
     		titleForm: "Modificar Registro"
-        }
+        },
+        colReorder: {
+			fixedColumnsLeft: 1
+		},
+		seeker: {
+			activate:true
+		},
+		buttons: {
+			activate:true
+		}
     } );
 });
