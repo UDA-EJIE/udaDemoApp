@@ -150,7 +150,7 @@ jQuery(function($){
     			}
     		},
     		colModel: tableColModels,
-    		tittleForm: "Edición"
+    		titleForm: "Modificar Registro"
         }
     } );
 });
