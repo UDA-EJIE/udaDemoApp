@@ -131,7 +131,7 @@ jQuery(function($){
 	
 	$('#example').rup_datatable({
 
-        multiSelect: {
+       multiSelect: {
             style:    'multi'
         },
         order: [[ 1, 'asc' ]],
@@ -149,14 +149,13 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
     		},
-    		colModel: tableColModels,
     		titleForm: "Modificar Registro"
         },
         colReorder: {
 			fixedColumnsLeft: 1
 		},
 		seeker: {
-			activate:true
+    		colModel: tableColModels
 		},
 		buttons: {
 			activate:true
