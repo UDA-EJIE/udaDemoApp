@@ -18,42 +18,42 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Context Menu</h2>
 		<hr>
 
-		<div id="contextMenu" class="card card-inverse"
+		<div id="contextMenu" class="card text-white"
 			style="background-color: #333; border-color: #333;">
-			<div class="card-block">
-				<h2 class="card-blockquote">
+			<div class="card-body">
+				<h2>
 					<center>Right click + Opciones desabilitadas</center>
 				</h2>
 			</div>
 		</div>
 
-		<div id="contextMenu-left" class="card card-inverse contextMenu-left"
+		<div id="contextMenu-left" class="card text-white contextMenu-left"
 			style="background-color: #333; border-color: #333;">
-			<div class="card-block">
-				<h2 class="card-blockquote">
+			<div class="card-body">
+				<h2>
 					<center>Left click + Atajos de teclado</center>
 				</h2>
 			</div>
 		</div>
 
-		<div id="contextMenu-hover" class="card card-inverse"
+		<div id="contextMenu-hover" class="card text-white"
 			style="background-color: #333; border-color: #333;">
-			<div class="card-block">
-				<h2 class="card-blockquote">
+			<div class="card-body">
+				<h2>
 					<center>Hover + submenus</center>
 				</h2>
 			</div>
 		</div>
 
 		<div id="contextMenu-other"
-			class="card card-inverse contextMenu-other"
+			class="card text-white contextMenu-other"
 			style="background-color: #333; border-color: #333;">
-			<div class="card-block">
-				<h2 class="card-blockquote">
+			<div class="card-body">
+				<h2>
 					<center>
 						Abrir desde otro elemento + bajo demanda
 						<button type="button" id="activate-menu">click me</button>

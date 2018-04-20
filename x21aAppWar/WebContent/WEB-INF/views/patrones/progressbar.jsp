@@ -17,14 +17,14 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Barra de progreso</h2>
 		<hr>
 
 		<div class="card">
 			<div class="card-header">Barra de progreso simple</div>
-			<div class="card-block">
-				<blockquote class="card-blockquote">
+			<div class="card-body">
+				<blockquote class="blockquote">
 					<div id="progressbar"></div>
 				</blockquote>
 			</div>
@@ -32,8 +32,8 @@
 
 		<div class="card">
 			<div class="card-header">Barra de progreso mostrando un mensaje</div>
-			<div class="card-block">
-				<blockquote class="card-blockquote">
+			<div class="card-body">
+				<blockquote class="blockquote">
 					<div id="progressbarLabel"></div>
 			</div>
 		</div>
@@ -41,8 +41,8 @@
 		<div class="card">
 			<div class="card-header">Barra de progreso sin mostrar un valor
 				concreto</div>
-			<div class="card-block">
-				<blockquote class="card-blockquote">
+			<div class="card-body">
+				<blockquote class="blockquote">
 					<div id="progressbarValueFalse"></div>
 				</blockquote>
 			</div>

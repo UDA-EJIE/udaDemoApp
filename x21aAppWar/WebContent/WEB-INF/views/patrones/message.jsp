@@ -17,7 +17,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Mensaje</h2>
 		<hr>
 		<p>El componente tiene como objetivo mostrar al usuario de forma
