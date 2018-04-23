@@ -42,7 +42,7 @@
                 <entry key="#{T(com.ejie.x21a.model.MultiPk)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.UsuarioJerarquia)}" value-ref="customSerializer" />
 				<entry key="#{T(com.ejie.x38.dto.JerarquiaDto)}" value-ref="customSerializer" />
-				<entry key="#{T(com.ejie.x38.rup.jqgrid.filter.model.Filter)}" value-ref="customSerializer" />
+				<entry key="#{T(com.ejie.x38.rup.table.filter.model.Filter)}" value-ref="customSerializer" />
              </util:map>
       	</property>
       	<property name="serializationInclusions" ref="serializationInclusions" />

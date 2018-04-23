@@ -48,6 +48,8 @@ import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.log.LoggingEditor;
 import com.ejie.x38.log.model.LogModel;
 import com.ejie.x21a.util.FileUtils;
@@ -87,11 +89,11 @@ public class ExperimentalController {
 
 		//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 		@RequestMapping(value = "/filter", method = RequestMethod.POST)
-		public @ResponseBody JQGridResponseDto<LogModel> filter(
+		public @ResponseBody TableResponseDto<LogModel> filter(
 				@RequestJsonBody(param="filter") LogModel filterLogModel,
-				@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+				@RequestJsonBody TableRequestDto tableRequestDto) {
 			
-			JQGridResponseDto<LogModel> resultado= new JQGridResponseDto<LogModel>();
+			TableResponseDto<LogModel> resultado= new TableResponseDto<LogModel>();
 			resultado= LoggingEditor.getLoggersFiltered(filterLogModel);
 
 		
