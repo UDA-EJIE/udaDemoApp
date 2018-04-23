@@ -26,13 +26,13 @@
 <section class="espacioLinea">
 	<!--LINEA-->
 	<div class=" row">
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.line" /></h3>
 				<canvas id="graficoLine" ></canvas>
 			</div>
 		</div>
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.bar" /></h3>
 				<canvas id="graficoBar" ></canvas>
@@ -42,13 +42,13 @@
 	<!--FIN LINEA-->
 	<!--LINEA-->
 	<div class=" row">
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.radar"/></h3>
 				<canvas id="graficoRadar" ></canvas>
 			</div>
 		</div>
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.polar"/></h3>
 				<canvas id="graficoPolar" ></canvas>
@@ -58,13 +58,13 @@
 	<!--FIN LINEA-->
 	<!--LINEA-->
 	<div class=" row">
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.pie"/></h3>
 				<canvas id="graficoPie" ></canvas>
 			</div>
 		</div>
-		<div class="col-xl-6 col-xs-12  col-sm-5 ">
+		<div class="col-xl-6 col-12  col-sm-5 ">
 			<div class="butstyle">
 				<h3><spring:message code="charts.doughnut"/></h3>
 				<canvas id="graficoDoughnut"></canvas>
@@ -74,7 +74,7 @@
 	<!--FIN LINEA-->
 	<!--LINEA-->
 	<div class="row">
-		<div class="col-xl-6  col-xs-12  col-sm-5">
+		<div class="col-xl-6  col-12  col-sm-5">
 			<div class="butstyle">
 				<h3><spring:message code="charts.bubble"/></h3>
 				<canvas id="graficoBubble" ></canvas>

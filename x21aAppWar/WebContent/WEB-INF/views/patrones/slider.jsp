@@ -17,7 +17,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Deslizador</h2>
 		<hr>
 		<div class="slider-examples">

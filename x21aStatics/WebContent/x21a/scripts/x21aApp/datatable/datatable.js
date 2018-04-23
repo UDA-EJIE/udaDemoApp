@@ -131,15 +131,10 @@ jQuery(function($){
 	
 	$('#example').rup_datatable({
 
-        multiSelect: {
+       multiSelect: {
             style:    'multi'
         },
         order: [[ 1, 'asc' ]],
-        columnDefs: [ {
-            orderable: false,
-            className: 'select-checkbox',
-            targets:   0
-        } ],
         fixedHeader: {
             footer: false,
             header:true
@@ -154,7 +149,16 @@ jQuery(function($){
     				"fechaBaja":{date:true}
     			}
     		},
+    		titleForm: "Modificar Registro"
+        },
+        colReorder: {
+			fixedColumnsLeft: 1
+		},
+		seeker: {
     		colModel: tableColModels
-        }
+		},
+		buttons: {
+			activate:true
+		}
     } );
 });
