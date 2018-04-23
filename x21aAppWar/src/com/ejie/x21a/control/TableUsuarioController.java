@@ -65,11 +65,12 @@ import com.ejie.x38.util.DateTimeManager;
  * 
  * @author UDA
  */
-@Controller
-@RequestMapping (value = "/jqGridUsuario")
-public class JQGridUsuarioController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(JQGridUsuarioController.class);
+@Controller
+@RequestMapping (value = "/tableUsuario")
+public class TableUsuarioController  {
+
+	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 
 	@Autowired
 	private JQGridUsuarioService jqGridUsuarioService; 
@@ -120,7 +121,7 @@ public class JQGridUsuarioController  {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
-		JQGridUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
+		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return this.jqGridUsuarioService.findAllLike(usuarioFilter, null, false);
 	}
 	
@@ -201,14 +202,14 @@ public class JQGridUsuarioController  {
 	public @ResponseBody JQGridResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		JQGridUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios");
+		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios");
 		return jqGridUsuarioService.filter(filterUsuario, jqGridRequestDto, false);
 	}
 	
 	
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Filter filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
-		JQGridUsuarioController.logger.info("[POST - jqGrid] : add filter");
+		TableUsuarioController.logger.info("[POST - jqGrid] : add filter");
 		
 		 return filterService.insert(filtro);
 	}	
@@ -218,7 +219,7 @@ public class JQGridUsuarioController  {
 	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
 	public @ResponseBody Filter  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		JQGridUsuarioController.logger.info("[POST - jqGrid] : delete filter");
+		TableUsuarioController.logger.info("[POST - jqGrid] : delete filter");
 		return  filterService.delete(filtro);
 	}
 	
@@ -227,7 +228,7 @@ public class JQGridUsuarioController  {
 	public @ResponseBody Filter filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		JQGridUsuarioController.logger.info("[get - jqGrid] : getDefault filter");
+		TableUsuarioController.logger.info("[get - jqGrid] : getDefault filter");
 		 return filterService.getDefault(filterSelector, filterUser);
 	}
 	
@@ -238,7 +239,7 @@ public class JQGridUsuarioController  {
 	public @ResponseBody List<Filter> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		JQGridUsuarioController.logger.info("[get - jqGrid] : GetAll filter");
+		TableUsuarioController.logger.info("[get - jqGrid] : GetAll filter");
 		 return filterService.getAllFilters(filterSelector,filterUser);
 	}
 	
@@ -261,7 +262,7 @@ public class JQGridUsuarioController  {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
-		JQGridUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
+		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
 		return jqGridUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
 	}
 	
@@ -280,9 +281,9 @@ public class JQGridUsuarioController  {
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		JQGridUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
+		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 	    this.jqGridUsuarioService.removeMultiple(filterUsuario, jqGridRequestDto, false);
-	    JQGridUsuarioController.logger.info("All entities correctly deleted!");
+	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return jqGridRequestDto.getMultiselection().getSelectedIds();
 	}	
@@ -308,7 +309,7 @@ public class JQGridUsuarioController  {
 	public @ResponseBody JQGridResponseDto< JerarquiaDto< Usuario>> jerarquia(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		JQGridUsuarioController.logger.info("[POST - jerarquia] : Obtener Usuarios Jerarquia");
+		TableUsuarioController.logger.info("[POST - jerarquia] : Obtener Usuarios Jerarquia");
 		return this.jqGridUsuarioService.jerarquia(filterUsuario, jqGridRequestDto, false);
 	}
 	
@@ -327,7 +328,7 @@ public class JQGridUsuarioController  {
 	public @ResponseBody JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
-		JQGridUsuarioController.logger.info("[GET - jqGrid] : Obtener Jerarquia - Hijos");
+		TableUsuarioController.logger.info("[GET - jqGrid] : Obtener Jerarquia - Hijos");
 		return this.jqGridUsuarioService.jerarquiaChildren(filterUsuario, jqGridRequestDto);
 	}
 	
@@ -335,6 +336,15 @@ public class JQGridUsuarioController  {
 	/**
 	 * EXPORTERS
 	 */
+	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	protected @ResponseBody List<Usuario> getClipboardReport(
+			@RequestJsonBody(param="filter") Usuario filterUsuario,
+			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+		TableUsuarioController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
+	    TableUsuarioController.logger.info("All entities correctly copied!");
+	    return this.jqGridUsuarioService.getMultiple(filterUsuario, jqGridRequestDto, false);
+	}
+	
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST)
 	protected ModelAndView getCSVReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
 			ModelMap modelMap,
@@ -482,7 +492,7 @@ public class JQGridUsuarioController  {
 	 */
 	@RequestMapping(value = "/rssDetail/{id}", method = RequestMethod.GET)
 	public String getRssDetail(@PathVariable String id, Model model) {
-		JQGridUsuarioController.logger.info("[GET - getRssDEtail] : Obtener el detalle del usuario a partir del RSS");
+		TableUsuarioController.logger.info("[GET - getRssDEtail] : Obtener el detalle del usuario a partir del RSS");
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.jqGridUsuarioService.find(usuario);
