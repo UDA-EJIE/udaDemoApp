@@ -51,10 +51,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.JQGridUsuarioService;
+import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.reports.ReportData;
 import com.ejie.x38.rup.table.filter.model.Filter;
@@ -74,6 +76,9 @@ public class TableUsuarioController  {
 
 	@Autowired
 	private JQGridUsuarioService jqGridUsuarioService; 
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Autowired
 	private FilterService filterService;
@@ -336,13 +341,13 @@ public class TableUsuarioController  {
 	/**
 	 * EXPORTERS
 	 */
+	
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<Usuario> getClipboardReport(
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
-		TableUsuarioController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
-	    TableUsuarioController.logger.info("All entities correctly copied!");
-	    return this.jqGridUsuarioService.getMultiple(filterUsuario, jqGridRequestDto, false);
+			@RequestJsonBody(param="filter") Usuario  filterUsuario ,
+			@RequestJsonBody TableRequestDto  tableRequestDto) {
+		//UsuarioController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
+		return this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
 	}
 	
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST)
