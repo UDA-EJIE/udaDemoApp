@@ -102,6 +102,15 @@ public interface JQGridUsuarioService {
 	void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
 	
 	/**
+	 * Finds a List of rows in the Usuario table via inverse select.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param startsWith Boolean
+	 */	
+	List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	
+	/**
 	 * Searches in the Usuario table.
 	 *
 	 * @param filterUsuario Usuario

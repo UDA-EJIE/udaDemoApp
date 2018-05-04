@@ -135,7 +135,7 @@
 	</div>
 
 	<section class="row">
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.default" />
@@ -149,7 +149,7 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.specificStyle" />
@@ -162,7 +162,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.changeView" />
@@ -190,7 +190,7 @@
 		</div>
 
 
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.jqueryuiStyles" />
@@ -207,7 +207,7 @@
 		</div>
 	</section>
 	<section class="row">
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.select" />
@@ -234,7 +234,7 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.hotkeys" />
@@ -258,7 +258,7 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.sort" />
@@ -279,7 +279,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.checkbox" />
@@ -309,7 +309,7 @@
 		</div>
 	</section>
 	<section class="row">
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.contextmenu" />
@@ -324,7 +324,7 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.unique" />
@@ -349,7 +349,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos json</h3>
 				<div id="jsonTreeDemo" class="rup_tree model_example_1"></div>
@@ -361,7 +361,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos xml</h3>
 				<div id="xmlTreeDemo" class="xml_tree model_example_1"></div>
@@ -375,7 +375,7 @@
 		</div>
 	</section>
 	<section class="row">
-		<div class="col-xl-3  col-xs-12  col-sm-4">
+		<div class="col-xl-3  col-12  col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos mediante AJAX (json)</h3>
 				<div id="ajaxTreeDemo" class="ajax_tree model_example_1"></div>

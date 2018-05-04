@@ -18,7 +18,7 @@
 <h2>Visor geoeuskadi</h2>
  
  
- <div id="mi_mapa" style="width: 100%; height: 100%; position:relative;"></div>
+ <div id="mi_mapa" style="width: 100%; height: 100%; position:relative;max-height: 600px;"></div>
  
  <div class="example">
 			<button type="button" id="marcador"> <spring:message code="integracion.geoeuskadi.marcador" /></button>

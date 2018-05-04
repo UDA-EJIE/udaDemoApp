@@ -20,11 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.dao.UsuarioDao;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dto.JQGridDto;
+import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -175,6 +178,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario,Pagination pagination) {
 		return this.usuarioDao.findAllChild(filterUsuario, pagination);
+	}
+	
+    public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto,  Boolean startsWith){
+		return this.usuarioDao.getMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 }
 

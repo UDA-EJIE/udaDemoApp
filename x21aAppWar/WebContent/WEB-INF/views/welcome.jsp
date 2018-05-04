@@ -9,7 +9,7 @@
  --
  -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
  -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- -- SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
@@ -17,17 +17,17 @@
 <div class="container" style="margin-top: 2em;">
 
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<h1>
 				<img alt="El contenido estático no está correctamente desplegado."
-					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v3.3.0
+					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v3.4.0
 				<small>(Portal demostrativo)</small>
 			</h1>
 			<hr>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<section id="mainContent">
 			
 				<p>

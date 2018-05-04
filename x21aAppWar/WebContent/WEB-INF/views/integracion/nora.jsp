@@ -18,7 +18,7 @@
 
 
 <section id="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 
 <h2>Nora</h2>
 	<hr>

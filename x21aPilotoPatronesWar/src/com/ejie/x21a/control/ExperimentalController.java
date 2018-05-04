@@ -19,9 +19,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import javax.servlet.http.HttpServletRequest;
 
-import n38c.exe.N38API;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,19 +37,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import weblogic.apache.xpath.XPathAPI;
-
 import com.bea.core.repackaged.springframework.beans.factory.annotation.Autowired;
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.service.IberdokFileService;
+import com.ejie.x21a.util.FileUtils;
 import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.log.LoggingEditor;
 import com.ejie.x38.log.model.LogModel;
-import com.ejie.x21a.util.FileUtils;
+
+import n38c.exe.N38API;
+import weblogic.apache.xpath.XPathAPI;
 
 /**
  * ExperimentalController
@@ -87,11 +87,11 @@ public class ExperimentalController {
 
 		//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 		@RequestMapping(value = "/filter", method = RequestMethod.POST)
-		public @ResponseBody JQGridResponseDto<LogModel> filter(
+		public @ResponseBody TableResponseDto<LogModel> filter(
 				@RequestJsonBody(param="filter") LogModel filterLogModel,
-				@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+				@RequestJsonBody TableRequestDto tableRequestDto) {
 			
-			JQGridResponseDto<LogModel> resultado= new JQGridResponseDto<LogModel>();
+			TableResponseDto<LogModel> resultado= new TableResponseDto<LogModel>();
 			resultado= LoggingEditor.getLoggersFiltered(filterLogModel);
 
 		

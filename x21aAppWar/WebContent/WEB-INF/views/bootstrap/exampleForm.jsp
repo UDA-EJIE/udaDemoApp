@@ -7,7 +7,7 @@
 <section>
 	<!-- Stack the columns on mobile by making one full-width and the other half-width -->
 	<div class="row">
-	  <div class="col-xs-12 col-md-8">
+	  <div class="col-12 col-md-8">
 	  
 	  		<div class="row">
 	  			<div class="col-md-12">

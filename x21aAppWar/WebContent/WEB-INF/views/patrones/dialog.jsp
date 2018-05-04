@@ -17,7 +17,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Diálogo</h2>
 		<hr>
 		<p>Permite lanzar un subproceso o un mensaje de confirmación

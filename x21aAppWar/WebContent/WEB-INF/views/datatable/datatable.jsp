@@ -18,16 +18,19 @@
 
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
-<table id="example" class="table table-striped table-bordered" data-url-base="./jqGridUsuario" cellspacing="0" width="100%">
+<table id="example" class="table table-striped table-bordered" 
+	data-url-base="./tableUsuario"
+	data-filter-form="#table_filter_form" 
+	cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th data-col-prop="id">Id</th>
                 <th data-col-prop="nombre">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
-                <th data-col-prop="ejie">Ejie</th>
-                <th data-col-prop="fechaAlta">Fecha alta</th>
-                <th data-col-prop="fechaBaja">Fecha baja</th>
-                <th data-col-prop="rol">Rol</th>
+                <th data-col-prop="ejie" data-col-type="checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="date">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="date">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
         <tfoot>
@@ -42,3 +45,5 @@
           </tr>
         </tfoot>
 </table>
+
+<jsp:include page="includes/datatableEdit.jsp"></jsp:include>
