@@ -1,0 +1,94 @@
+{
+	"x21aMantenimientosWar_migas" :{
+		"simple"	: "Soil-sorta",
+		"multi"		: "Multi-sorta",
+		"edlinea"	: "Lerroan edizioa", 
+		"formPropio" : "Form Propio_eu", 
+		"administracion" : "Administración_eu",
+		"alumno" : "Alumno_eu",
+		"jerarquia" : "Jerarquia_eu",
+		"usuarioJerarquia" : "Normal_eu",
+		"usuarioJerarquiaGroup" : "Agrupado_eu",
+		"usuarioJerarquiaMulti" : "Multiselección_eu",
+		"usuarioJerarquiaGroupMulti" : "Multiselección agrupado_eu",
+		"usuarioJerarquiaCol" : "Columna independiente_eu",
+		"uda":"UDA"
+	},
+	"GRID_simple##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"GRID_simple##rol" : {
+		"administrador" : "administrador_eu",
+		"desarrollador" : "desarrollador_eu",
+		"espectador" : "espectador_eu",
+		"informador" : "informador_eu",
+		"manager" : "manager_eu"
+	},
+	"GRID_simple##tipo" : {
+		"0A" : "Tipo_No_A_eu",
+		"0B" : "Tipo_No_B_eu",
+		"1A" : "Tipo_Si_A_eu",
+		"1B" : "Tipo_Si_B_eu"
+	},
+	"GRID_simple##subtipo" : {
+		"0_0A_A" : "Subtipo_No_TipoA_A_eu",
+		"0_0A_B" : "Subtipo_No_TipoA_B_eu",
+		"0_0B_A" : "Subtipo_No_TipoB_A_eu",
+		"0_0B_B" : "Subtipo_No_TipoB_B_eu",
+		"1_0A_A" : "Subtipo_Si_TipoA_A_eu",
+		"1_0A_B" : "Subtipo_Si_TipoA_B_eu",
+		"1_0B_A" : "Subtipo_Si_TipoB_A_eu",
+		"1_0B_B" : "Subtipo_Si_TipoB_B_eu",
+		"0_1A_A" : "Subtipo_No_TipoA_A_eu",
+		"0_1A_B" : "Subtipo_No_TipoA_B_eu",
+		"0_1B_A" : "Subtipo_No_TipoB_A_eu",
+		"0_1B_B" : "Subtipo_No_TipoB_B_eu",
+		"1_1A_A" : "Subtipo_Si_TipoA_A_eu",
+		"1_1A_B" : "Subtipo_Si_TipoA_B_eu",
+		"1_1A_A" : "Subtipo_Si_TipoB_A_eu",
+		"1_1A_B" : "Subtipo_Si_TipoB_B_eu"
+	},
+	"GRID_multi##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"GRID_edlinea##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"simpelMaint" : {
+		"actualizar":"Botoi pertsonalizatuen adibidea"
+	},
+	"alumno":{
+		"password_confirm":"Las contraseñas no coinciden_eu",
+		"email_confirm":"Los correos introducidos no coinciden_eu"
+	},
+	"GRID_alumno":{
+		"id": "Id_eu",
+		"usuario" : "Usuario_eu",
+		"nombre" : "Nombre_eu",
+		"apellido1" : "Primer apellido_eu",
+		"apellido2" : "Segundo apellido_eu",
+		"dni" : "DNI_eu",
+		"importeMatricula":"Importe matrícula_eu"
+	},
+	"loginUserMock" : {
+		"logginOk1" : "Usuario _eu'",
+		"logginOk2" : "' Seleccionado correctamente_eu"
+	},
+	"GRID_usuarioJerarquia##ejie" : {
+		"0" : "Ez",
+		"1" : "Bai"
+	},
+	"table":{
+		"id": "Id_eu",
+		"nombre" : "Nombre_eu",
+		"apellido1" : "Primer apellido_eu",
+		"apellido2" : "Segundo apellido_eu",
+		"ejie" : "Ejie_eu",
+		"fechaAlta":"Fecha de alta_eu",
+		"fechaBaja":"Fecha de baja_eu",
+		"rol":"Rol"
+	}
+}

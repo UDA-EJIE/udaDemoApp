@@ -1,0 +1,37 @@
+<div class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" >
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" ng-click="$hide()">&times;</button>
+	      <h4 class="modal-title">{{expediente.codigo}}</h4>
+	    </div>
+	    <div class="modal-body">
+	    	<span class="expedientes-detail-label" >T&iacute;tulo</span>
+			<span class="expedientes-detail-text">{{expediente.titulo}}</span>
+			<span class="expedientes-detail-label" >Nombre tramitador</span>
+			<span class="expedientes-detail-text">{{expediente.nombreTramitador}}</span>
+			<span class="expedientes-detail-label" >Buz&oacute;n tramitador</span>
+			<span class="expedientes-detail-text">{{expediente.buzonTramitador}}</span>
+			<span class="expedientes-detail-label" >e-mail</span>
+			<span class="expedientes-detail-text">{{expediente.email}}</span>
+			<span class="expedientes-detail-label" >Fecha</span>
+			<span class="expedientes-detail-text">{{expediente.fecha}}</span>
+			<span class="expedientes-detail-label" >Fase</span>
+			<span class="expedientes-detail-text">{{expediente.nombreFaseEs}}</span>
+			<span class="expedientes-detail-label" >Pregunta</span>
+			<span class="expedientes-detail-text">{{expediente.pregunta}}</span>
+	    </div>
+	    <div class="modal-footer">
+ 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-show="mostrarCambioFase">
+   				Modificar fase  <span class="caret"></span>
+ 				</button>
+ 				<ul class="dropdown-menu" role="menu" ng-show="mostrarCambioFase">
+   				<li><a href="#" ng-click="cambiarFase(506)">Derivaci&oacute;n</a></li>
+   				<li><a href="#" ng-click="cambiarFase(504)">Cierre</a></li>
+   				<li><a href="#" ng-click="cambiarFase(501)">Gesti&oacute;n</a></li>
+ 				</ul>
+				<button type="button" class="btn btn-default" ng-click="$hide()">Cancelar</button>
+	    </div>
+	  </div>
+	</div>
+</div>
