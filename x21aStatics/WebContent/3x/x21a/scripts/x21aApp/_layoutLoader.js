@@ -27,15 +27,6 @@ jQuery(document).ready(function(){
 		mixto = true;
 	}
 	
-	// ThemeRoller
-	jQuery('#themeroller').themeswitcher({
-	     imgpath: jQuery.rup.STATICS + "/themeswitcher/images/"
-	});
-	jQuery("#borrar_themeroller").show().click(function(){
-		$.rup_utils.setCookie("jquery-ui-theme", "", { path: '/' });
-		window.location.reload();
-	});
-	
 	//rastro de migas
 	jQuery("#x21aPilotoPatronesWar_migas").rup_breadCrumb({
 		logOutUrl: "/x21aAppWar/logout",
