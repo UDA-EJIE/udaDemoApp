@@ -190,7 +190,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#" id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog " aria-hidden="true"></i></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="x21aApp_releases">
-          <a class="dropdown-item" href="/x21aPilotoPatronesWar/">UDA Legacy (v2.4.11)</a>
+          <a class="dropdown-item" href="/x21aPilotoPatronesWar/">UDA Legacy (v2.4.12)</a>
         </div>
       </li>
       <li class="nav-item">
