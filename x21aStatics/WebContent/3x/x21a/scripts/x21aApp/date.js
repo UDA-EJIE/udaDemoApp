@@ -66,13 +66,13 @@ jQuery(document).ready(function(){
 		noWeekend : true,
 		mask: "dd/mm/yyyy hh:mm",
 		showSecond: false,
-		dateFormat: "dd/mm/yyyy",
+		dateFormat: "dd/mm/yy",
 		timeFormat: 'hh:mm'
 //		onSelect: function(selectedDate){
 //			alert("La fecha seleccionada es: " + selectedDate);
 //		}
 	});
-	
+
 	$("#fecha_inline").rup_date({
 		changeMonth : false,
 		changeYear	: false,
