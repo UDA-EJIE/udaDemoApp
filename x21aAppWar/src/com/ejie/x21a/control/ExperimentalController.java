@@ -39,7 +39,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import weblogic.apache.xpath.XPathAPI;
+import org.apache.xpath.XPathAPI;
 
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;

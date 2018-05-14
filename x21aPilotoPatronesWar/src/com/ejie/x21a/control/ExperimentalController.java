@@ -38,6 +38,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import org.apache.xpath.XPathAPI;
+
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.service.IberdokFileService;
@@ -50,7 +52,6 @@ import com.ejie.x38.log.LoggingEditor;
 import com.ejie.x38.log.model.LogModel;
 
 import n38c.exe.N38API;
-import weblogic.apache.xpath.XPathAPI;
 
 /**
  * ExperimentalController
