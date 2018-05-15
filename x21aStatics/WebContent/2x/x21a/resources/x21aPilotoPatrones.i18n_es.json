@@ -525,5 +525,22 @@
 		"pestana17" : "tab17",
 		"pestana18" : "sub18",
 		"pestana19" : "sub19"
-	}
+	},
+	"charts" : {
+        "charts": "Gráficos",
+        "line": "Líneas",
+        "bar": "Barras",
+        "radar": "Radar",
+        "polar": "Polar",
+        "pie": "Tarta",
+        "doughnut": "Donut",
+        "bubble": "Burbuja",
+        "datasetRadar": {
+            "dataset1": "dataset 1",
+            "dataset2": "dataset 2"
+        },
+        "colorLabels": ["rojo", "azul", "amarillo"],
+        "radarLabels": ["Comida", "Bebida", "Dormir", "DiseÃ±o", "Programacion", "Bicicleta", "Correr"],
+        "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
+    }
 }

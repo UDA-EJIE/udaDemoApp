@@ -496,5 +496,22 @@
 	"treeNodesExchangePanel_center" : {
 		"errorOp" : "Operación errónea_eu",
 		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"._eu"
+	},
+	"charts" : {
+		"charts": "Gráficos_eu",
+		"line": "Líneas_eu",
+		"bar": "Barras_eu",
+		"radar": "Radar_eu",
+		"polar": "Polar_eu",
+		"pie": "Tarta_eu",
+		"doughnut": "Donut_eu",
+		"bubble": "Burbuja_eu",
+		"datasetRadar": {
+				"dataset1": "dataset 1_eu",
+				"dataset2": "dataset 2_eu"
+		},
+		"colorLabels": ["rojo_eu", "azul_eu", "amarillo_eu"],
+		"radarLabels": ["Comida_eu", "Bebida_eu", "Dormir_eu", "Diseño_eu", "Programacion_eu", "Bicicleta_eu", "Correr_eu"],
+		"mesesLabels": ["Enero_eu", "Febrero_eu", "Marzo_eu", "Abril_eu", "Mayo_eu", "Junio_eu", "Julio_eu"]
 	}
 }
