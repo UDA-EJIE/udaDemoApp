@@ -59,6 +59,7 @@
 <script src="${staticsUrl}/rup/scripts/rup.accordion-2.4.12.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.autocomplete-2.4.12.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.breadCrumb-2.4.12.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/scripts/rup.chart-2.4.12.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.combo-2.4.12.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.contextMenu-2.4.12.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/scripts/rup.date-2.4.12.js" type="text/javascript"></script>

@@ -620,6 +620,9 @@ a.ui-selectmenu { text-decoration: none; color: black }
 .breadcrumb_icon{
 	background-image: url("../images/icons/breadcrumb.png") !important;
 }
+.chart_icon{
+	background-image: url("../images/icons/chart_16.png") !important;
+}
 .contextMenu_icon{
 	background-image: url("../images/icons/contextMenu.png") !important;
 }
