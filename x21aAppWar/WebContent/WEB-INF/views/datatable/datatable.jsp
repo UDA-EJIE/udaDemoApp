@@ -27,9 +27,9 @@
                 <th data-col-prop="id">Id</th>
                 <th data-col-prop="nombre">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
-                <th data-col-prop="ejie" data-col-type="checkbox">Ejie</th>
-                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="date">Fecha alta</th>
-                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="date">Fecha baja</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
                 <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
