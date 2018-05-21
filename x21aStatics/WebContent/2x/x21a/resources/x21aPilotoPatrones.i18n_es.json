@@ -540,7 +540,7 @@
             "dataset2": "dataset 2"
         },
         "colorLabels": ["rojo", "azul", "amarillo"],
-        "radarLabels": ["Comida", "Bebida", "Dormir", "DiseÃ±o", "Programacion", "Bicicleta", "Correr"],
+        "radarLabels": ["Comida", "Bebida", "Dormir", "Diseño", "Programacion", "Bicicleta", "Correr"],
         "mesesLabels": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
     }
 }

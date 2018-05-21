@@ -6,13 +6,13 @@
 			"all" :"[Eredu guztiak]",
 			"accordion" :"Accordion_eu",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"MenÃº contextual_eu",
+			"contextMenu" :"Menú contextual_eu",
 			"toolbar" :"Botoi-lerro",
 			"combo" :"Combo",
 				"comboSimple" :"Combo Simple",
 				"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-				"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
-				"multicombo" :"Combo MutiselecciÃ³n",
+				"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+				"multicombo" :"Combo Mutiselección",
 			"dialog" :"Dialogo",
 			"date" :"Data",
 			"feedback" :"Feedback",
@@ -24,7 +24,7 @@
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
 			"tabs" :"Erlaitz",
-				"tabsStatic":"Erlaitz carga estÃ¡tica",
+				"tabsStatic":"Erlaitz carga estática",
 				"tabsAjax":"Erlaitz carga Ajax",
 				"tabsMixto":"Erlaitz carga mixta",
 				"maintTab":"Erlaitz con mantenimientos",
@@ -34,41 +34,41 @@
 				"grid_arbol" :"Tabla Arbol_eu",
 			"tooltip" : "Tooltip",
 			"upload" : "Upload",
-			"validate" : "ValidaciÃ³n_eu",
+			"validate" : "Validación_eu",
 			"wizard" :"Wizard_eu",
 				"wizardA" :"Wizard simple_eu",
 				"wizardB" :"Wizard <%@ include %>_eu",
 				"wizardC" :"Wizard <jsp:include>_eu",
 				"wizardD" :"Wizard <c:import>_eu",
-				"wizardE" :"Wizard dinÃ¡mico_eu",
-			"tree" : "Ã�rbol_eu",
-				"trees" :"Ã�rboles con diferentes configuraciones_eu",
-				"treeDAD" :"Ã�rboles con interaccion mediante Drag & Drop_eu",
-				"trees_formats" :"Ã�rboles con diferentes formatos de datos_eu",
-				"tree_panel" :"Ã�rbol con panel de detalle_eu",
+				"wizardE" :"Wizard dinámico_eu",
+			"tree" : "Árbol_eu",
+				"trees" :"Árboles con diferentes configuraciones_eu",
+				"treeDAD" :"Árboles con interaccion mediante Drag & Drop_eu",
+				"trees_formats" :"Árboles con diferentes formatos de datos_eu",
+				"tree_panel" :"Árbol con panel de detalle_eu",
 		"experimental" :"Experimental_eu",
-		"integracion" :"IntegraciÃ³n_eu",
+		"integracion" :"Integración_eu",
 			"geoEuskadi":"Visor GeoEuskadi_eu",
 			"z-index" :"Capas RUP (z-index)_eu",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE",  
 		"uda":"UDA",
 		"titulo-notifi":"Notificaciones_eu",
-		"titulo-nave":"NavegaciÃ³n_eu",
-		"titulo-estru":"EstructuraciÃ³n de pantalla_eu",
-		"titulo-inser":"InserciÃ³n de datos_eu"
+		"titulo-nave":"Navegación_eu",
+		"titulo-estru":"Estructuración de pantalla_eu",
+		"titulo-inser":"Inserción de datos_eu"
 	},
 	"x21aPilotoPatronesWar_migas" :{
 		"patrones" :"Ereduak",
 			"all" :"[Eredu guztiak]",
 			"accordion" :"Accordion_eu",
 			"autocomplete" :"Autocomplete",
-			"contextMenu" :"MenÃº contextual_eu",
+			"contextMenu" :"Menú contextual_eu",
 			"toolbar" :"Botoi-lerro",
 			"comboSimple" :"Combo Simple",
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
-			"comboEnlazadoMulti" :"Combo Enlazado (mÃºltiple)",
-			"multicombo" :"Combo MutiselecciÃ³n",
+			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
+			"multicombo" :"Combo Mutiselección",
 			"dialog" :"Dialogo",
 			"date" :"Data",
 			"feedback" :"Feedback",
@@ -80,7 +80,7 @@
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
 			"tabs" :"Erlaitz",
-				"tabsStatic":"Erlaitz carga estÃ¡tica_eu",
+				"tabsStatic":"Erlaitz carga estática_eu",
 				"tabsAjax":"Erlaitz carga Ajax_eu",
 				"tabsMixto":"Erlaitz carga mixta_eu",
 				"maintTab":"Erlaitz con mantenimientos_eu",
@@ -90,20 +90,20 @@
 				"grid_arbol" :"Tabla Arbol_eu",
 			"tooltip" : "Tooltip",
 			"upload" : "Upload",
-			"validate" : "ValidaciÃ³n_eu",
+			"validate" : "Validación_eu",
 			"wizard" :"Wizard_eu",
 				"wizardA" :"Wizard simple_eu",
 				"wizardB" :"Wizard <%@ include %>_eu",
 				"wizardC" :"Wizard <jsp:include>_eu",
 				"wizardD" :"Wizard <c:import>_eu",
-				"wizardE" :"Wizard dinÃ¡mico_eu",
-			"tree" : "Ã�rbol_eu",
-				"trees" :"Ã�rboles_eu",
-				"treeDAD" : "Ã�rbol con D&D_eu",
-				"treesFormats" :"Ã�rboles formateados_eu",
-				"treePanel" :"Ã�rbol con panel_eu",
+				"wizardE" :"Wizard dinámico_eu",
+			"tree" : "Árbol_eu",
+				"trees" :"Árboles_eu",
+				"treeDAD" : "Árbol con D&D_eu",
+				"treesFormats" :"Árboles formateados_eu",
+				"treePanel" :"Árbol con panel_eu",
 		"experimental" :"Experimental_eu",
-		"integracion" :"IntegraciÃ³n_eu",
+		"integracion" :"Integración_eu",
 			"z-index" :"Capas RUP (z-index)_eu",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE", 
@@ -166,9 +166,9 @@
 	"_coment":"COMBO_ENLAZADO",
 		"comboAbuelo":{
 			"_blank":"[Selecciona Abuelo_eu]",
-			"a":"Ã�lava_eu",
+			"a":"Álava_eu",
 			"b":"Vizcaya_eu",
-			"g":"GipÃºzcoa_eu"
+			"g":"Gipúzcoa_eu"
 		},
 		"comboPadre":{
 			"a1":"A-Zona1_eu",
@@ -200,9 +200,9 @@
 		},
 		"mixto2_comboAbuelo":{
 			"_blank":"[Selecciona Abuelo_eu]",
-			"a":"Ã�lava_eu",
+			"a":"Álava_eu",
 			"b":"Vizcaya_eu",
-			"g":"GipÃºzcoa_eu"
+			"g":"Gipúzcoa_eu"
 		},
 	"_coment":"COMBO_ENLAZADO_MULTIPLE",
 		"departamentoRemote":{
@@ -212,14 +212,14 @@
 			"_blank":"[Selecciona Prov._eu]"
 		},
 		"mixto_provincia":{
-			"a":"Ã�lava_eu",
+			"a":"Álava_eu",
 			"b":"Vizcaya_eu",
-			"g":"GipÃºzcoa_eu"
+			"g":"Gipúzcoa_eu"
 		},
 		"mixto2_departamento":{
 			"ayto":"Ayuntamiento_eu",
-			"dipu":"DiputaciÃ³n_eu",
-			"poli":"PolicÃ­a_eu",
+			"dipu":"Diputación_eu",
+			"poli":"Policía_eu",
 			"bomb":"Bomberos_eu"
 		},
 	"_comment":"MULTI_COMBO",	
@@ -268,9 +268,9 @@
 		"sub10" 	:"sub10_eu",
 		"sub11" 	:"sub11_eu",
 		"pestana2" 	:"Tab 2_eu",
-		"pestanaAna"   	:"Nueva PestaÃ±a_eu",
-		"nuevaPestaÃ±a" 	:"Nuevo Nivel_eu",
-		"PestaÃ±asMaint"	:"PestaÃ±a con Mantenimientos_eu"
+		"pestanaAna"   	:"Nueva Pestaña_eu",
+		"nuevaPestaña" 	:"Nuevo Nivel_eu",
+		"PestañasMaint"	:"Pestaña con Mantenimientos_eu"
 	},
 	"pruebaSub3Maint" :{
 		"maint1"		:"Mantenimiento 1_eu",
@@ -278,21 +278,21 @@
 		"maint3"		:"Mantenimiento 3_eu"	
 	},
 	"tabsStatic" :{
-		"pestana0" 	:"PestaÃ±a 1_eu",
-		"pestana1"  :"PestaÃ±a 2_eu",
-		"pestana2" 	:"PestaÃ±a 3_eu",
-		"pestanaAna" :"PestaÃ±a AÃ±adida_eu"
+		"pestana0" 	:"Pestaña 1_eu",
+		"pestana1"  :"Pestaña 2_eu",
+		"pestana2" 	:"Pestaña 3_eu",
+		"pestanaAna" :"Pestaña Añadida_eu"
 	},
 	"tabsMixta" :{
-		"pestanaUrl" 	:"PestaÃ±a con url_eu",
-		"pestanaHtml"  :"PestaÃ±a con html_eu"
+		"pestanaUrl" 	:"Pestaña con url_eu",
+		"pestanaHtml"  :"Pestaña con html_eu"
 	},
 	"tabsMaint" :{
 		"maint1"	:"Mantenimiento Simple 1_eu",
 		"maint2"    :"Mantenimiento Simple 2_eu",
 		"maint3" 	:"Mantenimiento Simple 3_eu",
-		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea_eu",
-		"multi1" 	:"Mantenimiento mÃºltiple_eu"
+		"edit1" 	:"Mantenimiento edición en línea_eu",
+		"multi1" 	:"Mantenimiento múltiple_eu"
 	},
 	"tabsDialog" :{
 		"pestana0" 	:"Tab 0_eu",
@@ -396,19 +396,19 @@
 		"femenino":"Femenino_eu"  	
 	},
 	"validaciones":{
-		"password_confirm":"Las contraseÃ±as no coinciden_eu",
+		"password_confirm":"Las contraseñas no coinciden_eu",
 		"email_confirm":"Los correos introducidos no coinciden_eu"
 	},
 	"tabsValidacion":{
 		"validacionesCliente":"Validaciones en cliente_eu",
 		"validacionesServidor":"Validaciones en servidor_eu",
-		"reglasValidacion":"Reglas de validaciÃ³n_eu",
-		"validacionComponentes":"ValidaciÃ³n de componentes_eu"
+		"reglasValidacion":"Reglas de validación_eu",
+		"validacionComponentes":"Validación de componentes_eu"
 		 
 	},
 	"tabsFormulario":{
-		"ejemploYFunciones":"Ejemplo y mÃ©todos_eu",
-		"multiplesEntidades":"EnvÃ­o de varias entidades_eu"
+		"ejemploYFunciones":"Ejemplo y métodos_eu",
+		"multiplesEntidades":"Envío de varias entidades_eu"
 	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario _eu'",
@@ -418,23 +418,23 @@
 		"maint1"	:"Mantenimiento Simple 1_eu",
 		"maint2"    :"Mantenimiento Simple 2_eu",
 		"maint3" 	:"Mantenimiento Simple 3_eu",
-		"edit1" 	:"Mantenimiento ediciÃ³n en lÃ­nea_eu",
-		"multi1" 	:"Mantenimiento mÃºltiple_eu"
+		"edit1" 	:"Mantenimiento edición en línea_eu",
+		"multi1" 	:"Mantenimiento múltiple_eu"
 	},
 	"breadCrumb": {
-		"integracion" :"IntegraciÃ³n_eu",
+		"integracion" :"Integración_eu",
 			"z-index" :"Capas RUP (z-index)_eu",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"breadCrumb_2": {
-		"integracion" :"IntegraciÃ³n_eu",
+		"integracion" :"Integración_eu",
 			"z-index" :"Capas RUP (z-index)_eu",
 			"nora"	:"NORA",
 			"tiny" :"TinyMCE"
 	},
 	"treeCodeDialog": {
-		"title" : "CÃ³digo usado para generar el Ã¡rbol_eu",
+		"title" : "Código usado para generar el árbol_eu",
 		"javascript" : "JavaScript",
 		"html" : "HTML"
 	},
@@ -445,7 +445,7 @@
 	"uniqueDemo": {
 		"duplicateKey" : "Clave duplicada_eu",
 		"duplicateNodes" : "Se ha producido una duplicidad del nodo _eu",
-		"inFunction" : " con la funciÃ³n _eu"
+		"inFunction" : " con la función _eu"
 	},
 	"tasksTree": {
 		"raiz" : "Tareas Pendientes_eu",
@@ -454,7 +454,7 @@
 		"reparaciones" : "Reparaciones_eu",
 		"suministros" : "Pedidos de suministros_eu",
 		"facturas" : "Facturas por cobrar_eu",
-		"informe_trimestral" : "Informe general (1Âº trimestre)_eu",
+		"informe_trimestral" : "Informe general (1º trimestre)_eu",
 		"informe_gastos_generales" : "Gastos generales (oficina)_eu",
 		"informe_desperfectos" : "Desperfectos Granizada_eu",
 		"informe_deudas" : "Deudas pendientes de pagar_eu",
@@ -464,29 +464,29 @@
 		"pedido_cemento" : "Abastecimiento de cemento Andoain_eu",
 		"pedido_martillo" : "Martillo nuevo a Donosti_eu",
 		"reparacion_fachada" : "Arreglos en fachadas_eu",
-		"reparacion_indundacion" : "Limpieza por anegaciÃ³n_eu",
-		"reparacion_suelo" : "ReparaciÃ³n de la tarima_eu",
-		"reparacion_ratas" : "RevisiÃ³n de desratizaciÃ³n_eu",
+		"reparacion_indundacion" : "Limpieza por anegación_eu",
+		"reparacion_suelo" : "Reparación de la tarima_eu",
+		"reparacion_ratas" : "Revisión de desratización_eu",
 		"mp_ladrillos" : "3ton ladrillos_eu",
 		"mp_clavos" : "Clavos del 5cm_eu",
 		"mp_cemento" : "3 camiones de cemento_eu",
 		"mp_recambios" : "ruedas_eu",
-		"mp_jabon" : "JabÃ³n de manos (8 cajas)_eu",
+		"mp_jabon" : "Jabón de manos (8 cajas)_eu",
 		"mp_botas" : "40 pares de botas de seguridad_eu",
 		"mp_cascos" : "40 cascos de obra_eu",
 		"factura_VH" : "Cobros Valle Hermoso_eu",
 		"factura_Lindo" : "Cobros Lindo S.A._eu",
-		"factura_devolucion" : "Revisar devoluciÃ³n de cobro IT_eu",
+		"factura_devolucion" : "Revisar devolución de cobro IT_eu",
 		"factura_OM" : "Cobro Oscar Mayer_eu",
 		"workers" : "Trabajadores_eu",
-		"depAdmin" : "DEP de AdministraciÃ³n_eu",
+		"depAdmin" : "DEP de Administración_eu",
 		"depReparaciones" : "DEP de Suministros_eu",
 		"depClientes" : "DEP de Clientes_eu",
 		"depSuministros" : "DEP de Suministros_eu"
 	},
 	"treeNodesExchangePanel_center" : {
-		"errorOp" : "OperaciÃ³n errÃ³nea_eu",
-		"funtError" : "La imagen no es un botÃ³n. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un Ã¡rbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"._eu"
+		"errorOp" : "Operación errónea_eu",
+		"funtError" : "La imagen no es un botón. El objetivo de esta imagen es indicar el, posible, traspaso de los distintos nodos entre un árbol y otro. </br></br> La forma en la que esta dispuesto es mediante \"Drag&Drop\"._eu"
 	},
 	"table":{
 		"id": "Id_eu",
@@ -559,6 +559,6 @@
 		"nombre":"Debe de especificar un nombre obligatoriamente._eu",
 		"apellido1":"Debe de especificar un primer apellido obligatoriamente._eu",
 		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._eu",
-		"alertDay": "Debe de especificar al menos una opci�n entre las mostradas._eu"
+		"alertDay": "Debe de especificar al menos una opci�n entre las mostradas._eu"
 	} 
 }
