@@ -14,4 +14,4 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/wizard_dinamico.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/wizard_dinamico.js" type="text/javascript"></script>
