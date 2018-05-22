@@ -51,12 +51,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.JQGridUsuarioService;
+import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.reports.ReportData;
 import com.ejie.x38.rup.table.filter.model.Filter;
@@ -76,6 +78,9 @@ public class TableUsuarioController  {
 
 	@Autowired
 	private JQGridUsuarioService jqGridUsuarioService; 
+	
+	@Autowired
+	private TableUsuarioService tableUsuarioService;
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -204,11 +209,11 @@ public class TableUsuarioController  {
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<Usuario> filter(
+	public @ResponseBody TableResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios");
-		return jqGridUsuarioService.filter(filterUsuario, jqGridRequestDto, false);
+		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 	
 	

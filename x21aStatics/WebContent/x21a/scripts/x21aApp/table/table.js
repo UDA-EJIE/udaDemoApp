@@ -159,5 +159,8 @@ jQuery(function($){
 		buttons: {
 			activate:true
 		}
+		,select: {
+			activate:true
+		}
     } );
 });
