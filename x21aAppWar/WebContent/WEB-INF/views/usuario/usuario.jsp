@@ -17,7 +17,6 @@
 	                <th data-col-prop="fechaAlta" data-col-sidx="FECHA_ALTA" >fechaAlta</th>
 	                <th data-col-prop="fechaBaja" data-col-sidx="FECHA_BAJA" >fechaBaja</th>
 	                <th data-col-prop="rol" data-col-sidx="ROL" data-col-type="Combo">rol</th>
-	                <th data-col-prop="fechaModif" data-col-sidx="FECHA_MODIF" >fechaModif</th>
             </tr>
         </thead>
         <tfoot>
@@ -30,7 +29,6 @@
 	              <th>fechaAlta</th>
 	              <th>fechaBaja</th>
 	              <th>rol</th>
-	              <th>fechaModif</th>
           </tr>
         </tfoot>
 </table>

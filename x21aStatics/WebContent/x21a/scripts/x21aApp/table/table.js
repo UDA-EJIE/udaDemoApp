@@ -139,7 +139,7 @@ jQuery(function($){
             header:true
         },
         formEdit:{
-        	detailForm: "#table_detail_div",
+        	detailForm: "#example_detail_div",
         	validate:{
     			rules:{
     				"nombre":{required:true},
@@ -161,6 +161,11 @@ jQuery(function($){
 		}
 		,select: {
 			activate:true
-		}
+		},
+	    filter:{
+	    	  id:"example_filter_form",
+	    	  filterToolbar:"example_filter_toolbar",
+	    	  collapsableLayerId:"example_filter_fieldset"
+	    }
     } );
 });

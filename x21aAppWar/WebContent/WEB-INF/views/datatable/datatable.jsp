@@ -20,7 +20,7 @@
 
 <table id="example" class="table table-striped table-bordered" 
 	data-url-base="./tableUsuario"
-	data-filter-form="#table_filter_form" 
+	data-filter-form="#example_filter_form" 
 	cellspacing="0" width="100%">
         <thead>
             <tr>
