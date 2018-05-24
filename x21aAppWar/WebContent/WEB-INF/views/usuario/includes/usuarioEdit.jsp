@@ -1,5 +1,4 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>USUARIO</h2>
 
 
 <!-- Formulario de detalle -->
