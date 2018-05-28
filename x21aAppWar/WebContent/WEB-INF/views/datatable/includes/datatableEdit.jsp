@@ -14,13 +14,13 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>${tituloPagina}</h2> <!-- Titulo pagina -->
+<h2>table</h2> <!-- Titulo pagina -->
 
-<div id="table_detail_div" class="rup-table-formEdit-detail">
-	<div id ="table_detail_navigation"></div>
+<div id="example_detail_div" class="rup-table-formEdit-detail">
+	<div id ="example_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
-		<form id="table_detail_form">
-			<div id ="table_detail_feedback"></div>
+		<form id="example_detail_form">
+			<div id ="example_detail_feedback"></div>
 			
 			<div class="floating_left_pad_right">
 				<div class="floating_left_pad_right one-column">
@@ -61,13 +61,13 @@
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset">
-			<button id="table_detail_button_save" type="button">
+			<button id="example_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="table_detail_button_save_repeat" type="button">
+			<button id="example_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<a href="javascript:void(0)" role="button" id="table_detail_link_cancel"
+			<a href="javascript:void(0)" role="button" id="example_detail_link_cancel"
 				class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
 		</div>
 	</div>
