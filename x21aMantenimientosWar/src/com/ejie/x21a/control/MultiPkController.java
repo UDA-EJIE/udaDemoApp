@@ -62,7 +62,7 @@ public class MultiPkController  {
         MultiPk multiPk = new MultiPk();
 		multiPk.setIda(ida);
 		multiPk.setIdb(idb);
-        multiPk = this.multiPkService.find(multiPk);
+        //multiPk = this.multiPkService.find(multiPk);
         MultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
         return multiPk;
 	}
@@ -76,7 +76,7 @@ public class MultiPkController  {
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<MultiPk> getAll(@ModelAttribute MultiPk filterMultiPk) {
 		MultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
-	    return this.multiPkService.findAll(filterMultiPk, null);
+	    return null;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class MultiPkController  {
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody MultiPk edit(@RequestBody MultiPk multiPk) {		
-        MultiPk multiPkAux = this.multiPkService.update(multiPk);
+        MultiPk multiPkAux = null;
 		MultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
         return multiPkAux;
     }
@@ -100,7 +100,7 @@ public class MultiPkController  {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody MultiPk add(@RequestBody MultiPk multiPk) {		
-        MultiPk multiPkAux = this.multiPkService.add(multiPk);
+        MultiPk multiPkAux = null;
         MultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
     	return multiPkAux;
 	}
@@ -118,7 +118,7 @@ public class MultiPkController  {
         MultiPk multiPk = new MultiPk();
         multiPk.setIda(ida);
         multiPk.setIdb(idb);
-        this.multiPkService.remove(multiPk);
+        //this.multiPkService.remove(multiPk);
        	MultiPkController.logger.info("[DELETE] : MultiPk borrado correctamente");
        	return multiPk;
     }
@@ -140,7 +140,7 @@ public class MultiPkController  {
 	        multiPk.setIdb(ObjectConversionManager.convert(iterator.next(), java.math.BigDecimal.class));
 		    multiPkList.add(multiPk);
 	    }
-        this.multiPkService.removeMultiple(multiPkList);
+       // this.multiPkService.removeMultiple(multiPkList);
 		MultiPkController.logger.info("[POST - DELETE_ALL] : MultiPk borrados correctamente");
 		return multiPkIds;
 	}	

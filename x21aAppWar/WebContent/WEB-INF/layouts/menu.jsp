@@ -120,7 +120,8 @@
 	  <li class="nav-item dropdown">
 	  	<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Datatable</a>
 	    <div class="dropdown-menu" aria-labelledby="datatableDropdown">
-	    	<a class="dropdown-item" href="/x21aAppWar/datatable">Formulario de filtrado</a>
+	    	<a class="dropdown-item" href="/x21aAppWar/datatable">Mantenimiento completo</a>
+	    	<a class="dropdown-item" href="/x21aAppWar/multipk/maint">Tabla con multiples Pks</a>
 	    </div>
 	  </li>
       <li class="nav-item dropdown">

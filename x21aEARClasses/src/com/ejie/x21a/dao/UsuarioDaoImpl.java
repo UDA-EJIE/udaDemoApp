@@ -178,7 +178,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
      */
 	@Transactional (readOnly = true)
     public List<Usuario> findAllLike(Usuario usuario, Pagination pagination, Boolean startsWith) {
-		StringBuilder query = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA "); 
+		StringBuilder query = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHA_ALTA,t1.FECHA_BAJA FECHA_BAJA "); 
         query.append("FROM USUARIO t1 ");
       	
 		//Where clause & Params
