@@ -615,6 +615,11 @@
         <put-attribute name="content" value="/WEB-INF/views/usuario/usuario.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/usuario/usuario-includes.jsp"/>
     </definition> 
+    
+    <definition extends="template" name="multipk">
+        <put-attribute name="content" value="/WEB-INF/views/multipk/multipk.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/multipk/multipk-includes.jsp"/>
+    </definition>
 
 	<definition name="y52bdocumentos" extends="template">
 		<put-attribute name="content"

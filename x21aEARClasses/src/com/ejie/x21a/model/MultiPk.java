@@ -40,6 +40,15 @@ public class MultiPk  implements java.io.Serializable {
            this.apellido2 = apellido2;
     }
 
+   /** 
+    * Method 'MultiPk'.
+    * @param ida BigDecimal
+    * @param idb BigDecimal
+    */    
+    public MultiPk(BigDecimal ida, BigDecimal idb) {
+         this.ida = ida;
+         this.idb = idb;
+	}
 	/**
      * Method 'getIda'.
      *
