@@ -17,7 +17,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<h2>Botón</h2>
 		<hr>
 
@@ -59,11 +59,11 @@
 		<p>
 			Para ello se hará uso de las clases de Bootstrap definidas para ello
 			como son
-			<code>hidden-sm-down</code>
+			<code>d-none d-md-block</code>
 			,
-			<code>hidden-sm-up</code>
+			<code>d-none</code>
 			,
-			<code>hidden-md-down</code>
+			<code>d-none d-lg-block</code>
 			...
 		</p>
 		<p>
@@ -75,11 +75,11 @@
 		<div class="example">
 			<button type="button" id="btnRwdHtmlSm" class="">
 				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text hidden-sm-down">Rwd Html Sm</span>
+					class="rup-ui-button-text d-none d-md-block">Rwd Html Sm</span>
 			</button>
 			<button type="button" id="btnRwdHtmlMd" class="">
 				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text hidden-md-down">Rwd Html Md</span>
+					class="rup-ui-button-text d-none d-lg-block">Rwd Html Md</span>
 			</button>
 			<button type="button" id="btnRwdJsSm" class="">Rwd Js Sm</button>
 			<button type="button" id="btnRwdJsMd" class="">Rwd Js Md</button>
@@ -96,26 +96,26 @@
 			<div class="rup-mbutton">
 				<button type="button" id="btnMButton" data-mbutton="true">
 					<i class="fa fa-cog" aria-hidden="true"></i> <span
-						class="rup-ui-button-text hidden-md-down">MButton</span>
+						class="rup-ui-button-text d-none d-lg-block">MButton</span>
 				</button>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
 						<button type="button" id="mbutton-buttonNew">
 							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text hidden-md-down">Nuevo</span>
+								class="rup-ui-button-text d-none d-lg-block">Nuevo</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonEdit">
 							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text hidden-md-down">Editar</span>
+								class="rup-ui-button-text d-none d-lg-block">Editar</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonCancel">
 							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text hidden-md-down">Cancelar</span>
+								class="rup-ui-button-text d-none d-lg-block">Cancelar</span>
 						</button>
 					</li>
 				</ul>
@@ -128,7 +128,7 @@
 			<div class="rup-mbutton rup-collapsed-md">
 				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> <i
 					class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text hidden-xs-down">MButton</span>
+					class="rup-ui-button-text d-none d-sm-block">MButton</span>
 				</a>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
@@ -239,7 +239,7 @@
 		<div class="example">
 			<button type="button" id="btnClickJQuery" class="">
 				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text hidden-md-down">Handler jQuery</span>
+					class="rup-ui-button-text d-none d-lg-block">Handler jQuery</span>
 			</button>
 			<button type="button" id="btnClickRup" class="">Handler RUP</button>
 		</div>

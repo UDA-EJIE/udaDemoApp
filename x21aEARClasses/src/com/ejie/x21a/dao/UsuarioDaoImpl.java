@@ -33,10 +33,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
+import com.ejie.x38.dto.JQGridManager;
+import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.dto.PaginationManager;
 import com.ejie.x38.dto.PaginationManagerJerarquia;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -51,7 +55,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	private RowMapper<Usuario> rwMap = new RowMapper<Usuario>() {
 		public Usuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
            return new Usuario(
-               resultSet.getString("ID"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getString("EJIE"), resultSet.getDate("FECHAALTA"), resultSet.getDate("FECHABAJA")
+               resultSet.getString("ID"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getString("EJIE"), resultSet.getDate("FECHA_ALTA"), resultSet.getDate("FECHA_BAJA")
            ); } } ;
 
 	/**
@@ -634,4 +638,19 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return this.jdbcTemplate.query(sbSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, "id"), params.toArray());
 
 	}
+	
+    public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto,  Boolean startsWith){
+    	
+    	//Where clause & Params
+    	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith);
+    	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+    	where.append(mapaWhere.get("query"));
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object> params = (List<Object>) mapaWhere.get("params");
+    	
+    	StringBuilder sbMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID");
+    	
+    	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
+    }
 }

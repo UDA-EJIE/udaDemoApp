@@ -18,8 +18,10 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -102,7 +104,7 @@ public interface UsuarioDao {
     
     List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, Pagination<Usuario> pagination, Boolean startsWith);
 
-    
+    List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
 	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario,Pagination pagination);
 	Long findAllLikeCountJerarquia(Usuario filterUsuario, Pagination pagination);

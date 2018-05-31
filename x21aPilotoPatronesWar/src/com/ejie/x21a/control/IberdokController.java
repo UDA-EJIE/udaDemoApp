@@ -30,8 +30,8 @@ import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.rup.jqgrid.filter.model.Filter;
-import com.ejie.x38.rup.jqgrid.filter.service.FilterService;
+import com.ejie.x38.rup.table.filter.model.Filter;
+import com.ejie.x38.rup.table.filter.service.FilterService;
 
 @Controller
 @RequestMapping(value = "/iberdok")

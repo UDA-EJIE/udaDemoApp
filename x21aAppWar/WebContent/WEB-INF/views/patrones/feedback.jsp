@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <section class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 
 		<h2>
 			<spring:message code="feedback.title" />
@@ -53,8 +53,8 @@
 
 		<form>
 			<div class="form-group row">
-				<label for="feedback_type" class="col-md-1 col-xs-12 col-form-label">type:</label>
-				<div class="col-lg-2 col-md-2 col-xs-12">
+				<label for="feedback_type" class="col-md-1 col-12 col-form-label">type:</label>
+				<div class="col-lg-2 col-md-2 col-12">
 					<select id="feedback_type" class="form-control">
 						<option value="">---</option>
 						<option value="ok" selected="selected">ok</option>
@@ -63,24 +63,24 @@
 					</select>
 				</div>
 				<label for="feedback_gotoTop"
-					class="col-md-1 col-xs-12 col-form-label">gotoTop:</label>
-				<div class="col-lg-2 col-md-2 col-xs-12">
+					class="col-md-1 col-12 col-form-label">gotoTop:</label>
+				<div class="col-lg-2 col-md-2 col-12">
 					<select id="feedback_gotoTop" class="form-control">
 						<option value="true">true</option>
 						<option value="false">false</option>
 					</select>
 				</div>
 				<label for="feedback_block"
-					class="col-md-1 col-xs-12 col-form-label">block:</label>
-				<div class="col-lg-2 col-md-2 col-xs-12">
+					class="col-md-1 col-12 col-form-label">block:</label>
+				<div class="col-lg-2 col-md-2 col-12">
 					<select id="feedback_block" class="form-control">
 						<option value="true">true</option>
 						<option value="false">false</option>
 					</select>
 				</div>
 				<label for="feedback_closeLink"
-					class="col-md-1 col-xs-12 col-form-label">closeLink:</label>
-				<div class="col-lg-2 col-md-2 col-xs-12">
+					class="col-md-1 col-12 col-form-label">closeLink:</label>
+				<div class="col-lg-2 col-md-2 col-12">
 					<select id="feedback_closeLink" class="form-control">
 						<option value="true">true</option>
 						<option value="false">false</option>

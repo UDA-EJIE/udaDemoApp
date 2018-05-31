@@ -22,6 +22,7 @@ import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dto.JQGridDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -117,6 +118,7 @@ public interface UsuarioService {
 	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario, Pagination<Usuario> pagination);
 	Long findAllLikeCountJerarquia(Usuario filterUsuario, Pagination<Usuario> pagination);
 	List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario, Pagination<Usuario> pagination);
+	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 }
 
