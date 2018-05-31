@@ -9,10 +9,10 @@ import { Task } from './task';
 @Injectable()
 export class TaskService {
 
-  private taskUrlBase = 'http://desarrollo.jakina.ejiedes.net:7001/x21aModulesWar/taskList/';
+  private taskUrlBase = 'http://local.ejiedes.net:7001/x21aModulesWar/taskList/';
   private taskUrlSufix = '/task';
 
-  private taskUrl = 'http://desarrollo.jakina.ejiedes.net:7001/x21aModulesWar/task/';
+  private taskUrl = 'http://local.ejiedes.net:7001/x21aModulesWar/task/';
 
   constructor(private http: Http) {
 

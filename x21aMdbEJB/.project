@@ -22,12 +22,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>oracle.eclipse.tools.weblogic.sharedLibraryFrameworkValidator</name>
+			<name>org.eclipse.babel.editor.rbeBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.babel.editor.rbeBuilder</name>
+			<name>oracle.eclipse.tools.weblogic.sharedLibraryFrameworkValidator</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

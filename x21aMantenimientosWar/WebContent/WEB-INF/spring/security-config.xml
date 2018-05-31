@@ -76,7 +76,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 				</map>
 			</list>
 		</property>
-		<property name="userChangeUrl" value="http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/"/>
+		<property name="userChangeUrl" value="http://local.ejiedes.net:7001/x21aMantenimientosWar/"/>
 	</bean>
 
     <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">

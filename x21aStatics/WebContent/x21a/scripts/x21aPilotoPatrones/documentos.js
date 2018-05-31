@@ -6,7 +6,7 @@ $(document).ready(function () {
 	var $iframe = jQuery("#iframeDocumentos");
 	
 	// Url base que referencia la pantalla de documentos. Se deberá de sustituir por la url correspondiente.
-	var baseUrl = "http://desarrollo.jakina.ejiedes.net:7001/y52bComunWar/documentosExpedienteExternal";
+	var baseUrl = "http://local.ejiedes.net:7001/y52bComunWar/documentosExpedienteExternal";
 	
 	// Creación del diálogo mediante el componente RUP Dialogo. 
 	$div.rup_dialog({
