@@ -15,6 +15,10 @@
  
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
-<script src="${staticsUrl}/rup/js/rup.min.js" type="text/javascript"></script>
+<%-- DESARROLLO --%>
+<script src="${staticsUrl}/rup/js/rup.js" type="text/javascript"></script>
+<%-- PRODUCCION --%>
+<%--<script src="${staticsUrl}/rup/js/rup.min.js" type="text/javascript"></script> --%>
+
 <script src="${staticsUrl}/rup/js/externals/tether/tether.min.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/js/externals/bootstrap/bt4.min.js" type="text/javascript"></script>
