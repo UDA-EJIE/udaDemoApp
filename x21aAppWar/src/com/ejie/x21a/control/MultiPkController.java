@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
  
 @Controller
-@RequestMapping (value = "/multipk")
+@RequestMapping (value = "/table/multipk")
 
 public class MultiPkController  {
 
@@ -62,6 +62,12 @@ public class MultiPkController  {
         MultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
         return multiPk;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String getFiltroSimple (Model model) {
+		
+		return "multipk";
+	}
 
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
@@ -73,7 +79,7 @@ public class MultiPkController  {
 	 * @return List<MultiPk> 
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public @ResponseBody List<MultiPk> getAll(@ModelAttribute MultiPk filterMultiPk) {
 		MultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
 	    return this.multiPkService.findAll(filterMultiPk, null);

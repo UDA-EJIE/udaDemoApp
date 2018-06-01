@@ -71,7 +71,7 @@ import com.ejie.x38.util.DateTimeManager;
  */
 
 @Controller
-@RequestMapping (value = "/tableUsuario")
+@RequestMapping (value = "/table/simple")
 public class TableUsuarioController  {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
@@ -120,6 +120,12 @@ public class TableUsuarioController  {
         return usuario;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public String getFiltroSimple (Model model) {
+		
+		return "datatable";
+	}
+	
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
 	 * indicados en el objeto pasado como parámetro.
@@ -129,7 +135,7 @@ public class TableUsuarioController  {
 	 *            la búsqueda.
 	 * @return Lista de objetos correspondientes a la búsqueda realizada.
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/all",method = RequestMethod.GET)
 	public @ResponseBody List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return this.jqGridUsuarioService.findAllLike(usuarioFilter, null, false);

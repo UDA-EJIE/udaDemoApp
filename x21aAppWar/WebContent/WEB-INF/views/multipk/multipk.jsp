@@ -4,7 +4,7 @@
 <jsp:include page="includes/MultiPkFilterForm.jsp"></jsp:include>
 
 <table id="MultiPk" class="table table-striped table-bordered" 
-	data-url-base="../multipk"
+	data-url-base="./multipk"
 	data-filter-form="#MultiPk_filter_form" 
 	cellspacing="0" width="100%">
         <thead>
