@@ -129,43 +129,133 @@ jQuery(function($){
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
 	
-	$('#example').rup_datatable({
+	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
+	
+	 
+	function loadTable(){
+		$('#example').rup_datatable(loadPlugins());
+	}
+	
+	function loadPlugins(){
 
-       multiSelect: {
-            style:    'multi'
-        },
-        fixedHeader: {
+		if(localStorage.plugins === undefined){//si esta undefined es que es la primera vez.
+			localStorage.plugins = listaPlugins;
+		}
+		
+		var plugins = {};
+        
+		var fixedHeader = {
             footer: false,
             header:true
-        },
-        formEdit:{
-        	detailForm: "#example_detail_div",
-        	validate:{
-    			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-    		},
-    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
-        },
-        colReorder: {
-			fixedColumnsLeft: 1
-		},
-		seeker: {
-    		colModel: tableColModels
-		},
-		buttons: {
-			activate:true
+        };
+	    plugins.fixedHeader = fixedHeader;
+	    
+	    var filter = {
+		    	  id:"example_filter_form",
+		    	  filterToolbar:"example_filter_toolbar",
+		    	  collapsableLayerId:"example_filter_fieldset"
+		    }
+		    plugins.filter = filter;
+	    
+		if(localStorage.plugins.indexOf('multiSelection') > -1){
+		    var multiSelect = {
+		            style:    'multi'
+		        };
+		    plugins.multiSelect = multiSelect;
+		    $('#selection').prop('checked', false);
+		    $('#multiSelection').prop('checked', true);
+
+		}else{
+			$('#multiSelection').prop('checked', false);
 		}
-		,select: {
-			activate:true
-		},
-	    filter:{
-	    	  id:"example_filter_form",
-	    	  filterToolbar:"example_filter_toolbar",
-	    	  collapsableLayerId:"example_filter_fieldset"
-	    }
-    } );
+		
+		if(localStorage.plugins.indexOf('selection') > -1){
+		    var select = {
+		            activate:    true
+		        };
+		    plugins.select = select;
+		    $('#selection').prop('checked', true);
+		}else{
+			$('#selection').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('editForm') > -1){
+	        var formEdit = {
+	        	detailForm: "#example_detail_div",
+	        	validate:{
+	    			rules:{
+	    				"nombre":{required:true},
+	    				"apellido1":{required:true},
+	    				"fechaAlta":{date:true},
+	    				"fechaBaja":{date:true}
+	    			}
+	    		},
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	        }
+		    plugins.formEdit = formEdit;
+
+		    $('#editForm').prop('checked', true);
+		}else{
+			$('#selection').prop('checked', false);
+			$('#editForm').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('buttons') > -1){
+		    var buttons = {
+		            activate:    true
+		        };
+		    plugins.buttons = buttons;
+		    $('#buttons').prop('checked', true);
+
+		}else{
+			$('#buttons').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('seeker') > -1){
+		    var seeker = {
+		    		colModel: tableColModels
+		        };
+		    plugins.seeker = seeker;
+		    $('#seeker').prop('checked', true);
+		}else{
+			$('#seeker').prop('checked', false);
+		}
+
+		
+		if(localStorage.plugins.indexOf('colReorder') > -1){
+		    var colReorder = {
+		    		fixedColumnsLeft: 1
+		        };
+		    plugins.colReorder = colReorder;
+		    $('#colReorder').prop('checked', true);
+		}else{
+			$('#colReorder').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('groups') > -1){
+		    var groups = {
+		            style:    'multi'
+		        };
+		    plugins.groups = groups;
+		    $('#groups').prop('checked', true);
+		}else{
+			$('#groups').prop('checked', false);
+		}
+		localStorage.clear();
+		return plugins;
+	}
+	
+	$("#example_aplicar").click(function(){
+		if(localStorage.plugins === undefined){
+			localStorage.plugins = '';
+		}
+		$.each($(".checkbox input"), function( ) {
+			if($('#'+this.id).prop('checked')){
+				localStorage.plugins = localStorage.plugins+this.id
+			}
+		});
+		location.reload();
+	});
+	
+	loadTable();
 });

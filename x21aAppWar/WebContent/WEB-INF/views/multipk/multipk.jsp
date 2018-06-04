@@ -28,3 +28,54 @@
 </table>
 
 <jsp:include page="includes/MultiPkEdit.jsp"></jsp:include>
+
+   <div class="form-group">
+       <label id="pluginErrorLabel" for="plugin[]">Selección de Plugins</label>
+   </div>
+			    
+	<div class="row">
+				    
+          <div class="col-xs-6">
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="0" id="editForm"> Edicción en Formulario
+                  </label>
+              </div>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="1" id="colReorder"> Col Reorder
+                  </label>
+              </div>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="2" id="multiSelection"> Multiselección
+                  </label>
+              </div>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="3" id="seeker"> Seeker
+                  </label>
+              </div>
+	</div>
+						
+          <div class="col-xs-6">
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="4" id="selection" > Selección Simple
+                  </label>
+              </div>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="5" id="buttons"> Botones
+                  </label>
+              </div>
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" value="6" id="groups" > Agrupamiento
+                  </label>
+              </div>
+	</div>
+			 		
+</div>
+<span id="pluginError"></span>
+<button id="multipk_aplicar" type="button" class="ui-button ui-widget ui-state-default ui-corner-all">Aplicar Cambios</button>
