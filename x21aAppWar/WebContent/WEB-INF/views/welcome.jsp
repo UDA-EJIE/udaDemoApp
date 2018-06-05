@@ -108,7 +108,7 @@
 					<li>los <a
 						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos">videos</a></li>
 					<li>la <a target="_blank"
-						href="http://www.ejie.eus/x21aPilotoPatronesWar/">aplicación
+						href="http://www.ejie.eus/x21aAppWar/">aplicación
 							de demostración</a></li>
 				</ul>
 			</section>

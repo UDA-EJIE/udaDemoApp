@@ -38,7 +38,7 @@ import com.ejie.x21a.service.NoraPaisService;
 * @author UDA
  */
 @Controller
-@RequestMapping (value = "/table")
+@RequestMapping (value = "/tableLegacy")
 public class TableController  {
 
 	@Resource

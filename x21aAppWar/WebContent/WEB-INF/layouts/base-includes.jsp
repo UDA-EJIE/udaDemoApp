@@ -21,7 +21,7 @@ var	APP_RESOURCES = 'x21a',
 	CTX_PATH = '<%= request.getContextPath()%>/',
 	STATICS = '${staticsUrl}',
 	RUP = '${staticsUrl}/rup',
-	WAR_NAME = "x21aPilotoPatrones",
+	WAR_NAME = "x21aApp",
 	//model
 	LAYOUT = "${empty defaultLayout ?  mvcInterceptor.defaultLayout : defaultLayout}",
 	//mvc-config.xml
