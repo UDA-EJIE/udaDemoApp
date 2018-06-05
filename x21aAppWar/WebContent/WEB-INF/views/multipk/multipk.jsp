@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Multi PK</h2>
+<h2>Tabla configurable con multiples PKs</h2>
 
 <jsp:include page="includes/MultiPkFilterForm.jsp"></jsp:include>
 
@@ -30,7 +30,7 @@
 <jsp:include page="includes/MultiPkEdit.jsp"></jsp:include>
 
    <div class="form-group">
-       <label id="pluginErrorLabel" for="plugin[]">Selecci髇 de Plugins</label>
+       <label id="pluginErrorLabel" for="plugin[]">Selecci贸n de Plugins</label>
    </div>
 			    
 	<div class="row">
@@ -38,7 +38,7 @@
           <div class="col-xs-6">
               <div class="checkbox">
                   <label>
-                      <input type="checkbox" value="0" id="editForm"> Edicci髇 en Formulario
+                      <input type="checkbox" value="0" id="editForm"> Edici贸n en Formulario
                   </label>
               </div>
               <div class="checkbox">
@@ -48,7 +48,7 @@
               </div>
               <div class="checkbox">
                   <label>
-                      <input type="checkbox" value="2" id="multiSelection"> Multiselecci髇
+                      <input type="checkbox" value="2" id="multiSelection"> Multiselecci贸n
                   </label>
               </div>
               <div class="checkbox">
@@ -61,7 +61,7 @@
           <div class="col-xs-6">
               <div class="checkbox">
                   <label>
-                      <input type="checkbox" value="4" id="selection" > Selecci髇 Simple
+                      <input type="checkbox" value="4" id="selection" > Selecci贸n Simple
                   </label>
               </div>
               <div class="checkbox">
