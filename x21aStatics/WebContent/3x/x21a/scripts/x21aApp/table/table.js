@@ -242,10 +242,16 @@ jQuery(function($){
 		}
 		
 		if(localStorage.plugins.indexOf('groups') > -1){
-		    var groups = {
-		            style:    'multi'
+		    var rowGroup = {
+		    		startRender:false,
+		    		endRender: function ( rows, group ) {
+		 
+		                return $('<tr/>')
+		                    .append( '<td colspan="8"><b>'+group+' - '+rows[0].length+' Elemento(s) </b></td>' );
+		            },
+		    		dataSrc: 'nombre'
 		        };
-		    plugins.groups = groups;
+		    plugins.rowGroup = rowGroup;
 		    $('#groups').prop('checked', true);
 		}else{
 			$('#groups').prop('checked', false);
