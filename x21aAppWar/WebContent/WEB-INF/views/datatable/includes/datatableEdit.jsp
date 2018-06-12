@@ -61,14 +61,15 @@
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset">
-			<button id="example_detail_button_save" type="button">
+			<button id="example_detail_button_save" class="btn btn-outline-success" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="example_detail_button_save_repeat" type="button">
+			<button id="example_detail_button_save_repeat" class="btn btn-outline-success" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<a href="javascript:void(0)" role="button" id="example_detail_link_cancel"
-				class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
+			<button id="example_detail_link_cancel" class="btn btn-outline-danger" type="button">
+				<spring:message code="cancel" />
+			</button>
 		</div>
 	</div>
 </div>

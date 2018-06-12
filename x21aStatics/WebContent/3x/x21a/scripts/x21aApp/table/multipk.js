@@ -53,6 +53,13 @@ jQuery(function($){
 			$('#selection').prop('checked', false);
 		}
 		
+		if(localStorage.plugins.indexOf('noSelection') > -1){
+			console.log("Sin selección");
+		    $('#noSelection').prop('checked', true);
+		}else{
+			$('#noSelection').prop('checked', false);
+		}
+		
 		if(localStorage.plugins.indexOf('editForm') > -1){
 	        var formEdit = {
 	            	detailForm: "#MultiPk_detail_div",
@@ -135,9 +142,9 @@ jQuery(function($){
 		if(localStorage.plugins === undefined){
 			localStorage.plugins = '';
 		}
-		$.each($(".checkbox input"), function( ) {
+		$.each($(".pluginsControl input"), function( ) {
 			if($('#'+this.id).prop('checked')){
-				localStorage.plugins = localStorage.plugins+this.id
+				localStorage.plugins = localStorage.plugins+this.id+","
 			}
 		});
 		location.reload();

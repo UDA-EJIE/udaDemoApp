@@ -53,10 +53,13 @@
         </div>
       </div>
     </div>
+    <!-- Botonera del formulario de filtrado -->
     <div id="example_filter_buttonSet" class="right_buttons">
-
+    	<!-- Enlace de limpiar -->
+        <!-- <button id="example_filter_cleanLink" type="button" class="btn btn-warning btn-block">Limpiar</button> -->
         <a id="example_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
-        <button id="example_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" >Filtrar</button>
+        <!-- Botón de filtrado -->
+        <button id="example_filter_filterButton" type="button" class="btn btn-info btn-block">Filtrar</button>
     </div>
   </fieldset>
 </form>

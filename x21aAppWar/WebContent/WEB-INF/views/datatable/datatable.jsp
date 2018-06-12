@@ -48,54 +48,54 @@
 
 <jsp:include page="includes/datatableEdit.jsp"></jsp:include>
 
-
-   <div class="form-group">
-       <label id="pluginErrorLabel" for="plugin[]">Selección de Plugins</label>
-   </div>
-			    
-	<div class="row">
-				    
-          <div class="col-xs-6">
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="0" id="editForm"> Edición en Formulario
-                  </label>
-              </div>
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="1" id="colReorder"> Col Reorder
-                  </label>
-              </div>
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="2" id="multiSelection"> Multiselección
-                  </label>
-              </div>
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="3" id="seeker"> Seeker
-                  </label>
-              </div>
-	</div>
-						
-          <div class="col-xs-6">
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="4" id="selection" > Selección Simple
-                  </label>
-              </div>
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="5" id="buttons"> Botones
-                  </label>
-              </div>
-              <div class="checkbox">
-                  <label>
-                      <input type="checkbox" value="6" id="groups" > Agrupamiento
-                  </label>
-              </div>
-	</div>
-			 		
-</div>
-<span id="pluginError"></span>
-<button id="example_aplicar" type="button" class="ui-button ui-widget ui-state-default ui-corner-all">Aplicar Cambios</button>
+<form>
+   <label id="pluginErrorLabel" for="plugin[]">Selección de Plugins</label>
+   <fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Checkboxes</legend>				    
+	          <div class="col-sm-10">
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="editForm" class="custom-control-input" value="0">
+	                  <label for="editForm" class="custom-control-label">Edición en Formulario</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="colReorder" class="custom-control-input" value="1">
+	                  <label for="colReorder" class="custom-control-label">Col Reorder</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="seeker" class="custom-control-input" value="3">
+	                  <label for="seeker" class="custom-control-label">Seeker</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="buttons" class="custom-control-input" value="5">
+	                  <label for="buttons" class="custom-control-label">Botones</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="groups" class="custom-control-input" value="6">
+	                  <label for="groups" class="custom-control-label">Agrupamiento</label>
+	              </div>
+	          </div>
+		</div>
+  	</fieldset>
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+			<div class="col-sm-10">
+			    <div class="form-check custom-control custom-radio pluginsControl">
+			        <input type="radio" id="multiSelection" class="custom-control-input" name="seleccionTabla" value="2">
+			        <label for="multiSelection" class="custom-control-label">Multiselección</label>
+			    </div>
+		        <div class="form-check custom-control custom-radio pluginsControl">
+		            <input type="radio" id="selection" class="custom-control-input"  name="seleccionTabla" value="4">
+		            <label for="selection" class="custom-control-label">Selección Simple</label>
+		        </div>
+		        <div class="form-check custom-control custom-radio pluginsControl">
+		            <input type="radio" id="noSelection" class="custom-control-input"  name="seleccionTabla" value="7">
+		            <label for="noSelection" class="custom-control-label">Sin selección</label>
+		        </div>
+	        </div>
+		</div>
+  	</fieldset>
+	<span id="pluginError"></span>
+	<button id="example_aplicar" type="button" class="btn btn-primary">Aplicar Cambios</button>
+</form>

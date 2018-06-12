@@ -39,9 +39,14 @@
 				<!-- Botonera del formulario de filtrado -->
 				<div id="MultiPk_filter_buttonSet" class="right_buttons">
 					<!-- Enlace de limpiar -->
-					<a id="MultiPk_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
+					<!--<button id="MultiPk_filter_cleanLink" type="button" class="btn btn-warning btn-block">
+						<spring:message code="clear"/>
+					</button> -->
+        			<a id="MultiPk_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
 					<!-- Botón de filtrado -->
-					<button id="MultiPk_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" ><spring:message code="filter" /></button>
+					<button id="MultiPk_filter_filterButton" type="button" class="btn btn-info btn-block">
+						<spring:message code="filter" />
+					</button>
 				</div>
 			</fieldset>
 </form>

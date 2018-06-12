@@ -162,6 +162,7 @@ jQuery(function($){
 		            style:    'multi'
 		        };
 		    plugins.multiSelect = multiSelect;
+		    $('#noSelection').prop('checked', false);
 		    $('#selection').prop('checked', false);
 		    $('#multiSelection').prop('checked', true);
 
@@ -174,9 +175,17 @@ jQuery(function($){
 		            activate:    true
 		        };
 		    plugins.select = select;
+		    $('#noSelection').prop('checked', false);
 		    $('#selection').prop('checked', true);
 		}else{
 			$('#selection').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('noSelection') > -1){
+			console.log("Sin selección");
+		    $('#noSelection').prop('checked', true);
+		}else{
+			$('#noSelection').prop('checked', false);
 		}
 		
 		if(localStorage.plugins.indexOf('editForm') > -1){
@@ -249,9 +258,9 @@ jQuery(function($){
 		if(localStorage.plugins === undefined){
 			localStorage.plugins = '';
 		}
-		$.each($(".checkbox input"), function( ) {
+		$.each($(".pluginsControl input"), function( ) {
 			if($('#'+this.id).prop('checked')){
-				localStorage.plugins = localStorage.plugins+this.id
+				localStorage.plugins = localStorage.plugins+this.id+","
 			}
 		});
 		location.reload();
