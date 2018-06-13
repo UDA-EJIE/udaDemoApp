@@ -131,6 +131,12 @@ jQuery(function($){
 	
 	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
+	var allowedPluginsBySelecionType = {
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection'],
+		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection']
+	};
+	
 	 
 	function loadTable(){
 		$('#example').rup_datatable(loadPlugins());
@@ -159,8 +165,8 @@ jQuery(function($){
 	    
 		if(localStorage.plugins.indexOf('multiSelection') > -1){
 		    var multiSelect = {
-		            style:    'multi'
-		        };
+	            style: 'multi'
+	        };
 		    plugins.multiSelect = multiSelect;
 		    $('#noSelection').prop('checked', false);
 		    $('#selection').prop('checked', false);
@@ -172,8 +178,8 @@ jQuery(function($){
 		
 		if(localStorage.plugins.indexOf('selection') > -1){
 		    var select = {
-		            activate:    true
-		        };
+	            activate: true
+	        };
 		    plugins.select = select;
 		    $('#noSelection').prop('checked', false);
 		    $('#selection').prop('checked', true);
@@ -182,8 +188,7 @@ jQuery(function($){
 		}
 		
 		if(localStorage.plugins.indexOf('noSelection') > -1){
-			console.log("Sin selección");
-		    $('#noSelection').prop('checked', true);
+			$('#noSelection').prop('checked', true);
 		}else{
 			$('#noSelection').prop('checked', false);
 		}
@@ -264,11 +269,15 @@ jQuery(function($){
 		if(localStorage.plugins === undefined){
 			localStorage.plugins = '';
 		}
-		$.each($(".pluginsControl input"), function( ) {
-			if($('#'+this.id).prop('checked')){
-				localStorage.plugins = localStorage.plugins+this.id+","
+		
+		var selectionType = $("input[name = example_seleccionTabla]:checked")[0].id;
+		
+		$.each($("#example_tableConfiguration .pluginsControl input"), function() {
+			if($('#'+this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id) > -1){
+				localStorage.plugins = localStorage.plugins+this.id+",";
 			}
 		});
+		
 		location.reload();
 	});
 	

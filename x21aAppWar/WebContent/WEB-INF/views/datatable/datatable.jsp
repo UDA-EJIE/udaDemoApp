@@ -48,11 +48,11 @@
 
 <jsp:include page="includes/datatableEdit.jsp"></jsp:include>
 
-<form>
-   <label id="pluginErrorLabel" for="plugin[]">Selección de Plugins</label>
+<form id="example_tableConfiguration">
+   <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
-			  <legend class="col-form-label col-sm-2 pt-0">Checkboxes</legend>				    
+			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
 	          <div class="col-sm-10">
 	              <div class="form-check custom-control custom-checkbox pluginsControl">
 	                  <input type="checkbox" id="editForm" class="custom-control-input" value="0">
@@ -79,18 +79,18 @@
   	</fieldset>
 	<fieldset class="form-group">
 		<div class="row">
-			<legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
 			    <div class="form-check custom-control custom-radio pluginsControl">
-			        <input type="radio" id="multiSelection" class="custom-control-input" name="seleccionTabla" value="2">
+			        <input type="radio" id="multiSelection" class="custom-control-input" name="example_seleccionTabla" value="2">
 			        <label for="multiSelection" class="custom-control-label">Multiselección</label>
 			    </div>
 		        <div class="form-check custom-control custom-radio pluginsControl">
-		            <input type="radio" id="selection" class="custom-control-input"  name="seleccionTabla" value="4">
+		            <input type="radio" id="selection" class="custom-control-input"  name="example_seleccionTabla" value="4">
 		            <label for="selection" class="custom-control-label">Selección Simple</label>
 		        </div>
 		        <div class="form-check custom-control custom-radio pluginsControl">
-		            <input type="radio" id="noSelection" class="custom-control-input"  name="seleccionTabla" value="7">
+		            <input type="radio" id="noSelection" class="custom-control-input"  name="example_seleccionTabla" value="7">
 		            <label for="noSelection" class="custom-control-label">Sin selección</label>
 		        </div>
 	        </div>

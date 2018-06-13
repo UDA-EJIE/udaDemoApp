@@ -14,7 +14,8 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>table</h2> <!-- Titulo pagina -->
+<!-- Titulo pagina -->
+<!-- <h2>table</h2> -->
 
 <div id="example_detail_div" class="rup-table-formEdit-detail">
 	<div id ="example_detail_navigation"></div>
