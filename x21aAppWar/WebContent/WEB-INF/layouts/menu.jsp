@@ -115,7 +115,7 @@
 		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/inlineEditExcelMode"><spring:message code="tablaLegacy.edicionLineaExcel" /></a>
 		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/inlineEdit"><spring:message code="tablaLegacy.edicionLinea" /></a>
 	            <a class="dropdown-item" href="/x21aAppWar/tableLegacy/inlineEditMultiselection"><spring:message code="tablaLegacy.edicionLineaMultiseleccion" /></a>
-		        <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/tableLegacy/grouping"><spring:message code="tablaLegacy.agrupamiento" /></a> -->
+		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/grouping"><spring:message code="tablaLegacy.agrupamiento" /></a>
 		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/masterDetail"><spring:message code="tablaLegacy.maestroDetalle" /></a>
 		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/tableLoadOnStartUp"><spring:message code="tablaLegacy.loadStartupFalse" /></a>
 		        <a class="dropdown-item" href="/x21aAppWar/tableLegacy/dialog"><spring:message code="tablaLegacy.tablaDialogo" /></a>
