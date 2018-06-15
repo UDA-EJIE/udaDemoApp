@@ -18,10 +18,10 @@
 
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
-<table id="example" class="table table-striped table-bordered" 
+<table id="example" class="tableFit table-striped table-bordered" 
 	data-url-base="./simple"
 	data-filter-form="#example_filter_form" 
-	cellspacing="0" width="100%">
+	cellspacing="0">
         <thead>
             <tr>
                 <th data-col-prop="id">Id</th>
