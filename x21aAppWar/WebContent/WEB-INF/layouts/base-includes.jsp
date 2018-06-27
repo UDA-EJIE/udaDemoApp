@@ -21,7 +21,7 @@ var	APP_RESOURCES = 'x21a',
 	CTX_PATH = '<%= request.getContextPath()%>/',
 	STATICS = '${staticsUrl}',
 	RUP = '${staticsUrl}/rup',
-	WAR_NAME = "x21aPilotoPatrones",
+	WAR_NAME = "x21aApp",
 	//model
 	LAYOUT = "${empty defaultLayout ?  mvcInterceptor.defaultLayout : defaultLayout}",
 	//mvc-config.xml
@@ -33,11 +33,7 @@ var	APP_RESOURCES = 'x21a',
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
 </script>
 
-<!-- Scripts RUP sin minimizar (DESARROLLO) -->
+<!-- Scripts RUP -->
 <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
-<%-- Scripts RUP minimizados (PRODUCCION) --%>
-<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%> --%>
-
-<%@include file="/WEB-INF/layouts/includes/themeswitcher.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>

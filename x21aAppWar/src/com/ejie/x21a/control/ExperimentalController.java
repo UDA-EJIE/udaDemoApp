@@ -25,6 +25,7 @@ import n38c.exe.N38API;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -38,9 +39,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import weblogic.apache.xpath.XPathAPI;
+import org.apache.xpath.XPathAPI;
 
-import com.bea.core.repackaged.springframework.beans.factory.annotation.Autowired;
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.service.IberdokFileService;
