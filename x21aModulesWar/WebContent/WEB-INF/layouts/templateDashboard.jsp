@@ -1,16 +1,16 @@
 <!doctype html>
 <%--  
  -- Copyright 2013 E.J.I.E., S.A.
- -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
- -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  -- 
  -- http://ec.europa.eu/idabc/eupl.html
  -- 
- -- Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
- -- el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
- -- SIN GARANTÃAS NI CONDICIONES DE NINGÃN TIPO, ni expresas ni implÃ­citas.
- -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia. 
  --%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
@@ -28,10 +28,8 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	
 	
-	<%-- Estilos RUP sin minimizar (DESARROLLO) --%>
-<%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%> --%>
-	<%-- Estilos RUP sin minimizar (PRODUCCION) --%>
-	<%@include file="/WEB-INF/layouts/includes/rup.styles.min.inc" %>
+	<%-- Estilos RUP --%>
+	<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
 	<%-- Estilos Aplicacion --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	

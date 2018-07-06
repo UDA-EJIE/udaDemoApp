@@ -34,9 +34,11 @@ var	APP_RESOURCES = 'x21a',
 </script>
 
 <%-- Scripts RUP sin minimizar (DESARROLLO) --%>
-<%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
+<%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%> --%>
+<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%> --%>
 <%-- Scripts RUP minimizados (PRODUCCION) --%>
-<%-- <%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%> --%>
+<%@include file="/WEB-INF/layouts/includes/rup.styles.min.inc"%>
+<%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>
 <%@include file="/WEB-INF/layouts/includes/themeswitcher.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>
