@@ -132,9 +132,9 @@ jQuery(function($){
 	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection'],
-		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection']
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter'],
+		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter']
 	};
 	
 	 
@@ -261,6 +261,14 @@ jQuery(function($){
 		}else{
 			$('#groups').prop('checked', false);
 		}
+		
+		if(localStorage.plugins.indexOf('multiFilter') > -1){
+			plugins.multiFilter = { idFilter:"generated",labelSize:255,userFilter:"udaPruebas"};
+			$('#multiFilter').prop('checked', true);
+		}else{
+			$('#multiFilter').prop('checked', false);
+		}
+		
 		localStorage.clear();
 		return plugins;
 	}
