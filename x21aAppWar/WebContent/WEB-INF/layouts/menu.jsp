@@ -104,6 +104,7 @@
 	    <div class="dropdown-menu" aria-labelledby="datatableDropdown">
 	    	<a class="dropdown-item" href="/x21aAppWar/table/simple"><spring:message code="tabla.simple" /></a>
 	    	<a class="dropdown-item" href="/x21aAppWar/table/multipk"><spring:message code="tabla.multipk" /></a>
+	    	<a class="dropdown-item" href="/x21aAppWar/table/simple/masterDetail"><spring:message code="tabla.maestroDetalle" /></a>
 	    	<div class="dropdown-divider"></div>
 	    	<div class="dropdown-submenu" >
               <a class="dropdown-item dropdown-toggle" href="#"><spring:message code="tablaLegacy" /></a>

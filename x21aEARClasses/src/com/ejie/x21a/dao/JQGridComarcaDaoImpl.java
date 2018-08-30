@@ -195,6 +195,7 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (jqGridRequestDto != null) {
+			jqGridRequestDto.setSidx("t1."+jqGridRequestDto.getSidx());
 			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
 		}
 		
@@ -378,10 +379,10 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 			Boolean startsWith) {
 		
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.CODE CODE, t1.DESC_ES DESC_ES, t1.DESC_EU DESC_EU, t1.CSS CSS, t2.CODE PROVINCIACODE ");
 		
 		// FROM
-        sbSQL.append("FROM USUARIO t1 ");
+        sbSQL.append("FROM COMARCA t1, PROVINCIA t2 ");
         
 		// FILTRADO 
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(comarca, startsWith);
@@ -392,7 +393,7 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");		
 		
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(sbSQL, jqGridRequestDto, Comarca.class, filterParamList, "ID");
+		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(sbSQL, jqGridRequestDto, Comarca.class, filterParamList, "CODE");
 		
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Comarca>(this.rwMapPK, jqGridRequestDto), filterParamList.toArray());
 	}

@@ -533,6 +533,11 @@
         <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableMasterDetail-includes.jsp"/>
     </definition>
+    
+     <definition extends="template" name="newTableMasterDetail">
+        <put-attribute name="content" value="/WEB-INF/views/datatable/tableMasterDetail.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/datatable/tableMasterDetail-includes.jsp"/>
+    </definition>
      
     <definition extends="template" name="tableMasterDetailMultiselection">
         <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>

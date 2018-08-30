@@ -383,10 +383,10 @@ public class JQGridLocalidadDaoImpl implements JQGridLocalidadDao {
 			Boolean startsWith) {
 		
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
+		StringBuilder sbSQL = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESC_ES,t1.DESC_EU DESC_EU,t1.CSS CSS ");
 		
 		// FROM
-        sbSQL.append("FROM USUARIO t1 ");
+        sbSQL.append("FROM LOCALIDAD t1, COMARCA t2 ");
         
 		// FILTRADO 
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(comarca, startsWith);
@@ -397,7 +397,7 @@ public class JQGridLocalidadDaoImpl implements JQGridLocalidadDao {
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");		
 		
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(sbSQL, jqGridRequestDto, Localidad.class, filterParamList, "ID");
+		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(sbSQL, jqGridRequestDto, Localidad.class, filterParamList, "CODE");
 		
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Localidad>(this.rwMapPK, jqGridRequestDto), filterParamList.toArray());
 	}
