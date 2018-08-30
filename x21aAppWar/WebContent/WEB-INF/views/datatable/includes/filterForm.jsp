@@ -25,12 +25,7 @@
 	</div>
     
     <div class="form-row">
-    	<div class="form-group fix-align col-sm">  
-	    	<label for="ejie_filter_table" class="formulario_linea_label">EJIE</label>
-	    	<input type="text" name="ejie" class="formulario_linea_input form-control" id="ejie_filter_table" />
-	    </div>
-	    
-	    <div class="form-group fix-align col-sm">
+    	<div class="form-group fix-align col-sm">
 	    	<label for="fechaAlta_filter_table" class="formulario_linea_label">Fecha de alta</label>
 	    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_filter_table" />
 	    </div>
@@ -38,6 +33,11 @@
 	    <div class="form-group fix-align col-sm">
 	    	<label for="fechaBaja_filter_table" class="formulario_linea_label">Fecha de baja</label>
 	    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_filter_table" />
+	    </div>
+	    
+	    <div class="form-group fix-align col-sm">  
+	    	<label for="ejie_filter_table" class="formulario_linea_label">EJIE</label>
+	    	<input type="text" name="ejie" class="formulario_linea_input form-control" id="ejie_filter_table" />
 	    </div>
 	    
 	    <div class="form-group fix-align col-sm">  

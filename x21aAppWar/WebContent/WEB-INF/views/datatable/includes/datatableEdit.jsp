@@ -47,20 +47,20 @@
 			</div>
 			<div class="form-row">       
 			    <div class="form-group fix-align col-sm">
-			    	<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
-			    	<input type="checkbox" name="ejie" class="formulario_linea_input form-control" id=ejie_detail_table value="1" />
-			    </div>  
+			    	<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
+			    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
+			    </div>
 			    
 			    <div class="form-group fix-align col-sm">
 			    	<label for="fechaAlta_detail_table" class="formulario_linea_label"><spring:message code="fechaAlta" /></label>
 			    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">       
+			<div class="form-row">
 			    <div class="form-group fix-align col-sm">
-			    	<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
-			    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
-			    </div>  
+			    	<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
+			    	<input type="checkbox" name="ejie" class="formulario_linea_input form-control" id=ejie_detail_table value="1" />
+			    </div> 
 			    
 			    <div class="form-group fix-align col-sm">
 			    	<label for="rol_detail_table" class="formulario_linea_label"><spring:message code="rol" /></label>
@@ -77,7 +77,7 @@
 			<button id="example_detail_button_save_repeat" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<button id="example_detail_link_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
+			<button id="example_detail_button_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

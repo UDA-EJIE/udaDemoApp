@@ -60,12 +60,21 @@
 						<input type="text" name="rol" class="formulario_linea_input" id="rol_filter_table" />
 					</div>
 				</div>
+				
 				<div id="table_filter_buttonSet" class="right_buttons">
-<%-- 					<button id="table_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" ><spring:message code="filter" /></button>					<a id="table_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a> --%>
-					<input id="table_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" value='<spring:message code="filter" />' />
-										<a id="table_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
-					
-				</div>
+			        <button id="table_filter_cleanButton" type="button" class="btn btn-warning rup-limpiar">
+			        	<i class="fa fa-eraser"></i>
+			        	<span>
+			        		<spring:message code="clear" />
+			        	</span>
+			        </button>
+			        <button id="table_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
+			        	<i class="fa fa-filter"></i>
+			        	<span>
+			        		<spring:message code="filter" />
+			        	</span>
+			        </button>
+			    </div>
 			</fieldset>
 		</form>
 	</div>
@@ -119,16 +128,18 @@
 			</div>
 		</form>
 	</div>
+	
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset">
-			<button id="table_detail_button_save" type="button">
+		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+			<button id="table_detail_button_save" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="table_detail_button_save_repeat" type="button">
+			<button id="table_detail_button_save_repeat" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<a href="javascript:void(0)" role="button" id="table_detail_link_cancel"
-				class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
+			<button id="table_detail_button_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="cancel" />
+			</button>
 		</div>
 	</div>
 </div>
