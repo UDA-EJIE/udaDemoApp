@@ -350,7 +350,8 @@
 	},
 	"tabsMixta" :{
 		"pestanaUrl" 	:"Pestaña con url_eu",
-		"pestanaHtml"  :"Pestaña con html_eu"
+		"pestanaHtml"  :"Pestaña con html_eu",
+		"pestanaMantenimiento"  :"Pestaña con mantenimiento_eu"
 	},
 	"tabsMaint" :{
 		"maint1"	:"Mantenimiento Simple 1_eu",

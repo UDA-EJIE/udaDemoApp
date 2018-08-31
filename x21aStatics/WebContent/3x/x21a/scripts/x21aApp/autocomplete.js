@@ -35,7 +35,11 @@ jQuery(document).ready(function(){
 			{label: "scál2a", value:"scala_value"}
 		],
 		defaultValue : "java",
-		contains : false
+		contains : false,
+		select:function(){
+			var value=$("#autocomplete").rup_autocomplete("getRupValue");
+			alert('Seleccionado: '+value);
+			}
 	});
 	
 	$("#autocompleteNotAccent").rup_autocomplete({
