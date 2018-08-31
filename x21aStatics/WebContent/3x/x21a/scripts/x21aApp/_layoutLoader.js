@@ -127,9 +127,11 @@ jQuery(document).ready(function(){
 				//Elementos (url)
 				"simple" : { "i18nCaption" : "tableSimple" },
 				"multipk" : { "i18nCaption" : "tableMultipk" },
+				"maestroDetalle" : { "i18nCaption" : "tableMaestroDetalle" },
 				"subLevel":[
 				    {"i18nCaption": "tableSimple", "url": "/x21aAppWar/table/simple" },
-				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" }
+				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
+				    {"i18nCaption": "tableMaestroDetalle", "url": "/x21aAppWar/table/simple/masterDetail" }
 				]
 			},
 			"tableLegacy" : {

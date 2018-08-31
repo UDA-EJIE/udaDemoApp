@@ -54,7 +54,7 @@
         	<span>Limpiar</span>
         </button>
         <!-- Botón de filtrado -->
-        <button id="example_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
+        <button id="example_filter_filterButton" type="button" class="btn rup-filtrar rup-filter-dropdown">
         	<i class="fa fa-filter"></i>
         	<span>Filtrar</span>        	
         </button>

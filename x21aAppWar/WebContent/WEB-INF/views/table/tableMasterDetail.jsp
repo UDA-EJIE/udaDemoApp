@@ -28,25 +28,25 @@
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
-						<label for="code_filter_comarca" class="formulario_linea_label">code:</label>
+						<label for="code_filter_comarca" class="formulario_linea_label">code</label>
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia:</label>
+						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
 						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs:</label>
+						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
 						<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
-						<label for="descEu_filter_comarca" class="formulario_linea_label">descEu:</label>
+						<label for="descEu_filter_comarca" class="formulario_linea_label">descEu</label>
 						<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="css_filter_comarca" class="formulario_linea_label">css:</label>
+						<label for="css_filter_comarca" class="formulario_linea_label">css</label>
 						<input type="text" name="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
 					</div>
 				</div>
@@ -87,25 +87,25 @@
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
-						<label for="code_filter_localidad" class="formulario_linea_label">code:</label>
+						<label for="code_filter_localidad" class="formulario_linea_label">code</label>
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia:</label>
+						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia</label>
 						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs:</label>
+						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs</label>
 						<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_filter_localidad" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
-						<label for="descEu_filter_localidad" class="formulario_linea_label">descEu:</label>
+						<label for="descEu_filter_localidad" class="formulario_linea_label">descEu</label>
 						<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="css_filter_localidad" class="formulario_linea_label">css:</label>
+						<label for="css_filter_localidad" class="formulario_linea_label">css</label>
 						<input type="text" name="css" class="formulario_linea_input form-control" id="css_filter_localidad" />
 					</div>
 				</div>

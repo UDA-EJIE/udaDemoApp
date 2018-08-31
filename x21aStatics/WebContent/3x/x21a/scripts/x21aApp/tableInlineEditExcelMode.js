@@ -55,7 +55,7 @@ jQuery(function($){
     			}
         	}
         },
-        multifilter:{ idFilter:"inlineExcelMode",labelSize:255},
+        multifilter:{ idFilter:"inlineExcelMode",labelSize:255,userFilter:"udaPruebas"},
         report: options_table_report
 	});
 	

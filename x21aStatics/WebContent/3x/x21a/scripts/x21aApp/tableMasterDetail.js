@@ -83,7 +83,7 @@ jQuery(function($){
         usePlugins:[
  			"formEdit",
         	"feedback",
-			"toolbar",
+//			"toolbar",
         	"contextMenu",
         	"responsive",
         	"filter",
@@ -97,7 +97,7 @@ jQuery(function($){
         masterDetail:{
         	detail: "#localidad"
         },
-        multifilter:{ idFilter:"maestro",labelSize:255}
+        multifilter:{ idFilter:"maestro",labelSize:255,userFilter:"udaPruebas"}
 	});
 
 	$("#localidad").rup_table({
@@ -151,7 +151,7 @@ jQuery(function($){
         ],
         usePlugins:["formEdit",
                 	"feedback",
-        			"toolbar",
+//        			"toolbar",
                 	"contextMenu",
                 	"fluid",
                 	"filter",
@@ -168,6 +168,6 @@ jQuery(function($){
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
         },
-        multifilter:{ idFilter:"detalle",labelSize:255}
+        multifilter:{ idFilter:"detalle",labelSize:255,userFilter:"udaPruebas"}
 	});
 });
