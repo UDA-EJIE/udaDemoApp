@@ -78,7 +78,7 @@ import com.ejie.x38.validation.ValidationManager;
  */
 
 @Controller
-@RequestMapping (value = "/table/simple")
+@RequestMapping (value = "/table")
 public class TableUsuarioController  {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
@@ -133,7 +133,7 @@ public class TableUsuarioController  {
         return usuario;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		
 		return "datatable";

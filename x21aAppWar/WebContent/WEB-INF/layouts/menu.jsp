@@ -102,9 +102,9 @@
 	  <li class="nav-item dropdown">
 	  	<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i><spring:message code="tabla" /></a>
 	    <div class="dropdown-menu" aria-labelledby="datatableDropdown">
-	    	<a class="dropdown-item" href="/x21aAppWar/table/simple"><spring:message code="tabla.simple" /></a>
+	    	<a class="dropdown-item" href="/x21aAppWar/table/configurable"><spring:message code="tabla.configurable" /></a>
 	    	<a class="dropdown-item" href="/x21aAppWar/table/multipk"><spring:message code="tabla.multipk" /></a>
-	    	<a class="dropdown-item" href="/x21aAppWar/table/simple/masterDetail"><spring:message code="tabla.simple.maestroDetalle" /></a>
+	    	<a class="dropdown-item" href="/x21aAppWar/table/masterDetail"><spring:message code="tabla.masterDetail" /></a>
 	    	<div class="dropdown-divider"></div>
 	    	<div class="dropdown-submenu" >
               <a class="dropdown-item dropdown-toggle" href="#"><spring:message code="tablaLegacy" /></a>

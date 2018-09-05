@@ -11,7 +11,7 @@
 				<!-- Campos del formulario de detalle -->
 				<div class="form-group col-sm">
 					<label for="ida_detail_table" class="formulario_linea_label"><spring:message code="ida"/></label>
-					<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_detail_table"/>
+					<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_detail_table" autofocus/>
 				</div>
 				<div class="form-group col-sm">
 					<label for="idb_detail_table" class="formulario_linea_label"><spring:message code="idb"/></label>
@@ -39,11 +39,11 @@
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
 			<!-- Botón Guardar -->
-			<button id="MultiPk_detail_button_save" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
+			<button id="MultiPk_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
 			<!-- Enlace cancelar -->
-			<button id="MultiPk_detail_button_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
+			<button id="MultiPk_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

@@ -125,13 +125,13 @@ jQuery(document).ready(function(){
 				//Literal
 				"i18nCaption" : "table",
 				//Elementos (url)
-				"simple" : { "i18nCaption" : "tableSimple" },
+				"configurable" : { "i18nCaption" : "tableConfigurable" },
 				"multipk" : { "i18nCaption" : "tableMultipk" },
-				"maestroDetalle" : { "i18nCaption" : "tableMaestroDetalle" },
+				"masterDetail" : { "i18nCaption" : "tableMasterDetail" },
 				"subLevel":[
-				    {"i18nCaption": "tableSimple", "url": "/x21aAppWar/table/simple" },
+				    {"i18nCaption": "tableConfigurable", "url": "/x21aAppWar/table/configurable" },
 				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
-				    {"i18nCaption": "tableMaestroDetalle", "url": "/x21aAppWar/table/simple/masterDetail" }
+				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" }
 				]
 			},
 			"tableLegacy" : {
