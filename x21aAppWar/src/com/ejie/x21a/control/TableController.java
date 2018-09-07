@@ -93,6 +93,12 @@ public class TableController  {
 		return "tableFormEditTabs";
 	}
 	
+	@RequestMapping(value = "formEditTabs2", method = RequestMethod.GET)
+	public String getFormEditTabs2(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tablaFormEditMultiselection", null, LocaleContextHolder.getLocale()));
+		return "tableFormEditTabs2";
+	}
+	
 	@RequestMapping(value = "formEditMultiselection", method = RequestMethod.GET)
 	public String getFormEditMultiselection(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaFormEditMultiselection", null, LocaleContextHolder.getLocale()));
