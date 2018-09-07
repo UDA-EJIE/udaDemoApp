@@ -18,8 +18,8 @@ jQuery(function($){
 		,buttons: {
 			activate:true
 		}
-		,select: {
-	            activate: true
+		,multiSelect: {
+			style: 'multi'
         },
         formEdit: {
 	        	detailForm: "#comarca_detail_div",
@@ -50,13 +50,13 @@ jQuery(function($){
 		,buttons: {
 			activate:true
 		}
-		,select: {
-	            activate: true
+		,multiSelect: {
+			style: 'multi'
         },order: [[ 0, 'asc' ]],
-        masterDetail:{
+      /*  masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
-        },
+        },*/
         formEdit: {
         	detailForm: "#localidad_detail_div",
         	validate:{
