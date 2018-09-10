@@ -519,6 +519,10 @@
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
     </definition>
+     <definition extends="templateNoHeads" name="tableFormEditTabs2">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableLoadOnStartUp.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableLoadOnStartUp-includes.jsp"/>
+    </definition>
     <definition extends="template" name="tableFormEditMultiselection">
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEditMultiselection-includes.jsp"/>

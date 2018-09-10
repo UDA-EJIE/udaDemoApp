@@ -23,11 +23,11 @@ jQuery(document).ready(function(){
 		source: ["Ayuntamiento","Diputación","Policía","Bomberos"],
 		blank:"-1",
 		selected:1,
-		change : function() { alert("my own change"); }
+		change : function() {  }
 	});
 	$('#provincia').rup_combo({
 		source: ["Álava","Vizcaya","Gipúzcoa"],
-		change : function() { alert("my own change2"); }
+		change : function() { }
 	});
 	$('#dptoProv').rup_combo({
 		parent: [ "departamento", "provincia" ],
@@ -63,6 +63,10 @@ jQuery(document).ready(function(){
 		parent: [ "departamentoRemote", "provinciaRemote" ],
 		source : "comboEnlazadoMultiple/dptoProvRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+	});
+	
+	$("#dptoProvRemote").on("change", function(){
+		console.log("change");
 	});
 	
 	//MIXTO I

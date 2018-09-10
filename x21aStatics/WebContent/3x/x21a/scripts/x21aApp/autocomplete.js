@@ -93,14 +93,25 @@ jQuery(document).ready(function(){
 //		defaultValue : "java",
 		contains : false,
 		combobox: true,
-		minLength:0
+		minLength:0,
+		select:function(){
+			var value=$("#comboboxLocal").rup_autocomplete("getRupValue");
+			alert('Seleccionado: '+value);
+			}
 	});
 
 	$("#comboboxRemoto").rup_autocomplete({
 		source : "autocomplete/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
-		minLength: 4,
-		combobox: true
+		menuMaxHeight: 325,
+		minLength:3,
+		combobox: true,
+		width: 500,
+		contains:true,
+		select:function(){
+			var value=$("#comboboxRemoto").rup_autocomplete("getRupValue");
+			alert('Seleccionado: '+value);
+			}
 	});
 		
 });

@@ -21,6 +21,8 @@ jQuery(document).ready(function(){
 			{i18nCaption:"pestanaUrl", url:"tab2Fragment"},
 			{i18nCaption:"pestanaHtml", layer:".estiloMixto"},
 			{i18nCaption:"pestanaUrl", url:"tab3Fragment"},
-			{i18nCaption:"pestanaMantenimiento", url:"../tableLegacy/formEditTabs"}]
+			{i18nCaption:"pestanaMantenimiento", url:"../tableLegacy/formEditTabs"},
+			{i18nCaption:"pestanaMantenimiento2", url:"../tableLegacy/formEditTabs2"}],
+			cache:false
 	});
 });
