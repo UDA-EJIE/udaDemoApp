@@ -52,7 +52,7 @@ jQuery(function($){
 		}
 		,multiSelect: {
 			style: 'multi'
-        },order: [[ 0, 'asc' ]],
+        },order: [[ 1, 'asc' ]],
       /*  masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
