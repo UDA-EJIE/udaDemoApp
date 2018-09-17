@@ -53,10 +53,10 @@ jQuery(function($){
 		,select: {
 			style: 'multi'
         },order: [[ 1, 'asc' ]],
-      /*  masterDetail:{
+        masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
-        },*/
+        },
         formEdit: {
         	detailForm: "#localidad_detail_div",
         	validate:{
