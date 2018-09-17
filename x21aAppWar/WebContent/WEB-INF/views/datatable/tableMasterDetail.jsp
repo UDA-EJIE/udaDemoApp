@@ -99,46 +99,30 @@
 			
 			<div class="form-row">    
 				<div class="form-group col-sm">
-					<label for="id_detailForm_table" class="formulario_linea_label"><spring:message code="id" /></label>
-			    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
+					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
+			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
 			    </div>
 			    
 			    <div class="form-group col-sm">
-			    	<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre" /></label>
-			    	<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" />
+			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
+			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
-			    	<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1" /></label>
-			    	<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" />
+			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
+			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
 			    </div>  
 			    
 			    <div class="form-group col-sm">
-			    	<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2" /></label>
-			    	<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" />
+			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
+			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">       
+			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
-			    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
-			    </div>
-			    
-			    <div class="form-group fix-align col-sm">
-			    	<label for="fechaAlta_detail_table" class="formulario_linea_label"><spring:message code="fechaAlta" /></label>
-			    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
-			    </div>
-			</div>
-			<div class="form-row">
-			    <div class="form-group fix-align col-sm">
-			    	<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
-			    	<input type="checkbox" name="ejie" class="formulario_linea_input form-control" id=ejie_detail_table value="1" />
-			    </div> 
-			    
-			    <div class="form-group fix-align col-sm">
-			    	<label for="rol_detail_table" class="formulario_linea_label"><spring:message code="rol" /></label>
-			    	<input type="text" name="rol" class="formulario_linea_input form-control" id="rol_detail_table" />
+			    	<label for="provincia_detail_table" class="formulario_linea_label">provincia</label>
+			    	<input type="text" name="provincia" class="formulario_linea_input form-control" id="provincia_detail_table" />
 			    </div>
 			</div>			
 		</form>
@@ -214,7 +198,7 @@
         <thead>
             <tr>
                 <th data-col-prop="code" data-col-sidx="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="desc_Es">descEs</th>
+                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
                 <th data-col-prop="descEu" data-col-sidx="desc_Eu">descEu</th>
                 <th data-col-prop="css" >css</th>
             </tr>
@@ -239,46 +223,30 @@
 			
 			<div class="form-row">    
 				<div class="form-group col-sm">
-					<label for="id_detailForm_table" class="formulario_linea_label"><spring:message code="id" /></label>
-			    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
+					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
+			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
 			    </div>
 			    
 			    <div class="form-group col-sm">
-			    	<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre" /></label>
-			    	<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" />
+			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
+			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
-			    	<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1" /></label>
-			    	<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" />
+			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
+			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
 			    </div>  
 			    
 			    <div class="form-group col-sm">
-			    	<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2" /></label>
-			    	<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" />
+			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
+			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">       
+			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
-			    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
-			    </div>
-			    
-			    <div class="form-group fix-align col-sm">
-			    	<label for="fechaAlta_detail_table" class="formulario_linea_label"><spring:message code="fechaAlta" /></label>
-			    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
-			    </div>
-			</div>
-			<div class="form-row">
-			    <div class="form-group fix-align col-sm">
-			    	<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
-			    	<input type="checkbox" name="ejie" class="formulario_linea_input form-control" id=ejie_detail_table value="1" />
-			    </div> 
-			    
-			    <div class="form-group fix-align col-sm">
-			    	<label for="rol_detail_table" class="formulario_linea_label"><spring:message code="rol" /></label>
-			    	<input type="text" name="rol" class="formulario_linea_input form-control" id="rol_detail_table" />
+			    	<label for="comarca_detail_table" class="formulario_linea_label">comarca</label>
+			    	<input type="text" name="comarca" class="formulario_linea_input form-control" id="comarca_detail_table" />
 			    </div>
 			</div>			
 		</form>

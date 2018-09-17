@@ -18,7 +18,7 @@ jQuery(function($){
 		,buttons: {
 			activate:true
 		}
-		,multiSelect: {
+		,select: {
 			style: 'multi'
         },
         formEdit: {
@@ -50,7 +50,7 @@ jQuery(function($){
 		,buttons: {
 			activate:true
 		}
-		,multiSelect: {
+		,select: {
 			style: 'multi'
         },order: [[ 1, 'asc' ]],
       /*  masterDetail:{
