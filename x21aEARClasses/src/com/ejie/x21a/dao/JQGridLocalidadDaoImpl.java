@@ -391,7 +391,7 @@ public class JQGridLocalidadDaoImpl implements JQGridLocalidadDao {
 		// FILTRADO 
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(comarca, startsWith);
 		// Claula where  de filtrado
-		sbSQL.append(" WHERE 1=1 ").append(mapaWhere.get("query"));
+		sbSQL.append(" WHERE 1=1 AND t1.CODE_COMARCA= t2.CODE(+) ").append(mapaWhere.get("query"));
 		// Parámetros de filtrado
 		@SuppressWarnings("unchecked")
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");		
@@ -408,7 +408,7 @@ public class JQGridLocalidadDaoImpl implements JQGridLocalidadDao {
 	public List<TableRowDto<Localidad>> search(Localidad filterParams, Localidad searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
 		
 		// SELECT 
-		StringBuilder sbSQL = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESC_ES,t1.DESC_EU DESC_EU,t1.CSS CSS ");
+		StringBuilder sbSQL = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESCES,t1.DESC_EU DESCEU,t1.CSS CSS,t2.desc_es comarcadesces ");
 		
 		// FROM
 		sbSQL.append("FROM LOCALIDAD t1, COMARCA t2 ");

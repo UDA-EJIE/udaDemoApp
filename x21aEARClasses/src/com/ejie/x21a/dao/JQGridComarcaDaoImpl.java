@@ -404,7 +404,7 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 	public List<TableRowDto<Comarca>> search(Comarca filterParams, Comarca searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
 		
 		// SELECT 
-		StringBuilder sbSQL = new StringBuilder("SELECT t1.CODE CODE, t1.DESC_ES DESC_ES, t1.DESC_EU DESC_EU, t1.CSS CSS, t2.CODE PROVINCIACODE ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.CODE CODE, t1.DESC_ES DESCES, t1.DESC_EU DESCEU, t1.CSS CSS, t2.CODE PROVINCIACODE ");
 		
 		// FROM
 		sbSQL.append("FROM COMARCA t1, PROVINCIA t2 ");

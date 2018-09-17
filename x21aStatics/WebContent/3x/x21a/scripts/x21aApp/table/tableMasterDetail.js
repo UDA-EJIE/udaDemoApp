@@ -19,8 +19,17 @@ jQuery(function($){
 			activate:true
 		}
 		,select: {
-	            activate: true
-        }
+			style: 'multi'
+        },
+        formEdit: {
+	        	detailForm: "#comarca_detail_div",
+	        	validate:{
+	    			rules:{
+	    				"code":{required:true}
+	    			}
+	    		},
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	        }
 	});
 	
 	$("#localidad").rup_datatable({
@@ -42,11 +51,20 @@ jQuery(function($){
 			activate:true
 		}
 		,select: {
-	            activate: true
-        },order: [[ 0, 'asc' ]],
+			style: 'multi'
+        },order: [[ 1, 'asc' ]],
         masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
+        },
+        formEdit: {
+        	detailForm: "#localidad_detail_div",
+        	validate:{
+    			rules:{
+    				"code":{required:true}
+    			}
+    		},
+    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
         }
         
 	});

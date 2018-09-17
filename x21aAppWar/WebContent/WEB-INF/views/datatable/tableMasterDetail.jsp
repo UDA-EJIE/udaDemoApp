@@ -89,6 +89,58 @@
         </tfoot>
 </table>
 
+<!-- <h2>table</h2> -->
+
+<div id="comarca_detail_div" class="rup-table-formEdit-detail">
+	<div id ="comarca_detail_navigation"></div>
+	<div class="ui-dialog-content ui-widget-content" >
+		<form id="comarca_detail_form">
+			<div id ="comarca_detail_feedback"></div>
+			
+			<div class="form-row">    
+				<div class="form-group col-sm">
+					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
+			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			    </div>
+			    
+			    <div class="form-group col-sm">
+			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
+			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    </div>
+			</div>
+			<div class="form-row">       
+			    <div class="form-group col-sm">
+			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
+			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    </div>  
+			    
+			    <div class="form-group col-sm">
+			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
+			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    </div>
+			</div>
+			<div class="form-row">  
+			    <div class="form-group fix-align col-sm">
+			    	<label for="provincia_detail_table" class="formulario_linea_label">provincia</label>
+			    	<input type="text" name="provincia" class="formulario_linea_input form-control" id="provincia_detail_table" />
+			    </div>
+			</div>			
+		</form>
+	</div>
+	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+			<button id="comarca_detail_button_save" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="save" />
+			</button>
+			<button id="comarca_detail_button_save_repeat" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="saveAndContinue" />
+			</button>
+			<button id="comarca_detail_button_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="cancel" />
+			</button>
+		</div>
+	</div>
+</div>
 
 <h2>Localidad</h2>
 
@@ -146,7 +198,7 @@
         <thead>
             <tr>
                 <th data-col-prop="code" data-col-sidx="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="desc_Es">descEs</th>
+                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
                 <th data-col-prop="descEu" data-col-sidx="desc_Eu">descEu</th>
                 <th data-col-prop="css" >css</th>
             </tr>
@@ -160,3 +212,56 @@
           </tr>
         </tfoot>
 </table>	
+
+<!-- <h2>table</h2> -->
+
+<div id="localidad_detail_div" class="rup-table-formEdit-detail">
+	<div id ="localidad_detail_navigation"></div>
+	<div class="ui-dialog-content ui-widget-content" >
+		<form id="localidad_detail_form">
+			<div id ="localidad_detail_feedback"></div>
+			
+			<div class="form-row">    
+				<div class="form-group col-sm">
+					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
+			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			    </div>
+			    
+			    <div class="form-group col-sm">
+			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
+			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    </div>
+			</div>
+			<div class="form-row">       
+			    <div class="form-group col-sm">
+			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
+			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    </div>  
+			    
+			    <div class="form-group col-sm">
+			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
+			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    </div>
+			</div>
+			<div class="form-row">  
+			    <div class="form-group fix-align col-sm">
+			    	<label for="comarca_detail_table" class="formulario_linea_label">comarca</label>
+			    	<input type="text" name="comarca" class="formulario_linea_input form-control" id="comarca_detail_table" />
+			    </div>
+			</div>			
+		</form>
+	</div>
+	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+			<button id="localidad_detail_button_save" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="save" />
+			</button>
+			<button id="localidad_detail_button_save_repeat" class="btn btn-outline-success rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="saveAndContinue" />
+			</button>
+			<button id="localidad_detail_button_cancel" class="btn btn-outline-danger rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="cancel" />
+			</button>
+		</div>
+	</div>
+</div>
