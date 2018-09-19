@@ -3,10 +3,13 @@
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
+/* FONT PATH
+ * -------------------------- */
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,9 +23,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* makes the font 33% larger relative to the icon container */
+
 .r01gContainer .fa-lg {
   font-size: 1.33333333em;
-  line-height: .75em;
+  line-height: 0.75em;
   vertical-align: -15%;
 }
 
@@ -53,7 +58,7 @@
   list-style-type: none;
 }
 
-.r01gContainer .fa-ul>li {
+.r01gContainer .fa-ul > li {
   position: relative;
 }
 
@@ -61,7 +66,7 @@
   position: absolute;
   left: -2.14285714em;
   width: 2.14285714em;
-  top: .14285714em;
+  top: 0.14285714em;
   text-align: center;
 }
 
@@ -71,7 +76,7 @@
 
 .r01gContainer .fa-border {
   padding: .2em .25em .15em;
-  border: solid .08em #eee;
+  border: solid 0.08em #eeeeee;
   border-radius: .1em;
 }
 
@@ -90,6 +95,8 @@
 .r01gContainer .fa.fa-pull-right {
   margin-left: .3em;
 }
+
+/* Deprecated as of 4.4.0 */
 
 .r01gContainer .pull-right {
   float: right;
@@ -210,8 +217,11 @@
 }
 
 .r01gContainer .fa-inverse {
-  color: #fff;
+  color: #ffffff;
 }
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
 
 .r01gContainer .fa-glass:before {
   content: "\f000";
