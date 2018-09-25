@@ -88,6 +88,16 @@
 		<put-attribute name="base-includes" value="/WEB-INF/layouts/base-includes.jsp" />
 		<put-attribute name="includes" value="" />
 	</definition>
+	
+	<definition name="templateNoHeads" template="/WEB-INF/layouts/template.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="language" value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="breadCrumb" value="" />
+		<put-attribute name="footer" value="" />
+		<put-attribute name="base-includes" value="" />
+		<put-attribute name="includes" value="" />
+	</definition>
 
 	<!-- ***************************** -->
 	<!-- PANTALLAS -->
@@ -505,6 +515,14 @@
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
     </definition>
+    <definition extends="templateNoHeads" name="tableFormEditTabs">
+        <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/>
+    </definition>
+     <definition extends="templateNoHeads" name="tableFormEditTabs2">
+        <put-attribute name="content" value="/WEB-INF/views/table/tableLoadOnStartUp.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/table/tableLoadOnStartUp-includes.jsp"/>
+    </definition>
     <definition extends="template" name="tableFormEditMultiselection">
         <put-attribute name="content" value="/WEB-INF/views/table/table.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableFormEditMultiselection-includes.jsp"/>
@@ -532,6 +550,11 @@
      <definition extends="template" name="tableMasterDetail">
         <put-attribute name="content" value="/WEB-INF/views/table/tableMasterDetail.jsp"/>
         <put-attribute name="includes" value="/WEB-INF/views/table/tableMasterDetail-includes.jsp"/>
+    </definition>
+    
+     <definition extends="template" name="newTableMasterDetail">
+        <put-attribute name="content" value="/WEB-INF/views/datatable/tableMasterDetail.jsp"/>
+        <put-attribute name="includes" value="/WEB-INF/views/datatable/tableMasterDetail-includes.jsp"/>
     </definition>
      
     <definition extends="template" name="tableMasterDetailMultiselection">

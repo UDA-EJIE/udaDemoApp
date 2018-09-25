@@ -19,7 +19,7 @@
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
 <table id="example" class="tableFit table-striped table-bordered" 
-	data-url-base="./simple"
+	data-url-base="."
 	data-filter-form="#example_filter_form" 
 	cellspacing="0">
         <thead>
@@ -73,6 +73,10 @@
 	              <div class="form-check custom-control custom-checkbox pluginsControl">
 	                  <input type="checkbox" id="groups" class="custom-control-input" value="6">
 	                  <label for="groups" class="custom-control-label">Agrupamiento</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="multiFilter" class="custom-control-input" value="6">
+	                  <label for="multiFilter" class="custom-control-label">MultiFilter</label>
 	              </div>
 	          </div>
 		</div>

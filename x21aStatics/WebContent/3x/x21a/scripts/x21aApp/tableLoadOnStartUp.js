@@ -96,7 +96,7 @@ jQuery(function($){
         editOptions:{
         	fillDataMethod:"clientSide"
         },
-        multifilter:{ idFilter:"onLoadFalse",labelSize:255}
+        multifilter:{ idFilter:"onLoadFalse",labelSize:255,userFilter:"udaPruebas"}
        
 	});
 

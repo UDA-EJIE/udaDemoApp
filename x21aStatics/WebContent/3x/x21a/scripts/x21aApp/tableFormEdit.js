@@ -117,7 +117,7 @@ jQuery(function($){
 //    			return searchString;
 //    		}
         },
-        multifilter:{ idFilter:"formEdit",labelSize:255},
+        multifilter:{ idFilter:"formEdit",labelSize:255,userFilter:"udaPruebas"},
         search:{
         	validate:{
         		rules:{

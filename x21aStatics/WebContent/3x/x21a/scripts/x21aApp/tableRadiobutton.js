@@ -124,7 +124,7 @@ jQuery(function($){
     			}
         	}
         },
-         multifilter:{ idFilter:"formRadio",labelSize:255},
+         multifilter:{ idFilter:"formRadio",labelSize:255,userFilter:"udaPruebas"},
         report: options_table_report
 	});
 	
