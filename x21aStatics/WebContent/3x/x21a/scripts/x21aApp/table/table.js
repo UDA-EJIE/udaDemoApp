@@ -198,6 +198,7 @@ jQuery(function($){
 	        	detailForm: "#example_detail_div",
 	        	validate:{
 	    			rules:{
+	    				"id":{required:true},
 	    				"nombre":{required:true},
 	    				"apellido1":{required:true},
 	    				"fechaAlta":{date:true},
