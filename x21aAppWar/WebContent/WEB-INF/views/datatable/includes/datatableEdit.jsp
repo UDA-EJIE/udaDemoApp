@@ -26,7 +26,7 @@
 			<div class="form-row">    
 				<div class="form-group col-sm">
 					<label for="id_detailForm_table" class="formulario_linea_label"><spring:message code="id" /></label>
-			    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" autofocus />
+			    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
 			    </div>
 			    
 			    <div class="form-group col-sm">

@@ -11,7 +11,7 @@
 				<!-- Campos del formulario de detalle -->
 				<div class="form-group col-sm">
 					<label for="ida_detail_table" class="formulario_linea_label"><spring:message code="ida"/></label>
-					<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_detail_table" autofocus/>
+					<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_detail_table"/>
 				</div>
 				<div class="form-group col-sm">
 					<label for="idb_detail_table" class="formulario_linea_label"><spring:message code="idb"/></label>
