@@ -387,7 +387,7 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 		// FILTRADO 
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(comarca, startsWith);
 		// Claula where  de filtrado
-		sbSQL.append(" WHERE 1=1 ").append(mapaWhere.get("query"));
+		sbSQL.append(" WHERE 1=1 and t1.code_provincia = t2.code ").append(mapaWhere.get("query"));
 		// Parámetros de filtrado
 		@SuppressWarnings("unchecked")
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");		
