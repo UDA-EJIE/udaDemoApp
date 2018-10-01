@@ -14,7 +14,7 @@ jQuery(function($){
 			fillDataMethod: "clientSide",
          	validate:{ 
     			rules:{
-    				"id":{						required: false    					},
+    				"id":{						required: true    					},
     				"nombre":{						required: false    					},
     				"apellido1":{						required: false    					},
     				"apellido2":{						required: false    					},
