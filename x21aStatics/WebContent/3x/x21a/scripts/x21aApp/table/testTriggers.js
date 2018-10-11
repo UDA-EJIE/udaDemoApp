@@ -116,6 +116,10 @@ jQuery(function($){
 		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableHighlightRowAsSelected', function(event){
 			console.log('---Trigger--- ' + event.type);
 		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableButtonsOpenContextMenu', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
 	});
 	
 	table.on('tableSeekerBeforeSearch', function(event){
