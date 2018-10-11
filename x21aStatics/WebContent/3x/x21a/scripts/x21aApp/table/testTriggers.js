@@ -18,10 +18,6 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-	table.on('tableSelectBeforeSelectRow', function(event){
-		console.log('---Trigger--- ' + event.type);
-	});
-	
 	table.on('tableEditFormClickRow', function(event){
 		console.log('---Trigger--- ' + event.type);
 	});
@@ -35,10 +31,6 @@ jQuery(function($){
 	});
 	
 	table.on('tableMultiSelectAfterSelectRow', function(event){
-		console.log('---Trigger--- ' + event.type);
-	});
-	
-	table.on('tableSelectAfterSelectRow', function(event){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
@@ -94,14 +86,6 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-	table.on('tablaGroupingClickGroup', function(event){
-		console.log('---Trigger--- ' + event.type);
-	});
-	
-/*	table.on('tableHighlightRowAsSelected', function(event){
-		console.log('---Trigger--- ' + event.type);
-	});*/	
-	
 	table.on('tableMultiFilterFillForm', function(event){
 		console.log('---Trigger--- ' + event.type);
 	});
@@ -118,6 +102,26 @@ jQuery(function($){
 		});
 		
 		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableButtonsOpenContextMenu', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableMultiSelectBeforeSelectRow', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableMultiSelectAfterSelectRow', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(5)').on('tableSelectBeforeSelectRow', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(5)').on('tableSelectAfterSelectRow', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(1) td span').on('tablaGroupingClickGroup', function(event){
 			console.log('---Trigger--- ' + event.type);
 		});
 	});
