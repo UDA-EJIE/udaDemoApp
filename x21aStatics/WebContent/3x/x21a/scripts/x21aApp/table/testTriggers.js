@@ -98,9 +98,9 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-	table.on('tableHighlightRowAsSelected', function(event){
+/*	table.on('tableHighlightRowAsSelected', function(event){
 		console.log('---Trigger--- ' + event.type);
-	});	
+	});*/	
 	
 	table.on('tableMultiFilterFillForm', function(event){
 		console.log('---Trigger--- ' + event.type);
@@ -108,6 +108,14 @@ jQuery(function($){
 	
 	table.on('tableSeekerAfterCreateToolbar', function(event){
 		console.log('---Trigger--- ' + event.type);
+		
+		$('#' + table[0].id + ' tbody td:eq(6)').on('mouseenter.qtip', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
+		
+		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableHighlightRowAsSelected', function(event){
+			console.log('---Trigger--- ' + event.type);
+		});
 	});
 	
 	table.on('tableSeekerBeforeSearch', function(event){
@@ -160,14 +168,6 @@ jQuery(function($){
 	
 	table.on('tableAfterInit', function(event){
 		console.log('---Trigger--- ' + event.type);
-		
-		$('#' + table[0].id + ' tbody td:eq(6)').on('mouseenter.qtip', function(event){
-			console.log('---Trigger--- ' + event.type);
-		});
-		
-		$('#' + table[0].id + ' tbody tr:eq(6)').on('tableHighlightRowAsSelected', function(event){
-			console.log('---Trigger--- ' + event.type);
-		});
 	});	
 	
 	table.on('tableSeekerSearchError', function(event){
