@@ -38,7 +38,7 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-	table.on('tableSeekerAfterClear', function(event){
+	table.on('tableSeekerAfterSearch', function(event){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
@@ -66,7 +66,7 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-	table.on('tableEditFormBeforeInsertRow', function(event){
+	table.on('tableEditFormBeforeCallAjax', function(event){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
