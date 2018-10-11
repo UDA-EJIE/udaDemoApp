@@ -1,4 +1,4 @@
-jQuery(function($){
+function cargarPruebasTriggers(){
 	
 	var table = $('#example');
 	
@@ -344,4 +344,4 @@ jQuery(function($){
 		console.log('---Trigger--- ' + event.type);
 	});
 	
-});
+}

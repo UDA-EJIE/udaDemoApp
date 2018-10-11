@@ -132,9 +132,9 @@ jQuery(function($){
 	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter'],
-		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter']
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers'],
+		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers']
 	};
 	
 	 
@@ -270,6 +270,13 @@ jQuery(function($){
 			$('#multiFilter').prop('checked', false);
 		}
 		
+		if(localStorage.plugins !== undefined && localStorage.plugins.indexOf('triggers') > -1){
+			cargarPruebasTriggers();
+			$('#triggers').prop('checked', true);
+		}else{
+			$('#triggers').prop('checked', false);
+		}
+		
 		localStorage.clear();
 		return plugins;
 	}
@@ -290,5 +297,6 @@ jQuery(function($){
 		location.reload();
 	});
 	
-	loadTable();
+	loadTable();	
+
 });
