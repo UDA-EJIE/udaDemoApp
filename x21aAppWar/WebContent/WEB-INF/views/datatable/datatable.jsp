@@ -100,6 +100,17 @@
 	        </div>
 		</div>
   	</fieldset>
+  	<fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>				    
+	          <div class="col-sm-10">
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="triggers" class="custom-control-input" value="0">
+	                  <label for="triggers" class="custom-control-label">Activar Triggers en Consola</label>
+	              </div>
+	          </div>
+		</div>
+  	</fieldset>
 	<span id="pluginError"></span>
 	<button id="example_aplicar" type="button" class="btn btn-primary">Aplicar Cambios</button>
 </form>
