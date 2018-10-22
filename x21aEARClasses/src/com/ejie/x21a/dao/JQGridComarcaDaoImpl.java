@@ -120,9 +120,12 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
      * @param comarca Pagination
      * @return
      */
+    @Transactional
     public void remove(Comarca comarca) {
-		String query = "DELETE FROM COMARCA WHERE CODE=?";
-		this.jdbcTemplate.update(query, comarca.getCode());
+    	String queryDeleteLocalidad = "DELETE FROM LOCALIDAD WHERE CODE_COMARCA=?";
+		String queryDeleteComarca = "DELETE FROM COMARCA WHERE CODE=?";
+		this.jdbcTemplate.update(queryDeleteLocalidad, comarca.getCode());
+		this.jdbcTemplate.update(queryDeleteComarca, comarca.getCode());
     }
     
    /**

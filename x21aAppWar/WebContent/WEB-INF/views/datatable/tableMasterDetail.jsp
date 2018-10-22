@@ -26,8 +26,8 @@
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
-						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
+						<label for="provinciaCode_filter_comarca" class="formulario_linea_label">provinciaCode</label>
+						<input type="text" name="provincia.code" class="formulario_linea_input form-control" id="provinciaCode_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
@@ -121,10 +121,10 @@
 			</div>
 			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="provincia_detail_table" class="formulario_linea_label">provincia</label>
-			    	<input type="text" name="provincia" class="formulario_linea_input form-control" id="provincia_detail_table" />
+			    	<label for="provinciaCode_detail_table" class="formulario_linea_label">provincia.code</label>
+			    	<input type="text" name="provincia.code" class="formulario_linea_input form-control" id="provinciaCode_detail_table" />
 			    </div>
-			</div>			
+			</div>	
 		</form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
@@ -152,10 +152,6 @@
 					<div class="form-group col-sm">
 						<label for="code_filter_localidad" class="formulario_linea_label">code</label>
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
-					</div>
-					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia</label>
-						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs</label>
@@ -245,10 +241,24 @@
 			</div>
 			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="comarca_detail_table" class="formulario_linea_label">comarca</label>
-			    	<input type="text" name="comarca" class="formulario_linea_input form-control" id="comarca_detail_table" />
+			    	<label for="comarcaCode_detail_table" class="formulario_linea_label">comarca.code</label>
+			    	<input type="text" name="comarca.code" class="formulario_linea_input form-control" id="comarcaCode_detail_table" />
 			    </div>
-			</div>			
+			    <div class="form-group fix-align col-sm">
+			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
+			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
+			    </div>
+			</div>
+			<div class="form-row">  
+			    <div class="form-group fix-align col-sm">
+			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
+			    	<input type="text" name="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
+			    </div>
+			    <div class="form-group fix-align col-sm">
+			    	<label for="comarcaDescEu_detail_table" class="formulario_linea_label">comarca.descEu</label>
+			    	<input type="text" name="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
+			    </div>
+			</div>	
 		</form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
