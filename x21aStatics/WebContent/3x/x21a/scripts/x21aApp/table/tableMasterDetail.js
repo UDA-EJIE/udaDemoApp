@@ -25,7 +25,8 @@ jQuery(function($){
 	        	detailForm: "#comarca_detail_div",
 	        	validate:{
 	    			rules:{
-	    				"code":{required:true}
+	    				"code":{required:true},
+	    				"provincia.code":{range:[1,3]}
 	    			}
 	    		},
 	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
@@ -52,7 +53,8 @@ jQuery(function($){
 		}
 		,select: {
 			style: 'multi'
-        },order: [[ 1, 'asc' ]],
+        },
+        order: [[ 1, 'desc' ]],
         masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
