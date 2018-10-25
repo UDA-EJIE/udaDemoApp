@@ -1,5 +1,10 @@
 package x21aAppWar;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
@@ -14,19 +19,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class JasmineWebDriver {
  	private static ChromeDriver driver;
  	WebElement element;
+ 	static String path;
 
  @BeforeClass
  public static void openBrowser(){
 	 //System.setProperty("webdriver.chrome.driver", "C:/bea/chromedriver.exe");
 	 driver = new ChromeDriver();
      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+     Properties p = new Properties();
+     try {
+		p.load(new FileReader(new File("..\\x21aConfig\\x21a.properties")));
+		path = p.getProperty("statics.path");
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 	} 
 
  @Test
  public void valid_testComponentUda(){
 
 	 System.out.println("Starting test " + new Object(){}.getClass().getEnclosingMethod().getName());
-     driver.get("http://desarrollo.jakina.ejiedes.net:7001/x21aStatics/3x/x21a/scripts/x21aApp/testJasmine/specRunner.html");	
+     driver.get(path+"/3x/x21a/scripts/x21aApp/testJasmine/specRunner.html");	
      try{
 		 element = driver.findElement (By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='2 specs, 0 failures'])[1]"));
 	 }catch (Exception e){
