@@ -197,7 +197,7 @@
             <tr>
                 <th data-col-prop="code" data-col-sidx="code">code</th>
                 <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="desc_Eu">descEu</th>
+                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
                 <th data-col-prop="css" >css</th>
             </tr>
         </thead>
