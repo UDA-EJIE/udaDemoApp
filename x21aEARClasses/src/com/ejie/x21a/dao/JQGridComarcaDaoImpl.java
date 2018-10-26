@@ -436,9 +436,6 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 		
 
 		// SQL para la busqueda
-		if(jqGridRequestDto != null){
-			jqGridRequestDto.setSidx("t1."+jqGridRequestDto.getSidx());
-		}
 		StringBuilder sbReorderSelectionSQL = JQGridManager.getSearchQuery(sbSQL, jqGridRequestDto, Comarca.class, filterParamList, searchSQL, searchParamList, from_alias, "CODE");
 				
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Comarca>(this.rwMapPK, jqGridRequestDto), filterParamList.toArray());
