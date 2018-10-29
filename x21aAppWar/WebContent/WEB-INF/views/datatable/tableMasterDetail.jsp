@@ -70,8 +70,8 @@
         <thead>
             <tr>
                 <th data-col-prop="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="desc_Eu">descEu</th>
+                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
+                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
                 <th data-col-prop="css" >css</th>
                 <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
                 <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>

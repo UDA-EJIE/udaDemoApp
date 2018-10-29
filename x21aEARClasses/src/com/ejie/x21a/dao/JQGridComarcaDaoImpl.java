@@ -198,7 +198,6 @@ public class JQGridComarcaDaoImpl implements JQGridComarcaDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (jqGridRequestDto != null) {
-			jqGridRequestDto.setSidx("t1."+jqGridRequestDto.getSidx());
 			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
 		}
 		
