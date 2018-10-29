@@ -119,8 +119,8 @@
 			</div>
 			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="provinciaCode_detail_table" class="formulario_linea_label">provincia.code</label>
-			    	<input type="text" name="provincia.code" class="formulario_linea_input form-control" id="provinciaCode_detail_table" />
+			    	<label for="provinciaRemote">Provincia</label>
+					<select id="provinciaRemote" name="provincia.code" class="rup-combo"><option>&nbsp;</option></select>
 			    </div>			    
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="provinciaDescEs_detail_table" class="formulario_linea_label">provincia.descEs</label>

@@ -70,4 +70,11 @@ jQuery(function($){
         }
         
 	});
+	
+	$('#provinciaRemote').rup_combo({
+		source : "../patrones/comboEnlazadoMultiple/provinciaRemote",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		,rowStriping: true
+		,blank: ""
+	});
 });
