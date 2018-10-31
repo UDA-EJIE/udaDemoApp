@@ -80,26 +80,26 @@ public class JQGridComarcaController  {
 	
 	 /**
 		 * Method 'edit'.
-		 * @param usuario Usuario 
-		 * @return Usuario
+		 * @param comarca Comarca 
+		 * @return Comarca
 		 */
 		@RequestMapping(method = RequestMethod.PUT)
-	    public @ResponseBody Comarca edit(@Validated @RequestBody Comarca usuario) {		
-	        Comarca usuarioAux = this.comarcaService.update(usuario);
+	    public @ResponseBody Comarca edit(@Validated @RequestBody Comarca comarca) {		
+	        Comarca comarcaAux = this.comarcaService.update(comarca);
 			logger.info("Entity correctly updated!");
-	        return usuarioAux;
+	        return comarcaAux;
 	    }
 
 		 /**
 		 * Method 'add'.
-		 * @param usuario Usuario 
-		 * @return Usuario
+		 * @param comarca Comarca 
+		 * @return Comarca
 		 */
 		@RequestMapping(method = RequestMethod.POST)
-		public @ResponseBody Comarca add(@Validated @RequestBody Comarca usuario) {		
-	        Comarca usuarioAux = this.comarcaService.add(usuario);
+		public @ResponseBody Comarca add(@Validated @RequestBody Comarca comarca) {		
+	        Comarca comarcaAux = this.comarcaService.add(comarca);
 	        logger.info("Entity correctly inserted!");
-	    	return usuarioAux;
+	    	return comarcaAux;
 		}
 
 		 /**
@@ -127,7 +127,7 @@ public class JQGridComarcaController  {
 		public @ResponseBody JQGridResponseDto<Comarca> filter(
 				@RequestJsonBody(param="filter") Comarca comarca,
 				@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-			JQGridComarcaController.logger.info("[GET - jqGrid] : Obtener Usuarios");
+			JQGridComarcaController.logger.info("[GET - jqGrid] : Obtener Comarcas");
 			
 			return comarcaService.filter(comarca, jqGridRequestDto, false);
 		}
@@ -153,9 +153,9 @@ public class JQGridComarcaController  {
 		@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
 		public @ResponseBody Filter filterGetDefault(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterUser) {
+			@RequestParam(value = "comarca", required = true) String filterComarca) {
 			JQGridComarcaController.logger.info("[get - jqGrid] : getDefault filter");
-			 return filterService.getDefault(filterSelector, filterUser);
+			 return filterService.getDefault(filterSelector, filterComarca);
 		}
 		
 		
@@ -164,9 +164,9 @@ public class JQGridComarcaController  {
 		@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
 		public @ResponseBody List<Filter> filterGetAll(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterUser) {
+			@RequestParam(value = "comarca", required = true) String filterComarca) {
 			JQGridComarcaController.logger.info("[get - jqGrid] : GetAll filter");
-			 return filterService.getAllFilters(filterSelector,filterUser);
+			 return filterService.getAllFilters(filterSelector, filterComarca);
 		}
 		
 		
@@ -177,7 +177,7 @@ public class JQGridComarcaController  {
 				@RequestJsonBody(param="search") Comarca comarcaSearch,
 				@RequestJsonBody JQGridRequestDto jqGridRequestDto){
 			
-			JQGridComarcaController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
+			JQGridComarcaController.logger.info("[GET - search] : Obtener Comarcas por filtro");
 			return comarcaService.search(comarcaFilter, comarcaSearch, jqGridRequestDto, true);
 		}
 		
@@ -188,34 +188,34 @@ public class JQGridComarcaController  {
 		
 		/**
 		 * Method 'getAllCount'.
-		 * @param filterUsuario Usuario 
+		 * @param filterComarca Comarca 
 		 * @return Long
 		 */
 //		@RequestMapping(value = "/count", method = RequestMethod.GET)
-//		public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
-//			return jqGridUsuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
+//		public @ResponseBody Long getAllCount(@RequestParam(value = "comarca", required = false) Comarca  filterComarca) {
+//			return jqGridComarcaService.findAllLikeCount(filterComarca != null ? filterComarca: new Comarca(),false);
 //		}
 		
 		
 		
 //		 /**
 //		 * Method 'removeAll'.
-//		 * @param  usuarioIds  ArrayList
+//		 * @param  comarcaIds  ArrayList
 //		 *
 //		 */	
 //		@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 //		@ResponseStatus(value=HttpStatus.OK)
-//		public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> usuarioIds) {
-//		List<Usuario> usuarioList = new ArrayList<Usuario>();
-//        for (List<String> usuarioId:usuarioIds) {
-//		    Iterator<String> iterator = usuarioId.iterator();
-//			    Usuario usuario = new Usuario();
-//		        usuario.setId(ObjectConversionManager.convert(iterator.next(), String.class));
-//			    usuarioList.add(usuario);
+//		public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> comarcaIds) {
+//		List<Comarca> comarcaList = new ArrayList<Comarca>();
+//        for (List<String> comarcaId:comarcaIds) {
+//		    Iterator<String> iterator = comarcaId.iterator();
+//			    Comarca comarca = new Comarca();
+//		        comarca.setId(ObjectConversionManager.convert(iterator.next(), String.class));
+//			    comarcaList.add(comarca);
 //	    }
-//        this.jqGridUsuarioService.removeMultiple(usuarioList);
+//        this.jqGridComarcaService.removeMultiple(comarcaList);
 //        logger.info("All entities correctly deleted!");
-//        return usuarioIds;
+//        return comarcaIds;
 //	}	
 		
 		
@@ -224,12 +224,23 @@ public class JQGridComarcaController  {
 	 * MAPPING PARA EL COMBO DE PROVINCIAS
 	 */
 	@RequestMapping(value = "/provincia", method=RequestMethod.GET)
-	public @ResponseBody List<Provincia> getProvincias(
-			@RequestParam(value="autonomia.id", required=false) String autonomiaId) {
+	public @ResponseBody List<Provincia> getProvincias() {
 		
 		Provincia filtroProvincia = new Provincia();
 		
 		List<Provincia> findAll = provinciaService.findAll(filtroProvincia, null);
+		return findAll;
+	}
+	
+	/*
+	 * MAPPING PARA EL COMBO DE COMARCAS
+	 */
+	@RequestMapping(value = "/comarca", method=RequestMethod.GET)
+	public @ResponseBody List<Comarca> getComarcas() {
+		
+		Comarca filtroComarca = new Comarca();
+		
+		List<Comarca> findAll = comarcaService.findAll(filtroComarca, null);
 		return findAll;
 	}
 }

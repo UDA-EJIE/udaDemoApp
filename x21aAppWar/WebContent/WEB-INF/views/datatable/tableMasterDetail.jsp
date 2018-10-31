@@ -243,8 +243,8 @@
 			</div>
 			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
-			    	<label for="comarcaCode_detail_table" class="formulario_linea_label">comarca.code</label>
-			    	<input type="text" name="comarca.code" class="formulario_linea_input form-control" id="comarcaCode_detail_table" />
+			    	<label for="comarcaRemote" class="formulario_linea_label">Comarca</label>
+			    	<select id="comarcaRemote" name="comarca.code" class="rup-combo"><option>&nbsp;</option></select>
 			    </div>
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
