@@ -164,7 +164,7 @@ jQuery(function($){
 					 ]}
 			]
 		},
-		 multifilter:{ idFilter:"generated",labelSize:255}
+		 multifilter:{ idFilter:"generated",labelSize:255,userFilter:"udaPruebas"}
 	});
 	
 	//Formulario de filtrado

@@ -51,7 +51,7 @@ jQuery(function($){
     			}
         	}
         },
-        multifilter:{ idFilter:"inlineEdit",labelSize:255},
+        multifilter:{ idFilter:"inlineEdit",labelSize:255,userFilter:"udaPruebas"},
         report: options_table_report
 	});
 	

@@ -132,9 +132,9 @@ jQuery(function($){
 	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection'],
-		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection']
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers'],
+		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers']
 	};
 	
 	 
@@ -198,6 +198,7 @@ jQuery(function($){
 	        	detailForm: "#example_detail_div",
 	        	validate:{
 	    			rules:{
+	    				"id":{required:true},
 	    				"nombre":{required:true},
 	    				"apellido1":{required:true},
 	    				"fechaAlta":{date:true},
@@ -261,6 +262,21 @@ jQuery(function($){
 		}else{
 			$('#groups').prop('checked', false);
 		}
+		
+		if(localStorage.plugins.indexOf('multiFilter') > -1){
+			plugins.multiFilter = { idFilter:"generated",labelSize:255,userFilter:"udaPruebas"};
+			$('#multiFilter').prop('checked', true);
+		}else{
+			$('#multiFilter').prop('checked', false);
+		}
+		
+		if(localStorage.plugins !== undefined && localStorage.plugins.indexOf('triggers') > -1){
+			cargarPruebasTriggers();
+			$('#triggers').prop('checked', true);
+		}else{
+			$('#triggers').prop('checked', false);
+		}
+		
 		localStorage.clear();
 		return plugins;
 	}
@@ -281,5 +297,6 @@ jQuery(function($){
 		location.reload();
 	});
 	
-	loadTable();
+	loadTable();	
+
 });

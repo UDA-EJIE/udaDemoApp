@@ -73,10 +73,10 @@ jQuery(function($){
 	             	validate:{ 
 	        			rules:{
 	        				"ida":{
-	    						required: false
+	    						required: true
 	        					},
 	        				"idb":{
-	    						required: false
+	    						required: true
 	        					},
 	        				"nombre":{
 	    						required: false

@@ -2,51 +2,56 @@
 <form id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
 			<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
 			<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
-				<div class="row">
+				<div class="form-row">
 					<!-- Campos del formulario de filtrado -->
-					<div class="col-xs-6 col-md-3">
-						<div class="form-group form-group-sm">
-							<label for="ida_filter_table" class="formulario_linea_label"><spring:message code="ida"/>:</label>
-							<input type="text" name="ida" class="formulario_linea_input" id="ida_filter_table"/>
-						  </div>	
+					<div class="form-group col-sm">
+						<label for="ida_filter_table" class="formulario_linea_label">
+							<spring:message code="ida"/>
+						</label>
+						<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_filter_table"/>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<div class="form-group form-group-sm">
-							<label for="idb_filter_table" class="formulario_linea_label"><spring:message code="idb"/>:</label>
-							<input type="text" name="idb" class="formulario_linea_input" id="idb_filter_table"/>
-						  </div>	
+					<div class="form-group col-sm">
+						<label for="idb_filter_table" class="formulario_linea_label">
+							<spring:message code="idb"/>
+						</label>
+						<input type="text" name="idb" class="formulario_linea_input form-control" id="idb_filter_table"/>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<div class="form-group form-group-sm">
-							<label for="nombre_filter_table" class="formulario_linea_label"><spring:message code="nombre"/>:</label>
-							<input type="text" name="nombre" class="formulario_linea_input" id="nombre_filter_table"/>
-						  </div>	
+					<div class="form-group col-sm">
+						<label for="nombre_filter_table" class="formulario_linea_label">
+							<spring:message code="nombre"/>
+						</label>
+						<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_filter_table"/>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<div class="form-group form-group-sm">
-							<label for="apellido1_filter_table" class="formulario_linea_label"><spring:message code="apellido1"/>:</label>
-							<input type="text" name="apellido1" class="formulario_linea_input" id="apellido1_filter_table"/>
-						  </div>	
+				</div>
+				<div class="form-row">
+					<div class="form-group col-sm">
+						<label for="apellido1_filter_table" class="formulario_linea_label">
+							<spring:message code="apellido1"/>
+						</label>
+						<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_filter_table"/>
 					</div>
-					<div class="col-xs-6 col-md-3">
-						<div class="form-group form-group-sm">
-							<label for="apellido2_filter_table" class="formulario_linea_label"><spring:message code="apellido2"/>:</label>
-							<input type="text" name="apellido2" class="formulario_linea_input" id="apellido2_filter_table"/>
-						  </div>	
+					<div class="form-group col-sm">
+						<label for="apellido2_filter_table" class="formulario_linea_label">
+							<spring:message code="apellido2"/>
+						</label>
+						<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_filter_table"/>
 					</div>
 					<!-- Fin campos del formulario de filtrado -->
 				</div>
 				<!-- Botonera del formulario de filtrado -->
 				<div id="MultiPk_filter_buttonSet" class="right_buttons">
-					<!-- Enlace de limpiar -->
-					<!--<button id="MultiPk_filter_cleanLink" type="button" class="btn btn-warning btn-block">
-						<spring:message code="clear"/>
-					</button> -->
-        			<a id="MultiPk_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar">Limpiar</a>
-					<!-- Botón de filtrado -->
-					<button id="MultiPk_filter_filterButton" type="button" class="btn btn-info btn-block">
-						<spring:message code="filter" />
-					</button>
+					<button id="MultiPk_filter_cleanButton" type="button" class="btn btn-warning rup-limpiar">
+			        	<i class="fa fa-eraser"></i>
+			        	<span>
+			        		<spring:message code="clear" />
+			        	</span>
+			        </button>
+			        <button id="MultiPk_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
+			        	<i class="fa fa-filter"></i>
+			        	<span>
+			        		<spring:message code="filter" />
+			        	</span>
+			        </button>
 				</div>
 			</fieldset>
 </form>

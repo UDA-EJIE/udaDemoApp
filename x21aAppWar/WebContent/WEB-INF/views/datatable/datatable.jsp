@@ -19,7 +19,7 @@
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
 <table id="example" class="tableFit table-striped table-bordered" 
-	data-url-base="./simple"
+	data-url-base="."
 	data-filter-form="#example_filter_form" 
 	cellspacing="0">
         <thead>
@@ -74,6 +74,10 @@
 	                  <input type="checkbox" id="groups" class="custom-control-input" value="6">
 	                  <label for="groups" class="custom-control-label">Agrupamiento</label>
 	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="multiFilter" class="custom-control-input" value="6">
+	                  <label for="multiFilter" class="custom-control-label">MultiFilter</label>
+	              </div>
 	          </div>
 		</div>
   	</fieldset>
@@ -94,6 +98,17 @@
 		            <label for="noSelection" class="custom-control-label">Sin selección</label>
 		        </div>
 	        </div>
+		</div>
+  	</fieldset>
+  	<fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>				    
+	          <div class="col-sm-10">
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="triggers" class="custom-control-input" value="0">
+	                  <label for="triggers" class="custom-control-label">Activar Triggers en Consola</label>
+	              </div>
+	          </div>
 		</div>
   	</fieldset>
 	<span id="pluginError"></span>

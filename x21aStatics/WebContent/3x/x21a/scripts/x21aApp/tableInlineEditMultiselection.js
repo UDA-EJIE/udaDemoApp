@@ -49,7 +49,7 @@ jQuery(function($){
     			}
         	}
         },
-        multifilter:{ idFilter:"inlineEditMUlti",labelSize:255},
+        multifilter:{ idFilter:"inlineEditMUlti",labelSize:255,userFilter:"udaPruebas"},
         report: options_table_report
 	});
 	

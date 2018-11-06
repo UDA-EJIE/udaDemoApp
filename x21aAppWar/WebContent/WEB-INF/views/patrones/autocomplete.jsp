@@ -24,7 +24,7 @@
 
 
 		<!-- <div id="dialogo"> -->
-		<h3>Autocomplete local</h3>
+		<h3>Autocomplete local con función select</h3>
 		<label for="autocomplete">Lenguaje:</label><input id="autocomplete"
 			name="autocomplete" /> [asp, c, c++, coldfusion, groovy, haskell,
 		java, javascript, perl, php, python, ruby, scala] <br />
