@@ -588,14 +588,14 @@
     </definition> 
     
 <!-- 	    Jerarquia -->
-<!-- 	     <definition extends="template" name="tableJerarquia"> -->
-<!-- 	        <put-attribute name="content" value="/WEB-INF/views/table/tableJerarquia.jsp"/> -->
-<!-- 	        <put-attribute name="includes" value="/WEB-INF/views/table/jerarquia-includes.jsp"/> -->
-<!-- 	    </definition> -->
-<!-- 	    <definition extends="template" name="tableJerarquiaMulti"> -->
-<!-- 	        <put-attribute name="content" value="/WEB-INF/views/table/tableJerarquia.jsp"/> -->
-<!-- 	        <put-attribute name="includes" value="/WEB-INF/views/table/jerarquiaMulti-includes.jsp"/> -->
-<!-- 	    </definition> -->
+	     <definition extends="template" name="tableJerarquia">
+	        <put-attribute name="content" value="/WEB-INF/views/table/tableJerarquia.jsp"/>
+	        <put-attribute name="includes" value="/WEB-INF/views/table/jerarquia-includes.jsp"/>
+	    </definition>
+	    <definition extends="template" name="tableJerarquiaMulti">
+	        <put-attribute name="content" value="/WEB-INF/views/table/tableJerarquia.jsp"/>
+	        <put-attribute name="includes" value="/WEB-INF/views/table/jerarquiaMulti-includes.jsp"/>
+	    </definition>
 <!-- 	    Fin Jeraruia -->
 <!--     FIN TABLE -->
     
