@@ -77,7 +77,7 @@
           <button type="button" class="btn btn-info">Info</button>
 
           <!-- Indicates caution should be taken with this action -->
-          <button type="button" class="btn btn-warning">Warning</button>
+          <button type="button" class="btn btn-primary">Warning</button>
 
           <!-- Indicates a dangerous or potentially negative action -->
           <button type="button" class="btn btn-danger">Danger</button>

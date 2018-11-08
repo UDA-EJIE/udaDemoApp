@@ -61,13 +61,13 @@
 				</div>
 				
 				<div id="table_filter_buttonSet" class="right_buttons">
-			        <button id="table_filter_cleanButton" type="button" class="btn btn-warning rup-limpiar">
+			        <button id="table_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
 			        	<i class="fa fa-eraser"></i>
 			        	<span>
 			        		<spring:message code="clear" />
 			        	</span>
 			        </button>
-			        <button id="table_filter_filterButton" type="button" class="btn rup-filtrar rup-filter-dropdown">
+			        <button id="table_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
 			        	<i class="fa fa-filter"></i>
 			        	<span>
 			        		<spring:message code="filter" />
