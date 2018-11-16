@@ -12,6 +12,10 @@
 //   }(function ($) {
 
 
+import 'jquery';
+import 'handlebars';
+import 'jasmine-jquery';
+import 'rup.utils';
 
 describe('RUP Utils Tests', function(){
 

@@ -1,5 +1,9 @@
 /* jslint multistr: true */
 
+import 'jquery';
+import * as testutils from '../common/specCommonUtils.js';
+import 'jasmine-jquery';
+import 'rup.autocomplete';
 
 var $autocomplete, $autocomplete2, $autocompleteLabel, $autocompleteLabel2;
 
