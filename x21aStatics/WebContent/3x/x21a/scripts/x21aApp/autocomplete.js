@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "scala", value:"scala_value"},
 			{label: "scál2a", value:"scala_value"}
 		],
+		menuMaxHeight: 40,
 		defaultValue : "java",
 		contains : false,
 		select:function(){
