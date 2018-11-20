@@ -185,6 +185,12 @@ public class PatronesController {
 	public String getMulticombo(Model model) {
 		return "multicombo";
 	}
+	
+	//Multicombo
+	@RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
+	public String getComboMantenimiento(Model model) {
+		return "comboMantenimiento";
+	}
 
 	//Feedback
 	@RequestMapping(value = "feedback", method = RequestMethod.GET)
@@ -642,6 +648,21 @@ public class PatronesController {
 			
 			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
 			return departamentoProvinciaService.findAll(departamentoProvincia, null);
+		}
+		
+		@RequestMapping(value = "comboEnlazado/comarcaLocalidad", method=RequestMethod.GET)
+		public @ResponseBody List<Localidad> getComarcaLocalidad(
+				@RequestParam(value = "comarcaId", required = false) BigDecimal comarca_code) {
+			
+			//Convertir parámetros en entidad para búsqueda
+			Localidad localidad = new Localidad();
+			Comarca comarca = new Comarca();
+			comarca.setCode(comarca_code);
+			localidad.setComarca(comarca);
+
+			
+			try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+			return localidadService.findAll(localidad, null);
 		}
 		
 	/**

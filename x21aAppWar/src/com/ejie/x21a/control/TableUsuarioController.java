@@ -34,12 +34,9 @@ import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -54,7 +51,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ejie.x21a.control.pruebasValidate.BeanValidado;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
@@ -190,18 +186,7 @@ public class TableUsuarioController  {
     	return usuarioAux;
 	}
 	
-	@RequestMapping(value = "/automatico", method = RequestMethod.POST)
-	   public ResponseEntity<Boolean> pruebaValidacionAutomatica(@Validated @RequestBody BeanValidado beanValido) {
-	      return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
-	   }
-	
-	@RequestMapping(value = "/manual", method = RequestMethod.GET)
-	   public @ResponseBody Boolean pruebaValidacionManual(BeanValidado beanValido) {
-	      Errors errors = new BeanPropertyBindingResult(beanValido, "beanValido");
-	      validationManager.validate(errors, beanValido);
-	      return !errors.hasErrors();
-	   }
-	
+
 	/**
 	 * Operación CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.

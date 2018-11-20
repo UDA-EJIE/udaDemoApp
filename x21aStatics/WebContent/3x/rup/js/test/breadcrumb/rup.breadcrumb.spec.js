@@ -1,7 +1,6 @@
 /* jslint multistr: true */
 
 
-
 describe('Test BreadCrumb >', () => {
 	var $breadcrumb, $subLvlBC;
 

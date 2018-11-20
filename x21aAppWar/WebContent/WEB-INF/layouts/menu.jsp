@@ -77,6 +77,7 @@
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboEnlazadoSimple"><spring:message code="comboEnlazadoSimple" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/comboEnlazadoMultiple"><spring:message code="comboEnlazadoMulti" /></a>
                 <a class="dropdown-item" href=/x21aAppWar/patrones/multicombo><spring:message code="multicombo" /></a>
+                <a class="dropdown-item" href=/x21aAppWar/patrones/comboMantenimiento>Combo anidado con mantenimiento</a>
               </div>
             </div>
 

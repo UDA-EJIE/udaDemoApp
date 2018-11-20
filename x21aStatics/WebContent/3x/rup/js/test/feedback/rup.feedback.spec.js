@@ -56,6 +56,7 @@ describe('RUP Feedback Tests', () => {
 
 				$closeLink.trigger('click');
 				setTimeout(() => {
+					//expect($feedback).not.toBeVisible();
 					expect($feedback).toHaveCss({
 						visibility: 'hidden'
 					});
