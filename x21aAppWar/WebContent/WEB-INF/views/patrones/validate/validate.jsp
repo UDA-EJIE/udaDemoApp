@@ -22,12 +22,13 @@
 	
 	<h3>Formulario alineado a la derecha</h3>
 	<p>
-		Lso textos 
+		Los textos 
 	<p>
 	<div class="example">
 		<div id="feedbackLeftAligned"></div>
 		<form id="formLeftAligned" >
 			<div class="row">
+				
 				<div class="col-md-4">
 					<div class="form-group">
 				     	<label for="nombre" class="label"><spring:message code="nombre" /></label>

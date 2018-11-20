@@ -10,21 +10,32 @@
 		<form id="table_filter_form">
 			<div id="table_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
-				<div class="formulario_columna_cnt">
-					<div class="floating_left_pad_right one-column">
-						<label for="name_detailForm_table"><spring:message code="name" />:</label>
-						<input type="text" name="nameLog" class="formulario_linea_input" id="name_filter_table" />
+				<div class="form-row">
+					<div class="form-group col-sm">
+						<label for="name_detailForm_table" class="formulario_linea_label"><spring:message code="name" /></label>
+						<input type="text" name="nameLog" class="formulario_linea_input form-control" id="name_filter_table" />
 					</div>
-					<div class="floating_left_pad_right one-column">
-						<label for="level_detail_table"><spring:message code="level" />:</label>
-						<select name="levelLog" class="formulario_linea_input" id="level_filter_table" ></select>
+					<div class="form-group col-sm">
+						<label for="level_detail_table" class="formulario_linea_label"><spring:message code="level" /></label>
+						<select name="levelLog" class="formulario_linea_input form-control" id="level_filter_table" ></select>
 					</div>
 				
 				</div>
+				
 				<div id="table_filter_buttonSet" class="right_buttons">
-					<button id="table_filter_filterButton" type="button" class="ui-button ui-widget ui-state-default ui-corner-all" ><spring:message code="filter" /></button>
-					<a id="table_filter_cleanLink" href="javascript:void(0)" class="rup-enlaceCancelar"><spring:message code="clear" /></a>
-				</div>
+			        <button id="table_filter_cleanButton" type="button" class="btn btn-warning rup-limpiar">
+			        	<i class="fa fa-eraser"></i>
+			        	<span>
+			        		<spring:message code="clear" />
+			        	</span>
+			        </button>
+			        <button id="table_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
+			        	<i class="fa fa-filter"></i>
+			        	<span>
+			        		<spring:message code="filter" />
+			        	</span>
+			        </button>
+			    </div>
 			</fieldset>
 		</form>
 	</div>
@@ -32,7 +43,7 @@
 	<div id="table_grid_div">
 		<!-- Tabla -->
 		<table id="table"></table>
-		<!-- Barra de paginaci�n -->
+		<!-- Barra de paginación -->
 		<div id="table_pager"></div>
 	</div>
 </div>	
@@ -42,35 +53,33 @@
 	<div class="ui-dialog-content ui-widget-content" >
 		<form id="table_detail_form">
 			<div id ="table_detail_feedback"></div>
-			<div class="floating_left_pad_right">
-				<div class="floating_left_pad_right one-column">
-					<label for="name_detailForm_table"><spring:message code="name" />:</label>
-					<input type="text" name="nameLog" class="formulario_linea_input" id="name_detail_table" />
+			<div class="form-row">
+				<div class="form-group col-sm">
+					<label for="name_detailForm_table" class="formulario_linea_label"><spring:message code="name" /></label>
+					<input type="text" name="nameLog" class="formulario_linea_input form-control" id="name_detail_table" />
 				</div>
-				<div class="floating_left_pad_right one-column">
-					<label for="level_detail_table"><spring:message code="level" />:</label>
-					<select name="levelLog" class="formulario_linea_input" id="level_detail_table" ></select>
+				<div class="form-group col-sm">
+					<label for="level_detail_table" class="formulario_linea_label"><spring:message code="level" /></label>
+					<select name="levelLog" class="formulario_linea_input form-control" id="level_detail_table" ></select>
 				</div>
 				
 			</div>
 		</form>
 	</div>
+	
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset">
-			<button id="table_detail_button_save" type="button">
+		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+			<button id="table_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="table_detail_button_save_repeat" type="button">
+			<button id="table_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<a href="javascript:void(0)" role="button" id="table_detail_link_cancel"
-				class="rup-enlaceCancelar"><spring:message code="cancel" /></a>
+			<button id="table_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+				<spring:message code="cancel" />
+			</button>
 		</div>
-	</div>
-	
-	
-	
-	
+	</div>	
 	
 </div>
 

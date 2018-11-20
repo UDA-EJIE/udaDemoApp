@@ -525,6 +525,6 @@
 		"nombre":"Debe de especificar un nombre obligatoriamente._fr",
 		"apellido1":"Debe de especificar un primer apellido obligatoriamente._fr",
 		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._fr",
-		"alertDay": "Debe de especificar al menos una opci�n entre las mostradas._fr"
+		"alertDay": "Debe de especificar al menos una opción entre las mostradas._fr"
 	} 
 }

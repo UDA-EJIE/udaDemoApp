@@ -115,7 +115,7 @@ jQuery(function($){
 				"nombre":{required:true},
 				"apellido1":{required:true}
 			}
-		}, multifilter:{ idFilter:"formGrouping",labelSize:255}
+		}, multifilter:{ idFilter:"formGrouping",labelSize:255,userFilter:"udaPruebas"}
 	});
 	
 	
