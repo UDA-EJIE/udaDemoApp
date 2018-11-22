@@ -65,7 +65,7 @@
 				<!-- Botonera del formulario de filtrado -->
 				<div id="usuario_filter_buttonSet" class="right_buttons">
 					<!-- Botón de limpiar -->
-			        <button id="usuario_filter_cleanButton" type="button" class="btn btn-warning rup-limpiar">
+			        <button id="usuario_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
 			        	<i class="fa fa-eraser"></i>
 			        	<span>
 			        		<spring:message code="clear" />

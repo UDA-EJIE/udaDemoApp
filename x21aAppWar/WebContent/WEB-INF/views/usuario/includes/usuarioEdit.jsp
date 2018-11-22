@@ -56,7 +56,7 @@
 	<!-- Botonera del formulario de detalle -->
 	<div id="table_filter_buttonSet" class="right_buttons">
 		<!-- Enlace cancelar -->
-        <button id="usuario_detail_button_cancel" type="button" class="btn btn-warning rup-limpiar">
+        <button id="usuario_detail_button_cancel" type="button" class="btn btn-primary rup-limpiar">
         	<i class="fa fa-eraser"></i>
         	<span>
         		<spring:message code="clear" />
