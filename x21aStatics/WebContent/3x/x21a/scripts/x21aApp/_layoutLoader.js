@@ -215,7 +215,18 @@ jQuery(document).ready(function(){
 			"uda" : {
 				//Literal
 				"i18nCaption" : "uda"
-			}
+			},
+            "calendar" : {
+                //Literal
+                "i18nCaption" : "calendario",
+                //Elementos (url)
+                "simple" : { "i18nCaption" : "calendarioSimple" },
+                "doble" : { "i18nCaption" : "calendarioDoble" },
+                "subLevel":[
+                    {"i18nCaption": "calendarioSimple", "url": "/x21aAppWar/calendar/page" },
+                    {"i18nCaption": "calendarioDoble", "url": "/x21aAppWar/calendar/pageDouble" }
+                ]
+            }
 		}
 	});
 	//idioma
