@@ -26,17 +26,17 @@ jQuery(function($){
 		];
 
 	var tableColModels = [
-			{ name: "id", index: "id", editable:true, width: 80
+			{ name: "id", index: "id", editable:true, hidden:false, width: 80
 				, formoptions:{rowpos:1, colpos:1}
 			},
-			{ name: "nombre", index: "nombre", editable:true
+			{ name: "nombre", index: "nombre", editable:true, hidden:false
 				, formoptions:{rowpos:2, colpos:1}
 			},
-			{ name: "apellido1", index: "apellido1", editable:true
+			{ name: "apellido1", index: "apellido1", editable:true, hidden:false
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
-			{ name: "ejie", index: "ejie", editable:true, width: 60,
+			{ name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
@@ -54,7 +54,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:5, colpos:1}
 			},
-			{ name: "fechaAlta",  index: "fecha_alta", editable:true, width: 120,
+			{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -65,7 +65,11 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:2, colpos:2}
 			},
+<<<<<<< HEAD
 			{ name: "fechaBaja", index: "fecha_baja", editable:false, width: 120,
+=======
+			{ name: "fechaBaja", index: "fecha_baja", editable:true, hidden:false, width: 120,
+>>>>>>> develop
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -76,7 +80,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:3, colpos:2}
 			},
-			{ name: "rol", index: "rol", editable:true, width: 140,
+			{ name: "rol", index: "rol", editable:true, hidden:false, width: 140,
 				rupType: "combo",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				formatter: "rup_combo",
