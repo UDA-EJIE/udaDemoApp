@@ -65,11 +65,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:2, colpos:2}
 			},
-<<<<<<< HEAD
 			{ name: "fechaBaja", index: "fecha_baja", editable:false, width: 120,
-=======
-			{ name: "fechaBaja", index: "fecha_baja", editable:true, hidden:false, width: 120,
->>>>>>> develop
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
