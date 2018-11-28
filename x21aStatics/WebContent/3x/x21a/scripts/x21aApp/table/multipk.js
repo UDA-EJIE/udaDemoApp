@@ -1,5 +1,24 @@
 jQuery(function($){
 	
+	var tableColModels = [
+		{ name: "ida", index: "ida", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:1, colpos:1}
+		},
+		{ name: "idb", index: "idb", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:2, colpos:1}
+		},
+		{ name: "nombre", index: "nombre", editable:true, hidden:false
+			, formoptions:{rowpos:3, colpos:1}
+		},
+		{ name: "apellido1", index: "apellido1", editable:true, hidden:false
+			, formoptions:{rowpos:4, colpos:1}
+			, classes:'ui-ellipsis'
+		},
+		{ name: "apellido2", index: "apellido2", editable:true, hidden:false
+			, formoptions:{rowpos:5, colpos:1}
+		}
+	];
+	
 	var listaPlugins = 'editForm,colReorder,selection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
@@ -112,7 +131,8 @@ jQuery(function($){
 		
 		if(localStorage.plugins.indexOf('seeker') > -1){
 		    var seeker = {
-		    		activate: true
+		    		activate: true,
+		    		colModel: tableColModels
 		        };
 		    plugins.seeker = seeker;
 		    $('#seeker').prop('checked', true);
