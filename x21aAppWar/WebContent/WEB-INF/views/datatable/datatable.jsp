@@ -24,8 +24,8 @@
 	cellspacing="0">
         <thead>
             <tr>
-                <th data-col-prop="id">Id</th>
-                <th data-col-prop="nombre">Nombre</th>
+                <th data-col-prop="id" data-col-edit="false">Id</th>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
                 <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
                 <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
@@ -77,6 +77,10 @@
 	              <div class="form-check custom-control custom-checkbox pluginsControl">
 	                  <input type="checkbox" id="multiFilter" class="custom-control-input" value="6">
 	                  <label for="multiFilter" class="custom-control-label">MultiFilter</label>
+	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="inlineEdit" class="custom-control-input" value="0">
+	                  <label for="inlineEdit" class="custom-control-label">Edición en Linea</label>
 	              </div>
 	          </div>
 		</div>

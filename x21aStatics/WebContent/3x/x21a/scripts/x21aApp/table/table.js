@@ -26,20 +26,17 @@ jQuery(function($){
 		];
 
 	var tableColModels = [
-			{ name: "id", index: "id", editable:true, width: 80
+			{ name: "id", index: "id", editable:true, hidden:false, width: 80
 				, formoptions:{rowpos:1, colpos:1}
 			},
-			{ name: "nombre", index: "nombre", editable:true
+			{ name: "nombre", index: "nombre", editable:true, hidden:false
 				, formoptions:{rowpos:2, colpos:1}
 			},
-			{ name: "apellido1", index: "apellido1", editable:true
+			{ name: "apellido1", index: "apellido1", editable:true, hidden:false
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
-			{ name: "apellido2", index: "apellido2", editable:true
-				, formoptions:{rowpos:4, colpos:1}
-			},
-			{ name: "ejie", index: "ejie", editable:true, width: 60,
+			{ name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
@@ -57,7 +54,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:5, colpos:1}
 			},
-			{ name: "fechaAlta",  index: "fecha_alta", editable:true, width: 120,
+			{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -68,7 +65,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:2, colpos:2}
 			},
-			{ name: "fechaBaja", index: "fecha_baja", editable:true, width: 120,
+			{ name: "fechaBaja", index: "fecha_baja", editable:false, width: 120,
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -79,7 +76,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:3, colpos:2}
 			},
-			{ name: "rol", index: "rol", editable:true, width: 140,
+			{ name: "rol", index: "rol", editable:true, hidden:false, width: 140,
 				rupType: "combo",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				formatter: "rup_combo",
@@ -129,11 +126,11 @@ jQuery(function($){
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
 	
-	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
+	var listaPlugins = 'inlineEdit,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers'],
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers','inlineEdit'],
 		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers']
 	};
 	
@@ -155,6 +152,13 @@ jQuery(function($){
             header:true
         };
 	    plugins.fixedHeader = fixedHeader;
+	  plugins.selector = 'td';
+	/*    plugins.responsive =  {
+            details: {
+            	type: 'column',
+            	target: 'td'
+            }
+        };*/
 	    
 	    var filter = {
 		    	  id:"example_filter_form",
@@ -213,6 +217,39 @@ jQuery(function($){
 		}else{
 			$('#selection').prop('checked', false);
 			$('#editForm').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('inlineEdit') > -1){
+	        var formEdit = {
+	        	detailForm: "#example_detail_div",
+	        	validate:{
+	    			rules:{
+	    				"id":{required:true},
+	    				"nombre":{required:true},
+	    				"apellido1":{required:true},
+	    				"fechaAlta":{date:true},
+	    				"fechaBaja":{date:true}
+	    			}
+	    		},
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	        }
+	        var inlineEdit = {
+		        	deselect: true,
+		        	validate:{
+		    			rules:{
+		    				"id":{required:true},
+		    				"nombre":{required:true},
+		    				"apellido1":{required:true},
+		    				"fechaAlta":{date:true},
+		    				"fechaBaja":{date:true}
+		    			}
+		    		}
+		        }
+		    plugins.inlineEdit = inlineEdit;
+
+		    $('#inlineEdit').prop('checked', true);
+		}else{
+			$('#inlineEdit').prop('checked', false);
 		}
 		
 		if(localStorage.plugins.indexOf('buttons') > -1){
