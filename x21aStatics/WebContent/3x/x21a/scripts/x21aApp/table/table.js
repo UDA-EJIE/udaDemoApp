@@ -36,6 +36,10 @@ jQuery(function($){
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
+			{ name: "apellido2", index: "apellido2", editable:true, hidden:false
+				, formoptions:{rowpos:4, colpos:1}
+				, classes:'ui-ellipsis'
+			},
 			{ name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
@@ -65,7 +69,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:2, colpos:2}
 			},
-			{ name: "fechaBaja", index: "fecha_baja", editable:false, width: 120,
+			{ name: "fechaBaja", index: "fecha_baja", editable:true, hidden:false, width: 120,
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -126,7 +130,7 @@ jQuery(function($){
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
 	
-	var listaPlugins = 'inlineEdit,colReorder,multiSelection,seeker,buttons,';
+	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
 		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit'],
