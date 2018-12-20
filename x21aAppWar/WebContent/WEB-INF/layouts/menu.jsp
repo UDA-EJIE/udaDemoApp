@@ -227,10 +227,10 @@
 					<spring:message code="calendario" />
 				</a>
 				<div class="dropdown-menu" aria-labelledby="calendarDropdown">
-					<a class="dropdown-item" href="/x21aAppWar/calendar/page">
+					<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/page">
 						<spring:message code="calendario.simple" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/calendar/pageDouble">
+					<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/pageDouble">
 						<spring:message code="calendario.doble" />
 					</a>
 				</div>
