@@ -272,7 +272,7 @@ jQuery(function($) {
             function(i, e) {
                 var $elem = $(e);
                 $elem.click(function() {
-                    calendar.view($elem.data('calendar-view'));
+                    calendar.setView($elem.data('calendar-view'));
                     $('.btn-group span[data-calendar-view].active')
                             .removeClass('active');
                     $elem.addClass('active');

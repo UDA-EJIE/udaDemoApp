@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-integration"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-system"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test-unit"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_src"/>
         <property name="java-output-path" value="/x21aAppWar/build/classes"/>
         <property name="context-root" value="x21aAppWar"/>
     </wb-module>
