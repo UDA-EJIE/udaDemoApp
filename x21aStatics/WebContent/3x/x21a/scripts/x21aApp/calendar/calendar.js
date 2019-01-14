@@ -15,6 +15,10 @@
  */
 jQuery(function($) {
 
+	//funcion que ejecutarán los eventos.
+	window.actions = function(n) {
+		console.info(`${n} ha sido pulsado.`);
+	}
     // CALENDARIO
     var options = {
         events_source : function() {
