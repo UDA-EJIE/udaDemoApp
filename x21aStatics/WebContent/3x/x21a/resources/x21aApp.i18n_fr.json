@@ -103,6 +103,7 @@
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)_fr",
 			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)_fr",
 			"multicombo" :"Combo Mutiselección_fr",
+			"comboMantenimiento": "Combo anidado con mantenimiento_fr",
 			"dialog" :"Diálogos_fr",
 			"date" :"Fecha_fr",
 			"feedback" :"Feedback_fr",

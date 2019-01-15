@@ -104,6 +104,7 @@
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
 			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
 			"multicombo" :"Combo Multiselección",
+			"comboMantenimiento": "Combo anidado con mantenimiento",
 			"dialog" :"Diálogos",
 			"date" :"Fecha",
 			"feedback" :"Feedback",
