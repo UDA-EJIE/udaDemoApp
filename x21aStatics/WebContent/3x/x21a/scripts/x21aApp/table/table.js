@@ -269,14 +269,13 @@ jQuery(function($){
 		
 		if(localStorage.plugins.indexOf('seeker') > -1){
 		    var seeker = {
-		    		colModel: tableColModels
+		    		activate: true
 		        };
 		    plugins.seeker = seeker;
 		    $('#seeker').prop('checked', true);
 		}else{
 			$('#seeker').prop('checked', false);
 		}
-
 		
 		if(localStorage.plugins.indexOf('colReorder') > -1){
 		    var colReorder = {
@@ -317,6 +316,9 @@ jQuery(function($){
 		}else{
 			$('#triggers').prop('checked', false);
 		}
+		
+		//Col model es obligatorio,se mete como generico
+		plugins.colModel = tableColModels;
 		
 		localStorage.clear();
 		return plugins;
