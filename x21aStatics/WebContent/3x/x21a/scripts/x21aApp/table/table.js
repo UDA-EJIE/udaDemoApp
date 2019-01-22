@@ -36,10 +36,10 @@ jQuery(function($){
 				, formoptions:{rowpos:3, colpos:1}
 				, classes:'ui-ellipsis'
 			},
-			{ name: "apellido2", index: "apellido2", editable:true, hidden:false
+		/*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
 				, formoptions:{rowpos:4, colpos:1}
 				, classes:'ui-ellipsis'
-			},
+			},*/
 			{ name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
 				edittype: "checkbox",
 				formatter: "checkbox",
@@ -47,7 +47,7 @@ jQuery(function($){
 				align: "center",
 				editoptions: {
 					value:"1:0"
-				},
+				}/*,
 				searchoptions:{
 					rupType: "combo",
 					source : [
@@ -55,7 +55,7 @@ jQuery(function($){
 					   {label: "Si", value:"1"},
 					   {label: "No", value:"0"}
 					]
-				}
+				}*/
 				, formoptions:{rowpos:5, colpos:1}
 			},
 			{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
@@ -69,7 +69,7 @@ jQuery(function($){
 				}
 				, formoptions:{rowpos:2, colpos:2}
 			},
-			{ name: "fechaBaja", index: "fecha_baja", editable:true, hidden:false, width: 120,
+			{ name: "fechaBaja", index: "fecha_baja", editable:false, hidden:false, width: 120,
 				rupType: "date",
 				rwdClasses:"hidden-xs hidden-sm hidden-md",
 				editoptions:{
@@ -219,7 +219,6 @@ jQuery(function($){
 
 		    $('#editForm').prop('checked', true);
 		}else{
-			$('#selection').prop('checked', false);
 			$('#editForm').prop('checked', false);
 		}
 		
