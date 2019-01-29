@@ -26,7 +26,7 @@
     <p>Así pues, se consideran los siguientes valores:</p>
 
     <ul>
-      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
+      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Roboto".</li>
       <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tamaño de letra</li>
     </ul>
 
@@ -59,35 +59,6 @@
       </div>
     </div>
 
-    <p>Los botones de bootstrap <code>.btn</code> se visualizarían del siguiente modo:</p>
-
-    <div class="example">
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Standard button -->
-          <button type="button" class="btn btn-primary">Principal</button>
-
-          <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <button type="button" class="btn btn-secondary">Secundario</button>
-
-          <!-- Indicates a successful or positive action -->
-          <button type="button" class="btn btn-success">Success</button>
-
-          <!-- Contextual button for informational alert messages -->
-          <button type="button" class="btn btn-info">Info</button>
-
-          <!-- Indicates caution should be taken with this action -->
-          <button type="button" class="btn btn-primary">Warning</button>
-
-          <!-- Indicates a dangerous or potentially negative action -->
-          <button type="button" class="btn btn-danger">Danger</button>
-
-          <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-          <button type="button" class="btn btn-link">Link</button>
-        </div>
-      </div>
-    </div>
-
     <p>Este sería el aspecto de los botones <code>rup_button</code> de UDA:</p>
 
     <div class="example">
@@ -107,6 +78,159 @@
         </div>
       </div>
     </div>
+
+    <p>Los botones de bootstrap <code>.btn</code> se visualizarían del siguiente modo:</p>
+
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Standard button -->
+          <button type="button" class="btn btn-primary">Principal</button>
+
+          <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+          <button type="button" class="btn btn-secondary">Secundario</button>
+
+          <!-- Indicates a successful or positive action -->
+          <button type="button" class="btn btn-success">Success</button>
+
+          <!-- Indicates a dangerous or potentially negative action -->
+          <button type="button" class="btn btn-danger">Danger</button>
+
+          <!-- Indicates caution should be taken with this action -->
+          <button type="button" class="btn btn-warning">Warning</button>
+
+          <!-- Contextual button for informational alert messages -->
+          <button type="button" class="btn btn-info">Info</button>
+          
+          <button type="button" class="btn btn-light">Light</button>
+          
+          <button type="button" class="btn btn-dark">Dark</button>
+
+          <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+          <button type="button" class="btn btn-link">Link</button>
+        </div>
+      </div>
+    </div>
+    
+    <p>Los botones de bootstrap materializados <code>.btn-material</code> pueden ser presentados con diferentes énfasis y estados.</p>
+    <h3>Énfasis alto</h3>
+
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-secondary-high-emphasis"><span>Secundario</span></button>
+
+          <button type="button" class="btn-material btn-material-success-high-emphasis"><span>Success</span></button>
+
+          <button type="button" class="btn-material btn-material-danger-high-emphasis"><span>Danger</span></button>
+
+          <button type="button" class="btn-material btn-material-warning-dark-high-emphasis"><span>Warning</span></button>
+
+          <button type="button" class="btn-material btn-material-info-high-emphasis"><span>Info</span></button>
+        </div>
+      </div>
+    </div>
+    
+    
+    <h3>Énfasis medio</h3>
+    
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-medium-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-secondary-medium-emphasis"><span>Secundario</span></button>
+
+          <button type="button" class="btn-material btn-material-success-medium-emphasis"><span>Success</span></button>
+
+          <button type="button" class="btn-material btn-material-danger-medium-emphasis"><span>Danger</span></button>
+
+          <button type="button" class="btn-material btn-material-warning-dark-medium-emphasis"><span>Warning</span></button>
+
+          <button type="button" class="btn-material btn-material-info-medium-emphasis"><span>Info</span></button>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Énfasis bajo</h3>
+    
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-low-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-secondary-low-emphasis"><span>Secundario</span></button>
+
+          <button type="button" class="btn-material btn-material-success-low-emphasis"><span>Success</span></button>
+
+          <button type="button" class="btn-material btn-material-danger-low-emphasis"><span>Danger</span></button>
+
+          <button type="button" class="btn-material btn-material-warning-dark-low-emphasis"><span>Warning</span></button>
+
+          <button type="button" class="btn-material btn-material-info-low-emphasis"><span>Info</span></button>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Desactivados (Alto, medio y bajo énfasis)</h3>
+    
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-high-emphasis" disabled><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-secondary-high-emphasis" disabled><span>Secundario</span></button>
+
+          <button type="button" class="btn-material btn-material-success-medium-emphasis" disabled><span>Success</span></button>
+
+          <button type="button" class="btn-material btn-material-danger-medium-emphasis" disabled><span>Danger</span></button>
+
+          <button type="button" class="btn-material btn-material-warning-dark-low-emphasis" disabled><span>Warning</span></button>
+
+          <button type="button" class="btn-material btn-material-info-low-emphasis" disabled><span>Info</span></button>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Con iconos</h3>
+    
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-high-emphasis">
+          	<i class="material-icons">&#xe145;</i>
+          	<span>Añadir</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-secondary-high-emphasis">
+          	<i class="material-icons">&#xe3c9;</i>
+          	<span>Editar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-success-medium-emphasis">
+          	<i class="material-icons">&#xe14d;</i>
+          	<span>Clonar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-danger-medium-emphasis">
+          	<i class="material-icons">&#xe872;</i>
+          	<span>Eliminar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-warning-dark-low-emphasis">
+          	<i class="material-icons">&#xe863;</i>
+          	<span>Recargar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-info-low-emphasis">
+          	<i class="material-icons">&#xe24d;</i>
+          	<span>Informes</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -120,7 +244,7 @@
     <p>Un campo de texto por defecto hace uso de las siguientes propiedades de css:</p>
 
     <ul>
-      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
+      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Roboto".</li>
       <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tamaño de letra. Como es relativo al tamaño base definido para <code>html</code> el valor por defecto será de <strong>12px</strong>.</li>
       <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del campo de texto. Como es relativo al tamaño base definido para <code>html</code> el valor por defecto será de <strong>24px</strong>.</li>
     </ul>
@@ -150,7 +274,7 @@
     <p>Las propiedades aplicadas a los estilos son:</p>
 
     <ul>
-      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Open Sans".</li>
+      <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Roboto".</li>
       <li><code>font-size</code> : Se establece un valor de <strong>1rem</strong> para el tamaño de letra. Como es relativo al tamaño base definido para <code>html</code> el valor por defecto será de <strong>12px</strong>.</li>
       <li><code>height</code> : Se establece un valor de <strong>2rem</strong> para la altura del combo. Como es relativo al tamaño base definido para <code>html</code> el valor por defecto será de <strong>24px</strong>.</li>
     </ul>

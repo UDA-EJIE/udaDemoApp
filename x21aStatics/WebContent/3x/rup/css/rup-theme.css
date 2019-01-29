@@ -2354,7 +2354,8 @@ button, button.ui-button, .ui-button.rup-button, .rup-dropdown-btn-group .rup-dr
   height: 4rem;
   min-height: 4rem;
   margin-bottom: 0;
-  position: relative; }
+  position: relative;
+  display: block; }
   .rup-navbar .nav {
     padding-bottom: 0; }
   .rup-navbar .navbar-brand {
@@ -3595,13 +3596,6 @@ table.dataTable tbody > tr:hover {
   width: 11px;
   margin: 0 auto; }
 
-.filtered-row {
-  float: left;
-  margin-top: 3px; }
-
-.hiddenInput {
-  visibility: hidden; }
-
 .dtr-data {
   display: inline-block; }
 
@@ -3680,6 +3674,48 @@ table.dataTable tbody > tr:hover {
   .recolocatedPagination_length {
     padding: 7px 0 8px; } }
 
+.openResponsive, .closeResponsive {
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  margin-right: 8px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 14px;
+  box-shadow: 0 0 3px #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  line-height: 14px;
+  content: '+';
+  cursor: pointer; }
+
+.openResponsive:before {
+  content: '+'; }
+
+.openResponsive:hover {
+  background-color: #197019; }
+
+.openResponsive {
+  background-color: #31b131; }
+
+.closeResponsive:before {
+  content: '-'; }
+
+.closeResponsive {
+  background-color: #d33333; }
+
+.closeResponsive:hover {
+  background-color: #fc081f; }
+
+.select-checkbox {
+  text-align: center; }
+
+.select-checkbox input {
+  display: inline-block;
+  vertical-align: inherit;
+  margin-right: 3px; }
+
 table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
   background-color: #B0BED9; }
 
@@ -3728,32 +3764,6 @@ table.dataTable.display tbody > tr.selected:hover > .sorting_3, table.dataTable.
 table.dataTable.display tbody > tr:hover > .selected, table.dataTable.display tbody > tr > .selected:hover, table.dataTable.order-column.hover tbody > tr:hover > .selected, table.dataTable.order-column.hover tbody > tr > .selected:hover {
   background-color: #a2aec7; }
 
-table.dataTable tbody td.select-checkbox, table.dataTable tbody th.select-checkbox {
-  position: relative; }
-
-table.dataTable tbody td.select-checkbox:before, table.dataTable tbody td.select-checkbox:after, table.dataTable tbody th.select-checkbox:before, table.dataTable tbody th.select-checkbox:after {
-  display: block;
-  position: absolute;
-  top: 1.2em;
-  left: 50%;
-  width: 15px;
-  height: 15px;
-  box-sizing: border-box; }
-
-table.dataTable tbody td.select-checkbox:before, table.dataTable tbody th.select-checkbox:before {
-  content: ' ';
-  margin-top: -4px;
-  margin-left: -6px;
-  border: 1px solid black;
-  border-radius: 3px; }
-
-table.dataTable tr.selected td.select-checkbox:after, table.dataTable tr.selected th.select-checkbox:after {
-  content: '\2714';
-  margin-top: -6.7px;
-  margin-left: -6.3px;
-  text-align: center;
-  color: #000; }
-
 div.dataTables_wrapper span.select-info, div.dataTables_wrapper span.select-item {
   margin-left: 0.5em; }
 
@@ -3764,11 +3774,9 @@ div.dataTables_wrapper span.select-info, div.dataTables_wrapper span.select-item
 
 .rup-datatable_checkmenu_arrow {
   position: absolute;
+  margin-top: 4px;
   cursor: pointer;
   background-position: -64px -16px; }
-
-.rup-datatable_checkmenu_arrow_margin {
-  margin-top: 3px; }
 
 table.dataTable thead th:hover, table.dataTable tfoot th:hover {
   background-color: #aecff7; }
@@ -3776,10 +3784,6 @@ table.dataTable thead th:hover, table.dataTable tfoot th:hover {
 .disabledDatatable {
   pointer-events: none;
   opacity: 0.6; }
-
-.selected-pencil {
-  float: right;
-  margin-top: 3px; }
 
 .divSelectTableHead {
   padding-top: 3px;
