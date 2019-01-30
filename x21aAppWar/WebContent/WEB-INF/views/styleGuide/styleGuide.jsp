@@ -266,6 +266,19 @@
         <input type="password" class="form-control" id="passwordFieldBootstrap" placeholder="Password">
       </div>
     </div>
+    
+    <p>En cambio, si usamos los estilos de bootstrap materializados a la hora de diseñar los campos de los formularios, el estilo será el siguiente:</p>
+
+    <div class="example">
+      <div class="form-groupMaterial">      
+      	<input type="text" id="textFieldBootstrapMaterialized" required>
+      	<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+      </div>
+      <div class="form-groupMaterial">
+      	<input type="password" id="passwordBootstrapMaterialized" placeholder="Password" >
+      	<label for="passwordBootstrapMaterialized">Password</label>
+      </div>
+    </div>
 
     <h3>Select</h3>
 
