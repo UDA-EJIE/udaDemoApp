@@ -329,5 +329,35 @@
         <option>Opción 5</option>
       </select>
     </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+		    <h3>Radio</h3>
+		    
+		    <p>Aplicando los estilos de bootstrap materializado a este componente obtenemos el siguiente resultado:</p>
+		    
+		    <div class="radio-material">
+		      <input id="opcionRadioMaterial-1" type="radio" name="materialRadio" checked>
+		      <label for="opcionRadioMaterial-1">Opción 1</label>
+		    </div>
+		    <div class="radio-material">
+		      <input id="opcionRadioMaterial-2" type="radio" name="materialRadio">
+		      <label for="opcionRadioMaterial-2">Opción 2</label>
+		    </div>
+		</div>
+        <div class="col-md-6">    
+		    <h3>Checkbox</h3>
+		    
+		    <p>Los estilos de bootstrap materializado estilizan el componente de la siguiente manera:</p>
+		    
+		    <div class="checkbox-material">
+		      <input id="opcionCheckboxMaterial-1" type="checkbox" checked>
+		      <label for="opcionCheckboxMaterial-1">Opción 1</label>
+		    </div>
+		    <div class="checkbox-material">
+		      <input id="opcionCheckboxMaterial-2" type="checkbox">
+		      <label for="opcionCheckboxMaterial-2">Opción 2</label>
+		    </div>
+		</div>
+	</div>
   </section>
-
