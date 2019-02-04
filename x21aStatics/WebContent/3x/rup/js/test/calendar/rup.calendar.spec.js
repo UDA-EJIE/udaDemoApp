@@ -927,10 +927,6 @@ describe('Test rup_calendar (alternative)', () => {
                     describe(' > año', () => {
                         var initialYear;
                         beforeEach((done) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feat-rup_calendar
                             cal2.on('afterRender', () => {
                                 cal2.off('afterRender');
                                 cal2.on('afterRender', () => {
@@ -940,16 +936,6 @@ describe('Test rup_calendar (alternative)', () => {
                                     cal2.rup_calendar('navigate', 'prev');
                                 });
                                 cal2.rup_calendar('navigate', new Date('2020-01-01'));
-<<<<<<< HEAD
-=======
-                            cal.on('afterRender', () => {
-                                cal.off('afterRender');
-                                cal.on('afterRender',done);
-                                initialYear = cal.rup_calendar('getYear');
-                                cal.rup_calendar('navigate', 'prev');
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
->>>>>>> feat-rup_calendar
                             });
                             cal2.rup_calendar('setView','year');
                         });
@@ -1128,10 +1114,6 @@ describe('Test rup_calendar (alternative)', () => {
                     describe(' > año', () => {
                         var initialYear;
                         beforeEach((done) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feat-rup_calendar
                             cal2.on('afterRender', () => {
                                 cal2.off('afterRender');
                                 cal2.on('afterRender', () => {
@@ -1141,16 +1123,6 @@ describe('Test rup_calendar (alternative)', () => {
                                     cal2.rup_calendar('navigate', 'next');
                                 });
                                 cal2.rup_calendar('navigate', new Date('2019-01-02'));
-<<<<<<< HEAD
-=======
-                            initialYear = cal.rup_calendar('getYear');
-                            cal.on('afterRender', () => {
-                                cal.off('afterRender');
-                                cal.on('afterRender', done);
-                                cal.rup_calendar('navigate', 'next');
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
->>>>>>> feat-rup_calendar
                             });
                             cal2.rup_calendar('setView', 'year');
                         });
@@ -1325,23 +1297,12 @@ describe('Test rup_calendar (alternative)', () => {
         });
         describe(' > Método isToday', () => {
             describe(' > Funciona cuando es true', () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feat-rup_calendar
                 beforeEach((done) => {
                     cal2.on('afterRender', done);
                     cal2.rup_calendar('navigate', new Date('2019-01-03'));
                 });
                 it(' > Según se genera no debería ser visible el today', () => {
                     expect(cal2.rup_calendar('isToday')).toBeFalsy();
-<<<<<<< HEAD
-=======
-                it(' > Segun se genera debería ser visible el today', () => {
-                    expect(cal.rup_calendar('isToday')).toBeTruthy();
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
->>>>>>> feat-rup_calendar
                 });
             });
             describe(' > Funciona cuando es false', () => {
@@ -1367,43 +1328,17 @@ describe('Test rup_calendar (alternative)', () => {
         });
         describe(' > Método getYear', () => {
             beforeEach((done) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 cal2.on('afterRender', done);
                 cal2.rup_calendar('navigate', new Date('2019-02-20'));
             });
             it(' > Debe devolver el año correctamente', () => {
                 expect(cal2.rup_calendar('getYear')).toBe(2019);
-=======
-                cal.on('afterRender', done);
-                cal.rup_calendar('navigate', new Date('2000-02-20'));
-            });
-            it(' > Debe devolver el año correctamente', () => {
-                expect(cal.rup_calendar('getYear')).toBe(2000);
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
-                cal2.on('afterRender', done);
-                cal2.rup_calendar('navigate', new Date('2019-02-20'));
-            });
-            it(' > Debe devolver el año correctamente', () => {
-                expect(cal2.rup_calendar('getYear')).toBe(2019);
->>>>>>> feat-rup_calendar
             });
         });
         describe(' > Método getMonth', () => {
             beforeEach((done) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 cal2.on('afterRender', done);
                 cal2.rup_calendar('navigate', new Date('2019-02-20'));
-=======
-                cal.on('afterRender', done);
-                cal.rup_calendar('navigate', new Date('2000-02-20'));
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
-                cal2.on('afterRender', done);
-                cal2.rup_calendar('navigate', new Date('2019-02-20'));
->>>>>>> feat-rup_calendar
             });
             it(' > Debe devolver el mes correctamente', () => {
                 expect(cal2.rup_calendar('getMonth')).toBe('Febrero');
@@ -1411,36 +1346,15 @@ describe('Test rup_calendar (alternative)', () => {
         });
         describe(' > Método getDay', () => {
             beforeEach((done) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feat-rup_calendar
                 cal2.on('afterRender', () => {
                     cal2.off('afterRender');
                     cal2.on('afterRender', done);
                     cal2.rup_calendar('navigate', new Date('2019-02-19'));
-<<<<<<< HEAD
-=======
-                cal.on('afterRender', () => {
-                    cal.off('afterRender');
-                    cal.on('afterRender', done);
-                    cal.rup_calendar('navigate', new Date('2000-02-20'));
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
->>>>>>> feat-rup_calendar
                 });
                 cal2.rup_calendar('setView', 'day');
             });
             it(' > Debe devolver el día correctamente', () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 expect(cal2.rup_calendar('getDay')).toBe('Martes');
-=======
-                expect(cal.rup_calendar('getDay')).toBe('Domingo');
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
-                expect(cal2.rup_calendar('getDay')).toBe('Martes');
->>>>>>> feat-rup_calendar
             });
         });
         describe(' > Método getStartDate', () => {
@@ -1654,14 +1568,7 @@ var opts2 = {
     events_source: '/demo/calendar/events',
     weekbox: true,
     cell_navigation: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
     day: '' + new Date().getFullYear() + '-06-02',
-=======
->>>>>>> 9518c4a601f89bbc5d51a2e90693537fd33fd2d0
-=======
-    day: '' + new Date().getFullYear() + '-06-02',
->>>>>>> feat-rup_calendar
     position: {
         start: new Date('' + new Date().getFullYear() + '-01-01'),
         end: new Date('' + (new Date().getFullYear() + 1) + '-01-01')
