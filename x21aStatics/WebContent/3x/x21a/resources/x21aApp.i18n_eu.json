@@ -106,6 +106,7 @@
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
 			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
 			"multicombo" :"Combo Mutiselección",
+			"comboMantenimiento": "Combo anidado con mantenimiento_eu",
 			"dialog" :"Dialogo",
 			"date" :"Data",
 			"feedback" :"Feedback",
