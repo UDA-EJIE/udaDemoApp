@@ -1,10 +1,29 @@
 jQuery(function($){
 	
+	var tableColModels = [
+		{ name: "ida", index: "ida", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:1, colpos:1}
+		},
+		{ name: "idb", index: "idb", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:2, colpos:1}
+		},
+		{ name: "nombre", index: "nombre", editable:true, hidden:false
+			, formoptions:{rowpos:3, colpos:1}
+		},
+		{ name: "apellido1", index: "apellido1", editable:true, hidden:false
+			, formoptions:{rowpos:4, colpos:1}
+			, classes:'ui-ellipsis'
+		},
+		{ name: "apellido2", index: "apellido2", editable:true, hidden:false
+			, formoptions:{rowpos:5, colpos:1}
+		}
+	];
+	
 	var listaPlugins = 'editForm,colReorder,selection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection'],
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','inlineEdit'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','inlineEdit'],
 		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection']
 	};	
 	 
@@ -95,8 +114,40 @@ jQuery(function($){
 
 		    $('#editForm').prop('checked', true);
 		}else{
-			$('#selection').prop('checked', false);
 			$('#editForm').prop('checked', false);
+		}
+		
+		if(localStorage.plugins.indexOf('inlineEdit') > -1){
+	        var formEdit = {
+	        	detailForm: "#example_detail_div",
+	        	validate:{
+	    			rules:{
+	    				"ida":{required:true},
+	    				"nombre":{required:true},
+	    				"idb":{required:true},
+	    				"apellido1":{required:false},
+	    				"apellido2":{required:false}
+	    			}
+	    		},
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	        }
+	        var inlineEdit = {
+		        	deselect: true,
+		        	validate:{
+		    			rules:{
+		    				"ida":{required:true},
+		    				"nombre":{required:true},
+		    				"idb":{required:true},
+		    				"apellido1":{required:true},
+		    				"apellido2":{required:true}
+		    			}
+		    		}
+		        }
+		    plugins.inlineEdit = inlineEdit;
+
+		    $('#inlineEdit').prop('checked', true);
+		}else{
+			$('#inlineEdit').prop('checked', false);
 		}
 		
 		if(localStorage.plugins.indexOf('buttons') > -1){
@@ -146,6 +197,10 @@ jQuery(function($){
 		}else{
 			$('#groups').prop('checked', false);
 		}
+		
+		//Col model es obligatorio,se mete como generico
+		plugins.colModel = tableColModels;
+		
 		localStorage.clear();
 		return plugins;
 	}
