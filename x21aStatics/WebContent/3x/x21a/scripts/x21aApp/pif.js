@@ -28,7 +28,7 @@ jQuery(document).ready(function(){
 //	$('#fileuploadPif_only').rup_upload({
 ////		url:url,
 ////		url:"http://svc.integracion.jakina.ejiedes.net/y31ApiJSWAR/Y31JanoServicePutServlet",
-//		url:'http://desarrollo.jakina.ejiedes.net:7001/x21aPilotoPatronesWar/upload',
+//		url:'http://local.ejiedes.net:7001/x21aPilotoPatronesWar/upload',
 //		fileInput: $("#file_only"),
 //		forceIframeTransport: true
 //	});

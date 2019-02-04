@@ -8,7 +8,7 @@ import { List } from './list';
 @Injectable()
 export class ListService {
 
-  private listUrl = 'http://desarrollo.jakina.ejiedes.net:7001/x21aModulesWar/taskList';
+  private listUrl = 'http://local.ejiedes.net:7001/x21aModulesWar/taskList';
 
   constructor(private http: Http) {
 
