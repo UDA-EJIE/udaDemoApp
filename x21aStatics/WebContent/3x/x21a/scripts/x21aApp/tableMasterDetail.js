@@ -1,4 +1,5 @@
 ﻿/*!
+
  * Copyright 2011 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
@@ -17,8 +18,6 @@ jQuery(function($){
 	
 	$("#comarca").rup_table({
 		url: "../jqGridComarca",
-		sortorder: "asc",
-		sortname: "code",
 		colNames: [
 			"code",
 			"descEs",
@@ -61,7 +60,7 @@ jQuery(function($){
 				label: "provincia.code",
 				index: "provincia.code",
 				editable: true,
-				hidden: true,
+				hidden: false,
 				edittype: "text",
 				rupType: "combo",
 				editoptions: {
@@ -80,25 +79,45 @@ jQuery(function($){
 				editable: false
 			}
         ],
+        primaryKey: ["code"],
         usePlugins:[
  			"formEdit",
         	"feedback",
-//			"toolbar",
+			"toolbar",
         	"contextMenu",
         	"responsive",
         	"filter",
-        	"search",
-        	"multifilter"
+        	"search"
         ],
-        editOptions:{
-        	fillDataMethod:"clientSide"
+        rowNum:10, 
+        rowList:[10,20,30], 
+        sortname: 'code',
+        toolbar:{
+        	showOperations:{
+	    		operacion2:false
+        	}
         },
-        primaryKey: ["code"],
-        masterDetail:{
-        	detail: "#localidad"
-        },
-        multifilter:{ idFilter:"maestro",labelSize:255,userFilter:"udaPruebas"}
+        formEdit:{
+        	detailForm: "#comarca_detail_div",
+        	validate:{
+    			rules:{
+    				"code":{required:true}
+    			}
+    		}
+        }
+        
 	});
+	
+	var options_role_combo = {
+			source : [
+			   {label: "---", value:""},
+			   {label:"Alava", value:"1"},
+			   {label: "Vizcaya", value:"2"},
+			   {label: "Gipuzcoa", value:"3"}
+			]
+		};
+	
+	jQuery("#provinciaRemote").rup_combo(options_role_combo);
 
 	$("#localidad").rup_table({
 		url: "../jqGridLocalidad",
@@ -106,7 +125,7 @@ jQuery(function($){
 		sortname: "code",
 		colNames: [
 			"code",
-//			"codeComarca",
+			"codeComarca",
 			"descEs",
 			"descEu",
 			"css"
@@ -120,13 +139,13 @@ jQuery(function($){
 				edittype: "text",
 				key:true
 			},
-//			{ name: "comarca.codeComarca",
-//				label: "codeComarca",
-//				index: "codeComarca",
-//				width: "150",
-//				editable: true,
-//				edittype: "text"
-//			},
+			{ name: "comarca.code",
+				label: "codeComarca",
+				index: "codeComarca",
+				width: "150",
+				editable: true,
+				edittype: "text"
+			},
 			{ name: "descEs",
 				label: "descEs",
 				index: "descEs",
@@ -151,23 +170,36 @@ jQuery(function($){
         ],
         usePlugins:["formEdit",
                 	"feedback",
-//        			"toolbar",
+        			"toolbar",
                 	"contextMenu",
                 	"fluid",
                 	"filter",
                 	"search",
-                	"masterDetail",
-                	"multifilter"],
+                	"masterDetail"],
         loadOnStartUp:false,
         editOptions:{
         	fillDataMethod:"clientSide"
+        },
+        formEdit:{
+        	detailForm: "#localidad_detail_div",
+        	validate:{
+    			rules:{
+    				"code":{required:true}
+    			}
+    		}
         },
         primaryKey: "code",
         sortname: "code",
         masterDetail:{
         	master:"#comarca",
         	masterPrimaryKey:"comarca.code"
-        },
-        multifilter:{ idFilter:"detalle",labelSize:255,userFilter:"udaPruebas"}
+        }
+	});
+	
+	$('#comarcaRemote').rup_combo({
+		source : "../jqGridComarca/comarca",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
+		rowStriping: true,
+		blank: ""
 	});
 });
