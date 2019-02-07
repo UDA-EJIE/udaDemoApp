@@ -23,6 +23,9 @@ jQuery(document).ready(function(){
 			{i18nCaption:"pestanaUrl", url:"tab3Fragment"},
 			{i18nCaption:"pestanaMantenimiento", url:"../tableLegacy/formEditTabs"},
 			{i18nCaption:"pestanaMantenimiento2", url:"../tableLegacy/formEditTabs2"}],
-			cache:false
+			cache:false,
+			select: function() {
+				jQuery('.ui-tabs-loading').removeClass('ui-tabs-loading');
+			}
 	});
 });

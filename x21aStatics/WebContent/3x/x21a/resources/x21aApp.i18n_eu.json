@@ -88,7 +88,10 @@
 		"titulo-notifi":"Notificaciones_eu",
 		"titulo-nave":"Navegación_eu",
 		"titulo-estru":"Estructuración de pantalla_eu",
-		"titulo-inser":"Inserción de datos_eu"
+		"titulo-inser":"Inserción de datos_eu",
+		"calendario" : "Egutegia",
+			"calendarioSimple" : "Bat",
+			"calendarioDoble" : "Bikote"
 	},
 	"x21aAppWar_migas" :{
 		"patrones" :"Ereduak",
@@ -103,6 +106,7 @@
 			"comboEnlazadoSimple" :"Combo Enlazado (simple)",
 			"comboEnlazadoMulti" :"Combo Enlazado (múltiple)",
 			"multicombo" :"Combo Mutiselección",
+			"comboMantenimiento": "Combo anidado con mantenimiento_eu",
 			"dialog" :"Dialogo",
 			"date" :"Data",
 			"feedback" :"Feedback",
@@ -172,7 +176,10 @@
 			"mobileDesktop" : "Escritorio de móvil_eu",
 			"mobileTabletDesktop" : "Escritorio de móvil, tablet y sobremesa_eu",
 			"exampleForm" : "Formulario de ejemplo_eu",
-		"styleGuide" : "Guía de estilos_eu"
+		"styleGuide" : "Guía de estilos_eu",
+		"calendario" : "Egutegia",
+			"calendarioSimple" : "Bat",
+			"calendarioDoble" : "Bikote"
 	},
 	
 "_comment":"PATRONES",	

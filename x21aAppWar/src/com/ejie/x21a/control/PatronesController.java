@@ -1005,4 +1005,28 @@ public class PatronesController {
 		}
 		
 		
+		
+	/**
+	 * Método para obtener la vista el calendarios
+	 * 
+	 * @param model
+	 *            el modelo.
+	 * @return string la view.
+	 */
+	@RequestMapping(value = "calendar/page", method = RequestMethod.GET)
+	public String getCalendar(Model model) {
+		return "calendar";
+	}
+
+	/**
+	 * Método para obtener la vista con dos calendarios
+	 * 
+	 * @param model
+	 *            el modelo.
+	 * @return string la view.
+	 */
+	@RequestMapping(value = "calendar/pageDouble", method = RequestMethod.GET)
+	public String getDoubleCalendar(Model model) {
+		return "doubleCalendar";
+	}
 }
