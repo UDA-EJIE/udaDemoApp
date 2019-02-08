@@ -18,7 +18,7 @@
 
 <jsp:include page="includes/filterForm.jsp"></jsp:include>
 
-<table id="example" class="tableFit table-striped table-bordered" 
+<table id="example" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="."
 	data-filter-form="#example_filter_form" 
 	cellspacing="0">
@@ -116,5 +116,5 @@
 		</div>
   	</fieldset>
 	<span id="pluginError"></span>
-	<button id="example_aplicar" type="button" class="btn btn-primary">Aplicar Cambios</button>
+	<button id="example_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
 </form>

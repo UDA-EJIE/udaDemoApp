@@ -113,6 +113,7 @@
     </div>
     
     <p>Los botones de bootstrap materializados <code>.btn-material</code> pueden ser presentados con diferentes énfasis y estados.</p>
+    <p>Además, añadiendo la clase <code>.material-rounded</code> las esquinas serán redondeadas.</p>
     <h3>Énfasis alto</h3>
 
     <div class="example">
@@ -124,11 +125,11 @@
 
           <button type="button" class="btn-material btn-material-success-high-emphasis"><span>Success</span></button>
 
-          <button type="button" class="btn-material btn-material-danger-high-emphasis"><span>Danger</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-danger-high-emphasis"><span>Danger</span></button>
 
-          <button type="button" class="btn-material btn-material-warning-dark-high-emphasis"><span>Warning</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-warning-dark-high-emphasis"><span>Warning</span></button>
 
-          <button type="button" class="btn-material btn-material-info-high-emphasis"><span>Info</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-info-high-emphasis"><span>Info</span></button>
         </div>
       </div>
     </div>
@@ -145,11 +146,11 @@
 
           <button type="button" class="btn-material btn-material-success-medium-emphasis"><span>Success</span></button>
 
-          <button type="button" class="btn-material btn-material-danger-medium-emphasis"><span>Danger</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-danger-medium-emphasis"><span>Danger</span></button>
 
-          <button type="button" class="btn-material btn-material-warning-dark-medium-emphasis"><span>Warning</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-warning-dark-medium-emphasis"><span>Warning</span></button>
 
-          <button type="button" class="btn-material btn-material-info-medium-emphasis"><span>Info</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-info-medium-emphasis"><span>Info</span></button>
         </div>
       </div>
     </div>
@@ -165,11 +166,11 @@
 
           <button type="button" class="btn-material btn-material-success-low-emphasis"><span>Success</span></button>
 
-          <button type="button" class="btn-material btn-material-danger-low-emphasis"><span>Danger</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-danger-low-emphasis"><span>Danger</span></button>
 
-          <button type="button" class="btn-material btn-material-warning-dark-low-emphasis"><span>Warning</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-warning-dark-low-emphasis"><span>Warning</span></button>
 
-          <button type="button" class="btn-material btn-material-info-low-emphasis"><span>Info</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-info-low-emphasis"><span>Info</span></button>
         </div>
       </div>
     </div>
@@ -181,15 +182,15 @@
         <div class="col-md-12">
           <button type="button" class="btn-material btn-material-primary-high-emphasis" disabled><span>Principal</span></button>
 
-          <button type="button" class="btn-material btn-material-secondary-high-emphasis" disabled><span>Secundario</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-secondary-high-emphasis" disabled><span>Secundario</span></button>
 
           <button type="button" class="btn-material btn-material-success-medium-emphasis" disabled><span>Success</span></button>
 
-          <button type="button" class="btn-material btn-material-danger-medium-emphasis" disabled><span>Danger</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-danger-medium-emphasis" disabled><span>Danger</span></button>
 
           <button type="button" class="btn-material btn-material-warning-dark-low-emphasis" disabled><span>Warning</span></button>
 
-          <button type="button" class="btn-material btn-material-info-low-emphasis" disabled><span>Info</span></button>
+          <button type="button" class="btn-material material-rounded btn-material-info-low-emphasis" disabled><span>Info</span></button>
         </div>
       </div>
     </div>
@@ -199,12 +200,45 @@
     <div class="example">
       <div class="row">
         <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-lg btn-material-primary-high-emphasis">
+          	<i class="material-icons">&#xe145;</i>
+          	<span>Añadir</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-secondary-high-emphasis">
+          	<i class="material-icons">&#xe3c9;</i>
+          	<span>Editar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-lg btn-material-success-medium-emphasis">
+          	<i class="material-icons">&#xe14d;</i>
+          	<span>Clonar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-danger-medium-emphasis">
+          	<i class="material-icons">&#xe872;</i>
+          	<span>Eliminar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-lg btn-material-warning-dark-low-emphasis">
+          	<i class="material-icons">&#xe863;</i>
+          	<span>Recargar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-info-low-emphasis">
+          	<i class="material-icons">&#xe24d;</i>
+          	<span>Informes</span>
+          </button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12">
           <button type="button" class="btn-material btn-material-primary-high-emphasis">
           	<i class="material-icons">&#xe145;</i>
           	<span>Añadir</span>
           </button>
 
-          <button type="button" class="btn-material btn-material-secondary-high-emphasis">
+          <button type="button" class="btn-material material-rounded btn-material-secondary-high-emphasis">
           	<i class="material-icons">&#xe3c9;</i>
           	<span>Editar</span>
           </button>
@@ -214,7 +248,7 @@
           	<span>Clonar</span>
           </button>
 
-          <button type="button" class="btn-material btn-material-danger-medium-emphasis">
+          <button type="button" class="btn-material material-rounded btn-material-danger-medium-emphasis">
           	<i class="material-icons">&#xe872;</i>
           	<span>Eliminar</span>
           </button>
@@ -224,10 +258,95 @@
           	<span>Recargar</span>
           </button>
 
-          <button type="button" class="btn-material btn-material-info-low-emphasis">
+          <button type="button" class="btn-material material-rounded btn-material-info-low-emphasis">
           	<i class="material-icons">&#xe24d;</i>
           	<span>Informes</span>
           </button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-sm btn-material-primary-high-emphasis">
+          	<i class="material-icons">&#xe145;</i>
+          	<span>Añadir</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-secondary-high-emphasis">
+          	<i class="material-icons">&#xe3c9;</i>
+          	<span>Editar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-sm btn-material-success-medium-emphasis">
+          	<i class="material-icons">&#xe14d;</i>
+          	<span>Clonar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-danger-medium-emphasis">
+          	<i class="material-icons">&#xe872;</i>
+          	<span>Eliminar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-sm btn-material-warning-dark-low-emphasis">
+          	<i class="material-icons">&#xe863;</i>
+          	<span>Recargar</span>
+          </button>
+
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-info-low-emphasis">
+          	<i class="material-icons">&#xe24d;</i>
+          	<span>Informes</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Diferentes tamaños</h3>
+    
+    <p>Mediante la clase <code>.btn-material-sm</code> el botón será mas pequeño, en cambio si se usa la clase <code>.btn-material-lg</code>, será mas grande.</p>
+    
+    <div class="example">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-lg btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-lg btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material btn-material-lg btn-material-primary-low-emphasis"><span>Principal</span></button>
+          
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material btn-material-lg material-rounded btn-material-primary-low-emphasis"><span>Principal</span></button>
+        </div>
+      </div>
+	  <div class="row mt-4">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material btn-material-primary-low-emphasis"><span>Principal</span></button>
+          
+          <button type="button" class="btn-material material-rounded btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material material-rounded btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material material-rounded btn-material-primary-low-emphasis"><span>Principal</span></button>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <button type="button" class="btn-material btn-material-sm btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-sm btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material btn-material-sm btn-material-primary-low-emphasis"><span>Principal</span></button>
+          
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-primary-high-emphasis"><span>Principal</span></button>
+
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-primary-medium-emphasis"><span>Secundario</span></button>
+          
+          <button type="button" class="btn-material btn-material-sm material-rounded btn-material-primary-low-emphasis"><span>Principal</span></button>
         </div>
       </div>
     </div>
@@ -330,6 +449,19 @@
       </select>
     </div>
     
+    <p>Combo UDA Materializado:</p>
+
+    <div class="example">
+   	  <label for="rupComboMaterial">Opciones</label>
+      <select  id="rupComboMaterial">
+        <option>Opción 1</option>
+        <option>Opción 2</option>
+        <option>Opción 3</option>
+        <option>Opción 4</option>
+        <option>Opción 5</option>
+      </select>
+    </div>
+    
     <div class="row">
         <div class="col-md-6">
 		    <h3>Radio</h3>
@@ -358,6 +490,20 @@
 		      <input id="opcionCheckboxMaterial-2" type="checkbox">
 		      <label for="opcionCheckboxMaterial-2">Opción 2</label>
 		    </div>
+		</div>
+	</div>
+	
+	<h3>Fecha</h3>
+	
+	<div class="example">
+		<div class="form-groupMaterial materialDatepicker">
+			<label for="fechaMaterial">Fecha 
+				<span class="text-muted" id="fecha-mask"></span></label> 
+			<input id="fechaMaterial" type="text" />
+		</div>
+		<div class="form-groupMaterial materialDatepicker">
+			<label for="fechaMaterialPlaceholder">Fecha</label> 
+			<input id="fechaMaterialPlaceholder" type="text" />
 		</div>
 	</div>
   </section>

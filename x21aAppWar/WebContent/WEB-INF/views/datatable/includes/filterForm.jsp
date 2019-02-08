@@ -49,13 +49,13 @@
     <!-- Botonera del formulario de filtrado -->
     <div id="example_filter_buttonSet" class="right_buttons">
     	<!-- Botón de limpiar -->
-        <button id="example_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-        	<i class="fa fa-eraser"></i>
+        <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+        	<i class="material-icons">&#xe14c;</i>
         	<span>Limpiar</span>
         </button>
         <!-- Botón de filtrado -->
-        <button id="example_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
-        	<i class="fa fa-filter"></i>
+        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+        	<i class="material-icons">&#xe152;</i>
         	<span>Filtrar</span>        	
         </button>
     </div>
