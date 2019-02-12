@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Maestro-Detalle PRUEBA desde cero</h2>
+<h2>Maestro-Detalle</h2>
 <div id="error" style="display:none"></div>
 
 <h2>Comarca</h2>
