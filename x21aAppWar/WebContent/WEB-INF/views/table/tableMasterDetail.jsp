@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Maestro-Detalle</h2>
+<h2>Maestro-Detalle Legacy</h2>
 <div id="error" style="display:none"></div>
 
 <h2>Comarca</h2>
@@ -217,17 +217,17 @@
 			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">  
+			<div class="form-row">  <!--  
 			    <div class="form-group fix-align col-sm">
 			    	<label for="comarcaRemote" class="formulario_linea_label">Comarca</label>
 			    	<select id="comarcaRemote" name="comarca.code" class="rup-combo"><option>&nbsp;</option></select>
-			    </div>
+			    </div>-->
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
 			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">  
+		  	<div class="form-row">  
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
 			    	<input type="text" name="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
