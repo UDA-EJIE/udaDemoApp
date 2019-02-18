@@ -195,11 +195,11 @@ jQuery(function($){
         	masterPrimaryKey:"comarca.code"
         }
 	});
-	
+	/*
 	$('#comarcaRemote').rup_combo({
 		source : "../jqGridComarca/comarca",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
 		rowStriping: true,
 		blank: ""
-	});
+	});*/
 });
