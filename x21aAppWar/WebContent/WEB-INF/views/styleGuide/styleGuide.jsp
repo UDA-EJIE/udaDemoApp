@@ -496,14 +496,15 @@
 	<h3>Fecha</h3>
 	
 	<div class="example">
-		<div class="form-groupMaterial materialDatepicker">
-			<label for="fechaMaterial">Fecha 
-				<span class="text-muted" id="fecha-mask"></span></label> 
+		<div class="form-groupMaterial materialDatepicker"> 
 			<input id="fechaMaterial" type="text" />
+			<label for="fechaMaterial">Fecha 
+				<span class="text-muted" id="fecha-mask"></span>
+			</label>
 		</div>
-		<div class="form-groupMaterial materialDatepicker">
-			<label for="fechaMaterialPlaceholder">Fecha</label> 
+		<div class="form-groupMaterial materialDatepicker"> 
 			<input id="fechaMaterialPlaceholder" type="text" />
+			<label for="fechaMaterialPlaceholder">Fecha</label>
 		</div>
 	</div>
   </section>

@@ -103,7 +103,8 @@ jQuery(function($){
 			   {i18nCaption: "1", value:"1"}
 			],
 			i18nId: "GRID_simple##ejie",
-			width: 120
+			width: "100%",
+	        customClasses: ["select-material"]
 		},	
 		options_role_combo = {
 			source : [
@@ -113,7 +114,9 @@ jQuery(function($){
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
-			]
+			],
+			width: "100%",
+	        customClasses: ["select-material"]
 		};
 	
 
