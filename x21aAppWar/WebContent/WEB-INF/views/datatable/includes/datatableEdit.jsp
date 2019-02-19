@@ -20,7 +20,7 @@
 <div id="example_detail_div" class="rup-table-formEdit-detail">
 	<div id ="example_detail_navigation"></div>
 	<div class="dialog-content-material" >
-		<form id="example_detail_form">
+		<form id="example_detail_form" class="rup_form">
 			<div id ="example_detail_feedback"></div>
 			
 			<div class="form-row">    
