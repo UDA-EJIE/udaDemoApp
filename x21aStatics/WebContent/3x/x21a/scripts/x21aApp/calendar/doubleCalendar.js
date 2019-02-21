@@ -15,10 +15,27 @@
  */
 jQuery(function($){
 
-	//funcion que ejecutarán los eventos.
-	window.actions = function(n) {
+	// funcion que ejecutarán los eventos.
+	actions = function(n) {
 		console.info('' + n + ' ha sido pulsado');
 	}
+	
+	getDay = () => {
+        var days_array = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var m = (new Date()).getMonth();
+        var m_limit = days_array[m];
+        var d = Math.floor(Math.random() * m_limit) + 1;
+        return new Date(new Date().getFullYear(), m, d).getTime();
+    };
+    
+    days1 = [
+        getDay(), getDay(), getDay(), getDay()
+    ];
+    
+    days2 = [
+        getDay(), getDay(), getDay(), getDay()
+    ];
+	
 	// Opciones calendario 1
 	var options1 = {
         events_source : function() {
@@ -26,33 +43,33 @@ jQuery(function($){
                     {
                         "id" : "51469",
                         "title" : "<span><strong>REVISION DE AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DEL BARRIO DE NAFARRATE, EN LA LOCALIDAD DE URRUNAGA, T.M. DE LEGUTIANO (ARABA) (Rev. 2010-S-0285)</strong><ul class='pl-3'><li>Nºexp.:&nbsp;RAV-A-2016-0054</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li><li>Requiere muestra&nbsp;</li></ul></span>",
-                        "start" : "1543273200000",
+                        "start" : days1[0],
                         "class" : " vertido muestreo",
-                        "end" : "1543273200001",
+                        "end" : days1[0]+1,
                         "url" : "javascript:actions(51469)"
                     },
                     {
                         "id" : "49164",
                         "title" : "<span><strong>AUTORIZACIÓN DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DE LA POBLACION DE AMARITA, T.M. DE VITORIA-GASTEIZ (ALAVA).</strong><ul class='pl-3'><li>Nºexp.:&nbsp;VDP-A-2012-0268</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li></ul></span>",
-                        "start" : "1541372400000",
+                        "start" : days1[1],
                         "class" : " vertido vigilancia",
-                        "end" : "1541372400001",
+                        "end" : days1[1]+1,
                         "url" : "javascript:actions(49164)"
                     },
                     {
                         "id" : "47488",
                         "title" : "<span><strong>REVISION DE AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DE LA POBLACION DE GAMARRA MENOR, T.M. DE VITORIA-GASTEIZ (ARABA) (Rev. 2013-S-0095)</strong><ul class='pl-3'><li>Nºexp.:&nbsp;RAV-A-2016-0055</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li></ul></span>",
-                        "start" : "1543446000000",
+                        "start" : days1[2],
                         "class" : " vertido vigilancia",
-                        "end" : "1543446000001",
+                        "end" : days1[2]+1,
                         "url" : "javascript:actions(47488)"
                     },
                     {
                         "id" : "49143",
                         "title" : "<span><strong>AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DE UNA GRANJA EXPERIMENTAL DE AVES EN LA LOCALIDAD DE CASTILLO, EN EL T.M. DE VITORIA-GASTEIZ (ALAVA).</strong><ul class='pl-3'><li>Nºexp.:&nbsp;VDP-A-2012-0379</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li></ul></span>",
-                        "start" : "1542495600000",
+                        "start" : days1[3],
                         "class" : " vertido vigilancia",
-                        "end" : "1542495600001",
+                        "end" : days1[3]+1,
                         "url" : "javascript:actions(49143)"
                     } ];
         },
@@ -68,33 +85,33 @@ jQuery(function($){
 			{
 				"id" : "48605",
 				"title" : "<span><strong>AUTORIZACIÓN DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DE ESTACIÓN DE SERVICIO Nº 7338 EN ARKAUTE, T.M .DE VITORIA-GASTEIZ</strong><ul class='pl-3'><li>Nºexp.:&nbsp;VDP-A-2012-0382</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li><li>Requiere muestra&nbsp;</li><li><i class='fa fa-check pr-1' aria-hidden='true'></i>COMPLETADA</li></ul></span>",
-				"start" : "1541890800000",
+				"start" : days2[0],
 				"class" : " vertido muestreo completada",
-				"end" : "1541890800001",
+				"end" : days2[0]+1,
 				"url" : "javascript:actions(48605)"
 			},
 			{
 				"id" : "47278",
 				"title" : "<span><strong>REVISION DE LA AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES DE LA LOCALIDAD DE ILARRATZA (2 P. VERTIDO), T.M. DE VITORIA-GASTEIZ. (REV. 2009-S-0372)</strong><ul class='pl-3'><li>Nºexp.:&nbsp;RAV-A-2014-0058</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li></ul></span>",
-				"start" : "1543186800000",
+				"start" : days2[1],
 				"class" : " vertido vigilancia",
-				"end" : "1543186800001",
+				"end" : days2[1]+1,
 				"url" : "javascript:actions(47278)"
 			},
 			{
 				"id" : "49203",
 				"title" : "<span><strong>AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES EN ESTACION DE SERVICIO (FECALES, HIDROCARBUROS Y LAVADO DE VEHICULOS EN OTXANDIO</strong><ul class='pl-3'><li>Nºexp.:&nbsp;VDP-A-2012-0164</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li></ul></span>",
-				"start" : "1541890800000",
+				"start" : days2[2],
 				"class" : " vertido vigilancia",
-				"end" : "1541890800001",
+				"end" : days2[2]+1,
 				"url" : "javascript:actions(49203)"
 			},
 			{
 				"id" : "47275",
 				"title" : "<span><strong>REVISION DE LA AUTORIZACION DE VERTIDO DE AGUAS RESIDUALES DE LA LOCALIDAD DE ILARRATZA (2 P. VERTIDO), T.M. DE VITORIA-GASTEIZ. (REV. 2009-S-0372)</strong><ul class='pl-3'><li>Nºexp.:&nbsp;RAV-A-2014-0058</li><li>P.vertido:&nbsp;PV2</li><li>Id.flujo:&nbsp;F2</li></ul></span>",
-				"start" : "1543186800000",
+				"start" : days2[3],
 				"class" : " vertido vigilancia",
-				"end" : "1543186800001",
+				"end" : days2[3]+1,
 				"url" : "javascript:actions(47275)"
 			}];
         },
