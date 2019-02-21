@@ -24,7 +24,7 @@ jQuery(document).ready(function(){
 			{i18nCaption: "g", value:"03"}
 		],
 		selected: "02",
-		blank:"0",
+		blank:"",
 		change: function () {
 			console.log('comboLocalAbuelo:::Changed');
 		}
@@ -71,7 +71,7 @@ jQuery(document).ready(function(){
 $('#comboAbueloRemoto').rup_combo({
 	source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-	blank: "0",
+	blank: "",
 	selected: "2",
 	change:function(){
 		console.log('Cambio el :::: ABUELO');
@@ -85,7 +85,7 @@ $('#comboPadreRemoto').rup_combo({
 	parent: [ "comboAbueloRemoto"],
 	source : "comboEnlazadoSimple/remoteEnlazadoComarca",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-	blank: "0",
+	blank: "",
 	selected: "7",
 	change: function () {
 		console.log('comboRemotoPadre:::Changed');
@@ -97,7 +97,7 @@ $('#comboHijoRemoto').rup_combo({
 	parent: [ "comboPadreRemoto" ],
 	source : "comboEnlazadoSimple/remoteEnlazadoLocalidad",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-	blank: "0",
+	blank: "",
 	selected: "8",
 	change: function () {
 		console.log('comboRemotoHijo:::Changed');
