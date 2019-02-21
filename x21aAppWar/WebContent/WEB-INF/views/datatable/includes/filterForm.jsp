@@ -2,7 +2,7 @@
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
-    <div class="form-row">    
+    <div class="form-row col-12">    
 		<div class="form-groupMaterial col-sm">
 	    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_filter_table" />
 			<label for="id_filter_table" class="formulario_linea_label">ID</label>
@@ -24,7 +24,7 @@
 	    </div>
 	</div>
     
-    <div class="form-row">
+    <div class="form-row col-12">
     	<div class="form-groupMaterial fix-align col-sm">
 	    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_filter_table" />
 	    	<label for="fechaAlta_filter_table" class="formulario_linea_label">Fecha de alta</label>

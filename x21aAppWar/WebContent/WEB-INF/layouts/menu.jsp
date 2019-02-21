@@ -24,9 +24,15 @@
         <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><spring:message code="componentes" /><span class="caret"></span></a> -->
         <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><spring:message code="componentes" /></a>
         <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown">
-            <a class="dropdown-item" href="/x21aAppWar/patrones/feedback"><i class="fa fa-check-square" aria-hidden="true"></i><spring:message code="feedback" /></a>
+            <a class="dropdown-item" href="/x21aAppWar/patrones/feedback">
+            	<i class="material-icons" aria-hidden="true">&#xe87f;</i>
+            	<spring:message code="feedback" />
+            </a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/tooltip"><i class="fa fa-comment-o" aria-hidden="true"></i><spring:message code="tooltip" /></a>
-            <a class="dropdown-item" href="/x21aAppWar/patrones/message"><i class="fa fa-envelope" aria-hidden="true"></i><spring:message code="message" /></a>
+            <a class="dropdown-item" href="/x21aAppWar/patrones/message">
+            	<i class="material-icons" aria-hidden="true">&#xe0be;</i>
+            	<spring:message code="message" />
+           	</a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/dialog"><i class="fa fa-window-restore" aria-hidden="true"></i><spring:message code="dialog" /></a>
             <a class="dropdown-item" href="/x21aAppWar/patrones/progressbar"><i class="fa fa-hourglass-half" aria-hidden="true"></i><spring:message code="progressBar" /></a>
             <div class="dropdown-divider"></div>
@@ -39,7 +45,10 @@
             <div class="dropdown-submenu" >
               <a class="dropdown-item dropdown-toggle" href="#"><spring:message code="tabs" /></a>
               <div class="dropdown-menu menu-right" >
-                <a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic"><spring:message code="tabsStatic" /></a>
+                <a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic">
+                	<i class="material-icons" aria-hidden="true">&#xe8d8;</i>
+                	<spring:message code="tabsStatic" />
+                </a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax"><spring:message code="tabsAjax" /></a>
                 <a class="dropdown-item" href="/x21aAppWar/patrones/tabsMixto"><spring:message code="tabsMixto" /></a>
                 <!-- FIXME <a class="dropdown-item" href="/x21aAppWar/patrones/maintTab"><spring:message code="maintTab" /></a> -->
@@ -192,16 +201,22 @@
         <a class="nav-link rup-nav-tool-icon" href="http://uda-ejie.github.io/" id="uda_github"><i class="fa fa-github" aria-hidden="true"></i></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#" id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog " aria-hidden="true"></i></a>
+        <a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#" id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        	<i class="material-icons" aria-hidden="true">&#xe8b8;</i>
+        </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="x21aApp_releases">
           <a class="dropdown-item" href="/x21aPilotoPatronesWar/"><spring:message code="udaLegacy" /></a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link rup-nav-user rup-nav-tool-icon" href="#"><i class="fa fa-user-circle-o " aria-hidden="true"></i></a>
+        <a class="nav-link rup-nav-user rup-nav-tool-icon" href="#">
+        	<i class="material-icons" aria-hidden="true">&#xe853;</i>
+        </a>
       </li>
       <li class="nav-item swingTop">
-        <a class="nav-link rup-nav-user rup-nav-tool-icon" href="javascript:void(0)"><i class="fa fa-arrow-circle-up " aria-hidden="true"></i></a>
+        <a class="nav-link rup-nav-user rup-nav-tool-icon" href="javascript:void(0)">
+        	<i class="material-icons" aria-hidden="true">&#xe5d8;</i>
+        </a>
       </li>
     </ul>
   </div><!--/.navbar-collapse -->
