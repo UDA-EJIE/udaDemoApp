@@ -36,7 +36,10 @@ jQuery(document).ready(function(){
 		width: 300,
 		blank : "0",
 		rowStriping : true,
-		inputText:true
+		inputText:true,
+		change: function () {
+			console.log('combo:::Changed')
+		}
 	});
 	
 	
@@ -44,7 +47,10 @@ jQuery(document).ready(function(){
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "3",
-		width: 300
+		width: 300,
+		change: function () {
+			console.log('comboRemote:::Changed')
+		}
 	});
 
 	
@@ -62,7 +68,10 @@ jQuery(document).ready(function(){
 		],
 		selected: "joseph",
 		width: 400,
-		format: "default"
+		format: "default",
+		change: function () {
+			console.log('comboLargo:::Changed')
+		}
 	});
 	
 	
@@ -95,14 +104,20 @@ jQuery(document).ready(function(){
 			]}
 		],
 		selected: "real_value",
-		rowStriping : true
+		rowStriping : true,
+		change: function () {
+			console.log('comboGrupos:::Changed')
+		}
 	});
 	
 	$('#comboGruposRemoto').rup_combo({
 		sourceGroup : "comboSimple/remoteGroup",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "7",
-		width: 300
+		width: 300,
+		change: function () {
+			console.log('comboGruposRemoto:::Changed')
+		}
 	});
 		 
 		 
@@ -113,12 +128,18 @@ jQuery(document).ready(function(){
 			{Filtrar: "filter"},
 			{Imprimir: "print"}
 		],
-		selected: "Filtrar"
+		selected: "Filtrar",
+		change: function () {
+			console.log('comboImgs:::Changed')
+		}
 	});
 	
 	$('#comboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		width: 300
+		width: 300,
+		change: function () {
+			console.log('comboInput:::Changed')
+		}
 	});
 
 	$('#comboLoadFromSelect').rup_combo({
@@ -127,7 +148,10 @@ jQuery(document).ready(function(){
 		loadFromSelect: true,
 //		selected: "2",
 		width: 300,
-		height: 75
+		height: 75,
+		change: function () {
+			console.log('comboLoadFromSelect:::Changed')
+		}
 	});
 	
 });

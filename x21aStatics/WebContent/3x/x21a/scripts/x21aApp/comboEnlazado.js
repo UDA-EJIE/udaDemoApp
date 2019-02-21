@@ -24,7 +24,10 @@ jQuery(document).ready(function(){
 			{i18nCaption: "g", value:"03"}
 		],
 		selected: "02",
-		blank:""
+		blank:"",
+		change: function () {
+			console.log('comboLocalAbuelo:::Changed');
+		}
 	}); 
 	
 	$('#comboPadre').rup_combo({
@@ -37,7 +40,10 @@ jQuery(document).ready(function(){
 				 "03":[{i18nCaption: "g1", value:"g1_value"},{i18nCaption: "g2", value:"g2_value"},{i18nCaption: "g3", value:"g3_value"}]
 		
 		},
-		selected: "b1_value"
+		selected: "b1_value",
+		change: function () {
+			console.log('comboLocalPadre:::Changed');
+		}
 	});
 	
 	$('#comboHijo').rup_combo({
@@ -53,7 +59,10 @@ jQuery(document).ready(function(){
 			 "b3_value":[{i18nCaption: "Sestao", value:"b3_1_value"},{i18nCaption: "Barakaldo", value:"b3_2_value"},{i18nCaption: "Portu", value:"b3_3_value"}]
 	
 		},
-		selected: "b1_2_value"
+		selected: "b1_2_value",
+		change: function () {
+			console.log('comboLocalHijo:::Changed');
+		}
 		
 	});
 	
@@ -66,6 +75,9 @@ $('#comboAbueloRemoto').rup_combo({
 	selected: "2",
 	change:function(){
 		console.log('Cambio el :::: ABUELO');
+	},
+	change: function () {
+		console.log('comboRemotoAbuelo:::Changed');
 	}
 });
 
@@ -75,8 +87,8 @@ $('#comboPadreRemoto').rup_combo({
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 	blank: "",
 	selected: "7",
-	change:function(){
-		console.log('Cambio el :::: PADRE');
+	change: function () {
+		console.log('comboRemotoPadre:::Changed');
 	}
 		
 });
@@ -87,8 +99,8 @@ $('#comboHijoRemoto').rup_combo({
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 	blank: "",
 	selected: "8",
-	change:function(){
-		console.log('Cambio el :::: HIJO');
+	change: function () {
+		console.log('comboRemotoHijo:::Changed');
 	}
 });
 
@@ -99,19 +111,28 @@ $('#comboHijoRemoto').rup_combo({
 		source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: 2,
-		blank: "0"
+		blank: "0",
+		change: function () {
+			console.log('comboMixtoAbuelo:::Changed');
+		}
 	});
 	$('#mixto_comboPadre').rup_combo({
 		parent: [ "mixto_comboAbueloRemoto" ],
 		source: {"1":[{i18nCaption: "a1", value:"1"}, {i18nCaption: "a2", value:"2"}, {i18nCaption: "a3", value:"3"}],
 				 "2":[{i18nCaption: "b1", value:"7"},{i18nCaption: "b2", value:"8"},{i18nCaption: "b3", value:"9"}],
 				 "3":[{i18nCaption: "g1", value:"4"},{i18nCaption: "g2", value:"5"},{i18nCaption: "g3", value:"6"}]
+		},
+		change: function () {
+			console.log('comboMixtoPadre:::Changed');
 		}
 	});
 	$('#mixto_comboHijoRemoto').rup_combo({
 		parent: [ "mixto_comboPadre" ],
 		source : "comboEnlazadoSimple/remoteEnlazadoLocalidad",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboMixtoHijo:::Changed');
+		}
 	});
 
 	
@@ -124,18 +145,27 @@ $('#comboHijoRemoto').rup_combo({
 			{i18nCaption: "g", value:"3"}
 		],
 		selected: 2,
-		blank: "0"
+		blank: "0",
+		change: function () {
+			console.log('comboMixto2Abuelo:::Changed');
+		}
 	});
 	$('#mixto2_comboPadreRemoto').rup_combo({
 		parent: [ "mixto2_comboAbuelo"],
 		source : "comboEnlazadoSimple/remoteEnlazadoComarca",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboMixto2Padre:::Changed');
+		}
 	});
 	$('#mixto2_comboHijo').rup_combo({
 		parent: [ "mixto2_comboPadreRemoto" ],
 		source: {"7":["Bilbao","Basauri","Galdakao"],
 				 "8":["Leioa","Las Arenas","Getxo"],
 				 "9":["Sestao","Barakaldo","Portu"]
+		},
+		change: function () {
+			console.log('comboMixto2Hijo:::Changed');
 		}
 	});
 	
@@ -146,7 +176,10 @@ $('#comboHijoRemoto').rup_combo({
 		source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: 2,
-		blank: "0"
+		blank: "0",
+		change: function () {
+			console.log('comboRemoteGroupPadre:::Changed');
+		}
 	});
 	
 	$('#remoteGroup_comboHijo').rup_combo({
@@ -154,6 +187,9 @@ $('#comboHijoRemoto').rup_combo({
 		parent: [ "remoteGroup_comboPadre"],
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		width: 500,
-		multiselect: true
+		multiselect: true,
+		change: function () {
+			console.log('comboRemoteGroupHijo:::Changed');
+		}
 	});
 });
