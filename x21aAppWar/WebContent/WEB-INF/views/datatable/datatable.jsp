@@ -20,8 +20,7 @@
 
 <table id="example" class="tableFit table-striped table-bordered" 
 	data-url-base="."
-	data-filter-form="#example_filter_form" 
-	cellspacing="0">
+	data-filter-form="#example_filter_form">
         <thead>
             <tr>
                 <th data-col-prop="id" data-col-edit="false">Id</th>
