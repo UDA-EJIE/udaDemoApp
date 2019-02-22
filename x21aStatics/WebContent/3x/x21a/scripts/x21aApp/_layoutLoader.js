@@ -19,6 +19,9 @@ jQuery(document).ready(function(){
 	// Evitar conflictos entre Bootstrap y jQueryUI
 	jQuery.fn.bootstrapBtn = jQuery.fn.button.noConflict();
 	
+	//Habilitamos el envío de trazas a PIB
+	window.IS_EJIE = true;
+	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if (jQuery.rup.LAYOUT === "vertical") {
@@ -48,6 +51,7 @@ jQuery(document).ready(function(){
                 "comboEnlazadoSimple" : { "i18nCaption":"comboEnlazadoSimple" },
                 "comboEnlazadoMultiple" : { "i18nCaption":"comboEnlazadoMulti" },
                 "multicombo" : { "i18nCaption":"multicombo" },
+                "comboMantenimiento": {"i18nCaption":"comboMantenimiento"},
 				"slider" : { "i18nCaption" : "slider" },
 				"dialog" : { "i18nCaption" : "dialog" },
 				"date" : { "i18nCaption" : "date" },
@@ -91,6 +95,7 @@ jQuery(document).ready(function(){
                   	{"i18nCaption":"comboEnlazadoSimple", "url": "/x21aAppWar/patrones/comboEnlazadoSimple" },
                   	{"i18nCaption":"comboEnlazadoMulti", "url": "/x21aAppWar/patrones/comboEnlazadoMultiple" },
                   	{"i18nCaption":"multicombo", "url": "/x21aAppWar/patrones/multicombo" },
+                  	{"i18nCaption":"comboMantenimiento", "url": "/x21aAppWar/patrones/comboMantenimiento" },
 					{"i18nCaption":"slider", "url": "/x21aAppWar/patrones/slider" },
                   	{"i18nCaption":"dialog", "url": "/x21aAppWar/patrones/dialog" },
                   	{"i18nCaption":"date", "url": "/x21aAppWar/patrones/date" },
@@ -215,7 +220,18 @@ jQuery(document).ready(function(){
 			"uda" : {
 				//Literal
 				"i18nCaption" : "uda"
-			}
+			},
+            "calendar" : {
+                //Literal
+                "i18nCaption" : "calendario",
+                //Elementos (url)
+                "simple" : { "i18nCaption" : "calendarioSimple" },
+                "doble" : { "i18nCaption" : "calendarioDoble" },
+                "subLevel":[
+                    {"i18nCaption": "calendarioSimple", "url": "/x21aAppWar/calendar/page" },
+                    {"i18nCaption": "calendarioDoble", "url": "/x21aAppWar/calendar/pageDouble" }
+                ]
+            }
 		}
 	});
 	//idioma

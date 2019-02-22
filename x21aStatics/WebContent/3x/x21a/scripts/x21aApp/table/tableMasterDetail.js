@@ -1,5 +1,26 @@
 jQuery(function($){
-
+	
+	var tableColModelsComarca = [
+		{ name: "code", index: "code", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:1, colpos:1}
+		},
+		{ name: "descEs", index: "descEs", editable:true, hidden:false
+			, formoptions:{rowpos:2, colpos:1}
+		},
+		{ name: "descEu", index: "descEu", editable:true, hidden:false
+			, formoptions:{rowpos:3, colpos:1}
+		},
+		{ name: "css", index: "css", editable:true, hidden:false
+			, formoptions:{rowpos:4, colpos:1}
+		},
+		{ name: "provincia.code", index: "provincia.code", editable:true, hidden:false
+			, formoptions:{rowpos:5, colpos:1}
+		},
+		{ name: "provincia.descEs", index: "provincia.descEs", editable:true, hidden:false
+			, formoptions:{rowpos:6, colpos:1}
+		}
+	];
+	
 	$("#comarca").rup_datatable({
 		
 		primaryKey: "code",
@@ -13,7 +34,8 @@ jQuery(function($){
 			fixedColumnsLeft: 1
 		}
     	,seeker: {
-    		activate:true
+    		activate: true,
+    		colModel: tableColModelsComarca
 		}
 		,buttons: {
 			activate:true
@@ -33,6 +55,21 @@ jQuery(function($){
 	        }
 	});
 	
+	var tableColModelsLocalidad = [
+		{ name: "code", index: "code", editable:true, hidden:false, width: 80
+			, formoptions:{rowpos:1, colpos:1}
+		},
+		{ name: "descEs", index: "descEs", editable:true, hidden:false
+			, formoptions:{rowpos:2, colpos:1}
+		},
+		{ name: "descEu", index: "descEu", editable:true, hidden:false
+			, formoptions:{rowpos:3, colpos:1}
+		},
+		{ name: "css", index: "css", editable:true, hidden:false
+			, formoptions:{rowpos:4, colpos:1}
+		}
+	];
+	
 	$("#localidad").rup_datatable({
 		
 		primaryKey: "code",
@@ -46,7 +83,8 @@ jQuery(function($){
 			fixedColumnsLeft: 1
 		}
     	,seeker: {
-    		activate:true
+    		activate: true,
+    		colModel: tableColModelsLocalidad
 		}
 		,buttons: {
 			activate:true
@@ -77,11 +115,11 @@ jQuery(function($){
 		rowStriping: true,
 		blank: ""
 	});
-	
+	/*
 	$('#comarcaRemote').rup_combo({
 		source : "../jqGridComarca/comarca",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
 		rowStriping: true,
 		blank: ""
-	});
+	});*/
 });
