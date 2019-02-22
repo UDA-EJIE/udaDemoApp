@@ -32,17 +32,6 @@
                 <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
-        <tfoot>
-          <tr>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>Primer apellido</th>
-              <th>Ejie</th>
-              <th>Fecha alta</th>
-              <th>Fecha baja</th>
-              <th>Rol</th>
-          </tr>
-        </tfoot>
 </table>
 
 <jsp:include page="includes/datatableEdit.jsp"></jsp:include>
