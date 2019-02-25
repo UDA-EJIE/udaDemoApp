@@ -19,6 +19,9 @@ jQuery(document).ready(function(){
 	// Evitar conflictos entre Bootstrap y jQueryUI
 	jQuery.fn.bootstrapBtn = jQuery.fn.button.noConflict();
 	
+	//Habilitamos el envío de trazas a PIB
+	window.IS_EJIE = true;
+	
 	jQuery("#rup_dept_logo").attr("src", jQuery.rup.APP_STATICS + "/images/dept_logo_" + jQuery.rup.lang + ".gif");
 	var vertical = false, mixto = false;
 	if (jQuery.rup.LAYOUT === "vertical") {
@@ -217,7 +220,18 @@ jQuery(document).ready(function(){
 			"uda" : {
 				//Literal
 				"i18nCaption" : "uda"
-			}
+			},
+            "calendar" : {
+                //Literal
+                "i18nCaption" : "calendario",
+                //Elementos (url)
+                "simple" : { "i18nCaption" : "calendarioSimple" },
+                "doble" : { "i18nCaption" : "calendarioDoble" },
+                "subLevel":[
+                    {"i18nCaption": "calendarioSimple", "url": "/x21aAppWar/calendar/page" },
+                    {"i18nCaption": "calendarioDoble", "url": "/x21aAppWar/calendar/pageDouble" }
+                ]
+            }
 		}
 	});
 	//idioma

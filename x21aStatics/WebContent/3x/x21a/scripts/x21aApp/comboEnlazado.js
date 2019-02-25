@@ -63,7 +63,10 @@ $('#comboAbueloRemoto').rup_combo({
 	source : "comboEnlazadoSimple/remoteEnlazadoProvincia",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 	blank: "",
-	selected: "2"
+	selected: "2",
+	change:function(){
+		console.log('Cambio el :::: ABUELO');
+	}
 });
 
 $('#comboPadreRemoto').rup_combo({
@@ -71,7 +74,11 @@ $('#comboPadreRemoto').rup_combo({
 	source : "comboEnlazadoSimple/remoteEnlazadoComarca",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 	blank: "",
-	selected: "7"
+	selected: "7",
+	change:function(){
+		console.log('Cambio el :::: PADRE');
+	}
+		
 });
 
 $('#comboHijoRemoto').rup_combo({
@@ -79,7 +86,10 @@ $('#comboHijoRemoto').rup_combo({
 	source : "comboEnlazadoSimple/remoteEnlazadoLocalidad",
 	sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 	blank: "",
-	selected: "8"
+	selected: "8",
+	change:function(){
+		console.log('Cambio el :::: HIJO');
+	}
 });
 
 	

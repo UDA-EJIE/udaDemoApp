@@ -19,3 +19,8 @@
 <script src="${staticsUrl}/rup/js/rup.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/js/externals/tether/tether.js" type="text/javascript"></script>
 <script src="${staticsUrl}/rup/js/externals/bootstrap/bootstrap.bundle.js" type="text/javascript"></script>
+<%-- PRODUCCION --%>
+<%--<script src="${staticsUrl}/rup/js/rup.min.js" type="text/javascript"></script> --%>
+<script src="${staticsUrl}/rup/js/externals/popper/popper.min.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/js/externals/tether/tether.min.js" type="text/javascript"></script>
+<script src="${staticsUrl}/rup/js/externals/bootstrap/bt4.min.js" type="text/javascript"></script>

@@ -241,11 +241,11 @@
 			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">  
+			<div class="form-row">  <!--  
 			    <div class="form-group fix-align col-sm">
 			    	<label for="comarcaRemote" class="formulario_linea_label">Comarca</label>
 			    	<select id="comarcaRemote" name="comarca.code" class="rup-combo"><option>&nbsp;</option></select>
-			    </div>
+			    </div> -->
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
 			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />

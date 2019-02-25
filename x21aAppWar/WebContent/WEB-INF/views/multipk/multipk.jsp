@@ -55,6 +55,10 @@
 	                  <input type="checkbox" id="groups" class="custom-control-input" value="6">
 	                  <label for="groups" class="custom-control-label">Agrupamiento</label>
 	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	                  <input type="checkbox" id="inlineEdit" class="custom-control-input" value="6">
+	                  <label for="inlineEdit" class="custom-control-label">Edición en Linea</label>
+	              </div>
 	          </div>
 		</div>
   	</fieldset>

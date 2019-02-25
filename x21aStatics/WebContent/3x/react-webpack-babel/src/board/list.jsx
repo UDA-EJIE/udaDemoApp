@@ -18,7 +18,7 @@ export default class List extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get(`http://desarrollo.jakina.ejiedes.net:7001/x21aModulesWar/taskList`)
+    // axios.get(`http://local.ejiedes.net:7001/x21aModulesWar/taskList`)
     //   .then(res => {
     //
     //     const lists = res.data;

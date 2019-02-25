@@ -93,7 +93,7 @@
 		<div class="box-content-5">
 			<h1>
 				<a rel="permalink"
-					href="http://desarrollo.jakina.ejiedes.net:7001/x21aPilotoPatronesWar/patrones/tabsStatic">JSRs
+					href="http://local.ejiedes.net:7001/x21aPilotoPatronesWar/patrones/tabsStatic">JSRs
 					for Java 7 and Java 8 Approved</a>
 			</h1>
 

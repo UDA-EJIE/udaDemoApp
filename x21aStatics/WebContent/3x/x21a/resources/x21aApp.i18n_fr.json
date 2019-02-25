@@ -88,7 +88,10 @@
 		"titulo-notifi":"Notificaciones_fr",
 		"titulo-nave":"Navegación_fr",
 		"titulo-estru":"Estructuración de pantalla_fr",
-		"titulo-inser":"Inserción de datos_fr"
+		"titulo-inser":"Inserción de datos_fr",
+		"calendario" : "Calendario_fr",
+			"calendarioSimple" : "Simple_fr",
+			"calendarioDoble" : "Doble_fr"
 	},
 	"x21aAppWar_migas" :{
 		"patrones" :"Patrones_fr",
@@ -172,7 +175,10 @@
 			"mobileDesktop" : "Escritorio de móvil_fr",
 			"mobileTabletDesktop" : "Escritorio de móvil, tablet y sobremesa_fr",
 			"exampleForm" : "Formulario de ejemplo_fr",
-		"styleGuide" : "Guía de estilos_fr"
+		"styleGuide" : "Guía de estilos_fr",
+		"calendario" : "Calendario_fr",
+			"calendarioSimple" : "Simple_fr",
+			"calendarioDoble" : "Doble_fr"
 	},
 	
 "_comment":"PATRONES",	
