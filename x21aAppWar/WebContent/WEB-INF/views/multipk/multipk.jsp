@@ -16,15 +16,6 @@
 	                <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
             </tr>
         </thead>
-        <tfoot>
-          <tr>
-	              <th>ida</th>
-	              <th>idb</th>
-	              <th>nombre</th>
-	              <th>apellido1</th>
-	              <th>apellido2</th>
-          </tr>
-        </tfoot>
 </table>
 
 <jsp:include page="includes/MultiPkEdit.jsp"></jsp:include>

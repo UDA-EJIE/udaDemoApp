@@ -77,16 +77,6 @@
                 <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
             </tr>
         </thead>
-        <tfoot>
-          <tr>
-              <th>code</th>
-              <th>descEs</th>
-              <th>descEu</th>
-              <th>css</th>
-              <th>provincia.code</th>
-              <th>provincia.descEs</th>
-          </tr>
-        </tfoot>
 </table>
 
 <!-- <h2>table</h2> -->
@@ -201,14 +191,6 @@
                 <th data-col-prop="css" >css</th>
             </tr>
         </thead>
-        <tfoot>
-          <tr>
-              <th>code</th>
-              <th>descEs</th>
-              <th>descEu</th>
-              <th>css</th>
-          </tr>
-        </tfoot>
 </table>	
 
 <!-- <h2>table</h2> -->
