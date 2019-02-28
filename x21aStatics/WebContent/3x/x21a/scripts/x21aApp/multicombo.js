@@ -36,7 +36,10 @@ jQuery(document).ready(function(){
 		ordered: false,
 		width: 400,
 		multiselect: true,
-		rowStriping : true
+		rowStriping : true,
+		change: function () {
+			console.log('comboMulti:::Changed');
+		}
 	});
 	
 	$('#multicomboRemoto').rup_combo({
@@ -45,7 +48,10 @@ jQuery(document).ready(function(){
 		selected: [1], //index
 		width: 350,
 		height: 75,
-		multiselect: true
+		multiselect: true,
+		change: function () {
+			console.log('comboMultiRemoto:::Changed');
+		}
 	});
 	
 	$('#multicomboGrupos').rup_combo({
@@ -76,27 +82,39 @@ jQuery(document).ready(function(){
 		height: 300,
 		multiselect: true,
 		multiOptgroupIconText: false,
-		rowStriping : true
+		rowStriping : true,
+		change: function () {
+			console.log('comboMultiGroups:::Changed');
+		}
 	});
 	
 	$('#multicomboGruposRemoto').rup_combo({
 		sourceGroup : "comboSimple/remoteGroupEnlazado",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		width: 500,
-		multiselect: true
+		multiselect: true,
+		change: function () {
+			console.log('comboMultiGroupsRemote:::Changed');
+		}
 	});
 	
 	$('#multicomboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
 		width: 350,
-		multiselect: true
+		multiselect: true,
+		change: function () {
+			console.log('comboMultiInput:::Changed');
+		}
 	});
 
 	$('#multicomboLoadFromSelect').rup_combo({
 		loadFromSelect: true,
 		width: 350,
 		height: 75,
-		multiselect: true
+		multiselect: true,
+		change: function () {
+			console.log('comboMultiLoadFromSelect:::Changed');
+		}
 	});
 	
 	
