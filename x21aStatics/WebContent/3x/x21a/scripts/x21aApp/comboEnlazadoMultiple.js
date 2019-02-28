@@ -23,11 +23,15 @@ jQuery(document).ready(function(){
 		source: ["Ayuntamiento","Diputación","Policía","Bomberos"],
 		blank:"-1",
 		selected:1,
-		change : function() {  }
+		change: function () {
+			console.log('comboDepartamento:::Changed');
+		}
 	});
 	$('#provincia').rup_combo({
 		source: ["Álava","Vizcaya","Gipúzcoa"],
-		change : function() { }
+		change: function () {
+			console.log('comboProvincia:::Changed');
+		}
 	});
 	$('#dptoProv').rup_combo({
 		parent: [ "departamento", "provincia" ],
@@ -45,7 +49,10 @@ jQuery(document).ready(function(){
 			"Bomberos@@Vizcaya"		:["Bomberos de Vizcaya"],
 			"Bomberos@@Gipúzcoa"	:["Bomberos de Gipúzcoa"]
 		},
-		multiValueToken: "@@"
+		multiValueToken: "@@",
+		change: function () {
+			console.log('comboDptoProv:::Changed');
+		}
 	});
 
 	//REMOTE
@@ -53,16 +60,25 @@ jQuery(document).ready(function(){
 		source : "comboEnlazadoMultiple/departamentoRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		blank: "-1",
-		selected:1
+		selected:1,
+		change: function () {
+			console.log('comboDepartamentosRemote:::Changed');
+		}
 	});
 	$('#provinciaRemote').rup_combo({
 		source : "comboEnlazadoMultiple/provinciaRemote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboProvinciaRemote:::Changed');
+		}
 	});
 	$('#dptoProvRemote').rup_combo({
 		parent: [ "departamentoRemote", "provinciaRemote" ],
 		source : "comboEnlazadoMultiple/dptoProvRemote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboDptoProvRemote:::Changed');
+		}
 	});
 	
 	$("#dptoProvRemote").on("change", function(){
@@ -74,7 +90,10 @@ jQuery(document).ready(function(){
 		source : "comboEnlazadoMultiple/departamentoRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		blank: "-1",
-		selected:1
+		selected:1,
+		change: function () {
+			console.log('comboMixtoDepartamentoRemote:::Changed');
+		}
 	});
 	$('#mixto_provincia').rup_combo({
 		//source: ["Álava","Vizcaya","Gipúzcoa"]
@@ -82,12 +101,18 @@ jQuery(document).ready(function(){
 			{i18nCaption: "a", value:"1"},
 			{i18nCaption: "b", value:"2"},
 			{i18nCaption: "g", value:"3"}
-		]
+		],
+		change: function () {
+			console.log('comboMixtoProvincia:::Changed');
+		}
 	});
 	$('#mixto_dptoProvRemote').rup_combo({
 		parent: [ "mixto_departamentoRemote", "mixto_provincia" ],
 		source : "comboEnlazadoMultiple/dptoProvRemote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboMixtoDptoProvRemote:::Changed');
+		}
 	});
 	
 	
@@ -100,11 +125,17 @@ jQuery(document).ready(function(){
 			{i18nCaption: "bomb", value:"4"}
 		],
 		blank: "-1",
-		selected:1
+		selected:1,
+		change: function () {
+			console.log('comboMixto2Departamento:::Changed');
+		}
 	});
 	$('#mixto2_provinciaRemote').rup_combo({
 		source : "comboEnlazadoMultiple/provinciaRemote",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		change: function () {
+			console.log('comboMixto2ProvinciaRemote:::Changed');
+		}
 	});
 	$('#mixto2_dptoProv').rup_combo({
 		parent: [ "mixto2_departamento", "mixto2_provinciaRemote" ],
@@ -121,6 +152,9 @@ jQuery(document).ready(function(){
 			"4##1":["Bomberos de Álava"],
 			"4##2":["Bomberos de Vizcaya"],
 			"4##3":["Bomberos de Gipúzcoa"]
+		},
+		change: function () {
+			console.log('comboMixto2DptoProv:::Changed');
 		}
 	});
 });
