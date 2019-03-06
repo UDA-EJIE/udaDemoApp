@@ -533,5 +533,17 @@ public class TableUsuarioController  {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		return "newTableMasterDetail";
 	}
+	
+	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
+	public String getTableDialog(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
+		return "newTableDialog";
+	}
+	
+	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
+	public String getTableDialogAjax (Model model) {
+		
+		return "tableDialogAjax";
+	}
 		
 }
