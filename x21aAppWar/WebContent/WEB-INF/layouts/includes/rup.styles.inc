@@ -17,5 +17,5 @@
 
 <%-- DESARROLLO --%>
 <link href="${staticsUrl}/rup/css/externals/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="${staticsUrl}/rup/css/rup-base.min.css" rel="stylesheet" type="text/css" />
-<link href="${staticsUrl}/rup/css/rup-theme.min.css" rel="stylesheet" type="text/css" />
+<link href="${staticsUrl}/rup/css/rup-base.css" rel="stylesheet" type="text/css" />
+<link href="${staticsUrl}/rup/css/rup-theme.css" rel="stylesheet" type="text/css" />
