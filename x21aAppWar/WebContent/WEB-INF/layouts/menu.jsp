@@ -40,15 +40,15 @@
 						<spring:message code="feedback" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/tooltip">
-						<i class="fa fa-comment-o" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe0d8;</i>
 						<spring:message code="tooltip" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/message">
-						<i class="material-icons" aria-hidden="true">&#xe0be;</i>
+						<i class="material-icons" aria-hidden="true">&#xe0c9;</i>
 						<spring:message code="message" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/dialog">
-						<i class="fa fa-window-restore" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe0bf;</i>
 						<spring:message code="dialog" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/progressbar">
