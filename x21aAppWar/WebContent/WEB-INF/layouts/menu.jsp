@@ -197,7 +197,7 @@
 					</a>
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="fa fa-check" aria-hidden="true"></i>
+							<i class="material-icons" aria-hidden="true">&#xe5ca;</i>
 							<spring:message code="validate" />
 						</a>
 						<div class="dropdown-menu menu-right">

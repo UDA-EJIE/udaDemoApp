@@ -2,47 +2,47 @@
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
-    <div class="form-row col-12">    
+    <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<input type="text" name="id" class="formulario_linea_input form-control" id="id_filter_table" />
-			<label for="id_filter_table" class="formulario_linea_label">ID</label>
+	    	<input type="text" name="id" id="id_filter_table" />
+			<label for="id_filter_table">ID</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_filter_table" />
-	    	<label for="nombre_filter_table" class="formulario_linea_label">Nombre</label>
+	    	<input type="text" name="nombre" id="nombre_filter_table" />
+	    	<label for="nombre_filter_table">Nombre</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_filter_table" />
-	    	<label for="apellido1_filter_table" class="formulario_linea_label">Primer apellido</label>
+	    	<input type="text" name="apellido1" id="apellido1_filter_table" />
+	    	<label for="apellido1_filter_table">Primer apellido</label>
 	    </div>  
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_filter_table" />
-	    	<label for="apellido2_filter_table" class="formulario_linea_label">Segundo apellido</label>
+	    	<input type="text" name="apellido2" id="apellido2_filter_table" />
+	    	<label for="apellido2_filter_table">Segundo apellido</label>
 	    </div>
 	</div>
     
-    <div class="form-row col-12">
-    	<div class="form-groupMaterial fix-align col-sm">
-	    	<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_filter_table" />
-	    	<label for="fechaAlta_filter_table" class="formulario_linea_label">Fecha de alta</label>
+    <div class="form-row">
+    	<div class="form-groupMaterial col-sm">
+	    	<input type="text" name="fechaAlta" id="fechaAlta_filter_table" />
+	    	<label for="fechaAlta_filter_table">Fecha de alta</label>
 	    </div>
 	    
-	    <div class="form-groupMaterial fix-align col-sm">
-	    	<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_filter_table" />
-	    	<label for="fechaBaja_filter_table" class="formulario_linea_label">Fecha de baja</label>
+	    <div class="form-groupMaterial col-sm">
+	    	<input type="text" name="fechaBaja" id="fechaBaja_filter_table" />
+	    	<label for="fechaBaja_filter_table">Fecha de baja</label>
 	    </div>
 	    
-	    <div class="form-groupMaterial fix-align col-sm">  
-	    	<input type="text" name="ejie" class="formulario_linea_input form-control" id="ejie_filter_table" />
-	    	<label for="ejie_filter_table" class="formulario_linea_label">EJIE</label>
+	    <div class="form-groupMaterial col-sm">  
+	    	<input type="text" name="ejie" id="ejie_filter_table" />
+	    	<label for="ejie_filter_table">EJIE</label>
 	    </div>
 	    
-	    <div class="form-groupMaterial fix-align col-sm">  
-	    	<input type="text" name="rol" class="formulario_linea_input form-control" id="rol_filter_table" />
-	    	<label for="rol_filter_table" class="formulario_linea_label">ROL</label>
+	    <div class="form-groupMaterial col-sm">  
+	    	<input type="text" name="rol" id="rol_filter_table" />
+	    	<label for="rol_filter_table">ROL</label>
 	    </div>
 	</div>
      

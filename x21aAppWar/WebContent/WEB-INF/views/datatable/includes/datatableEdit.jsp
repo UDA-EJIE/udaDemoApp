@@ -71,14 +71,14 @@
 	</div>
 	<div class="rup-datatable-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
-			<button id="example_detail_button_save" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_tableEdit_buttonsResposive" type="button">
+			<button id="example_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
+			<button id="example_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="example_detail_button_save_repeat" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_tableEdit_buttonsResposive" type="button">
+			<button id="example_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="example_detail_button_cancel" class="btn-material btn-material-sm btn-material-primary-low-emphasis rup_tableEdit_buttonsResposive" type="button">
-				<spring:message code="cancel" />
 			</button>
 		</div>
 	</div>

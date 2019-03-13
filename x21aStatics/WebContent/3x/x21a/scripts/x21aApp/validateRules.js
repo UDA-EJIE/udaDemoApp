@@ -16,7 +16,7 @@
 jQuery(document).ready(function(){
 	
 	var $feedbackRequiredRules = jQuery("#feedbackRequiredRules").rup_feedback({ 
-		type: "ok",
+		type: "error",
 		closeLink: true,
 		block:false
 	});
@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
 	// Validaciones numéricas
 	
 	var $feedbackNumeric = jQuery("#feedbackNumeric").rup_feedback({ 
-		type: "ok",
+		type: "error",
 		closeLink: true,
 		block:false
 	});
@@ -79,7 +79,7 @@ jQuery(document).ready(function(){
 	// Validaciones texto
 	
 	var $feedbackText = jQuery("#feedbackText").rup_feedback({ 
-		type: "ok",
+		type: "error",
 		closeLink: true,
 		block:false
 	});

@@ -15,14 +15,14 @@
  */
 jQuery(document).ready(function(){
 	
-	var $feedbackLeftAligned = jQuery("#feedbackLeftAligned").rup_feedback({ 
-		type: "ok",
+	var $feedbackColumns = jQuery("#feedbackColumns").rup_feedback({ 
+		type: "error",
 		closeLink: true,
 		block:false
 	});
 	
-	$("#formLeftAligned").rup_validate({
-		feedback: $feedbackLeftAligned,
+	$("#formColumns").rup_validate({
+		feedback: $feedbackColumns,
 		liveCheckingErrors: false,
 		showFieldErrorAsDefault: true,
 		showErrorsInFeedback: true,
@@ -34,14 +34,35 @@ jQuery(document).ready(function(){
 		}
 	});
 	
-	var $feedbackHorizontal = jQuery("#feedbackHorizontal").rup_feedback({ 
-		type: "ok",
+	var $feedbackColumnsRequired = jQuery("#feedbackColumnsRequired").rup_feedback({ 
+		type: "error",
 		closeLink: true,
 		block:false
 	});
 	
-	$("#formHorizontal").rup_validate({
-		feedback: $feedbackHorizontal,
+	$("#formColumnsRequired").rup_validate({
+		feedback: $feedbackColumnsRequired,
+		liveCheckingErrors: false,
+		showFieldErrorAsDefault: true,
+		showErrorsInFeedback: true,
+		showFieldErrorsInFeedback:true, 
+		rules:{
+			"nombre": {required: true},
+			"apellido1": {required: true},
+			"apellido2": {required: true}
+		}
+	});
+	
+	// MATERIAL
+	var $feedbackHorizontalMaterial = jQuery("#feedbackHorizontalMaterial").rup_feedback({ 
+		type: "error",
+		closeLink: true,
+		block:false
+	});
+	
+	$("#formHorizontalMaterial").rup_validate({
+		adapter: 'validate_material',
+		feedback: $feedbackHorizontalMaterial,
 		liveCheckingErrors: false,
 		showFieldErrorAsDefault: true,
 		showErrorsInFeedback: true,
@@ -112,8 +133,90 @@ jQuery(document).ready(function(){
 		}
 	});
 	
+	// BOOTSTRAP
+	var $feedbackHorizontalBootstrap = jQuery("#feedbackHorizontalBootstrap").rup_feedback({ 
+		type: "error",
+		closeLink: true,
+		block:false
+	});
+	
+	$("#formHorizontalBootstrap").rup_validate({
+		adapter: 'validate_bootstrap',
+		feedback: $feedbackHorizontalBootstrap,
+		liveCheckingErrors: false,
+		showFieldErrorAsDefault: true,
+		showErrorsInFeedback: true,
+		showFieldErrorsInFeedback:true, 
+		rules:{
+			"nombre": {
+				required: true
+			},
+			"apellido1": {
+				required: true
+			},
+			"apellido2": {
+				required: true
+			},
+			"alertDay[]": {
+				required: true
+			},
+			"rol": {
+				required: true
+			},
+			"autocomplete": {
+				required: true
+			},
+			"rolName2": {
+				required: true
+			},
+			"autocompleteName2": {
+				required: true
+			}
+		},
+		messages:{
+			"nombre": {
+				required: $.rup.i18n.app.validacion.nombre
+			},
+			"apellido1": {
+				required: $.rup.i18n.app.validacion.apellido1
+			},
+			"apellido2": {
+				required: $.rup.i18n.app.validacion.apellido2
+			},
+			"alertDay[]": {
+				required: $.rup.i18n.app.validacion.alertDay
+			}
+		},
+		labels:{
+//			"nombre": {
+//				required: "Debe de especificar un nombre obligatoriamente."
+//			},
+//			"apellido1": {
+//				required: "Debe de especificar un primer apellido obligatoriamente."
+//			},
+//			"apellido2": {
+//				required: "Debe de especificar un segundo apellido obligatoriamente."
+//			},
+			"alertDay[]": "#alertDayError"
+		},
+		icons:{
+//			"nombre": {
+//				required: "Debe de especificar un nombre obligatoriamente."
+//			},
+//			"apellido1": {
+//				required: "Debe de especificar un primer apellido obligatoriamente."
+//			},
+//			"apellido2": {
+//				required: "Debe de especificar un segundo apellido obligatoriamente."
+//			},
+			"alertDay[]": "#alertDayErrorLabel"
+		}
+	});
+	
+	// JQUERYUI
+	
 	var $feedbackHorizontalJqueryui = jQuery("#feedbackHorizontalJqueryui").rup_feedback({ 
-		type: "ok",
+		type: "error",
 		closeLink: true,
 		block:false
 	});
