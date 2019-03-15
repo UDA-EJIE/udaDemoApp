@@ -22,6 +22,18 @@ jQuery(document).ready(function () {
   			dropdownListId:"dropdownHtmlList"
   		}
   	});
+    
+    $("#autocompleteDefault").rup_autocomplete({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		defaultValue : "",
+		contains : false
+	});
+    
+    $("#autocompleteMaterialized").rup_autocomplete({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		defaultValue : "",
+		contains : false
+	});
 
     $("#rupCombo").rup_combo({
     	loadFromSelect: true

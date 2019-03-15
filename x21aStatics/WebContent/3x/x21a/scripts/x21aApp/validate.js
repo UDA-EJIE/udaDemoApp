@@ -274,10 +274,11 @@ jQuery(document).ready(function(){
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
 		selected: "coldfusion_value",
-		width: 300,
+		width: '100%',
 		blank : "",
 		rowStriping : true,
-		inputText:true
+		inputText:true,
+        customClasses: ["select-material"]
 	});
 	
 	//$("#rol_detail_table").rup_combo("disable");
@@ -295,7 +296,7 @@ jQuery(document).ready(function(){
 		contains : false
 	});
 
-	$('#rolName').rup_combo({
+	$('#rolName2').rup_combo({
 		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
 		source : [
 			{i18nCaption: "asp", value:"asp_value"},
@@ -305,13 +306,14 @@ jQuery(document).ready(function(){
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
 		selected: "c_value",
-		width: 300,
+		width: '100%',
 		blank : "",
 		rowStriping : true,
-		inputText:true
+		inputText:true,
+        customClasses: ["select-material"]
 	});
 	
-	$("#autocompleteName").rup_autocomplete({
+	$("#autocompleteName2").rup_autocomplete({
 		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
 		source : [
 			{i18nCaption: "asp", value:"asp_value"},

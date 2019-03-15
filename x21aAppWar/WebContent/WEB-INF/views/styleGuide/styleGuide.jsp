@@ -398,6 +398,18 @@
       	<label for="passwordBootstrapMaterialized">Password</label>
       </div>
     </div>
+    
+    <h3>Autocomplete</h3>
+
+    <div class="form-group">
+		<input id="autocompleteDefault" name="autocompleteDefault" /> 
+		<label for="autocompleteDefault">Autocomplete</label>
+	</div>
+	
+	<div class="form-groupMaterial">
+		<input id="autocompleteMaterialized" name="autocompleteMaterialized" /> 
+		<label for="autocompleteMaterialized">Autocomplete Material</label>
+	</div>
 
     <h3>Select</h3>
 
