@@ -165,7 +165,7 @@
 					<label for="autocomplete">Autocomplete by Id</label>
 				</div>
 			</div>
-			<div class="row">
+			<div class="form-row">
 				<div class="form-groupMaterial col-sm-6">
 					<select name="rolName2" id="rolName2"></select>
 					<label for="rolName2">Select by Name</label>
