@@ -80,6 +80,9 @@ jQuery(document).ready(function(){
 			"alertDay[]": {
 				required: true
 			},
+			"alertEdad[]": {
+				required: true
+			},
 			"rol": {
 				required: true
 			},
@@ -273,7 +276,6 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
-		selected: "coldfusion_value",
 		width: '100%',
 		blank : "",
 		rowStriping : true,
@@ -305,7 +307,6 @@ jQuery(document).ready(function(){
 			{i18nCaption: "coldfusion", value:"coldfusion_value"},
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
-		selected: "c_value",
 		width: '100%',
 		blank : "",
 		rowStriping : true,

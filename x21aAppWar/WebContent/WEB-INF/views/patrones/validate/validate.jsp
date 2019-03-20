@@ -148,11 +148,32 @@
 				</div>
 			</div>
 				
-			<span id="alertDayError"></span>
+			<div class="form-row col-sm-12">
+				
+				<div class="col-12">
+					<label id="alertEdadErrorLabel" for="alertEdad[]">¿Mayor de edad?</label>
+				</div>
+				
+				<div class="col-12">
+	                <div class="radio-material">
+	                	<input id="radioAdulto" type="radio" value="0" name="alertEdad[]" >
+	                    <label for="radioAdulto">Sí</label>
+	                </div>
+	                <div class="radio-material">
+	                    <input id="radioMenor" type="radio" value="1" name="alertEdad[]" >
+	                    <label for="radioMenor">No</label>
+	                </div>
+                </div>
+				 		
+			</div>
         	
         	<p>
 				Componentes Rup:: select by id, autocomplete by id, select by name, autocomplete by name 
+			</p>
+			
 			<p>
+				Con clase padre 'row'
+			</p>
         	
         	<div class="row">
 	        	<div class="form-groupMaterial col-sm-6">
@@ -165,6 +186,11 @@
 					<label for="autocomplete">Autocomplete by Id</label>
 				</div>
 			</div>
+			
+			<p>
+				Con clase padre 'form-row'
+			</p>
+			
 			<div class="form-row">
 				<div class="form-groupMaterial col-sm-6">
 					<select name="rolName2" id="rolName2"></select>
