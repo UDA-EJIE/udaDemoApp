@@ -57,7 +57,7 @@
 			    </div>
 			</div>
 			<div class="form-row">
-			    <div class="form-groupMaterial col-sm checkbox-material">
+			    <div class="col-sm checkbox-material">
 			    	<input type="checkbox" name="ejie" id=ejie_detail_table value="1" />
 			    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
 			    </div> 

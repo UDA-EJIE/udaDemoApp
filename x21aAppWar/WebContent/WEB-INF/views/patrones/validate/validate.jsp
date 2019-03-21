@@ -74,10 +74,7 @@
 			<div class="row justify-content-center">
 				<button type="submit" class="btn-material btn-material-secondary-high-emphasis">Validar</button>
 			</div>
-		
 		</form>
-		
-	
 	</div>
 	
 	<h3>Formulario horizontal (Material)</h3>
