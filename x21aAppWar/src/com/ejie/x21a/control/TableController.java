@@ -150,7 +150,7 @@ public class TableController  {
 	@RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
 	public String getDialogAjax(Model model) {
 //		model.addAttribute("tituloPagina", messageSource.getMessage("tablaDialog", null, LocaleContextHolder.getLocale()));
-		return "tableDialogAjax";
+		return "tableLegacyDialogAjax";
 	}
 	
 	

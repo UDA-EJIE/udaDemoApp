@@ -254,6 +254,9 @@
 					<a class="dropdown-item" href="/x21aAppWar/table/masterDetail">
 						<spring:message code="tabla.masterDetail" />
 					</a>
+					<a class="dropdown-item" href="/x21aAppWar/table/tableDialog">
+						<spring:message code="tabla.tableDialog" />
+					</a>
 					<div class="dropdown-divider"></div>
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">

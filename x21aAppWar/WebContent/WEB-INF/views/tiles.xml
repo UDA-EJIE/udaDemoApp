@@ -694,9 +694,9 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/tableDialog-includes.jsp" />
 	</definition>
-	<!-- <definition extends="templateDialog" name="tableDialogAjax"> <put-attribute 
+	 <definition extends="templateNoHeads" name="tableLegacyDialogAjax"> <put-attribute 
 		name="content" value="/WEB-INF/views/table/table.jsp"/> <put-attribute name="includes" 
-		value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/> </definition> -->
+		value="/WEB-INF/views/table/tableFormEdit-includes.jsp"/> </definition> 
 
 	<definition extends="template" name="tableRadiobutton">
 		<put-attribute name="content"
@@ -704,7 +704,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/tableRadiobutton-includes.jsp" />
 	</definition>
-
+	
+	<definition extends="template" name="newTableDialog">
+		<put-attribute name="content"
+			value="/WEB-INF/views/datatable/tableDialog.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/datatable/tableDialog-includes.jsp" />
+	</definition>
 	<!-- Jerarquia -->
 	<definition extends="template" name="tableJerarquia">
 		<put-attribute name="content"
@@ -809,5 +815,12 @@
 			value="/WEB-INF/views/calendar/doubleCalendar.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/calendar/doubleCalendar-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tableDialogAjax">
+		<put-attribute name="content"
+			value="/WEB-INF/views/datatable/datatable.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/datatable/datatable-includes.jsp" />
 	</definition>
 </tiles-definitions>
