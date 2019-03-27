@@ -2,7 +2,6 @@ package com.ejie.x21a.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +23,6 @@ import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JQGridManager;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.rss.RssContent;
 
 @Repository
 @Transactional
@@ -530,75 +528,4 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 		}
 	};
 
-	/*
-	 * RSS
-	 */
-
-	private RowMapper<RssContent> rssMap = new RowMapper<RssContent>() {
-
-		public RssContent mapRow(ResultSet resultSet, int rowNum)
-				throws SQLException {
-			RssContent rssContent = new RssContent();
-
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-					"dd/MM/yyyy HH:mm:ss");
-
-			StringBuilder titulo = new StringBuilder();
-			titulo.append("IberdokFile : ");
-			titulo.append(resultSet.getString("ID"));
-			titulo.append("  (")
-					.append(simpleDateFormat.format(resultSet
-							.getTimestamp("FECHA_MODIF"))).append(") ");
-
-			StringBuilder descripcion = new StringBuilder();
-			descripcion.append("Nombre completo : ")
-					.append(resultSet.getString("APELLIDO1"))
-					.append(resultSet.getString("APELLIDO2")).append(", ")
-					.append(resultSet.getString("NOMBRE")).append("<br/>");
-			descripcion.append("Rol : ").append(resultSet.getString("ROL"))
-					.append("<br/>");
-			descripcion.append("Ejie : ").append(resultSet.getString("ROL"))
-					.append("<br/>");
-			descripcion.append("Fecha alta : ")
-					.append(resultSet.getDate("FECHA_ALTA")).append("<br/>");
-			descripcion.append("Fecha baja : ")
-					.append(resultSet.getDate("FECHA_BAJA")).append("<br/>");
-
-			StringBuilder link = new StringBuilder();
-			link.append(appConfiguration.get("rss.path")).append(
-					resultSet.getString("ID"));
-
-			rssContent.setTitle(titulo.toString());
-			rssContent.setDescription(descripcion.toString());
-			rssContent.setLink(link.toString());
-			rssContent.setPubDate(resultSet.getTimestamp("FECHA_MODIF"));
-
-			return rssContent;
-		}
-	};
-
-	public List<RssContent> getRssFeed() {
-
-		StringBuilder query = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
-		query.append("FROM IBERDOK_FILES t1 ");
-
-		StringBuilder filteredQuery = new StringBuilder();
-
-		// Where clause & Params
-		// Map<String, ?> mapaWhere = this.getWhereLikeMap(file,startsWith);
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		// where.append(mapaWhere.get("query"));
-		query.append(where);
-		query.append(" ORDER BY ID ASC ");
-
-		// List<?> params = (List<?>) mapaWhere.get("params");
-
-		filteredQuery.append("SELECT * FROM (SELECT rownum rnum, a.*  FROM ("
-				+ query + ")a) where rnum > 0 and rnum < 30");
-
-		return (List<RssContent>) this.jdbcTemplate.query(
-				filteredQuery.toString(), this.rssMap);
-
-	}
 }

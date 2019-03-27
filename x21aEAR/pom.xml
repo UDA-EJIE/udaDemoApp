@@ -163,12 +163,6 @@
 		
 		<dependency>
 			<groupId>com.ejie.x38</groupId>
-			<artifactId>x38ShLibClasses-rss</artifactId>
-			<version>${com.ejie.x38.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.ejie.x38</groupId>
 			<artifactId>x38ShLibClasses-rup</artifactId>
 			<version>${com.ejie.x38.version}</version>
 		</dependency>

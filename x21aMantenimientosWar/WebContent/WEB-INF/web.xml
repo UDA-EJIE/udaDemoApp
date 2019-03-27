@@ -31,15 +31,6 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-<!-- 	 <filter> -->
-<!--     <display-name>RssHttpBasicAuthenticationFilter</display-name> -->
-<!--     <filter-name>RssHttpBasicAuthenticationFilter</filter-name> -->
-<!--     <filter-class>com.ejie.x21a.rss.RssHttpBasicAuthenticationFilter</filter-class> -->
-<!--   </filter> -->
-<!--   <filter-mapping> -->
-<!--     <filter-name>RssHttpBasicAuthenticationFilter</filter-name> -->
-<!--     <url-pattern>/rssfeed</url-pattern> -->
-<!--   </filter-mapping> -->
 	<!-- Filtro encargado de resolver las peticiones mutipart.  -->
 <!-- 	<filter> -->
 <!-- 	    <filter-name>multipartFilter</filter-name> -->

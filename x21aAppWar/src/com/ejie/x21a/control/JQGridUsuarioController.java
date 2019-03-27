@@ -33,7 +33,6 @@ import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -487,21 +486,4 @@ public class JQGridUsuarioController  {
 		return new ModelAndView("pdfUsuario", modelMap);
     }
 
-	/*
-	 * DETALLE USUARIO RSS
-	 */
-	@RequestMapping(value = "/rssDetail/{id}", method = RequestMethod.GET)
-	public String getRssDetail(@PathVariable String id, Model model) {
-		JQGridUsuarioController.logger.info("[GET - getRssDEtail] : Obtener el detalle del usuario a partir del RSS");
-        Usuario usuario = new Usuario();
-		usuario.setId(id);
-        usuario = this.jqGridUsuarioService.find(usuario);
-		
-		model.addAttribute("usuario",usuario);
-		
-		return "tableRssDetail";
-	}
-
-	
-	
 }

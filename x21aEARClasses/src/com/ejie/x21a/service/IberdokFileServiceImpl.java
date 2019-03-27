@@ -11,7 +11,6 @@ import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.rss.RssContent;
 
 @Service(value = "iberdokFileService")
 public class IberdokFileServiceImpl implements IberdokFileService {
@@ -158,13 +157,6 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 		}
 		return new JQGridResponseDto<IberdokFile>(jqGridRequestDto, recordNum,
 				listaIberdokFile);
-	}
-
-	/*
-	 * RSS
-	 */
-	public List<RssContent> getRssFeed() {
-		return this.iberdokDao.getRssFeed();
 	}
 
 	@Override

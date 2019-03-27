@@ -5,7 +5,6 @@ import java.util.List;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.rss.RssContent;
 
 public interface IberdokFileDao {
 	
@@ -99,11 +98,6 @@ public interface IberdokFileDao {
     List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
     
     List<TableRowDto<IberdokFile>> search(IberdokFile filterParams, IberdokFile searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
-
     
-	/*
-	 * RSS
-	 */
-	List<RssContent> getRssFeed();
 }
 

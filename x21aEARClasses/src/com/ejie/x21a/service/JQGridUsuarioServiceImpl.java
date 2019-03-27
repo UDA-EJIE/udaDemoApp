@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.rss.RssContent;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -168,13 +167,5 @@ public class JQGridUsuarioServiceImpl implements JQGridUsuarioService {
 		return jqGridResponseDto;
 	}
 
-	/*
-	 * RSS
-	 */
-	public List<RssContent> getRssFeed(){
-		return this.jqGridUsuarioDao.getRssFeed();
-	}
-	
-	
 }
 
