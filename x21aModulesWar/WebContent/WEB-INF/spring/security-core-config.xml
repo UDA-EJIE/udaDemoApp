@@ -41,7 +41,7 @@
 		<constructor-arg value="/" />
 		<constructor-arg>
 			<array>
-				<ref local="myLogoutHandler" />
+				<ref bean="myLogoutHandler" />
 			</array>
 		</constructor-arg>
 		<property name="filterProcessesUrl" value="/logout" />
