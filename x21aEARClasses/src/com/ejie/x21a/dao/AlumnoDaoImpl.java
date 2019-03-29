@@ -179,7 +179,7 @@ public class AlumnoDaoImpl implements AlumnoDao {
 	public Alumno add(final Alumno alumno) {
 
 		final long nextId = jdbcTemplate
-				.queryForLong("SELECT ALUMNO_SEQ.NEXTVAL FROM DUAL");
+				.queryForObject("SELECT ALUMNO_SEQ.NEXTVAL FROM DUAL", Long.class);
 
 		String query = "INSERT INTO ALUMNO( ID,USUARIO,PASSWORD,NOMBRE,APELLIDO1,APELLIDO2,DNI,FECHA_NACIMIENTO,TELEFONO,EMAIL,IDIOMA,SEXO,NOMBRE_IMAGEN,PAIS_ID,AUTONOMIA_ID,PROVINCIA_ID,MUNICIPIO_ID,CALLE_ID,IMAGEN,DIRECCION,IMPORTE_MATRICULA)"
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -480,8 +480,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		}
 
 		query.append(where);
-		return this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 	
 	@Transactional(readOnly = true)
@@ -493,8 +493,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 				"SELECT COUNT(1) FROM ALUMNO t1 LEFT JOIN T17_MUNICIPIO t2 ON t1.MUNICIPIO_ID=t2.ID and T1.PROVINCIA_ID=t2.PROVINCIA_ID  ");
 
 		query.append(this.getFindAllLikeWhere(alumno, params, startsWith));
-		return this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 
 	/**
@@ -543,8 +543,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 			params.add(alumno.getId());
 		}
 
-		return (this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray()) == 0);
+		return (this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class) == 0);
 	}
 
 	@Override
@@ -556,8 +556,8 @@ public class AlumnoDaoImpl implements AlumnoDao {
 		params.add(alumno.getId());
 		params.add(oldPassword);
 
-		return (this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray()) == 1);
+		return (this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class) == 1);
 	}
 	
 	@Override

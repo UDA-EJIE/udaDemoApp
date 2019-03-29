@@ -161,7 +161,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**
@@ -211,7 +211,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**

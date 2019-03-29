@@ -89,7 +89,7 @@ public class JQGridUsuarioJerarquiaDaoImpl implements JQGridUsuarioJerarquiaDao 
 	public Usuario add(Usuario usuario) {
 		
 		final long nextId = jdbcTemplate
-				.queryForLong("SELECT USUARIO_JERARQUIA_SEQ.NEXTVAL FROM DUAL");
+				.queryForObject("SELECT USUARIO_JERARQUIA_SEQ.NEXTVAL FROM DUAL", Long.class);
 		
     	String query = "INSERT INTO USUARIO_JERARQUIA (ID, NOMBRE, APELLIDO1, APELLIDO2, EJIE, FECHA_ALTA, FECHA_BAJA, ID_PADRE, ROL) VALUES (?,?,?,?,?,?,?,?,?)";
 		this.jdbcTemplate.update(query, nextId, usuario.getNombre(), usuario.getApellido1(), usuario.getApellido2(), usuario.getEjie(), usuario.getFechaAlta(), usuario.getFechaBaja(), usuario.getIdPadre(), usuario.getRol());
@@ -181,7 +181,7 @@ public class JQGridUsuarioJerarquiaDaoImpl implements JQGridUsuarioJerarquiaDao 
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**
@@ -233,7 +233,7 @@ public class JQGridUsuarioJerarquiaDaoImpl implements JQGridUsuarioJerarquiaDao 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**
@@ -554,7 +554,7 @@ public class JQGridUsuarioJerarquiaDaoImpl implements JQGridUsuarioJerarquiaDao 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForLong(sbSQL.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(sbSQL.toString(), params.toArray(), Long.class);
 	}
 
 	@Override

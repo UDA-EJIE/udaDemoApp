@@ -64,7 +64,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	public IberdokFile add(IberdokFile file) {
 
 		final long nextId = jdbcTemplate
-				.queryForLong("SELECT IBERDOK_SEQ.NEXTVAL FROM DUAL");
+				.queryForObject("SELECT IBERDOK_SEQ.NEXTVAL FROM DUAL", Long.class);
 
 		String query = "INSERT INTO IBERDOK_FILES (ID, ID_MODELO, SEMILLA, ID_DOCUMENTO, ESTADO, NOMBRE) VALUES (?,?,?,?,?,?)";
 		this.jdbcTemplate.update(query, nextId, file.getIdModelo(),
@@ -104,7 +104,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	public IberdokFile updateLastRecord(IberdokFile file) {
 
 		final long lastId = jdbcTemplate
-				.queryForLong("select MAX(id) from IBERDOK_FILES");
+				.queryForObject("select MAX(id) from IBERDOK_FILES", Long.class);
 
 		String query = "UPDATE IBERDOK_FILES SET  ID_DOCUMENTO=?, ESTADO=? WHERE ID=?";
 		this.jdbcTemplate.update(query, file.getIdDocumento(),
@@ -239,8 +239,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 
 	/**
@@ -265,8 +265,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForLong(query.toString(),
-				params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 
 	@Override

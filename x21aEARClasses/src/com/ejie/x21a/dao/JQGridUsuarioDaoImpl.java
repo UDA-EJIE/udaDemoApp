@@ -209,7 +209,7 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**
@@ -231,7 +231,7 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	
@@ -418,7 +418,7 @@ public class JQGridUsuarioDaoImpl implements JQGridUsuarioDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForLong(sbSQL.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(sbSQL.toString(), params.toArray(), Long.class);
 	}
 
 	@Override

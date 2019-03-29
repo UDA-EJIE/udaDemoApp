@@ -223,7 +223,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
 			params.add(calle.getEstado());
 		}
 		query.append(where);
-		return this.jdbcTemplate.queryForLong(query.toString(), params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 	
 	/**
