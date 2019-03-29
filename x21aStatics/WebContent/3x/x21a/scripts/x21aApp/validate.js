@@ -94,6 +94,12 @@ jQuery(document).ready(function(){
 			},
 			"autocompleteName2": {
 				required: true
+			},
+			"autocompleteCombobox": {
+				required: true
+			},
+			"autocompleteCombobox2": {
+				required: true
 			}
 		},
 		messages:{
@@ -324,6 +330,34 @@ jQuery(document).ready(function(){
 			{i18nCaption: "groovy", value:"groovy_value"}
 		],
 		defaultValue : "",
+		contains : false
+	});
+	
+	$("#autocompleteCombobox").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		combobox: true,
+		contains : false
+	});
+	
+	$("#autocompleteCombobox2").rup_autocomplete({
+		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+		source : [
+			{i18nCaption: "asp", value:"asp_value"},
+			{i18nCaption: "c", value:"c_value"},
+			{i18nCaption: "c++", value:"c++_value"},
+			{i18nCaption: "coldfusion", value:"coldfusion_value"},
+			{i18nCaption: "groovy", value:"groovy_value"}
+		],
+		defaultValue : "",
+		combobox: true,
 		contains : false
 	});
 	

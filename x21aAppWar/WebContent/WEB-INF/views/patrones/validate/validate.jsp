@@ -182,6 +182,11 @@
 					<input id="autocomplete" name="autocomplete" /> 
 					<label for="autocomplete">Autocomplete by Id</label>
 				</div>
+				
+				<div class="form-groupMaterial col-sm-12">
+					<input id="autocompleteCombobox" name="autocompleteCombobox" /> 
+					<label for="autocompleteCombobox">Autocomplete Combobox</label>
+				</div>
 			</div>
 			
 			<p>
@@ -198,6 +203,11 @@
 					<input name="autocompleteName2" id="autocompleteName2"/> 
 					<label for="autocompleteName2">Autocomplete by Name</label>
 				</div>
+				
+				<div class="form-groupMaterial col-sm-12">
+					<input id="autocompleteCombobox2" name="autocompleteCombobox2" /> 
+					<label for="autocompleteCombobox2">Autocomplete Combobox</label>
+				</div>
 			</div>
 			
 			<div class="row justify-content-center">
@@ -206,7 +216,6 @@
 		
 		</form>
 		
-	
 	</div>
 	
 	<h3>Formulario horizontal (Bootstrap)</h3>
