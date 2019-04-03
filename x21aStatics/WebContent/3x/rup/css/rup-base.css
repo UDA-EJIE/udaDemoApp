@@ -6098,7 +6098,7 @@ table.dataTable thead th:hover,
 table.dataTable tfoot th:hover {
   background-color: #aecff7; }
 
-.disabledDatatable {
+.disabledButtonsTable {
   pointer-events: none;
   opacity: 0.6; }
 

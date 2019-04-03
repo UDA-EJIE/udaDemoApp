@@ -238,9 +238,11 @@ jQuery(document).ready(function(){
 	jQuery("#x21aApp_language").rup_language({languages: jQuery.rup.AVAILABLE_LANGS_ARRAY});
 	
 	//NAVBAR Menu
-	$("#navbarResponsive").rup_navbar({
-		sticky:false
-	});
+	if($("#navbarResponsive").length > 0){
+		$("#navbarResponsive").rup_navbar({
+			sticky:false
+		});
+	}
 	
 	jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : "----" });
 
