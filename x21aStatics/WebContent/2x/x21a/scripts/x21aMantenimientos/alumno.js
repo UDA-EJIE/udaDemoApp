@@ -103,28 +103,28 @@ jQuery(function($){
     				"email_confirm":$.rup.i18n.app.alumno.email_confirm
     			},
     			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"usuario":{required:true},
-    				"password":{required:function(){
-    					if ($("#divOldPassword").is(":hidden")) {
-    						return true;
-    					}else{
-    						if ($("#oldPassword").val()!==''){
-    							return true;
-    						}else{
-    							return false;
-    						}
-    					}
-    				}},
-    				"importeMatricula":{number:true},
-    				"password_confirm":{equalTo:"#password"},
-    				"dni":{required:true, dni:true},
-    				"email":{email:true},
-    				"email_confirm":{equalTo:"#email"},
-    				"pais":{required:true},
-    				"autonomia":{required:true},
-    				"provincia":{required:true}
+//    				"nombre":{required:true},
+//    				"apellido1":{required:true},
+//    				"usuario":{required:true},
+//    				"password":{required:function(){
+//    					if ($("#divOldPassword").is(":hidden")) {
+//    						return true;
+//    					}else{
+//    						if ($("#oldPassword").val()!==''){
+//    							return true;
+//    						}else{
+//    							return false;
+//    						}
+//    					}
+//    				}},
+//    				"importeMatricula":{number:true},
+//    				"password_confirm":{equalTo:"#password"},
+//    				"dni":{required:true, dni:true},
+//    				"email":{email:true},
+//    				"email_confirm":{equalTo:"#email"},
+//    				"pais":{required:true},
+//    				"autonomia":{required:true},
+//    				"provincia":{required:true}
     			}
     		},
         },

@@ -15,7 +15,7 @@
  --%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-	<form:form id="formValidaciones" action='${pageContext.request.contextPath}/patrones/validacion/cliente' modelAttribute="alumno" >
+	<form:form id="formValidaciones" action='${pageContext.request.contextPath}patrones/validacion/cliente' modelAttribute="alumno" >
 	
 	<fieldset class="alumnoFieldset">
 		<legend><spring:message code="obligatoriedad" /></legend>

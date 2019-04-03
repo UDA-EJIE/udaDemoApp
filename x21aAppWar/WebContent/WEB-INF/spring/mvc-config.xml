@@ -85,32 +85,32 @@
 	
 
 	<!-- Configurar MVC -->
-	    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-	        <property name="order" value="1" />
-	    </bean>
-	    
-		<!-- Permite la subida de ficheros -->	
-		<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="order" value="1" />
+    </bean>
+    
+	<!-- Permite la subida de ficheros -->	
+	<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" />
 
-	    <!-- Bean encargado de las peticiones -->
-	    <bean id="requestMappingHandlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		    <property name="webBindingInitializer">
-		        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-		            <property name="conversionService" ref="conversionService" />
-		        	<property name="validator" ref="validator" />
-		    	</bean>
-		    </property>
-	       	<property name="messageConverters">
-	            <list>
-	            	<ref bean="udaMappingJackson2HttpMessageConverter"/>
-	            </list>
-       		</property>
-       		<property name="customArgumentResolvers">
-       			<list>
-	            	<bean class="com.ejie.x38.control.method.annotation.RequestJsonBodyMethodArgumentResolver"/>
-	            </list>
-	        </property>
-		</bean>
+    <!-- Bean encargado de las peticiones -->
+    <bean id="requestMappingHandlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	    <property name="webBindingInitializer">
+	        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+	            <property name="conversionService" ref="conversionService" />
+	        	<property name="validator" ref="validator" />
+	    	</bean>
+	    </property>
+       	<property name="messageConverters">
+            <list>
+            	<ref bean="udaMappingJackson2HttpMessageConverter"/>
+            </list>
+      		</property>
+      		<property name="customArgumentResolvers">
+      			<list>
+            	<bean class="com.ejie.x38.control.method.annotation.RequestJsonBodyMethodArgumentResolver"/>
+            </list>
+        </property>
+	</bean>
 	<!-- FIN -->
 		
 	<!-- Gestión de la Vista (View) -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
@@ -39,9 +39,9 @@
                 <entry key="#{T(com.ejie.x21a.model.NoraMunicipio)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.NoraCalle)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.MultiPk)}" value-ref="customSerializer" />
-                 <entry key="#{T(com.ejie.x21a.model.Buzones)}" value-ref="customSerializer" />
-                  <entry key="#{T(com.ejie.x21a.model.IberdokFile)}" value-ref="customSerializer" />
-                  <entry key="#{T(com.ejie.x38.log.model.LogModel)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.Buzones)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.IberdokFile)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x38.log.model.LogModel)}" value-ref="customSerializer" />
              </util:map>
       	</property>
       	<property name="serializationInclusions" ref="serializationInclusions" />
@@ -77,7 +77,7 @@
 	
 	<!-- Inclusiones de serializacion -->
 	<util:list id="serializationInclusions">
-<!-- 		<value type="com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion">NON_NULL</value> -->
+		<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
 	</util:list>
 	
 </beans>

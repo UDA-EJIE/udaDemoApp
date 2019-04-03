@@ -44,7 +44,7 @@
 			<!-- 				</fieldset> -->
 
 			<form:form id="formHttpSubmit"
-				action='${pageContext.request.contextPath}/patrones/form/ejemplo'
+				action='${pageContext.request.contextPath}patrones/form/ejemplo'
 				modelAttribute="alumno">
 
 				<fieldset class="alumnoFieldset">
@@ -298,7 +298,7 @@
 
 		<div id="divMultiplesEntidades">
 			<form id="formMultientidades"
-				action='${pageContext.request.contextPath}/patrones/form/multientidades'
+				action='${pageContext.request.contextPath}patrones/form/multientidades'
 				method="post">
 				<fieldset class="alumnoFieldset">
 					<legend>
@@ -368,7 +368,7 @@
 			</form>
 
 			<form id="formMultientidadesMismoTipo"
-				action='${pageContext.request.contextPath}/patrones/form/multientidadesMismoTipo'
+				action='${pageContext.request.contextPath}patrones/form/multientidadesMismoTipo'
 				method="post">
 				<fieldset class="alumnoFieldset">
 					<legend>
@@ -496,7 +496,7 @@
 				<legend>Subida de ficheros</legend>
 
 				<form id="formSubidaArchivos"
-					action='${pageContext.request.contextPath}/patrones/form/subidaArchivos'
+					action='${pageContext.request.contextPath}patrones/form/subidaArchivos'
 					method="post">
 
 					<div id="feedback_fileupload_form_multiple"></div>

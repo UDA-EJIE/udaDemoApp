@@ -16,7 +16,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<form:form id="formServidor2" action='${pageContext.request.contextPath}/patrones/validacion/servidor2' modelAttribute="alumno" >
+<form:form id="formServidor2" action='${pageContext.request.contextPath}patrones/validacion/servidor2' modelAttribute="alumno" >
 				
 	<fieldset class="alumnoFieldset">
 		<legend><spring:message code="datosPersonales" /></legend>
