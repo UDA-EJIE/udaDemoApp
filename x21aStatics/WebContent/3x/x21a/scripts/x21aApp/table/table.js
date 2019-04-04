@@ -284,7 +284,7 @@ jQuery(function($){
 							var url = ctx.oInit.urlBase;
 							ctx.oInit.urlBase = "./editar";
 							ctx.oInit.formEdit.direct = true;
-							$('#divImagenAlumno').css("display",'block');
+							$('#divImagenAlumno').parent().removeClass("d-none");
 							$('#imagenAlumno').prop("disabled",false);
 							dt.buttons.actions(dt, config);
 						}
@@ -298,7 +298,7 @@ jQuery(function($){
 						console.log('---Trigger--- ' + event.type);
 						ctx.oInit.formEdit.multiPart = undefined;
 						ctx.oInit.urlBase = url = ".";
-						$('#divImagenAlumno').css("display",'none');
+						$('#divImagenAlumno').parent().addClass("d-none");
 						$('#imagenAlumno').prop("disabled",true);
 					}
 				});
@@ -309,7 +309,7 @@ jQuery(function($){
 						console.log('---Trigger--- ' + event.type);
 						ctx.oInit.formEdit.multiPart = undefined;
 						ctx.oInit.urlBase = url = ".";
-						$('#divImagenAlumno').css("display",'none');
+						$('#divImagenAlumno').parent().addClass("d-none");
 						$('#imagenAlumno').prop("disabled",true);
 					}
 				});

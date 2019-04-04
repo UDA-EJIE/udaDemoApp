@@ -67,14 +67,10 @@
 			    	<label for="rol_detail_table"><spring:message code="rol" /></label>
 			    </div>
 			</div>	
-			<div class="form-row">	
-				<div style="width: 30%;float:right; overflow: visible; display: none;" id="divImagenAlumno">
-					<label class="formulario_linea_label">Subir imagen</label>
-					<div class="col1">
-					        <label for="imagenAlumno" class="label"><spring:message code="" /></label>
-							<input type="file" name="imagenAlumno" class="formulario_linea_input" id="imagenAlumno" disabled/>
-					</div>
-						
+			<div class="form-row d-none">	
+				<div class="form-groupMaterial col-sm" id="divImagenAlumno">
+					<input type="file" name="imagenAlumno" id="imagenAlumno" disabled/>
+					<label for="imagenAlumno"><spring:message code="subidaImg" /></label>
 				</div>	
 			</div>	
 		</form>
