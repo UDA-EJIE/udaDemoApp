@@ -135,7 +135,7 @@ jQuery(function($){
 			}
 	    	
 	    	if (nombreImagen!==undefined && nombreImagen!==null && nombreImagen!==''){
-				$("#imagen", $form).attr("src","http://local.ejiedes.net:7001/x21aMantenimientosWar/administracion/alumno/imagen/"+$("#id", $form).val()+"?" + new Date());
+				$("#imagen", $form).attr("src","http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/administracion/alumno/imagen/"+$("#id", $form).val()+"?" + new Date());
 			}else{
 				$("#imagen", $form).attr("src",$.rup.STATICS+"/x21a/images/no_picture.gif");
 			}
