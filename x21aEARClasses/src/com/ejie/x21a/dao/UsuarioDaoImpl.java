@@ -55,7 +55,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	private RowMapper<Usuario> rwMap = new RowMapper<Usuario>() {
 		public Usuario mapRow(ResultSet resultSet, int rowNum) throws SQLException {
            return new Usuario(
-               resultSet.getString("ID"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getString("EJIE"), resultSet.getDate("FECHA_ALTA"), resultSet.getDate("FECHA_BAJA")
+               resultSet.getString("ID"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getString("EJIE"), 
+               resultSet.getDate("FECHA_ALTA"), resultSet.getDate("FECHA_BAJA"), resultSet.getString("ROL")
            ); } } ;
 
 	/**

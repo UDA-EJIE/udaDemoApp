@@ -487,7 +487,7 @@ public class TableUsuarioController  {
 			//Hoja 1
 			ReportData<Usuario> usuarioExcelDataAll = new ReportData<Usuario>();
 				//nombre hoja
-				usuarioExcelDataAll.setSheetName("Todos los usuarios");
+				usuarioExcelDataAll.setSheetName("Listado de usuarios");
 				//cabeceras hoja
 				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
@@ -556,7 +556,7 @@ public class TableUsuarioController  {
 		return new ModelAndView("odsReport", modelMap);
 	}
 	
-	@RequestMapping(value="/pdfReport")
+	@RequestMapping(value="pdfReport")
 	public ModelAndView generarPDFJasperReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
 			ModelMap modelMap,
 			@RequestParam(value = "isInline", required = false) boolean isInline){
