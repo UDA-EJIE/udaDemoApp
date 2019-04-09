@@ -389,14 +389,29 @@
     <p>En cambio, si usamos los estilos de bootstrap materializados a la hora de diseñar los campos de los formularios, el estilo será el siguiente:</p>
 
     <div class="example">
-      <div class="form-groupMaterial">      
-      	<input type="text" id="textFieldBootstrapMaterialized" required>
-      	<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
-      </div>
-      <div class="form-groupMaterial">
-      	<input type="password" id="passwordBootstrapMaterialized" placeholder="Password" >
-      	<label for="passwordBootstrapMaterialized">Password</label>
-      </div>
+    	<p>Input básico</p>
+		<div class="form-groupMaterial">      
+			<input type="text" id="textFieldBootstrapMaterialized">
+			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+		</div>
+    	
+    	<p>Input con required</p>
+		<div class="form-groupMaterial">      
+			<input type="text" id="textFieldBootstrapMaterialized" required>
+			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+		</div>
+		
+		<p>Input con placeholder</p>
+		<div class="form-groupMaterial">
+			<input type="password" id="passwordBootstrapMaterialized" placeholder="Password" >
+			<label for="passwordBootstrapMaterialized">Password</label>
+		</div>
+		
+		<p>Input con required y placeholder</p>
+		<div class="form-groupMaterial">      
+			<input type="text" id="textFieldBootstrapMaterialized" placeholder="Soy un placeholder..." required>
+			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+		</div>
     </div>
     
     <h3>Autocomplete</h3>
@@ -508,15 +523,50 @@
 	<h3>Fecha</h3>
 	
 	<div class="example">
-		<div class="form-groupMaterial materialDatepicker"> 
+		<div class="form-groupMaterial"> 
 			<input id="fechaMaterial" type="text" />
 			<label for="fechaMaterial">Fecha 
 				<span class="text-muted" id="fecha-mask"></span>
 			</label>
 		</div>
-		<div class="form-groupMaterial materialDatepicker"> 
+		<div class="form-groupMaterial"> 
 			<input id="fechaMaterialPlaceholder" type="text" />
 			<label for="fechaMaterialPlaceholder">Fecha</label>
+		</div>
+	</div>
+	
+	<h3>Textarea</h3>
+	
+	<div class="example">
+		<p>Textarea básico</p>
+		<div class="form-group">
+			<label for="textarea">Textarea</label>
+			<textarea id="textarea" class="form-control"></textarea>
+		</div>
+		
+		<p>Textarea básico materializado</p>
+		<div class="form-groupMaterial"> 
+			<textarea id="textareaBasicoMaterial"></textarea>
+			<label for="textareaBasicoMaterial">Textarea</label>
+		</div>
+		
+		<p>Textarea con required materializado</p>
+		<div class="form-groupMaterial"> 
+			<textarea id="textareaRequiredMaterial" required></textarea>
+			<label for="textareaRequiredMaterial">Textarea</label>
+		</div>
+		
+		<p>Textarea con placeholder materializado // Textarea con required y placeholder materializado</p>
+		<div class="form-row">
+			<div class="form-groupMaterial col-sm-6">
+				<textarea id="textareaPlaceholderMaterial" placeholder="Soy un placeholder..."></textarea>
+				<label for="textareaPlaceholderMaterial">Textarea</label>
+			</div>
+			
+			<div class="form-groupMaterial col-sm-6">
+				<textarea id="textareaPlaceholderRequiredMaterial" placeholder="Soy un placeholder..." required></textarea>
+				<label for="textareaPlaceholderRequiredMaterial">Textarea</label>
+			</div>
 		</div>
 	</div>
   </section>

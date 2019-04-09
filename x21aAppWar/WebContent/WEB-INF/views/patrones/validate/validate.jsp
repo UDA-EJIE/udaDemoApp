@@ -208,6 +208,11 @@
 					<input id="autocompleteCombobox2" name="autocompleteCombobox2" /> 
 					<label for="autocompleteCombobox2">Autocomplete Combobox</label>
 				</div>
+				
+				<div class="form-groupMaterial col-sm-12">
+					<textarea id="textarea" name="textarea"></textarea> 
+					<label for="textarea">Textarea</label>
+				</div>
 			</div>
 			
 			<div class="row justify-content-center">

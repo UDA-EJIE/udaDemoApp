@@ -100,6 +100,9 @@ jQuery(document).ready(function(){
 			},
 			"autocompleteCombobox2": {
 				required: true
+			},
+			"textarea": {
+				required: true
 			}
 		},
 		messages:{
