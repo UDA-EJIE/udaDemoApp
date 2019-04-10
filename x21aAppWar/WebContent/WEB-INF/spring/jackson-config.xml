@@ -77,7 +77,7 @@
 	
 	<!-- Inclusiones de serializacion -->
 	<util:list id="serializationInclusions">
-		<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+<!-- 		<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value> -->
 	</util:list>
 	
 </beans>
