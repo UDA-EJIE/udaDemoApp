@@ -393,20 +393,18 @@ public class TableUsuarioController  {
 		return this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
 	}
 	
-	@RequestMapping(value = {"xlsReport" , "xlsxReport"}, method = RequestMethod.POST)
-	protected ModelAndView getExcelPOI(
-			@RequestJsonBody(param="filter") Usuario filterUsuario, 
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto,
+	@RequestMapping(value = {"xlsReportViejo" , "xlsxReportViejo"}, method = RequestMethod.POST)
+	protected ModelAndView getExcelPOIViejo(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto tableRequestDto,
 			ModelMap modelMap,
 			@RequestParam(value = "columns", required = false) String columns,
 			HttpServletRequest request){
-		
+		System.out.print(" NUEVO \n");
 		//Acceso a BD para recuperar datos
-		List<Usuario> listUsuarioPage = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		/*List<Usuario> listUsuarioPage = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
 		jqGridRequestDto.setPage(null);
 		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		
+		List<Usuario> listUsuarioAll = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);*/
+		List<Usuario> listUsuarioAll = null;//this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
 		//Nombre fichero
 		modelMap.put("fileName", "datosExcel");
 		
@@ -417,7 +415,9 @@ public class TableUsuarioController  {
 				//nombre hoja
 				usuarioExcelDataAll.setSheetName("Todos los usuarios");
 				//cabeceras hoja
-				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
+				if(columns != null){
+					usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
+				}
 				//datos hoja
 				usuarioExcelDataAll.setModelData(listUsuarioAll);
 			reportData.add(usuarioExcelDataAll);
@@ -428,18 +428,18 @@ public class TableUsuarioController  {
 				//cabeceras hoja
 				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
-				usuarioExcelDataPage.setModelData(listUsuarioPage);
+				usuarioExcelDataPage.setModelData(listUsuarioAll);
 			reportData.add(usuarioExcelDataPage);
 		modelMap.put("reportData", reportData);
 		
 		//Generación del XLS o XLSX
-//		String reportView = request.getServletPath().substring(9);
+
 		if (request.getServletPath().indexOf("xlsReport")!=-1){
 			return new ModelAndView("xlsReport", modelMap);
 		}else{
 			return new ModelAndView("xlsxReport", modelMap);
 		}
-//		return new ModelAndView(reportView, modelMap);
+
 		
 	}
 	
@@ -468,17 +468,16 @@ public class TableUsuarioController  {
 		return new ModelAndView("csvReport", modelMap);
 	}
 	
-	@RequestMapping(value = {"xlsReportViejo" , "xlsxReportViejo"}, method = RequestMethod.POST)
-	protected ModelAndView getExcelPOIViejo(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
+	@RequestMapping(value = {"xlsReport" , "xlsxReport"}, method = RequestMethod.POST)
+	protected ModelAndView getExcelPOI(@ModelAttribute Usuario filterUsuario, 
+			@ModelAttribute TableRequestDto tableRequestDto,
 			ModelMap modelMap,
 			@RequestParam(value = "columns", required = false) String columns,
 			HttpServletRequest request){
 		
-		//Acceso a BD para recuperar datos
-		List<Usuario> listUsuarioPage = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		jqGridRequestDto.setPage(null);
-		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		try{
+
+		List<Usuario> listUsuarioAll = this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
 		
 		//Nombre fichero
 		modelMap.put("fileName", "datosExcel");
@@ -488,31 +487,31 @@ public class TableUsuarioController  {
 			//Hoja 1
 			ReportData<Usuario> usuarioExcelDataAll = new ReportData<Usuario>();
 				//nombre hoja
-				usuarioExcelDataAll.setSheetName("Todos los usuarios");
+				usuarioExcelDataAll.setSheetName("Listado de usuarios");
 				//cabeceras hoja
 				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataAll.setModelData(listUsuarioAll);
 			reportData.add(usuarioExcelDataAll);
 			//Hoja 2
-			ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
+		/*	ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
 				//nombre hoja
 				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
 				//cabeceras hoja
 				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
-				usuarioExcelDataPage.setModelData(listUsuarioPage);
-			reportData.add(usuarioExcelDataPage);
+				usuarioExcelDataPage.setModelData(listUsuarioAll);
+			reportData.add(usuarioExcelDataPage);*/
 		modelMap.put("reportData", reportData);
-		
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		//Generación del XLS o XLSX
-//		String reportView = request.getServletPath().substring(9);
 		if (request.getServletPath().indexOf("xlsReport")!=-1){
 			return new ModelAndView("xlsReport", modelMap);
 		}else{
 			return new ModelAndView("xlsxReport", modelMap);
 		}
-//		return new ModelAndView(reportView, modelMap);
 		
 	}
 	
@@ -557,7 +556,7 @@ public class TableUsuarioController  {
 		return new ModelAndView("odsReport", modelMap);
 	}
 	
-	@RequestMapping(value="/pdfReport")
+	@RequestMapping(value="pdfReport")
 	public ModelAndView generarPDFJasperReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
 			ModelMap modelMap,
 			@RequestParam(value = "isInline", required = false) boolean isInline){

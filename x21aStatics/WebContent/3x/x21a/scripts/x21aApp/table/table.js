@@ -291,6 +291,7 @@ jQuery(function($){
 					};
 				plugins.buttons.myButtons = []; 
 				plugins.buttons.myButtons.push(optionButtonEdit);
+
 				$('#example').on('tableEditFormSuccessCallSaveAjax', function(event){
 					var dt = $('#example').DataTable();
 					var ctx = dt.context[0];
@@ -318,6 +319,13 @@ jQuery(function($){
 			}else{
 				$('#multiPart').prop('checked', false);
 			}
+			//Reports
+			plugins.buttons.report = {};
+			plugins.buttons.report.reportsParams = [];
+			plugins.buttons.report.reportsParams.push({"isInline":false});
+			plugins.buttons.report.title = "Descargar Informe Personalizado";
+			plugins.buttons.report.message = "Descargando informe, por favor espere Personalizado";
+			plugins.buttons.blackListButtons = ['csvButton'];
 		   
 
 		}else{
