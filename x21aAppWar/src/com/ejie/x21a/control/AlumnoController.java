@@ -203,18 +203,18 @@ public class AlumnoController  {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, produces="application/json")
 	public @ResponseBody Alumno edit(
-			@ModelAttribute Alumno alumno,
+			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,
 			@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
 			@RequestParam(value = "oldPassword", required = false) String oldPassword,
 			HttpServletRequest request, HttpServletResponse response) throws IOException {	
-		System.out.print("ALUMNO::::"+alumno.getId()+" --- "+new Date()+"\n");
+		
 		if (imagen!=null){
 			alumno.setNombreImagen(imagen.getOriginalFilename());
 			alumno.setImagen(imagen.getBytes());
         }
 		
-		Alumno alumnoAux  = null;//this.alumnoService.update(alumno, oldPassword, errors);
+		Alumno alumnoAux  = this.alumnoService.update(alumno, oldPassword, errors);
 		
 		if (errors.hasErrors()){
 			Map<String, List<String>> errorsMap = validationManager.getErrorsAsMap(errors);
