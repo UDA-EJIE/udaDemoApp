@@ -29,6 +29,24 @@ jQuery(function($){
     				"apellido1":{
 						required: false
     					},
+    				"apellido2":{
+						required: false
+    					},
+    				"fechaNacimiento":{
+						required: false
+    					},
+    				"telefono":{
+						required: false
+    					},
+    				"email":{
+						required: false
+    					},
+    				"idioma":{
+						required: false
+    					},
+    				"paisId":{
+						required: false
+    					},
     				"provinciaId":{
 						required: false
     					},
@@ -41,7 +59,31 @@ jQuery(function($){
     				"municipioId":{
 						required: false
     					},
+    				"calleId":{
+						required: false
+    					},
+    				"imagen":{
+						required: false
+    					},
+    				"sexo":{
+						required: false
+    					},
+    				"dni":{
+						required: false
+    					},
     				"autonomiaId":{
+						required: false
+    					},
+    				"nombreImagen":{
+						required: false
+    					},
+    				"calle":{
+						required: false
+    					},
+    				"direccion":{
+						required: false
+    					},
+    				"importeMatricula":{
 						required: false
     					}
     				}
@@ -51,7 +93,7 @@ jQuery(function($){
     		,colReorder: {
 				fixedColumnsLeft: 1
 			}
-    	    , select: {
+    	    , multiSelect: {
            		 style:    'multi'
        		 }
     		,seeker: {
@@ -60,17 +102,5 @@ jQuery(function($){
 			,buttons: {
 				activate:true
 			}
-	});
-	
-	$('#comarcaId_detail_table').rup_combo({
-		source : "../jqGridComarca/comarca",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
-		rowStriping: true
-	});
-	
-	$('#localidadId_detail_table').rup_combo({
-		parent: [ "comarcaId_detail_table" ],
-		source : "comboEnlazado/comarcaLocalidad",
-		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"}
 	});
 });

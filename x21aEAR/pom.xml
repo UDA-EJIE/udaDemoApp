@@ -19,7 +19,7 @@
 		<!-- <org.jackson.version>2.8.11.3</org.jackson.version> -->
 		<org.jackson.version>2.7.9.5</org.jackson.version>
 	</properties>
-
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
