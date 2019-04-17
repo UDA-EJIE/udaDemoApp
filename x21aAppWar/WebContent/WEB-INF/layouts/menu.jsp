@@ -396,8 +396,8 @@
 			<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_language"
 					data-toggle="dropdown">
-					<i class="fa fa-globe" aria-hidden="true"></i><span
-						data-rup-lang-current=""></span>
+					<i class="material-icons" aria-hidden="true">&#xe894;</i>
+					<span data-rup-lang-current=""></span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="x21aApp_language">
 				</div>
