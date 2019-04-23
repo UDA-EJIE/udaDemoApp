@@ -66,13 +66,13 @@
 				</div>
 			</div>
 			<div class="form-row"> 
-				<div class="form-group fix-align col-sm">
+				<div class="form-group col-sm">
 					<label for="fechaBaja_detail_table" class="formulario_linea_label">
 						<spring:message code="fechaBaja" />
 					</label>
 					<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
 				</div>
-				<div class="form-group fix-align col-sm">
+				<div class="form-group col-sm">
 					<label for="fechaAlta_detail_table" class="formulario_linea_label">
 						<spring:message code="fechaAlta" />
 					</label>
@@ -80,13 +80,13 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group fix-align col-sm">
+				<div class="form-group col-sm">
 					<label for="ejie_detail_table" class="formulario_linea_label">
 						<spring:message code="ejie" />
 					</label>
 					<input type="checkbox" id="ejie_detail_table" class="formulario_linea_input form-control" name="ejie" value="1"/>
 				</div>
-				<div class="form-group fix-align col-sm">
+				<div class="form-group col-sm">
 					<label for="rol_detail_table" class="formulario_linea_label">
 						<spring:message code="rol" />
 					</label>

@@ -22,9 +22,40 @@ jQuery(document).ready(function () {
   			dropdownListId:"dropdownHtmlList"
   		}
   	});
+    
+    $("#autocompleteDefault").rup_autocomplete({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		defaultValue : "",
+		contains : false
+	});
+    
+    $("#autocompleteMaterialized").rup_autocomplete({
+		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
+		defaultValue : "",
+		contains : false
+	});
 
     $("#rupCombo").rup_combo({
-      loadFromSelect: true
+    	loadFromSelect: true
   	});
+    
+    $("#rupComboMaterial").rup_combo({
+        loadFromSelect: true,
+        customClasses: ["select-material"]
+    });
+    
+    $("#fechaMaterial").rup_date({
+		labelMaskId : "fecha-mask",
+		showButtonPanel : true,
+		showOtherMonths : true,
+		noWeekend : true
+	});
+	
+	$("#fechaMaterialPlaceholder").rup_date({
+		placeholderMask : true,
+		showButtonPanel : true,
+		showOtherMonths : true,
+		noWeekend : true
+	});
 	
 });

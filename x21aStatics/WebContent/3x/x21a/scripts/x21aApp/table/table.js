@@ -103,7 +103,8 @@ jQuery(function($){
 			   {i18nCaption: "1", value:"1"}
 			],
 			i18nId: "GRID_simple##ejie",
-			width: 120
+			width: "100%",
+	        customClasses: ["select-material"]
 		},	
 		options_role_combo = {
 			source : [
@@ -113,7 +114,9 @@ jQuery(function($){
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
-			]
+			],
+			width: "100%",
+	        customClasses: ["select-material"]
 		};
 	
 
@@ -281,7 +284,7 @@ jQuery(function($){
 							var url = ctx.oInit.urlBase;
 							ctx.oInit.urlBase = "./editar";
 							ctx.oInit.formEdit.direct = true;
-							$('#divImagenAlumno').css("display",'block');
+							$('#divImagenAlumno').parent().removeClass("d-none");
 							$('#imagenAlumno').prop("disabled",false);
 							dt.buttons.actions(dt, config);
 						}
@@ -296,7 +299,7 @@ jQuery(function($){
 						console.log('---Trigger--- ' + event.type);
 						ctx.oInit.formEdit.multiPart = undefined;
 						ctx.oInit.urlBase = url = ".";
-						$('#divImagenAlumno').css("display",'none');
+						$('#divImagenAlumno').parent().addClass("d-none");
 						$('#imagenAlumno').prop("disabled",true);
 					}
 				});
@@ -307,7 +310,7 @@ jQuery(function($){
 						console.log('---Trigger--- ' + event.type);
 						ctx.oInit.formEdit.multiPart = undefined;
 						ctx.oInit.urlBase = url = ".";
-						$('#divImagenAlumno').css("display",'none');
+						$('#divImagenAlumno').parent().addClass("d-none");
 						$('#imagenAlumno').prop("disabled",true);
 					}
 				});

@@ -36,19 +36,19 @@
 				<div class="dropdown-menu"
 					aria-labelledby="responsiveNavbarDropdown">
 					<a class="dropdown-item" href="/x21aAppWar/patrones/feedback">
-						<i class="fa fa-check-square" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe87f;</i>
 						<spring:message code="feedback" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/tooltip">
-						<i class="fa fa-comment-o" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe0d8;</i>
 						<spring:message code="tooltip" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/message">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe0c9;</i>
 						<spring:message code="message" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/dialog">
-						<i class="fa fa-window-restore" aria-hidden="true"></i>
+						<i class="material-icons" aria-hidden="true">&#xe0bf;</i>
 						<spring:message code="dialog" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/progressbar">
@@ -80,6 +80,7 @@
 						</a>
 						<div class="dropdown-menu menu-right">
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic">
+								<i class="material-icons" aria-hidden="true">&#xe8d8;</i>
 								<spring:message code="tabsStatic" />
 							</a>
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax">
@@ -196,7 +197,7 @@
 					</a>
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="fa fa-check" aria-hidden="true"></i>
+							<i class="material-icons" aria-hidden="true">&#xe5ca;</i>
 							<spring:message code="validate" />
 						</a>
 						<div class="dropdown-menu menu-right">
@@ -395,8 +396,8 @@
 			<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_language"
 					data-toggle="dropdown">
-					<i class="fa fa-globe" aria-hidden="true"></i><span
-						data-rup-lang-current=""></span>
+					<i class="material-icons" aria-hidden="true">&#xe894;</i>
+					<span data-rup-lang-current=""></span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="x21aApp_language">
 				</div>
@@ -411,7 +412,7 @@
 				<a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#"
 					id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<i class="fa fa-cog " aria-hidden="true"></i>
+					<i class="material-icons" aria-hidden="true">&#xe8b8;</i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="x21aApp_releases">
@@ -422,13 +423,13 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link rup-nav-user rup-nav-tool-icon" href="#">
-					<i class="fa fa-user-circle-o " aria-hidden="true"></i>
+					<i class="material-icons" aria-hidden="true">&#xe853;</i>
 				</a>
 			</li>
 			<li class="nav-item swingTop">
 				<a class="nav-link rup-nav-user rup-nav-tool-icon"
 					href="javascript:void(0)">
-					<i class="fa fa-arrow-circle-up " aria-hidden="true"></i>
+					<i class="material-icons" aria-hidden="true">&#xe5d8;</i>
 				</a>
 			</li>
 		</ul>
