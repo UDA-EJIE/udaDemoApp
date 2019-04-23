@@ -100,6 +100,10 @@
 	                  <input type="checkbox" id="triggers" class="custom-control-input" value="10">
 	                  <label for="triggers" class="custom-control-label">Activar Triggers en Consola</label>
 	              </div>
+	              <div class="form-check custom-control custom-checkbox pluginsControl">
+	               <input type="checkbox" id="multiPart" class="custom-control-input" value="10">
+	               <label for="multiPart" class="custom-control-label">Edición con MultiPart</label>
+	          	 </div>
 	          </div>
 		</div>
   	</fieldset>

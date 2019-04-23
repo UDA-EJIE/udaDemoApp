@@ -73,7 +73,7 @@ jQuery(function($){
 	$("#localidad").rup_datatable({
 		
 		primaryKey: "code",
-		loadOnStartUp: true,
+		loadOnStartUp: false,
 	    filter:{
 	    	  id:"localidad_filter_form",
 	    	  filterToolbar:"localidad_filter_toolbar",

@@ -133,9 +133,9 @@ jQuery(function($){
 	var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 	
 	var allowedPluginsBySelecionType = {
-		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit'],
-		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers','inlineEdit'],
-		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers']
+		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit','multiPart'],
+		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers','inlineEdit','multiPart'],
+		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers','multiPart']
 	};
 	
 	 
@@ -209,7 +209,7 @@ jQuery(function($){
 	    				"id":{required:true},
 	    				"nombre":{required:true},
 	    				"apellido1":{required:true},
-	    				"fechaAlta":{date:true},
+	    				"fechaAlta":{required:true},
 	    				"fechaBaja":{date:true}
 	    			}
 	    		},
@@ -223,7 +223,7 @@ jQuery(function($){
 		}
 		
 		if(localStorage.plugins.indexOf('inlineEdit') > -1){
-	        var formEdit = {
+	  /*      var formEdit = {
 	        	detailForm: "#example_detail_div",
 	        	validate:{
 	    			rules:{
@@ -235,7 +235,7 @@ jQuery(function($){
 	    			}
 	    		},
 	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
-	        }
+	        }*/
 	        var inlineEdit = {
 		        	deselect: true,
 		        	validate:{
@@ -243,7 +243,7 @@ jQuery(function($){
 		    				"id":{required:true},
 		    				"nombre":{required:true},
 		    				"apellido1":{required:true},
-		    				"fechaAlta":{date:true},
+		    				"fechaAlta":{required:true},
 		    				"fechaBaja":{date:true}
 		    			}
 		    		}
@@ -261,6 +261,69 @@ jQuery(function($){
 		        };
 		    plugins.buttons = buttons;
 		    $('#buttons').prop('checked', true);
+			if(localStorage.plugins !== undefined && localStorage.plugins.indexOf('multiPart') > -1){
+				 //Crear boton para editar con multiPart PUT
+				var optionButtonEdit = {
+						text: function (dt) {
+							return 'Editar con MultiPart';
+						},
+						id: 'exampleeditMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
+						className: 'datatable_toolbar_btnEdit',
+						displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
+						insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
+						type: 'edit',
+						init: function (dt, node, config) {
+							//ctx.ext.buttons.editButton.eventDT = dt;
+						},
+						action: function (e, dt, node, config) {
+							var ctx = dt.context[0];
+							ctx.oInit.formEdit.multiPart = true;
+							var url = ctx.oInit.urlBase;
+							ctx.oInit.urlBase = "./editar";
+							ctx.oInit.formEdit.direct = true;
+							$('#divImagenAlumno').css("display",'block');
+							$('#imagenAlumno').prop("disabled",false);
+							dt.buttons.actions(dt, config);
+						}
+					};
+				plugins.buttons.myButtons = []; 
+				plugins.buttons.myButtons.push(optionButtonEdit);
+
+				$('#example').on('tableEditFormSuccessCallSaveAjax', function(event){
+					var dt = $('#example').DataTable();
+					var ctx = dt.context[0];
+					if(ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.multiPart){
+						console.log('---Trigger--- ' + event.type);
+						ctx.oInit.formEdit.multiPart = undefined;
+						ctx.oInit.urlBase = url = ".";
+						$('#divImagenAlumno').css("display",'none');
+						$('#imagenAlumno').prop("disabled",true);
+					}
+				});
+				$('#example_detail_div').on( "dialogbeforeclose", function( event, ui ) {
+					var dt = $('#example').DataTable();
+					var ctx = dt.context[0];
+					if(ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.multiPart){
+						console.log('---Trigger--- ' + event.type);
+						ctx.oInit.formEdit.multiPart = undefined;
+						ctx.oInit.urlBase = url = ".";
+						$('#divImagenAlumno').css("display",'none');
+						$('#imagenAlumno').prop("disabled",true);
+					}
+				});
+				// FIN MULTIPART
+				$('#multiPart').prop('checked', true);
+			}else{
+				$('#multiPart').prop('checked', false);
+			}
+			//Reports
+			plugins.buttons.report = {};
+			plugins.buttons.report.reportsParams = [];
+			plugins.buttons.report.reportsParams.push({"isInline":false});
+			plugins.buttons.report.title = "Descargar Informe Personalizado";
+			plugins.buttons.report.message = "Descargando informe, por favor espere Personalizado";
+			plugins.buttons.blackListButtons = ['csvButton'];
+		   
 
 		}else{
 			$('#buttons').prop('checked', false);
@@ -315,6 +378,22 @@ jQuery(function($){
 		}else{
 			$('#triggers').prop('checked', false);
 		}
+		plugins.columnDefs = [
+    	    { 
+    	    	"targets": [5],
+    	    	"render": function(data){
+    	    		if(data !== undefined){
+    	    			return data.replace('/','/');
+    	    		}
+    	    	}
+    	    },
+    	    { "name": "Nombre",   "targets": 'Nombre',"render": function(data){
+	    		
+	    		return data.replace('a','.');
+	    	} }
+    	];
+
+
 		
 		//Col model es obligatorio,se mete como generico
 		plugins.colModel = tableColModels;
