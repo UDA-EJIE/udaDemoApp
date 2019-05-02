@@ -16,4 +16,4 @@
 	//breadCrumbs
 	LOGGED_USER = "NULL",
 	DESTROY_XLNETS_SESSION = "false";
-	document.cookie = "language=es";
+	document.cookie = "language=es";;

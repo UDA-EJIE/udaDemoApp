@@ -1,9 +1,7 @@
-import 'jquery';
+const DIST = "/x21aStatics/3x/rup";
+const DEMO = "/demo";
 
-export const DIST = "/dist";
-export const DEMO = "/demo";
-
-export function testTrace(title, toTrace) {
+function testTrace(title, toTrace) {
     console.info("\n\n*****************************************************\n\n" +
         title +
         "\n--------------------------------\n\n" +
@@ -11,7 +9,7 @@ export function testTrace(title, toTrace) {
         "\n\n*****************************************************\n\n");
 }
 
-export function loadCss(callback) {
+function loadCss(callback) {
     $('head > style').remove();
     $('head').append('<style></style>');
     return $.when($.ajax(DIST + '/css/externals/tether/tether.min.css'))
@@ -32,7 +30,7 @@ export function loadCss(callback) {
                                             $.when($.ajax(DIST + '/css/rup-jqueryui-theme.css'))
                                                 .then((data, textStatus, jqXHR) => {
                                                     $('head > style').append(data);
-                                                    $.when($.ajax(DIST + '/css/main.css'))
+                                                    $.when($.ajax('/x21aStatics/3x' + '/x21a/styles/main.css'))
                                                     .then((data, textStatus, jqXHR) => {
                                                         $('head > style').append(data);
                                                         if($('#content').length === 0) {
