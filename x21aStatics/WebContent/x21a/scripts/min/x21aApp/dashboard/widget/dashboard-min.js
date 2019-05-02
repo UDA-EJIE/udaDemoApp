@@ -1,1 +1,0 @@
-(function(a,b){if(typeof define==="function"&&define.amd){define(["jquery","rup/rup.dashboard"],b)}else{a.returnExports=b(jQuery)}}(this,function(d){var f=[];function b(g){f.push(g)}function e(){}function c(){}function a(){}return{addDashboard:b}}));
