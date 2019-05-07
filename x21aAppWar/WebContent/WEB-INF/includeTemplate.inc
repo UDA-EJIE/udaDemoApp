@@ -23,4 +23,4 @@
 window.IS_EJIE = true;
 </script>
 <c:set var="staticsUrl" value='<%=StaticsContainer.staticsUrl%>' />
-<c:set var="staticsUrl" value='${staticsUrl}/3x' />
+<c:set var="staticsUrl" value='${staticsUrl}/4x' />
