@@ -36,7 +36,7 @@
 
 <jsp:include page="includes/datatableEdit.jsp"></jsp:include>
 
-<form id="example_tableConfiguration">
+<form id="example_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
