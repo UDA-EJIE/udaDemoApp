@@ -179,6 +179,23 @@
 						<i class="fa fa-calendar" aria-hidden="true"></i>
 						<spring:message code="date" />
 					</a>
+					
+					
+					<div class="dropdown-submenu">
+						<a class="dropdown-item dropdown-toggle" href="#">
+							<i class="fa fa-calendar pr-2" aria-hidden="true"></i>
+							<spring:message code="calendario" />
+						</a>
+						<div class="dropdown-menu menu-right" aria-labelledby="calendarDropdown">
+							<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/page">
+								<spring:message code="calendario.simple" />
+							</a>
+							<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/pageDouble">
+								<spring:message code="calendario.doble" />
+							</a>
+						</div>
+					</div>
+					
 					<a class="dropdown-item" href="/x21aAppWar/patrones/form">
 						<i class="fa fa-wpforms" aria-hidden="true"></i>
 						<spring:message code="form" />
@@ -216,23 +233,6 @@
 					<a class="dropdown-item" href="/x21aAppWar/patrones/charts">
 						<i class="fa fa-bar-chart" aria-hidden="true"></i>
 						<spring:message code="charts.charts" />
-					</a>
-				</div>
-			</li>
-
-
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="calendarDropdown"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fa fa-calendar pr-2"></i>
-					<spring:message code="calendario" />
-				</a>
-				<div class="dropdown-menu" aria-labelledby="calendarDropdown">
-					<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/page">
-						<spring:message code="calendario.simple" />
-					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/calendar/pageDouble">
-						<spring:message code="calendario.doble" />
 					</a>
 				</div>
 			</li>
