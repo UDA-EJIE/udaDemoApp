@@ -38,7 +38,7 @@
          });
 
          afterEach((done) => {
-             setTimeout(() => {
+        	 setTimeout(() => {
             	 clearDatatable(done);
              }, 1500); 
          });
