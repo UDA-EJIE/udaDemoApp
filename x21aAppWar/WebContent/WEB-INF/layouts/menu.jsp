@@ -256,6 +256,9 @@
 					<a class="dropdown-item" href="/x21aAppWar/table/tableDialog">
 						<spring:message code="tabla.tableDialog" />
 					</a>
+					<a class="dropdown-item" href="${staticsUrl}/rup/html/specRunner.html" target="_blank">
+						<spring:message code="Test para la tabla" />
+					</a>
 					<div class="dropdown-divider"></div>
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
