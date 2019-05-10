@@ -216,7 +216,8 @@ jQuery(function($){
 	    				"fechaBaja":{date:true}
 	    			}
 	    		},
-	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption'),
+	    		saveContinueEdit:false//true pasa a edición; false seguir añadiendo
 	        }
 		    plugins.formEdit = formEdit;
 
