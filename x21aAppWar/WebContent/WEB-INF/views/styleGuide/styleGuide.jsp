@@ -201,32 +201,32 @@
       <div class="row">
         <div class="col-md-12">
           <button type="button" class="btn-material btn-material-lg btn-material-primary-high-emphasis">
-          	<i class="material-icons">&#xe145;</i>
+          	<i class="mdi mdi-plus"></i>
           	<span>Añadir</span>
           </button>
 
           <button type="button" class="btn-material btn-material-lg material-rounded btn-material-secondary-high-emphasis">
-          	<i class="material-icons">&#xe3c9;</i>
+          	<i class="mdi mdi-pencil"></i>
           	<span>Editar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-lg btn-material-success-medium-emphasis">
-          	<i class="material-icons">&#xe14d;</i>
+          	<i class="mdi mdi-content-copy"></i>
           	<span>Clonar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-lg material-rounded btn-material-danger-medium-emphasis">
-          	<i class="material-icons">&#xe872;</i>
+          	<i class="mdi mdi-delete"></i>
           	<span>Eliminar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-lg btn-material-warning-dark-low-emphasis">
-          	<i class="material-icons">&#xe863;</i>
+          	<i class="mdi mdi-reload"></i>
           	<span>Recargar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-lg material-rounded btn-material-info-low-emphasis">
-          	<i class="material-icons">&#xe24d;</i>
+          	<i class="mdi mdi-file"></i>
           	<span>Informes</span>
           </button>
         </div>
@@ -234,32 +234,32 @@
       <div class="row mt-4">
         <div class="col-md-12">
           <button type="button" class="btn-material btn-material-primary-high-emphasis">
-          	<i class="material-icons">&#xe145;</i>
+          	<i class="mdi mdi-plus"></i>
           	<span>Añadir</span>
           </button>
 
           <button type="button" class="btn-material material-rounded btn-material-secondary-high-emphasis">
-          	<i class="material-icons">&#xe3c9;</i>
+          	<i class="mdi mdi-pencil"></i>
           	<span>Editar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-success-medium-emphasis">
-          	<i class="material-icons">&#xe14d;</i>
+          	<i class="mdi mdi-content-copy"></i>
           	<span>Clonar</span>
           </button>
 
           <button type="button" class="btn-material material-rounded btn-material-danger-medium-emphasis">
-          	<i class="material-icons">&#xe872;</i>
+          	<i class="mdi mdi-delete"></i>
           	<span>Eliminar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-warning-dark-low-emphasis">
-          	<i class="material-icons">&#xe863;</i>
+          	<i class="mdi mdi-reload"></i>
           	<span>Recargar</span>
           </button>
 
           <button type="button" class="btn-material material-rounded btn-material-info-low-emphasis">
-          	<i class="material-icons">&#xe24d;</i>
+          	<i class="mdi mdi-file"></i>
           	<span>Informes</span>
           </button>
         </div>
@@ -267,32 +267,32 @@
       <div class="row mt-4">
         <div class="col-md-12">
           <button type="button" class="btn-material btn-material-sm btn-material-primary-high-emphasis">
-          	<i class="material-icons">&#xe145;</i>
+          	<i class="mdi mdi-plus"></i>
           	<span>Añadir</span>
           </button>
 
           <button type="button" class="btn-material btn-material-sm material-rounded btn-material-secondary-high-emphasis">
-          	<i class="material-icons">&#xe3c9;</i>
+          	<i class="mdi mdi-pencil"></i>
           	<span>Editar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-sm btn-material-success-medium-emphasis">
-          	<i class="material-icons">&#xe14d;</i>
+          	<i class="mdi mdi-content-copy"></i>
           	<span>Clonar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-sm material-rounded btn-material-danger-medium-emphasis">
-          	<i class="material-icons">&#xe872;</i>
+          	<i class="mdi mdi-delete"></i>
           	<span>Eliminar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-sm btn-material-warning-dark-low-emphasis">
-          	<i class="material-icons">&#xe863;</i>
+          	<i class="mdi mdi-reload"></i>
           	<span>Recargar</span>
           </button>
 
           <button type="button" class="btn-material btn-material-sm material-rounded btn-material-info-low-emphasis">
-          	<i class="material-icons">&#xe24d;</i>
+          	<i class="mdi mdi-file"></i>
           	<span>Informes</span>
           </button>
         </div>

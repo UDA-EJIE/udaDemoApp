@@ -36,19 +36,19 @@
 				<div class="dropdown-menu"
 					aria-labelledby="responsiveNavbarDropdown">
 					<a class="dropdown-item" href="/x21aAppWar/patrones/feedback">
-						<i class="material-icons" aria-hidden="true">&#xe87f;</i>
+						<i class="mdi mdi-message-alert" aria-hidden="true"></i>
 						<spring:message code="feedback" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/tooltip">
-						<i class="material-icons" aria-hidden="true">&#xe0d8;</i>
+						<i class="mdi mdi-message-processing" aria-hidden="true"></i>
 						<spring:message code="tooltip" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/message">
-						<i class="material-icons" aria-hidden="true">&#xe0c9;</i>
+						<i class="mdi mdi-message-text" aria-hidden="true"></i>
 						<spring:message code="message" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/dialog">
-						<i class="material-icons" aria-hidden="true">&#xe0bf;</i>
+						<i class="mdi mdi-forum" aria-hidden="true"></i>
 						<spring:message code="dialog" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/progressbar">
@@ -80,7 +80,7 @@
 						</a>
 						<div class="dropdown-menu menu-right">
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic">
-								<i class="material-icons" aria-hidden="true">&#xe8d8;</i>
+								<i class="mdi mdi-tab" aria-hidden="true"></i>
 								<spring:message code="tabsStatic" />
 							</a>
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax">
@@ -214,7 +214,7 @@
 					</a>
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="material-icons" aria-hidden="true">&#xe5ca;</i>
+							<i class="mdi mdi-check" aria-hidden="true"></i>
 							<spring:message code="validate" />
 						</a>
 						<div class="dropdown-menu menu-right">
@@ -396,7 +396,7 @@
 			<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_language"
 					data-toggle="dropdown">
-					<i class="material-icons" aria-hidden="true">&#xe894;</i>
+					<i class="mdi mdi-earth" aria-hidden="true"></i>
 					<span data-rup-lang-current=""></span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="x21aApp_language">
@@ -405,14 +405,14 @@
 			<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon"
 					href="http://uda-ejie.github.io/" id="uda_github">
-					<i class="fa fa-github" aria-hidden="true"></i>
+					<i class="mdi mdi-github-circle" aria-hidden="true"></i>
 				</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#"
 					id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<i class="material-icons" aria-hidden="true">&#xe8b8;</i>
+					<i class="mdi mdi-settings" aria-hidden="true"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="x21aApp_releases">
@@ -423,13 +423,13 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link rup-nav-user rup-nav-tool-icon" href="#">
-					<i class="material-icons" aria-hidden="true">&#xe853;</i>
+					<i class="mdi mdi-account-circle" aria-hidden="true"></i>
 				</a>
 			</li>
 			<li class="nav-item swingTop">
 				<a class="nav-link rup-nav-user rup-nav-tool-icon"
 					href="javascript:void(0)">
-					<i class="material-icons" aria-hidden="true">&#xe5d8;</i>
+					<i class="mdi mdi-arrow-up" aria-hidden="true"></i>
 				</a>
 			</li>
 		</ul>

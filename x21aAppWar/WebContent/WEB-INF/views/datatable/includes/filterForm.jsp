@@ -48,14 +48,14 @@
      
     <!-- Botonera del formulario de filtrado -->
     <div id="example_filter_buttonSet" class="right_buttons">
-    	<!-- BotÃ³n de limpiar -->
+    	<!-- Botón de limpiar -->
         <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
-        	<i class="material-icons">&#xe14c;</i>
+        	<i class="mdi mdi-broom"></i>
         	<span>Limpiar</span>
         </button>
-        <!-- BotÃ³n de filtrado -->
+        <!-- Botón de filtrado -->
         <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
-        	<i class="material-icons">&#xe152;</i>
+        	<i class="mdi mdi-filter-variant"></i>
         	<span>Filtrar</span>        	
         </button>
     </div>
