@@ -15,7 +15,7 @@
  */
 jQuery(document).ready(function() {
 
-	// anadir una rup_table al cargar la pagina
+	// anadir una rup_jqtable al cargar la pagina
 	addTableIberdok();
 
 	// js relacionado con el dialogo del lanzador del Editor de iberdok
@@ -26,13 +26,13 @@ jQuery(document).ready(function() {
 
 });
 /**
- * Anade un rup_table a la pantalla con el modelo de datos de IberdokFile
+ * Anade un rup_jqtable a la pantalla con el modelo de datos de IberdokFile
  * 
  * 
  */
 function addTableIberdok() {
 
-	$("#iberdokTable").rup_table(
+	$("#iberdokTable").rup_jqtable(
 			{
 				url : "../iberdok",
 				colNames : [ $.rup.i18n.app.iberdokTable.id,
@@ -67,7 +67,7 @@ function addTableIberdok() {
 				"contextMenu", "fluid", "search" ],
 				primaryKey : "id",
 				onSelectRow : function(id) {
-					var selectedRow = $("#iberdokTable").rup_table(
+					var selectedRow = $("#iberdokTable").rup_jqtable(
 							"getRowData", id);
 					if (selectedRow.estado == 1) {
 						$('#iberdokTable_toolbar\\#\\#Visualizar').hide();
@@ -302,8 +302,8 @@ function addCombosForm() {
  */
 function fnCopiarDocumento() {
 
-	var selectedRowId = $("#iberdokTable").rup_table("getSelectedRows");
-	var selectedRow = $("#iberdokTable").rup_table("getRowData", selectedRowId);
+	var selectedRowId = $("#iberdokTable").rup_jqtable("getSelectedRows");
+	var selectedRow = $("#iberdokTable").rup_jqtable("getRowData", selectedRowId);
 	var idDocumento = selectedRow.idDocumento;
 	var modo='8';
 	
@@ -321,8 +321,8 @@ function fnCopiarDocumento() {
  */
 function fnEditarIberdok() {
 
-	var selectedRowId = $("#iberdokTable").rup_table("getSelectedRows");
-	var selectedRow = $("#iberdokTable").rup_table("getRowData", selectedRowId);
+	var selectedRowId = $("#iberdokTable").rup_jqtable("getSelectedRows");
+	var selectedRow = $("#iberdokTable").rup_jqtable("getRowData", selectedRowId);
 	var idDocumento = selectedRow.idDocumento;
 	var modo;
 	if (selectedRow.estado == '1') {
@@ -353,8 +353,8 @@ function fnNuevoDocumento() {
  */
 function fnAbrirDocumento() {
 
-	var selectedRowId = $("#iberdokTable").rup_table("getSelectedRows");
-	var selectedRow = $("#iberdokTable").rup_table("getRowData", selectedRowId);
+	var selectedRowId = $("#iberdokTable").rup_jqtable("getSelectedRows");
+	var selectedRow = $("#iberdokTable").rup_jqtable("getRowData", selectedRowId);
 
 	var idDocumento = selectedRow.idDocumento;
 

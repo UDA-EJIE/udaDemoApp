@@ -17,11 +17,11 @@
 (function ($) {
 
 	
-	jQuery.rup_table.registerPlugin("masterDetail",{
+	jQuery.rup_jqtable.registerPlugin("masterDetail",{
 		loadOrder:10,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureMasterDetail", settings);
+			return $self.rup_jqtable("preConfigureMasterDetail", settings);
 			
 		}
 	});
@@ -31,7 +31,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la edición de los registros mediante un formulario. 
+	 * Extensión del componente rup_jqtable para permitir la edición de los registros mediante un formulario. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -47,7 +47,7 @@
 	 * settings.$detailFormDiv : Referencia al div que arropa el formulario de detalle y sobre el que se inicializa el componente rup_dialog. 
 	 *  
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/*
 		 * Realiza la configuración interna necesaria para la gestión correcta de la edición mediante un formulario.
 		 * 
@@ -62,7 +62,7 @@
 			
 			$self.on({
 				"rupTable_serializeGridData.rupTable.masterDetail": function(events, postData){
-					var masterPkObject = $self.rup_table("getMasterTablePkObject");
+					var masterPkObject = $self.rup_jqtable("getMasterTablePkObject");
 					
 					if (masterPkObject!==null){					
 						jsonParam={"filter":masterPkObject};
@@ -70,7 +70,7 @@
 					}
 				},
 				"jqGridAddEditBeforeSubmit.rupTable.masterDetail": function(event, postData, frmoper){
-					var masterPkObject = $self.rup_table("getMasterTablePkObject");
+					var masterPkObject = $self.rup_jqtable("getMasterTablePkObject");
 					
 					if (masterPkObject!==null){					
 						jQuery.extend(postData, masterPkObject);
@@ -78,7 +78,7 @@
 				},
 				"rupTable_searchBeforeSubmit.rupTable.masterDetail":function(event, postData, jsonData){
 					
-					var masterPkObject = $self.rup_table("getMasterTablePkObject");
+					var masterPkObject = $self.rup_jqtable("getMasterTablePkObject");
 					
 					if (masterPkObject!==null){					
 						jsonParam={"filter":masterPkObject};
@@ -93,10 +93,10 @@
 					if (lastRowid === undefined || lastRowid!==rowid){
 						if (jQuery.inArray("filter", settings.usePlugins) !== -1){
 		                    $self.data("tmp.masterDetail.lastRowid", rowid);
-		                    $self.rup_table("showSearchCriteria");
-		                    $self.rup_table("filter");
+		                    $self.rup_jqtable("showSearchCriteria");
+		                    $self.rup_jqtable("filter");
 		                } else {
-		                    $self.rup_table("reloadGrid");
+		                    $self.rup_jqtable("reloadGrid");
 		                }
 					}
 				},
@@ -110,10 +110,10 @@
 		}
 	});
 	
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		getMasterTablePkObject: function(){
 			var $self = this, settings = $self.data("settings"), $master = settings.masterDetail.$master,
-				masterPkValue = $master.rup_table("getSelectedRows"),
+				masterPkValue = $master.rup_jqtable("getSelectedRows"),
 				masterPkName = settings.masterDetail.masterPrimaryKey;
 			
 			function nestJSON(key, value){
@@ -129,7 +129,7 @@
 			}
 			//Inicio compatibilidad con masterPrimaryKey compuestas
 			if($.isArray(masterPkName) && masterPkName.length>0 && (masterPkValue.length===1)){
-                var multiplePkToken = $master.rup_table("getGridParam","multiplePkToken");
+                var multiplePkToken = $master.rup_jqtable("getGridParam","multiplePkToken");
                 var splitedMasterPkValue = masterPkValue[0].split(multiplePkToken);
                 var retPkObj = {};
                 if(splitedMasterPkValue.length===masterPkName.length){
@@ -157,8 +157,8 @@
 	
 		
 	// Parámetros de configuración por defecto para la acción de eliminar un registro.
-	jQuery.fn.rup_table.plugins.masterDetail = {};
-	jQuery.fn.rup_table.plugins.masterDetail.defaults = {
+	jQuery.fn.rup_jqtable.plugins.masterDetail = {};
+	jQuery.fn.rup_jqtable.plugins.masterDetail.defaults = {
 	};
 	
 		

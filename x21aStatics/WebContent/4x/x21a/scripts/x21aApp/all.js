@@ -16,7 +16,7 @@
 jQuery(function($){
 	
 	
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
@@ -164,7 +164,7 @@ jQuery(function($){
 			open : function(event, ui) { 
 				//Configurar dialog
 				
-				$("#tableDialog").rup_table({
+				$("#tableDialog").rup_jqtable({
 					url: "../jqGridUsuario",
 					colNames: tableColNames,
 					colModel: tableColModels,

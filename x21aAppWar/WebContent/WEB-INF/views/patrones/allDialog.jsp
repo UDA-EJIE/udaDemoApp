@@ -128,14 +128,14 @@
 	</div>
 	
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="tableDialog_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
+			<button id="tableDialog_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="tableDialog_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="tableDialog_detail_button_save_repeat" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<button id="tableDialog_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="tableDialog_detail_button_cancel" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

@@ -11383,8 +11383,8 @@ return jQuery;
           $.rup.i18n.base = data;
           //Se cargan los literales de la tabla por separado (consecuencia de la naturalza de JqGrid)
           $.jgrid = {};
-          $.extend($.jgrid, data.rup_table);
-          $.jgrid.formatter.date.S = new Function("j", data.rup_table.formatter.date.S);
+          $.extend($.jgrid, data.rup_jqtable);
+          $.jgrid.formatter.date.S = new Function("j", data.rup_jqtable.formatter.date.S);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
           //tratamiento de error
@@ -12030,7 +12030,7 @@ this["Rup"]["Templates"]["rup"]["table"]["detail"]["navigation"]["bootstrap"] = 
     + alias4(((helper = (helper = helpers.tableId || (depth0 != null ? depth0.tableId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data}) : helper)))
     + "\" class=\"rup-table-detail-info\">\r\n  <i class=\"fa fa-list-alt\" aria-hidden=\"true\" title=\""
     + alias4(((helper = (helper = helpers.resultNumText || (depth0 != null ? depth0.resultNumText : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"resultNumText","hash":{},"data":data}) : helper)))
-    + "\"></i>\r\n  <span id=\"rup_table_selectedElements_table\" class=\"rup-table-detail-currentElement\" >\r\n    "
+    + "\"></i>\r\n  <span id=\"rup_jqtable_selectedElements_table\" class=\"rup-table-detail-currentElement\" >\r\n    "
     + alias4(((helper = (helper = helpers.numResult || (depth0 != null ? depth0.numResult : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"numResult","hash":{},"data":data}) : helper)))
     + "\r\n  </span>\r\n</div>\r\n<div id=\"pag_"
     + alias4(((helper = (helper = helpers.tableId || (depth0 != null ? depth0.tableId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data}) : helper)))
@@ -12066,7 +12066,7 @@ this["Rup"]["Templates"]["rup"]["table"]["pager"]["bootstrap"] = Handlebars.temp
 
   return "\r\n  <div id=\"pg_"
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "_pager\" class=\"ui-pager-control rup_table_pager\" role=\"group\">\r\n    <div id=\""
+    + "_pager\" class=\"ui-pager-control rup_jqtable_pager\" role=\"group\">\r\n    <div id=\""
     + alias4(((helper = (helper = helpers.idPager || (depth0 != null ? depth0.idPager : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"idPager","hash":{},"data":data}) : helper)))
     + "_left\" class=\"pager_left\"></div>\r\n    <div id=\""
     + alias4(((helper = (helper = helpers.idPager || (depth0 != null ? depth0.idPager : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"idPager","hash":{},"data":data}) : helper)))
@@ -45065,7 +45065,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
       //Contador de seleccionados
       if (settings.multiselect === true) {
-        $pagerLeft.append($('<div/>').addClass('ui-paging-selected').html("0 " + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.selected")));
+        $pagerLeft.append($('<div/>').addClass('ui-paging-selected').html("0 " + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.selected")));
       }
 
       // Pager center
@@ -45075,7 +45075,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       // Evento de control de página máxima
       jQuery(".pagControls input.ui-pg-input", $pagerCenter).on("change", function () {
         var pageNum = parseInt($(this).val()),
-          totalNum = parseInt($self.rup_table("getGridParam", "lastpage"));
+          totalNum = parseInt($self.rup_jqtable("getGridParam", "lastpage"));
 
         if (isNaN(pageNum) === false && pageNum > totalNum) {
           $(this).val(totalNum);
@@ -45083,32 +45083,32 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       });
 
       // Tooltip al combo de selección de número de registros
-      jQuery(".pagControls select.ui-pg-selbox", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.select")).rup_tooltip();
+      jQuery(".pagControls select.ui-pg-selbox", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.select")).rup_tooltip();
       // Tooltip al input de selección de página
-      jQuery(".pagControls input.ui-pg-input", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.input")).rup_tooltip();
+      jQuery(".pagControls input.ui-pg-input", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.input")).rup_tooltip();
 
       var pagerLinkTemplate = Rup.Templates.rup.table.pager.link.bootstrap;
 
       //Cambiar flechas paginación por literales
       jQuery('#first_' + pagerName, $pagerCenter)
         .html(pagerLinkTemplate({
-          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.primPag"),
+          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.primPag"),
           icon: "fa fa-angle-double-left"
         })).removeClass('ui-pg-button');
 
       jQuery('#prev_' + pagerName, $pagerCenter)
         .html(pagerLinkTemplate({
-          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.anterior"),
+          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.anterior"),
           icon: "fa fa-angle-left"
         })).removeClass('ui-pg-button');
       jQuery('#next_' + pagerName, $pagerCenter)
         .html(pagerLinkTemplate({
-          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.siguiente"),
+          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.siguiente"),
           icon: "fa fa-angle-right"
         })).removeClass('ui-pg-button');
       jQuery('#last_' + pagerName, $pagerCenter)
         .html(pagerLinkTemplate({
-          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.ultiPag"),
+          label: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.ultiPag"),
           icon: "fa fa-angle-double-right"
         })).removeClass('ui-pg-button');
     }
@@ -45121,22 +45121,22 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       jqGridID = $self.attr("id");
     var $template = $(Rup.Templates.rup.table.detail.navigation.bootstrap({
       tableId: $self.prop("id"),
-      resultNumText: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.numResult"),
-      labelFirst: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.first"),
-      labelPrev: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.previous"),
-      labelNext: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.next"),
-      labelLast: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.last")
+      resultNumText: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.numResult"),
+      labelFirst: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.first"),
+      labelPrev: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.previous"),
+      labelNext: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.next"),
+      labelLast: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.last")
 
     }));
 
     // var $self = $(this),
     //     settings = $self.data("settings"),
     //     jqGridID = $self.attr("id"),
-    //     paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationBar"),
-    //     paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationLink"),
-    //     elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.elementCounter"),
-    //     $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.separator")),
-    //     $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.numResult"))),
+    //     paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationBar"),
+    //     paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationLink"),
+    //     elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.elementCounter"),
+    //     $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.separator")),
+    //     $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.numResult"))),
     //     $paginationBar = $(jQuery.jgrid.format(paginationBarTmpl, jqGridID)),
     var $firstPaginationLink = $('#first_' + jqGridID, $template),
       $backPaginationLink = $('#back_' + jqGridID, $template),
@@ -45291,7 +45291,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
       //Contador de seleccionados
       if (settings.multiselect === true) {
-        $pagerLeft.append($('<div/>').addClass('ui-paging-selected').html("0 " + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.selected")));
+        $pagerLeft.append($('<div/>').addClass('ui-paging-selected').html("0 " + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.selected")));
       }
 
       // Pager center
@@ -45300,7 +45300,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       // Evento de control de página máxima
       jQuery(".pagControls input.ui-pg-input", $pagerCenter).on("change", function () {
         var pageNum = parseInt($(this).val()),
-          totalNum = parseInt($self.rup_table("getGridParam", "lastpage"));
+          totalNum = parseInt($self.rup_jqtable("getGridParam", "lastpage"));
 
         if (isNaN(pageNum) === false && pageNum > totalNum) {
           $(this).val(totalNum);
@@ -45308,22 +45308,22 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       });
 
       // Tooltip al combo de selección de número de registros
-      jQuery(".pagControls select.ui-pg-selbox", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.select")).rup_tooltip();
+      jQuery(".pagControls select.ui-pg-selbox", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.select")).rup_tooltip();
       // Tooltip al input de selección de página
-      jQuery(".pagControls input.ui-pg-input", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.input")).rup_tooltip();
+      jQuery(".pagControls input.ui-pg-input", $pagerCenter).attr("title", jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.input")).rup_tooltip();
 
       //Cambiar flechas paginación por literales
       jQuery('#first_' + pagerName, $pagerCenter)
-        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.primPag")).addClass('linkPaginacion'))
+        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.primPag")).addClass('linkPaginacion'))
         .removeClass('ui-pg-button');
       jQuery('#prev_' + pagerName, $pagerCenter)
-        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.anterior")).addClass('linkPaginacion'))
+        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.anterior")).addClass('linkPaginacion'))
         .removeClass('ui-pg-button');
       jQuery('#next_' + pagerName, $pagerCenter)
-        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.siguiente")).addClass('linkPaginacion'))
+        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.siguiente")).addClass('linkPaginacion'))
         .removeClass('ui-pg-button');
       jQuery('#last_' + pagerName, $pagerCenter)
-        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.pager.ultiPag")).addClass('linkPaginacion'))
+        .html($('<a/>').attr("href", "javascript:void(0)").html(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.pager.ultiPag")).addClass('linkPaginacion'))
         .removeClass('ui-pg-button');
     }
   };
@@ -45332,16 +45332,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     var $self = $(this),
       settings = $self.data("settings"),
       jqGridID = $self.attr("id"),
-      paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationBar"),
-      paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationLink"),
-      elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.elementCounter"),
-      $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.separator")),
-      $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.numResult"))),
+      paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationBar"),
+      paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationLink"),
+      elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.elementCounter"),
+      $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.separator")),
+      $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.numResult"))),
       $paginationBar = $(jQuery.jgrid.format(paginationBarTmpl, jqGridID)),
-      $firstPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'first_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.first"))),
-      $backPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'back_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.previous"))),
-      $forwardPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'forward_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.next"))),
-      $lastPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'last_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.last"))),
+      $firstPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'first_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.first"))),
+      $backPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'back_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.previous"))),
+      $forwardPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'forward_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.next"))),
+      $lastPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'last_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.last"))),
       extpost = undefined;
 
     $paginationBar.append($firstPaginationLink)

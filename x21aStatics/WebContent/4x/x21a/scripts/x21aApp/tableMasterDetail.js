@@ -16,7 +16,7 @@
  */
 jQuery(function($){
 	
-	$("#comarca").rup_table({
+	$("#comarca").rup_jqtable({
 		url: "../jqGridComarca",
 		colNames: [
 			"code",
@@ -119,7 +119,7 @@ jQuery(function($){
 	
 	jQuery("#provinciaRemote").rup_combo(options_role_combo);
 
-	$("#localidad").rup_table({
+	$("#localidad").rup_jqtable({
 		url: "../jqGridLocalidad",
 		sortorder: "asc",
 		sortname: "code",

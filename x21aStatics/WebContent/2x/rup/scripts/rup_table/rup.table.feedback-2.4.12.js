@@ -23,15 +23,15 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("feedback",{
+	jQuery.rup_jqtable.registerPlugin("feedback",{
 		loadOrder:2,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureFeedback", settings);
+			return $self.rup_jqtable("preConfigureFeedback", settings);
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureFeedback", settings);
+			return $self.rup_jqtable("postConfigureFeedback", settings);
 		}
 	});
 	
@@ -40,7 +40,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión de la botonera asociada a la tabla. 
+	 * Extensión del componente rup_jqtable para permitir la gestión de la botonera asociada a la tabla. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -51,7 +51,7 @@
 	 * settings.$$internalFeedback : Referencia al feedback interno. 
 	 *  
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/*
 		 * Método que define la preconfiguración necesaria para el correcto funcionamiento del componente.
 		 * 
@@ -76,7 +76,7 @@
 			
 			if (!jQuery.isFunction(settings.loadError)){
 				settings.loadError = function(xhr,st,err){
-					$self.rup_table("showFeedback", settings.$feedback, xhr.responseText, "error");
+					$self.rup_jqtable("showFeedback", settings.$feedback, xhr.responseText, "error");
 				};
 			}
 			
@@ -93,7 +93,7 @@
 	});
 	
 	
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		showFeedback: function($feedback, msg, type, options){
 			var $self = this, settings = $self.data("settings"), options_backup, default_options;
 			
@@ -127,11 +127,11 @@
 	 * feedback.config: Configuración por defecto del feedback principal.
 	 * feedback.internalFeedbackConfig: Configuración por defecto del feedback interno.
 	 */
-	jQuery.fn.rup_table.plugins.feedback = {};
-	jQuery.fn.rup_table.plugins.feedback.defaults = {
+	jQuery.fn.rup_jqtable.plugins.feedback = {};
+	jQuery.fn.rup_jqtable.plugins.feedback.defaults = {
 			loadError : function(xhr,st,err){
 				var $self = $(this), settings = $self.data("settings");
-				$self.rup_table("showFeedback", settings.$feedback, xhr.responseText, "error");
+				$self.rup_jqtable("showFeedback", settings.$feedback, xhr.responseText, "error");
 			},
 			feedback:{
 				okFeedbackConfig:{

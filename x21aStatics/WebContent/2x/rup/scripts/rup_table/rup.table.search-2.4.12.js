@@ -23,15 +23,15 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 *
 	 */
-	jQuery.rup_table.registerPlugin("search",{
+	jQuery.rup_jqtable.registerPlugin("search",{
 		loadOrder:9,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureSearch", settings);
+			return $self.rup_jqtable("preConfigureSearch", settings);
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureSearch", settings);
+			return $self.rup_jqtable("postConfigureSearch", settings);
 
 		}
 	});
@@ -41,7 +41,7 @@
 	//********************************
 
 	/**
-	 * Extensión del componente rup_table para permitir la gestión de la búsqueda de registros.
+	 * Extensión del componente rup_jqtable para permitir la gestión de la búsqueda de registros.
 	 *
 	 * Los métodos implementados son:
 	 *
@@ -49,7 +49,7 @@
 	 * postConfigureSearch(settings): Método que define la postconfiguración necesaria para el correcto funcionamiento del componente.
 	 *
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigureSearch: function(settings){
 			// Añadimos la columna por defecto para mostrar la información de registros encontrados
 //			settings.colNames = $.merge([""], settings.colNames);
@@ -69,16 +69,16 @@
 		postConfigureSearch: function(settings){
 			var $self = this;
 
-			$self.rup_table("createSearchRow", settings);
+			$self.rup_jqtable("createSearchRow", settings);
 			$self._initializeSearchProps(settings);
 
 			$self.on({
 				"jqGridLoadComplete.rupTable.search": function(data){
-					var page = parseInt($self.rup_table("getGridParam", "page"),10);
+					var page = parseInt($self.rup_jqtable("getGridParam", "page"),10);
 
 
 					if($self._hasPageMatchedElements(page)){
-						$self.rup_table("highlightMatchedRowsInPage", page);
+						$self.rup_jqtable("highlightMatchedRowsInPage", page);
 //						// TODO: Generalizar
 //						$self.find("td[aria-describedby='"+settings.id+"_infoSearch'] img.ui-icon.ui-icon-search").remove();
 //						for (var i=0;i<settings.search.matchedRowsPerPage[page].length;i++){
@@ -87,15 +87,15 @@
 //						}
 					}
 
-					$self.rup_table("updateSearchPagination");
+					$self.rup_jqtable("updateSearchPagination");
 				},
 				"jqGridSelectRow.rupTable.search rupTable_setSelection.search": function(event, id, status, obj){
-					$self.rup_table("updateSearchPagination", id);
+					$self.rup_jqtable("updateSearchPagination", id);
 				},
-				"jqGridGridComplete.rup_table.search": function(event){
+				"jqGridGridComplete.rup_jqtable.search": function(event){
 					var $self = $(this), settings = $self.data("settings");
 
-					if ($self.rup_table("getGridParam","records")===0){
+					if ($self.rup_jqtable("getGridParam","records")===0){
 						settings.search.$searchRow.hide();
 					}else{
 						settings.search.$searchRow.show();
@@ -170,12 +170,12 @@
 	 * getSearchCurrentRowCount(): Devuelve el resgistro actual en el que se encuentra el registro seleccionado respecto al conjunto de resultados.
 	 *
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		toggleSearchForm: function(){
 			var $self = this, settings = $self.data("settings"), prop = $self[0].p, trow, trow2;
 
 			if (!settings.search.created){
-				$self.rup_table("createSearchToolbar");
+				$self.rup_jqtable("createSearchToolbar");
 				settings.search.$collapseIcon.removeClass("ui-icon-triangle-1-e");
 				settings.search.$collapseIcon.addClass("ui-icon-triangle-1-s");
 				jQuery("#searchNavLayer_"+settings.id).show();
@@ -183,7 +183,7 @@
 				jQuery("input","table thead tr.ui-search-toolbar").keypress(function(e){
 					var key = e.charCode || e.keyCode || 0;
 					if(key == 13){
-						$self.rup_table("search");
+						$self.rup_jqtable("search");
 						return false;
 					}
 					return this;
@@ -289,36 +289,36 @@
 			$gridHead = jQuery("table thead","#gview_"+settings.id),
 			searchForm,
 			// Templates
-			searchRowHeaderTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.searchRowHeader"),
-			collapseLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.collapseLayer"),
-			collapseIconTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.collapseIcon"),
-			collapseLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.collapseLabel"),
-			matchedLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.matchedLayer"),
-			matchedLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.matchedLabel"),
-			navLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.navLayer"),
-			navLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.navLink"),
-			navSearchButtonTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.navSearchButton"),
-			navClearLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.navClearLink"),
+			searchRowHeaderTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.searchRowHeader"),
+			collapseLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.collapseLayer"),
+			collapseIconTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.collapseIcon"),
+			collapseLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.collapseLabel"),
+			matchedLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.matchedLayer"),
+			matchedLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.matchedLabel"),
+			navLayerTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.navLayer"),
+			navLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.navLink"),
+			navSearchButtonTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.navSearchButton"),
+			navClearLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.navClearLink"),
 
 			// Objetos
-			$searchRow = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.search.searchRow")),
+			$searchRow = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.search.searchRow")),
 			$searchRowHeader = $(jQuery.jgrid.format(searchRowHeaderTmpl, $gridHead.find("th").length)),
 			// Capa que controla el colapso del formualario
 			$collapseLayer = $(jQuery.jgrid.format(collapseLayerTmpl, "searchCollapseLayer_"+settings.id)),
 			$collapseIcon = $(jQuery.jgrid.format(collapseIconTmpl, "searchCollapseIcon_"+settings.id)),
-			$collapseLabel = $(jQuery.jgrid.format(collapseLabelTmpl, "searchCollapsLabel_"+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.plugins.search.searchCriteria")));
+			$collapseLabel = $(jQuery.jgrid.format(collapseLabelTmpl, "searchCollapsLabel_"+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.plugins.search.searchCriteria")));
 			// Capa que muestra el número de ocurrencias
 			$matchedLayer = $(jQuery.jgrid.format(matchedLayerTmpl, "matchedLayer_"+settings.id)),
-			$matchedLabel = $(jQuery.jgrid.format(matchedLabelTmpl, "matchedLabel_"+settings.id, jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.plugins.search.matchedRecords"),0))),
+			$matchedLabel = $(jQuery.jgrid.format(matchedLabelTmpl, "matchedLabel_"+settings.id, jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.plugins.search.matchedRecords"),0))),
 
 			// Capa que controla la navegación entre las diferentes ocurrencias
 			$navLayer = $(jQuery.jgrid.format(navLayerTmpl, "searchNavLayer_"+settings.id)),
-			$firstNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_first_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.first"))),
-			$backNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_back_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.previous"))),
-			$forwardNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_forward_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.next"))),
-			$lastNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_last_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.last"))),
-			$navSearchButton = $(jQuery.jgrid.format(navSearchButtonTmpl, 'search_nav_button_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.search.Find")));
-			$navClearLink = $(jQuery.jgrid.format(navClearLinkTmpl, 'search_nav_clear_link'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.search.Reset")));
+			$firstNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_first_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.first"))),
+			$backNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_back_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.previous"))),
+			$forwardNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_forward_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.next"))),
+			$lastNavLink = $(jQuery.jgrid.format(navLinkTmpl, 'search_nav_last_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.last"))),
+			$navSearchButton = $(jQuery.jgrid.format(navSearchButtonTmpl, 'search_nav_button_'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.search.Find")));
+			$navClearLink = $(jQuery.jgrid.format(navClearLinkTmpl, 'search_nav_clear_link'+settings.id, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.search.Reset")));
 
 			// Construcción del objeto final
 			$collapseLayer.append($collapseIcon).append($collapseLabel);
@@ -348,24 +348,24 @@
 
 			// Creacion del enlace de mostrar/ocultar el formulario
 			$collapseIcon.add($collapseLabel).on("click", function(){
-				$self.rup_table("toggleSearchForm");
+				$self.rup_jqtable("toggleSearchForm");
 			});
 
 			// Evento de búsqueda asociado al botón
 			$navSearchButton.on("click", function(){
-				$self.rup_table("search");
+				$self.rup_jqtable("search");
 			});
 
 			// Evento asociado a limpiar el fomulario de búsqueda
 			$navClearLink.on("click", function(){
-				$self.rup_table("clearSearch");
+				$self.rup_jqtable("clearSearch");
 			});
 
 			$navLayer.hide();
 
 			function doSearchLinkNavigation($link, linkId){
 				if (!$link.hasClass("ui-state-disabled")){
-					$self.rup_table("navigateToMatchedRow", linkId);
+					$self.rup_jqtable("navigateToMatchedRow", linkId);
 				}
 			}
 
@@ -397,8 +397,8 @@
 
 		},
 		navigateToMatchedRow: function(matchedRow){
-			var $self = this, retNavParams  = $self.rup_table("fncGetSearchNavigationParams", matchedRow);
-			$self.rup_table("doSearchNavigation", retNavParams);
+			var $self = this, retNavParams  = $self.rup_jqtable("fncGetSearchNavigationParams", matchedRow);
+			$self.rup_jqtable("doSearchNavigation", retNavParams);
 		},
 		search : function(){
 			var $self = this,
@@ -413,14 +413,14 @@
 				if ( bfr === false ) { return; }
 			}
 
-			$self.rup_table("doSearch");
+			$self.rup_jqtable("doSearch");
 		},
 		doSearch: function(){
 			var $self = this, settings = $self.data("settings"),ret, jsonData={},
-			page = parseInt($self.rup_table("getGridParam", "page"),10),
-			postData =$self.rup_table("getGridParam","postData");
-//			jsonData.filterParams =$self.rup_table("getGridParam","postData"),
-			jsonData.filter = $self.rup_table("getFilterParams");
+			page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
+			postData =$self.rup_jqtable("getGridParam","postData");
+//			jsonData.filterParams =$self.rup_jqtable("getGridParam","postData"),
+			jsonData.filter = $self.rup_jqtable("getFilterParams");
 			jsonData.search = form2object(settings.search.$searchRowInputs[0]);
 			$self._initializeSearchProps(settings);
 
@@ -435,12 +435,12 @@
 				data: jQuery.toJSON($.extend(true, {}, postData, jsonData)),
 				contentType: 'application/json',
 				success: function(xhr,b,c){
-					rowsPerPage = parseInt($self.rup_table("getGridParam", "rowNum"),10);
+					rowsPerPage = parseInt($self.rup_jqtable("getGridParam", "rowNum"),10);
 
 					if (xhr.length===0){
 						$self._initializeSearchProps(settings);
-						$self.rup_table("updateSearchPagination");
-						$self.rup_table("clearHighlightedMatchedRows");
+						$self.rup_jqtable("updateSearchPagination");
+						$self.rup_jqtable("clearHighlightedMatchedRows");
 					}else{
 						jQuery.each(xhr, function(index, elem){
 //							if (settings.primaryKey.length>1){
@@ -456,7 +456,7 @@
 							$self._processMatchedRow(settings, elem);
 						});
 						$self.trigger("rupTableSearchSuccess");
-						$self.rup_table("goToFirstMatched", page);
+						$self.rup_jqtable("goToFirstMatched", page);
 					}
 				}
 			});
@@ -473,11 +473,11 @@
 //					$($self.jqGrid("getInd",newIndexPos, true)).find("td[aria-describedby='"+settings.id+"_infoSearch']").html($("<img/>").addClass("ui-icon ui-icon-search")[0]);
 //				}
 
-				$self.rup_table("setSelection", settings.search.matchedRowsPerPage[page][0], true);
-				$self.rup_table("highlightMatchedRowsInPage", page);
+				$self.rup_jqtable("setSelection", settings.search.matchedRowsPerPage[page][0], true);
+				$self.rup_jqtable("highlightMatchedRowsInPage", page);
 
 			}else{
-				$self.rup_table("navigateToMatchedRow", 'first');
+				$self.rup_jqtable("navigateToMatchedRow", 'first');
 			}
 
 
@@ -485,17 +485,17 @@
 		fncGetSearchNavigationParams : function(linkType){
 			var $self = this, settings = $self.data("settings"), execute = false, changePage = false, index=0, newPageIndex=0,
 			npos = jQuery.proxy(jQuery.jgrid.getCurrPos, $self[0])(),
-			page = parseInt($self.rup_table("getGridParam", "page"),10),
+			page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
 			newPage=page,
 			activeLineId,
-//			lastPage = parseInt(Math.ceil($self.rup_table("getGridParam", "records")/$self.rup_table("getGridParam", "rowNum")),10),
+//			lastPage = parseInt(Math.ceil($self.rup_jqtable("getGridParam", "records")/$self.rup_jqtable("getGridParam", "rowNum")),10),
 			currentArrayIndex, selectedLines, pageArrayIndex;
 
 			$self.trigger("rupTableAfterSearchNav",[linkType]);
 
 			npos[0] = parseInt(npos[0],10);
 
-			activeLineId = $self.rup_table("getActiveLineId");
+			activeLineId = $self.rup_jqtable("getActiveLineId");
 
 			$("#"+settings.formEdit.feedbackId, settings.$detailForm).hide();
 			switch (linkType){
@@ -626,18 +626,18 @@
 				newPageIndex = arrParams[6];
 
 				if (execute){
-					$self.rup_table("hideFormErrors", settings.$detailForm);
+					$self.rup_jqtable("hideFormErrors", settings.$detailForm);
 //					$self.triggerHandler("jqGridAddEditClickPgButtons", [linkType, settings.$detailForm, npos[1][npos[index]]]);
 					pagePos = jQuery.proxy(jQuery.jgrid.getCurrPos, $self[0])();
 
 //					actualRowId = npos[1][npos[0]];
-					actualRowId = $self.rup_table("getActiveRowId");
+					actualRowId = $self.rup_jqtable("getActiveRowId");
 
 //					ret = $self.triggerHandler("rupTable_searchNavigation_deselect", actualRowId);
 //					if (ret!==false){
 					$row = jQuery($self.jqGrid("getInd", actualRowId, true));
 					if ($row.data("tmp.search.notToDeselect")!=="true"){
-						$self.rup_table("setSelection", actualRowId, false);
+						$self.rup_jqtable("setSelection", actualRowId, false);
 						if ($row.data("tmp.search.notToDeselect")!==undefined){
 							delete $row.data("tmp.search.notToDeselect");
 						}
@@ -656,7 +656,7 @@
 								$row.data("tmp.search.notToDeselect","true");
 							}
 
-							$self.rup_table("setSelection", rowId, true);
+							$self.rup_jqtable("setSelection", rowId, true);
 
 							$self.off("jqGridAfterLoadComplete.rupTable.serach.pagination");
 						});
@@ -670,7 +670,7 @@
 							$row.data("tmp.search.notToDeselect","true");
 						}
 
-						$self.rup_table("setSelection", rowId, true);
+						$self.rup_jqtable("setSelection", rowId, true);
 					}
 				}
 			}
@@ -678,8 +678,8 @@
 		clearSearch: function(){
 			var $self = this, settings = $self.data("settings");
 			$self._initializeSearchProps(settings);
-			$self.rup_table("updateSearchPagination");
-			$self.rup_table("clearHighlightedMatchedRows");
+			$self.rup_jqtable("updateSearchPagination");
+			$self.rup_jqtable("clearHighlightedMatchedRows");
 			jQuery("input,textarea","#gview_"+settings.id+" table thead tr.ui-search-toolbar").val("");
 			jQuery("table thead tr.ui-search-toolbar [ruptype='combo']","#gview_"+settings.id).rup_combo("clear");
 		},
@@ -690,13 +690,13 @@
 		highlightMatchedRowsInPage:function(page){
 			var $self = this, settings = $self.data("settings"), internalProps = $self[0].p, $row;
 
-			$self.rup_table("clearHighlightedMatchedRows");
+			$self.rup_jqtable("clearHighlightedMatchedRows");
 
 
 			for (var i=0;i<settings.search.matchedRowsPerPage[page].length;i++){
 				newIndexPos = settings.search.matchedRowsPerPage[page][i];
 				$row = $($self.jqGrid("getInd",newIndexPos, true));
-				$self.rup_table("highlightMatchedRow", $row);
+				$self.rup_jqtable("highlightMatchedRow", $row);
 //				if (i==0){
 //					internalProps.selarrrow.push($row[0].id);
 //					internalProps.selrow = $row[0].id;
@@ -710,7 +710,7 @@
 		updateSearchPagination:function(paramRowId){
 			var $self = this, settings = $self.data("settings"),
 			rowId, pagePos, currentArrayIndex,
-			page = parseInt($self.rup_table("getGridParam", "page"),10),
+			page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
 			numMatched, formatter = $.jgrid.formatter.integer;
 
 			if (paramRowId!==undefined){
@@ -722,15 +722,15 @@
 
 			if (settings.search.numMatched===0){
 				settings.search.$firstNavLink.add(settings.search.$backNavLink).add(settings.search.$forwardNavLink).add(settings.search.$lastNavLink).addClass("ui-state-disabled");
-				settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.plugins.search.matchedRecords"),"0"));
+				settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.plugins.search.matchedRecords"),"0"));
 			}else if (rowId!==-1){
 				// Comprobamos si el registro seleccionado es uno de los resultados de la busqueda
 				if (jQuery.inArray(rowId, settings.search.matchedRowsPerPage[page])!==-1){
 					// Calculamos el
-					numMatched = $self.rup_table("getSearchCurrentRowCount", rowId);
+					numMatched = $self.rup_jqtable("getSearchCurrentRowCount", rowId);
 
 					if (settings.search && settings.search.numMatched){
-						settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.plugins.search.matchedRecordsCount"),$.fmatter.util.NumberFormat(numMatched,formatter), $.fmatter.util.NumberFormat(settings.search.numMatched,formatter)));
+						settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.plugins.search.matchedRecordsCount"),$.fmatter.util.NumberFormat(numMatched,formatter), $.fmatter.util.NumberFormat(settings.search.numMatched,formatter)));
 					}
 
 					if (numMatched===1){
@@ -751,7 +751,7 @@
 
 				}else{
 					if (settings.search && settings.search.numMatched){
-						settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.plugins.search.matchedRecords"),$.fmatter.util.NumberFormat(settings.search.numMatched,formatter)));
+						settings.search.$matchedLabel.html(jQuery.jgrid.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.plugins.search.matchedRecords"),$.fmatter.util.NumberFormat(settings.search.numMatched,formatter)));
 					}
 					settings.search.$firstNavLink.removeClass("ui-state-disabled");
 					settings.search.$backNavLink.removeClass("ui-state-disabled");
@@ -770,7 +770,7 @@
 						settings.search.$forwardNavLink.addClass("ui-state-disabled");
 						settings.search.$lastNavLink.addClass("ui-state-disabled");
 					}else{
-						pagePos = $self.rup_table("getActiveLineId");
+						pagePos = $self.rup_jqtable("getActiveLineId");
 						currentArrayIndex = $.rup_utils.insertSorted($.merge([],settings.search.matchedLinesPerPage[page]), pagePos+1);
 						if (currentArrayIndex===0){
 							settings.search.$backNavLink.addClass("ui-state-disabled");
@@ -784,10 +784,10 @@
 		},
 		getSearchCurrentRowCount : function(selectedRowId){
 			var $self = this, settings = $self.data("settings"),
-			page = parseInt($self.rup_table("getGridParam", "page"),10),
+			page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
 			currentPos = jQuery.proxy(jQuery.jgrid.getCurrPos, $self[0])(),
-			selectedRows = $self.rup_table("getSelectedRows"),
-//			rowsPerPage = parseInt($self.rup_table("getGridParam", "rowNum"),10),
+			selectedRows = $self.rup_jqtable("getSelectedRows"),
+//			rowsPerPage = parseInt($self.rup_jqtable("getGridParam", "rowNum"),10),
 			selectedPagesArrayIndex,
 			currentRow = jQuery.inArray(selectedRowId!==undefined?selectedRowId:selectedRows[0],currentPos[1]),
 			cont=0;
@@ -816,7 +816,7 @@
 	 * _initializeSearchProps(settings): Se realiza la inicialización de los componentes del plugin search.
 	 * _processMatchedRow(settings, matchedElem): Se gestiona el registro indicado.
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		_hasPageMatchedElements: function(paramPage){
 			var $self = this, settings = $self.data("settings"),
 			page = (typeof paramPage ==="string"?parseInt(paramPage,10):paramPage);
@@ -866,8 +866,8 @@
 
 
 	// Parámetros de configuración por defecto para la acción de eliminar un registro.
-	jQuery.fn.rup_table.plugins.search = {};
-	jQuery.fn.rup_table.plugins.search.defaults = {
+	jQuery.fn.rup_jqtable.plugins.search = {};
+	jQuery.fn.rup_jqtable.plugins.search.defaults = {
 			showGridInfoCol:true,
 			search:{
 				url: null,

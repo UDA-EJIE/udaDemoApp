@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../jqGridUsuario",
 		colNames: ["id","nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja","rol"],
 		colModel: [

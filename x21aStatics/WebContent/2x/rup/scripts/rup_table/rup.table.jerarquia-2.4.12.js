@@ -16,23 +16,23 @@
 
 (function (jQuery) {
 
-	jQuery.rup_table.registerPlugin("jerarquia",{
+	jQuery.rup_jqtable.registerPlugin("jerarquia",{
 		loadOrder:11,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigurejerarquia", settings);
+			return $self.rup_jqtable("preConfigurejerarquia", settings);
 			
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigurejerarquia", settings);
+			return $self.rup_jqtable("postConfigurejerarquia", settings);
 		}
 	});
 	
 	//********************************
 	// DEFINICIÓN DE MÉTODOS PÚBLICOS
 	//********************************
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigurejerarquia: function(settings){
 			
 			var $self = this, jerarquiaSettings = settings.jerarquia;
@@ -134,14 +134,14 @@
 					} 
 					
 					//ICONOS: filtrado (filter) y tooltip (parentNodes)
-					var rows =  $self.rup_table("getGridParam","data"),
+					var rows =  $self.rup_jqtable("getGridParam","data"),
 						rows_length = rows.length,
 						$filterIcon = jQuery("<div />")
 										.addClass("rup-jerarquia_filter ui-icon")
 										.addClass(jerarquiaSettings["icons"]["filter"])
 										.text(jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_grid_jerarquia.icons.filtered"));
 					for (var i=0; i<rows_length; i++){
-						var rowId = jQuery.jgrid.getAccessor(rows[i], $self.rup_table("getGridParam", "localReader").id),
+						var rowId = jQuery.jgrid.getAccessor(rows[i], $self.rup_jqtable("getGridParam", "localReader").id),
 							$rowColumn = jQuery("tr[id='"+rowId+"'] > td .tree-wrap");
 						//Filtro
 						if (rows[i].filter){
@@ -157,9 +157,9 @@
 					jQuery(".tree-plus, .tree-minus").off("click");
 					jQuery(".tree-plus, .tree-minus").on("click", function (event){
 						var $iconDiv = jQuery(this), 
-							rowId = $self.rup_table("getGridParam","_index")[$iconDiv.closest("tr.jqgrow")[0].id],
-							rowData = $self.rup_table("getGridParam","data")[rowId],
-							nodeId = jQuery.jgrid.getAccessor(rowData, $self.rup_table("getGridParam","localReader").id);
+							rowId = $self.rup_jqtable("getGridParam","_index")[$iconDiv.closest("tr.jqgrow")[0].id],
+							rowData = $self.rup_jqtable("getGridParam","data")[rowId],
+							nodeId = jQuery.jgrid.getAccessor(rowData, $self.rup_jqtable("getGridParam","localReader").id);
 						
 						//Añadir o eliminar elemento para query (y almacenarlo en la tabla)
 						if ($iconDiv.hasClass(settings.treeIcons.plus)){
@@ -210,7 +210,7 @@
 	 * 
 	 * reset: Reiniciar los elementos expandidos
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		//Reiniciar los elementos expandidos
 		reset : function () {
 			jQuery(this).data("tree", []);
@@ -227,7 +227,7 @@
 	 * _parseParentNodes(parentNodes): Procesar valores del tooltip
 	 * _getJerarquiaChildren($trigger, key, options : Obtener los hijos/descendientes para seleccionar/deseleccionar
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		_parseParentNodes : function (parentNodes){
 			var parentNodesTooltipFnc = this.data("settings")["jerarquia"]["parentNodesTooltipFnc"],
 				nodes = parentNodes.split(this.data("settings")["jerarquia"]["token"]).slice(1);//filtrar primer separador
@@ -250,8 +250,8 @@
 		//f(x) del contextMenu de multiselect con jerarquia
 		_getJerarquiaChildren : function ($trigger, key, options) {
 			var $self = this, settings = $self.data("settings"),
-//        		rowData = $self.rup_table("getGridParam","data")[$trigger.parent().index()-1],
-        		rowData = $self.rup_table("getRowData",$trigger.parent().attr("id")),
+//        		rowData = $self.rup_jqtable("getGridParam","data")[$trigger.parent().index()-1],
+        		rowData = $self.rup_jqtable("getRowData",$trigger.parent().attr("id")),
 				ajaxData = {
 					jerarquia:{
 							//tree : {}, //Obviar elementos contraidos 
@@ -259,9 +259,9 @@
 							child : key.toLowerCase().indexOf("child")!=-1
 					//FIXME: Quitar esto 
 					},
-					filter :$self.rup_table("getFilterParams")
+					filter :$self.rup_jqtable("getFilterParams")
         		};
-        	jQuery.extend(true, ajaxData, $self.rup_table("getGridParam", "postData")); 
+        	jQuery.extend(true, ajaxData, $self.rup_jqtable("getGridParam", "postData")); 
         	var primaryKey = jQuery.isArray(settings.primaryKey)?settings.primaryKey[0]:settings.primaryKey;
 			jQuery.rup_ajax({
 				url: settings.filter.childrenUrl,
@@ -301,8 +301,8 @@
 	// DEFINICIÓN DE LA CONFIGURACION POR DEFECTO DEL PATRON  
 	//*******************************************************
 	// Parámetros de configuración por defecto para la jerarquía.
-	jQuery.fn.rup_table.plugins.jerarquia = {};
-	jQuery.fn.rup_table.plugins.jerarquia.defaults = {
+	jQuery.fn.rup_jqtable.plugins.jerarquia = {};
+	jQuery.fn.rup_jqtable.plugins.jerarquia.defaults = {
 		treedatatype:'json',
 		formEdit:{
 			addEditOptions:{

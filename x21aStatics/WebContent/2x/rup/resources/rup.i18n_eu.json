@@ -420,7 +420,7 @@
 			"idName": "id"
 		}
 	},
-	"rup_table": {
+	"rup_jqtable": {
 		"detailTitle": "Detalle de registro",
 		"deletedOK": "Elementua zuzen ezabatu da.",
 		"insertOK": "Elementua zuzen gehitu da.",

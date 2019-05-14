@@ -216,7 +216,7 @@ jQuery(function($){
 	    				"fechaBaja":{date:true}
 	    			}
 	    		},
-	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
 	        }
 		    plugins.formEdit = formEdit;
 
@@ -237,7 +237,7 @@ jQuery(function($){
 	    				"fechaBaja":{date:true}
 	    			}
 	    		},
-	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
 	        }*/
 	        var inlineEdit = {
 		        	deselect: true,

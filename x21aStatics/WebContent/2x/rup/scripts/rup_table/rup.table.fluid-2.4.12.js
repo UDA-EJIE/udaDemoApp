@@ -22,11 +22,11 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("fluid",{
+	jQuery.rup_jqtable.registerPlugin("fluid",{
 		loadOrder:5,
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureFluid", settings);
+			return $self.rup_jqtable("postConfigureFluid", settings);
 		}
 	});
 	
@@ -35,7 +35,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión del diseño líquido del componente. 
+	 * Extensión del componente rup_jqtable para permitir la gestión del diseño líquido del componente. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -46,7 +46,7 @@
 	 * settings.$fluidBaseLayer : Referencia a la capa que se tomará como base para aplicar el diseño líquido.
 	 *  
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/*
 		 * Realiza la configuración interna necesaria para la gestión correcta de la edición mediante un formulario.
 		 * 
@@ -116,8 +116,8 @@
 	 * Parámetros de configuración por defecto para el plugin fluid.
 	 * 
 	 */
-	jQuery.fn.rup_table.plugins.fluid = {};
-	jQuery.fn.rup_table.plugins.fluid.defaults = {
+	jQuery.fn.rup_jqtable.plugins.fluid = {};
+	jQuery.fn.rup_jqtable.plugins.fluid.defaults = {
 			fluid:{
 				baseLayer:null,
 				minWidth: 100,

@@ -9,7 +9,7 @@
  *
  * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
  * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- * SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
@@ -29,7 +29,7 @@
 	* Se les presenta a los usuarios los datos tabulados para que la información se visualice de manera ágil y rápida, facilitando así su comprensión y manejo. Además, el componente implementa un nuevo patrón definido para facilitar la lógica necesaria en las acciones básicas, denominadas CRUD (create, read, update y delete), sobre una tabla.
 	*
 	* @summary Componente RUP Table.
-	* @namespace jQuery.rup_table
+	* @namespace jQuery.rup_jqtable
 	* @memberof jQuery
 	* @example
 	*
@@ -56,23 +56,23 @@
 	*		primaryKey: "id"
 	*	};
 	*
-	* $("#table").rup_table(properties);
+	* $("#table").rup_jqtable(properties);
 	*/
-	var rup_table = {};
-	rup_table.plugins=[];
+	var rup_jqtable = {};
+	rup_jqtable.plugins=[];
 
-	jQuery.rup_table = jQuery.rup_table || {};
-	jQuery.extend(jQuery.rup_table,{
+	jQuery.rup_jqtable = jQuery.rup_jqtable || {};
+	jQuery.extend(jQuery.rup_jqtable,{
 		registerPlugin: function(name, settings){
-			if (jQuery.inArray(name, rup_table.plugins)===-1){
-				rup_table.plugins.push(name);
-				rup_table.plugins[name]=settings;
+			if (jQuery.inArray(name, rup_jqtable.plugins)===-1){
+				rup_jqtable.plugins.push(name);
+				rup_jqtable.plugins[name]=settings;
 			}
 		}
 	});
 
 	//Se configura el arranque de UDA para que alberge el nuevo patrón
-	jQuery.extend(jQuery.rup.iniRup, jQuery.rup.rupSelectorObjectConstructor("rup_table", rup_table));
+	jQuery.extend(jQuery.rup.iniRup, jQuery.rup.rupSelectorObjectConstructor("rup_jqtable", rup_jqtable));
 
 	$.fn.fmatter.rup_combo = function (cellval, opts, rwd, act) {
 
@@ -231,7 +231,7 @@
 	});
 
 
-	jQuery.extend(jQuery.rup_table,{
+	jQuery.extend(jQuery.rup_jqtable,{
 		proxyAjax:function(ajaxOptions, identifier){
 			jQuery.rup_ajax(ajaxOptions);
 		}
@@ -240,17 +240,17 @@
 	/* ******************************
 	 * FUNCIONES DE CONFIGURACION
 	 * ******************************/
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/**
 		 * Metodo que realiza la pre-configuración del core del componente RUP Table.
 		 * Este método se ejecuta antes de la pre-configuración de los plugins y de la invocación al componente jqGrid.
 		 *
-		 * @name jQuery.rup_table#preConfigureCore
+		 * @name jQuery.rup_jqtable#preConfigureCore
 		 * @function
 		 * @param {object} settings - Parámetros de configuración del componente.
-		 * @fires jQuery.rup_table#rupTable_checkOutOfGrid
-		 * @fires jQuery.rup_table#rupTable_serializeGridData
-		 * @fires jQuery.rup_table#rupTable_beforeProcessing
+		 * @fires jQuery.rup_jqtable#rupTable_checkOutOfGrid
+		 * @fires jQuery.rup_jqtable#rupTable_serializeGridData
+		 * @fires jQuery.rup_jqtable#rupTable_beforeProcessing
 		 */
 		preConfigureCore: function(settings){
 			var $self = this, colModel, colModelObj;
@@ -280,7 +280,7 @@
 			});
 
 			/*
-			 * Configuración de los identificadores por defecto de los componentes del rup_table
+			 * Configuración de los identificadores por defecto de los componentes del rup_jqtable
 			 */
 			if (settings.pager!==false){
 				settings.pager = $.rup_utils.getJQueryId(settings.pager!==null?settings.pager:settings.id+"_pager");
@@ -402,7 +402,7 @@
 			settings.serializeGridData = function(postData){
 				var newPostData,
 				pageNum = parseInt(postData.page),
-				lastpage = parseInt($self.rup_table("getGridParam","lastpage"));
+				lastpage = parseInt($self.rup_jqtable("getGridParam","lastpage"));
 
 				if (lastpage!==0 && pageNum>lastpage){
 					postData.page = lastpage;
@@ -483,16 +483,16 @@
 			settings.getActiveRowId = function (){
 				var $self = this;
 
-				return $self.rup_table("getGridParam", "selrow");
+				return $self.rup_jqtable("getGridParam", "selrow");
 			};
 
 			settings.getSelectedRows = function (){
-				var $self = this, selrow = $self.rup_table("getGridParam", "selrow");
+				var $self = this, selrow = $self.rup_jqtable("getGridParam", "selrow");
 				return selrow===null ? [] : [selrow];
 			};
 
 			settings.getSelectedLines = function (){
-				var $self = this, selrow = $self.rup_table("getGridParam", "selrow");
+				var $self = this, selrow = $self.rup_jqtable("getGridParam", "selrow");
 				return selrow===null ? [] : [$.inArray(selrow, $self.jqGrid("getDataIDs"))];
 			};
 
@@ -509,7 +509,7 @@
 				"jqGridBeforeRequest":function(){
 					jQuery.set_uda_ajax_mode_on();
 				},
-				"jqGridLoadComplete.rup_table.tooltip": function(event, data){
+				"jqGridLoadComplete.rup_jqtable.tooltip": function(event, data){
 					var $self = $(this);
 					if (data!==undefined){
 						// Redimensionado del campo de número de página en base al número de página máximo
@@ -531,10 +531,10 @@
 
 				},
 
-				"jqGridGridComplete.rup_table.core": function(event){
+				"jqGridGridComplete.rup_jqtable.core": function(event){
 					var $self = $(this), $tbody;
 
-					if ($self.rup_table("getGridParam","records")===0){
+					if ($self.rup_jqtable("getGridParam","records")===0){
 						// No se han encontrado registros
 
 						$self.prev().remove(); //Borrar div vacío
@@ -559,7 +559,7 @@
 
 					}
 				},
-				"jqGridGridComplete.rup_table.tooltip": function(event){
+				"jqGridGridComplete.rup_jqtable.tooltip": function(event){
 					var $self = $(this), $tbody;
 
 					// Se han encontrado registros
@@ -602,7 +602,7 @@
 		 * Metodo que realiza la post-configuración del core del componente RUP Table.
 		 * Este método se ejecuta antes de la post-configuración de los plugins y después de la invocación al componente jqGrid.
 		 *
-		 * @name jQuery.rup_table#postConfigureCore
+		 * @name jQuery.rup_jqtable#postConfigureCore
 		 * @function
 		 * @param {object} settings - Parámetros de configuración del componente.
 		 */
@@ -611,12 +611,12 @@
 
 			// Se configura la funcionalidad de redimensionado de la tabla.
 			if (settings.resizable !== false){
-				$self.rup_table('gridResize', (jQuery.isPlainObject(settings.resizable)? settings.resizable:{}));
+				$self.rup_jqtable('gridResize', (jQuery.isPlainObject(settings.resizable)? settings.resizable:{}));
 			}
 
 			// Configruación pager
 			if (settings.pager!==false){
-				$self.rup_table("configurePager",settings);
+				$self.rup_jqtable("configurePager",settings);
 			}
 
 			// Se añaden los tooltip a las cabeceras de la tabla
@@ -639,7 +639,7 @@
 
 
 			// Implementación del ellipsis en las cabeceras de las columnas de la tabla
-			jQuery($self.rup_table("getGridParam","colModel")).each (function (index, element){
+			jQuery($self.rup_jqtable("getGridParam","colModel")).each (function (index, element){
 				var $headerLabel;
 
 				//Si la columna define ellipsis...
@@ -665,7 +665,7 @@
 
 			if (settings.loadOnStartUp===false || settings.multifilter!=undefined){
 				settings.datatype = $self.data("tmp.loadOnStartUp.datatype");
-				$self.rup_table("setGridParam",{datatype:$self.data("tmp.loadOnStartUp.datatype")});
+				$self.rup_jqtable("setGridParam",{datatype:$self.data("tmp.loadOnStartUp.datatype")});
 				$self.removeData("tmp.loadOnStartUp.datatype");
 			}
 		}
@@ -678,15 +678,15 @@
 	// DEFINICIÓN DE MÉTODOS PÚBLICOS
 	//********************************
 
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/**
 		 * Devuelve la propiedad colModel del jqGrid.
 		 *
-		 * @name jQuery.rup_table#getColModel
+		 * @name jQuery.rup_jqtable#getColModel
 		 * @function
 		 * @return {object} - Propiedad colModel del jqGrid.
 		 * @example
-		 * $("#idComponente").rup_table("getColModel");
+		 * $("#idComponente").rup_jqtable("getColModel");
 		 */
 		getColModel: function(){
 			return $(this).jqGrid("getGridParam","colModel");
@@ -694,12 +694,12 @@
 		/**
 		 * Devuelve el valor del parámetro del grid especificado.
 		 *
-		 * @name jQuery.rup_table#getGridParam
+		 * @name jQuery.rup_jqtable#getGridParam
 		 * @function
 		 * @param {string} pName - Nombre del parámetro que se desea obtener.
 		 * @return {object} - Valor del parámetro.
 		 * @example
-		 * $("#idComponente").rup_table("getGridParam","nombreParametro");
+		 * $("#idComponente").rup_jqtable("getGridParam","nombreParametro");
 		 */
 		getGridParam : function (pName) {
 			return $(this).jqGrid("getGridParam", pName);
@@ -707,12 +707,12 @@
 		/**
 		 * Permite redimensionar la tabla de acuerdo a los parámetros indicados.
 		 *
-		 * @name jQuery.rup_table#getGridParam
+		 * @name jQuery.rup_jqtable#getGridParam
 		 * @function
 		 * @param {object} options - Parámetros para configurar la altura y anchura del redimensionado.
 		 * @return {jQuery} - Referencia al propio componente.
 		 * @example
-		 * $("#idComponente").rup_table("gridResize",{});
+		 * $("#idComponente").rup_jqtable("gridResize",{});
 		 */
 		gridResize : function (options){
 			return $(this).jqGrid('gridResize', options);
@@ -720,11 +720,11 @@
 		/**
 		 * Devuelve un array con los identificadores de los registros seleccionados.
 		 *
-		 * @name jQuery.rup_table#getSelectedRows
+		 * @name jQuery.rup_jqtable#getSelectedRows
 		 * @function
 		 * @return {string[]} - Array con los identificadores de los registros seleccionados.
 		 * @example
-		 * $("#idComponente").rup_table("getSelectedRows");
+		 * $("#idComponente").rup_jqtable("getSelectedRows");
 		 */
 		getSelectedRows : function(){
 			var $self = this, settings = $self.data("settings");
@@ -734,11 +734,11 @@
 		/**
 		 * Devuelve un array con los índices de las líneas de los registros seleccionados.
 		 *
-		 * @name jQuery.rup_table#getSelectedLines
+		 * @name jQuery.rup_jqtable#getSelectedLines
 		 * @function
 		 * @return {number[]} - Array con los índices de las líneas de los registros seleccionados.
 		 * @example
-		 * $("#idComponente").rup_table("getSelectedLines");
+		 * $("#idComponente").rup_jqtable("getSelectedLines");
 		 */
 		getSelectedLines : function(){
 			var $self = this, settings = $self.data("settings");
@@ -749,12 +749,12 @@
 		 * El objetivo de este método es construir una URL mediante la cual se pueda realizar una petición para obtener los datos de un registro concreto.
 		 * La URL se genera concatenando los valores de las propiedades que forman la primary key del resgistro a la url base especificada en los settings de inicialización.
 		 *
-		 * @name jQuery.rup_table#getPkUrl
+		 * @name jQuery.rup_jqtable#getPkUrl
 		 * @function
 		 * @param {string} rowId - Identificador del registro.
 		 * @return {string} - Url para obtener los valores del registro correspondiente.
 		 * @example
-		 * $("#idComponente").rup_table("getPkUrl","0001");
+		 * $("#idComponente").rup_jqtable("getPkUrl","0001");
 		 */
 		getPkUrl : function(rowId){
 			var $self = this, settings = $self.data("settings"), tmpRowId;
@@ -769,14 +769,14 @@
 		/**
 		 * Lanza la recarga de la tabla.
 		 *
-		 * @name jQuery.rup_table#reloadGrid
+		 * @name jQuery.rup_jqtable#reloadGrid
 		 * @function
 		 * @param {boolean} async - Indica si la llamada debe ser asíncrona o síncrona.
 		 * @example
-		 * $("#idComponente").rup_table("reloadGrid", true);
+		 * $("#idComponente").rup_jqtable("reloadGrid", true);
 		 */
 		reloadGrid: function(async){
-			var $self = this, settings = $self.data("settings"), page = $self.rup_table("getGridParam", "page");
+			var $self = this, settings = $self.data("settings"), page = $self.rup_jqtable("getGridParam", "page");
 			var ajaxOptions = $self.jqGrid("getGridParam", "ajaxGridOptions");
 			var ajaxOptionsAsync =  ajaxOptions.async;
 			ajaxOptions.async = false;
@@ -793,12 +793,12 @@
 		/**
 		 * Resetea el formulario indicado.
 		 *
-		 * @name jQuery.rup_table#resetForm
+		 * @name jQuery.rup_jqtable#resetForm
 		 * @function
 		 * @param {jQuery} $form - Objeto jQuery que referencia el formulario que se desea resetear.
 		 * @return {jQuery} - Referencia al propio objeto.
 		 * @example
-		 * $("#idComponente").rup_table("resetForm", $("#idFormulario"));
+		 * $("#idComponente").rup_jqtable("resetForm", $("#idFormulario"));
 		 */
 		resetForm: function($form){
 			var $self = this, settings = $self.data("settings");
@@ -841,12 +841,12 @@
 		/**
 		 * Asigna a uno o varios parámetros del grid los valores indicados.
 		 *
-		 * @name jQuery.rup_table#setGridParam
+		 * @name jQuery.rup_jqtable#setGridParam
 		 * @function
 		 * @param {object} newParams - Objeto que contiene los parámetros y sus valores.
 		 * @return {jQuery} - Referencia al propio objeto.
 		 * @example
-		 * $("#idComponente").rup_table("setGridParam", {param1:value1, param2:value2});
+		 * $("#idComponente").rup_jqtable("setGridParam", {param1:value1, param2:value2});
 		 */
 		setGridParam : function (newParams) {
 			$(this).jqGrid("setGridParam", newParams);
@@ -855,12 +855,12 @@
 		/**
 		 * Selecciona o deselecciona los registros indicados.
 		 *
-		 * @name jQuery.rup_table#setSelection
+		 * @name jQuery.rup_jqtable#setSelection
 		 * @function
 		 * @param {string | string[]} selectedRows - Identificador o array de identificadores de los registros que se desea seleccionar o deseleccionar.
 		 * @param {boolean} status - En caso de ser true se seleccionarán los registros indicados. En caso de ser false se deseleccionarán.
 		 * @example
-		 * $("#idComponente").rup_table("setSelection", ["3","7"], true);
+		 * $("#idComponente").rup_jqtable("setSelection", ["3","7"], true);
 		 */
 		setSelection : function (selection, status, e){
 			var $self = this, settings = $self.data("settings"), ret;
@@ -874,12 +874,12 @@
 		/**
 		 * Muestra en los campos del formulario los errores de validación indicados.
 		 *
-		 * @name jQuery.rup_table#showServerValidationFieldErrors
+		 * @name jQuery.rup_jqtable#showServerValidationFieldErrors
 		 * @function
 		 * @param {jQuery} $form - Objeto jQuery que referencia el formulario que se desea resetear.
 		 * @param {object} errors - Objeto json que contiene los errores de validación que se han dado para cada campo.
 		 * @example
-		 * $("#idComponente").rup_table("showServerValidationFieldErrors ", $("#idFormulario"), {});
+		 * $("#idComponente").rup_jqtable("showServerValidationFieldErrors ", $("#idFormulario"), {});
 		 */
 		showServerValidationFieldErrors: function($form, errors){
 			var $self = $(this);
@@ -889,7 +889,7 @@
 				$form.validate().invalid=errors.rupErrorFields;
 				$form.validate().showErrors(errors.rupErrorFields);
 			}else if(errors.rupFeedback!==undefined){
-				$self.rup_table("showFeedback", $form.validate().settings.feedback, $.rup_utils.printMsg(errors.rupFeedback.message), (errors.rupFeedback.imgClass!==undefined?errors.rupFeedback.imgClass:null));
+				$self.rup_jqtable("showFeedback", $form.validate().settings.feedback, $.rup_utils.printMsg(errors.rupFeedback.message), (errors.rupFeedback.imgClass!==undefined?errors.rupFeedback.imgClass:null));
 			}
 
 		},
@@ -912,12 +912,12 @@
 	/**
 	 * Elimina el resaltado de la línea especificada de la tabla.
 	 *
-	 * @name jQuery.rup_table#rupTableClearHighlightedRowAsSelected
+	 * @name jQuery.rup_jqtable#rupTableClearHighlightedRowAsSelected
 	 * @function
 	 * @param {jQuery} $row - Objeto jQuery que referencia a la línea de la tabla.
-	 * @fires jQuery.rup_table#rupTableClearHighlightedRowAsSelected
+	 * @fires jQuery.rup_jqtable#rupTableClearHighlightedRowAsSelected
 	 * @example
-	 * $("#idComponente").rup_table("clearHighlightedRowAsSelected", $("#idFila"));
+	 * $("#idComponente").rup_jqtable("clearHighlightedRowAsSelected", $("#idFila"));
 	 */
 		clearHighlightedRowAsSelected: function($row){
 			var $self = this, self = $self[0], internalProps = self.p, row = $row[0],
@@ -937,12 +937,12 @@
 		/**
 		 * Resalta la línea especificada de la tabla.
 		 *
-		 * @name jQuery.rup_table#highlightRowAsSelected
+		 * @name jQuery.rup_jqtable#highlightRowAsSelected
 		 * @function
 		 * @param {jQuery} $row - Objeto jQuery que referencia a la línea de la tabla.
-		 * @fires jQuery.rup_table#rupTableHighlightRowAsSelected
+		 * @fires jQuery.rup_jqtable#rupTableHighlightRowAsSelected
 		 * @example
-		 * $("#idComponente").rup_table("highlightRowAsSelected", $("#idFila"));
+		 * $("#idComponente").rup_jqtable("highlightRowAsSelected", $("#idFila"));
 		 */
 		highlightRowAsSelected: function($row){
 			var $self = this, self = $self[0], internalProps = self.p, row = $row[0],
@@ -963,12 +963,12 @@
 		/**
 		 * Actualiza el valor de los datos que se muestran en la barra de paginación.
 		 *
-		 * @name jQuery.rup_table#updateDetailPagination
+		 * @name jQuery.rup_jqtable#updateDetailPagination
 		 * @function
 		 * @param {string} currentRowNumArg - Número actual de los registros que se están mostrando.
 		 * @param {string} totalRowNumArg - Número total de los registros que se muestran en la tabla.
 		 * @example
-		 * $("#idComponente").rup_table("updateDetailPagination", "1-10", "586" );
+		 * $("#idComponente").rup_jqtable("updateDetailPagination", "1-10", "586" );
 		 */
 		updateDetailPagination : function(currentRowNumArg, totalRowNumArg){
 			var $self = this, settings = $self.data("settings"), tableId = settings.id, currentRowNum, totalRowNum;
@@ -994,17 +994,17 @@
 		* @callback jQuery.rup_validate~onSubmitHandler
 		* @param {object} savedData - Objeto interno que almacena en formato json los datos con los que se han inicializado los campos del formulario.
 		* @example <caption>Envia el formulario cuando este es válido.</caption>
-		* $("#idComponente").rup_table("updateSavedData", function(savedData){
+		* $("#idComponente").rup_jqtable("updateSavedData", function(savedData){
 		* });
 		*/
 		/**
 		 * Permite modificar el objeto interno _savedData que se utiliza en el control de cambios en el modo de edición en formulario y edición en línea.
 		 *
-		 * @name jQuery.rup_table#updateSavedData
+		 * @name jQuery.rup_jqtable#updateSavedData
 		 * @function
-		 * @param {jQuery.rup_table~onUpdateSavedData} arg -Función de callback desde la que se puede modificar el objeto _savedData.
+		 * @param {jQuery.rup_jqtable~onUpdateSavedData} arg -Función de callback desde la que se puede modificar el objeto _savedData.
 		 * @example
-		 * $("#idComponente").rup_table("updateSavedData", function(savedData){
+		 * $("#idComponente").rup_jqtable("updateSavedData", function(savedData){
 	 	 * });
 		 */
 		updateSavedData: function(arg){
@@ -1017,15 +1017,15 @@
 	});
 
 
-	jQuery.fn.rup_table("extend", {
+	jQuery.fn.rup_jqtable("extend", {
 		/**
 		 * Realiza la configuración interna del paginador de acuerdo a los parámetros de configuración indicados en la inicialización del componente.
 		 *
-		 * @name jQuery.rup_table#configurePager
+		 * @name jQuery.rup_jqtable#configurePager
 		 * @function
 		 * @param {object} settings - Parámetros de configuración del componente.
 		 * @example
-		 * $("#idComponente").rup_table("configurePager", settings);
+		 * $("#idComponente").rup_jqtable("configurePager", settings);
 		 */
 		configurePager: function(settings){
 			var $self = this,
@@ -1066,7 +1066,7 @@
 				// Evento de control de página máxima
 				jQuery(".pagControls input.ui-pg-input", $pagerCenter).on("change", function(){
 					var pageNum = parseInt($(this).val()),
-					totalNum = parseInt($self.rup_table("getGridParam","lastpage"));
+					totalNum = parseInt($self.rup_jqtable("getGridParam","lastpage"));
 
 					if (isNaN(pageNum)===false && pageNum>totalNum){
 						$(this).val(totalNum);
@@ -1099,15 +1099,15 @@
 	// DEFINICIÓN DE MÉTODOS PRIVADOS
 	//********************************
 
-	jQuery.fn.rup_table("extend", {
+	jQuery.fn.rup_jqtable("extend", {
 		/**
 		 * Método de inicialización del componente.
 		 *
-		 * @name jQuery.rup_table#_init
+		 * @name jQuery.rup_jqtable#_init
 		 * @function
 		 * @private
 		 * @param {object} args - Parámetros de configuración del componente.
-		 * @fires jQuery.rup_table#rupTable_coreConfigFinished
+		 * @fires jQuery.rup_jqtable#rupTable_coreConfigFinished
 		 */
 		_init : function(args) {
 			if (args.length > 1) {
@@ -1120,13 +1120,13 @@
 				/* *************************
 				 * CONFIGURACION
 				 * *************************/
-				var defaultPugins = (jQuery.isArray(args[0].defaultPlugins)?args[0].defaultPlugins:jQuery.fn.rup_table.defaults.defaultPlugins),
+				var defaultPugins = (jQuery.isArray(args[0].defaultPlugins)?args[0].defaultPlugins:jQuery.fn.rup_jqtable.defaults.defaultPlugins),
 				userPlugins = jQuery.merge([], args[0].usePlugins),
 				configuredPlugins = jQuery.merge(jQuery.merge([], defaultPugins), userPlugins);
 
 
 				jQuery.rup_utils.sortArray(configuredPlugins, function(obj1,obj2){
-					return rup_table.plugins[obj2].loadOrder - rup_table.plugins[obj1].loadOrder;
+					return rup_jqtable.plugins[obj2].loadOrder - rup_jqtable.plugins[obj1].loadOrder;
 				});
 
 
@@ -1135,26 +1135,26 @@
 				 * *********************************************************
 				 */
 
-				settings = $.extend(true,{}, settings, jQuery.fn.rup_table.plugins.core.defaults);
+				settings = $.extend(true,{}, settings, jQuery.fn.rup_jqtable.plugins.core.defaults);
 
 				/* *********************************************************
 				 * SE PROCESAN LAS CONFIGURACIONES POR DEFECTO DE LOS PLUGINS
 				 * *********************************************************
 				 */
 				$.each(configuredPlugins, function(index, name){
-					if (rup_table.plugins[name] !== undefined && jQuery.fn.rup_table.plugins[name] !== undefined){
-						settings = $.extend(true,{}, settings, jQuery.fn.rup_table.plugins[name].defaults);
+					if (rup_jqtable.plugins[name] !== undefined && jQuery.fn.rup_jqtable.plugins[name] !== undefined){
+						settings = $.extend(true,{}, settings, jQuery.fn.rup_jqtable.plugins[name].defaults);
 					}
 				});
 
 				// Se sobreescribe la configuración por defecto con la especificada por el usaurio
-				settings = jQuery.extend(true, {}, jQuery.fn.rup_table.defaults, settings, args[0]);
+				settings = jQuery.extend(true, {}, jQuery.fn.rup_jqtable.defaults, settings, args[0]);
 
 				/* *********************************************************
 				 * EJECUCION DE LA PRECONFIGURACION DEL CORE
 				 * *********************************************************/
 
-				$self.rup_table("preConfigureCore",settings);
+				$self.rup_jqtable("preConfigureCore",settings);
 
 
 				/* *********************************************************
@@ -1163,8 +1163,8 @@
 				 */
 
 				$.each(configuredPlugins, function(index, name){
-					if (jQuery.isFunction(rup_table.plugins[name].preConfiguration)){
-						jQuery.proxy(rup_table.plugins[name].preConfiguration, $self)(settings);
+					if (jQuery.isFunction(rup_jqtable.plugins[name].preConfiguration)){
+						jQuery.proxy(rup_jqtable.plugins[name].preConfiguration, $self)(settings);
 					}
 				});
 
@@ -1177,14 +1177,14 @@
 				 * EJECUCION DE LA POSTCONFIGURACION DEL CORE
 				 * *********************************************************/
 
-				$self.rup_table("postConfigureCore",settings);
+				$self.rup_jqtable("postConfigureCore",settings);
 
 				/* *********************************************************
 				 * EJECUCION DE FUNCIONES DE POSTCONFIGURACION DE LOS PLUGINS
 				 * *********************************************************/
 				$.each(configuredPlugins, function(index, name){
-					if (jQuery.isFunction(rup_table.plugins[name].postConfiguration)){
-						jQuery.proxy(rup_table.plugins[name].postConfiguration, $self)(settings);
+					if (jQuery.isFunction(rup_jqtable.plugins[name].postConfiguration)){
+						jQuery.proxy(rup_jqtable.plugins[name].postConfiguration, $self)(settings);
 					}
 				});
 
@@ -1197,16 +1197,16 @@
 		/**
 		 * Devuelve el índice de la línea identificada mediante el valor indicado por parámetro.
 		 *
-		 * @name jQuery.rup_table#_getLineIndex
+		 * @name jQuery.rup_jqtable#_getLineIndex
 		 * @function
 		 * @private
 		 * @param {string} rowId - Identificador del registro.
-		 * @return {number} - �?ndice de la línea.
+		 * @return {number} - �?ndice de la línea.
 		 */
 		_getLineIndex: function(rowId){
 			var $self = this, settings = $self.data("settings"),
 				tableghead = settings.id+"ghead_", count=0, $row, id;
-			if ($self.rup_table("getGridParam","grouping")===true){
+			if ($self.rup_jqtable("getGridParam","grouping")===true){
 				for (var i=0; i<$self[0].rows.length;i++){
 					$row = jQuery($self[0].rows[i]);
 					id = $row.attr("id");
@@ -1227,11 +1227,11 @@
 	// MÉTODOS PARA MANTENER LA RETROCOMPATIBILIDAD CON LA API DEL RUP.GRID
 	//*********************************************************************
 
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/**
 		 * Añade una nueva línea a la tabla. Esta operación no realiza una inserción del registro en el sistema de persistencia, sino que únicamente añade una nueva fila de modo visual.
 		 *
-		 * @name jQuery.rup_table#addRowData
+		 * @name jQuery.rup_jqtable#addRowData
 		 * @function
 		 * @param {string} rowid - Identificador del registro.
 		 * @param {object} data - Objeto json que contiene los valores de cada columna de la nueva línea.
@@ -1239,7 +1239,7 @@
 		 * @param {string} srcrowid -En el caso de indicarse se insertará la nueva línea en la posición relativa al registro que identifica y el valor del parámetro position.
 		 * @return {jQuery} - Referencia al propio componente.
 		 * @example
-		 * $("#idComponente").rup_table("addRowData", "10", {campo1:valor1,campo2:valor2});
+		 * $("#idComponente").rup_jqtable("addRowData", "10", {campo1:valor1,campo2:valor2});
 		 */
 		addRowData : function (rowid, data, position, srcrowid) {
 			var $self = $(this);
@@ -1262,12 +1262,12 @@
 		/**
 		 * Elimina de la tabla un registro determinado. El registro no se elimina del sistema de persistencia. Solo se elimina de manera visual.
 		 *
-		 * @name jQuery.rup_table#delRowData
+		 * @name jQuery.rup_jqtable#delRowData
 		 * @function
 		 * @param {string} rowid - Identificador del registro.
 		 * @return {jQuery} - Referencia al propio componente.
 		 * @example
-		 * $("#idComponente").rup_table("delRowData","10");
+		 * $("#idComponente").rup_jqtable("delRowData","10");
 		 */
 		delRowData : function (rowid) {
 			var $self = $(this);
@@ -1279,11 +1279,11 @@
 		/**
 		 * Devuelve el identificador de la línea activa.
 		 *
-		 * @name jQuery.rup_table#getActiveRowId
+		 * @name jQuery.rup_jqtable#getActiveRowId
 		 * @function
 		 * @return {string} - Identificador de la línea activa.
 		 * @example
-		 * $("#idComponente").rup_table("getActiveRowId");
+		 * $("#idComponente").rup_jqtable("getActiveRowId");
 		 */
 		getActiveRowId : function(){
 			var $self = this, settings = $self.data("settings");
@@ -1293,11 +1293,11 @@
 		/**
 		 * Devuelve el índice de la línea activa.
 		 *
-		 * @name jQuery.rup_table#getActiveLineId
+		 * @name jQuery.rup_jqtable#getActiveLineId
 		 * @function
-		 * @return {string} - �?ndice de la línea activa.
+		 * @return {string} - �?ndice de la línea activa.
 		 * @example
-		 * $("#idComponente").rup_table("getActiveLineId");
+		 * $("#idComponente").rup_jqtable("getActiveLineId");
 		 */
 		getActiveLineId : function(){
 			var $self = this, settings = $self.data("settings");
@@ -1307,13 +1307,13 @@
 		/**
 		 * Actualiza los valores de las columnas de un registro determinado. La actualización de loa datos se realiza solo de manera visual. Los nuevos datos no se persisten.
 		 *
-		 * @name jQuery.rup_table#setRowData
+		 * @name jQuery.rup_jqtable#setRowData
 		 * @function
 		 * @param {string} rowid - Identificador del registro que se desea actualizar.
 		 * @param {object} data - Objeto json que contiene los valores de cada columna de la nueva línea.
 		 * @param {string} cssp - En caso de especificarse, se añadirán a la línea las class de estilos aquí indicadas.
 		 * @example
-		 * $("#idComponente").rup_table("setRowData", "10", {campo1:valor1,campo2:valor2});
+		 * $("#idComponente").rup_jqtable("setRowData", "10", {campo1:valor1,campo2:valor2});
 		 */
 		setRowData : function (rowid, data, cssp) {
 			var $self = $(this);
@@ -1331,12 +1331,12 @@
 		/**
 		 * Devuelve un objeto json con los valores de los campos del registro indicado.
 		 *
-		 * @name jQuery.rup_table#getRowData
+		 * @name jQuery.rup_jqtable#getRowData
 		 * @function
 		 * @param {string} rowid - Identificador del registro del que se quieren recuperar los datos.
 		 * @return {object} - Objecto json con los valores del registro.
 		 * @example
-		 * $("#idComponente").rup_table("getRowData", "10");
+		 * $("#idComponente").rup_jqtable("getRowData", "10");
 		 */
 		getRowData: function(rowid){
 			var $self = $(this);
@@ -1345,11 +1345,11 @@
 		/**
 		 * Devuelve un array con los identificadores de los registros que se muestran actualmente en la página de la tabla.
 		 *
-		 * @name jQuery.rup_table#getDataIDs
+		 * @name jQuery.rup_jqtable#getDataIDs
 		 * @function
 		 * @return {string[]} - Identificadores de lso registros mostrados en la página actual.
 		 * @example
-		 * $("#idComponente").rup_table("getDataIDs");
+		 * $("#idComponente").rup_jqtable("getDataIDs");
 		 */
 		getDataIDs : function () {
 			var $self = $(this);
@@ -1358,11 +1358,11 @@
 		/**
 		 * Limpia los registros mostrados en la tabla.
 		 *
-		 * @name jQuery.rup_table#clearGridData
+		 * @name jQuery.rup_jqtable#clearGridData
 		 * @function
 		 * @param {boolean} clearfooter - En caso de indicarse como true se elimina la información del pié de la tabla.
 		 * @example
-		 * $("#idComponente").rup_table("clearGridData", false);
+		 * $("#idComponente").rup_jqtable("clearGridData", false);
 		 */
 		clearGridData : function (clearfooter) {
 			var $self = $(this);
@@ -1371,11 +1371,11 @@
 		/**
 		 * Devuelve el objeto colModel del componente jqGrid.
 		 *
-		 * @name jQuery.rup_table#getColModel
+		 * @name jQuery.rup_jqtable#getColModel
 		 * @function
 		 * @return {object} - Objeto colModel de la tabla.
 		 * @example
-		 * $("#idComponente").rup_table("getColModel");
+		 * $("#idComponente").rup_jqtable("getColModel");
 		 */
 		getColModel : function () {// Función que devuelve el colModel directamente.
 			var $self = $(this);
@@ -1384,12 +1384,12 @@
 		/**
 		 * Devuelve el valor de la columna de la fila indicada.
 		 *
-		 * @name jQuery.rup_table#getCol
+		 * @name jQuery.rup_jqtable#getCol
 		 * @function
 		 * @param {string} rowid - Identificador de la fila.
 		 * @param {string} colName - Nombre de la columna.
 		 * @example
-		 * $("#idComponente").rup_table("getCol", "10", "nombre");
+		 * $("#idComponente").rup_jqtable("getCol", "10", "nombre");
 		 */
 		getCol : function (rowid, colName) { //Función que devuelve el valor de la celda de la fila que se le pasa como paramtero. El colName puede ser o el indice de la columna o el nombre de la misma
 			var $self = $(this);
@@ -1398,12 +1398,12 @@
 		/**
 		 * Devuelve un objeto json que contiene la serialización del formulario.
 		 *
-		 * @name jQuery.rup_table#getSerializedForm
+		 * @name jQuery.rup_jqtable#getSerializedForm
 		 * @function
 		 * @param {jQuery} form - Formulario que se desea serializar.
 		 * @param {boolean} skipEmpty - En caso de indicarse true se omiten los campos que no contienen valor.
 		 * @example
-		 * $("#idComponente").rup_table("getSerializedForm", $("#idFormulario"), false);
+		 * $("#idComponente").rup_jqtable("getSerializedForm", $("#idFormulario"), false);
 		 */
 		getSerializedForm: function(form, skipEmpty, delimeter){
 			return  form2object(form instanceof jQuery?form[0]:form, delimeter?delimeter:null, skipEmpty?skipEmpty:false);
@@ -1414,9 +1414,9 @@
 	//*******************************************************
 	// DEFINICIÓN DE LA CONFIGURACION POR DEFECTO DEL PATRON
 	//*******************************************************
-	jQuery.fn.rup_table.plugins = {};
-	jQuery.fn.rup_table.plugins.core = {};
-	jQuery.fn.rup_table.plugins.core.defaults = {
+	jQuery.fn.rup_jqtable.plugins = {};
+	jQuery.fn.rup_jqtable.plugins.core = {};
+	jQuery.fn.rup_jqtable.plugins.core.defaults = {
 		core:{
 			operations:{},
 			defaultOperations:{},
@@ -1429,7 +1429,7 @@
 /**
 	* Función de callback que será ejecutada cuando el usuario realice una acción sobre la operación.
 	*
-	* @callback jQuery.rup_table~onOperation
+	* @callback jQuery.rup_jqtable~onOperation
 	* @param {string} key - Identificador de la operación
 	* @param {object} options - Opciones de configuración de la operación.
 	* @example
@@ -1441,7 +1441,7 @@
 /**
 	* Función de callback que determina si la operación debe estar habilitada o no.
 	*
-	* @callback jQuery.rup_table~isEnabled
+	* @callback jQuery.rup_jqtable~isEnabled
 	* @return {boolean} - Devuelve si la operación debe de estar habilitada o no.
 	* @example
 	* enabled: function(){
@@ -1452,11 +1452,11 @@
 /**
 	* Mediante esta propiedad se definen las posibles operaciones a realizar sobre los registros mostrados en la tabla. Debido al carácter global de estas operaciones se toman en cuenta por otros componentes (toolbar, menú contextual) a la hora de mostrar sus controles. Las operaciones se definen mediante un objeto json en el cual el nombre de la propiedad será el identificador de la propiedad.
 	*
-	* @typedef {Object} jQuery.rup_table~Operations
+	* @typedef {Object} jQuery.rup_jqtable~Operations
 	* @property {string} [name] - Texto a mostrar al usuario a la hora de visualizar la operación.
 	* @property {string} [icon] - Clase CSS correspondiente al icono que se quiere visualizar junto a la operación.
-	* @property {jQuery.rup_table~isEnabled} [enabled] - Función que determina si el botón se debe mostrar habilitado o deshabilitado. Esto se determina devolviendo true/false desde la función de callback aquí indicada.
-	* @property {jQuery.rup_table~onOperation} [callback] - Función de callback que será ejecutada cuando el usuario realice una acción sobre la operación.
+	* @property {jQuery.rup_jqtable~isEnabled} [enabled] - Función que determina si el botón se debe mostrar habilitado o deshabilitado. Esto se determina devolviendo true/false desde la función de callback aquí indicada.
+	* @property {jQuery.rup_jqtable~onOperation} [callback] - Función de callback que será ejecutada cuando el usuario realice una acción sobre la operación.
 	* @example
 	* core:{
 	* 	operations:{
@@ -1487,7 +1487,7 @@
 	/**
 	* Permite habilitar/deshabilitar las operaciones definidas por defecto por otros módulos.
 	*
-	* @typedef jQuery.rup_table~ShowOperations
+	* @typedef jQuery.rup_jqtable~ShowOperations
 	* @example
 	* core:{
 	*		showOperations:{
@@ -1501,7 +1501,7 @@
 	* @description Propiedades de configuración del componente.
 	* @see Para mas información consulte la documentación acerca de las opciones de configuración del componente {@link http://www.trirand.com/jqgridwiki/doku.php|jqGrid}.
 	*
-	* @name jQuery.rup_table#options
+	* @name jQuery.rup_jqtable#options
 	* @property {boolean} [altRows=true] - Determina si se aplica o no el pijama en las filas de la tabla.
 	* @property {string} [altclass=rupgrid_oddRow] - Estilo que se aplica a las filas impares para mostrar el efecto.
 	* @property {string} [datatype=json] - Formato de dato esperado para representar los registros de la tabla.
@@ -1514,16 +1514,16 @@
 	* @property {boolean} [viewrecords=true] - Indica si se debe mostrar el rango de elementos que se están visualizando en la tabla.
 	* @property {boolean} [loadOnStartUp=true] - Determina si se debe realizar automáticamente la búsqueda al cargar la página.
 	* @property {string} [multiplePkToken=~] - Separador que se utiliza en los casos en los que la clave primaria sea múltiple. Se creará una columna que contenga un identificador único resultante de la concatenación de las claves primarias realizada mediante el separador aquí indicado.
-	* @property {jQuery.rup_table~Operations} [operations] - Mediante esta propiedad se definen las posibles operaciones a realizar sobre los registros mostrados en la tabla. Debido al carácter global de estas operaciones se toman en cuenta por otros componentes (toolbar, menú contextual) a la hora de mostrar sus controles. Las operaciones se definen mediante un objeto json en el cual el nombre de la propiedad será el identificador de la propiedad.
-	* @property {jQuery.rup_table~ShowOperations} [showOperations] - Permite habilitar/deshabilitar las operaciones definidas por defecto por otros módulos.
+	* @property {jQuery.rup_jqtable~Operations} [operations] - Mediante esta propiedad se definen las posibles operaciones a realizar sobre los registros mostrados en la tabla. Debido al carácter global de estas operaciones se toman en cuenta por otros componentes (toolbar, menú contextual) a la hora de mostrar sus controles. Las operaciones se definen mediante un objeto json en el cual el nombre de la propiedad será el identificador de la propiedad.
+	* @property {jQuery.rup_jqtable~ShowOperations} [showOperations] - Permite habilitar/deshabilitar las operaciones definidas por defecto por otros módulos.
 	* @property {number} [startOnPage=1] - Permite especificar el número de página inicial que se mostrará al cargar la página.
 	*/
 
-	jQuery.fn.rup_table.defaults = {
+	jQuery.fn.rup_jqtable.defaults = {
 			altRows: true,
 			altclass: "rup-grid_oddRow",
 			datatype: "json",					// Tipo de dato esperado para representar los registros de la tabla (jqGrid)
-			editable: false,					// Determina si la tabla permite la edición en línea (rup_table)
+			editable: false,					// Determina si la tabla permite la edición en línea (rup_jqtable)
 			height: "auto", 					// Ajusta la altura de la tabla al contenido (jqGrid)
 			jsonReader : {repeatitems: false},	// Parámetros de configuración que describen la estructura del json esperado (jqGrid)
 			pager: null,
@@ -1543,9 +1543,9 @@
 			},
 			loadOnStartUp: true,
 			// Callback ejecutado en las peticiones AJAX de la tabla
-			loadBeforeSend: function rup_table_defaults_loadBeforeSend(xhr, settings){
+			loadBeforeSend: function rup_jqtable_defaults_loadBeforeSend(xhr, settings){
 				// Se modifica la request para incluir las siguientes cabeceras:
-				// Se añade la cabecera JQGridModel para indicar que la petición ha sido realizada por el componente rup_table
+				// Se añade la cabecera JQGridModel para indicar que la petición ha sido realizada por el componente rup_jqtable
 				xhr.setRequestHeader("JQGridModel", "true");
 				// Se indica que el tipo de contenido enviado en la cabecera es application/jsons
 				xhr.setRequestHeader("Content-Type", "application/json");
@@ -1553,7 +1553,7 @@
 			loadui: "block",
 			validate:{},
 			defaultPlugins:[],
-			dataProxy: jQuery.rup_table.proxyAjax,
+			dataProxy: jQuery.rup_jqtable.proxyAjax,
 			defaultGridInfoCol:{
 				name: "rupInfoCol", index: "rupInfoCol", editable:false, fixed:true, sortable:false, width:16, resizable: false, classes:"rupInfoCol", search:false, formatter:function(){return "<span class='ui-icon ui-icon-rupInfoCol'/>";}
 			},
@@ -1573,7 +1573,7 @@
 /**
 * Evento que se produce al detectarse que el usuario interactua con un elemento externo a la tabla.
 *
-* @event jQuery.rup_table#rupTable_checkOutOfGrid
+* @event jQuery.rup_jqtable#rupTable_checkOutOfGrid
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @property {jQuery} $originalTarget - Objeto jQuery que referencia el elemento del dom con el que ha interactuado el usuario.
 * @example
@@ -1584,7 +1584,7 @@
 /**
 * Este evento se lanza durante el proceso de serialización de la información que va a ser enviada para obtener los registros que se van a mostrar en la tabla.
 *
-* @event jQuery.rup_table#rupTable_serializeGridData
+* @event jQuery.rup_jqtable#rupTable_serializeGridData
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @property {object} data - Información serializada que va a ser enviada. Se puede modificar o agregar nuevos campos para completarla.
 * @example
@@ -1595,7 +1595,7 @@
 /**
 * Evento que se lanza antes de que se procese la información recibida del servidor.
 *
-* @event jQuery.rup_table#rupTable_beforeProcessing
+* @event jQuery.rup_jqtable#rupTable_beforeProcessing
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @property {object} data - Información recibida del servidor.
 * @property {string} st - Mensaje de status de la petición.
@@ -1608,7 +1608,7 @@
 /**
 * Se produce cuando se elimina el resaltado de un registro de la tabla.
 *
-* @event jQuery.rup_table#rupTableClearHighlightedRowAsSelected
+* @event jQuery.rup_jqtable#rupTableClearHighlightedRowAsSelected
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @property {jQuery} $row - Objeto jQuery que identifica la línea que se ha procesado.
 * @example
@@ -1618,7 +1618,7 @@
 /**
 * Se produce cuando se añade el resaltado a un registro de la tabla.
 *
-* @event jQuery.rup_table#rupTableHighlightRowAsSelected
+* @event jQuery.rup_jqtable#rupTableHighlightRowAsSelected
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @property {jQuery} $row - Objeto jQuery que identifica la línea que se ha procesado.
 * @example
@@ -1628,7 +1628,7 @@
 /**
 * Evento que se lanza después de que el componente haya finalizado con el proceso de configuración e inicialización.
 *
-* @event jQuery.rup_table#rupTable_coreConfigFinished
+* @event jQuery.rup_jqtable#rupTable_coreConfigFinished
 * @property {Event} e - Objeto Event correspondiente al evento disparado.
 * @example
 * $("#idComponente").on("rupTable_coreConfigFinished", function(event, $row){ });

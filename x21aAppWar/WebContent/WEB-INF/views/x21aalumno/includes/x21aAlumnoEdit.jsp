@@ -59,14 +59,14 @@
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
 			<!-- Botón Guardar -->
-			<button id="x21aAlumno_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="x21aAlumno_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
 			<!-- Botón cancelar -->
 			<button id="x21aAlumno_detail_button_cancel"
-				 class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button"><spring:message code="cancel" /></a>
+				 class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button"><spring:message code="cancel" /></a>
 		</div>
 	</div>	
 </div>

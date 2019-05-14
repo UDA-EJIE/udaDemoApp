@@ -104,17 +104,17 @@
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
 			<!-- Botón Guardar -->
-			<button id="table_detail_button_save" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_tableEdit_buttonsResposive" type="button">
+			<button id="table_detail_button_save" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
 			<!-- Botón Guardar y continuar -->
-			<button id="table_detail_button_save_repeat" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_tableEdit_buttonsResposive" type="button">
+			<button id="table_detail_button_save_repeat" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
 			<!-- Botón cancelar -->
-			<button id="table_detail_button_cancel" class="btn-material btn-material-sm btn-material-primary-low-emphasis rup_tableEdit_buttonsResposive" type="button">
+			<button id="table_detail_button_cancel" class="btn-material btn-material-sm btn-material-primary-low-emphasis rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

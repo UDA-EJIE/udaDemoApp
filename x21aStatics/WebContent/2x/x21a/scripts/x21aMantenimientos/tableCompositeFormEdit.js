@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../multipk",
 		colNames: ["ida","idb","nombre","apellido1","apellido2"],
 		colModel: [
@@ -96,7 +96,7 @@ jQuery(function($){
 //				 }); 
 //			 }},
 //			 {i18nCaption:"borrar", css:"borrar", click: function(){
-//				 jQuery("#GRID_simple").rup_table("deleteElement");
+//				 jQuery("#GRID_simple").rup_jqtable("deleteElement");
 //			 }},
 //   			{i18nCaption:"filtrar", css:"filtrar", click: function(){
 //

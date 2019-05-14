@@ -88,7 +88,7 @@ jQuery(function($){
     					}
     				}
     		   }
-    		 ,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')  
+    		 ,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')  
     		}
     		,colReorder: {
 				fixedColumnsLeft: 1

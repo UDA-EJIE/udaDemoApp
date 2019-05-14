@@ -14,14 +14,14 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-//	jQuery.fn.rup_table.defaults.defaultPlugins = ["ivap"];
-//	jQuery.fn.rup_table("extend",{
+//	jQuery.fn.rup_jqtable.defaults.defaultPlugins = ["ivap"];
+//	jQuery.fn.rup_jqtable("extend",{
 //		highlightEditableRow: function($row){
 //			var $self = this, settings = $self.data("settings"), 
-//			page = parseInt($self.rup_table("getGridParam", "page"),10), 
+//			page = parseInt($self.rup_jqtable("getGridParam", "page"),10), 
 //			firstSelectedLine, firstSelectedId, $row;
 //			
-//			$self.rup_table("clearHighlightedEditableRows");
+//			$self.rup_jqtable("clearHighlightedEditableRows");
 //			
 //			if ($self._hasPageSelectedElements(page)){
 //				firstSelectedLine = $self._getFirstSelectedElementOfPage(page);
@@ -33,22 +33,22 @@ jQuery(function($){
 //		}
 //	});
 //	jQuery(function($){
-//		jQuery.extend(jQuery.fn.rup_table.plugins.multiselection.defaults,{
+//		jQuery.extend(jQuery.fn.rup_jqtable.plugins.multiselection.defaults,{
 //			  onSelectRow: function(){
 //			    var $self = $(this);
-//			    $self.rup_table("highlightFirstEditableRow");
+//			    $self.rup_jqtable("highlightFirstEditableRow");
 //			  }		  
 //		});
 //	});
 	
 	
 //	jQuery(function($){
-//		jQuery.fn.rup_table("extend",{
+//		jQuery.fn.rup_jqtable("extend",{
 //			editElement: function (rowId, options){
 //				var $self = this, 
 //				settings = $self.data("settings"),
 //				multiselectionSettings = settings.multiselection,
-//				page = parseInt($self.rup_table("getGridParam", "page"),10),
+//				page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
 //				firstPage, firstSelectedLine, firstSelectedId;
 //				
 //				if (multiselectionSettings.selectedPages.length > 0){
@@ -59,9 +59,9 @@ jQuery(function($){
 //						firstSelectedLine = $self._getFirstSelectedElementOfPage(firstPage);
 //						firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
 //						settings.multiselection.rowForEditing=firstSelectedId;
-//						$self.rup_table("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
+//						$self.rup_jqtable("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
 //						
-//						$self.rup_table("editElement", firstSelectedId);
+//						$self.rup_jqtable("editElement", firstSelectedId);
 //						
 //						$self.off("jqGridAfterLoadComplete.ivap.editFirstElement");
 //					});
@@ -73,9 +73,9 @@ jQuery(function($){
 ////							firstSelectedLine = $self._getFirstSelectedElementOfPage(firstPage);
 ////							firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
 ////							settings.multiselection.rowForEditing=firstSelectedId;
-////							$self.rup_table("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
+////							$self.rup_jqtable("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
 ////							
-////							$self.rup_table("editElement", firstSelectedId);
+////							$self.rup_jqtable("editElement", firstSelectedId);
 ////							
 ////							$self.off("jqGridAfterLoadComplete.ivap.editFirstElement");
 ////						});
@@ -94,7 +94,7 @@ jQuery(function($){
 //	});
 //	
 	
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
@@ -155,7 +155,7 @@ jQuery(function($){
 //	
 //	$("#table").on("jqGridSelectRow.rupTable.multiselection", function(){
 //	
-//	$("#table").rup_table("highlightFirstEditableRow");
+//	$("#table").rup_jqtable("highlightFirstEditableRow");
 //});
 	
 });
