@@ -141,13 +141,13 @@
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_datatableEdit_buttonsContainerResposive">
+		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
 			<!-- Botón Guardar -->
-			<button id="MultiPk_detail_button_save" class="btn btn-outline-primary rup_datatableEdit_buttonsResposive" type="button">
+			<button id="MultiPk_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
 			<!-- Enlace cancelar -->
-			<button id="MultiPk_detail_button_cancel" class="btn btn-outline-primary rup_datatableEdit_buttonsResposive" type="button">
+			<button id="MultiPk_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

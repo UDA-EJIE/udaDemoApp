@@ -21,7 +21,7 @@ jQuery(function($){
 		}
 	];
 	
-	$("#comarca").rup_datatable({
+	$("#comarca").rup_table({
 		
 		primaryKey: "code",
 		loadOnStartUp: true,
@@ -70,7 +70,7 @@ jQuery(function($){
 		}
 	];
 	
-	$("#localidad").rup_datatable({
+	$("#localidad").rup_table({
 		
 		primaryKey: "code",
 		loadOnStartUp: false,

@@ -43,7 +43,7 @@ jQuery(function($){
 		};	
 		 
 		function loadTable(){
-			$('#MultiPk').rup_datatable(loadPlugins());
+			$('#MultiPk').rup_table(loadPlugins());
 		}
 		
 		function loadPlugins(){
