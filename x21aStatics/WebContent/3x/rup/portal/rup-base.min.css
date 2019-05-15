@@ -10241,11 +10241,11 @@
 }
 
 @media (max-width:575px) {
-  .r01gContainer .rup_tableEdit_buttonsContainerResposive {
+  .r01gContainer .rup_jqtableEdit_buttonsContainerResposive {
     float: none!important;
   }
 
-  .r01gContainer .rup_tableEdit_buttonsResposive {
+  .r01gContainer .rup_jqtableEdit_buttonsResposive {
     width: 100%;
   }
 }
