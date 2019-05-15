@@ -143,7 +143,7 @@ jQuery(function($){
 	
 	 
 	function loadTable(){
-		$('#example').rup_datatable(loadPlugins());
+		$('#example').rup_table(loadPlugins());
 	}
 	
 	function loadPlugins(){

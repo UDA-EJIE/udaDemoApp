@@ -1,6 +1,6 @@
 jQuery(function($){
 
-	$("#usuario").rup_datatable({
+	$("#usuario").rup_table({
 		
 		primaryKey: "id",
 		loadOnStartUp: true,
