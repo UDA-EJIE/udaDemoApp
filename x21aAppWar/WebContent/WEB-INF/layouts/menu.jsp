@@ -57,7 +57,7 @@
 					</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/contextMenu">
-						<i class="fa fa-list-alt" aria-hidden="true"></i>
+						<i class="mdi mdi-tooltip" aria-hidden="true"></i>
 						<spring:message code="contextMenu" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/button">
@@ -76,11 +76,11 @@
 
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
+							<i class="mdi mdi-tab" aria-hidden="true"></i>
 							<spring:message code="tabs" />
 						</a>
 						<div class="dropdown-menu menu-right">
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic">
-								<i class="mdi mdi-tab" aria-hidden="true"></i>
 								<spring:message code="tabsStatic" />
 							</a>
 							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax">
@@ -128,7 +128,7 @@
 
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="fa fa-sitemap" aria-hidden="true"></i>
+							<i class="mdi mdi-file-tree" aria-hidden="true"></i>
 							<spring:message code="tree" />
 						</a>
 						<div class="dropdown-menu menu-right">
@@ -183,7 +183,7 @@
 					
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="fa fa-calendar pr-2" aria-hidden="true"></i>
+							<i class="mdi mdi-calendar" aria-hidden="true"></i>
 							<spring:message code="calendario" />
 						</a>
 						<div class="dropdown-menu menu-right" aria-labelledby="calendarDropdown">
@@ -201,7 +201,7 @@
 						<spring:message code="form" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/time">
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
+						<i class="mdi mdi-timer" aria-hidden="true"></i>
 						<spring:message code="time" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/spinner">
@@ -209,7 +209,7 @@
 						<spring:message code="spinner" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/upload">
-						<i class="fa fa-upload" aria-hidden="true"></i>
+						<i class="mdi mdi-cloud-upload" aria-hidden="true"></i>
 						<spring:message code="upload" />
 					</a>
 					<div class="dropdown-submenu">
@@ -231,7 +231,7 @@
 
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/charts">
-						<i class="fa fa-bar-chart" aria-hidden="true"></i>
+						<i class="mdi mdi-chart-bar" aria-hidden="true"></i>
 						<spring:message code="charts.charts" />
 					</a>
 				</div>
