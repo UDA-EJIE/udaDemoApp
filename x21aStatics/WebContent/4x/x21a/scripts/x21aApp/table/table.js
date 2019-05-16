@@ -381,11 +381,11 @@ jQuery(function($){
 		}else{
 			$('#triggers').prop('checked', false);
 		}
-		plugins.columnDefs = [
+		/*plugins.columnDefs = [
     	    { 
     	    	"targets": [5],
     	    	"render": function(data){
-    	    		if(data !== undefined){
+    	    		if(data !== undefined && data !== null){
     	    			return data.replace('/','/');
     	    		}
     	    	}
@@ -394,7 +394,7 @@ jQuery(function($){
 	    		
 	    		return data.replace('a','.');
 	    	} }
-    	];
+    	];*/
 
 
 		
