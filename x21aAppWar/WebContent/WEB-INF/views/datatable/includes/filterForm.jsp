@@ -50,12 +50,12 @@
     <div id="example_filter_buttonSet" class="right_buttons">
     	<!-- Botón de limpiar -->
         <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
-        	<i class="mdi mdi-broom"></i>
+        	<i class="mdi mdi-eraser"></i>
         	<span>Limpiar</span>
         </button>
         <!-- Botón de filtrado -->
         <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
-        	<i class="mdi mdi-filter-variant"></i>
+        	<i class="mdi mdi-filter"></i>
         	<span>Filtrar</span>        	
         </button>
     </div>

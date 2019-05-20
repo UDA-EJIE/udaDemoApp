@@ -23,6 +23,7 @@
 	<div id="navbarResponsive"
 		class="collapse navbar-toggleable-md col-md-12 no-gutter">
 		<a class="navbar-brand" href="/x21aAppWar/">
+			<i class="mdi mdi-home" aria-hidden="true"></i>
 			<spring:message code="app.title" />
 		</a>
 		<ul class="nav navbar-nav">
@@ -31,6 +32,7 @@
 				<a class="nav-link dropdown-toggle" href="#"
 					id="responsiveNavbarDropdown" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
+					<i class="mdi mdi-apps" aria-hidden="true"></i>
 					<spring:message code="componentes" />
 				</a>
 				<div class="dropdown-menu"
@@ -52,7 +54,7 @@
 						<spring:message code="dialog" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/progressbar">
-						<i class="fa fa-hourglass-half" aria-hidden="true"></i>
+						<i class="mdi mdi-timer-sand" aria-hidden="true"></i>
 						<spring:message code="progressBar" />
 					</a>
 					<div class="dropdown-divider"></div>
@@ -61,16 +63,16 @@
 						<spring:message code="contextMenu" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/button">
-						<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+						<i class="mdi mdi-cursor-pointer" aria-hidden="true"></i>
 						<spring:message code="button" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/toolbar">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
+						<i class="mdi mdi-wrench" aria-hidden="true"></i>
 						<spring:message code="toolbar" />
 					</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/accordion">
-						<i class="fa fa-list" aria-hidden="true"></i>
+						<i class="mdi mdi-format-list-bulleted" aria-hidden="true"></i>
 						<spring:message code="accordion" />
 					</a>
 
@@ -100,7 +102,7 @@
 
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
-							<i class="fa fa-magic" aria-hidden="true"></i>
+							<i class="mdi mdi-teach" aria-hidden="true"></i>
 							<spring:message code="wizard" htmlEscape="true" />
 						</a>
 						<div class="dropdown-menu menu-right">
@@ -172,11 +174,11 @@
 					</div>
 
 					<a class="dropdown-item" href="/x21aAppWar/patrones/slider">
-						<i class="fa fa-sliders" aria-hidden="true"></i>
+						<i class="mdi mdi-tune" aria-hidden="true"></i>
 						<spring:message code="slider" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/date">
-						<i class="fa fa-calendar" aria-hidden="true"></i>
+						<i class="mdi mdi-calendar-month" aria-hidden="true"></i>
 						<spring:message code="date" />
 					</a>
 					
@@ -197,7 +199,7 @@
 					</div>
 					
 					<a class="dropdown-item" href="/x21aAppWar/patrones/form">
-						<i class="fa fa-wpforms" aria-hidden="true"></i>
+						<i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
 						<spring:message code="form" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/time">
@@ -205,7 +207,7 @@
 						<spring:message code="time" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/spinner">
-						<i class="fa fa-spinner" aria-hidden="true"></i>
+						<i class="mdi mdi-spin mdi-loading" aria-hidden="true"></i>
 						<spring:message code="spinner" />
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/upload">
@@ -241,7 +243,7 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					</i>
+					<i class="mdi mdi-table" aria-hidden="true"></i>
 					<spring:message code="tabla" />
 				</a>
 				<div class="dropdown-menu" aria-labelledby="datatableDropdown">
@@ -321,6 +323,7 @@
 				<a class="nav-link dropdown-toggle" href="#"
 					id="gridResponsiveDropdown" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
+					<i class="mdi mdi-view-grid" aria-hidden="true"></i>
 					<spring:message code="gridResponsive" />
 				</a>
 				<div class="dropdown-menu" aria-labelledby="gridResponsiveDropdown">
@@ -344,6 +347,7 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="styleGuideDropdown"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="mdi mdi-format-line-style" aria-hidden="true"></i>
 					<spring:message code="stylingGuide" />
 				</a>
 				<div class="dropdown-menu" aria-labelledby="styleGuideDropdown">

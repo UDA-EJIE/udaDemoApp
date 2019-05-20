@@ -12,21 +12,21 @@
 <!-- 				            <label for="file">Ficheros: </label> -->
 <!-- 				            <input id="file_only" type="file" name="files[]" multiple="multiple"> -->
 							<span class="btn btn-success fileinput-button">
-							      <i class="fa fa-plus" aria-hidden="true"></i>
+							      <i class="mdi mdi-plus" aria-hidden="true"></i>
 							      <span><spring:message code="upload.button.addFiles"/></span>
 							      <input id="file_only" type="file" name="files[]" multiple="multiple" />
 							</span>
 				    				            
 				            <button type="submit" class="btn btn-primary start">
-			                    <i class="fa fa-upload" aria-hidden="true"></i>
+			                    <i class="mdi mdi-upload" aria-hidden="true"></i>
 			                    <span>Subir todos</span>
 			                </button>
 			                <button type="reset" class="btn btn-secondary cancel">
-			                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+			                    <i class="mdi mdi-close-circle-outline" aria-hidden="true"></i>
 			                    <span>Cancelar todos</span>
 			                </button>
 			                <button type="button" class="btn btn-secondary delete">
-			                    <i class="fa fa-trash" aria-hidden="true"></i>
+			                    <i class="mdi mdi-delete" aria-hidden="true"></i>
 			                    <span>Eliminar todos</span>
 			                </button>
 				            

@@ -68,13 +68,13 @@
 				<!-- Botonera del formulario de filtrado -->
 				<div id="MultiPk_filter_buttonSet" class="right_buttons">
 					<button id="MultiPk_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-			        	<i class="fa fa-eraser"></i>
+			        	<i class="mdi mdi-eraser"></i>
 			        	<span>
 			        		<spring:message code="clear" />
 			        	</span>
 			        </button>
 			        <button id="MultiPk_filter_filterButton" type="button" class="btn btn-primary rup-filtrar">
-			        	<i class="fa fa-filter"></i>
+			        	<i class="mdi mdi-filter"></i>
 			        	<span>
 			        		<spring:message code="filter" />
 			        	</span>

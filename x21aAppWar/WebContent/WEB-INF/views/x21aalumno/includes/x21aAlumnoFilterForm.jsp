@@ -50,12 +50,12 @@
 				<div id="x21aAlumno_filter_buttonSet" class="right_buttons">
 					<!-- Botón de limpiar -->
 					<button id="x21aAlumno_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-						<i class="fa fa-eraser"></i>
+						<i class="mdi mdi-eraser"></i>
 						<span><spring:message code="clear" /></span>
 					</button>
 					<!-- Botón de filtrado -->
 					<button id="x21aAlumno_filter_filterButton" type="button" class="btn rup-filtrar btn-primary" >
-						<i class="fa fa-filter"></i>
+						<i class="mdi mdi-filter"></i>
 						<span><spring:message code="filter" /></span>
 					</button>
 				</div>

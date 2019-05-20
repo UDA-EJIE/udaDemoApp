@@ -66,14 +66,14 @@
 				<div id="usuario_filter_buttonSet" class="right_buttons">
 					<!-- Botón de limpiar -->
 			        <button id="usuario_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-			        	<i class="fa fa-eraser"></i>
+			        	<i class="mdi mdi-eraser"></i>
 			        	<span>
 			        		<spring:message code="clear" />
 			        	</span>
 			        </button>
 			        <!-- Botón de filtrado -->
 			        <button id="usuario_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
-			        	<i class="fa fa-filter"></i>
+			        	<i class="mdi mdi-filter"></i>
 			        	<span>
 			        		<spring:message code="filter" />
 			        	</span>

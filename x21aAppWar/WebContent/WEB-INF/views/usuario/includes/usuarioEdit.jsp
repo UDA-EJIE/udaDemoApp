@@ -57,14 +57,14 @@
 	<div id="table_filter_buttonSet" class="right_buttons">
 		<!-- Enlace cancelar -->
         <button id="usuario_detail_button_cancel" type="button" class="btn btn-primary rup-limpiar">
-        	<i class="fa fa-eraser"></i>
+        	<i class="mdi mdi-eraser"></i>
         	<span>
         		<spring:message code="clear" />
         	</span>
         </button>
         <!-- Botón Guardar -->
         <button id="usuario_detail_button_save" type="button" class="btn btn-info rup-filtrar">
-        	<i class="fa fa-filter"></i>
+        	<i class="mdi mdi-filter"></i>
         	<span>
         		<spring:message code="filter" />
         	</span>

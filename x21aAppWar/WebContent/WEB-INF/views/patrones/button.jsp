@@ -45,7 +45,7 @@
 		</p>
 		<div class="example">
 			<button type="button" id="btnIconHtml">
-				<i class="fa fa-cog" aria-hidden="true"></i> Configuración HTML
+				<i class="mdi mdi-settings" aria-hidden="true"></i> Configuración HTML
 			</button>
 			<button type="button" id="btnIconJs">Configuración JS</button>
 		</div>
@@ -74,11 +74,11 @@
 
 		<div class="example">
 			<button type="button" id="btnRwdHtmlSm" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
+				<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 					class="rup-ui-button-text d-none d-md-block">Rwd Html Sm</span>
 			</button>
 			<button type="button" id="btnRwdHtmlMd" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
+				<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 					class="rup-ui-button-text d-none d-lg-block">Rwd Html Md</span>
 			</button>
 			<button type="button" id="btnRwdJsSm" class="">Rwd Js Sm</button>
@@ -95,26 +95,26 @@
 		<div class="example">
 			<div class="rup-mbutton">
 				<button type="button" id="btnMButton" data-mbutton="true">
-					<i class="fa fa-cog" aria-hidden="true"></i> <span
+					<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 						class="rup-ui-button-text d-none d-lg-block">MButton</span>
 				</button>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
 						<button type="button" id="mbutton-buttonNew">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text d-none d-lg-block">Nuevo</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonEdit">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text d-none d-lg-block">Editar</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonCancel">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text d-none d-lg-block">Cancelar</span>
 						</button>
 					</li>
@@ -127,26 +127,26 @@
 		<div class="example">
 			<div class="rup-mbutton rup-collapsed-md">
 				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> <i
-					class="fa fa-cog" aria-hidden="true"></i> <span
+					class="mdi mdi-settings" aria-hidden="true"></i> <span
 					class="rup-ui-button-text d-none d-sm-block">MButton</span>
 				</a>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
 						<button type="button" id="mbutton-buttonNew">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text">Nuevo</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonEdit">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text">Editar</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonCancel">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
+							<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 								class="rup-ui-button-text">Cancelar</span>
 						</button>
 					</li>
@@ -200,21 +200,21 @@
 				<ul id="fabButtonFixedList" class="rup-button-fab-list">
 					<li><button type="button" id="fabButtonList1" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-print" aria-hidden="true"></i>
+							<i class="mdi mdi-printer" aria-hidden="true"></i>
 						</button></li>
 					<li><button type="button" id="fabButtonList2" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-trash" aria-hidden="true"></i>
+							<i class="mdi mdi-delete" aria-hidden="true"></i>
 						</button></li>
 					<li><button type="button" id="fabButtonList3" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-pencil" aria-hidden="true"></i>
+							<i class="mdi-pencil" aria-hidden="true"></i>
 						</button></li>
 				</ul>
 				<button type="button" id="fabButtonFixed" data-fab="true"
 					data-fixed="true" data-list="fabButtonFixedList"
 					class="rup-button-fab rup-button-fixed ui-button ui-corner-all ui-widget rup-button">
-					<i class="fa fa-plus" aria-hidden="true"></i>
+					<i class="mdi mdi-plus" aria-hidden="true"></i>
 				</button>
 			</div>
 
@@ -238,7 +238,7 @@
 		</p>
 		<div class="example">
 			<button type="button" id="btnClickJQuery" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
+				<i class="mdi mdi-settings" aria-hidden="true"></i> <span
 					class="rup-ui-button-text d-none d-lg-block">Handler jQuery</span>
 			</button>
 			<button type="button" id="btnClickRup" class="">Handler RUP</button>

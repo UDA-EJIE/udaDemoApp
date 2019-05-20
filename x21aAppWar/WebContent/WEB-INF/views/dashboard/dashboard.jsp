@@ -67,13 +67,13 @@
   <div class="dashboard-aside">
     <div class="dashboard-menu-title">
       <a id="currentDashboardLink">
-        <i class="fa fa-tachometer" aria-hidden="true"></i><span class="current-dashboard" id="currentDashboard"></span>
+        <i class="mdi mdi-monitor-dashboard" aria-hidden="true"></i><span class="current-dashboard" id="currentDashboard"></span>
       </a>
     </div>
     <ul>
       <li>
         <a data-toggle="collapse" href="#dashboardList" aria-expanded="false" aria-controls="dashboardList">
-          <i class="fa fa-desktop" aria-hidden="true"></i><span>Escritorios</span>
+          <i class="mdi mdi-desktop-mac" aria-hidden="true"></i><span>Escritorios</span>
         </a>
         <div class="collapse" id="dashboardList">
           <ul>
@@ -84,7 +84,7 @@
       </li>
       <li>
         <a data-toggle="collapse" href="#toolsList" aria-expanded="false" aria-controls="toolsList">
-          <i class="fa fa-cog" aria-hidden="true"></i><span>Acciones</span>
+          <i class="mdi mdi-settings" aria-hidden="true"></i><span>Acciones</span>
         </a>
         <div class="collapse" id="toolsList">
           <ul>

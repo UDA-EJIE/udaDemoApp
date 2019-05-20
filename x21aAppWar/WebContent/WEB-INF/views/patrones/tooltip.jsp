@@ -62,7 +62,7 @@
 						<input id="code" name="code" type="text" class="form-control">
 						<span class="input-group-btn">
 							<button id="codeTooltip" class="btn btn-secondary" type="button">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
+								<i class="mdi mdi-comment-question" aria-hidden="true"></i>
 							</button>
 						</span>
 					</div>
@@ -83,7 +83,7 @@
 						<input id="identificador" name="identificador" type="text"
 							class="form-control"> <span class="input-group-btn">
 							<button id="idTooltip" class="btn btn-secondary" type="button">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
+								<i class="mdi mdi-comment-question" aria-hidden="true"></i>
 							</button>
 						</span>
 					</div>
@@ -105,7 +105,7 @@
 							class="form-control"> <span class="input-group-btn">
 							<button id="idHtmlTooltip" class="btn btn-secondary"
 								type="button">
-								<i class="fa fa-question-circle" aria-hidden="true"></i>
+								<i class="mdi mdi-comment-question" aria-hidden="true"></i>
 							</button>
 						</span>
 					</div>
