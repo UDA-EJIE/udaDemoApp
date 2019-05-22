@@ -22,30 +22,37 @@ jQuery(document).ready(function () {
 
     // Botón con icono JS
 	$("#btnIconJs").rup_button({
-      iconCss: "fa fa-cog"
+      iconCss: "mdi mdi-settings"
     });
 
     // Botón Rwd HTML Sd
 	$("#btnRwdHtmlSm").rup_button();
 	$("#btnRwdHtmlMd").rup_button();
 	$("#btnRwdJsSm").rup_button({
-      iconCss: "fa fa-cog",
+      iconCss: "mdi mdi-settings",
       labelCss: "hidden-sm-down"
     });
 	$("#btnRwdJsMd").rup_button({
-      iconCss: "fa fa-cog",
+      iconCss: "mdi mdi-settings",
       labelCss: "hidden-md-down"
     });
 
     // MButton
-
     $("#btnMButton").rup_button({});
 
-    $("#fabButton").rup_button({
+    $("#fabButton_18px").rup_button({
       // fab: true
     });
 
-	$("#fabButtonLayer").rup_button({
+	$("#fabButton_24px").rup_button({
+      // fab: true
+    });
+	
+	$("#fabButton_36px").rup_button({
+      // fab: true
+    });
+
+	$("#fabButton_48px").rup_button({
       // fab: true
     });
 
@@ -67,7 +74,7 @@ jQuery(document).ready(function () {
       });
     });
 	$("#btnClickRup").rup_button({
-      iconCss: "fa fa-cog",
+      iconCss: "mdi mdi-settings",
       click: function(){
         $.rup_messages("msgOK", {
           title: "Evento Click",
@@ -82,12 +89,11 @@ jQuery(document).ready(function () {
 	
 	
 	// Dropdown dialog
-	
 	jQuery("#dropdownDialogButton").rup_button({
 		dropdown:{
 			dropdownDialog: "dropdownDialog",
 			dropdownDialogConfig:{
-				title:"<span class='rup-icon rup-icon-filter'/>Administración de filtros",
+				title:"<i class='mdi mdi-filter' aria-hidden='true'></i>Administración de filtros",
 				width:"380px",
 				buttons: [{
 					text: "Guardar",
@@ -117,13 +123,14 @@ jQuery(document).ready(function () {
 	});
 	
 	var options_ejie_combo = {
-			source : [
-			   {label:"Si", value:"0"},
-			   {label:"No", value:"1"}
-			],
-			width: 120,
-			blank: ""
-		};
+		source : [
+		   {label:"Si", value:"0"},
+		   {label:"No", value:"1"}
+		],
+		width: "100%",
+		blank: "",
+        customClasses: ["select-material"]
+	};
 
 	
 	jQuery("#dropdownButton-combo").rup_combo(options_ejie_combo);

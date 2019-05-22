@@ -26,14 +26,14 @@ jQuery(function($){
 		    "zoomToMarker": 7,
 		};
  $("#marcador").rup_button({
-     iconCss: "fa fa-bookmark",
+     iconCss: "mdi mdi-bookmark",
      click: function(){
     	 COREProxy.api.interactions.addMarker("555661, 4793971", options);
      }
    });
  
  $("#centrar").rup_button({
-     iconCss: "fa  fa-search-plus",
+     iconCss: "mdi mdi-map-marker-radius",
 
      click: function(){
     	 COREProxy.api.interactions.zoomToCoordinates(["555661","4793971"], 10, true, 2500);
