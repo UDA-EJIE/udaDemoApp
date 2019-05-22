@@ -60,7 +60,7 @@
   </div>
 
   <!-- FAB Button -->
-  <button type="button" id="fabButton" data-fab="true" data-fixed="true" data-layer="fabButtonDiv"><span class="glyphicon glyphicon-cog" /></button>
+  <button type="button" id="fabButton" data-fab="true" data-fixed="true" data-layer="fabButtonDiv"><span class="mdi mdi-settings" /></button>
   <div id="fabButtonDiv">
 
 	</div>
