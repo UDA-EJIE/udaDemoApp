@@ -1,21 +1,27 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la �Licencia�);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Salvo cuando lo exija la legislaci�n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye �TAL CUAL�,
+ -- SIN GARANT�AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla Maestro Detalle</h2> <!-- Titulo pagina -->
+<h2>Maestro-Detalle Legacy</h2>
+<div id="error" style="display:none"></div>
+
 <h2>Comarca</h2>
+<div id="comarca_div" class="rup-table-container">
+<!-- 	<div id="error_comarca" style="display:none"></div> -->
+	<div id="comarca_feedback"></div>
+	<div id="comarca_toolbar"></div>
 	<div id="comarca_filter_div"  class="rup-table-filter">
 		<form id="comarca_filter_form">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
@@ -26,8 +32,8 @@
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
-						<label for="provinciaCode_filter_comarca" class="formulario_linea_label">provinciaCode</label>
-						<input type="text" name="provincia.code" class="formulario_linea_input form-control" id="provinciaCode_filter_comarca" />
+						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
+						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
@@ -45,41 +51,30 @@
 					</div>
 				</div>
 				<div id="comarca_filter_buttonSet" class="right_buttons">
-                   <button id="comarca_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-                             <i class="mdi mdi-eraser"></i>
-                      <span>
-                             <spring:message code="clear" />
-                      </span>
-                       </button>
-                       <button id="comarca_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
-                             <i class="mdi mdi-filter"></i>
-                      <span>
-                             <spring:message code="filter" />
-                      </span>
-                    </button>
-               </div>
-
+					<button id="comarca_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
+						<i class="mdi mdi-eraser"></i>
+			        	<span>
+			        		<spring:message code="clear" />
+			        	</span>
+					</button>
+					<button id="comarca_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
+						<i class="mdi mdi-filter"></i>
+			        	<span>
+			        		<spring:message code="filter" />
+			        	</span>
+					</button>
+				</div>
 			</fieldset>
 		</form>
 	</div>
 
-<table id="comarca" class="tableFit table-striped table-bordered" 
-	data-url-base="../jqGridComarca"
-	data-filter-form="#comarca_filter_form" 
-	cellspacing="0">
-        <thead>
-            <tr>
-                <th data-col-prop="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
-                <th data-col-prop="css" >css</th>
-                <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
-                <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
-            </tr>
-        </thead>
-</table>
-
-<!-- <h2>table</h2> -->
+	<div id="comarca_grid_div">
+		<!-- Tabla -->
+		<table id="comarca"></table>
+		<!-- Barra de paginación -->
+		<div id="comarca_pager"></div>
+	</div>
+</div>
 
 <div id="comarca_detail_div" class="rup-table-formEdit-detail">
 	<div id ="comarca_detail_navigation"></div>
@@ -120,14 +115,14 @@
 		</form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="comarca_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
+			<button id="comarca_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="comarca_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="comarca_detail_button_save_repeat" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<button id="comarca_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="comarca_detail_button_cancel" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>
@@ -135,7 +130,10 @@
 </div>
 
 <h2>Localidad</h2>
-
+<div id="localidad_div">
+<!-- 	<div id="error_localidad" style="display:none"></div> -->
+	<div id="localidad_feedback"></div>
+	<div id="localidad_toolbar"></div>
 	<div id="localidad_filter_div"  class="rup-table-filter">
 		<form id="localidad_filter_form">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
@@ -144,6 +142,10 @@
 					<div class="form-group col-sm">
 						<label for="code_filter_localidad" class="formulario_linea_label">code</label>
 						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
+					</div>
+					<div class="form-group col-sm">
+						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia</label>
+						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs</label>
@@ -161,39 +163,31 @@
 					</div>
 				</div>
 				<div id="localidad_filter_buttonSet" class="right_buttons">
-                       <button id="localidad_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-                             <i class="mdi mdi-eraser"></i>
-                      <span>
-                             <spring:message code="clear" />
-                      </span>
-                       </button>
-                       <button id="localidad_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
-                             <i class="mdi mdi-filter"></i>
-                      <span>
-                             <spring:message code="filter" />
-                      </span>
-                       </button>
-                 </div>
-
+					<button id="localidad_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
+						<i class="mdi mdi-eraser"></i>
+			        	<span>
+			        		<spring:message code="clear" />
+			        	</span>
+					</button>
+					<button id="localidad_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
+						<i class="mdi mdi-filter"></i>
+			        	<span>
+			        		<spring:message code="filter" />
+			        	</span>
+					</button>
+				</div>
 			</fieldset>
 		</form>
 	</div>
-	
-<table id="localidad" class="tableFit table-striped table-bordered" 
-	data-url-base="../jqGridLocalidad"
-	data-filter-form="#localidad_filter_form" 
-	cellspacing="0">
-        <thead>
-            <tr>
-                <th data-col-prop="code" data-col-sidx="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
-                <th data-col-prop="css" >css</th>
-            </tr>
-        </thead>
-</table>	
 
-<!-- <h2>table</h2> -->
+	<div id="localidad_grid_div">
+		<!-- Tabla -->
+		<table id="localidad"></table>
+		<!-- Barra de paginación -->
+		<div id="localidad_pager" ></div>
+	</div>
+
+</div>
 
 <div id="localidad_detail_div" class="rup-table-formEdit-detail">
 	<div id ="localidad_detail_navigation"></div>
@@ -227,13 +221,13 @@
 			    <div class="form-group fix-align col-sm">
 			    	<label for="comarcaRemote" class="formulario_linea_label">Comarca</label>
 			    	<select id="comarcaRemote" name="comarca.code" class="rup-combo"><option>&nbsp;</option></select>
-			    </div> -->
+			    </div>-->
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
 			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
 			    </div>
 			</div>
-			<div class="form-row">  
+		  	<div class="form-row">  
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
 			    	<input type="text" name="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
@@ -246,14 +240,14 @@
 		</form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="localidad_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
+			<button id="localidad_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="localidad_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="localidad_detail_button_save_repeat" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<button id="localidad_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="localidad_detail_button_cancel" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

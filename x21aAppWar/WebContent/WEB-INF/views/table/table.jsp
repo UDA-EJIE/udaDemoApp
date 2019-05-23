@@ -14,99 +14,99 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>${tituloPagina}</h2> <!-- Titulo pagina -->
+<h2>Tabla configurable</h2> <!-- Titulo pagina -->
 
-<div id="table_div" class="rup-table-container">
-	<div id="table_feedback"></div>
-	<div id="table_toolbar"></div>
-	<div id="table_filter_div" class="rup-table-filter">
-		<jsp:include page="includes/filterForm.jsp"></jsp:include>
-	</div>
+<jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 
-	<div id="table_grid_div">
-		<!-- Tabla -->
-		<table id="table"></table>
-		<!-- Barra de paginación -->
-		<div id="table_pager"></div>
-	</div>
-</div>	
+<table id="example" class="tableFit table-striped table-bordered table-material" 
+	data-url-base="."
+	data-filter-form="#example_filter_form">
+        <thead>
+            <tr>
+                <th data-col-prop="id" data-col-edit="false">Id</th>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                <th data-col-prop="apellido1">Primer apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
+            </tr>
+        </thead>
+</table>
 
-<div id="table_detail_div" class="rup-table-formEdit-detail">
-	<div id ="table_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
-		<form id="table_detail_form">
-			<div id ="table_detail_feedback"></div>
-			
-			<div class="form-row"> 
-				<div class="form-group col-sm">
-					<label for="id_detailForm_table" class="formulario_linea_label">
-						<spring:message code="id" />
-					</label>
-					<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
-				</div>
-				<div class="form-group col-sm">
-					<label for="nombre_detail_table" class="formulario_linea_label">
-						<spring:message code="nombre" />
-					</label>
-					<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" />
-				</div>
-			</div>
-			<div class="form-row"> 
-				<div class="form-group col-sm">
-					<label for="apellido1_detail_table" class="formulario_linea_label">
-						<spring:message code="apellido1" />
-					</label>
-					<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" />
-				</div>
-				<div class="form-group col-sm">
-					<label for="apellido2_detail_table" class="formulario_linea_label">
-						<spring:message code="apellido2" />
-					</label>
-					<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" />
-				</div>
-			</div>
-			<div class="form-row"> 
-				<div class="form-group col-sm">
-					<label for="fechaBaja_detail_table" class="formulario_linea_label">
-						<spring:message code="fechaBaja" />
-					</label>
-					<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
-				</div>
-				<div class="form-group col-sm">
-					<label for="fechaAlta_detail_table" class="formulario_linea_label">
-						<spring:message code="fechaAlta" />
-					</label>
-					<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="form-group col-sm">
-					<label for="ejie_detail_table" class="formulario_linea_label">
-						<spring:message code="ejie" />
-					</label>
-					<input type="checkbox" id="ejie_detail_table" class="formulario_linea_input form-control" name="ejie" value="1"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="rol_detail_table" class="formulario_linea_label">
-						<spring:message code="rol" />
-					</label>
-					<input type="text"  id="rol_detail_table" name="rol" class="formulario_linea_input form-control" />
-				</div>
-			</div>
-			
-		</form>
-	</div>
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
-			<button id="table_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive fix-editForm-buttons-align" type="button">
-				<spring:message code="save" />
-			</button>
-			<button id="table_detail_button_save_repeat" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive fix-editForm-buttons-align" type="button">
-				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="table_detail_button_cancel" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
-				<spring:message code="cancel" />
-			</button>
+<jsp:include page="includes/tableEdit.jsp"></jsp:include>
+
+<form id="example_tableConfiguration" class="mt-5">
+   <h3 id="pluginErrorLabel">Selección de Plugins</h3>
+   <fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
+	          <div class="col-sm-10">
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="editForm" value="0">
+	                  <label for="editForm">Edición en Formulario</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="colReorder" value="1">
+	                  <label for="colReorder">Col Reorder</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="seeker" value="2">
+	                  <label for="seeker">Seeker</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="buttons" value="3">
+	                  <label for="buttons">Botones</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="groups" value="4">
+	                  <label for="groups">Agrupamiento</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="multiFilter" value="5">
+	                  <label for="multiFilter">MultiFilter</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="inlineEdit" value="6">
+	                  <label for="inlineEdit">Edición en Linea</label>
+	              </div>
+	          </div>
 		</div>
-	</div>
-</div>
+  	</fieldset>
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
+			<div class="col-sm-10">
+			    <div class="radio-material pluginsControl">
+			        <input type="radio" id="multiSelection" name="example_seleccionTabla" value="7">
+			        <label for="multiSelection">Multiselección</label>
+			    </div>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="selection" name="example_seleccionTabla" value="8">
+		            <label for="selection">Selección Simple</label>
+		        </div>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="noSelection" name="example_seleccionTabla" value="9">
+		            <label for="noSelection">Sin selección</label>
+		        </div>
+	        </div>
+		</div>
+  	</fieldset>
+  	<fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>				    
+	          <div class="col-sm-10">
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="triggers" value="10">
+	                  <label for="triggers">Activar Triggers en Consola</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	               <input type="checkbox" id="multiPart" value="11">
+	               <label for="multiPart">Edición con MultiPart</label>
+	          	 </div>
+	          </div>
+		</div>
+  	</fieldset>
+	<span id="pluginError"></span>
+	<button id="example_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
+</form>

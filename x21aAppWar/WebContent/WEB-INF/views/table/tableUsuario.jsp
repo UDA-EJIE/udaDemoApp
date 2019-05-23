@@ -1,7 +1,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>USUARIO</h2>
 
-<jsp:include page="includes/usuarioFilterForm.jsp"></jsp:include>
+<jsp:include page="includes/tableUsuarioFilterForm.jsp"></jsp:include>
 
 <table id="usuario" class="table table-striped table-bordered" 
 	data-url-base="./tableUsuario" <%-- Table usuario se sustitulle por usuario que corresponde al controller,este es de pruebas --%>
@@ -33,4 +33,4 @@
         </tfoot>
 </table>
 
-<jsp:include page="includes/usuarioEdit.jsp"></jsp:include>
+<jsp:include page="includes/tableUsuarioEdit.jsp"></jsp:include>

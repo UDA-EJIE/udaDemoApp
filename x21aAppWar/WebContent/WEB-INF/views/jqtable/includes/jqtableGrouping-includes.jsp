@@ -14,4 +14,5 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aApp/tableMasterDetail.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/jqtable/jqtableColModel.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/jqtable/jqtableGrouping.js" type="text/javascript"></script>

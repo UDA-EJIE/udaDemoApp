@@ -1,7 +1,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>Tabla configurable con multiples PKs</h2>
 
-<jsp:include page="includes/MultiPkFilterForm.jsp"></jsp:include>
+<jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 
 <table id="MultiPk" class="tableFit table-striped table-bordered" 
 	data-url-base="./multipk"
@@ -18,7 +18,7 @@
         </thead>
 </table>
 
-<jsp:include page="includes/MultiPkEdit.jsp"></jsp:include>
+<jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
 <form id="multipk_tableConfiguration">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>

@@ -13,8 +13,6 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
- 
- 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aApp/tableColModel.js" type="text/javascript"></script>
-<script src="${staticsUrl}/x21a/scripts/x21aApp/tableFiltroSimple.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/table/tableTestTriggers.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/table/table.js" type="text/javascript"></script>
