@@ -133,10 +133,13 @@ jQuery(document).ready(function(){
 				"configurable" : { "i18nCaption" : "tableConfigurable" },
 				"multipk" : { "i18nCaption" : "tableMultipk" },
 				"masterDetail" : { "i18nCaption" : "tableMasterDetail" },
+				"tableDialog" : { "i18nCaption" : "tableDialog" },
+				/* METER LA TABLA EN DIALOGO */
 				"subLevel":[
 				    {"i18nCaption": "tableConfigurable", "url": "/x21aAppWar/table/configurable" },
 				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
-				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" }
+				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" },
+				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/tableDialog" }
 				]
 			},
 			"tableLegacy" : {
