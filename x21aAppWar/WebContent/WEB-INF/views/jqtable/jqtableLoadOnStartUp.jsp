@@ -18,14 +18,14 @@
 <div id="error" style="display:none"></div>
 
 <h2>Comarca</h2>
-<div id="comarca_div" class="rup-table-container">
+<div id="comarca_div" class="rup-jqtable-container">
 <!-- 	<div id="error_comarca" style="display:none"></div> -->
 	<div id="comarca_feedback"></div>
 	<div id="comarca_toolbar"></div>
-	<div id="comarca_filter_div"  class="rup-table-filter">
+	<div id="comarca_filter_div"  class="rup-jqtable-filter">
 		<form id="comarca_filter_form">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
-			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
+			<fieldset id="comarca_filter_fieldset" class="rup-jqtable-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="code_filter_comarca" class="formulario_linea_label">code</label>

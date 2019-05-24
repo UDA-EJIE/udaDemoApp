@@ -16,10 +16,10 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>${tituloPagina}</h2> <!-- Titulo pagina -->
 
-<div id="table_div" class="rup-table-container">
+<div id="table_div" class="rup-jqtable-container">
 	<div id="table_feedback"></div>
 	<div id="table_toolbar"></div>
-	<div id="table_filter_div" class="rup-table-filter">
+	<div id="table_filter_div" class="rup-jqtable-filter">
 		<jsp:include page="includes/jqtableFilterForm.jsp"></jsp:include>
 	</div>
 
@@ -31,7 +31,7 @@
 	</div>
 </div>	
 
-<div id="table_detail_div" class="rup-table-formEdit-detail">
+<div id="table_detail_div" class="rup-jqtable-formEdit-detail">
 	<div id ="table_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
 		<form id="table_detail_form">
@@ -96,7 +96,7 @@
 			
 		</form>
 	</div>
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+	<div class="rup-jqtable-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
 			<button id="table_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive fix-editForm-buttons-align" type="button">
 				<spring:message code="save" />

@@ -75,7 +75,7 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-datatable-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
 			<button id="example_detail_button_cancel" type="button">
 				<spring:message code="cancel" />

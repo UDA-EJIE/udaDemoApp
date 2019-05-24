@@ -150,7 +150,7 @@
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-datatable-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
 			<!-- Botón Guardar -->
 			<button id="MultiPk_detail_button_save" type="button">

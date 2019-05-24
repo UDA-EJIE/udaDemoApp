@@ -22,13 +22,13 @@
 
 <div id="tableDialog_layer_ajax"></div>
 <div id="tableDialog_layer_div" style="display:none">
-	<div id="tableDialog_div" class="rup-table-container">
+	<div id="tableDialog_div" class="rup-jqtable-container">
 		<div id="tableDialog_feedback"></div>
 		<div id="tableDialog_toolbar"></div>
-		<div id="tableDialog_filter_div" class="rup-table-filter">
+		<div id="tableDialog_filter_div" class="rup-jqtable-filter">
 			<form id="tableDialog_filter_form">
 				<div id="tableDialog_filter_toolbar" class="formulario_legend"></div>
-				<fieldset id="tableDialog_filter_fieldset" class="rup-table-filter-fieldset">
+				<fieldset id="tableDialog_filter_fieldset" class="rup-jqtable-filter-fieldset">
 					<div class="form-row">
 						<div class="form-group col-sm">
 							<label for="id_filter_table" class="formulario_linea_label"><spring:message code="id" /></label>
@@ -96,7 +96,7 @@
 		</div>
 	</div>	
 	
-	<div id="tableDialog_detail_div" class="rup-table-formEdit-detail">
+	<div id="tableDialog_detail_div" class="rup-jqtable-formEdit-detail">
 		<div id ="tableDialog_detail_navigation"></div>
 		<div class="ui-dialog-content ui-widget-content" >
 			<form id="tableDialog_detail_form">
@@ -144,7 +144,7 @@
 			</form>
 		</div>
 		
-		<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+		<div class="rup-jqtable-buttonpane ui-widget-content ui-helper-clearfix">
 			<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
 				<button id="tableDialog_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive fix-editForm-buttons-align" type="button">
 					<spring:message code="save" />

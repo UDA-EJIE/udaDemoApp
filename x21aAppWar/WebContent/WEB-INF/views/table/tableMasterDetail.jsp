@@ -119,7 +119,7 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-datatable-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
 			<button id="comarca_detail_button_save" type="button">
 				<spring:message code="save" />
@@ -245,7 +245,7 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-datatable-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
 			<button id="localidad_detail_button_save" type="button">
 				<spring:message code="save" />

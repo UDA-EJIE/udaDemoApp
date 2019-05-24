@@ -16,13 +16,13 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>${tituloPagina}</h2> <!-- Titulo pagina -->
 
-<div id="table_div" class="rup-table-container">
+<div id="table_div" class="rup-jqtable-container">
 	<div id="table_feedback"></div>		<!-- Feedback de la tabla -->
 	<div id="table_toolbar"></div>		<!-- Botonera de la tabla -->
-	<div id="table_filter_div" class="rup-table-filter">	<!-- Capa contenedora del formulario de filtrado -->
+	<div id="table_filter_div" class="rup-jqtable-filter">	<!-- Capa contenedora del formulario de filtrado -->
 		<form id="table_filter_form">						<!-- Formulario de filtrado -->
 			<div id="table_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
-			<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
+			<fieldset id="table_filter_fieldset" class="rup-jqtable-filter-fieldset">
 				<div class="form-row">
 				
 					<!-- Campos del formulario de filtrado -->
@@ -77,7 +77,7 @@
 </div>	
 
 <!-- Formulario de detalle -->
-<div id="table_detail_div" class="rup-table-formEdit-detail">
+<div id="table_detail_div" class="rup-jqtable-formEdit-detail">
 	<div id ="table_detail_navigation"></div>			<!-- Barra de navegación del detalle -->
 	<div class="ui-dialog-content ui-widget-content" >
 		<form id="table_detail_form">					<!-- Formulario -->
@@ -103,7 +103,7 @@
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
+	<div class="rup-jqtable-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
 			<!-- Botón Guardar -->
 			<button id="table_detail_button_save" class="btn-material btn-material-sm btn-material-primary-high-emphasis rup_jqtableEdit_buttonsResposive" type="button">
