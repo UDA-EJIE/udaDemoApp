@@ -3,8 +3,8 @@
 
 <jsp:include page="includes/tableUsuarioFilterForm.jsp"></jsp:include>
 
-<table id="usuario" class="table table-striped table-bordered" 
-	data-url-base="./tableUsuario" <%-- Table usuario se sustitulle por usuario que corresponde al controller,este es de pruebas --%>
+<table id="usuario" class="table table-striped table-bordered table-material" 
+	data-url-base="./tableUsuario" <%-- Table usuario se sustituye por usuario que corresponde al controller,este es de pruebas --%>
 	data-filter-form="#usuario_filter_form" 
 	cellspacing="0" width="100%">
         <thead>

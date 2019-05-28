@@ -17,13 +17,19 @@
 <!-- Titulo pagina -->
 <!-- <h2>table</h2> -->
 
+<!-- Formulario de detalle -->
 <div id="example_detail_div" class="rup-table-formEdit-detail">
-	<div id ="example_detail_navigation"></div>
-	<div class="dialog-content-material" >
+	<!-- Barra de navegación del detalle -->
+	<div id ="example_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
 		<form id="example_detail_form">
-			<div id ="example_detail_feedback"></div>
-			
-			<div class="form-row">    
+			<!-- Feedback del formulario de detalle -->
+			<div id ="example_detail_feedback"></div>	
+			<div class="form-row">
+				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
 			    	<input type="text" name="id" id="id_detailForm_table" />
 					<label for="id_detailForm_table"><spring:message code="id" /></label>

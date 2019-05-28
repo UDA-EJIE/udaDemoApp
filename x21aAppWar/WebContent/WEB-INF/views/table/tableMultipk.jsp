@@ -3,7 +3,7 @@
 
 <jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 
-<table id="MultiPk" class="tableFit table-striped table-bordered" 
+<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="./multipk"
 	data-filter-form="#MultiPk_filter_form" 
 	cellspacing="0">

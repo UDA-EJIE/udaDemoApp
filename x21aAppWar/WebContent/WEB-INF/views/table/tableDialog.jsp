@@ -23,11 +23,14 @@
 <div id="tableDialog_layer_ajax"></div>
 <div id="tableDialog_layer_div" style="display:none">
 	<div id="tableDialog_div" class="rup-table-container">
+		<!-- Feedback del formulario de filtrado -->
 		<div id="tableDialog_feedback"></div>
 		<div id="tableDialog_toolbar"></div>
 		<div id="tableDialog_filter_div" class="rup-table-filter">
-			<form id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
-				<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
+			<!-- Formulario de filtrado -->
+			<form id="MultiPk_filter_form">
+				<!-- Barra de herramientas del formulario de filtrado -->
+				<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>
 				<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
 					<div class="form-row">
 						<!-- Campos del formulario de filtrado -->
@@ -86,7 +89,7 @@
 	
 		<div id="tableDialog_grid_div">
 			<!-- Tabla -->
-			<table id="MultiPk" class="tableFit table-striped table-bordered" 
+			<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
 			data-url-base="./multipk"
 			data-filter-form="#MultiPk_filter_form" 
 			cellspacing="0">
@@ -100,17 +103,22 @@
 		            </tr>
 		        </thead>
 		</table>
-			<!-- Barra de paginaciÃ³n -->
+			<!-- Barra de paginación -->
 			<div id="tableDialog_pager"></div>
 		</div>
 	</div>	
 	
 <!-- Formulario de detalle -->
 <div id="MultiPk_detail_div" class="rup-table-formEdit-detail">
-	<div id ="MultiPk_detail_navigation"></div>			<!-- Barra de navegaciÃ³n del detalle -->
-	<div class="ui-dialog-content ui-widget-content" >
-		<form id="MultiPk_detail_form">					<!-- Formulario -->
-			<div id ="MultiPk_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
+	<!-- Barra de navegación del detalle -->
+	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
+		<form id="MultiPk_detail_form">
+			<!-- Feedback del formulario de detalle -->
+			<div id ="MultiPk_detail_feedback"></div>
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
@@ -152,13 +160,13 @@
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
-			<!-- BotÃ³n Guardar -->
-			<button id="MultiPk_detail_button_save" type="button">
-				<spring:message code="save" />
-			</button>
 			<!-- Enlace cancelar -->
 			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
+			</button>
+			<!-- Botón Guardar -->
+			<button id="MultiPk_detail_button_save" type="button">
+				<spring:message code="save" />
 			</button>
 		</div>
 	</div>

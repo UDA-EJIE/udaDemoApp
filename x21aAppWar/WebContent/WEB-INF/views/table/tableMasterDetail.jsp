@@ -63,7 +63,7 @@
 		</form>
 	</div>
 
-<table id="comarca" class="tableFit table-striped table-bordered" 
+<table id="comarca" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="../jqGridComarca"
 	data-filter-form="#comarca_filter_form" 
 	cellspacing="0">
@@ -81,13 +81,19 @@
 
 <!-- <h2>table</h2> -->
 
+<!-- Formulario de detalle -->
 <div id="comarca_detail_div" class="rup-table-formEdit-detail">
-	<div id ="comarca_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
+	<!-- Barra de navegación del detalle -->
+	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
 		<form id="comarca_detail_form">
+			<!-- Feedback del formulario de detalle -->
 			<div id ="comarca_detail_feedback"></div>
-			
-			<div class="form-row">    
+			<div class="form-row">
+				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
 			    	<input type="text" name="code" id="code_detailForm_table" />
 					<label for="code_detailForm_table">code</label>
@@ -116,19 +122,20 @@
 			    	<input type="text" name="provincia.descEs" id="provinciaDescEs_detail_table" />
 			    	<label for="provinciaDescEs_detail_table">provincia.descEs</label>
 			    </div>
+				<!-- Fin campos del formulario de detalle -->	
 			</div>	
 		</form>
 	</div>
 	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
+			<button id="comarca_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
 			<button id="comarca_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
 			<button id="comarca_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="comarca_detail_button_cancel" type="button">
-				<spring:message code="cancel" />
 			</button>
 		</div>
 	</div>
@@ -179,7 +186,7 @@
 		</form>
 	</div>
 	
-<table id="localidad" class="tableFit table-striped table-bordered" 
+<table id="localidad" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="../jqGridLocalidad"
 	data-filter-form="#localidad_filter_form" 
 	cellspacing="0">
@@ -195,13 +202,19 @@
 
 <!-- <h2>table</h2> -->
 
+<!-- Formulario de detalle -->
 <div id="localidad_detail_div" class="rup-table-formEdit-detail">
-	<div id ="localidad_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
+	<!-- Barra de navegación del detalle -->
+	<div id ="localidad_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
 		<form id="localidad_detail_form">
+			<!-- Feedback del formulario de detalle -->
 			<div id ="localidad_detail_feedback"></div>
-			
-			<div class="form-row">    
+			<div class="form-row">
+				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
 			    	<input type="text" name="code" id="code_detailForm_table" />
 					<label for="code_detailForm_table">code</label>
@@ -242,19 +255,20 @@
 			    	<input type="text" name="comarca.descEu" id="comarcaDescEu_detail_table" />
 			    	<label for="comarcaDescEu_detail_table">comarca.descEu</label>
 			    </div>
+				<!-- Fin campos del formulario de detalle -->	
 			</div>	
 		</form>
 	</div>
 	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
 		<div class="text-right">
+			<button id="localidad_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
 			<button id="localidad_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
 			<button id="localidad_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="localidad_detail_button_cancel" type="button">
-				<spring:message code="cancel" />
 			</button>
 		</div>
 	</div>

@@ -3,48 +3,53 @@
 
 <!-- Formulario de detalle -->
 <div id="MultiPk_detail_div" class="rup-table-formEdit-detail">
-	<div id ="MultiPk_detail_navigation"></div>			<!-- Barra de navegaciÃ³n del detalle -->
-	<div class="ui-dialog-content ui-widget-content" >
-		<form id="MultiPk_detail_form">					<!-- Formulario -->
-			<div id ="MultiPk_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
+	<!-- Barra de navegación del detalle -->
+	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
+		<form id="MultiPk_detail_form">
+			<!-- Feedback del formulario de detalle -->
+			<div id ="MultiPk_detail_feedback"></div>
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
-				<div class="form-group col-sm">
-					<label for="ida_detail_table" class="formulario_linea_label"><spring:message code="ida"/></label>
-					<input type="text" name="ida" class="formulario_linea_input form-control" id="ida_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="ida" id="ida_detail_table"/>
+					<label for="ida_detail_table"><spring:message code="ida"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="idb_detail_table" class="formulario_linea_label"><spring:message code="idb"/></label>
-					<input type="text" name="idb" class="formulario_linea_input form-control" id="idb_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="idb" id="idb_detail_table"/>
+					<label for="idb_detail_table"><spring:message code="idb"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre"/></label>
-					<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="nombre" id="nombre_detail_table"/>
+					<label for="nombre_detail_table"><spring:message code="nombre"/></label>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-sm">
-					<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1"/></label>
-					<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="apellido1" id="apellido1_detail_table"/>
+					<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2"/></label>
-					<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="apellido2" id="apellido2_detail_table"/>
+					<label for="apellido2_detail_table"><spring:message code="apellido2"/></label>
 				</div>
 				<!-- Fin campos del formulario de detalle -->
 			</div>
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<!-- BotÃ³n Guardar -->
-			<button id="MultiPk_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
-				<spring:message code="save" />
-			</button>
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+		<div class="text-right">
 			<!-- Enlace cancelar -->
-			<button id="MultiPk_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
+			</button>
+			<!-- Botón Guardar -->
+			<button id="MultiPk_detail_button_save" type="button">
+				<spring:message code="save" />
 			</button>
 		</div>
 	</div>

@@ -3,71 +3,70 @@
 
 <!-- Formulario de detalle -->
 <div id="usuario_detail_div" class="rup-table-formEdit-detail">
-	<div id ="usuario_detail_navigation"></div>			<!-- Barra de navegaciÃ³n del detalle -->
-	<div class="ui-dialog-content ui-widget-content" >
-		<form id="usuario_detail_form">					<!-- Formulario -->
-			<div id ="usuario_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
+	<!-- Barra de navegación del detalle -->
+	<div id ="usuario_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
+		<form id="usuario_detail_form">
+			<!-- Feedback del formulario de detalle -->
+			<div id ="usuario_detail_feedback"></div>
 			<div class="form-row">
-			
 				<!-- Campos del formulario de detalle -->
-				<div class="form-group col-sm">
-					<label for="id_detail_table" class="formulario_linea_label"><spring:message code="id"/></label>
-					<input type="text" name="id" class="formulario_linea_input form-control" id="id_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="id" id="id_detail_table"/>
+					<label for="id_detail_table"><spring:message code="id"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre"/></label>
-					<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="nombre" id="nombre_detail_table"/>
+					<label for="nombre_detail_table"><spring:message code="nombre"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1"/></label>
-					<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="apellido1" id="apellido1_detail_table"/>
+					<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2"/></label>
-					<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="apellido2" id="apellido2_detail_table"/>
+					<label for="apellido2_detail_table"><spring:message code="apellido2"/></label>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-sm">
-					<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie"/></label>
-					<input type="checkbox" name="ejie" class="formulario_linea_input form-control" id="ejie_detail_table"/>							
+				<div class="form-groupMaterial col-sm">
+					<input type="checkbox" name="ejie" id="ejie_detail_table"/>			
+					<label for="ejie_detail_table"><spring:message code="ejie"/></label>				
 				</div>
-				<div class="form-group col-sm">
-					<label for="fechaAlta_detail_table" class="formulario_linea_label"><spring:message code="fechaAlta"/></label>
-					<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="fechaAlta" id="fechaAlta_detail_table"/>
+					<label for="fechaAlta_detail_table"><spring:message code="fechaAlta"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja"/></label>
-					<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="fechaBaja" id="fechaBaja_detail_table"/>
+					<label for="fechaBaja_detail_table"><spring:message code="fechaBaja"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="rol_detail_table" class="formulario_linea_label"><spring:message code="rol"/></label>
-					<input type="text" name="rol" class="formulario_linea_input form-control" id="rol_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="rol" id="rol_detail_table"/>
+					<label for="rol_detail_table"><spring:message code="rol"/></label>
 				</div>
-				<div class="form-group col-sm">
-					<label for="fechaModif_detail_table" class="formulario_linea_label"><spring:message code="fechaModif"/></label>
-					<input type="text" name="fechaModif" class="formulario_linea_input form-control" id="fechaModif_detail_table"/>
+				<div class="form-groupMaterial col-sm">
+					<input type="text" name="fechaModif" id="fechaModif_detail_table"/>
+					<label for="fechaModif_detail_table"><spring:message code="fechaModif"/></label>
 				</div>
-				<!-- Fin campos del formulario de detalle -->
-				
+				<!-- Fin campos del formulario de detalle -->	
 			</div>
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div id="table_filter_buttonSet" class="right_buttons">
-		<!-- Enlace cancelar -->
-        <button id="usuario_detail_button_cancel" type="button" class="btn btn-primary rup-limpiar">
-        	<i class="mdi mdi-eraser"></i>
-        	<span>
-        		<spring:message code="clear" />
-        	</span>
-        </button>
-        <!-- BotÃ³n Guardar -->
-        <button id="usuario_detail_button_save" type="button" class="btn btn-info rup-filtrar">
-        	<i class="mdi mdi-filter"></i>
-        	<span>
-        		<spring:message code="filter" />
-        	</span>
-        </button>
+	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+		<div class="text-right">
+			<!-- Enlace cancelar -->
+			<button id="usuario_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
+			<!-- Botón Guardar -->
+			<button id="usuario_detail_button_save" type="button">
+				<spring:message code="save" />
+			</button>
+		</div>
     </div>
 </div>
