@@ -114,6 +114,7 @@ jQuery(function($){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		rowStriping: true,
 		blank: "",
+		width: "100%",
         customClasses: ["select-material"]
 	});
 	/*
@@ -122,6 +123,7 @@ jQuery(function($){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
 		rowStriping: true,
 		blank: "",
+		width: "100%",
 	    customClasses: ["select-material"]
 	});*/
 });
