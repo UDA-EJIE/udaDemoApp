@@ -64,11 +64,11 @@
 		<p>
 			Para ello se hará uso de las clases de Bootstrap definidas para ello
 			como son
-			<code>d-none d-md-block</code>
+			<code>d-none d-md-inline</code>
 			,
 			<code>d-none</code>
 			,
-			<code>d-none d-lg-block</code>
+			<code>d-none d-lg-inline</code>
 			...
 		</p>
 		<p>
@@ -80,11 +80,11 @@
 		<div class="example">
 			<button type="button" id="btnRwdHtmlSm" class="btn-material btn-material-primary-high-emphasis">
 				<i class="mdi mdi-settings" aria-hidden="true"></i> 
-				<span class="rup-ui-button-text d-none d-md-block">Rwd Html Sm</span>
+				<span class="rup-ui-button-text d-none d-md-inline">Rwd Html Sm</span>
 			</button>
 			<button type="button" id="btnRwdHtmlMd" class="btn-material btn-material-primary-high-emphasis">
 				<i class="mdi mdi-settings" aria-hidden="true"></i>
-				<span class="rup-ui-button-text d-none d-lg-block">Rwd Html Md</span>
+				<span class="rup-ui-button-text d-none d-lg-inline">Rwd Html Md</span>
 			</button>
 			<button type="button" id="btnRwdJsSm" class="btn-material btn-material-primary-high-emphasis">
 				<span>Rwd Js Sm</span>
@@ -105,26 +105,26 @@
 			<div class="rup-mbutton">
 				<button type="button" id="btnMButton" class="btn-material btn-material-primary-high-emphasis" data-mbutton="true">
 					<i class="mdi mdi-settings" aria-hidden="true"></i> 
-					<span class="rup-ui-button-text d-none d-lg-block">MButton</span>
+					<span class="rup-ui-button-text d-none d-lg-inline">MButton</span>
 				</button>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
 						<button type="button" id="mbutton-buttonNew" class="btn-material btn-material-primary-high-emphasis">
 							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
-							<span class="rup-ui-button-text d-none d-lg-block">Nuevo</span>
+							<span class="rup-ui-button-text d-none d-lg-inline">Nuevo</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonEdit" class="btn-material btn-material-primary-high-emphasis">
 							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
-							<span class="rup-ui-button-text d-none d-lg-block">Editar</span>
+							<span class="rup-ui-button-text d-none d-lg-inline">Editar</span>
 						</button>
 					</li>
 					<li>
 						<button type="button" id="mbutton-buttonCancel" class="btn-material btn-material-primary-high-emphasis">
 							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
-							<span class="rup-ui-button-text d-none d-lg-block">Cancelar</span>
+							<span class="rup-ui-button-text d-none d-lg-inline">Cancelar</span>
 						</button>
 					</li>
 				</ul>
@@ -137,7 +137,7 @@
 			<div class="rup-mbutton rup-collapsed-md">
 				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> 
 					<i class="mdi mdi-settings" aria-hidden="true"></i>
-					<span class="rup-ui-button-text d-none d-sm-block">MButton</span>
+					<span class="rup-ui-button-text d-none d-sm-inline">MButton</span>
 				</a>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
@@ -262,7 +262,7 @@
 		<div class="example">
 			<button type="button" id="btnClickJQuery" class="btn-material btn-material-primary-high-emphasis">
 				<i class="mdi mdi-settings" aria-hidden="true"></i>
-				<span class="rup-ui-button-text d-none d-lg-block">Handler jQuery</span>
+				<span class="rup-ui-button-text d-none d-lg-inline">Handler jQuery</span>
 			</button>
 			<button type="button" id="btnClickRup" class="btn-material btn-material-primary-high-emphasis">Handler RUP</button>
 		</div>

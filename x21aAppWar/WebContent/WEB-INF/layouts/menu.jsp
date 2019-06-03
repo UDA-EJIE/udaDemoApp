@@ -22,7 +22,7 @@
 		aria-label="Toggle navigation"></button>
 	<div id="navbarResponsive"
 		class="collapse navbar-toggleable-md col-md-12 no-gutter">
-		<a class="navbar-brand" href="/x21aAppWar/">
+		<a class="navbar-brand text-decoration-none" href="/x21aAppWar/">
 			<i class="mdi mdi-home" aria-hidden="true"></i>
 			<spring:message code="app.title" />
 		</a>

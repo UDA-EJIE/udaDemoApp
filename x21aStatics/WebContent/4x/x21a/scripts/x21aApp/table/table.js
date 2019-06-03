@@ -91,7 +91,9 @@ jQuery(function($){
 							value: elem.codTipoSubsanacion
 						};
 						
-					})
+					}),
+					width: "100%",
+					customClasses: ["select-material"]
 				}
 				, formoptions:{rowpos:3, colpos:2}
 			}
