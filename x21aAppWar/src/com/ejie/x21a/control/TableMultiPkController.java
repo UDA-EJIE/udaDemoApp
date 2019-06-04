@@ -33,9 +33,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 @RequestMapping (value = "/table/multipk")
 
-public class MultiPkController  {
+public class TableMultiPkController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(MultiPkController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TableMultiPkController.class);
 
 	@Autowired
 	private MultiPkService multiPkService;
@@ -59,14 +59,14 @@ public class MultiPkController  {
 		multiPk.setIda(ida);
 		multiPk.setIdb(idb);
         multiPk = this.multiPkService.find(multiPk);
-        MultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
+        TableMultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
         return multiPk;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		
-		return "multipk";
+		return "tableMultipk";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class MultiPkController  {
 	 */
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public @ResponseBody List<MultiPk> getAll(@ModelAttribute MultiPk filterMultiPk) {
-		MultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
+		TableMultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
 	    return this.multiPkService.findAll(filterMultiPk, null);
 	}
 
@@ -96,7 +96,7 @@ public class MultiPkController  {
 	@RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody MultiPk edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
-		MultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
+		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
         return multiPkAux;
     }
 
@@ -113,7 +113,7 @@ public class MultiPkController  {
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody MultiPk add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
-        MultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
+        TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
     	return multiPkAux;
 	}
 
@@ -134,7 +134,7 @@ public class MultiPkController  {
         multiPk.setIda(ida);
         multiPk.setIdb(idb);
         this.multiPkService.remove(multiPk);
-       	MultiPkController.logger.info("[DELETE] : MultiPk borrado correctamente");
+       	TableMultiPkController.logger.info("[DELETE] : MultiPk borrado correctamente");
        	return multiPk;
     }
     
@@ -152,8 +152,8 @@ public class MultiPkController  {
 	 */
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
-		MultiPkController.logger.info("[GET - View] : multipk");
-		return "multipk";
+		TableMultiPkController.logger.info("[GET - View] : tableMultipk");
+		return "tableMultipk";
 	}
 	 
 	 /**
@@ -172,13 +172,13 @@ public class MultiPkController  {
 	public @ResponseBody TableResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		MultiPkController.logger.info("[POST - filter] : Obtener MultiPks");
+		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks");
 		return this.multiPkService.filter(filterMultiPk, tableRequestDto, false);
 	}
 	
 	@RequestMapping(value = "/filter2", method = RequestMethod.POST)
 	public @ResponseBody TableResponseDto<MultiPk> filter2() {
-		MultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
+		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
 		return this.multiPkService.filter(new MultiPk(), new TableRequestDto(), false);
 	}
 	 
@@ -201,7 +201,7 @@ public class MultiPkController  {
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody(param="search") MultiPk searchMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		MultiPkController.logger.info("[POST - search] : Buscar MultiPks");
+		TableMultiPkController.logger.info("[POST - search] : Buscar MultiPks");
 		return this.multiPkService.search(filterMultiPk, searchMultiPk, tableRequestDto, false);
 	}
 	
@@ -222,9 +222,9 @@ public class MultiPkController  {
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		MultiPkController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples MultiPks");
+		TableMultiPkController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples MultiPks");
 		this.multiPkService.removeMultiple(filterMultiPk, tableRequestDto, false);
-		MultiPkController.logger.info("All entities correctly deleted!");
+		TableMultiPkController.logger.info("All entities correctly deleted!");
 		
 		return tableRequestDto.getMultiselection().getSelectedIds();
 	}
@@ -239,7 +239,7 @@ public class MultiPkController  {
 	protected @ResponseBody List<MultiPk> getClipboardReport(
 			@RequestJsonBody(param="filter") MultiPk  filterMultiPk ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
-		MultiPkController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
+		TableMultiPkController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
 		return this.multiPkService.getMultiple(filterMultiPk, tableRequestDto, false);
 	}
 	

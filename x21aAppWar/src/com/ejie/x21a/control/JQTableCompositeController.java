@@ -55,9 +55,9 @@ import com.ejie.x38.util.ObjectConversionManager;
 @Controller
 @RequestMapping (value = "/tableComposite")
 
-public class TableCompositeController  {
+public class JQTableCompositeController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(TableCompositeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(JQTableCompositeController.class);
 
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -75,7 +75,7 @@ public class TableCompositeController  {
 	@RequestMapping(value = "formEdit", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaCompositeFormEdit", null, LocaleContextHolder.getLocale()));
-		return "tableCompositeFormEdit";
+		return "jqtableCompositeFormEdit";
 	}
 	
 	
@@ -110,14 +110,14 @@ public class TableCompositeController  {
 	public @ResponseBody JQGridDto<Usuario> filter(
 			@ModelAttribute() Usuario usuarioFilter, @ModelAttribute Pagination pagination,
 			HttpServletRequest request) {
-			TableCompositeController.logger.info("[GET - jqGrid] : Obtener Usuarios");
+			JQTableCompositeController.logger.info("[GET - jqGrid] : Obtener Usuarios");
            
 			return usuarioService.filter(usuarioFilter, pagination, false);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Object getAll(@ModelAttribute() Usuario usuarioFilter){
-		TableCompositeController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
+		JQTableCompositeController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return this.usuarioService.findAllLike(usuarioFilter, null, false);
 	}
 	
@@ -133,7 +133,7 @@ public class TableCompositeController  {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody Object search(@RequestBody SearchDto<Usuario, Usuario> search){
-		TableCompositeController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
+		JQTableCompositeController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 
 		return this.usuarioService.search(search.getFilterParams(Usuario.class) ,search.getSearchParams(Usuario.class), search.getPagination(), false);
 	}
