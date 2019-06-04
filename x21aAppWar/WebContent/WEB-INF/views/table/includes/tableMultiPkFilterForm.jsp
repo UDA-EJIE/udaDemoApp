@@ -39,8 +39,8 @@
 			<!-- Fin campos del formulario de filtrado -->
 		</div>
 		<!-- Botonera del formulario de filtrado -->
-		<div id="MultiPk_filter_buttonSet" class="right_buttons">
-			<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+		<div id="MultiPk_filter_buttonSet" class="text-right">
+			<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 	        		<spring:message code="clear" />

@@ -41,13 +41,13 @@
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
-			<!-- Enlace cancelar -->
+			<!-- Botón cancelar -->
 			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
-			<!-- Botón Guardar -->
+			<!-- Botón guardar -->
 			<button id="MultiPk_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>

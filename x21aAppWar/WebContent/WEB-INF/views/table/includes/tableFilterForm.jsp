@@ -47,9 +47,9 @@
 	</div>
      
     <!-- Botonera del formulario de filtrado -->
-    <div id="example_filter_buttonSet" class="right_buttons">
+    <div id="example_filter_buttonSet" class="text-right">
     	<!-- Botón de limpiar -->
-        <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+        <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
         	<span>Limpiar</span>
         </button>

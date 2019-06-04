@@ -69,8 +69,8 @@
 						<!-- Fin campos del formulario de filtrado -->
 					</div>
 					<!-- Botonera del formulario de filtrado -->
-					<div id="MultiPk_filter_buttonSet" class="right_buttons">
-						<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+					<div id="MultiPk_filter_buttonSet" class="text-right">
+						<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
 				        	<i class="mdi mdi-eraser"></i>
 				        	<span>
 				        		<spring:message code="clear" />
@@ -90,19 +90,18 @@
 		<div id="tableDialog_grid_div">
 			<!-- Tabla -->
 			<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
-			data-url-base="./multipk"
-			data-filter-form="#MultiPk_filter_form" 
-			cellspacing="0">
+				data-url-base="./multipk"
+				data-filter-form="#MultiPk_filter_form">
 		        <thead>
 		            <tr>
-			                <th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
-			                <th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
-			                <th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
-			                <th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
-			                <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
+		                <th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
+		                <th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
+		                <th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
+		                <th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
+		                <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
 		            </tr>
 		        </thead>
-		</table>
+			</table>
 			<!-- Barra de paginación -->
 			<div id="tableDialog_pager"></div>
 		</div>
@@ -158,7 +157,7 @@
 		</form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
 			<!-- Enlace cancelar -->
 			<button id="MultiPk_detail_button_cancel" type="button">

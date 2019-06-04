@@ -44,8 +44,8 @@
 						<label for="css_filter_comarca">css</label>
 					</div>
 				</div>
-				<div id="comarca_filter_buttonSet" class="right_buttons">
-                   <button id="comarca_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+				<div id="comarca_filter_buttonSet" class="text-right">
+                   <button id="comarca_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
                              <i class="mdi mdi-eraser"></i>
                       <span>
                              <spring:message code="clear" />
@@ -65,18 +65,17 @@
 
 <table id="comarca" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="../jqGridComarca"
-	data-filter-form="#comarca_filter_form" 
-	cellspacing="0">
-        <thead>
-            <tr>
-                <th data-col-prop="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
-                <th data-col-prop="css" >css</th>
-                <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
-                <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
-            </tr>
-        </thead>
+	data-filter-form="#comarca_filter_form">
+    <thead>
+        <tr>
+            <th data-col-prop="code">code</th>
+            <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
+            <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
+            <th data-col-prop="css" >css</th>
+            <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
+            <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
+        </tr>
+    </thead>
 </table>
 
 <!-- <h2>table</h2> -->
@@ -126,7 +125,7 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
 			<button id="comarca_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
@@ -167,8 +166,8 @@
 						<label for="css_filter_localidad">css</label>
 					</div>
 				</div>
-				<div id="localidad_filter_buttonSet" class="right_buttons">
-                       <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+				<div id="localidad_filter_buttonSet" class="text-right">
+                       <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
                              <i class="mdi mdi-eraser"></i>
                       <span>
                              <spring:message code="clear" />
@@ -188,16 +187,15 @@
 	
 <table id="localidad" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="../jqGridLocalidad"
-	data-filter-form="#localidad_filter_form" 
-	cellspacing="0">
-        <thead>
-            <tr>
-                <th data-col-prop="code" data-col-sidx="code">code</th>
-                <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-                <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
-                <th data-col-prop="css" >css</th>
-            </tr>
-        </thead>
+	data-filter-form="#localidad_filter_form">
+	<thead>
+		<tr>
+			<th data-col-prop="code" data-col-sidx="code">code</th>
+		    <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
+		    <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
+		    <th data-col-prop="css">css</th>
+		</tr>
+	</thead>
 </table>	
 
 <!-- <h2>table</h2> -->
@@ -259,7 +257,7 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
 			<button id="localidad_detail_button_cancel" type="button">
 				<spring:message code="cancel" />

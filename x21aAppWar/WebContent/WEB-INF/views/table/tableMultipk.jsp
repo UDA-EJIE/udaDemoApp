@@ -5,17 +5,16 @@
 
 <table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="./multipk"
-	data-filter-form="#MultiPk_filter_form" 
-	cellspacing="0">
-        <thead>
-            <tr>
-	                <th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
-	                <th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
-	                <th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
-	                <th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
-	                <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
-            </tr>
-        </thead>
+	data-filter-form="#MultiPk_filter_form">
+    <thead>
+		<tr>
+			<th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
+			<th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
+			<th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
+			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
+			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
+		</tr>
+	</thead>
 </table>
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
@@ -26,29 +25,29 @@
 		<div class="row">
 			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
 	          <div class="col-sm-10">
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="editForm" class="custom-control-input" value="0">
-	                  <label for="editForm" class="custom-control-label">Edición en Formulario</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="editForm" value="0">
+	                  <label for="editForm">Edición en Formulario</label>
 	              </div>
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="colReorder" class="custom-control-input" value="1">
-	                  <label for="colReorder" class="custom-control-label">Col Reorder</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="colReorder" value="1">
+	                  <label for="colReorder">Col Reorder</label>
 	              </div>
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="seeker" class="custom-control-input" value="3">
-	                  <label for="seeker" class="custom-control-label">Seeker</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="seeker" value="3">
+	                  <label for="seeker">Seeker</label>
 	              </div>
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="buttons" class="custom-control-input" value="5">
-	                  <label for="buttons" class="custom-control-label">Botones</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="buttons" value="5">
+	                  <label for="buttons">Botones</label>
 	              </div>
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="groups" class="custom-control-input" value="6">
-	                  <label for="groups" class="custom-control-label">Agrupamiento</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="groups" value="6">
+	                  <label for="groups">Agrupamiento</label>
 	              </div>
-	              <div class="form-check custom-control custom-checkbox pluginsControl">
-	                  <input type="checkbox" id="inlineEdit" class="custom-control-input" value="6">
-	                  <label for="inlineEdit" class="custom-control-label">Edición en Linea</label>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="inlineEdit" value="6">
+	                  <label for="inlineEdit">Edición en Linea</label>
 	              </div>
 	          </div>
 		</div>
@@ -57,21 +56,21 @@
 		<div class="row">
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
-			    <div class="form-check custom-control custom-radio pluginsControl">
-			        <input type="radio" id="multiSelection" class="custom-control-input" name="multipk_seleccionTabla" value="2">
-			        <label for="multiSelection" class="custom-control-label">Multiselección</label>
+			    <div class="radio-material pluginsControl">
+			        <input type="radio" id="multiSelection" name="multipk_seleccionTabla" value="2">
+			        <label for="multiSelection">Multiselección</label>
 			    </div>
-		        <div class="form-check custom-control custom-radio pluginsControl">
-		            <input type="radio" id="selection" class="custom-control-input"  name="multipk_seleccionTabla" value="4">
-		            <label for="selection" class="custom-control-label">Selección Simple</label>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="selection" name="multipk_seleccionTabla" value="4">
+		            <label for="selection">Selección Simple</label>
 		        </div>
-		        <div class="form-check custom-control custom-radio pluginsControl">
-		            <input type="radio" id="noSelection" class="custom-control-input"  name="multipk_seleccionTabla" value="7">
-		            <label for="noSelection" class="custom-control-label">Sin selección</label>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="noSelection" name="multipk_seleccionTabla" value="7">
+		            <label for="noSelection">Sin selección</label>
 		        </div>
 	        </div>
 		</div>
   	</fieldset>
 	<span id="pluginError"></span>
-	<button id="multipk_aplicar" type="button" class="btn btn-primary">Aplicar Cambios</button>
+	<button id="multipk_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
 </form>

@@ -81,14 +81,18 @@
 			</div>	
 		</form>
 	</div>
-	<div class="rup-table-buttonpanel-material ui-helper-clearfix">
+	<!-- Botonera del formulario de detalle -->
+	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
+			<!-- Botón cancelar -->
 			<button id="example_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
+			<!-- Botón guardar -->
 			<button id="example_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
+			<!-- Botón guardar y continuar -->
 			<button id="example_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
