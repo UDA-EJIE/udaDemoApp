@@ -54,7 +54,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
-import com.ejie.x21a.service.AlumnoService;
+import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
@@ -73,12 +73,12 @@ import com.ejie.x38.validation.ValidationManager;
  
 @Controller
 @RequestMapping (value = "/administracion/alumno")
-public class AlumnoController  {
+public class TableAlumnoController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(AlumnoController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TableAlumnoController.class);
 
 	@Autowired
-	private AlumnoService alumnoService;
+	private TableAlumnoService alumnoService;
 	
 	@Autowired
 	private NoraPaisService noraPaisService;
@@ -124,7 +124,7 @@ public class AlumnoController  {
 		model.addAttribute("alumno",alumno);
 //		model.addAttribute("pais",pais);
 		
-		AlumnoController.logger.info("[GET - View] : alumno");
+		TableAlumnoController.logger.info("[GET - View] : alumno");
 		return "alumno";
 	}
 
@@ -147,7 +147,7 @@ public class AlumnoController  {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
         alumno = this.alumnoService.find(alumno);
-        AlumnoController.logger.info("[GET - findBy_PK] : Obtener Alumno por PK");
+        TableAlumnoController.logger.info("[GET - findBy_PK] : Obtener Alumno por PK");
         return alumno;
 	}
 
@@ -159,7 +159,7 @@ public class AlumnoController  {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Alumno> getAll(@ModelAttribute Alumno filterAlumno) {
-		AlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
+		TableAlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
 	    return this.alumnoService.findAll(filterAlumno, null);
 	}
 
@@ -191,7 +191,7 @@ public class AlumnoController  {
             response.flushBuffer();       
         	return null;
         }
-        AlumnoController.logger.info("[POST] : Alumno insertado correctamente");
+        TableAlumnoController.logger.info("[POST] : Alumno insertado correctamente");
     	return alumnoAux;
 	}
 	
@@ -229,7 +229,7 @@ public class AlumnoController  {
             
         	return null;
         }
-		AlumnoController.logger.info("[PUT] : Alumno actualizado correctamente");
+		TableAlumnoController.logger.info("[PUT] : Alumno actualizado correctamente");
         return alumnoAux;
     }
 	
@@ -267,7 +267,7 @@ public class AlumnoController  {
         Alumno alumno = new Alumno();
         alumno.setId(id);
         this.alumnoService.remove(alumno);
-       	AlumnoController.logger.info("[DELETE] : Alumno borrado correctamente");
+       	TableAlumnoController.logger.info("[DELETE] : Alumno borrado correctamente");
        	return alumno;
     }
 	
@@ -296,7 +296,7 @@ public class AlumnoController  {
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
 		
-		AlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
+		TableAlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
 		return this.alumnoService.filter(filterAlumno, jqGridRequestDto, false);
 	}
 	
@@ -320,7 +320,7 @@ public class AlumnoController  {
 			@RequestJsonBody(param="search") Alumno searchAlumno,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
 		
-		AlumnoController.logger.info("[POST - search] : Buscar Alumnos");
+		TableAlumnoController.logger.info("[POST - search] : Buscar Alumnos");
 		return this.alumnoService.search(filterAlumno, searchAlumno, jqGridRequestDto, false);
 	}
 	
@@ -336,9 +336,9 @@ public class AlumnoController  {
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		AlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
+		TableAlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 	    this.alumnoService.removeMultiple(filterAlumno, jqGridRequestDto, false);
-	    AlumnoController.logger.info("All entities correctly deleted!");
+	    TableAlumnoController.logger.info("All entities correctly deleted!");
 	    
 	    return jqGridRequestDto.getMultiselection().getSelectedIds();
 	}	

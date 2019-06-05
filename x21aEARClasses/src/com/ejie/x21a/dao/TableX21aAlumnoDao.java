@@ -12,7 +12,7 @@ import com.ejie.x21a.model.X21aAlumno;
  * @author UDA
  */
 
-public interface X21aAlumnoDao {
+public interface TableX21aAlumnoDao {
     
     /**
      * Inserts a single row in the X21aAlumno table.

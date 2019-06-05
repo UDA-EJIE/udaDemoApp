@@ -15,7 +15,6 @@
 */
 package com.ejie.x21a.control;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -38,7 +37,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -54,12 +52,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
-import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
@@ -84,9 +79,6 @@ public class TableUsuarioController  {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 
-	@Autowired
-	private JQGridUsuarioService jqGridUsuarioService; 
-	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
 	
@@ -129,7 +121,7 @@ public class TableUsuarioController  {
 	public @ResponseBody Usuario get(@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
-        usuario = this.jqGridUsuarioService.find(usuario);
+        usuario = this.tableUsuarioService.find(usuario);
         
         return usuario;
 	}
@@ -152,7 +144,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "/all",method = RequestMethod.GET)
 	public @ResponseBody List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
-		return this.jqGridUsuarioService.findAllLike(usuarioFilter, null, false);
+		return this.tableUsuarioService.findAllLike(usuarioFilter, null, false);
 	}
 	
 	/**
@@ -167,7 +159,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.update(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
@@ -184,7 +176,7 @@ public class TableUsuarioController  {
 		if (imagen!=null){
 			System.out.print("IMAGEN::::"+imagen);
         }
-        Usuario usuarioAux = this.jqGridUsuarioService.update(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
@@ -203,7 +195,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.add(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
     	return usuarioAux;
 	}
@@ -222,7 +214,7 @@ public class TableUsuarioController  {
     public @ResponseBody Usuario remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
         usuario.setId(id);
-        this.jqGridUsuarioService.remove(usuario);
+        this.tableUsuarioService.remove(usuario);
         logger.info("Entity correctly deleted!");
         return usuario;
     }
@@ -311,7 +303,7 @@ public class TableUsuarioController  {
 			@RequestJsonBody(param="search") Usuario searchUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
 		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
-		return jqGridUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
+		return tableUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
 	}
 	
 	/**
@@ -330,7 +322,7 @@ public class TableUsuarioController  {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.jqGridUsuarioService.removeMultiple(filterUsuario, jqGridRequestDto, false);
+	    this.tableUsuarioService.removeMultiple(filterUsuario, jqGridRequestDto, false);
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return jqGridRequestDto.getMultiselection().getSelectedIds();
@@ -358,7 +350,7 @@ public class TableUsuarioController  {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
 		TableUsuarioController.logger.info("[POST - jerarquia] : Obtener Usuarios Jerarquia");
-		return this.jqGridUsuarioService.jerarquia(filterUsuario, jqGridRequestDto, false);
+		return this.tableUsuarioService.jerarquia(filterUsuario, jqGridRequestDto, false);
 	}
 	
 	/**
@@ -377,7 +369,7 @@ public class TableUsuarioController  {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
 		TableUsuarioController.logger.info("[GET - jqGrid] : Obtener Jerarquia - Hijos");
-		return this.jqGridUsuarioService.jerarquiaChildren(filterUsuario, jqGridRequestDto);
+		return this.tableUsuarioService.jerarquiaChildren(filterUsuario, jqGridRequestDto);
 	}
 	
 	
@@ -400,10 +392,10 @@ public class TableUsuarioController  {
 			HttpServletRequest request){
 		System.out.print(" NUEVO \n");
 		//Acceso a BD para recuperar datos
-		/*List<Usuario> listUsuarioPage = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		/*List<Usuario> listUsuarioPage = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
 		jqGridRequestDto.setPage(null);
 		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);*/
+		List<Usuario> listUsuarioAll = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);*/
 		List<Usuario> listUsuarioAll = null;//this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
 		//Nombre fichero
 		modelMap.put("fileName", "datosExcel");
@@ -451,7 +443,7 @@ public class TableUsuarioController  {
 		//Acceso a BD para recuperar datos
 		jqGridRequestDto.setPage(null);
 		jqGridRequestDto.setRows(null);
-		List<Usuario> filter = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		List<Usuario> filter = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
 		 
 		//Nombre fichero
 		modelMap.put("fileName", "datosCSV");
@@ -522,10 +514,10 @@ public class TableUsuarioController  {
 			@RequestParam(value = "columns", required = false) String columns){
 		
 		//Acceso a BD para recuperar datos
-		List<Usuario> listUsuarioPage = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		List<Usuario> listUsuarioPage = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
 		jqGridRequestDto.setPage(null);
 		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.jqGridUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
+		List<Usuario> listUsuarioAll = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
 		
 		//Nombre fichero
 		modelMap.put("fileName", "datosODS");
@@ -562,7 +554,7 @@ public class TableUsuarioController  {
 			@RequestParam(value = "isInline", required = false) boolean isInline){
 		
 		//Acceso a BD para recuperar datos
-		List<Usuario> usuarios = this.jqGridUsuarioService.findAll(new Usuario(), null);
+		List<Usuario> usuarios = this.tableUsuarioService.findAll(new Usuario(), null);
 		
 		//Nombre fichero
 		modelMap.put("fileName", "datosPDF");
@@ -591,7 +583,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[GET - getRssDEtail] : Obtener el detalle del usuario a partir del RSS");
         Usuario usuario = new Usuario();
 		usuario.setId(id);
-        usuario = this.jqGridUsuarioService.find(usuario);
+        usuario = this.tableUsuarioService.find(usuario);
 		
 		model.addAttribute("usuario",usuario);
 		

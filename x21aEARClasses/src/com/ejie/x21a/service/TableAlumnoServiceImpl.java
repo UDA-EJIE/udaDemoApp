@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 
-import com.ejie.x21a.dao.AlumnoDao;
+import com.ejie.x21a.dao.TableAlumnoDao;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
@@ -35,15 +35,15 @@ import com.ejie.x38.dto.TableRowDto;
  */
 
 @Service(value = "alumnoService")
-public  class AlumnoServiceImpl implements AlumnoService {
+public  class TableAlumnoServiceImpl implements TableAlumnoService {
 
 	/**
     * Final static logger.
     */
-	private static final  Logger logger = LoggerFactory.getLogger(AlumnoServiceImpl.class);
+	private static final  Logger logger = LoggerFactory.getLogger(TableAlumnoServiceImpl.class);
 	
 	@Autowired
-	private AlumnoDao alumnoDao;
+	private TableAlumnoDao alumnoDao;
 
 	/**
 	 * Inserts a single row in the Alumno table.
@@ -127,7 +127,7 @@ public  class AlumnoServiceImpl implements AlumnoService {
 	 *
 	 * @return AlumnoDao
 	 */
-	public AlumnoDao getAlumnoDao() {
+	public TableAlumnoDao getAlumnoDao() {
 		return this.alumnoDao;
 	}
     
@@ -136,7 +136,7 @@ public  class AlumnoServiceImpl implements AlumnoService {
 	 *
 	 * @param  alumnoDao AlumnoDao
 	 */
-	public void setAlumnoDao(AlumnoDao alumnoDao) {
+	public void setAlumnoDao(TableAlumnoDao alumnoDao) {
 		logger.info("Setting Dependency "+alumnoDao);
 		this.alumnoDao = alumnoDao;
 	}

@@ -15,7 +15,7 @@ import com.ejie.x38.dto.TableRowDto;
  * @author UDA
  */
 
-public interface AlumnoService {
+public interface TableAlumnoService {
 
 	
 	/*

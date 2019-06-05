@@ -54,7 +54,7 @@ import com.ejie.x38.dto.TableRowDto;
 
 @Repository
 @Transactional
-public class AlumnoDaoImpl implements AlumnoDao {
+public class TableAlumnoDaoImpl implements TableAlumnoDao {
 
 	private JdbcTemplate jdbcTemplate;
 

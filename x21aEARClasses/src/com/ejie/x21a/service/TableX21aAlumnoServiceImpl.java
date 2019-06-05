@@ -1,5 +1,5 @@
 package com.ejie.x21a.service;
-import com.ejie.x21a.dao.X21aAlumnoDao;
+import com.ejie.x21a.dao.TableX21aAlumnoDao;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -17,10 +17,10 @@ import com.ejie.x21a.model.X21aAlumno;
  */
 
 @Service(value = "x21aAlumnoService")
-public class X21aAlumnoServiceImpl implements X21aAlumnoService {
+public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 
 	@Autowired
-	private X21aAlumnoDao x21aAlumnoDao;
+	private TableX21aAlumnoDao x21aAlumnoDao;
 
 	/**
 	 * Inserts a single row in the X21aAlumno table.

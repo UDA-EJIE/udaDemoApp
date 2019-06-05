@@ -14,7 +14,7 @@ import java.util.List;
  * @author UDA
  */
 
-public interface MultiPkService {
+public interface TableMultiPkService {
 
 	/**
 	 * Inserts a single row in the MultiPk table.

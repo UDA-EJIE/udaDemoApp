@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class MultiPkDaoImpl implements MultiPkDao {
+public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 
     public static final String[] ORDER_BY_WHITE_LIST = new String[] {"IDA", "IDB", "NOMBRE", "APELLIDO1", "APELLIDO2"};
@@ -178,7 +178,7 @@ public class MultiPkDaoImpl implements MultiPkDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query, MultiPkDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableMultiPkDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<MultiPk>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -206,7 +206,7 @@ public class MultiPkDaoImpl implements MultiPkDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query, MultiPkDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableMultiPkDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<MultiPk>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -413,7 +413,7 @@ public class MultiPkDaoImpl implements MultiPkDao {
 
 		//PAGINACION
 		if (tableRequestDto != null) {
-			query = TableManagerJerarquia.getPaginationQuery(tableRequestDto, query, MultiPkDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManagerJerarquia.getPaginationQuery(tableRequestDto, query, TableMultiPkDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		List<?> params = (List<?>) mapaWhere.get("params");
@@ -550,7 +550,7 @@ public class MultiPkDaoImpl implements MultiPkDao {
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
 	private Map<String, ?> getWhereMap (MultiPk multipk){
 
-		StringBuilder where = new StringBuilder(MultiPkDaoImpl.STRING_BUILDER_INIT);
+		StringBuilder where = new StringBuilder(TableMultiPkDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
 
 		if (multipk  != null  && multipk.getIda() != null ) {
@@ -596,7 +596,7 @@ public class MultiPkDaoImpl implements MultiPkDao {
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
 	private Map<String, Object> getWhereLikeMap (MultiPk multipk, Boolean startsWith){
 
-		StringBuilder where = new StringBuilder(MultiPkDaoImpl.STRING_BUILDER_INIT);
+		StringBuilder where = new StringBuilder(TableMultiPkDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
 
 		if (multipk  != null  && multipk.getIda() != null ) {

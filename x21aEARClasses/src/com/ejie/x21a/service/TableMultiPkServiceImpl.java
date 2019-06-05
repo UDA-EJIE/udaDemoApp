@@ -1,6 +1,6 @@
 package com.ejie.x21a.service;
 
-import com.ejie.x21a.dao.MultiPkDao;
+import com.ejie.x21a.dao.TableMultiPkDao;
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service(value = "multiPkService")
-public class MultiPkServiceImpl implements MultiPkService {
+public class TableMultiPkServiceImpl implements TableMultiPkService {
 
 	@Autowired
-	private MultiPkDao multiPkDao;
+	private TableMultiPkDao multiPkDao;
 
 	/**
 	 * Inserts a single row in the MultiPk table.

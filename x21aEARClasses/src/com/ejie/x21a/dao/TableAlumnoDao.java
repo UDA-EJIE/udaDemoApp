@@ -11,7 +11,7 @@ import com.ejie.x38.dto.TableRowDto;
  * @author UDA
  */
 
-public interface AlumnoDao {
+public interface TableAlumnoDao {
     
 	/*
 	 * OPERACIONES CRUD

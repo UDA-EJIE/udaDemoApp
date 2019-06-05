@@ -12,7 +12,7 @@ import java.util.List;
  * @author UDA
  */
 
-public interface MultiPkDao {
+public interface TableMultiPkDao {
     
     /**
      * Inserts a single row in the MultiPk table.

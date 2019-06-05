@@ -1,6 +1,6 @@
 package com.ejie.x21a.control;
 
-import com.ejie.x21a.service.X21aAlumnoService;
+import com.ejie.x21a.service.TableX21aAlumnoService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
@@ -31,12 +31,12 @@ import com.ejie.x21a.model.X21aAlumno;
 @Controller
 @RequestMapping (value = "/x21aalumno")
 
-public class X21aAlumnoController  {
+public class TableX21aAlumnoController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(X21aAlumnoController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TableX21aAlumnoController.class);
 
 	@Autowired
-	private X21aAlumnoService x21aAlumnoService;
+	private TableX21aAlumnoService x21aAlumnoService;
 	
 	/*
 	 * OPERACIONES CRUD (Create, Read, Update, Delete)
@@ -55,7 +55,7 @@ public class X21aAlumnoController  {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
         x21aAlumno = this.x21aAlumnoService.find(x21aAlumno);
-        X21aAlumnoController.logger.info("[GET - findBy_PK] : Obtener X21aAlumno por PK");
+        TableX21aAlumnoController.logger.info("[GET - findBy_PK] : Obtener X21aAlumno por PK");
         return x21aAlumno;
 	}
 
@@ -71,7 +71,7 @@ public class X21aAlumnoController  {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<X21aAlumno> getAll(@ModelAttribute X21aAlumno filterX21aAlumno) {
-		X21aAlumnoController.logger.info("[GET - find_ALL] : Obtener X21aAlumno por filtro");
+		TableX21aAlumnoController.logger.info("[GET - find_ALL] : Obtener X21aAlumno por filtro");
 	    return this.x21aAlumnoService.findAll(filterX21aAlumno, null);
 	}
 
@@ -86,7 +86,7 @@ public class X21aAlumnoController  {
 	@RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody X21aAlumno edit(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.update(x21aAlumno);
-		X21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
+		TableX21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
         return x21aAlumnoAux;
     }
 
@@ -103,7 +103,7 @@ public class X21aAlumnoController  {
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody X21aAlumno add(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.add(x21aAlumno);
-        X21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
+        TableX21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
     	return x21aAlumnoAux;
 	}
 
@@ -122,7 +122,7 @@ public class X21aAlumnoController  {
         X21aAlumno x21aAlumno = new X21aAlumno();
         x21aAlumno.setId(id);
         this.x21aAlumnoService.remove(x21aAlumno);
-       	X21aAlumnoController.logger.info("[DELETE] : X21aAlumno borrado correctamente");
+       	TableX21aAlumnoController.logger.info("[DELETE] : X21aAlumno borrado correctamente");
        	return x21aAlumno;
     }
     
@@ -140,7 +140,7 @@ public class X21aAlumnoController  {
 	 */
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
-		X21aAlumnoController.logger.info("[GET - View] : x21aalumno");
+		TableX21aAlumnoController.logger.info("[GET - View] : x21aalumno");
 		return "x21aalumno";
 	}
 	 
@@ -160,7 +160,7 @@ public class X21aAlumnoController  {
 	public @ResponseBody TableResponseDto<X21aAlumno> filter(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - filter] : Obtener X21aAlumnos");
+		TableX21aAlumnoController.logger.info("[POST - filter] : Obtener X21aAlumnos");
 		return this.x21aAlumnoService.filter(filterX21aAlumno, tableRequestDto, false);
 	}
 	 
@@ -183,7 +183,7 @@ public class X21aAlumnoController  {
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody(param="search") X21aAlumno searchX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - search] : Buscar X21aAlumnos");
+		TableX21aAlumnoController.logger.info("[POST - search] : Buscar X21aAlumnos");
 		return this.x21aAlumnoService.search(filterX21aAlumno, searchX21aAlumno, tableRequestDto, false);
 	}
 	
@@ -204,9 +204,9 @@ public class X21aAlumnoController  {
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples X21aAlumnos");
+		TableX21aAlumnoController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples X21aAlumnos");
 		this.x21aAlumnoService.removeMultiple(filterX21aAlumno, tableRequestDto, false);
-		X21aAlumnoController.logger.info("All entities correctly deleted!");
+		TableX21aAlumnoController.logger.info("All entities correctly deleted!");
 		
 		return tableRequestDto.getMultiselection().getSelectedIds();
 	}
@@ -232,7 +232,7 @@ public class X21aAlumnoController  {
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia");
+		TableX21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia");
 		return this.x21aAlumnoService.jerarquia(filterX21aAlumno, tableRequestDto, false);
 	}
 	
@@ -252,7 +252,7 @@ public class X21aAlumnoController  {
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(
 			@RequestJsonBody(param="filter") X21aAlumno  filterX21aAlumno ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia - Hijos");
+		TableX21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia - Hijos");
 		return this.x21aAlumnoService.jerarquiaChildren(filterX21aAlumno, tableRequestDto);
 	}
 	
@@ -264,7 +264,7 @@ public class X21aAlumnoController  {
 	protected @ResponseBody List<X21aAlumno> getClipboardReport(
 			@RequestJsonBody(param="filter") X21aAlumno  filterX21aAlumno ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
-		X21aAlumnoController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
+		TableX21aAlumnoController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
 		return this.x21aAlumnoService.getMultiple(filterX21aAlumno, tableRequestDto, false);
 	}
 	

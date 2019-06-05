@@ -2,9 +2,8 @@ package com.ejie.x21a.control;
 
 
 import com.ejie.x21a.model.MultiPk;
-import com.ejie.x21a.service.MultiPkService;
+import com.ejie.x21a.service.TableMultiPkService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -38,7 +37,7 @@ public class TableMultiPkController  {
 	private static final Logger logger = LoggerFactory.getLogger(TableMultiPkController.class);
 
 	@Autowired
-	private MultiPkService multiPkService;
+	private TableMultiPkService multiPkService;
 	
 	/*
 	 * OPERACIONES CRUD (Create, Read, Update, Delete)

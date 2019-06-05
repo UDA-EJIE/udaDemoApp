@@ -29,7 +29,7 @@ import com.ejie.x21a.model.X21aAlumno;
 
 @Repository
 @Transactional
-public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
+public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 
     public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "USUARIO", "PASSWORD", "NOMBRE", "APELLIDO1", "APELLIDO2", "FECHANACIMIENTO", "TELEFONO", "EMAIL", "IDIOMA", "PAISID", "PROVINCIAID", "LOCALIDADID", "COMARCAID", "MUNICIPIOID", "CALLEID", "IMAGEN", "SEXO", "DNI", "AUTONOMIAID", "NOMBREIMAGEN", "CALLE", "DIRECCION", "IMPORTEMATRICULA"};
@@ -177,7 +177,7 @@ public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query, X21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableX21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<X21aAlumno>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -205,7 +205,7 @@ public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
 		List<?> params = (List<?>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query, X21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableX21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<X21aAlumno>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -412,7 +412,7 @@ public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
 
 		//PAGINACION
 		if (tableRequestDto != null) {
-			query = TableManagerJerarquia.getPaginationQuery(tableRequestDto, query, X21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
+			query = TableManagerJerarquia.getPaginationQuery(tableRequestDto, query, TableX21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		List<?> params = (List<?>) mapaWhere.get("params");
@@ -549,7 +549,7 @@ public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
 	private Map<String, ?> getWhereMap (X21aAlumno x21aalumno){
 
-		StringBuilder where = new StringBuilder(X21aAlumnoDaoImpl.STRING_BUILDER_INIT);
+		StringBuilder where = new StringBuilder(TableX21aAlumnoDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
 
 		if (x21aalumno  != null  && x21aalumno.getId() != null ) {
@@ -667,7 +667,7 @@ public class X21aAlumnoDaoImpl implements X21aAlumnoDao {
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
 	private Map<String, Object> getWhereLikeMap (X21aAlumno x21aalumno, Boolean startsWith){
 
-		StringBuilder where = new StringBuilder(X21aAlumnoDaoImpl.STRING_BUILDER_INIT);
+		StringBuilder where = new StringBuilder(TableX21aAlumnoDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
 
 		if (x21aalumno  != null  && x21aalumno.getId() != null ) {
