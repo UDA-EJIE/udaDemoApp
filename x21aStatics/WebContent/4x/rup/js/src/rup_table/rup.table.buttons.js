@@ -84,7 +84,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.copyButton');
 		},
 		id: idTable+'copyButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-		className: 'buttons-copyButton',
+		className: 'btn-material-primary-low-emphasis buttons-copyButton',
 		displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 		insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 		type: 'copyButton',
@@ -109,7 +109,7 @@ var Buttons = function( dt, config )
 				return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.excelButton');
 			},
 			id: idTable+'excelButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-			className: 'buttons-copyButton',
+			className: 'btn-material-primary-low-emphasis buttons-copyButton',
 			displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 			insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 			type: 'excelButton',
@@ -132,7 +132,7 @@ var Buttons = function( dt, config )
 				return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.pdfButton');
 			},
 			id: idTable+'pdfButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-			className: 'buttons-copyButton',
+			className: 'btn-material-primary-low-emphasis buttons-copyButton',
 			displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 			insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 			type: 'pdfButton',
@@ -155,7 +155,7 @@ var Buttons = function( dt, config )
 				return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.odsButton');
 			},
 			id: idTable+'odsButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-			className: 'buttons-copyButton',
+			className: 'btn-material-primary-low-emphasis buttons-copyButton',
 			displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 			insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 			type: 'odsButton',
@@ -178,7 +178,7 @@ var Buttons = function( dt, config )
 				return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.csvButton');
 			},
 			id: idTable+'csvButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-			className: 'buttons-copyButton',
+			className: 'btn-material-primary-low-emphasis buttons-copyButton',
 			displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 			insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 			type: 'csvButton',
@@ -201,7 +201,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.add');
 		},
 		id: idTable+'addButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-		className: 'table_toolbar_btnAdd',
+		className: 'btn-material-primary-high-emphasis table_toolbar_btnAdd',
 		displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
 		insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 		type: 'add',
@@ -220,7 +220,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.edit');
 		},
 		id: idTable+'editButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-		className: 'table_toolbar_btnEdit',
+		className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit',
 		displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 		insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 		type: 'edit',
@@ -239,7 +239,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.clone');
 		},
 		id: idTable+'cloneButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-		className: 'table_toolbar_btnClone',
+		className: 'btn-material-primary-high-emphasis table_toolbar_btnClone',
 		displayRegex: /^1$/, // Se muestra solo cuando sea igual a 1
 		insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 		type: 'clone',
@@ -258,7 +258,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.delete');
 		},
 		id: idTable+'deleteButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-		className: 'table_toolbar_btnDelete',
+		className: 'btn-material-primary-high-emphasis table_toolbar_btnDelete',
 		displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 		insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 		type: 'delete',
@@ -296,7 +296,7 @@ var Buttons = function( dt, config )
 			return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.reports.main');
 		},
 		id: idTable+'informes_01',
-		className: 'align-right',
+		className: 'btn-material-primary-medium-emphasis order-last ml-1 ml-lg-auto',
 		displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 		autoClose: true,
 		type: 'reports',
@@ -1616,7 +1616,7 @@ Buttons.defaults = {
 	dom: {
 		container: {
 			tag: 'div',
-			className: 'dt-buttons'
+			className: 'dt-buttons row'
 		},
 		collection: {
 			tag: 'div',
@@ -1624,7 +1624,7 @@ Buttons.defaults = {
 		},
 		button: {
 			tag: 'button',
-			className: 'btn-material btn-material-primary-high-emphasis',
+			className: 'col-12 col-sm-auto btn-material',
 			active: 'active',
 			disabled: 'disabledButtonsTable'
 		},
@@ -1659,7 +1659,10 @@ $.extend( _dtButtons, {
 		action: function ( e, dt, button, config ) {
 			var host = button;
 			var collectionParent = $(button).parents('div.dt-button-collection');
-			var hostPosition = host.position();
+			var hostPosition = { 
+					top: host.position().top + parseInt(host.css('marginTop'), 10), 
+					left: host.position().left + parseInt(host.css('marginLeft'), 10) 
+			};
 			var tableContainer = $( dt.table().container() );
 			var multiLevel = false;
 			var insertPoint = host;
@@ -1754,6 +1757,23 @@ $.extend( _dtButtons, {
 					}
 				} );
 			}, 10 );
+			
+			// Como el boton se posiciona de manera absoluta hay que establecerle la posicion
+			// cada vez que se cambia el tamaño de la pantalla.
+			$(window).resize(function() {
+				console.log("resize...");
+			    hostPosition = { 
+			    	top: host.position().top + parseInt(host.css('marginTop'), 10), 
+					left: host.position().left + parseInt(host.css('marginLeft'), 10) 
+				};
+				
+				config._collection.css( {
+					top: hostPosition.top + host.outerHeight(),
+					left: hostPosition.left
+				} );
+				
+				// TODO: eliminar evento cuando se cierra el collection
+			} );
 
 			if ( config.autoClose ) {
 				dt.on( 'buttons-action.b-internal', function () {

@@ -273,7 +273,7 @@ jQuery(function($){
 							return 'Editar con MultiPart';
 						},
 						id: 'exampleeditMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
-						className: 'datatable_toolbar_btnEdit',
+						className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit',
 						displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 						insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 						type: 'edit',

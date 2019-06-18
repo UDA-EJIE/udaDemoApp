@@ -2,7 +2,7 @@
 
 
 <!-- Formulario de detalle -->
-<div id="usuario_detail_div" class="rup-table-formEdit-detail">
+<div id="usuario_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
 	<div id ="usuario_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->

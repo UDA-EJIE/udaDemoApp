@@ -108,7 +108,7 @@
 	</div>	
 	
 <!-- Formulario de detalle -->
-<div id="MultiPk_detail_div" class="rup-table-formEdit-detail">
+<div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
 	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->

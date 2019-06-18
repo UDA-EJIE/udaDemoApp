@@ -1,9 +1,9 @@
 /**
   * Módulo que habilita la edicción mediante un formulario.
   *
-  * @summary 		Extensión del componente RUP Datatable
-  * @module			"rup.table.inlineEdit"
-  * @version     1.0.0
+  * @summary	Extensión del componente RUP Datatable
+  * @module		"rup.table.inlineEdit"
+  * @version	1.0.0
   * @license
   * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
   * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -89,7 +89,7 @@ DataTable.inlineEdit.init = function ( dt ) {
 	 
 	    	if(ctx.oInit.inlineEdit.rowDefault !== undefined && ctx.oInit.inlineEdit.rowDefault === 'estadoFinal'){
 	    		ctx.oInit.inlineEdit.rowDefault = undefined;
-	    		_restaurarFila(ctx,true);;
+	    		_restaurarFila(ctx,true);
 	    		_editInline(dt,ctx,row.index());
 	    		if(ctx.oInit.inlineEdit.currentPos !== null && ctx.oInit.inlineEdit.currentPos.actionType === 'CLONE'){
 	    			$('#'+ctx.sTableId+' tbody tr:eq(0)').addClass('new');
@@ -136,7 +136,7 @@ DataTable.inlineEdit.init = function ( dt ) {
                 return $.rup.i18nParse($.rup.i18n.base, 'rup_table.save');
          },
          id: ctx.sTableId+'saveButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-         className: 'table_toolbar_btnSave disabledButtonsTable',
+         className: 'btn-material-primary-high-emphasis table_toolbar_btnSave disabledButtonsTable',
          icon: "mdi-content-save",
          displayRegex: /asss/, // Se muestra siempre que sea un numero positivo o neutro
          insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
@@ -154,7 +154,7 @@ DataTable.inlineEdit.init = function ( dt ) {
                 return $.rup.i18nParse($.rup.i18n.base, 'rup_table.cancel');
          },
          id: ctx.sTableId+'cancelButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
-         className: 'table_toolbar_btnCancel disabledButtonsTable',
+         className: 'btn-material-primary-high-emphasis table_toolbar_btnCancel disabledButtonsTable',
          icon: "mdi-cancel",
          displayRegex: /asss/, // Se muestra siempre que sea un numero positivo o neutro
          insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
@@ -366,7 +366,7 @@ function _addChildIcons(ctx){
 				}
 				var $fila = $(this).parent();
 				$span.click(function(event){
-					if($fila.hasClass('editable') && $fila.find('.closeResponsive').length){//nose hace nada. si esta editando
+					if($fila.hasClass('editable') && $fila.find('.closeResponsive').length){// No se hace nada si esta editando
 						event.stopPropagation();
 					}else{
 						if($span.hasClass('closeResponsive')){
@@ -385,7 +385,7 @@ function _addChildIcons(ctx){
 		}else{//si la edicion en linea esta activada
 			
 		}
-		//si hay inputs guardadoas se machancn los cambios por el responsive.
+		//si hay inputs guardados se reemplazan los cambios por el responsive.
 		if(ctx.inlineEdit !== undefined && 
 				ctx.inlineEdit.lastRow !== undefined && ctx.inlineEdit.lastRow.rupValues !== undefined){
 			var table = $('#'+ctx.sTableId).DataTable( );
@@ -410,13 +410,13 @@ function _addChildIcons(ctx){
 *
 */
 function _editInline ( dt,ctx, idRow ){
-	if(ctx.inlineEdit.lastRow !== undefined && ctx.inlineEdit.lastRow.idx !== idRow){//si no es la mismafila.
+	if(ctx.inlineEdit.lastRow !== undefined && ctx.inlineEdit.lastRow.idx !== idRow){//si no es la misma fila.
 		_restaurarFila(ctx,false);
 	}
 	var $rowSelect = $('#'+ctx.sTableId+' > tbody > tr:not(".child"):eq('+idRow+')'); 
 	if(!$rowSelect.hasClass("editable")){
 		_changeInputsToRup(ctx,idRow);
-		//se deshabilita los botones de la tabla.
+		//se deshabilitan los botones de la tabla.
 		DataTable.Api().buttons.disableAllButtons(ctx);
 	}
 	
@@ -433,7 +433,7 @@ function _editInline ( dt,ctx, idRow ){
 		selectores[1] = $selectorTr.next().find(".child");
 	}
 	
-	$.each(selectores,function() {//se crea eventor para los selectores creados.
+	$.each(selectores,function() {//se crea evento para los selectores creados.
 		_crearEventos(ctx,this);
 	});
 	
@@ -450,7 +450,7 @@ function _editInline ( dt,ctx, idRow ){
 	
 	dt.responsive.recalc();
 	if(ctx.oInit.inlineEdit.currentPos !== undefined && ctx.oInit.inlineEdit.currentPos.actionType !== undefined
-			 && ctx.oInit.inlineEdit.currentPos.actionType === 'CLONE' && $selectorTr.find('span.openResponsive').length === 0){//revisar cuadno es clone por si el responsive falla
+			 && ctx.oInit.inlineEdit.currentPos.actionType === 'CLONE' && $selectorTr.find('span.openResponsive').length === 0){//revisar cuando es clone por si el responsive falla
 		 _addChildIcons(ctx);
 	}
 }
@@ -473,8 +473,7 @@ function _getRowSelected(dt,actionType){
 	var rowDefault = {id:0,page:1,line:0};
 	var lastSelectedId = ctx.multiselection.lastSelectedId;
 	if(!ctx.multiselection.selectedAll){
-		//Si no hay un ultimo señalado se coge el ultimo;
-
+		//Si no hay un ultimo señalado se coge el ultimo
 		if(lastSelectedId === undefined || lastSelectedId === ''){
 			ctx.multiselection.lastSelectedId = ctx.multiselection.selectedRowsPerPage[0].id;
 		}
@@ -560,7 +559,7 @@ function _cloneLine(dt,ctx,line){
 }
 
 /**
-* Metodo que obtiene la página siguiente donde esta el primer elemento o elemento seleccionado.
+* Método que obtiene la página siguiente donde está el primer elemento o elemento seleccionado.
 *
 * @name getNextPageSelected
 * @function
@@ -608,7 +607,7 @@ function _getNextPageSelected(ctx,pageInit,orden){
 }
 
 /**
-* Metodo que obtiene la linea siguiente donde esta el primer elemento o elemento seleccionado.
+* Método que obtiene la linea siguiente donde está el primer elemento o elemento seleccionado.
 *
 * @name getLineByPageSelected
 * @function
@@ -740,7 +739,7 @@ function _changeInputsToRup(ctx,idRow){
 }
 
 /**
-* Método para recorre las celdas y las procesa.
+* Método que recorre las celdas y las procesa.
 *
 * @name _recorrerCeldas
 * @function
@@ -775,9 +774,8 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 				var $input = $('<input />').val($celda.text()).attr('name', cellColModel.name+'_inline'+child);
 				var title = cellColModel.name.charAt(0).toUpperCase() + cellColModel.name.slice(1);
 				$input.attr('id', cellColModel.name+'_inline'+child).attr("oldtitle",title);
-				var resol = $celda.width() - 10;
-				$input.css('max-width',resol+'px');
-				//si es el primero dejar el focus
+				
+				// Si es el primero dejar el focus
 				if(ctx.inlineEdit.lastRow.cellValues[0] === undefined){
 					ctx.inlineEdit.lastRow.ponerFocus = true;
 				}
@@ -798,29 +796,26 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 				var colModelName = cellColModel.name;
 				var $elem = $('#'+colModelName+'_inline'+child,ctx.nTBody);
 				// Se añade el title de los elementos de acuerdo al colname
+				
+				// Si ya existe el div necesario para dar los estilos material al input, evitamos duplicarlo.
+				if(!$('#'+colModelName+'_inline').parent().hasClass('form-groupMaterial')) {
+					$('#'+colModelName+'_inline').wrap("<div class='form-groupMaterial'></div>");
+				}
+				// Lo mismo que el anterior pero cuando se ha aplicado el responsivo.
+				if(!$('#'+colModelName+'_inline_child').parent().hasClass('form-groupMaterial')) {
+					$('#'+colModelName+'_inline_child').wrap("<div class='form-groupMaterial'></div>");
+				}
 
 				var columns = jQuery.grep(ctx.aoColumns, function( n) {
 					  return ( n.className !== 'select-checkbox' );
 				});
 				$elem.attr({
-					'title': columns[cont].sTitle,
+					'title': $('#'+colModelName+'_inline').attr('oldtitle'),
 					'class': 'editable customelement form-control-customer'
 				}).removeAttr('readOnly');
 				// En caso de tratarse de un componente rup, se inicializa de acuerdo a la configuracón especificada en el colModel
 				if(searchRupType!==undefined) {
 					var searchEditOptions = cellColModel.searchoptions || cellColModel.editoptions;
-	
-					/*
-					 * PRE Configuración de los componentes RUP
-					 */
-					if(searchRupType === 'combo'){
-						searchEditOptions = $.extend({},{menuWidth:$elem.width()}, searchEditOptions, {width:'97%'});
-						$elem.val('');
-					} else if(searchRupType === 'date'){
-						$elem.css('width','86%');
-						$elem.css('max-width','80px');
-						$elem.css('min-width','75px');
-					}
 	
 					// Invocación al componente RUP
 					$elem['rup_'+searchRupType](searchEditOptions);
@@ -828,8 +823,14 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 						$('#'+$elem.attr('id')).rup_combo('setRupValue',ctx.inlineEdit.lastRow.cellValues[cont]);
 					}
 				}else if(cellColModel.edittype === 'checkbox'){
-					$elem.prop('type', 'checkbox');
+					$elem
+						.prop('type', 'checkbox')
+						.addClass('select-material')
+						.parent().toggleClass('form-groupMaterial checkbox-material')
+						.append('<label for="' + $elem.attr('name') + '"></label>');
+					
 					var valueCelda = ctx.inlineEdit.lastRow.cellValues[cont];
+					
 					if($(valueCelda).find('i.mdi-close').length === 1){
 						$elem.prop('checked', false);
 					}else if($(valueCelda).find('i.mdi-check').length === 1){
@@ -838,11 +839,11 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 				}
 				//Fin conversion
 				
-				//NOs aseguramos de que el input existe
+				//Nos aseguramos de que el input existe
 				if(ctx.inlineEdit.lastRow.ponerFocus){
 					$input.focus();
 					ctx.inlineEdit.lastRow.ponerFocus = false;
-					//Realaizar comprobaciones x si el id es NO editable
+					//Realizar comprobaciones por si el id es NO editable
 					if(edicion && ctx.oInit.blockPKeditForm && ctx.oInit.primaryKey.length > 0){
 						$.each(ctx.oInit.primaryKey,function(key,id) {
 							if(id === cellColModel.name){
@@ -971,7 +972,7 @@ function _crearEventos(ctx,$selector){
 		    		var dt = $('#'+ctx.sTableId).DataTable();
 		    		ctx.inlineEdit.lastRow = undefined;
 		    		ctx.oInit.inlineEdit.alta = undefined;
-		    		//primer parametro para mandar una funcion a ejecutar, 2 parametro bloquear la pagina si pones false
+		    		//primer parametro para mandar una funcion a ejecutar, segundo parametro bloquear la pagina si pones false
 		    		dt.ajax.reload(undefined,false);
 		    	}else{//si se modifica
 		    		_restaurarFila(ctx,true);
@@ -979,7 +980,7 @@ function _crearEventos(ctx,$selector){
 		    }else if (e.keyCode === 13 || 
 		    		(e.keyCode === 9 && _lastIndexEditable(ctx,$(e.target)))) {//Intro 13, //Tabulador 9
 		    	var child = false;
-		    	if($selector.parent('tr').length > 0){//si e smayor que cero la seleccion es en el td,hay que pasar al tr.
+		    	if($selector.parent('tr').length > 0){//si es mayor que cero la seleccion es en el td,hay que pasar al tr.
 		    		$selector = $selector.parent('tr');
 		    	}
 		    	if($selector.find('.child').length === 1 || $selector.hasClass('child')){
@@ -1007,8 +1008,8 @@ function _crearEventos(ctx,$selector){
 */
 function _lastIndexEditable(ctx,$target){
 	var indexTarget = $target.closest('td').index();
-	//Se recooren las columnas a la inversa, si es editable, se devuelve la posicion
-	//Si llama el hijo calcalur index
+	//Se recorren las columnas a la inversa, si es editable, se devuelve la posicion
+	//Si llama el hijo calcular index
 	if($target.closest('tr.child').length === 1){
 		indexTarget = ctx.aoColumns.length - $target.closest('ul').find('li').length + $target.closest('li').index();
 	}
@@ -1049,7 +1050,7 @@ function _inlineEditFormSerialize($fila,ctx,child){
 	var serializedForm = {};
 	var selectores = {};
 
-	//añadir columans child
+	//añadir columnas child
 	if(child === false){
 		selectores[0] = $fila;
 		if($fila.next().find('.child').length === 1){
@@ -1079,7 +1080,7 @@ function _inlineEditFormSerialize($fila,ctx,child){
 		});
 	});
 	
-	//añadir los no editables,en caso de SOLO edicción, 
+	//añadir los no editables,en caso de SOLO edición, 
 	if(!selectores[0].hasClass('new')){
 		jQuery.grep(ctx.oInit.colModel, function( n,i) {
 			  if ( n.editable !== true ){
@@ -1102,7 +1103,7 @@ function _inlineEditFormSerialize($fila,ctx,child){
 *
 * @param {object} ctx - Es el contexto de cada tabla.
 * @param {object} $fila - fila que se está editando.
-* @param {boolean} $child - boolean apra decir si la llamda es del hijo o del padre
+* @param {boolean} $child - boolean para decir si la llamada es del hijo o del padre
 *
 */
 function _guardar(ctx,$fila,child){
@@ -1208,8 +1209,8 @@ function _callSaveAjax(actionType,ctx,$fila,row,url){
 
 			DataTable.Api().seeker.disabledButtons(ctx);
 		
-					// Recargar datos
-				//primer parametro para mandar una funcion a ejecutar, 2 parametro bloquear la pagina si pones false
+				// Recargar datos
+				// Primer parametro para mandar una funcion a ejecutar, segundo parametro bloquear la pagina si pones false
 				dt.ajax.reload( function (  ) {
 					_addChildIcons(ctx);
 				},false );
@@ -1277,7 +1278,7 @@ function _callFeedbackOk(ctx,feedback,msgFeedBack,type){
 }
 
 /**
-* Cambiar los valores de los inputs  de responsive a normal y viciversa.
+* Cambiar los valores de los inputs de responsive a normal y viciversa.
 *
 * @name _inResponsiveChangeInputsValues
 * @function
@@ -1359,7 +1360,7 @@ function _inResponsiveChangeInputsValues(ctx,$fila){
 }
 
 /**
-* Asiganar los valores de los inputs en responsive.
+* Asignar los valores de los inputs en responsive.
 *
 * @name _asignarInputsValues
 * @function
