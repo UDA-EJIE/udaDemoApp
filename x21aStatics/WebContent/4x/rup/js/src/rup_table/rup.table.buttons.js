@@ -1727,7 +1727,14 @@ $.extend( _dtButtons, {
 			}
 
 			if ( config.background ) {
-				Buttons.background( true, config.backgroundClassName, config.fade );
+				// Si la tabla se encuentra en un dialogo insertamos el background dentro del dialogo
+				if($('div.rup-dialog').has('#' + dt.context[0].sTableId + '_wrapper').length ? true : false) {
+					$('div.rup-dialog #' + dt.context[0].sTableId + '_wrapper').append('<div class="dt-button-background"/>');
+				} 
+				// Si no usamos el funcionamiento por defecto
+				else{
+					Buttons.background( true, config.backgroundClassName, config.fade );
+				}
 			}
 
 			// Need to break the 'thread' for the collection button being
@@ -1750,7 +1757,15 @@ $.extend( _dtButtons, {
 							} );
 
 						$('div.dt-button-background').off( 'click.dtb-collection' );
-						Buttons.background( false, config.backgroundClassName, config.fade );
+						
+						// Si la tabla se encuentra en un dialogo eliminamos el background de dentro del dialogo
+						if($('div.rup-dialog').has('#' + dt.context[0].sTableId + '_wrapper').length ? true : false) {
+							$('div.dt-button-background').remove();
+						} 
+						// Si no usamos el funcionamiento por defecto
+						else{
+							Buttons.background( false, config.backgroundClassName, config.fade );
+						}
 
 						$('body').off( 'click.dtb-collection' );
 						dt.off( 'buttons-action.b-internal' );
@@ -1760,20 +1775,21 @@ $.extend( _dtButtons, {
 			
 			// Como el boton se posiciona de manera absoluta hay que establecerle la posicion
 			// cada vez que se cambia el tamaño de la pantalla.
-			$(window).resize(function() {
-				console.log("resize...");
-			    hostPosition = { 
-			    	top: host.position().top + parseInt(host.css('marginTop'), 10), 
-					left: host.position().left + parseInt(host.css('marginLeft'), 10) 
-				};
-				
-				config._collection.css( {
-					top: hostPosition.top + host.outerHeight(),
-					left: hostPosition.left
-				} );
-				
-				// TODO: eliminar evento cuando se cierra el collection
-			} );
+			$(window).on("resize.ajustarCollection",(function() {
+				if(!$('div.dt-button-collection').is(':visible')) {
+					$(window).off("resize.ajustarCollection");
+				} else{
+					hostPosition = { 
+				    	top: host.position().top + parseInt(host.css('marginTop'), 10), 
+						left: host.position().left + parseInt(host.css('marginLeft'), 10) 
+					};
+					
+					config._collection.css( {
+						top: hostPosition.top + host.outerHeight(),
+						left: hostPosition.left
+					} );
+				}
+			} ));
 
 			if ( config.autoClose ) {
 				dt.on( 'buttons-action.b-internal', function () {
@@ -2221,7 +2237,7 @@ DataTable.Api.register( 'buttons.disableAllButtons()', function (ctx,exception) 
 	$.each(opts, function () {
 		if(exception === undefined){
 			$(this.node).addClass('disabledButtonsTable');//para el toolbar
-			$('#'+this.node.id+'_contextMenuToolbar').addClass('disabledButtonsTable');//para el contexmenu
+			$('#'+this.node.id+'_contextMenuToolbar').addClass('disabledButtonsTable');//para el contextmenu
 		}else if(this.node.id !== exception){//ponemos los regex a cero menos la excepcion
 			this.conf.displayRegex = undefined;
 		}
