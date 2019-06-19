@@ -15,44 +15,47 @@
  */
 jQuery(function($){
 	
-	jQuery("#table").rup_jqtable({
-		url: "../jqGridUsuario",
-		colNames: tableColNames,
-		colModel: tableColModels,
-		usePlugins:[
-			"inlineEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
-        	"responsive",
-        	"filter",
-        	"search",
-        	"report",
-        	"multifilter"
-        ],
-        editOptions:{
-        	fillDataMethod:"clientSide"
-        },
-        primaryKey: "id",
-        sortname: 'id',
-        validate:{
-			rules:{
-				"nombre":{required:true},
-				"apellido1":{required:true},
-				"fechaAlta":{date:true},
-				"fechaBaja":{date:true}
-			}
-		},
-        filter:{
-        	validate:{
-        		rules:{
+    // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    confLoaded.then(function() {
+    	jQuery("#table").rup_jqtable({
+    		url: "../jqGridUsuario",
+    		colNames: tableColNames,
+    		colModel: tableColModels,
+    		usePlugins:[
+    			"inlineEdit",
+            	"feedback",
+    			"toolbar",
+            	"contextMenu",
+            	"responsive",
+            	"filter",
+            	"search",
+            	"report",
+            	"multifilter"
+            ],
+            editOptions:{
+            	fillDataMethod:"clientSide"
+            },
+            primaryKey: "id",
+            sortname: 'id',
+            validate:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true},
     				"fechaAlta":{date:true},
     				"fechaBaja":{date:true}
     			}
-        	}
-        },
-        multifilter:{ idFilter:"inlineEdit",labelSize:255,userFilter:"udaPruebas"},
-        report: options_table_report
-	});
+    		},
+            filter:{
+            	validate:{
+            		rules:{
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+            	}
+            },
+            multifilter:{ idFilter:"inlineEdit",labelSize:255,userFilter:"udaPruebas"},
+            report: options_table_report
+    	});
+    });
 	
 });

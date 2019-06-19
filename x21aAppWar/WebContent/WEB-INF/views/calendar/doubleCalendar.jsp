@@ -18,7 +18,7 @@
 
 <div class="cal-1">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div class="page-header w-100 mb-3">
                 <div class="pull-right form-inline">
                     <div class="btn-group mb-3">
@@ -42,14 +42,14 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div id="calendar1" class="calendar"></div>
         </div>
     </div>
 </div>
 <div class="cal-2">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div class="page-header w-100 mb-3">
                 <div class="pull-right form-inline">
                     <div class="btn-group mb-3">
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div id="calendar2" class="calendar"></div>
         </div>
     </div>

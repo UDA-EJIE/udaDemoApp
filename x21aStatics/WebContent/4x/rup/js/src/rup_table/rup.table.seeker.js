@@ -167,8 +167,7 @@ function _createFilterColumn(dt,ctx){
 				}
 			}
 		} );
-
-
+		
 	   dt.columns().eq(0).each(function(colIdx) {
 		   if(colIdx > 0){
 		        $( 'input', $('#'+idTabla+' tfoot')[0].rows[0].cells[colIdx] ).on( 'keypress', function (ev) {
@@ -192,9 +191,10 @@ function _createFilterColumn(dt,ctx){
 		   }
 	   });
 
-	   _createSearchRow(dt,ctx);
-	   ctx.seeker.searchForm = $('#'+idTabla+' tfoot tr:nth-child(2)');
+	   _createSearchRow(dt, ctx);
+	   ctx.seeker.searchForm = $('#' + idTabla + ' tfoot tr:nth-child(2)');
 	   ctx.seeker.searchForm.hide();
+
 	   _createRupComponent(dt,ctx);
 }
 /**
@@ -340,13 +340,12 @@ function _createSearchRow (dt,ctx){
 			ctx.seeker.search.pos = ctx.seeker.search.funcionParams.length-1;
 			_processData(dt,ctx,ctx.seeker.search.funcionParams);
 		});
-
+		
 		// Se recubre con un form
 		var $searchForm = jQuery('<form>').attr('id',idTabla+'_search_searchForm');
-
+		$('#' + idTabla).wrapAll($searchForm);
 		ctx.seeker.search.$searchForm = jQuery('#'+idTabla+'_search_searchForm');
 		ctx.seeker.search.$searchRow.hide();
-        $('#'+idTabla).wrapAll($searchForm);
         ctx.seeker.search.pos = 0;
         ctx.seeker.search.accion = '';
 }
@@ -502,7 +501,7 @@ function _processData(dt,ctx,data){
 function _getDatos(ctx){
 	var datos = ctx.aBaseJson;
 	if(datos !== undefined){
-		datos.search = form2object($(ctx.seeker.search.$searchForm.selector)[0]);
+		datos.search = form2object(ctx.seeker.search.$searchForm[0]);
 	}
 	return datos;
 }

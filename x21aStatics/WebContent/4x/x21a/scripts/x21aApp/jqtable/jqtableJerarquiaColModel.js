@@ -14,7 +14,9 @@
  * que establece la Licencia.
  */
 	
-	var tableColNames = [
+// No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    initRupI18nPromise.then(function() {
+        var tableColNames = [
 	                     $.rup.i18n.app.table.id,
 	                     "",
 			           $.rup.i18n.app.table.nombre,
@@ -95,6 +97,7 @@
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
 			]
 		};
+    });
 
 	//Formulario de filtrado
 	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);

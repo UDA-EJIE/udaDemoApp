@@ -94,64 +94,67 @@ jQuery(function($){
 //	});
 //	
 	
-	$("#table").rup_jqtable({
-		url: "../jqGridUsuario",
-		colNames: tableColNames,
-		colModel: tableColModels,
-		multiboxonly: true,
-        model:"Usuario",
-        usePlugins:[
-			"formEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
-        	"responsive",
-        	"filter",
-        	"search",
-        	"multiselection",
-        	"report",
-//        	"multifilter"
-        ],
-        primaryKey: ["id"],
-        sortname: 'id',
-        formEdit:{
-        	detailForm: "#table_detail_div",
-        	validate:{
-    			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-    		}
-        },
-       
-		multiselection: {
-//			headerContextMenu: {
-//				items: {
-//		            "edit": {name: "Edit", icon: "edit", accesskey: "e"},
-//		            "cut": {name: "Cut", icon: "cut", accesskey: "c"},
-//		            // first unused character is taken (here: o)
-//		            "copy": {name: "Copy", icon: "copy", accesskey: "c o p y"},
-//		            // words are truncated to their first letter (here: p)
-//		            "paste": {name: "Paste", icon: "paste", accesskey: "cool paste"},
-//		            "delete": {name: "Delete", icon: "delete"},
-//		            "sep1": "---------",
-//		            "quit": {name: "Quit", icon: "quit"}
-//		        }
-//			}
-		},
-        filter:{
-        	validate:{
-        		rules:{
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-        	}
-        },
-        multifilter:{ idFilter:"formEditMulti",labelSize:255},
-        report: options_table_report
-	});
+    // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    confLoaded.then(function() {
+    	$("#table").rup_jqtable({
+    		url: "../jqGridUsuario",
+    		colNames: tableColNames,
+    		colModel: tableColModels,
+    		multiboxonly: true,
+            model:"Usuario",
+            usePlugins:[
+    			"formEdit",
+            	"feedback",
+    			"toolbar",
+            	"contextMenu",
+            	"responsive",
+            	"filter",
+            	"search",
+            	"multiselection",
+            	"report",
+    //        	"multifilter"
+            ],
+            primaryKey: ["id"],
+            sortname: 'id',
+            formEdit:{
+            	detailForm: "#table_detail_div",
+            	validate:{
+        			rules:{
+        				"nombre":{required:true},
+        				"apellido1":{required:true},
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+        		}
+            },
+           
+    		multiselection: {
+    //			headerContextMenu: {
+    //				items: {
+    //		            "edit": {name: "Edit", icon: "edit", accesskey: "e"},
+    //		            "cut": {name: "Cut", icon: "cut", accesskey: "c"},
+    //		            // first unused character is taken (here: o)
+    //		            "copy": {name: "Copy", icon: "copy", accesskey: "c o p y"},
+    //		            // words are truncated to their first letter (here: p)
+    //		            "paste": {name: "Paste", icon: "paste", accesskey: "cool paste"},
+    //		            "delete": {name: "Delete", icon: "delete"},
+    //		            "sep1": "---------",
+    //		            "quit": {name: "Quit", icon: "quit"}
+    //		        }
+    //			}
+    		},
+            filter:{
+            	validate:{
+            		rules:{
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+            	}
+            },
+            multifilter:{ idFilter:"formEditMulti",labelSize:255},
+            report: options_table_report
+    	});
+    });
 //	
 //	$("#table").on("jqGridSelectRow.rupTable.multiselection", function(){
 //	

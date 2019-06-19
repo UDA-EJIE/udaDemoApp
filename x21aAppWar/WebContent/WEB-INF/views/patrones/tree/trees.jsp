@@ -25,7 +25,7 @@
 		<div id="javaScriptCode" class="codePanel codePanelRight"></div>
 	</div>
 
-	<div id="tree_example" class="tree_example_code">
+	<div id="tree_example" class="card p-3">
 		<ul>
 			<li id="node1"><a href="#">Padre 1</a>
 				<ul>

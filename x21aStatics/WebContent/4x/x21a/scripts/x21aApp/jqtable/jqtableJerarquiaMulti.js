@@ -14,83 +14,87 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	$("#table").rup_jqtable({
-		url: "../jqGridUsuarioJerarquia",
-		colNames: tableColNames,
-		colModel: tableColModels,
-        primaryKey:["id"],
-        usePlugins:[
-        	"feedback",
-			"toolbar",
-//        	"contextMenu",
-        	"fluid",
-        	"filter",
-        	"search",
-        	"jerarquia",
-        	"multiselection",
-        	"formEdit",
-        	"multifilter"
-        ],
-        rowNum:10, 
-        rowList:[10,20,30], 
-        sortname: 'id',
-        filter: {
-        	url:"../jqGridUsuarioJerarquia/jerarquia/filter",
-        	childrenUrl:"../jqGridUsuarioJerarquia/jerarquiaChildren",
+    
+ // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    initRupI18nPromise.then(function() {
+    	$("#table").rup_jqtable({
+    		url: "../jqGridUsuarioJerarquia",
+    		colNames: tableColNames,
+    		colModel: tableColModels,
+            primaryKey:["id"],
+            usePlugins:[
+            	"feedback",
+    			"toolbar",
+    //        	"contextMenu",
+            	"fluid",
+            	"filter",
+            	"search",
+            	"jerarquia",
+            	"multiselection",
+            	"formEdit",
+            	"multifilter"
+            ],
+            rowNum:10, 
+            rowList:[10,20,30], 
+            sortname: 'id',
+            filter: {
+            	url:"../jqGridUsuarioJerarquia/jerarquia/filter",
+            	childrenUrl:"../jqGridUsuarioJerarquia/jerarquiaChildren",
+            	validate:{
+            		rules:{
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+            	}
+            },
+    	formEdit:{
+        	detailForm: "#table_detail_div",
         	validate:{
-        		rules:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true},
     				"fechaAlta":{date:true},
     				"fechaBaja":{date:true}
     			}
-        	}
+    		}
         },
-	formEdit:{
-    	detailForm: "#table_detail_div",
-    	validate:{
-			rules:{
-				"nombre":{required:true},
-				"apellido1":{required:true},
-				"fechaAlta":{date:true},
-				"fechaBaja":{date:true}
-			}
-		}
-    },
-       multiselection: {
-        	headerContextMenu: { 
-        		deselectAll : false,
-        		items : {
-        			"aaa" : {name: "custom_a"},
-        			"bbb" : {name: "custom_b"}
-        		}
-        		,
-        		callback : function(){
-        			alert('customHeader');
-        		}
-        	},
-        	rowContextMenu: { 
-        		select_child : false,
-        		items : {
-        			"ccc" : {name: "custom_c"},
-        			"ddd" : {name: "custom_d"}
-        		}
-        		,
-        		callback : function(){
-        			alert('customRow');
-        		}
-        	}
-        },
-        jerarquia: {
-          	//token: '###',
-          	parentProp: "idPadre",
-          	column: 'nombre',
-          	resetEvents: {
-          		click: ["table_filter_filterButton", "table_filter_cleanLink"],
-          		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
-          	},
-          	contextMenu : true //(default)
-          }
-        , multifilter:{ idFilter:"jerarquiMulti",labelSize:255}
-	});
+           multiselection: {
+            	headerContextMenu: { 
+            		deselectAll : false,
+            		items : {
+            			"aaa" : {name: "custom_a"},
+            			"bbb" : {name: "custom_b"}
+            		}
+            		,
+            		callback : function(){
+            			alert('customHeader');
+            		}
+            	},
+            	rowContextMenu: { 
+            		select_child : false,
+            		items : {
+            			"ccc" : {name: "custom_c"},
+            			"ddd" : {name: "custom_d"}
+            		}
+            		,
+            		callback : function(){
+            			alert('customRow');
+            		}
+            	}
+            },
+            jerarquia: {
+              	//token: '###',
+              	parentProp: "idPadre",
+              	column: 'nombre',
+              	resetEvents: {
+              		click: ["table_filter_filterButton", "table_filter_cleanLink"],
+              		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
+              	},
+              	contextMenu : true //(default)
+              }
+            , multifilter:{ idFilter:"jerarquiMulti",labelSize:255}
+    	});
+    });
 	
 	jQuery("#idPadre_detailForm_table").rup_combo({
 		source : "../jqGridUsuarioJerarquia",
