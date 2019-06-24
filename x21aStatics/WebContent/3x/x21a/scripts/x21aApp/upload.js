@@ -33,6 +33,9 @@ jQuery(document).ready(function(){
 //		]
 //	});
 //	
+	
+	// Cambiamos el name para que funcione bien 
+	$('#file_only').attr('name', 'files[]');
 	// Creacion de los componentes feedback
 	$("#feedback_fileupload_form").rup_feedback();
 	$("#feedback_fileupload_form_multiple").rup_feedback();

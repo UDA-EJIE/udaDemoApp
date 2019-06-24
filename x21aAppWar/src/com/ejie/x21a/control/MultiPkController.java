@@ -65,7 +65,7 @@ public class MultiPkController  {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		
+		model.addAttribute("multiPk", new MultiPk());
 		return "multipk";
 	}
 

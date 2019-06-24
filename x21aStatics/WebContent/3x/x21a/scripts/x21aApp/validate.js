@@ -14,7 +14,9 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function(){
-	
+	//Cambiamos los names para que funcionen
+	$('[name="alertDay"]').attr('name', 'alertDay[]');
+	$('[name="alertDayJqueryui"]').attr('name', 'alertDayJqueryui[]');
 	var $feedbackLeftAligned = jQuery("#feedbackLeftAligned").rup_feedback({ 
 		type: "ok",
 		closeLink: true,
@@ -31,6 +33,9 @@ jQuery(document).ready(function(){
 			"nombre": {required: true},
 			"apellido1": {required: true},
 			"apellido2": {required: true}
+		}
+		, submitHandler : function () {
+			alert('se ha enviado correctamente');
 		}
 	});
 	

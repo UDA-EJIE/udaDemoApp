@@ -55,6 +55,8 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.model.Comarca;
+import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
@@ -136,7 +138,7 @@ public class TableUsuarioController  {
 	
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		
+		model.addAttribute("usuario", new Usuario());
 		return "datatable";
 	}
 	
@@ -601,6 +603,8 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("localidad", new Localidad());
 		return "newTableMasterDetail";
 	}
 	

@@ -59,13 +59,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.model.AlumnoDepartamento;
+import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
@@ -208,7 +212,13 @@ public class PatronesController {
 		List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
 		model.addAttribute("autonomias",autonomias);
 		
+		model.addAttribute("comarca", new Comarca());
+		
+		model.addAttribute("formComarcas", new FormComarcas());
+		
 		model.addAttribute("alumno",new Alumno());
+		
+		model.addAttribute("alumnoDepartamento", new AlumnoDepartamento());
 		
 		return "form";
 	}
@@ -312,6 +322,8 @@ public class PatronesController {
 	//Upload
 	@RequestMapping(value = "upload", method = RequestMethod.GET)
 	public String getUpload(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("collection", new Collection());
 		return "upload";
 	}
 	
@@ -410,17 +422,22 @@ public class PatronesController {
 	//Validate
 	@RequestMapping(value = "validate", method = RequestMethod.GET)
 	public String getValidate(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("randomForm", new RandomForm());
 		return "validate";
 	}
 	
 	//Validate
 	@RequestMapping(value = "validateRules", method = RequestMethod.GET)
 	public String getValidateRules(Model model) {
+
+		model.addAttribute("alumno", new Alumno());
 		return "validateRules";
 	}
 	
 	@RequestMapping(value = "validateRup", method = RequestMethod.GET)
 	public String getValidateRup(Model model) {
+		model.addAttribute("alumno", new Alumno());
 		return "validateRup";
 	}
 	

@@ -27,6 +27,9 @@
 		<property name="serializers">
 			<util:map>
                 <entry key="#{T(com.ejie.x21a.model.Alumno)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.AlumnoDepartamento)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.FormComarcas)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.RandomForm)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.Comarca)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.Departamento)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.DepartamentoProvincia)}" value-ref="customSerializer" />

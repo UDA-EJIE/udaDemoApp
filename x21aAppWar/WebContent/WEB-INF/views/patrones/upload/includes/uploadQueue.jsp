@@ -3,7 +3,8 @@
 
 
 <div id="fileupload_only">
-	<form action="../upload" id="usuarioForm" enctype="multipart/form-data" method="POST">
+	<!-- <form action="../upload" id="usuarioForm" enctype="multipart/form-data" method="POST"> -->
+	<form:form action="../upload" id="usuarioForm" enctype="multipart/form-data" method="POST" modelAttribute="collection">
 		<fieldset id="fieldset_formulario" class="rup-upload">
 			<div class="formulario_columna_cnt">
 				<div class="formulario_linea_izda_float">
@@ -14,7 +15,8 @@
 							<span class="btn btn-success fileinput-button">
 							      <i class="fa fa-plus" aria-hidden="true"></i>
 							      <span><spring:message code="upload.button.addFiles"/></span>
-							      <input id="file_only" type="file" name="files[]" multiple="multiple" />
+							      <!-- <input id="file_only" type="file" name="files[]" multiple="multiple" /> -->
+							      <form:input path="files" type="file" multiple="multiple" id="file_only" />
 							</span>
 				    				            
 				            <button type="submit" class="btn btn-primary start">
@@ -41,6 +43,6 @@
 			    </div>
 			  </div>
 		</fieldset>
-	</form>
+	</form:form>
 </div>
 
