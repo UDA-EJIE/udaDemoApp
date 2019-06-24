@@ -15,7 +15,7 @@
 */
 package com.ejie.x21a.control;
 
-import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -54,12 +54,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.exception.X21aRuntimeException;
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.Usuario2;
 import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
-import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
@@ -134,10 +134,32 @@ public class TableUsuarioController  {
         return usuario;
 	}
 	
+	@RequestMapping(value = "{bis}/{id}", method = RequestMethod.GET)
+	@ResponseBody()
+	public Usuario getBis(@PathVariable String id) {
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		usuario = this.jqGridUsuarioService.find(usuario);
+		
+		Usuario2 usuario2 = new Usuario2();
+		try {
+			BeanUtils.copyProperties(usuario2, usuario);
+		} catch (Exception e) {
+			throw new X21aRuntimeException(e);
+		}
+		
+		return usuario2;
+	}
+	
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		
 		return "datatable";
+	}
+	@RequestMapping(value = "/configurableDouble", method = RequestMethod.GET)
+	public String configurableDouble (Model model) {
+		
+		return "datatableDouble";
 	}
 	
 	/**
@@ -171,6 +193,25 @@ public class TableUsuarioController  {
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
+	
+	@RequestMapping(value="/{bis}",method = RequestMethod.PUT)
+	@ResponseBody
+	public Usuario2 editBis(@RequestBody Usuario2 usuario2) {
+		if (usuario2.getEjie()==null){
+			usuario2.setEjie("0");
+		}
+		Usuario usuarioAux = this.jqGridUsuarioService.update(usuario2);
+		logger.info("Entity correctly updated!");
+		
+		Usuario2 rdo = new Usuario2();
+		try {
+			BeanUtils.copyProperties(rdo, usuarioAux);
+		} catch (Exception e) {
+			throw new X21aRuntimeException(e);
+		}
+		
+		return rdo;
+	}
 	
 	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
     public @ResponseBody Usuario editar(
@@ -253,6 +294,27 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios");
 		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
+	@ResponseBody()
+	public TableResponseDto<Usuario2> filter2(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios 2");
+		try {
+			tableRequestDto.setSidx(tableRequestDto.getSidx().substring(0, tableRequestDto.getSidx().length()-1));
+			TableResponseDto<Usuario> rdo1 = this.filter(filterUsuario, tableRequestDto);
+			List<Usuario2> rows = new ArrayList<Usuario2>();
+			for (Usuario usuario : (List<Usuario>)rdo1.getRows()) {
+				Usuario2 aux = new Usuario2();
+				BeanUtils.copyProperties(aux, usuario);
+				rows.add(aux);
+			}
+			return new TableResponseDto<Usuario2>(tableRequestDto, Long.valueOf(rdo1.getRecords()), Long.valueOf(rdo1.getRecords()), rows);
+		} catch (Exception e) {
+			throw new X21aRuntimeException(e);
+		}
+	}
 	
 	
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
@@ -312,6 +374,27 @@ public class TableUsuarioController  {
 			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
 		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
 		return jqGridUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
+	}
+	
+	@RequestMapping(value = "{bis}/search", method = RequestMethod.POST)
+	@ResponseBody
+	public List<TableRowDto<Usuario2>> searchBis(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
+			@RequestJsonBody(param="search") Usuario2 searchUsuario,
+			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios 2");
+		try {
+			jqGridRequestDto.setSidx(jqGridRequestDto.getSidx().substring(0, jqGridRequestDto.getSidx().length()-1));
+			List<TableRowDto<Usuario2>> search = new ArrayList<TableRowDto<Usuario2>>();
+			for (TableRowDto<Usuario> usuario : this.search(filterUsuario, searchUsuario, jqGridRequestDto)) {
+				Usuario2 aux = new Usuario2();
+				BeanUtils.copyProperties(aux, usuario);
+				search.add(new TableRowDto<Usuario2>(usuario.getPkMap(), usuario.getPage(), usuario.getPageLine(), usuario.getTableLine(), aux));
+			}
+			return search;
+		} catch (Exception e) {
+			throw new X21aRuntimeException(e);
+		}
 	}
 	
 	/**
