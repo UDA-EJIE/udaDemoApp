@@ -23,55 +23,13 @@
 	data-filter-form="#example_filter_form">
         <thead>
             <tr>
-                <th data-col-prop="id" data-col-edit="false">
-                	<span class="d-block d-xl-inline">Id</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="nombre" data-col-edit="true">
-                	<span class="d-block d-xl-inline">Nombre</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="apellido1">
-                	<span class="d-block d-xl-inline">Primer apellido</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="ejie" data-col-type="Checkbox">
-                	<span class="d-block d-xl-inline">Ejie</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">
-                	<span class="d-block d-xl-inline">Fecha alta</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">
-                	<span class="d-block d-xl-inline">Fecha baja</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
-                <th data-col-prop="rol" data-col-type="combo">
-                	<span class="d-block d-xl-inline">Rol</span>
-                	<div class="d-flex d-xl-inline">
-                		<span class="mdi mdi-arrow-down mr-2 mr-xl-0"></span>
-                		<span class="mdi mdi-arrow-up"></span>
-                	</div>
-                </th>
+                <th data-col-prop="id" data-col-edit="false">Id</th>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                <th data-col-prop="apellido1">Primer apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja </th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
 </table>

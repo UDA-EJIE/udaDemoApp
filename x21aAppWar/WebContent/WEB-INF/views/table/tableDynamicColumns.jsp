@@ -31,27 +31,13 @@
 	data-filter-form="#columnasDinamicas_filter_form">
         <thead>
             <tr>
-                <th data-col-prop="id" data-col-edit="false">
-                	Id
-                </th>
-                <th data-col-prop="nombre" data-col-edit="true">
-                	Nombre
-                </th>
-                <th data-col-prop="apellido1">
-                	Primer apellido
-                </th>
-                <th data-col-prop="ejie" data-col-type="Checkbox">
-                	Ejie
-                </th>
-                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">
-                	Fecha alta
-                </th>
-                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">
-                	Fecha baja
-                </th>
-                <th data-col-prop="rol" data-col-type="combo">
-                	Rol
-                </th>
+                <th data-col-prop="id" data-col-edit="false">Id</th>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                <th data-col-prop="apellido1">Primer apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
             </tr>
         </thead>
 </table>
