@@ -145,7 +145,9 @@ jQuery(function($){
 	        	deselect: true,
 	        	validate:{
 	    			rules:{
-	    				"id": {required:true}
+	    				"id": {required:true},
+	    				"nombre":{required:true},
+	    				"fechaAlta":{required:true}
 	    			}
 	    		}
 	        }
