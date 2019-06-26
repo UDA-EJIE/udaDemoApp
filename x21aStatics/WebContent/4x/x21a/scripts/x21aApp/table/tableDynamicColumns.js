@@ -24,10 +24,10 @@ jQuery(function($){
 	   {rol: "Manager", codTipoSubsanacion:"manager"}
 	], 
 	tableColModel = [
-		{ name: "id", index: "id", editable:true, hidden:false, width: 80
+		{ name: "id", index: "id", editable:true, hidden:false, width: 80 ,obligatorio:true
 			, formoptions:{rowpos:1, colpos:1}
 		},
-		{ name: "nombre", index: "nombre", editable:true, hidden:false
+		{ name: "nombre", index: "nombre", editable:true, hidden:false ,obligatorio:true
 			, formoptions:{rowpos:2, colpos:1}
 		},
 		{ name: "apellido1", index: "apellido1", editable:true, hidden:false
@@ -44,7 +44,7 @@ jQuery(function($){
 			}
 			, formoptions:{rowpos:5, colpos:1}
 		},
-		{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
+		{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120, obligatorio:true,
 			rupType: "date",
 			rwdClasses:"hidden-xs hidden-sm hidden-md",
 			editoptions:{
@@ -114,28 +114,21 @@ jQuery(function($){
 	];
 		 
 	function loadTable(){
-		tableColModel = jQuery.grep(tableColModel, function(n,i) {
+		tableColModel = jQuery.grep(tableColModel, function(n) {
 				var temp = "";
-				var encontrado = false;
 				
 				// Bucle para los opcionales
-				$.each($('#columsSelector').rup_combo("getRupValue"), function (index, value) {
+				$.each($('#columsSelector').rup_combo("getRupValue"), function (index) {
 					if(n.name === optionalColumns[index].label) {
 						temp = n;
 						return;
 					}
 				});
 				
-				// Bucle para los obligatorios
-				$.each(optionalColumns, function (index, value) {
-					if(n.name === optionalColumns[index].label) {
-						encontrado = true;
-						return;
-					}
-				});
-				
-				if(temp !== "" || !encontrado){
+				if(temp !== "" || n.obligatorio){
 					return n;
+				}else{
+					$("th[data-col-prop='"+n.name+"']").remove();
 				}
 		});
 		
@@ -156,19 +149,6 @@ jQuery(function($){
 	    			}
 	    		}
 	        }
-		});
-		
-		$.each(optionalColumns, function (index, item) {
-			
-			// Si no ha sido seleccionado la ocultamos
-			if($.inArray(item.value, $('#columsSelector').rup_combo("getRupValue")) === -1){
-				// Obtenemos la columna
-		        var column = $('#columnasDinamicas').DataTable().column(item.value - 1);
-				
-				// Ocultamos la columna
-		        column.visible(false);
-			}
-			
 		});
 		
 		// Ocultamos los elementos configuradores de la tabla
