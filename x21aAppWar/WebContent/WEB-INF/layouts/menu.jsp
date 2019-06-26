@@ -241,12 +241,12 @@
 
 
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="datatableDropdown"
+				<a class="nav-link dropdown-toggle" href="#" id="tableDropdown"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="mdi mdi-table" aria-hidden="true"></i>
 					<spring:message code="tabla" />
 				</a>
-				<div class="dropdown-menu" aria-labelledby="datatableDropdown">
+				<div class="dropdown-menu" aria-labelledby="tableDropdown">
 					<a class="dropdown-item" href="/x21aAppWar/table/configurable">
 						<spring:message code="tabla.configurable" />
 					</a>
@@ -258,6 +258,9 @@
 					</a>
 					<a class="dropdown-item" href="/x21aAppWar/table/tableDialog">
 						<spring:message code="tabla.tableDialog" />
+					</a>
+					<a class="dropdown-item" href="/x21aAppWar/table/dynamicColumns">
+						<spring:message code="tabla.dynamicColumns" />
 					</a>
 					<a class="dropdown-item" href="${staticsUrl}/rup/html/specRunner.html" target="_blank">
 						<spring:message code="Test para la tabla" />

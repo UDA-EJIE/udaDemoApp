@@ -16,9 +16,12 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>${tituloPagina}</h2> <!-- Titulo pagina -->
 
-<button id="btnTablaDialog_div">Tabla en formulario (DIV)</button>
-<button id="btnTablaDialog_ajax">Tabla en formulario (AJAX)</button>
-
+<button id="btnTablaDialog_div" class="btn-material btn-material-primary-high-emphasis" type="button">
+	<span>Tabla en formulario (DIV)</span>
+</button>
+<button id="btnTablaDialog_ajax" class="btn-material btn-material-primary-high-emphasis" type="button">
+	<span>Tabla en formulario (AJAX)</span>
+</button>
 
 <div id="tableDialog_layer_ajax"></div>
 <div id="tableDialog_layer_div" style="display:none">

@@ -588,18 +588,25 @@
 			value="/WEB-INF/views/table/includes/tableDialog-includes.jsp" />
 	</definition>
 
-	<definition extends="template" name="tablePruebas">
-		<put-attribute name="content"
-			value="/WEB-INF/views/table/tableUsuario.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/table/includes/tableUsuario-includes.jsp" />
-	</definition>
-
 	<definition extends="template" name="tableMultipk">
 		<put-attribute name="content"
 			value="/WEB-INF/views/table/tableMultipk.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/tableMultipk-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableDynamicColumns">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDynamicColumns.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDynamicColumns-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tablePruebas">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableUsuario.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableUsuario-includes.jsp" />
 	</definition>
 	
 

@@ -1,5 +1,5 @@
 /*!
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2019 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -134,12 +134,14 @@ jQuery(document).ready(function(){
 				"multipk" : { "i18nCaption" : "tableMultipk" },
 				"masterDetail" : { "i18nCaption" : "tableMasterDetail" },
 				"tableDialog" : { "i18nCaption" : "tableDialog" },
+				"dynamicColumns" : { "i18nCaption" : "tableDynamicColumns" },
 				/* METER LA TABLA EN DIALOGO */
 				"subLevel":[
 				    {"i18nCaption": "tableConfigurable", "url": "/x21aAppWar/table/configurable" },
 				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
 				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" },
-				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/tableDialog" }
+				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/tableDialog" },
+				    {"i18nCaption": "tableDynamicColumns", "url": "/x21aAppWar/table/dynamicColumns" }
 				]
 			},
 			"tableLegacy" : {
