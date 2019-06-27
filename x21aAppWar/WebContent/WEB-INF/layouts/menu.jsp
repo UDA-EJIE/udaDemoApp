@@ -296,6 +296,10 @@
 								<spring:message code="tablaLegacy.edicionLinea" />
 							</a>
 							<a class="dropdown-item"
+								href="/x21aAppWar/tableLegacy/inlineEditDynamicColumns">
+								<spring:message code="tablaLegacy.edicionLineaColumnasDinamicas" />
+							</a>
+							<a class="dropdown-item"
 								href="/x21aAppWar/tableLegacy/inlineEditMultiselection">
 								<spring:message code="tablaLegacy.edicionLineaMultiseleccion" />
 							</a>

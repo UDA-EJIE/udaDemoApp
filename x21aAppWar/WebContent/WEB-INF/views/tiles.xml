@@ -667,11 +667,11 @@
 			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditExcelMode-includes.jsp" />
 	</definition>
 	
-	<definition extends="template" name="jqtableGrouping">
+	<definition extends="template" name="jqtableInlineEditDynamicColumns">
 		<put-attribute name="content"
-			value="/WEB-INF/views/jqtable/jqtable.jsp" />
+			value="/WEB-INF/views/jqtable/jqtableInlineEditDynamicColumns.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/jqtable/includes/jqtableGrouping-includes.jsp" />
+			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditDynamicColumns-includes.jsp" />
 	</definition>
 	
 	<definition extends="template" name="jqtableInlineEditMultiselection">
@@ -679,6 +679,13 @@
 			value="/WEB-INF/views/jqtable/jqtable.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditMultiselection-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="jqtableGrouping">
+		<put-attribute name="content"
+			value="/WEB-INF/views/jqtable/jqtable.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/jqtable/includes/jqtableGrouping-includes.jsp" />
 	</definition>
 	
 	<!-- <definition extends="template" name="jqtableAllFeatures"> -->

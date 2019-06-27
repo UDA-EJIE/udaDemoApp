@@ -114,22 +114,25 @@ jQuery(function($){
 	];
 		 
 	function loadTable(){
-		tableColModel = jQuery.grep(tableColModel, function(n) {
-				var temp = "";
-				
+		tableColModel = jQuery.grep(tableColModel, function(item) {
+			var temp = "";
+			
+			if(!item.obligatorio){
 				// Bucle para los opcionales
 				$.each($('#columsSelector').rup_combo("getRupValue"), function (index) {
-					if(n.name === optionalColumns[index].label) {
-						temp = n;
+					if(item.name === tableColModel[this - 1].name) {
+						temp = item;
 						return;
 					}
 				});
-				
-				if(temp !== "" || n.obligatorio){
-					return n;
-				}else{
-					$("th[data-col-prop='"+n.name+"']").remove();
-				}
+			}
+			
+			if(temp !== "" || item.obligatorio){
+				return item;
+			}else{
+				// Eliminamos la columna
+				$("th[data-col-prop='" + item.name + "']").remove();
+			}
 		});
 		
 		$('#columnasDinamicas').rup_table({
