@@ -6,6 +6,8 @@ public class RandomForm implements java.io.Serializable{
 	
 	private Object nombre;
 	
+	private Object apellido;
+	
 	private Object apellido1;
 	
 	private Object apellido2;
@@ -72,9 +74,37 @@ public class RandomForm implements java.io.Serializable{
 
 	private Object mes_diciembre;
 	
+	private Object ejie;
 	
+	private Object group1;
 	
+	private Object empresa_nombre;
 	
+	private Object empresa_web;
+	
+	private Object empresa_email;
+	
+	private Object provincia;
+	
+	private Object direccion_araba;
+	
+	private Object direccion_bizkaia;
+	
+	private Object direccion_gipuzkoa;
+	
+	private Object telefono_araba;
+	
+	private Object telefono_bizkaia;
+	
+	private Object telefono_gipuzkoa;
+	
+	private Object aficiones;
+
+	private Object countryId;
+	
+	private Object regionId;
+	
+	private Object countryName;
 
 	public Object getNombre() {
 		return nombre;
@@ -346,6 +376,142 @@ public class RandomForm implements java.io.Serializable{
 
 	public void setMes_diciembre(Object mes_diciembre) {
 		this.mes_diciembre = mes_diciembre;
+	}
+
+	public Object getEjie() {
+		return ejie;
+	}
+
+	public void setEjie(Object ejie) {
+		this.ejie = ejie;
+	}
+
+	public Object getGroup1() {
+		return group1;
+	}
+
+	public void setGroup1(Object group1) {
+		this.group1 = group1;
+	}
+
+	public Object getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(Object apellido) {
+		this.apellido = apellido;
+	}
+
+	public Object getEmpresa_nombre() {
+		return empresa_nombre;
+	}
+
+	public void setEmpresa_nombre(Object empresa_nombre) {
+		this.empresa_nombre = empresa_nombre;
+	}
+
+	public Object getEmpresa_web() {
+		return empresa_web;
+	}
+
+	public void setEmpresa_web(Object empresa_web) {
+		this.empresa_web = empresa_web;
+	}
+
+	public Object getEmpresa_email() {
+		return empresa_email;
+	}
+
+	public void setEmpresa_email(Object empresa_email) {
+		this.empresa_email = empresa_email;
+	}
+
+	public Object getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Object provincia) {
+		this.provincia = provincia;
+	}
+
+	public Object getDireccion_araba() {
+		return direccion_araba;
+	}
+
+	public void setDireccion_araba(Object direccion_araba) {
+		this.direccion_araba = direccion_araba;
+	}
+
+	public Object getDireccion_bizkaia() {
+		return direccion_bizkaia;
+	}
+
+	public void setDireccion_bizkaia(Object direccion_bizkaia) {
+		this.direccion_bizkaia = direccion_bizkaia;
+	}
+
+	public Object getDireccion_gipuzkoa() {
+		return direccion_gipuzkoa;
+	}
+
+	public void setDireccion_gipuzkoa(Object direccion_gipuzkoa) {
+		this.direccion_gipuzkoa = direccion_gipuzkoa;
+	}
+
+	public Object getTelefono_araba() {
+		return telefono_araba;
+	}
+
+	public void setTelefono_araba(Object telefono_araba) {
+		this.telefono_araba = telefono_araba;
+	}
+
+	public Object getTelefono_bizkaia() {
+		return telefono_bizkaia;
+	}
+
+	public void setTelefono_bizkaia(Object telefono_bizkaia) {
+		this.telefono_bizkaia = telefono_bizkaia;
+	}
+
+	public Object getTelefono_gipuzkoa() {
+		return telefono_gipuzkoa;
+	}
+
+	public void setTelefono_gipuzkoa(Object telefono_gipuzkoa) {
+		this.telefono_gipuzkoa = telefono_gipuzkoa;
+	}
+
+	public Object getAficiones() {
+		return aficiones;
+	}
+
+	public void setAficiones(Object aficiones) {
+		this.aficiones = aficiones;
+	}
+
+	public Object getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(Object countryId) {
+		this.countryId = countryId;
+	}
+
+	public Object getRegionId() {
+		return regionId;
+	}
+
+	public void setRegionId(Object regionId) {
+		this.regionId = regionId;
+	}
+
+	public Object getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(Object countryName) {
+		this.countryName = countryName;
 	}
 
 }

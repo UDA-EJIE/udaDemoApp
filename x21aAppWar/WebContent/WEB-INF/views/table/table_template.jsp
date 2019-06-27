@@ -20,7 +20,7 @@
 	<div id="table_feedback"></div>		<!-- Feedback de la tabla -->
 	<div id="table_toolbar"></div>		<!-- Botonera de la tabla -->
 	<div id="table_filter_div" class="rup-table-filter">	<!-- Capa contenedora del formulario de filtrado -->
-		<form id="table_filter_form">						<!-- Formulario de filtrado -->
+		<form:form modelAttribute="randomForm" id="table_filter_form">						<!-- Formulario de filtrado -->
 			<div id="table_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
 			<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
@@ -30,19 +30,19 @@
 						<label for="countryId_filter_table" class="formulario_linea_label">
 							<spring:message code="countryId" />
 						</label>
-						<input type="text" name="countryId" class="formulario_linea_input form-control" id="countryId_filter_table" />
+						<form:input path="countryId" class="formulario_linea_input form-control" id="countryId_filter_table" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="regionId_filter_table" class="formulario_linea_label">
 							<spring:message code="regionId" />
 						</label>
-						<input type="text" name="regionId" class="formulario_linea_input form-control" id="regionId_filter_table" />
+						<form:input path="regionId" class="formulario_linea_input form-control" id="regionId_filter_table" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="countryName_filter_table" class="formulario_linea_label">
 							<spring:message code="countryName" />
 						</label>
-						<input type="text" name="countryName" class="formulario_linea_input form-control" id="countryName_filter_table" />
+						<form:input path="countryName" class="formulario_linea_input form-control" id="countryName_filter_table" />
 					</div>
 					<!-- Fin campos del formulario de filtrado -->
 					
@@ -65,7 +65,7 @@
 			        </button>
 				</div>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 
 	<div id="table_grid_div">
@@ -80,27 +80,27 @@
 <div id="table_detail_div" class="rup-table-formEdit-detail">
 	<div id ="table_detail_navigation"></div>			<!-- Barra de navegación del detalle -->
 	<div class="ui-dialog-content ui-widget-content" >
-		<form id="table_detail_form">					<!-- Formulario -->
+		<form:form modelAttribute="randomForm" id="table_detail_form">					<!-- Formulario -->
 			<div id ="table_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
 			<div class="form-row">
 			
 				<!-- Campos del formulario de detalle -->
 				<div class="form-group col-sm">
 					<label for="countryId_detailForm_table"><spring:message code="countryId" /></label>
-					<input type="text" name="countryId" class="formulario_linea_input form-control" id="countryId_detailForm_table" />
+					<form:input path="countryId" class="formulario_linea_input form-control" id="countryId_detailForm_table" />
 				</div>
 				<div class="form-group col-sm">
 					<label for="regionId_detail_table"><spring:message code="regionId" /></label>
-					<input type="text" name="regionId" class="formulario_linea_input form-control" id="regionId_detail_table" />
+					<form:input path="regionId" class="formulario_linea_input form-control" id="regionId_detail_table" />
 				</div>
 				<div class="form-group col-sm">
 					<label for="countryName_detail_table"><spring:message code="countryName" /></label>
-					<input type="text" name="countryName" class="formulario_linea_input form-control" id="countryName_detail_table" />
+					<form:input path="countryName" class="formulario_linea_input form-control" id="countryName_detail_table" />
 				</div>
 				<!-- Fin campos del formulario de detalle -->
 				
 			</div>
-		</form>
+		</form:form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">

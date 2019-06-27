@@ -13,14 +13,21 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <fieldset>
 	<legend class="wizardLegend">Datos de la cuenta</legend>
-	<label for="username">Usuario</label> <input id="username" name="username" type="text" /> <br/><br/>
-	<label for="password">Password</label> <input id="password" name="password" type="password" /> <br/><br/>
+	<label for="username">Usuario</label>
+	<!-- <input id="username" name="username" type="text" /> -->
+	<form:input path="username" />
+	<br/><br/>
+	<label for="password">Password</label>
+	<!-- <input id="password" name="password" type="password" /> -->
+	<form:password path="password"/>
+	<br/><br/>
 	<label for="ejie">Ejie</label> 
-		<select id="ejie">
-			<option value="0" selected="selected">No</option>
-			<option value="1">Sí</option>
-		</select> 
+		<form:select path="ejie">
+			<form:option value="0" selected="selected" label="No"/>
+			<form:option value="1" label="S�"/>
+		</form:select> 
 	<br/><br/>
 </fieldset>

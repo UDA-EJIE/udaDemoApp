@@ -13,6 +13,8 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ <%@include file="/WEB-INF/includeTemplate.inc"%>
+ 
 <h2>Wizard &lt;%@ include %&gt;</h2>
 
 <div id="wizard_options">
@@ -34,11 +36,12 @@
 	</fieldset>
 </div>
 
-<form id="wizardForm">
+<!-- <form id="wizardForm"> -->
+<form:form id="wizardForm" modelAttribute="randomForm">
 	<%@ include file="wizard_step0.jsp" %>
 	<%@ include file="wizard_step1.jsp" %>
 	<%@ include file="wizard_step2.jsp" %>
 	<%@ include file="wizard_step3.jsp" %>
 	<br/>
 	<input id="saveForm" type="button" value="Enviar" />
-</form>
+</form:form>

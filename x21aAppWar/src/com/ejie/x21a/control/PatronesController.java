@@ -71,6 +71,7 @@ import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -193,6 +194,7 @@ public class PatronesController {
 	//Multicombo
 	@RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
 	public String getComboMantenimiento(Model model) {
+		model.addAttribute("alumno", new Alumno());
 		return "comboMantenimiento";
 	}
 
@@ -330,26 +332,31 @@ public class PatronesController {
 	//Wizard
 	@RequestMapping(value = "wizard", method = RequestMethod.GET)
 	public String getWizard(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard";
 	}
 	//Wizard_includeFile
 	@RequestMapping(value = "wizard_includeFile", method = RequestMethod.GET)
 	public String getWizard_includeFile(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_includeFile";
 	}
 	//Wizard_jspInclude
 	@RequestMapping(value = "wizard_jspInclude", method = RequestMethod.GET)
 	public String getWizard_jspInclude(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jspInclude";
 	}
 	//Wizard_jstlImport
 	@RequestMapping(value = "wizard_jstlImport", method = RequestMethod.GET)
 	public String getWizard_jstlImporte(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jstlImport";
 	}
 	//Wizard dinamico
 	@RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
 	public String getWizard_dinamico(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_dinamico";
 	}
 	@RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
@@ -446,6 +453,7 @@ public class PatronesController {
 	//All (todos los patrones en una pagina)
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public String getAll(Model model) {
+		model.addAttribute("usuario", new Usuario());
 		return "all";
 	}
 	//AllDialog (todos los patrones en un dialogo)

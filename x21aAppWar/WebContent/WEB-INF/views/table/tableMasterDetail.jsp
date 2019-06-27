@@ -23,31 +23,31 @@
 	<div id="comarca_feedback"></div>
 	<div id="comarca_toolbar"></div>
 	<div id="comarca_filter_div"  class="rup-table-filter">
-		<form id="comarca_filter_form">
+		<form:form modelAttribute="comarca" id="comarca_filter_form">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="code_filter_comarca" class="formulario_linea_label">code</label>
-						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
+						<form:input path="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
-						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
+						<form:input path="provincia.code" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
-						<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
+						<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="descEu_filter_comarca" class="formulario_linea_label">descEu</label>
-						<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
+						<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="css_filter_comarca" class="formulario_linea_label">css</label>
-						<input type="text" name="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
+						<form:input path="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
 					</div>
 				</div>
 				<div id="comarca_filter_buttonSet" class="right_buttons">
@@ -65,7 +65,7 @@
 					</button>
 				</div>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 
 	<div id="comarca_grid_div">
@@ -79,40 +79,40 @@
 <div id="comarca_detail_div" class="rup-table-formEdit-detail">
 	<div id ="comarca_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
-		<form id="comarca_detail_form">
+		<form:form modelAttribute="comarca" id="comarca_detail_form">
 			<div id ="comarca_detail_feedback"></div>
 			
 			<div class="form-row">    
 				<div class="form-group col-sm">
 					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
-			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			    	<form:input path="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
 			    </div>			    
 			    <div class="form-group col-sm">
 			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
-			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    	<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
 			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
-			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    	<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
 			    </div>			    
 			    <div class="form-group col-sm">
 			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
-			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    	<form:input path="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">  
 			    <div class="form-group fix-align col-sm">
 			    	<label for="provinciaRemote">Provincia</label>
-					<select id="provinciaRemote" name="provincia.code" class="rup-combo"><option>&nbsp;</option></select>
+					<form:select id="provinciaRemote" path="provincia.code" class="rup-combo"><form:option value="0" label="&nbsp;"/>&nbsp;</form:select>
 			    </div>			    
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="provinciaDescEs_detail_table" class="formulario_linea_label">provincia.descEs</label>
-			    	<input type="text" name="provincia.descEs" class="formulario_linea_input form-control" id="provinciaDescEs_detail_table" />
+			    	<form:input path="provincia.descEs" class="formulario_linea_input form-control" id="provinciaDescEs_detail_table" />
 			    </div>
 			</div>	
-		</form>
+		</form:form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
@@ -135,31 +135,31 @@
 	<div id="localidad_feedback"></div>
 	<div id="localidad_toolbar"></div>
 	<div id="localidad_filter_div"  class="rup-table-filter">
-		<form id="localidad_filter_form">
+		<form:form modelAttribute="localidad" id="localidad_filter_form">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="code_filter_localidad" class="formulario_linea_label">code</label>
-						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
+						<form:input path="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia</label>
-						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
+						<form:input path="comarca.provincia.code" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs</label>
-						<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_filter_localidad" />
+						<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_filter_localidad" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="descEu_filter_localidad" class="formulario_linea_label">descEu</label>
-						<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_filter_localidad" />
+						<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_filter_localidad" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="css_filter_localidad" class="formulario_linea_label">css</label>
-						<input type="text" name="css" class="formulario_linea_input form-control" id="css_filter_localidad" />
+						<form:input path="css" class="formulario_linea_input form-control" id="css_filter_localidad" />
 					</div>
 				</div>
 				<div id="localidad_filter_buttonSet" class="right_buttons">
@@ -177,7 +177,7 @@
 					</button>
 				</div>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 
 	<div id="localidad_grid_div">
@@ -192,29 +192,29 @@
 <div id="localidad_detail_div" class="rup-table-formEdit-detail">
 	<div id ="localidad_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
-		<form id="localidad_detail_form">
+		<form:form modelAttribute="localidad" id="localidad_detail_form">
 			<div id ="localidad_detail_feedback"></div>
 			
 			<div class="form-row">    
 				<div class="form-group col-sm">
 					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
-			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			    	<form:input path="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
 			    </div>
 			    
 			    <div class="form-group col-sm">
 			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
-			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    	<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
 			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
-			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    	<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
 			    </div>  
 			    
 			    <div class="form-group col-sm">
 			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
-			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    	<form:input path="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">  <!--  
@@ -224,20 +224,20 @@
 			    </div>-->
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
-			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
+			    	<form:input path="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
 			    </div>
 			</div>
 		  	<div class="form-row">  
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
-			    	<input type="text" name="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
+			    	<form:input path="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
 			    </div>
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEu_detail_table" class="formulario_linea_label">comarca.descEu</label>
-			    	<input type="text" name="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
+			    	<form:input path="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
 			    </div>
 			</div>	
-		</form>
+		</form:form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">

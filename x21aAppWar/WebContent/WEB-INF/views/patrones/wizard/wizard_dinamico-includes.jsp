@@ -13,5 +13,6 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <script src="${staticsUrl}/x21a/scripts/x21aApp/wizard_dinamico.js" type="text/javascript"></script>

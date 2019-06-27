@@ -35,11 +35,11 @@
 	</fieldset>
 </div>
 
-<form id="wizardForm">
+<form:form modelAttribute="randomForm" id="wizardForm">
 	<c:import url="${staticsUrl}/x21a/resources/wizard_step0.html" />
 	<c:import url="${staticsUrl}/x21a/resources/wizard_step1.html" />
 	<c:import url="${staticsUrl}/x21a/resources/wizard_step2.html" />
 	<c:import url="${staticsUrl}/x21a/resources/wizard_step3.html" />
 	<br/>
 	<input id="saveForm" type="button" value="Enviar" />
-</form>
+</form:form>
