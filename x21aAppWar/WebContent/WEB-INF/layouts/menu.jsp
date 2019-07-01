@@ -28,69 +28,83 @@
 		<ul class="nav navbar-nav">
 			<li class="nav-item dropdown">
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><spring:message code="componentes" /><span class="caret"></span></a> -->
-				<a class="nav-link dropdown-toggle" href="#"
+				<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+				<a class="nav-link dropdown-toggle" href="${urlHashtag}"
 					id="responsiveNavbarDropdown" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
 					<spring:message code="componentes" />
 				</a>
 				<div class="dropdown-menu"
 					aria-labelledby="responsiveNavbarDropdown">
-					<a class="dropdown-item" href="/x21aAppWar/patrones/feedback">
+					<spring:url value="/patrones/feedback" var="urlFeedback" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlFeedback}">
 						<i class="fa fa-check-square" aria-hidden="true"></i>
 						<spring:message code="feedback" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/tooltip">
+					<spring:url value="/patrones/tooltip" var="urlTooltip" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlTooltip}">
 						<i class="fa fa-comment-o" aria-hidden="true"></i>
 						<spring:message code="tooltip" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/message">
+					<spring:url value="/patrones/message" var="urlMessage" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlMessage}">
 						<i class="fa fa-envelope" aria-hidden="true"></i>
 						<spring:message code="message" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/dialog">
+					<spring:url value="/patrones/dialog" var="urlDialog" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlDialog}">
 						<i class="fa fa-window-restore" aria-hidden="true"></i>
 						<spring:message code="dialog" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/progressbar">
+					<spring:url value="/patrones/progressbar" var="urlProgressbar" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlProgressbar}">
 						<i class="fa fa-hourglass-half" aria-hidden="true"></i>
 						<spring:message code="progressBar" />
 					</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/contextMenu">
+					<spring:url value="/patrones/contextMenu" var="urlContextMenu" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlContextMenu}">
 						<i class="fa fa-list-alt" aria-hidden="true"></i>
 						<spring:message code="contextMenu" />
 					</a>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/button">
+					<spring:url value="/patrones/button" var="urlButton" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlButton}">
 						<i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
 						<spring:message code="button" />
 					</a>
+					<spring:url value="/patrones/toolbar" var="urlToolbar" htmlEscape="true"/>
 					<a class="dropdown-item" href="/x21aAppWar/patrones/toolbar">
 						<i class="fa fa-wrench" aria-hidden="true"></i>
 						<spring:message code="toolbar" />
 					</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/accordion">
+					<spring:url value="/patrones/accordion" var="urlAccordion" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlAccordion}">
 						<i class="fa fa-list" aria-hidden="true"></i>
 						<spring:message code="accordion" />
 					</a>
 
 					<div class="dropdown-submenu">
-						<a class="dropdown-item dropdown-toggle" href="#">
+						<a class="dropdown-item dropdown-toggle" href="${urlHashtag}">
 							<spring:message code="tabs" />
 						</a>
 						<div class="dropdown-menu menu-right">
-							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsStatic">
+							<spring:url value="/patrones/tabsStatic" var="urlTabsStatic" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlTabsStatic}">
 								<spring:message code="tabsStatic" />
 							</a>
-							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsAjax">
+							<spring:url value="/patrones/tabsAjax" var="urlTabsAjax" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlTabsAjax}">
 								<spring:message code="tabsAjax" />
 							</a>
-							<a class="dropdown-item" href="/x21aAppWar/patrones/tabsMixto">
+							<spring:url value="/patrones/tabsMixto" var="urlTabsMixto" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlTabsMixto}">
 								<spring:message code="tabsMixto" />
 							</a>
 							<!-- FIXME <a class="dropdown-item" href="/x21aAppWar/patrones/maintTab"><spring:message code="maintTab" /></a> -->
+							<spring:url value="/patrones/tabsScrollable" var="urlTabsScrollable" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/tabsScrollable">
+								href="${urlTabsScrollable}">
 								<spring:message code="tabsScrollable" />
 							</a>
 
@@ -98,70 +112,82 @@
 					</div>
 
 					<div class="dropdown-submenu">
-						<a class="dropdown-item dropdown-toggle" href="#">
+						<a class="dropdown-item dropdown-toggle" href="${urlHashtag}">
 							<i class="fa fa-magic" aria-hidden="true"></i>
 							<spring:message code="wizard" htmlEscape="true" />
 						</a>
 						<div class="dropdown-menu menu-right">
-							<a class="dropdown-item" href="/x21aAppWar/patrones/wizard">
+							<spring:url value="/patrones/wizard" var="urlWizard" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlWizard}">
 								<spring:message code="wizardA" />
 							</a>
+							<spring:url value="/patrones/wizard_includeFile" var="urlWizardIncludeFile" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/wizard_includeFile">
+								href="${urlWizardIncludeFile}">
 								<spring:message code="wizardB" htmlEscape="true" />
 							</a>
+							<spring:url value="/patrones/wizard_jspInclude" var="urlWizardJspInclude" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/wizard_jspInclude">
+								href="${urlWizardJspInclude}">
 								<spring:message code="wizardC" htmlEscape="true" />
 							</a>
+							<spring:url value="/patrones/wizard_jstlImport" var="urlWizardJstlImport" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/wizard_jstlImport">
+								href="${urlWizardJstlImport}">
 								<spring:message code="wizardD" htmlEscape="true" />
 							</a>
+							<spring:url value="/patrones/wizard_dinamico" var="urlWizardDinamico" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/wizard_dinamico">
+								href="${urlWizardDinamico}">
 								<spring:message code="wizardE" />
 							</a>
 						</div>
 					</div>
 
 					<div class="dropdown-submenu">
-						<a class="dropdown-item dropdown-toggle" href="#">
+						<a class="dropdown-item dropdown-toggle" href="${urlHashtag}">
 							<i class="fa fa-sitemap" aria-hidden="true"></i>
 							<spring:message code="tree" />
 						</a>
 						<div class="dropdown-menu menu-right">
-							<a class="dropdown-item" href="/x21aAppWar/patrones/trees">
+							<spring:url value="/patrones/trees" var="urlTrees" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlTrees}">
 								<spring:message code="tree_multiple_configuraciones" />
 							</a>
-							<a class="dropdown-item" href="/x21aAppWar/patrones/treeDAD">
+							<spring:url value="/patrones/treeDAD" var="urlTreeDAD" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlTreeDAD}">
 								<spring:message code="tree_multiple_d&d" />
 							</a>
 						</div>
 					</div>
 
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="/x21aAppWar/patrones/autocomplete">
+					<spring:url value="/patrones/autocomplete" var="urlAutocomplete" htmlEscape="true"/>
+					<a class="dropdown-item" href="${urlAutocomplete}">
 						<spring:message code="autocomplete" />
 					</a>
 
 					<div class="dropdown-submenu">
-						<a class="dropdown-item dropdown-toggle" href="#">
+						<a class="dropdown-item dropdown-toggle" href="${urlHashtag}">
 							<spring:message code="combo" />
 						</a>
 						<div class="dropdown-menu menu-right">
-							<a class="dropdown-item" href="/x21aAppWar/patrones/comboSimple">
+							<spring:url value="/patrones/comboSimple" var="urlComboSimple" htmlEscape="true"/>
+							<a class="dropdown-item" href="${urlComboSimple}">
 								<spring:message code="comboSimple" />
 							</a>
+							<spring:url value="/patrones/comboEnlazadoSimple" var="urlComboEnlazadoSimple" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/comboEnlazadoSimple">
+								href="${urlComboEnlazadoSimple}">
 								<spring:message code="comboEnlazadoSimple" />
 							</a>
+							<spring:url value="/patrones/comboEnlazadoMultiple" var="urlComboEnlazadoMultiple" htmlEscape="true"/>
 							<a class="dropdown-item"
-								href="/x21aAppWar/patrones/comboEnlazadoMultiple">
+								href="${urlComboEnlazadoMultiple}">
 								<spring:message code="comboEnlazadoMulti" />
 							</a>
-							<a class="dropdown-item" href=/x21aAppWar/patrones/multicombo>
+							<spring:url value="/patrones/multiCombo" var="urlMulticombo" htmlEscape="true"/>
+							<a class="dropdown-item" href=${urlMulticombo}>
 								<spring:message code="multicombo" />
 							</a>
 							<a class="dropdown-item"
