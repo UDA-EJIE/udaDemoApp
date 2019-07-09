@@ -57,79 +57,7 @@ jQuery(function($){
 		   {rol: "Informador", codTipoSubsanacion:"informador"},
 		   {rol: "Manager", codTipoSubsanacion:"manager"}
 		];
-
-	var tableColModels = [
-			{ name: "id", index: "id", editable:true, hidden:false, width: 80
-				, formoptions:{rowpos:1, colpos:1}
-			},
-			{ name: "nombre", index: "nombre", editable:true, hidden:false
-				, formoptions:{rowpos:2, colpos:1}
-			},
-			{ name: "apellido1", index: "apellido1", editable:true, hidden:false
-				, formoptions:{rowpos:3, colpos:1}
-				, classes:'ui-ellipsis'
-			},
-		/*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
-				, formoptions:{rowpos:4, colpos:1}
-				, classes:'ui-ellipsis'
-			},*/
-			{ name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
-				edittype: "checkbox",
-				formatter: "checkbox",
-				rwdClasses:"hidden-xs hidden-sm hidden-md",
-				align: "center",
-				editoptions: {
-					value:"1:0"
-				}/*,
-				searchoptions:{
-					rupType: "combo",
-					source : [
-					   {label: "---", value:""},
-					   {label: "Si", value:"1"},
-					   {label: "No", value:"0"}
-					]
-				}*/
-				, formoptions:{rowpos:5, colpos:1}
-			},
-			{ name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
-				rupType: "date",
-				rwdClasses:"hidden-xs hidden-sm hidden-md",
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:2, colpos:2}
-			},
-			{ name: "fechaBaja", index: "fecha_baja", editable:false, hidden:false, width: 120,
-				rupType: "date",
-				rwdClasses:"hidden-xs hidden-sm hidden-md",
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:3, colpos:2}
-			},
-			{ name: "rol", index: "rol", editable:true, hidden:false, width: 140,
-				rupType: "combo",
-				rwdClasses:"hidden-xs hidden-sm hidden-md",
-				formatter: "rup_combo",
-				editoptions: {
-					source: $.map(combo, function(elem){
-						return {
-							label: elem.rol,
-							value: elem.codTipoSubsanacion
-						};
-						
-					})
-				}
-				, formoptions:{rowpos:3, colpos:2}
-			}
-     ],
-     options_ejie_combo = {
+	var options_ejie_combo = {
 			source : [
 			   {label: "---", value:""},
 			   {i18nCaption: "0", value:"0"},
@@ -137,8 +65,8 @@ jQuery(function($){
 			],
 			i18nId: "GRID_simple##ejie",
 			width: 120
-		},	
-		options_role_combo = {
+		}
+	var options_role_combo = {
 			source : [
 			   {label: "---", value:""},
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
@@ -148,7 +76,6 @@ jQuery(function($){
 			   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
 			]
 		};
-	
 
 	//Formulario de filtrado
 	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
@@ -167,11 +94,11 @@ jQuery(function($){
 	function listaPlugins(num){
 	    switch (num) {
             case '2':
-                return 'colReorder,multiSelection,seeker,'
+                return 'editForm,colReorder,multiSelection,seeker,buttons,'
             default:
                 return 'editForm,colReorder,multiSelection,seeker,buttons,';
         }
-	};
+	}
 	
 	var allowedPluginsBySelecionType = {
 		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit','multiPart'],
@@ -432,36 +359,101 @@ jQuery(function($){
 		}else{
 			$('#triggers'+num).prop('checked', false);
 		}
-		plugins.columnDefs = [
-    	    { 
-    	    	"targets": [5],
-    	    	"render": function(data){
-    	    		if(data !== undefined){
-    	    			return data.replace('/','/');
-    	    		}
-    	    	}
-    	    },
-    	    {'targets': [2], 'visible': false},
-    	    { "name": "Nombre",   "targets": 'Nombre',"render": function(data){
-	    		
-	    		return data.replace('a','.');
-	    	} }
-    	];
 
+        plugins.columnDefs = [
+            {
+                "targets": [5],
+                "render": function(data){
+                    if(data !== undefined){
+                        return data.replace('/','/');
+                    }
+                }
+            },
+            { "name": "Nombre",   "targets": 'Nombre',"render": function(data){
+                return data.replace('a','.');
+            } }
+        ];
 
-		
-		//Col model es obligatorio,se mete como generico
-		$(tableColModels).each(function(i,e){
-		   e.name = e.name+num; 
-		});
-		plugins.colModel = tableColModels;
-		
-		
+        if(num){
+            plugins.columnDefs.push({'targets': [2], 'visible': false});
+        }
+
+		plugins.colModel = [
+            { name: "id"+num, index: "id", editable:true, hidden:false, width: 80
+                , formoptions:{rowpos:1, colpos:1}
+            },
+            { name: "nombre"+num, index: "nombre", editable:true, hidden:false
+                , formoptions:{rowpos:2, colpos:1}
+            },
+            { name: "apellido1"+num, index: "apellido1", editable:true, hidden:false
+                , formoptions:{rowpos:3, colpos:1}
+                , classes:'ui-ellipsis'
+            },
+        /*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
+                , formoptions:{rowpos:4, colpos:1}
+                , classes:'ui-ellipsis'
+            },*/
+            { name: "ejie"+num, index: "ejie", editable:true, hidden:false, width: 60,
+                edittype: "checkbox",
+                formatter: "checkbox",
+                rwdClasses:"hidden-xs hidden-sm hidden-md",
+                align: "center",
+                editoptions: {
+                    value:"1:0"
+                }/*,
+                searchoptions:{
+                    rupType: "combo",
+                    source : [
+                       {label: "---", value:""},
+                       {label: "Si", value:"1"},
+                       {label: "No", value:"0"}
+                    ]
+                }*/
+                , formoptions:{rowpos:5, colpos:1}
+            },
+            { name: "fechaAlta"+num,  index: "fecha_alta", editable:true, hidden:false, width: 120,
+                rupType: "date",
+                rwdClasses:"hidden-xs hidden-sm hidden-md",
+                editoptions:{
+                    labelMaskId : "fecha-mask",
+                    showButtonPanel : true,
+                    showOtherMonths : true,
+                    noWeekend : true
+                }
+                , formoptions:{rowpos:2, colpos:2}
+            },
+            { name: "fechaBaja"+num, index: "fecha_baja", editable:false, hidden:false, width: 120,
+                rupType: "date",
+                rwdClasses:"hidden-xs hidden-sm hidden-md",
+                editoptions:{
+                    labelMaskId : "fecha-mask",
+                    showButtonPanel : true,
+                    showOtherMonths : true,
+                    noWeekend : true
+                }
+                , formoptions:{rowpos:3, colpos:2}
+            },
+            { name: "rol"+num, index: "rol", editable:true, hidden:false, width: 140,
+                rupType: "combo",
+                rwdClasses:"hidden-xs hidden-sm hidden-md",
+                formatter: "rup_combo",
+                editoptions: {
+                    source: $.map(combo, function(elem){
+                        return {
+                            label: elem.rol,
+                            value: elem.codTipoSubsanacion
+                        };
+
+                    })
+                }
+                , formoptions:{rowpos:3, colpos:2}
+            }
+        ];
+
 		delete localStorage['plugins'+num];
 		return plugins;
 	}
-	
-	
+
 	
 	loadTable();
 	loadTable(2);

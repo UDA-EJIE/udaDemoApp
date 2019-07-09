@@ -18,9 +18,9 @@
 <!-- Titulo pagina -->
 
 <div class="row">
-    <div class="col-xl-12">
-        <jsp:include page="includes/filterForm.jsp"></jsp:include>
-    </div>
+  <div class="col-xl-12">
+      <jsp:include page="includes/filterForm.jsp"></jsp:include>
+  </div>
 </div>
 
 <div class="row mt-5">
