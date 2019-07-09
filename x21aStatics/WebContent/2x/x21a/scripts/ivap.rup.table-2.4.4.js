@@ -9,20 +9,20 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("ivap",{
+	jQuery.rup_jqtable.registerPlugin("ivap",{
 		loadOrder:30,
 		preConfiguration: function(settings){
 			var $self = this;
 			
 			if (jQuery.inArray("multiselection", settings.usePlugins) !== -1 && jQuery.inArray("formEdit", settings.usePlugins) !== -1){
-				return $self.rup_table("preConfigureIvap", settings);
+				return $self.rup_jqtable("preConfigureIvap", settings);
 			}
 		},
 		postConfiguration: function(settings){
 			var $self = this;
 			
 			if (jQuery.inArray("multiselection", settings.usePlugins) !== -1 && jQuery.inArray("formEdit", settings.usePlugins) !== -1){
-				return $self.rup_table("postConfigureIvap", settings);
+				return $self.rup_jqtable("postConfigureIvap", settings);
 			}
 		}
 	});
@@ -33,20 +33,20 @@
 	
 	/**
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigureIvap: function(settings){
 			var $self = this, colModel = settings.colModel;
 			
 			
 			settings.core.operations["edit"] = {
-				name: $.rup.i18nParse($.rup.i18n.base,"rup_table.modify"),
+				name: $.rup.i18nParse($.rup.i18n.base,"rup_jqtable.modify"),
 				icon: "rup-icon rup-icon-edit", 
 				enabled: function(){
 					var $self = this, settings = $self.data("settings");
 					return jQuery.proxy(settings.fncHasSelectedElements, $self)();
 				},
 				callback: function(key, options){
-					$self.rup_table("editElementIvap");			
+					$self.rup_jqtable("editElementIvap");			
 				}
 			};
 			
@@ -63,12 +63,12 @@
 	
 	/**
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		editElementIvap: function (rowId, options){
 			var $self = this, 
 			settings = $self.data("settings"),
 			multiselectionSettings = settings.multiselection,
-			page = parseInt($self.rup_table("getGridParam", "page"),10),
+			page = parseInt($self.rup_jqtable("getGridParam", "page"),10),
 			firstPage, firstSelectedLine, firstSelectedId;
 			
 			if (multiselectionSettings.selectedPages.length > 0){
@@ -79,10 +79,10 @@
 					firstSelectedLine = $self._getFirstSelectedElementOfPage(firstPage);
 					firstSelectedId = $self.jqGrid("getDataIDs")[firstSelectedLine-1];
 					settings.multiselection.rowForEditing=firstSelectedId;
-					$self.rup_table("clearHighlightedEditableRows");
-					$self.rup_table("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
+					$self.rup_jqtable("clearHighlightedEditableRows");
+					$self.rup_jqtable("highlightEditableRow", $self.jqGrid("getInd",firstSelectedId, true));
 					
-					$self.rup_table("editElement", firstSelectedId);
+					$self.rup_jqtable("editElement", firstSelectedId);
 					
 					$self.off("jqGridAfterLoadComplete.ivap.editFirstElement");
 				});
@@ -102,8 +102,8 @@
 	//*******************************************************
 	// DEFINICIÓN DE LA CONFIGURACION POR DEFECTO DEL PATRON  
 	//*******************************************************
-	jQuery.fn.rup_table.plugins.ivap = {};
-	jQuery.fn.rup_table.plugins.ivap.defaults = {
+	jQuery.fn.rup_jqtable.plugins.ivap = {};
+	jQuery.fn.rup_jqtable.plugins.ivap.defaults = {
 	};	
 	
 	

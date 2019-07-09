@@ -22,15 +22,15 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("contextMenu",{
+	jQuery.rup_jqtable.registerPlugin("contextMenu",{
 		loadOrder:4,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureContextMenu", settings);
+			return $self.rup_jqtable("preConfigureContextMenu", settings);
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureContextMenu", settings);
+			return $self.rup_jqtable("postConfigureContextMenu", settings);
 		}
 	});
 	
@@ -39,7 +39,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión del diseño líquido del componente. 
+	 * Extensión del componente rup_jqtable para permitir la gestión del diseño líquido del componente. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -50,7 +50,7 @@
 	 * settings.$fluidBaseLayer : Referencia a la capa que se tomará como base para aplicar el diseño líquido.
 	 *  
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigureContextMenu: function(settings){
 			var $self = this,  contextMenuSettings = settings.contextMenu;
 			
@@ -183,8 +183,8 @@
 	 * Parámetros de configuración por defecto para el plugin fluid.
 	 * 
 	 */
-	jQuery.fn.rup_table.plugins.contextMenu = {};
-	jQuery.fn.rup_table.plugins.contextMenu.defaults = {
+	jQuery.fn.rup_jqtable.plugins.contextMenu = {};
+	jQuery.fn.rup_jqtable.plugins.contextMenu.defaults = {
 			contextMenu:{
 				colNames: null,
 				createDefaultRowOperations:true,

@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	
-	$("#comarca").rup_table({
+	$("#comarca").rup_jqtable({
 		url: "../jqGridComarca",
 		sortorder: "asc",
 		sortname: "code",
@@ -100,7 +100,7 @@ jQuery(function($){
         multifilter:{ idFilter:"maestro",labelSize:255}
 	});
 
-	$("#localidad").rup_table({
+	$("#localidad").rup_jqtable({
 		url: "../jqGridLocalidad",
 		sortorder: "asc",
 		sortname: "code",

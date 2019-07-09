@@ -24,13 +24,13 @@
 				
 				<div id="table_filter_buttonSet" class="right_buttons">
 			        <button id="table_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-			        	<i class="fa fa-eraser"></i>
+			        	<i class="mdi mdi-eraser"></i>
 			        	<span>
 			        		<spring:message code="clear" />
 			        	</span>
 			        </button>
 			        <button id="table_filter_filterButton" type="button" class="btn btn-info rup-filtrar">
-			        	<i class="fa fa-filter"></i>
+			        	<i class="mdi mdi-filter"></i>
 			        	<span>
 			        		<spring:message code="filter" />
 			        	</span>
@@ -68,14 +68,14 @@
 	</div>
 	
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="table_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+		<div class="ui-dialog-buttonset rup_jqtableEdit_buttonsContainerResposive">
+			<button id="table_detail_button_save" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="table_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="table_detail_button_save_repeat" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
-			<button id="table_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="table_detail_button_cancel" class="btn btn-outline-primary rup_jqtableEdit_buttonsResposive" type="button">
 				<spring:message code="cancel" />
 			</button>
 		</div>

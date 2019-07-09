@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.MultiPk;
-import com.ejie.x21a.service.MultiPkService;
+import com.ejie.x21a.service.TableMultiPkService;
 import com.ejie.x38.util.ObjectConversionManager;
 
 /**
@@ -36,7 +36,7 @@ public class MultiPkController  {
 	private static final Logger logger = LoggerFactory.getLogger(MultiPkController.class);
 
 	@Autowired
-	private MultiPkService multiPkService;
+	private TableMultiPkService multiPkService;
 	
 	/**
 	 * Method 'getCreateForm'.

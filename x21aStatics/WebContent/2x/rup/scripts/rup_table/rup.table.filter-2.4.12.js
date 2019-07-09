@@ -22,15 +22,15 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("filter",{
+	jQuery.rup_jqtable.registerPlugin("filter",{
 		loadOrder:1,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureFilter", settings);
+			return $self.rup_jqtable("preConfigureFilter", settings);
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureFilter", settings);
+			return $self.rup_jqtable("postConfigureFilter", settings);
 		}
 	});
 	
@@ -39,7 +39,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión del filtrado de registros de la tabla. 
+	 * Extensión del componente rup_jqtable para permitir la gestión del filtrado de registros de la tabla. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -55,7 +55,7 @@
 	 * settings.filter.$filterSummary : Contenedor donde se especifican los criterios de filtrado
 	 *  
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigureFilter: function(settings){
 			var $self = this, tableId = settings.id, filterSettings = settings.filter, filterFormId,
 			toggleIcon1Tmpl,toggleLabelTmpl,filterSummaryTmpl,toggleIcon2Tmpl,$toggleIcon1,$toggleLabel,$filterSummary,$toggleIcon2;
@@ -95,13 +95,13 @@
 				 * $toggleIcon1Id : Control que oculta muestra el fomulario 
 				 * $filterSummary : Contenedor donde se especifican los criterios de filtrado
 				 */
-				toggleIcon1Tmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.filter.toggleIcon1");
-				toggleLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.filter.toggleLabel");
-				filterSummaryTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.filter.filterSummary");
-				toggleIcon2Tmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table.templates.filter.toggleIcon2");
+				toggleIcon1Tmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.filter.toggleIcon1");
+				toggleLabelTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.filter.toggleLabel");
+				filterSummaryTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.filter.filterSummary");
+				toggleIcon2Tmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable.templates.filter.toggleIcon2");
 				
 				$toggleIcon1 = $(jQuery.jgrid.format(toggleIcon1Tmpl, filterSettings.toggleIcon1Id));
-				$toggleLabel = $(jQuery.jgrid.format(toggleLabelTmpl, filterSettings.toggleLabelId, $.rup.i18n.base.rup_table.plugins.filter.filterCriteria));
+				$toggleLabel = $(jQuery.jgrid.format(toggleLabelTmpl, filterSettings.toggleLabelId, $.rup.i18n.base.rup_jqtable.plugins.filter.filterCriteria));
 				$filterSummary = $(jQuery.jgrid.format(filterSummaryTmpl, filterSettings.filterSummaryId));
 				$toggleIcon2 = $(jQuery.jgrid.format(toggleIcon2Tmpl, filterSettings.toggleIcon2Id));
 				
@@ -133,7 +133,7 @@
 				
 				// Se utiliza el plugin ajaxForm de jQuery para configurar el formualario de busqueda como AJAX.
 				// Se redimensiona el formulario de busqueda al tamanyo del grid.
-				filterSettings.$filterContainer.parent().css("width",$self.rup_table("getGridParam", "width"));
+				filterSettings.$filterContainer.parent().css("width",$self.rup_jqtable("getGridParam", "width"));
 				
 				// Se configura la url de filtrado
 				if (settings.filter.url === null){
@@ -142,7 +142,7 @@
 				settings.url = settings.filter.url;
 				
 				// Se almacena en las propiedades la url utilizada para la busqueda a partir de la especificada en el grid.
-				settings.searchURL = $self.rup_table("getGridParam", "url");
+				settings.searchURL = $self.rup_jqtable("getGridParam", "url");
 				
 				
 	
@@ -155,8 +155,8 @@
 				filterSettings.$filterContainer.bind("keydown", function(evt) {
 					if (evt.keyCode == 13) {
 						// TODO : poner como evento 
-						//$self.rup_table("showSearchCriteria");
-						$self.rup_table("filter");
+						//$self.rup_jqtable("showSearchCriteria");
+						$self.rup_jqtable("filter");
 					}
 				});
 				
@@ -170,8 +170,8 @@
 					
 					settings.$firstStartUp=false;
 					}
-					//$self.rup_table("showSearchCriteria");
-					$self.rup_table("filter");
+					//$self.rup_jqtable("showSearchCriteria");
+					$self.rup_jqtable("filter");
 				});
 				
 
@@ -183,11 +183,11 @@
 						settings.$firstStartUp=false;
 					}
 					
-					$self.rup_table("cleanFilterForm").rup_table("filter");
+					$self.rup_jqtable("cleanFilterForm").rup_jqtable("filter");
 					if (filterSettings.validate!==undefined){
 						jQuery(".rup-maint_validateIcon", filterSettings.$filterContainer).remove();
 					}
-					//$self.rup_table("showSearchCriteria");
+					//$self.rup_jqtable("showSearchCriteria");
 				});
 				
 				filterSettings.$toggleIcon1.add(filterSettings.$toggleLabel).add(filterSettings.$toggleIcon2)
@@ -195,14 +195,14 @@
 				.on({
 					"keydown":function(evt) {
 						if (evt.keyCode == 13) {
-							$self.rup_table("toggleFilterForm");
+							$self.rup_jqtable("toggleFilterForm");
 						}
 					}
 				});
 				
 				filterSettings.$filterToolbar.addClass("cursor_pointer").on({
 					"click":function(){
-						$self.rup_table("toggleFilterForm");
+						$self.rup_jqtable("toggleFilterForm");
 					}
 				});
 				
@@ -263,7 +263,7 @@
 			
 			$self.on("jqGridGridComplete",function(event){
 				if ($self.data("settings")!==undefined){
-					$self.rup_table("showSearchCriteria");
+					$self.rup_jqtable("showSearchCriteria");
 				}
 			});
 										
@@ -312,7 +312,7 @@
 											complete : function(jqXHR,
 													textStatus) {
 											if (settings.loadOnStartUp){
-												$self.rup_table("filter");	
+												$self.rup_jqtable("filter");	
 												}
 											$self.triggerHandler("rupTable_multifilter_fillForm",$self.data.filterData);
 
@@ -370,12 +370,12 @@
 	 * toggleFilterForm: Método encargado de ocultar y mostrar el formulario de filtrado.
 	 * 
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		cleanFilterForm : function () {
 			var $self = this, 
 				settings = $self.data("settings");
 			$self.triggerHandler("rupTable_filter_beforeCleanFilterForm");
-			$self.rup_table("resetForm", settings.filter.$filterContainer);
+			$self.rup_jqtable("resetForm", settings.filter.$filterContainer);
 			$self.triggerHandler("rupTable_filter_afterCleanFilterForm");
 			
 			return $self;
@@ -393,7 +393,7 @@
 				if ( bfr === false ) { return; }
 			}
 			
-			$self.rup_table("setGridParam",{page:"1"});
+			$self.rup_jqtable("setGridParam",{page:"1"});
 			
 			$self.trigger("reloadGrid");
 		},
@@ -437,11 +437,11 @@
 
 			if (filterSettings.$collapsableLayer.is(":hidden")) {
 				//MOSTRAR
-				$self.rup_table("showFilterForm");
+				$self.rup_jqtable("showFilterForm");
 				
 			}else{
 				// OCULTAR
-				$self.rup_table("hideFilterForm");
+				$self.rup_jqtable("hideFilterForm");
 			}
 			
 			return $self;
@@ -662,7 +662,7 @@
 	// DEFINICIÓN DE MÉTODOS PRIVADOS
 	//*******************************
 	
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		_getSearchFormFieldLabel: function($field, $form){
 			var fieldId = $field.attr("id"), $label, formFieldLabel="", rupType = $field.attr("ruptype");
 			
@@ -742,8 +742,8 @@
 	 * Parámetros de configuración por defecto para el plugin filter.
 	 * 
 	 */
-	jQuery.fn.rup_table.plugins.filter = {};
-	jQuery.fn.rup_table.plugins.filter.defaults = {
+	jQuery.fn.rup_jqtable.plugins.filter = {};
+	jQuery.fn.rup_jqtable.plugins.filter.defaults = {
 			core:{
 				startOnPage :null
 			},

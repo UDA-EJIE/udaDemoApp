@@ -23,16 +23,16 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("toolbar",{
+	jQuery.rup_jqtable.registerPlugin("toolbar",{
 		loadOrder:3,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureToolbar", settings);
+			return $self.rup_jqtable("preConfigureToolbar", settings);
 			
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureToolbar", settings);
+			return $self.rup_jqtable("postConfigureToolbar", settings);
 			
 		}
 	});
@@ -42,7 +42,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión de la botonera asociada a la tabla. 
+	 * Extensión del componente rup_jqtable para permitir la gestión de la botonera asociada a la tabla. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -50,7 +50,7 @@
 	 * postConfigureToolbar(settings): Método que define la postconfiguración necesaria para el correcto funcionamiento del componente.
 	 * 
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		/*
 		 * Realiza la configuración interna necesaria para la gestión correcta de la edición mediante un formulario.
 		 * 
@@ -92,7 +92,7 @@
 			
 			// autoAjustToolbar: Realiza el autoajuste del toolbar al tamanyo del grid.
 			if (toolbarSettings.autoAjustToolbar) {
-				settings.$toolbar.css("width", $self.rup_table("getGridParam", "width") - 5);//-5 para ajustar el ancho
+				settings.$toolbar.css("width", $self.rup_jqtable("getGridParam", "width") - 5);//-5 para ajustar el ancho
 			}
 			
 			// createDefaultToolButtons: Determina la creacion de los botones basicos por defecto del toolbar.
@@ -121,7 +121,7 @@
 							index: counter++,
 							dropdown: operationCfg.dropdown,
 							right: operationCfg.right
-						}, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_table")).bind("click", function(event){
+						}, jQuery.rup.i18nParse(jQuery.rup.i18n.base,"rup_jqtable")).bind("click", function(event){
 							jQuery.proxy(operationCfg.callback,$self)($self, event);
 						});
 					}
@@ -143,7 +143,7 @@
 					 	 var mButton = settings.$toolbar.addMButton(object, object.json_i18n).bind("click", settings.$toolbar.showMButton);
 					 	 settings.$toolbar.addButtonsToMButton(object.buttons, mButton, object.json_i18n);
 					}else{
-						$.rup.errorGestor($.rup.i18nParse($.rup.i18n.base,"rup_table.toolbarNewButtonError"));
+						$.rup.errorGestor($.rup.i18nParse($.rup.i18n.base,"rup_jqtable.toolbarNewButtonError"));
 					} 
 				});
 			} 
@@ -194,8 +194,8 @@
 	
 		
 	// Parámetros de configuración por defecto para la acción de eliminar un registro.
-	jQuery.fn.rup_table.plugins.toolbar = {};
-	jQuery.fn.rup_table.plugins.toolbar.defaults = {
+	jQuery.fn.rup_jqtable.plugins.toolbar = {};
+	jQuery.fn.rup_jqtable.plugins.toolbar.defaults = {
 			toolbar:{
 				id: null,
 				autoAjustToolbar: true,

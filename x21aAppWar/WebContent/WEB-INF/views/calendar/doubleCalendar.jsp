@@ -18,15 +18,15 @@
 
 <div class="cal-1">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div class="page-header w-100 mb-3">
                 <div class="pull-right form-inline">
                     <div class="btn-group mb-3">
                         <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                            class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;Prev.
+                            class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
                         </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
                             class="btn btn-primary" data-calendar-nav="next">
-                            Sig.&nbsp;<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                            Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="pl-3 d-xs-none"></div>
@@ -42,22 +42,22 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div id="calendar1" class="calendar"></div>
         </div>
     </div>
 </div>
 <div class="cal-2">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div class="page-header w-100 mb-3">
                 <div class="pull-right form-inline">
                     <div class="btn-group mb-3">
                         <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                            class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;Prev.
+                            class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
                         </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
                             class="btn btn-primary" data-calendar-nav="next">
-                            Sig.&nbsp;<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                            Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="pl-3 d-xs-none"></div>
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-xs-12">
+        <div class="col-xl-12">
             <div id="calendar2" class="calendar"></div>
         </div>
     </div>
@@ -115,7 +115,7 @@
 			<div class="row row-noPadding">
 				<div class="col-md-1">
 					<div class="legend bgCheck">
-						<i class='fa fa-check pr-1' style='color: black'
+						<i class='mdi mdi-check pr-1' style='color: black'
 							aria-hidden='true'></i>
 					</div>
 				</div>
@@ -124,7 +124,7 @@
 			<div class="row row-noPadding">
 				<div class="col-md-1">
 					<div class="legend bgExclamation">
-						<i class='fa fa-exclamation pr-1'
+						<i class='mdi mdi-exclamation pr-1'
 							style='color: black; padding: 6px 7px;' aria-hidden='true'></i>
 					</div>
 				</div>

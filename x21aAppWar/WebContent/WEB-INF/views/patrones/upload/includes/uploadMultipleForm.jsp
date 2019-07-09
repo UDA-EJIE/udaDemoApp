@@ -47,7 +47,7 @@
 				<div class="col-md-12 ">
 			        <div id="fileupload_file_form_padre" class="rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="glyphicon glyphicon-plus"></i>
+						      <i class="mdi mdi-plus"></i>
 						      <span>Seleccione foto padre...</span>
 						      <input id="file_form_padre" type="file" name="fotoPadre"  />
 						</span>
@@ -62,7 +62,7 @@
 				<div class="col-md-12 ">
 			        <div id="fileupload_file_form_madre" class="fileupload_file_form_madre rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="glyphicon glyphicon-plus"></i>
+						      <i class="mdi mdi-plus"></i>
 						      <span>Seleccione foto madre...</span>
 						      <input id="file_form_madre" type="file" name="fotoMadre"  />
 						</span>

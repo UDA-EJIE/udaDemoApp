@@ -423,7 +423,7 @@
             "idName":"id"
         }
     },
-    "rup_table":{
+    "rup_jqtable":{
     	"detailTitle":"en_Detalle de Registro",
 		"deletedOK":"en_El elemento se ha borrado correctamente.",
 		"insertOK":"en_El elemento se ha añadido correctamente.",

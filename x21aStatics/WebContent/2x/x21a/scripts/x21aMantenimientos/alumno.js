@@ -1,7 +1,7 @@
 jQuery(function($){
 	
 	
-	$("#alumno").rup_table({
+	$("#alumno").rup_jqtable({
 		
 		url: "../alumno",
 		colNames: [
@@ -156,7 +156,7 @@ jQuery(function($){
 		
 		$("#email_confirm").val($("#email").val());
 		
-		$self.rup_table("updateSavedData", function(savedData){
+		$self.rup_jqtable("updateSavedData", function(savedData){
 			savedData["imagenAlumno"] = '';
 			savedData["oldPassword"] = '';
 			savedData["password"] = '';

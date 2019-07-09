@@ -16,7 +16,7 @@
 jQuery(function($){
 
 	
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../jqGridUsuarioJerarquia",
 		colNames: tableColNames,
 		colModel: tableColModels,

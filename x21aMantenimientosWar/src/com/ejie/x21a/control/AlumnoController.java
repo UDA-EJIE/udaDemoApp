@@ -54,7 +54,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
-import com.ejie.x21a.service.AlumnoService;
+import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
@@ -78,7 +78,7 @@ public class AlumnoController  {
 	private static final Logger logger = LoggerFactory.getLogger(AlumnoController.class);
 
 	@Autowired
-	private AlumnoService alumnoService;
+	private TableAlumnoService alumnoService;
 	
 	@Autowired
 	private NoraPaisService noraPaisService;

@@ -1,0 +1,76 @@
+<%@include file="/WEB-INF/includeTemplate.inc"%>
+<h2>Tabla configurable con multiples PKs</h2>
+
+<jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
+
+<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
+	data-url-base="./multipk"
+	data-filter-form="#MultiPk_filter_form">
+    <thead>
+		<tr>
+			<th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
+			<th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
+			<th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
+			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
+			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
+		</tr>
+	</thead>
+</table>
+
+<jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
+
+<form id="multipk_tableConfiguration">
+   <h3 id="pluginErrorLabel">Selección de Plugins</h3>
+   <fieldset class="form-group">		    
+		<div class="row">
+			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
+	          <div class="col-sm-10">
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="editForm" value="0">
+	                  <label for="editForm">Edición en Formulario</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="colReorder" value="1">
+	                  <label for="colReorder">Col Reorder</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="seeker" value="3">
+	                  <label for="seeker">Seeker</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="buttons" value="5">
+	                  <label for="buttons">Botones</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="groups" value="6">
+	                  <label for="groups">Agrupamiento</label>
+	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <input type="checkbox" id="inlineEdit" value="6">
+	                  <label for="inlineEdit">Edición en Linea</label>
+	              </div>
+	          </div>
+		</div>
+  	</fieldset>
+	<fieldset class="form-group">
+		<div class="row">
+			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
+			<div class="col-sm-10">
+			    <div class="radio-material pluginsControl">
+			        <input type="radio" id="multiSelection" name="multipk_seleccionTabla" value="2">
+			        <label for="multiSelection">Multiselección</label>
+			    </div>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="selection" name="multipk_seleccionTabla" value="4">
+		            <label for="selection">Selección Simple</label>
+		        </div>
+		        <div class="radio-material pluginsControl">
+		            <input type="radio" id="noSelection" name="multipk_seleccionTabla" value="7">
+		            <label for="noSelection">Sin selección</label>
+		        </div>
+	        </div>
+		</div>
+  	</fieldset>
+	<span id="pluginError"></span>
+	<button id="multipk_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
+</form>

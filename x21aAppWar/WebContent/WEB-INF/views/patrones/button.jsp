@@ -30,7 +30,9 @@
 		</p>
 		<p>Un ejemplo de creación de un botón básico sería el siguiente:</p>
 		<div class="example">
-			<button type="button" id="boton">Acci&oacute;n</button>
+			<button type="button" id="boton" class="btn-material btn-material-primary-high-emphasis">
+				<span>Acci&oacute;n</span>
+			</button>
 		</div>
 
 		<h4>Botón con icono</h4>
@@ -44,10 +46,13 @@
 			.
 		</p>
 		<div class="example">
-			<button type="button" id="btnIconHtml">
-				<i class="fa fa-cog" aria-hidden="true"></i> Configuración HTML
+			<button type="button" id="btnIconHtml" class="btn-material btn-material-primary-high-emphasis">
+				<i class="mdi mdi-settings" aria-hidden="true"></i>
+				<span>Configuración HTML</span>
 			</button>
-			<button type="button" id="btnIconJs">Configuración JS</button>
+			<button type="button" id="btnIconJs" class="btn-material btn-material-primary-high-emphasis">
+				<span>Configuración JS</span>
+			</button>
 		</div>
 
 		<h4>Responsive Web Design</h4>
@@ -59,11 +64,11 @@
 		<p>
 			Para ello se hará uso de las clases de Bootstrap definidas para ello
 			como son
-			<code>d-none d-md-block</code>
+			<code>d-none d-md-inline</code>
 			,
 			<code>d-none</code>
 			,
-			<code>d-none d-lg-block</code>
+			<code>d-none d-lg-inline</code>
 			...
 		</p>
 		<p>
@@ -73,16 +78,20 @@
 		</p>
 
 		<div class="example">
-			<button type="button" id="btnRwdHtmlSm" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text d-none d-md-block">Rwd Html Sm</span>
+			<button type="button" id="btnRwdHtmlSm" class="btn-material btn-material-primary-high-emphasis">
+				<i class="mdi mdi-settings" aria-hidden="true"></i> 
+				<span class="rup-ui-button-text d-none d-md-inline">Rwd Html Sm</span>
 			</button>
-			<button type="button" id="btnRwdHtmlMd" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text d-none d-lg-block">Rwd Html Md</span>
+			<button type="button" id="btnRwdHtmlMd" class="btn-material btn-material-primary-high-emphasis">
+				<i class="mdi mdi-settings" aria-hidden="true"></i>
+				<span class="rup-ui-button-text d-none d-lg-inline">Rwd Html Md</span>
 			</button>
-			<button type="button" id="btnRwdJsSm" class="">Rwd Js Sm</button>
-			<button type="button" id="btnRwdJsMd" class="">Rwd Js Md</button>
+			<button type="button" id="btnRwdJsSm" class="btn-material btn-material-primary-high-emphasis">
+				<span>Rwd Js Sm</span>
+			</button>
+			<button type="button" id="btnRwdJsMd" class="btn-material btn-material-primary-high-emphasis">
+				<span>Rwd Js Md</span>
+			</button>
 		</div>
 
 		<h4>MButtons</h4>
@@ -94,28 +103,28 @@
 
 		<div class="example">
 			<div class="rup-mbutton">
-				<button type="button" id="btnMButton" data-mbutton="true">
-					<i class="fa fa-cog" aria-hidden="true"></i> <span
-						class="rup-ui-button-text d-none d-lg-block">MButton</span>
+				<button type="button" id="btnMButton" class="btn-material btn-material-primary-high-emphasis" data-mbutton="true">
+					<i class="mdi mdi-settings" aria-hidden="true"></i> 
+					<span class="rup-ui-button-text d-none d-lg-inline">MButton</span>
 				</button>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
-						<button type="button" id="mbutton-buttonNew">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text d-none d-lg-block">Nuevo</span>
+						<button type="button" id="mbutton-buttonNew" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text d-none d-lg-inline">Nuevo</span>
 						</button>
 					</li>
 					<li>
-						<button type="button" id="mbutton-buttonEdit">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text d-none d-lg-block">Editar</span>
+						<button type="button" id="mbutton-buttonEdit" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text d-none d-lg-inline">Editar</span>
 						</button>
 					</li>
 					<li>
-						<button type="button" id="mbutton-buttonCancel">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text d-none d-lg-block">Cancelar</span>
+						<button type="button" id="mbutton-buttonCancel" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-18px mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text d-none d-lg-inline">Cancelar</span>
 						</button>
 					</li>
 				</ul>
@@ -126,28 +135,28 @@
 
 		<div class="example">
 			<div class="rup-mbutton rup-collapsed-md">
-				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> <i
-					class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text d-none d-sm-block">MButton</span>
+				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> 
+					<i class="mdi mdi-settings" aria-hidden="true"></i>
+					<span class="rup-ui-button-text d-none d-sm-inline">MButton</span>
 				</a>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>
-						<button type="button" id="mbutton-buttonNew">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text">Nuevo</span>
+						<button type="button" id="mbutton-buttonNew" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text">Nuevo</span>
 						</button>
 					</li>
 					<li>
-						<button type="button" id="mbutton-buttonEdit">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text">Editar</span>
+						<button type="button" id="mbutton-buttonEdit" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text">Editar</span>
 						</button>
 					</li>
 					<li>
-						<button type="button" id="mbutton-buttonCancel">
-							<i class="fa fa-cog" aria-hidden="true"></i> <span
-								class="rup-ui-button-text">Cancelar</span>
+						<button type="button" id="mbutton-buttonCancel" class="btn-material btn-material-primary-high-emphasis">
+							<i class="mdi mdi-settings" aria-hidden="true"></i>
+							<span class="rup-ui-button-text">Cancelar</span>
 						</button>
 					</li>
 				</ul>
@@ -157,7 +166,7 @@
 
 		<h4>Botón con desplegable</h4>
 		<div class="example">
-			<button type="button" id="dropdownHtmlListButton">Lista HTML</button>
+			<button type="button" id="dropdownHtmlListButton" class="btn-material btn-material-primary-high-emphasis">Lista HTML</button>
 			<ul id="dropdownHtmlList" class="rup-dropdown-option-list">
 				<li><a href="#" id="dropdownElem1">Elemento 1</a></li>
 				<li><a href="#" id="dropdownElem2">Elemento 2</a></li>
@@ -167,54 +176,68 @@
 			</ul>
 
 
-			<button type="button" id="dropdownDialogButton">Dialogo</button>
-			<div id="dropdownDialog" style="width: 380px;">
+			<button type="button" id="dropdownDialogButton" class="btn-material btn-material-primary-high-emphasis">Dialogo</button>
+			<div id="dropdownDialog" class="dialog-content-material">
 				<form>
-					<fieldset class="dropdownButton-inputs">
-						<div class="formulario_columna_cnt">
-							<div class="formulario_linea_izda_float">
-								<label for="dropdownButton-combo">Filtros</label> <input
-									id="dropdownButton-combo" />
-							</div>
-							<div class="formulario_linea_izda_float">
-								<input type="checkbox" id="dropdownButton-defaultFilter" /> <label
-									for="dropdownButton-defaultFilter">Filtro por defecto</label>
-							</div>
+					<div class="form-row">
+						<div class="form-groupMaterial col-12">
+							<label for="dropdownButton-combo">Filtros</label>
+							<input id="dropdownButton-combo" />
 						</div>
-					</fieldset>
+					</div>
+					<div class="form-row">
+						<div class="checkbox-material col-12">
+							<input type="checkbox" id="dropdownButton-defaultFilter" />
+							<label for="dropdownButton-defaultFilter">Filtro por defecto</label>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
 
 		<p>Botón FAB (Floating Action Button)</p>
 		<div class="example">
-			<button type="button" id="fabButton" data-fab="true">
-				<span class="glyphicon glyphicon-cog" />
+			<button type="button" id="fabButton_18px" class="rup-button-fab-sm" data-fab="true">
+				<span class="mdi mdi-18px mdi-settings" />
 			</button>
 			
-			<button type="button" id="fabButtonLayer" data-fab="true">
-				<span class="glyphicon glyphicon-cog" />
+			<button type="button" id="fabButton_24px" data-fab="true">
+				<span class="mdi mdi-24px mdi-settings" />
+			</button>
+			
+			<button type="button" id="fabButton_36px" data-fab="true">
+				<span class="mdi mdi-36px mdi-settings" />
+			</button>
+			
+			<button type="button" id="fabButton_48px" class="rup-button-fab-lg" data-fab="true">
+				<span class="mdi mdi-48px mdi-settings" />
 			</button>
 
 			<div class="rup-button-fab-group">
 				<ul id="fabButtonFixedList" class="rup-button-fab-list">
-					<li><button type="button" id="fabButtonList1" data-fab="true"
+					<li>
+						<button type="button" id="fabButtonList1" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-print" aria-hidden="true"></i>
-						</button></li>
-					<li><button type="button" id="fabButtonList2" data-fab="true"
+							<i class="mdi mdi-printer" aria-hidden="true"></i>
+						</button>
+					</li>
+					<li>
+						<button type="button" id="fabButtonList2" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-trash" aria-hidden="true"></i>
-						</button></li>
-					<li><button type="button" id="fabButtonList3" data-fab="true"
+							<i class="mdi mdi-delete" aria-hidden="true"></i>
+						</button>
+					</li>
+					<li>
+						<button type="button" id="fabButtonList3" data-fab="true"
 							class="rup-button-fab-sm rup-button-fab ui-button ui-corner-all ui-widget rup-button">
-							<i class="fa fa-pencil" aria-hidden="true"></i>
-						</button></li>
+							<i class="mdi mdi-pencil" aria-hidden="true"></i>
+						</button>
+					</li>
 				</ul>
 				<button type="button" id="fabButtonFixed" data-fab="true"
 					data-fixed="true" data-list="fabButtonFixedList"
 					class="rup-button-fab rup-button-fixed ui-button ui-corner-all ui-widget rup-button">
-					<i class="fa fa-plus" aria-hidden="true"></i>
+					<i class="mdi mdi-24px mdi-plus" aria-hidden="true"></i>
 				</button>
 			</div>
 
@@ -237,11 +260,11 @@
 			.
 		</p>
 		<div class="example">
-			<button type="button" id="btnClickJQuery" class="">
-				<i class="fa fa-cog" aria-hidden="true"></i> <span
-					class="rup-ui-button-text d-none d-lg-block">Handler jQuery</span>
+			<button type="button" id="btnClickJQuery" class="btn-material btn-material-primary-high-emphasis">
+				<i class="mdi mdi-settings" aria-hidden="true"></i>
+				<span class="rup-ui-button-text d-none d-lg-inline">Handler jQuery</span>
 			</button>
-			<button type="button" id="btnClickRup" class="">Handler RUP</button>
+			<button type="button" id="btnClickRup" class="btn-material btn-material-primary-high-emphasis">Handler RUP</button>
 		</div>
 
 		<h4>i18n</h4>
@@ -253,7 +276,7 @@
 			<code>i18nCaption</code>
 		</p>
 		<div class="example">
-			<button type="button" id="btnI18n" class="">Handler RUP</button>
+			<button type="button" id="btnI18n" class="btn-material btn-material-primary-high-emphasis">Handler RUP</button>
 		</div>
 	</div>
 </section>

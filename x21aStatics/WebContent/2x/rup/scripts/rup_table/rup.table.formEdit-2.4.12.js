@@ -23,17 +23,17 @@
      * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
      *
      */
-    jQuery.rup_table.registerPlugin("formEdit", {
+    jQuery.rup_jqtable.registerPlugin("formEdit", {
         loadOrder: 6,
         preConfiguration: function (settings) {
             var $self = this;
 
-            return $self.rup_table("preConfigureFormEdit", settings);
+            return $self.rup_jqtable("preConfigureFormEdit", settings);
         },
         postConfiguration: function (settings) {
             var $self = this;
 
-            return $self.rup_table("postConfigureFormEdit", settings);
+            return $self.rup_jqtable("postConfigureFormEdit", settings);
         }
     });
 
@@ -42,7 +42,7 @@
     //********************************
 
     /**
-     * Extensión del componente rup_table para permitir la edición de los registros mediante un formulario.
+     * Extensión del componente rup_jqtable para permitir la edición de los registros mediante un formulario.
      *
      * Los métodos implementados son:
      *
@@ -55,7 +55,7 @@
      * settings.formEdit.$detailFormDiv : Referencia al div que arropa el formulario de detalle y sobre el que se inicializa el componente rup_dialog.
      *
      */
-    jQuery.fn.rup_table("extend", {
+    jQuery.fn.rup_jqtable("extend", {
         preConfigureFormEdit: function (settings) {
             var $self = this,
                 colModel = settings.colModel;
@@ -91,7 +91,7 @@
 
 
             settings.ondblClickRow = function (rowid, iRow, iCol, e) {
-                $self.rup_table('editElement', rowid);
+                $self.rup_jqtable('editElement', rowid);
                 return false;
             };
 
@@ -99,7 +99,7 @@
             settings.formEdit.deleteOptions.ajaxDelOptions = jQuery.extend(true, settings.formEdit.deleteOptions.ajaxDelOptions, {
                 success: function (data, st, xhr) {
                     $self.triggerHandler("rupTableAfterDelete", [data, st, xhr]);
-                    $self.rup_table("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_table.deletedOK"), "ok");
+                    $self.rup_jqtable("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.deletedOK"), "ok");
                 }
             });
 
@@ -115,17 +115,17 @@
 
             settings.core.defaultOperations = {
                 "add": {
-                    name: $.rup.i18nParse($.rup.i18n.base, "rup_table.new"),
+                    name: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.new"),
                     icon: "rup-icon rup-icon-new",
                     enabled: function () {
                         return true;
                     },
                     callback: function (key, options) {
-                        $self.rup_table("newElement");
+                        $self.rup_jqtable("newElement");
                     }
                 },
                 "edit": {
-                    name: $.rup.i18nParse($.rup.i18n.base, "rup_table.modify"),
+                    name: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.modify"),
                     icon: "rup-icon rup-icon-edit",
                     enabled: function () {
                         var $self = this,
@@ -133,7 +133,7 @@
                         return jQuery.proxy(settings.fncHasSelectedElements, $self)();
                     },
                     callback: function (key, options) {
-                        $self.rup_table("editElement");
+                        $self.rup_jqtable("editElement");
                     }
                 },
                 //				"save": {
@@ -143,16 +143,16 @@
                 //						return false;
                 //					}},
                 //					callback: function(key, options){
-                //						$self.rup_table("newElement");
+                //						$self.rup_jqtable("newElement");
                 //					}},
                 "clone": {
-                    name: $.rup.i18nParse($.rup.i18n.base, "rup_table.clone"),
+                    name: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.clone"),
                     icon: "rup-icon rup-icon-clone",
                     enabled: function () {
                         return jQuery.proxy(settings.fncHasSelectedElements, $self)();
                     },
                     callback: function (key, options) {
-                        $self.rup_table("cloneElement");
+                        $self.rup_jqtable("cloneElement");
                     }
                 },
                 //				"cancel": {
@@ -162,7 +162,7 @@
                 //						return false;
                 //					}},
                 "delete": {
-                    name: $.rup.i18nParse($.rup.i18n.base, "rup_table.delete"),
+                    name: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.delete"),
                     icon: "rup-icon rup-icon-delete",
                     enabled: function () {
                         var $self = this,
@@ -170,7 +170,7 @@
                         return jQuery.proxy(settings.fncHasSelectedElements, $self)();
                     },
                     callback: function (key, options) {
-                        $self.rup_table("deleteElement");
+                        $self.rup_jqtable("deleteElement");
                     }
                 }
             };
@@ -250,7 +250,7 @@
 
             settings.getDetailTotalRowCount = function () {
                 var $self = this;
-                return $self.rup_table("getGridParam", "records");
+                return $self.rup_jqtable("getGridParam", "records");
             };
 
             settings.getDetailCurrentRowCount = function () {
@@ -258,14 +258,14 @@
                     page, rowNum, rowId;
 
                 // Obtenemos la pagina actual
-                page = parseInt($self.rup_table("getGridParam", "page"), 10);
+                page = parseInt($self.rup_jqtable("getGridParam", "page"), 10);
                 // Obtenemos el identificador del registro seleccionado
-                rowId = $self.rup_table("getGridParam", "selrow");
+                rowId = $self.rup_jqtable("getGridParam", "selrow");
                 // Obtenemos el numero de linea
                 //				rowNum = $self.jqGrid("getInd", rowId);
                 rowNum = jQuery.inArray(rowId, jQuery.proxy(jQuery.jgrid.getCurrPos, $self[0])()[1]) + 1;
                 // Numero de registros por pagina que se visualizan
-                rowsPerPage = parseInt($self.rup_table("getGridParam", "rowNum"), 10);
+                rowsPerPage = parseInt($self.rup_jqtable("getGridParam", "rowNum"), 10);
                 // Flag de todos los registros seleccionados
                 cont = (page * rowsPerPage) - rowsPerPage + rowNum;
 
@@ -294,9 +294,9 @@
                     newPage = 0,
                     newPageIndex = 0,
                     npos = jQuery.proxy(jQuery.jgrid.getCurrPos, $self[0])(),
-                    page = parseInt($self.rup_table("getGridParam", "page"), 10),
-                    rowsPerPage = parseInt($self.rup_table("getGridParam", "rowNum"), 10),
-                    lastPage = parseInt(Math.ceil($self.rup_table("getGridParam", "records") / $self.rup_table("getGridParam", "rowNum")), 10);
+                    page = parseInt($self.rup_jqtable("getGridParam", "page"), 10),
+                    rowsPerPage = parseInt($self.rup_jqtable("getGridParam", "rowNum"), 10),
+                    lastPage = parseInt(Math.ceil($self.rup_jqtable("getGridParam", "records") / $self.rup_jqtable("getGridParam", "rowNum")), 10);
 
                 npos[0] = parseInt(npos[0], 10);
 
@@ -366,7 +366,7 @@
                     newPageIndex = arrParams[6];
 
                     if (execute) {
-                        $self.rup_table("hideFormErrors", settings.formEdit.$detailForm);
+                        $self.rup_jqtable("hideFormErrors", settings.formEdit.$detailForm);
                         $self.triggerHandler("jqGridAddEditClickPgButtons", [linkType, settings.formEdit.$detailForm, npos[1][npos[index]]]);
                         if (changePage) {
                             $self.trigger("reloadGrid", [{
@@ -470,16 +470,16 @@
                     // Dependiendo del boton de guardado seleccionado se realiza el comportamiento correspondiente
                     if (formEditSaveType === "SAVE") {
                         if (oper === 'edit') {
-                            $self.rup_table("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_table.modifyOK"), "ok");
+                            $self.rup_jqtable("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.modifyOK"), "ok");
                         } else {
-                            $self.rup_table("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_table.insertOK"), "ok");
+                            $self.rup_jqtable("showFeedback", settings.$feedback, $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.insertOK"), "ok");
                         }
                         settings.formEdit.$detailFormDiv.rup_dialog("close");
                     } else if (formEditSaveType === "SAVE_REPEAT") {
                         if (oper === 'edit') {
-                            $self.rup_table("showFeedback", settings.$detailFeedback, $.rup.i18nParse($.rup.i18n.base, "rup_table.modifyOK"), "ok");
+                            $self.rup_jqtable("showFeedback", settings.$detailFeedback, $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.modifyOK"), "ok");
                         } else {
-                            $self.rup_table("showFeedback", settings.$detailFeedback, $.rup.i18nParse($.rup.i18n.base, "rup_table.insertOK"), "ok");
+                            $self.rup_jqtable("showFeedback", settings.$detailFeedback, $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.insertOK"), "ok");
                         }
                     }
 
@@ -509,17 +509,17 @@
                         try {
                             responseJSON = jQuery.parseJSON(data.responseText);
                             if (responseJSON.rupErrorFields) {
-                                $self.rup_table("showServerValidationFieldErrors", settings.formEdit.$detailForm, responseJSON);
+                                $self.rup_jqtable("showServerValidationFieldErrors", settings.formEdit.$detailForm, responseJSON);
                             }
                         } catch (e) {
                             // El mensaje JSON
-                            $self.rup_table("showFeedback", settings.$detailFeedback, data.responseText, "error");
+                            $self.rup_jqtable("showFeedback", settings.$detailFeedback, data.responseText, "error");
                         }
 
                     }
                 },
                 //				 "jqGridDblClickRow.rupTable.formEditing": function (event, rowid, iRow, iCol, e){
-                //					$self.rup_table('editElement', rowid);
+                //					$self.rup_jqtable('editElement', rowid);
                 //				 },
                 "jqGridAddEditBeforeShowForm.rupTable.formEditing": function (event, $detailForm, frmoper) {
                     var $self = $(this),
@@ -528,7 +528,7 @@
                         colModel = $self[0].p.colModel;
 
                     // Se ocultan los errores de validación mostrados en el formulario de detalle
-                    $self.rup_table("hideFormErrors", settings.formEdit.$detailForm);
+                    $self.rup_jqtable("hideFormErrors", settings.formEdit.$detailForm);
                     if (frmoper === "add" || frmoper === "clone" || frmoper === "clone_clear") {
                         $title.html(rp_ge[$self[0].p.id].addCaption);
                         $("#pagination_" + settings.id + ",#pag_" + settings.id).hide();
@@ -585,21 +585,21 @@
      * s($form): Oculta los mensaje de error visualizado en el
      *
      */
-    jQuery.fn.rup_table("extend", {
+    jQuery.fn.rup_jqtable("extend", {
         createDetailNavigation: function () {
             var $self = $(this),
                 settings = $self.data("settings"),
                 jqGridID = $self.attr("id"),
-                paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationBar"),
-                paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.paginationLink"),
-                elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.elementCounter"),
-                $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.templates.detailForm.separator")),
-                $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.numResult"))),
+                paginationBarTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationBar"),
+                paginationLinkTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.paginationLink"),
+                elementCounterTmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.elementCounter"),
+                $separator = $(jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.separator")),
+                $elementCounter = $(jQuery.jgrid.format(elementCounterTmpl, jqGridID, jQuery.rup.STATICS, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.numResult"))),
                 $paginationBar = $(jQuery.jgrid.format(paginationBarTmpl, jqGridID)),
-                $firstPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'first_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.first"))),
-                $backPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'back_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.previous"))),
-                $forwardPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'forward_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.next"))),
-                $lastPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'last_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.last"))),
+                $firstPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'first_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.first"))),
+                $backPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'back_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.previous"))),
+                $forwardPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'forward_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.next"))),
+                $lastPaginationLink = $(jQuery.jgrid.format(paginationLinkTmpl, 'last_' + jqGridID, jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.last"))),
                 extpost = undefined;
 
             $paginationBar.append($firstPaginationLink)
@@ -648,12 +648,12 @@
             var $self = this,
                 settings = $self.data("settings"),
                 deleteOptions = jQuery.extend(true, {}, settings.formEdit.deleteOptions, options),
-                selectedRow = (rowId === undefined ? $self.rup_table('getSelectedRows') : rowId);
+                selectedRow = (rowId === undefined ? $self.rup_jqtable('getSelectedRows') : rowId);
 
             // En caso de especificarse el uso del método HTTP DELETE, se anyade el identificador como PathParameter
             if (selectedRow.length === 1) {
                 if (deleteOptions.mtype === "DELETE") {
-                    deleteOptions.url = settings.formEdit.editurl + "/" + $self.rup_table("getPkUrl", selectedRow);
+                    deleteOptions.url = settings.formEdit.editurl + "/" + $self.rup_jqtable("getPkUrl", selectedRow);
                 }
             } else {
                 deleteOptions.mtype = "POST";
@@ -667,8 +667,8 @@
                             "pkToken": settings.multiplePkToken,
                             "pkNames": settings.primaryKey
                         },
-                        "multiselection": $self.rup_table('getSelectedIds'),
-                        "filter": $self.rup_table("getFilterParams")
+                        "multiselection": $self.rup_jqtable('getSelectedIds'),
+                        "filter": $self.rup_jqtable("getFilterParams")
                     });
                 };
             }
@@ -943,7 +943,7 @@
             }
             var cm = obj.p.colModel;
             if (rowid == '_empty') {
-                $self.rup_table("resetForm", settings.formEdit.$detailForm);
+                $self.rup_jqtable("resetForm", settings.formEdit.$detailForm);
                 $(cm).each(function () {
                     nm = this.name;
                     id = this.id !== undefined ? this.id : nm;
@@ -1106,7 +1106,7 @@
                 $detailFormToPopulate = ($form !== undefined ? $form : settings.formEdit.$detailForm);
 
             if (rowid == '_empty') {
-                $self.rup_table("resetForm", settings.formEdit.$detailForm);
+                $self.rup_jqtable("resetForm", settings.formEdit.$detailForm);
 
                 $.proxy($.jgrid.getFormData, $t)(postdata, {});
                 rp_ge[$t.p.id]._savedData = $.rup_utils.unnestjson(postdata);
@@ -1145,7 +1145,7 @@
                 }
             }, settings.formEdit.detailOptions.ajaxDetailOptions);
 
-            ajaxOptions.url += "/" + $self.rup_table("getPkUrl", rowid);
+            ajaxOptions.url += "/" + $self.rup_jqtable("getPkUrl", rowid);
             $.when($.rup_ajax(ajaxOptions)).then(function (success, statusText, xhr) {
                 $self.triggerHandler("jqGridAddEditAfterFillData", [$form, frmoper]);
             });
@@ -1523,8 +1523,8 @@
 
                 if (compareDataEvent.isDifferent) {
                     $.rup_messages("msgConfirm", {
-                        message: $.rup.i18nParse($.rup.i18n.base, "rup_table.saveAndContinue"),
-                        title: $.rup.i18nParse($.rup.i18n.base, "rup_table.changes"),
+                        message: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.saveAndContinue"),
+                        title: $.rup.i18nParse($.rup.i18n.base, "rup_jqtable.changes"),
                         OKFunction: function () {
                             $(this).dialog("destroy").remove();
                             if (jQuery.isFunction(okCallback)) {
@@ -1587,7 +1587,7 @@
                     $("#nData", frmtb + "_2").removeClass('ui-state-disabled');
                 }
             }
-            $self.rup_table("updateDetailPagination");
+            $self.rup_jqtable("updateDetailPagination");
         }
     });
 
@@ -1776,8 +1776,8 @@
                 } else {
                     var dh = isNaN(p.dataheight) ? p.dataheight : p.dataheight + "px",
                         dw = isNaN(p.datawidth) ? p.datawidth : p.datawidth + "px",
-                        frm = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_table.templates.detailForm.form", frmgr, dh)).data("disabled", false),
-                        tbl = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_table.templates.detailForm.body", frmtborg)),
+                        frm = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.form", frmgr, dh)).data("disabled", false),
+                        tbl = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.body", frmtborg)),
                         showFrm = $($t).triggerHandler("jqGridAddEditBeforeInitData", [$("#" + frmgr), frmoper]);
                     if (typeof (showFrm) == "undefined") {
                         showFrm = true;
@@ -1795,7 +1795,7 @@
                         maxRows = Math.max(maxRows, fmto ? fmto.rowpos || 0 : 0);
                     });
                     $(frm).append(tbl);
-                    flr = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_table.templates.detailForm.errorFeedback", settings.formEdit.feedbackId));
+                    flr = $(jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, "rup_jqtable.templates.detailForm.errorFeedback", settings.formEdit.feedbackId));
                     flr[0].rp = 0;
                     $(tbl).append(flr);
                     /* ADD	*/
@@ -1877,7 +1877,7 @@
                      * Añadida barra de navegación entre elementos
                      */
 
-                    var barraNavegacion = $self.rup_table("createDetailNavigation"),
+                    var barraNavegacion = $self.rup_jqtable("createDetailNavigation"),
                         tms;
 
 
@@ -2150,7 +2150,7 @@
 
                 }
                 var posInit = $.proxy($.jgrid.getCurrPos, $t)();
-                $self.rup_table("updateDetailPagination");
+                $self.rup_jqtable("updateDetailPagination");
                 $.proxy($.jgrid.updateNav, $t)(posInit[0], posInit[1].length - 1);
             });
         }
@@ -2177,8 +2177,8 @@
     //*******************************************************
     // DEFINICIÓN DE LA CONFIGURACION POR DEFECTO DEL PATRON
     //*******************************************************
-    jQuery.fn.rup_table.plugins.formEdit = {};
-    jQuery.fn.rup_table.plugins.formEdit.defaults = {
+    jQuery.fn.rup_jqtable.plugins.formEdit = {};
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults = {
         toolbar: {
             defaultButtons: {
                 add: true,
@@ -2211,12 +2211,12 @@
 
 
     // Parámetros de configuración por defecto para la acción de eliminar un registro.
-    jQuery.fn.rup_table.plugins.formEdit.defaults.formEdit.deleteOptions = {
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults.formEdit.deleteOptions = {
         bSubmit: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_message.aceptar"),
         cancelicon: [true, "left", "icono_cancelar"],
         delicon: [false],
         linkStyleButtons: ["#eData"],
-        msg: '<div id="rup_msgDIV_msg_icon" class="rup-message_icon-confirm"></div><div id="rup_msgDIV_msg" class="rup-message_msg-confirm white-space-normal">' + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.deleteAll") + '</div>',
+        msg: '<div id="rup_msgDIV_msg_icon" class="rup-message_icon-confirm"></div><div id="rup_msgDIV_msg" class="rup-message_msg-confirm white-space-normal">' + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.deleteAll") + '</div>',
         mtype: "DELETE",
         width: 320,
         reloadAfterSubmit: false,
@@ -2226,7 +2226,7 @@
     };
 
     // Parámetros de configuración por defecto para la acción de añadir y editar un registro.
-    jQuery.fn.rup_table.plugins.formEdit.defaults.formEdit.addEditOptions = {
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults.formEdit.addEditOptions = {
         bSubmit: jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_message.aceptar"),
         closeicon: [false],
         checkOnUpdate: true,
@@ -2234,7 +2234,7 @@
         fillDataMethod: "serverSide", // clientSide || serverSide
         saveicon: [false],
         linkStyleButtons: ["#cData"],
-        msg: '<div id="rup_msgDIV_msg_icon" class="rup-message_icon-confirm"></div><div id="rup_msgDIV_msg" class="rup-message_msg-confirm white-space-normal">' + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_table.deleteAll") + '</div>',
+        msg: '<div id="rup_msgDIV_msg_icon" class="rup-message_icon-confirm"></div><div id="rup_msgDIV_msg" class="rup-message_msg-confirm white-space-normal">' + jQuery.rup.i18nParse(jQuery.rup.i18n.base, "rup_jqtable.deleteAll") + '</div>',
         mtype: "PUT",
         reloadAfterSubmit: false,
         resize: false,
@@ -2248,7 +2248,7 @@
     };
 
     // Parámetros de configruación específicos para la acción de añadir un registro
-    jQuery.fn.rup_table.plugins.formEdit.defaults.formEdit.addOptions = {
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults.formEdit.addOptions = {
         mtype: "POST",
         ajaxEditOptions: {
             type: "POST"
@@ -2256,7 +2256,7 @@
     };
 
     // Parámetros de configruación específicos para la acción de editar un registro
-    jQuery.fn.rup_table.plugins.formEdit.defaults.formEdit.editOptions = {
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults.formEdit.editOptions = {
         mtype: "PUT",
         ajaxEditOptions: {
             type: "PUT"
@@ -2264,7 +2264,7 @@
     };
 
     // Parámetros de configuración por defecto para la obtención del detalle de un registro
-    jQuery.fn.rup_table.plugins.formEdit.defaults.formEdit.detailOptions = {
+    jQuery.fn.rup_jqtable.plugins.formEdit.defaults.formEdit.detailOptions = {
         ajaxDetailOptions: {
             dataType: 'json',
             type: "GET",

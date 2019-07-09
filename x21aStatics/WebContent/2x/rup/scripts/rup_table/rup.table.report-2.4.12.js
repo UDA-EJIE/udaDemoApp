@@ -22,15 +22,15 @@
 	 * postConfiguration: Método que se ejecuta después de la invocación del componente jqGrid.
 	 * 
 	 */
-	jQuery.rup_table.registerPlugin("report",{
+	jQuery.rup_jqtable.registerPlugin("report",{
 		loadOrder:11,
 		preConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("preConfigureReport", settings);
+			return $self.rup_jqtable("preConfigureReport", settings);
 		},
 		postConfiguration: function(settings){
 			var $self = this;
-			return $self.rup_table("postConfigureReport", settings);
+			return $self.rup_jqtable("postConfigureReport", settings);
 		}
 	});
 	
@@ -39,7 +39,7 @@
 	//********************************
 	
 	/**
-	 * Extensión del componente rup_table para permitir la gestión de la generaciónd de informes. 
+	 * Extensión del componente rup_jqtable para permitir la gestión de la generaciónd de informes. 
 	 * 
 	 * Los métodos implementados son:
 	 * 
@@ -47,7 +47,7 @@
 	 * 
 	 * postConfigureReport(settings): Método que define la preconfiguración necesaria para el correcto funcionamiento del componente.
 	 */
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		preConfigureReport: function(settings){
 			var $self = this;
 			
@@ -55,7 +55,7 @@
 		},
 		postConfigureReport: function(settings){
 			var $self = this,
-				colModel = $self.rup_table("getColModel"),
+				colModel = $self.rup_jqtable("getColModel"),
 				reportsColums,
 				reportSettings = settings.report;
 			
@@ -100,7 +100,7 @@
 				});
 				
 				if (settings.filter !== undefined && settings.filter.$filterContainer!== undefined){
-					filterData = $self.rup_table("getFilterParams");
+					filterData = $self.rup_jqtable("getFilterParams");
 				}
 
 				jQuery.extend(true, data, filterData);
@@ -120,7 +120,7 @@
 	});
 	
 	
-	jQuery.fn.rup_table("extend",{
+	jQuery.fn.rup_jqtable("extend",{
 		_getReportColumns: function(colModel, settings){
 			return jQuery.map(colModel, function(elem, index){
 				if (jQuery.inArray(elem.name, settings.report.excludeColumns) === -1){
@@ -141,8 +141,8 @@
 	 * Parámetros de configuración por defecto para el plugin report.
 	 * 
 	 */
-	jQuery.fn.rup_table.plugins.report = {};
-	jQuery.fn.rup_table.plugins.report.defaults = {
+	jQuery.fn.rup_jqtable.plugins.report = {};
+	jQuery.fn.rup_jqtable.plugins.report.defaults = {
 			report:{
 				columns:{},
 				excludeColumns:['rupInfoCol','cb'],

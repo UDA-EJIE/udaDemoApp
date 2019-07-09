@@ -16,7 +16,7 @@
 jQuery(function($){
 	
 	var disable=1;
-	$("#table").rup_table({
+	$("#table").rup_jqtable({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,

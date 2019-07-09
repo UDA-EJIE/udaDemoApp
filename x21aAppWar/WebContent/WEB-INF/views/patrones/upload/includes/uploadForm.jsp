@@ -47,7 +47,7 @@
 				<div class="col-md-12 ">
 			        <div class="rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="glyphicon glyphicon-plus"></i>
+						      <i class="mdi mdi-plus"></i>
 						      <span><spring:message code="upload.button.addFiles"/></span>
 						      <input id="file_form" type="file" name="file"  />
 						</span>

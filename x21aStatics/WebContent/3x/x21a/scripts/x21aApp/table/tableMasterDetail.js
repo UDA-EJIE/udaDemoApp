@@ -21,7 +21,7 @@ jQuery(function($){
 		}
 	];
 	
-	$("#comarca").rup_datatable({
+	$("#comarca").rup_table({
 		
 		primaryKey: "code",
 		loadOnStartUp: true,
@@ -51,7 +51,7 @@ jQuery(function($){
 	    				"provincia.code":{range:[1,3]}
 	    			}
 	    		},
-	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+	    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
 	        }
 	});
 	
@@ -70,7 +70,7 @@ jQuery(function($){
 		}
 	];
 	
-	$("#localidad").rup_datatable({
+	$("#localidad").rup_table({
 		
 		primaryKey: "code",
 		loadOnStartUp: false,
@@ -104,7 +104,7 @@ jQuery(function($){
     				"code":{required:true}
     			}
     		},
-    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
+    		titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
         }
         
 	});
