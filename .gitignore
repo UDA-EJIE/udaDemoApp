@@ -11,3 +11,7 @@ x21aEARClasses/bin/
 
 .settings
 .sonarlint
+
+*_estruct_servidor/
+.idea/
+*.iml

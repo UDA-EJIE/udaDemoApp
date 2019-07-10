@@ -823,4 +823,11 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/datatable/datatable-includes.jsp" />
 	</definition>
+	
+	<definition extends="template" name="datatableDouble">
+		<put-attribute name="content"
+			value="/WEB-INF/views/datatable/datatableDouble.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/datatable/datatableDouble-includes.jsp" />
+	</definition>
 </tiles-definitions>
