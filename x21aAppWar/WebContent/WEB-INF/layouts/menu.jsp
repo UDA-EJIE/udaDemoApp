@@ -250,6 +250,9 @@
 					<a class="dropdown-item" href="/x21aAppWar/table/configurable">
 						<spring:message code="tabla.configurable" />
 					</a>
+					<a class="dropdown-item" href="/x21aAppWar/table/configurableDouble">
+						<spring:message code="tabla.configurableDouble" />
+					</a>
 					<a class="dropdown-item" href="/x21aAppWar/table/multipk">
 						<spring:message code="tabla.multipk" />
 					</a>

@@ -566,6 +566,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
 	</definition>
+
+	<definition extends="template" name="tableDouble">
+		<put-attribute name="content"
+					   value="/WEB-INF/views/table/tableDouble.jsp" />
+		<put-attribute name="includes"
+					   value="/WEB-INF/views/table/includes/tableDouble-includes.jsp" />
+	</definition>
 	
 	<definition extends="templateNoHeads" name="tableDialogAjax">
 		<put-attribute name="content"
