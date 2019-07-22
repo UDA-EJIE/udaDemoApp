@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2019 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -14,11 +14,12 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
 <!-- Titulo pagina -->
 <!-- <h2>table</h2> -->
 
 <!-- Formulario de detalle -->
-<div id="example_detail_div" class="rup-table-formEdit-detail">
+<div id="example_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegaci�n del detalle -->
 	<div id ="example_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->

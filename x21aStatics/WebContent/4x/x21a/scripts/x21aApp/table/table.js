@@ -1,5 +1,5 @@
 /*!
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2019 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -273,7 +273,7 @@ jQuery(function($){
 							return 'Editar con MultiPart';
 						},
 						id: 'exampleeditMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
-						className: 'datatable_toolbar_btnEdit',
+						className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit',
 						displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 						insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 						type: 'edit',

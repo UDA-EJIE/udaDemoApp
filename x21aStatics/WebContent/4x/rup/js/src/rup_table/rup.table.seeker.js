@@ -146,7 +146,7 @@ function _createFilterColumn(dt,ctx){
 	var idTabla = ctx.sTableId;
 	$('#'+idTabla+' tfoot').css('display','table-header-group');
 		$('#'+idTabla+' tfoot th').each( function () {
-			var title = $(this).text();
+			var title = this.innerText;
 			var index = $(this).index();
 			
 			if(index > 0 || ctx.oInit.multiSelect === undefined){
@@ -167,7 +167,8 @@ function _createFilterColumn(dt,ctx){
 				}
 			}
 		} );
-		
+
+
 	   dt.columns().eq(0).each(function(colIdx) {
 		   if(colIdx > 0){
 		        $( 'input', $('#'+idTabla+' tfoot')[0].rows[0].cells[colIdx] ).on( 'keypress', function (ev) {
@@ -191,10 +192,9 @@ function _createFilterColumn(dt,ctx){
 		   }
 	   });
 
-	   _createSearchRow(dt, ctx);
-	   ctx.seeker.searchForm = $('#' + idTabla + ' tfoot tr:nth-child(2)');
+	   _createSearchRow(dt,ctx);
+	   ctx.seeker.searchForm = $('#'+idTabla+' tfoot tr:nth-child(2)');
 	   ctx.seeker.searchForm.hide();
-
 	   _createRupComponent(dt,ctx);
 }
 /**
@@ -340,11 +340,13 @@ function _createSearchRow (dt,ctx){
 			ctx.seeker.search.pos = ctx.seeker.search.funcionParams.length-1;
 			_processData(dt,ctx,ctx.seeker.search.funcionParams);
 		});
-		
+
 		// Se recubre con un form
 		var $searchForm = jQuery('<form>').attr('id',idTabla+'_search_searchForm');
-		$('#' + idTabla).wrapAll($searchForm);
-		ctx.seeker.search.$searchForm = jQuery('#'+idTabla+'_search_searchForm');
+
+        $('#'+idTabla).wrapAll($searchForm);
+
+		ctx.seeker.search.$searchForm = $('#'+idTabla+'_search_searchForm');
 		ctx.seeker.search.$searchRow.hide();
         ctx.seeker.search.pos = 0;
         ctx.seeker.search.accion = '';
@@ -493,15 +495,15 @@ function _processData(dt,ctx,data){
 * @function
 * @since UDA 3.4.0 // Table 1.0.0
 * 
-* @param {object} ctx - Es el contecto del table donde esta la configuración del mismo.
+* @param {object} ctx - Es el contexto del table donde esta la configuración del mismo.
 * 
 * @return {object} Devuelve el objeto mapeado de todos los campos.
 *
 */
 function _getDatos(ctx){
 	var datos = ctx.aBaseJson;
-	if(datos !== undefined){
-		datos.search = form2object(ctx.seeker.search.$searchForm[0]);
+	if (datos !== undefined && $(ctx.seeker.search.$searchForm.selector)[0]!== undefined) {
+		datos.search = form2object($(ctx.seeker.search.$searchForm.selector)[0]);
 	}
 	return datos;
 }
@@ -532,7 +534,7 @@ function _createRupComponent(dt,ctx){
 				var $elem = $('[name=\''+colModelName+'\']',ctx.seeker.searchForm);
 				// Se añade el title de los elementos de acuerdo al colname
 				$elem.attr({
-					'title': ctx.aoColumns[i].sTitle,
+					'title': $('#'+cellColModel.name+'_seeker').attr('placeholder'),
 					'class': 'editable customelement form-control-customer'
 				}).removeAttr('readOnly');
 	

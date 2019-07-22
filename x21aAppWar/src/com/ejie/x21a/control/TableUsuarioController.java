@@ -589,21 +589,6 @@ public class TableUsuarioController  {
 		//Generación del PDF
 		return new ModelAndView("pdfUsuario", modelMap);
     }
-
-	/*
-	 * DETALLE USUARIO RSS
-	 */
-	@RequestMapping(value = "/rssDetail/{id}", method = RequestMethod.GET)
-	public String getRssDetail(@PathVariable String id, Model model) {
-		TableUsuarioController.logger.info("[GET - getRssDEtail] : Obtener el detalle del usuario a partir del RSS");
-        Usuario usuario = new Usuario();
-		usuario.setId(id);
-        usuario = this.tableUsuarioService.find(usuario);
-		
-		model.addAttribute("usuario",usuario);
-		
-		return "tableRssDetail";
-	}
 	
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {

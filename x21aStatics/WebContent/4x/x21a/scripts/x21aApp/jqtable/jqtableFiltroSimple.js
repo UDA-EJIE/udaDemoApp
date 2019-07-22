@@ -19,7 +19,7 @@ jQuery(function($){
 	var disable=1;
 	
 	// No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
-	confLoaded.then(function() {
+	initRupI18nPromise.then(function() {
     	$("#table").rup_jqtable({
     		url: "../jqGridUsuario",
     		colNames: tableColNames,

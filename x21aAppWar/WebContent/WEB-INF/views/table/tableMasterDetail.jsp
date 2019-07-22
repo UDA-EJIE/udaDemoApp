@@ -51,7 +51,7 @@
                              <spring:message code="clear" />
                       </span>
                        </button>
-                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
                              <i class="mdi mdi-filter"></i>
                       <span>
                              <spring:message code="filter" />
@@ -81,7 +81,7 @@
 <!-- <h2>table</h2> -->
 
 <!-- Formulario de detalle -->
-<div id="comarca_detail_div" class="rup-table-formEdit-detail">
+<div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
 	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
@@ -201,7 +201,7 @@
 <!-- <h2>table</h2> -->
 
 <!-- Formulario de detalle -->
-<div id="localidad_detail_div" class="rup-table-formEdit-detail">
+<div id="localidad_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
 	<div id ="localidad_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->

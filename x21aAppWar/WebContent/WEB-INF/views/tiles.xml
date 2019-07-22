@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_01.dtd">
 <tiles-definitions>
 
 	<!-- ****************************** -->
@@ -595,18 +595,25 @@
 			value="/WEB-INF/views/table/includes/tableDialog-includes.jsp" />
 	</definition>
 
-	<definition extends="template" name="tablePruebas">
-		<put-attribute name="content"
-			value="/WEB-INF/views/table/tableUsuario.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/table/includes/tableUsuario-includes.jsp" />
-	</definition>
-
 	<definition extends="template" name="tableMultipk">
 		<put-attribute name="content"
 			value="/WEB-INF/views/table/tableMultipk.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/tableMultipk-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableDynamicColumns">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDynamicColumns.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDynamicColumns-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tablePruebas">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableUsuario.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableUsuario-includes.jsp" />
 	</definition>
 	
 
@@ -667,11 +674,11 @@
 			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditExcelMode-includes.jsp" />
 	</definition>
 	
-	<definition extends="template" name="jqtableGrouping">
+	<definition extends="template" name="jqtableInlineEditDynamicColumns">
 		<put-attribute name="content"
-			value="/WEB-INF/views/jqtable/jqtable.jsp" />
+			value="/WEB-INF/views/jqtable/jqtableInlineEditDynamicColumns.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/jqtable/includes/jqtableGrouping-includes.jsp" />
+			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditDynamicColumns-includes.jsp" />
 	</definition>
 	
 	<definition extends="template" name="jqtableInlineEditMultiselection">
@@ -679,6 +686,13 @@
 			value="/WEB-INF/views/jqtable/jqtable.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/jqtable/includes/jqtableInlineEditMultiselection-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="jqtableGrouping">
+		<put-attribute name="content"
+			value="/WEB-INF/views/jqtable/jqtable.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/jqtable/includes/jqtableGrouping-includes.jsp" />
 	</definition>
 	
 	<!-- <definition extends="template" name="jqtableAllFeatures"> -->
