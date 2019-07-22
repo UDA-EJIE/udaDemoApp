@@ -17,12 +17,12 @@
  <%@include file="/WEB-INF/includeTemplate.inc"%>
 
  <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="http://www.geo.euskadi.eus/bisorea/v3/css/GeoeuskadiLoadingSplash_c.css" />
+        <link rel="stylesheet" type="text/css" href="https://www.geo.euskadi.eus/bisorea/v3/css/GeoeuskadiLoadingSplash_c.css" />
          
         <!--  CORE -->
-        <script type="text/javascript" src="http://www.geo.euskadi.eus/bisorea/v3/js/main-compiled.js"></script>
+        <script type="text/javascript" src="https://www.geo.euskadi.eus/bisorea/v3/js/main-compiled.js"></script>
         <!-- Variables globales de la aplicacion -->
-        <script type="text/javascript" src="http://www.geo.euskadi.eus/bisorea/v3/js/imports_lite.js"></script>
+        <script type="text/javascript" src="https://www.geo.euskadi.eus/bisorea/v3/js/imports_lite.js"></script>
         
         
 
