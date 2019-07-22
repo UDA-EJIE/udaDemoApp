@@ -17,7 +17,7 @@ jQuery(function($){
 	
 	
 	var disable=1;
-	$("#table").rup_jqtable({
+	$("#table").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
@@ -65,6 +65,17 @@ jQuery(function($){
         	showOperations:{
 	    		operacion2:false
         	}
+//        ,
+//        	buttons:[
+//	        	{ 
+//	          		obj : { i18nCaption: "Rss", css: "rup-rss-icon-16", index: 4 }, 
+//	          		json_i18n : "Rss",
+//					click : function(){
+//						window.open(CTX_PATH+"rssfeed","Rss Feed");
+//						
+//					}
+//				}
+//        	]
         },
 		contextMenu:{
 			colNames:["nombre","apellido1","apellido2","ejie","fechaAlta"],

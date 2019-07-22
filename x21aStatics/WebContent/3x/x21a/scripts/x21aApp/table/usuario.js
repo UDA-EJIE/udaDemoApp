@@ -1,6 +1,6 @@
 jQuery(function($){
 
-	$("#usuario").rup_table({
+	$("#usuario").rup_datatable({
 		
 		primaryKey: "id",
 		loadOnStartUp: true,
@@ -25,7 +25,7 @@ jQuery(function($){
     				"fechaModif":{						required: false    					}
     				}
          		} 
-    	,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
+    	,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
         }
     	,colReorder: {
 			fixedColumnsLeft: 1

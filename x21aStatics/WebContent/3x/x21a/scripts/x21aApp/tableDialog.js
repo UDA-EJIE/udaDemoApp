@@ -19,7 +19,7 @@ jQuery(function($){
 	
 	
 	
-	$("#tableDialog").rup_jqtable({
+	$("#tableDialog").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,

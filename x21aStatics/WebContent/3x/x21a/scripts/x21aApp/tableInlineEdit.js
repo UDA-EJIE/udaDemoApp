@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	
-	jQuery("#table").rup_jqtable({
+	jQuery("#table").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,

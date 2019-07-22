@@ -19,7 +19,7 @@ jQuery(function($){
  loadApp();
  var options = {
 		    //Definimos el icono
-		    "icon" : "http://www.geo.euskadi.eus/bisorea/v3/img/markerXY.png",
+		    "icon" : "https://www.geo.euskadi.eus/bisorea/v3/img/markerXY.png",
 		    //Definimos la opacidad del icono
 		    "markersOpacity": 1,
 		    //Definimos el nivel de zoom
@@ -60,9 +60,9 @@ jQuery(function($){
               //Plugin de transparencia de capas
              COREProxy.api.plugins.enableOne( COREProxy.api.plugins.TRANSPARENCIA_DE_CAPAS );
              
-             COREProxy.api.layers.addKMLLayer("Hoteles", "http://www.geo.euskadi.eus/bisorea/v3/demos/ficheros_datos/hoteles.kml");
-            // COREProxy.api.layers.addKMLLayer("Deba Zumaia", "http://zumaia.eus/eu/turismoa/zer-egin-zumaian/oinezko-ibilbideak/zumaia-deba%20%28KML%29/view");
-             COREProxy.api.layers.addGeoJSONLayer("Centro btt", "http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/centros_btt_bicicleta_montana/opendata/centros-btt.json");
+             COREProxy.api.layers.addKMLLayer("Hoteles", "https://www.geo.euskadi.eus/bisorea/v3/demos/ficheros_datos/hoteles.kml");
+            // COREProxy.api.layers.addKMLLayer("Deba Zumaia", "https://zumaia.eus/eu/turismoa/zer-egin-zumaian/oinezko-ibilbideak/zumaia-deba%20%28KML%29/view");
+             COREProxy.api.layers.addGeoJSONLayer("Centro btt", "https://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/centros_btt_bicicleta_montana/opendata/centros-btt.json");
          }
      });
  };

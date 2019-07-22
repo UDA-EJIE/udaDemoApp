@@ -133,6 +133,29 @@
 
 /**************/
 
+.r01gContainer .rup-navbar div > a.nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 3rem;
+}
+
+.r01gContainer .rup-navbar div > a.nav-link:hover {
+  background: #337ab7;
+}
+
+@media (max-width: 991px) {
+  .r01gContainer .rup-navbar div > a.nav-link {
+    display: block;
+    float: none;
+    margin: 0;
+    background: #337ab7;
+  }
+
+  .r01gContainer .rup-navbar div > a.nav-link:hover {
+    background: #69a3d6;
+  }
+}
+
 /** CONTAINER */
 
 .r01gContainer .content {

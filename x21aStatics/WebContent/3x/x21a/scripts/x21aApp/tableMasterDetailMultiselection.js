@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	
-	$("#GRID_comarca").rup_jqtable({
+	$("#GRID_comarca").rup_table({
 		url: "../jqGridComarca",
 		pagerName: "pager_comarca",
 		rowNum: "10",
@@ -124,7 +124,7 @@ jQuery(function($){
         }
 	});
 
-	$("#GRID_localidad").rup_jqtable({
+	$("#GRID_localidad").rup_table({
 		url: "../jqGridLocalidad",
 		pagerName: "pager_localidad",
 		rowNum: "10",

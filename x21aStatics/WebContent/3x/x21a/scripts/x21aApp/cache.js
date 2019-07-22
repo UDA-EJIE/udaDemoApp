@@ -37,7 +37,7 @@ jQuery(function($){
         ];
 	
 	
-	jQuery("#table").rup_jqtable({
+	jQuery("#table").rup_table({
 		url: "../cache",
 		colNames: tableColNames,
 		colModel: tableColModels,
@@ -55,7 +55,7 @@ jQuery(function($){
 	
 	
 	jQuery("#btnRecargarTabla").on("click", function(){
-		jQuery("#table").rup_jqtable("reloadGrid");
+		jQuery("#table").rup_table("reloadGrid");
 	});
 	
 });

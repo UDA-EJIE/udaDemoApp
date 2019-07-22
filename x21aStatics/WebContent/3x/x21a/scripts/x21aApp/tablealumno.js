@@ -1,5 +1,5 @@
 jQuery(function($){
-	$("#GRID_alumno").rup_jqtable({
+	$("#GRID_alumno").rup_table({
 		hasMaint: true,
 		url: "../administracion/alumno",
 		colNames: [

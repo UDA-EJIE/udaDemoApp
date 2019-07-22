@@ -662,7 +662,7 @@
 				}
 
 
-				// rup_jqtable
+				// rup_table
 				$('#step' + stepNumber + ' .rup-table-container').each(function () {
 					var $table = $(this);
 
