@@ -1,6 +1,6 @@
 jQuery(function($){
 
-	$("#x21aAlumno").rup_table({
+	$("#x21aAlumno").rup_datatable({
 		
 		primaryKey: "id",
 		loadOnStartUp: true,
@@ -88,7 +88,7 @@ jQuery(function($){
     					}
     				}
     		   }
-    		 ,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')  
+    		 ,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')  
     		}
     		,colReorder: {
 				fixedColumnsLeft: 1

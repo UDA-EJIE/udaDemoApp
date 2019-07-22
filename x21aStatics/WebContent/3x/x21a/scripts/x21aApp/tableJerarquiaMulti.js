@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	$("#table").rup_jqtable({
+	$("#table").rup_table({
 		url: "../jqGridUsuarioJerarquia",
 		colNames: tableColNames,
 		colModel: tableColModels,

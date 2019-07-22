@@ -3,7 +3,7 @@
 
 
 describe('Test Lang >', () => {
-    var $lang;
+    var $lang, $lang2;
 
     beforeAll((done) => {
         testutils.loadCss(done);

@@ -42,7 +42,7 @@
 
 			this.element.find('.widget-body').append($tableContainer);
 
-			$tableContainer.rup_jqtable();
+			$tableContainer.rup_table();
 
 			$tableContainer.on('ajaxLoaded', function(){
 				$self.hideLoading();

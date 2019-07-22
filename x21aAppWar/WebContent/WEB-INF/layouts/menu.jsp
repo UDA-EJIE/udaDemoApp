@@ -425,16 +425,17 @@
 					<i class="mdi mdi-github-circle" aria-hidden="true"></i>
 				</a>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle rup-nav-tool-icon" href="#"
-					id="x21aApp_releases" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">
+			<li class="nav-item">
+				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_releases"
+					data-toggle="dropdown">
 					<i class="mdi mdi-settings" aria-hidden="true"></i>
 				</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="x21aApp_releases">
-					<a class="dropdown-item" href="/x21aPilotoPatronesWar/">
-						<spring:message code="udaLegacy" />
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow-center">
+					<a class="dropdown-item" href="/x21aPilotoPatronesWar/" aria-labelledby="x21aApp_uda_2">
+						<spring:message code="udaLegacy2x" />
+					</a>
+					<a class="dropdown-item" href="/x21aApp3xWar/" aria-labelledby="x21aApp_uda_3">
+						<spring:message code="udaLegacy3x" />
 					</a>
 				</div>
 			</li>
