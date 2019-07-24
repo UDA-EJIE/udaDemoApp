@@ -181,8 +181,8 @@
 						<i class="mdi mdi-calendar-month" aria-hidden="true"></i>
 						<spring:message code="date" />
 					</a>
-					
-					
+
+
 					<div class="dropdown-submenu">
 						<a class="dropdown-item dropdown-toggle" href="#">
 							<i class="mdi mdi-calendar" aria-hidden="true"></i>
@@ -197,7 +197,7 @@
 							</a>
 						</div>
 					</div>
-					
+
 					<a class="dropdown-item" href="/x21aAppWar/patrones/form">
 						<i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
 						<spring:message code="form" />

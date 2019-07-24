@@ -1,16 +1,5 @@
 @charset "UTF-8";
 
-/*!
- * jQuery UI CSS Framework 1.12.0
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/category/theming/
- */
-
 .r01gContainer .ui-button-icon-only,
 .r01gContainer .ui-controlgroup-vertical .ui-controlgroup-item {
   box-sizing: border-box;
@@ -26,6 +15,24 @@
 .r01gContainer a.select-material span:first-child {
   pointer-events: none;
 }
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"),local("Roboto-Regular"),url(fonts/roboto-v19-latin-regular.woff2) format("woff2"),url(fonts/roboto-v19-latin-regular.woff) format("woff"),url(fonts/roboto-v19-latin-regular.ttf) format("truetype");
+}
+
+/*!
+ * jQuery UI CSS Framework 1.12.0
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ */
 
 .r01gContainer .ui-helper-hidden {
   display: none;
@@ -4294,7 +4301,7 @@
   }
 
   .r01gContainer .rup-mbutton.rup-collapsed-sm .rup-mbutton-container {
-    display: inline;
+    display: inline!important;
     position: static;
     padding: 0;
     border: none;
@@ -4334,7 +4341,7 @@
   }
 
   .r01gContainer .rup-mbutton.rup-collapsed-md .rup-mbutton-container {
-    display: inline;
+    display: inline!important;
     position: static;
     padding: 0;
     border: none;
@@ -4374,7 +4381,7 @@
   }
 
   .r01gContainer .rup-mbutton.rup-collapsed-lg .rup-mbutton-container {
-    display: inline;
+    display: inline!important;
     position: static;
     padding: 0;
     border: none;
@@ -4414,7 +4421,7 @@
   }
 
   .r01gContainer .rup-mbutton.rup-collapsed-xl .rup-mbutton-container {
-    display: inline;
+    display: inline!important;
     position: static;
     padding: 0;
     border: none;
