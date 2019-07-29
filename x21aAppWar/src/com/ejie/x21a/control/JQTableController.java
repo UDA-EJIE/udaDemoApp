@@ -42,7 +42,7 @@ import com.ejie.x21a.service.NoraPaisService;
  */
 @Controller
 @RequestMapping (value = "/tableLegacy")
-public class TableController  {
+public class JQTableController  {
 
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;

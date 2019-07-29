@@ -20,7 +20,7 @@
 	<div id="table_feedback"></div>
 	<div id="table_toolbar"></div>
 	<div id="table_filter_div" class="rup-table-filter">
-		<jsp:include page="includes/filterForm.jsp"></jsp:include>
+		<jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 	</div>
 
 	<div id="table_grid_div">
