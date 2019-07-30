@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 
-jQuery(document).ready(function(){
+$(function() {
 	
 	$("#tabs").rup_tabs({
 		tabs : [

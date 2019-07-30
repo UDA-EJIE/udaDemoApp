@@ -130,6 +130,12 @@ public class JQTableController  {
 		return "tableInlineEditExcelMode";
 	}
 	
+	@RequestMapping(value = "inlineEditDynamicColumns", method = RequestMethod.GET)
+	public String getInlineEditDynamicColumns(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tablaInlineDynamicColumns", null, LocaleContextHolder.getLocale()));
+		return "jqtableInlineEditDynamicColumns";
+	}
+	
 	@RequestMapping(value = "inlineEditMultiselection", method = RequestMethod.GET)
 	public String getInlineEditMultiselection(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaInlineEditMultiselection", null, LocaleContextHolder.getLocale()));

@@ -1,254 +1,272 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la �Licencia�);
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaci�n aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye �TAL CUAL�,
- -- SIN GARANT�AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Maestro-Detalle Legacy</h2>
-<div id="error" style="display:none"></div>
-
+<h2>Tabla Maestro Detalle</h2> <!-- Titulo pagina -->
 <h2>Comarca</h2>
-<div id="comarca_div" class="rup-table-container">
-<!-- 	<div id="error_comarca" style="display:none"></div> -->
-	<div id="comarca_feedback"></div>
-	<div id="comarca_toolbar"></div>
 	<div id="comarca_filter_div"  class="rup-table-filter">
 		<form:form modelAttribute="comarca" id="comarca_filter_form">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
-					<div class="form-group col-sm">
-						<label for="code_filter_comarca" class="formulario_linea_label">code</label>
-						<form:input path="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="code" id="code_filter_comarca" />
+						<label for="code_filter_comarca">code</label>
 					</div>
-					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
-						<form:input path="provincia.code" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="provincia.code" id="provinciaCode_filter_comarca" />
+						<label for="provinciaCode_filter_comarca">provinciaCode</label>
 					</div>
-					<div class="form-group col-sm">
-						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
-						<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="descEs" id="descEs_filter_comarca" />
+						<label for="descEs_filter_comarca">descEs</label>
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="form-group col-sm">
-						<label for="descEu_filter_comarca" class="formulario_linea_label">descEu</label>
-						<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="descEu" id="descEu_filter_comarca" />
+						<label for="descEu_filter_comarca">descEu</label>
 					</div>
-					<div class="form-group col-sm">
-						<label for="css_filter_comarca" class="formulario_linea_label">css</label>
-						<form:input path="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="css" id="css_filter_comarca" />
+						<label for="css_filter_comarca">css</label>
 					</div>
 				</div>
-				<div id="comarca_filter_buttonSet" class="right_buttons">
-					<button id="comarca_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-						<i class="fa fa-eraser"></i>
-			        	<span>
-			        		<spring:message code="clear" />
-			        	</span>
-					</button>
-					<button id="comarca_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
-						<i class="fa fa-filter"></i>
-			        	<span>
-			        		<spring:message code="filter" />
-			        	</span>
-					</button>
-				</div>
+				<div id="comarca_filter_buttonSet" class="text-right">
+                   <button id="comarca_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                             <i class="mdi mdi-eraser"></i>
+                      <span>
+                             <spring:message code="clear" />
+                      </span>
+                       </button>
+                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+                             <i class="mdi mdi-filter"></i>
+                      <span>
+                             <spring:message code="filter" />
+                      </span>
+                    </button>
+               </div>
+
 			</fieldset>
 		</form:form>
 	</div>
 
-	<div id="comarca_grid_div">
-		<!-- Tabla -->
-		<table id="comarca"></table>
-		<!-- Barra de paginación -->
-		<div id="comarca_pager"></div>
-	</div>
-</div>
+<table id="comarca" class="tableFit table-striped table-bordered table-material" 
+	data-url-base="../jqGridComarca"
+	data-filter-form="#comarca_filter_form">
+    <thead>
+        <tr>
+            <th data-col-prop="code">code</th>
+            <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
+            <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
+            <th data-col-prop="css" >css</th>
+            <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
+            <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
+        </tr>
+    </thead>
+</table>
 
-<div id="comarca_detail_div" class="rup-table-formEdit-detail">
-	<div id ="comarca_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
+<!-- <h2>table</h2> -->
+
+<!-- Formulario de detalle -->
+<div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
+	<!-- Barra de navegaci�n del detalle -->
+	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
 		<form:form modelAttribute="comarca" id="comarca_detail_form">
+			<!-- Feedback del formulario de detalle -->
 			<div id ="comarca_detail_feedback"></div>
-			
-			<div class="form-row">    
-				<div class="form-group col-sm">
-					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
-			    	<form:input path="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			<div class="form-row">
+				<!-- Campos del formulario de detalle -->
+				<div class="form-groupMaterial col-sm">
+			    	<form:input path="code" id="code_detailForm_table" />
+					<label for="code_detailForm_table">code</label>
 			    </div>			    
-			    <div class="form-group col-sm">
-			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
-			    	<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="descEs" id="descEs_detail_table" />
+			    	<label for="descEs_detail_table">descEs</label>
 			    </div>
 			</div>
 			<div class="form-row">       
-			    <div class="form-group col-sm">
-			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
-			    	<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="descEu" id="descEu_detail_table" />
+			    	<label for="descEu_detail_table">descEu</label>
 			    </div>			    
-			    <div class="form-group col-sm">
-			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
-			    	<form:input path="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="css" id="css_detail_table" />
+			    	<label for="css_detail_table">css</label>
 			    </div>
 			</div>
 			<div class="form-row">  
-			    <div class="form-group fix-align col-sm">
+			    <div class="form-groupMaterial col-sm">
+					<select id="provinciaRemote" name="provincia.code"><option>&nbsp;</option></select>
 			    	<label for="provinciaRemote">Provincia</label>
 					<form:select id="provinciaRemote" path="provincia.code" class="rup-combo"><form:option value="0" label="&nbsp;"/>&nbsp;</form:select>
 			    </div>			    
-			    <div class="form-group fix-align col-sm d-none">
-			    	<label for="provinciaDescEs_detail_table" class="formulario_linea_label">provincia.descEs</label>
-			    	<form:input path="provincia.descEs" class="formulario_linea_input form-control" id="provinciaDescEs_detail_table" />
+			    <div class="form-groupMaterial col-sm d-none">
+			    	<form:input path="provincia.descEs" id="provinciaDescEs_detail_table" />
+			    	<label for="provinciaDescEs_detail_table">provincia.descEs</label>
 			    </div>
 			</div>	
 		</form:form>
 	</div>
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="comarca_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+	<div class="rup-table-buttonpanel-material">
+		<div class="text-right">
+			<button id="comarca_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
+			<button id="comarca_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="comarca_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="comarca_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="comarca_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
-				<spring:message code="cancel" />
 			</button>
 		</div>
 	</div>
 </div>
 
 <h2>Localidad</h2>
-<div id="localidad_div">
-<!-- 	<div id="error_localidad" style="display:none"></div> -->
-	<div id="localidad_feedback"></div>
-	<div id="localidad_toolbar"></div>
+
 	<div id="localidad_filter_div"  class="rup-table-filter">
 		<form:form modelAttribute="localidad" id="localidad_filter_form">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
-					<div class="form-group col-sm">
-						<label for="code_filter_localidad" class="formulario_linea_label">code</label>
-						<form:input path="code" class="formulario_linea_input form-control" id="code_filter_localidad" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="code" id="code_filter_localidad" />
+						<label for="code_filter_localidad">code</label>
 					</div>
-					<div class="form-group col-sm">
-						<label for="codeProvincia_filter_localidad" class="formulario_linea_label">codeProvincia</label>
-						<form:input path="comarca.provincia.code" class="formulario_linea_input form-control" id="codeProvincia_filter_localidad" />
-					</div>
-					<div class="form-group col-sm">
-						<label for="descEs_filter_localidad" class="formulario_linea_label">descEs</label>
-						<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_filter_localidad" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="descEs" id="descEs_filter_localidad" />
+						<label for="descEs_filter_localidad">descEs</label>
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="form-group col-sm">
-						<label for="descEu_filter_localidad" class="formulario_linea_label">descEu</label>
-						<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_filter_localidad" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="descEu" id="descEu_filter_localidad" />
+						<label for="descEu_filter_localidad">descEu</label>
 					</div>
-					<div class="form-group col-sm">
-						<label for="css_filter_localidad" class="formulario_linea_label">css</label>
-						<form:input path="css" class="formulario_linea_input form-control" id="css_filter_localidad" />
+					<div class="form-groupMaterial col-sm">
+						<form:input path="css" id="css_filter_localidad" />
+						<label for="css_filter_localidad">css</label>
 					</div>
 				</div>
-				<div id="localidad_filter_buttonSet" class="right_buttons">
-					<button id="localidad_filter_cleanButton" type="button" class="btn btn-primary rup-limpiar">
-						<i class="fa fa-eraser"></i>
-			        	<span>
-			        		<spring:message code="clear" />
-			        	</span>
-					</button>
-					<button id="localidad_filter_filterButton" type="button" class="btn rup-filtrar btn-primary">
-						<i class="fa fa-filter"></i>
-			        	<span>
-			        		<spring:message code="filter" />
-			        	</span>
-					</button>
-				</div>
+				<div id="localidad_filter_buttonSet" class="text-right">
+                       <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                             <i class="mdi mdi-eraser"></i>
+                      <span>
+                             <spring:message code="clear" />
+                      </span>
+                       </button>
+                       <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                             <i class="mdi mdi-filter"></i>
+                      <span>
+                             <spring:message code="filter" />
+                      </span>
+                       </button>
+                 </div>
+
 			</fieldset>
 		</form:form>
 	</div>
+	
+<table id="localidad" class="tableFit table-striped table-bordered table-material" 
+	data-url-base="../jqGridLocalidad"
+	data-filter-form="#localidad_filter_form">
+	<thead>
+		<tr>
+			<th data-col-prop="code" data-col-sidx="code">code</th>
+		    <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
+		    <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
+		    <th data-col-prop="css">css</th>
+		</tr>
+	</thead>
+</table>	
 
-	<div id="localidad_grid_div">
-		<!-- Tabla -->
-		<table id="localidad"></table>
-		<!-- Barra de paginación -->
-		<div id="localidad_pager" ></div>
-	</div>
+<!-- <h2>table</h2> -->
 
-</div>
-
-<div id="localidad_detail_div" class="rup-table-formEdit-detail">
-	<div id ="localidad_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
+<!-- Formulario de detalle -->
+<div id="localidad_detail_div" class="rup-table-formEdit-detail d-none">
+	<!-- Barra de navegaci�n del detalle -->
+	<div id ="localidad_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
 		<form:form modelAttribute="localidad" id="localidad_detail_form">
+			<!-- Feedback del formulario de detalle -->
 			<div id ="localidad_detail_feedback"></div>
-			
-			<div class="form-row">    
-				<div class="form-group col-sm">
-					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
-			    	<form:input path="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			<div class="form-row">
+				<!-- Campos del formulario de detalle -->
+				<div class="form-groupMaterial col-sm">
+			    	<form:input path="code" id="code_detailForm_table" />
+					<label for="code_detailForm_table">code</label>
 			    </div>
 			    
-			    <div class="form-group col-sm">
-			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
-			    	<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="descEs" id="descEs_detail_table" />
+			    	<label for="descEs_detail_table">descEs</label>
 			    </div>
 			</div>
 			<div class="form-row">       
-			    <div class="form-group col-sm">
-			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
-			    	<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="descEu" id="descEu_detail_table" />
+			    	<label for="descEu_detail_table">descEu</label>
 			    </div>  
 			    
-			    <div class="form-group col-sm">
-			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
-			    	<form:input path="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    <div class="form-groupMaterial col-sm">
+			    	<form:input path="css" id="css_detail_table" />
+			    	<label for="css_detail_table">css</label>
 			    </div>
 			</div>
 			<div class="form-row">  <!--  
-			    <div class="form-group fix-align col-sm">
-			    	<label for="comarcaRemote" class="formulario_linea_label">Comarca</label>
-			    	<select id="comarcaRemote" name="comarca.code" class="rup-combo"><option>&nbsp;</option></select>
-			    </div>-->
-			    <div class="form-group fix-align col-sm d-none">
-			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
-			    	<form:input path="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
+			    <div class="form-group col-sm">
+			    	<select id="comarcaRemote" name="comarca.code"><option>&nbsp;</option></select>
+			    	<label for="comarcaRemote">Comarca</label>
+			    </div> -->
+			    <div class="form-groupMaterial col-sm d-none">
+			    	<form:input path="comarca.css" id="comarcaCss_detail_table" />
+			    	<label for="comarcaCss_detail_table">comarca.css</label>
 			    </div>
 			</div>
-		  	<div class="form-row">  
-			    <div class="form-group fix-align col-sm d-none">
-			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
-			    	<form:input path="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
+			<div class="form-row">  
+			    <div class="form-groupMaterial col-sm d-none">
+			    	<form:input path="comarca.descEs" id="comarcaDescEs_detail_table" />
+			    	<label for="comarcaDescEs_detail_table">comarca.descEs</label>
 			    </div>
-			    <div class="form-group fix-align col-sm d-none">
-			    	<label for="comarcaDescEu_detail_table" class="formulario_linea_label">comarca.descEu</label>
-			    	<form:input path="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
+			    <div class="form-groupMaterial col-sm d-none">
+			    	<form:input path="comarca.descEu" id="comarcaDescEu_detail_table" />
+			    	<label for="comarcaDescEu_detail_table">comarca.descEu</label>
 			    </div>
+				<!-- Fin campos del formulario de detalle -->	
 			</div>	
 		</form:form>
 	</div>
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<button id="localidad_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+	<div class="rup-table-buttonpanel-material">
+		<div class="text-right">
+			<button id="localidad_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
+			<button id="localidad_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<button id="localidad_detail_button_save_repeat" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+			<button id="localidad_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
-			</button>
-			<button id="localidad_detail_button_cancel" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
-				<spring:message code="cancel" />
 			</button>
 		</div>
 	</div>

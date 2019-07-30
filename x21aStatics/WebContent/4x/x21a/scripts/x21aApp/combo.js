@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	$('#combo').rup_combo({
 		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],

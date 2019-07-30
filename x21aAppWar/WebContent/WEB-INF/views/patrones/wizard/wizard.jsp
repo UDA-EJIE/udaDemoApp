@@ -105,7 +105,7 @@
 	<legend class="wizardLegend">Plan de trabajo</legend>
 	<label for="desde">Fecha desde</label><label for="desde" id="intervalo-mask"/></label>:
 	<form:input path="desde"/>
-	<label for="hasta">hasta:
+	<label for="hasta">hasta</label>:
 	<form:input path="hasta"/>
 	<br/><br/>
 	<label for="hora_entrada">Horario desde</label><label for="hora_entrada" id="hora-mask"></label>:

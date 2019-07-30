@@ -38,7 +38,7 @@ jQuery(document).ready(function () {
     });
 
     // MButton
-    $("#btnMButton").rup_button({});
+    $('[id="btnMButton"]').rup_button({});
 
     $("#fabButton_18px").rup_button({
       // fab: true

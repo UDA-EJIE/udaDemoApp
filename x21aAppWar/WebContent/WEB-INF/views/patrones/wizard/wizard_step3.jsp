@@ -19,7 +19,7 @@
 	<label for="desde">Fecha desde</label><label for="desde" id="intervalo-mask"/></label>:
 	<!-- <input type="text" id="desde" name="desde"/>  -->
 	<form:input path="desde"/>
-	<label for="hasta">hasta:
+	<label for="hasta">hasta</label>:
 	<!-- </label><input type="text" id="hasta" name="hasta"/> -->
 	<form:input path="hasta"/>
 	<br/><br/>

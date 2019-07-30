@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2019 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -23,13 +23,21 @@
 		<jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 	</div>
 
-	<div id="table_grid_div">
-		<!-- Tabla -->
-		<table id="table"></table>
-		<!-- Barra de paginación -->
-		<div id="table_pager"></div>
-	</div>
-</div>	
+(??)<table id="example" class="tableFit table-striped table-bordered table-material" 
+(??)	data-url-base="."
+(??)	data-filter-form="#example_filter_form">
+(??)        <thead>
+(??)            <tr>
+(??)                <th data-col-prop="id" data-col-edit="false">Id</th>
+(??)                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+(??)                <th data-col-prop="apellido1">Primer apellido</th>
+(??)                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+(??)                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+(??)                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+(??)                <th data-col-prop="rol" data-col-type="combo">Rol</th>
+(??)            </tr>
+(??)        </thead>
+(??)</table>
 
 <div id="table_detail_div" class="rup-table-formEdit-detail">
 	<div id ="table_detail_navigation"></div>

@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 //	jQuery("#ajaxRupPifUpload").on("click",function(){
 //		jQuery.rup_ajax

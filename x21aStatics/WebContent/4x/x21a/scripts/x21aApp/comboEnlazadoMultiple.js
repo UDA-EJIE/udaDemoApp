@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 
 	//Feedback
 	$("#x21aPilotoPatronesWar_feedback").rup_feedback({block:false});
