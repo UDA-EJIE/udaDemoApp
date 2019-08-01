@@ -47,7 +47,7 @@
 		</form:form>
 	</div>
 
-	<h3>Formulario columnas con required</h3>
+	<h3>Formulario columnas con required="required"</h3>
 	<p>
 		Los textos
 	<p>
@@ -56,15 +56,15 @@
 		<form:form id="formColumnsRequired" modelAttribute="alumno" method="get">
 			<div class="form-row">
 				<div class="form-groupMaterial col-sm">
-				  	<form:input path="nombre" id="nombre" required />
+				  	<form:input path="nombre" id="nombre" required="required" />
 			     	<label for="nombre"><spring:message code="nombre" /></label>
 				</div>
 				<div class="form-groupMaterial col-sm">
-				  	<form:input path="apellido1" id="apellido1" required />
+				  	<form:input path="apellido1" id="apellido1" required="required" />
 			     	<label for="apellido1"><spring:message code="apellido1" /></label>
 				</div>
 				<div class="form-groupMaterial col-sm">
-				  	<form:input path="apellido2" id="apellido2" required />
+				  	<form:input path="apellido2" id="apellido2" required="required" />
 			     	<label for="apellido2"><spring:message code="apellido2" /></label>
 				</div>
 			</div>
@@ -86,18 +86,18 @@
 				<div class="col-sm-6">
 
 					<div class="form-groupMaterial">
-				  		<form:input path="nombre" id="nombre" required />
+				  		<form:input path="nombre" id="nombre" required="required" />
 			     		<label for="nombre"><spring:message code="nombre" /></label>
 				    </div>
 
 
 				    <div class="form-groupMaterial">
-					  	<form:input path="apellido1" id="apellido1" required />
+					  	<form:input path="apellido1" id="apellido1" required="required" />
 				     	<label for="apellido1"><spring:message code="apellido1" /></label>
 				    </div>
 
 				    <div class="form-groupMaterial">
-					  	<form:input path="apellido2" id="apellido2" required />
+					  	<form:input path="apellido2" id="apellido2" required="required" />
 				     	<label for="apellido2"><spring:message code="apellido2" /></label>
 				    </div>
 
