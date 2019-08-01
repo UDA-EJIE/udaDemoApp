@@ -55,21 +55,18 @@
 						<div class="col1">
 							<label for="nombre" class="label"><spring:message
 									code="nombre" /></label>
-							<!-- <input type="text" name="nombre" class="formulario_linea_input" size="20" id="nombre" /> -->
 							<form:input path="nombre" class="formulario_linea_input" size="20" id="nombre"/>
 						</div>
 
 						<div class="col1">
 							<label for="apellido1" class="label"><spring:message
 									code="apellido1" /></label>
-							<!-- <input type="text" name="apellido1" class="formulario_linea_input" size="30" id="apellido1" /> -->
 							<form:input path="apellido1" class="formulario_linea_input" size="30" id="apellido1"/>
 						</div>
 
 						<div class="col1">
 							<label for="apellido2" class="label"><spring:message
 									code="apellido2" /></label>
-							<!-- <input type="text" name="apellido2" class="formulario_linea_input" size="30" id="apellido2" /> -->
 							<form:input path="apellido2" class="formulario_linea_input" size="30" id="apellido2"/>
 						</div>
 					</div>
@@ -78,21 +75,18 @@
 						<div class="col1">
 							<label for="sexo" class="label"><spring:message
 									code="sexo" /></label>
-							<!-- <input type="text" name="sexo" class="formulario_linea_input" id="sexo" /> -->
 							<form:input path="sexo" class="formulario_linea_input" id="sexo"/>
 						</div>
 
 						<div class="col1">
 							<label for="fechaNacimiento" class="label"><spring:message
 									code="fechaNacimiento" /></label>
-							<!-- <input type="text" name="fechaNacimiento" class="formulario_linea_input" id="fechaNacimiento" /> -->
 							<form:input path="fechaNacimiento" class="formulario_linea_input" id="fechaNacimiento"/>
 						</div>
 
 						<div class="col1">
 							<label for="telefono" class="label"><spring:message
 									code="telefono" /></label>
-							<!-- <input type="text" name="telefono" class="formulario_linea_input" id="telefono" /> -->
 							<form:input path="telefono" class="formulario_linea_input" id="telefono"/>
 						</div>
 					</div>
@@ -100,7 +94,6 @@
 					<div class="two-col">
 						<div class="col1">
 							<label for="dni" class="label"><spring:message code="dni" /></label>
-							<!-- <input type="text" name="dni" class="formulario_linea_input" id="dni" /> -->
 							<form:input path="dni" class="formulario_linea_input" id="dni"/>
 						</div>
 
@@ -117,20 +110,17 @@
 						<div class="col1">
 							<label for="usuario" class="label"><spring:message
 									code="usuario" /></label>
-							<!-- <input type="text" name="usuario" class="formulario_linea_input" id="usuario" /> -->
 							<form:input path="usuario" class="formulario_linea_input" id="usuario"/>
 						</div>
 						<div class="col1">
 							<div>
 								<label for="password" class="label"><spring:message
 										code="contrasena" /></label>
-								<!-- <input type="password" name="password" class="formulario_linea_input" id="password" /> -->
 								<form:password path="password" class="formulario_linea_input" id="password"/>
 							</div>
 							<div>
 								<label for="password_confirm" class="label"><spring:message
 										code="confirmarContrasena" /></label>
-								<!-- <input type="password" name="password_confirm" class="formulario_linea_input id="password_confirm" /> -->
 								<form:password path="password" class="formulario_linea_input" id="password_confirm"/>
 							</div>
 						</div>
@@ -138,13 +128,11 @@
 							<div>
 								<label for="email" class="label"><spring:message
 										code="email" /></label>
-								<!-- <input type="text" name="email" class="formulario_linea_input" id="email" /> -->
 								<form:input path="email" class="formulario_linea_input" id="email"/>
 							</div>
 							<div>
 								<label for="email_confirm" class="label"><spring:message
 										code="confirmarEmail" /></label>
-								<!-- <input type="text" name="email_confirm" class="formulario_linea_input" id="email_confirm" /> -->
 								<form:input path="email" class="formulario_linea_input" id="email_confirm"/>
 							</div>
 						</div>
@@ -166,7 +154,6 @@
 								<form:options items="${model.paises}" itemLabel="dsO"
 									itemValue="id" />
 							</form:select>
-							<!-- 						   <input type="text" name="pais.id" class="formulario_linea_input" id="pais" /> -->
 						</div>
 						<div class="col1">
 							<label for="autonomia" class="label"><spring:message
@@ -176,12 +163,10 @@
 								<form:options items="${model.autonomias}" itemLabel="dsO"
 									itemValue="id" />
 							</form:select>
-							<!-- 							<input type="text" name="autonomia.id" class="formulario_linea_input" id="autonomia" /> -->
 						</div>
 						<div class="col1">
 							<label for="provincia" class="label"><spring:message
 									code="provincia" /></label>
-							<!-- <input type="text" name="provincia.id" class="formulario_linea_input" id="provincia" /> -->
 							<form:input path="provincia.id" class="formulario_linea_input" id="provincia"/>
 						</div>
 					</div>
@@ -190,13 +175,11 @@
 						<div class="col1">
 							<label for="municipio" class="label"><spring:message
 									code="municipio" /></label>
-							<!-- <input type="text" name="municipio.id" class="formulario_linea_input" size="30" id="municipio" /> -->
 							<form:input path="municipio.id" class="formulario_linea_input" size="30" id="municipio"/>
 						</div>
 						<div class="col1">
 							<label for="calle" class="label"><spring:message
 									code="calle" /></label>
-							<!-- <input type="text" name="calle.id class="formulario_linea_input" size="50" id="calle" /> -->
 							<form:input path="calle.id" class="formulario_linea_input" size="50" id="calle"/>
 						</div>
 					</div>
@@ -328,21 +311,18 @@
 							<div class="col1">
 								<label for="alumno_nombre_multi" class="label"><spring:message
 										code="nombre" /></label>
-								<!-- <input type="text" name="alumno.nombre" class="formulario_linea_input" size="20" id="alumno_nombre_multi" /> -->
 								<form:input path="alumno.nombre" class="formulario_linea_input" size="20" id="alumno_nombre_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="alumno_apellido1_multi" class="label"><spring:message
 										code="apellido1" /></label>
-								<!-- <input type="text" name="alumno.apellido1" class="formulario_linea_input" size="30" id="alumno_apellido1_multi" /> -->
 								<form:input path="alumno.apellido1" class="formulario_linea_input" size="30" id="alumno_apellido1_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="alumno_apellido2_multi" class="label"><spring:message
 										code="apellido2" /></label>
-								<!-- <input type="text" name="alumno.apellido2" class="formulario_linea_input" size="30" id="alumno_apellido2_multi" /> -->
 								<form:input path="alumno.apellido2" class="formulario_linea_input" size="30" id="alumno_apellido2_multi"/>
 							</div>
 						</div>
@@ -355,21 +335,18 @@
 							<div class="col1">
 								<label for="departamento_code_multi" class="label"><spring:message
 										code="codigo" /></label>
-								<!-- <input type="text" name="departamento.code" class="formulario_linea_input" size="20" id="departamento_code_multi" /> -->
 								<form:input path="departamento.code" class="formulario_linea_input" size="20" id="departamento_code_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="departamento_descEs_multi" class="label"><spring:message
 										code="descEs" /></label>
-								<!-- <input type="text" name="departamento.descEs" class="formulario_linea_input" size="30" id="departamento_descEs_multi" /> -->
 								<form:input path="departamento.descEs" class="formulario_linea_input" size="30" id="departamento_descEs_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="departamento_descEu_multi" class="label"><spring:message
 										code="descEu" /></label>
-								<!-- <input type="text" name="departamento.descEu" class="formulario_linea_input" size="30" id="departamento_descEu_multi" /> -->
 								<form:input path="departamento.descEu" class="formulario_linea_input" size="30" id="departamento_descEu_multi"/>
 							</div>
 						</div>
@@ -400,21 +377,18 @@
 							<div class="col1">
 								<label for="comarca1_code_multi" class="label"><spring:message
 										code="codigo" /></label>
-								<!-- <input type="text" name="comarca1.code" class="formulario_linea_input" size="20" id="comarca1_code_multi" /> -->
 								<form:input path="comarca1.code" class="formulario_linea_input" size="20" id="comarca1_code_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca1_descEs_multi" class="label"><spring:message
 										code="descEs" /></label>
-								<!-- <input type="text" name="comarca1.descEs" class="formulario_linea_input" size="30" id="comarca1_descEs_multi" /> -->
 								<form:input path="comarca1.descEs" class="formulario_linea_input" size="30" id="comarca1_descEs_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca1_descEu_multi" class="label"><spring:message
 										code="descEu" /></label>
-								<!-- <input type="text" name="comarca1.descEu" class="formulario_linea_input" size="30" id="comarca1_descEu_multi" /> -->
 								<form:input path="comarca1.descEu" class="formulario_linea_input" size="30" id="comarca1_descEu_multi"/>
 							</div>
 						</div>
@@ -427,21 +401,18 @@
 							<div class="col1">
 								<label for="comarca2_code_multi" class="label"><spring:message
 										code="codigo" /></label>
-								<!-- <input type="text" name="comarca2.code" class="formulario_linea_input" size="20" id="comarca2_code_multi" /> -->
 								<form:input path="comarca2.code" class="formulario_linea_input" size="20" id="comarca2_code_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca2_descEs_multi" class="label"><spring:message
 										code="descEs" /></label>
-								<!-- <input type="text" name="comarca2.descEs"class="formulario_linea_input" size="30" id="comarca2_descEs_multi" /> -->
 								<form:input path="comarca2.descEs" class="formulario_linea_input" size="30" id="comarca2_descEs_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca2_descEu_multi" class="label"><spring:message
 										code="descEu" /></label>
-								<!-- <input type="text" name="comarca2.descEu" class="formulario_linea_input" size="30" id="comarca2_descEu_multi" /> -->
 								<form:input path="comarca2.descEu" class="formulario_linea_input" size="30" id="comarca2_descEu_multi"/>
 							</div>
 						</div>
@@ -455,21 +426,18 @@
 							<div class="col1">
 								<label for="comarca3_code_multi" class="label"><spring:message
 										code="codigo" /></label>
-								<!-- <input type="text" name="comarca3.code"class="formulario_linea_input" size="20" id="comarca3_code_multi" /> -->
 								<form:input path="comarca3.code" class="formulario_linea_input" size="20" id="comarca3_code_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEs_multi" class="label"><spring:message
 										code="descEs" /></label>
-								<!-- <input type="text" name="comarca3.descEs" class="formulario_linea_input" size="30" id="comarca3_descEs_multi" /> -->
 								<form:input path="comarca3.descEs" class="formulario_linea_input" size="30" id="comarca3_descEs_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEu_multi" class="label"><spring:message
 										code="descEu" /></label>
-								<!-- <input type="text" name="comarca3.descEu" class="formulario_linea_input" size="30" id="comarca3_descEu_multi" /> -->
 								<form:input path="comarca3.descEu" class="formulario_linea_input" size="30" id="comarca3_descEu_multi"/>
 							</div>
 						</div>
@@ -479,21 +447,18 @@
 							<div class="col1">
 								<label for="comarca3_provincia_code_multi" class="label"><spring:message
 										code="codigo" /></label>
-								<!-- <input type="text" name="comarca3.provincia.code" class="formulario_linea_input" size="20" id="comarca3_provincia_code_multi" /> -->
 								<form:input path="comarca3.provincia.code" class="formulario_linea_input" size="20" id="comarca3_provincia_code_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_provincia_descEs_multi" class="label"><spring:message
 										code="descEs" /></label>
-								<!-- <input type="text" name="comarca3.provincia.descEs" class="formulario_linea_input" size="30" id="comarca3_provincia_descEs_multi" /> -->
 								<form:input path="comarca3.provincia.descEs" class="formulario_linea_input" size="30" id="comarca3_provincia_descEs_multi"/>
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEu_multi" class="label"><spring:message
 										code="descEu" /></label>
-								<!-- <input type="text" name="comarca3.provincia.descEu" class="formulario_linea_input" size="30" id="comarca3_provincia_descEu_multi" /> -->
 								<form:input path="comarca3.provincia.descEu" class="formulario_linea_input" size="30" id="comarca3_provincia_descEu_multi"/>
 							</div>
 						</div>
@@ -517,22 +482,18 @@
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
 							<label id="label_nombre" for="nombre">Nombre :</label>
-							<!-- <input id="nombre" name="nombre" /> -->
 							<form:input path="nombre"/>
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label id="label_apellido1" for="apellido1">Apellido 1:</label>
-							<!-- <input id="apellido1" name="apellido1" /> -->
 							<form:input path="apellido1"/>
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label id="label_apellido2" for="apellido2">Apellido 2:</label>
-							<!-- <input id="apellido2" name="apellido2" /> -->
 							<form:input path="apellido2"/>
 						</div>
 						<div class="formulario_linea_izda_float">
 							<label id="label_ejie" for="ejie">EJIE:</label>
-							<!-- <input type="checkbox" id="ejie" name="ejie" value="1" /> -->
 							<form:checkbox path="ejie" value="1"/>
 						</div>
 					</div>

@@ -10,12 +10,9 @@
 				<div class="formulario_linea_izda_float">
 			        <div class="fileupload-buttonbar">
 				        <div>
-<!-- 				            <label for="file">Ficheros: </label> -->
-<!-- 				            <input id="file_only" type="file" name="files[]" multiple="multiple"> -->
 							<span class="btn btn-success fileinput-button">
 							      <i class="mdi mdi-plus" aria-hidden="true"></i>
 							      <span><spring:message code="upload.button.addFiles"/></span>
-							      <!-- <input id="file_only" type="file" name="files[]" multiple="multiple" /> -->
 							      <form:input path="files" type="file" multiple="multiple" id="file_only" />
 							</span>
 				    				            

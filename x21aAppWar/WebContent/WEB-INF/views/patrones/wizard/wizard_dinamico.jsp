@@ -37,16 +37,13 @@
 	</fieldset>
 </div>
 
-<!-- <form id="wizardForm"> -->
 <form:form id="wizardForm" modelAttribute="randomForm">
 	<fieldset>
 		<legend class="wizardLegend">Datos de la cuenta</legend>
 		<label for="username">Usuario</label>
-		<!-- <input id="username" name="username" type="text" /> -->
 		<form:input path="username" id="username" />
 		<br/><br/>
 		<label for="password">Password</label>
-		<!-- <input id="password" name="password" type="password" /> -->
 		<form:password path="password" id="password" />
 		<br/><br/>
 		<label for="ejie">Ejie</label> 
@@ -65,17 +62,13 @@
 	<fieldset>
 		<legend class="wizardLegend">Plan de trabajo</legend>
 		<label for="desde">Fecha desde</label><label for="desde" id="intervalo-mask"/></label>: 
-		<!-- <input type="text" id="desde" name="desde"/>  -->
 		<form:input path="desde" id="desde"/>
 		<label for="hasta">hasta: </label>
-		<!-- <input type="text" id="hasta" name="hasta"/> -->
 		<form:input path="hasta" id="hasta"/>
 		<br/><br/>
 		<label for="hora_entrada">Horario desde</label><label for="hora_entrada" id="hora-mask"></label>: 
-		<!-- <input id="hora_entrada" name="hora_entrada" type="text"/> -->
 		<form:input path="hora_entrada" id="hora_entrada"/>
 		<label for="hora_entrada">hasta: </label>
-		<!-- <input id="hora_salida" name="hora_salida" type="text"/> -->
 		<form:input path="hora_salida" id="hora_salida"/>
 		<br/><br/>
 		<label for="dias">Días de trabajo</label>

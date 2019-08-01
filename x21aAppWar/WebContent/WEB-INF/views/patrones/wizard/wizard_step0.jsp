@@ -17,17 +17,15 @@
 <fieldset>
 	<legend class="wizardLegend">Datos de la cuenta</legend>
 	<label for="username">Usuario</label>
-	<!-- <input id="username" name="username" type="text" /> -->
 	<form:input path="username" />
 	<br/><br/>
 	<label for="password">Password</label>
-	<!-- <input id="password" name="password" type="password" /> -->
 	<form:password path="password"/>
 	<br/><br/>
 	<label for="ejie">Ejie</label> 
 		<form:select path="ejie">
 			<form:option value="0" selected="selected" label="No"/>
-			<form:option value="1" label="SÃ"/>
+			<form:option value="1" label="Sï¿½"/>
 		</form:select> 
 	<br/><br/>
 </fieldset>

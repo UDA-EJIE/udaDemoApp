@@ -35,7 +35,6 @@
 	</fieldset>
 </div>
 
-<!-- <form id="wizardForm"> -->
 <form:form id="wizardForm" modelAttribute="randomForm">
 	<fieldset>
 		<legend class="wizardLegend">Datos de la cuenta</legend>
@@ -114,7 +113,6 @@
 	<form:input path="hora_salida"/>
 	<br/><br/>
 	<label for="dias">Días de trabajo</label>
-	<!-- <select id="dias"></select> -->
 	<form:select path="dias"/>
 	<br/><br/>
 	<label for="cliente">Meses de trabajo en cliente</label>

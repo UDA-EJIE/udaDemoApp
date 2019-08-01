@@ -27,52 +27,44 @@
 			<div class="form-row">    
 				<div class="form-group col-sm">
 					<label for="id_detailForm_table" class="formulario_linea_label"><spring:message code="id" /></label>
-			    	<!-- <input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" /> -->
 			    	<form:input path="id" class="formulario_linea_input form-control" id="id_detailForm_table"/>
 			    </div>
 			    
 			    <div class="form-group col-sm">
 			    	<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre" /></label>
-			    	<!-- <input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" /> -->
 			    	<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_detail_table"/>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
 			    	<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1" /></label>
-			    	<!-- <input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" /> -->
 			    	<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
 			    </div>  
 			    
 			    <div class="form-group col-sm">
 			    	<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2" /></label>
-			    	<!-- <input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" /> -->
 			    	<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table"/>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group fix-align col-sm">
 			    	<label for="fechaBaja_detail_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
-			    	<!-- <input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" /> -->
 			    	<form:input path="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table"/>
 			    </div>
 			    
 			    <div class="form-group fix-align col-sm">
 			    	<label for="fechaAlta_detail_table" class="formulario_linea_label"><spring:message code="fechaAlta" /></label>
-			    	<!-- <input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" /> -->
 			    	<form:input path="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table"/>
 			    </div>
 			</div>
 			<div class="form-row">
 			    <div class="form-group fix-align col-sm">
 			    	<label for="ejie_detail_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
-			    	<!-- <input type="checkbox" name="ejie" class="formulario_linea_input form-control" id=ejie_detail_table value="1" /> -->
 			    	<form:checkbox path="ejie" class="formulario_linea_input form-control" id="ejie_detail_table" value="1" />
 			    </div> 
 			    
 			    <div class="form-group fix-align col-sm">
 			    	<label for="rol_detail_table" class="formulario_linea_label"><spring:message code="rol" /></label>
-			    	<!-- <input type="text" name="rol" class="formulario_linea_input form-control" id="rol_detail_table" /> -->
 			    	<form:input path="rol" class="formulario_linea_input form-control" id="rol_detail_table"/>
 			    </div>
 			</div>	
@@ -81,7 +73,6 @@
 					<label class="formulario_linea_label">Subir imagen</label>
 					<div class="col1">
 					        <label for="imagenAlumno" class="label"><spring:message code="" /></label>
-							<!-- <input type="file" name="imagenAlumno" class="formulario_linea_input" id="imagenAlumno" disabled/> -->
 							<form:input path="imagenAlumno" type="file" class="formulario_linea_input" id="imagenAlumno" disabled="true"/>
 					</div>
 						
