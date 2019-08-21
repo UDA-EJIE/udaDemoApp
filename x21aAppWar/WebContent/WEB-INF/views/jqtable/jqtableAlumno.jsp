@@ -47,7 +47,7 @@
 			<form:form id="detalleAlumnoForm" modelAttribute="alumno" >
 				<fieldset class="alumnoFieldset">
 					<legend><spring:message code="datosPersonales" /></legend>
-					<input type="hidden" name="id" id="id" />
+					<input name="id" id="id"  style="display:none;"/>
 					
 					<div class="two-col" style="overflow: visible;">
 						<div style="width: 70%;">
@@ -73,7 +73,7 @@
 						        <label for="imagenAlumno" class="label"><spring:message code="modificarImagen" /></label>
 								<input type="file" name="imagenAlumno" class="formulario_linea_input" id="imagenAlumno" />
 						    </div>
-						    <input type="hidden" id="nombreImagen" name="nombreImagen" />
+						    <input style="display:none;" id="nombreImagen" name="nombreImagen" />
 						</div>
 					</div>
 					

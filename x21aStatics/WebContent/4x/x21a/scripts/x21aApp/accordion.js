@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	$(".rup_accordion").rup_accordion({
 		animated: "bounceslide",

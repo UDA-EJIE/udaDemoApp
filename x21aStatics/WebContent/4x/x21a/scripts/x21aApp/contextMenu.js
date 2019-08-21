@@ -27,6 +27,7 @@ jQuery(document).ready(function () {
 	
 	
 	$('#contextMenu').rup_contextMenu({
+	    selector: '#contextMenu',
 		callback: function(key, options) {
 			alert("clicked: " + key); 
 	    },
@@ -37,6 +38,7 @@ jQuery(document).ready(function () {
 	});
 	
 	$('.contextMenu-left').rup_contextMenu({
+	    selector: '.contextMenu-left',
 		trigger: 'left',
 		callback: function(key, options) {
            alert("clicked: " + key); 
@@ -55,6 +57,7 @@ jQuery(document).ready(function () {
 	});
 	
 	$('#contextMenu-hover').rup_contextMenu({
+	    selector: '#contextMenu-hover',
 		trigger: 'hover',
 		callback: function(key, options) {
 			alert("clicked: " + key); 
@@ -92,6 +95,7 @@ jQuery(document).ready(function () {
 	});
 	
 	$(".contextMenu-other").rup_contextMenu({
+	    selector: ".contextMenu-other",
         trigger: 'none',
         build: function($trigger, e) {
 	        return {

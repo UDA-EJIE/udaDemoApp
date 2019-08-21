@@ -15,60 +15,62 @@
  */
 jQuery(function($){
 
-	
-	$("#table").rup_jqtable({
-		url: "../jqGridUsuarioJerarquia",
-		colNames: tableColNames,
-		colModel: tableColModels,
-        primaryKey:["id"],
-        usePlugins:[
- 			"formEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
-        	"fluid",
-        	"filter",
-        	"search",
-        	"jerarquia",
-        	"multifilter"
-        ],
-        rowNum:10, 
-        rowList:[10,20,30], 
-        sortname: 'id',
-        filter: {
-        	url:"../jqGridUsuarioJerarquia/jerarquia/filter",
-        	childrenUrl:"../jqGridUsuarioJerarquia/jerarquiaChildren",
-        	validate:{
-        		rules:{
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-        	}
-        },
-        formEdit:{
-        	detailForm: "#table_detail_div",
-        	validate:{
-    			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-    		}
-        },
-      jerarquia: {
-      	//token: '###',
-      	parentProp: "idPadre",
-      	column: 'nombre',
-      	resetEvents: {
-      		click: ["table_filter_filterButton", "table_filter_cleanLink"],
-      		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
-      	},
-      	 multifilter:{ idFilter:"jerarquiaNormal",labelSize:255},
-      	contextMenu : true //(default)
-      }
-        
-	});
+ // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    initRupI18nPromise.then(function() {
+    	$("#table").rup_jqtable({
+    		url: "../jqGridUsuarioJerarquia",
+    		colNames: tableColNames,
+    		colModel: tableColModels,
+            primaryKey:["id"],
+            usePlugins:[
+     			"formEdit",
+            	"feedback",
+    			"toolbar",
+            	"contextMenu",
+            	"fluid",
+            	"filter",
+            	"search",
+            	"jerarquia",
+            	"multifilter"
+            ],
+            rowNum:10, 
+            rowList:[10,20,30], 
+            sortname: 'id',
+            filter: {
+            	url:"../jqGridUsuarioJerarquia/jerarquia/filter",
+            	childrenUrl:"../jqGridUsuarioJerarquia/jerarquiaChildren",
+            	validate:{
+            		rules:{
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+            	}
+            },
+            formEdit:{
+            	detailForm: "#table_detail_div",
+            	validate:{
+        			rules:{
+        				"nombre":{required:true},
+        				"apellido1":{required:true},
+        				"fechaAlta":{date:true},
+        				"fechaBaja":{date:true}
+        			}
+        		}
+            },
+          jerarquia: {
+          	//token: '###',
+          	parentProp: "idPadre",
+          	column: 'nombre',
+          	resetEvents: {
+          		click: ["table_filter_filterButton", "table_filter_cleanLink"],
+          		keydown : [ function(event){ if (event.keyCode === 13) { return false; } }, "table_filter_form" ]
+          	},
+          	 multifilter:{ idFilter:"jerarquiaNormal",labelSize:255},
+          	contextMenu : true //(default)
+          }
+            
+    	});
+    });
 	
 	
 	jQuery("#idPadre_detailForm_table").rup_combo({

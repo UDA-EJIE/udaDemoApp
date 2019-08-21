@@ -19,7 +19,9 @@
   	<div style="float: left;" >
   		<img src="${staticsUrl}/x21a/images/ejie.jpg"/>
   	</div>
-  	<a href="/x21aAppWar/" style="float: right;">
+  	
+  	<spring:url value="/" var="urlHeader" htmlEscape="true"/>
+  	<a href="${urlHeader}" style="float: right;">
   		<img src="${staticsUrl}/x21a/images/euskadieus_logo.gif" alt="Euskadi Eus"/>
   	</a>
   </div>

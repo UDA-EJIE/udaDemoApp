@@ -135,10 +135,10 @@
 
 		<div class="example">
 			<div class="rup-mbutton rup-collapsed-md">
-				<a role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary"> 
+				<button role="button" id="btnMButton" data-mbutton="true" class="btn btn-secondary">
 					<i class="mdi mdi-settings" aria-hidden="true"></i>
 					<span class="rup-ui-button-text d-none d-sm-inline">MButton</span>
-				</a>
+				</button>
 				<ul id="mbuttonContainer" class="rup-mbutton-container"
 					aria-labelledby="btnMButton">
 					<li>

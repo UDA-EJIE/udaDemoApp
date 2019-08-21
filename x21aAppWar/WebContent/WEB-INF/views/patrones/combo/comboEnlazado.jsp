@@ -37,7 +37,7 @@
 	<fieldset class="combo_fieldset">
 		<legend class="combo_legend">Remoto</legend>
 		
-		<input type="hidden" id="hiddenAbueloRemoto" name="provincia" value="02" />
+		<input style="display:none;" id="hiddenAbueloRemoto" name="provincia" value="02" />
 		<label for="comboAbueloRemoto">Provincia</label>
 		<select id="comboAbueloRemoto" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
 		<br><br>

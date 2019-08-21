@@ -4,6 +4,7 @@ package com.ejie.x21a.control;
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.service.TableMultiPkService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -64,8 +65,8 @@ public class TableMultiPkController  {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		
-		return "tableMultipk";
+		model.addAttribute("multiPk", new MultiPk());
+		return "multipk";
 	}
 
 	/**
@@ -151,8 +152,8 @@ public class TableMultiPkController  {
 	 */
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
-		TableMultiPkController.logger.info("[GET - View] : tableMultipk");
-		return "tableMultipk";
+		TableMultiPkController.logger.info("[GET - View] : multipk");
+		return "multipk";
 	}
 	 
 	 /**

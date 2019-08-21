@@ -43,9 +43,9 @@ jQuery(document).ready(function(){
 		showErrorsInFeedback: true,
 		showFieldErrorsInFeedback:true, 
 		rules:{
-			"campoObligatorio1":{required:true},
-			"campoObligatorio2":{required:"#esObligatorio:checked"},
-			"campoObligatorio3":{
+			"randomData[campoObligatorio1]":{required:true},
+			"randomData[campoObligatorio2]":{required:"#esObligatorio:checked"},
+			"randomData[campoObligatorio3]":{
 				required:function(){
 					return $("#diaObligatorio").val() > 5;
 				}
@@ -68,11 +68,11 @@ jQuery(document).ready(function(){
 		showErrorsInFeedback: true,
 		showFieldErrorsInFeedback:true, 
 		rules:{
-			"valorMinimo":{min:10},
-			"valorMaximo":{max:30},
-			"valorIntervalo":{range:[10,30]},
-			"numeroDecimal":{number:true},
-			"entero":{integer:true}
+			"randomData[valorMinimo]":{min:10},
+			"randomData[valorMaximo]":{max:30},
+			"randomData[valorIntervalo]":{range:[10,30]},
+			"randomData[numeroDecimal]":{number:true},
+			"randomData[entero]":{integer:true}
 		}
 	});
 		
@@ -91,19 +91,19 @@ jQuery(document).ready(function(){
 		showErrorsInFeedback: true,
 		showFieldErrorsInFeedback:true, 
 		rules:{
-			"longitudMinima":{minlength:8},
-			"longitudMaxima":{maxlength:20},
-			"longitudIntervalo":{rangelength:[8,20]},
-			"numeroDecimal":{number:true},
-			"soloDigitos":{digits:true},
-			"palabrasMaximo":{maxWords:6},
-			"palabrasMinimo":{minWords:2},
-			"palabrasIntervalo":{rangeWords:[2,6]},
-			"letrasYPuntuacion":{letterswithbasicpunc:true},
-			"alfanumerico":{alphanumeric:true},
-			"soloLetras":{lettersonly:true},
-			"sinEspacios":{nowhitespace:true},
-			"patron":{pattern:'\\d'}
+			"randomData[longitudMinima]":{minlength:8},
+			"randomData[longitudMaxima]":{maxlength:20},
+			"randomData[longitudIntervalo]":{rangelength:[8,20]},
+			"randomData[numeroDecimal]":{number:true},
+			"randomData[soloDigitos]":{digits:true},
+			"randomData[palabrasMaximo]":{maxWords:6},
+			"randomData[palabrasMinimo]":{minWords:2},
+			"randomData[palabrasIntervalo]":{rangeWords:[2,6]},
+			"randomData[letrasYPuntuacion]":{letterswithbasicpunc:true},
+			"randomData[alfanumerico]":{alphanumeric:true},
+			"randomData[soloLetras]":{lettersonly:true},
+			"randomData[sinEspacios]":{nowhitespace:true},
+			"randomData[patron]":{pattern:'\\d'}
 		}
 	});
 	

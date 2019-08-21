@@ -3,6 +3,7 @@ package com.ejie.x21a.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.validation.Valid;
 import javax.validation.groups.Default;
@@ -67,8 +68,18 @@ public class Alumno  implements java.io.Serializable {
             private String direccion;
             private BigDecimal importeMatricula;
             private byte[] imagen;
+            private Integer ejie;
+            private HashMap<String,String> randomData;
             
-            private String gender;
+            public HashMap<String, String> getRandomData() {
+				return randomData;
+			}
+
+			public void setRandomData(HashMap<String, String> randomData) {
+				this.randomData = randomData;
+			}
+
+			private String gender;
             
 	/** Method 'Alumno'.
 	*
@@ -575,6 +586,14 @@ public class Alumno  implements java.io.Serializable {
 		result.append(", [ calle: ").append(this.calle).append(" ]");
 		result.append("}");
 		return result.toString();
+	}
+
+	public Integer getEjie() {
+		return ejie;
+	}
+
+	public void setEjie(Integer ejie) {
+		this.ejie = ejie;
 	}
 
 

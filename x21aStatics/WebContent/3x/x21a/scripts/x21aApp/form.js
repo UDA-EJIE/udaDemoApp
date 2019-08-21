@@ -230,7 +230,7 @@ jQuery(document).ready(function(){
 	
 	
 	$("#formMultientidades").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/multientidades",
+		url:$.rup.CTX_PATH+"patrones/form/multientidades",
 		feedback:$("#feedbackMensajes"),
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
@@ -244,7 +244,7 @@ jQuery(document).ready(function(){
 	});
 	
 	$("#formMultientidadesMismoTipo").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/multientidadesMismoTipo",
+		url:$.rup.CTX_PATH+"patrones/form/multientidadesMismoTipo",
 		feedback:$("#feedbackMensajes"),
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
@@ -260,7 +260,7 @@ jQuery(document).ready(function(){
 	});
 	
 	$("#formSubidaArchivos").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/subidaArchivos",
+		url:$.rup.CTX_PATH+"patrones/form/subidaArchivos",
 		feedback:$("#feedbackMensajes"),
 		dataType: 'json',
 		success:function(xhr){

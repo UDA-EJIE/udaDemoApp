@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	
 	// Definicion de las pestanas
@@ -80,7 +80,7 @@ jQuery(document).ready(function(){
 		// Creacion de la configuracion del componente de formulario
 		var formConfigSettings = {
 			ajaxForm:{
-				url:$.rup.CTX_PATH+"/patrones/form/ajax",
+				url:$.rup.CTX_PATH+"patrones/form/ajax",
 				success:function(){
 					$("#feedbackMensajes").rup_feedback("set","El formulario se ha enviado correctamente mediante un submit AJAX", "ok");
 				}
@@ -230,7 +230,7 @@ jQuery(document).ready(function(){
 	
 	
 	$("#formMultientidades").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/multientidades",
+		url:$.rup.CTX_PATH+"patrones/form/multientidades",
 		feedback:$("#feedbackMensajes"),
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
@@ -244,7 +244,7 @@ jQuery(document).ready(function(){
 	});
 	
 	$("#formMultientidadesMismoTipo").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/multientidadesMismoTipo",
+		url:$.rup.CTX_PATH+"patrones/form/multientidadesMismoTipo",
 		feedback:$("#feedbackMensajes"),
 		success:function(xhr){
 			$("#feedbackMensajes").rup_feedback("set",$.rup_utils.printMsg($.parseJSON($.parseJSON(xhr))),"ok");
@@ -260,7 +260,7 @@ jQuery(document).ready(function(){
 	});
 	
 	$("#formSubidaArchivos").rup_form({
-		url:$.rup.CTX_PATH+"/patrones/form/subidaArchivos",
+		url:$.rup.CTX_PATH+"patrones/form/subidaArchivos",
 		feedback:$("#feedbackMensajes"),
 		dataType: 'json',
 		success:function(xhr){

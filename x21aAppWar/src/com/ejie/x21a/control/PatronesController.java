@@ -59,14 +59,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.model.AlumnoDepartamento;
+import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -189,6 +194,7 @@ public class PatronesController {
 	//Multicombo
 	@RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
 	public String getComboMantenimiento(Model model) {
+		model.addAttribute("alumno", new Alumno());
 		return "comboMantenimiento";
 	}
 
@@ -208,7 +214,13 @@ public class PatronesController {
 		List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
 		model.addAttribute("autonomias",autonomias);
 		
+		model.addAttribute("comarca", new Comarca());
+		
+		model.addAttribute("formComarcas", new FormComarcas());
+		
 		model.addAttribute("alumno",new Alumno());
+		
+		model.addAttribute("alumnoDepartamento", new AlumnoDepartamento());
 		
 		return "form";
 	}
@@ -312,32 +324,39 @@ public class PatronesController {
 	//Upload
 	@RequestMapping(value = "upload", method = RequestMethod.GET)
 	public String getUpload(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("collection", new Collection());
 		return "upload";
 	}
 	
 	//Wizard
 	@RequestMapping(value = "wizard", method = RequestMethod.GET)
 	public String getWizard(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard";
 	}
 	//Wizard_includeFile
 	@RequestMapping(value = "wizard_includeFile", method = RequestMethod.GET)
 	public String getWizard_includeFile(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_includeFile";
 	}
 	//Wizard_jspInclude
 	@RequestMapping(value = "wizard_jspInclude", method = RequestMethod.GET)
 	public String getWizard_jspInclude(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jspInclude";
 	}
 	//Wizard_jstlImport
 	@RequestMapping(value = "wizard_jstlImport", method = RequestMethod.GET)
 	public String getWizard_jstlImporte(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jstlImport";
 	}
 	//Wizard dinamico
 	@RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
 	public String getWizard_dinamico(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_dinamico";
 	}
 	@RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
@@ -410,17 +429,22 @@ public class PatronesController {
 	//Validate
 	@RequestMapping(value = "validate", method = RequestMethod.GET)
 	public String getValidate(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("randomForm", new RandomForm());
 		return "validate";
 	}
 	
 	//Validate
 	@RequestMapping(value = "validateRules", method = RequestMethod.GET)
 	public String getValidateRules(Model model) {
+
+		model.addAttribute("alumno", new Alumno());
 		return "validateRules";
 	}
 	
 	@RequestMapping(value = "validateRup", method = RequestMethod.GET)
 	public String getValidateRup(Model model) {
+		model.addAttribute("alumno", new Alumno());
 		return "validateRup";
 	}
 	
@@ -429,6 +453,7 @@ public class PatronesController {
 	//All (todos los patrones en una pagina)
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public String getAll(Model model) {
+		model.addAttribute("usuario", new Usuario());
 		return "all";
 	}
 	//AllDialog (todos los patrones en un dialogo)
