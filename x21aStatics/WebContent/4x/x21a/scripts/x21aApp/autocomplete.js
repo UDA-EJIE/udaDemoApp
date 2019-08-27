@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 
-jQuery(document).ready(function(){
+$(function() {
 	
 	$("#autocomplete").rup_autocomplete({
 		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/

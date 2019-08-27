@@ -36,7 +36,6 @@
 	</fieldset>
 </div>
 
-<!-- <form id="wizardForm"> -->
 <form:form id="wizardForm" modelAttribute="randomForm">
 	<%@ include file="wizard_step0.jsp" %>
 	<%@ include file="wizard_step1.jsp" %>

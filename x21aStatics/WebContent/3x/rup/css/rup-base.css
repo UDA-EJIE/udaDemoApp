@@ -10236,16 +10236,10 @@ tr.ui-state-highlight .ui-icon.ui-icon-rupInfoCol.ui-icon-pencil.ui-icon-search 
   padding-top: .5rem; }
 
 @media (max-width: 575px) {
-  .rup_jqtableEdit_buttonsContainerResposive {
-    float: none !important; }
-  .rup_jqtableEdit_buttonsResposive {
-    width: 100%; } }
-    
-@media (max-width: 575px) {
   .rup_tableEdit_buttonsContainerResposive {
     float: none !important; }
   .rup_tableEdit_buttonsResposive {
-    width: 100%; } }    
+    width: 100%; } }
 
 .checkboxPKBloqueado {
   visibility: hidden;

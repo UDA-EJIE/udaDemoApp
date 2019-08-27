@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="x21aWL" default="copiarAutodeploy" basedir=".">
+	<!--    PROPIEDADES WEBLOGIC-->
+	<property name="beaVers" value="1036"/>
+	<property name="bea" value="C:/bea/weblogic${beaVers}"/>
+	<property name="domain" value="C:/dominio_wls${beaVers}/dominio_desa/applications"/>
+
+	<!--    PROPIEDADES APP-->
+	<property name="cp" value="x21a"/>
+	<property name="dir" value="C:/aplic/uda/udaDemoApp"/>
+	<property name="war1" value="${cp}AppWar"/>
+	<property name="war2" value="${cp}MantenimientosWar"/>
+	<property name="war3" value="${cp}ModulesWar"/>
+	<property name="war4" value="${cp}PilotoPatronesWar"/>
+	<property name="war5" value="${cp}App3xWar"/>
+	<property name="ejb1" value="${cp}MdbEJB"/>
+	<property name="exe" value="${dir}/${cp}_estruct_servidor/exe/"/>
+	<property name="wsStyle" value="rpc"/>
+
+	<taskdef name="wldeploy" classname="weblogic.ant.taskdefs.management.WLDeploy">
+		<classpath>
+			<pathelement location="${bea}/wlserver_10.3/server/lib/weblogic.jar"/>
+		</classpath>
+	</taskdef>
+
+	<!-- Patron para copiar ficheros -->
+	<patternset id="fuentesManual">
+		<include name="**/*.*"/>
+	</patternset>
+
+	<!-- Tarea por defecto lanza todas las copias, seria como un ALL -->
+	<target name="copiarTodo">
+		<echo message="Copiar todo ..."/>
+		<antcall target="copiarCLS"/>
+		<antcall target="copiarWAR"/>
+		<antcall target="copiarEJBs"/>
+		<antcall target="copiarEAR"/>
+	</target>
+
+	<!-- Copiar ficheros del proyecto Classes -->
+	<target name="copiarCLS">
+		<echo message="Copiando ficheros de ${cp}EARClasses..."/>
+		<copy todir="${exe}/APP-INF/classes" verbose="true" overwrite="false" includeemptydirs="false">
+			<fileset dir="${dir}/${cp}EARClasses/build/classes" includes="*">
+				<patternset refid="fuentesManual"/>
+			</fileset>
+		</copy>
+		<copy todir="${exe}/APP-INF/classes/resources" verbose="true" overwrite="false" includeemptydirs="false">
+			<fileset dir="${dir}/${cp}EARClasses/resources" includes="*">
+				<include name="**/*.properties"/>
+				<include name="**/*.xsl"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Copiar ficheros del proyecto War -->
+	<target name="copiarWAR">
+		<echo message="Copiando ficheros de ${war1}..."/>
+		<war destfile="${exe}/${war1}.war" webxml="${dir}/${war1}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dir}/${war1}/WebContent">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${dir}/${war1}/build/classes"/>
+		</war>
+		<war destfile="${exe}/${war2}.war" webxml="${dir}/${war2}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dir}/${war2}/WebContent">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${dir}/${war2}/build/classes"/>
+		</war>
+		<war destfile="${exe}/${war3}.war" webxml="${dir}/${war3}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dir}/${war3}/WebContent">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${dir}/${war3}/build/classes"/>
+		</war>
+		<war destfile="${exe}/${war4}.war" webxml="${dir}/${war4}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dir}/${war4}/WebContent">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${dir}/${war4}/build/classes"/>
+		</war>
+		<war destfile="${exe}/${war5}.war" webxml="${dir}/${war5}/WebContent/WEB-INF/web.xml">
+			<fileset dir="${dir}/${war5}/WebContent">
+				<include name="**/*.*"/>
+			</fileset>
+			<classes dir="${dir}/${war5}/build/classes"/>
+		</war>
+	</target>
+
+	<!-- Copiar ficheros del proyecto EJB -->
+	<target name="copiarEJBs">
+		<echo message="Copiando ficheros de EJBs..."/>
+		<jar destfile="${exe}/${ejb1}.jar"
+			 basedir="${dir}/${ejb1}/build/classes"/>
+	</target>
+
+	<!-- Copiar ficheros del proyecto ${cp}EAR (estaticos) -->
+	<target name="copiarEAR">
+		<echo message="Copiando ficheros de ${cp}EAR ..."/>
+		<copy todir="${exe}/META-INF" verbose="true" overwrite="false" includeemptydirs="false">
+			<fileset dir="${dir}/${cp}EAR/EarContent/META-INF">
+				<include name="*.xml"/>
+				<include name="*.MF"/>
+			</fileset>
+		</copy>
+		<copy todir="${exe}/APP-INF/lib" verbose="true" overwrite="false" includeemptydirs="false">
+			<fileset dir="${dir}/${cp}EAR/EarContent/APP-INF/lib" includes="*"/>
+		</copy>
+	</target>
+
+	<!-- Classpath para APPC, lanzar tras generar_${ejbName} y copiarAutodeploy -->
+	<property name="appc.classpath"
+			  value="C:\bea\jrockit-jdk1.6.0_45-R28.2.7-4.1.0\lib\tools.jar;${exe}/APP-INF/classes/"/>
+
+	<!-- Limpiar EXE -->
+	<target name="clean">
+		<echo message="Borrar directorio EXE"/>
+		<delete dir="${exe}"/>
+	</target>
+
+	<!-- Redesplegar aplicacion -->
+	<target name="redesplegar" description="Redesplegar aplicacion">
+		<wldeploy
+				action="redeploy"
+				verbose="true"
+				name="${cp}"
+				user="weblogic11"
+				password="weblogic11"
+				adminurl="t3://localhost:7001"
+				targets="AdminServer"/>
+	</target>
+
+	<target name="copiarYredesplegar" description="Copiar y Redesplegar aplicacion">
+		<antcall target="copiarTodo"/>
+		<antcall target="redesplegar"/>
+	</target>
+</project>

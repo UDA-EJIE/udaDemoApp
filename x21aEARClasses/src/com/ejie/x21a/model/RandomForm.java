@@ -1,517 +1,558 @@
 package com.ejie.x21a.model;
 
-public class RandomForm implements java.io.Serializable{
-
-	private static final long serialVersionUID = 1L;
-	
-	private Object nombre;
-	
-	private Object apellido;
-	
-	private Object apellido1;
-	
-	private Object apellido2;
-	
-	private Object alertDay;
-	
-	private Object rol;
-	
-	private Object rolName2;
-	
-	private Object autocomplete;
-	
-	private Object autocompleteName2;
-	
-	private Object nombreJqueryui;
-	
-	private Object alertDayJqueryui;
-	
-	private Object rolJqueryui;
-	
-	private Object rolName2Jqueryui;
-	
-	private Object autocompleteJqueryui;
-	
-	private Object autocompleteName2Jqueryui;
-	
-	private Object username;
-	
-	private Object password;
-	
-	private Object desde;
-	
-	private Object hasta;
-
-	private Object hora_entrada;
-
-	private Object hora_salida;
-	
-	private Object dias;
-
-	private Object cliente;
-	
-	private Object mes_enero;
-	
-	private Object mes_febrero;
-	
-	private Object mes_marzo;
-	
-	private Object mes_abril;
-	
-	private Object mes_mayo;
-	
-	private Object mes_junio;
-	
-	private Object mes_julio;
-	
-	private Object mes_agosto;
-
-	private Object mes_septiembre;
-
-	private Object mes_octubre;
-	
-	private Object mes_noviembre;
-
-	private Object mes_diciembre;
-	
-	private Object ejie;
-	
-	private Object group1;
-	
-	private Object empresa_nombre;
-	
-	private Object empresa_web;
-	
-	private Object empresa_email;
-	
-	private Object provincia;
-	
-	private Object direccion_araba;
-	
-	private Object direccion_bizkaia;
-	
-	private Object direccion_gipuzkoa;
-	
-	private Object telefono_araba;
-	
-	private Object telefono_bizkaia;
-	
-	private Object telefono_gipuzkoa;
-	
-	private Object aficiones;
-
-	private Object countryId;
-	
-	private Object regionId;
-	
-	private Object countryName;
-
-	public Object getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(Object nombre) {
-		this.nombre = nombre;
-	}
-
-	public Object getApellido1() {
-		return apellido1;
-	}
-
-	public void setApellido1(Object apellido1) {
-		this.apellido1 = apellido1;
-	}
-
-	public Object getApellido2() {
-		return apellido2;
-	}
-
-	public void setApellido2(Object apellido2) {
-		this.apellido2 = apellido2;
-	}
-
-	public Object getAlertDay() {
-		return alertDay;
-	}
-
-	public void setAlertDay(Object alertDay) {
-		this.alertDay = alertDay;
-	}
-
-	public Object getRol() {
-		return rol;
-	}
-
-	public void setRol(Object rol) {
-		this.rol = rol;
-	}
-
-	public Object getRolName2() {
-		return rolName2;
-	}
-
-	public void setRolName2(Object rolName2) {
-		this.rolName2 = rolName2;
-	}
-
-	public Object getAutocomplete() {
-		return autocomplete;
-	}
-
-	public void setAutocomplete(Object autocomplete) {
-		this.autocomplete = autocomplete;
-	}
-
-	public Object getAutocompleteName2() {
-		return autocompleteName2;
-	}
-
-	public void setAutocompleteName2(Object autocompleteName2) {
-		this.autocompleteName2 = autocompleteName2;
-	}
-
-	public Object getNombreJqueryui() {
-		return nombreJqueryui;
-	}
-
-	public void setNombreJqueryui(Object nombreJqueryui) {
-		this.nombreJqueryui = nombreJqueryui;
-	}
-
-	public Object getAlertDayJqueryui() {
-		return alertDayJqueryui;
-	}
-
-	public void setAlertDayJqueryui(Object alertDayJqueryui) {
-		this.alertDayJqueryui = alertDayJqueryui;
-	}
-
-	public Object getRolJqueryui() {
-		return rolJqueryui;
-	}
-
-	public void setRolJqueryui(Object rolJqueryui) {
-		this.rolJqueryui = rolJqueryui;
-	}
-
-	public Object getRolName2Jqueryui() {
-		return rolName2Jqueryui;
-	}
-
-	public void setRolName2Jqueryui(Object rolName2Jqueryui) {
-		this.rolName2Jqueryui = rolName2Jqueryui;
-	}
-
-	public Object getAutocompleteJqueryui() {
-		return autocompleteJqueryui;
-	}
-
-	public void setAutocompleteJqueryui(Object autocompleteJqueryui) {
-		this.autocompleteJqueryui = autocompleteJqueryui;
-	}
-
-	public Object getAutocompleteName2Jqueryui() {
-		return autocompleteName2Jqueryui;
-	}
-
-	public void setAutocompleteName2Jqueryui(Object autocompleteName2Jqueryui) {
-		this.autocompleteName2Jqueryui = autocompleteName2Jqueryui;
-	}
-
-	public Object getUsername() {
-		return username;
-	}
-
-	public void setUsername(Object username) {
-		this.username = username;
-	}
-
-	public Object getPassword() {
-		return password;
-	}
-
-	public void setPassword(Object password) {
-		this.password = password;
-	}
-
-	public Object getDesde() {
-		return desde;
-	}
-
-	public void setDesde(Object desde) {
-		this.desde = desde;
-	}
-
-	public Object getHasta() {
-		return hasta;
-	}
-
-	public void setHasta(Object hasta) {
-		this.hasta = hasta;
-	}
-
-	public Object getHora_entrada() {
-		return hora_entrada;
-	}
-
-	public void setHora_entrada(Object hora_entrada) {
-		this.hora_entrada = hora_entrada;
-	}
-
-	public Object getHora_salida() {
-		return hora_salida;
-	}
-
-	public void setHora_salida(Object hora_salida) {
-		this.hora_salida = hora_salida;
-	}
-
-	public Object getDias() {
-		return dias;
-	}
-
-	public void setDias(Object dias) {
-		this.dias = dias;
-	}
-
-	public Object getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Object cliente) {
-		this.cliente = cliente;
-	}
-
-	public Object getMes_enero() {
-		return mes_enero;
-	}
-
-	public void setMes_enero(Object mes_enero) {
-		this.mes_enero = mes_enero;
-	}
-
-	public Object getMes_febrero() {
-		return mes_febrero;
-	}
-
-	public void setMes_febrero(Object mes_febrero) {
-		this.mes_febrero = mes_febrero;
-	}
-
-	public Object getMes_marzo() {
-		return mes_marzo;
-	}
-
-	public void setMes_marzo(Object mes_marzo) {
-		this.mes_marzo = mes_marzo;
-	}
-
-	public Object getMes_abril() {
-		return mes_abril;
-	}
-
-	public void setMes_abril(Object mes_abril) {
-		this.mes_abril = mes_abril;
-	}
-
-	public Object getMes_mayo() {
-		return mes_mayo;
-	}
-
-	public void setMes_mayo(Object mes_mayo) {
-		this.mes_mayo = mes_mayo;
-	}
-
-	public Object getMes_junio() {
-		return mes_junio;
-	}
-
-	public void setMes_junio(Object mes_junio) {
-		this.mes_junio = mes_junio;
-	}
-
-	public Object getMes_julio() {
-		return mes_julio;
-	}
-
-	public void setMes_julio(Object mes_julio) {
-		this.mes_julio = mes_julio;
-	}
-
-	public Object getMes_agosto() {
-		return mes_agosto;
-	}
-
-	public void setMes_agosto(Object mes_agosto) {
-		this.mes_agosto = mes_agosto;
-	}
-
-	public Object getMes_septiembre() {
-		return mes_septiembre;
-	}
-
-	public void setMes_septiembre(Object mes_septiembre) {
-		this.mes_septiembre = mes_septiembre;
-	}
-
-	public Object getMes_octubre() {
-		return mes_octubre;
-	}
-
-	public void setMes_octubre(Object mes_octubre) {
-		this.mes_octubre = mes_octubre;
-	}
-
-	public Object getMes_noviembre() {
-		return mes_noviembre;
-	}
-
-	public void setMes_noviembre(Object mes_noviembre) {
-		this.mes_noviembre = mes_noviembre;
-	}
-
-	public Object getMes_diciembre() {
-		return mes_diciembre;
-	}
-
-	public void setMes_diciembre(Object mes_diciembre) {
-		this.mes_diciembre = mes_diciembre;
-	}
-
-	public Object getEjie() {
-		return ejie;
-	}
-
-	public void setEjie(Object ejie) {
-		this.ejie = ejie;
-	}
-
-	public Object getGroup1() {
-		return group1;
-	}
-
-	public void setGroup1(Object group1) {
-		this.group1 = group1;
-	}
-
-	public Object getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(Object apellido) {
-		this.apellido = apellido;
-	}
-
-	public Object getEmpresa_nombre() {
-		return empresa_nombre;
-	}
-
-	public void setEmpresa_nombre(Object empresa_nombre) {
-		this.empresa_nombre = empresa_nombre;
-	}
-
-	public Object getEmpresa_web() {
-		return empresa_web;
-	}
-
-	public void setEmpresa_web(Object empresa_web) {
-		this.empresa_web = empresa_web;
-	}
-
-	public Object getEmpresa_email() {
-		return empresa_email;
-	}
-
-	public void setEmpresa_email(Object empresa_email) {
-		this.empresa_email = empresa_email;
-	}
-
-	public Object getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(Object provincia) {
-		this.provincia = provincia;
-	}
-
-	public Object getDireccion_araba() {
-		return direccion_araba;
-	}
-
-	public void setDireccion_araba(Object direccion_araba) {
-		this.direccion_araba = direccion_araba;
-	}
-
-	public Object getDireccion_bizkaia() {
-		return direccion_bizkaia;
-	}
-
-	public void setDireccion_bizkaia(Object direccion_bizkaia) {
-		this.direccion_bizkaia = direccion_bizkaia;
-	}
-
-	public Object getDireccion_gipuzkoa() {
-		return direccion_gipuzkoa;
-	}
-
-	public void setDireccion_gipuzkoa(Object direccion_gipuzkoa) {
-		this.direccion_gipuzkoa = direccion_gipuzkoa;
-	}
-
-	public Object getTelefono_araba() {
-		return telefono_araba;
-	}
-
-	public void setTelefono_araba(Object telefono_araba) {
-		this.telefono_araba = telefono_araba;
-	}
-
-	public Object getTelefono_bizkaia() {
-		return telefono_bizkaia;
-	}
-
-	public void setTelefono_bizkaia(Object telefono_bizkaia) {
-		this.telefono_bizkaia = telefono_bizkaia;
-	}
-
-	public Object getTelefono_gipuzkoa() {
-		return telefono_gipuzkoa;
-	}
-
-	public void setTelefono_gipuzkoa(Object telefono_gipuzkoa) {
-		this.telefono_gipuzkoa = telefono_gipuzkoa;
-	}
-
-	public Object getAficiones() {
-		return aficiones;
-	}
-
-	public void setAficiones(Object aficiones) {
-		this.aficiones = aficiones;
-	}
-
-	public Object getCountryId() {
-		return countryId;
-	}
-
-	public void setCountryId(Object countryId) {
-		this.countryId = countryId;
-	}
-
-	public Object getRegionId() {
-		return regionId;
-	}
-
-	public void setRegionId(Object regionId) {
-		this.regionId = regionId;
-	}
-
-	public Object getCountryName() {
-		return countryName;
-	}
-
-	public void setCountryName(Object countryName) {
-		this.countryName = countryName;
-	}
+import java.util.List;
 
+public class RandomForm implements java.io.Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String nombre;
+
+    private String apellido;
+
+    private String apellido1;
+
+    private String apellido2;
+
+    private List<String> alertDay;
+
+    private String rol;
+
+    private String rolName2;
+
+    private String autocomplete;
+
+    private String autocompleteName2;
+
+    private String nombreJqueryui;
+
+    private String alertDayJqueryui;
+
+    private String rolJqueryui;
+
+    private String rolName2Jqueryui;
+
+    private String autocompleteJqueryui;
+
+    private String autocompleteName2Jqueryui;
+
+    private String autocompleteCombobox;
+
+    private String autocompleteCombobox2;
+
+    private String username;
+
+    private String password;
+
+    private String desde;
+
+    private String hasta;
+
+    private String hora_entrada;
+
+    private String hora_salida;
+
+    private String dias;
+
+    private String cliente;
+
+    private String mes_enero;
+
+    private String mes_febrero;
+
+    private String mes_marzo;
+
+    private String mes_abril;
+
+    private String mes_mayo;
+
+    private String mes_junio;
+
+    private String mes_julio;
+
+    private String mes_agosto;
+
+    private String mes_septiembre;
+
+    private String mes_octubre;
+
+    private String mes_noviembre;
+
+    private String mes_diciembre;
+
+    private String ejie;
+
+    private String group1;
+
+    private String empresa_nombre;
+
+    private String empresa_web;
+
+    private String empresa_email;
+
+    private String provincia;
+
+    private String direccion_araba;
+
+    private String direccion_bizkaia;
+
+    private String direccion_gipuzkoa;
+
+    private String telefono_araba;
+
+    private String telefono_bizkaia;
+
+    private String telefono_gipuzkoa;
+
+    private String aficiones;
+
+    private String countryId;
+
+    private String regionId;
+
+    private String countryName;
+
+    private String textarea;
+
+    private List<String> alertEdad;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+    public List<String> getAlertDay() {
+        return alertDay;
+    }
+
+    public void setAlertDay(List<String> alertDay) {
+        this.alertDay = alertDay;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getRolName2() {
+        return rolName2;
+    }
+
+    public void setRolName2(String rolName2) {
+        this.rolName2 = rolName2;
+    }
+
+    public String getAutocomplete() {
+        return autocomplete;
+    }
+
+    public void setAutocomplete(String autocomplete) {
+        this.autocomplete = autocomplete;
+    }
+
+    public String getAutocompleteName2() {
+        return autocompleteName2;
+    }
+
+    public void setAutocompleteName2(String autocompleteName2) {
+        this.autocompleteName2 = autocompleteName2;
+    }
+
+    public String getNombreJqueryui() {
+        return nombreJqueryui;
+    }
+
+    public void setNombreJqueryui(String nombreJqueryui) {
+        this.nombreJqueryui = nombreJqueryui;
+    }
+
+    public String getAlertDayJqueryui() {
+        return alertDayJqueryui;
+    }
+
+    public void setAlertDayJqueryui(String alertDayJqueryui) {
+        this.alertDayJqueryui = alertDayJqueryui;
+    }
+
+    public String getRolJqueryui() {
+        return rolJqueryui;
+    }
+
+    public void setRolJqueryui(String rolJqueryui) {
+        this.rolJqueryui = rolJqueryui;
+    }
+
+    public String getRolName2Jqueryui() {
+        return rolName2Jqueryui;
+    }
+
+    public void setRolName2Jqueryui(String rolName2Jqueryui) {
+        this.rolName2Jqueryui = rolName2Jqueryui;
+    }
+
+    public String getAutocompleteJqueryui() {
+        return autocompleteJqueryui;
+    }
+
+    public void setAutocompleteJqueryui(String autocompleteJqueryui) {
+        this.autocompleteJqueryui = autocompleteJqueryui;
+    }
+
+    public String getAutocompleteName2Jqueryui() {
+        return autocompleteName2Jqueryui;
+    }
+
+    public void setAutocompleteName2Jqueryui(String autocompleteName2Jqueryui) {
+        this.autocompleteName2Jqueryui = autocompleteName2Jqueryui;
+    }
+
+    public String getAutocompleteCombobox() {
+        return autocompleteCombobox;
+    }
+
+    public void setAutocompleteCombobox(String autocompleteCombobox) {
+        this.autocompleteCombobox = autocompleteCombobox;
+    }
+
+    public String getAutocompleteCombobox2() {
+        return autocompleteCombobox2;
+    }
+
+    public void setAutocompleteCombobox2(String autocompleteCombobox2) {
+        this.autocompleteCombobox2 = autocompleteCombobox2;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDesde() {
+        return desde;
+    }
+
+    public void setDesde(String desde) {
+        this.desde = desde;
+    }
+
+    public String getHasta() {
+        return hasta;
+    }
+
+    public void setHasta(String hasta) {
+        this.hasta = hasta;
+    }
+
+    public String getHora_entrada() {
+        return hora_entrada;
+    }
+
+    public void setHora_entrada(String hora_entrada) {
+        this.hora_entrada = hora_entrada;
+    }
+
+    public String getHora_salida() {
+        return hora_salida;
+    }
+
+    public void setHora_salida(String hora_salida) {
+        this.hora_salida = hora_salida;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getMes_enero() {
+        return mes_enero;
+    }
+
+    public void setMes_enero(String mes_enero) {
+        this.mes_enero = mes_enero;
+    }
+
+    public String getMes_febrero() {
+        return mes_febrero;
+    }
+
+    public void setMes_febrero(String mes_febrero) {
+        this.mes_febrero = mes_febrero;
+    }
+
+    public String getMes_marzo() {
+        return mes_marzo;
+    }
+
+    public void setMes_marzo(String mes_marzo) {
+        this.mes_marzo = mes_marzo;
+    }
+
+    public String getMes_abril() {
+        return mes_abril;
+    }
+
+    public void setMes_abril(String mes_abril) {
+        this.mes_abril = mes_abril;
+    }
+
+    public String getMes_mayo() {
+        return mes_mayo;
+    }
+
+    public void setMes_mayo(String mes_mayo) {
+        this.mes_mayo = mes_mayo;
+    }
+
+    public String getMes_junio() {
+        return mes_junio;
+    }
+
+    public void setMes_junio(String mes_junio) {
+        this.mes_junio = mes_junio;
+    }
+
+    public String getMes_julio() {
+        return mes_julio;
+    }
+
+    public void setMes_julio(String mes_julio) {
+        this.mes_julio = mes_julio;
+    }
+
+    public String getMes_agosto() {
+        return mes_agosto;
+    }
+
+    public void setMes_agosto(String mes_agosto) {
+        this.mes_agosto = mes_agosto;
+    }
+
+    public String getMes_septiembre() {
+        return mes_septiembre;
+    }
+
+    public void setMes_septiembre(String mes_septiembre) {
+        this.mes_septiembre = mes_septiembre;
+    }
+
+    public String getMes_octubre() {
+        return mes_octubre;
+    }
+
+    public void setMes_octubre(String mes_octubre) {
+        this.mes_octubre = mes_octubre;
+    }
+
+    public String getMes_noviembre() {
+        return mes_noviembre;
+    }
+
+    public void setMes_noviembre(String mes_noviembre) {
+        this.mes_noviembre = mes_noviembre;
+    }
+
+    public String getMes_diciembre() {
+        return mes_diciembre;
+    }
+
+    public void setMes_diciembre(String mes_diciembre) {
+        this.mes_diciembre = mes_diciembre;
+    }
+
+    public String getEjie() {
+        return ejie;
+    }
+
+    public void setEjie(String ejie) {
+        this.ejie = ejie;
+    }
+
+    public String getGroup1() {
+        return group1;
+    }
+
+    public void setGroup1(String group1) {
+        this.group1 = group1;
+    }
+
+    public String getEmpresa_nombre() {
+        return empresa_nombre;
+    }
+
+    public void setEmpresa_nombre(String empresa_nombre) {
+        this.empresa_nombre = empresa_nombre;
+    }
+
+    public String getEmpresa_web() {
+        return empresa_web;
+    }
+
+    public void setEmpresa_web(String empresa_web) {
+        this.empresa_web = empresa_web;
+    }
+
+    public String getEmpresa_email() {
+        return empresa_email;
+    }
+
+    public void setEmpresa_email(String empresa_email) {
+        this.empresa_email = empresa_email;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getDireccion_araba() {
+        return direccion_araba;
+    }
+
+    public void setDireccion_araba(String direccion_araba) {
+        this.direccion_araba = direccion_araba;
+    }
+
+    public String getDireccion_bizkaia() {
+        return direccion_bizkaia;
+    }
+
+    public void setDireccion_bizkaia(String direccion_bizkaia) {
+        this.direccion_bizkaia = direccion_bizkaia;
+    }
+
+    public String getDireccion_gipuzkoa() {
+        return direccion_gipuzkoa;
+    }
+
+    public void setDireccion_gipuzkoa(String direccion_gipuzkoa) {
+        this.direccion_gipuzkoa = direccion_gipuzkoa;
+    }
+
+    public String getTelefono_araba() {
+        return telefono_araba;
+    }
+
+    public void setTelefono_araba(String telefono_araba) {
+        this.telefono_araba = telefono_araba;
+    }
+
+    public String getTelefono_bizkaia() {
+        return telefono_bizkaia;
+    }
+
+    public void setTelefono_bizkaia(String telefono_bizkaia) {
+        this.telefono_bizkaia = telefono_bizkaia;
+    }
+
+    public String getTelefono_gipuzkoa() {
+        return telefono_gipuzkoa;
+    }
+
+    public void setTelefono_gipuzkoa(String telefono_gipuzkoa) {
+        this.telefono_gipuzkoa = telefono_gipuzkoa;
+    }
+
+    public String getAficiones() {
+        return aficiones;
+    }
+
+    public void setAficiones(String aficiones) {
+        this.aficiones = aficiones;
+    }
+
+    public String getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
+    }
+
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public String getTextarea() {
+        return textarea;
+    }
+
+    public void setTextarea(String textarea) {
+        this.textarea = textarea;
+    }
+
+    public List<String> getAlertEdad() {
+        return alertEdad;
+    }
+
+    public void setAlertEdad(List<String> alertEdad) {
+        this.alertEdad = alertEdad;
+    }
 }

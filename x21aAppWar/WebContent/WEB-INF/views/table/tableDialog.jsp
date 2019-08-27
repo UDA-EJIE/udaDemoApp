@@ -16,9 +16,12 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>${tituloPagina}</h2> <!-- Titulo pagina -->
 
-<button id="btnTablaDialog_div">Tabla en formulario (DIV)</button>
-<button id="btnTablaDialog_ajax">Tabla en formulario (AJAX)</button>
-
+<button id="btnTablaDialog_div" class="btn-material btn-material-primary-high-emphasis" type="button">
+	<span>Tabla en formulario (DIV)</span>
+</button>
+<button id="btnTablaDialog_ajax" class="btn-material btn-material-primary-high-emphasis" type="button">
+	<span>Tabla en formulario (AJAX)</span>
+</button>
 
 <div id="tableDialog_layer_ajax"></div>
 <div id="tableDialog_layer_div" style="display:none">
@@ -76,7 +79,7 @@
 				        		<spring:message code="clear" />
 				        	</span>
 				        </button>
-				        <button id="MultiPk_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+				        <button id="MultiPk_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
 				        	<i class="mdi mdi-filter"></i>
 				        	<span>
 				        		<spring:message code="filter" />
@@ -108,7 +111,7 @@
 	</div>	
 	
 <!-- Formulario de detalle -->
-<div id="MultiPk_detail_div" class="rup-table-formEdit-detail">
+<div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
 	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->

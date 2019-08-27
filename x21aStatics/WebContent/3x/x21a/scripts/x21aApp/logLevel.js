@@ -30,7 +30,7 @@ jQuery("#level_detail_table").rup_combo(options_level_combo);
 
 
 
-$("#table").rup_jqtable({
+$("#table").rup_table({
 	url: "../experimental",
 	colNames: [
 	"nameLog","levelLog"],

@@ -35,7 +35,6 @@
 	</fieldset>
 </div>
 
-<!-- <form id="wizardForm"> -->
 <form:form id="wizardForm" modelAttribute="randomForm">
 	<fieldset>
 		<legend class="wizardLegend">Datos de la cuenta</legend>
@@ -105,7 +104,7 @@
 	<legend class="wizardLegend">Plan de trabajo</legend>
 	<label for="desde">Fecha desde</label><label for="desde" id="intervalo-mask"/></label>:
 	<form:input path="desde"/>
-	<label for="hasta">hasta:
+	<label for="hasta">hasta</label>:
 	<form:input path="hasta"/>
 	<br/><br/>
 	<label for="hora_entrada">Horario desde</label><label for="hora_entrada" id="hora-mask"></label>:
@@ -114,7 +113,6 @@
 	<form:input path="hora_salida"/>
 	<br/><br/>
 	<label for="dias">Días de trabajo</label>
-	<!-- <select id="dias"></select> -->
 	<form:select path="dias"/>
 	<br/><br/>
 	<label for="cliente">Meses de trabajo en cliente</label>

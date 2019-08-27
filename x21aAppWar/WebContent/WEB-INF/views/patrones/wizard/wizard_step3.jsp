@@ -17,21 +17,16 @@
 <fieldset>
 	<legend class="wizardLegend">Plan de trabajo</legend>
 	<label for="desde">Fecha desde</label><label for="desde" id="intervalo-mask"/></label>:
-	<!-- <input type="text" id="desde" name="desde"/>  -->
 	<form:input path="desde"/>
-	<label for="hasta">hasta:
-	<!-- </label><input type="text" id="hasta" name="hasta"/> -->
+	<label for="hasta">hasta</label>:
 	<form:input path="hasta"/>
 	<br/><br/>
 	<label for="hora_entrada">Horario desde</label><label for="hora_entrada" id="hora-mask"></label>:
-	<!-- <input id="hora_entrada" name="hora_entrada" type="text"/> -->
 	<form:input path="hora_entrada"/>
 	<label for="hora_entrada">hasta: </label>
-	<!-- <input id="hora_salida" name="hora_salida" type="text"/> -->
 	<form:input path="hora_salida"/>
 	<br/><br/>
 	<label for="dias">Días de trabajo</label>
-	<!-- <select id="dias"></select> -->
 	<form:select path="dias"/>
 	<br/><br/>
 	<label for="cliente">Meses de trabajo en cliente</label>

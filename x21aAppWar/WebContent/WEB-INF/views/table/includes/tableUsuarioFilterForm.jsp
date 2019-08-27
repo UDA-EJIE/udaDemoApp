@@ -1,4 +1,20 @@
+<%--  
+ -- Copyright 2019 E.J.I.E., S.A.
+ --
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Solo podrá usarse esta obra si se respeta la Licencia.
+ -- Puede obtenerse una copia de la Licencia en
+ --
+ --      http://ec.europa.eu/idabc/eupl.html
+ --
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- que establece la Licencia.
+ --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
 <!-- Formulario de filtrado -->
 <form id="usuario_filter_form">
 	<!-- Barra de herramientas del formulario de filtrado -->
@@ -56,7 +72,7 @@
 	        	</span>
 	        </button>
 	        <!-- Bot�n de filtrado -->
-	        <button id="usuario_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+	        <button id="usuario_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
 	        	<i class="mdi mdi-filter"></i>
 	        	<span>
 	        		<spring:message code="filter" />
