@@ -98,7 +98,8 @@
 			<div style="float: right; margin-right: 3em;">
 					<button id="visorLT">Visor LT</button>
 					<button id="visorFormulario" >Formulario</button>
-					<a id="limpiar" href="#">Limpiar</a>
+					<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+					<a id="limpiar" href="${urlHashtag}">Limpiar</a>
 				</div>
 				<div class="formulario_columna_cnt">&nbsp;</div>
 		

@@ -139,7 +139,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "datatable";
+		return "table";
 	}
 	
 	/**
@@ -605,13 +605,13 @@ public class TableUsuarioController  {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("comarca", new Comarca());
 		model.addAttribute("localidad", new Localidad());
-		return "newTableMasterDetail";
+		return "tableMasterDetail";
 	}
 	
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
-		return "newTableDialog";
+		return "tableDialog";
 	}
 	
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)

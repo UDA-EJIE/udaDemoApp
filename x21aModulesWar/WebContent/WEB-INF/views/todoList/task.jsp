@@ -23,7 +23,8 @@
 	  <section>
 	  	<div class="col-md-2"></div>
 	  	<div class="col-md-8">
-	  	<h2 class="page-header"><a href="/x21aModulesWar/taskList/maint">Listas de tareas</a> > ${taskList.name}</h2>
+	  	<spring:url value="/taskList/maint" var="urlTaskList" htmlEscape="true"/>
+	  	<h2 class="page-header"><a href="${urlTaskList}">Listas de tareas</a> > ${taskList.name}</h2>
 	    
 	    
 	    <div id="feedback"></div>

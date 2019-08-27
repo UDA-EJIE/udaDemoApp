@@ -25,7 +25,20 @@
 
 	<div id="table_grid_div">
 		<!-- Tabla -->
-		<table id="table"></table>
+		<table id="table" data-url-base="../table">
+		<thead>
+			<tr>
+				<th data-col-prop="id">id</th>
+				<th data-col-prop="nombre">nombre</th>
+				<th data-col-prop="apellido1">apellido1</th>
+				<th data-col-prop="ejie">ejie</th>
+				<th data-col-prop="fechaAlta">fecAlta</th>
+				<th data-col-prop="fechaBaja">fecBaja</th>
+				<th data-col-prop="rol">ejie</th>
+				
+			</tr>
+		</thead>
+		</table>
 		<!-- Barra de paginación -->
 		<div id="table_pager"></div>
 	</div>
