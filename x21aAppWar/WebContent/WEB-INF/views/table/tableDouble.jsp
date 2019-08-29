@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla configurable</h2>
+<h2>Tabla doble</h2>
 <!-- Titulo pagina -->
 
 <div class="row">

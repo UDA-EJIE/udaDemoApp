@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla Maestro Detalle</h2> <!-- Titulo pagina -->
+<h2>Tabla Maestro - Detalle</h2> <!-- Titulo pagina -->
 <h2>Comarca</h2>
 	<div id="comarca_filter_div"  class="rup-table-filter">
 		<form:form modelAttribute="comarca" id="comarca_filter_form">
@@ -82,7 +82,7 @@
 
 <!-- Formulario de detalle -->
 <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegación del detalle -->
+	<!-- Barra de navegaciï¿½n del detalle -->
 	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -202,7 +202,7 @@
 
 <!-- Formulario de detalle -->
 <div id="localidad_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegación del detalle -->
+	<!-- Barra de navegaciï¿½n del detalle -->
 	<div id ="localidad_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">

@@ -124,7 +124,7 @@ public class TableUsuarioController  {
 		return "table";
 	}
 
-	@RequestMapping(value = "/configurableDouble", method = RequestMethod.GET)
+	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble () {
 
 		return "tableDouble";

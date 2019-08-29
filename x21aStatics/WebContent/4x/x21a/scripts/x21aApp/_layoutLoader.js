@@ -131,6 +131,7 @@ $(function() {
 				"i18nCaption" : "table",
 				//Elementos (url)
 				"configurable" : { "i18nCaption" : "tableConfigurable" },
+				"double" : { "i18nCaption" : "tableDouble" },
 				"multipk" : { "i18nCaption" : "tableMultipk" },
 				"masterDetail" : { "i18nCaption" : "tableMasterDetail" },
 				"tableDialog" : { "i18nCaption" : "tableDialog" },
@@ -138,9 +139,10 @@ $(function() {
 				/* METER LA TABLA EN DIALOGO */
 				"subLevel":[
 				    {"i18nCaption": "tableConfigurable", "url": "/x21aAppWar/table/configurable" },
+				    {"i18nCaption": "tableDouble", "url": "/x21aAppWar/table/double" },
 				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
 				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" },
-				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/tableDialog" },
+				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/dialog" },
 				    {"i18nCaption": "tableDynamicColumns", "url": "/x21aAppWar/table/dynamicColumns" }
 				]
 			},
