@@ -32,7 +32,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  
 @Controller
 @RequestMapping (value = "/table/multipk")
-
 public class TableMultiPkController  {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableMultiPkController.class);
@@ -66,7 +65,7 @@ public class TableMultiPkController  {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
-		return "multipk";
+		return "tableMultipk";
 	}
 
 	/**
