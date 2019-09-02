@@ -31,12 +31,14 @@
 			<section id="mainContent">
 			
 				<p>
+					<spring:url value="${staticsUrl}/rup/css/images/uda-mini-micro2.png" var="urlUdaMiniMicro2" htmlEscape="true"/>
+					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes" var="urlUdaComponentes" htmlEscape="true"/>
 					<a target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMiniMicro2}"><img
 						style="max-width: 100%;"
 						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 					es el conjunto de <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes">utilidades,
+						href="${urlUdaComponentes}">utilidades,
 						herramientas, librerías, plugins, guías, y recomendaciones
 						funcionales y técnicas</a> que permiten acelerar el proceso de
 					desarrollo de sistemas software con tecnología Java.<br> <br>
@@ -44,17 +46,22 @@
 					aumentar la productividad del desarrollador, sin coartar por ello
 					su imaginación ni su libertad para crear software. <a
 						target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMiniMicro2}"><img
 						style="max-width: 100%;"
 						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 					ayuda y colabora en las tareas repetitivas y de poco (o nulo) valor
 					añadido, pero que sin embargo, son imprescindibles. Pero también
 					persigue otros fines:<br> <br>
 				</p>
+				<spring:url value="https://es.wikipedia.org/wiki/Rich_Internet_Application" var="urlWikiRIA" htmlEscape="true"/>
+				<spring:url value="https://es.wikipedia.org/wiki/AJAX" var="urlWikiAJAX" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones#14._Mantenimiento_con_formulario" var="urlUdaPatrMantForm" htmlEscape="true"/>
+				<spring:url value="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador" var="urlWikiMVC" htmlEscape="true"/>
+				<spring:url value="http://www.w3.org/TR/WCAG20/" var="urlWCAG20" htmlEscape="true"/>
 				<ul>
 					<li>Minimizar la curva de aprendizaje. No pretende ser un
 						framework más, <a target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMiniMicro2}"><img
 							style="max-width: 100%;"
 							src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
 						adopta y explota los ya consolidados y de uso extendido y se
@@ -63,13 +70,13 @@
 					</li>
 					<li>Proponer patrones de usabilidad web, que aprovechen las
 						mejoras proporcionadas por las tecnologías <a target="_blank"
-						href="https://es.wikipedia.org/wiki/Rich_Internet_Application">RIA</a>
-						- <a target="_blank" href="https://es.wikipedia.org/wiki/AJAX">Ajax</a>.
+						href="${urlWikiRIA}">RIA</a>
+						- <a target="_blank" href="${urlWikiAJAX}">Ajax</a>.
 						Se cubren los escenarios de uso más habituales para las
 						aplicaciones web con dicha tecnología.
 					</li>
 					<li>Generar interfaces de usuario. Crea automáticamente las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones#14._Mantenimiento_con_formulario">interfaces
+						href="${urlUdaPatrMantForm}">interfaces
 							de mantenimiento de datos</a> (acciones <a target="_blank"
 						href="https://es.wikipedia.org/wiki/CRUD">CRUD</a>), y otras de
 						uso común (combos enlazados, fechas-horas, feedback, etc.)
@@ -77,7 +84,7 @@
 					<li>Generar código. Crea el código imprescindible en toda
 						aplicación con arquitectura en capas y bajo el paradigma <a
 						target="_blank"
-						href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">MVC</a>
+						href="${urlWikiMVC}">MVC</a>
 						(Modelo-Vista-Controlador).
 					</li>
 					<li>Ser flexible y configurable. Permite adaptar el código
@@ -92,7 +99,7 @@
 						arquitectura.</li>
 					<li>Crear aplicaciones accesibles. Hasta donde sea posible, se
 						cumplen con las recomendaciones <a target="_blank"
-						href="http://www.w3.org/TR/WCAG20/">WCAG2.0</a> y <a
+						href="${urlWCAG20}">WCAG2.0</a> y <a
 						target="_blank" href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a>
 					</li>
 				</ul>
@@ -104,60 +111,74 @@
 		<div class="col-xs-12">
 			<section id="newFeaturesContent">
 				<h2>Novedades</h2>
-
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar" var="urlActualizar" htmlEscape="true"/>
+				<spring:url value="https://drive.google.com/folderview?id=0B2jWuJHnBpz_VFVLU2ZoREQ2Q1E&amp;usp=sharing#list" var="urlDescargas" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_b3dWblVzVTJOT0E&amp;export=download" var="urlPlantillas" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_OWZrTnZUMnIySGc&amp;export=download" var="urlComponentes" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_YkEyZUlEb1dvRnM&amp;export=download" var="urlPlugin" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_eng5RmV1YTk3Z1E&amp;export=download" var="urlEclipse" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_dUxGLXhXWTdhUlE&amp;export=download" var="urlx38" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_dzVPQWp1YWl1ZDQ&amp;export=download" var="urlMaven" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_VGowMkNWa1NyeEU&amp;export=download" var="urlDoc" htmlEscape="true"/>
+				
 				<b><a
-					href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar">9-Agosto-2016</a>:</b>
+					href="${urlActualizar}">9-Agosto-2016</a>:</b>
 				<br> Se actualizan las siguientes <a target="_blank"
-					href="https://drive.google.com/folderview?id=0B2jWuJHnBpz_VFVLU2ZoREQ2Q1E&amp;usp=sharing#list">descargas</a>:<br>
+					href="${urlDescargas}">descargas</a>:<br>
 				<ul>
 					<li>Plantillas de generación de código: <a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_b3dWblVzVTJOT0E&amp;export=download">Plantillas
+						href="${urlPlantillas}">Plantillas
 							(v2.4.8)</a></li>
 					<li>Componentes visuales: <a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_OWZrTnZUMnIySGc&amp;export=download">Componentes
+						href="${urlComponentes}">Componentes
 							RUP (v2.4.8)</a></li>
 					<li>Asistente de generación de código: <a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_YkEyZUlEb1dvRnM&amp;export=download">Plugin
+						href="${urlPlugin}">Plugin
 							UDA (v2.4.8)</a></li>
 					<li>Eclipse IDE configurado con nuevas plantillas y nuevo
 						plugin: <a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_eng5RmV1YTk3Z1E&amp;export=download">Eclipse
+						href="${urlEclipse}">Eclipse
 							Helios UDA (v2.4.8)</a>
 					</li>
 					<li>Librería de utilidades comunes: <a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_dUxGLXhXWTdhUlE&amp;export=download">x38ShLibClasses-2.4.7-RELEASE.jar</a></li>
+						href="${urlx38}">x38ShLibClasses-2.4.7-RELEASE.jar</a></li>
 					<li>Actualización con las nuevas versiones de la librería del
 						<a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_dzVPQWp1YWl1ZDQ&amp;export=download">Repositorio
+						href="${urlMaven}">Repositorio
 							Maven</a>
 					</li>
 					<li><a
-						href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_VGowMkNWa1NyeEU&amp;export=download">Documentación
+						href="${urlDoc}">Documentación
 							actualizada</a></li>
 				</ul>
 
 				En esta versión se han realizado las siguientes mejoras:<br>
+				<spring:url value="https://github.com/UDA-EJIE/udaRUP/issues?q=milestone%3Av2.4.8+label%3Abug" var="urlCorrBugs" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/udaPlugin/issues?q=milestone%3Av2.4.8" var="urlcorrPlug" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_TFMxZFVrMFJDQVk&amp;export=download" var="urlChangelog" htmlEscape="true"/>
+				<spring:url value="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_TnhuN2k1bElmTFU&amp;export=download" var="urlMaquinaVirtual" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones" var="urlVersiones" htmlEscape="true"/>
 				<ul>
 					<li><a target="_blank"
-						href="https://github.com/UDA-EJIE/udaRUP/issues?q=milestone%3Av2.4.8+label%3Abug">Correción
+						href="${urlCorrBugs}">Correción
 							de bugs detectados en la versión anterior de los componentes</a></li>
 					<li><a target="_blank"
-						href="https://github.com/UDA-EJIE/udaPlugin/issues?q=milestone%3Av2.4.8">Plugin
+						href="${urlcorrPlug}">Plugin
 							UDA: </a>Adecuación de la cadena de conexión a base de datos usando
 						Service Name</li>
 				</ul>
 
 				En la sección UDA v2.4.8 (09-Agosto-2016) del archivo <a
-					href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_TFMxZFVrMFJDQVk&amp;export=download">ChangeLog.txt</a>
+					href="${urlChangelog}">ChangeLog.txt</a>
 				podrás encontrar la lista de cambios realizados en esta versión.<br>
 				<br> La <a
-					href="https://docs.google.com/uc?authuser=0&amp;id=0B2jWuJHnBpz_TnhuN2k1bElmTFU&amp;export=download">máquina
+					href="${urlMaquinaVirtual}">máquina
 					virtual</a> configurada con el entorno completo sobre la versión 2.4.4
 				sigue estando disponible en caso de necesitar una maqueta de entorno
 				completo.<br> <br> <i>Puedes encontrar la información
 					sobre los productos liberados anteriormente en el apartado <a
 					target="_blank"
-					href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones">Versiones</a>
+					href="${urlVersiones}">Versiones</a>
 				</i> <br> <br>
 			</section>
 		</div>
@@ -167,10 +188,12 @@
 			<section>
 				<h2>verlo en funcionamiento</h2>
 				<ul>
+					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos" var="urlVideos" htmlEscape="true"/>
+					<spring:url value="http://www.ejie.eus/x21aPilotoPatronesWar/" var="urlPilotos" htmlEscape="true"/>
 					<li>los <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos">videos</a></li>
+						href="${urlVideos}">videos</a></li>
 					<li>la <a target="_blank"
-						href="http://www.ejie.eus/x21aPilotoPatronesWar/">aplicación
+						href="${urlPilotos}">aplicación
 							de demostración</a></li>
 				</ul>
 			</section>
@@ -178,33 +201,40 @@
 		<div class="col-md-4">
 			<section>
 				<h2>profundizar</h2>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Arquitectura" var="urlUdaArq" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes" var="urlUdaEjieComponentes" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones" var="urlUdaEjiePatrones" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Documentacion" var="urlUdaEjieDoc" htmlEscape="true"/>
 				<ul>
 					<li>las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Arquitectura">guías,
+						href="${urlUdaArq}">guías,
 							y recomendaciones funcionales y técnicas</a></li>
 					<li>las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes">utilidades,
+						href="${urlUdaEjieComponentes}">utilidades,
 							herramientas, librerías, plugins</a></li>
 					<li>los <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones">
+						href="${urlUdaEjiePatrones}">
 							patrones de usabilidad web</a><a></a></li>
 					<a> </a>
 					<li><a>la </a><a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Documentacion">documentación</a></li>
+						href="${urlUdaEjieDoc}">documentación</a></li>
 				</ul>
 			</section>
 		</div>
 		<div class="col-md-4">
 			<section>
 				<h2>pasar a la acción</h2>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Instalar" var="urlUdaEjieInstalar" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar" var="urlUdaEjieActualizar" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones" var="urlUdaEjieVersion" htmlEscape="true"/>
 				<ul>
 					<li>partiendo de cero, consulta cómo <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Instalar">Instalar</a></li>
+						href="${urlUdaEjieInstalar}">Instalar</a></li>
 					<li>si ya has instalado alguna versión anteriormente, puedes
 						ver cómo <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar">Actualizar</a>
+						href="${urlUdaEjieActualizar}">Actualizar</a>
 						desde tu <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones">versión</a>
+						href="${urlUdaEjieVersion}">versión</a>
 					</li>
 				</ul>
 			</section>

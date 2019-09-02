@@ -31,7 +31,8 @@
 
 	<h1>Pestañas de navegación</h1>
 	<p id="docu">
-		<a target="_blank" href="#">Descargar documentación</a>
+		<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+		<a target="_blank" href="${urlHashtag}">Descargar documentación</a>
 	</p>
 	<br>
 

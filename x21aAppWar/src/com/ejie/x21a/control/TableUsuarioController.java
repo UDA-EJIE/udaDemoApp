@@ -606,6 +606,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("multiPk", new MultiPk());
 		return "tableDialog";
 	}
 	

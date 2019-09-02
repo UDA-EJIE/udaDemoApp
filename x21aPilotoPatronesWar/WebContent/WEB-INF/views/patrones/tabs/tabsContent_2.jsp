@@ -14,7 +14,8 @@
  -- que establece la Licencia.
  --%>
 <h1>Pestañas de navegación</h1>
-<p id="docu"><a target="_blank" href="#">Descargar documentación</a></p>
+<spring:url value="#" var="urlHashtag" htmlEscape="true"/> 
+<p id="docu"><a target="_blank" href="${urlHashtag}">Descargar documentación</a></p>
 <br>
 
 	<h2>Descripción</h2>

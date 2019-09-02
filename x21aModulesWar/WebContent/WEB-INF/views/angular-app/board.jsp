@@ -96,8 +96,9 @@
 				<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
 			</button>
 			<div class="dropdown-menu" aria-labelledby="btnOptions_{{id}}">
-    			<a class="dropdown-item list-modify" data-listId="{{id}}" href="#">Modificar</a>
-    			<a class="dropdown-item list-delete" data-listId="{{id}}" href="#">Eliminar</a>
+				<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+    			<a class="dropdown-item list-modify" data-listId="{{id}}" href="${urlHashtag}">Modificar</a>
+    			<a class="dropdown-item list-delete" data-listId="{{id}}" href="${urlHashtag}">Eliminar</a>
   			</div>
 			</div>
 
@@ -105,6 +106,7 @@
 		<h6 class="card-subtitle mb-2 text-muted">{{taskNum}} Tareas</h6>
 		<p class="card-text">{{description}}</p>
 	  	<a class="card-link" id="><span>Mostrar tareas</span></a>
-      	<a class="card-link" href="/x21aModulesWar/task/maint/{{id}}"><span>Ir detalle</span></a>
+		<spring:url value="/task/maint/{{id}}" var="urlTaskDetalle" htmlEscape="true"/>
+      	<a class="card-link" href="${urlTaskDetalle}"><span>Ir detalle</span></a>
       </div>
 </script>

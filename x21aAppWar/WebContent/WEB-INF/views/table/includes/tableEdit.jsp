@@ -26,51 +26,51 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form id="example_detail_form">
+		<form:form modelAttribute="usuario" id="example_detail_form">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="example_detail_feedback"></div>	
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-			    	<input type="text" name="id" id="id_detailForm_table" />
+			    	<form:input path="id" id="id_detailForm_table" />
 					<label for="id_detailForm_table"><spring:message code="id" /></label>
 			    </div>
 			    
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="nombre" id="nombre_detail_table" />
+			    	<form:input path="nombre" id="nombre_detail_table" />
 			    	<label for="nombre_detail_table"><spring:message code="nombre" /></label>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="apellido1" id="apellido1_detail_table" />
+			    	<form:input path="apellido1" id="apellido1_detail_table" />
 			    	<label for="apellido1_detail_table"><spring:message code="apellido1" /></label>
 			    </div>  
 			    
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="apellido2" id="apellido2_detail_table" />
+			    	<form:input path="apellido2" id="apellido2_detail_table" />
 			    	<label for="apellido2_detail_table"><spring:message code="apellido2" /></label>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="fechaBaja" id="fechaBaja_detail_table" />
+			    	<form:input path="fechaBaja" id="fechaBaja_detail_table" />
 			    	<label for="fechaBaja_detail_table"><spring:message code="fechaBaja" /></label>
 			    </div>
 			    
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="fechaAlta" id="fechaAlta_detail_table" />
+			    	<form:input path="fechaAlta" id="fechaAlta_detail_table" />
 			    	<label for="fechaAlta_detail_table"><spring:message code="fechaAlta" /></label>
 			    </div>
 			</div>
 			<div class="form-row">
 			    <div class="col-sm checkbox-material">
-			    	<input type="checkbox" name="ejie" id=ejie_detail_table value="1" />
+			    	<form:checkbox path="ejie" id=ejie_detail_table value="1" />
 			    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
 			    </div> 
 			    
 			    <div class="form-groupMaterial col-sm">
-			    	<input type="text" name="rol" id="rol_detail_table" />
+			    	<form:input path="rol" id="rol_detail_table" />
 			    	<label for="rol_detail_table"><spring:message code="rol" /></label>
 			    </div>
 			</div>	
@@ -80,7 +80,7 @@
 					<label for="imagenAlumno"><spring:message code="subidaImg" /></label>
 				</div>	
 			</div>	
-		</form>
+		</form:form>
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">

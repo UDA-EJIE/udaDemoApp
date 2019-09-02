@@ -29,12 +29,12 @@
 	
 	<div class="example">
 		<div id="feedbackDate"></div>
-		<form id="formDate">
+		<form:form modelAttribute="randomForm" id="formDate">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
 				     	<label for="dateField" class="label"><spring:message code="campoObligatorio" /></label>
-					  	<input type="text" name="dateField" class="form-control" id="dateField" />
+					  	<form:input path="dateField" class="form-control" id="dateField" />
 				    </div>
 				</div>
 				<div class="col-md-4">
@@ -49,18 +49,18 @@
 					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</div>
 	
 	<div class="example">
 		<div id="feedbackAutocomplete"></div>
 		
-		<form id="formAutocomplete">
+		<form:form modelAttribute="randomForm" id="formAutocomplete">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
 				     	<label for="autocompleteField" class="label"><spring:message code="campoObligatorio" /></label>
-					  	<input type="text" name="autocompleteField" class="form-control" id="autocompleteField" />
+					  	<form:input path="autocompleteField" class="form-control" id="autocompleteField" />
 				    </div>
 				</div>
 				<div class="col-md-4">
@@ -75,7 +75,7 @@
 					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
 				</div>
 			</div>
-		</form>
+		</form:form>
 	
 	</div>
 	

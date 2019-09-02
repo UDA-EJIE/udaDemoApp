@@ -34,7 +34,7 @@
 <div id="table_detail_div" class="rup-table-formEdit-detail">
 	<div id ="table_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
-		<form id="table_detail_form">
+		<form:form modelAttribute="usuario" id="table_detail_form">
 			<div id ="table_detail_feedback"></div>
 			
 			<div class="form-row"> 
@@ -42,13 +42,13 @@
 					<label for="id_detailForm_table" class="formulario_linea_label">
 						<spring:message code="id" />
 					</label>
-					<input type="text" name="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
+					<form:input path="id" class="formulario_linea_input form-control" id="id_detailForm_table" />
 				</div>
 				<div class="form-group col-sm">
 					<label for="nombre_detail_table" class="formulario_linea_label">
 						<spring:message code="nombre" />
 					</label>
-					<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" />
+					<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_detail_table" />
 				</div>
 			</div>
 			<div class="form-row"> 
@@ -56,13 +56,13 @@
 					<label for="apellido1_detail_table" class="formulario_linea_label">
 						<spring:message code="apellido1" />
 					</label>
-					<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" />
+					<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table" />
 				</div>
 				<div class="form-group col-sm">
 					<label for="apellido2_detail_table" class="formulario_linea_label">
 						<spring:message code="apellido2" />
 					</label>
-					<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" />
+					<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table" />
 				</div>
 			</div>
 			<div class="form-row"> 
@@ -70,13 +70,13 @@
 					<label for="fechaBaja_detail_table" class="formulario_linea_label">
 						<spring:message code="fechaBaja" />
 					</label>
-					<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
+					<form:input path="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_detail_table" />
 				</div>
 				<div class="form-group fix-align col-sm">
 					<label for="fechaAlta_detail_table" class="formulario_linea_label">
 						<spring:message code="fechaAlta" />
 					</label>
-					<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
+					<form:input path="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_detail_table" />
 				</div>
 			</div>
 			<div class="form-row">
@@ -84,17 +84,17 @@
 					<label for="ejie_detail_table" class="formulario_linea_label">
 						<spring:message code="ejie" />
 					</label>
-					<input type="checkbox" id="ejie_detail_table" class="formulario_linea_input form-control" name="ejie" value="1"/>
+					<form:checkbox id="ejie_detail_table" class="formulario_linea_input form-control" path="ejie" value="1"/>
 				</div>
 				<div class="form-group fix-align col-sm">
 					<label for="rol_detail_table" class="formulario_linea_label">
 						<spring:message code="rol" />
 					</label>
-					<input type="text"  id="rol_detail_table" name="rol" class="formulario_linea_input form-control" />
+					<form:input id="rol_detail_table" path="rol" class="formulario_linea_input form-control" />
 				</div>
 			</div>
 			
-		</form>
+		</form:form>
 	</div>
 	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
 		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">

@@ -20,49 +20,49 @@
 	<div id="table_feedback"></div>
 	<div id="table_toolbar"></div>
 	<div id="table_filter_div" class="rup-jqtable-filter">
-		<form id="table_filter_form">
+		<form:form modelAttribute="usuario" id="table_filter_form">
 			<div id="table_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="table_filter_fieldset" class="rup-jqtable-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="id_filter_table" class="formulario_linea_label"><spring:message code="id" /></label>
-						<input type="text" name="id" class="formulario_linea_input form-control" id="id_filter_table" />
+						<form:input path="id" class="formulario_linea_input form-control" id="id_filter_table" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="nombre_filter_table" class="formulario_linea_label"><spring:message code="nombre" /></label>
-						<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_filter_table" />
+						<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_filter_table" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="apellido1_filter_table" class="formulario_linea_label"><spring:message code="apellido1" /></label>
-						<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_filter_table" />
+						<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_filter_table" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="apellido2_filter_table" class="formulario_linea_label"><spring:message code="apellido2" /></label>
-						<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_filter_table" />
+						<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_filter_table" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="ejie_filter_table" class="formulario_linea_label"><spring:message code="ejie" /></label>
 						<div class="formulario_linea_input form-control">
-							<select id="ejie_filter_table" name="ejie" class="rup-combo" ></select>
+							<form:select id="ejie_filter_table" path="ejie" class="rup-combo" />
 						</div>
 					</div>
 					<div class="form-group col-sm">
 						<label for="fechaAlta_filter_table" class="formulario_linea_label"><spring:message code="fechaAlta" /></label>
-						<input type="text" name="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_filter_table" />
+						<form:input type="text" path="fechaAlta" class="formulario_linea_input form-control" id="fechaAlta_filter_table" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm" style="clear: left;">
 						<label for="fechaBaja_filter_table" class="formulario_linea_label"><spring:message code="fechaBaja" /></label>
-						<input type="text" name="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_filter_table" />
+						<form:input path="fechaBaja" class="formulario_linea_input form-control" id="fechaBaja_filter_table" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="rol_filter_table" class="formulario_linea_label"><spring:message code="rol" /></label>
-						<select id="rol_filter_table" name="rol" class="formulario_linea_input form-control" ></select>
+						<form:select id="rol_filter_table" path="rol" class="formulario_linea_input form-control" />
 					</div>
 				</div>
 				
@@ -81,7 +81,7 @@
 			        </button>
 			    </div>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 
 	<div id="table_grid_div">

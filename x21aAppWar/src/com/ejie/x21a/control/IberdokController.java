@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.IberdokFile;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
@@ -274,6 +275,7 @@ public class IberdokController {
 		model.addAttribute("urlEditorDocumentos",
 				appConfiguration.getProperty("iberdok.urlEditorDocumentos"));
 
+		model.addAttribute("randomForm", new RandomForm());
 		return "iberdok";
 	}
 
