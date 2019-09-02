@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<form:form modelAttriute="multiPk" id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
+<form:form modelAttribute="multiPk" id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
 	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
 	<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
 		<div class="form-row">

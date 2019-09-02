@@ -59,7 +59,7 @@
         <div class="row mt-5">
             <jsp:include page="includes/tableEdit.jsp"></jsp:include>
 
-            <form:form id="example_tableConfiguration" class="col-xl-12">
+            <form:form id="example_tableConfiguration" modelAttribute="options" class="col-xl-12">
                 <h3 id="pluginErrorLabel">Selección de Plugins</h3>
                 <fieldset class="form-group">
                     <div class="row">
@@ -136,17 +136,17 @@
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="multiSelection"
-                                    class="custom-control-input"
-                                    path="example_seleccionTabla"
+                                    cssClass="custom-control-input"
+                                    path="tipoSeleccionTabla"
                                     value="7"/> <label
                                     for="multiSelection"
                                     class="custom-control-label">Multiselección</label>
                             </div>
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
-                                <form:radiobutton" id="selection"
-                                    class="custom-control-input"
-                                    path="example_seleccionTabla"
+                                <form:radiobutton id="selection"
+                                    cssClass="custom-control-input"
+                                    path="tipoSeleccionTabla"
                                     value="8"/> <label
                                     for="selection"
                                     class="custom-control-label">Selección
@@ -155,8 +155,8 @@
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="noSelection"
-                                    class="custom-control-input"
-                                    path="example_seleccionTabla"
+                                    cssClass="custom-control-input"
+                                    path="tipoSeleccionTabla"
                                     value="9"/> <label
                                     for="noSelection"
                                     class="custom-control-label">Sin

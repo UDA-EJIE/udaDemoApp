@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<form:form id="example_filter_form">
+<form:form modelAttribute="usuario" id="example_filter_form">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
@@ -64,12 +64,12 @@
      
     <!-- Botonera del formulario de filtrado -->
     <div id="example_filter_buttonSet" class="text-right">
-    	<!-- Botón de limpiar -->
+    	<!-- Botï¿½n de limpiar -->
         <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
         	<span>Limpiar</span>
         </button>
-        <!-- Botón de filtrado -->
+        <!-- Botï¿½n de filtrado -->
         <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
         	<i class="mdi mdi-filter"></i>
         	<span>Filtrar</span>        	

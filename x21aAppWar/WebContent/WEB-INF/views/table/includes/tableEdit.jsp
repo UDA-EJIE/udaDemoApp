@@ -20,7 +20,7 @@
 
 <!-- Formulario de detalle -->
 <div id="example_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegación del detalle -->
+	<!-- Barra de navegaciï¿½n del detalle -->
 	<div id ="example_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -65,7 +65,7 @@
 			</div>
 			<div class="form-row">
 			    <div class="col-sm checkbox-material">
-			    	<form:checkbox path="ejie" id=ejie_detail_table value="1" />
+			    	<form:checkbox path="ejie" id="ejie_detail_table" value="1" />
 			    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
 			    </div> 
 			    
@@ -85,15 +85,15 @@
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
-			<!-- Botón cancelar -->
+			<!-- Botï¿½n cancelar -->
 			<button id="example_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
-			<!-- Botón guardar -->
+			<!-- Botï¿½n guardar -->
 			<button id="example_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<!-- Botón guardar y continuar -->
+			<!-- Botï¿½n guardar y continuar -->
 			<button id="example_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
