@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>${tituloPagina}</h2> <!-- Titulo pagina -->
+<h2>Tabla en di√°logo</h2> <!-- Titulo pagina -->
 
 <button id="btnTablaDialog_div" class="btn-material btn-material-primary-high-emphasis" type="button">
 	<span>Tabla en formulario (DIV)</span>
@@ -105,14 +105,14 @@
 		            </tr>
 		        </thead>
 			</table>
-			<!-- Barra de paginaciÛn -->
+			<!-- Barra de paginaciÔøΩn -->
 			<div id="tableDialog_pager"></div>
 		</div>
 	</div>	
 	
 <!-- Formulario de detalle -->
 <div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegaciÛn del detalle -->
+	<!-- Barra de navegaciÔøΩn del detalle -->
 	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -166,7 +166,7 @@
 			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
-			<!-- BotÛn Guardar -->
+			<!-- BotÔøΩn Guardar -->
 			<button id="MultiPk_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
