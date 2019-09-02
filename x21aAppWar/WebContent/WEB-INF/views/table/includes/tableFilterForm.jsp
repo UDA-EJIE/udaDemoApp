@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<form:form id="example_filter_form">
+<form:form modelAttribute="usuario" id="example_filter_form">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     

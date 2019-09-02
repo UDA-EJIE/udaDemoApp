@@ -137,7 +137,7 @@
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="multiSelection"
                                     cssClass="custom-control-input"
-                                    path="example_seleccionTabla"
+                                    path="tipoSeleccionTabla"
                                     value="7"/> <label
                                     for="multiSelection"
                                     class="custom-control-label">Multiselección</label>
@@ -146,7 +146,7 @@
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="selection"
                                     cssClass="custom-control-input"
-                                    path="example_seleccionTabla"
+                                    path="tipoSeleccionTabla"
                                     value="8"/> <label
                                     for="selection"
                                     class="custom-control-label">Selección
@@ -156,7 +156,7 @@
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="noSelection"
                                     cssClass="custom-control-input"
-                                    path="example_seleccionTabla"
+                                    path="tipoSeleccionTabla"
                                     value="9"/> <label
                                     for="noSelection"
                                     class="custom-control-label">Sin
