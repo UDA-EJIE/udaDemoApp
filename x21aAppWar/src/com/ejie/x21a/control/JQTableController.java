@@ -133,6 +133,7 @@ public class JQTableController  {
 	@RequestMapping(value = "inlineEditDynamicColumns", method = RequestMethod.GET)
 	public String getInlineEditDynamicColumns(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaInlineDynamicColumns", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("usuario", new Usuario());
 		return "jqtableInlineEditDynamicColumns";
 	}
 	

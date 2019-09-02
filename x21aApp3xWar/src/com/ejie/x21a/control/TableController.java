@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 
@@ -64,6 +65,7 @@ public class TableController  {
 		model.addAttribute("tituloPagina",
 				messageSource.getMessage("jerarquiaTitle", null, LocaleContextHolder.getLocale()) + " - " +
 				messageSource.getMessage("jerarquia", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("usuario", new Usuario());
 		return "tableJerarquia";
 	}
 	
@@ -72,6 +74,7 @@ public class TableController  {
 		model.addAttribute("tituloPagina",
 				messageSource.getMessage("jerarquiaTitle", null, LocaleContextHolder.getLocale()) + " - " +
 				messageSource.getMessage("jerarquiaMulti", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("usuario", new Usuario());
 		return "tableJerarquiaMulti";
 	}
 	
@@ -144,6 +147,7 @@ public class TableController  {
 	@RequestMapping(value = "dialog", method = RequestMethod.GET)
 	public String getDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaDialog", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("usuario", new Usuario());
 		return "tableDialog";
 	}
 	

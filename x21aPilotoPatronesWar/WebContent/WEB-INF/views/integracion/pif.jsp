@@ -72,7 +72,7 @@
 	</script>		
 </head>
 <body onload="inicio()">
-<form id="fmFileUpload" name="fmFileUpload" action="PDTE" method="post">
+<form:form id="fmFileUpload" name="fmFileUpload" action="PDTE" method="post">
 	<div id="divSWFUploadUI">
 		<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;Ejemplo de Uso de Subida Asíncrona
@@ -101,7 +101,7 @@
 		We're sorry.  SWFUpload could not load.  You may need to install or upgrade Flash Player.
 		Visit the <a href="${urlAdobeFlash}">Adobe website</a> to get the Flash Player.
 	</div>
-</form>
+</form:form>
 
 
 

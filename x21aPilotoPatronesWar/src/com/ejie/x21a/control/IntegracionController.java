@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ejie.x21a.model.NoraCalle;
 import com.ejie.x21a.model.NoraMunicipio;
 import com.ejie.x21a.model.NoraProvincia;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.NoraCalleService;
 import com.ejie.x21a.service.NoraMunicipioService;
 import com.ejie.x21a.service.NoraProvinciaService;
@@ -52,6 +53,7 @@ public class IntegracionController {
 	//Nora
 	@RequestMapping(value = "nora", method = RequestMethod.GET)
 	public String getNora(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "nora";
 	}
 	//Tiny

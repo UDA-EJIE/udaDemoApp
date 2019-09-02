@@ -19,7 +19,7 @@
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
-<form id="multipk_tableConfiguration">
+<form:form id="multipk_tableConfiguration">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
@@ -57,15 +57,15 @@
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
 			    <div class="radio-material pluginsControl">
-			        <input type="radio" id="multiSelection" name="multipk_seleccionTabla" value="2">
+			        <form:radiobutton id="multiSelection" path="multipk_seleccionTabla" value="2"/>
 			        <label for="multiSelection">Multiselección</label>
 			    </div>
 		        <div class="radio-material pluginsControl">
-		            <input type="radio" id="selection" name="multipk_seleccionTabla" value="4">
+		            <form:radiobutton type="radio" id="selection" path="multipk_seleccionTabla" value="4"/>
 		            <label for="selection">Selección Simple</label>
 		        </div>
 		        <div class="radio-material pluginsControl">
-		            <input type="radio" id="noSelection" name="multipk_seleccionTabla" value="7">
+		            <form:radiobutton type="radio" id="noSelection" path="multipk_seleccionTabla" value="7"/>
 		            <label for="noSelection">Sin selección</label>
 		        </div>
 	        </div>
@@ -73,4 +73,4 @@
   	</fieldset>
 	<span id="pluginError"></span>
 	<button id="multipk_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
-</form>
+</form:form>

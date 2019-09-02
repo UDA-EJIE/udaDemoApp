@@ -43,6 +43,7 @@ import org.apache.xpath.XPathAPI;
 
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
@@ -83,7 +84,7 @@ public class ExperimentalController {
 		//logLevel
 		@RequestMapping(value = "logLevel", method = RequestMethod.GET)
 		public String getLogLevel(Model model) {
-	
+			model.addAttribute("randomForm", new RandomForm());
 			return "logLevel";
 		}
 
@@ -258,7 +259,7 @@ public class ExperimentalController {
 		public String urlFinalizacion(@RequestBody IberdokFile file,
 //				@RequestParam(value = "idModelo") String idModelo) {
 			 @RequestParam(value = "idModelo") String idModelo,
-			 @RequestParam(value = "idCorrelacion") String nombre) {
+			 @RequestParam(value = "idCorrelacion") String nombre, Model modelo) {
 			logger.info("urlFinalizacion-start");
 			logger.info("urlFinalizacion-idDOcumento: " + file.getIdDocumento());
 			logger.info("urlFinalizacion-file: " + file.getFile());
@@ -310,6 +311,7 @@ public class ExperimentalController {
 			}
 
 			logger.info("urlFinalizacion-end");
+			modelo.addAttribute("randomForm", new RandomForm());
 			return "iberdok";
 		}
 		
@@ -342,7 +344,7 @@ public class ExperimentalController {
 /**							                                                                                   ***/
 /*****************************************************************************************************************/
 		@RequestMapping(value = "/urlPruebaConDosParamatros")
-		public String urlFinalizacion(@RequestBody String file ,@RequestBody String idModelo){
+		public String urlFinalizacion(@RequestBody String file ,@RequestBody String idModelo, Model modelo){
 			logger.info("urlUrko-start");
 			//logger.info("urlUrko-idDOcumento: " + file.getIdDocumento());
 			logger.info("urlUrko-file: " + file);
@@ -394,6 +396,7 @@ public class ExperimentalController {
 //			}
 
 			logger.info("urlUrko-end");
+			modelo.addAttribute("randomForm", new RandomForm());
 			return "iberdok";
 		}
 		

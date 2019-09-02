@@ -297,7 +297,7 @@
 		</div>
 
 		<div id="divMultiplesEntidades">
-			<form id="formMultientidades"
+			<form:form modelAttribute="randomForm" id="formMultientidades"
 				action='${pageContext.request.contextPath}/patrones/form/multientidades'
 				method="post">
 				<fieldset class="alumnoFieldset">
@@ -315,22 +315,20 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="alumno_nombre_multi" class="label"><spring:message
-										code="nombre" /></label> <input type="text" name="alumno.nombre"
+										code="nombre" /></label> <form:input path="alumno.nombre"
 									class="formulario_linea_input" size="20"
 									id="alumno_nombre_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="alumno_apellido1_multi" class="label"><spring:message
-										code="apellido1" /></label> <input type="text"
-									name="alumno.apellido1" class="formulario_linea_input"
+										code="apellido1" /></label> <form:input path="alumno.apellido1" class="formulario_linea_input"
 									size="30" id="alumno_apellido1_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="alumno_apellido2_multi" class="label"><spring:message
-										code="apellido2" /></label> <input type="text"
-									name="alumno.apellido2" class="formulario_linea_input"
+										code="apellido2" /></label> <form:input path="alumno.apellido2" class="formulario_linea_input"
 									size="30" id="alumno_apellido2_multi" />
 							</div>
 						</div>
@@ -342,22 +340,20 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="departamento_code_multi" class="label"><spring:message
-										code="codigo" /></label> <input type="text" name="departamento.code"
+										code="codigo" /></label> <form:input path="departamento.code"
 									class="formulario_linea_input" size="20"
 									id="departamento_code_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="departamento_descEs_multi" class="label"><spring:message
-										code="descEs" /></label> <input type="text"
-									name="departamento.descEs" class="formulario_linea_input"
+										code="descEs" /></label> <form:input path="departamento.descEs" class="formulario_linea_input"
 									size="30" id="departamento_descEs_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="departamento_descEu_multi" class="label"><spring:message
-										code="descEu" /></label> <input type="text"
-									name="departamento.descEu" class="formulario_linea_input"
+										code="descEu" /></label> <form:input path="departamento.descEu" class="formulario_linea_input"
 									size="30" id="departamento_descEu_multi" />
 							</div>
 						</div>
@@ -365,9 +361,9 @@
 					<input type="submit"
 						value="<spring:message code="patron.formulario.enviarMultientidad" />" />
 				</fieldset>
-			</form>
+			</form:form>
 
-			<form id="formMultientidadesMismoTipo"
+			<form:form modelAttribute="randomForm" id="formMultientidadesMismoTipo"
 				action='${pageContext.request.contextPath}/patrones/form/multientidadesMismoTipo'
 				method="post">
 				<fieldset class="alumnoFieldset">
@@ -386,21 +382,21 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="comarca1_code_multi" class="label"><spring:message
-										code="codigo" /></label> <input type="text" name="comarca1.code"
+										code="codigo" /></label> <form:input path="comarca1.code"
 									class="formulario_linea_input" size="20"
 									id="comarca1_code_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca1_descEs_multi" class="label"><spring:message
-										code="descEs" /></label> <input type="text" name="comarca1.descEs"
+										code="descEs" /></label> <form:input path="comarca1.descEs"
 									class="formulario_linea_input" size="30"
 									id="comarca1_descEs_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca1_descEu_multi" class="label"><spring:message
-										code="descEu" /></label> <input type="text" name="comarca1.descEu"
+										code="descEu" /></label> <form:input path="comarca1.descEu"
 									class="formulario_linea_input" size="30"
 									id="comarca1_descEu_multi" />
 							</div>
@@ -413,21 +409,21 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="comarca2_code_multi" class="label"><spring:message
-										code="codigo" /></label> <input type="text" name="comarca2.code"
+										code="codigo" /></label> <form:input path="comarca2.code"
 									class="formulario_linea_input" size="20"
 									id="comarca2_code_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca2_descEs_multi" class="label"><spring:message
-										code="descEs" /></label> <input type="text" name="comarca2.descEs"
+										code="descEs" /></label> <form:input path="comarca2.descEs"
 									class="formulario_linea_input" size="30"
 									id="comarca2_descEs_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca2_descEu_multi" class="label"><spring:message
-										code="descEu" /></label> <input type="text" name="comarca2.descEu"
+										code="descEu" /></label> <form:input path="comarca2.descEu"
 									class="formulario_linea_input" size="30"
 									id="comarca2_descEu_multi" />
 							</div>
@@ -441,21 +437,21 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="comarca3_code_multi" class="label"><spring:message
-										code="codigo" /></label> <input type="text" name="comarca3.code"
+										code="codigo" /></label> <form:input path="comarca3.code"
 									class="formulario_linea_input" size="20"
 									id="comarca3_code_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEs_multi" class="label"><spring:message
-										code="descEs" /></label> <input type="text" name="comarca3.descEs"
+										code="descEs" /></label> <form:input path="comarca3.descEs"
 									class="formulario_linea_input" size="30"
 									id="comarca3_descEs_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEu_multi" class="label"><spring:message
-										code="descEu" /></label> <input type="text" name="comarca3.descEu"
+										code="descEu" /></label> <form:input path="comarca3.descEu"
 									class="formulario_linea_input" size="30"
 									id="comarca3_descEu_multi" />
 							</div>
@@ -465,22 +461,19 @@
 						<div class="two-col">
 							<div class="col1">
 								<label for="comarca3_provincia_code_multi" class="label"><spring:message
-										code="codigo" /></label> <input type="text"
-									name="comarca3.provincia.code" class="formulario_linea_input"
+										code="codigo" /></label> <form:input path="comarca3.provincia.code" class="formulario_linea_input"
 									size="20" id="comarca3_provincia_code_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_provincia_descEs_multi" class="label"><spring:message
-										code="descEs" /></label> <input type="text"
-									name="comarca3.provincia.descEs" class="formulario_linea_input"
+										code="descEs" /></label> <form:input path="comarca3.provincia.descEs" class="formulario_linea_input"
 									size="30" id="comarca3_provincia_descEs_multi" />
 							</div>
 
 							<div class="col1">
 								<label for="comarca3_descEu_multi" class="label"><spring:message
-										code="descEu" /></label> <input type="text"
-									name="comarca3.provincia.descEu" class="formulario_linea_input"
+										code="descEu" /></label> <form:input path="comarca3.provincia.descEu" class="formulario_linea_input"
 									size="30" id="comarca3_provincia_descEu_multi" />
 							</div>
 						</div>
@@ -488,34 +481,33 @@
 					<input type="submit"
 						value="<spring:message code="patron.formulario.enviarMultientidad" />" />
 				</fieldset>
-			</form>
+			</form:form>
 		</div>
 
 		<div id="divSubidaFicheros">
 			<fieldset class="alumnoFieldset">
 				<legend>Subida de ficheros</legend>
 
-				<form id="formSubidaArchivos"
+				<form:form modelAttribute="usuario" id="formSubidaArchivos"
 					action='${pageContext.request.contextPath}/patrones/form/subidaArchivos'
 					method="post">
 
 					<div id="feedback_fileupload_form_multiple"></div>
 					<div class="formulario_columna_cnt">
 						<div class="formulario_linea_izda_float">
-							<label id="label_nombre" for="nombre">Nombre :</label> <input
-								id="nombre" name="nombre" />
+							<label id="label_nombre" for="nombre">Nombre :</label> <form:input
+								id="nombre" path="nombre" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label id="label_apellido1" for="apellido1">Apellido 1:</label> <input
-								id="apellido1" name="apellido1" />
+							<label id="label_apellido1" for="apellido1">Apellido 1:</label> <form:input
+								id="apellido1" path="apellido1" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label id="label_apellido2" for="apellido2">Apellido 2:</label> <input
-								id="apellido2" name="apellido2" />
+							<label id="label_apellido2" for="apellido2">Apellido 2:</label> <form:input
+								id="apellido2" path="apellido2" />
 						</div>
 						<div class="formulario_linea_izda_float">
-							<label id="label_ejie" for="ejie">EJIE:</label> <input
-								type="checkbox" id="ejie" name="ejie" value="1" />
+							<label id="label_ejie" for="ejie">EJIE:</label> <form:checkbox id="ejie" path="ejie" value="1" />
 						</div>
 					</div>
 					<div class="formulario_columna_cnt">&nbsp;</div>
@@ -553,7 +545,7 @@
 								formulario</button>
 						</div>
 					</div>
-				</form>
+				</form:form>
 			</fieldset>
 		</div>
 	</div>

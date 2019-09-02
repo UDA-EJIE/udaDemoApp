@@ -27,7 +27,7 @@
 		<form:input path="apellido"/>
 		<br/><br/>
 		<label for="provincia">Delegación</label>
-		<form:select path="provincia" class="rup-combo"/>
+		<form:select path="provincia.code" class="rup-combo"/>
 	</div>
 	<div id="empresa_datos" style="display: none;">
 		<label for="empresa_nombre">Nombre</label>

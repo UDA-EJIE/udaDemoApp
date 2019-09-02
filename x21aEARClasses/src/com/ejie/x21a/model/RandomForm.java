@@ -13,12 +13,132 @@ public class RandomForm implements java.io.Serializable {
     private String apellido1;
 
     private String apellido2;
+    
+    private String location;
+    
+    private Autonomia autonomia;
+    
+    private Comarca comarca;
+    
+    private Comarca comarca1;
+    
+    private Comarca comarca2;
+    
+    private Comarca comarca3;
+    
+    private Provincia provincia;
+    
+    private Localidad localidad;
+    
+    private Municipio municipio;
+    
+    private String calle;
+    
+    private String portal;
+    
+    private String cp;
+    
+    private String escalera;
+    
+    private String piso;
+    
+    private String mano;
+    
+    private String puerta;
+    
+    private Alumno alumno;
+    
+    private Departamento departamento;
+    
+    private String aprox_postal;
+    
+    private String multipk_seleccionTabla;
+    
+    private String example_seleccionTabla;
+    
+    private String campoObligatorio1;
+    
+    private String campoObligatorio2;
+    
+    private String campoObligatorio3;
+    
+    private String valorMinimo;
+    
+    private String valorMaximo;
+    
+    private String valorIntervalo;
+    
+    private String entero;
+    
+    private String numeroDecimal;
+    
+    private String longitudMinima;
+    
+    private String longitudMaxima;
+    
+    private String longitudIntervalo;
+    
+    private String palabrasMinimo;
+    
+    private String palabrasMaximo;
+    
+    private String palabrasIntervalo;
+    
+    private String letrasYPuntuacion;
+    
+    private String alfanumerico;
+    
+    private String soloLetras;
+    
+    private String soloDigitos;
+    
+    private String sinEspacos;
+    
+    private String patron;
+    
+    private String nameLog;
+    
+    private String levelLog;
+    
+    private String dateField;
+    
+    private String autocompleteField;
 
     private List<String> alertDay;
+    
+    private String select;
+    
+    private boolean terms;
 
     private String rol;
+    
+    private String As;
 
     private String rolName2;
+    
+    private String lang;
+    
+    private String modo;
+    
+    private String token;
+    
+    private String xhtml64;
+    
+    private String idDocumento;
+    
+    private String idUsuario;
+    
+    private String idModelo;
+    
+    private String semilla;
+    
+    private String semillaTXT;
+    
+    private String semillaXML;
+    
+    private String urlRetorno;
+    
+    private String urlFinalizacion;
 
     private String autocomplete;
 
@@ -41,8 +161,16 @@ public class RandomForm implements java.io.Serializable {
     private String autocompleteCombobox2;
 
     private String username;
+    
+    private String name;
 
     private String password;
+    
+    private String password1;
+    
+    private String password2;
+    
+    private String gender;
 
     private String desde;
 
@@ -81,16 +209,22 @@ public class RandomForm implements java.io.Serializable {
     private String mes_diciembre;
 
     private String ejie;
+    
+    private String email;
 
     private String group1;
+    
+    private String number;
+    
+    private String category;
 
     private String empresa_nombre;
+    
+    private String company;
 
     private String empresa_web;
 
     private String empresa_email;
-
-    private String provincia;
 
     private String direccion_araba;
 
@@ -452,11 +586,11 @@ public class RandomForm implements java.io.Serializable {
         this.empresa_email = empresa_email;
     }
 
-    public String getProvincia() {
+    public Provincia getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(String provincia) {
+    public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
     }
 
@@ -555,4 +689,576 @@ public class RandomForm implements java.io.Serializable {
     public void setAlertEdad(List<String> alertEdad) {
         this.alertEdad = alertEdad;
     }
+
+	public String getSelect() {
+		return select;
+	}
+
+	public void setSelect(String select) {
+		this.select = select;
+	}
+
+	public String getAs() {
+		return As;
+	}
+
+	public void setAs(String as) {
+		As = as;
+	}
+
+	public String getPassword1() {
+		return password1;
+	}
+
+	public void setPassword1(String password1) {
+		this.password1 = password1;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public boolean isTerms() {
+		return terms;
+	}
+
+	public void setTerms(boolean terms) {
+		this.terms = terms;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
+	}
+
+	public String getModo() {
+		return modo;
+	}
+
+	public void setModo(String modo) {
+		this.modo = modo;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getUrlRetorno() {
+		return urlRetorno;
+	}
+
+	public void setUrlRetorno(String urlRetorno) {
+		this.urlRetorno = urlRetorno;
+	}
+
+	public String getUrlFinalizacion() {
+		return urlFinalizacion;
+	}
+
+	public void setUrlFinalizacion(String urlFinalizacion) {
+		this.urlFinalizacion = urlFinalizacion;
+	}
+
+	public String getIdModelo() {
+		return idModelo;
+	}
+
+	public void setIdModelo(String idModelo) {
+		this.idModelo = idModelo;
+	}
+
+	public String getXhtml64() {
+		return xhtml64;
+	}
+
+	public void setXhtml64(String xhtml64) {
+		this.xhtml64 = xhtml64;
+	}
+
+	public String getIdDocumento() {
+		return idDocumento;
+	}
+
+	public void setIdDocumento(String idDocumento) {
+		this.idDocumento = idDocumento;
+	}
+
+	public String getSemilla() {
+		return semilla;
+	}
+
+	public void setSemilla(String semilla) {
+		this.semilla = semilla;
+	}
+
+	public String getSemillaTXT() {
+		return semillaTXT;
+	}
+
+	public void setSemillaTXT(String semillaTXT) {
+		this.semillaTXT = semillaTXT;
+	}
+
+	public String getSemillaXML() {
+		return semillaXML;
+	}
+
+	public void setSemillaXML(String semillaXML) {
+		this.semillaXML = semillaXML;
+	}
+
+	public String getNameLog() {
+		return nameLog;
+	}
+
+	public void setNameLog(String nameLog) {
+		this.nameLog = nameLog;
+	}
+
+	public String getLevelLog() {
+		return levelLog;
+	}
+
+	public void setLevelLog(String levelLog) {
+		this.levelLog = levelLog;
+	}
+	
+	public class Autonomia implements java.io.Serializable {
+		private String codeAutonomia;
+		
+		public String getCodeAutonomia() {
+			return codeAutonomia;
+		}
+
+		public void setCodeAutonomia(String codeAutonomia) {
+			this.codeAutonomia = codeAutonomia;
+		}
+	}
+	
+	public class Municipio implements java.io.Serializable {
+		private String codeMunicipio;
+		
+		public String getCodeMunicipio() {
+			return codeMunicipio;
+		}
+
+		public void setCodeMunicipio(String codeMunicipio) {
+			this.codeMunicipio = codeMunicipio;
+		}
+	}
+	
+	public class Localidad implements java.io.Serializable {
+		private String codeLocalidad;
+		
+		public String getCodeLocalidad() {
+			return codeLocalidad;
+		}
+
+		public void setCodeLocalidad(String codeLocalidad) {
+			this.codeLocalidad = codeLocalidad;
+		}
+	}
+
+	public Autonomia getAutonomia() {
+		return autonomia;
+	}
+
+	public void setAutonomia(Autonomia autonomia) {
+		this.autonomia = autonomia;
+	}
+
+	public Comarca getComarca() {
+		return comarca;
+	}
+
+	public void setComarca(Comarca comarca) {
+		this.comarca = comarca;
+	}
+
+	public Localidad getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
+	}
+
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getPortal() {
+		return portal;
+	}
+
+	public void setPortal(String portal) {
+		this.portal = portal;
+	}
+
+	public String getCp() {
+		return cp;
+	}
+
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
+
+	public String getEscalera() {
+		return escalera;
+	}
+
+	public void setEscalera(String escalera) {
+		this.escalera = escalera;
+	}
+
+	public String getPiso() {
+		return piso;
+	}
+
+	public void setPiso(String piso) {
+		this.piso = piso;
+	}
+
+	public String getMano() {
+		return mano;
+	}
+
+	public void setMano(String mano) {
+		this.mano = mano;
+	}
+
+	public String getMultipk_seleccionTabla() {
+		return multipk_seleccionTabla;
+	}
+
+	public void setMultipk_seleccionTabla(String multipk_seleccionTabla) {
+		this.multipk_seleccionTabla = multipk_seleccionTabla;
+	}
+
+	public String getDateField() {
+		return dateField;
+	}
+
+	public void setDateField(String dateField) {
+		this.dateField = dateField;
+	}
+
+	public String getAutocompleteField() {
+		return autocompleteField;
+	}
+
+	public void setAutocompleteField(String autocompleteField) {
+		this.autocompleteField = autocompleteField;
+	}
+
+	public String getPuerta() {
+		return puerta;
+	}
+
+	public void setPuerta(String puerta) {
+		this.puerta = puerta;
+	}
+
+	public String getAprox_postal() {
+		return aprox_postal;
+	}
+
+	public void setAprox_postal(String aprox_postal) {
+		this.aprox_postal = aprox_postal;
+	}
+
+	public String getExample_seleccionTabla() {
+		return example_seleccionTabla;
+	}
+
+	public void setExample_seleccionTabla(String example_seleccionTabla) {
+		this.example_seleccionTabla = example_seleccionTabla;
+	}
+
+	public String getCampoObligatorio1() {
+		return campoObligatorio1;
+	}
+
+	public void setCampoObligatorio1(String campoObligatorio1) {
+		this.campoObligatorio1 = campoObligatorio1;
+	}
+
+	public String getCampoObligatorio2() {
+		return campoObligatorio2;
+	}
+
+	public void setCampoObligatorio2(String campoObligatorio2) {
+		this.campoObligatorio2 = campoObligatorio2;
+	}
+
+	public String getCampoObligatorio3() {
+		return campoObligatorio3;
+	}
+
+	public void setCampoObligatorio3(String campoObligatorio3) {
+		this.campoObligatorio3 = campoObligatorio3;
+	}
+
+	public String getValorMinimo() {
+		return valorMinimo;
+	}
+
+	public void setValorMinimo(String valorMinimo) {
+		this.valorMinimo = valorMinimo;
+	}
+
+	public String getValorMaximo() {
+		return valorMaximo;
+	}
+
+	public void setValorMaximo(String valorMaximo) {
+		this.valorMaximo = valorMaximo;
+	}
+
+	public String getValorIntervalo() {
+		return valorIntervalo;
+	}
+
+	public void setValorIntervalo(String valorIntervalo) {
+		this.valorIntervalo = valorIntervalo;
+	}
+
+	public String getEntero() {
+		return entero;
+	}
+
+	public void setEntero(String entero) {
+		this.entero = entero;
+	}
+
+	public String getNumeroDecimal() {
+		return numeroDecimal;
+	}
+
+	public void setNumeroDecimal(String numeroDecimal) {
+		this.numeroDecimal = numeroDecimal;
+	}
+
+	public String getLongitudMinima() {
+		return longitudMinima;
+	}
+
+	public void setLongitudMinima(String longitudMinima) {
+		this.longitudMinima = longitudMinima;
+	}
+
+	public String getLongitudMaxima() {
+		return longitudMaxima;
+	}
+
+	public void setLongitudMaxima(String longitudMaxima) {
+		this.longitudMaxima = longitudMaxima;
+	}
+
+	public String getLongitudIntervalo() {
+		return longitudIntervalo;
+	}
+
+	public void setLongitudIntervalo(String longitudIntervalo) {
+		this.longitudIntervalo = longitudIntervalo;
+	}
+
+	public String getPalabrasMinimo() {
+		return palabrasMinimo;
+	}
+
+	public void setPalabrasMinimo(String palabrasMinimo) {
+		this.palabrasMinimo = palabrasMinimo;
+	}
+
+	public String getPalabrasMaximo() {
+		return palabrasMaximo;
+	}
+
+	public void setPalabrasMaximo(String palabrasMaximo) {
+		this.palabrasMaximo = palabrasMaximo;
+	}
+
+	public String getPalabrasIntervalo() {
+		return palabrasIntervalo;
+	}
+
+	public void setPalabrasIntervalo(String palabrasIntervalo) {
+		this.palabrasIntervalo = palabrasIntervalo;
+	}
+
+	public String getLetrasYPuntuacion() {
+		return letrasYPuntuacion;
+	}
+
+	public void setLetrasYPuntuacion(String letrasYPuntuacion) {
+		this.letrasYPuntuacion = letrasYPuntuacion;
+	}
+
+	public String getAlfanumerico() {
+		return alfanumerico;
+	}
+
+	public void setAlfanumerico(String alfanumerico) {
+		this.alfanumerico = alfanumerico;
+	}
+
+	public String getSoloLetras() {
+		return soloLetras;
+	}
+
+	public void setSoloLetras(String soloLetras) {
+		this.soloLetras = soloLetras;
+	}
+
+	public String getSoloDigitos() {
+		return soloDigitos;
+	}
+
+	public void setSoloDigitos(String soloDigitos) {
+		this.soloDigitos = soloDigitos;
+	}
+
+	public String getSinEspacos() {
+		return sinEspacos;
+	}
+
+	public void setSinEspacos(String sinEspacos) {
+		this.sinEspacos = sinEspacos;
+	}
+
+	public String getPatron() {
+		return patron;
+	}
+
+	public void setPatron(String patron) {
+		this.patron = patron;
+	}
+
+	public Comarca getComarca1() {
+		return comarca1;
+	}
+
+	public void setComarca1(Comarca comarca1) {
+		this.comarca1 = comarca1;
+	}
+
+	public Comarca getComarca2() {
+		return comarca2;
+	}
+
+	public void setComarca2(Comarca comarca2) {
+		this.comarca2 = comarca2;
+	}
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Comarca getComarca3() {
+		return comarca3;
+	}
+
+	public void setComarca3(Comarca comarca3) {
+		this.comarca3 = comarca3;
+	}
 }
