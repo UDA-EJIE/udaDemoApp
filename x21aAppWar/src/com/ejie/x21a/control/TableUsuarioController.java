@@ -125,8 +125,9 @@ public class TableUsuarioController  {
 	}
 
 	@RequestMapping(value = "/configurableDouble", method = RequestMethod.GET)
-	public String getTableDouble () {
-
+	public String getTableDouble (Model model) {
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("options", new TableOptions());
 		return "tableDouble";
 	}
 	

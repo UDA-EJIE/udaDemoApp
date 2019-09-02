@@ -33,7 +33,7 @@
 					</div>
 					<div class="formulario_linea_izda_float">
 						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia:</label>
-						<form:input type="text" name="provincia.code" class="formulario_linea_input" id="codeProvincia_filter_comarca" />
+						<form:input type="text" path="provincia.code" class="formulario_linea_input" id="codeProvincia_filter_comarca" />
 					</div>
 					<div class="formulario_linea_izda_float">
 						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs:</label>

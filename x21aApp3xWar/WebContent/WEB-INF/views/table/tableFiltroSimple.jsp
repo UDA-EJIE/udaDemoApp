@@ -29,7 +29,7 @@
 		<!-- Barra de paginación -->
 		<div id="table_pager"></div>
 	</div>
-</div>	
+</div>
 
 <div id="table_detail_div" class="rup-table-formEdit-detail">
 	<div id ="table_detail_navigation"></div>

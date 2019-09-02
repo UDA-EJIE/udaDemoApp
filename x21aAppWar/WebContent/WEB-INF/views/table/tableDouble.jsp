@@ -59,7 +59,7 @@
         <div class="row mt-5">
             <jsp:include page="includes/tableEdit.jsp"></jsp:include>
 
-            <form:form id="example_tableConfiguration" class="col-xl-12">
+            <form:form id="example_tableConfiguration" modelAttribute="options" class="col-xl-12">
                 <h3 id="pluginErrorLabel">Selección de Plugins</h3>
                 <fieldset class="form-group">
                     <div class="row">
@@ -136,7 +136,7 @@
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="multiSelection"
-                                    class="custom-control-input"
+                                    cssClass="custom-control-input"
                                     path="example_seleccionTabla"
                                     value="7"/> <label
                                     for="multiSelection"
@@ -144,8 +144,8 @@
                             </div>
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
-                                <form:radiobutton" id="selection"
-                                    class="custom-control-input"
+                                <form:radiobutton id="selection"
+                                    cssClass="custom-control-input"
                                     path="example_seleccionTabla"
                                     value="8"/> <label
                                     for="selection"
@@ -155,7 +155,7 @@
                             <div
                                 class="form-check custom-control custom-radio pluginsControl">
                                 <form:radiobutton id="noSelection"
-                                    class="custom-control-input"
+                                    cssClass="custom-control-input"
                                     path="example_seleccionTabla"
                                     value="9"/> <label
                                     for="noSelection"
