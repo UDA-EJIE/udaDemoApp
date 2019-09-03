@@ -282,9 +282,9 @@
 					<a class="dropdown-item" href="${tableConfigurable}">
 						<spring:message code="tabla.configurable" />
 					</a>
-					<spring:url value="/table/configurableDouble" var="tableConfigurableDouble" htmlEscape="true"/>
-					<a class="dropdown-item" href="${tableConfigurableDouble}">
-						<spring:message code="tabla.configurableDouble" />
+					<spring:url value="/table/double" var="tableDouble" htmlEscape="true"/>
+					<a class="dropdown-item" href="${tableDouble}">
+						<spring:message code="tabla.double" />
 					</a>
 					<spring:url value="/table/multipk" var="tableMultipk" htmlEscape="true"/>
 					<a class="dropdown-item" href="${tableMultipk}">
