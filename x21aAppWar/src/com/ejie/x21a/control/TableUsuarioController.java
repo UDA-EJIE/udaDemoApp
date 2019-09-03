@@ -613,7 +613,8 @@ public class TableUsuarioController  {
 	
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
-		
+		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("options", new TableOptions());
 		return "tableDialogAjax";
 	}
 		
