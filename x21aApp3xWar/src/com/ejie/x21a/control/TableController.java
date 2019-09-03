@@ -190,6 +190,7 @@ public class TableController  {
 	@RequestMapping(value = "tableRadiobutton", method = RequestMethod.GET)
 	public String getTableRadiobutton(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tableRadiobutton", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("usuario", new Usuario());
 		return "tableRadiobutton";
 	}
 	

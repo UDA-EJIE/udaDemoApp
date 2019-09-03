@@ -198,23 +198,23 @@
 			<div class="form-row">    
 				<div class="form-group col-sm">
 					<label for="code_detailForm_table" class="formulario_linea_label">code</label>
-			    	<input type="text" name="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
+			    	<form:input path="code" class="formulario_linea_input form-control" id="code_detailForm_table" />
 			    </div>
 			    
 			    <div class="form-group col-sm">
 			    	<label for="descEs_detail_table" class="formulario_linea_label">descEs</label>
-			    	<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
+			    	<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-group col-sm">
 			    	<label for="descEu_detail_table" class="formulario_linea_label">descEu</label>
-			    	<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
+			    	<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_detail_table" />
 			    </div>  
 			    
 			    <div class="form-group col-sm">
 			    	<label for="css_detail_table" class="formulario_linea_label">css</label>
-			    	<input type="text" name="css" class="formulario_linea_input form-control" id="css_detail_table" />
+			    	<form:input path="css" class="formulario_linea_input form-control" id="css_detail_table" />
 			    </div>
 			</div>
 			<div class="form-row">  <!--  
@@ -224,17 +224,17 @@
 			    </div>-->
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaCss_detail_table" class="formulario_linea_label">comarca.css</label>
-			    	<input type="text" name="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
+			    	<form:input path="comarca.css" class="formulario_linea_input form-control" id="comarcaCss_detail_table" />
 			    </div>
 			</div>
 		  	<div class="form-row">  
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEs_detail_table" class="formulario_linea_label">comarca.descEs</label>
-			    	<input type="text" name="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
+			    	<form:input path="comarca.descEs" class="formulario_linea_input form-control" id="comarcaDescEs_detail_table" />
 			    </div>
 			    <div class="form-group fix-align col-sm d-none">
 			    	<label for="comarcaDescEu_detail_table" class="formulario_linea_label">comarca.descEu</label>
-			    	<input type="text" name="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
+			    	<form:input path="comarca.descEu" class="formulario_linea_input form-control" id="comarcaDescEu_detail_table" />
 			    </div>
 			</div>	
 		</form:form>
