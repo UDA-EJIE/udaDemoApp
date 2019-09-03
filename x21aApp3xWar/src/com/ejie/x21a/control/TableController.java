@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.model.Comarca;
+import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Usuario;
@@ -145,14 +147,15 @@ public class TableController  {
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("localidad", new Localidad());
 		return "tableMasterDetail";
 	}
 	
 	@RequestMapping(value = "tableLoadOnStartUp", method = RequestMethod.GET)
 	public String gettableLoadOnStartUp(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tableLoadOnStartUp", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("comarca", new Comarca());
 		return "tableLoadOnStartUp";
 	}
 	
