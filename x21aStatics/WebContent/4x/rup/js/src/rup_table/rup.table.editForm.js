@@ -24,7 +24,7 @@
 (function( factory ){
     if ( typeof define === 'function' && define.amd ) {
         // AMD
-        define( ['jquery', '../core/utils/jquery.form','../rup.form', 'datatables.net'], function ( $ ) {
+        define(['jquery', '../core/utils/jquery.form', '../rup.form', '../rup.combo', 'datatables.net'], function ($) {
             return factory( $, window, document );
         } );
     }
@@ -847,7 +847,7 @@
         $dialogContent.parent().css('overflow-x','hidden');
         $dialogContent.hide('slide', {
             direction: direction
-        }, 300, () => {
+        }, 100, () => {
             $dialogContent.after('<span id="' + ctx.sTableId + '_detail_div_loading" style="font-size: 5rem;"><i class="mdi mdi-spin mdi-loading" aria-hidden="true"/></span>');
             callback();
         });
@@ -860,7 +860,7 @@
         $('#' + ctx.sTableId + '_detail_div_loading').remove();
         $dialogContent.show('slide', {
             direction: direction
-        }, 300, ()=>{
+        }, 100, ()=>{
             $dialogContent.parent().css('overflow-x', 'auto');
         });
     }

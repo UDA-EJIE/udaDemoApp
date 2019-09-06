@@ -12548,4 +12548,488 @@ jQuery.fn.extend({ fluidWidth : jQuery.jgrid.fluid.fluidWidth });
 
 
 
-		if (opts.colModel.f
+		if (opts.colModel.formatoptions && opts.colModel.formatoptions.labelName) {
+			labelProp = opts.colModel.formatoptions.labelName;
+			label = $.rup_utils.getJson(rwd, labelProp);
+
+		} else {
+			if (typeof opts.colModel.editoptions.source === 'string') {
+				// Combo remoto
+				// Obtener la propiedad que corresponde al texto a visualizar
+				if (opts.colModel.name.indexOf('.') !== -1) {
+					labelProp = opts.colModel.name.substring(0, opts.colModel.name.lastIndexOf('.')) + '.' + opts.colModel.editoptions.sourceParam.label;
+				} else {
+					labelProp = opts.colModel.editoptions.sourceParam.label;
+				}
+				label = $.rup_utils.getJson(rwd, labelProp);
+
+			} else {
+				// Combo local
+
+				var labelArr = $.grep(opts.colModel.editoptions.source, function (elem, index) {
+					if (elem.value === cellval) {
+						return true;
+					}
+				});
+
+				if (labelArr.length === 1) {
+					if (labelArr[0].i18nCaption) {
+						label = $.rup.i18nParse($.rup.i18n.app[settings.i18nId], labelArr[0].i18nCaption);
+					} else {
+						label = labelArr[0].label;
+					}
+				}
+
+			}
+		}
+		formatterObj['rup_combo']['label'] = label;
+
+		$.extend(true, formatterData, rowObj);
+		$(this).data('rup.jqtable.formatter', formatterData);
+
+		return label || '';
+
+	};
+
+	$.fn.fmatter.rup_combo.unformat = function (cellvalue, options) {
+		var val = $(this).data('rup.jqtable.formatter')[options.rowId][options.colModel.name]['rup_combo']['value'];
+
+		return val || '';
+
+	};
+
+
+	$.fn.fmatter.rup_autocomplete = function (cellval, opts, rwd, act) {
+
+		var labelProp, label, settings;
+
+
+		var formatterData = $(this).data('rup.jqtable.formatter') !== undefined ? $(this).data('rup.jqtable.formatter') : {};
+
+		// Se añade la info del formatter
+		var formatterObj = {};
+		formatterObj['rup_autocomplete'] = {
+			value: cellval
+		};
+
+
+		//		formatterObj["rup_combo"] = cellval;
+
+		// Se añade la info de la columna
+		var colFormatter = {};
+		colFormatter[opts.colModel.name] = formatterObj;
+
+		// Se añade el id de la fila
+		var rowObj = {};
+		rowObj[opts.rowId] = colFormatter;
+
+
+
+		if (opts.colModel.formatoptions && opts.colModel.formatoptions.labelName) {
+			labelProp = opts.colModel.formatoptions.labelName;
+			label = $.rup_utils.getJson(rwd, labelProp);
+
+		} else {
+			if (typeof opts.colModel.editoptions.source === 'string') {
+				// Combo remoto
+				// Obtener la propiedad que corresponde al texto a visualizar
+				if (opts.colModel.name.indexOf('.') !== -1) {
+					labelProp = opts.colModel.name.substring(0, opts.colModel.name.lastIndexOf('.')) + '.' + opts.colModel.editoptions.sourceParam.label;
+				} else {
+					labelProp = opts.colModel.editoptions.sourceParam.label;
+				}
+				label = $.rup_utils.getJson(rwd, labelProp);
+
+			} else {
+				// Combo local
+
+				var labelArr = $.grep(opts.colModel.editoptions.source, function (elem, index) {
+					if (elem.value === cellval) {
+						return true;
+					}
+				});
+
+				if (labelArr.length === 1) {
+					if (labelArr[0].i18nCaption) {
+						label = $.rup.i18nParse($.rup.i18n.app[settings.i18nId], labelArr[0].i18nCaption);
+					} else {
+						label = labelArr[0].label;
+					}
+				}
+
+			}
+		}
+		formatterObj['rup_autocomplete']['label'] = label;
+
+		$.extend(true, formatterData, rowObj);
+		$(this).data('rup.jqtable.formatter', formatterData);
+
+		return label || '';
+
+	};
+
+	$.fn.fmatter.rup_autocomplete.unformat = function (cellvalue, options) {
+		var val = $(this).data('rup.jqtable.formatter')[options.rowId][options.colModel.name]['rup_autocomplete']['value'];
+
+		return val || '';
+
+	};
+
+	/*
+   * SOBREESCITURAS
+   * Funciones extendidas (SOBREESCRITAS) del componente jqGrid
+   *
+   * Los métodos aquí indicados han sido extendidos y su implementación sustituida por completo.
+   * La extensión ha sido realizada para ajustar el comportamiento del componente jqGrid a los requisitos exigidos.
+   *
+   * Los métodos extendidos para su modificación son los siguientes:
+   *
+   * - createModal
+   * - hideModal
+   * - viewModal
+   */
+	jQuery.extend(jQuery.jgrid, {
+		createModal: function (aIDs, content, p, insertSelector, posSelector, appendsel, css) {
+			// aIDs: Identificadores de la modal
+			// -- aIDs.modalcontent :
+			// -- aIDs.modalhead :
+			// -- aIDs.scrollelm :
+			// -- aIDs.themodal :
+			// content: Contenido HTML del díalogo
+			// p: parámetros de configuración del diálogo
+			// insertSelector: selector que corresponde al elemento despues del que se va a insertar la modal
+			// posSelector: elemento base sobre el que se calcula la posición
+			var $divModal = jQuery('<div/>').attr('id', aIDs.themodal).append($(content));
+			var $scrollelm = $divModal.find('#' + aIDs.scrollelm);
+
+			$divModal.insertBefore($(insertSelector));
+			/* TODO : Añadir los parametros de configruación que puedan añadirse al rup_dialog. */
+			$divModal.rup_dialog({
+				type: $.rup.dialog.DIV,
+				autoOpen: false,
+				modal: true,
+				resizable: p.resize,
+				title: p.caption,
+				width: p.width,
+				buttons: p.buttons
+			});
+
+			// Eliminamos los eventos del boton de cerrar para mostrar el gestor de cambios
+
+			if (jQuery.isFunction(p.onClose)) {
+				jQuery('.ui-dialog-titlebar-close, a:has(#closeText_' + $divModal.first()[0].id + ')', $divModal.parent()).off('click').on('click', function (event) {
+					p.onClose.call(event);
+				});
+				// Se elimina el evento de cerrar al texto de cierre del dialogo y se asigna el evento de la gestion de cambios.
+				//				prop.detailDiv.parent().find("#closeText_" + prop.detailDiv.first()[0].id).parent().unbind('click').bind("click", function () {
+				//					self._checkDetailFormModifications(function(){
+				//						prop.detailDiv.rup_dialog("close");
+				//					});
+				//				});
+
+				// Se elimina el evento de cerrar al icono de cierre del dialogo y se asigna el evento de la gestion de cambios.
+				//				prop.detailDiv.parent().find(".ui-dialog-titlebar-close").unbind('click').bind("click", function () {
+				//					self._checkDetailFormModifications(function(){
+				//						prop.detailDiv.rup_dialog("close");
+				//					});
+				//				});
+			}
+
+			jQuery('#' + aIDs.scrollelm + '_2').addClass('botoneraModal');
+
+			jQuery('.fm-button', '#' + aIDs.scrollelm + '_2').on({
+				focusin: function () {
+					jQuery(this).addClass('ui-state-focus');
+				},
+				focusout: function () {
+					jQuery(this).removeClass('ui-state-focus');
+				}
+			});
+		},
+		hideModal: function (selector, o) {
+			jQuery(selector).rup_dialog('close');
+		},
+		viewModal: function (selector, o) {
+			jQuery(selector).rup_dialog('open');
+		}
+
+	});
+
+
+	jQuery.extend(jQuery.rup_jqtable, {
+		proxyAjax: function (ajaxOptions, identifier) {
+			jQuery.rup_ajax(ajaxOptions);
+		}
+	});
+
+	/* ******************************
+   * FUNCIONES DE CONFIGURACION
+   * ******************************/
+	jQuery.fn.rup_jqtable('extend', {
+		/**
+     * Metodo que realiza la pre-configuración del core del componente RUP Table.
+     * Este método se ejecuta antes de la pre-configuración de los plugins y de la invocación al componente jqGrid.
+     *
+     * @name preConfigureCore
+     * @function
+     * @param {object} settings - Parámetros de configuración del componente.
+     * @fires module:rup_jqtable#rupTable_checkOutOfGrid
+     * @fires module:rup_jqtable#rupTable_serializeGridData
+     * @fires module:rup_jqtable#rupTable_beforeProcessing
+     */
+		preConfigureCore: function (settings) {
+			var $self = this,
+				colModel, colModelObj;
+
+			// Configuración del parámetro url
+			settings.baseUrl = settings.url;
+
+			// Ajuste en caso de no utilizar el plugin de filter
+			if (jQuery.inArray('filter', settings.usePlugins) === -1) {
+				settings.url += '/filter';
+			}
+
+			// Se almacena el identificador del objeto en la propiedad settings.id
+			settings.id = $self.attr('id');
+
+			// Se da valor a la propiedad ruptype
+			$self.attr('ruptype', 'jqtable');
+
+			settings.core.tableDiv = settings.id + '_div';
+			settings.core.$tableDiv = jQuery('#' + settings.core.tableDiv);
+
+			jQuery(document).bind('click', function (event) {
+				var $originalTarget = jQuery(event.target);
+				if ($originalTarget.parents().index(settings.core.$tableDiv) === -1) {
+					$self.triggerHandler('rupTable_checkOutOfGrid', [event, $originalTarget]);
+				}
+			});
+
+			/*
+       * Configuración de los identificadores por defecto de los componentes del rup_jqtable
+       */
+			if (settings.pager !== false) {
+				settings.pager = $.rup_utils.getJQueryId(settings.pager !== null ? settings.pager : settings.id + '_pager');
+				settings.$pager = jQuery(settings.pager);
+				if (settings.$pager.length === 0) {
+					alert('El identificador ' + settings.pager + ' especificado para el paginador no existe.');
+				}
+			}
+
+			colModel = settings.colModel;
+
+			if (settings.loadOnStartUp === false || settings.multifilter != undefined) {
+				$self.data('tmp.loadOnStartUp.datatype', settings.datatype);
+				settings.datatype = 'clientSide';
+			}
+
+			// Configuración del colModel para los campos sobre los que se debe de configurar un componente RUP
+			for (var i = 0; i < colModel.length; i++) {
+				colModelObj = colModel[i];
+
+				// Se comprueba para cada uno de las entradas en el colModel si se debe de crear un componente RUP
+				if (colModelObj.rupType !== undefined && colModelObj.rupType !== null) {
+					// En caso de tratarse de un componente RUP
+					// Se indica como edittype="custom" para que jqGrid lo trate como un componente personalizado
+					colModelObj.edittype = 'custom';
+
+					// Si no se ha especificado una funcion custom_element se asigna la función genérica correspondiente a un componente RUP
+					if (!jQuery.isFunction(colModelObj.editoptions.custom_element)) {
+						colModelObj.editoptions.custom_element = function (value, options) {
+							return $('<input>').attr({
+								'type': 'text',
+								'id': options.id,
+								'name': options.name,
+								'class': 'FormElement formulario_linea_input customelement',
+								'style': 'width:98%',
+								'value': value
+							})[0];
+						};
+					}
+					// Si no se ha especificado una funcion custom_value se asigna la función genérica correspondiente a un componente RUP
+					if (!jQuery.isFunction(colModelObj.editoptions.custom_value)) {
+						colModelObj.editoptions.custom_value = function ($elem, operation, value) {
+							var ruptype = $elem.attr('ruptype');
+							if (ruptype !== undefined) {
+								if (operation === 'set') {
+									$elem['rup_' + ruptype]('setRupValue', value);
+								} else if (operation === 'get') {
+									if (ruptype === 'autocomplete'){
+										return $('[id="'+$elem.attr('id').substring(0, $elem.attr('id').indexOf('_label'))+'"]')['rup_' + ruptype]('getRupValue');
+									}else{
+										return $elem['rup_' + ruptype]('getRupValue');
+									}
+								}
+							}
+						};
+					}
+				}
+			}
+
+			// Configuración de la columna extra utilizada para mostrar el estado de los registros
+			if (settings.showGridInfoCol) {
+				settings.colNames = $.merge([''], settings.colNames);
+				settings.colModel = $.merge([settings.defaultGridInfoCol], settings.colModel);
+			}
+
+			// Configuración de las claves compuestas
+			if (settings.primaryKey !== undefined && typeof settings.primaryKey === 'string') {
+				settings.primaryKey = [settings.primaryKey];
+			}
+
+			if (settings.primaryKey !== undefined && typeof settings.primaryKey === 'object') {
+				// Configuración de la columna extra para gestionar las claves compuestas
+				if (settings.primaryKey.length === 1) {
+					settings.primaryKeyCol = settings.primaryKey[0];
+
+					// Se configura la propiedad key para la columna correspondiente a a clave primaria
+					for (var i = 0; i < colModel.length; i++) {
+						if (colModel[i].name === settings.primaryKeyCol) {
+							colModel[i].key = true;
+							break;
+						}
+					}
+
+				} else if (settings.primaryKey.length > 1) {
+					settings.colNames = $.merge([''], settings.colNames);
+					var pkColModel = $.extend({}, settings.defaultGridMultiplePkCol, {
+						key: true,
+						formatter: function (cellvalue, options, rowObject) {
+							var $self = $(this),
+								settings = $self.data('settings'),
+								retValue = '';
+							for (var i = 0; i < settings.primaryKey.length; i++) {
+								retValue += $.rup_utils.unnestjson(rowObject)[settings.primaryKey[i]] + settings.multiplePkToken;
+							}
+							retValue = retValue.substr(0, retValue.length - 1);
+							return retValue;
+						}
+					});
+
+					settings.primaryKeyCol = 'pkCol';
+					settings.colModel = $.merge([pkColModel], settings.colModel);
+				}
+				// Se actualiza el nombre de la columna que va a ejercer como clave primaria
+				$.extend(settings, {
+					prmNames: {
+						id: settings.primaryKeyCol
+					}
+				});
+			}
+
+			// Configuración del colModel para la gestión de la edición de las claves primarias en los modos add y edit
+			for (var i = 0; i < colModel.length; i++) {
+				colModelObj = colModel[i];
+				if (colModelObj.editable === true) {
+					if (colModelObj.editableOnAdd === undefined) {
+						colModelObj.editableOnAdd = true;
+					}
+					if (colModelObj.editableOnEdit === undefined) {
+						if (jQuery.inArray(colModel[i].name, settings.primaryKey) !== -1) {
+							colModelObj.editableOnEdit = false;
+						} else {
+							colModelObj.editableOnEdit = true;
+						}
+					}
+				}
+			}
+
+			// Sobreescritura del método serialize grid data
+			settings.serializeGridData = function (postData) {
+				var newPostData,
+					pageNum = parseInt(postData.page),
+					lastpage = parseInt($self.rup_jqtable('getGridParam', 'lastpage'));
+
+				if (lastpage !== 0 && pageNum > lastpage) {
+					postData.page = lastpage;
+				}
+
+				if (settings.core.startOnPage !== null) {
+					postData.page = settings.core.startOnPage;
+					$self.data('tmp.firstLoad', true);
+				}
+
+				jQuery.extend(true, postData, {
+					core: {
+						'pkToken': settings.multiplePkToken,
+						'pkNames': settings.primaryKey
+					}
+				});
+
+
+
+				newPostData = $.extend({}, {
+					'filter': {}
+				}, postData);
+
+				$self.triggerHandler('rupTable_serializeGridData', [newPostData]);
+
+				$self.removeData('tmp.firstLoad');
+				settings.core.startOnPage = null;
+				return jQuery.toJSON(newPostData);
+			};
+
+			settings.beforeProcessing = function (data, st, xhr) {
+				if ($self.triggerHandler('rupTable_beforeProcessing', [data, st, xhr] === false)) {
+					return false;
+				}
+
+				if (settings.primaryKey.length > 1) {
+					$.each(data.rows, function (index, elem) {
+						var retValue = '';
+						for (var i = 0; i < settings.primaryKey.length; i++) {
+							retValue += $.rup_utils.unnestjson(elem)[settings.primaryKey[i]] + settings.multiplePkToken;
+						}
+						retValue = retValue.substr(0, retValue.length - 1);
+						elem['pkCol'] = retValue;
+					});
+				}
+
+				return true;
+			};
+
+			// Gestión de errores por defecto
+			//			if (!jQuery.isFunction(settings.loadError)){
+			//				settings.userDefined
+			//				settings.loadError = function(xhr,st,err){
+			//					jQuery.rup_messages("msgError", {
+			//						title: settings.core.defaultLoadErrorTitle,
+			//						message: xhr.responseText
+			//					});
+			//				};
+			//			}
+
+			var userLoadError = settings.loadError;
+			settings.loadError = function (xhr, st, err) {
+				var $self = $(this),
+					ret;
+
+				ret = $self.triggerHandler('rupTable_loadError', xhr, st, err);
+
+				if (ret !== false) {
+					jQuery.proxy(userLoadError, $self)(xhr, st, err);
+				}
+			};
+
+			settings.getActiveLineId = function () {
+				var $self = this,
+					rowsInGrid = $self.jqGrid('getDataIDs'),
+					selrow = $self.jqGrid('getGridParam', 'selrow');
+
+				return $.inArray(selrow, rowsInGrid);
+
+			};
+
+			settings.getActiveRowId = function () {
+				var $self = this;
+
+				return $self.rup_jqtable('getGridParam', 'selrow');
+			};
+
+			settings.getSelectedRows = function () {
+				var $self = this,
+					selrow = $self.rup_jqtable('getGridParam', 'selrow');
+				return selrow === null ? [] : [selrow];
+			};
+
+			settings.getS
