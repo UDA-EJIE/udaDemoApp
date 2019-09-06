@@ -23,31 +23,31 @@
 	<div id="comarca_feedback"></div>
 	<div id="comarca_toolbar"></div>
 	<div id="comarca_filter_div"  class="rup-table-filter">
-		<form id="comarca_filter_form">
+		<form:form modelAttribute="comarca" id="comarca_filter_form">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="code_filter_comarca" class="formulario_linea_label">code</label>
-						<input type="text" name="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
+						<form:input path="code" class="formulario_linea_input form-control" id="code_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="codeProvincia_filter_comarca" class="formulario_linea_label">codeProvincia</label>
-						<input type="text" name="provincia.codeProvincia" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
+						<form:input path="provincia.code" class="formulario_linea_input form-control" id="codeProvincia_filter_comarca" />
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="descEs_filter_comarca" class="formulario_linea_label">descEs</label>
-						<input type="text" name="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
+						<form:input path="descEs" class="formulario_linea_input form-control" id="descEs_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="descEu_filter_comarca" class="formulario_linea_label">descEu</label>
-						<input type="text" name="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
+						<form:input path="descEu" class="formulario_linea_input form-control" id="descEu_filter_comarca" />
 					</div>
 					<div class="form-group col-sm">
 						<label for="css_filter_comarca" class="formulario_linea_label">css</label>
-						<input type="text" name="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
+						<form:input path="css" class="formulario_linea_input form-control" id="css_filter_comarca" />
 					</div>
 				</div>
 				<div id="comarca_filter_buttonSet" class="right_buttons">
@@ -65,7 +65,7 @@
 			        </button>
 			    </div>
 			</fieldset>
-		</form>
+		</form:form>
 	</div>
 
 	<div id="comarca_grid_div">

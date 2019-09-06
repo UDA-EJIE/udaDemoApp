@@ -156,7 +156,7 @@
 					<div class="two-col" id="divDireccionExtranjera">
 						<div class="col1">
 							<label for="direccion" class="label"><spring:message code="direccion" /></label>
-							<form:textarea name="direccion" id="direccion" rows="4" cols="60" />						
+							<form:textarea path="direccion" id="direccion" rows="4" cols="60" />						
 						</div>
 					</div>
 					<div class="two-col" id="divDireccionPais">

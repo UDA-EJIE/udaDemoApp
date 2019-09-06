@@ -19,34 +19,34 @@
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
-<form:form id="multipk_tableConfiguration">
+<form:form modelAttribute="options" id="multipk_tableConfiguration">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
 			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
 	          <div class="col-sm-10">
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="editForm" value="0">
+	                  <form:checkbox path="plugins" id="editForm" value="0"/>
 	                  <label for="editForm">Edición en Formulario</label>
 	              </div>
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="colReorder" value="1">
+	                  <form:checkbox path="plugins" id="colReorder" value="1"/>
 	                  <label for="colReorder">Col Reorder</label>
 	              </div>
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="seeker" value="3">
+	                  <form:checkbox path="plugins" id="seeker" value="3"/>
 	                  <label for="seeker">Seeker</label>
 	              </div>
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="buttons" value="5">
+	                  <form:checkbox path="plugins" id="buttons" value="5"/>
 	                  <label for="buttons">Botones</label>
 	              </div>
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="groups" value="6">
+	                  <form:checkbox path="plugins" id="groups" value="6"/>
 	                  <label for="groups">Agrupamiento</label>
 	              </div>
 	              <div class="checkbox-material pluginsControl">
-	                  <input type="checkbox" id="inlineEdit" value="6">
+	                  <form:checkbox path="plugins" id="inlineEdit" value="6"/>
 	                  <label for="inlineEdit">Edición en Linea</label>
 	              </div>
 	          </div>
@@ -57,15 +57,15 @@
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
 			    <div class="radio-material pluginsControl">
-			        <form:radiobutton id="multiSelection" path="multipk_seleccionTabla" value="2"/>
+			        <form:radiobutton id="multiSelection" path="tipoSeleccionTabla" value="2"/>
 			        <label for="multiSelection">Multiselección</label>
 			    </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton type="radio" id="selection" path="multipk_seleccionTabla" value="4"/>
+		            <form:radiobutton id="selection" path="tipoSeleccionTabla" value="4"/>
 		            <label for="selection">Selección Simple</label>
 		        </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton type="radio" id="noSelection" path="multipk_seleccionTabla" value="7"/>
+		            <form:radiobutton id="noSelection" path="tipoSeleccionTabla" value="7"/>
 		            <label for="noSelection">Sin selección</label>
 		        </div>
 	        </div>
