@@ -173,7 +173,7 @@
                              <spring:message code="clear" />
                       </span>
                        </button>
-                       <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                       <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
                              <i class="mdi mdi-filter"></i>
                       <span>
                              <spring:message code="filter" />
