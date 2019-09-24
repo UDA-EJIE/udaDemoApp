@@ -250,7 +250,10 @@ jQuery(function($){
                                 "apellido1":{required:true},
                                 "fechaAlta":{required:true},
                                 "fechaBaja":{date:true}
-                            }
+                            },
+                            messages: {
+                                required: "Campo requerido"
+                              }
                         }
                     }
                 plugins.inlineEdit = inlineEdit;
