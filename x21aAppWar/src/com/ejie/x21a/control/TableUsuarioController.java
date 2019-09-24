@@ -157,7 +157,7 @@ public class TableUsuarioController  {
 	 * @return Bean resultante de la modificación.
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
+    public @ResponseBody Usuario edit(@RequestJsonBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}

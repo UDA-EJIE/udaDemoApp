@@ -17,14 +17,13 @@
 <h2>Tabla doble</h2>
 <!-- Titulo pagina -->
 
-<div class="row">
-  <div class="col-xl-12">
-      <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
-  </div>
-</div>
-
 <div class="row mt-5">
     <div class="col-xl-6 border-dark">
+    	<div class="row">
+		  <div class="col-xl-12">
+		      <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
+		  </div>
+		</div>
         <div class="row">
             <div class="col-xl-12">
                 <table id="example"
@@ -198,6 +197,11 @@
     </div>
 
     <div class="col-xl-6 border-left border-dark">
+    	<div class="row">
+		  <div class="col-xl-12">
+		      <jsp:include page="includes/tableFilterForm2.jsp"></jsp:include>
+		  </div>
+		</div>
         <div class="row">
             <div class="col-xl-12">
                 <table id="example2"

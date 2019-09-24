@@ -79,17 +79,32 @@ jQuery(function($){
 		};
 
 	//Formulario de filtrado
-	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
-	jQuery('#rol_filter_table').rup_combo(options_role_combo);
+	jQuery('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
+	jQuery('[id="rol_filter_table"]').rup_combo(options_role_combo);
 
-	jQuery("#fechaAlta_filter_table").rup_date();
-	jQuery("#fechaBaja_filter_table").rup_date();
+	jQuery('[id="fechaAlta_filter_table"]').rup_date();
+	jQuery('[id="fechaBaja_filter_table"]').rup_date();
 
 	//Formulario de detalle
-	jQuery("#fechaAlta_detail_table").rup_date();
-	jQuery("#fechaBaja_detail_table").rup_date();
+	jQuery('[id="fechaAlta_detail_table"]').rup_date();
+	jQuery('[id="fechaBaja_detail_table"]').rup_date();
 
-	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	jQuery('[id="rol_detail_table"]').rup_combo(options_role_combo);
+	
+	//--------------------------------------------
+	
+	//Formulario de filtrado
+	jQuery('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
+	jQuery('[id="rol_filter_table2"]').rup_combo(options_role_combo);
+
+	jQuery('[id="fechaAlta_filter_table2"]').rup_date();
+	jQuery('[id="fechaBaja_filter_table2"]').rup_date();
+
+	//Formulario de detalle
+	jQuery('[id="fechaAlta_detail_table2"]').rup_date();
+	jQuery('[id="fechaBaja_detail_table2"]').rup_date();
+
+	jQuery('[id="rol_detail_table2"]').rup_combo(options_role_combo);
 
 
 	function listaPlugins(num){
@@ -160,9 +175,9 @@ jQuery(function($){
         };*/
 
 	    var filter = {
-		    	  id:"example_filter_form",
-		    	  filterToolbar:"example_filter_toolbar",
-		    	  collapsableLayerId:"example_filter_fieldset"
+		    	  id:"example" + num + "_filter_form",
+		    	  filterToolbar:"example" + num + "_filter_toolbar",
+		    	  collapsableLayerId:"example" + num + "_filter_fieldset"
 		    }
 		    plugins.filter = filter;
 
@@ -249,7 +264,7 @@ jQuery(function($){
 						text: function (dt) {
 							return 'Editar con MultiPart';
 						},
-						id: 'exampleeditMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
+						id: 'example' + num + 'editMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
 						className: 'datatable_toolbar_btnEdit',
 						displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 						insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
