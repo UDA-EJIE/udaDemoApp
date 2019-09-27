@@ -42,6 +42,7 @@ import org.apache.xpath.XPathAPI;
 
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x21a.util.JmsUtils;
@@ -82,7 +83,7 @@ public class ExperimentalController {
 		//logLevel
 		@RequestMapping(value = "logLevel", method = RequestMethod.GET)
 		public String getLogLevel(Model model) {
-	
+			model.addAttribute("randomForm", new RandomForm());
 			return "logLevel";
 		}
 

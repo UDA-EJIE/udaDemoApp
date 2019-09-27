@@ -72,7 +72,7 @@
 	</script>		
 </head>
 <body onload="inicio()">
-<form id="fmFileUpload" name="fmFileUpload" action="PDTE" method="post">
+<form:form modelAttribute="randomForm" id="fmFileUpload" name="fmFileUpload" action="PDTE" method="post">
 	<div id="divSWFUploadUI">
 		<br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;Ejemplo de Uso de Subida Asíncrona
@@ -96,11 +96,12 @@
 	<div id="divLongLoading" class="content" style="background-color: #FFFF66; border-top: solid 4px #FF9966; border-bottom: solid 4px #FF9966; margin: 10px 25px; padding: 10px 15px; display: none;">
 		SWFUpload is taking a long time to load or the load has failed.  Please make sure that the Flash Plugin is enabled and that a working version of the Adobe Flash Player is installed.
 	</div>
+	<spring:url value="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" var="urlAdobe" htmlEscape="true"/>
 	<div id="divAlternateContent" class="content" style="background-color: #FFFF66; border-top: solid 4px #FF9966; border-bottom: solid 4px #FF9966; margin: 10px 25px; padding: 10px 15px; display: none;">
 		We're sorry.  SWFUpload could not load.  You may need to install or upgrade Flash Player.
 		Visit the <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Adobe website</a> to get the Flash Player.
 	</div>
-</form>
+</form:form>
 
 
 

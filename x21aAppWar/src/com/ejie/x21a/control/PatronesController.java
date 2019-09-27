@@ -445,6 +445,7 @@ public class PatronesController {
 	@RequestMapping(value = "validateRup", method = RequestMethod.GET)
 	public String getValidateRup(Model model) {
 		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("randomForm", new RandomForm());
 		return "validateRup";
 	}
 	
@@ -459,6 +460,7 @@ public class PatronesController {
 	//AllDialog (todos los patrones en un dialogo)
 	@RequestMapping(value = "allDialog", method = RequestMethod.GET)
 	public String getAllDialog(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "allDialog";
 	}
 	

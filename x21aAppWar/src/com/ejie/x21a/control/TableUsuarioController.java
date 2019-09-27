@@ -66,6 +66,8 @@ import java.util.*;
 public class TableUsuarioController  {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
+	public static final String MODEL_USUARIO = "usuario";
+	public static final String MODEL_OPTIONS = "options";
 
 	@Autowired
 	private JQGridUsuarioService jqGridUsuarioService;
@@ -119,14 +121,15 @@ public class TableUsuarioController  {
 	
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		model.addAttribute("usuario", new Usuario());
-		model.addAttribute("options", new TableOptions());
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		return "table";
 	}
 
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
-	public String getTableDouble () {
-
+	public String getTableDouble (Model model) {
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		return "tableDouble";
 	}
 	
@@ -154,7 +157,7 @@ public class TableUsuarioController  {
 	 * @return Bean resultante de la modificación.
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
+    public @ResponseBody Usuario edit(@RequestJsonBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
@@ -227,9 +230,9 @@ public class TableUsuarioController  {
 	/**
 	 * Operación de filtrado del componente RUP_TABLE.
 	 * 
-	 * @param Usuario
+	 * @param filterUsuario Usuario
 	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
@@ -606,12 +609,14 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("multiPk", new MultiPk());
 		return "tableDialog";
 	}
 	
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
-		
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		return "tableDialogAjax";
 	}
 		

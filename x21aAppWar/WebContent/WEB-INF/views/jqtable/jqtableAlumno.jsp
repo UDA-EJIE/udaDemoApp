@@ -4,35 +4,35 @@
 	<div id="alumno" >
 		<div id=toolbar></div>
 		<div id="contenido" style="margin-top:0.5em;margin-bottom:0.5em;width:600px;">
-			<form id="searchForm" >
+			<form:form modelAttribute="alumno" id="searchForm" >
 				<div  class="formulario_legend" id="titleSearch_alumno"><spring:message code="searchCriteria" /></div>
 				<fieldset style="border:1px solid #DADADA;" id="FIELDSET_SEARCH_alumno">
 					<div class="form-row">
 						<div class="form-group col-sm">
 							<label for="usuario_search" class="formulario_linea_label"><spring:message code="usuario" /></label>
-							<input type="text" name="usuario" class="formulario_linea_input form-control" id="usuario_search" />
+							<form:input path="usuario" class="formulario_linea_input form-control" id="usuario_search" />
 						</div>
 						<div class="form-group col-sm">
 							<label for="nombre_search" class="formulario_linea_label"><spring:message code="nombre" /></label>
-							<input type="text" name="nombre" class="formulario_linea_input form-control" id="nombre_search" />
+							<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_search" />
 						</div>
 						<div class="form-group col-sm">
 							<label for="apellido1_search" class="formulario_linea_label"><spring:message code="apellido1" /></label>
-							<input type="text" name="apellido1" class="formulario_linea_input form-control" id="apellido1_search" />
+							<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_search" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-sm">
 							<label for="apellido2_search" class="formulario_linea_label"><spring:message code="apellido2" /></label>
-							<input type="text" name="apellido2" class="formulario_linea_input form-control" id="apellido2_search" />
+							<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_search" />
 						</div>
 						<div class="form-group col-sm">
 							<label for="dni_search" class="formulario_linea_label"><spring:message code="dni" /></label>
-							<input type="text" name="dni" class="formulario_linea_input form-control" id="dni_search" />
+							<form:input path="dni" class="formulario_linea_input form-control" id="dni_search" />
 						</div>
 					</div>
 				</fieldset>
-			</form>
+			</form:form>
 		</div>
 
 		<div id="RUP_GRID_alumno">

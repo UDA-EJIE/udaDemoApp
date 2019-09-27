@@ -72,7 +72,8 @@
     </div>
     <ul>
       <li>
-        <a data-toggle="collapse" href="#dashboardList" aria-expanded="false" aria-controls="dashboardList">
+      	<spring:url value="#dashboardList" var="urlDList" htmlEscape="true"/>
+        <a data-toggle="collapse" href="${urlDList}" aria-expanded="false" aria-controls="dashboardList">
           <i class="fa fa-desktop" aria-hidden="true"></i><span>Escritorios</span>
         </a>
         <div class="collapse" id="dashboardList">
@@ -83,7 +84,8 @@
 
       </li>
       <li>
-        <a data-toggle="collapse" href="#toolsList" aria-expanded="false" aria-controls="toolsList">
+      	<spring:url value="#toolsList" var="urlDToolList" htmlEscape="true"/>
+        <a data-toggle="collapse" href="${urlDToolList}" aria-expanded="false" aria-controls="toolsList">
           <i class="fa fa-cog" aria-hidden="true"></i><span>Acciones</span>
         </a>
         <div class="collapse" id="toolsList">

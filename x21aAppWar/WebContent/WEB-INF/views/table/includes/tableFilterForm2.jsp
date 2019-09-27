@@ -14,63 +14,63 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<form:form modelAttribute="usuario" id="example_filter_form">
-  <div id="example_filter_toolbar" class="formulario_legend"></div>
-  <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
+<form:form modelAttribute="usuario" id="example2_filter_form">
+  <div id="example2_filter_toolbar" class="formulario_legend"></div>
+  <fieldset id="example2_filter_fieldset" class="rup-table-filter-fieldset">
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table" />
-			<label for="id_filter_table">ID</label>
+	    	<form:input path="id" id="id_filter_table2" />
+			<label for="id_filter_table2">ID</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="nombre" id="nombre_filter_table" />
-	    	<label for="nombre_filter_table">Nombre</label>
+	    	<form:input path="nombre" id="nombre_filter_table2" />
+	    	<label for="nombre_filter_table2">Nombre</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="apellido1" id="apellido1_filter_table" />
-	    	<label for="apellido1_filter_table">Primer apellido</label>
+	    	<form:input path="apellido1" id="apellido1_filter_table2" />
+	    	<label for="apellido1_filter_table2">Primer apellido</label>
 	    </div>  
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="apellido2" id="apellido2_filter_table" />
-	    	<label for="apellido2_filter_table">Segundo apellido</label>
+	    	<form:input path="apellido2" id="apellido2_filter_table2" />
+	    	<label for="apellido2_filter_table2">Segundo apellido</label>
 	    </div>
 	</div>
     
     <div class="form-row">
     	<div class="form-groupMaterial col-sm">
-	    	<form:input path="fechaAlta" id="fechaAlta_filter_table" />
-	    	<label for="fechaAlta_filter_table">Fecha de alta</label>
+	    	<form:input path="fechaAlta" id="fechaAlta_filter_table2" />
+	    	<label for="fechaAlta_filter_table2">Fecha de alta</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="fechaBaja" id="fechaBaja_filter_table" />
-	    	<label for="fechaBaja_filter_table">Fecha de baja</label>
+	    	<form:input path="fechaBaja" id="fechaBaja_filter_table2" />
+	    	<label for="fechaBaja_filter_table2">Fecha de baja</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="ejie" id="ejie_filter_table" />
-	    	<label for="ejie_filter_table">EJIE</label>
+	    	<form:input path="ejie" id="ejie_filter_table2" />
+	    	<label for="ejie_filter_table2">EJIE</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="rol" id="rol_filter_table" />
-	    	<label for="rol_filter_table">ROL</label>
+	    	<form:input path="rol" id="rol_filter_table2" />
+	    	<label for="rol_filter_table2">ROL</label>
 	    </div>
 	</div>
      
     <!-- Botonera del formulario de filtrado -->
-    <div id="example_filter_buttonSet" class="text-right">
+    <div id="example2_filter_buttonSet" class="text-right">
     	<!-- Bot�n de limpiar -->
-        <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <button id="example2_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
         	<span>Limpiar</span>
         </button>
         <!-- Bot�n de filtrado -->
-        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+        <button id="example2_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
         	<i class="mdi mdi-filter"></i>
         	<span>Filtrar</span>        	
         </button>

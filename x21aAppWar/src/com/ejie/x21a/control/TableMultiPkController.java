@@ -2,6 +2,9 @@ package com.ejie.x21a.control;
 
 
 import com.ejie.x21a.model.MultiPk;
+import com.ejie.x21a.model.RandomForm;
+import com.ejie.x21a.model.TableOptions;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableMultiPkService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -65,6 +68,7 @@ public class TableMultiPkController  {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("options", new TableOptions());
 		return "tableMultipk";
 	}
 

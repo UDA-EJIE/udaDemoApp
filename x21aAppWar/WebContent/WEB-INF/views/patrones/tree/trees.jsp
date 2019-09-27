@@ -27,107 +27,108 @@
 
 	<div id="tree_example" class="card p-3">
 		<ul>
-			<li id="node1"><a href="#">Padre 1</a>
+			<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+			<li id="node1"><a href="${urlHashtag}">Padre 1</a>
 				<ul>
-					<li id="node11"><a href="#">Padre 1.1</a>
+					<li id="node11"><a href="${urlHashtag}">Padre 1.1</a>
 						<ul>
-							<li id="node111"><a href="#">Hoja 1.1.1</a></li>
-							<li id="node112"><a href="#">Padre 1.1.2</a>
+							<li id="node111"><a href="${urlHashtag}">Hoja 1.1.1</a></li>
+							<li id="node112"><a href="${urlHashtag}">Padre 1.1.2</a>
 								<ul>
-									<li id="node1121"><a href="#">Hoja 1.1.2.1</a></li>
-									<li id="node1122"><a href="#">Hoja 1.1.2.2</a></li>
+									<li id="node1121"><a href="${urlHashtag}">Hoja 1.1.2.1</a></li>
+									<li id="node1122"><a href="${urlHashtag}">Hoja 1.1.2.2</a></li>
 								</ul></li>
 						</ul></li>
-					<li id="node12"><a href="#">Hoja 1.2></a></li>
+					<li id="node12"><a href="${urlHashtag}">Hoja 1.2></a></li>
 				</ul></li>
 		</ul>
 	</div>
 
 	<div id="model_example_1" class="model_example_1_code">
 		<ul>
-			<li id="node1"><a href="#"><spring:message
+			<li id="node1"><a href="${urlHashtag}"><spring:message
 						code="treeExample.Hijo1" /></a>
 				<ul>
-					<li id="node11"><a href="#"><spring:message
+					<li id="node11"><a href="${urlHashtag}"><spring:message
 								code="treeExample.Hijo2" /></a>
 						<ul>
-							<li id="node111"><a href="#"><spring:message
+							<li id="node111"><a href="${urlHashtag}"><spring:message
 										code="treeExample.hoja" /></a></li>
-							<li id="node112"><a href="#"><spring:message
+							<li id="node112"><a href="${urlHashtag}"><spring:message
 										code="treeExample.Hijo3" /></a>
 								<ul>
-									<li id="node1121"><a href="#"><spring:message
+									<li id="node1121"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
 								</ul></li>
-							<li id="node113"><a href="#"><spring:message
+							<li id="node113"><a href="${urlHashtag}"><spring:message
 										code="treeExample.Hijo3" /></a>
 								<ul>
-									<li id="node1131"><a href="#"><spring:message
+									<li id="node1131"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
-									<li id="node1132"><a href="#"><spring:message
+									<li id="node1132"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
 								</ul></li>
 						</ul></li>
-					<li id="node12"><a href="#"><spring:message
+					<li id="node12"><a href="${urlHashtag}"><spring:message
 								code="treeExample.Hijo2" /></a>
 						<ul>
-							<li id="node121"><a href="#"><spring:message
+							<li id="node121"><a href="${urlHashtag}"><spring:message
 										code="treeExample.Hijo3" /></a>
 								<ul>
-									<li id="node1211"><a href="#"><spring:message
+									<li id="node1211"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
-									<li id="node1212"><a href="#"><spring:message
+									<li id="node1212"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
-									<li id="node1213"><a href="#"><spring:message
+									<li id="node1213"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
-									<li id="node1214"><a href="#"><spring:message
+									<li id="node1214"><a href="${urlHashtag}"><spring:message
 												code="treeExample.hoja" /></a></li>
 								</ul></li>
-							<li id="node122"><a href="#"><spring:message
+							<li id="node122"><a href="${urlHashtag}"><spring:message
 										code="treeExample.hoja" /></a></li>
 						</ul></li>
-					<li id="node13"><a href="#"><spring:message
+					<li id="node13"><a href="${urlHashtag}"><spring:message
 								code="treeExample.hoja" /></a></li>
 				</ul></li>
-			<li id="node2"><a href="#"><spring:message
+			<li id="node2"><a href="${urlHashtag}"><spring:message
 						code="treeExample.hoja" /></a></li>
 		</ul>
 	</div>
 
 	<div id="model_example_2" class="model_example_2_code">
 		<ul>
-			<li id="nodeA"><a href="#"><spring:message
+			<li id="nodeA"><a href="${urlHashtag}"><spring:message
 						code="treeExample.HijoA" /></a>
 				<ul>
-					<li id="nodeAA"><a href="#"><spring:message
+					<li id="nodeAA"><a href="${urlHashtag}"><spring:message
 								code="treeExample.HijoA" /> <spring:message
 								code="treeExample.HijoA" /></a></li>
-					<li id="nodeAB"><a href="#"><spring:message
+					<li id="nodeAB"><a href="${urlHashtag}"><spring:message
 								code="treeExample.HijoA" /> <spring:message
 								code="treeExample.HijoB" /></a></li>
-					<li id="nodeAC"><a href="#"><spring:message
+					<li id="nodeAC"><a href="${urlHashtag}"><spring:message
 								code="treeExample.HijoA" /> <spring:message
 								code="treeExample.HijoC" /></a>
 						<ul>
-							<li id="nodeACA"><a href="#"><spring:message
+							<li id="nodeACA"><a href="${urlHashtag}"><spring:message
 										code="treeExample.HijoA" /> <spring:message
 										code="treeExample.HijoC" /> <spring:message
 										code="treeExample.HijoA" /></a></li>
-							<li id="nodeACB"><a href="#"><spring:message
+							<li id="nodeACB"><a href="${urlHashtag}"><spring:message
 										code="treeExample.HijoA" /> <spring:message
 										code="treeExample.HijoC" /> <spring:message
 										code="treeExample.HijoB" /></a></li>
 						</ul></li>
 				</ul></li>
-			<li id="nodeB"><a href="#"><spring:message
+			<li id="nodeB"><a href="${urlHashtag}"><spring:message
 						code="treeExample.HijoB" /></a></li>
-			<li id="nodeC"><a href="#"><spring:message
+			<li id="nodeC"><a href="${urlHashtag}"><spring:message
 						code="treeExample.HijoC" /></a>
 				<ul>
-					<li id="nodeCA"><a href="#"><spring:message
+					<li id="nodeCA"><a href="${urlHashtag}"><spring:message
 								code="treeExample.HijoC" /> <spring:message
 								code="treeExample.HijoA" /></a></li>
-					<li id="nodeCB"><a href="#"><spring:message
+					<li id="nodeCB"><a href="${urlHashtag}"><spring:message
 								code="treeExample.HijoC" /> <spring:message
 								code="treeExample.HijoB" /></a></li>
 				</ul></li>

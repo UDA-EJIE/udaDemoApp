@@ -60,6 +60,7 @@ public class Usuario  implements java.io.Serializable {
             @NotNull(message="validacion.required")
             private Date fechaAlta;
             private Date fechaBaja;
+            private Date fechaModif;
 //            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
             private Provincia provincia;
             private String rol;
@@ -343,6 +344,14 @@ public class Usuario  implements java.io.Serializable {
 		result.append(", [ rol: ").append(this.rol).append(" ]");
 		result.append("}");
 		return result.toString();
+	}
+
+	public Date getFechaModif() {
+		return fechaModif;
+	}
+
+	public void setFechaModif(Date fechaModif) {
+		this.fechaModif = fechaModif;
 	}
 
 //	public int hashCode() {

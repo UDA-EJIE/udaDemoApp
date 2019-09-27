@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
+import com.ejie.x21a.model.RandomForm;
+
 /**
  * PatronesController
  * 
@@ -70,6 +72,7 @@ public class BootstrapController {
 	
 	@RequestMapping(value = "exampleForm", method = RequestMethod.GET)
 	public String getExampleForm(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "exampleForm";
 	}
 	

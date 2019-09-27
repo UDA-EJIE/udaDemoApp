@@ -43,11 +43,12 @@ function copyFormEdit(num) {
 }
 
 jQuery(function($){
-	
+	initRupI18nPromise.then(function(){
+
     copyPluginsForm(2);
     copyFormEdit(2);
-    
-    
+
+
 	//FILTRO Y DETALLE
 	var combo = [
 		   {rol: "---", codTipoSubsanacion:""},
@@ -78,19 +79,34 @@ jQuery(function($){
 		};
 
 	//Formulario de filtrado
-	jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
-	jQuery('#rol_filter_table').rup_combo(options_role_combo);
+	jQuery('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
+	jQuery('[id="rol_filter_table"]').rup_combo(options_role_combo);
 
-	jQuery("#fechaAlta_filter_table").rup_date();
-	jQuery("#fechaBaja_filter_table").rup_date();
-	
+	jQuery('[id="fechaAlta_filter_table"]').rup_date();
+	jQuery('[id="fechaBaja_filter_table"]').rup_date();
+
 	//Formulario de detalle
-	jQuery("#fechaAlta_detail_table").rup_date();
-	jQuery("#fechaBaja_detail_table").rup_date();
+	jQuery('[id="fechaAlta_detail_table"]').rup_date();
+	jQuery('[id="fechaBaja_detail_table"]').rup_date();
+
+	jQuery('[id="rol_detail_table"]').rup_combo(options_role_combo);
 	
-	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+	//--------------------------------------------
 	
-	
+	//Formulario de filtrado
+	jQuery('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
+	jQuery('[id="rol_filter_table2"]').rup_combo(options_role_combo);
+
+	jQuery('[id="fechaAlta_filter_table2"]').rup_date();
+	jQuery('[id="fechaBaja_filter_table2"]').rup_date();
+
+	//Formulario de detalle
+	jQuery('[id="fechaAlta_detail_table2"]').rup_date();
+	jQuery('[id="fechaBaja_detail_table2"]').rup_date();
+
+	jQuery('[id="rol_detail_table2"]').rup_combo(options_role_combo);
+
+
 	function listaPlugins(num){
 	    switch (num) {
             case '2':
@@ -99,24 +115,24 @@ jQuery(function($){
                 return 'editForm,colReorder,multiSelection,seeker,buttons,';
         }
 	}
-	
+
 	var allowedPluginsBySelecionType = {
 		multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection','multiFilter','triggers','inlineEdit','multiPart'],
 		selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection','multiFilter','triggers','inlineEdit','multiPart'],
 		noSelection: ['colReorder', 'seeker', 'groups', 'noSelection','multiFilter','triggers','multiPart']
 	};
-	
-	 
+
+
 	function loadTable(num){
 	    num = (num?num:'')+'';
-	    
+
 	    $("#example_aplicar"+num).click(function(){
 	        if(localStorage['plugins'+num] === undefined){
 	            localStorage['plugins'+num] = '';
 	        }
-	        
-	        var selectionType = $("input[name = example_seleccionTabla]:checked")[0].id;
-	        
+
+	        var selectionType = $("input[name='tipoSeleccionTabla']:checked")[0].id;
+
 	        if(num.length>0){
     	        $.each($("#example_tableConfiguration"+num+" .pluginsControl input"), function() {
     	            if($('#'+this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id.substring(0,this.id.length-1)) > -1){
@@ -130,21 +146,21 @@ jQuery(function($){
 	                }
 	            });
 	        }
-	        
+
 	        location.reload();
 	    });
-	    
+
 		$('#example'+num).rup_table(loadPlugins(num));
 	}
-	
+
 	function loadPlugins(num){
 
 		if(localStorage['plugins'+num] === undefined){//si esta undefined es que es la primera vez.
 			localStorage['plugins'+num] = listaPlugins(num);
 		}
-		
+
 		var plugins = {};
-        
+
 		var fixedHeader = {
             footer: false,
             header:true
@@ -157,14 +173,14 @@ jQuery(function($){
             	target: 'td'
             }
         };*/
-	    
+
 	    var filter = {
-		    	  id:"example_filter_form",
-		    	  filterToolbar:"example_filter_toolbar",
-		    	  collapsableLayerId:"example_filter_fieldset"
+		    	  id:"example" + num + "_filter_form",
+		    	  filterToolbar:"example" + num + "_filter_toolbar",
+		    	  collapsableLayerId:"example" + num + "_filter_fieldset"
 		    }
 		    plugins.filter = filter;
-	    
+
 		if(localStorage['plugins'+num].indexOf('multiSelection') > -1){
 		    var multiSelect = {
 	            style: 'multi'
@@ -177,7 +193,7 @@ jQuery(function($){
 		}else{
 			$('#multiSelection'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('selection') > -1){
 		    var select = {
 	            activate: true
@@ -188,13 +204,13 @@ jQuery(function($){
 		}else{
 			$('#selection'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('noSelection') > -1){
 			$('#noSelection'+num).prop('checked', true);
 		}else{
 			$('#noSelection'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('editForm') > -1){
 	        var formEdit = {
 	        	detailForm: "#example_detail_div"+num,
@@ -209,14 +225,14 @@ jQuery(function($){
 	        formEdit.validate.rules["apellido1"+num]={required:true};
             formEdit.validate.rules["fechaAlta"+num]={required:true};
             formEdit.validate.rules["fechaBaja"+num]={date:true};
-	        
+
 		    plugins.formEdit = formEdit;
 
 		    $('#editForm'+num).prop('checked', true);
 		}else{
 			$('#editForm'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('inlineEdit') > -1){
 	        var inlineEdit = {
 		        	deselect: true,
@@ -235,7 +251,7 @@ jQuery(function($){
 		}else{
 			$('#inlineEdit'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('buttons') > -1){
 		    var buttons = {
 		            activate:    true
@@ -248,7 +264,7 @@ jQuery(function($){
 						text: function (dt) {
 							return 'Editar con MultiPart';
 						},
-						id: 'exampleeditMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
+						id: 'example' + num + 'editMultiPart_1', // Campo obligatorio si se quiere usar desde el contextMenu
 						className: 'datatable_toolbar_btnEdit',
 						displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 						insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
@@ -267,7 +283,7 @@ jQuery(function($){
 							dt.buttons.actions(dt, config);
 						}
 					};
-				plugins.buttons.myButtons = []; 
+				plugins.buttons.myButtons = [];
 				plugins.buttons.myButtons.push(optionButtonEdit);
 
 				$('#example'+num).on('tableEditFormSuccessCallSaveAjax', function(event){
@@ -304,12 +320,12 @@ jQuery(function($){
 			plugins.buttons.report.title = "Descargar Informe Personalizado";
 			plugins.buttons.report.message = "Descargando informe, por favor espere Personalizado";
 			plugins.buttons.blackListButtons = ['csvButton'];
-		   
+
 
 		}else{
 			$('#buttons'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('seeker') > -1){
 		    var seeker = {
 		    		activate: true
@@ -319,7 +335,7 @@ jQuery(function($){
 		}else{
 			$('#seeker'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('colReorder') > -1){
 		    var colReorder = {
 		    		fixedColumnsLeft: 1
@@ -329,12 +345,12 @@ jQuery(function($){
 		}else{
 			$('#colReorder'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('groups') > -1){
 		    var rowGroup = {
 		    		startRender:false,
 		    		endRender: function ( rows, group ) {
-		 
+
 		                return $('<tr/>')
 		                    .append( '<td colspan="8"><b>'+group+' - '+rows[0].length+' Elemento(s) </b></td>' );
 		            },
@@ -345,14 +361,14 @@ jQuery(function($){
 		}else{
 			$('#groups'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num].indexOf('multiFilter') > -1){
 			plugins.multiFilter = { idFilter:"generated",labelSize:255,userFilter:"udaPruebas"};
 			$('#multiFilter'+num).prop('checked', true);
 		}else{
 			$('#multiFilter'+num).prop('checked', false);
 		}
-		
+
 		if(localStorage['plugins'+num] !== undefined && localStorage['plugins'+num].indexOf('triggers') > -1){
 			cargarPruebasTriggers();
 			$('#triggers'+num).prop('checked', true);
@@ -454,7 +470,8 @@ jQuery(function($){
 		return plugins;
 	}
 
-	
+
 	loadTable();
 	loadTable(2);
+	});
 });

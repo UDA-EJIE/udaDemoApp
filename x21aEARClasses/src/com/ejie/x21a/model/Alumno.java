@@ -42,6 +42,7 @@ public class Alumno  implements java.io.Serializable {
             @NotEmpty(message="validacion.required",groups={AlumnoAddValidation.class, AlumnoEjemplo2Validation.class})
             @Length(min=6, message="validacion.minLength", groups={AlumnoAddValidation.class})
             private String password;
+            private String password_confirm;
             @NotEmpty(message="validacion.required", groups={Default.class,AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
             @Length(max=20, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
             private String nombre;
@@ -54,6 +55,7 @@ public class Alumno  implements java.io.Serializable {
             private Date fechaNacimiento;
             private String telefono;
             private String email;
+            private String email_confirm;
             private String idioma;
             @Valid()
             private NoraPais pais;
@@ -199,7 +201,15 @@ public class Alumno  implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    /**
+    public String getPassword_confirm() {
+		return password_confirm;
+	}
+
+	public void setPassword_confirm(String password_confirm) {
+		this.password_confirm = password_confirm;
+	}
+
+	/**
 	 * Method 'getNombre'.
 	 *
 	 * @return String
@@ -325,7 +335,15 @@ public class Alumno  implements java.io.Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-    /**
+    public String getEmail_confirm() {
+		return email_confirm;
+	}
+
+	public void setEmail_confirm(String email_confirm) {
+		this.email_confirm = email_confirm;
+	}
+
+	/**
 	 * Method 'getIdioma'.
 	 *
 	 * @return String

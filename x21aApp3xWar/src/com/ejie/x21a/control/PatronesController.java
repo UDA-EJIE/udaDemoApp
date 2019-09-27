@@ -59,6 +59,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Alumno;
+import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
@@ -66,7 +67,9 @@ import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -133,6 +136,7 @@ public class PatronesController {
 	//Accordion
 	@RequestMapping(value = "accordion", method = RequestMethod.GET)
 	public String getAccordion(Model model) {
+		model.addAttribute("usuario", new Usuario());
 		return "accordion";
 	}
 
@@ -312,36 +316,44 @@ public class PatronesController {
 	//Upload
 	@RequestMapping(value = "upload", method = RequestMethod.GET)
 	public String getUpload(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("collection", new Collection());
 		return "upload";
 	}
 	
 	//Wizard
 	@RequestMapping(value = "wizard", method = RequestMethod.GET)
 	public String getWizard(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard";
 	}
 	//Wizard_includeFile
 	@RequestMapping(value = "wizard_includeFile", method = RequestMethod.GET)
 	public String getWizard_includeFile(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_includeFile";
 	}
 	//Wizard_jspInclude
 	@RequestMapping(value = "wizard_jspInclude", method = RequestMethod.GET)
 	public String getWizard_jspInclude(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jspInclude";
 	}
 	//Wizard_jstlImport
 	@RequestMapping(value = "wizard_jstlImport", method = RequestMethod.GET)
 	public String getWizard_jstlImporte(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_jstlImport";
 	}
 	//Wizard dinamico
 	@RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
 	public String getWizard_dinamico(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_dinamico";
 	}
 	@RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
 	public String getWizard_dinamico_content(Model model) {
+		model.addAttribute("randomForm", new RandomForm());
 		return "wizard_dinamico_content";
 	}
 	
@@ -410,6 +422,8 @@ public class PatronesController {
 	//Validate
 	@RequestMapping(value = "validate", method = RequestMethod.GET)
 	public String getValidate(Model model) {
+		model.addAttribute("alumno", new Alumno());
+		model.addAttribute("randomForm", new RandomForm());
 		return "validate";
 	}
 	
@@ -429,11 +443,13 @@ public class PatronesController {
 	//All (todos los patrones en una pagina)
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public String getAll(Model model) {
+		model.addAttribute("ususario", new Usuario());
 		return "all";
 	}
 	//AllDialog (todos los patrones en un dialogo)
 	@RequestMapping(value = "allDialog", method = RequestMethod.GET)
 	public String getAllDialog(Model model) {
+		model.addAttribute("ususario", new Usuario());
 		return "allDialog";
 	}
 	
@@ -833,7 +849,7 @@ public class PatronesController {
 		@RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
 		public @ResponseBody Object getFormmMultientidades(
 				@RequestJsonBody(param="alumno") Alumno alumno,
-				@RequestJsonBody(param="departamento") Departamento departamento) {
+				@RequestJsonBody(param="departamento") Departamento departamento, Model model) {
 			
 			MessageWriter messageWriter = new MessageWriter();
 
@@ -845,6 +861,8 @@ public class PatronesController {
 			messageWriter.endSubLevel();
 			messageWriter.endMessageList();
 			
+			model.addAttribute("randomForm", new RandomForm());
+			
 			return messageWriter.toString();
 		}
 		
@@ -853,7 +871,8 @@ public class PatronesController {
 		public @ResponseBody Object getFormmMultientidadesMismoTipo(
 				@RequestJsonBody(param="comarca1") Comarca comarca1,
 				@RequestJsonBody(param="comarca2") Comarca comarca2,
-				@RequestJsonBody(param="comarca3") Comarca comarca3
+				@RequestJsonBody(param="comarca3") Comarca comarca3,
+				Model model
 				) {
 			
 			MessageWriter messageWriter = new MessageWriter();
@@ -865,6 +884,9 @@ public class PatronesController {
 			messageWriter.addMessage(new JSONObject(comarca1).toString());
 			messageWriter.endSubLevel();
 			messageWriter.endMessageList();
+			
+			model.addAttribute("randomForm", new RandomForm());
+			model.addAttribute("usuario", new Usuario());
 			
 			return messageWriter.toString();
 			
