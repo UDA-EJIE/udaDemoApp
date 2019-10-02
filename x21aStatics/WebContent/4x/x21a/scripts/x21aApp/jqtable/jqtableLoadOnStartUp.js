@@ -15,89 +15,92 @@
  */
 jQuery(function($){
 	
-	$("#comarca").rup_jqtable({
-		url: "../jqGridComarca",
-		sortorder: "asc",
-		sortname: "code",
-		primaryKey: "code" ,
-		loadOnStartUp:false,
-		colNames: [
-			"code",
-			"descEs",
-			"descEu",
-			"css",
-			"Provincia",
-			"Provincia"
-		],
-		  
-		colModel: [
-			{ name: "code",
-				label: "code",
-				index: "code",
-				width: "150",
-				editable: true,
-				edittype: "text",
-				key:true
-			},
-			{ name: "descEs",
-				label: "descEs",
-				index: "descEs",
-				width: "150",
-				editable: true,
-				edittype: "text"
-			},
-			{ name: "descEu",
-				label: "descEu",
-				index: "descEu",
-				width: "150",
-				editable: true,
-				edittype: "text"
-			},
-			{ name: "css",
-				label: "css",
-				index: "css",
-				width: "150",
-				editable: true,
-				edittype: "text"
-			},
-			{ name: "provincia.code",
-				label: "provincia.code",
-				index: "provincia.code",
-				editable: true,
-				hidden: true,
-				edittype: "text",
-				rupType: "combo",
-				editoptions: {
-					source : "../jqGridComarca/provincia",
-					sourceParam : {label:"descEs", value:"code"},
-					blank : "",
-					edithidden:true
+	// No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+	initRupI18nPromise.then(function() {
+		$("#comarca").rup_jqtable({
+			url: "../jqGridComarca",
+			sortorder: "asc",
+			sortname: "code",
+			primaryKey: "code" ,
+			loadOnStartUp:false,
+			colNames: [
+				"code",
+				"descEs",
+				"descEu",
+				"css",
+				"Provincia",
+				"Provincia"
+			],
+			  
+			colModel: [
+				{ name: "code",
+					label: "code",
+					index: "code",
+					width: "150",
+					editable: true,
+					edittype: "text",
+					key:true
 				},
-				editrules:{
-					edithidden:true
+				{ name: "descEs",
+					label: "descEs",
+					index: "descEs",
+					width: "150",
+					editable: true,
+					edittype: "text"
+				},
+				{ name: "descEu",
+					label: "descEu",
+					index: "descEu",
+					width: "150",
+					editable: true,
+					edittype: "text"
+				},
+				{ name: "css",
+					label: "css",
+					index: "css",
+					width: "150",
+					editable: true,
+					edittype: "text"
+				},
+				{ name: "provincia.code",
+					label: "provincia.code",
+					index: "provincia.code",
+					editable: true,
+					hidden: true,
+					edittype: "text",
+					rupType: "combo",
+					editoptions: {
+						source : "../jqGridComarca/provincia",
+						sourceParam : {label:"descEs", value:"code"},
+						blank : "",
+						edithidden:true
+					},
+					editrules:{
+						edithidden:true
+					}
+				},
+				{ name: "provincia.descEs",
+					label: "provincia.descEs",
+					index: "provincia.descEs",
+					editable: false
 				}
-			},
-			{ name: "provincia.descEs",
-				label: "provincia.descEs",
-				index: "provincia.descEs",
-				editable: false
-			}
-        ],
-        usePlugins:[
- 			"formEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
-        	"responsive",
-        	"filter",
-        	"search",
-        	"multifilter"
-        ],
-        editOptions:{
-        	fillDataMethod:"clientSide"
-        },
-        multifilter:{ idFilter:"onLoadFalse",labelSize:255,userFilter:"udaPruebas"}
-       
+	        ],
+	        usePlugins:[
+	 			"formEdit",
+	        	"feedback",
+				"toolbar",
+	        	"contextMenu",
+	        	"responsive",
+	        	"filter",
+	        	"search",
+	        	"multifilter"
+	        ],
+	        editOptions:{
+	        	fillDataMethod:"clientSide"
+	        },
+	        multifilter:{ idFilter:"onLoadFalse",labelSize:255,userFilter:"udaPruebas"}
+	       
+		});
 	});
 
 });
