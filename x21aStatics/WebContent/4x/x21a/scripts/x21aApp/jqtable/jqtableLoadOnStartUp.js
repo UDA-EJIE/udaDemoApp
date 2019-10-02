@@ -23,6 +23,7 @@ jQuery(function($){
 			sortname: "code",
 			primaryKey: "code" ,
 			loadOnStartUp:false,
+			autowidth: true,
 			colNames: [
 				"code",
 				"descEs",
