@@ -18,74 +18,86 @@
 <!-- Feedback -->
 <div id="x21aPilotoPatronesWar_feedback"></div><br/>
  
-<div id="local" style="float: left;">
-	<fieldset class="combo_fieldset">
-		<legend class="combo_legend">Local (no i18n)</legend>
-		
-		<label for="departamento">Departamento</label>
-		<select id="departamento" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="provincia">Provincia</label>
-		<select id="provincia" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="dptoProv">Departamento-Provincia</label>
-		<select id="dptoProv" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-	</fieldset>
+<div class="container-fluid">
+	<div class="form-row">
+		<fieldset class="col-sm mr-sm-5">
+			<legend>Local (no i18n)</legend>
+			
+			<div class="form-groupMaterial">
+				<label for="departamento">Departamento</label>
+				<select id="departamento"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="provincia">Provincia</label>
+				<select id="provincia"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="dptoProv">Departamento-Provincia</label>
+				<select id="dptoProv"><option>&nbsp;</option></select>
+			</div>
+		</fieldset>
+	
+		<fieldset class="col-sm">
+			<legend>Remoto</legend>
+			
+			<div class="form-groupMaterial">
+				<label for="departamentoRemote">Departamento</label>
+				<select id="departamentoRemote" name="departamento"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="provinciaRemote">Provincia</label>
+				<select id="provinciaRemote" name="provincia"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="dptoProvRemote">Departamento-Provincia</label>
+				<select id="dptoProvRemote"><option>&nbsp;</option></select>
+			</div>
+		</fieldset>
+	</div>
 </div>
 
-<div id="remote" style="float: left; margin-left: 4em;">
-	<fieldset class="combo_fieldset">
-		<legend class="combo_legend">Remoto</legend>
-		
-		<label for="departamentoRemote">Departamento</label>
-		<select id="departamentoRemote" name="departamento" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="provinciaRemote">Provincia</label>
-		<select id="provinciaRemote" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="dptoProvRemote">Departamento-Provincia</label>
-		<select id="dptoProvRemote" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-	</fieldset>		
-</div>
+<div class="container-fluid mt-4">
+	<div class="form-row">
+		<fieldset class="col-sm mr-sm-5">
+			<legend>Mixto I</legend>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto_departamentoRemote">Departamento (remoto)</label>
+				<select id="mixto_departamentoRemote" name="departamento"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto_provincia">Provincia (local)</label>
+				<select id="mixto_provincia" name="provincia"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
+				<select id="mixto_dptoProvRemote"><option>&nbsp;</option></select>
+			</div>
+		</fieldset>
 
-<div id="mixto" style="float: left; margin-left: 4em;">
-	<fieldset class="combo_fieldset">
-		<legend class="combo_legend">Mixto I</legend>
-		
-		<label for="mixto_departamentoRemote">Departamento (remoto)</label>
-		<select id="mixto_departamentoRemote" name="departamento" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="mixto_provincia">Provincia (local)</label>
-		<select id="mixto_provincia" name="provincia" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
-		<select id="mixto_dptoProvRemote" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-	</fieldset>
-</div>
-
-<div id="mixto2" style="float: left; margin-left: 4em; margin-bottom: 3em;">
-	<fieldset class="combo_fieldset">
-		<legend class="combo_legend">Mixto II</legend>
-		
-		<label for="mixto2_departamento">Departamento (local)</label>
-		<select id="mixto2_departamento" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
-		<select id="mixto2_provinciaRemote" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-		
-		<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
-		<select id="mixto2_dptoProv" class="rup-combo"><option>&nbsp;</option></select>
-		<br><br>
-	</fieldset>
+		<fieldset class="col-sm">
+			<legend>Mixto II</legend>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto2_departamento">Departamento (local)</label>
+				<select id="mixto2_departamento"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
+				<select id="mixto2_provinciaRemote"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
+				<select id="mixto2_dptoProv"><option>&nbsp;</option></select>
+			</div>
+		</fieldset>
+	</div>
 </div>

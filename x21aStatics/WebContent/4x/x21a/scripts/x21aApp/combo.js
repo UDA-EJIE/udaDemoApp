@@ -33,7 +33,7 @@ $(function() {
 			{i18nCaption: "scala", value:"scala_value"}
 		],
 		selected: "perl_value",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		blank : "0",
 		rowStriping : true,
@@ -48,7 +48,7 @@ $(function() {
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "3",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		change: function () {
 			console.log('comboRemote:::Changed')
@@ -69,7 +69,7 @@ $(function() {
 			{i18nCaption: "mad_doe", value:"mad"}
 		],
 		selected: "joseph",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		format: "default",
 		change: function () {
@@ -107,7 +107,7 @@ $(function() {
 			]}
 		],
 		selected: "real_value",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		rowStriping : true,
 		change: function () {
@@ -119,7 +119,7 @@ $(function() {
 		sourceGroup : "comboSimple/remoteGroup",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "7",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		change: function () {
 			console.log('comboGruposRemoto:::Changed')
@@ -135,7 +135,7 @@ $(function() {
 			{Imprimir: "print"}
 		],
 		selected: "Filtrar",
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		change: function () {
 			console.log('comboImgs:::Changed')
@@ -144,7 +144,7 @@ $(function() {
 	
 	$('#comboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		width: '99%',
+		width: '98%',
         customClasses: ["select-material"],
 		change: function () {
 			console.log('comboInput:::Changed')
@@ -156,7 +156,7 @@ $(function() {
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		loadFromSelect: true,
 //		selected: "2",
-		width: '99%',
+		width: '98%',
 		height: 75,
         customClasses: ["select-material"],
 		change: function () {
