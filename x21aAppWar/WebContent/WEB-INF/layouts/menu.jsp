@@ -270,6 +270,19 @@
 				</div>
 			</li>
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="listDropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="mdi mdi-view-sequential" aria-hidden="true"></i>
+                    <spring:message code="lista" />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="listaDropdown">
+                    <spring:url value="/lista/simple" var="listaSimple" htmlEscape="true"/>
+                	<a class="dropdown-item" href="${listaSimple}">
+                		<spring:message code="lista.simple" />
+                	</a>
+                </div>
+            </li>
 
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="tableDropdown"

@@ -1,4 +1,8 @@
 {
+	"comun": {
+		"si": "Bai",
+		"no": "Ez"
+	},
 	"x21aAppWar_menu_mixto":{
 		"inicio" :"Hasiera",
 		"mantenimientos" :"x21aMantenimientosWar",

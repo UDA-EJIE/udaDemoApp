@@ -1,4 +1,8 @@
 {
+	"comun": {
+		"si": "Yes",
+		"no": "No"
+	},
 	"x21aAppWar_menu_mixto" :{
 		"inicio" :"Inicio_en",
 		"mantenimientos" :"x21aMantenimientosWar_en",
