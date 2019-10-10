@@ -114,5 +114,24 @@ $(function() {
 			alert('Seleccionado: '+value);
 			}
 	});
+	
+	$('#comboRemoto').rup_combo({
+		source : "comboSimple/remote",
+		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		selected: "3",
+		width: 300,
+		change: function () {
+			console.log('comboRemote:::Changed')
+		},
+		select : function() {
+			var valor = $('#comboRemoto').rup_combo('getRupValue');
+			$("#autocompleteGet").rup_autocomplete({
+				source : "autocomplete/remote?codProvincia="+valor,
+				sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code"},
+				minLength: 4
+			});
+			jQuery('#autocompleteGet_label').data('tmp.loadObjects.term','notLoad');
+		}
+	});
 		
 });
