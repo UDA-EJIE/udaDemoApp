@@ -18,7 +18,7 @@ $('#rup-list').rup_list({
     feedback: 'rup-list-feedback',
     visiblePages: 3, //Mínimo 3
     key: 'id',
-    orderType: 'multi',
+    isMultiSort: true,
     selectable:{
         multi: true
         , selector: '.list-item'
