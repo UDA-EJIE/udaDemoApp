@@ -602,7 +602,9 @@ public class TableUsuarioController  {
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("comarca", new Comarca());
-		model.addAttribute("localidad", new Localidad());
+		Localidad localidad = new Localidad();
+		localidad.setComarca(new Comarca());
+		model.addAttribute("localidad", localidad);
 		return "tableMasterDetail";
 	}
 	

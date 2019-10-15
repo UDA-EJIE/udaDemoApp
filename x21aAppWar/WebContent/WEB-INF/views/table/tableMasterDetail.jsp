@@ -82,7 +82,7 @@
 
 <!-- Formulario de detalle -->
 <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegaci�n del detalle -->
+	<!-- Barra de navegación del detalle -->
 	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -146,6 +146,12 @@
 		<form:form modelAttribute="localidad" id="localidad_filter_form">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
+			    <legend></legend>
+
+			    <!-- Hidden de la PK de la tabla padre -->
+			    <label for="localidad_filter_masterPK" class="d-none">code</label>
+                <form:input id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
+
 				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="code" id="code_filter_localidad" />
