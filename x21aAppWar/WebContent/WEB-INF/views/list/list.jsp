@@ -8,7 +8,7 @@
 <div id="rup-list-content">
     <fieldset id="rup-list-header">
         <div class="row">
-            <div id="rup-list-header-selectables" class="col-md-4">
+            <div id="rup-list-header-selectables" class="col-md-3">
                 Selección:
             </div>
             <div class="col-md-2">
@@ -16,12 +16,18 @@
                 <select id="rup-list-header-rowNum"></select>
             </div>
             <!-- Ordenar por -->
-            <div class="col-md-2">
-                <label for="rup-list-header-sidx">Ordenar por:</label>
-                <select id="rup-list-header-sidx"></select>
-                <button id="rup-list-header-sord">
-                    <i class="mdi mdi-sort"></i>
-                </button>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-7">
+                        <label for="rup-list-header-sidx">Ordenar por:</label>
+                        <select id="rup-list-header-sidx"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="rup-list-header-sord">
+                            <i class="mdi mdi-sort"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <!-- Navegación -->
             <div class="col-md-2">

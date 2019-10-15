@@ -26,6 +26,12 @@ public class ListaController {
         return "listaSimple";
     }
 
+    @GetMapping (value = "/multiOrd")
+    public String getListaMultiOrdView(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "listaMultiOrd";
+    }
+
     @PostMapping(value = "/filter")
     public @ResponseBody
     TableResponseDto<Usuario> filter(
