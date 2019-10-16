@@ -51,6 +51,14 @@
 		<label for="comboboxRemoto">Departamento-Provincia:</label><input
 			id="comboboxRemoto" name="comboboxRemoto" /> [Castellano: " de " //
 		Euskara: arab, gipuz, bilb] <br />
+		
+		<label for="comboRemoto">Combo remoto</label>
+		<select id="comboRemoto" class="rup-combo"></select>
+		
+		<h3>Autocomplete remoto Cambian los valores con el Select del Combo Remoto</h3>
+		<label for="autocompleteGet">Departamento-Provincia:</label><input id="autocompleteGet"
+			name="autocompleteGet" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
+		<br />
 	</div>
 </section>
 

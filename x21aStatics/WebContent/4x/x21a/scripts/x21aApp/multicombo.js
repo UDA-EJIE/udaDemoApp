@@ -35,6 +35,7 @@ $(function() {
 		selected: ["perl_value", "javascript_value", "ruby_value"], //value && index
 		ordered: false,
 		width: 400,
+		customClasses: ["select-material"],
 		multiselect: true,
 		rowStriping : true,
 		change: function () {
@@ -48,6 +49,7 @@ $(function() {
 		selected: [1], //index
 		width: 350,
 		height: 75,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiRemoto:::Changed');
@@ -80,6 +82,7 @@ $(function() {
 		],
 		width: 500,
 		height: 300,
+		customClasses: ["select-material"],
 		multiselect: true,
 		multiOptgroupIconText: false,
 		rowStriping : true,
@@ -92,6 +95,7 @@ $(function() {
 		sourceGroup : "comboSimple/remoteGroupEnlazado",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		width: 500,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiGroupsRemote:::Changed');
@@ -101,6 +105,7 @@ $(function() {
 	$('#multicomboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
 		width: 350,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiInput:::Changed');
@@ -111,6 +116,7 @@ $(function() {
 		loadFromSelect: true,
 		width: 350,
 		height: 75,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiLoadFromSelect:::Changed');
