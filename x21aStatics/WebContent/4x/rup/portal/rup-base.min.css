@@ -8319,6 +8319,7 @@
   top: 5px;
 }
 
+.r01gContainer .context-menu-item.context-menu-visible>.context-menu-list,
 .r01gContainer .context-menu-item.hover>.context-menu-list,
 .r01gContainer .context-menu-item.icon.rup-icon {
   display: block;
