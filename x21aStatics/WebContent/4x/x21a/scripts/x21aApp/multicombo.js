@@ -34,7 +34,7 @@ $(function() {
 		],
 		selected: ["perl_value", "javascript_value", "ruby_value"], //value && index
 		ordered: false,
-		width: 400,
+		width: '97%',
 		customClasses: ["select-material"],
 		multiselect: true,
 		rowStriping : true,
@@ -47,7 +47,7 @@ $(function() {
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: [1], //index
-		width: 350,
+		width: '97%',
 		height: 75,
 		customClasses: ["select-material"],
 		multiselect: true,
@@ -80,7 +80,7 @@ $(function() {
 				{i18nCaption: "vettel", value:"vettel_value"}
 			]}
 		],
-		width: 500,
+		width: '97%',
 		height: 300,
 		customClasses: ["select-material"],
 		multiselect: true,
@@ -94,7 +94,7 @@ $(function() {
 	$('#multicomboGruposRemoto').rup_combo({
 		sourceGroup : "comboSimple/remoteGroupEnlazado",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-		width: 500,
+		width: '97%',
 		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
@@ -104,7 +104,7 @@ $(function() {
 	
 	$('#multicomboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		width: 350,
+		width: '97%',
 		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
@@ -114,7 +114,7 @@ $(function() {
 
 	$('#multicomboLoadFromSelect').rup_combo({
 		loadFromSelect: true,
-		width: 350,
+		width: '97%',
 		height: 75,
 		customClasses: ["select-material"],
 		multiselect: true,
