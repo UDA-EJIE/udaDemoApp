@@ -56,5 +56,6 @@ $('#rup-list').rup_list({
             ejieval.text($.rup.i18n.app.comun.no);
         }
     },
+    isMultiSort: true,
     load: () => {}
 });
