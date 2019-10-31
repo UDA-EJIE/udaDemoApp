@@ -198,7 +198,7 @@
 						<i class="mdi mdi-tune" aria-hidden="true"></i>
 						<spring:message code="slider" />
 					</a>
-					<spring:url value="/patrones/date" var="" htmlEscape="true"/>
+					<spring:url value="/patrones/date" var="date" htmlEscape="true"/>
 					<a class="dropdown-item" href="${date}">
 						<i class="mdi mdi-calendar-month" aria-hidden="true"></i>
 						<spring:message code="date" />

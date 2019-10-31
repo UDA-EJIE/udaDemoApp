@@ -7,7 +7,7 @@
  *
  *      http://ec.europa.eu/idabc/eupl.html
  *
- * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, multipk_aplicar").click(function(){
  * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
  * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
@@ -225,7 +225,7 @@ jQuery(function($){
 			localStorage.plugins = '';
 		}
 		
-		var selectionType = $("input[name = multipk_seleccionTabla]:checked")[0].id;
+		var selectionType = $('input[name = "tipoSeleccionTabla"]:checked')[0].id;
 		
 		$.each($("#multipk_tableConfiguration .pluginsControl input"), function() {
 			if($('#' + this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id) > -1){

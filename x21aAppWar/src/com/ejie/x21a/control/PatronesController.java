@@ -503,7 +503,8 @@ public class PatronesController {
 		@RequestMapping(value = "autocomplete/remote", method=RequestMethod.GET)
 		public @ResponseBody List<DepartamentoProvincia> getRemoteAutocomplete(
 				@RequestParam(value = "q", required = true) String q,
-				@RequestParam(value = "c", required = true) Boolean c){
+				@RequestParam(value = "c", required = true) Boolean c,
+				@RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia){
 				//Filtro
 				DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
 	
@@ -513,6 +514,11 @@ public class PatronesController {
 					departamentoProvincia.setDescEu(q);
 				}else{
 					departamentoProvincia.setDescEs(q);
+				}
+				if(codProvincia != null){
+					Provincia provincia = new Provincia();
+					provincia.setCode(codProvincia);
+					departamentoProvincia.setProvincia(provincia);
 				}
 				
 				try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }

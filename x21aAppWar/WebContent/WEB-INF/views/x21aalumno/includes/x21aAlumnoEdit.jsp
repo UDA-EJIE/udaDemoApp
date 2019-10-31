@@ -2,7 +2,7 @@
 
 
 <!-- Formulario de detalle -->
-<div id="x21aAlumno_detail_div" class="rup-table-formEdit-detail">
+<div id="x21aAlumno_detail_div" class="rup-table-formEdit-detail d-none">
 	<div id ="x21aAlumno_detail_navigation"></div>			<!-- Barra de navegación del detalle -->
 	<div class="ui-dialog-content ui-widget-content" >
 		<form:form modelAttribute="alumno" id="x21aAlumno_detail_form">					<!-- Formulario -->

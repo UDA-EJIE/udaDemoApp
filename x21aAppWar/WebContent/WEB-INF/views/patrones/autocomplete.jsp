@@ -21,37 +21,74 @@
 
 		<h2>Autocomplete</h2>
 		<hr>
-
-
-		<!-- <div id="dialogo"> -->
-		<h3>Autocomplete local con función select</h3>
-		<label for="autocomplete">Lenguaje:</label><input id="autocomplete"
-			name="autocomplete" /> [asp, c, c++, coldfusion, groovy, haskell,
-		java, javascript, perl, php, python, ruby, scala] <br />
-		<!-- </div> -->
 		
-		<h3>Autocomplete local sin acentos</h3>
-		<label for="autocompleteNotAccent">Lenguaje:</label><input id="autocompleteNotAccent"
-			name="autocompleteNotAccent" /> [asp, c, c++, coldfusion, groovy, haskell,
-		java, javascript, perl, php, python, ruby, scala] <br />
-
-		<h3>Autocomplete remoto</h3>
-		<label for="patron">Departamento-Provincia:</label><input id="patron"
-			name="patron" /> [Castellano: " de " // Euskara: arab, gipuz, bilb]
-		<br />
-
-
-		<h3>Combobox local</h3>
-		<label for="comboboxLocal">Lenguaje:</label><input id="comboboxLocal"
-			name="comboboxLocal" /> [asp, c, c++, coldfusion, groovy, haskell,
-		java, javascript, perl, php, python, ruby, scala]
-
-
-		<h3>Combobox remoto</h3>
-		<label for="comboboxRemoto">Departamento-Provincia:</label><input
-			id="comboboxRemoto" name="comboboxRemoto" /> [Castellano: " de " //
-		Euskara: arab, gipuz, bilb] <br />
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="col-sm-12">Combobox local</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="comboboxLocal" name="comboboxLocal" /> 
+					<label for="comboboxLocal">Lenguaje</label>
+					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+				</div>
+			</div>
+			
+			<div class="col-sm-6">
+				<h3 class="col-sm-12">Combobox remoto</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="comboboxRemoto" name="comboboxRemoto" /> 
+					<label for="comboboxRemoto">Departamento-Provincia</label>
+					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row mt-4">
+			<div class="col-sm-6">
+				<h3 class="col-sm-12">Combobox remoto (con evento en el select)</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<select id="comboRemoto" name="comboRemoto"></select> 
+					<label for="comboRemoto">Combo remoto</label>
+					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+				</div>
+			</div>
+			
+			<div class="col-sm-6">
+				<h3 class="col-sm-12">Autocomplete remoto (el combobox remoto cambia sus valores)</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="autocompleteGet" name="autocompleteGet" /> 
+					<label for="autocompleteGet">Departamento-Provincia</label>
+					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row mt-4">
+			<div class="col-sm-4">
+				<h3 class="col-sm-12">Autocomplete local con función select</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="autocomplete" name="autocomplete" /> 
+					<label for="autocomplete">Lenguaje</label>
+					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<h3 class="col-sm-12">Autocomplete local sin acentos</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="autocompleteNotAccent" name="autocompleteNotAccent" /> 
+					<label for="autocompleteNotAccent">Lenguaje</label>
+					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<h3 class="col-sm-12">Autocomplete remoto</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<input id="patron" name="patron" /> 
+					<label for="patron">Departamento-Provincia</label>
+					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+				</div>
+			</div>	
+		</div>
 	</div>
 </section>
-
-

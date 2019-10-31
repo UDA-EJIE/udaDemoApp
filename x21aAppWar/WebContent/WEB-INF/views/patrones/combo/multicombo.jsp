@@ -16,30 +16,45 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2><spring:message code="multicombo" /></h2>
 
-<label for="multicombo">Multicombo local</label><br>
-<select id="multicombo"></select>
-<br><br>
+<div class="container-fluid">
+	<div class="form-row">
+		<div class="form-groupMaterial col-sm">  
+			<label for="multicombo">Multicombo local</label>
+			<select id="multicombo"></select>
+		</div>
+		<div class="form-groupMaterial col-sm">  
+			<label for="multicomboRemoto">MultiCombo remoto</label>
+			<select id="multicomboRemoto"></select>
+		</div>
+	</div>
+</div>
 
-<label for="multicomboRemoto">MultiCombo remoto</label><br>
-<select id="multicomboRemoto"></select>
-<br><br>
+<div class="container-fluid mt-4">
+	<div class="form-row">
+		<div class="form-groupMaterial col-sm">  
+			<label for="multicomboGrupos">MultiCombo con 'optgroups'</label>
+			<select id="multicomboGrupos"></select>
+		</div>
+		<div class="form-groupMaterial col-sm"> 
+			<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
+			<select id="multicomboGruposRemoto"></select>
+		</div>
+	</div>
+</div>
 
-<label for="multicomboGrupos">MultiCombo con 'optgroups'</label><br>
-<select id="multicomboGrupos"></select>
-<br><br>
-
-<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label><br>
-<select id="multicomboGruposRemoto"></select>
-<br><br>
-
-<label for="multicomboInput">MultiCombo sobre <strong>Input</strong></label><br>
-<input type="text" name="multicomboInput" id="multicomboInput" value="coldfusion##python" />
-<br><br>
-
-<label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label><br>
-<select id="multicomboLoadFromSelect" multiple="multiple">
-	<option value="1" selected="selected">Alava</option>
-	<option value="3">Gipuzcoa</option>
-	<option value="2" selected="selected">Vizcaya</option>
-</select>
-<br><br>
+<div class="container-fluid mt-4">
+	<div class="form-row">
+		<div class="form-groupMaterial col-sm">  
+			<label for="multicomboInput">MultiCombo sobre <strong>Input</strong></label>
+			<input type="text" name="multicomboInput" id="multicomboInput" value="coldfusion##python" />
+		</div>
+		<div class="form-groupMaterial col-sm"> 
+			<label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label>
+			<select id="multicomboLoadFromSelect" multiple="multiple">
+				<option value="1" selected="selected">Alava</option>
+				<option value="3">Gipuzcoa</option>
+				<option value="2" selected="selected">Vizcaya</option>
+			</select>
+		</div>
+	</div>
+</div>

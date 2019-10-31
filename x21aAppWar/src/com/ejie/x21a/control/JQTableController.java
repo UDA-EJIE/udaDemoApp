@@ -162,7 +162,7 @@ public class JQTableController  {
 	@RequestMapping(value = "tableLoadOnStartUp", method = RequestMethod.GET)
 	public String gettableLoadOnStartUp(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tableLoadOnStartUp", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("comarca", new Comarca());
 		return "jqtableLoadOnStartUp";
 	}
 	
