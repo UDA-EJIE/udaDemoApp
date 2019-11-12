@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	
-	$("#comarca").rup_jqtable({
+	$("#comarca").rup_table({
 		url: "../jqGridComarca",
 		sortorder: "asc",
 		sortname: "code",

@@ -19,7 +19,7 @@ jQuery(function($){
 	
 	
 	
-	$("#tableDialog").rup_jqtable({
+	$("#tableDialog").rup_table({
 		url: "../jqGridUsuario",
 		colNames: tableColNames,
 		colModel: tableColModels,
@@ -155,7 +155,7 @@ jQuery(function($){
 	jQuery("#btnTablaDialog_ajax").on("click", function(event){
 		jQuery("#tableDialog_layer_div").rup_dialog({
 			type: $.rup.dialog.AJAX,
-			url:"./dialogAjax",
+			url:"./tableDialogAjax",
 			autoOpen:true,
 			width: 1200
 		});

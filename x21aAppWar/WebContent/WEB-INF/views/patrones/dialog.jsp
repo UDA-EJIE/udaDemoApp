@@ -76,18 +76,18 @@
 						<spring:message code="dialogNormal" />
 					</button>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 mt-3 mt-md-0">
 					<button id="btnAjaxDialogWAR" class="btn btn-block btn-secondary">
 						<spring:message code="dialogAjaxWAR" />
 					</button>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 mt-3 mt-md-0">
 					<button id="btnAjaxDialogStatics"
 						class="btn btn-block btn-secondary">
 						<spring:message code="dialogAjaxStatics" />
 					</button>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3 mt-3 mt-md-0">
 					<button id="btnTextDialog" class="btn btn-block btn-secondary">
 						<spring:message code="dialogText" />
 					</button>

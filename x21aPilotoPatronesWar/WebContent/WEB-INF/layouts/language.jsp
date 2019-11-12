@@ -16,12 +16,14 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <div id="x21aPilotoPatronesWar_language" class="rup-language_root">
 	<div class="languageHelpContact">
-		<a target="_blank" title='<spring:message code="language.ayuda" />' href="https://elkarlan.ejgv.euskadi.net/webguneak/jakingune/RecursosDidacticos/Guias/Gaveta/Paginas%20Wiki/Inicio.aspx" id="header_ayuda">
+		<spring:url value="https://elkarlan.ejgv.euskadi.net/webguneak/jakingune/RecursosDidacticos/Guias/Gaveta/Paginas%20Wiki/Inicio.aspx" var="urlLang" htmlEscape="true"/>
+		<spring:url value="mailto:uda@uda.es" var="urlMailto" htmlEscape="true"/>
+		<a target="_blank" title='<spring:message code="language.ayuda" />' href="${urlLang}" id="header_ayuda">
 			<spring:message code="language.ayuda" />
 		</a>
 		<span class="ui-icon ui-icon-extlink rup_external_link">&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		&nbsp;&nbsp;&nbsp;
-		<a target="_blank" title='<spring:message code="language.contacto" />' href="mailto:uda@uda.es">
+		<a target="_blank" title='<spring:message code="language.contacto" />' href="${urlMailto}">
 			<spring:message code="language.contacto" />	
 		</a>
 		<span class="ui-icon ui-icon-extlink rup_external_link">&nbsp;&nbsp;&nbsp;&nbsp;</span>

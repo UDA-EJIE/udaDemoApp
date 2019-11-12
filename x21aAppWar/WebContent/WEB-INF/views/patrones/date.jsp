@@ -40,14 +40,14 @@
 			<li><code>placeholderMask</code>: Muestra en el placeholder del
 				elemento la máscara de fecha.</li>
 		</ul>
-		<div class="example">
-			<div class="form-group">
-				<label for="fecha">Fecha <span class="text-muted"
-					id="fecha-mask"></span></label>: <input id="fecha" type="text" />
+		<div class="form-row">
+			<div class="form-groupMaterial col-sm">
+				<input id="fecha" type="text" />
+				<label for="fecha">Fecha <span class="text-muted" id="fecha-mask"/>:</label>
 			</div>
-			<div class="form-group">
-				<label for="fechaPlaceholder">Fecha</label>: <input
-					id="fechaPlaceholder" type="text" />
+			<div class="form-groupMaterial col-sm">
+				<input id="fechaPlaceholder" type="text" />
+				<label for="fechaPlaceholder">Fecha:</label>
 			</div>
 		</div>
 
@@ -58,10 +58,10 @@
 			<code>multiSelect</code>
 			.
 		</p>
-		<div class="example">
-			<div class="form-group">
-				<label for="fecha">Fecha multiple</label>: <input id="fecha_multi"
-					type="text" />
+		<div class="form-row">
+			<div class="form-groupMaterial col-sm">
+				<input id="fecha_multi" type="text" />
+				<label for="fecha">Fecha multiple:</label>
 			</div>
 		</div>
 
@@ -69,17 +69,25 @@
 
 		<p>Se permite vincular dos campos fecha (desde y hasta) para
 			permitir al usuario especificar un intervalo de fechas.</p>
-		<div class="example">
-			<div class="form-group">
-				<label for="fecha">Intervalo desde </label>: <input type="text"
-					id="desde" /> <label for="fecha">hasta: </label> <input
-					type="text" id="hasta" />
-			</div>
-			<div class="form-group">
-				<label for="fecha">Intervalo desde </label>: <input type="text"
-					id="desdeDateTime" /> <label for="fecha">hasta: </label> <input
-					type="text" id="hastaDateTime" />
-			</div>
+		<div class="form-row">
+          	<div class="form-groupMaterial col-sm">
+              	<input type="text" id="desde" />
+              	<label for="fecha">Intervalo desde:</label>
+          	</div>
+          	<div class="form-groupMaterial col-sm">
+            	<input type="text" id="hasta" />
+            	<label for="fecha">hasta:</label>
+        	</div>
+      	</div>
+		<div class="form-row">
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="desdeDateTime" />
+                <label for="fecha">Intervalo desde:</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="hastaDateTime" />
+                <label for="fecha">hasta:</label>
+            </div>
 		</div>
 
 		<h4>Calendario en línea</h4>
@@ -87,8 +95,8 @@
 		<p>El componente fecha permite su visualización en modo calendario
 			en vez de estar asociado a un campo concreto.</p>
 
-		<div class="example">
-			<div id="fecha_inline" style="float: left;"></div>
+		<div class="form-row">
+			<div id="fecha_inline"></div>
 		</div>
 	</div>
 </section>

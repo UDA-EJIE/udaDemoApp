@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	var codeDialogSelector = $("#treeCodeDialog");
 	
@@ -157,12 +157,7 @@ jQuery(document).ready(function(){
 		codeDialogSelector.rup_dialog("open");
 	});
 	
-	$("#tree_example").rup_tree({
-		"json_data":{
-			
-		}
-		
-	});
+	$("#tree_example").rup_tree();
 	
 	
 	/* Ejemplo de un árbol con cambios en el modo de selección */

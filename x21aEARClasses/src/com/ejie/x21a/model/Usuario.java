@@ -25,10 +25,12 @@ import javax.validation.groups.Default;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ejie.x21a.validation.group.UsuarioEditValidation;
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -58,10 +60,21 @@ public class Usuario  implements java.io.Serializable {
             @NotNull(message="validacion.required")
             private Date fechaAlta;
             private Date fechaBaja;
+            private Date fechaModif;
 //            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
             private Provincia provincia;
             private String rol;
             private String idPadre;
+            private MultipartFile imagenAlumno;
+
+	public MultipartFile getImagenAlumno() {
+				return imagenAlumno;
+			}
+
+	@JsonIgnore
+	public void setImagenAlumno(MultipartFile imagenAlumno) {
+		this.imagenAlumno = imagenAlumno;
+	}
 
 	/** Method 'Usuario'.
 	*
@@ -331,6 +344,14 @@ public class Usuario  implements java.io.Serializable {
 		result.append(", [ rol: ").append(this.rol).append(" ]");
 		result.append("}");
 		return result.toString();
+	}
+
+	public Date getFechaModif() {
+		return fechaModif;
+	}
+
+	public void setFechaModif(Date fechaModif) {
+		this.fechaModif = fechaModif;
 	}
 
 //	public int hashCode() {

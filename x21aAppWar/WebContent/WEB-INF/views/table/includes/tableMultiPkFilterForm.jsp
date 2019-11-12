@@ -15,25 +15,25 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<form id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
+<form:form modelAttribute="multiPk" id="MultiPk_filter_form">						<!-- Formulario de filtrado -->
 	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
 	<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
 		<div class="form-row">
 			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
-				<input type="text" name="ida" id="ida_filter_table"/>
+				<form:input path="ida" id="ida_filter_table"/>
 				<label for="ida_filter_table">
 					<spring:message code="ida"/>
 				</label>
 			</div>
 			<div class="form-groupMaterial col-sm">
-				<input type="text" name="idb" id="idb_filter_table"/>
+				<form:input path="idb" id="idb_filter_table"/>
 				<label for="idb_filter_table">
 					<spring:message code="idb"/>
 				</label>
 			</div>
 			<div class="form-groupMaterial col-sm">
-				<input type="text" name="nombre" id="nombre_filter_table"/>
+				<form:input path="nombre" id="nombre_filter_table"/>
 				<label for="nombre_filter_table" >
 					<spring:message code="nombre"/>
 				</label>
@@ -41,13 +41,13 @@
 		</div>
 		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
-				<input type="text" name="apellido1" id="apellido1_filter_table"/>
+				<form:input path="apellido1" id="apellido1_filter_table"/>
 				<label for="apellido1_filter_table">
 					<spring:message code="apellido1"/>
 				</label>
 			</div>
 			<div class="form-groupMaterial col-sm">
-				<input type="text" name="apellido2" id="apellido2_filter_table"/>
+				<form:input path="apellido2" id="apellido2_filter_table"/>
 				<label for="apellido2_filter_table">
 					<spring:message code="apellido2"/>
 				</label>
@@ -70,4 +70,4 @@
 	        </button>
 		</div>
 	</fieldset>
-</form>
+</form:form>

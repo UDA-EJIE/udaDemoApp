@@ -7,8 +7,7 @@
 	<div id='divFormEditorIberdok' style="display: none">
 
 
-		<form id="editorDocumentosForm" action="" method="post"
-			target="_blank">
+		<form:form id="editorDocumentosForm" action="" method="post" modelAttribute="randomForm" target="_blank">
 			<div class="">
 				<div class="header">
 					<h3>
@@ -23,7 +22,7 @@
 							<label><spring:message code="iberdok.lang" /></label>
 						</div>
 						<div class="enLinea componentsIberdok">
-							<select id="lang" name="lang"></select>
+							<form:select id="lang" path="lang"/>
 						</div>
 					</div>
 					<div class="enLinea">
@@ -31,7 +30,7 @@
 							<label><spring:message code="iberdok.modo" /></label>
 						</div>
 						<div class="enLinea componentsIberdok">
-							<select id="modo" name="modo" class="rup-combo"></select>
+							<form:select id="modo" path="modo" class="rup-combo"/>
 						</div>
 					</div>
 					<div class="enLinea" style='display: none;'>
@@ -39,7 +38,7 @@
 							<label><spring:message code="iberdok.token" /></label>
 						</div>
 						<div class="enLinea componentsIberdok">
-							<input id="token" name="token" />
+							<form:input id="token" path="token" />
 						</div>
 					</div>
 				</div>
@@ -49,7 +48,7 @@
 							<label><spring:message code="iberdok.idUsuario" /></label>
 						</div>
 						<div class="enLinea componentsIberdok">
-							<input id="idUsuario" name="idUsuario"></input>
+							<form:input id="idUsuario" path="idUsuario"/>
 						</div>
 					</div>
 
@@ -63,7 +62,7 @@
 							<label><spring:message code="iberdok.urlRetorno" /></label>
 						</div>
 						<div class="enLinea componentsIberdokGrande">
-							<input id="urlRetorno" name="urlRetorno"></input>
+							<form:input id="urlRetorno" path="urlRetorno"/>
 						</div>
 					</div>
 
@@ -83,7 +82,7 @@
 						</div>
 
 						<div class="enLinea componentsIberdokGrande">
-							<input id="urlFinalizacion" name="urlFinalizacion" value=""></input>
+							<form:input id="urlFinalizacion" path="urlFinalizacion" value=""/>
 						</div>
 					</div>
 				</div>
@@ -102,7 +101,7 @@
 											code="iberdok.idModelo" />*</label>
 								</div>
 								<div class="enLinea componentsIberdok">
-									<input type="text" id="idModelo" name="idModelo"></input>
+									<form:input type="text" id="idModelo" path="idModelo"/>
 								</div>
 							</div>
 							<div class="enLinea widthFijo ">
@@ -111,7 +110,7 @@
 											code="iberdok.nombre" />*</label>
 								</div>
 								<div class="enLinea componentsIberdok">
-									<input type="text" id="nombre" name="nombre"></input>
+									<form:input type="text" id="nombre" path="nombre"/>
 								</div>
 							</div>
 						</div>
@@ -123,7 +122,7 @@
 						<label><spring:message code="iberdok.xhtml64" /></label>
 					</div>
 					<div class="enLinea componentsIberdok">
-						<input type="text" id="xhtml64" name="xhtml64" readonly="readonly"></input>
+						<form:input type="text" id="xhtml64" path="xhtml64" readonly="readonly"/>
 					</div>
 				</div>
 				<div id="divModo7">
@@ -131,7 +130,7 @@
 						<label><spring:message code="iberdok.idDocumento" /></label>
 					</div>
 					<div class="enLinea componentsIberdok">
-						<input id="idDocumento" name="idDocumento" readonly="readonly"></input>
+						<form:input id="idDocumento" path="idDocumento" readonly="readonly"/>
 					</div>
 
 				</div>
@@ -142,7 +141,7 @@
 									<label><spring:message code="iberdok.semilla" /></label>
 								</div>
 								<div class="enLinea componentsIberdok">
-									<textarea id="semilla" name="semilla"></textarea>
+									<form:textarea id="semilla" path="semilla"/>
 								</div>
 							</div>
 							<div class="enLinea widthFijo">
@@ -151,7 +150,7 @@
 								</div>
 
 								<div class="enLinea componentsIberdok">
-									<textarea name="semillaTXT"></textarea>
+									<form:textarea path="semillaTXT"/>
 								</div>
 							</div>
 						</div>
@@ -160,7 +159,7 @@
 								<label><spring:message code="iberdok.semillaxml" /></label>
 							</div>
 							<div class="enLinea componentsIberdok">
-								<textarea name="semillaXML">	</textarea>
+								<form:textarea path="semillaXML"/>
 							</div>
 						</div>
 					</div>
@@ -172,7 +171,7 @@
 					value="<spring:message code="iberdok.botonSubmit" />"></input>
 			</div>
 	</div>
-	</form>
+	</form:form>
 
 </div>
 <!-- 	PRUEBA WEBSERVICE REST -->

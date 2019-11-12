@@ -24,6 +24,7 @@
 	<div class="box-content-2">
 		<div class="box-content-5">
 			<h1>
+				<spring:url value="" var="" htmlEscape="true"/>
 				<a rel="permalink"
 					href="http://local.ejiedes.net:7001/x21aPilotoPatronesWar/patrones/tabsStatic">JSRs
 					for Java 7 and Java 8 Approved</a>
@@ -34,25 +35,35 @@
 				and Tim Peierls voted against the Java SE 7 and Java SE 8 JSRs,
 				supporting the ongoing licensing issues and field-of-use
 				restrictions for the TCK.</p>
+				
 			<ul>
+				<spring:url value="http://jcp.org/en/jsr/summary?id=334" var="url334" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/results?id=5109" var="url5109" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/summary?id=335" var="url335" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/results?id=5110" var="url5110" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/summary?id=336" var="url336" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/results?id=5111" var="url5111" htmlEscape="true"/>
+				<spring:url value="http://jcp.org/en/jsr/summary?id=337" var="url337" htmlEscape="true"/>
+				<spring:url value="http://www.jroller.com/scolebourne/entry/java_se_7_8_passed" var="urJSe78Pass" htmlEscape="true"/>
+				
 				<li>Project Coin, <a
-					href="http://jcp.org/en/jsr/summary?id=334">JSR 334</a>, <a
-					href="http://jcp.org/en/jsr/results?id=5109">passed</a> with 13
+					href="${url334}">JSR 334</a>, <a
+					href="${url5109}">passed</a> with 13
 					votes to 1 (and 1 abstention)</li>
 				<li>Project Lambda, <a
-					href="http://jcp.org/en/jsr/summary?id=335">JSR 335</a>, <a
-					href="http://jcp.org/en/jsr/results?id=5110">passed</a> with 13
+					href="${url335}">JSR 335</a>, <a
+					href="${url5110}">passed</a> with 13
 					votes to 1 (and 1 abstention)</li>
-				<li>Java SE 7, <a href="http://jcp.org/en/jsr/summary?id=336">JSR
-						336</a>, <a href="http://jcp.org/en/jsr/results?id=5111">passed</a>
+				<li>Java SE 7, <a href="${url336}">JSR
+						336</a>, <a href="${url5111}">passed</a>
 					with 12 votes to 3</li>
-				<li>Java SE 8, <a href="http://jcp.org/en/jsr/summary?id=337">JSR
-						337</a>, <a href="http://jcp.org/en/jsr/results?id=5112">passed</a>
+				<li>Java SE 8, <a href="${url337}">JSR
+						337</a>, <a href="${url5112}">passed</a>
 					with 12 votes to 3</li>
 			</ul>
 			<p>
 				The comments make interesting reading; Steven Colebourne <a
-					href="http://www.jroller.com/scolebourne/entry/java_se_7_8_passed">summarises
+					href="${urJSe78Pass}">summarises
 					them on one page</a>. Even though the majority voted for the TCK, the
 				comments continue to criticise the licensing issues:
 			</p>
@@ -84,14 +95,16 @@
 				can point back to the votes and claim that it was agreed by most,
 				even if the Java SE 8 content differs markedly from its original
 				version.</p>
+			<spring:url value="http://communityovercode.com/2010/12/java-no-longer-free-as-in-speech/" var="urlJavaNoFreeSpeech" htmlEscape="true"/>
+			<spring:url value="https://blogs.apache.org/foundation/entry/statement_by_the_asf_board1" var="urlStatByAsf1" htmlEscape="true"/>
 			<p>
 				However, with the licensing issue left unresolved, some are calling
 				the JCP “<a
-					href="http://communityovercode.com/2010/12/java-no-longer-free-as-in-speech/">Just
+					href="${urlJavaNoFreeSpeech}">Just
 					Customers, Please</a>” &ndash; Oracle does not appear to take the JCP
 				seriously any more. The last stage in this saga will be Apache's
 				resignation from the JCP which will follow up on their <a
-					href="https://blogs.apache.org/foundation/entry/statement_by_the_asf_board1">earlier
+					href="${urlStatByAsf1}">earlier
 					threat</a>. Here is what may be the Apache Foundation's last vote on a
 				JSR:
 			</p>
@@ -135,11 +148,13 @@
 					of the JCP within the structure of the JCP to keep Java a vital and
 					viable platform.</p>
 			</blockquote>
+			<spring:url value="https://blogs.apache.org/foundation/entry/statement_by_the_asf_board2" var="urlStatByAsf2" htmlEscape="true"/>
+			<spring:url value="https://blogs.apache.org/foundation/" var="urlApacheFoundation" htmlEscape="true"/>
 			<p>
 				Since Oracle looks unlikely to <a
-					href="https://blogs.apache.org/foundation/entry/statement_by_the_asf_board2">honor
+					href="${urlStatByAsf2}">honor
 					the agreement</a>, a statement by the <a
-					href="https://blogs.apache.org/foundation/">Apache Foundation</a>
+					href="${urlApacheFoundation}">Apache Foundation</a>
 				is expected in the next week.
 			</p>
 			<div class="box-bottom"></div>

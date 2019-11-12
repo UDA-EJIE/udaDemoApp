@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 
 	//Feedback
 	$("#x21aPilotoPatronesWar_feedback").rup_feedback({block:false});
@@ -23,12 +23,16 @@ jQuery(document).ready(function(){
 		source: ["Ayuntamiento","Diputación","Policía","Bomberos"],
 		blank:"-1",
 		selected:1,
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboDepartamento:::Changed');
 		}
 	});
 	$('#provincia').rup_combo({
 		source: ["Álava","Vizcaya","Gipúzcoa"],
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboProvincia:::Changed');
 		}
@@ -50,6 +54,8 @@ jQuery(document).ready(function(){
 			"Bomberos@@Gipúzcoa"	:["Bomberos de Gipúzcoa"]
 		},
 		multiValueToken: "@@",
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboDptoProv:::Changed');
 		}
@@ -61,6 +67,8 @@ jQuery(document).ready(function(){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		blank: "-1",
 		selected:1,
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboDepartamentosRemote:::Changed');
 		}
@@ -68,6 +76,8 @@ jQuery(document).ready(function(){
 	$('#provinciaRemote').rup_combo({
 		source : "comboEnlazadoMultiple/provinciaRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboProvinciaRemote:::Changed');
 		}
@@ -76,6 +86,8 @@ jQuery(document).ready(function(){
 		parent: [ "departamentoRemote", "provinciaRemote" ],
 		source : "comboEnlazadoMultiple/dptoProvRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboDptoProvRemote:::Changed');
 		}
@@ -91,6 +103,8 @@ jQuery(document).ready(function(){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		blank: "-1",
 		selected:1,
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixtoDepartamentoRemote:::Changed');
 		}
@@ -102,6 +116,8 @@ jQuery(document).ready(function(){
 			{i18nCaption: "b", value:"2"},
 			{i18nCaption: "g", value:"3"}
 		],
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixtoProvincia:::Changed');
 		}
@@ -110,6 +126,8 @@ jQuery(document).ready(function(){
 		parent: [ "mixto_departamentoRemote", "mixto_provincia" ],
 		source : "comboEnlazadoMultiple/dptoProvRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixtoDptoProvRemote:::Changed');
 		}
@@ -126,6 +144,8 @@ jQuery(document).ready(function(){
 		],
 		blank: "-1",
 		selected:1,
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixto2Departamento:::Changed');
 		}
@@ -133,6 +153,8 @@ jQuery(document).ready(function(){
 	$('#mixto2_provinciaRemote').rup_combo({
 		source : "comboEnlazadoMultiple/provinciaRemote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixto2ProvinciaRemote:::Changed');
 		}
@@ -153,6 +175,8 @@ jQuery(document).ready(function(){
 			"4##2":["Bomberos de Vizcaya"],
 			"4##3":["Bomberos de Gipúzcoa"]
 		},
+		width: '99%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboMixto2DptoProv:::Changed');
 		}

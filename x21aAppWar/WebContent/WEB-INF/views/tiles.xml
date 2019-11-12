@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_01.dtd">
 <tiles-definitions>
 
 	<!-- ****************************** -->
@@ -565,6 +565,13 @@
 			value="/WEB-INF/views/table/table.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tableDouble">
+		<put-attribute name="content"
+					   value="/WEB-INF/views/table/tableDouble.jsp" />
+		<put-attribute name="includes"
+					   value="/WEB-INF/views/table/includes/tableDouble-includes.jsp" />
 	</definition>
 	
 	<definition extends="templateNoHeads" name="tableDialogAjax">

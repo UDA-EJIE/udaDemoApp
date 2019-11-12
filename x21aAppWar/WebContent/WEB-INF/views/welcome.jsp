@@ -20,7 +20,7 @@
 		<div class="col-12">
 			<h1>
 				<img alt="El contenido estático no está correctamente desplegado."
-					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v4.0.0
+					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v4.1.0
 				<small>(Portal demostrativo)</small>
 			</h1>
 			<hr>
@@ -31,12 +31,21 @@
 			<section id="mainContent">
 			
 				<p>
+					<spring:url value="${staticsUrl}/rup/css/images/uda-mini-micro2.png" var ="urlUdaMini" htmlEscape="true"/>
+					<spring:url value="${staticsUrl}/rup/css/images/uda-mini-micro2.png" var ="urlComponentesGH" htmlEscape="true"/>
+					<spring:url value="https://es.wikipedia.org/wiki/Rich_Internet_Application" var ="urlRIA" htmlEscape="true"/>
+					<spring:url value="https://es.wikipedia.org/wiki/AJAX" var ="urlAJAX" htmlEscape="true"/>
+					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones#14._Mantenimiento_con_formulario" var ="urlMantFormGH" htmlEscape="true"/>
+					<spring:url value="https://es.wikipedia.org/wiki/CRUD" var ="urlCRUD" htmlEscape="true"/>
+					<spring:url value="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador" var ="urlMVC" htmlEscape="true"/>
+					<spring:url value="http://www.w3.org/TR/WCAG20/" var ="urlWCAG" htmlEscape="true"/>
+					<spring:url value="http://www.w3.org/TR/wai-aria/" var ="urlWAIARIA" htmlEscape="true"/>
 					<a target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMini}"><img
 						style="max-width: 100%;"
-						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
+						src="${urlUdaMini}"></a>
 					es el conjunto de <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes">utilidades,
+						href="${urlComponentesGH}">utilidades,
 						herramientas, librerías, plugins, guías, y recomendaciones
 						funcionales y técnicas</a> que permiten acelerar el proceso de
 					desarrollo de sistemas software con tecnología Java.<br> <br>
@@ -44,9 +53,9 @@
 					aumentar la productividad del desarrollador, sin coartar por ello
 					su imaginación ni su libertad para crear software. <a
 						target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMini}"><img
 						style="max-width: 100%;"
-						src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
+						src="${urlUdaMini}"></a>
 					ayuda y colabora en las tareas repetitivas y de poco (o nulo) valor
 					añadido, pero que sin embargo, son imprescindibles. Pero también
 					persigue otros fines:<br> <br>
@@ -54,30 +63,30 @@
 				<ul>
 					<li>Minimizar la curva de aprendizaje. No pretende ser un
 						framework más, <a target="_blank"
-						href="${staticsUrl}/rup/css/images/uda-mini-micro2.png"><img
+						href="${urlUdaMini}"><img
 							style="max-width: 100%;"
-							src="${staticsUrl}/rup/css/images/uda-mini-micro2.png"></a>
+							src="${urlUdaMini}"></a>
 						adopta y explota los ya consolidados y de uso extendido y se
 						aprovecha del conocimiento compartido por sus creadores y
 						usuarios.
 					</li>
 					<li>Proponer patrones de usabilidad web, que aprovechen las
 						mejoras proporcionadas por las tecnologías <a target="_blank"
-						href="https://es.wikipedia.org/wiki/Rich_Internet_Application">RIA</a>
-						- <a target="_blank" href="https://es.wikipedia.org/wiki/AJAX">Ajax</a>.
+						href="${urlRIA}">RIA</a>
+						- <a target="_blank" href="${urlAJAX}">Ajax</a>.
 						Se cubren los escenarios de uso más habituales para las
 						aplicaciones web con dicha tecnología.
 					</li>
 					<li>Generar interfaces de usuario. Crea automáticamente las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones#14._Mantenimiento_con_formulario">interfaces
+						href="${urlMantFormGH}">interfaces
 							de mantenimiento de datos</a> (acciones <a target="_blank"
-						href="https://es.wikipedia.org/wiki/CRUD">CRUD</a>), y otras de
+						href="${urlCRUD}">CRUD</a>), y otras de
 						uso común (combos enlazados, fechas-horas, feedback, etc.)
 					</li>
 					<li>Generar código. Crea el código imprescindible en toda
 						aplicación con arquitectura en capas y bajo el paradigma <a
 						target="_blank"
-						href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">MVC</a>
+						href="${urlMVC}">MVC</a>
 						(Modelo-Vista-Controlador).
 					</li>
 					<li>Ser flexible y configurable. Permite adaptar el código
@@ -92,8 +101,8 @@
 						arquitectura.</li>
 					<li>Crear aplicaciones accesibles. Hasta donde sea posible, se
 						cumplen con las recomendaciones <a target="_blank"
-						href="http://www.w3.org/TR/WCAG20/">WCAG2.0</a> y <a
-						target="_blank" href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a>
+						href="${urlWCAG}">WCAG2.0</a> y <a
+						target="_blank" href="${urlWAIARIA}">WAI-ARIA</a>
 					</li>
 				</ul>
 				</p>
@@ -105,10 +114,12 @@
 			<section>
 				<h2>verlo en funcionamiento</h2>
 				<ul>
+					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos" var ="urlVideos" htmlEscape="true" />
+					<spring:url value="" var="urlx21Eus" htmlEscape="true"/>
 					<li>los <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos">videos</a></li>
+						href="${urlVideos}">videos</a></li>
 					<li>la <a target="_blank"
-						href="http://www.ejie.eus/x21aAppWar/">aplicación
+						href="${urlx21Eus}">aplicación
 							de demostración</a></li>
 				</ul>
 			</section>
@@ -116,33 +127,40 @@
 		<div class="col-md-4">
 			<section>
 				<h2>profundizar</h2>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Arquitectura" var="urlGHArq" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes" var="urlGHComp" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones" var="urlGHPatr" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Documentacion" var="urlGHDocu" htmlEscape="true"/>
 				<ul>
 					<li>las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Arquitectura">guías,
+						href="${urlGHArq}">guías,
 							y recomendaciones funcionales y técnicas</a></li>
 					<li>las <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Componentes">utilidades,
+						href="${urlGHComp}">utilidades,
 							herramientas, librerías, plugins</a></li>
 					<li>los <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones">
+						href="${urlGHPatr}">
 							patrones de usabilidad web</a><a></a></li>
 					<a> </a>
 					<li><a>la </a><a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Documentacion">documentación</a></li>
+						href="${urlGHDocu}">documentación</a></li>
 				</ul>
 			</section>
 		</div>
 		<div class="col-md-4">
 			<section>
 				<h2>pasar a la acción</h2>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Instalar" var="urlGHInstalar" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar" var="urlGHActualizar" htmlEscape="true"/>
+				<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones" var="urlGHVersiones" htmlEscape="true"/>
 				<ul>
 					<li>partiendo de cero, consulta cómo <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Instalar">Instalar</a></li>
+						href="${urlGHInstalar}">Instalar</a></li>
 					<li>si ya has instalado alguna versión anteriormente, puedes
 						ver cómo <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Actualizar">Actualizar</a>
+						href="${urlGHActualizar}">Actualizar</a>
 						desde tu <a
-						href="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Versiones">versión</a>
+						href="${urlGHVersiones}">versión</a>
 					</li>
 				</ul>
 			</section>

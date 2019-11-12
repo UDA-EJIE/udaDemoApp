@@ -15,6 +15,12 @@
   </module>
   <module>
     <web>
+      <web-uri>x21aApp3xWar.war</web-uri>
+      <context-root>x21aApp3xWar</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
       <web-uri>x21aAppWar.war</web-uri>
       <context-root>x21aAppWar</context-root>
     </web>

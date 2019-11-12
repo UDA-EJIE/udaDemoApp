@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	$('#combo').rup_combo({
 		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
@@ -33,7 +33,8 @@ jQuery(document).ready(function(){
 			{i18nCaption: "scala", value:"scala_value"}
 		],
 		selected: "perl_value",
-		width: 300,
+		width: '98%',
+        customClasses: ["select-material"],
 		blank : "0",
 		rowStriping : true,
 		inputText:true,
@@ -47,7 +48,8 @@ jQuery(document).ready(function(){
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "3",
-		width: 300,
+		width: '98%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboRemote:::Changed')
 		}
@@ -67,7 +69,8 @@ jQuery(document).ready(function(){
 			{i18nCaption: "mad_doe", value:"mad"}
 		],
 		selected: "joseph",
-		width: 400,
+		width: '98%',
+        customClasses: ["select-material"],
 		format: "default",
 		change: function () {
 			console.log('comboLargo:::Changed')
@@ -104,6 +107,8 @@ jQuery(document).ready(function(){
 			]}
 		],
 		selected: "real_value",
+		width: '98%',
+        customClasses: ["select-material"],
 		rowStriping : true,
 		change: function () {
 			console.log('comboGrupos:::Changed')
@@ -114,7 +119,8 @@ jQuery(document).ready(function(){
 		sourceGroup : "comboSimple/remoteGroup",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: "7",
-		width: 300,
+		width: '98%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboGruposRemoto:::Changed')
 		}
@@ -129,6 +135,8 @@ jQuery(document).ready(function(){
 			{Imprimir: "print"}
 		],
 		selected: "Filtrar",
+		width: '98%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboImgs:::Changed')
 		}
@@ -136,7 +144,8 @@ jQuery(document).ready(function(){
 	
 	$('#comboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		width: 300,
+		width: '98%',
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboInput:::Changed')
 		}
@@ -147,8 +156,9 @@ jQuery(document).ready(function(){
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		loadFromSelect: true,
 //		selected: "2",
-		width: 300,
+		width: '98%',
 		height: 75,
+        customClasses: ["select-material"],
 		change: function () {
 			console.log('comboLoadFromSelect:::Changed')
 		}

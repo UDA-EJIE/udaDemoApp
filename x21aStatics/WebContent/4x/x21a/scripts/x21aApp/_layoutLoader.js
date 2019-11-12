@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	
 	// Evitar conflictos entre Bootstrap y jQueryUI
@@ -131,6 +131,7 @@ jQuery(document).ready(function(){
 				"i18nCaption" : "table",
 				//Elementos (url)
 				"configurable" : { "i18nCaption" : "tableConfigurable" },
+				"double" : { "i18nCaption" : "tableDouble" },
 				"multipk" : { "i18nCaption" : "tableMultipk" },
 				"masterDetail" : { "i18nCaption" : "tableMasterDetail" },
 				"tableDialog" : { "i18nCaption" : "tableDialog" },
@@ -138,6 +139,7 @@ jQuery(document).ready(function(){
 				/* METER LA TABLA EN DIALOGO */
 				"subLevel":[
 				    {"i18nCaption": "tableConfigurable", "url": "/x21aAppWar/table/configurable" },
+				    {"i18nCaption": "tableDouble", "url": "/x21aAppWar/table/double" },
 				    {"i18nCaption": "tableMultipk", "url": "/x21aAppWar/table/multipk" },
 				    {"i18nCaption": "tableMasterDetail", "url": "/x21aAppWar/table/masterDetail" },
 				    {"i18nCaption": "tableDialog", "url": "/x21aAppWar/table/tableDialog" },

@@ -14,8 +14,8 @@
  * que establece la Licencia.
  */
 	
-
-	var combo = [
+initRupI18nPromise.then(function() {
+	window.combo = [
 	   {rol: "---", codTipoSubsanacion:""},
 	   {rol: "Administrador", codTipoSubsanacion:"administrador"},
 	   {rol: "Desarrollador", codTipoSubsanacion:"desarrollador"},
@@ -24,7 +24,7 @@
 	   {rol: "Manager", codTipoSubsanacion:"manager"}
 	];
 
-	var tableColNames = [
+	window.tableColNames = [
 	   $.rup.i18n.app.table.id,
 	   $.rup.i18n.app.table.nombre,
 	   $.rup.i18n.app.table.apellido1,
@@ -33,8 +33,9 @@
 	   $.rup.i18n.app.table.fechaAlta,
 	   $.rup.i18n.app.table.fechaBaja,
 	   $.rup.i18n.app.table.rol	           
-	],
-	tableColModels = [
+	];
+
+	window.tableColModels = [
 		{ name: "id", index: "id", editable:true, width: 80, obligatorio:true
 			, formoptions:{rowpos:1, colpos:1}
 		},
@@ -120,8 +121,9 @@
 //				}
 //				, formoptions:{rowpos:3, colpos:2}
 //			}
-    ],
-    options_table_report = {
+    ];
+
+    window.options_table_report = {
 		buttons:[
 			{id:"reports", i18nCaption:"Informes", right:true,
 				buttons:[
@@ -146,8 +148,9 @@
 					}
 				 ]}
 		]
-	},
-    options_ejie_combo = {
+	};
+
+    window.options_ejie_combo = {
 		source : [
 		   {label: "---", value:""},
 		   {i18nCaption: "0", value:"0"},
@@ -155,8 +158,9 @@
 		],
 		i18nId: "GRID_simple##ejie",
 		width: 120
-	},	
-	options_role_combo = {
+	};
+
+	window.options_role_combo = {
 		source : [
 		   {label: "---", value:""},
 		   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
@@ -165,8 +169,9 @@
 		   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
 		   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
 		]
-	},
-	optionalColumns = [
+	};
+
+	window.optionalColumns = [
 		{label: "apellido2", value:"4"},
 		{label: "ejie", value:"5"},
 		{label: "fechaBaja", value:"7"},
@@ -186,3 +191,4 @@
 	jQuery("#fechaBaja_detail_table").rup_date();
 	
 	jQuery("#rol_detail_table").rup_combo(options_role_combo);
+});

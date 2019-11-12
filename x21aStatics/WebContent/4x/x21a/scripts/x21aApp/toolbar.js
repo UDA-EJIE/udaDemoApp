@@ -81,7 +81,7 @@ jQuery(document).ready(function () {
       buttons:[
         {id: "filter", text:"Filtrar", css:"mdi mdi-filter", click: handlerMButtons},
         {id: "print", text:"Imprimir", css:"mdi mdi-printer", click: handlerMButtons},
-  			{id: "others", id: "mbuton1", text:"Otros", groupClasses:"rup-collapsed-md", buttons:[
+  			{id: "others", text:"Otros", groupClasses:"rup-collapsed-md", buttons:[
   				{id: "new", text:"Nuevo", css:"mdi mdi-file-outline", click: handlerMButtons},
   				{id: "edit", text:"Editar", css:"mdi mdi-square-edit-outline", click: handlerMButtons},
   				{id: "cancel", text:"Cancelar", css:"mdi mdi-close-circle-outline", click: handlerMButtons},

@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	$("#GRID_simple").rup_jqtable({
+	$("#GRID_simple").rup_table({
 		url: "../table",
 		colNames: [ "id", "nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja"],
 		colModel: [
@@ -156,7 +156,7 @@ jQuery(function($){
 //				 }); 
 //			 }},
 //			 {i18nCaption:"borrar", css:"borrar", click: function(){
-//				 jQuery("#GRID_simple").rup_jqtable("deleteElement");
+//				 jQuery("#GRID_simple").rup_table("deleteElement");
 //			 }},
 //   			{i18nCaption:"filtrar", css:"filtrar", click: function(){
 //

@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function(){
+$(function() {
 	
 	$('#multicombo').rup_combo({
 		//source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
@@ -34,7 +34,8 @@ jQuery(document).ready(function(){
 		],
 		selected: ["perl_value", "javascript_value", "ruby_value"], //value && index
 		ordered: false,
-		width: 400,
+		width: '97%',
+		customClasses: ["select-material"],
 		multiselect: true,
 		rowStriping : true,
 		change: function () {
@@ -46,8 +47,9 @@ jQuery(document).ready(function(){
 		source : "comboSimple/remote",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
 		selected: [1], //index
-		width: 350,
+		width: '97%',
 		height: 75,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiRemoto:::Changed');
@@ -78,8 +80,9 @@ jQuery(document).ready(function(){
 				{i18nCaption: "vettel", value:"vettel_value"}
 			]}
 		],
-		width: 500,
+		width: '97%',
 		height: 300,
+		customClasses: ["select-material"],
 		multiselect: true,
 		multiOptgroupIconText: false,
 		rowStriping : true,
@@ -91,7 +94,8 @@ jQuery(document).ready(function(){
 	$('#multicomboGruposRemoto').rup_combo({
 		sourceGroup : "comboSimple/remoteGroupEnlazado",
 		sourceParam : {label:"desc"+$.rup_utils.capitalizedLang(), value:"code", style:"css"},
-		width: 500,
+		width: '97%',
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiGroupsRemote:::Changed');
@@ -100,7 +104,8 @@ jQuery(document).ready(function(){
 	
 	$('#multicomboInput').rup_combo({
 		source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-		width: 350,
+		width: '97%',
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiInput:::Changed');
@@ -109,8 +114,9 @@ jQuery(document).ready(function(){
 
 	$('#multicomboLoadFromSelect').rup_combo({
 		loadFromSelect: true,
-		width: 350,
+		width: '97%',
 		height: 75,
+		customClasses: ["select-material"],
 		multiselect: true,
 		change: function () {
 			console.log('comboMultiLoadFromSelect:::Changed');

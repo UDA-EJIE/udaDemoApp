@@ -15,108 +15,111 @@
  */
 jQuery(function($){
 	
-	$("#table").rup_jqtable({
-		url: "../jqGridUsuario",
-		colNames: ["id","nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja","rol"],
-		colModel: [
-			{ name: "id", index: "id", editable:true
-				, formoptions:{rowpos:3, colpos:1},
-				summaryType: "count",
-				summaryTpl: $.rup.i18nParse($.rup.i18n.app.gridTree,"total")+" {0}"
-//				, formoptions:{colpos:1}
-			},
-			{ name: "nombre", index: "nombre", editable:true
-				, formoptions:{rowpos:4, colpos:1}
-//				, formoptions:{colpos:1}
-			},
-			{ name: "apellido1", index: "apellido1", editable:true
-				, formoptions:{rowpos:2, colpos:1}
-//				, formoptions:{colpos:1}
-			},
-			{ name: "apellido2", index: "apellido2", editable:true
-				, formoptions:{rowpos:1, colpos:1}
-//				, formoptions:{colpos:1}
-			},
-			{ name: "ejie", index: "ejie", editable:true,
-				edittype: "checkbox",
-				formatter: "checkbox",
-				align: "center",
-				editoptions: {
-					value:"1:0"
-				}
-				, formoptions:{rowpos:5, colpos:1}
-			},
-			{ name: "fechaAlta",  index: "fechaAlta", editable:true,
-				rupType: "date",
-//				validationrules:{required:true, date:true},
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:2, colpos:2},
-				summaryType: maxFecha
-//				, formoptions:{colpos:2}
-			},
-			{ name: "fechaBaja", index: "fechaBaja", editable:true,
-				rupType: "date",
-//				validationrules:{date:true},
-				editoptions:{
-					labelMaskId : "fecha-mask",
-					showButtonPanel : true,
-					showOtherMonths : true,
-					noWeekend : true
-				}
-				, formoptions:{rowpos:1, colpos:2},
-				summaryType: minFecha 
-//				, formoptions:{colpos:2}
-			},
-			{ name: "rol", index: "rol", editable:true,
-				rupType: "combo",
-				editoptions: {
-					source : [
-					   {label: "---", value:""},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
-					   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
-					]
-				}
-				, formoptions:{rowpos:3, colpos:2}
-			}
-        ],
-	    grouping:true,
-	    groupingView : {
-	    	groupField : ['nombre'],
-			groupSummary : [true],
-			showSummaryOnHide : [true],
-			groupText : ['<b>{0} - {1} Elemento(s)</b>']
-	    },
-	    usePlugins:[
-			"formEdit",
-        	"feedback",
-			"toolbar",
-        	"contextMenu",
-//        	"multiselection",
-        	"fluid",
-        	"filter",
-        	"search",
-        	"multifilter"
-        ],
-        editOptions:{
-        	fillDataMethod:"clientSide"
-        },
-        primaryKey: "id",
-        sortname: 'id',
-        validate:{
-			rules:{
-				"nombre":{required:true},
-				"apellido1":{required:true}
-			}
-		}, multifilter:{ idFilter:"formGrouping",labelSize:255,userFilter:"udaPruebas"}
-	});
+    // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
+    initRupI18nPromise.then(function() {
+            $("#table").rup_jqtable({
+    		url: "../jqGridUsuario",
+    		colNames: ["id","nombre", "apellido1", "apellido2", "ejie", "fechaAlta", "fechaBaja","rol"],
+    		colModel: [
+    			{ name: "id", index: "id", editable:true
+    				, formoptions:{rowpos:3, colpos:1},
+    				summaryType: "count",
+    				summaryTpl: $.rup.i18nParse($.rup.i18n.app.gridTree,"total")+" {0}"
+    //				, formoptions:{colpos:1}
+    			},
+    			{ name: "nombre", index: "nombre", editable:true
+    				, formoptions:{rowpos:4, colpos:1}
+    //				, formoptions:{colpos:1}
+    			},
+    			{ name: "apellido1", index: "apellido1", editable:true
+    				, formoptions:{rowpos:2, colpos:1}
+    //				, formoptions:{colpos:1}
+    			},
+    			{ name: "apellido2", index: "apellido2", editable:true
+    				, formoptions:{rowpos:1, colpos:1}
+    //				, formoptions:{colpos:1}
+    			},
+    			{ name: "ejie", index: "ejie", editable:true,
+    				edittype: "checkbox",
+    				formatter: "checkbox",
+    				align: "center",
+    				editoptions: {
+    					value:"1:0"
+    				}
+    				, formoptions:{rowpos:5, colpos:1}
+    			},
+    			{ name: "fechaAlta",  index: "fechaAlta", editable:true,
+    				rupType: "date",
+    //				validationrules:{required:true, date:true},
+    				editoptions:{
+    					labelMaskId : "fecha-mask",
+    					showButtonPanel : true,
+    					showOtherMonths : true,
+    					noWeekend : true
+    				}
+    				, formoptions:{rowpos:2, colpos:2},
+    				summaryType: maxFecha
+    //				, formoptions:{colpos:2}
+    			},
+    			{ name: "fechaBaja", index: "fechaBaja", editable:true,
+    				rupType: "date",
+    //				validationrules:{date:true},
+    				editoptions:{
+    					labelMaskId : "fecha-mask",
+    					showButtonPanel : true,
+    					showOtherMonths : true,
+    					noWeekend : true
+    				}
+    				, formoptions:{rowpos:1, colpos:2},
+    				summaryType: minFecha 
+    //				, formoptions:{colpos:2}
+    			},
+    			{ name: "rol", index: "rol", editable:true,
+    				rupType: "combo",
+    				editoptions: {
+    					source : [
+    					   {label: "---", value:""},
+    					   {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
+    					   {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
+    					   {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
+    					   {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
+    					   {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
+    					]
+    				}
+    				, formoptions:{rowpos:3, colpos:2}
+    			}
+            ],
+    	    grouping:true,
+    	    groupingView : {
+    	    	groupField : ['nombre'],
+    			groupSummary : [true],
+    			showSummaryOnHide : [true],
+    			groupText : ['<b>{0} - {1} Elemento(s)</b>']
+    	    },
+    	    usePlugins:[
+    			"formEdit",
+            	"feedback",
+    			"toolbar",
+            	"contextMenu",
+    //        	"multiselection",
+            	"fluid",
+            	"filter",
+            	"search",
+            	"multifilter"
+            ],
+            editOptions:{
+            	fillDataMethod:"clientSide"
+            },
+            primaryKey: "id",
+            sortname: 'id',
+            validate:{
+    			rules:{
+    				"nombre":{required:true},
+    				"apellido1":{required:true}
+    			}
+    		}, multifilter:{ idFilter:"formGrouping",labelSize:255,userFilter:"udaPruebas"}
+    	});
+    });
 	
 	
 	//funciones propias asociada al resumen de agrupacion
