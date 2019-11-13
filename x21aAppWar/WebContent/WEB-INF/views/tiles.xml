@@ -558,6 +558,16 @@
 			value="/WEB-INF/views/styleGuide/styleGuide-includes.jsp" />
 	</definition>
 
+	<!-- LISTADO -->
+	<definition extends="template" name="listaSimple">
+		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="listaMultiOrd">
+		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listMultiOrd-includes.jsp" />
+	</definition>
 
 	<!-- TABLE -->
 	<definition extends="template" name="table">
