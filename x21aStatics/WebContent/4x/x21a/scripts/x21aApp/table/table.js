@@ -207,6 +207,8 @@ jQuery(function($){
             }
 
             if(localStorage.plugins.indexOf('editForm') > -1){
+            	function cancelClicked() { console.log("Ha cancelado eliminar."); };
+          
                 var formEdit = {
                     detailForm: "#example_detail_div",
                     validate:{
@@ -218,7 +220,8 @@ jQuery(function($){
                             "fechaBaja":{date:true}
                         }
                     },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
+                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption'),
+                    cancelDeleteFunction:cancelClicked
                 }
                 plugins.formEdit = formEdit;
 
