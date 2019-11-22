@@ -380,7 +380,7 @@ jQuery(function($){
             {
                 "targets": [5],
                 "render": function(data){
-                    if(data !== undefined){
+                    if(data !== undefined && data !== null){
                         return data.replace('/','/');
                     }
                 }
