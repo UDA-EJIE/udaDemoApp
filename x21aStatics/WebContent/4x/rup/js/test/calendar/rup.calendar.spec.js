@@ -780,7 +780,7 @@ describe('Test rup_calendar (default)', () => {
                     'end': '1541890800000',
                     'url': 'javascript:actions(48506)'
                 });
-                cal.on('afterRefresh', done);
+                cal.on('afterRender', done);
                 cal.rup_calendar('refresh');
             });
             afterEach(() => {
@@ -1266,7 +1266,7 @@ describe('Test rup_calendar (alternative)', () => {
                 cal2.on('afterViewLoad', () => {
                     done();
                 });
-                cal2.rup_calendar('navigate', 'next');
+                cal2.rup_calendar('navigate', new Date(2018, 5, 2, 0, 0, 0));
             });
             it(' > El titulo devuelto debe ser igual al del DOM', () => {
                 expect(cal2.rup_calendar('getTitle')).toBe($('.page-header > h3').text());
@@ -1369,11 +1369,13 @@ describe('Test rup_calendar (alternative)', () => {
         });
         describe(' > Método refresh', () => {
             beforeEach((done) => {
-                $.post('/demo/calendar/events/add')
-                    .done(() => {
-                        cal2.on('afterRefresh', done);
-                        cal2.rup_calendar('refresh');
-                    });
+                cal2.on('afterViewLoad', () => {
+                    $.post('/demo/calendar/events/add')
+                        .done(() => {
+                            cal2.on('afterRefresh', done);
+                            cal2.rup_calendar('refresh');
+                        });
+                });
                 cal2.rup_calendar('navigate', new Date(2019, 5, 2, 0, 0, 0));
             });
             afterEach((done) => {

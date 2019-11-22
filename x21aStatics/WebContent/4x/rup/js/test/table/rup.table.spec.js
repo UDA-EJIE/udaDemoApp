@@ -25,7 +25,7 @@ function testDatatable() {
             testutils.loadCss(done);
 
             window.onerror = (event) => {
-                testutils.testTrace('Evento de error detectado en el window',
+                console.info('Evento de error detectado en el window...\n' +
                     'namespace: ' + event.namespace +
                     'target: ' + event.target.id);
             };
@@ -214,10 +214,6 @@ function testDatatable() {
                             $('#example_detail_button_save_repeat').click();
                         });
 
-                        afterEach((done) => {
-                            $.get('/demo/table/reset', done);
-                        });
-
                         it('Se ha actualizado la tabla:', () => {
                             let ctx = $('tbody > tr:eq(0)');
                             expect($('td:eq(4)', ctx).text()).toBe('11');
@@ -233,10 +229,6 @@ function testDatatable() {
                             $('#edad_detail_table').val(11);
                             $('#example').on('tableEditFormSuccessCallSaveAjax', done);
                             $('#example_detail_button_save').click();
-                        });
-
-                        afterEach((done) => {
-                            $.get('/demo/table/reset', done);
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -271,10 +263,6 @@ function testDatatable() {
                             $('#example_detail_button_save_repeat').click();
                         });
 
-                        afterEach((done) => {
-                            $.get('/demo/table/reset', done);
-                        });
-
                         it('Se ha actualizado la tabla:', () => {
                             let ctx = $('tbody > tr > td:contains(345)').parent();
                             expect($('td:contains(Adriana)', ctx).length).toBe(1);
@@ -297,10 +285,6 @@ function testDatatable() {
                                 setTimeout(done, 600);
                             });
                             $('#example_detail_button_save').click();
-                        });
-
-                        afterEach((done) => {
-                            $.get('/demo/table/reset', done);
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -404,16 +388,16 @@ function testDatatable() {
                     });
 
                     it('Los registros deben cambiar:', () => {
-                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('1');
-                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('2');
-                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('3');
-                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('4');
-                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('5');
-                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('6');
-                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('7');
-                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('8');
-                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('9');
-                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('10');
+                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('345');
+                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('1');
+                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('2');
+                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('3');
+                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('4');
+                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('5');
+                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('6');
+                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('7');
+                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('8');
+                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('9');
                     });
                 });
 
@@ -439,16 +423,16 @@ function testDatatable() {
                     });
 
                     it('Los registros deben cambiar:', () => {
-                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('1');
-                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('2');
-                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('3');
-                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('4');
-                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('5');
-                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('6');
-                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('7');
-                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('8');
-                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('9');
-                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('10');
+                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('345');
+                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('1');
+                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('2');
+                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('3');
+                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('4');
+                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('5');
+                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('6');
+                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('7');
+                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('8');
+                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('9');
                     });
                 });
 
@@ -515,7 +499,50 @@ function testDatatable() {
                     expect($('.pageSearch.searchPaginator:contains(" de 2")', $('#example_wrapper')).length).toBe(1);
                 });
             });
-            
+            describe('Ordenación > ', () => {
+                describe('Ordenación por nombre ascendente > ', () => {
+                    beforeEach((done) => {
+                        $('#example').on('draw.dt', done);
+                        $('th.sorting[data-col-prop="nombre"]').click();
+                    });
+
+                    it('Comprobamos que haya cambiado el orden:', () => {
+                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('1');
+                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('6');
+                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('5');
+                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('9');
+                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('4');
+                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('3');
+                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('10');
+                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('8');
+                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('7');
+                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('2');
+                    });
+                });
+
+                describe('Ordenación por nombre descendente:', () => {
+                    describe('Ordenacion por nombre descendente', () => {
+                        beforeEach((done) => {
+                            $('#example').on('draw.dt', done);
+                            $('th.sorting_asc[data-col-prop="nombre"]').click();
+                        });
+
+                        it('Comprobamos que haya cambiado el orden:', () => {
+                            expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('2');
+                            expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('7');
+                            expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('8');
+                            expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('10');
+                            expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('3');
+                            expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('4');
+                            expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('9');
+                            expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('5');
+                            expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('6');
+                            expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('1');
+                        });
+                    });
+
+                });
+            });
             describe('Botonera > ', () => {
                 describe('Aparecen los botones por defecto > ', () => {
                     it('Botones por defecto existen:', () => {
@@ -559,7 +586,6 @@ function testDatatable() {
                     });
                 });
             });
-
             describe('Multiseleccion > ', () => {
                 beforeEach(() => {
                     $('#linkSelectTableHeadexample').click();
@@ -582,7 +608,7 @@ function testDatatable() {
                             expect($('#example').DataTable().settings()[0].multiselection.selectedAll)
                                 .toBeFalsy();
                             expect($('#example').DataTable().settings()[0].multiselection.selectedIds)
-                                .toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+                                .toEqual(['2', '7', '8', '10', '3', '4', '9', '5', '6', '1']);
                         });
 
                         it('Debe marcar con highlight los elementos seleccionados:', () => {
@@ -681,7 +707,6 @@ function testDatatable() {
                     });
                 });
             });
-
             describe('Validación de formulario > ', () => {
                 beforeEach((done) => {
                     $('#example_detail_feedback').on('rupFeedback_show', done);
@@ -691,18 +716,12 @@ function testDatatable() {
                         .find('#nombre_detail_table').val('');
                     $('#example_detail_button_save').click();
                 });
-
-                afterEach((done) => {
-                    $.get('/demo/table/reset', done);
-                });
-
                 it('Debe mostrar el feedback del formulario:', () => {
                     expect($('#example_detail_feedback').is(':visible')).toBeTruthy();
                     expect($('#example_detail_feedback').text())
                         .toBe('Se han producido los siguientes errores:Nombre:Campo obligatorio.');
                 });
             });
-
             describe('Gestión de errores > ', () => {
                 describe('Errores al filtrar > ', () => {
                     beforeEach((done) => {
@@ -727,11 +746,6 @@ function testDatatable() {
                         $('#edad_detail_table').val('asd');
                         $('#example_detail_button_save').click();
                     });
-
-                    afterEach((done) => {
-                        $.get('/demo/table/reset', done);
-                    });
-
                     it('El feedback debe mostrarse:', () => {
                         expect($('#example_detail_feedback_ok').height()).toBeGreaterThan(0);
                     });
@@ -752,56 +766,6 @@ function testDatatable() {
                     });
                     it('Debe contener el mensaje esperado:', () => {
                         expect($('#rup_feedback_example').text()).toBe('Not Acceptable: KABOOM');
-                    });
-                });
-            });
-
-            describe('Ordenación > ', () => {
-                describe('Ordenación por nombre ascendente > ', () => {
-                    beforeEach((done) => {
-                        $('#example').on('draw.dt', done);
-                        $('th.sorting[data-col-prop="nombre"]').click();
-                    });
-
-                    afterEach((done) => {
-                        $.get('/demo/table/reset', done);
-                    });
-
-                    it('Comprobamos que haya cambiado el orden:', () => {
-                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('1');
-                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('6');
-                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('5');
-                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('9');
-                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('4');
-                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('3');
-                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('10');
-                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('8');
-                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('7');
-                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('2');
-                    });
-                });
-
-                describe('Ordenación por nombre descendente:', () => {
-                    beforeEach((done) => {
-                        $('#example').on('draw.dt', done);
-                        $('th.sorting_asc[data-col-prop="nombre"]').click();
-                    });
-
-                    afterEach((done) => {
-                        $.get('/demo/table/reset', done);
-                    });
-
-                    it('Comprobamos que haya cambiado el orden:', () => {
-                        expect($('tbody > tr:eq(0) > td:eq(1)').text()).toBe('2');
-                        expect($('tbody > tr:eq(1) > td:eq(1)').text()).toBe('7');
-                        expect($('tbody > tr:eq(2) > td:eq(1)').text()).toBe('8');
-                        expect($('tbody > tr:eq(3) > td:eq(1)').text()).toBe('10');
-                        expect($('tbody > tr:eq(4) > td:eq(1)').text()).toBe('3');
-                        expect($('tbody > tr:eq(5) > td:eq(1)').text()).toBe('4');
-                        expect($('tbody > tr:eq(6) > td:eq(1)').text()).toBe('9');
-                        expect($('tbody > tr:eq(7) > td:eq(1)').text()).toBe('5');
-                        expect($('tbody > tr:eq(8) > td:eq(1)').text()).toBe('6');
-                        expect($('tbody > tr:eq(9) > td:eq(1)').text()).toBe('1');
                     });
                 });
             });

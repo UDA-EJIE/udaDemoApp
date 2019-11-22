@@ -1,7 +1,7 @@
 /* eslint-env jquery,jasmine */
 
 
-function clearList () {
+function clearList() {
     $('.rup_list-multiorder-dialog').remove();
     $('.ui-dialog').remove();
     $('#rup_list').rup_list('destroy');
@@ -18,13 +18,13 @@ describe('Test rup_list', () => {
         }
         testutils.loadCss(done);
     });
-    
+
     afterEach(() => {
         clearList();
     });
 
 
-    describe('> Creación',() => {
+    describe('> Creación', () => {
         beforeEach((done) => {
             listGen.createList('rup-list', done);
         });
@@ -42,7 +42,7 @@ describe('Test rup_list', () => {
 
         describe('> Filtrado', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
+                listGen.createList('rup-list', () => {
                     $('#rup-list').on('load', done);
                     $('#listFilterEdad').val(25);
                     $('#listFilterAceptar').click();
@@ -59,11 +59,11 @@ describe('Test rup_list', () => {
 
         describe('> Ordenación', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
-                    $('#rup-list').on('load', ()=>{
+                listGen.createList('rup-list', () => {
+                    $('#rup-list').on('load', () => {
                         $('#rup-list').off('load');
-                        $('#rup-list').on('load',done);
-                        $('#rup-list-header-sidx').rup_combo('setRupValue','EDAD');
+                        $('#rup-list').on('load', done);
+                        $('#rup-list-header-sidx').rup_combo('setRupValue', 'EDAD');
                     });
                     $('#rup-list').rup_list('filter');
                 });
@@ -93,12 +93,12 @@ describe('Test rup_list', () => {
 
         describe('> Paginación', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
+                listGen.createList('rup-list', () => {
                     $('#rup-list').on('load', done);
                     $('#rup-list').rup_list('filter');
                 });
             });
-            describe('> Página siguiente',() => {
+            describe('> Página siguiente', () => {
                 beforeEach((done) => {
                     $('#rup-list').on('load', done);
                     $('#rup-list-header-page-next').click();
@@ -151,14 +151,14 @@ describe('Test rup_list', () => {
             describe('> Acceso directo a página desde el nav', () => {
                 beforeEach((done) => {
                     $('#rup-list').on('load', done);
-                    $('.page[data-page="2"]',$('#rup-list-header')).click();
+                    $('.page[data-page="2"]', $('#rup-list-header')).click();
                 });
                 describe('> Se marca la página correcta en el nav', () => {
                     it('> Ha cambiado la página activa en la navegación:', () => {
                         expect($('.page.active').attr('data-page')).toBe('2');
                     });
                 });
-                it('> Se activa la opción de página anterior',() => {
+                it('> Se activa la opción de página anterior', () => {
                     expect($('#rup-list-header-page-prev').is('.disabled')).toBeFalsy();
                 });
             });
@@ -167,8 +167,8 @@ describe('Test rup_list', () => {
 
         describe('> Elementos por página', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
-                    $('#rup-list').on('load', ()=>{
+                listGen.createList('rup-list', () => {
+                    $('#rup-list').on('load', () => {
                         $('#rup-list').off('load');
                         $('#rup-list').on('load', done);
                         $('#rup-list-header-rowNum').rup_combo('setRupValue', '10');
@@ -188,7 +188,7 @@ describe('Test rup_list', () => {
                         $('#rup-list').on('load', () => {
                             done();
                         });
-                        $('.page[data-page="4"]',$('#rup-list-header')).click();
+                        $('.page[data-page="4"]', $('#rup-list-header')).click();
                     }, 250);
                 });
                 it('> Hay el número de elementos esperados:', () => {
@@ -198,8 +198,8 @@ describe('Test rup_list', () => {
         });
 
 
-        describe('> Aparición de los separadores ("...") en la paginación',() => {
-            beforeEach((done)=>{
+        describe('> Aparición de los separadores ("...") en la paginación', () => {
+            beforeEach((done) => {
                 listGen.createList('rup-list', done);
             });
 
@@ -213,10 +213,10 @@ describe('Test rup_list', () => {
                     $('#rup-list').rup_list('filter');
                 });
                 it('> No aparece el separador del final: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(-4).text()).toBe('6');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(-4).text()).toBe('6');
                 });
                 it('> Aparece el separador del inicio: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(2).text()).toBe('...');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(2).text()).toBe('...');
                 });
             });
             describe('> Separador del final', () => {
@@ -225,10 +225,10 @@ describe('Test rup_list', () => {
                     $('#rup-list').rup_list('filter');
                 });
                 it('> Aparece el separador del final: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(-3).text()).toBe('...');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(-3).text()).toBe('...');
                 });
                 it('> No aparece el separador del inicio: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(3).text()).toBe('2');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(3).text()).toBe('2');
                 });
             });
             describe('> Ambos separadores', () => {
@@ -245,10 +245,10 @@ describe('Test rup_list', () => {
                     $('#rup-list').rup_list('filter');
                 });
                 it('> Aparece el separador del final: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(-3).text()).toBe('...');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(-3).text()).toBe('...');
                 });
                 it('> Aparece el separador del inicio: ', () => {
-                    expect($('.pagination',$('#rup-list-header-nav')).children().eq(2).text()).toBe('...');
+                    expect($('.pagination', $('#rup-list-header-nav')).children().eq(2).text()).toBe('...');
                 });
             });
         });
@@ -256,7 +256,7 @@ describe('Test rup_list', () => {
 
         describe('> Control de errores', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
+                listGen.createList('rup-list', () => {
                     $('#rup-list').on('load', () => {
                         done();
                     });
@@ -278,7 +278,7 @@ describe('Test rup_list', () => {
 
         describe('> Selección y multiselección', () => {
             beforeEach((done) => {
-                listGen.createList('rup-list', ()=>{
+                listGen.createList('rup-list', () => {
                     $('#rup-list').on('load', done);
                     $('#rup-list').rup_list('filter');
                 });
@@ -286,9 +286,9 @@ describe('Test rup_list', () => {
             describe('> Creación y funcionamiento del groupButton', () => {
                 it('> Se crea el botón:', () => {
                     expect($('button#rup-list-display-selectables', $('#rup-list-header')).length).toBe(1);
-                    expect($('button#rup-list-display-selectables', $('#rup-list-header')).text()).toBe('Opciones de seleccion:');
+                    expect($('button#rup-list-display-selectables', $('#rup-list-header')).text().trim()).toBe('Opciones de seleccion:');
                     expect($('button#rup-list-display-selectables', $('#rup-list-footer')).length).toBe(1);
-                    expect($('button#rup-list-display-selectables', $('#rup-list-footer')).text()).toBe('Opciones de seleccion:');
+                    expect($('button#rup-list-display-selectables', $('#rup-list-footer')).text().trim()).toBe('Opciones de seleccion:');
                 });
                 describe('> Funcionamiento del botón', () => {
                     beforeEach(() => {
@@ -456,7 +456,7 @@ describe('Test rup_list', () => {
                     $('#rup-list').on('rup_list-mord-dialogOpen', () => {
                         setTimeout(done, 500);
                     });
-                    $('#rup-list').on('load', ()=>{
+                    $('#rup-list').on('load', () => {
                         $('.rup_list-mord-dialogbtn:first').click();
                     });
                     $('#rup-list').rup_list('filter');
@@ -511,7 +511,7 @@ describe('Test rup_list', () => {
             describe('> Funcionamiento del multiSort', () => {
                 describe('> Ordenación con el valor por defecto', () => {
                     beforeEach((done) => {
-                        $('#rup-list').on('load',  done);
+                        $('#rup-list').on('load', done);
                         $('#rup-list').rup_list('filter');
                     });
                     it('> Deben aparecer los resultados esperados:', () => {
@@ -525,11 +525,11 @@ describe('Test rup_list', () => {
                 });
                 describe('> Ordenación con todos los valores de ordenación', () => {
                     beforeEach((done) => {
-                        $('#rup-list').on('load', ()=>{
+                        $('#rup-list').on('load', () => {
                             $('#rup-list').off('load');
                             $('#rup-list').on('load', done);
-                            $('#rup-list').on('rup_list-mord-dialogOpen', ()=>{
-                                setTimeout(()=>{
+                            $('#rup-list').on('rup_list-mord-dialogOpen', () => {
+                                setTimeout(() => {
                                     $('button[data-ordValue="CODCLIENTE"]').click();
                                     $('.ui-dialog-buttonset > button').click();
                                 }, 500);
@@ -549,11 +549,11 @@ describe('Test rup_list', () => {
                 });
                 describe('> Ordenación con un valor ascendente y otro descendente', () => {
                     beforeEach((done) => {
-                        $('#rup-list').on('load', ()=>{
+                        $('#rup-list').on('load', () => {
                             $('#rup-list').off('load');
                             $('#rup-list').on('load', done);
-                            $('#rup-list').on('rup_list-mord-dialogOpen', ()=>{
-                                setTimeout(()=>{
+                            $('#rup-list').on('rup_list-mord-dialogOpen', () => {
+                                setTimeout(() => {
                                     $('.rup_list-mord', $('[data-ordValue="EDAD"]')).click();
                                     $('.ui-dialog-buttonset > button').click();
                                 }, 500);
@@ -573,5 +573,40 @@ describe('Test rup_list', () => {
                 });
             });
         });
+
+        // describe('> Carga en Scroll', () => {
+        //     beforeAll((done) => {
+        //         testutils.loadCss(done);
+        //     });
+        //     beforeEach((done) => {
+        //         listGen.createListScroll('rup-list', () => {
+        //             $('#rup-list').on('load', done);
+        //             $('#rup-list').rup_list('filter');
+        //         });
+        //     });
+
+        //     it('El bloque de paginación debe desaparecer:', () => {
+        //         expect($('#rup-list-header-nav').is(':visible')).toBe(false);
+        //         expect($('#rup-list-footer-nav').is(':visible')).toBe(false);
+        //     });
+        //     it('Debe crear el div señal y colocarlo después del listado:', () => {
+        //         expect($('#scrollSignal').length).toBe(1);
+        //         expect($('#rup-list').next().attr('id').toBe('scrollSignal'));
+        //     });
+        //     it('Debe crear el nav señal y colocarlo antes del listado:', () => {
+        //         expect($('#rupListScrollspy').length).toBe(1);
+        //         expect($('#rup-list').previous().attr('id').toBe('rupListScrollspy'));
+        //         expect($('#rupListScrollspy').width().toBe(0));
+        //         expect($('#rupListScrollspy').height().toBe(0));
+        //     });
+        //     it('El body debe tener position relative y data-target apuntando al nav creado:', () => {
+        //         expect($('body').css('position').toBe('relative'));
+        //         expect($('body').scrollspy('target').toBe('#rupListScrollspy'));
+        //     });
+        //     it('El número de elementos mostrados en pantalla debe ser igual al total de elementos a mostrar:', () => {
+        //         expect($('.rup-list-item').length).toEqual($('#rup-list').rup_list().data().count());
+        //     });
+        // });
+
     });
 });

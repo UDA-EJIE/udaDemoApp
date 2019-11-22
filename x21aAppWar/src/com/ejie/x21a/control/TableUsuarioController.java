@@ -51,6 +51,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.*;
@@ -137,7 +138,7 @@ public class TableUsuarioController  {
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
 	 * indicados en el objeto pasado como parámetro.
 	 * 
-	 * @param Usuario
+	 * @param usuarioFilter
 	 *            Objeto que contiene los parámetros de filtrado utilizados en
 	 *            la búsqueda.
 	 * @return Lista de objetos correspondientes a la búsqueda realizada.
@@ -152,7 +153,7 @@ public class TableUsuarioController  {
 	/**
 	 * Operación CRUD Edit. Modificación del bean indicado.
 	 * 
-	 * @param Usuario
+	 * @param usuario
 	 *            Bean que contiene la información a modificar.
 	 * @return Bean resultante de la modificación.
 	 */
@@ -187,7 +188,7 @@ public class TableUsuarioController  {
 	 * Operación CRUD Create. Creación de un nuevo registro a partir del bean
 	 * indicado.
 	 * 
-	 * @param Usuario
+	 * @param usuario
 	 *            Bean que contiene la información con la que se va a crear el
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creación.
@@ -313,7 +314,7 @@ public class TableUsuarioController  {
 	 *            Bean que contiene los parámetros de filtrado a emplear.
 	 * @param searchUsuario
 	 *            Bean que contiene los parámetros de búsqueda a emplear.
-	 * @param JQGridRequestDto
+	 * @param jqGridRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
@@ -334,7 +335,7 @@ public class TableUsuarioController  {
 	 * 
 	 * @param filterUsuario
 	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param jqGridRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
@@ -359,9 +360,9 @@ public class TableUsuarioController  {
 	 * Operación de filtrado del componente RUP_TABLE para presentar los
 	 * registros medainte una visualización jerárquica.
 	 * 
-	 * @param Usuario
+	 * @param filterUsuario
 	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param jqGridRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
@@ -379,9 +380,9 @@ public class TableUsuarioController  {
 	/**
 	 * Recupera los hijos de los registros desplegados en la visualización jerárquica.
 	 * 
-	 * @param Usuario
+	 * @param filterUsuario
 	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param jqGridRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado a mostrar en el componente RUP_TABLE.

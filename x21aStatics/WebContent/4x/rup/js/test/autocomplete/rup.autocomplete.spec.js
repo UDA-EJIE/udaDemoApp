@@ -5,13 +5,11 @@
 
 var $autocomplete, $autocomplete2, $autocomplete3, $autocompleteLabel, $autocompleteLabel2, $autocompleteLabel3;
 
-function createAutocomplete(done) {
+function createAutocomplete() {
     let html = '<input type="text" id="exampleAutocomplete">\
                 <input type="text" id="exampleAutocompleteDos">\
                 <input type="text" id="exampleAutocompleteTres">';
-
     $('#content').append(html);
-
     let sourceJson = [
         {i18nCaption: 'ab', value: 'ab_value'},
         {i18nCaption: 'tc', value: 'tc_value'},
@@ -24,7 +22,6 @@ function createAutocomplete(done) {
         {i18nCaption: 'uj', value: 'uj_value'},
         {i18nCaption: 'ak', value: 'ak_value'}
     ];
-
     $('#exampleAutocomplete').rup_autocomplete({
         source: sourceJson,
         defaultValue: 'a',
@@ -51,20 +48,16 @@ function createAutocomplete(done) {
     $autocompleteLabel = $('#exampleAutocomplete_label');
     $autocompleteLabel2 = $('#exampleAutocompleteDos_label');
     $autocompleteLabel3 = $('#exampleAutocompleteTres_label');
-
-    done();
 }
 
 
 describe('Test Autocomplete > ', () => {
     beforeAll((done) => {
-        if ($('#content').length == 0) {
-            $('body').append('<div id="content" class="container mt-4"></div>');
-        }
         testutils.loadCss(done);
     });
     beforeEach((done) => {
-        createAutocomplete(done);
+        $.when(createAutocomplete())
+            .then(done());
     });
     afterEach(() => {
         $('#content').html('');
@@ -177,11 +170,15 @@ describe('Test Autocomplete > ', () => {
                 });
             });
             describe('Contiene una letra > ', () => {
+
+            });
+            describe('Contiene una letra > ', () => {
                 beforeEach(() => {
                     $('body').trigger('mousedown');
 
                     $autocomplete.rup_autocomplete('search', 'a');
                     $autocomplete2.rup_autocomplete('search', 'j');
+
                 });
                 it('Solo debe mostrarse el segundo autocomplete:', () => {
                     expect($('#exampleAutocomplete_menu').is(':visible')).toBe(false);
