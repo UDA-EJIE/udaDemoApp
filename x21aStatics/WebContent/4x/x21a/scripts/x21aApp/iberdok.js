@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
 
 	// anadir una rup_jqtable al cargar la pagina
 	addTableIberdok();
@@ -32,90 +32,91 @@ jQuery(document).ready(function() {
  */
 function addTableIberdok() {
 
-	$("#iberdokTable").rup_jqtable(
-			{
-				url : "../iberdok",
-				colNames : [ $.rup.i18n.app.iberdokTable.id,
-						$.rup.i18n.app.iberdokTable.nombre,
-						$.rup.i18n.app.iberdokTable.idModelo,
-						$.rup.i18n.app.iberdokTable.idDocumento,
-						$.rup.i18n.app.iberdokTable.estado ],
-				colModel : [ {
-					name : "id",
-					label : $.rup.i18n.app.iberdokTable.id
+	$("#iberdokTable").rup_jqtable({
+		url: "../iberdok",
+		colNames: [$.rup.i18n.app.iberdokTable.id,
+			$.rup.i18n.app.iberdokTable.nombre,
+			$.rup.i18n.app.iberdokTable.idModelo,
+			$.rup.i18n.app.iberdokTable.idDocumento,
+			$.rup.i18n.app.iberdokTable.estado
+		],
+		colModel: [{
+			name: "id",
+			label: $.rup.i18n.app.iberdokTable.id
+		}, {
+
+			name: "nombre",
+			label: $.rup.i18n.app.iberdokTable.nombre
+		}, {
+			name: "idModelo",
+			label: $.rup.i18n.app.iberdokTable.idModelo
+		}, {
+
+			name: "idDocumento",
+			label: $.rup.i18n.app.iberdokTable.idDocumento
+		}, {
+
+			name: "estado",
+			label: $.rup.i18n.app.iberdokTable.estado,
+			unformat: unformatterEstado,
+			formatter: formatterEstado
+		}, ],
+		model: "IberdokFile",
+		usePlugins: ["formEdit", "feedback", "toolbar",
+
+			"contextMenu", "fluid", "search"
+		],
+		primaryKey: "id",
+		onSelectRow: function (id) {
+			var selectedRow = $("#iberdokTable").rup_jqtable(
+				"getRowData", id);
+			if (selectedRow.estado == 1) {
+				$('#iberdokTable_toolbar\\#\\#Visualizar').hide();
+			} else {
+				$('#iberdokTable_toolbar\\#\\#Visualizar').show();
+			}
+		},
+		toolbar: {
+			createDefaultToolButtons: false,
+			buttons: [{
+					obj: {
+						i18nCaption: $.rup.i18n.app.iberdokTable.nuevo,
+						css: "nuevo",
+						index: 4
+					},
+					json_i18n: "nuevoDocumento",
+					click: fnNuevoDocumento
 				}, {
-
-					name : "nombre",
-					label : $.rup.i18n.app.iberdokTable.nombre
+					obj: {
+						i18nCaption: $.rup.i18n.app.iberdokTable.editar,
+						css: "editar",
+						index: 4
+					},
+					json_i18n: "editarEnIberdok",
+					click: fnEditarIberdok
 				}, {
-					name : "idModelo",
-					label : $.rup.i18n.app.iberdokTable.idModelo
+					obj: {
+						i18nCaption: $.rup.i18n.app.iberdokTable.ver,
+						css: "buscar",
+						index: 4
+					},
+					json_i18n: "abrirDocumento",
+					click: fnAbrirDocumento,
+					id: "visualizar"
 				}, {
-
-					name : "idDocumento",
-					label : $.rup.i18n.app.iberdokTable.idDocumento
-				}, {
-
-					name : "estado",
-					label : $.rup.i18n.app.iberdokTable.estado,
-					unformat : unformatterEstado,
-					formatter : formatterEstado
-				}, ],
-				model : "IberdokFile",
-				usePlugins : [ "formEdit", "feedback", "toolbar",
-
-				"contextMenu", "fluid", "search" ],
-				primaryKey : "id",
-				onSelectRow : function(id) {
-					var selectedRow = $("#iberdokTable").rup_jqtable(
-							"getRowData", id);
-					if (selectedRow.estado == 1) {
-						$('#iberdokTable_toolbar\\#\\#Visualizar').hide();
-					} else {
-						$('#iberdokTable_toolbar\\#\\#Visualizar').show();
-					}
-				},
-				toolbar : {
-					createDefaultToolButtons : false,
-					buttons : [ {
-						obj : {
-							i18nCaption : $.rup.i18n.app.iberdokTable.nuevo,
-							css : "nuevo",
-							index : 4
-						},
-						json_i18n : "nuevoDocumento",
-						click : fnNuevoDocumento
-					}, {
-						obj : {
-							i18nCaption : $.rup.i18n.app.iberdokTable.editar,
-							css : "editar",
-							index : 4
-						},
-						json_i18n : "editarEnIberdok",
-						click : fnEditarIberdok
-					}, {
-						obj : {
-							i18nCaption : $.rup.i18n.app.iberdokTable.ver,
-							css : "buscar",
-							index : 4
-						},
-						json_i18n : "abrirDocumento",
-						click : fnAbrirDocumento,
-						id : "visualizar"
-					}, {
-						obj : {
-							i18nCaption : $.rup.i18n.app.iberdokTable.copiar,
-							css : "clonar",
-							index : 4
-						},
-						json_i18n : "copiarDocumento",
-						click : fnCopiarDocumento,
-						id : "copiar"
-					}
-
-					],
+					obj: {
+						i18nCaption: $.rup.i18n.app.iberdokTable.copiar,
+						css: "clonar",
+						index: 4
+					},
+					json_i18n: "copiarDocumento",
+					click: fnCopiarDocumento,
+					id: "copiar"
 				}
-			});
+
+			],
+		}
+	});
 }
 
 /**
@@ -158,32 +159,28 @@ function formatterEstado(cellvalue, options, rowObject) {
 function formularioEditorDocumentos() {
 
 	$('#lanzarEditor').on(
-			"click",
-			function() {
+		"click",
+		function () {
 
-				var modo = $('#modo').val();
+			var modo = $('#modo').val();
 
-				validarFormulario(modo);
+			validarFormulario(modo);
 
-				if (modo == '1') {
-					// enviamos por el queryString el idMOdelo y el nombre del
-					// documento para que vuelvan a la URL de finalizacion
+			if (modo == '1') {
+				// enviamos por el queryString el idMOdelo y el nombre del
+				// documento para que vuelvan a la URL de finalizacion
 
-					var urlFinalizacion = $('#urlFinalizacion').val();
-					if (urlFinalizacion != '') {
-						var idModelo = $('#idModelo').val();
-						var nombre = $('#nombre').val()
-						// var queryString = '?idModelo=' + idModelo +
-						// '&nombre='
-						// + nombre;
-						// var queryString = '?idModelo=' + idModelo;
+				var urlFinalizacion = $('#urlFinalizacion').val();
+				if (urlFinalizacion != '') {
+					var idModelo = $('#idModelo').val();
+					var nombre = $('#nombre').val();
 					$('#urlFinalizacion').val(
-								urlFinalizacion + '?idModelo=' + idModelo
-										+ '&idCorrelacion=' + nombre+'&');
-					}
-
+						urlFinalizacion + '?idModelo=' + idModelo +
+						'&idCorrelacion=' + nombre + '&');
 				}
-			});
+
+			}
+		});
 }
 
 /**
@@ -196,22 +193,24 @@ function formularioEditorDocumentos() {
  * 
  */
 function validarFormulario(modo) {
+	var properties;
+
 	if (modo == '1') {
 
-		var properties = {
+		properties = {
 
-			rules : {
-				"nombre" : {
-					required : true
+			rules: {
+				"nombre": {
+					required: true
 				},
-				"idModelo" : {
-					required : true
+				"idModelo": {
+					required: true
 				},
-				"urlFinalizacion" : {
-					required : true
+				"urlFinalizacion": {
+					required: true
 				},
-				"lang" : {
-					required : true
+				"lang": {
+					required: true
 				}
 			},
 
@@ -219,15 +218,15 @@ function validarFormulario(modo) {
 
 	} else {
 
-		var properties = {
+		properties = {
 
-			rules : {
+			rules: {
 
-				"urlFinalizacion" : {
-					required : true
+				"urlFinalizacion": {
+					required: true
 				},
-				"lang" : {
-					required : true
+				"lang": {
+					required: true
 				}
 			},
 
@@ -245,51 +244,48 @@ function validarFormulario(modo) {
 function addCombosForm() {
 	$('#lang').rup_combo({
 
-		source : [ {
-			i18nCaption : $.rup.i18n.app.iberdokTable.es,
-			value : "es"
+		source: [{
+			i18nCaption: $.rup.i18n.app.iberdokTable.es,
+			value: "es"
 		}, {
-			i18nCaption : $.rup.i18n.app.iberdokTable.eu,
-			value : "eu"
+			i18nCaption: $.rup.i18n.app.iberdokTable.eu,
+			value: "eu"
 		}, {
-			i18nCaption : $.rup.i18n.app.iberdokTable.en,
-			value : "en"
+			i18nCaption: $.rup.i18n.app.iberdokTable.en,
+			value: "en"
 		}, ],
 
-		width : 150,
-		blank : "",
-		rowStriping : true,
-		inputText : true
+		width: 150,
+		blank: "",
+		rowStriping: true,
+		inputText: true
 	});
 
 	$('#modo').rup_combo({
 
-		source : [ {
-			i18nCaption : $.rup.i18n.app.iberdokTable.modo1,// crear documento
-			value : "1"
-		}, {
-			i18nCaption : $.rup.i18n.app.iberdokTable.modo2,// editar documento
-			// finalizado
-			value : "2"
-		// }, {
-		// i18nCaption : "Modo Inicio",
-		// value : "3"
-		}, {
-			i18nCaption : $.rup.i18n.app.iberdokTable.modo7,// editar documento
-			// NO finalizado
-			value : "7"
-		}, {
-			i18nCaption : $.rup.i18n.app.iberdokTable.modo8,// copiar documento
-			value : "8"
-		},
+		source: [{
+				i18nCaption: $.rup.i18n.app.iberdokTable.modo1, // crear documento
+				value: "1"
+			}, {
+				i18nCaption: $.rup.i18n.app.iberdokTable.modo2, // editar documento
+				// finalizado
+				value: "2"
+			}, {
+				i18nCaption: $.rup.i18n.app.iberdokTable.modo7, // editar documento
+				// NO finalizado
+				value: "7"
+			}, {
+				i18nCaption: $.rup.i18n.app.iberdokTable.modo8, // copiar documento
+				value: "8"
+			},
 
 		],
 
-		width : 250,
-		blank : "0",
-		rowStriping : true,
-		inputText : true,
-		disabled : true
+		width: 250,
+		blank: "0",
+		rowStriping: true,
+		inputText: true,
+		disabled: true
 	});
 }
 
@@ -305,8 +301,8 @@ function fnCopiarDocumento() {
 	var selectedRowId = $("#iberdokTable").rup_jqtable("getSelectedRows");
 	var selectedRow = $("#iberdokTable").rup_jqtable("getRowData", selectedRowId);
 	var idDocumento = selectedRow.idDocumento;
-	var modo='8';
-	
+	var modo = '8';
+
 	abridEditorIberdok(modo, idDocumento);
 
 }
@@ -327,7 +323,7 @@ function fnEditarIberdok() {
 	var modo;
 	if (selectedRow.estado == '1') {
 		// Editar documento sin finalizar
-		modo = "7"
+		modo = "7";
 	} else {
 		// reabrir Documento finalizado
 		modo = "2";
@@ -377,14 +373,14 @@ function abridEditorIberdok(modo, idDocumento) {
 	gestionarVisibilidadDivs(modo);
 
 	$("#divFormEditorIberdok").rup_dialog({
-		type : $.rup.dialog.DIV,
+		type: $.rup.dialog.DIV,
 
-		autoOpen : false,
-		modal : true,
-		resizable : true,
-		title : $.rup.i18n.app.iberdokTable.dialog,
-		width : 900,
-		height : 500
+		autoOpen: false,
+		modal: true,
+		resizable: true,
+		title: $.rup.i18n.app.iberdokTable.dialog,
+		width: 900,
+		height: 500
 	});
 
 	$("#divFormEditorIberdok").rup_dialog("open");
@@ -421,41 +417,37 @@ function gestionarDatosDivs(modo, idDocumento) {
 	$('#token').val(IBERDOK.token);
 	$('#idUsuario').val(IBERDOK.idUsuario);
 	$('#idModelo').val(IBERDOK.idModelo);
-	// $('#urlRetorno').val(IBERDOK.urlRetorno);
 	$('#urlRetornoEjemplo').text(IBERDOK.urlRetorno);
 	$('#urlFinalizacion').val(IBERDOK.urlFinalizacion);
 
 	switch (parseInt(modo)) {
-	case 1:
-		$('#datosNecesarios').show();
-		$('#divModo1').show();
-		// url de iberdok
-		$('#editorDocumentosForm').attr("action", IBERDOK.urlEditorDocumentos);
-		break;
-	case 2:
-		$.ajax({
-			url : 'getXhtml?idDocumento=' + idDocumento,
-			async : false,
-			success : function(data) {
-				$('#xhtml64').val(data);
+		case 1:
+			$('#datosNecesarios').show();
+			$('#divModo1').show();
+			// url de iberdok
+			$('#editorDocumentosForm').attr("action", IBERDOK.urlEditorDocumentos);
+			break;
+		case 2:
+			$.ajax({
+				url: 'getXhtml?idDocumento=' + idDocumento,
+				async: false,
+				success: function (data) {
+					$('#xhtml64').val(data);
 
-			},
+				},
 
-			dataType : 'json'
-		});
-		break;
-	// case 3:
-	// $('#divModo3').show();
-	// break;
-	case 7:
-	case 8:
-		// modo 7 reapertura y modo 8 reapertura copia necesitan los mismos
-		// datos
-		$('#idDocumento').val(idDocumento);
-		// url de iberdok
-		$('#editorDocumentosForm').attr("action", IBERDOK.urlEditorDocumentos);
+				dataType: 'json'
+			});
+			break;
+		case 7:
+		case 8:
+			// modo 7 reapertura y modo 8 reapertura copia necesitan los mismos
+			// datos
+			$('#idDocumento').val(idDocumento);
+			// url de iberdok
+			$('#editorDocumentosForm').attr("action", IBERDOK.urlEditorDocumentos);
 
-		break;
+			break;
 	}
 }
 /**
@@ -469,28 +461,22 @@ function gestionarVisibilidadDivs(modo) {
 	ocultarDivsModos();
 	$('#datosNecesarios').show();
 	switch (parseInt(modo)) {
-	case 1:
+		case 1:
+			$('#divModo1').show();
+			$('#semillas').show();
+			break;
+		case 2:
 
-		$('#divModo1').show();
-		$('#semillas').show();
-
-		break;
-	case 2:
-		
-		$('#divModo2').show();
-		$('#semillas').show();
-		
-
-		break;
-	// case 3:
-	// $('#divModo3').show();
-	// break;
-	case 7:
-		$('#semillas').show();
-	case 8:
-		// ambos requieren los mismos datos
-		$('#divModo7').show();
-		break;
+			$('#divModo2').show();
+			$('#semillas').show();
+			break;
+		case 7:
+			$('#semillas').show();
+			break;
+		case 8:
+			// ambos requieren los mismos datos
+			$('#divModo7').show();
+			break;
 	}
 
 }

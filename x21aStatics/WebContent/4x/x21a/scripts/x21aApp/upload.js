@@ -15,24 +15,6 @@
  */
 $(function() {
 	
-	// Definicion de las pestanas
-//	$("#uploadTabs").rup_tabs({
-//		tabs : [ {
-//			i18nCaption : "upload",
-//			layer : "#fileupload_only"
-//		}, {
-//			i18nCaption : "uploadFormSimple",
-//			layer : "#fileupload_form"
-//		}, {
-//			i18nCaption : "uploadFormMultiple",
-//			layer : "#fileupload_form_multiple"
-//		}, {
-//			i18nCaption : "uploadFormPif",
-//			layer : "#fileupload_pif_form"
-//		} 
-//		]
-//	});
-//	
 	// Creacion de los componentes feedback
 	$("#feedback_fileupload_form").rup_feedback();
 	$("#feedback_fileupload_form_multiple").rup_feedback();
@@ -43,21 +25,11 @@ $(function() {
 		$("#feedback_fileupload_form").rup_feedback("set","Los datos se han enviado correctamente");
 	});
 
-//	 
 	$("#uploadFormMultiple").ajaxForm(function(){
 		$("#feedback_fileupload_form_multiple").rup_feedback("set","Los datos se han enviado correctamente");
 	});
-//	
-	// Creacion de los diferentes componentes Upload
-	
 
-	// Upload basic
-//	$('#basicFileupload').rup_upload({
-////		fileInput: $("#file_only"),
-//		maxFileSize: 5000000
-//	});
-	
-	
+	// Creacion de los diferentes componentes Upload
 	$('#basicFileupload').fileupload({
         dataType: 'json',
         uploadTemplateId:false,
@@ -78,8 +50,7 @@ $(function() {
 		fileInput: $("#file_only"),
 		maxFileSize: 5000000
 	});
-//	
-//	 
+
 //	// Upload integrado en formulario
 	$('#fileupload_form').rup_upload({
 		fileInput: $("#file_form"),
@@ -98,32 +69,8 @@ $(function() {
 			preserveName:true
 		}
 	});
-//	
-//	$('#fileupload_pif_form').rup_upload({
-//		fileInput: $("#file_pif_form"),
-//		url: "../pifServlet",
-//		formData:{
-//			base_url:"../pifServlet",
-//			hadoop_folder_path: "/x21a",
-//			y31_ttl: 60,
-//			hadoop_preserve_name:true,
-//			securityToken:"user"
-//		}
-//	});
-//	
-	
-//	$('#fileupload_pif_form').rup_upload({
-//		fileInput: $("#file_pif_form"),
-//		url: "../pifServlet",
-//		pif:{
-//			folderPath: "/x21a",
-//			fileTtl: 60,
-//			preserveName:true
-//		}
-//	});
-//	
-//	 
-//	// Dos controles Upload intergrados en un mismo formulario
+
+	//	// Dos controles Upload intergrados en un mismo formulario
 	$('#fileupload_file_form_padre').rup_upload({
 		form:"fileupload_form_multiple",
 		fileInput: $("#file_form_padre"),

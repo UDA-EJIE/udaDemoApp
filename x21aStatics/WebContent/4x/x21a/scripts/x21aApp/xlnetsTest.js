@@ -9,8 +9,4 @@ $(function($) {
 		minLength: 	3,
 		combobox: false
 		});
-	
-
-   
-   
 });

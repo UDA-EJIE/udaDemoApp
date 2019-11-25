@@ -14,7 +14,6 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-// console.log("hola");
 
  loadApp();
  var options = {
@@ -65,5 +64,5 @@ jQuery(function($){
              COREProxy.api.layers.addGeoJSONLayer("Centro btt", "https://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/centros_btt_bicicleta_montana/opendata/centros-btt.json");
          }
      });
- };
+ }
 });

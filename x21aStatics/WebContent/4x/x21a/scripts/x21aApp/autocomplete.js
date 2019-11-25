@@ -63,7 +63,7 @@ $(function() {
 			width: '99%',
 	        customClasses: ["select-material"],
 			change: function () {
-				console.log('comboRemote:::Changed')
+				console.log('comboRemote:::Changed');
 			},
 			select : function() {
 				var valor = $('#comboRemoto').rup_combo('getRupValue');

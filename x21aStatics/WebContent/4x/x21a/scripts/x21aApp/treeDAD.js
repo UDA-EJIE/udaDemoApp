@@ -29,7 +29,7 @@ $(function() {
 		modal: true,
 		resizable: true,
 		width: "auto",
-		title: $.rup.i18nParse($.rup.i18n.app["treeCodeDialog"],"title"),
+		title: $.rup.i18nParse($.rup.i18n.app.treeCodeDialog,"title"),
 		buttons: [{
 			text: $.rup.i18nParse($.rup.i18n.base,"rup_global.close"),
 			click: function () { 
@@ -121,162 +121,162 @@ $(function() {
 	/* Codigo JSon del árbol de tareas */
 	var tasksTreeJson = [
 	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"raiz")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"raiz")
 	    },
 	    "attr" : { "id" : "raizTasks", "rel" : "tasks"},
 	    "state" : "open",
 	    "children" : [
 	        {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informes")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informes")
 		    },
 		    "attr" : { "id" : "informes", "rel" : "forms"},
 		    "state" : "open",
 		    "children" : [
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_trimestral")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_trimestral")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_gastos_generales")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_gastos_generales")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_desperfectos")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_desperfectos")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_deudas")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_deudas")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_calidad")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_calidad")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_perdidas")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"informe_perdidas")
 		         },
 		         "attr" : { "id" : "informe_trimestral", "rel" : "job"}
 		         }
 		    ]},
 		    {"data" : { 
-	    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"transportes")
+	    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"transportes")
 		    },
 		    "attr" : { "id" : "transportes", "rel" : "Transportation"},
 		    "state" : "open",
 		    "children" : [
 				{"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_lujua")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"pedido_lujua")
 		         },
 		         "attr" : { "id" : "pedido_lujua", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_cemento")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"pedido_cemento")
 		         },
 		         "attr" : { "id" : "pedido_cemento", "rel" : "job"}
 		         },
 		         {"data" : { 
-		    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_martillo")
+		    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"pedido_martillo")
 		         },
 		         "attr" : { "id" : "pedido_martillo", "rel" : "job"}
 		         }
 		    ]},
 		    {"data" : { 
-	    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparaciones")
+	    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"reparaciones")
 		    },
 		    "attr" : { "id" : "reparaciones", "rel" : "repair"},
 		    "state" : "open",
 		    "children" : [
 				{"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_fachada")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"reparacion_fachada")
 				 },
 				 "attr" : { "id" : "reparacion_fachada", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_indundacion")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"reparacion_indundacion")
 				 },
 				 "attr" : { "id" : "reparacion_indundacion", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_suelo")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"reparacion_suelo")
 				 },
 				 "attr" : { "id" : "reparacion_suelo", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_ratas")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"reparacion_ratas")
 				 },
 				 "attr" : { "id" : "reparacion_ratas", "rel" : "job"}
 				 }         
 		    ]},
 		    {"data" : { 
-	    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"suministros")
+	    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"suministros")
 		    },
 		    "attr" : { "id" : "suministros", "rel" : "suppliers"},
 		    "state" : "open",
 		    "children" : [
 				{"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_ladrillos")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_ladrillos")
 				 },
 				 "attr" : { "id" : "mp_ladrillos", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_clavos")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_clavos")
 				 },
 				 "attr" : { "id" : "mp_clavos", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cemento")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_cemento")
 				 },
 				 "attr" : { "id" : "mp_cemento", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_recambios")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_recambios")
 				 },
 				 "attr" : { "id" : "mp_recambios", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_jabon")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_jabon")
 				 },
 				 "attr" : { "id" : "mp_jabon", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_botas")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_botas")
 				 },
 				 "attr" : { "id" : "mp_botas", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cascos")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"mp_cascos")
 				 },
 				 "attr" : { "id" : "mp_cascos", "rel" : "job"}
 				 }          
 		    ]},
 		    {"data" : { 
-	    		"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"facturas")
+	    		"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"facturas")
 		    },
 		    "attr" : { "id" : "facturas", "rel" : "invoice"},
 		    "state" : "open",
 		    "children" : [
 				{"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_VH")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"factura_VH")
 				 },
 				 "attr" : { "id" : "factura_VH", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_Lindo")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"factura_Lindo")
 				 },
 				 "attr" : { "id" : "factura_Lindo", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_devolucion")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"factura_devolucion")
 				 },
 				 "attr" : { "id" : "factura_devolucion", "rel" : "job"}
 				 },
 				 {"data" : { 
-					"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_OM")
+					"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"factura_OM")
 				 },
 				 "attr" : { "id" : "factura_OM", "rel" : "job"}
 				 }
@@ -287,7 +287,7 @@ $(function() {
 	/* Codigo JSon del árbol de trabajadores */
 	var workersTreeJson = [
    	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"workers")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"workers")
 	    },
 	    "attr" : { "id" : "raizWorkers", "rel" : "workers"},
 	    "state" : "open",
@@ -373,7 +373,7 @@ $(function() {
 	/* Codigo JSon del árbol de trabajadores */
 	var workersDepartmentTreeJson = [
    	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depAdmin")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"depAdmin")
 	    },
 	    "attr" : { "id" : "department", "rel" : "workers"},
 	    "state" : "open",
@@ -410,7 +410,7 @@ $(function() {
 		    }
 	    ]},
 	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depClientes")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"depClientes")
 	    },
     	"attr" : { "id" : "department", "rel" : "workers"},
 	    "state" : "close",
@@ -462,7 +462,7 @@ $(function() {
 		    }
 	    ]},
 	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depReparaciones")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"depReparaciones")
 	    },
 	    "attr" : { "id" : "department", "rel" : "workers"},
 		"state" : "close",
@@ -499,7 +499,7 @@ $(function() {
 		    }
   	    ]},
 	    {"data" : { 
-	    	"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depSuministros")
+	    	"title" : $.rup.i18nParse($.rup.i18n.app.tasksTree,"depSuministros")
     	},
     	"attr" : { "id" : "department", "rel" : "workers"},
 	    "state" : "close",
@@ -615,8 +615,8 @@ $(function() {
 	$(".treeNodesExchangePanel_center").css("visibility", "visible");
 	$(".treeNodesExchangePanel_center_img").bind("click", function(){
 		$.rup_messages("msgError", {
-			title: $.rup.i18nParse($.rup.i18n.app["treeNodesExchangePanel_center"],"errorOp"),
-			message: $.rup.i18nParse($.rup.i18n.app["treeNodesExchangePanel_center"],"funtError")
+			title: $.rup.i18nParse($.rup.i18n.app.treeNodesExchangePanel_center,"errorOp"),
+			message: $.rup.i18nParse($.rup.i18n.app.treeNodesExchangePanel_center,"funtError")
 		});
 	});
 	

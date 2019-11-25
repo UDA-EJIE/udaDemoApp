@@ -120,33 +120,14 @@ $(function() {
                 }
             },
             labels:{
-    //			"nombre": {
-    //				required: "Debe de especificar un nombre obligatoriamente."
-    //			},
-    //			"apellido1": {
-    //				required: "Debe de especificar un primer apellido obligatoriamente."
-    //			},
-    //			"apellido2": {
-    //				required: "Debe de especificar un segundo apellido obligatoriamente."
-    //			},
                 "alertDay[]": "#alertDayError"
             },
             icons:{
-    //			"nombre": {
-    //				required: "Debe de especificar un nombre obligatoriamente."
-    //			},
-    //			"apellido1": {
-    //				required: "Debe de especificar un primer apellido obligatoriamente."
-    //			},
-    //			"apellido2": {
-    //				required: "Debe de especificar un segundo apellido obligatoriamente."
-    //			},
                 "alertDay[]": "#alertDayErrorLabel"
             }
         });
 
         $('#rol_detail_table').rup_combo({
-            //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},
@@ -161,10 +142,8 @@ $(function() {
             customClasses: ["select-material"]
         });
 
-        //$("#rol_detail_table").rup_combo("disable");
 
         $("#autocomplete").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},
@@ -177,7 +156,6 @@ $(function() {
         });
 
         $('#rolName2').rup_combo({
-            //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},
@@ -193,7 +171,6 @@ $(function() {
         });
 
         $("#autocompleteName2").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},
@@ -206,7 +183,6 @@ $(function() {
         });
 
         $("#autocompleteCombobox").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},
@@ -220,7 +196,6 @@ $(function() {
         });
 
         $("#autocompleteCombobox2").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
             source : [
                 {i18nCaption: "asp", value:"asp_value"},
                 {i18nCaption: "c", value:"c_value"},

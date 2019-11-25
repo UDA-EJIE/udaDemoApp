@@ -47,7 +47,6 @@ $(function() {
 	});
 	
 	$("#autocompleteField").rup_autocomplete({
-		/*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
 		source : [
 			{i18nCaption: "asp", value:"asp_value"},
 			{i18nCaption: "c", value:"c_value"},

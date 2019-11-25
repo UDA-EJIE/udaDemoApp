@@ -22,7 +22,6 @@ $(function() {
         });
 
         $('#diaObligatorio').rup_combo({
-            //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
             source : [
                 {i18nCaption: "lunes", value:"1"},
                 {i18nCaption: "martes", value:"2"},

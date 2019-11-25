@@ -13,14 +13,14 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(function($) {
+jQuery(function ($) {
 
-	// funcion que ejecutarán los eventos.
-	actions = function(n) {
-		console.info('' + n + ' ha sido pulsado');
-	}
-	
-	getDay = () => {
+    // funcion que ejecutarán los eventos.
+    actions = function (n) {
+        console.info('' + n + ' ha sido pulsado');
+    };
+
+    getDay = function() {
         var days_array = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         var m = (new Date()).getMonth();
         var m_limit = days_array[m];
@@ -32,10 +32,10 @@ jQuery(function($) {
         getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(),
         getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(), getDay(),
     ];
-	
+
     // CALENDARIO
     var options = {
-        events_source : function() {
+        events_source: function () {
             return [{
                 "id": "48605",
                 "title": "<span><strong>AUTORIZACIÓN DE VERTIDO DE AGUAS RESIDUALES PROCEDENTES DE ESTACIÓN DE SERVICIO Nº 7338 EN ARKAUTE, T.M .DE VITORIA-GASTEIZ</strong><ul class='pl-3'><li>Nºexp.:&nbsp;VDP-A-2012-0382</li><li>P.vertido:&nbsp;PV1</li><li>Id.flujo:&nbsp;F1</li><li>Requiere muestra&nbsp;</li><li><i class='mdi mdi-check pr-1' aria-hidden='true'></i>COMPLETADA</li></ul></span>",
@@ -241,7 +241,7 @@ jQuery(function($) {
                 "url": "javascript:actions(49143)"
             }];
         },
-        rupAfterViewLoad : function(view) {
+        rupAfterViewLoad: function (view) {
             $('.page-header h3').text(this.getTitle());
             $('.btn-group button').removeClass('active');
             $('button[data-calendar-view="' + view + '"]').addClass('active');
@@ -250,22 +250,22 @@ jQuery(function($) {
 
     var calendar = $('#calendar').rup_calendar(options);
 
-    $('.btn-group span[data-calendar-nav]').each(function(i, e) {
+    $('.btn-group span[data-calendar-nav]').each(function (i, e) {
         var $elem = $(e);
-        $elem.click(function() {
+        $elem.click(function () {
             calendar.navigate($elem.data('calendar-nav'));
         });
     });
 
     $('.btn-group span[data-calendar-view]').each(
-            function(i, e) {
-                var $elem = $(e);
-                $elem.click(function() {
-                    calendar.setView($elem.data('calendar-view'));
-                    $('.btn-group span[data-calendar-view].active')
-                            .removeClass('active');
-                    $elem.addClass('active');
-                });
+        function (i, e) {
+            var $elem = $(e);
+            $elem.click(function () {
+                calendar.setView($elem.data('calendar-view'));
+                $('.btn-group span[data-calendar-view].active')
+                    .removeClass('active');
+                $elem.addClass('active');
             });
+        });
 
 });

@@ -1,106 +1,106 @@
-jQuery(function($){
+jQuery(function ($) {
 
 	$("#x21aAlumno").rup_table({
-		
+
 		primaryKey: "id",
 		loadOnStartUp: true,
-		filter:{
-  	  		id:"x21aAlumno_filter_form",
-  	  		filterToolbar:"x21aAlumno_filter_toolbar",
-  	  		collapsableLayerId:"x21aAlumno_filter_fieldset"
-     	},
-        formEdit:{
-        	detailForm: "#x21aAlumno_detail_div",
+		filter: {
+			id: "x21aAlumno_filter_form",
+			filterToolbar: "x21aAlumno_filter_toolbar",
+			collapsableLayerId: "x21aAlumno_filter_fieldset"
+		},
+		formEdit: {
+			detailForm: "#x21aAlumno_detail_div",
 			fillDataMethod: "clientSide",
-         	validate:{ 
-    			rules:{
-    				"id":{
+			validate: {
+				rules: {
+					"id": {
 						required: false
-    					},
-    				"usuario":{
+					},
+					"usuario": {
 						required: false
-    					},
-    				"password":{
+					},
+					"password": {
 						required: false
-    					},
-    				"nombre":{
+					},
+					"nombre": {
 						required: false
-    					},
-    				"apellido1":{
+					},
+					"apellido1": {
 						required: false
-    					},
-    				"apellido2":{
+					},
+					"apellido2": {
 						required: false
-    					},
-    				"fechaNacimiento":{
+					},
+					"fechaNacimiento": {
 						required: false
-    					},
-    				"telefono":{
+					},
+					"telefono": {
 						required: false
-    					},
-    				"email":{
+					},
+					"email": {
 						required: false
-    					},
-    				"idioma":{
+					},
+					"idioma": {
 						required: false
-    					},
-    				"paisId":{
+					},
+					"paisId": {
 						required: false
-    					},
-    				"provinciaId":{
+					},
+					"provinciaId": {
 						required: false
-    					},
-    				"localidadId":{
+					},
+					"localidadId": {
 						required: false
-    					},
-    				"comarcaId":{
+					},
+					"comarcaId": {
 						required: false
-    					},
-    				"municipioId":{
+					},
+					"municipioId": {
 						required: false
-    					},
-    				"calleId":{
+					},
+					"calleId": {
 						required: false
-    					},
-    				"imagen":{
+					},
+					"imagen": {
 						required: false
-    					},
-    				"sexo":{
+					},
+					"sexo": {
 						required: false
-    					},
-    				"dni":{
+					},
+					"dni": {
 						required: false
-    					},
-    				"autonomiaId":{
+					},
+					"autonomiaId": {
 						required: false
-    					},
-    				"nombreImagen":{
+					},
+					"nombreImagen": {
 						required: false
-    					},
-    				"calle":{
+					},
+					"calle": {
 						required: false
-    					},
-    				"direccion":{
+					},
+					"direccion": {
 						required: false
-    					},
-    				"importeMatricula":{
+					},
+					"importeMatricula": {
 						required: false
-    					}
-    				}
-    		   }
-    		 ,titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')  
-    		}
-    		,colReorder: {
-				fixedColumnsLeft: 1
-			}
-    	    , multiSelect: {
-           		 style:    'multi'
-       		 }
-    		,seeker: {
-    			activate:true
-			}
-			,buttons: {
-				activate:true
-			}
+					}
+				}
+			},
+			titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
+		},
+		colReorder: {
+			fixedColumnsLeft: 1
+		},
+		multiSelect: {
+			style: 'multi'
+		},
+		seeker: {
+			activate: true
+		},
+		buttons: {
+			activate: true
+		}
 	});
 });

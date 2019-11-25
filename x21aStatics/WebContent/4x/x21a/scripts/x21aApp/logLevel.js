@@ -9,7 +9,7 @@ $(document).ready(function () {
 					contentType : 'application/json',
 					
 		});
-	})
+	});
 
 
 options_level_combo = {
