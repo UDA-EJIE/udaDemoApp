@@ -11,10 +11,6 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="x21aApp3xWar.war" deploy-path="/" handle="module:/resource/x21aApp3xWar/x21aApp3xWar">
-            <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
             <dependent-object/>
             <dependency-type>uses</dependency-type>

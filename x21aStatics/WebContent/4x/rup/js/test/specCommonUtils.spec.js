@@ -1,4 +1,4 @@
-const DIST = "/x21aStatics/3x/rup";
+const DIST = "/x21aStatics/4x/rup";
 const DEMO = "/demo";
 
 function testTrace(title, toTrace) {
@@ -27,7 +27,7 @@ function loadCss(callback) {
                                         $.when($.ajax(DIST + '/css/rup-jqueryui-theme.css'))
                                             .then((data, textStatus, jqXHR) => {
                                                 $('head > style').append(data);
-                                                $.when($.ajax('/x21aStatics/3x' + '/x21a/styles/main.css'))
+                                                $.when($.ajax('/x21aStatics/4x' + '/x21a/styles/main.css'))
                                                 .then((data, textStatus, jqXHR) => {
                                                     $('head > style').append(data);
                                                     if($('#content').length === 0) {

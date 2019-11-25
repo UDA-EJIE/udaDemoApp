@@ -484,9 +484,6 @@
 					<a class="dropdown-item" href="/x21aPilotoPatronesWar/" aria-labelledby="x21aApp_uda_2">
 						<spring:message code="udaLegacy2x" />
 					</a>
-					<a class="dropdown-item" href="/x21aApp3xWar/" aria-labelledby="x21aApp_uda_3">
-						<spring:message code="udaLegacy3x" />
-					</a>
 				</div>
 			</li>
 			<li class="nav-item">
