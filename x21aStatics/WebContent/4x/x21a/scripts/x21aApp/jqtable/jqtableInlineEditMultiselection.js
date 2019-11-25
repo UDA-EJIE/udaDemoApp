@@ -13,46 +13,62 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-jQuery(function($){
-	
+jQuery(function ($) {
+
     // No pueden resolverse resources i18n de rup hasta que haya terminado de cargarlos
-    initRupI18nPromise.then(function() {
-    	$("#table").rup_jqtable({
-    		url: "../jqGridUsuario",
-    		colNames: tableColNames,
-    		colModel: tableColModels,
-            usePlugins:[
-     			"inlineEdit",
-            	"feedback",
-    			"toolbar",
-            	"contextMenu",
-            	"responsive",
-            	"filter",
-            	"search",
-            	"multiselection",
-            	"report",
-            	"multifilter"
+    window.initRupI18nPromise.then(function () {
+        $('#table').rup_jqtable({
+            url: '../jqGridUsuario',
+            colNames: window.tableColNames,
+            colModel: window.tableColModels,
+            usePlugins: [
+                'inlineEdit',
+                'feedback',
+                'toolbar',
+                'contextMenu',
+                'responsive',
+                'filter',
+                'search',
+                'multiselection',
+                'report',
+                'multifilter'
             ],
-            primaryKey: "id",
+            primaryKey: 'id',
             sortname: 'id',
-            validate:{
-    			rules:{
-    				"nombre":{required:true},
-    				"apellido1":{required:true},
-    				"fechaAlta":{date:true},
-    				"fechaBaja":{date:true}
-    			}
-    		},
-            filter:{
-            	validate:{
-            		rules:{
-        				"fechaAlta":{date:true},
-        				"fechaBaja":{date:true}
-        			}
-            	}
+            validate: {
+                rules: {
+                    'nombre': {
+                        required: true
+                    },
+                    'apellido1': {
+                        required: true
+                    },
+                    'fechaAlta': {
+                        date: true
+                    },
+                    'fechaBaja': {
+                        date: true
+                    }
+                }
             },
-            multifilter:{ idFilter:"inlineEditMUlti",labelSize:255,userFilter:"udaPruebas"},
-            report: options_table_report
-    	});
+            filter: {
+                validate: {
+                    rules: {
+                        'fechaAlta': {
+                            date: true
+                        },
+                        'fechaBaja': {
+                            date: true
+                        }
+                    }
+                }
+            },
+            multifilter: {
+                idFilter: 'inlineEditMUlti',
+                labelSize: 255,
+                userFilter: 'udaPruebas'
+            },
+            report: window.options_table_report
+        });
     });
 });

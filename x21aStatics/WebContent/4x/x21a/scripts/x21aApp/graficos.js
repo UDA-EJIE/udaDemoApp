@@ -14,130 +14,130 @@
  * que establece la Licencia.
  */
 
-jQuery(function ($) {
+jQuery(function () {
 
-	var vista = {};
-	vista.ui = {};
+    var vista = {};
+    vista.ui = {};
 
-	vista.ui.graficoLine = "#graficoLine";
-	vista.ui.graficoBar = "#graficoBar";
-	vista.ui.graficoRadar = "#graficoRadar";
-	vista.ui.graficoPolar = "#graficoPolar";
-	vista.ui.graficoPie = "#graficoPie";
-	vista.ui.graficoDoughnut = "#graficoDoughnut";
-	vista.ui.graficoBubble = "#graficoBubble";
+    vista.ui.graficoLine = '#graficoLine';
+    vista.ui.graficoBar = '#graficoBar';
+    vista.ui.graficoRadar = '#graficoRadar';
+    vista.ui.graficoPolar = '#graficoPolar';
+    vista.ui.graficoPie = '#graficoPie';
+    vista.ui.graficoDoughnut = '#graficoDoughnut';
+    vista.ui.graficoBubble = '#graficoBubble';
 
-	vista.mesesData = [];
-	vista.colorsData = [];
-	vista.radarData = [];
-	vista.bubbleData = [];
+    vista.mesesData = [];
+    vista.colorsData = [];
+    vista.radarData = [];
+    vista.bubbleData = [];
 
-	fncInitialize(vista);
-	fncOnDomRefresh(vista);
+    fncInitialize(vista);
+    fncOnDomRefresh(vista);
 
 });
 
 function fncInitialize(vista) {
-	/* data */
+    /* data */
 
-	vista.mesesData = {
-		labels: $.rup.i18n.app.charts.mesesLabels,
-		datasets: [{
-			label: $.rup.i18n.app.charts.datasetRadar.dataset1,
-			data: [65, 59, 80, 81, 56, 55, 40]
-		}]
-	};
-	vista.colorsData = {
+    vista.mesesData = {
+        labels: $.rup.i18n.app.charts.mesesLabels,
+        datasets: [{
+            label: $.rup.i18n.app.charts.datasetRadar.dataset1,
+            data: [65, 59, 80, 81, 56, 55, 40]
+        }]
+    };
+    vista.colorsData = {
 
-		labels: $.rup.i18n.app.charts.colorLabels,
-		datasets: [{
-			data: [300, 50, 100],
-			backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-			hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
-		}]
-	};
-	vista.radarData = {
-		labels: $.rup.i18n.app.charts.radarLabels,
-		datasets: [{
-			label: $.rup.i18n.app.charts.datasetRadar.dataset1,
-			data: [65, 59, 90, 81, 56, 55, 40]
-		}, {
-			label: $.rup.i18n.app.charts.datasetRadar.dataset2,
-			data: [28, 48, 40, 19, 96, 27, 100]
-		}]
-	};
+        labels: $.rup.i18n.app.charts.colorLabels,
+        datasets: [{
+            data: [300, 50, 100],
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+    };
+    vista.radarData = {
+        labels: $.rup.i18n.app.charts.radarLabels,
+        datasets: [{
+            label: $.rup.i18n.app.charts.datasetRadar.dataset1,
+            data: [65, 59, 90, 81, 56, 55, 40]
+        }, {
+            label: $.rup.i18n.app.charts.datasetRadar.dataset2,
+            data: [28, 48, 40, 19, 96, 27, 100]
+        }]
+    };
 
-	vista.bubbleData = {
-		datasets: [{
-			label: $.rup.i18n.app.charts.datasetRadar.dataset1,
-			data: [{
-				x: 20,
-				y: 30,
-				r: 15
-			}, {
-				x: 40,
-				y: 10,
-				r: 10
-			}],
-			backgroundColor: "#FF6384",
-			hoverBackgroundColor: "#FF6384",
-		}]
-	};
+    vista.bubbleData = {
+        datasets: [{
+            label: $.rup.i18n.app.charts.datasetRadar.dataset1,
+            data: [{
+                x: 20,
+                y: 30,
+                r: 15
+            }, {
+                x: 40,
+                y: 10,
+                r: 10
+            }],
+            backgroundColor: '#FF6384',
+            hoverBackgroundColor: '#FF6384',
+        }]
+    };
 }
 
 function fncOnDomRefresh(vista) {
 
-	var options = {
-		legend: {
-			display: true
-		}
+    var options = {
+        legend: {
+            display: true
+        }
 
-	};
-	// line chart
-	$(vista.ui.graficoLine).rup_chart({
-		type: "line",
-		data: vista.mesesData,
-		options: options
-	});
+    };
+    // line chart
+    $(vista.ui.graficoLine).rup_chart({
+        type: 'line',
+        data: vista.mesesData,
+        options: options
+    });
 
-	// bar chart
-	$(vista.ui.graficoBar).rup_chart({
-		type: "bar",
-		data: vista.mesesData,
-		options: options
-	});
+    // bar chart
+    $(vista.ui.graficoBar).rup_chart({
+        type: 'bar',
+        data: vista.mesesData,
+        options: options
+    });
 
-	// radar chart
-	$(vista.ui.graficoRadar).rup_chart({
-		type: "radar",
-		data: vista.radarData
-	});
+    // radar chart
+    $(vista.ui.graficoRadar).rup_chart({
+        type: 'radar',
+        data: vista.radarData
+    });
 
-	// polar chart
-	$(vista.ui.graficoPolar).rup_chart({
-		type: "polarArea",
-		data: vista.colorsData
+    // polar chart
+    $(vista.ui.graficoPolar).rup_chart({
+        type: 'polarArea',
+        data: vista.colorsData
 
-	});
+    });
 
-	// pie chart
-	$(vista.ui.graficoPie).rup_chart({
-		type: "pie",
-		data: vista.colorsData
+    // pie chart
+    $(vista.ui.graficoPie).rup_chart({
+        type: 'pie',
+        data: vista.colorsData
 
-	});
+    });
 
-	// doughnut chart
-	$(vista.ui.graficoDoughnut).rup_chart({
-		type: "doughnut",
-		data: vista.colorsData
+    // doughnut chart
+    $(vista.ui.graficoDoughnut).rup_chart({
+        type: 'doughnut',
+        data: vista.colorsData
 
-	});
+    });
 
-	// bubble chart
-	$(vista.ui.graficoBubble).rup_chart({
-		type: 'bubble',
-		data: vista.bubbleData
+    // bubble chart
+    $(vista.ui.graficoBubble).rup_chart({
+        type: 'bubble',
+        data: vista.bubbleData
 
-	});
+    });
 }

@@ -14,89 +14,89 @@
  * que establece la Licencia.
  */
 jQuery(function(jQuery){
-	
-	jQuery("#limpiar").click(function() {
-		limpiarFiltros();
-	});
+    
+    jQuery('#limpiar').click(function() {
+        window.limpiarFiltros();
+    });
 
-	jQuery("#visorLT").bind("click", function(event) {
-		mostrarVisor();
-		event.preventDefault();
-		event.stopImmediatePropagation();
-	});
-	
-	jQuery("#visorFormulario").click(function(event) {
-		mostrarFormulario();
-		event.preventDefault();
-		event.stopImmediatePropagation();
-	});
+    jQuery('#visorLT').bind('click', function(event) {
+        window.mostrarVisor();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+    });
+    
+    jQuery('#visorFormulario').click(function(event) {
+        window.mostrarFormulario();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+    });
 });	
-	
-	var noraapi_provincias = new NORA.provincia({
-			asynchronous : false,
-			baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
-			onSuccess : function(response) {
-				var provincias = response.responseText.evalJSON(true);
-				for ( var i = 0; i < provincias.data.length; i++) {
-					var valor = provincias.data[i].descripcionOficial;
-					var id = provincias.data[i].id;
-					jQuery("#comboProvinciasAPI").append(jQuery('<option/>').val(id).html(valor));
-				}
-				jQuery("#comboProvinciasAPI").rup_combo('refresh');
-			}
-		}),
-		noraapi_municipios = new NORA.municipio({
-			asynchronous : false,
-			baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
-			onSuccess : function(response) {
-				if (jQuery("#comboProvinciasAPI").rup_combo("index") === 0){
-					jQuery("#comboMunicipiosAPI").rup_combo("disable");
-				}	
-				jQuery("#comboMunicipiosAPI").get(0).options.length = 1;
-				var municipios = response.responseText.evalJSON(true);
-				jQuery.each(municipios.data, function(position, val){
-					jQuery("#comboMunicipiosAPI").append(jQuery('<option/>').val(val.id).html(val.descripcionOficial));
-				});
-				jQuery("#comboMunicipiosAPI").rup_combo('refresh');
-			}
-		}),
-		noraapi_calle = new NORA.calle({
-			asynchronous : false,
-			baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
-			onSuccess : function(response) {
-				var callejero = response.responseText.evalJSON(true);
-				
-				var json = [];
-				jQuery.each(callejero.data, function(position, val){
-					json[position] = {
-							value : val.id,
-							label : val.descripcionOficial
-						};
-				});
-				jQuery("#autocompleteAPI_label").rup_autocomplete( "option", "source", json);
-				jQuery("#autocompleteAPI_label").rup_autocomplete('enable');
-			}
-		});
-	function getAllProvincias() {
-		noraapi_provincias.getByDesc("", {});
-	}
-	function getComunidadProvincia() {
-		return noraapi_provincias.getByDesc("", {
-			responseWithParents : 1,
-			idProvincia : jQuery("#comboProvinciasAPI").val()
-		});
-	}
-	function findByNameMunicipio() {
-		noraapi_municipios.getByDesc("", {
-			responseWithParents : 1,
-			provinciaId : jQuery("#comboProvinciasAPI").val()
-		});
-	}
-	function findByNameCalle(calle) {
-		noraapi_calle.getByDesc((calle)?calle:"", {
-			responseWithParents : 1,
-			provinciaId : jQuery("#comboProvinciasAPI").val(),
-			municipioId : jQuery("#comboMunicipiosAPI").val()
-		});	
-	}
-	getAllProvincias();
+    
+var noraapi_provincias = new window.NORA.provincia({
+        asynchronous : false,
+        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        onSuccess : function(response) {
+            var provincias = response.responseText.evalJSON(true);
+            for ( var i = 0; i < provincias.data.length; i++) {
+                var valor = provincias.data[i].descripcionOficial;
+                var id = provincias.data[i].id;
+                jQuery('#comboProvinciasAPI').append(jQuery('<option/>').val(id).html(valor));
+            }
+            jQuery('#comboProvinciasAPI').rup_combo('refresh');
+        }
+    }),
+    noraapi_municipios = new window.NORA.municipio({
+        asynchronous : false,
+        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        onSuccess : function(response) {
+            if (jQuery('#comboProvinciasAPI').rup_combo('index') === 0){
+                jQuery('#comboMunicipiosAPI').rup_combo('disable');
+            }	
+            jQuery('#comboMunicipiosAPI').get(0).options.length = 1;
+            var municipios = response.responseText.evalJSON(true);
+            jQuery.each(municipios.data, function(position, val){
+                jQuery('#comboMunicipiosAPI').append(jQuery('<option/>').val(val.id).html(val.descripcionOficial));
+            });
+            jQuery('#comboMunicipiosAPI').rup_combo('refresh');
+        }
+    }),
+    noraapi_calle = new window.NORA.calle({
+        asynchronous : false,
+        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        onSuccess : function(response) {
+            var callejero = response.responseText.evalJSON(true);
+                
+            var json = [];
+            jQuery.each(callejero.data, function(position, val){
+                json[position] = {
+                    value : val.id,
+                    label : val.descripcionOficial
+                };
+            });
+            jQuery('#autocompleteAPI_label').rup_autocomplete( 'option', 'source', json);
+            jQuery('#autocompleteAPI_label').rup_autocomplete('enable');
+        }
+    });
+window.getAllProvincias = function() {
+    noraapi_provincias.getByDesc('', {});
+};
+window.getComunidadProvincia = function() {
+    return noraapi_provincias.getByDesc('', {
+        responseWithParents : 1,
+        idProvincia : jQuery('#comboProvinciasAPI').val()
+    });
+};
+window.findByNameMunicipio = function() {
+    noraapi_municipios.getByDesc('', {
+        responseWithParents : 1,
+        provinciaId : jQuery('#comboProvinciasAPI').val()
+    });
+};
+window.findByNameCalle = function(calle) {
+    noraapi_calle.getByDesc((calle)?calle:'', {
+        responseWithParents : 1,
+        provinciaId : jQuery('#comboProvinciasAPI').val(),
+        municipioId : jQuery('#comboMunicipiosAPI').val()
+    });	
+};
+window.getAllProvincias();

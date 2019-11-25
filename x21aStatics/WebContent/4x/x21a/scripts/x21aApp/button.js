@@ -15,124 +15,124 @@
  */
 jQuery(document).ready(function () {
 
-	$("#btnDefault").rup_button({});
+    $('#btnDefault').rup_button({});
 
     // Botón con icono HTML
-	$("#btnIconHtml").rup_button();
+    $('#btnIconHtml').rup_button();
 
     // Botón con icono JS
-	$("#btnIconJs").rup_button({
-      iconCss: "mdi mdi-settings"
+    $('#btnIconJs').rup_button({
+        iconCss: 'mdi mdi-settings'
     });
 
     // Botón Rwd HTML Sd
-	$("#btnRwdHtmlSm").rup_button();
-	$("#btnRwdHtmlMd").rup_button();
-	$("#btnRwdJsSm").rup_button({
-      iconCss: "mdi mdi-settings",
-      labelCss: "hidden-sm-down"
+    $('#btnRwdHtmlSm').rup_button();
+    $('#btnRwdHtmlMd').rup_button();
+    $('#btnRwdJsSm').rup_button({
+        iconCss: 'mdi mdi-settings',
+        labelCss: 'hidden-sm-down'
     });
-	$("#btnRwdJsMd").rup_button({
-      iconCss: "mdi mdi-settings",
-      labelCss: "hidden-md-down"
+    $('#btnRwdJsMd').rup_button({
+        iconCss: 'mdi mdi-settings',
+        labelCss: 'hidden-md-down'
     });
 
     // MButton
     $('[id="btnMButton"]').rup_button({});
 
-    $("#fabButton_18px").rup_button({
-      // fab: true
+    $('#fabButton_18px').rup_button({
+        // fab: true
     });
 
-	$("#fabButton_24px").rup_button({
-      // fab: true
+    $('#fabButton_24px').rup_button({
+        // fab: true
     });
-	
-	$("#fabButton_36px").rup_button({
-      // fab: true
-    });
-
-	$("#fabButton_48px").rup_button({
-      // fab: true
+    
+    $('#fabButton_36px').rup_button({
+        // fab: true
     });
 
-	$("#fabButtonFixed").rup_button({
-      // fab: true
+    $('#fabButton_48px').rup_button({
+        // fab: true
     });
 
-	$("#btnDropdownList").rup_button({
-  		dropdown:{
-  			dropdownListId:"dropdownHtmlList"
-  		}
-  	});
+    $('#fabButtonFixed').rup_button({
+        // fab: true
+    });
+
+    $('#btnDropdownList').rup_button({
+        dropdown:{
+            dropdownListId:'dropdownHtmlList'
+        }
+    });
 
     // Eventos click
-	$("#btnClickJQuery").rup_button().on("click", function(){
-      $.rup_messages("msgOK", {
-        title: "Evento Click",
-        message: "Se ha capturado el evento click mediante un handler de jQuery."
-      });
-    });
-	$("#btnClickRup").rup_button({
-      iconCss: "mdi mdi-settings",
-      click: function(){
-        $.rup_messages("msgOK", {
-          title: "Evento Click",
-          message: "Se ha capturado el evento click mediante un handler especificado en la propiedad click."
+    $('#btnClickJQuery').rup_button().on('click', function(){
+        $.rup_messages('msgOK', {
+            title: 'Evento Click',
+            message: 'Se ha capturado el evento click mediante un handler de jQuery.'
         });
-      }
     });
-	
-	$("#dropdownElem1").on("click", function(){
-		alert("Seleccionado elemento 1");
-	});
-	
-	
-	// Dropdown dialog
-	jQuery("#dropdownDialogButton").rup_button({
-		dropdown:{
-			dropdownDialog: "dropdownDialog",
-			dropdownDialogConfig:{
-				title:"<i class='mdi mdi-filter' aria-hidden='true'></i>Administración de filtros",
-				width:"380px",
-				buttons: [{
-					text: "Guardar",
-					click: function () { 
-					}
-				},
-				{
-					text: "Aceptar",
-					click: function () { 
-					}
-				},
-				{
-					text: "Eliminar",
-					click: function () { 
-					}
-				},
-				{
-					text: "Cancelar",
-					click: function () { 
-						$("#dropdownDialog").dialog("close"); 
-					},
-					btnType: $.rup.dialog.LINK
-				}
-				]	
-			}
-		}
-	});
-	
-	var options_ejie_combo = {
-		source : [
-		   {label:"Si", value:"0"},
-		   {label:"No", value:"1"}
-		],
-		width: "100%",
-		blank: "",
-        customClasses: ["select-material"]
-	};
+    $('#btnClickRup').rup_button({
+        iconCss: 'mdi mdi-settings',
+        click: function(){
+            $.rup_messages('msgOK', {
+                title: 'Evento Click',
+                message: 'Se ha capturado el evento click mediante un handler especificado en la propiedad click.'
+            });
+        }
+    });
+    
+    $('#dropdownElem1').on('click', function(){
+        alert('Seleccionado elemento 1');
+    });
+    
+    
+    // Dropdown dialog
+    jQuery('#dropdownDialogButton').rup_button({
+        dropdown:{
+            dropdownDialog: 'dropdownDialog',
+            dropdownDialogConfig:{
+                title:'<i class=\'mdi mdi-filter\' aria-hidden=\'true\'></i>Administración de filtros',
+                width:'380px',
+                buttons: [{
+                    text: 'Guardar',
+                    click: function () { 
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    click: function () { 
+                    }
+                },
+                {
+                    text: 'Eliminar',
+                    click: function () { 
+                    }
+                },
+                {
+                    text: 'Cancelar',
+                    click: function () { 
+                        $('#dropdownDialog').dialog('close'); 
+                    },
+                    btnType: $.rup.dialog.LINK
+                }
+                ]	
+            }
+        }
+    });
+    
+    var options_ejie_combo = {
+        source : [
+            {label:'Si', value:'0'},
+            {label:'No', value:'1'}
+        ],
+        width: '100%',
+        blank: '',
+        customClasses: ['select-material']
+    };
 
-	
-	jQuery("#dropdownButton-combo").rup_combo(options_ejie_combo);
-	
+    
+    jQuery('#dropdownButton-combo').rup_combo(options_ejie_combo);
+    
 });

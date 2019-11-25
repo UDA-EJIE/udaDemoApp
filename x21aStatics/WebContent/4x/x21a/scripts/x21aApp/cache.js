@@ -14,48 +14,48 @@
  * que establece la Licencia.
  */
 jQuery(function($){
-	
-	var tableColNames = [
-	                     "Id",
-			           "Nombre",
-			           "Primer apellido",
-			           "Segundo apellido",
-			           "Ejie",
-			           "Fecha alta",
-			           "Fecha baja",
-			           "Rol"
-			],
-		tableColModels = [
-			{ name: "id", editable:true,  index: "id", width: 80},
-			{ name: "nombre", editable:true,index: "nombre"},
-			{ name: "apellido1", editable:true, index: "apellido1"},
-			{ name: "apellido2",  editable:true, index: "apellido2"},
-			{ name: "ejie", editable:true, index: "ejie", width: 60},
-			{ name: "fechaAlta", editable:true,  index: "fecha_alta", width: 120},
-			{ name: "fechaBaja", editable:true, index: "fecha_baja", width: 120},
-			{ name: "rol", editable:true, index: "rol", width: 140}
+    
+    var tableColNames = [
+            'Id',
+            'Nombre',
+            'Primer apellido',
+            'Segundo apellido',
+            'Ejie',
+            'Fecha alta',
+            'Fecha baja',
+            'Rol'
+        ],
+        tableColModels = [
+            { name: 'id', editable:true,  index: 'id', width: 80},
+            { name: 'nombre', editable:true,index: 'nombre'},
+            { name: 'apellido1', editable:true, index: 'apellido1'},
+            { name: 'apellido2',  editable:true, index: 'apellido2'},
+            { name: 'ejie', editable:true, index: 'ejie', width: 60},
+            { name: 'fechaAlta', editable:true,  index: 'fecha_alta', width: 120},
+            { name: 'fechaBaja', editable:true, index: 'fecha_baja', width: 120},
+            { name: 'rol', editable:true, index: 'rol', width: 140}
         ];
-	
-	
-	jQuery("#table").rup_jqtable({
-		url: "../cache",
-		colNames: tableColNames,
-		colModel: tableColModels,
-        primaryKey:["id"],
+    
+    
+    $('#table').rup_jqtable({
+        url: '../cache',
+        colNames: tableColNames,
+        colModel: tableColModels,
+        primaryKey:['id'],
         usePlugins:[
-        	"feedback",
-        	"fluid",
-        	"inlineEdit"
+            'feedback',
+            'fluid',
+            'inlineEdit'
         ],
         rowNum:10, 
         rowList:[10,20,30], 
         sortname: 'id'
         
-	});
-	
-	
-	jQuery("#btnRecargarTabla").on("click", function(){
-		jQuery("#table").rup_jqtable("reloadGrid");
-	});
-	
+    });
+    
+    
+    $('#btnRecargarTabla').on('click', function(){
+        $('#table').rup_jqtable('reloadGrid');
+    });
+    
 });

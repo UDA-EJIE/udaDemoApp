@@ -14,68 +14,65 @@
  * que establece la Licencia.
  */
 $(function() {
-	
-	
-	
-	
-	var $feedbackDate = jQuery("#feedbackDate").rup_feedback({ 
-		type: "ok",
-		closeLink: true,
-		block:false
-	});
-	
-	$('#dateField').rup_date({
-		
-	});
-	
-	$("#formDate").rup_validate({
-		feedback: $feedbackDate,
-		liveCheckingErrors: false,
-		showFieldErrorAsDefault: true,
-		showErrorsInFeedback: true,
-		showFieldErrorsInFeedback:true, 
-		rules:{
-			"dateField":{required:true}
-			
-		}
-	});
-	
-	var $feedbackAutocomplete = jQuery("#feedbackAutocomplete").rup_feedback({ 
-		type: "ok",
-		closeLink: true,
-		block:false
-	});
-	
-	$("#autocompleteField").rup_autocomplete({
-		source : [
-			{i18nCaption: "asp", value:"asp_value"},
-			{i18nCaption: "c", value:"c_value"},
-			{i18nCaption: "c++", value:"c++_value"},
-			{i18nCaption: "coldfusion", value:"coldfusion_value"},
-			{i18nCaption: "groovy", value:"groovy_value"},
-			{i18nCaption: "haskell", value:"haskell_value"},
-			{i18nCaption: "java", value:"java_value"},
-			{i18nCaption: "javascript", value:"javascript_value"},
-			{i18nCaption: "perl", value:"perl_value"},
-			{i18nCaption: "php", value:"php_value"},
-			{i18nCaption: "python", value:"python_value"},
-			{i18nCaption: "ruby", value:"ruby_value"},
-			{i18nCaption: "scala", value:"scala_value"}
-		],
-		defaultValue : "java",
-		contains : false
-	});
-	
-	$("#formAutocomplete").rup_validate({
-		feedback: $feedbackAutocomplete,
-		liveCheckingErrors: false,
-		showFieldErrorAsDefault: true,
-		showErrorsInFeedback: true,
-		showFieldErrorsInFeedback:true, 
-		rules:{
-			"autocompleteField":{required:true}
-			
-		}
-	});
-	
+    
+    var $feedbackDate = jQuery('#feedbackDate').rup_feedback({ 
+        type: 'ok',
+        closeLink: true,
+        block:false
+    });
+    
+    $('#dateField').rup_date({
+        
+    });
+    
+    $('#formDate').rup_validate({
+        feedback: $feedbackDate,
+        liveCheckingErrors: false,
+        showFieldErrorAsDefault: true,
+        showErrorsInFeedback: true,
+        showFieldErrorsInFeedback:true, 
+        rules:{
+            'dateField':{required:true}
+            
+        }
+    });
+    
+    var $feedbackAutocomplete = jQuery('#feedbackAutocomplete').rup_feedback({ 
+        type: 'ok',
+        closeLink: true,
+        block:false
+    });
+    
+    $('#autocompleteField').rup_autocomplete({
+        source : [
+            {i18nCaption: 'asp', value:'asp_value'},
+            {i18nCaption: 'c', value:'c_value'},
+            {i18nCaption: 'c++', value:'c++_value'},
+            {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+            {i18nCaption: 'groovy', value:'groovy_value'},
+            {i18nCaption: 'haskell', value:'haskell_value'},
+            {i18nCaption: 'java', value:'java_value'},
+            {i18nCaption: 'javascript', value:'javascript_value'},
+            {i18nCaption: 'perl', value:'perl_value'},
+            {i18nCaption: 'php', value:'php_value'},
+            {i18nCaption: 'python', value:'python_value'},
+            {i18nCaption: 'ruby', value:'ruby_value'},
+            {i18nCaption: 'scala', value:'scala_value'}
+        ],
+        defaultValue : 'java',
+        contains : false
+    });
+    
+    $('#formAutocomplete').rup_validate({
+        feedback: $feedbackAutocomplete,
+        liveCheckingErrors: false,
+        showFieldErrorAsDefault: true,
+        showErrorsInFeedback: true,
+        showFieldErrorsInFeedback:true, 
+        rules:{
+            'autocompleteField':{required:true}
+            
+        }
+    });
+    
 });

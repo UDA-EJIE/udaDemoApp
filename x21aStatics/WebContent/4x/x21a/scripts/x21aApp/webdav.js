@@ -14,17 +14,17 @@
  * que establece la Licencia.
  */
 $(function() {
-	
-	jQuery('#webdavEdit').bind("click", function() {
-		
-		jQuery.rup_dav.editOnline({
-			url:"webdavServlet/webdav.doc",
-			xlnetsAuth:true,
-			downloadOnError:true,
-			alternateDownloadURL:"../upload?fileName=webdav.doc"
-		});
-		
-	});
-	
+    
+    jQuery('#webdavEdit').bind('click', function() {
+        
+        jQuery.rup_dav.editOnline({
+            url:'webdavServlet/webdav.doc',
+            xlnetsAuth:true,
+            downloadOnError:true,
+            alternateDownloadURL:'../upload?fileName=webdav.doc'
+        });
+        
+    });
+    
 });	
-	
+    
