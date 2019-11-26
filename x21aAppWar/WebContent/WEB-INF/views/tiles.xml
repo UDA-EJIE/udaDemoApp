@@ -602,6 +602,13 @@
 			value="/WEB-INF/views/table/includes/tableMultipk-includes.jsp" />
 	</definition>
 	
+	<definition extends="template" name="tableMultipkDoble">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipkDoble.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableMultipkDoble-includes.jsp" />
+	</definition>
+	
 	<definition extends="template" name="tableDynamicColumns">
 		<put-attribute name="content"
 			value="/WEB-INF/views/table/tableDynamicColumns.jsp" />
