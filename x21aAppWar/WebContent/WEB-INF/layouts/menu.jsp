@@ -299,10 +299,21 @@
 					<a class="dropdown-item" href="${tableConfigurable}">
 						<spring:message code="tabla.configurable" />
 					</a>
-					<spring:url value="/table/double" var="tableDouble" htmlEscape="true"/>
-					<a class="dropdown-item" href="${tableDouble}">
-						<spring:message code="tabla.double" />
-					</a>
+					<div class="dropdown-submenu">
+						<a class="dropdown-item dropdown-toggle" href="#">
+							<spring:message code="tabla.double" />
+						</a>
+						<div class="dropdown-menu menu-right">
+							<spring:url value="/table/double" var="tableDouble" htmlEscape="true"/>
+							<a class="dropdown-item" href="${tableDouble}">
+								<spring:message code="tabla.doubleSimple" />
+							</a>
+							<spring:url value="/table/multipk/double" var="tableMultipkDouble" htmlEscape="true"/>
+							<a class="dropdown-item" href="${tableMultipkDouble}">
+								<spring:message code="tabla.doubleMultipk" />
+							</a>
+						</div>
+					</div>
 					<spring:url value="/table/multipk" var="tableMultipk" htmlEscape="true"/>
 					<a class="dropdown-item" href="${tableMultipk}">
 						<spring:message code="tabla.multipk" />

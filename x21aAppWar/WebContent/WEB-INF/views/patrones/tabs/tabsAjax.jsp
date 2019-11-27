@@ -20,11 +20,11 @@
 <div id="tabs"></div>
 
 <div id="testButtons" style="padding-top: 0.8em">
-	<button title="<spring:message code="tab.changeUrlTab.tooltip" />" id="changeUrlTab"><spring:message code="tab.changeUrlTab" /></button>
-	<button title="<spring:message code="tab.AddTab.tooltip" />" id="addSubPestana"><spring:message code="tab.AddTab" /></button>
-	<button title="<spring:message code="tab.AddSubTab.tooltip" />" id="addSubLevelPestana"><spring:message code="tab.AddSubTab" /></button>
-	<button title="<spring:message code="tab.AddSubTabPlusTab.tooltip" />" id="addSubLevelPestanaMasPestaña"><spring:message code="tab.AddSubTabPlusTab" /></button>
-	<button title="<spring:message code="tab.mainTab.tooltip" />" id="addSubLevelPestana3Maint"><spring:message code="tab.mainTab" /></button>
+	<button title="<spring:message code="tab.changeUrlTab.tooltip" />" id="changeUrlTab" class="btn-material btn-material-primary-high-emphasis"><spring:message code="tab.changeUrlTab" /></button>
+	<button title="<spring:message code="tab.AddTab.tooltip" />" id="addSubPestana" class="btn-material btn-material-primary-high-emphasis"><spring:message code="tab.AddTab" /></button>
+	<button title="<spring:message code="tab.AddSubTab.tooltip" />" id="addSubLevelPestana" class="btn-material btn-material-primary-high-emphasis"><spring:message code="tab.AddSubTab" /></button>
+	<button title="<spring:message code="tab.AddSubTabPlusTab.tooltip" />" id="addSubLevelPestanaMasPestaña" class="btn-material btn-material-primary-high-emphasis"><spring:message code="tab.AddSubTabPlusTab" /></button>
+	<button title="<spring:message code="tab.mainTab.tooltip" />" id="addSubLevelPestana3Maint" class="btn-material btn-material-primary-high-emphasis"><spring:message code="tab.mainTab" /></button>
 </div>
 
 <div class="estiloo" style="display: none;">

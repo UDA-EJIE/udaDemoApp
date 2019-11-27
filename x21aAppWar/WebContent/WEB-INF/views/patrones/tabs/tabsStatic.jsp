@@ -93,7 +93,7 @@
 	<div class="box-content-2">
 		<div class="box-content-5">
 			<h1>
-				<spring:url value="http://local.ejiedes.net:7001/x21aAppWar/patrones/tabsStatic" var="urlPatronesTabsStatic" htmlEscape="true"/>
+				<spring:url value="https://www.ejie.eus/x21aAppWar/patrones/tabsStatic" var="urlPatronesTabsStatic" htmlEscape="true"/>
 				<a rel="permalink"
 					href="${urlPatronesTabsStatic}">JSRs
 					for Java 7 and Java 8 Approved</a>

@@ -24,30 +24,30 @@
 
 		<div id="accordionExample1" class="rup_accordion">
 
-			<h1>
+			<h3>
 				<a><spring:message code="seccion1" /></a>
-			</h1>
+			</h3>
 			<div class="section">
 				<img alt="La primera sección"
 					src="${staticsUrl}/x21a/images/primera_seccion.PNG">
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="seccion2" /></a>
-			</h1>
+			</h3>
 			<div class="section2">
 				<img alt="La segunda sección"
 					src="${staticsUrl}/x21a/images/segunda_seccion.PNG">
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="seccion3" /></a>
-			</h1>
+			</h3>
 			<div class="section">
 				<img alt="La tercera sección"
 					src="${staticsUrl}/x21a/images/tercera_seccion.PNG">
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="seccion4" /></a>
-			</h1>
+			</h3>
 			<div class="section2">
 				<img alt="La cuarta sección"
 					src="${staticsUrl}/x21a/images/cuarta_seccion.PNG">
@@ -62,42 +62,49 @@
 
 		<div id="accordionExample2" class="rup_accordion">
 
-			<h1>
+			<h3>
 				<a><spring:message code="secAuto" /></a>
-			</h1>
+			</h3>
 			<div class="sectionAuto">
-				<h3 class="sectionh2">Autocomplete local</h3>
-				<label for="autocomplete">Lenguaje:</label><input id="autocomplete"
-					name="autocomplete" /> [asp, c, c++, coldfusion, groovy, haskell,
-				java, javascript, perl, php, python, ruby, scala] <br />
-
-				<h3>Autocomplete remoto</h3>
-				<label for="patron">Departamento-Provincia:</label><input
-					id="patron" name="patron" /> [Castellano: " de " // Euskara: arab,
-				gipuz, bilb] <br />
-
+				<h4 class="sectionh4">Autocomplete local</h4>
+				<div class="form-row">
+					<div class="form-groupMaterial col-sm">
+				    	<input id="autocomplete" />
+						<label for="autocomplete">Lenguaje</label>
+						<p>[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+				    </div>
+				</div>
+				
+				<h4>Autocomplete remoto</h4>
+				<div class="form-row">   
+				    <div class="form-groupMaterial col-sm">
+				    	<input id="patron" />
+				    	<label for="patron">Departamento-Provincia</label>
+				    	<p>[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+				    </div>
+				</div>
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="secMaint" /></a>
-			</h1>
+			</h3>
 			<div class="sectionMaint">
-				<h2 class="sectionh2">Mantenimiento Agrupado</h2>
+				<h4 class="sectionh4">Mantenimiento Agrupado</h4>
 				<div id="maintGroup"></div>
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="secTab" /></a>
-			</h1>
+			</h3>
 			<div class="sectionTab">
-				<h2 class="sectionh2">Mantenimientos en Tabs</h2>
+				<h4 class="sectionh4">Mantenimientos en Tabs</h4>
 				<div id="maintTab"></div>
 			</div>
-			<h1>
+			<h3>
 				<a><spring:message code="secUpload" /></a>
-			</h1>
+			</h3>
 			<div class="sectionUpload">
-				<h2 class="sectionh2">
+				<h4 class="sectionh4">
 					<spring:message code="uploadFormMultiple" />
-				</h2>
+				</h4>
 				<div id="fileupload_form_multiple">
 					<form:form action="../upload/formSimple" modelAttribute="alumno"
 						enctype="multipart/form-data" method="POST" id="usuarioFormSimple">
@@ -105,34 +112,37 @@
 							id="fieldset_formulario">
 							<div id="feedback_fileupload_form_multiple"></div>
 							<div class="formulario_columna_cnt">
-								<div class="formulario_linea_izda_float">
-									<label id="label_nombre" for="nombre">Nombre :</label>
+								<div class="form-groupMaterial col-sm">
 									<form:input path="nombre" id="nombre" />
+									<label id="label_nombre" for="nombre">Nombre</label>
 								</div>
-								<div class="formulario_linea_izda_float">
-									<label id="label_apellido1" for="apellido1">Apellido 1:</label>
+								<div class="form-groupMaterial col-sm">
 									<form:input path="apellido1" id="apellido1" />
+									<label id="label_apellido1" for="apellido1">Apellido 1</label>
 								</div>
-								<div class="formulario_linea_izda_float">
-									<label id="label_apellido2" for="apellido2">Apellido 2:</label>
+								<div class="form-groupMaterial col-sm">
 									<form:input path="apellido2" id="apellido2" />
+									<label id="label_apellido2" for="apellido2">Apellido 2</label>
 								</div>
-								<div class="formulario_linea_izda_float">
-									<label id="label_ejie" for="ejie">EJIE:</label>
+								<div class="checkbox-material col-sm">
 									<form:checkbox path="ejie" id="ejie" value="1"/>
+									<label id="label_ejie" for="ejie">EJIE</label>
 								</div>
 							</div>
 							<div class="formulario_columna_cnt">&nbsp;</div>
 							<div class="formulario_columna_cnt">
-								<div class="formulario_linea_izda_float">Archivos
-									adjuntos:</div>
+								<p>Archivos adjuntos:</p>
 							</div>
 							<div class="formulario_columna_cnt">
 								<div class="formulario_linea_izda_float">
 									<div id="fileupload_file_form_padre">
 										<div class="fileupload-buttonbar">
-											<label for="file">Foto padre: </label> <input
-												id="file_form_padre" type="file" name="fotoPadre">
+											<div class="form-row">
+												<div class="form-groupMaterial col-sm">
+											    	<input id="file_form_padre" type="file" name="fotoPadre" />
+													<label for="file">Foto padre</label>
+											    </div>
+											</div>
 										</div>
 										<div class="fileupload-content">
 											<table class="files"></table>
@@ -141,8 +151,12 @@
 
 									<div id="fileupload_file_form_madre">
 										<div class="fileupload-buttonbar">
-											<label for="file">Foto madre: </label> <input
-												id="file_form_madre" type="file" name="fotoMadre">
+											<div class="form-row">
+												<div class="form-groupMaterial col-sm">
+											    	<input id="file_form_madre" type="file" name="fotoMadre" />
+													<label for="file">Foto madre</label>
+											    </div>
+											</div>
 										</div>
 										<div class="fileupload-content">
 											<table class="files"></table>
@@ -153,8 +167,9 @@
 							</div>
 							<div class="formulario_columna_cnt">
 								<div class="formulario_linea_izda_float fileupload-buttonbar">
-									<button id="sendButtonMultiple" type="submit" class="start">Enviar
-										formulario</button>
+									<button id="sendButtonMultiple" type="submit" class="start btn-material btn-material-primary-high-emphasis">
+										Enviar formulario
+									</button>
 								</div>
 							</div>
 						</fieldset>
