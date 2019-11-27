@@ -71,6 +71,14 @@ public class TableMultiPkController  {
 		model.addAttribute("options", new TableOptions());
 		return "tableMultipk";
 	}
+	
+	@RequestMapping(method = RequestMethod.GET,value = "/double")
+	public String getFiltroSimpleDoble (Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("options", new TableOptions());
+		model.addAttribute("usuario", new Usuario());
+		return "tableMultipkDoble";
+	}
 
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
