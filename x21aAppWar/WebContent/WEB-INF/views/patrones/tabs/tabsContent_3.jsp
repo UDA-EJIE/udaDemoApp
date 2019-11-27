@@ -1,16 +1,16 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- -- Solo podrá usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+ -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+ -- el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+ -- SIN GARANTÃAS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+ -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
 <div class="jvc0w1 clearfix">
@@ -22,42 +22,42 @@
 <div class="jvdl0 jvdl0v0"><a class="jvdla0" href="${urlHashtag}"
 	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">
 <span> Descarga gratuita de Java </span> </a>
-<p><span class="rightarrowred">»</span> <a
-	title="Obtenga más información sobre Java" href="${urlHashtag}"
-	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">¿Qué
-es Java?</a> <span class="rightarrowred">»</span> <a
-	title="Verificar la versión de Java para su sistema" href="${urlHashtag}"
-	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">¿Tengo
-Java?</a> <span class="rightarrowred">»</span> <a
+<p><span class="rightarrowred">Â»</span> <a
+	title="Obtenga mÃ¡s informaciÃ³n sobre Java" href="${urlHashtag}"
+	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">Â¿QuÃ©
+es Java?</a> <span class="rightarrowred">Â»</span> <a
+	title="Verificar la versiÃ³n de Java para su sistema" href="${urlHashtag}"
+	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">Â¿Tengo
+Java?</a> <span class="rightarrowred">Â»</span> <a
 	title="Obtener ayuda para Java" href="${urlHashtag}"
-	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">¿Necesita
+	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">Â¿Necesita
 ayuda?</a></p>
 </div>
 
 <br>
 <hr>
 
-<h3>¿Qué es Java?</h3>
+<h3>Â¿QuÃ© es Java?</h3>
 
 
 <br>
-<p>Java le permite jugar en línea, participar en sesiones de chat
+<p>Java le permite jugar en lÃ­nea, participar en sesiones de chat
 con internautas de todo el mundo, calcular los intereses de una hipoteca
-y ver imágenes en tres dimensiones, entre otras muchas aplicaciones. Es
-también esencial para las aplicaciones de intranet y otras soluciones de
-comercio electrónico que constituyen la base informática de las
+y ver imÃ¡genes en tres dimensiones, entre otras muchas aplicaciones. Es
+tambiÃ©n esencial para las aplicaciones de intranet y otras soluciones de
+comercio electrÃ³nico que constituyen la base informÃ¡tica de las
 empresas. <br>
 <br>
 <span class="rightarrowred">&gt;</span> <a
-	title="Más información sobre Java" href="${urlHashtag}"
+	title="MÃ¡s informaciÃ³n sobre Java" href="${urlHashtag}"
 	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">Obtenga
-más información sobre Java </a> <br>
+mÃ¡s informaciÃ³n sobre Java </a> <br>
 <br>
 
 
-Después de descargar Java, visite java.com para conocer <a href="${urlHashtag}"
+DespuÃ©s de descargar Java, visite java.com para conocer <a href="${urlHashtag}"
 	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">Java
-en acción</a> (sitio en inglés) en su vida diaria. <br>
+en acciÃ³n</a> (sitio en inglÃ©s) en su vida diaria. <br>
 <br>
 
 
@@ -67,8 +67,8 @@ en acción</a> (sitio en inglés) en su vida diaria. <br>
 <!-- body content ends here --></p>
 <hr>
 <p class="quiet">El software de Java para el equipo o el entorno de
-ejecución Java se denomina también ejecución Java, entorno de ejecución,
-ejecución, JRE, máquina virtual Java, máquina virtual, Java VM, JVM, VM
+ejecuciÃ³n Java se denomina tambiÃ©n ejecuciÃ³n Java, entorno de ejecuciÃ³n,
+ejecuciÃ³n, JRE, mÃ¡quina virtual Java, mÃ¡quina virtual, Java VM, JVM, VM
 o descarga de Java.</p>
 
 <!-- RIGHT COLUMN / --> <!-- STYLED CONTENTS / --></div>

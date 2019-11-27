@@ -13,12 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
-    
-    
-    // Evitar conflictos entre Bootstrap y jQueryUI
-    jQuery.fn.bootstrapBtn = jQuery.fn.button.noConflict();
-    
+jQuery(function($) {
     //Habilitamos el envío de trazas a PIB
     window.IS_EJIE = true;
     
@@ -246,8 +241,10 @@ $(function() {
             sticky:false
         });
     }
-    
-    jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : '----' });
+
+    window.initRupI18nPromise.then(function() {
+        jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : '----' });
+    });
 
     //pie
     jQuery('.footer [title]').rup_tooltip();

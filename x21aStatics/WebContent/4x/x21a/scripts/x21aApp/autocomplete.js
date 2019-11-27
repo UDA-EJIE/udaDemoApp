@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 
-$(function() {
+jQuery(function($) {
     window.initRupI18nPromise.then(function(){	
         $('#comboboxLocal').rup_autocomplete({
             source : [

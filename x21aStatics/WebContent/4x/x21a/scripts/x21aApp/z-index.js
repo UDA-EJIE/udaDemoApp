@@ -57,9 +57,9 @@ jQuery(function($){
                 'tiny' : {'i18nCaption' : 'tiny' },
                 //Submenu
                 'subLevel':[
-                    {'i18nCaption':'z-index', 'url': '/x21aPilotoPatronesWar/integracion/z-index' },
-                    {'i18nCaption':'nora', 'url': '/x21aPilotoPatronesWar/integracion/nora' },
-                    {'i18nCaption':'tiny', 'url': '/x21aPilotoPatronesWar/integracion/tiny' }
+                    {'i18nCaption':'z-index', 'url': '/x21aAppWar/integracion/z-index' },
+                    {'i18nCaption':'nora', 'url': '/x21aAppWar/integracion/nora' },
+                    {'i18nCaption':'tiny', 'url': '/x21aAppWar/integracion/tiny' }
                 ]
             }
         }
@@ -108,9 +108,9 @@ jQuery(function($){
                 'tiny' : {'i18nCaption' : 'tiny' },
                 //Submenu
                 'subLevel':[
-                    {'i18nCaption':'z-index', 'url': '/x21aPilotoPatronesWar/integracion/z-index' },
-                    {'i18nCaption':'nora', 'url': '/x21aPilotoPatronesWar/integracion/nora' },
-                    {'i18nCaption':'tiny', 'url': '/x21aPilotoPatronesWar/integracion/tiny' }
+                    {'i18nCaption':'z-index', 'url': '/x21aAppWar/integracion/z-index' },
+                    {'i18nCaption':'nora', 'url': '/x21aAppWar/integracion/nora' },
+                    {'i18nCaption':'tiny', 'url': '/x21aAppWar/integracion/tiny' }
                 ]
             }
         }

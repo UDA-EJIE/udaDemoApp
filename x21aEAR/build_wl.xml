@@ -11,7 +11,6 @@
 	<property name="war1" value="${cp}AppWar"/>
 	<property name="war2" value="${cp}MantenimientosWar"/>
 	<property name="war3" value="${cp}ModulesWar"/>
-	<property name="war4" value="${cp}PilotoPatronesWar"/>
 	<property name="ejb1" value="${cp}MdbEJB"/>
 	<property name="exe" value="${dir}/${cp}_estruct_servidor/exe/"/>
 	<property name="wsStyle" value="rpc"/>
@@ -72,12 +71,6 @@
 				<include name="**/*.*"/>
 			</fileset>
 			<classes dir="${dir}/${war3}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war4}.war" webxml="${dir}/${war4}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war4}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war4}/build/classes"/>
 		</war>
 	</target>
 

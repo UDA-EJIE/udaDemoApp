@@ -24,8 +24,7 @@
 	<div class="box-content-2">
 		<div class="box-content-5">
 			<h1>
-<!-- 				http://local.ejiedes.net:7001/x21aPilotoPatronesWar/patrones/tabsStatic -->
-				<spring:url value="/patrones/tabsStatic" context="x21aPilotoPatronesWar" var="urlPilotoTabsStatic" htmlEscape="true"/>
+				<spring:url value="/patrones/tabsStatic" context="x21aAppWar" var="urlPilotoTabsStatic" htmlEscape="true"/>
 				<a rel="permalink"
 					href="${urlPilotoTabsStatic}">JSRs
 					for Java 7 and Java 8 Approved</a>

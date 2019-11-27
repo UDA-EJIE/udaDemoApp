@@ -44,7 +44,7 @@
 			<!-- 				</fieldset> -->
 
 			<form:form id="formHttpSubmit"
-				action='${pageContext.request.contextPath}patrones/form/ejemplo'
+				action='${pageContext.request.contextPath}/patrones/form/ejemplo'
 				modelAttribute="alumno">
 
 				<fieldset class="alumnoFieldset">

@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
+jQuery(function($) {
     
     //	jQuery("#ajaxRupPifUpload").on("click",function(){
     //		jQuery.rup_ajax
@@ -28,7 +28,7 @@ $(function() {
     //	$('#fileuploadPif_only').rup_upload({
     ////		url:url,
     ////		url:"http://svc.integracion.jakina.ejiedes.net/y31ApiJSWAR/Y31JanoServicePutServlet",
-    //		url:'http://local.ejiedes.net:7001/x21aPilotoPatronesWar/upload',
+    //		url:'http://local.ejiedes.net:7001/x21aAppWar/upload',
     //		fileInput: $("#file_only"),
     //		forceIframeTransport: true
     //	});

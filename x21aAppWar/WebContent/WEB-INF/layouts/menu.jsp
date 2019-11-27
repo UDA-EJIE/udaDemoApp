@@ -235,7 +235,7 @@
 					</a>
 					<spring:url value="/patrones/spinner" var="spinner" htmlEscape="true"/>
 					<a class="dropdown-item" href="${spinner}">
-						<i class="mdi mdi-spin mdi-loading" aria-hidden="true"></i>
+						<i class="mdi mdi-arrow-up-down-bold" aria-hidden="true"></i>
 						<spring:message code="spinner" />
 					</a>
 					<spring:url value="/patrones/upload" var="upload" htmlEscape="true"/>
@@ -481,9 +481,6 @@
 					<i class="mdi mdi-settings" aria-hidden="true"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow-center">
-					<a class="dropdown-item" href="/x21aPilotoPatronesWar/" aria-labelledby="x21aApp_uda_2">
-						<spring:message code="udaLegacy2x" />
-					</a>
 				</div>
 			</li>
 			<li class="nav-item">

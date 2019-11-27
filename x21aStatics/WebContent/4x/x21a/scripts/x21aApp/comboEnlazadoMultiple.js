@@ -13,10 +13,10 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
+jQuery(function($) {
 
     //Feedback
-    $('#x21aPilotoPatronesWar_feedback').rup_feedback({block:false});
+    $('#x21aAppWar_feedback').rup_feedback({block:false});
     
     //LOCAL
     $('#departamento').rup_combo({

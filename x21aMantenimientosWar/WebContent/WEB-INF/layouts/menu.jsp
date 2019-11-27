@@ -17,7 +17,7 @@
 
 	<ul id="x21aMantenimientosWar_menu" class="rup_invisible_menu">
 		<li>
-			<spring:url value="/" context="x21aPilotoPatronesWar" var="urlPatrones" htmlEscape="true"/>
+			<spring:url value="/" context="x21aAppWar" var="urlPatrones" htmlEscape="true"/>
 			<a href="${urlPatrones}">
 				<spring:message code="patrones" />
 			</a>

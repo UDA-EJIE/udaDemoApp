@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
+jQuery(function($) {
     
     // Creacion de los componentes feedback
     $('#feedback_fileupload_form').rup_feedback();

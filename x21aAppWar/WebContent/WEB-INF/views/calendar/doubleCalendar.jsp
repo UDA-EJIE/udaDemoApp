@@ -16,70 +16,72 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>Dos calendarios</h2> <!-- Titulo pagina -->
 
-<div class="cal-1">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="page-header w-100 mb-3">
-                <div class="pull-right form-inline">
-                    <div class="btn-group mb-3">
-                        <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                            class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
-                        </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
-                            class="btn btn-primary" data-calendar-nav="next">
-                            Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
-                        </span>
+<div class="row">
+    <div class="cal-1 col-md-6">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-header w-100 mb-3">
+                    <div class="pull-right form-inline">
+                        <div class="btn-group mb-3">
+                            <span class="btn btn-primary" data-calendar-nav="prev"> <i
+                                class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
+                            </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
+                                class="btn btn-primary" data-calendar-nav="next">
+                                Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="pl-3 d-xs-none"></div>
+                        <div class="btn-group mb-3">
+                            <span class="btn btn-light" data-calendar-view="year">Año</span> <span
+                                class="btn btn-light active" data-calendar-view="month">Mes</span>
+                            <span class="btn btn-light" data-calendar-view="week">Semana</span>
+                            <span class="btn btn-light" data-calendar-view="day">Día</span>
+                        </div>
                     </div>
-                    <div class="pl-3 d-xs-none"></div>
-                    <div class="btn-group mb-3">
-                        <span class="btn btn-light" data-calendar-view="year">Año</span> <span
-                            class="btn btn-light active" data-calendar-view="month">Mes</span>
-                        <span class="btn btn-light" data-calendar-view="week">Semana</span>
-                        <span class="btn btn-light" data-calendar-view="day">Día</span>
-                    </div>
+                    <h3></h3>
                 </div>
-                <h3></h3>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-xl-12">
+                <div id="calendar1" class="calendar"></div>
             </div>
         </div>
     </div>
-    <div class="row mb-3">
-        <div class="col-xl-12">
-            <div id="calendar1" class="calendar"></div>
-        </div>
-    </div>
-</div>
-<div class="cal-2">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="page-header w-100 mb-3">
-                <div class="pull-right form-inline">
-                    <div class="btn-group mb-3">
-                        <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                            class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
-                        </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
-                            class="btn btn-primary" data-calendar-nav="next">
-                            Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
-                        </span>
+    <div class="cal-2 col-md-6">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-header w-100 mb-3">
+                    <div class="pull-right form-inline">
+                        <div class="btn-group mb-3">
+                            <span class="btn btn-primary" data-calendar-nav="prev"> <i
+                                class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
+                            </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
+                                class="btn btn-primary" data-calendar-nav="next">
+                                Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="pl-3 d-xs-none"></div>
+                        <div class="btn-group mb-3">
+                            <span class="btn btn-light" data-calendar-view="year">Año</span> <span
+                                class="btn btn-light active" data-calendar-view="month">Mes</span>
+                            <span class="btn btn-light" data-calendar-view="week">Semana</span>
+                            <span class="btn btn-light" data-calendar-view="day">Día</span>
+                        </div>
                     </div>
-                    <div class="pl-3 d-xs-none"></div>
-                    <div class="btn-group mb-3">
-                        <span class="btn btn-light" data-calendar-view="year">Año</span> <span
-                            class="btn btn-light active" data-calendar-view="month">Mes</span>
-                        <span class="btn btn-light" data-calendar-view="week">Semana</span>
-                        <span class="btn btn-light" data-calendar-view="day">Día</span>
-                    </div>
+                    <h3></h3>
                 </div>
-                <h3></h3>
             </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-xl-12">
-            <div id="calendar2" class="calendar"></div>
+        <div class="row mb-3">
+            <div class="col-xl-12">
+                <div id="calendar2" class="calendar"></div>
+            </div>
         </div>
     </div>
 </div>
 <div id="divLeyenda" class="row">
-	<div class="col-xs-5 noPadding">
+	<div class="col-md-5 noPadding">
 		<div id="divLegend" class="">
 			<span class="separator" style="color: #666;"> Leyenda: </span>
 			<div class="row row-noPadding">

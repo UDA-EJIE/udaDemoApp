@@ -13,7 +13,7 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
+jQuery(function($) {
     window.initRupI18nPromise.then(function(){
         var $feedbackColumns = jQuery('#feedbackColumns').rup_feedback({
             type: 'error',

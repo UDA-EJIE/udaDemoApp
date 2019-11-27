@@ -12,4 +12,4 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia. 
  --%>
-<div id="x21aPilotoPatronesWar_menu_mixto" class="menu"></div>
+<div id="x21aAppWar_menu_mixto" class="menu"></div>

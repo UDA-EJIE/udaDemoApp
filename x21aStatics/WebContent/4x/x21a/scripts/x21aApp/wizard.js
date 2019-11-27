@@ -109,17 +109,6 @@ $(function () {
         ]
     });
 
-    $('#provincia').rup_combo({
-        source: 'comboSimple/remote',
-        sourceParam: {
-            label: 'desc' + $.rup_utils.capitalizedLang(),
-            value: 'code',
-            style: 'css'
-        },
-        selected: 'Combo',
-        width: 300
-    });
-
     $.rup_date({
         from: 'desde',
         to: 'hasta',
@@ -140,13 +129,15 @@ $(function () {
         showButtonPanel: true
     });
 
-    $('#dias').rup_combo({
-        source: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
-        ordered: false,
-        width: 320,
-        multiselect: true,
-        summaryInline: true
-    });
+    if($('#dias')){
+        $('#dias').rup_combo({
+            source: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+            ordered: false,
+            width: 320,
+            multiselect: true,
+            summaryInline: true
+        });
+    }
 
 
     $('#cliente').rup_combo({
