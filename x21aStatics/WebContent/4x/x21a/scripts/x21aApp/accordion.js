@@ -38,7 +38,7 @@ jQuery(function($) {
             }
             
             $.rup_ajax({
-                url: '/x21aMantenimientosWar/usuario/groupMulti',
+                url: '/x21aAppWar/calendar/noTemplate',
                 //Cabecera RUP
                 success: function(data) {
                     $('#maintGroup').html('');
@@ -61,11 +61,11 @@ jQuery(function($) {
             if(!$('#maintTab').hasClass('ui-tabs')){
                 $('#maintTab').rup_tabs({
                     tabs:[
-                        {i18nCaption:'maint1', url:'/x21aMantenimientosWar/usuario/simpleTable1'},
-                        {i18nCaption:'maint2', url:'/x21aMantenimientosWar/usuario/simpleTable2'},
-                        {i18nCaption:'maint3', url:'/x21aMantenimientosWar/usuario/simpleTable3'},
-                        {i18nCaption:'edit1', url:'/x21aMantenimientosWar/usuario/editTable1'},
-                        {i18nCaption:'multi1', url:'/x21aMantenimientosWar/usuario/multiTable1'}],
+                        {i18nCaption:'maint1', url:'/x21aAppWar/calendar/noTemplate'},
+                        {i18nCaption:'maint2', url:'/x21aAppWar/calendar/noTemplate'},
+                        {i18nCaption:'maint3', url:'/x21aAppWar/calendar/noTemplate'},
+                        {i18nCaption:'edit1', url:'/x21aAppWar/lista/noTemplate'},
+                        {i18nCaption:'multi1', url:'/x21aAppWar/lista/noTemplate'}],
                     load: function(){
                         if($('#mockPageContent').length > 0){
                             $('#maintTab').rup_tabs('disableTabs', {

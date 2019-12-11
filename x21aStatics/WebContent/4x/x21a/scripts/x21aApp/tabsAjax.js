@@ -51,7 +51,7 @@ jQuery(function($) {
         $('#tabs').rup_tabs('changeUrlTab',{
             idTab: 'tabs',
             position: 0,
-            url: '/x21aMantenimientosWar/usuario/simpleTable1'
+            url: '/x21aAppWar/calendar/noTemplate'
         });
         
         $('#tabs').rup_tabs('loadTab',{
@@ -67,7 +67,7 @@ jQuery(function($) {
             idTab: 'pestana0',
             position: 2,
             label: 'pestanaAna',
-            url: '/x21aMantenimientosWar/usuario/simpleTable1'
+            url: '/x21aAppWar/lista/noTemplate'
         });
     });
     
@@ -100,7 +100,7 @@ jQuery(function($) {
             idTab: 'pruebaSubAna',
             position: 3,
             label: 'pestanaAna',
-            url: '/x21aMantenimientosWar/usuario/simpleTable2'
+            url: '/x21aAppWar/calendar/noTemplate'
         });
     });
     
@@ -108,9 +108,9 @@ jQuery(function($) {
         $('#tabs').rup_tabs('addTab',{
             idNewTab: 'pruebaSub3Maint',
             tabs:[
-                {i18nCaption:'maint1', url:'/x21aMantenimientosWar/usuario/simpleTable1'},
-                {i18nCaption:'maint2', url:'/x21aMantenimientosWar/usuario/simpleTable2'},
-                {i18nCaption:'maint3', url:'/x21aMantenimientosWar/usuario/simpleTable3'}],
+                {i18nCaption:'maint1', url:'/x21aAppWar/calendar/noTemplate'},
+                {i18nCaption:'maint2', url:'/x21aAppWar/calendar/noTemplate'},
+                {i18nCaption:'maint3', url:'/x21aAppWar/calendar/noTemplate'}],
             idTab: 'pestana0',
             position: 3,
             label: 'PestañasMaint'

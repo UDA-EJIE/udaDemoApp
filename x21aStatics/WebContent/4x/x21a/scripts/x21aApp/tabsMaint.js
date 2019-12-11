@@ -18,11 +18,11 @@ jQuery(function($) {
     
     $('#tabsMaint').rup_tabs({
         tabs:[
-            {i18nCaption:'maint1', url:'/x21aMantenimientosWar/usuario/simpleTable1'},
-            {i18nCaption:'maint2', url:'/x21aMantenimientosWar/usuario/simpleTable2'},
-            {i18nCaption:'maint3', url:'/x21aMantenimientosWar/usuario/simpleTable3'},
-            {i18nCaption:'edit1', url:'/x21aMantenimientosWar/usuario/editTable1'},
-            {i18nCaption:'multi1', url:'/x21aMantenimientosWar/usuario/multiTable1'}],
+            {i18nCaption:'maint1', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'maint2', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'maint3', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'edit1', url:'/x21aAppWar/lista/noTemplate'},
+            {i18nCaption:'multi1', url:'/x21aAppWar/lista/noTemplate'}],
         load: function(){
             if($('#mockPageContent').length > 0){
                 $('#tabsMaint').rup_tabs('disableTabs', {

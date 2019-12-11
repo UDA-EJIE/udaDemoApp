@@ -116,11 +116,11 @@ jQuery(function ($) {
                 $('#divDireccionPais, #divAutonomia', $form).hide();
             }
 
-            if (nombreImagen !== undefined && nombreImagen !== null && nombreImagen !== '') {
-                $('#imagen', $form).attr('src', 'http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/administracion/alumno/imagen/' + $('#id', $form).val() + '?' + new Date());
-            } else {
+//            if (nombreImagen !== undefined && nombreImagen !== null && nombreImagen !== '') {
+//                $('#imagen', $form).attr('src', 'http://desarrollo.jakina.ejiedes.net:7001/x21aAppWar/administracion/alumno/imagen/' + $('#id', $form).val() + '?' + new Date());
+//            } else {
                 $('#imagen', $form).attr('src', $.rup.STATICS + '/x21a/images/no_picture.gif');
-            }
+//            }
         } else {
             $('#divDireccionPais', $form).show();
             $('#divDireccionExtranjera, #divOldPassword', $form).hide();

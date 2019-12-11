@@ -6,7 +6,6 @@
 	},
 	"x21aAppWar_menu_mixto" :{
 		"inicio" :"Inicio",
-		"mantenimientos" :"x21aMantenimientosWar",
 		"patrones" :"Patrones",
 			"all" :"[Todos los patrones]",
 			"accordion" :"Accordion",

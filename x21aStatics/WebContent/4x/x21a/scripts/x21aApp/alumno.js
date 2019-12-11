@@ -171,11 +171,11 @@ jQuery(function ($) {
         'rupTable_afterFormFillDataServerSide': function (event, xhr) {
             var $self = $(this);
             if ($self.data('settings').opermode === 'edit') {
-                if (xhr.nombreImagen !== undefined && xhr.nombreImagen !== null && xhr.imagen !== '') {
-                    $('#imagen').attr('src', 'http://desarrollo.jakina.ejiedes.net:7001/x21aMantenimientosWar/administracion/alumno/imagen/' + xhr.id + '?' + new Date());
-                } else {
+//                if (xhr.nombreImagen !== undefined && xhr.nombreImagen !== null && xhr.imagen !== '') {
+//                    $('#imagen').attr('src', 'http://desarrollo.jakina.ejiedes.net:7001/x21aAppWar/administracion/alumno/imagen/' + xhr.id + '?' + new Date());
+//                } else {
                     $('#imagen').attr('src', $.rup.STATICS + '/x21a/images/no_picture.gif');
-                }
+//                }
             }
 
             $('#email_confirm').val($('#email').val());

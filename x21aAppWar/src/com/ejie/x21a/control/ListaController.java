@@ -26,6 +26,12 @@ public class ListaController {
         return "listaSimple";
     }
 
+    @GetMapping (value = "/noTemplate")
+    public String getListaNoTemplateView(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "listaNoTemplate";
+    }
+
     @GetMapping (value = "/multiOrd")
     public String getListaMultiOrdView(Model model) {
         model.addAttribute("usuario", new Usuario());

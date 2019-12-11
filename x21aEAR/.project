@@ -5,7 +5,6 @@
 	<projects>
 		<project>x21aAppWar</project>
 		<project>x21aEARClasses</project>
-		<project>x21aMantenimientosWar</project>
 		<project>x38ShLibClasses</project>
 	</projects>
 	<buildSpec>

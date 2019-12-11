@@ -69,7 +69,7 @@
         var init = ctx.oInit.multiSelect;
         var defaults = DataTable.defaults.multiSelect;
 
-        if(init=== undefined){
+        if (init === undefined) {
             init = defaults;
         }
 
@@ -108,18 +108,21 @@
                 sel = ctx.oInit.select;
             }
             if (!sel.deleteDoubleClick) { //Propiedad para desactivar el doble click.
-                rowsBody.on('dblclick.DT', 'tr[role="row"]', function () {
-                    idRow = this._DT_RowIndex;
-                    //Añadir la seleccion del mismo.
-                    if (ctx.oInit.multiSelect !== undefined) {
-                        dt.row(idRow).multiSelect();
-                    } else {
-                        $('tr', rowsBody).removeClass('selected tr-highlight');
-                        DataTable.Api().select.selectRowIndex(dt, idRow, true);
+                rowsBody.on('dblclick.DT keypress', 'tr[role="row"]', function (e) {
+                    // Solo selecciona si se pulsa sobre el enter o se hace click izquierdo col raton
+                    if (e.type == 'keypress' && e.which == 13 || e.type === 'dblclick') {
+                        idRow = this._DT_RowIndex;
+                        // Añadir la seleccion del mismo.
+                        if (ctx.oInit.multiSelect !== undefined) {
+                            dt['row'](idRow).multiSelect();
+                        } else {
+                            $('tr', rowsBody).removeClass('selected tr-highlight');
+                            DataTable.Api().select.selectRowIndex(dt, idRow, true);
+                        }
+                        _getRowSelected(dt, 'PUT');
+                        DataTable.editForm.fnOpenSaveDialog('PUT', dt, idRow);
+                        $('#' + ctx.sTableId).triggerHandler('tableEditFormClickRow');
                     }
-                    _getRowSelected(dt, 'PUT');
-                    DataTable.editForm.fnOpenSaveDialog('PUT', dt, idRow);
-                    $('#' + ctx.sTableId).triggerHandler('tableEditFormClickRow');
                 });
             }
         }
@@ -679,23 +682,18 @@
     function _callFeedbackOk(ctx, feedback, msgFeedBack, type) {
         $('#' + ctx.sTableId).triggerHandler('tableEditFormFeedbackShow');
         var confDelay = ctx.oInit.feedback.okFeedbackConfig.delay;
+
+        try {
+            feedback.rup_feedback('destroy');
+        } catch (ex) {}
+
         feedback.rup_feedback({
             message: msgFeedBack,
             type: type,
             block: false,
-            gotoTop: false
+            gotoTop: false,
+            delay: confDelay
         });
-        feedback.rup_feedback('set', msgFeedBack);
-        // Aseguramos que el estilo es correcto.
-        if (type === 'ok') {
-            setTimeout(function () {
-                if (feedback.find('div').length > 0) { //asegurar que esta inicializado
-                    feedback.rup_feedback('destroy');
-                    feedback.css('width', '100%');
-                    $('#' + ctx.sTableId).triggerHandler('tableEditFormInternalFeedbackClose');
-                }
-            }, confDelay);
-        }
     }
 
 
@@ -733,14 +731,14 @@
     function _updateDetailPagination(ctx, currentRowNum, totalRowNum) {
         var tableId = ctx.oInit.formEdit.$navigationBar[0].id;
         if (currentRowNum === 1) {
-            $('#first_' + tableId + ', #back_' + tableId, ctx.oInit.formEdit.detailForm).addClass('ui-state-disabled');
+            $('#first_' + tableId + ', #back_' + tableId, ctx.oInit.formEdit.detailForm).prop('disabled', true);
         } else {
-            $('#first_' + tableId + ', #back_' + tableId, ctx.oInit.formEdit.detailForm).removeClass('ui-state-disabled');
+            $('#first_' + tableId + ', #back_' + tableId, ctx.oInit.formEdit.detailForm).prop('disabled', false);
         }
         if (currentRowNum === totalRowNum) {
-            $('#forward_' + tableId + ', #last_' + tableId, ctx.oInit.formEdit.detailForm).addClass('ui-state-disabled');
+            $('#forward_' + tableId + ', #last_' + tableId, ctx.oInit.formEdit.detailForm).prop('disabled', true);
         } else {
-            $('#forward_' + tableId + ', #last_' + tableId, ctx.oInit.formEdit.detailForm).removeClass('ui-state-disabled');
+            $('#forward_' + tableId + ', #last_' + tableId, ctx.oInit.formEdit.detailForm).prop('disabled', false);
         }
 
         $('#rup_jqtable_selectedElements_' + tableId).text($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.defaults.detailForm_pager'), currentRowNum, totalRowNum));
@@ -1425,17 +1423,19 @@
      *
      */
     function _addChildIcons(ctx) {
-        var fistColumn = true;
-        var count = ctx.responsive._columnsVisiblity().reduce(function (a, b) {
-            if (fistColumn) { //La primera columna nunca se puede ocultar.
-                b = true;
-                fistColumn = false;
+        let hasHidden = false;
+        let columnsVisiblity = ctx.responsive._columnsVisiblity();
+        for (let i = 0; i < columnsVisiblity.length; i++) {
+            if (!columnsVisiblity[i]) {
+                if (!ctx.aoColumns[i].className || ctx.aoColumns[i].className.indexOf('never') < 0) {
+                    hasHidden = true;
+                }
             }
-            return b === false ? a + 1 : a;
-        }, 0);
+        }
+
         if (ctx.responsive.c.details.target === 'td span.openResponsive') { //por defecto
             $('#' + ctx.sTableId).find('tbody td:first-child span.openResponsive').remove();
-            if (count > 0) { //añadir span ala primera fila
+            if (hasHidden) { //añadir span ala primera fila
                 $.each($('#' + ctx.sTableId).find('tbody td:first-child:not(.child):not(.dataTables_empty)'), function () {
                     var $span = $('<span/>');
                     if ($(this).find('span.openResponsive').length === 0) {

@@ -9,8 +9,6 @@
 	<property name="cp" value="x21a"/>
 	<property name="dir" value="C:/aplic/uda/udaDemoApp"/>
 	<property name="war1" value="${cp}AppWar"/>
-	<property name="war2" value="${cp}MantenimientosWar"/>
-	<property name="war3" value="${cp}ModulesWar"/>
 	<property name="ejb1" value="${cp}MdbEJB"/>
 	<property name="exe" value="${dir}/${cp}_estruct_servidor/exe/"/>
 	<property name="wsStyle" value="rpc"/>
@@ -59,18 +57,6 @@
 				<include name="**/*.*"/>
 			</fileset>
 			<classes dir="${dir}/${war1}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war2}.war" webxml="${dir}/${war2}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war2}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war2}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war3}.war" webxml="${dir}/${war3}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war3}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war3}/build/classes"/>
 		</war>
 	</target>
 

@@ -4,9 +4,6 @@
         <dependent-module deploy-path="/lib" handle="module:/resource/x21aEARClasses/x21aEARClasses">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="x21aMantenimientosWar.war" deploy-path="/" handle="module:/resource/x21aMantenimientosWar/x21aMantenimientosWar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
             <dependent-object/>
             <dependency-type>uses</dependency-type>

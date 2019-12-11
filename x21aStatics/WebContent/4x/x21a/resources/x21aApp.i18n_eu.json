@@ -5,7 +5,6 @@
 	},
 	"x21aAppWar_menu_mixto":{
 		"inicio" :"Hasiera",
-		"mantenimientos" :"x21aMantenimientosWar",
 		"patrones" :"Ereduak",
 			"all" :"[Eredu guztiak]",
 			"accordion" :"Accordion_eu",

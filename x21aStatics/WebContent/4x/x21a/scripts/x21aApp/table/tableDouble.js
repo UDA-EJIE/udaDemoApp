@@ -426,9 +426,9 @@ function _init() {
         // Para cualquier tabla que no sea la primera se oculta el nombre
         if (num) {
             plugins.columnDefs.push({
-                'targets': [2],
-                'visible': false
-            });
+                'className': 'never',
+                'targets': [2] }
+            );
         }
 
         plugins.colModel = [{
@@ -545,6 +545,7 @@ function _init() {
         ];
 
         delete localStorage['plugins' + num];
+        plugins.responsive=true;
         return plugins;
     }
 

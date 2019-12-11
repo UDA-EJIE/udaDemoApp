@@ -564,6 +564,11 @@
 		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
 	</definition>
 
+	<definition extends="templateNoHeads" name="listaNoTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
+	</definition>
+
 	<definition extends="template" name="listaMultiOrd">
 		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
 		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listMultiOrd-includes.jsp" />
@@ -830,6 +835,13 @@
 	</definition>
 
 	<definition extends="template" name="calendar">
+		<put-attribute name="content"
+			value="/WEB-INF/views/calendar/calendar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/calendar/calendar-includes.jsp" />
+	</definition>
+
+	<definition extends="templateNoHeads" name="calendarNoTemplate">
 		<put-attribute name="content"
 			value="/WEB-INF/views/calendar/calendar.jsp" />
 		<put-attribute name="includes"

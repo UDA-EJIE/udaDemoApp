@@ -13,7 +13,7 @@ $('#listFilterAceptar').on('click', function (e) {
 
 //Generamos el componente
 $('#rup-list').rup_list({
-    action: './filter',
+    action: '/x21aAppWar/lista/filter',
     filterForm: 'listFilterForm',
     feedback: 'rup-list-feedback',
     visiblePages: 3, //Mínimo 3

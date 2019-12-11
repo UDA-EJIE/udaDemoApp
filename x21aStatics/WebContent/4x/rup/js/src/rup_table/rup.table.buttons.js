@@ -93,7 +93,7 @@
                     tag: 'button',
                     className: 'col-12 col-sm-auto btn-material',
                     active: 'active',
-                    disabled: 'disabledButtonsTable'
+                    disabled: 'disabled'
                 },
                 buttonLiner: {
                     tag: 'span',
@@ -308,6 +308,19 @@
                 type: 'reports',
                 buttons: listadoExports
             };
+
+		// Ajusta el tamaño de los botones por defecto en caso de que haya sido especificado en las preferencias
+        if(ctx.oInit.buttons.size !== undefined) {
+        	$.each(ctx.ext.buttons, function (name, item) {
+				if(item.className !== undefined) {
+	                if(ctx.oInit.buttons.size === 'lg') {
+	                	item.className += " btn-material-lg";
+	                } else if(ctx.oInit.buttons.size === 'sm') {
+	                	item.className += " btn-material-sm";
+	                }
+				}
+			});
+        }
         
     	if(ctx.oInit.buttons.blackListButtons !== undefined){
     		if(ctx.oInit.buttons.blackListButtons === 'all'){//si no se quiere ninguno se elimina
@@ -956,13 +969,6 @@
                     }
 
                     button.blur();
-                })
-                .on('keyup.dtb', function (e) {
-                    if (e.keyCode === 13) {
-                        if (!button.hasClass(buttonDom.disabled) && config.action) {
-                            action(e, dt, button, config);
-                        }
-                    }
                 });
 
             // Make `a` tags act like a link
@@ -2154,8 +2160,10 @@
             // borramos todos los seleccionados.
             if (ctx.oInit.formEdit !== undefined) {
                 DataTable.Api().editForm.deleteAllSelects(dt);
-            } else { //edicion en linea
+            } else if (ctx.oInit.inlineEdit !== undefined){ //edicion en linea
                 DataTable.Api().inlineEdit.deleteAllSelects(dt);
+            }else{//Delete sin formulario
+            	 _deleteAllSelects(dt);
             }
             break;
         }
@@ -2190,7 +2198,7 @@
         var opts = ctx._buttons[0].inst.s.buttons;
         $.each(opts, function () {
             if (exception === undefined) {
-                $(this.node).addClass('disabledButtonsTable'); //para el toolbar
+                $(this.node).prop('disabled', true); //para el toolbar
                 $('#' + this.node.id + '_contextMenuToolbar').addClass('disabledButtonsTable'); //para el contextmenu
             } else if (this.node.id !== exception) { //ponemos los regex a cero menos la excepcion
                 this.conf.displayRegex = undefined;
@@ -2201,6 +2209,10 @@
 
     DataTable.Api.register('buttons.initButtons()', function (ctx, opts) {
         _initButtons(ctx, opts);
+    });
+    
+    DataTable.Api.register('buttons.deleteNotForm()', function (dt) {
+    	 _deleteAllSelects(dt);
     });
 
 
@@ -2437,7 +2449,7 @@
      *
      */
     var _enableCollection = function (id) {
-        $('#' + id).removeClass('disabledButtonsTable');
+        $('#' + id).prop('disabled', false);
     };
 
     /**
@@ -2451,7 +2463,7 @@
      *
      */
     var _disableCollection = function (id) {
-        $('#' + id).addClass('disabledButtonsTable');
+        $('#' + id).prop('disabled', true);
     };
 
     /**
@@ -2465,7 +2477,8 @@
      *
      */
     var _enableButtonAndContextMenuOption = function (id) {
-        $('#' + id + ', #' + id + '_contextMenuToolbar').removeClass('disabledButtonsTable');
+        $('#' + id).prop('disabled', false);
+        $('#' + id + '_contextMenuToolbar').removeClass('disabledButtonsTable');
     };
 
     /**
@@ -2479,7 +2492,8 @@
      *
      */
     var _disableButtonAndContextMenuOption = function (id) {
-        $('#' + id + '_contextMenuToolbar, #' + id).addClass('disabledButtonsTable');
+    	$('#' + id).prop('disabled', true);
+    	$('#' + id + '_contextMenuToolbar').addClass('disabledButtonsTable');
     };
 
     /**
@@ -3210,6 +3224,113 @@
             var botonesToolbar = ctx._buttons[0].inst.s.buttons;
             _updateContextMenu(botonesToolbar, api, ctx);
         }
+    };
+    
+    var _deleteAllSelects = function (dt) {
+    	var ctx = dt.settings()[0];
+    	var idRow = 0;
+    	var regex = new RegExp(ctx.oInit.multiplePkToken, 'g');
+    	$.rup_messages('msgConfirm', {
+    		message: $.rup.i18nParse($.rup.i18n.base, 'rup_table.deleteAll'),
+    		title: $.rup.i18nParse($.rup.i18n.base, 'rup_table.delete'),
+    		OKFunction: function () {
+    			if(ctx.multiselection.selectedIds.length > 1){
+    				var row = {};
+    				row.core =  {'pkToken': ctx.oInit.multiplePkToken,'pkNames': ctx.oInit.primaryKey};
+    				row.multiselection = {};
+    				row.multiselection.selectedAll = ctx.multiselection.selectedAll;
+    				if(row.multiselection.selectedAll){
+    					row.multiselection.selectedIds = ctx.multiselection.deselectedIds;
+    				}else{
+    					row.multiselection.selectedIds = ctx.multiselection.selectedIds;
+    				}
+    				_callDelete('POST',dt,ctx,row,'/deleteAll');
+    			}else{
+    				row = ctx.multiselection.selectedIds[0];
+    				row = row.replace(regex,'/');
+    				_callDelete('DELETE',dt,ctx,idRow,'/'+row);
+    			}
+    		}
+    	});
+    };
+    
+    var _callDelete = function (actionType,dt,ctx,row,url) {
+    	$('#'+ctx.sTableId).triggerHandler('tableBeforeCallDelete');
+    	
+    	
+    	if(ctx.oInit.masterDetail !== undefined){//Asegurar que se recoge el idPadre
+    		var masterPkObject = DataTable.Api().masterDetail.getMasterTablePkObject(ctx);
+    		jQuery.extend(true,masterPkObject,row);
+    		row = masterPkObject;
+    	}
+    	
+    	var msgFeedBack = $.rup.i18nParse($.rup.i18n.base, 'rup_table.deletedOK');
+    	
+    	var ajaxOptions = {
+    			url : ctx.oInit.urlBase+url,
+    			accepts: {'*':'*/*','html':'text/html','json':'application/json, text/javascript',
+    				'script':'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript',
+    				'text':'text/plain','xml':'application/xml, text/xml'},
+    			type : actionType,
+    			data : row,
+    			dataType : 'json',
+    			showLoading : false,
+    			contentType : 'application/json',
+    			async : true,
+    			success : function() {
+	
+    			// Eliminar
+      				ctx.multiselection.internalFeedback.msgFeedBack = msgFeedBack;
+    				if(ctx.oInit.multiSelect !== undefined){
+    					DataTable.Api().multiSelect.deselectAll(dt);
+    				}else if(ctx.oInit.select !== undefined){
+    					DataTable.Api().select.deselect(ctx);
+    				}
+    				$('#' + ctx.sTableId).triggerHandler('tablefterDelete');
+    			
+    				ctx._buttons[0].inst.s.disableAllButttons = undefined;
+
+    				DataTable.Api().seeker.disabledButtons(ctx);
+    			
+    					// Recargar datos
+    					// Primer parametro para mandar una funcion a ejecutar, segundo parametro bloquear la pagina si pones false
+    					dt.ajax.reload( function (  ) {
+    						_callFeedback(ctx,ctx.multiselection.internalFeedback,msgFeedBack,'ok');
+    					},false );
+    			
+    				
+    			$('#' + ctx.sTableId).triggerHandler('tableSuccessCallDelete');
+    			},
+    			complete : function() {
+    				$('#' + ctx.sTableId).triggerHandler('tableCompleteCallDelete');
+    			},
+    			error : function(xhr) {
+     				_callFeedback(ctx,ctx.multiselection.internalFeedback,xhr.responseText,'error');
+    				$('#' + ctx.sTableId).triggerHandler('tableErrorCallDelete');
+    			},
+    			feedback:ctx.multiselection.internalFeedback.rup_feedback({type:"ok",block:false})
+    		};
+    	
+    	ajaxOptions.data = JSON.stringify(ajaxOptions.data);
+		$.rup_ajax(ajaxOptions);
+    };
+    
+    var _callFeedback = function (ctx, feedback, msgFeedBack, type) {
+        $('#' + ctx.sTableId).triggerHandler('tableFeedbackShowDelete');
+        var confDelay = ctx.oInit.feedback.okFeedbackConfig.delay;
+        
+        try {
+        	feedback.rup_feedback('destroy');
+        } catch(ex) {
+        }
+        
+        feedback.rup_feedback({
+            message: msgFeedBack,
+            type: type,
+            block: false,
+            gotoTop: false,
+            delay: confDelay
+        });
     };
 
     var _updateContextMenu = function (botones, api, ctx) {
