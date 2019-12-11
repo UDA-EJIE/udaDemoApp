@@ -262,7 +262,11 @@ public class TableUsuarioController  {
 			List<Usuario2> rows = new ArrayList<Usuario2>();
 			for (Usuario usuario : (List<Usuario>)rdo1.getRows()) {
 				Usuario2 aux = new Usuario2();
-				BeanUtils.copyProperties(aux, usuario);
+				aux.setId(usuario.getId());
+				aux.setApellido1(usuario.getApellido1());
+				aux.setFechaAlta(usuario.getFechaAlta());
+				aux.setFechaBaja(usuario.getFechaBaja());
+				aux.setRol(usuario.getRol());
 				rows.add(aux);
 			}
 			return new TableResponseDto<Usuario2>(tableRequestDto, Long.valueOf(rdo1.getRecords()), Long.valueOf(rdo1.getRecords()), rows);
