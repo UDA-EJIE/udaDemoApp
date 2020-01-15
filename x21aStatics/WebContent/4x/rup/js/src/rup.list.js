@@ -171,6 +171,7 @@
             sord: 'asc',
             visiblePages: 5,
             createFooter: true,
+            loader: () => {},
             modElement: () => {},
             load: function () {}
         },
@@ -272,12 +273,7 @@
                 /**
                  * OVERLAY (Lock & Unlock)
                  */
-                opciones._idOverlay = selfId + '-overlay';
-                opciones._overlay = jQuery('<div id="' + opciones._idOverlay + '" class="rup_list-overlay"/>');
-                opciones._overlay
-                    .append('<div class="rup_list-overlay-layer"/>')
-                    .append('<div class="rup_list-overlay-loader"/>');
-                opciones._overlay.addClass('rup_list-overlay');
+                self._loader.apply(self);
 
                 /**
                  * FEEDBACK
@@ -369,18 +365,21 @@
                 $('#' + self.element[0].id).on('load', opciones.load);
                 $('#' + self.element[0].id).on('modElement', (e, item, json) => {
                     opciones.modElement(e, item, json);
-                    // if (opciones.isScrollList) {
-                    //     self.element.prepend(item);
-                    // } else {
-                    //     self.element.append(item);
-                    // }
                     self.element.append(item);
+                    
                 });
 
                 /**
                  * PAGENAV
                  */
                 self._pagenavInit.apply(self);
+
+                /**
+                 * PRINT
+                 */
+                if (opciones.print) {
+                    self._print.apply(self);
+                }
 
                 /**
                  * SELECT/MULTISELECT
@@ -464,6 +463,9 @@
                     self._generateSelectablesBtnGroup();
                 }
 
+                /**
+                 * SCROLL LIST
+                 */
                 if (opciones.isScrollList) {
                     self._scrollListInit.apply(self);
                 }
@@ -492,7 +494,15 @@
             self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
             self.options.stepOnLoad = false;
 
-            var stepCounter = 0;
+            self.options.stepCounter = 0;
+
+            $(self.element).on('scrollListPageNext', function () {
+                return self.options.page++;
+            });
+
+            $(self.element).on('scrollListPagePrev', function () {
+                return self.options.page--;
+            });
             
             $(window).on('scroll', function () {
                 var windowHeight = document.documentElement.clientHeight,
@@ -505,17 +515,14 @@
                 
                 if (self.options.stepLoad == self.options.page) {
                     if (targetButtomPoint < windowHeight) {
-                        stepCounter++;
-                        if (stepCounter == 1) {
+                        self.options.stepCounter++;
+                        if (self.options.stepCounter == 1) {
                             if (self.element.children().length <= self.options.rowNum.value * self.options.page) {
                                 if (!self.options.stepOnLoad) {
                                     self.options.stepOnLoad = true;
-                                    self.options.page++;
+                                    self._lock();
+                                    $(self.element).trigger('scrollListPageNext');
                                     self._doFilter();
-                                    setTimeout(function () {
-                                        stepCounter = 0;
-                                        self.options.stepOnLoad = false;
-                                    }, 50 + (self.options.rowNum.value * 50));
                                 }
                             }
                         }
@@ -550,18 +557,56 @@
 
                 if (targetTopPoint < window.scrollHeight) {
                     opciones._header.obj.addClass('rup_list-sticky');
-                    opciones._header.obj.css({
-                        'top': window.scrollHeight
-                    });
+                    self.element.css({'padding-top': opciones._header.obj[0].offsetHeight});
+                    opciones._header.obj.css({'top': window.scrollHeight});
                 } else if (targetTopPoint >= window.scrollHeight) {
                     if (opciones._header.obj.hasClass('rup_list-sticky')) {
                         opciones._header.obj.removeClass('rup_list-sticky');
-                        opciones._header.obj.css({
-                            'top': 0
-                        });
+                        self.element.css({'padding-top': 0});
+                        opciones._header.obj.css({'top': 0});
                     }
                 }
             });
+        },
+
+        /**
+         * Método que crea el loader
+         * @name _loader
+         * @function
+         */
+        _loader: function () {
+            const self = this;
+            const opciones = self.options;
+            const selfId = self.element.attr('id');
+
+            if (!opciones._overlay) {
+                opciones._idOverlay = selfId + '-overlay';
+                opciones._overlay = jQuery('<div id="' + opciones._idOverlay + '" class="rup_list-overlay"/>');
+                opciones._overlay.append('<div class="rup_list-overlay-layer"/>').append('<div class="rup_list-overlay-loader"/>');
+            }
+
+            opciones.loader(opciones._overlay);
+        },
+
+        /**
+         * Método para iniciar los estilos
+         * @name _print
+         * @function
+         */
+        _print: function () {
+            const self = this;
+            const opciones = self.options;
+
+            var tagPrint = $('<link>', {
+                'id': 'rup-list-print',
+                'rel': 'stylesheet',
+                'media': 'print',
+                'href': opciones.print
+            });
+
+            if ($('#rup-list-print').length == 0) {
+                $('head').prepend(tagPrint);
+            }
         },
         
         /**
@@ -1432,15 +1477,26 @@
         _lock: function () {
             const self = this;
             const opciones = self.options;
+            
+            if (opciones.isScrollList && opciones.stepOnLoad) {
+                $('#' + opciones._idOverlay).remove();
+                opciones._overlay.css({
+                    'position': 'relative',
+                    'height': 'auto'
+                });
+                self.element.after(opciones._overlay);
+            } else {
+                opciones._header.obj.css('opacity', '0.3');
+                self.element.css('opacity', '0.3');
+                opciones._footer.obj.css('opacity', '0.3');
 
-            opciones._header.obj.css('opacity', '0.3');
-            self.element.css('opacity', '0.3');
-            opciones._footer.obj.css('opacity', '0.3');
-
-            $('#' + opciones._idOverlay).remove();
-            opciones._overlay.prependTo(opciones._content);
-
-            opciones._overlay.height(opciones._content.height());
+                $('#' + opciones._idOverlay).remove();
+                opciones._overlay.css({
+                    'position': 'absolute'
+                });
+                opciones._content.prepend(opciones._overlay);
+                opciones._overlay.height(opciones._content.height());
+            }
         },
 
         /**
@@ -1514,9 +1570,34 @@
                 }
             };
 
-            if (opciones.isScrollList) {
-                self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
-                self.options.stepOnLoad = false;
+            /**
+            * SHOW, HIDE
+            */
+
+            if (opciones.show) {
+                if (opciones.show.constructor == Object) {
+                    opciones.show = opciones.show;
+                }
+            } else if (opciones.show == false) {
+                opciones.show = {};
+                opciones.animation = false;
+            } else {
+                opciones.show = {};
+                opciones.show.animation = 'drop';
+                opciones.show.delay = 200;
+            }
+
+            if (opciones.hide) {
+                if (opciones.hide.constructor == Object) {
+                    opciones.hide = opciones.hide;
+                }
+            } else if (opciones.hide == false) {
+                opciones.hide = {};
+                opciones.animation = false;
+            } else {
+                opciones.hide = {};
+                opciones.hide.animation = 'drop';
+                opciones.hide.delay = 200;
             }
 
             // opciones.feedback.rup_feedback('hide');
@@ -1613,16 +1694,40 @@
                         self.element
                             .children().each(function (i, e) {
                                 setTimeout(function () {
-                                    $(e).show('drop', {}, 200, function () {
+                                    $(e).show(opciones.show.animation, {}, opciones.show.delay, function () {
                                         if ($(e).next().length == 0) {
                                             self.element.css('height', 'auto');
                                             self.element.trigger('load');
+                                            if (opciones.isScrollList && opciones.stepOnLoad) {
+                                                self._unlock();
+                                            }
+                                            if (opciones.isScrollList) {
+                                                self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
+                                                self.options.stepOnLoad = false;
+                                                self.options.stepCounter = 0;
+                                            } 
                                         }
                                     });
+                                    if (!opciones.show.animation) {
+                                        if ($(e).next().length == 0) {
+                                            self.element.css('height', 'auto');
+                                            self.element.trigger('load');
+                                            if (opciones.isScrollList && opciones.stepOnLoad) {
+                                                self._unlock();
+                                            }
+                                            if (opciones.isScrollList) {
+                                                self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
+                                                self.options.stepOnLoad = false;
+                                                self.options.stepCounter = 0;
+                                            } 
+                                        }
+                                    }
                                 }, 50 + (i * 50));
                             });
 
-                        self._unlock();
+                        if (!opciones.stepOnLoad) {
+                            self._unlock();
+                        }
                     },
                     error: function (XMLHttpResponse) {
                         opciones.feedback.rup_feedback('set', XMLHttpResponse.responseText, 'error');
@@ -1650,7 +1755,8 @@
          * $('#rup-list').rup_list('reload');
          */
         reload: function () {
-            var self = this;
+            var self = this,
+                opciones = self.options;
 
             self._lock();
 
@@ -1660,7 +1766,7 @@
                     .css('height', self.element.outerHeight() + 16)
                     .children().each(function (i, e) {
                         setTimeout(function () {
-                            $(e).hide('drop', {}, 200, function () {
+                            $(e).hide(opciones.hide.animation, {}, opciones.hide.delay, function () {
                                 $(this).remove();
 
                                 // Si hemos llegado al último elemento procedemos a buscar el nuevo listado
@@ -1696,9 +1802,11 @@
                     .css('height', self.element.outerHeight() + 16)
                     .children().each(function (i, e) {
                         setTimeout(function () {
-                            $(e).hide('drop', {}, 200, function () {
+                            $(e).hide(opciones.hide.animation, {}, opciones.hide.delay, function () {
                                 $(this).remove();
-
+                                if (opciones.isScrollList) {
+                                    self._deselectAll();
+                                }
                                 // Si hemos llegado al último elemento procedemos a buscar el nuevo listado
                                 if (self.element.children().length == 0) {
                                     self._doFilter();

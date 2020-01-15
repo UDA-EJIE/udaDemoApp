@@ -32,9 +32,10 @@ jQuery(function () {
     vista.radarData = [];
     vista.bubbleData = [];
 
-    fncInitialize(vista);
-    fncOnDomRefresh(vista);
-
+    window.initRupI18nPromise.then(function(){
+        fncInitialize(vista);
+        fncOnDomRefresh(vista);
+    });
 });
 
 function fncInitialize(vista) {

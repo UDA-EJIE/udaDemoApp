@@ -21154,74 +21154,9 @@
   color: #c5c5c5;
 }
 
-/*table.dataTable thead {
-	.sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled,.sorting_desc_disabled {
-		background-image: none;
-		
-		&:before, &:after {
-			font: normal normal normal 1.5rem/1 "Material Design Icons";
-			float: right;
-		}
-		
-		&:before {
-			content: "\f05d";
-		}
-		
-		&:after {
-			content: "\f045";
-		}
-	}
-	
-	.sorting {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_asc {	
-		&:before {
-			color: $primary-color;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_desc {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $primary-color;
-		}
-	}
-	
-	.sorting_asc_disabled {	
-		&:before {
-			color: $grey-color-ultra-light;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_desc_disabled {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $grey-color-ultra-light;
-		}
-	}
-}*/
+.r01gContainer table.dataTable thead .sorting_disabled > div:not(.divSelectTableHead) {
+  display: none !important;
+}
 
 /* SE HACE TRANSPARENTE LA SELECCION DE TEXTO PARA EVITAR
    UN BUG VISUAL CUANDO SE SELECCIONA POR RANGOS */
@@ -46872,10 +46807,6 @@
   color: white !important;
 }
 
-.r01gContainer .rup_list {
-  transition: all .5s ease;
-}
-
 .r01gContainer .rup_list .list-item {
   border: 1px solid rgba(0, 0, 0, 0.54);
   border-color: transparent;
@@ -46905,8 +46836,14 @@
   position: fixed;
   top: 0;
   background-color: #ffffff;
-  z-index: 1000;
+  z-index: 80;
   width: calc(100% - 102px);
+}
+
+@media screen and (max-width: 768px) {
+  .r01gContainer .rup_list-sticky {
+    width: calc(100% - 78px);
+  }
 }
 
 .r01gContainer .rup_list-header {
@@ -46923,7 +46860,6 @@
   margin-left: 0;
   margin-right: 0;
   padding: .75rem 0;
-  transition: all .5s ease;
 }
 
 .r01gContainer .rup_list-header button,
@@ -54918,74 +54854,9 @@
   color: #c5c5c5;
 }
 
-/*table.dataTable thead {
-	.sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled,.sorting_desc_disabled {
-		background-image: none;
-		
-		&:before, &:after {
-			font: normal normal normal 1.5rem/1 "Material Design Icons";
-			float: right;
-		}
-		
-		&:before {
-			content: "\f05d";
-		}
-		
-		&:after {
-			content: "\f045";
-		}
-	}
-	
-	.sorting {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_asc {	
-		&:before {
-			color: $primary-color;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_desc {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $primary-color;
-		}
-	}
-	
-	.sorting_asc_disabled {	
-		&:before {
-			color: $grey-color-ultra-light;
-		}
-		
-		&:after {
-			color: $grey-color-very-light;
-		}
-	}
-	
-	.sorting_desc_disabled {	
-		&:before {
-			color: $grey-color-very-light;
-		}
-		
-		&:after {
-			color: $grey-color-ultra-light;
-		}
-	}
-}*/
+.r01gContainer table.dataTable thead .sorting_disabled > div:not(.divSelectTableHead) {
+  display: none !important;
+}
 
 /* SE HACE TRANSPARENTE LA SELECCION DE TEXTO PARA EVITAR
    UN BUG VISUAL CUANDO SE SELECCIONA POR RANGOS */
