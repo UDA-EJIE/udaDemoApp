@@ -18,7 +18,7 @@
 <!-- Titulo pagina -->
 
 <div class="row mt-5">
-    <div class="col-xl-6 border-dark">
+    <div class="col-xl-6">
     	<div class="row">
 		  <div class="col-xl-12">
 		      <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
@@ -191,12 +191,12 @@
                 </fieldset>
                 <span id="pluginError"></span>
                 <button id="example_aplicar" type="button"
-                    class="btn btn-primary">Aplicar Cambios</button>
+                    class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
             </form:form>
         </div>
     </div>
 
-    <div class="col-xl-6 border-left border-dark">
+    <div class="col-xl-6 tableDoubleBorder">
     	<div class="row">
 		  <div class="col-xl-12">
 		      <jsp:include page="includes/tableFilterForm2.jsp"></jsp:include>

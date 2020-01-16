@@ -106,7 +106,7 @@
 			  	<div class="form-row col-sm-6">
 
 					<div class="col-12">
-						<label id="alertDayErrorLabel">Alert on</label>
+						<label id="alertDayErrorLabel" data-title="alertDay">Alert on</label>
 					</div>
 
 		            <div class="col-6">
@@ -145,7 +145,7 @@
 			<div class="form-row col-sm-12">
 
 				<div class="col-12">
-					<label id="alertEdadErrorLabel" for="alertEdad[]">¿Mayor de edad?</label>
+					<label id="alertEdadErrorLabel" for="alertEdad[]" data-title="alertEdad">¿Mayor de edad?</label>
 				</div>
 
 				<div class="col-12">

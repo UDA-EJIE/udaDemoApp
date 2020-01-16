@@ -402,6 +402,12 @@ jQuery(function($){
                     return data.replace('a','.');
                 } }
             ];*/
+            plugins.columnDefs = [
+                {
+                    "targets": [2],
+                    "orderable": false
+                }
+            ];
 
 
 
