@@ -62,7 +62,7 @@
 	        		<spring:message code="clear" />
 	        	</span>
 	        </button>
-	        <button id="MultiPk_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+	        <button id="MultiPk_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
 	        	<i class="mdi mdi-filter"></i>
 	        	<span>
 	        		<spring:message code="filter" />

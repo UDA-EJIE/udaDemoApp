@@ -70,7 +70,7 @@
         	<span>Limpiar</span>
         </button>
         <!-- Bot�n de filtrado -->
-        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-filter"></i>
         	<span>Filtrar</span>        	
         </button>
