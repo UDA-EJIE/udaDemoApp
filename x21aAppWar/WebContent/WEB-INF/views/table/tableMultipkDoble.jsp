@@ -75,12 +75,16 @@
     	<!-- Bot�n de limpiar -->
         <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
-        	<span>Limpiar</span>
+        	<span>
+        		<spring:message code="clear" />
+        	</span>  
         </button>
         <!-- Bot�n de filtrado -->
-        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+        <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-filter"></i>
-        	<span>Filtrar</span>        	
+        	<span>
+        		<spring:message code="filter" />
+        	</span>        	
         </button>
     </div>
         
