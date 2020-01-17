@@ -51,7 +51,7 @@
                              <spring:message code="clear" />
                       </span>
                        </button>
-                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
                              <i class="mdi mdi-filter"></i>
                       <span>
                              <spring:message code="filter" />
@@ -173,20 +173,19 @@
 					</div>
 				</div>
 				<div id="localidad_filter_buttonSet" class="text-right">
-                       <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
-                             <i class="mdi mdi-eraser"></i>
-                      <span>
-                             <spring:message code="clear" />
-                      </span>
-                       </button>
-                       <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
-                             <i class="mdi mdi-filter"></i>
-                      <span>
-                             <spring:message code="filter" />
-                      </span>
-                       </button>
+                    <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                        <i class="mdi mdi-eraser"></i>
+                    	<span>
+                       		<spring:message code="clear" />
+                   		</span>
+                    </button>
+                    <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                        <i class="mdi mdi-filter"></i>
+                   		<span>
+                        	<spring:message code="filter" />
+                   		</span>
+                    </button>
                  </div>
-
 			</fieldset>
 		</form:form>
 	</div>
