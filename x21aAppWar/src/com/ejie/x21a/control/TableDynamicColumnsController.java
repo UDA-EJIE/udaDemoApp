@@ -259,23 +259,19 @@ public class TableDynamicColumnsController  {
 	/**
 	 * Borrado múltiple de registros
 	 * 
-	 * @param filterUsuario
-	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
-	public @ResponseBody List<String> removeMultiple(
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableDynamicColumnsController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.tableUsuarioService.removeMultiple(filterUsuario, jqGridRequestDto, false);
+	    this.tableUsuarioService.removeMultiple(tableRequestDto);
 	    TableDynamicColumnsController.logger.info("All entities correctly deleted!");
 	    
-	    return jqGridRequestDto.getMultiselection().getSelectedIds();
+	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}
 	
 	

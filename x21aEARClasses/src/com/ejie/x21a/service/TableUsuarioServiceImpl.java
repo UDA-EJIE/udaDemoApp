@@ -127,8 +127,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @return
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		this.jqGridUsuarioDao.removeMultiple(filterUsuario, jqGridRequestDto, startsWith);
+	public void removeMultiple(TableRequestDto tableRequestDto) {
+		this.tableUsuarioDao.removeMultiple(tableRequestDto);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
