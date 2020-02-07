@@ -277,6 +277,10 @@
                     <spring:message code="lista" />
                 </a>
                 <div class="dropdown-menu" aria-labelledby="listaDropdown">
+                    <spring:url value="/lista/configurable" var="listaConfigurable" htmlEscape="true"/>
+                    <a class="dropdown-item" href="${listaConfigurable}">
+                        <spring:message code="lista.configurable" />
+                    </a>
                     <spring:url value="/lista/simple" var="listaSimple" htmlEscape="true"/>
                 	<a class="dropdown-item" href="${listaSimple}">
                 		<spring:message code="lista.simple" />

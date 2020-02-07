@@ -559,6 +559,11 @@
 	</definition>
 
 	<!-- LISTADO -->
+	<definition extends="template" name="listaConfigurable">
+		<put-attribute name="content" value="/WEB-INF/views/list/listConfigurable.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listConfigurable-includes.jsp" />
+	</definition>
+	
 	<definition extends="template" name="listaSimple">
 		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
 		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />

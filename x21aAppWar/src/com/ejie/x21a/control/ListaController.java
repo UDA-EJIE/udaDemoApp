@@ -19,6 +19,12 @@ public class ListaController {
 
     @Autowired
     private TableUsuarioService tableUsuarioService;
+    
+    @GetMapping (value = "/configurable")
+    public String getListaConfigurableView(Model model) {
+    	model.addAttribute("usuario", new Usuario());
+    	return "listaConfigurable";
+    }
 
     @GetMapping (value = "/simple")
     public String getListaSimpleView(Model model) {
