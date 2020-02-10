@@ -305,7 +305,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", "ID");
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", new String[]{"ID"});
 		
 		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
