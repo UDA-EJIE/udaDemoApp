@@ -225,9 +225,9 @@ jQuery(function ($) {
         var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 
         var allowedPluginsBySelecionType = {
-            multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
-            selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
-            noSelection: ['colReorder', 'seeker', 'groups', 'noSelection', 'multiFilter', 'triggers', 'multiPart']
+            multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart','sinFiltro'],
+            selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart','sinFiltro'],
+            noSelection: ['colReorder', 'seeker', 'groups', 'noSelection', 'multiFilter', 'triggers', 'multiPart','sinFiltro']
         };
 
 
@@ -255,13 +255,6 @@ jQuery(function ($) {
                         target: 'td'
                     }
                 };*/
-
-            var filter = {
-                id: 'example_filter_form',
-                filterToolbar: 'example_filter_toolbar',
-                collapsableLayerId: 'example_filter_fieldset'
-            };
-            plugins.filter = filter;
 
             if (localStorage.plugins.indexOf('multiSelection') > -1) {
                 var multiSelect = {
@@ -498,6 +491,20 @@ jQuery(function ($) {
                 $('#triggers').prop('checked', true);
             } else {
                 $('#triggers').prop('checked', false);
+            }
+            
+            if (localStorage.plugins !== undefined && localStorage.plugins.indexOf('sinFiltro') > -1) {
+               $('#example_filter_form').remove();
+               $('#sinFiltro').prop('checked', true);
+               plugins.filter = 'noFilter';
+            }else{
+                var filter = {
+                        id: 'example_filter_form',
+                        filterToolbar: 'example_filter_toolbar',
+                        collapsableLayerId: 'example_filter_fieldset'
+                    };
+                plugins.filter = filter;
+                $('#sinFiltro').prop('checked', false);
             }
 
             //Col model es obligatorio,se mete como generico
