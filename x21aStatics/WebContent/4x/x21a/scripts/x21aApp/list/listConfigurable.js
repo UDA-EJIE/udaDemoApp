@@ -116,7 +116,6 @@ function functionListConfigButton () {
     
     deleteContent();
     setFunctionOnBtns();
-    console.log(valor);
     $('#rup-list').rup_list(valor);
 }
 

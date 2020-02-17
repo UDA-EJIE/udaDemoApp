@@ -655,5 +655,90 @@ describe('Test rup_list', () => {
                 expect($('#rup-list-header').hasClass('rup_list-sticky')).toEqual(true);
             });
         });
+
+        describe('> Transiciones carga filas configurable', () => {
+            beforeAll((done) => {
+                testutils.loadCss(done);
+            });
+            beforeEach((done) => {
+                listGen.createShowHide('rup-list', () => {
+                    $('#rup-list').on('load', done);
+                    $('#rup-list').rup_list('filter');
+                });
+            });
+            describe('> Transición SHOW', () => {
+                var spyShow;
+                var callsCounterWithArgs = 0;
+                var opcionesShow = {
+                    animation: 'fade',
+                    delay: 1000
+                };
+                beforeEach((done) => {
+                    $('#rup-list').on('load', done);
+                    spyShow = spyOn($.fn, 'show').and.callThrough();
+                    $('#listFilterAceptar').click();
+                });
+                it('> Tiene que haber sido llamado SHOW con los argumentos', () => {
+                    for (let i = 0; i < spyShow.calls.count(); i++) {
+                        if (spyShow.calls.argsFor(i).length != 0) {
+                            if (spyShow.calls.argsFor(i)[0] == opcionesShow.animation) {
+                                if (spyShow.calls.argsFor(i)[2] == opcionesShow.delay) {
+                                    callsCounterWithArgs++;
+                                }
+                            }
+                        }
+                    }
+                    expect(spyShow).toHaveBeenCalled();
+                    expect(callsCounterWithArgs).toEqual($('#rup-list').children().length);
+                });
+            });
+            describe('> Transición HIDE', () => {
+                var spyHide;
+                var callsCounterWithArgs = 0;
+                var opcionesHide = {
+                    animation: 'fade',
+                    delay: 1000
+                };
+                beforeEach((done) => {
+                    $('#rup-list').on('load', done);
+                    spyHide = spyOn($.fn, 'hide').and.callThrough();
+                    $('#listFilterAceptar').click();
+                });
+                it ('> Tiene que haber sido llamado HIDE con los argumentos', () => {
+                    for (let i = 0; i < spyHide.calls.count(); i++) {
+                        if (spyHide.calls.argsFor(i).length != 0) {
+                            if (spyHide.calls.argsFor(i)[0] == opcionesHide.animation) {
+                                if (spyHide.calls.argsFor(i)[2] == opcionesHide.delay) {
+                                    callsCounterWithArgs++;
+                                }
+                            }
+                        }
+                    }
+                    expect(spyHide).toHaveBeenCalled();
+                    expect(callsCounterWithArgs).toEqual($('#rup-list').children().length);
+                });
+            });
+        });
+        describe('> Impresión HTML', () => {
+            var spyAjax;
+            beforeAll((done) => {
+                testutils.loadCss(done);
+            });
+            beforeEach((done) => {
+                listGen.createImpresionHTML('rup-list', () => {
+                    $('#rup-list').on('load', done);
+                    $('#rup-list').rup_list('filter');
+                });
+                spyAjax = spyOn($, 'rup_ajax').and.callThrough();
+            });
+            it('Tiene que aparecer el bóton "Imprimir"', () => {
+                expect($('#listPrint').length).toEqual(1);
+            });
+            it('Ajax con cantidad de los elementos 32', () => {
+                $('#listPrint').click();
+                expect(Number(JSON.parse(spyAjax.calls.argsFor(0)[0].data).rows)).toEqual(5);
+                expect(Number(JSON.parse(spyAjax.calls.argsFor(1)[0].data).rows)).toEqual(32);
+            });
+        });
     });
 });
