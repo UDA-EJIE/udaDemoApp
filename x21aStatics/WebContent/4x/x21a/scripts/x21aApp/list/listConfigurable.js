@@ -2,22 +2,6 @@ window.$ = $;
 
 setFunctionOnBtn();
 
-if ($('#listConfigShow')[0].checked) {
-    $('#listConfigShowAnimation')[0].disabled = false;
-    $('#listConfigShowDelay')[0].disabled = false;
-} else {
-    $('#listConfigShowAnimation')[0].disabled = true;
-    $('#listConfigShowDelay')[0].disabled = true;
-}
-
-if ($('#listConfigHide')[0].checked) {
-    $('#listConfigHideAnimation')[0].disabled = false;
-    $('#listConfigHideDelay')[0].disabled = false;
-} else {
-    $('#listConfigHideAnimation')[0].disabled = true;
-    $('#listConfigHideDelay')[0].disabled = true;
-}
-
 var valor = {
     action: '/x21aAppWar/lista/filter',
     filterForm: 'listFilterForm',
@@ -66,6 +50,90 @@ var valor = {
     load: function () {}
 }
 
+if (localStorage.length > 0) {
+    if (localStorage.isMultiSort) {
+        if (localStorage.isMultiSort == 'true') {
+            $('#listConfigMultiSort')[0].checked = true;
+            valor.isMultiSort = true;
+        } else if (localStorage.isMultiSort == 'false') {
+            $('#listConfigMultiSort')[0].checked = false;
+            valor.isMultiSort = false;
+        }
+    }
+    if (localStorage.isScrollList) {
+        if (localStorage.isScrollList == 'true') {
+            $('#listConfigScrollList')[0].checked = true;
+            valor.isScrollList = true;
+        } else if (localStorage.isScrollList == 'false') {
+            $('#listConfigScrollList')[0].checked = false;
+            valor.isScrollList = false;
+        }
+    }
+    if (localStorage.isHeaderSticky) {
+        if (localStorage.isHeaderSticky == 'true') {
+            $('#listConfigHeaderSticky')[0].checked = true;
+            valor.isHeaderSticky = true;
+        } else if (localStorage.isHeaderSticky == 'false') {
+            $('#listConfigHeaderSticky')[0].checked = false;
+            valor.isHeaderSticky = false;
+        }
+    }
+    if (localStorage.isMultiFilter) {
+        if (localStorage.isMultiFilter == 'true') {
+            $('#listConfigMultiFilter')[0].checked = true;
+            valor.isMultiFilter = true;
+        } else if (localStorage.isMultiFilter == 'false') {
+            $('#listConfigMultiFilter')[0].checked = false;
+            valor.isMultiFilter = false;
+        }
+    }
+    
+    if (localStorage.print) {
+        $('#listConfigPrint').val(localStorage.print);
+        valor.print = localStorage.print;
+    }
+    
+    if (localStorage.show) {
+        valor.show = JSON.parse(localStorage.show);
+        if (valor.show.animation != 'drop') {
+            $('#listConfigShow')[0].checked = true;
+            $('#listConfigShowAnimation')[0].value = valor.show.animation;
+        }
+        if (valor.show.delay != '200') {
+            $('#listConfigShow')[0].checked = true;
+            $('#listConfigShowDelay').val(valor.show.delay);
+        }
+    }
+    
+    if (localStorage.hide) {
+        valor.hide = JSON.parse(localStorage.hide);
+        if (valor.hide.animation != 'drop') {
+            $('#listConfigHide')[0].checked = true;
+            $('#listConfigHideAnimation')[0].value = valor.hide.animation;
+        }
+        if (valor.hide.delay != '200') {
+            $('#listConfigHide')[0].checked = true;
+            $('#listConfigHideDelay').val(valor.hide.delay);
+        }
+    }
+}
+
+if ($('#listConfigShow')[0].checked) {
+    $('#listConfigShowAnimation')[0].disabled = false;
+    $('#listConfigShowDelay')[0].disabled = false;
+} else {
+    $('#listConfigShowAnimation')[0].disabled = true;
+    $('#listConfigShowDelay')[0].disabled = true;
+}
+
+if ($('#listConfigHide')[0].checked) {
+    $('#listConfigHideAnimation')[0].disabled = false;
+    $('#listConfigHideDelay')[0].disabled = false;
+} else {
+    $('#listConfigHideAnimation')[0].disabled = true;
+    $('#listConfigHideDelay')[0].disabled = true;
+}
+
 //Generamos el componente
 $('#rup-list').rup_list(valor);
 
@@ -89,6 +157,7 @@ function functionListConfigButton () {
     valor.isScrollList = $('#listConfigScrollList')[0].checked;
     valor.isHeaderSticky = $('#listConfigHeaderSticky')[0].checked;
     valor.print = $('#listConfigPrint').val();
+    valor.isMultiFilter = $('#listConfigMultiFilter')[0].checked;
 
     if (valor.print == '') {
         valor.print = false;
@@ -98,6 +167,7 @@ function functionListConfigButton () {
         valor.show = {};
         valor.show.animation = $('#listConfigShowAnimation').val();
         valor.show.delay = $('#listConfigShowDelay').val();
+        
     } else {
         valor.show = {};
         valor.show.animation = 'drop';
@@ -108,14 +178,26 @@ function functionListConfigButton () {
         valor.hide = {};
         valor.hide.animation = $('#listConfigHideAnimation').val();
         valor.hide.delay = $('#listConfigHideDelay').val();
+        
     } else {
         valor.hide = {};
         valor.hide.animation = 'drop';
         valor.hide.delay = 200;
     }
     
+    localStorage.setItem('isMultiSort', $('#listConfigMultiSort')[0].checked);
+    localStorage.setItem('isScrollList', $('#listConfigScrollList')[0].checked);
+    localStorage.setItem('isHeaderSticky', $('#listConfigHeaderSticky')[0].checked);
+    localStorage.setItem('isMultiFilter', $('#listConfigMultiFilter')[0].checked);
+    
+    localStorage.setItem('print', $('#listConfigPrint').val());
+    
+    localStorage.setItem('show', JSON.stringify(valor.show));
+    localStorage.setItem('hide', JSON.stringify(valor.hide));
+    
     deleteContent();
     setFunctionOnBtns();
+    location.reload(true);
     $('#rup-list').rup_list(valor);
 }
 

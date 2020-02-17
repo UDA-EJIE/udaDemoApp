@@ -114,6 +114,12 @@
                     </div>
                 </div>
                 <div class="row pb-2">
+                    <label for="listConfigMultiFilter" class="col-md-2 col-form-label">Multi Filter:</label>
+                    <div class="col-md-1">
+                        <input id="listConfigMultiFilter" type="checkbox" name="MultiFilter" class="form-control">
+                    </div>
+                </div>
+                <div class="row pb-2">
                     <label for="listConfigPrint" class="col-md-2 col-form-label">Print:</label>
                     <div class="col-md-4">
                         <input id="listConfigPrint" type="text" name="Print" class="form-control">
