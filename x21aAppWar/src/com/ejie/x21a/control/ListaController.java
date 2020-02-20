@@ -65,7 +65,7 @@ public class ListaController {
         return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
     }
 	
-	@GetMapping(value = "/multiFilter/getAll")
+	@GetMapping(value = "/filter/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
@@ -73,7 +73,7 @@ public class ListaController {
 		return filterService.getAllFilters(filterSelector,filterUser);
 	}
 	
-	@GetMapping(value = "/multiFilter/getDefault")
+	@GetMapping(value = "/filter/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
@@ -81,13 +81,13 @@ public class ListaController {
 		 return filterService.getDefault(filterSelector, filterUser);
 	}
 	
-	@PostMapping(value = "/multiFilter/add")
+	@PostMapping(value = "/filter/multiFilter/add")
 	public @ResponseBody Filter filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
 		ListaController.logger.info("[POST - jqGrid] : add filter");
 		 return filterService.insert(filtro);
 	}
 	
-	@PostMapping(value = "/multiFilter/delete")
+	@PostMapping(value = "/filter/multiFilter/delete")
 	public @ResponseBody Filter  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
 		ListaController.logger.info("[POST - jqGrid] : delete filter");
