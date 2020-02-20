@@ -1117,32 +1117,7 @@ describe('Test rup_list', () => {
                         expect($('#dropdownDialog_feedback').is(':visible')).toBeTruthy();
                     });
                 });
-                // describe('> Eliminar', () => {
-                //     beforeEach((done) => {
-                //         $('#rup-list').on('load', done);
-                //         $('#rup-list').rup_list('filter');
-                //         $('#dropdownDialog_combo_menu').focus();
-                //         $('#dropdownDialog').find('a.rup-combobox-toggle').click();
-                //         keyPress(38, () => {
-                //             keyUp(38);
-                //         });
-                        
-                //     });
-                //     it('> Tiene que aparecer el feedback', () => {
-                //         expect($('#dropdownDialog_feedback').is(':visible')).toBeTruthy();
-                //     });
-                // });
             });
-            // describe('> dun2', () => {
-            //     beforeEach((done) => {
-            //         $('#rup-list').on('load', done);
-            //         $('#rup-list').rup_list('filter');
-            //         $('#listFilterAceptar_dropdown').click();
-            //     });
-            //     it('test 2', () => {
-            //         expect($('#dropdownDialog').length).toEqual(1);
-            //     });
-            // });
         });
     });
 });
