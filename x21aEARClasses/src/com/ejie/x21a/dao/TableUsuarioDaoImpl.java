@@ -304,25 +304,12 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	 */
 	
 	@Override
-	public void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public void removeMultiple(TableRequestDto tableRequestDto) {
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", new String[]{"ID"});
 		
-		StringBuilder query = new StringBuilder("SELECT  t1.ID  "); 
-		query.append("FROM USUARIO t1 ");
-		
-		//Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
-		query.append(where);
-		
-		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-		
-		StringBuilder sbRemoveMultipleSQL = JQGridManager.getRemoveMultipleQuery(jqGridRequestDto, Usuario.class, query, params, "ID");
-		
+		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
-		
 	}
 	
 	@Override

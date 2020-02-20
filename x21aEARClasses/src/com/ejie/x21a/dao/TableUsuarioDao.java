@@ -91,7 +91,7 @@ public interface TableUsuarioDao {
 	 */
 	
 	
-	void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	void removeMultiple(TableRequestDto tableRequestDto);
 	
 	List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
 	

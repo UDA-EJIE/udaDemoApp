@@ -96,11 +96,9 @@ public interface TableUsuarioService {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-	 * @param filterUsuario Usuario
-	 * @param jqGridRequestDto JQGridRequestDto
-	 * @param startsWith Boolean
+	 * @param TableRequestDto tableRequestDto
 	 */	
-	void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	void removeMultiple(TableRequestDto tableRequestDto);
 	
 	/**
 	 * Finds a List of rows in the Usuario table via inverse select.

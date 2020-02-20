@@ -17,13 +17,6 @@ package com.ejie.x21a.model;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.Default;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.ejie.x21a.validation.group.UsuarioEditValidation;
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
