@@ -88,6 +88,16 @@ if (localStorage.length > 0) {
         }
     }
     
+    if (localStorage.isSuperSelect) {
+        if (localStorage.isSuperSelect == 'true') {
+            $('#listConfigSuperSelect')[0].checked = true;
+            valor.isSuperSelect = true;
+        } else if (localStorage.isMultiFilter == 'false') {
+            $('#listConfigSuperSelect')[0].checked = false;
+            valor.isSuperSelect = false;
+        }
+    }
+    
     if (localStorage.print) {
         $('#listConfigPrint').val(localStorage.print);
         valor.print = localStorage.print;
@@ -158,6 +168,7 @@ function functionListConfigButton () {
     valor.isHeaderSticky = $('#listConfigHeaderSticky')[0].checked;
     valor.print = $('#listConfigPrint').val();
     valor.isMultiFilter = $('#listConfigMultiFilter')[0].checked;
+    valor.isSuperSelect = $('#listConfigSuperSelect')[0].checked;
 
     if (valor.print == '') {
         valor.print = false;
@@ -189,6 +200,7 @@ function functionListConfigButton () {
     localStorage.setItem('isScrollList', $('#listConfigScrollList')[0].checked);
     localStorage.setItem('isHeaderSticky', $('#listConfigHeaderSticky')[0].checked);
     localStorage.setItem('isMultiFilter', $('#listConfigMultiFilter')[0].checked);
+    localStorage.setItem('isSuperSelect', $('#listConfigSuperSelect')[0].checked);
     
     localStorage.setItem('print', $('#listConfigPrint').val());
     
@@ -198,6 +210,7 @@ function functionListConfigButton () {
     deleteContent();
     setFunctionOnBtns();
     location.reload(true);
+    console.log(valor.isSuperSelect);
     $('#rup-list').rup_list(valor);
 }
 

@@ -92,89 +92,105 @@
 <h3 style="margin-top: 20px">Configuracion</h3>
 
 <div class="rup_list_configuracion">
-    <form id="listConfigFilterForm">
-        <fieldset class="p-4">
-            <div class="col-md-6">
-                <div class="row pb-2">
-                    <label for="listConfigMultiSort" class="col-md-2 col-form-label">MultiSort:</label>
-                    <div class="col-md-1">
-                        <input id="listConfigMultiSort" type="checkbox" name="MultiSort" class="form-control">
-                    </div>
-                </div>
-                <div class="row pb-2">
-                    <label for="listConfigScrollList" class="col-md-2 col-form-label">Scroll List:</label>
-                    <div class="col-md-1">
-                        <input id="listConfigScrollList" type="checkbox" name="ScrollList" class="form-control">
-                    </div>
-                </div>
-                <div class="row pb-2">
-                    <label for="listConfigHeaderSticky" class="col-md-2 col-form-label">Header Sticky:</label>
-                    <div class="col-md-1">
-                        <input id="listConfigHeaderSticky" type="checkbox" name="HeaderSticky" class="form-control">
-                    </div>
-                </div>
-                <div class="row pb-2">
-                    <label for="listConfigMultiFilter" class="col-md-2 col-form-label">Multi Filter:</label>
-                    <div class="col-md-1">
-                        <input id="listConfigMultiFilter" type="checkbox" name="MultiFilter" class="form-control">
-                    </div>
-                </div>
-                <div class="row pb-2">
-                    <label for="listConfigPrint" class="col-md-2 col-form-label">Print:</label>
-                    <div class="col-md-4">
-                        <input id="listConfigPrint" type="text" name="Print" class="form-control">
-                        <p>ejemplo: "./print.css"</p>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
-
-        <fieldset class="p-4">
+    <form id="listConfigFilterForm" class="mt-5">
+        <fieldset class="form-group">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="row pb-2">
-                        <label for="listConfigShow" class="col-md-2 col-form-label">Show:</label>
-                        <div class="col-md-6">
-                            <fieldset>
-                                <input id="listConfigShow" type="checkbox" name="Show" class="form-control">
-                                <div class="row p-4">
-                                    <label for="listConfigShowAnimation">Animation:</label>
-                                    <select name="ShowAnimation" id="listConfigShowAnimation">
-                                        <option value="fade">fade</option>
-                                        <option value="bounce">bounce</option>
-                                    </select>
-                                </div>
-                                <div class="row p-4">
-                                    <label for="listConfigShowDelay">Delay:</label>
-                                    <input id="listConfigShowDelay" type="number" name="ShowDelay" class="form-control">
-                                </div>
-                            </fieldset>
-                        </div>
+                <div class="col-sm-12">
+                    <div class="checkbox-material">
+                        <input id="listConfigMultiSort" type="checkbox">
+                        <label for="listConfigMultiSort">MultiSort</label>
+        		    </div>
+                    <div class="checkbox-material">
+                        <input id="listConfigScrollList" type="checkbox">
+                        <label for="listConfigScrollList">Scroll List</label>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row pb-2">
-                        <label for="listConfigHide" class="col-md-2 col-form-label">Hide:</label>
-                        <div class="col-md-6">
-                            <fieldset>
-                                <input id="listConfigHide" type="checkbox" name="Show" class="form-control">
-                                <div class="row p-4">
-                                    <label for="listConfigHideAnimation">Animation:</label>
-                                    <select name="HideAnimation" id="listConfigHideAnimation">
-                                        <option value="fade">fade</option>
-                                        <option value="bounce">bounce</option>
-                                    </select>
-                                </div>
-                                <div class="row p-4">
-                                    <label for="listConfigHideDelay">Delay:</label>
-                                    <input id="listConfigHideDelay" type="number" name="HideDelay" class="form-control">
-                                </div>
-                            </fieldset>
-                        </div>
+                    <div class="checkbox-material">
+                        <input id="listConfigHeaderSticky" type="checkbox">
+                        <label for="listConfigHeaderSticky">Header Sticky</label>
+                    </div>
+                    <div class="checkbox-material">
+                        <input id="listConfigMultiFilter" type="checkbox">
+                        <label for="listConfigMultiFilter">Multi Filter</label>
+                    </div>
+                    <div class="checkbox-material">
+                        <input id="listConfigSuperSelect" type="checkbox">
+                        <label for="listConfigSuperSelect">Super Select</label>
+                    </div>
+                    <div class="form-groupMaterial">      
+                        <input type="text" id="listConfigPrint" placeholder="print.css">
+                        <label for="listConfigPrint">Print</label>
                     </div>
                 </div>
             </div>
         </fieldset>
-        <button id="listConfigButton">Aplicar</button>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-1 pt-0">Show</legend>
+                <div class="col-sm-5">
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="checkbox-material">
+                                    <input id="listConfigShow" name="Show" type="checkbox">
+                                    <label for="listConfigShow">On/Off</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label for="listConfigShowAnimation">Animation</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <select id="listConfigShowAnimation" name="ShowAnimation" class="form-control">
+                                    <option value="fade">fade</option>
+                                    <option value="bounce">bounce</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                            <label for="listConfigShowDelay">Delay</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="ShowDelay" id="listConfigShowDelay" placeholder="200">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <legend class="col-form-label col-sm-1 pt-0">Hide</legend>
+                <div class="col-sm-5">
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="checkbox-material">
+                                    <input id="listConfigHide" name="Hide" type="checkbox">
+                                    <label for="listConfigHide">On/Off</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label for="listConfigHideAnimation">Animation</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <select id="listConfigHideAnimation" name="HideAnimation" class="form-control">
+                                    <option value="fade">fade</option>
+                                    <option value="bounce">bounce</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                            <label for="listConfigHideDelay">Delay</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="HideDelay" id="listConfigHideDelay" placeholder="200">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </fieldset>
+        <button id="listConfigButton" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar</button>
     </form>
 </div>
