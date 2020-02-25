@@ -285,6 +285,10 @@
                 	<a class="dropdown-item" href="${listaSimple}">
                 		<spring:message code="lista.simple" />
                 	</a>
+                    <spring:url value="/lista/doble" var="listaDoble" htmlEscape="true"/>
+                    <a class="dropdown-item" href="${listaDoble}">
+                        <spring:message code="lista.doble" />
+                    </a>
                 	<spring:url value="/lista/multiOrd" var="listaMultiOrd" htmlEscape="true"/>
                 	<a class="dropdown-item" href="${listaMultiOrd}">
                         <spring:message code="lista.multiOrd" />

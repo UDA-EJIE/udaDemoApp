@@ -662,6 +662,10 @@ import Printd from 'printd';
             const self = this;
             const opciones = self.options;
 
+            $(window).on('resize', function () {
+                opciones._header.obj.css('width', self.element.css('width'));
+            });
+
             $(window).on('scroll', function () {
                 if ($('.rup-navbar.navbar').hasClass('rup-navbar-sticky')) {
                     window.scrollHeight = $('.rup-navbar').height();
@@ -676,6 +680,8 @@ import Printd from 'printd';
                     targetOpciones = self.element[0].getBoundingClientRect();
                     targetTopPoint = targetOpciones.top;
                 }
+
+                opciones._header.obj.css('width', self.element.css('width'));
 
                 if (targetTopPoint < window.scrollHeight) {
                     opciones._header.obj.addClass('rup_list-sticky');
@@ -800,9 +806,9 @@ import Printd from 'printd';
             opciones.multiFilter = {};
             opciones.multiFilter._filterSelector = 'generated';
             opciones.multiFilter._filterUser = 'udaPruebas';
-            opciones.multiFilter._dialogId = 'dropdownDialog';
+            opciones.multiFilter._dialogId = self.element[0].id + '_dropdownDialog';
 
-            opciones.multiFilter.$btn = $('#listFilterAceptar');
+            opciones.multiFilter.$btn = $('#' + opciones.filterForm).find('button').eq(0);
             opciones.multiFilter.$dialog = $('<div id="' + opciones.multiFilter._dialogId + '" class="dialog-content-material"><div id="'+ opciones.multiFilter._dialogId + '_feedback" role="alert"></div><form><div class="form-row"><div class="form-groupMaterial col-12"><label for="'+ opciones.multiFilter._dialogId +'_combo">Filtros</label><input id="'+ opciones.multiFilter._dialogId +'_combo" /></div></div><div class="form-row"><div class="checkbox-material col-12"><input type="checkbox" id="' + opciones.multiFilter._dialogId + '-defaultFilter" /><label for="' + opciones.multiFilter._dialogId + '-defaultFilter">Filtro por defecto</label></div></div></form></div>');
             
             opciones.multiFilter.$btn.after(opciones.multiFilter.$dialog);

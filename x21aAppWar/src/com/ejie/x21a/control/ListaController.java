@@ -37,6 +37,12 @@ public class ListaController {
     	model.addAttribute("usuario", new Usuario());
     	return "listaConfigurable";
     }
+    
+    @GetMapping (value = "/doble")
+    public String getListaDobleView(Model model) {
+    	model.addAttribute("usuario", new Usuario());
+    	return "listaDoble";
+    }
 
     @GetMapping (value = "/simple")
     public String getListaSimpleView(Model model) {
