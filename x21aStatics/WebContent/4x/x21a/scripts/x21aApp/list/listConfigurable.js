@@ -46,7 +46,6 @@ var valor = {
             ejieval.text($.rup.i18n.app.comun.no);
         }
     },
-    isMultiSort: true,
     load: function () {}
 }
 
@@ -146,6 +145,10 @@ if ($('#listConfigHide')[0].checked) {
 
 //Generamos el componente
 $('#rup-list').rup_list(valor);
+
+$(window).load(function () {
+    $('#rup-list').rup_list('filter');
+});
 
 function setFunctionOnBtn () {
     //Preparamos los eventos de la pantalla
