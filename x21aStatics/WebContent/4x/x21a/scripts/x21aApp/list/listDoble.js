@@ -413,8 +413,6 @@ function functionListConfigButton (position) {
     deleteContent(position);
     setFunctionOnBtns(position);
     location.reload(true);
-    console.log(valorLeft);
-    console.log(valorRight);
     $('#rup-list-left').rup_list(valorLeft);
     $('#rup-list-right').rup_list(valorRight);
 }
