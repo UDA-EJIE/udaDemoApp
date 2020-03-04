@@ -22,9 +22,7 @@
                     <select id="rup-list-header-sidx"></select>
                 </div>
                 <div class="col-md-2">
-                    <button id="rup-list-header-sord">
-                        <em class="mdi mdi-sort"></em>
-                    </button>
+                    <button id="rup-list-header-sord"></button>
                 </div>
             </div>
         </div>
