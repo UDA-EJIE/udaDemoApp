@@ -65,5 +65,7 @@ jQuery(function($) {
         minDate: $.rup_utils.createDate(1, 1, 2012),
         maxDate: $.rup_utils.createDate(31, 12, 2012)		
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });

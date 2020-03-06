@@ -88,5 +88,7 @@ jQuery(function($) {
         singleFileUploads:true,
         submitInForm:true
     });
-     
+
+
+    $('.contenedor').addClass('show');
 });

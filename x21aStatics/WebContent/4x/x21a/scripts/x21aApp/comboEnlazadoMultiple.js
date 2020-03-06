@@ -181,4 +181,7 @@ jQuery(function($) {
             console.log('comboMixto2DptoProv:::Changed');
         }
     });
+
+
+    $('.contenedor').addClass('show');
 });

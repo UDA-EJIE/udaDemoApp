@@ -461,7 +461,5 @@ $(function () {
     });
 
 
-
-
-
+    $('.contenedor').addClass('show');
 });

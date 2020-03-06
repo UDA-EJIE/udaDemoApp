@@ -20,7 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/lista")
+@RequestMapping(value = "/patrones/lista")
 public class ListaController {
     private static final Logger logger = LoggerFactory.getLogger(ListaController.class);
 
@@ -44,22 +44,10 @@ public class ListaController {
     	return "listaDoble";
     }
 
-    @GetMapping (value = "/simple")
-    public String getListaSimpleView(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "listaSimple";
-    }
-
     @GetMapping (value = "/noTemplate")
     public String getListaNoTemplateView(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "listaNoTemplate";
-    }
-
-    @GetMapping (value = "/multiOrd")
-    public String getListaMultiOrdView(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "listaMultiOrd";
     }
 
     @PostMapping(value = "/filter")

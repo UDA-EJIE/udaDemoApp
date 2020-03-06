@@ -53,5 +53,7 @@ jQuery(document).ready(function () {
     $('#btnAlertJS').bind('click', function () {
         alert('esto es un alert de javascript puro');
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });

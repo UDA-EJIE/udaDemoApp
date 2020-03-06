@@ -69,6 +69,28 @@ jQuery(function($) {
                 'wizard_jspInclude' : {'i18nCaption':'wizardC' },
                 'wizard_jstlImport' : {'i18nCaption':'wizardD' },
                 'wizard_dinamico' : {'i18nCaption':'wizardE' },
+                'lista' : {
+                    //Literal
+                    'i18nCaption' : 'lista',
+                    //Elementos (url)
+                    'configurable' : { 'i18nCaption' : 'listaConfigurable' },
+                    'doble' : { 'i18nCaption' : 'listaDoble' },
+                    'subLevel':[
+                        {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/lista/configurable' },
+                        {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/lista/doble' }
+                    ]
+                },
+                'calendar' : {
+                    //Literal
+                    'i18nCaption' : 'calendario',
+                    //Elementos (url)
+                    'page' : { 'i18nCaption' : 'calendarioSimple' },
+                    'pageDouble' : { 'i18nCaption' : 'calendarioDoble' },
+                    'subLevel':[
+                        {'i18nCaption': 'calendarioSimple', 'url': '/x21aAppWar/calendar/page' },
+                        {'i18nCaption': 'calendarioDoble', 'url': '/x21aAppWar/calendar/pageDouble' }
+                    ]
+                },
                 //Submenu
                 'subLevel':[
                     {'i18nCaption':'all', 'url': '/x21aAppWar/patrones/all' },
@@ -112,7 +134,11 @@ jQuery(function($) {
                     {'i18nCaption':'wizardB', 'url': '/x21aAppWar/patrones/wizard_includeFile' },
                     {'i18nCaption':'wizardC', 'url': '/x21aAppWar/patrones/wizard_jspInclude' },
                     {'i18nCaption':'wizardD', 'url': '/x21aAppWar/patrones/wizard_jstlImport' },
-                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' }
+                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' },
+                    {'i18nCaption': 'calendarioSimple', 'url': '/x21aAppWar/calendar/page' },
+                    {'i18nCaption': 'calendarioDoble', 'url': '/x21aAppWar/calendar/pageDouble' },
+                    {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/lista/configurable' },
+                    {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/lista/doble' }
                 ]
             },
             'table' : {
@@ -218,17 +244,6 @@ jQuery(function($) {
             'uda' : {
                 //Literal
                 'i18nCaption' : 'uda'
-            },
-            'calendar' : {
-                //Literal
-                'i18nCaption' : 'calendario',
-                //Elementos (url)
-                'simple' : { 'i18nCaption' : 'calendarioSimple' },
-                'doble' : { 'i18nCaption' : 'calendarioDoble' },
-                'subLevel':[
-                    {'i18nCaption': 'calendarioSimple', 'url': '/x21aAppWar/calendar/page' },
-                    {'i18nCaption': 'calendarioDoble', 'url': '/x21aAppWar/calendar/pageDouble' }
-                ]
             }
         }
     });
@@ -239,6 +254,8 @@ jQuery(function($) {
     if($('#navbarResponsive').length > 0){
         $('#navbarResponsive').rup_navbar({
             sticky:false
+        }).find('a:not([href^=#])').on('click', function(){
+            $('.contenedor').removeClass('show');
         });
     }
 
@@ -254,4 +271,20 @@ jQuery(function($) {
         jQuery('header').remove();
         jQuery('footer').remove();
     }
+
+    // Gestión de errores genérica en frontend
+    window.onerror = function(message, uri, line) {
+        var fullMessage = location.href + '\n' + uri + '\n' + line;
+        console.error(fullMessage);
+        document.querySelector('.contenedor').classList.add('show');
+        return false;
+    }
+
+    // Tiempo excesivo de carga
+    setTimeout(function(){
+        if(!$('.contenedor').hasClass('show')){
+            console.warn('Atención, demasiado tiempo esperando para cargar la pantalla...');
+            document.querySelector('.contenedor').classList.add('show');
+        }
+    }, 5000);
 });

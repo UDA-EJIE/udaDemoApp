@@ -26,6 +26,9 @@ jQuery(function($) {
         cache:false,
         select: function() {
             jQuery('.ui-tabs-loading').removeClass('ui-tabs-loading');
+        },
+        load: function(){
+            $('.contenedor').addClass('show');
         }
     });
 });

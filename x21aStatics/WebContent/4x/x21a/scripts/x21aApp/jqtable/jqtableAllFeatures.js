@@ -183,4 +183,6 @@ jQuery(function ($) {
     $('#fechaAlta_search').rup_date();
     $('#fechaBaja_search').rup_date();
 
+
+    $('.contenedor').addClass('show');
 });

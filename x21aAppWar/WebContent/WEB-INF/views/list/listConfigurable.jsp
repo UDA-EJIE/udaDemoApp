@@ -87,101 +87,99 @@
     </div>
 </div>
 
-<h3 style="margin-top: 20px">Configuracion</h3>
 
 <div class="rup_list_configuracion">
     <form id="listConfigFilterForm" class="mt-5">
         <fieldset class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="checkbox-material">
-                        <input id="listConfigMultiSort" type="checkbox">
-                        <label for="listConfigMultiSort">MultiSort</label>
-        		    </div>
-                    <div class="checkbox-material">
-                        <input id="listConfigScrollList" type="checkbox">
-                        <label for="listConfigScrollList">Scroll List</label>
-                    </div>
-                    <div class="checkbox-material">
-                        <input id="listConfigHeaderSticky" type="checkbox">
-                        <label for="listConfigHeaderSticky">Header Sticky</label>
-                    </div>
-                    <div class="checkbox-material">
-                        <input id="listConfigMultiFilter" type="checkbox">
-                        <label for="listConfigMultiFilter">Multi Filter</label>
-                    </div>
-                    <div class="checkbox-material">
-                        <input id="listConfigSuperSelect" type="checkbox">
-                        <label for="listConfigSuperSelect">Super Select</label>
-                    </div>
-                    <div class="form-groupMaterial">      
-                        <input type="text" id="listConfigPrint" placeholder="print.css">
-                        <label for="listConfigPrint">Print</label>
-                    </div>
+            <legend>Configuracion</legend>
+            <div class="form-group">
+                <label for="listConfigPrint" class="pr-4">Seleccionables:</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigSelectNo" name="listConfigSelect" value="0" checked>
+                  <label class="form-check-label" for="listConfigSelectNo">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigSelectSimple" name="listConfigSelect" value="1">
+                  <label class="form-check-label" for="listConfigSelectSimple">Simple</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigSelectMultiple" name="listConfigSelect" value="2">
+                  <label class="form-check-label" for="listConfigSelectMultiple">Múltiple</label>
+                </div>
+                <div class="checkbox-material form-check-inline ml-4">
+                    <input id="listConfigSuperSelect" type="checkbox" disabled>
+                    <label for="listConfigSuperSelect">Super Select</label>
                 </div>
             </div>
-        </fieldset>
-        <fieldset class="form-group">
+
+            <div class="form-group">
+                <div class="checkbox-material">
+                    <input id="listConfigMultiSort" type="checkbox">
+                    <label for="listConfigMultiSort">MultiSort</label>
+                </div>
+                <div class="checkbox-material">
+                    <input id="listConfigScrollList" type="checkbox">
+                    <label for="listConfigScrollList">Scroll List</label>
+                </div>
+                <div class="checkbox-material">
+                    <input id="listConfigHeaderSticky" type="checkbox">
+                    <label for="listConfigHeaderSticky">Header Sticky</label>
+                </div>
+                <div class="checkbox-material">
+                    <input id="listConfigMultiFilter" type="checkbox">
+                    <label for="listConfigMultiFilter">Multi Filter</label>
+                </div>
+            </div>
+
+            <div class="form-groupMaterial">
+                <input type="text" id="listConfigPrint" placeholder="print.css">
+                <label for="listConfigPrint">Print</label>
+            </div>
+
             <div class="row">
-                <legend class="col-form-label col-sm-1 pt-0">Show</legend>
-                <div class="col-sm-5">
+                <div class="col">
                     <fieldset class="form-group">
+                        <legend class="col-form-label">Show</legend>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="form-group col-md">
                                 <div class="checkbox-material">
                                     <input id="listConfigShow" name="Show" type="checkbox">
                                     <label for="listConfigShow">On/Off</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
+                            <div class="form-group col-md">
                                 <label for="listConfigShowAnimation">Animation</label>
-                            </div>
-                            <div class="col-sm-10">
                                 <select id="listConfigShowAnimation" name="ShowAnimation" class="form-control">
                                     <option value="fade">fade</option>
                                     <option value="bounce">bounce</option>
-                              </select>
+                                </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                            <label for="listConfigShowDelay">Delay</label>
-                            </div>
-                            <div class="col-sm-10">
+                            <div class="form-group col-md">
+                                <label for="listConfigShowDelay">Delay</label>
                                 <input type="number" class="form-control" name="ShowDelay" id="listConfigShowDelay" placeholder="200">
                             </div>
                         </div>
                     </fieldset>
                 </div>
-                <legend class="col-form-label col-sm-1 pt-0">Hide</legend>
-                <div class="col-sm-5">
+                <div class="col">
                     <fieldset class="form-group">
+                        <legend class="col-form-label">Hide</legend>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="form-group col-md">
                                 <div class="checkbox-material">
                                     <input id="listConfigHide" name="Hide" type="checkbox">
                                     <label for="listConfigHide">On/Off</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
+                            <div class="form-group col-md">
                                 <label for="listConfigHideAnimation">Animation</label>
-                            </div>
-                            <div class="col-sm-10">
                                 <select id="listConfigHideAnimation" name="HideAnimation" class="form-control">
                                     <option value="fade">fade</option>
                                     <option value="bounce">bounce</option>
-                              </select>
+                                </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                            <label for="listConfigHideDelay">Delay</label>
-                            </div>
-                            <div class="col-sm-10">
+                            <div class="form-group col-md">
+                                <label for="listConfigHideDelay">Delay</label>
                                 <input type="number" class="form-control" name="HideDelay" id="listConfigHideDelay" placeholder="200">
                             </div>
                         </div>
@@ -189,6 +187,7 @@
                 </div>
             </div>
         </fieldset>
+
         <button id="listConfigButton" type="button" class="btn-material btn-material-primary-medium-emphasis">Aplicar</button>
     </form>
 </div>

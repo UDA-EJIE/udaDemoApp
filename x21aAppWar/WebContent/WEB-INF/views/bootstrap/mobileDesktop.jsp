@@ -22,3 +22,8 @@
 	  <div class="col-xs-6"><p>Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit.</p></div>
 	</div>
 </section>
+
+
+<script type="text/javascript">
+    document.querySelector('.contenedor').classList.add('show');
+</script>

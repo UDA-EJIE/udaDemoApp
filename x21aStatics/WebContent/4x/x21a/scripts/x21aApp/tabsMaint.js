@@ -36,6 +36,8 @@ jQuery(function($) {
                     });
                 });
             }
+
+            $('.contenedor').addClass('show');
         }
     });
 });

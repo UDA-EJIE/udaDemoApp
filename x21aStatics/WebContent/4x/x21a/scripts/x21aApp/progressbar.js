@@ -29,4 +29,6 @@ jQuery(document).ready(function () {
         //        label: $.rup.i18n.base.rup_progressbar.loading
     });
 
+
+    $('.contenedor').addClass('show');
 });

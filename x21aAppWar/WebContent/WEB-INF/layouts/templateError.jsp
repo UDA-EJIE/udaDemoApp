@@ -29,7 +29,7 @@
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 </head>	
 <body>
-	<div class="contenedor">	
+	<div class="contenedor fade">
 		<!-- Cabecera -->
 		<tiles:insertAttribute name="header" />
 		

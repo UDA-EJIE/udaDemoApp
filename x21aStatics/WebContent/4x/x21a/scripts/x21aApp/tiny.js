@@ -70,6 +70,8 @@ jQuery(function($) {
     $('#replace').click(function() {
         $('#editor').tinymce().execCommand('mceReplaceContent',false,'<b>{$selection}</b>');
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });	
     

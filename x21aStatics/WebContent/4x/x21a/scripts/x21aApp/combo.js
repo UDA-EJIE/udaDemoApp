@@ -245,4 +245,6 @@ $(function () {
         }
     });
 
+
+    $('.contenedor').addClass('show');
 });

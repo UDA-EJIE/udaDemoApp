@@ -257,5 +257,7 @@ jQuery(function($) {
         $('#formServidor2').rup_form(getConfiguracionValServidorEjemplo2());
         
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });

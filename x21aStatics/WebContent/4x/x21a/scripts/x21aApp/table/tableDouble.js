@@ -584,6 +584,8 @@ function _init() {
 
         loadTable();
         loadTable(2);
+
+        $('.contenedor').addClass('show');
     });
 }
 

@@ -104,4 +104,6 @@ jQuery(function($) {
     function feedback_show(){
         $('#feedback').rup_feedback('show');
     }
+
+    $('.contenedor').addClass('show');
 });

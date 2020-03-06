@@ -61,8 +61,10 @@ jQuery(function ($) {
                 //Plugin de transparencia de capas
                 window.COREProxy.api.plugins.enableOne(window.COREProxy.api.plugins.TRANSPARENCIA_DE_CAPAS);
 
-                window.COREProxy.api.layers.addKMLLayer('Hoteles', 'https://www.geo.euskadi.eus/bisorea/v3/demos/ficheros_datos/hoteles.kml');
+                window.COREProxy.api.layers.addKMLLayer('Hoteles', '/x21aAppWar/integracion/geoEuskadiLayer.kml');
                 window.COREProxy.api.layers.addGeoJSONLayer('Centro btt', 'https://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/centros_btt_bicicleta_montana/opendata/centros-btt.json');
+
+                $('.contenedor').addClass('show');
             }
         });
     }

@@ -129,5 +129,8 @@ jQuery(function($) {
             sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
             minLength: 4
         });
+
+
+        $('.contenedor').addClass('show');
     });
 });
