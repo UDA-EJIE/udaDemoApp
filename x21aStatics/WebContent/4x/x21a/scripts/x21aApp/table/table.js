@@ -80,7 +80,7 @@ jQuery(function ($) {
                     },*/
             {
                 name: 'ejie',
-                index: 'ejie',
+                index: 'ejie_detail_table',
                 editable: true,
                 hidden: false,
                 width: 60,
@@ -98,7 +98,7 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaAlta',
-                index: 'fecha_alta',
+                index: 'fechaAlta_detail_table',
                 editable: true,
                 hidden: false,
                 width: 120,
@@ -117,7 +117,7 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaBaja',
-                index: 'fecha_baja',
+                index: 'fechaAlta_detail_table',
                 editable: false,
                 hidden: false,
                 width: 120,
@@ -136,7 +136,7 @@ jQuery(function ($) {
             },
             {
                 name: 'rol',
-                index: 'rol',
+                index: 'rol_detail_table',
                 editable: true,
                 hidden: false,
                 width: 140,
@@ -217,10 +217,10 @@ jQuery(function ($) {
         jQuery('#fechaBaja_filter_table').rup_date();
 
         //Formulario de detalle
-        jQuery('#fechaAlta_detail_table').rup_date();
+/*        jQuery('#fechaAlta_detail_table').rup_date();
         jQuery('#fechaBaja_detail_table').rup_date();
 
-        jQuery('#rol_detail_table').rup_combo(options_role_combo);
+        jQuery('#rol_detail_table').rup_combo(options_role_combo);*/
 
         var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 
