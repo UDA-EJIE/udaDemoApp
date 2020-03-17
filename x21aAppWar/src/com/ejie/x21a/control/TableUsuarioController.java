@@ -15,6 +15,8 @@
 */
 package com.ejie.x21a.control;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -33,7 +35,9 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -452,11 +456,34 @@ public class TableUsuarioController  {
 	
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<Usuario> getClipboardReport(
-			@RequestJsonBody(param="filter") Usuario  filterUsuario ,
+			@RequestJsonBody(param = "filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
-		//UsuarioController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
-		return this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
+		TableUsuarioController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
+		// TODO: falta la query de seleccion inversa (NOT IN)
+		if(tableRequestDto.getMultiselection().getSelectedAll()) {
+			return this.tableUsuarioService.findAllLike(filterUsuario, null, false);
+		} else {
+			return this.tableUsuarioService.getMultiple(filterUsuario, tableRequestDto, false);
+		}
 	}
+	
+	@RequestMapping(value = "xlsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody FileSystemResource download() throws ServletException{
+		
+		File datos = null;
+		try {			
+			String name = "pruebaReport";
+			String extension = ".xls";
+
+			datos = File.createTempFile(name, extension);
+			datos.deleteOnExit();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new FileSystemResource(datos);
+    }
 	
 	@RequestMapping(value = {"xlsReportViejo" , "xlsxReportViejo"}, method = RequestMethod.POST)
 	protected ModelAndView getExcelPOIViejo(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto tableRequestDto,
@@ -533,7 +560,7 @@ public class TableUsuarioController  {
 		return new ModelAndView("csvReport", modelMap);
 	}
 	
-	@RequestMapping(value = {"xlsReport" , "xlsxReport"}, method = RequestMethod.POST)
+	/*@RequestMapping(value = {"xlsReport" , "xlsxReport"}, method = RequestMethod.POST)
 	protected ModelAndView getExcelPOI(@ModelAttribute Usuario filterUsuario, 
 			@ModelAttribute TableRequestDto tableRequestDto,
 			ModelMap modelMap,
@@ -557,7 +584,7 @@ public class TableUsuarioController  {
 				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
 				//datos hoja
 				usuarioExcelDataAll.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataAll);
+			reportData.add(usuarioExcelDataAll);*/
 			//Hoja 2
 		/*	ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
 				//nombre hoja
@@ -567,7 +594,7 @@ public class TableUsuarioController  {
 				//datos hoja
 				usuarioExcelDataPage.setModelData(listUsuarioAll);
 			reportData.add(usuarioExcelDataPage);*/
-		modelMap.put("reportData", reportData);
+		/*modelMap.put("reportData", reportData);
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -578,7 +605,7 @@ public class TableUsuarioController  {
 			return new ModelAndView("xlsxReport", modelMap);
 		}
 		
-	}
+	}*/
 	
 	
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST)
