@@ -358,5 +358,7 @@ window.cargarPruebasTriggers = function(){
     table.on('tableMultiSelectFeedbackDestroy', function(event){
         console.log('---Trigger--- ' + event.type);
     });
-    
+
+
+    $('.contenedor').addClass('show');
 };

@@ -16,6 +16,8 @@
 
 /* eslint-disable no-console */
 
+import Printd from 'printd';
+
 /**
  * Presenta los elementos que presenta una tabla rup_table en formato listado. Pensado para movilidad.
  *
@@ -70,7 +72,7 @@
     if (typeof define === 'function' && define.amd) {
 
         // AMD. Register as an anonymous module.
-        define(['jquery', 'rup.base', 'rup.button'], factory);
+        define(['jquery', 'rup.base', 'rup.button', 'rup.autocomplete', 'rup.dialog'], factory);
     } else {
 
         // Browser globals
@@ -106,15 +108,15 @@
     /**
      * @description Opciones por defecto de configuración de rowNum
      * @name defaultsRowNum
-     * 
+     *
      * @property {Array} [sorce=Array] - Es un array de objetos con las propiedades value e i18nCaption que serán los elementos disponibles para la seleccion de los elementos por página
-     * @property {String} [value=5] - Valor del source por defecto 
+     * @property {String} [value=5] - Valor del source por defecto
      */
 
     /**
      * @description Opciones por defecto de configuración de sidx
      * @name defaultsSidx
-     * 
+     *
      * @property {Array} [sorce=Array] - Es un array de objetos con las propiedades value e i18nCaption que serán los elementos disponibles para la seleccion de la ordenacion.
      * @property {String} [value=5] - Valor del source por defecto. En caso de ser multiOrdenacion se pueden añadir campos separados por comas
      */
@@ -122,7 +124,7 @@
     /**
      * @description Opciones por defecto de configuración de selectable
      * @name defaultsSelectable
-     * 
+     *
      * @property {boolean} [multi=null] - Si es true será de selección múltiple, de ser false será de seleccion simple.
      * @property {selector} [value=null] - Selctor JQuery sobre el que se deberá hacer click para seleccionar o deseleccionar elementos.
      */
@@ -130,7 +132,7 @@
     /**
      * @description Eventos lanzados sobre rup-list
      * @name defaultsEvents
-     * 
+     *
      * @property [initComplete] - Se lanza una vez el componente ha sido inicializado.
      * @property [listAfterMultiselection] - Se lanza tras finalizar operaciones de multiseleccion desde el desplegable.
      * @property [rup_list-mord-inited] - Se lanza una vez se ha inicializado la característica de multiorder
@@ -178,11 +180,12 @@
 
         /**
          * Método interno para cambiar el valor de algunas opciones
-         * 
+         *
          * @name _changeOption
+         * @private
          * @function
-         * @param {String} key 
-         * @param {*} value 
+         * @param {String} key
+         * @param {*} value
          */
         _changeOption: function (key, value) {
             var opciones = this.options;
@@ -212,6 +215,7 @@
         /**
          * Método interno que valida que el esqueleto html es válido para el componente
          * @name _validateSkeleton
+         * @private
          * @function
          */
         _validateSkeleton: function () {
@@ -239,6 +243,7 @@
         /**
          * Método interno que configura el componente
          * @name _create
+         * @private
          * @function
          */
         _create: function () {
@@ -366,7 +371,7 @@
                 $('#' + self.element[0].id).on('modElement', (e, item, json) => {
                     opciones.modElement(e, item, json);
                     self.element.append(item);
-                    
+
                 });
 
                 /**
@@ -378,82 +383,7 @@
                  * SELECT/MULTISELECT
                  */
                 if (opciones.selectable) {
-                    $(opciones.selectable.selector).attr('rup-list-selector', 'enabled');
-                    $('[rup-list-selector="enabled"]').click(function (e) {
-                        let clickedElemIdArr = e.currentTarget.id.split('_');
-                        let clickedPK = clickedElemIdArr[clickedElemIdArr.length - 1];
-                        if (opciones.multiselection.selectedIds == null) {
-                            opciones.multiselection.selectedIds = [];
-                        }
-                        if (opciones.multiselection.selectedRowsPerPage == null) {
-                            opciones.multiselection.selectedRowsPerPage = [];
-                        }
-                        let select = (clickedPK) => {
-                            if (!opciones.selectable.multi) {
-                                opciones.multiselection.selectedAll = false;
-                                opciones.multiselection.selectedIds = [];
-                                opciones.multiselection.selectedRowsPerPage = [];
-                            }
-                            opciones.multiselection.selectedRowsPerPage.push({
-                                id: self.element[0].id + '-itemTemplate_' + clickedPK,
-                                line: (function () {
-                                    let cont = 0;
-                                    let final = 0;
-                                    self.element.children().toArray().forEach(element => {
-                                        if (element.id == self.element.id + '-itemTemplate_' + clickedPK) {
-                                            final = cont;
-                                        }
-                                        cont++;
-                                    });
-                                    return final;
-                                })(),
-                                page: opciones.page
-                            });
-                            opciones.multiselection.selectedIds.push(clickedPK);
-                            $('#' + self.element[0].id + '-itemTemplate_' + clickedPK).addClass('list-item-selected');
-                        };
-                        let deselect = (clickedPK) => {
-                            let index = opciones.multiselection.selectedIds.indexOf(clickedPK);
-                            opciones.multiselection.selectedIds.splice(index, 1);
-                            opciones.multiselection.selectedRowsPerPage = opciones.multiselection.selectedRowsPerPage.filter(elem =>
-                                elem.id != self.element[0].id + '-itemTemplate_' + clickedPK
-                            );
-                            $('#' + self.element[0].id + '-itemTemplate_' + clickedPK).removeClass('list-item-selected');
-                        };
-                        let selectAll = (clickedPK) => {
-                            deselect(clickedPK);
-                            $('#' + self.element[0].id + '-itemTemplate_' + clickedPK).addClass('list-item-selected');
-                        };
-                        let deselectAll = (clickedPK) => {
-                            select(clickedPK);
-                            $('#' + self.element[0].id + '-itemTemplate_' + clickedPK).removeClass('list-item-selected');
-                        };
-                        if (opciones.multiselection.selectedIds.includes(clickedPK)) {
-                            if (opciones.multiselection.selectedAll) {
-                                selectAll(clickedPK);
-                            } else {
-                                deselect(clickedPK);
-                            }
-                        } else {
-                            if (opciones.multiselection.selectedAll) {
-                                deselectAll(clickedPK);
-                            } else {
-                                select(clickedPK);
-                            }
-                        }
-                        if (opciones.multiselection.selectedIds.length == 0) {
-                            opciones.multiselection.selectedIds = null;
-                        }
-                        if (opciones.multiselection.selectedRowsPerPage.length == 0) {
-                            opciones.multiselection.selectedRowsPerPage = null;
-                        }
-                    });
-                    opciones.multiselection = {
-                        selectedIds: null,
-                        selectedAll: false,
-                        selectedRowsPerPage: null
-                    };
-                    self._generateSelectablesBtnGroup();
+                    self._selectablesInit.apply(self);
                 }
 
                 /**
@@ -461,6 +391,20 @@
                  */
                 if (opciones.isScrollList) {
                     self._scrollListInit.apply(self);
+                }
+
+                /**
+                 * PRINT
+                 */
+                if (opciones.print) {
+                    self._print.apply(self);
+                }
+
+                /**
+                 * MULTIFILTER
+                 */
+                if (opciones.isMultiFilter) {
+                    self._multiFilter.apply(self);
                 }
 
                 $('#' + opciones._idItemTemplate).hide();
@@ -471,14 +415,223 @@
                 } else {
                     $('#' + self.element[0].id).trigger('initComplete');
                 }
+
+                //Se audita el componente
+                $.rup.auditComponent('rup_list', 'init');
             }).catch((error) => {
                 console.error('Error al inicializar el componente:\n', error);
             });
         },
 
         /**
+         * Método interno que inicializa el listado con seleccionables
+         * @name _selectablesInit
+         * @private
+         * @function
+         */
+        _selectablesInit: function () {
+            var self = this;
+            var opciones = self.options;
+
+            $('#' + self.element[0].id + '-content').find(opciones.selectable.selector).attr('rup-list-selector', 'enabled');
+
+            opciones.multiselection = {
+                selectedIds: null,
+                selectedAll: false,
+                selectedRowsPerPage: null
+            };
+            
+            if (opciones.selectable.multi) {
+                self._generateSelectablesBtnGroup();
+            }
+
+            var isControl = false,
+                isShift = false,
+                modeAll;
+
+            if (opciones.isSuperSelect) {
+                $(document).on('keydown', (e) => {
+                    if (e.keyCode == '17') {
+                        isControl = true;
+                    } else if (e.keyCode == '16') {
+                        isShift = true;
+                    }
+                });
+
+                $(document).on('keyup', (e) => {
+                    if (e.keyCode == '17') {
+                        isControl = false;
+                    } else if (e.keyCode == '16') {
+                        isShift = false;
+                    }
+                });
+            }
+
+            $('#' + self.element[0].id + '-content').find('[rup-list-selector="enabled"]').on('click', (e) => {
+                let clickedElemIdArr = e.currentTarget.id.split('_');
+                let clickedPK = clickedElemIdArr[clickedElemIdArr.length - 1];
+
+                if (opciones.multiselection.selectedIds == null) {
+                    opciones.multiselection.selectedIds = [];
+                }
+
+                if (opciones.multiselection.selectedRowsPerPage == null) {
+                    opciones.multiselection.selectedRowsPerPage = [];
+                }
+
+                if (opciones.multiselection.selectedAll) {
+                    modeAll = true;
+                } else {
+                    modeAll = false;
+                }
+
+                if (opciones.isSuperSelect) {
+                    if (isShift && isControl) {
+                        if (opciones.multiselection.selectedIds[opciones.multiselection.selectedIds.length - 1]) {
+                            let posicionClicked = getPosicion(opciones.multiselection.selectedIds[opciones.multiselection.selectedIds.length - 1], clickedPK);
+                            let newRangeClickedPK = clickedPK;
+                            let newRangeLastClickedPK = opciones.multiselection.selectedIds[opciones.multiselection.selectedIds.length - 1];
+                            if (posicionClicked[0] > posicionClicked[1]) {
+                                deselect(newRangeLastClickedPK, modeAll);
+                                selectRange(newRangeLastClickedPK, newRangeClickedPK, modeAll);
+                            } else {
+                                selectRange(newRangeLastClickedPK, newRangeClickedPK, modeAll);
+                            }
+                        } else {
+                            select(clickedPK, modeAll);
+                        }
+                    } else if (!isShift && isControl) {
+                        if (opciones.multiselection.selectedIds.includes(clickedPK)) {
+                            deselect(clickedPK, modeAll);
+                        } else {
+                            select(clickedPK, modeAll);
+                        }
+                    } else if (isShift && !isControl) {
+                        if (opciones.multiselection.selectedIds[opciones.multiselection.selectedIds.length - 1]) {
+                            let newRangeClickedPK = clickedPK;
+                            let newRangeLastClickedPK = opciones.multiselection.selectedIds[0];
+                            deselectRest(modeAll);
+                            selectRange(newRangeLastClickedPK, newRangeClickedPK, modeAll);
+                        } else {
+                            select(clickedPK, modeAll);
+                        }
+                    } else if (!isShift && !isControl) {
+                        if (opciones.multiselection.selectedIds.includes(clickedPK)) {
+                            deselect(clickedPK, modeAll);
+                        } else {
+                            deselectRest(modeAll);
+                            select(clickedPK, modeAll);
+                        }
+                    }
+                } else {
+                    if (opciones.multiselection.selectedIds.includes(clickedPK)) {
+                        deselect(clickedPK, modeAll);
+                    } else {
+                        select(clickedPK, modeAll);
+                    }
+                }
+            });
+
+            let select = (clickedPK, modeAll) => {
+                if (!opciones.selectable.multi) {
+                    opciones.multiselection.selectedAll = false;
+                    opciones.multiselection.selectedIds = [];
+                    opciones.multiselection.selectedRowsPerPage = [];
+                    self.element.find('.list-item-selected').removeClass('list-item-selected');
+                }
+                opciones.multiselection.selectedRowsPerPage.push({
+                    id: self.element[0].id + '-itemTemplate_' + clickedPK,
+                    line: (function () {
+                        let cont = 0;
+                        let final = 0;
+                        self.element.children().toArray().forEach(element => {
+                            if (element.id == self.element.id + '-itemTemplate_' + clickedPK) {
+                                final = cont;
+                            }
+                            cont++;
+                        });
+                        return final;
+                    })(),
+                    page: (function () {
+                        if (opciones.isScrollList) {
+                            return 1;
+                        } else {
+                            return opciones.page;
+                        }
+                    })()
+                });
+                opciones.multiselection.selectedIds.push(clickedPK);
+                if (!modeAll) {
+                    self.element.find('#' + self.element[0].id + '-itemTemplate_' + clickedPK).addClass('list-item-selected');
+                } else {
+                    self.element.find('#' + self.element[0].id + '-itemTemplate_' + clickedPK).removeClass('list-item-selected');
+                }
+            };
+
+            let deselect = (clickedPK, modeAll) => {
+                let index = opciones.multiselection.selectedIds.indexOf(clickedPK);
+                opciones.multiselection.selectedIds.splice(index, 1);
+                opciones.multiselection.selectedRowsPerPage = opciones.multiselection.selectedRowsPerPage.filter(elem =>
+                    elem.id != self.element[0].id + '-itemTemplate_' + clickedPK
+                );
+                if (!modeAll) {
+                    self.element.find('#' + self.element[0].id + '-itemTemplate_' + clickedPK).removeClass('list-item-selected');
+                } else {
+                    self.element.find('#' + self.element[0].id + '-itemTemplate_' + clickedPK).addClass('list-item-selected');
+                }
+            };
+
+            let deselectRest = (modeAll) => {
+                if (!modeAll) {
+                    opciones.multiselection.selectedAll = false;
+                } else {
+                    opciones.multiselection.selectedAll = true;
+                }
+                opciones.multiselection.selectedIds = [];
+                opciones.multiselection.selectedRowsPerPage = [];
+                for (let i = 0; i < opciones.content.length; i++) {
+                    if (!modeAll) {
+                        self.element.find('#' + self.element[0].id + '-itemTemplate_' + opciones.content[i][opciones.key]).removeClass('list-item-selected');
+                    } else {
+                        self.element.find('#' + self.element[0].id + '-itemTemplate_' + opciones.content[i][opciones.key]).addClass('list-item-selected');
+                    }
+                }
+            };
+
+            let selectRange = (lastClickedPK, clickedPK, modeAll) => {
+                var posicionClicked = getPosicion(lastClickedPK, clickedPK);
+                if (posicionClicked[0] > posicionClicked[1]) {
+                    for (let i = posicionClicked[1]; i <= posicionClicked[0]; i++) {
+                        if (!opciones.multiselection.selectedIds.includes(String(opciones.content[i][opciones.key]))) {
+                            select(String(opciones.content[i][opciones.key]), modeAll);
+                        }
+                    }
+                } else {
+                    for (let i = posicionClicked[1]; i >= posicionClicked[0]; i--) {
+                        if (!opciones.multiselection.selectedIds.includes(String(opciones.content[i][opciones.key]))) {
+                            select(String(opciones.content[i][opciones.key]), modeAll);
+                        }
+                    }
+                }
+            };
+
+            let getPosicion = (lastClickedPK, clickedPK) => {
+                var posicionClicked = {};
+                for (let i = 0; i < opciones.content.length; i++) {
+                    if (opciones.content[i][opciones.key] == clickedPK) {
+                        posicionClicked[0] = i;
+                    } else if (opciones.content[i][opciones.key] == lastClickedPK) {
+                        posicionClicked[1] = i;
+                    }
+                }
+                return posicionClicked;
+            };
+        },
+
+        /**
          * Método interno que crea el scrollList
          * @name _scrollListInit
+         * @private
          * @function
          */
         _scrollListInit: function () {
@@ -496,7 +649,7 @@
             $(self.element).on('scrollListPagePrev', function () {
                 return self.options.page--;
             });
-            
+
             $(window).on('scroll', function () {
                 var windowHeight = document.documentElement.clientHeight,
                     targetOpciones = self.element[0].getBoundingClientRect(),
@@ -505,7 +658,7 @@
                     targetButtomPoint = targetHeight + targetTopPoint + 150;
 
                 self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
-                
+
                 if (self.options.stepLoad == self.options.page) {
                     if (targetButtomPoint < windowHeight) {
                         self.options.stepCounter++;
@@ -527,19 +680,24 @@
         /**
          * Método que aplica el modo 'sticky' al header
          * @name _headerSticky
+         * @private
          * @function
          */
         _headerSticky: function () {
             const self = this;
             const opciones = self.options;
 
-            if ($('.rup-navbar').length != 0) {
-                window.scrollHeight = $('.rup-navbar').height();
-            } else {
-                window.scrollHeight = 0;
-            }
+            $(window).on('resize', function () {
+                opciones._header.obj.css('width', self.element.css('width'));
+            });
 
             $(window).on('scroll', function () {
+                if ($('.rup-navbar.navbar').hasClass('rup-navbar-sticky')) {
+                    window.scrollHeight = $('.rup-navbar').height();
+                } else {
+                    window.scrollHeight = 0;
+                }
+
                 var targetOpciones = opciones._header.obj[0].getBoundingClientRect(),
                     targetTopPoint = targetOpciones.top;
 
@@ -548,15 +706,25 @@
                     targetTopPoint = targetOpciones.top;
                 }
 
+                opciones._header.obj.css('width', self.element.css('width'));
+
                 if (targetTopPoint < window.scrollHeight) {
                     opciones._header.obj.addClass('rup_list-sticky');
-                    self.element.css({'padding-top': opciones._header.obj[0].offsetHeight});
-                    opciones._header.obj.css({'top': window.scrollHeight});
+                    self.element.css({
+                        'padding-top': opciones._header.obj[0].offsetHeight
+                    });
+                    opciones._header.obj.css({
+                        'top': window.scrollHeight
+                    });
                 } else if (targetTopPoint >= window.scrollHeight) {
                     if (opciones._header.obj.hasClass('rup_list-sticky')) {
                         opciones._header.obj.removeClass('rup_list-sticky');
-                        self.element.css({'padding-top': 0});
-                        opciones._header.obj.css({'top': 0});
+                        self.element.css({
+                            'padding-top': 0
+                        });
+                        opciones._header.obj.css({
+                            'top': 0
+                        });
                     }
                 }
             });
@@ -565,6 +733,7 @@
         /**
          * Método que crea el loader
          * @name _loader
+         * @private
          * @function
          */
         _loader: function () {
@@ -582,45 +751,58 @@
         },
 
         /**
-         * Método para iniciar los estilos
+         * Método que lanza la imprisión HTML
          * @name _print
+         * @private
          * @function
          */
         _print: function () {
             const self = this;
             const opciones = self.options;
 
-            if ($('#listPrint').length == 0) {
-                var newBtnPrint = $('<button id="listPrint">Imprimir</button>');
-                newBtnPrint.appendTo($('#listFilterForm'));
-                newBtnPrint.on('click', btnPrintMain);
+            if ($('#' + opciones.filterForm).find('#listPrint').length == 0) {
+                opciones.btnPrint = $('<button id="listPrint">Imprimir</button>');
+                opciones.btnPrint.appendTo($('#' + opciones.filterForm));
+                opciones.btnPrint[0].disabled = true;
+                opciones.btnPrint.on('click', btnPrintMain);
             }
 
-            function btnPrintMain (e) {
+            function btnPrintMain(e) {
                 e.preventDefault();
-                var winPrint = window.open('','_blank'),
-                    winContent,
-                    filter = {
-                        filter: $('#' + opciones.filterForm).rup_form('formToJson'),
-                        page: 1,
-                        rows: opciones.records,
-                        sidx: '',
-                        sord: '',
-                        multiselection: opciones.multiselection,
-                        core: {
-                            pkNames: [opciones.key],
-                            pkToken: '~'
-                        }
-                    },
-                    tagPrint = $('<link>', {
+                var doc = new Printd(),
+                    printDoc = $('<div id="print-doc"></div>'),
+                    printTagStyle = $('<link>', {
                         'id': 'rup-list-link-print',
                         'rel': 'stylesheet',
                         // 'media': 'print',
                         'href': opciones.print
-                    });
+                    }),
+                    sidx = '',
+                    sord = '';
 
-                tagPrint = tagPrint[0].outerHTML;
-                winPrint.document.write(tagPrint);
+
+                if (opciones.isMultiSort) {
+                    sidx = opciones.multiorder.sidx;
+                    sord = opciones.multiorder.sord;
+                } else {
+                    sidx = opciones.sidx.value;
+                    sord = opciones.sord;
+                }
+
+                var filter = {
+                    filter: $('#' + opciones.filterForm).rup_form('formToJson'),
+                    page: 1,
+                    rows: opciones.records,
+                    sidx: sidx,
+                    sord: sord,
+                    multiselection: opciones.multiselection,
+                    core: {
+                        pkNames: [opciones.key],
+                        pkToken: '~'
+                    }
+                };
+
+                printDoc.append(printTagStyle);
 
                 jQuery.rup_ajax({
                     url: opciones.action,
@@ -629,55 +811,286 @@
                     data: JSON.stringify(filter),
                     contentType: 'application/json',
                     success: function (xhr) {
-                        winContent = $('<div id="rup-list-print" class="rup_list-print">');
-                        for (var i = 0; i < xhr.rows.length; i++) {
-                            winContent.append($('<p id="rup-list-print-item" class="rup_list-print-item">' + xhr.rows[i].usuario+ '</p>'));
+                        if (!opciones.multiselection.selectedIds || opciones.multiselection.selectedIds.length == 0) {
+                            for (var i = 0; i < xhr.rows.length; i++) {
+                                printDoc.append($('<p>' + xhr.rows[i][opciones.key] + '</p>'));
+                            }
+                        } else {
+                            for (var x = 0; x < xhr.rows.length; x++) {
+                                for (var y = 0; y < xhr.reorderedSelection.length; y++) {
+                                    if (xhr.rows[x][opciones.key] == xhr.reorderedSelection[y].pk[opciones.key]) {
+                                        printDoc.append($('<p>' + xhr.rows[x][opciones.key] + '</p>'));
+                                    }
+                                }
+                            }
                         }
-                        winContent = winContent[0].outerHTML;
-                        winPrint.document.write(winContent);
-                        setTimeout(() => {
-                            winPrint.print();
-                        }, 1);
+                        doc.print(printDoc[0]);
                     }
                 });
             }
         },
-        
+
+        /**
+         * Método interno que configura MultiFilter
+         * @name _multiFilter
+         * @private
+         * @function
+         */
+        _multiFilter: function () {
+            const self = this;
+            const opciones = self.options;
+
+            opciones.multiFilter = {};
+            opciones.multiFilter._filterSelector = 'generated';
+            opciones.multiFilter._filterUser = 'udaPruebas';
+            opciones.multiFilter._dialogId = self.element[0].id + '_dropdownDialog';
+
+            opciones.multiFilter.$btn = $('#' + opciones.filterForm).find('button').eq(0);
+            opciones.multiFilter.$dialog = $('<div id="' + opciones.multiFilter._dialogId + '" class="dialog-content-material"><div id="' + opciones.multiFilter._dialogId + '_feedback" role="alert"></div><form><div class="form-row"><div class="form-groupMaterial col-12"><label for="' + opciones.multiFilter._dialogId + '_combo">Filtros</label><input id="' + opciones.multiFilter._dialogId + '_combo" /></div></div><div class="form-row"><div class="checkbox-material col-12"><input type="checkbox" id="' + opciones.multiFilter._dialogId + '-defaultFilter" /><label for="' + opciones.multiFilter._dialogId + '-defaultFilter">Filtro por defecto</label></div></div></form></div>');
+
+            opciones.multiFilter.$btn.after(opciones.multiFilter.$dialog);
+
+            opciones.multiFilter.$combo = $('#' + opciones.multiFilter._dialogId + '_combo');
+            opciones.multiFilter.$feedback = $('#' + opciones.multiFilter._dialogId + '_feedback');
+
+            opciones.multiFilter.$feedback.rup_feedback({
+                block: false,
+                delay: 2000
+            });
+
+            // Dropdown dialog
+            opciones.multiFilter.$btn.rup_button({
+                dropdown: {
+                    dropdownDialog: opciones.multiFilter._dialogId,
+                    dropdownDialogConfig: {
+                        autoOpen: false,
+                        modal: true,
+                        resizable: true,
+                        title: '<i class=\'mdi mdi-filter\' aria-hidden=\'true\'></i>Administración de filtros',
+                        width: '380px',
+                        buttons: [{
+                            id: opciones.multiFilter._dialogId + '_btn_save',
+                            text: 'Guardar',
+                            click: function () {
+                                if ($('#' + opciones.filterForm).rup_form('formToJson').length != 0) {
+                                    var elem = {
+                                        filtro: {
+                                            filterSelector: opciones.multiFilter._filterSelector,
+                                            filterName: opciones.multiFilter.$label.val(),
+                                            filterValue: JSON.stringify($('#' + opciones.filterForm).rup_form('formToJson')),
+                                            filterDefault: opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked,
+                                            filterUser: opciones.multiFilter._filterUser
+                                        }
+                                    };
+                                    $.rup_ajax({
+                                        url: opciones.action + '/./multiFilter/add',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: JSON.stringify(elem),
+                                        contentType: 'application/json',
+                                        success: () => {
+                                            opciones.multiFilter.$feedback.rup_feedback('set', $.rup.i18n.base.rup_jqtable.plugins.multifilter.ok, 'ok');
+                                        },
+                                        error: () => {
+                                            opciones.multiFilter.$feedback.rup_feedback('set', $.rup.i18n.base.rup_jqtable.plugins.multifilter.error, 'error');
+                                        }
+                                    });
+                                }
+
+                            }
+                        },
+                        {
+                            id: opciones.multiFilter._dialogId + '_btn_apply',
+                            text: 'Aplicar',
+                            click: function () {
+                                if (opciones.multiFilter.selected) {
+                                    opciones.multiFilter.$dialog.dialog('close');
+                                    self.element.rup_list('filter');
+                                }
+                            }
+                        },
+                        {
+                            id: opciones.multiFilter._dialogId + '_btn_delete',
+                            text: 'Eliminar',
+                            click: function () {
+                                if (opciones.multiFilter.selected) {
+                                    var elem = {
+                                        filtro: {
+                                            filterSelector: opciones.multiFilter.selected.filterSelector,
+                                            filterName: opciones.multiFilter.selected.filterName,
+                                            filterValue: JSON.stringify(opciones.multiFilter.selected.filterValue),
+                                            filterDefault: opciones.multiFilter.selected.filterDefault,
+                                            filterUser: opciones.multiFilter.selected.filterUser
+                                        }
+                                    };
+                                    $.rup_ajax({
+                                        url: opciones.action + '/./multiFilter/delete',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: JSON.stringify(elem),
+                                        contentType: 'application/json',
+                                        success: () => {
+                                            opciones.multiFilter.$feedback.rup_feedback('set', $.rup.i18n.base.rup_jqtable.plugins.multifilter.ok, 'ok');
+                                            opciones.multiFilter.$combo.rup_autocomplete('set', '', '');
+                                            opciones.multiFilter.$label.data('tmp.loadObjects.term', null);
+                                            opciones.multiFilter.$label.data('loadObjects', {});
+                                            opciones.multiFilter.$label.data('tmp.data', {});
+                                        },
+                                        error: () => {
+                                            opciones.multiFilter.$feedback.rup_feedback('set', $.rup.i18n.base.rup_jqtable.plugins.multifilter.error, 'error');
+                                        }
+                                    });
+                                }
+                            }
+                        },
+                        {
+                            id: opciones.multiFilter._dialogId + '_btn_cancel',
+                            text: 'Cancelar',
+                            click: function () {
+                                opciones.multiFilter.$dialog.dialog('close');
+                            },
+                            btnType: $.rup.dialog.LINK
+                        }
+                        ]
+                    }
+                }
+            });
+
+            opciones.multiFilter.$combo.rup_autocomplete({
+                source: opciones.action +
+                    '/./multiFilter/getAll?filterSelector=' +
+                    opciones.multiFilter._filterSelector + '&user=' +
+                    opciones.multiFilter._filterUser,
+                sourceParam: {
+                    label: 'filterName',
+                    value: 'filterDefault',
+                    data: 'filterValue',
+                    category: 'filter'
+                },
+                method: 'GET',
+                menuMaxHeight: 325,
+                minLength: 3,
+                combobox: true,
+                contains: true,
+                select: function () {
+                    if (opciones.multiFilter.$combo.rup_autocomplete('getRupValue')) {
+                        opciones.multiFilter.selected = {
+                            filterSelector: opciones.multiFilter._filterSelector,
+                            filterName: opciones.multiFilter.$combo.rup_autocomplete('getRupValue'),
+                            filterDefault: opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked,
+                            filterUser: opciones.multiFilter._filterUser
+                        };
+                        $.rup_ajax({
+                            url: opciones.action +
+                                '/./multiFilter/getAll?filterSelector=' +
+                                opciones.multiFilter._filterSelector + '&user=' +
+                                opciones.multiFilter._filterUser,
+                            type: 'GET',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            success: function (data) {
+                                if (opciones.multiFilter.selected.filterName) {
+                                    for (let i = 0; i < data.length; i++) {
+                                        if (opciones.multiFilter.selected.filterName == data[i].filterName) {
+                                            opciones.multiFilter.selected.filterValue = JSON.parse(data[i].filterValue);
+                                            opciones.multiFilter.selected.filterDefault = data[i].filterDefault;
+                                        }
+                                    }
+                                    if (opciones.multiFilter.selected.filterDefault) {
+                                        opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked = true;
+                                    } else {
+                                        opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked = false;
+                                    }
+
+                                    $('#' + opciones.filterForm).find('input').val('');
+                                    for (let i = 0; i < $('#' + opciones.filterForm).find('input').length; i++) {
+                                        if (opciones.multiFilter.selected.filterValue[$('#' + opciones.filterForm).find('input').eq(i).attr('name')] != undefined) {
+                                            $('#' + opciones.filterForm).find('input').eq(i).val(opciones.multiFilter.selected.filterValue[$('#' + opciones.filterForm).find('input').eq(i).attr('name')]);
+                                        }
+                                    }
+                                }
+                            },
+                            error: () => {
+                                opciones.multiFilter.$feedback.rup_feedback('set', $.rup.i18n.base.rup_jqtable.plugins.multifilter.error, 'error');
+                            }
+                        });
+                    }
+                }
+            });
+
+            opciones.multiFilter.$label = $('#' + opciones.multiFilter._dialogId + '_combo_label');
+
+            //filtro por derecho
+            $.rup_ajax({
+                url: opciones.action +
+                    '/./multiFilter/getDefault?filterSelector=' +
+                    opciones.multiFilter._filterSelector + '&user=' +
+                    opciones.multiFilter._filterUser,
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    opciones.multiFilter.$label.val(data.filterName);
+                    data.filterValue = JSON.parse(data.filterValue);
+                    if (data.filterDefault) {
+                        opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked = true;
+                    } else {
+                        opciones.multiFilter.$dialog.find('#' + opciones.multiFilter._dialogId + '-defaultFilter')[0].checked = false;
+                    }
+                    for (let i = 0; i < $('#' + opciones.filterForm).find('input').length; i++) {
+                        if (data.filterValue[$('#' + opciones.filterForm).find('input').eq(i).attr('name')] != undefined) {
+                            $('#' + opciones.filterForm).find('input').eq(i).val(data.filterValue[$('#' + opciones.filterForm).find('input').eq(i).attr('name')]);
+                        }
+                    }
+                }
+            });
+
+            opciones.multiFilter.$label.data('uiAutocomplete')._renderItem = (ul, item) => {
+                return $('<li></li>').data(
+                    'item.autocomplete', item).append(
+                    '<a>' + item.label + '</a>')
+                    .appendTo(ul);
+            };
+            opciones.multiFilter.$label.off('blur click');
+        },
+
         /**
          * Método interno que configura el boton de alternar el sord en la ordenación simple
          * @name _sordButtonInit
+         * @private
          * @function
          */
         _sordButtonInit: function () {
             const self = this;
             const opciones = self.options;
 
-            var sordH = opciones._header.sord.find('i');
-            var sordF = opciones._footer.sord.find('i');
+            var sordH = opciones._header.sord;
+            var sordF = opciones._footer.sord;
             if (opciones.sord === 'asc') {
-                sordH.addClass('fa-sort-amount-asc');
-                sordF.addClass('fa-sort-amount-asc');
-                sordH.removeClass('fa-sort-amount-desc');
-                sordF.removeClass('fa-sort-amount-desc');
+                sordH.addClass('asc');
+                sordF.addClass('asc');
+                sordH.removeClass('desc');
+                sordF.removeClass('desc');
             } else {
-                sordH.addClass('fa-sort-amount-desc');
-                sordF.addClass('fa-sort-amount-desc');
-                sordH.removeClass('fa-sort-amount-asc');
-                sordF.removeClass('fa-sort-amount-asc');
+                sordH.addClass('desc');
+                sordF.addClass('desc');
+                sordH.removeClass('asc');
+                sordF.removeClass('asc');
             }
             // Funcionamiento botón sord
             $('#' + opciones._idListHeader.sord + ', #' + opciones._idListFooter.sord).on('click', function () {
-                sordH.toggleClass('fa-sort-amount-asc');
-                sordH.toggleClass('fa-sort-amount-desc');
-                sordF.toggleClass('fa-sort-amount-asc');
-                sordF.toggleClass('fa-sort-amount-desc');
-                self._changeOption('sord', sordH.hasClass('fa-sort-amount-asc') ? 'asc' : 'desc');
+                sordH.toggleClass('asc');
+                sordH.toggleClass('desc');
+                sordF.toggleClass('asc');
+                sordF.toggleClass('desc');
+                self._changeOption('sord', sordH.hasClass('asc') ? 'asc' : 'desc');
             });
         },
 
         /**
          * Método interno que configura el combo de seleccion de sidx en la ordenación simple
          * @name _sidxComboInit
+         * @private
          * @function
          */
         _sidxComboInit: function () {
@@ -711,6 +1124,7 @@
         /**
          * Método interno que configura los elementos de la multiordenación.
          * @name _multisortInit
+         * @private
          * @function
          */
         _multisortInit: function () {
@@ -771,7 +1185,7 @@
                 opciones.multiorder.sidx.split(',').map((e) => {
                     return e.trim();
                 }).forEach((e, i) => {
-                    if(e!==''){
+                    if (e !== '') {
                         let $tmpSum = $('<li class="rup_list-mord-summary-badge badge badge-pill badge-primary rounded-0 mr-1"/>');
                         let geti18n = (val) => {
                             let srcVal = opciones.sidx.source.filter(x => x.value == val);
@@ -894,6 +1308,7 @@
         /**
          * Método interno que configura el combo de elementos de lista por página
          * @name _rownumInit
+         * @private
          * @function
          */
         _rownumInit: function () {
@@ -931,6 +1346,7 @@
         /**
          * Método interno que configura el nav de la paginación
          * @name _pagenavInit
+         * @private
          * @function
          */
         _pagenavInit: function () {
@@ -991,10 +1407,11 @@
 
         /**
          * Método interno que crea la estructura de las líneas en la multiordenación
-         * 
+         *
          * @name _actualizarOrdenMulti
+         * @private
          * @function
-         * @param {Event} e 
+         * @param {Event} e
          * @param {JQueryObj} self  Objeto JQuery del botón
          * @param {String} ord  Direccion de la ordenación con la que se va a generar la línea
          */
@@ -1039,8 +1456,9 @@
 
         /**
          * Método interno que da funcionalidad a cada línea en la multiordenación
-         * 
+         *
          * @name _fnOrderOfOrderFields
+         * @private
          * @function
          * @param {JQuery} ctx La instancia de rup_list
          * @param {JQuery} line Objeto JQuery de la línea a la que se va a dar funcionalidad
@@ -1143,7 +1561,7 @@
             $('.rup_list-mord-remove', line).click(() => {
                 //recreamos el botón
                 let $btn = $(`
-                    <button class="rup_list-mord-field btn btn-material btn-material-sm btn-material-primary-low-emphasis" 
+                    <button class="rup_list-mord-field btn btn-material btn-material-sm btn-material-primary-low-emphasis"
                         data-ordValue="${$(line).attr('data-ordValue')}">
                         ${opciones.sidx.source.filter(x => x.value == $(line).attr('data-ordValue'))[0].i18nCaption}
                         <i class="mdi mdi-plus"/>
@@ -1164,8 +1582,9 @@
 
         /**
          * Método interno para seleccionar todos los elementos de la lista.
-         * 
+         *
          * @name _selectAll
+         * @private
          * @function
          */
         _selectAll: function () {
@@ -1184,8 +1603,9 @@
 
         /**
          * Método interno para deseleccionar todos los elementos de la lista
-         * 
+         *
          * @name _deselectAll
+         * @private
          * @function
          */
         _deselectAll: function () {
@@ -1203,8 +1623,9 @@
 
         /**
          * Método interno para seleccionar todos los elementos en la página actual
-         * 
+         *
          * @name _selectPage
+         * @private
          * @function
          */
         _selectPage: function () {
@@ -1263,8 +1684,9 @@
 
         /**
          * Método interno para deseleccionar todos los elementos en la página actual
-         * 
+         *
          * @name _deselectPage
+         * @private
          * @function
          */
         _deselectPage: function () {
@@ -1323,8 +1745,9 @@
 
         /**
          * Método interno que genera el desplegable de multiseleccion
-         * 
+         *
          * @name _generateSelectablesBtnGroup
+         * @private
          * @function
          */
         _generateSelectablesBtnGroup: function () {
@@ -1334,8 +1757,8 @@
 
             let $btnGroup = $(`
                 <div class="btn-group h-100" role="group">
-                    <button id="${selfId + '-display-selectables'}" 
-                        class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" 
+                    <button id="${selfId + '-display-selectables'}"
+                        class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         ${opciones._header.selectables.text()}
                     </button>
@@ -1381,8 +1804,9 @@
 
         /**
          * Método interno para obtener los Ids de la página actual
-         * 
+         *
          * @name _getPageIds
+         * @private
          * @function
          */
         _getPageIds: function () {
@@ -1396,8 +1820,9 @@
 
         /**
          * Método interno que otorga funcionalidad a la paginación
-         * 
+         *
          * @name _pagenavManagement
+         * @private
          * @function
          * @param {Number} numPages Número total de páginas
          */
@@ -1504,14 +1929,15 @@
 
         /**
          * Método interno que se encarga del bloqueo del componente
-         * 
+         *
          * @name _lock
+         * @private
          * @function
          */
         _lock: function () {
             const self = this;
             const opciones = self.options;
-            
+
             if (opciones.isScrollList && opciones.stepOnLoad) {
                 $('#' + opciones._idOverlay).remove();
                 opciones._overlay.css({
@@ -1535,8 +1961,9 @@
 
         /**
          * Método interno que se encarga del desbloqueo del componente
-         * 
+         *
          * @name _unlock
+         * @private
          * @function
          */
         _unlock: function () {
@@ -1551,8 +1978,9 @@
 
         /**
          * Método para destruir el componente
-         * 
+         *
          * @name destroy
+         * @public
          * @function
          * @example
          * $('#rup-list').rup_list('destroy');
@@ -1569,8 +1997,9 @@
 
         /**
          * Método interno que se encarga de realizar el filtrado y construir la lista desde los datos recibidos
-         * 
+         *
          * @name _doFilter
+         * @private
          * @function
          */
         _doFilter: function () {
@@ -1605,9 +2034,8 @@
             };
 
             /**
-            * SHOW, HIDE
-            */
-
+             * SHOW, HIDE
+             */
             if (opciones.show) {
                 if (opciones.show.constructor == Object) {
                     opciones.show = opciones.show;
@@ -1634,6 +2062,12 @@
                 opciones.hide.delay = 200;
             }
 
+            if (opciones.btnPrint) {
+                if (opciones.btnPrint[0].disabled) {
+                    opciones.btnPrint[0].disabled = false;
+                }
+            }
+
             // opciones.feedback.rup_feedback('hide');
 
             if ($('#' + opciones.filterForm).rup_form('valid')) {
@@ -1646,7 +2080,6 @@
                     success: function (xhr) {
                         $pagenavH.find('.page').remove();
                         $pagenavF.find('.page').remove();
-
                         $pagenavH.find('.page-separator').hide();
                         $pagenavF.find('.page-separator').hide();
 
@@ -1707,6 +2140,23 @@
 
                                 // Si no se está mostrando el content se despliega
                                 opciones._content.slideDown();
+
+                                if (!opciones.content) {
+                                    opciones.content = {};
+                                }
+
+                                if (opciones.content.length == 0 || opciones.content.length == undefined) {
+                                    opciones.content = xhr.rows;
+                                } else {
+                                    if (!opciones.isScrollList) {
+                                        opciones.content = xhr.rows;
+                                    } else {
+                                        var x = opciones.content.length;
+                                        for (let i = 0; i < xhr.rows.length; i++) {
+                                            opciones.content[x + i] = xhr.rows[i];
+                                        }
+                                    }
+                                }
                             } else {
                                 // Si no se devuelven resultados
                                 opciones._header.obj.hide();
@@ -1714,6 +2164,7 @@
                                 opciones._footer.obj.hide();
                                 opciones.feedback.rup_feedback('set', $.rup.i18n.base.rup_table.defaults.emptyrecords, 'alert');
                                 opciones._content.slideDown();
+                                self.element.trigger('load');
                             }
                         }
 
@@ -1724,10 +2175,6 @@
 
                         if (opciones.isHeaderSticky) {
                             self._headerSticky.apply(self);
-                        }
-
-                        if (opciones.print) {
-                            self._print.apply(self);
                         }
 
                         self.element
@@ -1744,7 +2191,7 @@
                                                 self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
                                                 self.options.stepOnLoad = false;
                                                 self.options.stepCounter = 0;
-                                            } 
+                                            }
                                         }
                                     });
                                     if (!opciones.show.animation) {
@@ -1758,7 +2205,7 @@
                                                 self.options.stepLoad = self.element.children().length / self.options.rowNum.value;
                                                 self.options.stepOnLoad = false;
                                                 self.options.stepCounter = 0;
-                                            } 
+                                            }
                                         }
                                     }
                                 }, 50 + (i * 50));
@@ -1787,8 +2234,9 @@
 
         /**
          * Método que se encarga de realizar una recarga de la lista
-         * 
+         *
          * @name reload
+         * @public
          * @function
          * @example
          * $('#rup-list').rup_list('reload');
@@ -1822,8 +2270,9 @@
 
         /**
          * Método que se encarga de realizar el filtrado de la lista
-         * 
+         *
          * @name filter
+         * @public
          * @function
          * @example
          * $('#rup-list').rup_list('filter');
@@ -1860,8 +2309,9 @@
 
         /**
          * Método para cambiar la página actual.
-         * 
+         *
          * @name page
+         * @public
          * @function
          * @param {Number} page La página a la que navegar
          * @example
@@ -1874,8 +2324,9 @@
 
         /**
          * Método que obtiene la información de la selección actual
-         * 
+         *
          * @name getSelectedIds
+         * @public
          * @function
          * @example
          * $('#rup-list').rup_list('getSelectedIds');

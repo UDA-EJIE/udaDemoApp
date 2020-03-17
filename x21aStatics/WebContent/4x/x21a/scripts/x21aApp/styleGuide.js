@@ -57,5 +57,7 @@ jQuery(document).ready(function () {
         showOtherMonths : true,
         noWeekend : true
     });
-    
+
+
+    document.querySelector('.contenedor').classList.add('show');
 });

@@ -134,5 +134,7 @@ jQuery(document).ready(function () {
 
     
     jQuery('#dropdownButton-combo').rup_combo(options_ejie_combo);
-    
+
+
+    $('.contenedor').addClass('show');
 });

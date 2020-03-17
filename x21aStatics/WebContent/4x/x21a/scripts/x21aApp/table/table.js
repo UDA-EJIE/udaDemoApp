@@ -531,4 +531,7 @@ jQuery(function ($) {
 
         loadTable();
     });
+
+
+    $('.contenedor').addClass('show');
 });

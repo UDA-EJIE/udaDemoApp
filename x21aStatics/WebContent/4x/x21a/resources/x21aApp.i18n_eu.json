@@ -187,8 +187,11 @@
 			"exampleForm" : "Formulario de ejemplo_eu",
 		"styleGuide" : "Guía de estilos_eu",
 		"calendario" : "Egutegia",
-			"calendarioSimple" : "Bat",
-			"calendarioDoble" : "Bikote"
+			"calendarioSimple" : "Egutegi bat",
+			"calendarioDoble" : "Egutegi bikote",
+		"lista" : "Listado_eu",
+			"listaConfigurable" : "Listado configurable_eu",
+			"listaDoble" : "Listado doble_eu"
 	},
 	
 "_comment":"PATRONES",	

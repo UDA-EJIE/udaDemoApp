@@ -57,5 +57,7 @@ jQuery(function($){
     $('#btnRecargarTabla').on('click', function(){
         $('#table').rup_jqtable('reloadGrid');
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });

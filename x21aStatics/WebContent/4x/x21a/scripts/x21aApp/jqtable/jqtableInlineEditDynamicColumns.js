@@ -87,5 +87,8 @@ jQuery(function($){
     
     $('#btnTableLoad').click(function() {
         loadTable();
-    });	
+    });
+
+
+    $('.contenedor').addClass('show');
 });

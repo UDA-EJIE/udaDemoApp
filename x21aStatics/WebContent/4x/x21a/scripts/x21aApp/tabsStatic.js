@@ -33,4 +33,5 @@ $(function () {
     });
 
 
+    $('.contenedor').addClass('show');
 });

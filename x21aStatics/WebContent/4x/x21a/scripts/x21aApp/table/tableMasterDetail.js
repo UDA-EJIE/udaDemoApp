@@ -223,4 +223,7 @@ jQuery(function ($) {
         width: "100%",
         customClasses: ["select-material"]
     });*/
+
+
+    $('.contenedor').addClass('show');
 });

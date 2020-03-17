@@ -304,4 +304,7 @@ window.initRupI18nPromise.then(function () {
     jQuery('#fechaBaja_detail_table').rup_date();
 
     jQuery('#rol_detail_table').rup_combo(window.options_role_combo);
+
+
+    $('.contenedor').addClass('show');
 });

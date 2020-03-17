@@ -116,6 +116,9 @@ jQuery(function($) {
             label: 'PestañasMaint'
         });
     });
+
+
+    $('.contenedor').addClass('show');
 });
 
 

@@ -50,4 +50,7 @@ jQuery(function($) {
     $('#hora_inline').rup_time('setTime', new Date());
     
     //$("#fecha_hora").datetimepicker({});
+
+
+    $('.contenedor').addClass('show');
 });

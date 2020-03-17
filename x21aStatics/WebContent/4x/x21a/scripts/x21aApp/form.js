@@ -264,5 +264,7 @@ jQuery(function($) {
             $('#feedbackMensajes').rup_feedback('set',$.rup_utils.printMsg(xhr),'ok');
         }
     });
-    
+
+
+    $('.contenedor').addClass('show');
 });

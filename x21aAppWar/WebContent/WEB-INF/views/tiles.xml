@@ -559,19 +559,19 @@
 	</definition>
 
 	<!-- LISTADO -->
-	<definition extends="template" name="listaSimple">
-		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
-		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
+	<definition extends="template" name="listaConfigurable">
+		<put-attribute name="content" value="/WEB-INF/views/list/listConfigurable.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listConfigurable-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="listaDoble">
+		<put-attribute name="content" value="/WEB-INF/views/list/listDoble.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listDoble-includes.jsp" />
 	</definition>
 
 	<definition extends="templateNoHeads" name="listaNoTemplate">
 		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
 		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
-	</definition>
-
-	<definition extends="template" name="listaMultiOrd">
-		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
-		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listMultiOrd-includes.jsp" />
 	</definition>
 
 	<!-- TABLE -->

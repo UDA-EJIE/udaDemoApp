@@ -180,4 +180,7 @@ jQuery(document).ready(function () {
     $('#activate-menu').on('click', function () {
         $('.contextMenu-other').rup_contextMenu('show');
     });
+
+
+    $('.contenedor').addClass('show');
 });

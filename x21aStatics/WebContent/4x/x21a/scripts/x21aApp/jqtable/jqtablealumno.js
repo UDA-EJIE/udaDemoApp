@@ -247,4 +247,7 @@ jQuery(function ($) {
     });
 
     $('#contentLayer').css('opacity', '100');
+
+
+    $('.contenedor').addClass('show');
 });

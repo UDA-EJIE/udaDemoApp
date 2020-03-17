@@ -173,6 +173,9 @@ window.initRupI18nPromise.then(function () {
         }
         ]
     };
+
+
+    $('.contenedor').addClass('show');
 });
 
 //Formulario de filtrado

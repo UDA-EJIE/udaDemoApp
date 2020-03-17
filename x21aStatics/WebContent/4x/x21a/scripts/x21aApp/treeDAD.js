@@ -670,6 +670,7 @@ jQuery(function($) {
     $('.rup_accordion').rup_accordion({
         autoHeight: false
     });
-    
-    
+
+
+    $('.contenedor').addClass('show');
 });

@@ -71,4 +71,7 @@ jQuery(function ($) {
             report: window.options_table_report
         });
     });
+
+
+    $('.contenedor').addClass('show');
 });
