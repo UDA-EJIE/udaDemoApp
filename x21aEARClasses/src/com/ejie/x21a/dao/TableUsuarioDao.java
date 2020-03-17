@@ -93,7 +93,7 @@ public interface TableUsuarioDao {
 	
 	void removeMultiple(TableRequestDto tableRequestDto);
 	
-	List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
     /**
      * Counts rows in the Usuario table using like.
@@ -114,7 +114,7 @@ public interface TableUsuarioDao {
     
     List<TableRowDto<Usuario>> reorderSelection(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
 
     /*
 	 * OPERACIONES RUP_TABLE JERARQUIA

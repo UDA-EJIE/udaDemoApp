@@ -132,19 +132,19 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
-	public List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.jqGridUsuarioDao.getMultiple(filterUsuario, jqGridRequestDto, startsWith);
+	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.getMultiple(filterUsuario, jqGridRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(Usuario usuario, JQGridRequestDto jqGridRequestDto,
+	public Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto,
 			Boolean startsWith) {
-		return this.jqGridUsuarioDao.reorderSelection(usuario, jqGridRequestDto, startsWith);
+		return this.tableUsuarioDao.reorderSelection(usuario, jqGridRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.jqGridUsuarioDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto jqGridRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
 	}
 
 	@Override

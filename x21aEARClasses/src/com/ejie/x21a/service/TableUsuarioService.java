@@ -107,7 +107,7 @@ public interface TableUsuarioService {
 	 * @param jqGridRequestDto JQGridRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
 	
 	/**
 	 * Searches in the Usuario table.
@@ -117,11 +117,11 @@ public interface TableUsuarioService {
 	 * @param jqGridRequestDto JQGridRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
 
 	TableResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
-	Object reorderSelection(Usuario usuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
 
 	
 	/*

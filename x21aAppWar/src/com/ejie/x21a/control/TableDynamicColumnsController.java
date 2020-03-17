@@ -251,9 +251,9 @@ public class TableDynamicColumnsController  {
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+			@RequestJsonBody TableRequestDto tableRequestDto){
 		TableDynamicColumnsController.logger.info("[POST - search] : Buscar Usuarios");
-		return tableUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
+		return tableUsuarioService.search(filterUsuario, searchUsuario, tableRequestDto, false);
 	}
 	
 	/**

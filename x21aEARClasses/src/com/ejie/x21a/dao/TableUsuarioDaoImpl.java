@@ -262,7 +262,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	}
 	
 	@Override
-	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
 		// SELECT 
 		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
@@ -293,9 +293,9 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getSearchQuery(sbSQL, jqGridRequestDto, Usuario.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Usuario.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
 				
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	
@@ -313,7 +313,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	}
 	
 	@Override
-	public List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
 		//Where clause & Params
 		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
@@ -323,7 +323,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		@SuppressWarnings("unchecked")
 		List<Object> params = (List<Object>) mapaWhere.get("params");
 		
-		StringBuilder sbRemoveMultipleSQL = JQGridManager.getSelectMultipleQuery(jqGridRequestDto, Usuario.class, params, "ID");
+		StringBuilder sbRemoveMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID");
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		
