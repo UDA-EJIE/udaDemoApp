@@ -15,8 +15,11 @@
 */
 package com.ejie.x21a.control;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -468,15 +472,30 @@ public class TableUsuarioController  {
 	}
 	
 	@RequestMapping(value = "xlsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody FileSystemResource download() throws ServletException{
+	public FileSystemResource download(HttpServletResponse response) throws ServletException{
 		
 		File datos = null;
 		try {			
 			String name = "pruebaReport";
 			String extension = ".xls";
+			
+			File pathtmp = new File("/datos/x21a/tmp");
+			datos = File.createTempFile("IMP", ".xls", pathtmp);
+			String fic = datos.getPath();
 
-			datos = File.createTempFile(name, extension);
-			datos.deleteOnExit();
+			//datos = File.createTempFile(name, extension);
+			
+
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + fic + "\"");
+			response.setContentType("application/download");
+			response.flushBuffer();
+
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(datos));
+
+			FileCopyUtils.copy(inputStream, response.getOutputStream());
+
+			
+			datos.delete();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
