@@ -315,6 +315,28 @@ jQuery(function ($) {
                     titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption'),
                     cancelDeleteFunction: cancelClicked
                 };
+                plugins.validarModificarContinuar = function customGuardar(ctx){
+                	if($('#apellido1_detail_table').val() !== 'ruiz'){
+	                	//Ejemplo de validación personalizada
+	                	 let idTableDetail = ctx.oInit.formEdit.detailForm;
+	                	 let feedback = idTableDetail.find('#' + ctx.sTableId + '_detail_feedback');
+	                     try {//Se destruye para asegurar la inicialización.
+	                         feedback.rup_feedback('destroy');
+	                     } catch (ex) {
+	                      
+	                     }
+	
+	                     feedback.rup_feedback({
+	                         message: 'No validado, validación personal, solo se valida si el primer apellido es ruiz.',
+	                         type: 'error',
+	                         block: false,
+	                         gotoTop: false,
+	                         delay: 2000
+	                     });
+	                	return true;//no paso la validacion
+                	}
+                	return false;//Paso la validacion
+                };
                 plugins.formEdit = formEdit;
 
                 $('#editForm').prop('checked', true);
@@ -372,6 +394,7 @@ jQuery(function ($) {
                 var buttons = {
                     activate: true
                 };
+
                 plugins.buttons = buttons;
                 $('#buttons').prop('checked', true);
                 if (localStorage.plugins !== undefined && localStorage.plugins.indexOf('multiPart') > -1) {
