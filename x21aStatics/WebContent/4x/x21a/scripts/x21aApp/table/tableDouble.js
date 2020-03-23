@@ -117,7 +117,7 @@ function _init() {
         });
         $formDetail.find('input').each(function (i, e) {
             $(e).attr('id', $(e).attr('id') + num);
-            $(e).attr('name', $(e).attr('name'));
+            $(e).attr('name', $(e).attr('name') + num);
         });
         $formDetail.find('label [for]').each(function (i, e) {
             $(e).attr('for', $(e).attr('for') + num);
@@ -433,7 +433,7 @@ function _init() {
 
         plugins.colModel = [{
             name: 'id' + num,
-            index: 'id',
+            index: 'id' + num,
             editable: true,
             hidden: false,
             width: 80,
@@ -444,7 +444,7 @@ function _init() {
         },
         {
             name: 'nombre' + num,
-            index: 'nombre',
+            index: 'nombre' + num,
             editable: true,
             hidden: false,
             formoptions: {
@@ -454,7 +454,7 @@ function _init() {
         },
         {
             name: 'apellido1' + num,
-            index: 'apellido1',
+            index: 'apellido1' + num,
             editable: true,
             hidden: false,
             formoptions: {
@@ -465,7 +465,7 @@ function _init() {
         },
         {
             name: 'ejie' + num,
-            index: 'ejie',
+            index: 'ejie' + num,
             editable: true,
             hidden: false,
             width: 60,
@@ -483,7 +483,7 @@ function _init() {
         },
         {
             name: 'fechaAlta' + num,
-            index: 'fecha_alta',
+            index: 'fechaAlta' + num,
             editable: true,
             hidden: false,
             width: 120,
@@ -502,7 +502,7 @@ function _init() {
         },
         {
             name: 'fechaBaja' + num,
-            index: 'fecha_baja',
+            index: 'fechaBaja' + num,
             editable: false,
             hidden: false,
             width: 120,
@@ -521,7 +521,7 @@ function _init() {
         },
         {
             name: 'rol' + num,
-            index: 'rol',
+            index: 'rol' + num,
             editable: true,
             hidden: false,
             width: 140,

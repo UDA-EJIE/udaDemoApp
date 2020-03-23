@@ -509,6 +509,13 @@ jQuery(function ($) {
             //Col model es obligatorio,se mete como generico
             plugins.colModel = tableColModels;
 
+            plugins.filter = {
+                rules: {
+                    fechaAlta: 'date',
+                    fechaBaja: 'date'
+                }
+            }
+
             localStorage.clear();
             return plugins;
         }
