@@ -158,7 +158,7 @@
                                     <a class="dropdown-item" href="${tableDynamicColumns}">
                                         <spring:message code="tabla.dynamicColumns" />
                                     </a>
-                                    <a class="dropdown-item" href="${staticsUrl}/rup/html/specRunner.html" target="_blank">
+                                    <a class="dropdown-item" href="${staticsUrl}/x21a/scripts/x21aApp/testJasmine/specRunner.html" >
                                         <spring:message code="Test para la tabla" />
                                     </a>
                                     <div class="dropdown-divider"></div>

@@ -14,7 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(function ($) {
-
+	window.initRupI18nPromise.then(function () {
     var combo = [{
             rol: '---',
             codTipoSubsanacion: ''
@@ -181,7 +181,7 @@ jQuery(function ($) {
 
             if (!item.obligatorio) {
                 // Bucle para los opcionales
-                $.each($('#columsSelector').rup_combo('getRupValue'), function () {
+                $.each(localStorage.columnas, function () {
                     if (item.name === tableColModel[this - 1].name) {
                         temp = item;
                         return;
@@ -221,11 +221,12 @@ jQuery(function ($) {
                         }
                     }
                 }
-            }
+            },
+            filter : 'noFilter'
         });
 
         // Ocultamos los elementos configuradores de la tabla
-        $('div#columsSelectorContainer, button#btnTableLoad').addClass('d-none');
+        //$('div#columsSelectorContainer, button#btnTableLoad').addClass('d-none');
         $('table#columnasDinamicas').removeClass('d-none');
     }
 
@@ -239,9 +240,20 @@ jQuery(function ($) {
     });
 
     $('#btnTableLoad').click(function () {
-        loadTable();
+    	let columnas = [];
+        $.each($('#columsSelector').rup_combo('getRupValue'), function () {
+             columnas.push(tableColModel[this - 1].name);
+        });
+        localStorage.columnas = columnas;
+    	location.reload();
     });
 
 
     $('.contenedor').addClass('show');
+	});
+	
+    if (localStorage.columnas !== undefined) { //si esta undefined es que es la primera vez.
+    	loadTable();
+    }
+
 });
