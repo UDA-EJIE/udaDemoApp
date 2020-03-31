@@ -297,4 +297,7 @@ $(function () {
         customClasses: ['select-material'],
         multiselect: true
     });
+
+
+    $('.contenedor').addClass('show');
 });

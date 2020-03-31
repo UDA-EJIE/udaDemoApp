@@ -39,7 +39,7 @@
 	</bean>
 
 	<!-- Gestiona la locale (idioma) mediante cookie  -->
-    <bean id="localeResolver" class="com.ejie.x38.util.CookieLocaleResolver">
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="cookieName" value="language" />
     </bean>
     

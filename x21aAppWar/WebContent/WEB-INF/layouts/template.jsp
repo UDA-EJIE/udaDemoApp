@@ -39,7 +39,7 @@
 	<body>
 	
 	
-		<div class="contenedor" >
+		<div class="contenedor fade" >
 			<!-- Cabecera -->
 			<tiles:insertAttribute name="header" />
 			

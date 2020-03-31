@@ -208,4 +208,7 @@ jQuery(function($) {
             contains : false
         });
     });
+
+
+    $('.contenedor').addClass('show');
 });

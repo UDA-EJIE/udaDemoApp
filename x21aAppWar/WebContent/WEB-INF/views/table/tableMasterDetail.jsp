@@ -94,33 +94,31 @@
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-			    	<form:input path="code" id="code_detailForm_table" />
+			    	<form:input path="code" id="code_detailForm_tableComarca" />
 					<label for="code_detailForm_table">code</label>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="descEs" id="descEs_detail_table" />
+			    	<form:input path="descEs" id="descEs_detail_tableComarca" />
 			    	<label for="descEs_detail_table">descEs</label>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="descEu" id="descEu_detail_table" />
+			    	<form:input path="descEu" id="descEu_detail_tableComarca" />
 			    	<label for="descEu_detail_table">descEu</label>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="css" id="css_detail_table" />
+			    	<form:input path="css" id="css_detail_tableComarca" />
 			    	<label for="css_detail_table">css</label>
 			    </div>
 			</div>
 			<div class="form-row">  
 			    <div class="form-groupMaterial col-sm">
-					<select id="provinciaRemote" name="provincia.code"><option>&nbsp;</option></select>
 			    	<label for="provinciaRemote">Provincia</label>
 					<form:select id="provinciaRemote" path="provincia.code" class="rup-combo"><form:option value="0" label="&nbsp;"/>&nbsp;</form:select>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm d-none">
 			    	<form:input path="provincia.descEs" id="provinciaDescEs_detail_table" />
-			    	<label for="provinciaDescEs_detail_table">provincia.descEs</label>
 			    </div>
 			</div>	
 		</form:form>

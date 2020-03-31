@@ -165,4 +165,7 @@ $(function () {
         autoHeight: false,
         collapsible: true
     });
+
+
+    $('.contenedor').addClass('show');
 });

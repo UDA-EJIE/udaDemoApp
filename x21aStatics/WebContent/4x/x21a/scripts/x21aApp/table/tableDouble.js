@@ -117,7 +117,7 @@ function _init() {
         });
         $formDetail.find('input').each(function (i, e) {
             $(e).attr('id', $(e).attr('id') + num);
-            $(e).attr('name', $(e).attr('name'));
+            $(e).attr('name', $(e).attr('name')+num);
         });
         $formDetail.find('label [for]').each(function (i, e) {
             $(e).attr('for', $(e).attr('for') + num);
@@ -584,6 +584,8 @@ function _init() {
 
         loadTable();
         loadTable(2);
+
+        $('.contenedor').addClass('show');
     });
 }
 

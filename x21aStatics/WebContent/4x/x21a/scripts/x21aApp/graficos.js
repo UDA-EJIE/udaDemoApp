@@ -141,4 +141,7 @@ function fncOnDomRefresh(vista) {
         data: vista.bubbleData
 
     });
+
+
+    $('.contenedor').addClass('show');
 }

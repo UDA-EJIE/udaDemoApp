@@ -314,6 +314,8 @@ jQuery(function($){
 	
 	loadTableMultiPk();
 	loadTable();
+
+	$('.contenedor').addClass('show');
 	});
 
 });

@@ -73,4 +73,7 @@ jQuery(function ($) {
             style: 'multi'
         }
     });
+
+
+    $('.contenedor').addClass('show');
 });

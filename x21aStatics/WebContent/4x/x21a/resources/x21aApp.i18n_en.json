@@ -186,8 +186,11 @@
 			"exampleForm" : "Example form",
 		"styleGuide" : "Styling guide",
 		"calendario" : "Calendar",
-			"calendarioSimple" : "Simple",
-			"calendarioDoble" : "Double"
+			"calendarioSimple" : "Calendar simple",
+			"calendarioDoble" : "Calendar double",
+		"lista" : "List",
+			"listaConfigurable" : "List configurable",
+			"listaDoble" : "List double"
 	},
 	
 "_comment":"PATRONES",	

@@ -127,4 +127,7 @@ jQuery(document).ready(function () {
     function handlerMButtons(event){
         alert ('MButton:' + event.data.i18nCaption);
     }
+
+
+    $('.contenedor').addClass('show');
 });

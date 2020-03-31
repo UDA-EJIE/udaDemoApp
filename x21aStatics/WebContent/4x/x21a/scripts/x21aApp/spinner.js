@@ -39,4 +39,6 @@ jQuery(document).ready(function () {
 
     $('#button').button();
 
+
+    $('.contenedor').addClass('show');
 });

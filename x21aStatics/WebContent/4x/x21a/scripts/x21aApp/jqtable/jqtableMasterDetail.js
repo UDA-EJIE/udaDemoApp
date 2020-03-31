@@ -222,4 +222,7 @@ jQuery(function ($) {
             masterPrimaryKey: 'comarca.code'
         }
     });
+
+
+    $('.contenedor').addClass('show');
 });
