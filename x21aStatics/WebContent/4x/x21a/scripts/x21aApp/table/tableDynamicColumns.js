@@ -15,7 +15,7 @@
  */
 jQuery(function ($) {
 	window.initRupI18nPromise.then(function () {
-    var combo = [{
+    let combo = [{
             rol: '---',
             codTipoSubsanacion: ''
         },
@@ -39,8 +39,8 @@ jQuery(function ($) {
             rol: 'Manager',
             codTipoSubsanacion: 'manager'
         }
-        ],
-        tableColModel = [{
+        ];
+      let tableColModel = [{
             name: 'id',
             index: 'id',
             editable: true,
@@ -175,14 +175,44 @@ jQuery(function ($) {
         }
         ];
 
-    function loadTable() {
+      //se inicializa
+    
+    $('#columsSelector').rup_combo({
+        source: optionalColumns,
+        ordered: false,
+        multiselect: true,
+        rowStriping: true,
+        width: 350,
+        readAsString: true,
+        customClasses: ['select-material']
+    });
+    $('#columsSelector').rup_combo('setRupValue','0');
+
+    $('#btnTableLoad').click(function () {
+    	let columnas = [];
+        $.each($('#columsSelector').rup_combo('getRupValue'), function () {
+             columnas.push(tableColModel[this - 1].name);
+        });
+        localStorage.columnas = columnas;
+    	location.reload();
+    });
+
+
+    $('.contenedor').addClass('show');
+    
+    function loadTable(tableColModel) {
+    	let valores = localStorage.columnas.replace('apellido1','3');
+    	valores = valores.replace('ejie','4');
+    	valores = valores.replace('fechaBaja','6');
+    	valores = valores.replace('rol','7');
+    	$('#columsSelector').rup_combo('setRupValue',valores);
         tableColModel = jQuery.grep(tableColModel, function (item) {
             var temp = '';
 
             if (!item.obligatorio) {
                 // Bucle para los opcionales
-                $.each(localStorage.columnas, function () {
-                    if (item.name === tableColModel[this - 1].name) {
+                $.each(localStorage.columnas.split(','), function () {
+                    if (item.name === this.toString()) {
                         temp = item;
                         return;
                     }
@@ -229,31 +259,15 @@ jQuery(function ($) {
         //$('div#columsSelectorContainer, button#btnTableLoad').addClass('d-none');
         $('table#columnasDinamicas').removeClass('d-none');
     }
-
-    $('#columsSelector').rup_combo({
-        source: optionalColumns,
-        ordered: false,
-        multiselect: true,
-        rowStriping: true,
-        width: 350,
-        customClasses: ['select-material']
-    });
-
-    $('#btnTableLoad').click(function () {
-    	let columnas = [];
-        $.each($('#columsSelector').rup_combo('getRupValue'), function () {
-             columnas.push(tableColModel[this - 1].name);
-        });
-        localStorage.columnas = columnas;
-    	location.reload();
-    });
-
-
-    $('.contenedor').addClass('show');
-	});
 	
-    if (localStorage.columnas !== undefined) { //si esta undefined es que es la primera vez.
-    	loadTable();
-    }
+	function cargarTablas(localStorage,tableColModel){
+	    if (localStorage.columnas !== undefined) { //si esta undefined es que es la primera vez.
+	    	loadTable(tableColModel);
+	    }
+	}
+	
+	cargarTablas(localStorage,tableColModel);
+	});
+
 
 });
