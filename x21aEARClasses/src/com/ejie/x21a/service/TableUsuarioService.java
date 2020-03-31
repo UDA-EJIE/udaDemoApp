@@ -17,6 +17,10 @@ package com.ejie.x21a.service;
 
 
 import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dto.JQGridRequestDto;
@@ -86,7 +90,7 @@ public interface TableUsuarioService {
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<Usuario> findAllLike(Usuario usuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) ;
+	List<Usuario> findAllLike(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	
 	/*
@@ -107,7 +111,7 @@ public interface TableUsuarioService {
 	 * @param jqGridRequestDto JQGridRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Searches in the Usuario table.
@@ -130,8 +134,30 @@ public interface TableUsuarioService {
 	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
 	
 	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto);
-
 	
+	/*
+	 * EXPORTACIONES DE DATOS
+	 */
+	
+	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<Usuario> getDataForReports(Usuario filterUsuario, TableRequestDto tableRequestDto);
+	
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param locale Locale
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(Usuario filterUsuario, String[] columns, String fileName, String sheetTitle, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
 }
-
-

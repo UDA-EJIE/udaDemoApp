@@ -181,7 +181,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		List<Object> params = (List<Object>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-//			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
 			query = TableManager.getPaginationQuery(tableRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		

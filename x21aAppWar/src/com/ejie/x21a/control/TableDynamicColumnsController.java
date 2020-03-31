@@ -17,9 +17,9 @@ package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -34,9 +34,9 @@ import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -50,19 +50,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.reports.ReportData;
 import com.ejie.x38.util.DateTimeManager;
 
 
@@ -274,207 +269,122 @@ public class TableDynamicColumnsController  {
 	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}
 	
-	
-	/**
-	 * EXPORTERS
+	/*
+	 * EXPORTACIONES DE DATOS
 	 */
 	
+	/**
+	 * Devuelve los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param tableRequestDto TableRequestDto
+	 */	
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<Usuario> getClipboardReport(
-			@RequestJsonBody(param="filter") Usuario  filterUsuario ,
-			@RequestJsonBody TableRequestDto  tableRequestDto) {
-		//UsuarioController.logger.info("[POST - clipboardReport] : : Copiar multiples usuarios");
-		return this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableDynamicColumnsController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
+		return this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto);
 	}
 	
-	@RequestMapping(value = {"xlsReportViejo" , "xlsxReportViejo"}, method = RequestMethod.POST)
-	protected ModelAndView getExcelPOIViejo(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto tableRequestDto,
-			ModelMap modelMap,
-			@RequestParam(value = "columns", required = false) String columns,
-			HttpServletRequest request){
-		System.out.print(" NUEVO \n");
-		//Acceso a BD para recuperar datos
-		/*List<Usuario> listUsuarioPage = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		jqGridRequestDto.setPage(null);
-		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);*/
-		List<Usuario> listUsuarioAll = null;//this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
-		//Nombre fichero
-		modelMap.put("fileName", "datosExcel");
-		
-		//Datos
-		List<Object> reportData = new ArrayList<Object>();
-			//Hoja 1
-			ReportData<Usuario> usuarioExcelDataAll = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataAll.setSheetName("Todos los usuarios");
-				//cabeceras hoja
-				if(columns != null){
-					usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
-				}
-				//datos hoja
-				usuarioExcelDataAll.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataAll);
-			//Hoja 2
-			ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
-				//cabeceras hoja
-				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
-				//datos hoja
-				usuarioExcelDataPage.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataPage);
-		modelMap.put("reportData", reportData);
-		
-		//Generación del XLS o XLSX
-
-		if (request.getServletPath().indexOf("xlsReport")!=-1){
-			return new ModelAndView("xlsReport", modelMap);
-		}else{
-			return new ModelAndView("xlsxReport", modelMap);
-		}
-
-		
-	}
-	
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST)
-	protected ModelAndView getCSVReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
-			ModelMap modelMap,
-			@RequestParam(value = "columns", required = false) String columns){
-		
-		//Acceso a BD para recuperar datos
-		jqGridRequestDto.setPage(null);
-		jqGridRequestDto.setRows(null);
-		List<Usuario> filter = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		 
-		//Nombre fichero
-		modelMap.put("fileName", "datosCSV");
-			
-		//Datos
-		ReportData<Usuario> reportData = new ReportData<Usuario>();
-			//cabeceras hoja
-			reportData.setHeaderNames(ReportData.parseColumns(columns));
-			//datos hoja
-			reportData.setModelData(filter);
-		modelMap.put("reportData", reportData);
-		
-		//Generación del CVS
-		return new ModelAndView("csvReport", modelMap);
-	}
-	
-	@RequestMapping(value = {"xlsReport" , "xlsxReport"}, method = RequestMethod.POST)
-	protected ModelAndView getExcelPOI(@ModelAttribute Usuario filterUsuario, 
-			@ModelAttribute TableRequestDto tableRequestDto,
-			ModelMap modelMap,
-			@RequestParam(value = "columns", required = false) String columns,
-			HttpServletRequest request){
-		
-		try{
-
-		List<Usuario> listUsuarioAll = this.usuarioService.getMultiple(filterUsuario, tableRequestDto, false);
-		
-		//Nombre fichero
-		modelMap.put("fileName", "datosExcel");
-		
-		//Datos
-		List<Object> reportData = new ArrayList<Object>();
-			//Hoja 1
-			ReportData<Usuario> usuarioExcelDataAll = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataAll.setSheetName("Listado de usuarios");
-				//cabeceras hoja
-				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
-				//datos hoja
-				usuarioExcelDataAll.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataAll);
-			//Hoja 2
-		/*	ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
-				//cabeceras hoja
-				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
-				//datos hoja
-				usuarioExcelDataPage.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataPage);*/
-		modelMap.put("reportData", reportData);
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-		//Generación del XLS o XLSX
-		if (request.getServletPath().indexOf("xlsReport")!=-1){
-			return new ModelAndView("xlsReport", modelMap);
-		}else{
-			return new ModelAndView("xlsxReport", modelMap);
-		}
-		
-	}
-	
-	
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST)
-	protected ModelAndView getODSReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
-			ModelMap modelMap,
-			@RequestParam(value = "columns", required = false) String columns){
-		
-		//Acceso a BD para recuperar datos
-		List<Usuario> listUsuarioPage = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		jqGridRequestDto.setPage(null);
-		jqGridRequestDto.setRows(null);
-		List<Usuario> listUsuarioAll = this.tableUsuarioService.findAllLike(filterUsuario, jqGridRequestDto, false);
-		
-		//Nombre fichero
-		modelMap.put("fileName", "datosODS");
-		
-		//Datos
-		List<Object> reportData = new ArrayList<Object>();
-			//Hoja 1
-			ReportData<Usuario> usuarioExcelDataAll = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataAll.setSheetName("Todos los usuarios");
-				//cabeceras hoja
-				usuarioExcelDataAll.setHeaderNames(ReportData.parseColumns(columns));
-				//datos hoja
-				usuarioExcelDataAll.setModelData(listUsuarioAll);
-			reportData.add(usuarioExcelDataAll);
-			//Hoja 2
-			ReportData<Usuario> usuarioExcelDataPage = new ReportData<Usuario>();
-				//nombre hoja
-				usuarioExcelDataPage.setSheetName("Página 1 de usuarios");
-				//cabeceras hoja
-				usuarioExcelDataPage.setHeaderNames(ReportData.parseColumns(columns));
-				//datos hoja
-				usuarioExcelDataPage.setModelData(listUsuarioPage);
-			reportData.add(usuarioExcelDataPage);
-		modelMap.put("reportData", reportData);
-		
-		//Generación del ODS
-		return new ModelAndView("odsReport", modelMap);
-	}
-	
-	@RequestMapping(value="pdfReport")
-	public ModelAndView generarPDFJasperReport(@ModelAttribute Usuario filterUsuario, @ModelAttribute JQGridRequestDto jqGridRequestDto,
-			ModelMap modelMap,
-			@RequestParam(value = "isInline", required = false) boolean isInline){
-		
-		//Acceso a BD para recuperar datos
-		List<Usuario> usuarios = this.tableUsuarioService.findAll(new Usuario(), null);
-		
-		//Nombre fichero
-		modelMap.put("fileName", "datosPDF");
-		
-		//En línea (no descarga fichero) ?
-		modelMap.put("isInline", isInline);
-		
-		//Titulo y cabeceras (parameter)
-		modelMap.put("TITULO", "Listado usuarios");
-		modelMap.put("COL_NOMBRE", "Nombre");
-		modelMap.put("COL_APE1", "Apellido 1");
-		modelMap.put("COL_APE2", "Apellido 2");
-		
-		//Datos (field)
-		modelMap.put("usuarios", usuarios);
-		
-		//Generación del PDF
-		return new ModelAndView("pdfUsuario", modelMap);
+	/**
+	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */	
+	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateExcelReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response) throws ServletException{
+		TableDynamicColumnsController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
     }
-		
+	
+	/**
+	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */	
+	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generatePDFReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableDynamicColumnsController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */	
+	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateODSReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableDynamicColumnsController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */	
+	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateCSVReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableDynamicColumnsController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+	}
 }

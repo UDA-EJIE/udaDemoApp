@@ -4,11 +4,45 @@ import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.lowagie.text.Document;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.odftoolkit.odfdom.doc.OdfSpreadsheetDocument;
+import org.odftoolkit.odfdom.doc.table.OdfTable;
+import org.odftoolkit.odfdom.doc.table.OdfTableRow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.X21aAlumno;
 
 /**
@@ -195,6 +229,389 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	}
       
 	
+    /*
+	 * EXPORTACIONES DE DATOS
+	 */
 	
-}
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterX21aAlumno X21aAlumno
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(X21aAlumno filterX21aAlumno, String[] columns, String fileName, String sheetTitle, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+		// Accede a la DB para recuperar datos
+		List<X21aAlumno> filteredData = getDataForReports(filterX21aAlumno, tableRequestDto);
+		String extension = null;
+		
+		// Obtener idioma
+		String language = locale.getLanguage();
+		
+		// Comprobar si las siguientes variables estan vacias, en caso de estarlo se las asigna un valor generico
+		fileName = (fileName != null && !fileName.isEmpty()) ? fileName : "report";
+		sheetTitle = (sheetTitle != null && !sheetTitle.isEmpty()) ? sheetTitle : Usuario.class.getSimpleName();
+		
+		// Obtener el formato de fecha especifico del locale
+        SimpleDateFormat formatter = (SimpleDateFormat) SimpleDateFormat.getDateInstance(DateFormat.SHORT, locale);
+		
+		// Cuando no se definen columnas porque se quieren obtener todas
+        if (columns == null) {
+        	Field[] fields = Usuario.class.getDeclaredFields();
+        	ArrayList<String> tempColumns = new ArrayList<String>();
+	        
+	        for(int i = 0; i < fields.length; i++) {
+	        	try {
+	        		String methodName = fields[i].getName();
+	        		methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
+    				Usuario.class.getMethod("get" + methodName);
+    				tempColumns.add(fields[i].getName());
+    			} catch (NoSuchMethodException e) {
+    				e.printStackTrace();
+    			}
+	        	
+	        }
+	        columns = tempColumns.toArray(new String[0]);
+        }
+		
+		String servletPath = request.getServletPath();
+		String reportType = null;
+		if (servletPath.contains("/") && (servletPath.lastIndexOf("/") + 1 != servletPath.length())) {
+			reportType = servletPath.substring(servletPath.lastIndexOf("/") + 1, servletPath.length());
+		} else {
+			reportType = servletPath.substring(0, servletPath.length());
+		}
+		
+		if (reportType.equals("xlsReport")) {
+			extension = ".xls";
+			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("xlsxReport")) {
+			extension = ".xlsx";
+			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("pdfReport")) {
+			extension = ".pdf";
+			generatePDFReport(filteredData, columns, fileName, formatter, response);
+		} else if (reportType.equals("odsReport")) {
+			extension = ".ods";
+			generateODSReport(filteredData, columns, fileName, sheetTitle, formatter, response);
+		} else if (reportType.equals("csvReport")) {
+			extension = ".csv";
+			generateCSVReport(filteredData, columns, fileName, sheetTitle, formatter, language, response);
+		}
+	}
 
+	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterX21aAlumno X21aAlumno
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<X21aAlumno> getDataForReports(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto) {
+		if (tableRequestDto.getMultiselection().getSelectedAll() && tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
+			if (filterX21aAlumno != null) {
+				return this.x21aAlumnoDao.findAllLike(filterX21aAlumno, tableRequestDto, false);
+			} else {
+				return this.x21aAlumnoDao.findAll(new X21aAlumno(), null);
+			}
+		} else {
+			return this.x21aAlumnoDao.getMultiple(filterX21aAlumno, tableRequestDto, false);
+		}
+	}
+	
+	/**
+	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
+	 *
+	 * @param filteredData List<X21aAlumno>
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param extension String
+	 * @param formatter SimpleDateFormat
+	 * @param response HttpServletResponse
+	 */
+	private void generateExcelReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
+		try {
+			// Creacion del Excel
+			Workbook workbook = null;
+			if (extension == ".xlsx"){
+				workbook = new XSSFWorkbook();
+				response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+			} else {
+				workbook = new HSSFWorkbook();
+				response.setContentType("application/vnd.ms-excel");
+			}
+			
+	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + extension + "");
+			
+			// Creacion de una hoja y asignacion de su nombre
+	        Sheet sheet = workbook.createSheet(sheetTitle);
+	        
+	        // Se crea una fuente para estilizar las cabeceras
+	        Font headerFont = workbook.createFont();
+	        headerFont.setBold(true);
+	        headerFont.setFontHeightInPoints((short) 12);
+	        
+	        // Se crea un CellStyle con la fuente
+	        CellStyle headerCellStyle = workbook.createCellStyle();
+	        headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+	        headerCellStyle.setFont(headerFont);
+	        
+	        // Inicializar contador de filas
+	        int rowNumber = 0;
+	        
+	        // Se crea la fila para insertar los titulos de las columnas
+	        Row row = sheet.createRow(rowNumber++);
+	        
+	        // Añadir titulos
+	        for(int i = 0; i < columns.length; i++) {
+	        	Cell cell = row.createCell(i);
+	            cell.setCellValue(columns[i]);
+	            cell.setCellStyle(headerCellStyle);
+	        }
+	        
+	        // CreationHelper ayudara a mantener la compatibilidad del DataFormat tanto si se crea un .xls como un .xlsx
+	        CreationHelper createHelper = workbook.getCreationHelper();
+	        
+	        // Se crea un CellStyle para añadir el formateador de fechas
+	        CellStyle dateCellStyle = workbook.createCellStyle();
+	        dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(formatter.toPattern()));
+	        
+	        // Añadir datos
+	        for (X21aAlumno rowX21aAlumno : filteredData) {
+	        	int cellNumber = 0;
+	        	row = sheet.createRow(rowNumber++);
+	        	
+	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
+	        	for (String column : columns) {
+	        		column = column.substring(0, 1).toUpperCase() + column.substring(1);
+	        		Cell cellUsuario = row.createCell(cellNumber++);
+	        		cellUsuario.setCellValue(getCellValue(column, rowX21aAlumno, formatter));
+	        	}
+	        }
+	        
+	        // Se adapta el ancho de las columnas al contenido
+	        for(int i = 0; i < columns.length; i++) {
+	            sheet.autoSizeColumn(i);
+	        }
+
+			// Se añade el fichero excel al response
+	        workbook.write(response.getOutputStream());
+            workbook.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
+	 *
+	 * @param filteredData List<X21aAlumno>
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param formatter SimpleDateFormat
+	 * @param response HttpServletResponse
+	 */
+	private void generatePDFReport(List<X21aAlumno> filteredData, String[] columns, String fileName, SimpleDateFormat formatter, HttpServletResponse response) {
+		try {
+			// Se añade el fichero excel al response y se añade el contenido
+	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
+			response.setContentType("application/pdf");
+			
+			Document document = new Document();
+			// Se añade el fichero pdf al response
+			PdfWriter.getInstance(document, response.getOutputStream());
+			
+			document.open();
+			 
+			PdfPTable table = new PdfPTable(columns.length);
+
+			for (String column : columns) {
+				PdfPCell header = new PdfPCell();
+		        header.setBorderWidth(2);
+		        header.setPhrase(new Phrase(column));
+		        table.addCell(header);
+        	}
+			
+			// Añadir datos
+	        for (X21aAlumno rowX21aAlumno : filteredData) {
+	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
+	        	for (String column : columns) {
+	        		table.addCell(getCellValue(column, rowX21aAlumno, formatter));
+	        	}
+	        }
+			
+			document.add(table);
+			document.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
+	 *
+	 * @param filteredData List<X21aAlumno>
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param formatter SimpleDateFormat
+	 * @param response HttpServletResponse
+	 */
+	private void generateODSReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, HttpServletResponse response) {
+		try {
+			// Se añade el fichero ods al response y se añade el contenido
+	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
+			response.setContentType("application/vnd.oasis.opendocument.spreadsheet");
+			
+			OdfSpreadsheetDocument ods = OdfSpreadsheetDocument.newSpreadsheetDocument();
+			ods.getOrCreateDocumentStyles();
+			
+			// Hay que eliminar la hoja que se genera por defecto
+	        ods.getTableByName("Sheet1").remove();
+	        
+	        // Hoja nueva
+			OdfTable table = OdfTable.newTable(ods, filteredData.size() + 1, columns.length);
+			table.setTableName(sheetTitle);
+	        
+			// Inicializar contador de filas
+	        int rowNumber = 0;
+			
+	        // Cabeceras
+			OdfTableRow row = table.getRowByIndex(rowNumber++);
+	        for(int i = 0; i < columns.length; i++) {
+	        	row.getCellByIndex(i).setStringValue(columns[i]);
+	        }
+
+			// Añadir datos
+	        for (X21aAlumno rowX21aAlumno : filteredData) {
+	        	row = table.getRowByIndex(rowNumber++);
+				int cellNumber = 0;
+				
+	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
+	        	for (String column : columns) {
+        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowX21aAlumno, formatter));
+	        	}
+	        }
+			
+	        // Se añade el fichero ods al response
+			ods.save(response.getOutputStream());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
+	 *
+	 * @param filteredData List<X21aAlumno>
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param formatter SimpleDateFormat
+	 * @param language String
+	 * @param response HttpServletResponse
+	 */
+	private void generateCSVReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, String language, HttpServletResponse response) {
+		try {
+		    // Se añade el fichero excel al response y se añade el contenido
+	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
+			response.setContentType("text/csv");
+			
+			// Separador de campos dependiendo del idioma
+			String separator = ";";
+			if (language.equals("en")) {
+				separator = ",";
+			}
+			
+			// Se añade el fichero csv al response
+		    OutputStream out = response.getOutputStream();
+		    // Añadir titulos
+		    boolean addTitles = true;
+			
+			// Añadir datos
+	        for (X21aAlumno rowX21aAlumno : filteredData) {
+	        	int cellNumber = 1;
+	        	StringBuilder columnsTitles = new StringBuilder();
+	        	StringBuilder row = new StringBuilder();
+	        	
+	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
+	        	for (String column : columns) {
+	        		String cellValue = getCellValue(column, rowX21aAlumno, formatter);
+	        		
+	        		if (cellNumber < columns.length) {
+        				if (addTitles) {
+        					columnsTitles.append("\"");
+        					columnsTitles.append(column);
+        					columnsTitles.append("\"");
+        					columnsTitles.append(separator);
+        				}
+        				row.append("\"");
+    					row.append(cellValue);
+    					row.append("\"");
+    					row.append(separator);
+    					cellNumber++;
+    				} else {
+        				if (addTitles) {
+        					columnsTitles.append("\"");
+        					columnsTitles.append(column);
+        					columnsTitles.append("\"\n");
+        				}
+        				row.append("\"");
+    					row.append(cellValue);
+    					row.append("\"\n");
+    				}
+	        	}
+	        	
+	        	if (addTitles) {
+	        		out.write(columnsTitles.toString().getBytes());
+					addTitles = false;
+	        	}
+	        	out.write(row.toString().getBytes());
+	        }
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Mediante java reflection llama dinamicamente a los getters y asi alimenta las celdas
+	 *
+	 * @param column String
+	 * @param rowX21aAlumno Usuario
+	 * @param formatter SimpleDateFormat
+	 */
+	private String getCellValue(String column, X21aAlumno rowX21aAlumno, SimpleDateFormat formatter) {
+		column = column.substring(0, 1).toUpperCase() + column.substring(1);
+		String cellValue = "";
+		try {
+			Method method = Usuario.class.getMethod("get" + column);
+			if (method.invoke(rowX21aAlumno) != null) {
+				if (Date.class.equals(method.getReturnType())) {
+					cellValue = new SimpleDateFormat(formatter.toPattern()).format((Date) method.invoke(rowX21aAlumno));
+				} else if (Integer.class.equals(method.getReturnType())) {
+					cellValue = Integer.toString((Integer) method.invoke(rowX21aAlumno));
+				} else {
+					cellValue = (String) method.invoke(rowX21aAlumno);
+				}
+			}
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		
+		return cellValue;
+	}
+}
