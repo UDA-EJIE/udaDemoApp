@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -366,7 +367,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	        // Se crea la fila para insertar los titulos de las columnas
 	        Row row = sheet.createRow(rowNumber++);
 	        
-	        // Añadir titulos
+	        // Aï¿½adir titulos
 	        for(int i = 0; i < columns.length; i++) {
 	        	Cell cell = row.createCell(i);
 	            cell.setCellValue(columns[i]);
@@ -376,11 +377,11 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	        // CreationHelper ayudara a mantener la compatibilidad del DataFormat tanto si se crea un .xls como un .xlsx
 	        CreationHelper createHelper = workbook.getCreationHelper();
 	        
-	        // Se crea un CellStyle para añadir el formateador de fechas
+	        // Se crea un CellStyle para aï¿½adir el formateador de fechas
 	        CellStyle dateCellStyle = workbook.createCellStyle();
 	        dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(formatter.toPattern()));
 	        
-	        // Añadir datos
+	        // Aï¿½adir datos
 	        for (X21aAlumno rowX21aAlumno : filteredData) {
 	        	int cellNumber = 0;
 	        	row = sheet.createRow(rowNumber++);
@@ -398,7 +399,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	            sheet.autoSizeColumn(i);
 	        }
 
-			// Se añade el fichero excel al response
+			// Se aï¿½ade el fichero excel al response
 	        workbook.write(response.getOutputStream());
             workbook.close();
 		} catch (IOException e) {
@@ -417,12 +418,12 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 */
 	private void generatePDFReport(List<X21aAlumno> filteredData, String[] columns, String fileName, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
-			// Se añade el fichero excel al response y se añade el contenido
+			// Se aï¿½ade el fichero excel al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
 			response.setContentType("application/pdf");
 			
 			Document document = new Document();
-			// Se añade el fichero pdf al response
+			// Se aï¿½ade el fichero pdf al response
 			PdfWriter.getInstance(document, response.getOutputStream());
 			
 			document.open();
@@ -436,7 +437,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 		        table.addCell(header);
         	}
 			
-			// Añadir datos
+			// Aï¿½adir datos
 	        for (X21aAlumno rowX21aAlumno : filteredData) {
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
@@ -464,7 +465,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 */
 	private void generateODSReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
-			// Se añade el fichero ods al response y se añade el contenido
+			// Se aï¿½ade el fichero ods al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
 			response.setContentType("application/vnd.oasis.opendocument.spreadsheet");
 			
@@ -487,7 +488,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	        	row.getCellByIndex(i).setStringValue(columns[i]);
 	        }
 
-			// Añadir datos
+			// Aï¿½adir datos
 	        for (X21aAlumno rowX21aAlumno : filteredData) {
 	        	row = table.getRowByIndex(rowNumber++);
 				int cellNumber = 0;
@@ -498,7 +499,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	        	}
 	        }
 			
-	        // Se añade el fichero ods al response
+	        // Se aï¿½ade el fichero ods al response
 			ods.save(response.getOutputStream());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -518,7 +519,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 */
 	private void generateCSVReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, String language, HttpServletResponse response) {
 		try {
-		    // Se añade el fichero excel al response y se añade el contenido
+		    // Se aï¿½ade el fichero excel al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
 			response.setContentType("text/csv");
 			
@@ -528,12 +529,12 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 				separator = ",";
 			}
 			
-			// Se añade el fichero csv al response
+			// Se aï¿½ade el fichero csv al response
 		    OutputStream out = response.getOutputStream();
-		    // Añadir titulos
+		    // Aï¿½adir titulos
 		    boolean addTitles = true;
 			
-			// Añadir datos
+			// Aï¿½adir datos
 	        for (X21aAlumno rowX21aAlumno : filteredData) {
 	        	int cellNumber = 1;
 	        	StringBuilder columnsTitles = new StringBuilder();
@@ -596,6 +597,8 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 					cellValue = new SimpleDateFormat(formatter.toPattern()).format((Date) method.invoke(rowX21aAlumno));
 				} else if (Integer.class.equals(method.getReturnType())) {
 					cellValue = Integer.toString((Integer) method.invoke(rowX21aAlumno));
+				} else if (BigDecimal.class.equals(method.getReturnType())) {
+					cellValue = method.invoke(rowX21aAlumno).toString();
 				} else {
 					cellValue = (String) method.invoke(rowX21aAlumno);
 				}

@@ -19,6 +19,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -581,6 +582,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 					cellValue = new SimpleDateFormat(formatter.toPattern()).format((Date) method.invoke(rowUsuario));
 				} else if (Integer.class.equals(method.getReturnType())) {
 					cellValue = Integer.toString((Integer) method.invoke(rowUsuario));
+				} else if (BigDecimal.class.equals(method.getReturnType())) {
+					cellValue = method.invoke(rowUsuario).toString();
 				} else {
 					cellValue = (String) method.invoke(rowUsuario);
 				}
