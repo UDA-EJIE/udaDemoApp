@@ -1,6 +1,7 @@
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -290,6 +291,7 @@ public class TableX21aAlumnoController  {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
@@ -300,13 +302,14 @@ public class TableX21aAlumnoController  {
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto,
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException{
 		TableX21aAlumnoController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -316,6 +319,7 @@ public class TableX21aAlumnoController  {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
@@ -326,13 +330,14 @@ public class TableX21aAlumnoController  {
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto,
 			HttpServletRequest request,
 			HttpServletResponse response){
 		TableX21aAlumnoController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -342,6 +347,7 @@ public class TableX21aAlumnoController  {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
@@ -352,13 +358,14 @@ public class TableX21aAlumnoController  {
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto,
 			HttpServletRequest request,
 			HttpServletResponse response){
 		TableX21aAlumnoController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -368,6 +375,7 @@ public class TableX21aAlumnoController  {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
@@ -378,12 +386,13 @@ public class TableX21aAlumnoController  {
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto,
 			HttpServletRequest request,
 			HttpServletResponse response){
 		TableX21aAlumnoController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, tableRequestDto, locale, request, response);
+		this.x21aAlumnoService.generateReport(filterX21aAlumno, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }	

@@ -230,11 +230,12 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
 		// Accede a la DB para recuperar datos
 		List<MultiPk> filteredData = getDataForReports(filterMultiPk, tableRequestDto);
 		String extension = null;

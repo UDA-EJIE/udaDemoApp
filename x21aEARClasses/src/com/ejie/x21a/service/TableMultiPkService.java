@@ -1,6 +1,7 @@
 package com.ejie.x21a.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -156,10 +157,11 @@ public interface TableMultiPkService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param locale Locale
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);    
+	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);    
 }

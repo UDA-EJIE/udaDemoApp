@@ -241,11 +241,12 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(X21aAlumno filterX21aAlumno, String[] columns, String fileName, String sheetTitle, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+	public void generateReport(X21aAlumno filterX21aAlumno, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
 		// Accede a la DB para recuperar datos
 		List<X21aAlumno> filteredData = getDataForReports(filterX21aAlumno, tableRequestDto);
 		String extension = null;
