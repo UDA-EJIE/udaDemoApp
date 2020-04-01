@@ -341,9 +341,6 @@ function _init() {
             plugins.buttons.report.reportsParams.push({
                 'isInline': false
             });
-            plugins.buttons.report.title = 'Descargar Informe Personalizado';
-            plugins.buttons.report.message = 'Descargando informe, por favor espere Personalizado';
-            plugins.buttons.blackListButtons = ['csvButton'];
 
 
         } else {
