@@ -16,33 +16,32 @@
 
 function _init() {
     'use strict';
-
+    
     //FILTRO Y DETALLE
     var combo = [{
         rol: '---',
         codTipoSubsanacion: ''
-    },
-    {
-        rol: 'Administrador',
-        codTipoSubsanacion: 'administrador'
-    },
-    {
-        rol: 'Desarrollador',
-        codTipoSubsanacion: 'desarrollador'
-    },
-    {
-        rol: 'Espectador',
-        codTipoSubsanacion: 'espectador'
-    },
-    {
-        rol: 'Informador',
-        codTipoSubsanacion: 'informador'
-    },
-    {
-        rol: 'Manager',
-        codTipoSubsanacion: 'manager'
-    }
-    ];
+	    },
+	    {
+	        rol: 'Administrador',
+	        codTipoSubsanacion: 'administrador'
+	    },
+	    {
+	        rol: 'Desarrollador',
+	        codTipoSubsanacion: 'desarrollador'
+	    },
+	    {
+	        rol: 'Espectador',
+	        codTipoSubsanacion: 'espectador'
+	    },
+	    {
+	        rol: 'Informador',
+	        codTipoSubsanacion: 'informador'
+	    },
+	    {
+	        rol: 'Manager',
+	        codTipoSubsanacion: 'manager'
+    }];
     var options_ejie_combo = {
         source: [{
             label: '---',
@@ -62,33 +61,32 @@ function _init() {
     };
     var options_role_combo;
     window.initRupI18nPromise.then(function () {
-        options_role_combo = {
-            source: [{
-                label: '---',
-                value: ''
-            },
-            {
-                label: $.rup.i18n.app['GRID_simple##rol'].administrador,
-                value: 'administrador'
-            },
-            {
-                label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
-                value: 'desarrollador'
-            },
-            {
-                label: $.rup.i18n.app['GRID_simple##rol'].espectador,
-                value: 'espectador'
-            },
-            {
-                label: $.rup.i18n.app['GRID_simple##rol'].informador,
-                value: 'informador'
-            },
-            {
-                label: $.rup.i18n.app['GRID_simple##rol'].manager,
-                value: 'manager'
-            }
-            ]
-        };
+	    options_role_combo = {
+	        source: [{
+	            label: '---',
+	            value: ''
+	        },
+	        {
+	            label: $.rup.i18n.app['GRID_simple##rol'].administrador,
+	            value: 'administrador'
+	        },
+	        {
+	            label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
+	            value: 'desarrollador'
+	        },
+	        {
+	            label: $.rup.i18n.app['GRID_simple##rol'].espectador,
+	            value: 'espectador'
+	        },
+	        {
+	            label: $.rup.i18n.app['GRID_simple##rol'].informador,
+	            value: 'informador'
+	        },
+	        {
+	            label: $.rup.i18n.app['GRID_simple##rol'].manager,
+	            value: 'manager'
+	        }]
+	    };
     });
     var allowedPluginsBySelecionType = {
         multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
@@ -553,39 +551,44 @@ function _init() {
     jQuery(function ($) {
         copyPluginsForm(2);
         copyFormEdit(2);
-
+        
         //Formulario de filtrado
-        $('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
-        $('[id="rol_filter_table"]').rup_combo(options_role_combo);
-
         $('[id="fechaAlta_filter_table"]').rup_date();
         $('[id="fechaBaja_filter_table"]').rup_date();
-
+        
         //Formulario de detalle
         $('[id="fechaAlta_detail_table"]').rup_date();
         $('[id="fechaBaja_detail_table"]').rup_date();
-
-        $('[id="rol_detail_table"]').rup_combo(options_role_combo);
-
-        //--------------------------------------------
-
+        window.initRupI18nPromise.then(function () {
+	        //Formulario de filtrado
+	        $('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
+	        $('[id="rol_filter_table"]').rup_combo(options_role_combo);
+	        
+	        //Formulario de detalle
+	        $('[id="rol_detail_table"]').rup_combo(options_role_combo);
+        });
+	    //--------------------------------------------
+        
         //Formulario de filtrado
-        $('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
-        $('[id="rol_filter_table2"]').rup_combo(options_role_combo);
-
         $('[id="fechaAlta_filter_table2"]').rup_date();
         $('[id="fechaBaja_filter_table2"]').rup_date();
 
         //Formulario de detalle
         $('[id="fechaAlta_detail_table2"]').rup_date();
         $('[id="fechaBaja_detail_table2"]').rup_date();
-
-        $('[id="rol_detail_table2"]').rup_combo(options_role_combo);
-
-        loadTable();
-        loadTable(2);
-
-        $('.contenedor').addClass('show');
+        window.initRupI18nPromise.then(function () {
+	        //Formulario de filtrado
+	        $('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
+	        $('[id="rol_filter_table2"]').rup_combo(options_role_combo);
+	        
+	        //Formulario de detalle
+	        $('[id="rol_detail_table2"]').rup_combo(options_role_combo);
+	
+	        loadTable();
+	        loadTable(2);
+	
+	        $('.contenedor').addClass('show');
+        });
     });
 }
 
