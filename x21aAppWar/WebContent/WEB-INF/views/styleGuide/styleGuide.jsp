@@ -392,26 +392,26 @@
     <div class="example">
     	<p>Input básico</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized">
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldBasicoBootstrapMaterialized">
+			<label for="textFieldBasicoBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
     	
     	<p>Input con required</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized" required>
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldRequiredBootstrapMaterialized" required>
+			<label for="textFieldRequiredBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
 		
 		<p>Input con placeholder</p>
 		<div class="form-groupMaterial">
-			<input type="password" id="passwordBootstrapMaterialized" placeholder="Password" >
-			<label for="passwordBootstrapMaterialized">Password</label>
+			<input type="password" id="passwordPlaceholderBootstrapMaterialized" placeholder="Password" >
+			<label for="passwordPlaceholderBootstrapMaterialized">Password</label>
 		</div>
 		
 		<p>Input con required y placeholder</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized" placeholder="Soy un placeholder..." required>
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldRequiredPlaceholderBootstrapMaterialized" placeholder="Soy un placeholder..." required>
+			<label for="textFieldRequiredPlaceholderBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
     </div>
     
