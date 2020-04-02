@@ -197,7 +197,7 @@
                 <table id="example2"
                     class="tableFit table-striped table-bordered"
                     data-url-base="./2"
-                    data-filter-form="#example_filter_form">
+                    data-filter-form="#example2_filter_form">
                     <thead>
                         <tr>
                             <th data-col-prop="id2" data-col-edit="false">Id</th>
