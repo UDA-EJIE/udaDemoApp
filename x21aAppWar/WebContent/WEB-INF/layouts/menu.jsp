@@ -152,7 +152,7 @@
                                     </a>
                                      <spring:url value="/table/masterDialog" var="tableDialogDetail" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${tableDialogDetail}">
-                                        <spring:message code="tabla.masterDialog" />
+                                        <spring:message code="tabla.tableDialogDetail" />
                                     </a>
                                     <spring:url value="/table/tableDialog" var="tableDialog" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${tableDialog}">
