@@ -603,6 +603,13 @@
 			value="/WEB-INF/views/table/includes/tableMasterDetail-includes.jsp" />
 	</definition>
 	
+	<definition extends="template" name="tableDialogDetail">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDialogDetail.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDialogDetail-includes.jsp" />
+	</definition>
+	
 	<definition extends="template" name="tableDialog">
 		<put-attribute name="content"
 			value="/WEB-INF/views/table/tableDialog.jsp" />
