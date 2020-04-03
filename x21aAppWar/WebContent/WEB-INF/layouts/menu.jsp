@@ -519,14 +519,14 @@
 					<i class="mdi mdi-github-circle" aria-hidden="true"></i>
 				</a>
 			</li>
-			<li class="nav-item">
+			<!--<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_releases"
 					data-toggle="dropdown">
 					<i class="mdi mdi-settings" aria-hidden="true"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow-center">
 				</div>
-			</li>
+			</li>-->
 			<li class="nav-item">
 				<a class="nav-link rup-nav-user rup-nav-tool-icon" href="#">
 					<i class="mdi mdi-account-circle" aria-hidden="true"></i>
