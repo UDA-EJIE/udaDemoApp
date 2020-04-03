@@ -175,7 +175,15 @@ jQuery(function($){
         };
         plugins.fixedHeader = fixedHeader;
       plugins.selector = 'td';
-
+      
+      plugins.feedback = {
+    	      closeLink: true,
+    	      delay: 2000,
+    	      block: false,
+    	      gotoTop: false
+    	    };
+      //se puede añadir una funcion
+      //plugins.feedback.customGoTo = function prueba (){return $('#example_containerToolbar').offset().top}
 
         var filter = {
                   id:"example_filter_form",
