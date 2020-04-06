@@ -146,16 +146,19 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
     *
     */
     public List<MultiPk> getMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith){
-    	
+    	StringBuilder sbMultipleSQL = new StringBuilder("SELECT  t1.IDA IDA,t1.IDB IDB,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2 ");
+    	sbMultipleSQL.append("FROM MULTI_PK t1 ");
     	//Where clause & Params
     	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterMultiPk, startsWith);
     	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
     	where.append(mapaWhere.get("query"));
+    	sbMultipleSQL.append(where);
     	
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	StringBuilder sbMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA AND IDB" );
+    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA,IDB" ));
+    	
     	
     	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
     }
@@ -341,7 +344,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
      */
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
+		StringBuilder sbRemoveMultipleSQL = new StringBuilder();//TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
 		
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
 		List<String> params = new ArrayList<String>();
