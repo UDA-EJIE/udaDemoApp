@@ -344,7 +344,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
      */
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = new StringBuilder();//TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
 		
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
 		List<String> params = new ArrayList<String>();
