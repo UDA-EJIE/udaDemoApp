@@ -20,6 +20,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.X21aAlumno;
 
 /**
@@ -143,17 +144,23 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
     */
     public List<X21aAlumno> getMultiple(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto,  Boolean startsWith){
     	
+    	// SELECT 
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.USUARIO USUARIO, t1.PASSWORD PASSWORD, t1.NOMBRE NOMBRE, t1.APELLIDO1 APELLIDO1, t1.APELLIDO2 APELLIDO2, t1.FECHA_NACIMIENTO FECHANACIMIENTO, t1.TELEFONO TELEFONO, t1.EMAIL EMAIL, t1.IDIOMA IDIOMA, t1.PAIS_ID PAISID, t1.PROVINCIA_ID PROVINCIAID, t1.LOCALIDAD_ID LOCALIDADID, t1.COMARCA_ID COMARCAID, t1.MUNICIPIO_ID MUNICIPIOID, t1.CALLE_ID CALLEID, t1.IMAGEN IMAGEN, t1.SEXO SEXO, t1.DNI DNI, t1.AUTONOMIA_ID AUTONOMIAID, t1.NOMBRE_IMAGEN NOMBREIMAGEN, t1.CALLE CALLE, t1.DIRECCION DIRECCION, t1.IMPORTE_MATRICULA IMPORTEMATRICULA ");
+		
+		// FROM
+		sbSQL.append("FROM X21A_ALUMNO t1 ");
     	//Where clause & Params
     	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterX21aAlumno, startsWith);
     	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
     	where.append(mapaWhere.get("query"));
+    	sbSQL.append(where);
     	
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	StringBuilder sbMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, "ID" );
-    	
-    	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
+		StringBuilder sbMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, "ID"));
+		
+		return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
     }
 
    /**
