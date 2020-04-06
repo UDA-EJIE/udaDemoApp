@@ -21,19 +21,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JQGridManager;
@@ -61,9 +58,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "NOMBRE", "APELLIDO1", "APELLIDO2", "EJIE", "FECHA_ALTA", "FECHA_BAJA", "ROL", "FECHA_MODIF"};
 	
     private JdbcTemplate jdbcTemplate;
-    
-    @Autowired
-	private Properties appConfiguration;
     
 
 	/**
@@ -316,7 +310,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
 		// SELECT 
-		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.NOMBRE NOMBRE, t1.APELLIDO1 APELLIDO1, t1.APELLIDO2 APELLIDO2, t1.EJIE EJIE, t1.FECHA_ALTA FECHA_ALTA, t1.FECHA_BAJA FECHA_BAJA, t1.ROL ROL ");
 		
 		// FROM
 		sbSQL.append("FROM USUARIO t1 ");
