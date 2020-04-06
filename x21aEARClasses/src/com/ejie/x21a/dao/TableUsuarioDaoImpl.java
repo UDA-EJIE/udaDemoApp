@@ -33,6 +33,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JQGridManager;
@@ -304,7 +305,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", new String[]{"ID"});
+		StringBuilder sbRemoveMultipleSQL = new StringBuilder();//TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", new String[]{"ID"});
 		
 		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
@@ -314,15 +315,21 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	@Override
 	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
-		//Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
+		// SELECT 
+		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
 		
-		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-		
-		StringBuilder sbRemoveMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID");
+		// FROM
+		sbSQL.append("FROM USUARIO t1 ");
+    	//Where clause & Params
+    	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith);
+    	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+    	where.append(mapaWhere.get("query"));
+    	sbSQL.append(where);
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object> params = (List<Object>) mapaWhere.get("params");
+    	
+		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID"));
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		
