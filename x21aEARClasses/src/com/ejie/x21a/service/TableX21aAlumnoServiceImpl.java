@@ -293,13 +293,13 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("pdfReport")) {
 			extension = ".pdf";
-			generatePDFReport(filteredData, columns, fileName, formatter, response);
+			generatePDFReport(filteredData, columns, fileName, response);
 		} else if (reportType.equals("odsReport")) {
 			extension = ".ods";
-			generateODSReport(filteredData, columns, fileName, sheetTitle, formatter, response);
+			generateODSReport(filteredData, columns, fileName, sheetTitle, response);
 		} else if (reportType.equals("csvReport")) {
 			extension = ".csv";
-			generateCSVReport(filteredData, columns, fileName, sheetTitle, formatter, language, response);
+			generateCSVReport(filteredData, columns, fileName, sheetTitle, language, response);
 		}
 	}
 
@@ -410,10 +410,9 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param filteredData List<X21aAlumno>
 	 * @param columns String[]
 	 * @param fileName String
-	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generatePDFReport(List<X21aAlumno> filteredData, String[] columns, String fileName, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generatePDFReport(List<X21aAlumno> filteredData, String[] columns, String fileName, HttpServletResponse response) {
 		try {
 			// Se a�ade el fichero excel al response y se a�ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
@@ -457,10 +456,9 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
-	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generateODSReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generateODSReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, HttpServletResponse response) {
 		try {
 			// Se a�ade el fichero ods al response y se a�ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
@@ -510,11 +508,10 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param sheetTitle String
-	 * @param formatter SimpleDateFormat
 	 * @param language String
 	 * @param response HttpServletResponse
 	 */
-	private void generateCSVReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, SimpleDateFormat formatter, String language, HttpServletResponse response) {
+	private void generateCSVReport(List<X21aAlumno> filteredData, String[] columns, String fileName, String sheetTitle, String language, HttpServletResponse response) {
 		try {
 		    // Se a�ade el fichero excel al response y se a�ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
@@ -586,7 +583,7 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	private String getCellValue(String column, X21aAlumno rowX21aAlumno) {
 		String cellValue = "";
 		try {
-			cellValue = BeanUtils.getProperty(rowX21aAlumno, column);
+			cellValue = BeanUtils.getProperty(rowX21aAlumno, column) != null ? BeanUtils.getProperty(rowX21aAlumno, column) : "";
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
