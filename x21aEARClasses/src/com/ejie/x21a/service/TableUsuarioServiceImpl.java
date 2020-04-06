@@ -18,18 +18,16 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -374,9 +372,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		column = column.substring(0, 1).toUpperCase() + column.substring(1);
 	        		Cell cellUsuario = row.createCell(cellNumber++);
-	        		cellUsuario.setCellValue(getCellValue(column, rowUsuario, formatter));
+	        		cellUsuario.setCellValue(getCellValue(column, rowUsuario));
 	        	}
 	        }
 	        
@@ -427,7 +424,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        for (Usuario rowUsuario : filteredData) {
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		table.addCell(getCellValue(column, rowUsuario, formatter));
+	        		table.addCell(getCellValue(column, rowUsuario));
 	        	}
 	        }
 			
@@ -481,7 +478,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 				
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowUsuario, formatter));
+        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowUsuario));
 	        	}
 	        }
 			
@@ -528,7 +525,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		String cellValue = getCellValue(column, rowUsuario, formatter);
+	        		String cellValue = getCellValue(column, rowUsuario);
 	        		
 	        		if (cellNumber < columns.length) {
         				if (addTitles) {
@@ -567,37 +564,20 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	/**
-	 * Mediante java reflection llama dinamicamente a los getters y asi alimenta las celdas
+	 * Obtiene los valores de las celdas.
 	 *
 	 * @param column String
 	 * @param rowUsuario Usuario
-	 * @param formatter SimpleDateFormat
 	 */
-	private String getCellValue(String column, Usuario rowUsuario, SimpleDateFormat formatter) {
-		column = column.substring(0, 1).toUpperCase() + column.substring(1);
+	private String getCellValue(String column, Usuario rowUsuario) {
 		String cellValue = "";
 		try {
-			Method method = Usuario.class.getMethod("get" + column);
-			if (method.invoke(rowUsuario) != null) {
-				if (Date.class.equals(method.getReturnType())) {
-					cellValue = new SimpleDateFormat(formatter.toPattern()).format((Date) method.invoke(rowUsuario));
-				} else if (Integer.class.equals(method.getReturnType())) {
-					cellValue = Integer.toString((Integer) method.invoke(rowUsuario));
-				} else if (BigDecimal.class.equals(method.getReturnType())) {
-					cellValue = method.invoke(rowUsuario).toString();
-				} else {
-					cellValue = (String) method.invoke(rowUsuario);
-				}
-			}
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
+			cellValue = BeanUtils.getProperty(rowUsuario, column);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
 		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
 		
