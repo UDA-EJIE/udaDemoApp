@@ -533,7 +533,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateExcelReport2(
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -543,6 +543,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateExcelReport2] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
+        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
@@ -577,7 +578,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generatePDFReport2(
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -587,6 +588,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generatePDFReport2] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
+        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
@@ -621,7 +623,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateODSReport2(
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -631,6 +633,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateODSReport2] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
+        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
@@ -665,7 +668,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateCSVReport2(
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -675,6 +678,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateCSVReport2] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
+        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
