@@ -543,7 +543,15 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateExcelReport2] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
+        
+        // Corregir nombres de columnas
+        ArrayList<String> tempColumns = new ArrayList<String>();
+        for (String column : columns2) {
+        	String newColumn = column.substring(0, column.length() - 1);
+        	tempColumns.add(newColumn);
+        }
+        String[] columns = tempColumns.toArray(new String[0]);
+        
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
@@ -588,7 +596,15 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generatePDFReport2] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
+        
+        // Corregir nombres de columnas
+        ArrayList<String> tempColumns = new ArrayList<String>();
+        for (String column : columns2) {
+        	String newColumn = column.substring(0, column.length() - 1);
+        	tempColumns.add(newColumn);
+        }
+        String[] columns = tempColumns.toArray(new String[0]);
+        
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
@@ -633,7 +649,15 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateODSReport2] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
+        
+        // Corregir nombres de columnas
+        ArrayList<String> tempColumns = new ArrayList<String>();
+        for (String column : columns2) {
+        	String newColumn = column.substring(0, column.length() - 1);
+        	tempColumns.add(newColumn);
+        }
+        String[] columns = tempColumns.toArray(new String[0]);
+        	
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
@@ -678,7 +702,15 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateCSVReport2] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-        String[] columns = {"id", "nombre","apellido1","ejie","fechaAlta","fechaBaja","rol"};
+        
+        // Corregir nombres de columnas
+        ArrayList<String> tempColumns = new ArrayList<String>();
+        for (String column : columns2) {
+        	String newColumn = column.substring(0, column.length() - 1);
+        	tempColumns.add(newColumn);
+        }
+        String[] columns = tempColumns.toArray(new String[0]);
+        
 		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
