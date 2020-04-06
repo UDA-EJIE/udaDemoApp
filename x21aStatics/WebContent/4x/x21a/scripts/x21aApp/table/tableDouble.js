@@ -57,7 +57,8 @@ function _init() {
         }
         ],
         i18nId: 'GRID_simple##ejie',
-        width: 120
+        width: '100%',
+        customClasses: ['select-material']
     };
     var options_role_combo;
     window.initRupI18nPromise.then(function () {
@@ -85,7 +86,9 @@ function _init() {
 	        {
 	            label: $.rup.i18n.app['GRID_simple##rol'].manager,
 	            value: 'manager'
-	        }]
+	        }],
+            width: '100%',
+            customClasses: ['select-material']
 	    };
     });
     var allowedPluginsBySelecionType = {
