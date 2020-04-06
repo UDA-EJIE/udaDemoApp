@@ -494,6 +494,14 @@ public class TableUsuarioController  {
 		return this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto);
 	}
 	
+	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
+	protected @ResponseBody List<Usuario> getClipboardReport2(
+			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
+		return this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto);
+	}
+	
 	/**
 	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
 	 *
@@ -520,6 +528,22 @@ public class TableUsuarioController  {
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
 		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+    }
+	
+	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateExcelReport2(
+			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response) throws ServletException{
+		TableUsuarioController.logger.info("[POST - generateExcelReport2] : Devuelve un fichero excel");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -550,6 +574,22 @@ public class TableUsuarioController  {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
+	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generatePDFReport2(
+			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableUsuarioController.logger.info("[POST - generatePDFReport2] : Devuelve un fichero pdf");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
 	/**
 	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
 	 *
@@ -578,6 +618,22 @@ public class TableUsuarioController  {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
+	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateODSReport2(
+			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableUsuarioController.logger.info("[POST - generateODSReport2] : Devuelve un fichero ods");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
 	/**
 	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
 	 *
@@ -604,5 +660,21 @@ public class TableUsuarioController  {
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
 		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
+	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	protected @ResponseBody void generateCSVReport2(
+			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableUsuarioController.logger.info("[POST - generateCSVReport2] : Devuelve un fichero csv");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
