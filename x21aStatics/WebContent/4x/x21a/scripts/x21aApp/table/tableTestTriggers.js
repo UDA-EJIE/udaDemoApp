@@ -145,7 +145,7 @@ window.cargarPruebasTriggers = function(){
         console.log('---Trigger--- ' + event.type);
     });
     
-    table.on('tableSeekerSearchSucess', function(event){
+    table.on('tableSeekerSearchSuccess', function(event){
         console.log('---Trigger--- ' + event.type);
     });
     
@@ -181,7 +181,7 @@ window.cargarPruebasTriggers = function(){
         console.log('---Trigger--- ' + event.type);
     });
     
-    table.on('tableSeekerSearchSucess', function(event){
+    table.on('tableSeekerSearchSuccess', function(event){
         console.log('---Trigger--- ' + event.type);
     });
     
