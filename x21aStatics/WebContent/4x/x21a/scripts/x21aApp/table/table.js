@@ -454,14 +454,15 @@ jQuery(function ($) {
                 } else {
                     $('#multiPart').prop('checked', false);
                 }
-                //Reports
-                plugins.buttons.report = {};
-                plugins.buttons.report.reportsParams = [];
-                plugins.buttons.report.reportsParams.push({
-                    'isInline': false
-                });
-
-
+                // Reports
+                plugins.buttons.report = {
+                    title: 'Exportación (título personalizado)',
+                    message: 'Su archivo está siendo generado... (mensaje personalizado)',
+                    columns: ["id", "nombre", "apellido1", "ejie", "fechaAlta"],
+                    reportsParams: {
+                        "isInline": false
+                    }
+                };
             } else {
                 $('#buttons').prop('checked', false);
             }

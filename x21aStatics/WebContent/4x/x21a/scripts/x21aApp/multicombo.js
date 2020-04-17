@@ -121,9 +121,7 @@ jQuery(function($) {
 	        change: function () {
 	            console.log('comboMultiLoadFromSelect:::Changed');
 	        }
-	    });
-	    
-	
-	    $('.contenedor').addClass('show');
+	    });	    
 	});
+	$('.contenedor').addClass('show');
 });
