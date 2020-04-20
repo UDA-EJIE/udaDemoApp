@@ -827,13 +827,6 @@
 			value="/WEB-INF/views/bootstrap/exampleForm.jsp" />
 	</definition>
 
-	<definition extends="template" name="y52bdocumentos">
-		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/documentos.jsp" />
-		<put-attribute name="includes"
-			value="/WEB-INF/views/experimental/documentos-includes.jsp" />
-	</definition>
-
 	<definition extends="template" name="x21aalumno">
 		<put-attribute name="content"
 			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
