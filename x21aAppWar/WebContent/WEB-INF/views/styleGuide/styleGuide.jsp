@@ -27,7 +27,7 @@
 
     <ul>
       <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Roboto".</li>
-      <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tamaño de letra</li>
+      <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tamaño de letra.</li>
     </ul>
 
     <div class="example">
