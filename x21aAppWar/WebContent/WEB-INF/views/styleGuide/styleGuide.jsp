@@ -198,6 +198,9 @@
     
     <h3>Con iconos</h3>
     
+    <p>En caso de querer añadir iconos a los botones, sería tan sencillo como insertarle un elemento <code>i</code> con su clase correspondiente.</p>
+    <p>UDA usa los iconos material del proyecto <a href="https://materialdesignicons.com">Material Design Icons</a> donde además, pueden obtenerse ejemplos.</p>
+    
     <div class="example">
       <div class="row">
         <div class="col-md-12">
