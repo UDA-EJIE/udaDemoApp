@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +53,7 @@ import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.util.DateTimeManager;
 import com.lowagie.text.Document;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
@@ -242,7 +242,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		sheetTitle = (sheetTitle != null && !sheetTitle.isEmpty()) ? sheetTitle : Usuario.class.getSimpleName();
 		
 		// Obtener el formato de fecha especifico del locale
-        SimpleDateFormat formatter = (SimpleDateFormat) SimpleDateFormat.getDateInstance(DateFormat.SHORT, locale);
+        SimpleDateFormat formatter = DateTimeManager.getDateTimeFormat(locale);
 		
 		// Cuando no se definen columnas porque se quieren obtener todas
         if (columns == null) {
