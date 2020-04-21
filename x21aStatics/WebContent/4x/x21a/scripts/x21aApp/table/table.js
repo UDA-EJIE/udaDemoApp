@@ -16,8 +16,8 @@
 jQuery(function ($) {
 	
 	
-	$('#example').on('tableEditFormAddEditBeforeShowForm', function () {
-		var ctx = $('#example').rup_table('getContext');
+	$('#example').on('tableEditFormAddEditBeforeShowForm', function (event,ctx) {
+		//ctx = $('#example').rup_table('getContext'); es el contexto de la tabla
 		console.log('Este es un ejemplo de trigger, para ver más activar la opción "Activar Triggers en Consola". '+ctx.oInit.formEdit.actionType)
 	});
     window.initRupI18nPromise.then(function () {
