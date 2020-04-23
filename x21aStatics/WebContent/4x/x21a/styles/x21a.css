@@ -88,22 +88,6 @@ input:focus, textarea:focus {
 	padding-top:1em;
 	background-image: url("../images/data_grid.png");
 }
-.footer {
-	border-top:1px solid #DADADA;
-	clear:both;
-	color:#000000;
-	font-size:0.9em;
-	margin:2em 0 0;
-	padding:0.7em;
-	padding-bottom: 0em;
-}
-.footer a {
-	color:#000;
-}
-
-.content{
-	clear:both;
-}
 
 /** FEEDBACK **/
 .feedbackImgPruebas {
