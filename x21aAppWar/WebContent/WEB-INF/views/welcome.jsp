@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<div class="container" style="margin-top: 2em;">
+<div class="container">
 
 	<div class="row">
 		<div class="col-12">
