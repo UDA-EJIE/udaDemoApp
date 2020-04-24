@@ -51,7 +51,7 @@
                              <spring:message code="clear" />
                       </span>
                        </button>
-                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+                       <button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
                              <i class="mdi mdi-filter"></i>
                       <span>
                              <spring:message code="filter" />
@@ -82,7 +82,7 @@
 
 <!-- Formulario de detalle -->
 <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegaci�n del detalle -->
+	<!-- Barra de navegación del detalle -->
 	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -94,33 +94,31 @@
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-			    	<form:input path="code" id="code_detailForm_table" />
+			    	<form:input path="code" id="code_detailForm_tableComarca" />
 					<label for="code_detailForm_table">code</label>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="descEs" id="descEs_detail_table" />
+			    	<form:input path="descEs" id="descEs_detail_tableComarca" />
 			    	<label for="descEs_detail_table">descEs</label>
 			    </div>
 			</div>
 			<div class="form-row">       
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="descEu" id="descEu_detail_table" />
+			    	<form:input path="descEu" id="descEu_detail_tableComarca" />
 			    	<label for="descEu_detail_table">descEu</label>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm">
-			    	<form:input path="css" id="css_detail_table" />
+			    	<form:input path="css" id="css_detail_tableComarca" />
 			    	<label for="css_detail_table">css</label>
 			    </div>
 			</div>
 			<div class="form-row">  
 			    <div class="form-groupMaterial col-sm">
-					<select id="provinciaRemote" name="provincia.code"><option>&nbsp;</option></select>
 			    	<label for="provinciaRemote">Provincia</label>
 					<form:select id="provinciaRemote" path="provincia.code" class="rup-combo"><form:option value="0" label="&nbsp;"/>&nbsp;</form:select>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm d-none">
 			    	<form:input path="provincia.descEs" id="provinciaDescEs_detail_table" />
-			    	<label for="provinciaDescEs_detail_table">provincia.descEs</label>
 			    </div>
 			</div>	
 		</form:form>
@@ -146,6 +144,12 @@
 		<form:form modelAttribute="localidad" id="localidad_filter_form">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
+			    <legend></legend>
+
+			    <!-- Hidden de la PK de la tabla padre -->
+			    <label for="localidad_filter_masterPK" class="d-none">code</label>
+                <form:input id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
+
 				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="code" id="code_filter_localidad" />
@@ -167,20 +171,19 @@
 					</div>
 				</div>
 				<div id="localidad_filter_buttonSet" class="text-right">
-                       <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
-                             <i class="mdi mdi-eraser"></i>
-                      <span>
-                             <spring:message code="clear" />
-                      </span>
-                       </button>
-                       <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
-                             <i class="mdi mdi-filter"></i>
-                      <span>
-                             <spring:message code="filter" />
-                      </span>
-                       </button>
+                    <button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                        <i class="mdi mdi-eraser"></i>
+                    	<span>
+                       		<spring:message code="clear" />
+                   		</span>
+                    </button>
+                    <button id="localidad_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                        <i class="mdi mdi-filter"></i>
+                   		<span>
+                        	<spring:message code="filter" />
+                   		</span>
+                    </button>
                  </div>
-
 			</fieldset>
 		</form:form>
 	</div>

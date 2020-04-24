@@ -13,7 +13,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 	<bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">
         <property name="xlnetCachingPeriod" value="0" />
         <property name="specificCredentials" value="com.ejie.x21a.security.MyUserCredentials"/>
-        <property name="userChangeUrl" value="/x21aPilotoPatronesWar/" />
+        <property name="userChangeUrl" value="/x21AppWar/" />
         <property name="alternativeStorageUserCredentials" ref="jdbcUserService"/>
         <property name="useXlnetProfiles" value="true"/>
 		<property name="anonymousCredentials">
@@ -38,7 +38,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 
 	<!-- Se especifica un el punto de origen  de exclusión sobre los usuarios validados. Esto permite la limitación del acceso aunque se han usuarios validos de XLNets. -->
 <!-- 	<bean id="usuariosConCertificado" class="com.ejie.x21a.security.UsuariosConCertificado"> -->
-<!-- 		<property name="accessDeniedUrl" value="/x21aPilotoPatronesWar/accessDenied" /> -->
+<!-- 		<property name="accessDeniedUrl" value="/x21aAppWar/accessDenied" /> -->
 <!-- 	</bean> -->
 	
 	<!-- A conctinuación, se parametrizan los distintos aspectos asociada al manejo de credenciales mediante una base de datos en Spring Security	 -->

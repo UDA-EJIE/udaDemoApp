@@ -14,7 +14,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 	<bean id="rssViewer" class="com.ejie.x38.rss.RssFeedView" >
 		<property name="title" value="X21A - UDA" />
 		<property name="descripcion" value="Ejemplo de uso de rss" />
-		<property name="link" value="http://desarrollo.jakina.ejiedes.net:7001/x21aPilotoPatronesWar/" />
+		<property name="link" value="http://desarrollo.jakina.ejiedes.net:7001/x21aAppWar/" />
 	</bean>
 	
 	<bean id="rssAuthDetailsSource"

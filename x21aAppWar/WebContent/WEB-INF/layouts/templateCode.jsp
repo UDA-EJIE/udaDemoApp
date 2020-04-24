@@ -16,7 +16,7 @@
 <%@ include file="/WEB-INF/includeTemplate.inc" %>
 <%@ taglib prefix="tiles" uri="/WEB-INF/tld/tiles-jsp.tld" %>
 
-<html>
+<html class="no-js" lang="es">
 <head>
 	<title><spring:message code="app.title" /></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

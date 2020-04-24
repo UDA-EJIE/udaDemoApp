@@ -17,7 +17,7 @@
 <%@ include file="/WEB-INF/includeTemplate.inc" %>
 <%@ taglib prefix="tiles" uri="/WEB-INF/tld/tiles-jsp.tld" %>
 
- <html class="no-js" lang="">
+<html class="no-js" lang="es">
 
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,6 @@
 	<title><spring:message code="app.title" /></title>
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	
 	
 	<%-- Estilos RUP --%>
@@ -40,7 +39,7 @@
 	<body>
 	
 	
-		<div class="contenedor" >
+		<div class="contenedor fade" >
 			<!-- Cabecera -->
 			<tiles:insertAttribute name="header" />
 			
@@ -54,7 +53,7 @@
 			<tiles:insertAttribute name="breadCrumb" />
 			
 			<!-- Contenidos -->
-			<div class="content" >
+			<div class="m-0 m-md-3 p-4 clear" >
 				<tiles:insertAttribute name="content"/>
 			</div>
 			<!-- Pie -->

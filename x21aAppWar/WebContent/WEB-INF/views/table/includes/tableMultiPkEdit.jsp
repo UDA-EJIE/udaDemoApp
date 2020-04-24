@@ -17,7 +17,7 @@
 
 <!-- Formulario de detalle -->
 <div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegación del detalle -->
+	<!-- Barra de navegaciï¿½n del detalle -->
 	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
@@ -57,11 +57,11 @@
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
-			<!-- Botón cancelar -->
+			<!-- Botï¿½n cancelar -->
 			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
-			<!-- Botón guardar -->
+			<!-- Botï¿½n guardar -->
 			<button id="MultiPk_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>

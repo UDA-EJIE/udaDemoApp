@@ -19,7 +19,7 @@
 <section class="row">
 	<div class="col-12">
 
-		<h3>Botonera</h3>
+		<h2>Botonera</h2>
 		<hr>
 
 		<p>Se les presenta a los usuarios una barra de botones con

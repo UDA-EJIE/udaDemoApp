@@ -21,17 +21,17 @@
 <div id="wizard_options">
 	<fieldset>
 		<legend style="float: left;">Generar resumen: </legend>
-		<input type="radio" name="summary" value="true" id="radio_summary_yes" checked="checked"/> <label for="radio_summary_yes">SÃ­</label>
+		<input type="radio" name="summary" value="true" id="radio_summary_yes" checked="checked"/> <label for="radio_summary_yes">SÍ</label>
 		<input type="radio" name="summary" value="false" id="radio_summary_no"/> <label for="radio_summary_no">No</label> <br/><br/>
 	</fieldset>
 	<fieldset>
 		<legend style="float: left;">Resumen con 'accordion': </legend>
-		<input type="radio" name="accordion" value="true" id="radio_accordion_yes" checked="checked"/> <label for="radio_accordion_yes">SÃ­</label>
+		<input type="radio" name="accordion" value="true" id="radio_accordion_yes" checked="checked"/> <label for="radio_accordion_yes">SÍ­</label>
 		<input type="radio" name="accordion" value="false" id="radio_accordion_no"/> <label for="radio_accordion_no">No</label> <br/><br/>
 	</fieldset>
 	<fieldset>
 		<legend style="float: left;">Pestañas convertidas a 'accordion': </legend> 
-		<input type="radio" name="tabs2accordion" value="true" id="radio_tab2accordion_yes" checked="checked"/> <label for="radio_tab2accordion_yes">SÃ­</label>
+		<input type="radio" name="tabs2accordion" value="true" id="radio_tab2accordion_yes" checked="checked"/> <label for="radio_tab2accordion_yes">SÍ­</label>
 		<input type="radio" name="tabs2accordion" value="false" id="radio_tab2accordion_no"/> <label for="radio_tab2accordion_no">No</label> <br/><br/>
 		<input type="button" id="makeWizard" value="Convertir formulario en Wizard" /> <br/><br/>
 	</fieldset>
@@ -49,7 +49,7 @@
 		<label for="ejie">Ejie</label> 
 			<form:select path="ejie" id="ejie">
 				<form:option value="0" selected="selected" label="No"/>
-				<form:option value="1" label="SÃ­"/>
+				<form:option value="1" label="SÍ­"/>
 			</form:select> 
 		<br/><br/>
 	</fieldset>

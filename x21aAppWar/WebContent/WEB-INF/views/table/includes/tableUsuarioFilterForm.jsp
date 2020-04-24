@@ -64,15 +64,15 @@
 		
 		<!-- Botonera del formulario de filtrado -->
 	    <div id="usuario_filter_buttonSet" class="text-right">
-	    	<!-- Botón de limpiar -->
+	    	<!-- Botï¿½n de limpiar -->
 	        <button id="usuario_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 	        		<spring:message code="clear" />
 	        	</span>
 	        </button>
-	        <!-- Botón de filtrado -->
-	        <button id="usuario_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+	        <!-- Botï¿½n de filtrado -->
+	        <button id="usuario_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
 	        	<i class="mdi mdi-filter"></i>
 	        	<span>
 	        		<spring:message code="filter" />

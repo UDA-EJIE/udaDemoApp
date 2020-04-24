@@ -1,7 +1,10 @@
 {
+	"comun": {
+		"si": "Yes",
+		"no": "No"
+	},
 	"x21aAppWar_menu_mixto" :{
 		"inicio" :"Inicio_en",
-		"mantenimientos" :"x21aMantenimientosWar_en",
 		"patrones" :"Patrones_en",
 			"all" :"[Todos los patrones_en]",
 			"accordion" :"Accordion",
@@ -183,8 +186,11 @@
 			"exampleForm" : "Example form",
 		"styleGuide" : "Styling guide",
 		"calendario" : "Calendar",
-			"calendarioSimple" : "Simple",
-			"calendarioDoble" : "Double"
+			"calendarioSimple" : "Calendar simple",
+			"calendarioDoble" : "Calendar double",
+		"lista" : "List",
+			"listaConfigurable" : "List configurable",
+			"listaDoble" : "List double"
 	},
 	
 "_comment":"PATRONES",	

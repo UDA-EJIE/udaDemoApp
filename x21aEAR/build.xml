@@ -67,7 +67,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 ]]></header>
 			<filelist 
-				dir="../x21aPilotoPatronesWar/WebContent/WEB-INF/layouts/includes/"
+				dir="../x21aAppWar/WebContent/WEB-INF/layouts/includes/"
 		    	files="rup.styles.inc,x21a.styles.inc"
 			/>
 		</concat>

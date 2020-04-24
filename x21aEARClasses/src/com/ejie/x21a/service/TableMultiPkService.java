@@ -1,12 +1,18 @@
 package com.ejie.x21a.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import java.util.List;
 
 
 /**
@@ -73,11 +79,9 @@ public interface TableMultiPkService {
 	/**
 	 * Removes rows from the MultiPk table.
 	 *
-	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 * @param startsWith Boolean
 	 */	
-	void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith);
+	void removeMultiple(TableRequestDto tableRequestDto);
    
     
 	/**
@@ -134,12 +138,30 @@ public interface TableMultiPkService {
 	 */	
 	TableResponseDto<JerarquiaDto<MultiPk>> jerarquiaChildren(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
     
-    /**
-    * Exporta Datos al clipBoard
-    *
-    */
-    List<MultiPk> getMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith);
-    
+	/*
+	 * EXPORTACIONES DE DATOS
+	 */
+	
+	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterMultiPk MultiPk
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<MultiPk> getDataForReports(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
+	
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterMultiPk MultiPk
+	 * @param columns String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param locale Locale
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);    
 }
-
-

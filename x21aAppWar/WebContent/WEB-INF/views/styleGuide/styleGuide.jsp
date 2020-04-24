@@ -27,7 +27,6 @@
 
     <ul>
       <li><code>font-family</code> : El tipo de letra utilizado por defecto es "Roboto".</li>
-      <li><code>font-size</code> : Se establece un valor de <strong>12px</strong> para el tamaño de letra</li>
     </ul>
 
     <div class="example">
@@ -197,6 +196,9 @@
     </div>
     
     <h3>Con iconos</h3>
+    
+    <p>En caso de querer añadir iconos a los botones, sería tan sencillo como insertarle un elemento <code>i</code> con su clase correspondiente.</p>
+    <p>UDA usa los iconos material del proyecto <a href="https://materialdesignicons.com">Material Design Icons</a> donde además, pueden obtenerse ejemplos.</p>
     
     <div class="example">
       <div class="row">
@@ -392,26 +394,26 @@
     <div class="example">
     	<p>Input básico</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized">
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldBasicoBootstrapMaterialized">
+			<label for="textFieldBasicoBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
     	
     	<p>Input con required</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized" required>
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldRequiredBootstrapMaterialized" required>
+			<label for="textFieldRequiredBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
 		
 		<p>Input con placeholder</p>
 		<div class="form-groupMaterial">
-			<input type="password" id="passwordBootstrapMaterialized" placeholder="Password" >
-			<label for="passwordBootstrapMaterialized">Password</label>
+			<input type="password" id="passwordPlaceholderBootstrapMaterialized" placeholder="Password" >
+			<label for="passwordPlaceholderBootstrapMaterialized">Password</label>
 		</div>
 		
 		<p>Input con required y placeholder</p>
 		<div class="form-groupMaterial">      
-			<input type="text" id="textFieldBootstrapMaterialized" placeholder="Soy un placeholder..." required>
-			<label for="textFieldBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
+			<input type="text" id="textFieldRequiredPlaceholderBootstrapMaterialized" placeholder="Soy un placeholder..." required>
+			<label for="textFieldRequiredPlaceholderBootstrapMaterialized">Campo de texto Bootstrap Materializado</label>
 		</div>
     </div>
     
@@ -494,7 +496,7 @@
         <div class="col-md-6">
 		    <h3>Radio</h3>
 		    
-		    <p>Aplicando los estilos de bootstrap materializado a este componente obtenemos el siguiente resultado:</p>
+		    <p>Aplicando los estilos de bootstrap materializado a este elemento obtenemos el siguiente resultado:</p>
 		    
 		    <div class="radio-material">
 		      <input id="opcionRadioMaterial-1" type="radio" name="materialRadio" checked>
@@ -508,7 +510,7 @@
         <div class="col-md-6">    
 		    <h3>Checkbox</h3>
 		    
-		    <p>Los estilos de bootstrap materializado estilizan el componente de la siguiente manera:</p>
+		    <p>Los estilos de bootstrap materializado estilizan el elemento de la siguiente manera:</p>
 		    
 		    <div class="checkbox-material">
 		      <input id="opcionCheckboxMaterial-1" type="checkbox" checked>
@@ -517,6 +519,69 @@
 		    <div class="checkbox-material">
 		      <input id="opcionCheckboxMaterial-2" type="checkbox">
 		      <label for="opcionCheckboxMaterial-2">Opción 2</label>
+		    </div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6">
+		    <h3>Radio Inline</h3>
+		    
+		    <p>Aplicando los estilos de bootstrap materializado a este elemento en su versión "inline" obtenemos el siguiente resultado:</p>
+		    
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-1" type="radio" name="materialRadioInline">
+		      <label for="opcionRadioMaterialInline-1">Opción 1</label>
+		    </div>
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-2" type="radio" name="materialRadioInline">
+		      <label for="opcionRadioMaterialInline-2">Opción 2</label>
+		    </div>
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-3" type="radio" name="materialRadioInline">
+		      <label for="opcionRadioMaterialInline-3">Opción 3</label>
+		    </div>
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-4" type="radio" name="materialRadioInline">
+		      <label for="opcionRadioMaterialInline-4">Opción 4</label>
+		    </div>
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-5" type="radio" name="materialRadioInline" checked>
+		      <label for="opcionRadioMaterialInline-5">Opción 5</label>
+		    </div>
+		    <div class="radio-material radio-material-inline">
+		      <input id="opcionRadioMaterialInline-6" type="radio" name="materialRadioInline">
+		      <label for="opcionRadioMaterialInline-6">Opción 6</label>
+		    </div>
+		</div>
+        <div class="col-md-6">    
+		    <h3>Checkbox Inline</h3>
+		    
+		    <p>Los estilos de bootstrap materializado estilizan el elemento en su versión "inline" de la siguiente manera:</p>
+		    
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-1" type="checkbox">
+		      <label for="opcionCheckboxMaterialInline-1">Opción 1</label>
+		    </div>
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-2" type="checkbox" checked>
+		      <label for="opcionCheckboxMaterialInline-2">Opción 2</label>
+		    </div>
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-3" type="checkbox">
+		      <label for="opcionCheckboxMaterialInline-3">Opción 3</label>
+		    </div>
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-4" type="checkbox" checked>
+		      <label for="opcionCheckboxMaterialInline-4">Opción 4</label>
+		    </div>
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-5" type="checkbox">
+		      <label for="opcionCheckboxMaterialInline-5">Opción 5</label>
+		    </div>
+		    <div class="checkbox-material checkbox-material-inline">
+		      <input id="opcionCheckboxMaterialInline-6" type="checkbox" checked>
+		      <label for="opcionCheckboxMaterialInline-6">Opción 6</label>
 		    </div>
 		</div>
 	</div>

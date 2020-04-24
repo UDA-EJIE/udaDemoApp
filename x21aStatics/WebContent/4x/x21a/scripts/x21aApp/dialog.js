@@ -15,97 +15,99 @@
  */
 $(document).ready(function () {
 
-	$("#idDialog").rup_dialog({
-		type: $.rup.dialog.DIV,
-		autoOpen: false,
-		modal: true,
-		resizable: true,
-		title: "<i>Título del dialog (div)</i>",
-		buttons: [{
-				text: "Aceptar",
-				click: function () { 
-					$("#idDialog").rup_dialog("close"); 
-				}
-			},
-			{
-				text: "Enviar",
-				click: function () { 
-					$("#idDialog").rup_dialog("close"); 
-				}
-			},
-			{
-				text: "Abandonar",
-				click: function () { 
-					$("#idDialog").rup_dialog("close"); 
-				},
-				btnType: $.rup.dialog.LINK
-			}
-		],
-		position: { my: "left top", at: "left bottom", of: $("#btnAjaxDialogWAR") } 
-	});	
-	$("#btnDialog").bind("click", function () {
-		$("#idDialog").rup_dialog("open");
-	});
+    $('#idDialog').rup_dialog({
+        type: $.rup.dialog.DIV,
+        autoOpen: false,
+        modal: true,
+        resizable: true,
+        title: '<i>Título del dialog (div)</i>',
+        buttons: [{
+            text: 'Aceptar',
+            click: function () { 
+                $('#idDialog').rup_dialog('close'); 
+            }
+        },
+        {
+            text: 'Enviar',
+            click: function () { 
+                $('#idDialog').rup_dialog('close'); 
+            }
+        },
+        {
+            text: 'Abandonar',
+            click: function () { 
+                $('#idDialog').rup_dialog('close'); 
+            },
+            btnType: $.rup.dialog.LINK
+        }
+        ],
+        position: { my: 'left top', at: 'left bottom', of: $('#btnAjaxDialogWAR') } 
+    });	
+    $('#btnDialog').bind('click', function () {
+        $('#idDialog').rup_dialog('open');
+    });
 
-	
-	$("#btnAjaxDialogWAR").bind("click", function () {
-		$("#idDialogAjaxWar").rup_dialog({
-			type: $.rup.dialog.AJAX,
-			url: "../patrones/dialogAjax" ,
-			autoOpen: true,
-			modal: true,
-			width: "650",
-			resizable: true,
-			title: "Diálogo Ajax (War)",
-			buttons: [{
-				text: "Aceptar",
-				click: function () { 
-					$("#idDialogAjaxWar").rup_dialog("close");
-				}					
-			},
-			{
-				text: "Enviar",
-				click: function () { 
-					$("#idDialogAjaxWar").rup_dialog("close"); 
-				}
-			},
-			{
-				text: "Abandonar",
-				click: function () { 
-					$("#idDialogAjaxWar").rup_dialog("close");
-				},
-				btnType: $.rup.dialog.LINK
-			}]
-		});	
-	});
-	
-	$("#btnAjaxDialogStatics").bind("click", function () {
-		$("#idDialogAjaxStatics").rup_dialog({
-			type: $.rup.dialog.AJAX,
-			url: $.rup.APP_STATICS + "/resources/ajaxDiv.htm",
-			autoOpen: true,
-			modal: true,
-			width: "650",
-			resizable: true,
-			title: "Diálogo Ajax (Statics)",
-			buttons: [{
-				text: "Aceptar",
-				click: function () { 
-					$(this).dialog("close");
-				}					
-			}]
-		});	
-	});
-	
-	$("#btnTextDialog").bind("click", function () {
-		$("#idDialogText").rup_dialog({
-			type: $.rup.dialog.TEXT,
-			autoOpen: true,
-			modal: true,
-			resizable: true,
-			title: "Título del dialog (text) ",
-			message: "Se esta creando un div con el mensaje puesto por parametro."
-		});
-	});
+    
+    $('#btnAjaxDialogWAR').bind('click', function () {
+        $('#idDialogAjaxWar').rup_dialog({
+            type: $.rup.dialog.AJAX,
+            url: '../patrones/dialogAjax' ,
+            autoOpen: true,
+            modal: true,
+            width: '650',
+            resizable: true,
+            title: 'Diálogo Ajax (War)',
+            buttons: [{
+                text: 'Aceptar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close');
+                }					
+            },
+            {
+                text: 'Enviar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close'); 
+                }
+            },
+            {
+                text: 'Abandonar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close');
+                },
+                btnType: $.rup.dialog.LINK
+            }]
+        });	
+    });
+    
+    $('#btnAjaxDialogStatics').bind('click', function () {
+        $('#idDialogAjaxStatics').rup_dialog({
+            type: $.rup.dialog.AJAX,
+            url: $.rup.APP_STATICS + '/resources/ajaxDiv.htm',
+            autoOpen: true,
+            modal: true,
+            width: '650',
+            resizable: true,
+            title: 'Diálogo Ajax (Statics)',
+            buttons: [{
+                text: 'Aceptar',
+                click: function () { 
+                    $(this).dialog('close');
+                }					
+            }]
+        });	
+    });
+    
+    $('#btnTextDialog').bind('click', function () {
+        $('#idDialogText').rup_dialog({
+            type: $.rup.dialog.TEXT,
+            autoOpen: true,
+            modal: true,
+            resizable: true,
+            title: 'Título del dialog (text) ',
+            message: 'Se esta creando un div con el mensaje puesto por parametro.'
+        });
+    });
 
+
+    $('.contenedor').addClass('show');
 });

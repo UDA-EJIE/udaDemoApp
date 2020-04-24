@@ -70,6 +70,10 @@
 	                  <form:checkbox path="plugins" id="inlineEdit" value="6"/>
 	                  <label for="inlineEdit">Edición en Linea</label>
 	              </div>
+	              <div class="checkbox-material pluginsControl">
+	                  <form:checkbox path="plugins" id="sinFiltro" value="12"/>
+	                  <label for="sinFiltro">Sin Filtro</label>
+	              </div>
 	          </div>
 		</div>
   	</fieldset>

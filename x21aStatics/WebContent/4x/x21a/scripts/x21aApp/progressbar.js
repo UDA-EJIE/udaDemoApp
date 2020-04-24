@@ -15,20 +15,20 @@
  */
 jQuery(document).ready(function () {
 
-	 
-
-      $("#progressbar").rup_progressbar({
+    $('#progressbar').rup_progressbar({
         value: 37
-      });
+    });
 
-      $("#progressbarLabel").rup_progressbar({
+    $('#progressbarLabel').rup_progressbar({
         value: 37
-//        label: $.rup.i18n.base.rup_progressbar.progress
-      });
+        //        label: $.rup.i18n.base.rup_progressbar.progress
+    });
 
-      $("#progressbarValueFalse").rup_progressbar({
+    $('#progressbarValueFalse').rup_progressbar({
         value: false
-//        label: $.rup.i18n.base.rup_progressbar.loading
-      });
-	
+        //        label: $.rup.i18n.base.rup_progressbar.loading
+    });
+
+
+    $('.contenedor').addClass('show');
 });

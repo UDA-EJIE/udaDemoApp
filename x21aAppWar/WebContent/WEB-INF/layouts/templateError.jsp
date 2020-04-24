@@ -16,7 +16,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="/WEB-INF/tld/tiles-jsp.tld" %>
      
-<html>
+<html class="no-js" lang="es">
 <head>
 	<%@include file="/WEB-INF/includeTemplate.inc"%>
 	<title><spring:message code="app.title" /></title>
@@ -29,7 +29,7 @@
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 </head>	
 <body>
-	<div class="contenedor">	
+	<div class="contenedor fade">
 		<!-- Cabecera -->
 		<tiles:insertAttribute name="header" />
 		

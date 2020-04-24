@@ -18,7 +18,7 @@
 <!-- Titulo pagina -->
 
 <div class="row mt-5">
-    <div class="col-xl-6 border-dark">
+    <div class="col-xl-6">
     	<div class="row">
 		  <div class="col-xl-12">
 		      <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
@@ -33,22 +33,12 @@
                     <thead>
                         <tr>
                             <th data-col-prop="id" data-col-edit="false">Id</th>
-                            <th data-col-prop="nombre"
-                                data-col-edit="true">Nombre</th>
-                            <th data-col-prop="apellido1">Primer
-                                apellido</th>
-                            <th data-col-prop="ejie"
-                                data-col-type="Checkbox">Ejie</th>
-                            <th data-col-prop="fechaAlta"
-                                data-col-sidx="fecha_alta"
-                                data-col-type="Datepicker">Fecha
-                                alta</th>
-                            <th data-col-prop="fechaBaja"
-                                data-col-sidx="fecha_baja"
-                                data-col-type="Datepicker">Fecha
-                                baja</th>
-                            <th data-col-prop="rol"
-                                data-col-type="combo">Rol</th>
+                            <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                            <th data-col-prop="apellido1">Primer apellido</th>
+                            <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                            <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                            <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                            <th data-col-prop="rol" data-col-type="combo">Rol</th>
                         </tr>
                     </thead>
                 </table>
@@ -191,12 +181,12 @@
                 </fieldset>
                 <span id="pluginError"></span>
                 <button id="example_aplicar" type="button"
-                    class="btn btn-primary">Aplicar Cambios</button>
+                    class="btn-material btn-material-primary-medium-emphasis">Aplicar Cambios</button>
             </form:form>
         </div>
     </div>
 
-    <div class="col-xl-6 border-left border-dark">
+    <div class="col-xl-6 tableDoubleBorder">
     	<div class="row">
 		  <div class="col-xl-12">
 		      <jsp:include page="includes/tableFilterForm2.jsp"></jsp:include>
@@ -207,26 +197,16 @@
                 <table id="example2"
                     class="tableFit table-striped table-bordered"
                     data-url-base="./2"
-                    data-filter-form="#example_filter_form">
+                    data-filter-form="#example2_filter_form">
                     <thead>
                         <tr>
                             <th data-col-prop="id2" data-col-edit="false">Id</th>
-                            <th data-col-prop="nombre2"
-                                data-col-edit="true">Nombre</th>
-                            <th data-col-prop="apellido12">Primer
-                                apellido</th>
-                            <th data-col-prop="ejie2"
-                                data-col-type="Checkbox">Ejie</th>
-                            <th data-col-prop="fechaAlta2"
-                                data-col-sidx="fecha_alta"
-                                data-col-type="Datepicker">Fecha
-                                alta</th>
-                            <th data-col-prop="fechaBaja2"
-                                data-col-sidx="fecha_baja"
-                                data-col-type="Datepicker">Fecha
-                                baja</th>
-                            <th data-col-prop="rol2"
-                                data-col-type="combo">Rol</th>
+                            <th data-col-prop="nombre2" data-col-edit="true">Nombre</th>
+                            <th data-col-prop="apellido12">Primer apellido</th>
+                            <th data-col-prop="ejie2" data-col-type="Checkbox">Ejie</th>
+                            <th data-col-prop="fechaAlta2" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                            <th data-col-prop="fechaBaja2" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                            <th data-col-prop="rol2" data-col-type="combo">Rol</th>
                         </tr>
                     </thead>
                 </table>

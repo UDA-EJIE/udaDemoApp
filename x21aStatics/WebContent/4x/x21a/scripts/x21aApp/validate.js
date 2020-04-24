@@ -13,54 +13,54 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
-    initRupI18nPromise.then(function(){
-        var $feedbackColumns = jQuery("#feedbackColumns").rup_feedback({
-            type: "error",
+jQuery(function($) {
+    window.initRupI18nPromise.then(function(){
+        var $feedbackColumns = jQuery('#feedbackColumns').rup_feedback({
+            type: 'error',
             closeLink: true,
             block:false
         });
 
-        $("#formColumns").rup_validate({
+        $('#formColumns').rup_validate({
             feedback: $feedbackColumns,
             liveCheckingErrors: false,
             showFieldErrorAsDefault: true,
             showErrorsInFeedback: true,
             showFieldErrorsInFeedback:true,
             rules:{
-                "nombre": {required: true},
-                "apellido1": {required: true},
-                "apellido2": {required: true}
+                'nombre': {required: true},
+                'apellido1': {required: true},
+                'apellido2': {required: true}
             }
         });
 
-        var $feedbackColumnsRequired = jQuery("#feedbackColumnsRequired").rup_feedback({
-            type: "error",
+        var $feedbackColumnsRequired = jQuery('#feedbackColumnsRequired').rup_feedback({
+            type: 'error',
             closeLink: true,
             block:false
         });
 
-        $("#formColumnsRequired").rup_validate({
+        $('#formColumnsRequired').rup_validate({
             feedback: $feedbackColumnsRequired,
             liveCheckingErrors: false,
             showFieldErrorAsDefault: true,
             showErrorsInFeedback: true,
             showFieldErrorsInFeedback:true,
             rules:{
-                "nombre": {required: true},
-                "apellido1": {required: true},
-                "apellido2": {required: true}
+                'nombre': {required: true},
+                'apellido1': {required: true},
+                'apellido2': {required: true}
             }
         });
 
         // MATERIAL
-        var $feedbackHorizontalMaterial = jQuery("#feedbackHorizontalMaterial").rup_feedback({
-            type: "error",
+        var $feedbackHorizontalMaterial = jQuery('#feedbackHorizontalMaterial').rup_feedback({
+            type: 'error',
             closeLink: true,
             block:false
         });
 
-        $("#formHorizontalMaterial").rup_validate({
+        $('#formHorizontalMaterial').rup_validate({
             adapter: 'validate_material',
             feedback: $feedbackHorizontalMaterial,
             liveCheckingErrors: false,
@@ -68,169 +68,147 @@ $(function() {
             showErrorsInFeedback: true,
             showFieldErrorsInFeedback:true,
             rules:{
-                "nombre": {
+                'nombre': {
                     required: true
                 },
-                "apellido1": {
+                'apellido1': {
                     required: true
                 },
-                "apellido2": {
+                'apellido2': {
                     required: true
                 },
-                "alertDay": {
+                'alertDay': {
                     required: true
                 },
-                "alertEdad[]": {
+                'alertEdad[]': {
                     required: true
                 },
-                "rol": {
+                'rol': {
                     required: true
                 },
-                "autocomplete": {
+                'autocomplete': {
                     required: true
                 },
-                "rolName2": {
+                'rolName2': {
                     required: true
                 },
-                "autocompleteName2": {
+                'autocompleteName2': {
                     required: true
                 },
-                "autocompleteCombobox": {
+                'autocompleteCombobox': {
                     required: true
                 },
-                "autocompleteCombobox2": {
+                'autocompleteCombobox2': {
                     required: true
                 },
-                "textarea": {
+                'textarea': {
                     required: true
                 }
             },
             messages:{
-                "nombre": {
+                'nombre': {
                     required: $.rup.i18n.app.validacion.nombre
                 },
-                "apellido1": {
+                'apellido1': {
                     required: $.rup.i18n.app.validacion.apellido1
                 },
-                "apellido2": {
+                'apellido2': {
                     required: $.rup.i18n.app.validacion.apellido2
                 },
-                "alertDay[]": {
+                'alertDay[]': {
                     required: $.rup.i18n.app.validacion.alertDay
                 }
             },
             labels:{
-    //			"nombre": {
-    //				required: "Debe de especificar un nombre obligatoriamente."
-    //			},
-    //			"apellido1": {
-    //				required: "Debe de especificar un primer apellido obligatoriamente."
-    //			},
-    //			"apellido2": {
-    //				required: "Debe de especificar un segundo apellido obligatoriamente."
-    //			},
-                "alertDay[]": "#alertDayError"
+                'alertDay[]': '#alertDayError'
             },
             icons:{
-    //			"nombre": {
-    //				required: "Debe de especificar un nombre obligatoriamente."
-    //			},
-    //			"apellido1": {
-    //				required: "Debe de especificar un primer apellido obligatoriamente."
-    //			},
-    //			"apellido2": {
-    //				required: "Debe de especificar un segundo apellido obligatoriamente."
-    //			},
-                "alertDay[]": "#alertDayErrorLabel"
+                'alertDay[]': '#alertDayErrorLabel'
             }
         });
 
         $('#rol_detail_table').rup_combo({
-            //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
             width: '100%',
-            blank : "",
+            blank : '',
             rowStriping : true,
             inputText:true,
-            customClasses: ["select-material"]
+            customClasses: ['select-material']
         });
 
-        //$("#rol_detail_table").rup_combo("disable");
 
-        $("#autocomplete").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+        $('#autocomplete').rup_autocomplete({
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
-            defaultValue : "",
+            defaultValue : '',
             contains : false
         });
 
         $('#rolName2').rup_combo({
-            //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
             width: '100%',
-            blank : "",
+            blank : '',
             rowStriping : true,
             inputText:true,
-            customClasses: ["select-material"]
+            customClasses: ['select-material']
         });
 
-        $("#autocompleteName2").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+        $('#autocompleteName2').rup_autocomplete({
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
-            defaultValue : "",
+            defaultValue : '',
             contains : false
         });
 
-        $("#autocompleteCombobox").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+        $('#autocompleteCombobox').rup_autocomplete({
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
-            defaultValue : "",
+            defaultValue : '',
             combobox: true,
             contains : false
         });
 
-        $("#autocompleteCombobox2").rup_autocomplete({
-            /*source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"]*/
+        $('#autocompleteCombobox2').rup_autocomplete({
             source : [
-                {i18nCaption: "asp", value:"asp_value"},
-                {i18nCaption: "c", value:"c_value"},
-                {i18nCaption: "c++", value:"c++_value"},
-                {i18nCaption: "coldfusion", value:"coldfusion_value"},
-                {i18nCaption: "groovy", value:"groovy_value"}
+                {i18nCaption: 'asp', value:'asp_value'},
+                {i18nCaption: 'c', value:'c_value'},
+                {i18nCaption: 'c++', value:'c++_value'},
+                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
+                {i18nCaption: 'groovy', value:'groovy_value'}
             ],
-            defaultValue : "",
+            defaultValue : '',
             combobox: true,
             contains : false
         });
     });
+
+
+    $('.contenedor').addClass('show');
 });

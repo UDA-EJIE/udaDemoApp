@@ -13,77 +13,78 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-$(function() {
+jQuery(function($) {
 	
-	$("[title]").rup_tooltip({"applyToPortal": true});
+    $('[title]').rup_tooltip({'applyToPortal': true});
 	
-	$("#codeTooltip").rup_tooltip({
-		content: {
-			text: "Esto es un ejemplo de tooltip sobre imagen"
-		},
-		position: {
-			my: 'top center',
-			at: 'bottom center',
-			target: $("#code")
-		},
-		show: {
-			event: 'click'
-		}
-	});
+    $('#codeTooltip').rup_tooltip({
+        content: {
+            text: 'Esto es un ejemplo de tooltip sobre imagen'
+        },
+        position: {
+            my: 'top center',
+            at: 'bottom center',
+            target: $('#code')
+        },
+        show: {
+            event: 'click'
+        }
+    });
 	
-	$("#idTooltip").rup_tooltip({
-		content: {
-			text: 'Esto es un ejemplo de tooltip modal sobre imagen',
-			title: {
-				text: 'Tooltip modal'
-			}
-		},
-		position: {
-			my: 'bottom center',
-			at: 'top center', 
-			target: $("#identificador")
-		},
-		show: {
-			event: 'click',
-			modal: true
-		},
-		hide: {
-			event: 'click'
-		}
-	});
+    $('#idTooltip').rup_tooltip({
+        content: {
+            text: 'Esto es un ejemplo de tooltip modal sobre imagen',
+            title: {
+                text: 'Tooltip modal'
+            }
+        },
+        position: {
+            my: 'bottom center',
+            at: 'top center', 
+            target: $('#identificador')
+        },
+        show: {
+            event: 'click',
+            modal: true
+        },
+        hide: {
+            event: 'click'
+        }
+    });
 	
-	$("#idHtmlTooltip").rup_tooltip({
-		content: {
-			text: $("#accordionExample1")
-//			title: {
-//				text: 'Tooltip modal'
-//			}
-		},
-		style:{
-			width:900
-		},
-		position: {
-			my: 'bottom center',
-			at: 'top center', 
-			target: $("#htmlTooltip")
-		},
-		show: {
-			event: 'click',
-		},
-		hide: {
-			event: 'click'
-		}
-	});
+    $('#idHtmlTooltip').rup_tooltip({
+        content: {
+            text: $('#accordionExample1')
+            //			title: {
+            //				text: 'Tooltip modal'
+            //			}
+        },
+        style:{
+            width:900
+        },
+        position: {
+            my: 'bottom center',
+            at: 'top center', 
+            target: $('#htmlTooltip')
+        },
+        show: {
+            event: 'click',
+        },
+        hide: {
+            event: 'click'
+        }
+    });
 	
-	$("#button").click(function() {
-		$(".qtip").rup_tooltip('option', 'style.widget', true);
-	});
+    $('#button').click(function() {
+        $('.qtip').rup_tooltip('option', 'style.widget', true);
+    });
 	
-	$(".rup_accordion").rup_accordion({
-		animated: "bounceslide",
-		active: false,
-		autoHeight: false,
-		collapsible: true
-	});
-	
+    $('.rup_accordion').rup_accordion({
+        animated: 'bounceslide',
+        active: false,
+        autoHeight: false,
+        collapsible: true
+    });
+
+	$('.contenedor').addClass('show');
 });

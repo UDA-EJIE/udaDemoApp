@@ -16,7 +16,7 @@
 <h2>Combo Enlazado (multiple)</h2>
 
 <!-- Feedback -->
-<div id="x21aPilotoPatronesWar_feedback"></div><br/>
+<div id="x21aAppWar_feedback"></div><br/>
  
 <div class="container-fluid">
 	<div class="form-row">

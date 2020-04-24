@@ -182,7 +182,7 @@
 <!-- 			<h3>Test URL FINALIZACION</h3> -->
 <!-- 		</div> -->
 <!-- 		<form -->
-<!-- 			action="http://local.ejiedes.net:7001/x21aPilotoPatronesWar/iberdok/urlFinalizacion2" -->
+<!-- 			action="http://local.ejiedes.net:7001/x21aAppWar/iberdok/urlFinalizacion2" -->
 <!-- 			method="post" target="_blank"> -->
 <!-- 			<div class="espaciodo"> -->
 <!-- 				<label>File</label> -->

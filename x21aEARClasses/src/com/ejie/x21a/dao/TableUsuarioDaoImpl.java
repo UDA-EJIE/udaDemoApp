@@ -21,12 +21,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -60,9 +58,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "NOMBRE", "APELLIDO1", "APELLIDO2", "EJIE", "FECHA_ALTA", "FECHA_BAJA", "ROL", "FECHA_MODIF"};
 	
     private JdbcTemplate jdbcTemplate;
-    
-    @Autowired
-	private Properties appConfiguration;
     
 
 	/**
@@ -181,7 +176,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		List<Object> params = (List<Object>) mapaWhere.get("params");
 
 		if (tableRequestDto != null) {
-//			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
 			query = TableManager.getPaginationQuery(tableRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
@@ -262,7 +256,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	}
 	
 	@Override
-	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
 		// SELECT 
 		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
@@ -293,9 +287,9 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getSearchQuery(sbSQL, jqGridRequestDto, Usuario.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Usuario.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
 				
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	
@@ -304,39 +298,32 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	 */
 	
 	@Override
-	public void removeMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public void removeMultiple(TableRequestDto tableRequestDto) {
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Usuario.class, "USUARIO", new String[]{"ID"});
 		
-		StringBuilder query = new StringBuilder("SELECT  t1.ID  "); 
-		query.append("FROM USUARIO t1 ");
-		
-		//Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
-		query.append(where);
-		
-		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-		
-		StringBuilder sbRemoveMultipleSQL = JQGridManager.getRemoveMultipleQuery(jqGridRequestDto, Usuario.class, query, params, "ID");
-		
+		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
-		
 	}
 	
 	@Override
-	public List<Usuario> getMultiple(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		
-		//Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith); 
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
+		// SELECT 
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.NOMBRE NOMBRE, t1.APELLIDO1 APELLIDO1, t1.APELLIDO2 APELLIDO2, t1.EJIE EJIE, t1.FECHA_ALTA FECHA_ALTA, t1.FECHA_BAJA FECHA_BAJA, t1.ROL ROL ");
 		
-		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-		
-		StringBuilder sbRemoveMultipleSQL = JQGridManager.getSelectMultipleQuery(jqGridRequestDto, Usuario.class, params, "ID");
+		// FROM
+		sbSQL.append("FROM USUARIO t1 ");
+    	//Where clause & Params
+    	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterUsuario, startsWith);
+    	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+    	where.append(mapaWhere.get("query"));
+    	sbSQL.append(where);
+    	
+    	@SuppressWarnings("unchecked")
+    	List<Object> params = (List<Object>) mapaWhere.get("params");
+    	
+		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID"));
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		

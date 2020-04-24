@@ -14,32 +14,31 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function () {
+    $('#spinner').rup_spinner();
 
-	 
-
-	$("#spinner").rup_spinner();
-
-	$("#disable").click(function() {
-      if ( $("#spinner").spinner( "option", "disabled" ) ) {
-    	  $("#spinner").spinner( "enable" );
-      } else {
-    	  $("#spinner").spinner( "disable" );
-      }
+    $('#disable').click(function () {
+        if ($('#spinner').spinner('option', 'disabled')) {
+            $('#spinner').spinner('enable');
+        } else {
+            $('#spinner').spinner('disable');
+        }
     });
-	$("#destroy").click(function() {
-      if ( $("#spinner").spinner( "instance" ) ) {
-    	  $("#spinner").spinner( "destroy" );
-      } else {
-    	  $("#spinner").rup_spinner();
-      }
+    $('#destroy').click(function () {
+        if ($('#spinner').spinner('instance')) {
+            $('#spinner').spinner('destroy');
+        } else {
+            $('#spinner').rup_spinner();
+        }
     });
-	$("#getvalue").click(function() {
-      alert( $("#spinner").rup_spinner( "getRupValue" ) );
+    $('#getvalue').click(function () {
+        alert($('#spinner').rup_spinner('getRupValue'));
     });
-	$("#setvalue").click(function() {
-		$("#spinner").rup_spinner( "setRupValue", 5 );
+    $('#setvalue').click(function () {
+        $('#spinner').rup_spinner('setRupValue', 5);
     });
 
-	$("#button").button();
-	
+    $('#button').button();
+
+
+    $('.contenedor').addClass('show');
 });

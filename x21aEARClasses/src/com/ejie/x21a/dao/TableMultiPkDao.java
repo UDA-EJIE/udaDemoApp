@@ -72,11 +72,9 @@ public interface TableMultiPkDao {
 	/**
 	 * Filter in the MultiPk table.
 	 *
-	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 * @param startsWith Boolean
 	 */	
-	 void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith);
+	 void removeMultiple(TableRequestDto tableRequestDto);
 	
 	
     /**

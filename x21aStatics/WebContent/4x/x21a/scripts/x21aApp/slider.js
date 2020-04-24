@@ -14,19 +14,18 @@
  * que establece la Licencia.
  */
 jQuery(document).ready(function () {
+    $('#slider').rup_slider({});
 
-	 
-
-	$("#slider").rup_slider({});
-
-	$("#sliderRange").rup_slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 300 ],
-      slide: function( event, ui ) {
-    	  $("#amount").val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
+    $('#sliderRange').rup_slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [75, 300],
+        slide: function (event, ui) {
+            $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+        }
     });
-	
+
+
+    $('.contenedor').addClass('show');
 });

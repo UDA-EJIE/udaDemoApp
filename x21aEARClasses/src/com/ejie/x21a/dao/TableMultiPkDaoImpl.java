@@ -1,5 +1,21 @@
 package com.ejie.x21a.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -7,19 +23,6 @@ import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableManagerJerarquia;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-import org.springframework.dao.support.DataAccessUtils;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 
 
@@ -143,16 +146,19 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
     *
     */
     public List<MultiPk> getMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith){
-    	
+    	StringBuilder sbMultipleSQL = new StringBuilder("SELECT  t1.IDA IDA,t1.IDB IDB,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2 ");
+    	sbMultipleSQL.append("FROM MULTI_PK t1 ");
     	//Where clause & Params
     	Map<String, Object> mapaWhere = this.getWhereLikeMap(filterMultiPk, startsWith);
     	StringBuilder where = new StringBuilder(" WHERE 1=1 ");
     	where.append(mapaWhere.get("query"));
+    	sbMultipleSQL.append(where);
     	
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	StringBuilder sbMultipleSQL = TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA AND IDB" );
+    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA,IDB" ));
+    	
     	
     	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
     }
@@ -334,28 +340,22 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 	/**
 	 * Remove multiple method for rup_table
      *
-     * @param filtermultipk MultiPk
      * @param tableRequestDto TableRequestDto
-     * @param startsWith Boolean
      */
 	@Override
-	public void removeMultiple(MultiPk filtermultipk, TableRequestDto tableRequestDto, Boolean startsWith) {
-		// SELECT
-		/** TODO: select por clave */
-		StringBuilder query = new StringBuilder("SELECT t1.IDA IDA,t1.IDB IDB,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2 ");
-		// FROM
-        query.append("FROM MULTI_PK t1 ");
-
-		// WHERE
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filtermultipk, startsWith);
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
-		query.append(where);
-
-		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, query, params, "IDA,IDB");
+	public void removeMultiple(TableRequestDto tableRequestDto) {
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
+		
+		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
+		List<String> params = new ArrayList<String>();
+		
+		for(String row : selectedIds) {
+			String[] parts = row.split(tableRequestDto.getCore().getPkToken());
+			for(String param : parts) {
+				params.add(param);
+			}
+		}
+		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
 

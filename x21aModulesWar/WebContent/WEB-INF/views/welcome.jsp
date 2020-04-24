@@ -189,7 +189,7 @@
 				<h2>verlo en funcionamiento</h2>
 				<ul>
 					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Videos" var="urlVideos" htmlEscape="true"/>
-					<spring:url value="http://www.ejie.eus/x21aPilotoPatronesWar/" var="urlPilotos" htmlEscape="true"/>
+					<spring:url value="http://www.ejie.eus/x21aAppWar/" var="urlPilotos" htmlEscape="true"/>
 					<li>los <a
 						href="${urlVideos}">videos</a></li>
 					<li>la <a target="_blank"

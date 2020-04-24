@@ -9,10 +9,6 @@
 	<property name="cp" value="x21a"/>
 	<property name="dir" value="C:/aplic/uda/udaDemoApp"/>
 	<property name="war1" value="${cp}AppWar"/>
-	<property name="war2" value="${cp}MantenimientosWar"/>
-	<property name="war3" value="${cp}ModulesWar"/>
-	<property name="war4" value="${cp}PilotoPatronesWar"/>
-	<property name="war5" value="${cp}App3xWar"/>
 	<property name="ejb1" value="${cp}MdbEJB"/>
 	<property name="exe" value="${dir}/${cp}_estruct_servidor/exe/"/>
 	<property name="wsStyle" value="rpc"/>
@@ -61,30 +57,6 @@
 				<include name="**/*.*"/>
 			</fileset>
 			<classes dir="${dir}/${war1}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war2}.war" webxml="${dir}/${war2}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war2}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war2}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war3}.war" webxml="${dir}/${war3}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war3}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war3}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war4}.war" webxml="${dir}/${war4}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war4}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war4}/build/classes"/>
-		</war>
-		<war destfile="${exe}/${war5}.war" webxml="${dir}/${war5}/WebContent/WEB-INF/web.xml">
-			<fileset dir="${dir}/${war5}/WebContent">
-				<include name="**/*.*"/>
-			</fileset>
-			<classes dir="${dir}/${war5}/build/classes"/>
 		</war>
 	</target>
 

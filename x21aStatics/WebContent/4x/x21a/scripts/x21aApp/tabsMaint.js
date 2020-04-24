@@ -14,28 +14,30 @@
  * que establece la Licencia.
  */
 
-$(function() {
-	
-	$("#tabsMaint").rup_tabs({
+jQuery(function($) {
+    
+    $('#tabsMaint').rup_tabs({
         tabs:[
-			{i18nCaption:"maint1", url:"/x21aMantenimientosWar/usuario/simpleTable1"},
-			{i18nCaption:"maint2", url:"/x21aMantenimientosWar/usuario/simpleTable2"},
-			{i18nCaption:"maint3", url:"/x21aMantenimientosWar/usuario/simpleTable3"},
-			{i18nCaption:"edit1", url:"/x21aMantenimientosWar/usuario/editTable1"},
-			{i18nCaption:"multi1", url:"/x21aMantenimientosWar/usuario/multiTable1"}],
-			load: function(event, ui){
-				if($("#mockPageContent").length > 0){
-					$("#tabsMaint").rup_tabs("disableTabs", {
-						idTab: "tabsMaint",
-						position: [1,2,3,4]
-					});
-					$("#mockPageContent #loginButtonObject").on("click", function (event){
-						$("#tabsMaint").rup_tabs("enableTabs", {
-							idTab: "tabsMaint",
-							position: [1,2,3,4]
-						});
-					});
-				}
-			}
-	});
+            {i18nCaption:'maint1', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'maint2', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'maint3', url:'/x21aAppWar/calendar/noTemplate'},
+            {i18nCaption:'edit1', url:'/x21aAppWar/lista/noTemplate'},
+            {i18nCaption:'multi1', url:'/x21aAppWar/lista/noTemplate'}],
+        load: function(){
+            if($('#mockPageContent').length > 0){
+                $('#tabsMaint').rup_tabs('disableTabs', {
+                    idTab: 'tabsMaint',
+                    position: [1,2,3,4]
+                });
+                $('#mockPageContent #loginButtonObject').on('click', function (){
+                    $('#tabsMaint').rup_tabs('enableTabs', {
+                        idTab: 'tabsMaint',
+                        position: [1,2,3,4]
+                    });
+                });
+            }
+
+            $('.contenedor').addClass('show');
+        }
+    });
 });

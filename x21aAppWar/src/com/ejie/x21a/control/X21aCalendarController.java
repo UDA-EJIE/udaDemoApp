@@ -41,4 +41,10 @@ public class X21aCalendarController {
 		logger.info("Request /calendar/page view");
 		return "calendar";
 	}
+
+	@RequestMapping(value = "noTemplate", method = RequestMethod.GET)
+	public String getPageNoTemplate(Model model) {
+		logger.info("Request /calendar/noTemplate view");
+		return "calendarNoTemplate";
+	}
 }
