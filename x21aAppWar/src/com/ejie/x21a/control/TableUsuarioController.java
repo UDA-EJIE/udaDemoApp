@@ -130,11 +130,10 @@ public class TableUsuarioController  {
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Usuario get(@PathVariable String id) {
+	public @ResponseBody Usuario get(@PathVariable String id,Model model) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.jqGridUsuarioService.find(usuario);
-        
         return usuario;
 	}
 	
@@ -143,13 +142,24 @@ public class TableUsuarioController  {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.jqGridUsuarioService.find(usuario);
+
+			Usuario2 aux = new Usuario2();
+			aux.setId2(usuario.getId());
+			aux.setNombre2(usuario.getNombre());
+			aux.setApellido12(usuario.getApellido1());
+			aux.setFechaAlta2(usuario.getFechaAlta());
+			aux.setFechaBaja2(usuario.getFechaBaja());
+			aux.setRol2(usuario.getRol());
+
+
         
-        return usuario;
+        return aux;
 	}
 	
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
+		Usuario usuario = new Usuario();
+		model.addAttribute(MODEL_USUARIO, usuario);
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		return "table";
 	}
