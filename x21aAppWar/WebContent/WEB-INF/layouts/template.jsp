@@ -53,7 +53,7 @@
 			<tiles:insertAttribute name="breadCrumb" />
 			
 			<!-- Contenidos -->
-			<div class="m-0 m-md-3 p-4 clear" >
+			<div id="x21aAppWar_content" class="m-0 m-md-3 p-4 clear" >
 				<tiles:insertAttribute name="content"/>
 			</div>
 			<!-- Pie -->
