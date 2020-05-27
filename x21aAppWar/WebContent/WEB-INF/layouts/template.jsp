@@ -30,8 +30,6 @@
 	
 	<%-- Estilos RUP --%>
 	<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
-	<%-- Estilos RUP para integración con portales --%>
-	<%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.portal.inc" %> --%>
 	<%-- Estilos Aplicacion --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	

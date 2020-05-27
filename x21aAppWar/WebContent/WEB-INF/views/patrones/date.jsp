@@ -47,7 +47,9 @@
 			</div>
 			<div class="form-groupMaterial col-sm">
 				<input id="fechaPlaceholder" type="text" />
-				<label for="fechaPlaceholder">Fecha:</label>
+				<label for="fechaPlaceholder">Prueba</label>
+				<label for="fechaPlaceholder">Varios</label>
+				<label for="fechaPlaceholder">Labels:</label>
 			</div>
 		</div>
 
@@ -61,7 +63,7 @@
 		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
 				<input id="fecha_multi" type="text" />
-				<label for="fecha">Fecha multiple:</label>
+				<label for="fecha_multi">Fecha multiple:</label>
 			</div>
 		</div>
 
@@ -72,21 +74,21 @@
 		<div class="form-row">
           	<div class="form-groupMaterial col-sm">
               	<input type="text" id="desde" />
-              	<label for="fecha">Intervalo desde:</label>
+              	<label for="desde">Intervalo desde:</label>
           	</div>
           	<div class="form-groupMaterial col-sm">
             	<input type="text" id="hasta" />
-            	<label for="fecha">hasta:</label>
+            	<label for="hasta">hasta:</label>
         	</div>
       	</div>
 		<div class="form-row">
             <div class="form-groupMaterial col-sm">
                 <input type="text" id="desdeDateTime" />
-                <label for="fecha">Intervalo desde:</label>
+                <label for="desdeDateTime">Intervalo desde:</label>
             </div>
             <div class="form-groupMaterial col-sm">
                 <input type="text" id="hastaDateTime" />
-                <label for="fecha">hasta:</label>
+                <label for="hastaDateTime">hasta:</label>
             </div>
 		</div>
 

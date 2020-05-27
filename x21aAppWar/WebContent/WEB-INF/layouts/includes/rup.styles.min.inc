@@ -17,3 +17,6 @@
 
 <%-- PRODUCCION --%>
 <link href="${staticsUrl}/rup/css/rup.min.css" rel="stylesheet" type="text/css" />
+
+<%-- PORTAL --%>
+<%-- <link href="${staticsUrl}/rup/portal/rup.min.css" rel="stylesheet" type="text/css" /> --%>

@@ -22,16 +22,15 @@
 		<hr>
 		<div class="slider-examples">
 			<div class="example">
-				<div id="slider"></div>
+				<div id="slider" class="rup-slider-material"></div>
 			</div>
 
 			<div class="example">
-				<p>
-					<label for="amount">Price range:</label> <input type="text"
-						id="amount" readonly
-						style="border: 0; color: #f6931f; font-weight: bold;">
-				</p>
-				<div id="sliderRange"></div>
+				<div class="form-groupMaterial">
+					<input id="amount" type="text" readonly>
+					<label for="amount">Price range:</label>
+				</div>
+				<div id="sliderRange" class="rup-slider-range-material"></div>
 			</div>
 
 		</div>
