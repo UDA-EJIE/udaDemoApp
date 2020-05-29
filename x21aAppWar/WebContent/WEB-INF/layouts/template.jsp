@@ -30,8 +30,6 @@
 	
 	<%-- Estilos RUP --%>
 	<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
-	<%-- Estilos RUP para integración con portales --%>
-	<%-- <%@include file="/WEB-INF/layouts/includes/rup.styles.portal.inc" %> --%>
 	<%-- Estilos Aplicacion --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 	
@@ -53,7 +51,7 @@
 			<tiles:insertAttribute name="breadCrumb" />
 			
 			<!-- Contenidos -->
-			<div class="m-0 m-md-3 p-4 clear" >
+			<div id="x21aAppWar_content" class="m-0 m-md-3 p-4 clear" >
 				<tiles:insertAttribute name="content"/>
 			</div>
 			<!-- Pie -->

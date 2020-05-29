@@ -38,8 +38,8 @@ jQuery(function($) {
         hourMin: 8,
         hourMax: 18,
         stepHour : 2,
-        stepMinute : 10
-        //,disabled:true
+        stepMinute : 10,
+        disabled:true
     });
     
     $('#hora_inline').rup_time({

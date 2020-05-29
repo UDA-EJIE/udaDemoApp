@@ -82,14 +82,20 @@
 					</button>
 				</div>
 				<div class="col-md-3 mt-3 mt-md-0">
-					<button id="btnAjaxDialogStatics"
-						class="btn btn-block btn-secondary">
+					<button id="btnAjaxDialogStatics" class="btn btn-block btn-secondary">
 						<spring:message code="dialogAjaxStatics" />
 					</button>
 				</div>
 				<div class="col-md-3 mt-3 mt-md-0">
 					<button id="btnTextDialog" class="btn btn-block btn-secondary">
 						<spring:message code="dialogText" />
+					</button>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-md-3">
+					<button id="btnSetOptionDialog" class="btn btn-block btn-secondary">
+						<spring:message code="dialogSetOption" />
 					</button>
 				</div>
 			</div>
@@ -102,3 +108,4 @@
 <div id="idDialogAjaxWar" style="display: none"></div>
 <div id="idDialogAjaxStatics" style="display: none"></div>
 <div id="idDialogText" style="display: none"></div>
+<div id="idDialogSetOption" style="display: none"></div>

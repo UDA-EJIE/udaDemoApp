@@ -38,23 +38,26 @@
 			<li><code>placeholderMask</code>: Muestra en el placeholder del
 				elemento la máscara de hora.</li>
 		</ul>
+		<label for="hora2">Exterior </label>
 
-		<div class="example">
-			<div class="form-group">
-				<label for="hora">Hora </label><label for="hora" id="hora-mask"></label>:
+		<div class="form-row example">
+			<div class="form-groupMaterial col-sm">
 				<input id="hora" type="text" />
+				<label for="hora">Hora <span id="hora-mask"></span></label>
 			</div>
-			<div class="form-group">
-				<label for="horaPlaceholder">Hora </label>: <input
-					id="horaPlaceholder" type="text" />
+			<div class="form-groupMaterial col-sm">
+				<input id="horaPlaceholder" type="text" />
+				<label for="horaPlaceholder">Hora </label>
 			</div>
 		</div>
 
 		<p>El componente permite configurar muchos aspectos de su
 			comportamiento. Un ejemplo de personalización sería:</p>
-		<div class="example">
-			<div class="form-group">
-				<label for="hora2">Hora </label>: <input id="hora2" type="text" />
+		<div class="form-row example">
+			<div class="form-groupMaterial col-sm">
+				<input id="hora2" type="text" />
+				<label for="hora2">Hora </label>
+				<label for="hora2">Label2 </label>
 			</div>
 		</div>
 

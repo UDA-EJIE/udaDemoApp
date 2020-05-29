@@ -130,11 +130,10 @@ public class TableUsuarioController  {
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Usuario get(@PathVariable String id) {
+	public @ResponseBody Usuario get(@PathVariable String id,Model model) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.jqGridUsuarioService.find(usuario);
-        
         return usuario;
 	}
 	
@@ -143,13 +142,24 @@ public class TableUsuarioController  {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.jqGridUsuarioService.find(usuario);
+
+			Usuario2 aux = new Usuario2();
+			aux.setId2(usuario.getId());
+			aux.setNombre2(usuario.getNombre());
+			aux.setApellido12(usuario.getApellido1());
+			aux.setFechaAlta2(usuario.getFechaAlta());
+			aux.setFechaBaja2(usuario.getFechaBaja());
+			aux.setRol2(usuario.getRol());
+
+
         
-        return usuario;
+        return aux;
 	}
 	
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
+		Usuario usuario = new Usuario();
+		model.addAttribute(MODEL_USUARIO, usuario);
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		return "table";
 	}
@@ -292,7 +302,7 @@ public class TableUsuarioController  {
 	public @ResponseBody TableResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios");
+		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios");
 		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 
@@ -302,7 +312,7 @@ public class TableUsuarioController  {
 	public TableResponseDto<Usuario2> filter2(
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		TableUsuarioController.logger.info("[POST - jqGrid] : Obtener Usuarios 2");
+		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios 2");
 		try {
 			tableRequestDto.setSidx(tableRequestDto.getSidx().substring(0, tableRequestDto.getSidx().length()-1));
 			TableResponseDto<Usuario> rdo1 = this.filter(filterUsuario, tableRequestDto);
@@ -325,7 +335,7 @@ public class TableUsuarioController  {
 	
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Filter filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
-		TableUsuarioController.logger.info("[POST - jqGrid] : add filter");
+		TableUsuarioController.logger.info("[POST - table] : add filter");
 		
 		 return filterService.insert(filtro);
 	}	
@@ -335,7 +345,7 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
 	public @ResponseBody Filter  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		TableUsuarioController.logger.info("[POST - jqGrid] : delete filter");
+		TableUsuarioController.logger.info("[POST - table] : delete filter");
 		return  filterService.delete(filtro);
 	}
 	
@@ -377,9 +387,9 @@ public class TableUsuarioController  {
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+			@RequestJsonBody TableRequestDto tableRequestDto){
 		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
-		return jqGridUsuarioService.search(filterUsuario, searchUsuario, jqGridRequestDto, false);
+		return tableUsuarioService.search(filterUsuario, searchUsuario, tableRequestDto, false);
 	}
 	
 	/**

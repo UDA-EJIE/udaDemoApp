@@ -108,6 +108,39 @@ $(document).ready(function () {
         });
     });
 
+    $('#btnSetOptionDialog').bind('click', function () {
+        $('#idDialogSetOption').rup_dialog({
+            type: $.rup.dialog.AJAX,
+            url: $.rup.APP_STATICS + '/resources/ajaxDiv.htm',
+            autoOpen: true,
+            modal: true,
+            width: '650',
+            resizable: true,
+            title: 'Botones con "setOption"'
+        });
+
+        $('#idDialogSetOption').rup_dialog("setOption", "buttons",
+            [{
+                text: 'Aceptar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close');
+                }				
+            },
+            {
+                text: 'Enviar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close'); 
+                }
+            },
+            {
+                text: 'Abandonar',
+                click: function () { 
+                    $('#idDialogAjaxWar').rup_dialog('close');
+                },
+                btnType: $.rup.dialog.LINK
+            }]
+        );
+    });
 
     $('.contenedor').addClass('show');
 });

@@ -17,3 +17,6 @@
 
 <%-- DESARROLLO --%>
 <link href="${staticsUrl}/rup/css/rup.css" rel="stylesheet" type="text/css" />
+
+<%-- PORTAL --%>
+<%-- <link href="${staticsUrl}/rup/portal/rup.css" rel="stylesheet" type="text/css" /> --%>
