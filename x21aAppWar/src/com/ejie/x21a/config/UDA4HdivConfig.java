@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hdiv.config.annotation.ExclusionRegistry;
 import org.hdiv.config.annotation.RuleRegistry;
+import org.hdiv.config.annotation.builders.SecurityConfigBuilder;
 import org.hdiv.ee.config.annotation.ValidationConfigurer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	protected String getLoginPage() {
-		return "/loginPage";
+		return "/mockLoginPage";
 	}
 
 	@Override
@@ -43,7 +44,11 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	protected List<Link> getStaticLinks() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+    public void configure(SecurityConfigBuilder builder) {
+        builder.errorPage("/error.jsp");
+    }
 }
