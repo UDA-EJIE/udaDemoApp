@@ -229,7 +229,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(Usuario filterUsuario, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+	public void generateReport(Usuario filterUsuario, String[] columns,String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
 		// Accede a la DB para recuperar datos
 		List<Usuario> filteredData = getDataForReports(filterUsuario, tableRequestDto);
 		String extension = null;
@@ -262,6 +262,11 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        }
 	        columns = tempColumns.toArray(new String[0]);
         }
+        
+        //si no se definen el nombre de las columnas , se dejan las de por defecto.
+        if(columnsName == null){
+        	columnsName = columns;
+        }
 		
 		String servletPath = request.getServletPath();
 		String reportType = null;
@@ -273,19 +278,19 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		
 		if (reportType.equals("xlsReport")) {
 			extension = ".xls";
-			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns,columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("xlsxReport")) {
 			extension = ".xlsx";
-			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns,columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("pdfReport")) {
 			extension = ".pdf";
-			generatePDFReport(filteredData, columns, fileName, response);
+			generatePDFReport(filteredData, columns,columnsName, fileName, response);
 		} else if (reportType.equals("odsReport")) {
 			extension = ".ods";
-			generateODSReport(filteredData, columns, fileName, sheetTitle, response);
+			generateODSReport(filteredData, columns,columnsName, fileName, sheetTitle, response);
 		} else if (reportType.equals("csvReport")) {
 			extension = ".csv";
-			generateCSVReport(filteredData, columns, fileName, sheetTitle, language, response);
+			generateCSVReport(filteredData, columns,columnsName, fileName, sheetTitle, language, response);
 		}
 	}
 
@@ -318,7 +323,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generateExcelReport(List<Usuario> filteredData, String[] columns, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generateExcelReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
 			// Creacion del Excel
 			Workbook workbook = null;
@@ -352,9 +357,9 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        Row row = sheet.createRow(rowNumber++);
 	        
 	        // Añadir titulos
-	        for(int i = 0; i < columns.length; i++) {
+	        for(int i = 0; i < columnsName.length; i++) {
 	        	Cell cell = row.createCell(i);
-	            cell.setCellValue(columns[i]);
+	            cell.setCellValue(columnsName[i]);
 	            cell.setCellStyle(headerCellStyle);
 	        }
 	        
@@ -397,8 +402,9 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param columns String[]
 	 * @param fileName String
 	 * @param response HttpServletResponse
+	 * @param columnsName 
 	 */
-	private void generatePDFReport(List<Usuario> filteredData, String[] columns, String fileName, HttpServletResponse response) {
+	private void generatePDFReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
 		try {
 			// Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
@@ -443,8 +449,9 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param response HttpServletResponse
+	 * @param columnsName 
 	 */
-	private void generateODSReport(List<Usuario> filteredData, String[] columns, String fileName, String sheetTitle, HttpServletResponse response) {
+	private void generateODSReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
 		try {
 			// Se añade el fichero ods al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
@@ -496,8 +503,9 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param sheetTitle String
 	 * @param language String
 	 * @param response HttpServletResponse
+	 * @param columnsName 
 	 */
-	private void generateCSVReport(List<Usuario> filteredData, String[] columns, String fileName, String sheetTitle, String language, HttpServletResponse response) {
+	private void generateCSVReport(List<Usuario> filteredData, String[] columns,String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
 		try {
 		    // Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
