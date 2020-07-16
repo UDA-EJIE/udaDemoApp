@@ -51,7 +51,7 @@ import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
 import com.lowagie.text.Document;
@@ -178,10 +178,10 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 
 	@Override
-	public TableResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+	public TableResourceResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		List<Usuario> listaUsuario =  this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
 		Long recordNum =  this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
-		TableResponseDto<Usuario> usuarioDto = new TableResponseDto<Usuario>(tableRequestDto, recordNum, listaUsuario);
+		TableResourceResponseDto<Usuario> usuarioDto = new TableResourceResponseDto<Usuario>(tableRequestDto, recordNum, listaUsuario);
 		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
 			List<TableRowDto<Usuario>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);

@@ -57,7 +57,7 @@ import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
 
@@ -222,7 +222,7 @@ public class TableDynamicColumnsController  {
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<Usuario> filter(
+	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableDynamicColumnsController.logger.info("[POST - jqGrid] : Obtener Usuarios");

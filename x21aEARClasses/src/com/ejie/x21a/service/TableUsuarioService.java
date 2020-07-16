@@ -28,7 +28,7 @@ import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -124,7 +124,7 @@ public interface TableUsuarioService {
 	 */	
 	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
 
-	TableResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith) ;
+	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
 	Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
 
