@@ -1,6 +1,8 @@
 package com.ejie.x21a.model;
 
-public class IberdokFile  implements java.io.Serializable {
+import org.hdiv.services.SecureIdentifiable;
+
+public class IberdokFile implements java.io.Serializable, SecureIdentifiable<String> {
 	
 	/**
 	 * 
@@ -15,12 +17,6 @@ public class IberdokFile  implements java.io.Serializable {
 	private String documentoFinal;
 	private String file;
 	private String nombre;
-	
-	
-	
-	
-	
-	
 	
 	public String getFile() {
 		return file;

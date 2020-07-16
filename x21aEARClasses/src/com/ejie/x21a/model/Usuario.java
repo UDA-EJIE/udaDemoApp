@@ -21,8 +21,7 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.groups.Default;
 
-
-
+import org.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,33 +38,33 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class Usuario  implements java.io.Serializable {
+public class Usuario implements java.io.Serializable, SecureIdentifiable<String> {
 
 	private static final long serialVersionUID = 1L;
             
-			@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
-			@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
-            private String id;
-            @NotBlank(message="validacion.required")
-            @Length(max=25, message="validacion.maxLength")
-            private String nombre;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido1;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido2;
-//            @NotBlank(message="validacion.required")
-            private String ejie;
-            private String tipo;
-            private String subtipo;
-            @NotNull(message="validacion.required")
-            private Date fechaAlta;
-            private Date fechaBaja;
-            private Date fechaModif;
-//            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
-            private Provincia provincia;
-            private String rol;
-            private String idPadre;
-            private MultipartFile imagenAlumno;
+	@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
+	@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
+	private String id;
+	@NotBlank(message="validacion.required")
+	@Length(max=25, message="validacion.maxLength")
+	private String nombre;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido1;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido2;
+	//@NotBlank(message="validacion.required")
+	private String ejie;
+	private String tipo;
+	private String subtipo;
+	@NotNull(message="validacion.required")
+	private Date fechaAlta;
+	private Date fechaBaja;
+	private Date fechaModif;
+	//private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
+	private Provincia provincia;
+	private String rol;
+	private String idPadre;
+	private MultipartFile imagenAlumno;
 
 	public MultipartFile getImagenAlumno() {
 				return imagenAlumno;

@@ -1,5 +1,6 @@
 package com.ejie.x21a.model;
 
+import org.hdiv.services.SecureIdentifiable;
 
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
@@ -13,18 +14,18 @@ import java.util.Date;
  * @author UDA
  */
 
-public class UsuarioJerarquia  implements java.io.Serializable {
+public class UsuarioJerarquia implements java.io.Serializable, SecureIdentifiable<String> {
 
 	private static final long serialVersionUID = 1L;
-            private String id;
-            private String nombre;
-            private String apellido1;
-            private String apellido2;
-            private String ejie;
-            private Date fechaAlta;
-            private Date fechaBaja;
-            private String idPadre;
-            private String grupo;
+	private String id;
+	private String nombre;
+	private String apellido1;
+	private String apellido2;
+	private String ejie;
+	private Date fechaAlta;
+	private Date fechaBaja;
+	private String idPadre;
+	private String grupo;
 
 	/** 
 	 * Method 'UsuarioJerarquia'.
