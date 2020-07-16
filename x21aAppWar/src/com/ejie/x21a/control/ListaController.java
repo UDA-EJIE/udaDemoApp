@@ -1,23 +1,25 @@
 package com.ejie.x21a.control;
 
-import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.service.TableUsuarioService;
-import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
-
-import com.ejie.x38.rup.table.filter.model.Filter;
-import com.ejie.x38.rup.table.filter.service.FilterService;
-
 import java.util.List;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.service.TableUsuarioService;
+import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
+import com.ejie.x38.rup.table.filter.model.Filter;
+import com.ejie.x38.rup.table.filter.service.FilterService;
 
 @Controller
 @RequestMapping(value = "/patrones/lista")
@@ -52,7 +54,7 @@ public class ListaController {
 
     @PostMapping(value = "/filter")
     public @ResponseBody
-    TableResponseDto<Usuario> filter(
+    TableResourceResponseDto<Usuario> filter(
             @RequestJsonBody(param="filter") Usuario filterUsuario,
             @RequestJsonBody TableRequestDto tableRequestDto) {
         ListaController.logger.info("[POST - jqGrid] : Obtener Usuarios");
