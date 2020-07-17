@@ -201,17 +201,25 @@
         if(ctx.oInit.formEdit.validate !== undefined){
         	validaciones = ctx.oInit.formEdit.validate.rules;
         }
-        ctx.oInit.formEdit.idForm.rup_validate({
-            feedback: feed,
-            liveCheckingErrors: false,
-            showFieldErrorAsDefault: true,
-            showErrorsInFeedback: true,
-            showFieldErrorsInFeedback:true,
-            rules:validaciones,
-            submitHandler: function(form) {
-                return false;  // block the default submit action
-            }
-        });
+        
+        if (feed.length === 0) {
+        	feed = $('<div></div>').attr('id', feed[0].id + '_ok').insertBefore(feed);
+        }
+        
+    	feed.rup_feedback(ctx.oInit.feedback);
+          
+        let propertiesDefault = {
+                liveCheckingErrors: false,
+                showFieldErrorAsDefault: true,
+                showErrorsInFeedback: true,
+                showFieldErrorsInFeedback:true
+            };
+        let propertiesValidate = $.extend(true, {}, propertiesDefault,ctx.oInit.formEdit.propertiesValidate);
+        propertiesValidate.feedback = feed;
+        propertiesValidate.rules = validaciones;
+        propertiesValidate.submitHandler = function(form) {return false;}; // block the default submit action
+        
+        ctx.oInit.formEdit.idForm.rup_validate(propertiesValidate);
 
     };
 
@@ -663,8 +671,9 @@
             showLoading: false,
             contentType: 'application/json',
             async: true,
-            success: function () {
+            success: function (valor) {
             	ctx.oInit.formEdit.okCallBack = true;
+            	ctx.oInit.formEdit.lastValue = valor;
                 if (url !== '/deleteAll' && actionType !== 'DELETE') {
                     if (continuar) { //Se crea un feedback_ok, para que no se pise con el de los errores
                         var divOkFeedback = idTableDetail.find('#' + feed[0].id + '_ok');
@@ -698,6 +707,17 @@
                         ctx.multiselection.selectedRowsPerPage[posicion].id = DataTable.Api().rupTable.getIdPk(row, ctx.oInit);
                         ctx.oInit.feedback.type = undefined; //se recarga el type no esta definido.
                     } else {
+                    	//Asegura a cargar los nuevos IDS.
+                    	
+                        $.each(ctx.oInit.primaryKey, function (index, key) {
+                            // Comprueba si la primaryKey es un subcampo
+                            if (key.indexOf('.') !== -1) {
+                                row[key] = DataTable.Api().rupTable.getDescendantProperty(valor, key);
+                            } else {
+                            	row[key] = valor[key];
+                            }
+
+                        });
                         // Se actualiza la tabla temporalmente. y deja de ser post para pasar a put(edicion)
                         if (ctx.oInit.select !== undefined) {
                             DataTable.Api().select.deselect(ctx);
@@ -734,10 +754,19 @@
                             ctx.oInit.feedback.type = 'noBorrar';
                             dt.row().multiSelect();
                         }
-                        // Se actualiza la linea
+                        
+                     // Se actualiza la linea
                         if (ctx.json.reorderedSelection !== null && ctx.json.reorderedSelection !== undefined) {
-                            ctx.multiselection.selectedRowsPerPage[0].line = ctx.json.reorderedSelection[0].pageLine;
+	                        try
+	                        {
+	                          ctx.multiselection.selectedRowsPerPage[0].line = ctx.json.reorderedSelection[0].pageLine;
+	                          
+	                        }
+	                        catch(err) {
+	                          console.log(err.message);
+	                        }
                         }
+                        
                         $('#' + ctx.sTableId).triggerHandler('tableEditFormAfterInsertRow',actionType,ctx);
                     }
 
