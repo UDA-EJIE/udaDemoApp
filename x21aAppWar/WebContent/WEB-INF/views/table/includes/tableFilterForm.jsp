@@ -14,7 +14,8 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<form:form modelAttribute="usuario" id="example_filter_form">
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="example_filter_form" action="${url}">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
@@ -52,12 +53,12 @@
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="ejie" id="ejie_filter_table" />
+	    	<form:select path="ejie" id="ejie_filter_table" items="${comboEjie}" />
 	    	<label for="ejie_filter_table">EJIE</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="rol" id="rol_filter_table" />
+	    	<form:select path="rol" id="rol_filter_table" items="${comboRol}" />
 	    	<label for="rol_filter_table">ROL</label>
 	    </div>
 	</div>
