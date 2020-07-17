@@ -42,55 +42,6 @@ function _init() {
 	        rol: 'Manager',
 	        codTipoSubsanacion: 'manager'
     }];
-    var options_ejie_combo = {
-        source: [{
-            label: '---',
-            value: ''
-        },
-        {
-            i18nCaption: '0',
-            value: '0'
-        },
-        {
-            i18nCaption: '1',
-            value: '1'
-        }
-        ],
-        i18nId: 'GRID_simple##ejie',
-        width: '100%',
-        customClasses: ['select-material']
-    };
-    var options_role_combo;
-    window.initRupI18nPromise.then(function () {
-	    options_role_combo = {
-	        source: [{
-	            label: '---',
-	            value: ''
-	        },
-	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].administrador,
-	            value: 'administrador'
-	        },
-	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
-	            value: 'desarrollador'
-	        },
-	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].espectador,
-	            value: 'espectador'
-	        },
-	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].informador,
-	            value: 'informador'
-	        },
-	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].manager,
-	            value: 'manager'
-	        }],
-            width: '100%',
-            customClasses: ['select-material']
-	    };
-    });
     var allowedPluginsBySelecionType = {
         multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
         selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
@@ -559,14 +510,6 @@ function _init() {
         //Formulario de detalle
         $('[id="fechaAlta_detail_table"]').rup_date();
         $('[id="fechaBaja_detail_table"]').rup_date();
-        window.initRupI18nPromise.then(function () {
-	        //Formulario de filtrado
-	        $('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
-	        $('[id="rol_filter_table"]').rup_combo(options_role_combo);
-	        
-	        //Formulario de detalle
-	        $('[id="rol_detail_table"]').rup_combo(options_role_combo);
-        });
 	    //--------------------------------------------
         
         //Formulario de filtrado
@@ -577,13 +520,6 @@ function _init() {
         $('[id="fechaAlta_detail_table2"]').rup_date();
         $('[id="fechaBaja_detail_table2"]').rup_date();
         window.initRupI18nPromise.then(function () {
-	        //Formulario de filtrado
-	        $('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
-	        $('[id="rol_filter_table2"]').rup_combo(options_role_combo);
-	        
-	        //Formulario de detalle
-	        $('[id="rol_detail_table2"]').rup_combo(options_role_combo);
-	
 	        loadTable();
 	        loadTable(2);
 	
