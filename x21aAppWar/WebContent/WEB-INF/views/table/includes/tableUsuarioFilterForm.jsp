@@ -16,7 +16,8 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <!-- Formulario de filtrado -->
-<form:form modelAttribute="usuario" id="usuario_filter_form">
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="usuario_filter_form" action="${url}">
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="usuario_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="usuario_filter_fieldset" class="rup-table-filter-fieldset">
