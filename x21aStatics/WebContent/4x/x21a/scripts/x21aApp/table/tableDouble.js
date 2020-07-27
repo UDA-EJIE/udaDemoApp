@@ -381,8 +381,8 @@ function _init() {
         }
 
         plugins.colModel = [{
-            name: 'id' + num,
-            index: 'id' + num,
+            name: 'nid',
+            index: 'nid',
             editable: true,
             hidden: false,
             width: 80,

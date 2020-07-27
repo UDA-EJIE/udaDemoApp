@@ -49,9 +49,9 @@ jQuery(function ($) {
         ];
 
         var tableColModels = [{
-                name: 'id',
-                index: 'id',
-                editable: true,
+                name: 'nid',
+                index: 'nid',
+                editable: false,
                 hidden: false,
                 width: 80,
                 formoptions: {
@@ -165,68 +165,16 @@ jQuery(function ($) {
                     colpos: 2
                 }
             }
-            ],
-            options_ejie_combo = {
-                source: [{
-                    label: '---',
-                    value: ''
-                },
-                {
-                    i18nCaption: '0',
-                    value: '0'
-                },
-                {
-                    i18nCaption: '1',
-                    value: '1'
-                }
-                ],
-                i18nId: 'GRID_simple##ejie',
-                width: '100%',
-                customClasses: ['select-material']
-            },
-            options_role_combo = {
-                source: [{
-                    label: '---',
-                    value: ''
-                },
-                {
-                    label: $.rup.i18n.app['GRID_simple##rol'].administrador,
-                    value: 'administrador'
-                },
-                {
-                    label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
-                    value: 'desarrollador'
-                },
-                {
-                    label: $.rup.i18n.app['GRID_simple##rol'].espectador,
-                    value: 'espectador'
-                },
-                {
-                    label: $.rup.i18n.app['GRID_simple##rol'].informador,
-                    value: 'informador'
-                },
-                {
-                    label: $.rup.i18n.app['GRID_simple##rol'].manager,
-                    value: 'manager'
-                }
-                ],
-                width: '100%',
-                customClasses: ['select-material']
-            };
+        ];
 
 
         //Formulario de filtrado
-        jQuery('#ejie_filter_table').rup_combo(options_ejie_combo);
-        jQuery('#rol_filter_table').rup_combo(options_role_combo);
-
         jQuery('#fechaAlta_filter_table').rup_date();
         jQuery('#fechaBaja_filter_table').rup_date();
 
         //Formulario de detalle
-/*        jQuery('#fechaAlta_detail_table').rup_date();
-        jQuery('#fechaBaja_detail_table').rup_date();
-
-        jQuery('#rol_detail_table').rup_combo(options_role_combo);*/
+        /*jQuery('#fechaAlta_detail_table').rup_date();
+        jQuery('#fechaBaja_detail_table').rup_date();*/
 
         var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 
