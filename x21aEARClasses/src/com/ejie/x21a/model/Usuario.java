@@ -21,7 +21,8 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.groups.Default;
 
-import org.hdiv.services.SecureIdentifiable;
+import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.TrustAssertion;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,12 +39,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class Usuario implements java.io.Serializable, SecureIdentifiable<String> {
+public class Usuario implements java.io.Serializable, SecureIdContainer {
 
 	private static final long serialVersionUID = 1L;
             
 	@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
 	@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
+	@TrustAssertion(idFor=Usuario.class)
 	private String id;
 	@NotBlank(message="validacion.required")
 	@Length(max=25, message="validacion.maxLength")
@@ -67,8 +69,8 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
 	private MultipartFile imagenAlumno;
 
 	public MultipartFile getImagenAlumno() {
-				return imagenAlumno;
-			}
+		return imagenAlumno;
+	}
 
 	@JsonIgnore
 	public void setImagenAlumno(MultipartFile imagenAlumno) {

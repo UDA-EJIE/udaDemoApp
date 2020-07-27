@@ -1,9 +1,11 @@
 package com.ejie.x21a.model;
 
-import org.hdiv.services.SecureIdentifiable;
+import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.TrustAssertion;
 
-public class Dashboard implements SecureIdentifiable<String> {
-
+public class Dashboard implements SecureIdContainer {
+	
+	@TrustAssertion(idFor=Dashboard.class)
 	private String id;
 	
 	private String nombre;
