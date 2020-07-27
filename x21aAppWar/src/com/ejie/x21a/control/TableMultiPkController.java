@@ -3,8 +3,10 @@ package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +87,22 @@ public class TableMultiPkController  {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
 		model.addAttribute("usuario", new Usuario());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("administrador", "Administrador");
+		comboRol.put("desarrollador", "Desarrollador");
+		comboRol.put("espectador", "Espectador");
+		comboRol.put("informador", "Informador");
+		comboRol.put("manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "Sí");
+		model.addAttribute("comboEjie", comboEjie);
+		
 		return "tableMultipkDoble";
 	}
 

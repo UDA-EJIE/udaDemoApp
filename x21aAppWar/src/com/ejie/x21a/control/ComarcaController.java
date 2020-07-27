@@ -71,13 +71,4 @@ public class ComarcaController  {
 		ComarcaController.logger.info("[GET - find_ALL] : Obtener Comarca por filtro");
 	    return this.comarcaService.findAll(filterComarca, null);
 	}
-
-
-
-
-	
-
-
-
-	
 }	
