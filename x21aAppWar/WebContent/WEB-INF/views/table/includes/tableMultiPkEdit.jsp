@@ -23,7 +23,8 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form:form modelAttribute="multiPk" id="MultiPk_detail_form">
+		<spring:url value="/table/multipk" var="url"/>
+		<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="MultiPk_detail_feedback"></div>
 			<div class="form-row">

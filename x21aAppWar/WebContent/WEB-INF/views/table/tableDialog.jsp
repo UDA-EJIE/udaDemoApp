@@ -31,7 +31,8 @@
 		<div id="tableDialog_toolbar"></div>
 		<div id="tableDialog_filter_div" class="rup-table-filter">
 			<!-- Formulario de filtrado -->
-			<form:form modelAttribute="multiPk" id="MultiPk_filter_form">
+			<spring:url value="/table/multipk/filter" var="url"/>
+			<form:form modelAttribute="multiPk" id="MultiPk_filter_form" action="${url}">
 				<!-- Barra de herramientas del formulario de filtrado -->
 				<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>
 				<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
@@ -110,67 +111,68 @@
 		</div>
 	</div>	
 	
-<!-- Formulario de detalle -->
-<div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
-	<!-- Barra de navegaci�n del detalle -->
-	<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
-	<!-- Separador -->
-	<hr class="m-1">
-	<div class="dialog-content-material">
-		<!-- Formulario -->
-		<form:form modelAttribute="multiPk" id="MultiPk_detail_form">
-			<!-- Feedback del formulario de detalle -->
-			<div id ="MultiPk_detail_feedback"></div>
-			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
-				<div class="form-groupMaterial col-sm">
-					<form:input type="text" path="ida" id="ida_detail_table"/>
-					<label for="ida_detail_table">
-						<spring:message code="ida"/>
-					</label>
+	<!-- Formulario de detalle -->
+	<div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
+		<!-- Barra de navegaci�n del detalle -->
+		<div id ="MultiPk_detail_navigation" class="row no-gutters"></div>
+		<!-- Separador -->
+		<hr class="m-1">
+		<div class="dialog-content-material">
+			<!-- Formulario -->
+			<spring:url value="/table/multipk/filter" var="url"/>
+			<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}">
+				<!-- Feedback del formulario de detalle -->
+				<div id ="MultiPk_detail_feedback"></div>
+				<div class="form-row">
+					<!-- Campos del formulario de detalle -->
+					<div class="form-groupMaterial col-sm">
+						<form:input type="text" path="ida" id="ida_detail_table"/>
+						<label for="ida_detail_table">
+							<spring:message code="ida"/>
+						</label>
+					</div>
+					<div class="form-groupMaterial col-sm">
+						<form:input type="text" path="idb" id="idb_detail_table"/>
+						<label for="idb_detail_table">
+							<spring:message code="idb"/>
+						</label>
+					</div>
+					<div class="form-groupMaterial col-sm">
+						<form:input type="text" path="nombre" id="nombre_detail_table"/>
+						<label for="nombre_detail_table">
+							<spring:message code="nombre"/>
+						</label>
+					</div>
 				</div>
-				<div class="form-groupMaterial col-sm">
-					<form:input type="text" path="idb" id="idb_detail_table"/>
-					<label for="idb_detail_table">
-						<spring:message code="idb"/>
-					</label>
+				<div class="form-row">
+					<div class="form-groupMaterial col-sm">
+						<form:input type="text" path="apellido1" id="apellido1_detail_table"/>
+						<label for="apellido1_detail_table">
+							<spring:message code="apellido1"/>
+						</label>
+					</div>
+					<div class="form-groupMaterial col-sm">
+						<form:input type="text" path="apellido2" id="apellido2_detail_table"/>
+						<label for="apellido2_detail_table">
+							<spring:message code="apellido2"/>
+						</label>
+					</div>
+					<!-- Fin campos del formulario de detalle -->
 				</div>
-				<div class="form-groupMaterial col-sm">
-					<form:input type="text" path="nombre" id="nombre_detail_table"/>
-					<label for="nombre_detail_table">
-						<spring:message code="nombre"/>
-					</label>
-				</div>
+			</form:form>
+		</div>
+		<!-- Botonera del formulario de detalle -->
+		<div class="rup-table-buttonpanel-material">
+			<div class="text-right">
+				<!-- Enlace cancelar -->
+				<button id="MultiPk_detail_button_cancel" type="button">
+					<spring:message code="cancel" />
+				</button>
+				<!-- Bot�n Guardar -->
+				<button id="MultiPk_detail_button_save" type="button">
+					<spring:message code="save" />
+				</button>
 			</div>
-			<div class="form-row">
-				<div class="form-groupMaterial col-sm">
-					<form:input type="text" path="apellido1" id="apellido1_detail_table"/>
-					<label for="apellido1_detail_table">
-						<spring:message code="apellido1"/>
-					</label>
-				</div>
-				<div class="form-groupMaterial col-sm">
-					<form:input type="text" path="apellido2" id="apellido2_detail_table"/>
-					<label for="apellido2_detail_table">
-						<spring:message code="apellido2"/>
-					</label>
-				</div>
-				<!-- Fin campos del formulario de detalle -->
-			</div>
-		</form:form>
-	</div>
-	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpanel-material">
-		<div class="text-right">
-			<!-- Enlace cancelar -->
-			<button id="MultiPk_detail_button_cancel" type="button">
-				<spring:message code="cancel" />
-			</button>
-			<!-- Bot�n Guardar -->
-			<button id="MultiPk_detail_button_save" type="button">
-				<spring:message code="save" />
-			</button>
 		</div>
 	</div>
-</div>
 </div>

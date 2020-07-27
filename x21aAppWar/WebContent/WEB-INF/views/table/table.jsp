@@ -23,7 +23,7 @@
 	data-filter-form="#example_filter_form">
         <thead>
             <tr>
-                <th data-col-prop="id" data-col-edit="false">Id</th>
+                <th data-col-prop="nid" data-col-sidx="id" data-col-edit="false">Id</th>
                 <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
                 <th data-col-prop="apellido1">Primer apellido</th>
                 <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>

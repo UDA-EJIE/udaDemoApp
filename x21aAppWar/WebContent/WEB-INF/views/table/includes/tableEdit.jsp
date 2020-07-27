@@ -26,13 +26,15 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form:form modelAttribute="usuario" id="example_detail_form">
+		<spring:url value="/table" var="url"/>
+		<form:form modelAttribute="usuario" id="example_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="example_detail_feedback"></div>	
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-			    	<form:input path="id" id="id_detailForm_table" />
+					<form:input path="id" class="d-none" />
+			    	<input type="text" name="nid" id="id_detailForm_table"/>
 					<label for="id_detailForm_table"><spring:message code="id" /></label>
 			    </div>
 			    
