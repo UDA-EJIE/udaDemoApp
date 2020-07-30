@@ -40,6 +40,13 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	public void addCustomExclusions(final ExclusionRegistry registry) {
+		registry.addUrlExclusions(".*/jqGridComarca/.*");
+		registry.addUrlExclusions(".*/jqGridLocalidad/.*");
+		registry.addUrlExclusions(".*/jqGridMasterDetail/.*");
+		registry.addUrlExclusions(".*/jqGridUsuario/.*");
+		registry.addUrlExclusions(".*/jqGridUsuarioJerarquia/.*");
+		registry.addUrlExclusions(".*/tableComposite/.*");
+		registry.addUrlExclusions(".*/tableLegacy/.*");
 	}
 
 	@Override
