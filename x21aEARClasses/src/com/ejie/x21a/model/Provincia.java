@@ -45,6 +45,11 @@ public class Provincia  implements java.io.Serializable, SecureIdContainer {
 	*/
     public Provincia() {
     }
+    
+    public Provincia(BigDecimal code) {
+    	this.code = code;
+	}
+	
     /** Method 'Provincia'.
     * @param code BigDecimal
     * @param descEs String
