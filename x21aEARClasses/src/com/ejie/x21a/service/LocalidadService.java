@@ -125,7 +125,7 @@ public interface LocalidadService {
 	 * Finds a List of rows in the Localidad table via inverse select.
 	 *
 	 * @param filterLocalidad Localidad
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
 	List<Localidad> getMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
@@ -135,14 +135,14 @@ public interface LocalidadService {
 	 *
 	 * @param filterLocalidad Localidad
 	 * @param searchLocalidad Localidad
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Localidad>> search(Localidad filterLocalidad, Localidad searchLocalidad, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	List<TableRowDto<Localidad>> search(Localidad filterLocalidad, Localidad searchLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
 
-	TableResourceResponseDto<Localidad> filter(Localidad Localidad, TableRequestDto tableRequestDto, Boolean startsWith) ;
+	TableResourceResponseDto<Localidad> filter(Localidad localidad, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
-	Object reorderSelection(Localidad Localidad, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(Localidad localidad, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/*
 	 * EXPORTACIONES DE DATOS

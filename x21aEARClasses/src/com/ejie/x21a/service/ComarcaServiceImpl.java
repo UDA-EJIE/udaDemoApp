@@ -184,19 +184,19 @@ public class ComarcaServiceImpl implements ComarcaService {
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
-	public List<Comarca> getMultiple(Comarca filterComarca, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.comarcaDao.getMultiple(filterComarca, jqGridRequestDto, startsWith);
+	public List<Comarca> getMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.comarcaDao.getMultiple(filterComarca, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(Comarca Comarca, TableRequestDto jqGridRequestDto,
+	public Object reorderSelection(Comarca comarca, TableRequestDto tableRequestDto,
 			Boolean startsWith) {
-		return this.comarcaDao.reorderSelection(Comarca, jqGridRequestDto, startsWith);
+		return this.comarcaDao.reorderSelection(comarca, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<Comarca>> search(Comarca filterParams, Comarca searchParams, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.comarcaDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Comarca>> search(Comarca filterParams, Comarca searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.comarcaDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
 
 	@Override

@@ -184,19 +184,19 @@ public class LocalidadServiceImpl implements LocalidadService {
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
-	public List<Localidad> getMultiple(Localidad filterLocalidad, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.localidadDao.getMultiple(filterLocalidad, jqGridRequestDto, startsWith);
+	public List<Localidad> getMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.localidadDao.getMultiple(filterLocalidad, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(Localidad Localidad, TableRequestDto jqGridRequestDto,
+	public Object reorderSelection(Localidad localidad, TableRequestDto tableRequestDto,
 			Boolean startsWith) {
-		return this.localidadDao.reorderSelection(Localidad, jqGridRequestDto, startsWith);
+		return this.localidadDao.reorderSelection(localidad, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<Localidad>> search(Localidad filterParams, Localidad searchParams, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.localidadDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Localidad>> search(Localidad filterParams, Localidad searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.localidadDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
 
 	@Override

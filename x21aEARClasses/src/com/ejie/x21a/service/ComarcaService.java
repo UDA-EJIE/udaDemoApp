@@ -125,7 +125,7 @@ public interface ComarcaService {
 	 * Finds a List of rows in the Comarca table via inverse select.
 	 *
 	 * @param filterComarca Comarca
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
 	List<Comarca> getMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith);
@@ -135,14 +135,14 @@ public interface ComarcaService {
 	 *
 	 * @param filterComarca Comarca
 	 * @param searchComarca Comarca
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Comarca>> search(Comarca filterComarca, Comarca searchComarca, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	List<TableRowDto<Comarca>> search(Comarca filterComarca, Comarca searchComarca, TableRequestDto tableRequestDto, Boolean startsWith);
 
-	TableResourceResponseDto<Comarca> filter(Comarca Comarca, TableRequestDto tableRequestDto, Boolean startsWith) ;
+	TableResourceResponseDto<Comarca> filter(Comarca comarca, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
-	Object reorderSelection(Comarca Comarca, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(Comarca comarca, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/*
 	 * EXPORTACIONES DE DATOS
