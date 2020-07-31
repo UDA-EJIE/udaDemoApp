@@ -146,11 +146,11 @@
                                     <a class="dropdown-item" href="${tableMultipk}">
                                         <spring:message code="tabla.multipk" />
                                     </a>
-                                    <spring:url value="/tableComarca/masterDetail" var="tableMasterDetail" htmlEscape="true"/>
+                                    <spring:url value="/table/masterDetail" var="tableMasterDetail" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${tableMasterDetail}">
                                         <spring:message code="tabla.masterDetail" />
                                     </a>
-                                     <spring:url value="/tableComarca/masterDialog" var="tableDialogDetail" htmlEscape="true"/>
+                                     <spring:url value="/table/masterDialog" var="tableDialogDetail" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${tableDialogDetail}">
                                         <spring:message code="tabla.tableDialogDetail" />
                                     </a>

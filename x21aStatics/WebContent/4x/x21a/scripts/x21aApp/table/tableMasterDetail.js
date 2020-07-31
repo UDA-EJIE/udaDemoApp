@@ -18,7 +18,7 @@ jQuery(function ($) {
 	    var tableColModelsComarca = [{
 	        name: 'nid',
 	        index: 'nid',
-	        editable: true,
+	        editable: false,
 	        hidden: false,
 	        width: 80,
 	        formoptions: {
@@ -119,7 +119,7 @@ jQuery(function ($) {
 	    var tableColModelsLocalidad = [{
 	        name: 'nid',
 	        index: 'nid',
-	        editable: true,
+	        editable: false,
 	        hidden: false,
 	        width: 80,
 	        formoptions: {

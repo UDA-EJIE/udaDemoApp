@@ -17,7 +17,7 @@
 <h2>Tabla Maestro - Detalle</h2> <!-- Titulo pagina -->
 <h2>Comarca</h2>
 	<div id="comarca_filter_div"  class="rup-table-filter">
-		<spring:url value="/tableComarca/filter" var="url"/>
+		<spring:url value="../tableComarca/filter" var="url"/>
 		<form:form modelAttribute="comarca" id="comarca_filter_form" action="${url}">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
@@ -65,7 +65,7 @@
 	</div>
 
 <table id="comarca" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="."
+	data-url-base="../tableComarca"
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
@@ -89,7 +89,7 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<spring:url value="/tableComarca" var="url"/>
+		<spring:url value="../tableComarca" var="url"/>
 		<form:form modelAttribute="comarca" id="comarca_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="comarca_detail_feedback"></div>
@@ -147,7 +147,7 @@
 <h2>Localidad</h2>
 
 	<div id="localidad_filter_div"  class="rup-table-filter">
-		<spring:url value="/jqGridLocalidad/filter" var="url"/>
+		<spring:url value="../tableLocalidad/filter" var="url"/>
 		<form:form modelAttribute="localidad" id="localidad_filter_form" action="${url}">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
@@ -196,7 +196,7 @@
 	</div>
 	
 <table id="localidad" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="../jqGridLocalidad"
+	data-url-base="../tableLocalidad"
 	data-filter-form="#localidad_filter_form">
 	<thead>
 		<tr>
@@ -218,7 +218,7 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<spring:url value="/jqGridLocalidad" var="url"/>
+		<spring:url value="../tableLocalidad" var="url"/>
 		<form:form modelAttribute="localidad" id="localidad_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="localidad_detail_feedback"></div>

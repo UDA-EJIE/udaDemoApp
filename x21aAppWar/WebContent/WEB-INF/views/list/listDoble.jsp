@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-md-2" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px gray solid;">
-                        <strong><span id="id_label" /></strong>: <span id="id_value"/>
+                        <strong><span id="nid_label" /></strong>: <span id="nid_value"/>
                     </div>
                     <div>
                         <strong><span id="nombre_label"/></strong>: <span id="nombre_value"/>
@@ -256,7 +256,7 @@
                 </div>
                 <div class="col-md-2" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px gray solid;">
-                        <strong><span id="id_label" /></strong>: <span id="id_value"/>
+                        <strong><span id="nid_label" /></strong>: <span id="nid_value"/>
                     </div>
                     <div>
                         <strong><span id="nombre_label"/></strong>: <span id="nombre_value"/>
