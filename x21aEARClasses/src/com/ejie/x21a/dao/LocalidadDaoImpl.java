@@ -285,7 +285,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Localidad.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Localidad.class, filterParamList, searchSQL, searchParamList, from_alias, "CODE");
 				
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Localidad>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -297,7 +297,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Localidad.class, "COMARCA", new String[]{"ID"});
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Localidad.class, "COMARCA", new String[]{"CODE"});
 		
 		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		

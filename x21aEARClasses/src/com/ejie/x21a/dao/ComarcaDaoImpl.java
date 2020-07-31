@@ -286,7 +286,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
 		
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Comarca.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Comarca.class, filterParamList, searchSQL, searchParamList, from_alias, "CODE");
 				
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Comarca>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -298,7 +298,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
 	
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Comarca.class, "COMARCA", new String[]{"ID"});
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Comarca.class, "COMARCA", new String[]{"CODE"});
 		
 		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
