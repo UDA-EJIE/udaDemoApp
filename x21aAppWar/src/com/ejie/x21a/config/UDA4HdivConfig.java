@@ -6,6 +6,7 @@ import org.hdiv.config.annotation.ExclusionRegistry;
 import org.hdiv.config.annotation.RuleRegistry;
 import org.hdiv.config.annotation.builders.SecurityConfigBuilder;
 import org.hdiv.ee.config.annotation.ValidationConfigurer;
+import org.hdiv.ee.validator.ValidationTargetType;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -55,6 +56,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
+		validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("user").rules("text").target(ValidationTargetType.CLIENT_PARAMETERS);
 	}
 
 	@Override
