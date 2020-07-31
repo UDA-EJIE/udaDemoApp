@@ -420,6 +420,8 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
+		@RequestParam(value = "q", required = false) String filterQ,
+		@RequestParam(value = "c", required = true) String filterC,
 		@RequestParam(value = "user", required = true) String filterUser) {
 		TableUsuarioController.logger.info("[get - jqGrid] : GetAll filter");
 		return ResourceUtils.fromListToResource(filterService.getAllFilters(filterSelector, filterUser));
@@ -517,6 +519,11 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "remove", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "search"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),

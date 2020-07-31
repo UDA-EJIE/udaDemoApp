@@ -74,7 +74,7 @@ public class TableComarcaController {
 	@javax.annotation.Resource
 	private ReloadableResourceBundleMessageSource messageSource;
 	
-	@UDALink(name = "getSimpleMasterDetail", linkTo = {
+	/*@UDALink(name = "getSimpleMasterDetail", linkTo = {
 			@UDALinkAllower(name = "search"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -102,7 +102,7 @@ public class TableComarcaController {
 		model.addAttribute("comarca", new Comarca());
 		model.addAttribute("localidad", new Localidad());
 		return "tableDialogDetail";
-	}
+	}*/
 	
 	/**
 	 * Method 'getById'.
@@ -168,14 +168,14 @@ public class TableComarcaController {
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,
 			@RequestJsonBody final TableRequestDto tableRequestDto) {
-		TableComarcaController.logger.info("[GET - jqGrid] : Obtener Comarcas");	
+		TableComarcaController.logger.info("[GET - table] : Obtener Comarcas");	
 		return comarcaService.filter(comarca, tableRequestDto, false);
 	}
 	
 	@UDALink(name = "multifilterAdd")
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Filter> filterAdd(@RequestJsonBody(param="filtro") final Filter filtro){
-		TableComarcaController.logger.info("[POST - jqGrid] : add filter");
+		TableComarcaController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
 	}	
 	
@@ -183,7 +183,7 @@ public class TableComarcaController {
 	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
 	public @ResponseBody Resource<Filter>  filterDelete(
 			@RequestJsonBody(param="filtro") final Filter filtro) {
-		TableComarcaController.logger.info("[POST - jqGrid] : delete filter");
+		TableComarcaController.logger.info("[POST - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	
@@ -192,7 +192,7 @@ public class TableComarcaController {
 	public @ResponseBody Resource<Filter> filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
 		@RequestParam(value = "comarca", required = true) final String filterComarca) {
-		TableComarcaController.logger.info("[get - jqGrid] : getDefault filter");
+		TableComarcaController.logger.info("[get - table] : getDefault filter");
 		return ResourceUtils.toResource(filterService.getDefault(filterSelector, filterComarca));
 	}
 	
@@ -201,7 +201,7 @@ public class TableComarcaController {
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
 		@RequestParam(value = "comarca", required = true) final String filterComarca) {
-		TableComarcaController.logger.info("[get - jqGrid] : GetAll filter");
+		TableComarcaController.logger.info("[get - table] : GetAll filter");
 		return ResourceUtils.fromListToResource(filterService.getAllFilters(filterSelector, filterComarca));
 	}
 	
@@ -214,42 +214,6 @@ public class TableComarcaController {
 		TableComarcaController.logger.info("[GET - search] : Obtener Comarcas por filtro");
 		return comarcaService.search(comarcaFilter, comarcaSearch, tableRequestDto, true);
 	}
-		
-	/**
-	 * N/A	
-	 */
-		
-		/**
-		 * Method 'getAllCount'.
-		 * @param filterComarca Comarca 
-		 * @return Long
-		 */
-//		@RequestMapping(value = "/count", method = RequestMethod.GET)
-//		public @ResponseBody Long getAllCount(@RequestParam(value = "comarca", required = false) Comarca  filterComarca) {
-//			return comarcaService.findAllLikeCount(filterComarca != null ? filterComarca: new Comarca(),false);
-//		}
-		
-		
-		
-//		 /**
-//		 * Method 'removeAll'.
-//		 * @param  comarcaIds  ArrayList
-//		 *
-//		 */	
-//		@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-//		@ResponseStatus(value=HttpStatus.OK)
-//		public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> comarcaIds) {
-//		List<Comarca> comarcaList = new ArrayList<Comarca>();
-//        for (List<String> comarcaId:comarcaIds) {
-//		    Iterator<String> iterator = comarcaId.iterator();
-//			    Comarca comarca = new Comarca();
-//		        comarca.setId(ObjectConversionManager.convert(iterator.next(), String.class));
-//			    comarcaList.add(comarca);
-//	    }
-//        this.comarcaService.removeMultiple(comarcaList);
-//        logger.info("All entities correctly deleted!");
-//        return comarcaIds;
-//	}	
 		
 	/*
 	 * MAPPING PARA EL COMBO DE PROVINCIAS

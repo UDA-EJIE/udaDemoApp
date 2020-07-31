@@ -1,16 +1,16 @@
 /*
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2020 E.J.I.E., S.A.
  *
- * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+ * Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
  * Puede obtenerse una copia de la Licencia en
  *
  * http://ec.europa.eu/idabc/eupl.html
  *
- * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
- * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+ * SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+ * VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
 package com.ejie.x21a.control;
@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +39,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -80,10 +80,13 @@ import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.service.ProvinciaService;
 import com.ejie.x21a.service.UploadService;
+import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
 import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
@@ -119,7 +122,7 @@ public class PatronesController {
     private UploadService uploadService;
 
 
-    @Resource
+    @javax.annotation.Resource
     private ReloadableResourceBundleMessageSource messageSource;
 
     @InitBinder
@@ -141,6 +144,7 @@ public class PatronesController {
     }
 
     //Autocomplete
+    @UDALink(name = "getAutocomplete", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete")})
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
     public String getAutocomplete(Model model) {
         return "autocomplete";
@@ -164,25 +168,28 @@ public class PatronesController {
         return "dialog";
     }
 
-    //Dialog (petición Ajax)
+    //Dialog (peticiÃ³n Ajax)
     @RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
     public String dialogJSP(Model model) {
         return "dialogAjax";
     }
 
     //Combos
+    @UDALink(name = "getComboSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "comboSimple", method = RequestMethod.GET)
     public String getComboSimple(Model model) {
         return "combo";
     }
 
     //CombosEnlazado - simple
+    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad")})
     @RequestMapping(value = "comboEnlazadoSimple", method = RequestMethod.GET)
     public String getComboEnlazadoSimple(Model model) {
         return "comboEnlazado";
     }
 
     //CombosEnlazado - multiple
+    @UDALink(name = "getEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
     @RequestMapping(value = "comboEnlazadoMultiple", method = RequestMethod.GET)
     public String getEnlazadoMultiple(Model model) {
         return "comboEnlazadoMultiple";
@@ -505,14 +512,15 @@ public class PatronesController {
 
     @Autowired
     private DepartamentoProvinciaService departamentoProvinciaService;
-
-
+    
+    
     /**
      * AUTOCOMPLETE REMOTO
      */
+    @UDALink(name = "getRemoteAutocomplete")
     @RequestMapping(value = "autocomplete/remote", method = RequestMethod.GET)
     public @ResponseBody
-    List<DepartamentoProvincia> getRemoteAutocomplete(
+    List<Resource<DepartamentoProvincia>> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
             @RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia) {
@@ -537,7 +545,7 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
 
 
@@ -552,35 +560,38 @@ public class PatronesController {
         int getDescEs();
     }
 
+    @UDALink(name = "getComboRemote")
     @Json(mixins = {@JsonMixin(target = Provincia.class, mixin = ProvinciaMixIn.class)})
     @RequestMapping(value = "comboSimple/remote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getComboRemote() {
+    List<Resource<Provincia>> getComboRemote() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
-
+    
+    @UDALink(name = "getRemoteComboGrupos", linkTo = { @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
     public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGrupos() {
+    List<Resource<HashMap<String, List<?>>>> getRemoteComboGrupos() {
         return this.getRemoteComboGruposEnlazado(null);
     }
-
+    
+    @UDALink(name = "getRemoteComboGruposEnlazado")
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
 
-        //Retorno del método
+        //Retorno del mÃ©todo
         List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
 
-        //Nombres de los grupos según idioma
+        //Nombres de los grupos segÃºn idioma
         String provincia = null, comarca = null, localidad = null;
         if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
             provincia = "Provincia_eu";
@@ -635,30 +646,32 @@ public class PatronesController {
         }
         retorno.add(group);
 
-        return retorno;
+        return ResourceUtils.fromListToResource(retorno);
     }
 
 
     /**
      * COMBO ENLAZADO SIMPLE
      */
+    @UDALink(name = "getEnlazadoProvincia")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getEnlazadoProvincia() {
+    List<Resource<Provincia>> getEnlazadoProvincia() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
-
+    
+    @UDALink(name = "getEnlazadoComarca")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
     public @ResponseBody
-    List<Comarca> getEnlazadoComarca(
+    List<Resource<Comarca>> getEnlazadoComarca(
             @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
         Comarca comarca = new Comarca();
@@ -668,15 +681,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return comarcaService.findAll(comarca, null);
+        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
     }
 
+    @UDALink(name = "getEnlazadoLocalidad")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
     public @ResponseBody
-    List<Localidad> getEnlazadoLocalidad(
+    List<Resource<Localidad>> getEnlazadoLocalidad(
             @RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
         Localidad localidad = new Localidad();
@@ -687,7 +701,7 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return localidadService.findAll(localidad, null);
+        return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
     }
 
 
@@ -695,37 +709,40 @@ public class PatronesController {
      * COMBO ENLAZADO MULTIPLE
      */
     /**
-     * Combos Enlazados (múltiple)
+     * Combos Enlazados (mÃºltiple)
      */
+    @UDALink(name = "getEnlMultDpto")
     @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Departamento> getEnlMultDpto() {
+    List<Resource<Departamento>> getEnlMultDpto() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoService.findAll(null, null);
+        return ResourceUtils.fromListToResource(departamentoService.findAll(null, null));
     }
 
+    @UDALink(name = "getEnlMultProv")
     @RequestMapping(value = "comboEnlazadoMultiple/provinciaRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getEnlMultProv() {
+    List<Resource<Provincia>> getEnlMultProv() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
 
+    @UDALink(name = "getEnlMultDptoProv")
     @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<DepartamentoProvincia> getEnlMultDptoProv(
+    List<Resource<DepartamentoProvincia>> getEnlMultDptoProv(
             @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
             @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
         departamento.setCode(departamento_code);
         Provincia provincia = new Provincia();
@@ -739,15 +756,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoProvinciaService.findAll(departamentoProvincia, null);
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
     }
 
+    @UDALink(name = "getComarcaLocalidad")
     @RequestMapping(value = "comboEnlazado/comarcaLocalidad", method = RequestMethod.GET)
     public @ResponseBody
-    List<Localidad> getComarcaLocalidad(
+    List<Resource<Localidad>> getComarcaLocalidad(
             @RequestParam(value = "comarcaId", required = false) BigDecimal comarca_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Localidad localidad = new Localidad();
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
@@ -759,28 +777,32 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return localidadService.findAll(localidad, null);
+        return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
     }
 
     /**
      * TABS -> Contenidos
      */
+    @UDALink(name = "tabsContent")
     @RequestMapping(value = {"fragmento1", "fragmento2", "fragmento3"}, method = RequestMethod.GET)
     public String tabsContent(Model model) {
         return "tabsContent_1";
     }
-
+    
+    @UDALink(name = "tabs2Content")
     @RequestMapping(value = {"tab2Fragment"}, method = RequestMethod.GET)
     public String tabs2Content(Model model) {
         return "tabsContent_2";
     }
 
+    @UDALink(name = "tabs3Content")
     @RequestMapping(value = {"tab3Fragment"}, method = RequestMethod.GET)
     public String tabs3Content(Model model) {
         return "tabsContent_3";
     }
 
     // rupCharts
+    @UDALink(name = "getCharts")
     @RequestMapping(value = "charts", method = RequestMethod.GET)
     public String getCharts(Model model) {
         return "charts";
@@ -896,7 +918,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("El formulario se ha enviado correctamente.");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(new JSONObject(alumno).toString());
         messageWriter.endSubLevel();
@@ -931,7 +953,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(alumno != null ? new JSONObject(alumno).toString() : "");
         messageWriter.endSubLevel();
@@ -953,7 +975,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(comarca1 != null ? new JSONObject(comarca1).toString() : "");
         messageWriter.endSubLevel();
@@ -1104,7 +1126,7 @@ public class PatronesController {
 
 
     /**
-     * Método para obtener la vista el calendarios
+     * MÃ©todo para obtener la vista el calendarios
      *
      * @param model el modelo.
      * @return string la view.
@@ -1115,7 +1137,7 @@ public class PatronesController {
     }
 
     /**
-     * Método para obtener la vista con dos calendarios
+     * MÃ©todo para obtener la vista con dos calendarios
      *
      * @param model el modelo.
      * @return string la view.
