@@ -160,6 +160,7 @@ public interface TableUsuarioService {
 	 * @param locale Locale
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
+	 * @param columnsName 
 	 */
-	public void generateReport(Usuario filterUsuario, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
+	public void generateReport(Usuario filterUsuario, String[] columns,String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
 }
