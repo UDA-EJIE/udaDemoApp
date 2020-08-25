@@ -383,6 +383,7 @@ public class PatronesController {
     }
 
     //Tree
+    @UDALink(name = "trees", linkTo = { @UDALinkAllower(name = "ajaxTree" )})
     @RequestMapping(value = "trees", method = RequestMethod.GET)
     public String getTrees(Model model) {
         return "trees";
@@ -392,7 +393,8 @@ public class PatronesController {
     public String getTreeDragAndDrop(Model model) {
         return "treeDAD";
     }
-
+    
+    @UDALink(name = "ajaxTree")
     @RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
     public Object getTreeAjax(Model model, HttpServletResponse response) {
 
