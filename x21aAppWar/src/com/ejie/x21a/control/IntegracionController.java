@@ -36,6 +36,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+
 /**
  * ExperimentalController
  *
@@ -60,11 +63,13 @@ public class IntegracionController {
     private NoraCalleService calleService;
 
     //visor geoEuskadi
+    @UDALink(name = "geoEuskadi", linkTo = { @UDALinkAllower(name = "geoEuskadiLayer.kml" )})
     @RequestMapping(value = "geoEuskadi", method = RequestMethod.GET)
     public String getVisorGeoEuskadi() {
         return "geoEuskadi";
     }
-
+    
+    @UDALink(name = "geoEuskadiLayer.kml")
     @RequestMapping(value = "geoEuskadiLayer.kml", method = RequestMethod.GET)
     public @ResponseBody
     void getVisorGeoEuskadiLayer(HttpServletResponse response) {

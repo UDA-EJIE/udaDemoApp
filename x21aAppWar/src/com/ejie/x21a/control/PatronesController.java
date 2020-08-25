@@ -144,7 +144,7 @@ public class PatronesController {
     }
 
     //Autocomplete
-    @UDALink(name = "getAutocomplete", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete")})
+    @UDALink(name = "getAutocomplete", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete"), @UDALinkAllower(name = "getComboRemote")})
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
     public String getAutocomplete(Model model) {
         return "autocomplete";
@@ -215,6 +215,7 @@ public class PatronesController {
     }
 
     //Form
+    @UDALink(name = "form", linkTo = { @UDALinkAllower(name = "ejemplo" ), @UDALinkAllower(name = "multientidades" ), @UDALinkAllower(name = "multientidadesMismoTipo" ), @UDALinkAllower(name = "subidaArchivos" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String getForm(Model model) {
 
@@ -910,6 +911,7 @@ public class PatronesController {
      * MAINT (Usuarios) [form.jsp]
      */
     //Form http submit
+    @UDALink(name = "ejemplo")
     @RequestMapping(value = "form/ejemplo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormHttp(@RequestBody Alumno alumno) {
@@ -943,6 +945,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
+    @UDALink(name = "multientidades")
     @RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidades(
@@ -963,6 +966,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
+    @UDALink(name = "multientidadesMismoTipo")
     @RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidadesMismoTipo(
@@ -984,7 +988,8 @@ public class PatronesController {
         return messageWriter.toString();
 
     }
-
+    
+    @UDALink(name = "subidaArchivos")
     @RequestMapping(value = "form/subidaArchivos", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     Object addFormSimple(
