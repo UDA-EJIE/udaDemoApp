@@ -65,6 +65,7 @@ jQuery(function($) {
             },
             select : function() {
                 var valor = $('#comboRemoto').rup_combo('getRupValue');
+                $('#autocompleteGet').prop("readonly", false);
                 $('#autocompleteGet').rup_autocomplete({
                     source : 'autocomplete/remote?codProvincia='+valor,
                     sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
