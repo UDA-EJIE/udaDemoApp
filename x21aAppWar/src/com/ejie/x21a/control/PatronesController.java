@@ -169,6 +169,7 @@ public class PatronesController {
     }
 
     //Dialog (peticiÃ³n Ajax)
+    @UDALink(name = "dialogJSP")
     @RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
     public String dialogJSP(Model model) {
         return "dialogAjax";
@@ -215,7 +216,7 @@ public class PatronesController {
     }
 
     //Form
-    @UDALink(name = "form", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp" ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
+    @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp" ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String getForm(Model model) {
 
