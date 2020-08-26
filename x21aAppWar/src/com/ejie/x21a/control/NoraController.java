@@ -71,6 +71,7 @@ public class NoraController {
 		return findAll;
 	}
 	
+	@UDALink(name = "getMunicipios")
 	@RequestMapping(value = "municipio", method=RequestMethod.GET)
 	public @ResponseBody List<Resource<NoraMunicipio>> getMunicipios(
 			@RequestParam(value = "q", required = true) String q,
@@ -82,6 +83,7 @@ public class NoraController {
 		return findAll;
 	}
 	
+	@UDALink(name = "getCalles")
 	@RequestMapping(value = "calle", method=RequestMethod.GET)
 	public @ResponseBody List<Resource<NoraCalle>> getCalles(
 			@RequestParam(value = "q", required = true) String q,
