@@ -57,6 +57,7 @@ public class NoraController {
 		return findAll;
 	}
 	
+	@UDALink(name = "getProvincias")
 	@RequestMapping(value = "provincia", method=RequestMethod.GET)
 	public @ResponseBody List<Resource<NoraProvincia>> getProvincias(
 			@RequestParam(value="autonomia.id", required=false) String autonomiaId) {

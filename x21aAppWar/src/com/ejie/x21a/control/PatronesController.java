@@ -215,7 +215,7 @@ public class PatronesController {
     }
 
     //Form
-    @UDALink(name = "form", linkTo = { @UDALinkAllower(name = "ejemplo" ), @UDALinkAllower(name = "multientidades" ), @UDALinkAllower(name = "multientidadesMismoTipo" ), @UDALinkAllower(name = "subidaArchivos" )})
+    @UDALink(name = "form", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp" ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String getForm(Model model) {
 
@@ -383,7 +383,7 @@ public class PatronesController {
     }
 
     //Tree
-    @UDALink(name = "trees", linkTo = { @UDALinkAllower(name = "ajaxTree" )})
+    @UDALink(name = "getTrees", linkTo = { @UDALinkAllower(name = "getTreeAjax" )})
     @RequestMapping(value = "trees", method = RequestMethod.GET)
     public String getTrees(Model model) {
         return "trees";
@@ -394,7 +394,7 @@ public class PatronesController {
         return "treeDAD";
     }
     
-    @UDALink(name = "ajaxTree")
+    @UDALink(name = "getTreeAjax")
     @RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
     public Object getTreeAjax(Model model, HttpServletResponse response) {
 
@@ -913,7 +913,7 @@ public class PatronesController {
      * MAINT (Usuarios) [form.jsp]
      */
     //Form http submit
-    @UDALink(name = "ejemplo")
+    @UDALink(name = "getFormHttp")
     @RequestMapping(value = "form/ejemplo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormHttp(@RequestBody Alumno alumno) {
@@ -947,7 +947,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
-    @UDALink(name = "multientidades")
+    @UDALink(name = "getFormmMultientidades")
     @RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidades(
@@ -968,7 +968,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
-    @UDALink(name = "multientidadesMismoTipo")
+    @UDALink(name = "getFormmMultientidadesMismoTipo")
     @RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidadesMismoTipo(
@@ -991,7 +991,7 @@ public class PatronesController {
 
     }
     
-    @UDALink(name = "subidaArchivos")
+    @UDALink(name = "addFormSimple")
     @RequestMapping(value = "form/subidaArchivos", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     Object addFormSimple(

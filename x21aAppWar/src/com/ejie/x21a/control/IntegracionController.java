@@ -63,13 +63,13 @@ public class IntegracionController {
     private NoraCalleService calleService;
 
     //visor geoEuskadi
-    @UDALink(name = "geoEuskadi", linkTo = { @UDALinkAllower(name = "geoEuskadiLayer.kml" )})
+    @UDALink(name = "getVisorGeoEuskadi", linkTo = { @UDALinkAllower(name = "getVisorGeoEuskadiLayer" )})
     @RequestMapping(value = "geoEuskadi", method = RequestMethod.GET)
     public String getVisorGeoEuskadi() {
         return "geoEuskadi";
     }
     
-    @UDALink(name = "geoEuskadiLayer.kml")
+    @UDALink(name = "getVisorGeoEuskadiLayer")
     @RequestMapping(value = "geoEuskadiLayer.kml", method = RequestMethod.GET)
     public @ResponseBody
     void getVisorGeoEuskadiLayer(HttpServletResponse response) {
