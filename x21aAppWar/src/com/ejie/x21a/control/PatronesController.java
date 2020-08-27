@@ -138,6 +138,7 @@ public class PatronesController {
     }
 
     //Accordion
+    @UDALink(name = "getAccordion", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete")})
     @RequestMapping(value = "accordion", method = RequestMethod.GET)
     public String getAccordion(Model model) {
         return "accordion";
