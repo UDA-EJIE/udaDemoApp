@@ -41,9 +41,9 @@ jQuery(function ($) {
         }
         ];
       let tableColModel = [{
-            name: 'id',
-            index: 'id',
-            editable: true,
+            name: 'nid',
+            index: 'nid',
+            editable: false,
             hidden: false,
             width: 80,
             obligatorio: true,

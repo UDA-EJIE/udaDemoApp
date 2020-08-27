@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +33,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -54,11 +54,13 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableUsuarioService;
-import com.ejie.x21a.service.UsuarioService;
+import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.util.DateTimeManager;
 
 
@@ -71,10 +73,7 @@ public class TableDynamicColumnsController  {
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
 	
-	@Autowired
-	private UsuarioService usuarioService;
-	
-	@Resource
+	@javax.annotation.Resource
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	@InitBinder
@@ -93,62 +92,66 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * Operación CRUD Read. Devuelve el bean correspondiente al identificador
+	 * OperaciÃ³n CRUD Read. Devuelve el bean correspondiente al identificador
 	 * indicado.
 	 * 
 	 * @param id
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Usuario get(@PathVariable String id) {
+	public @ResponseBody Resource<Usuario> get(@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
-        
-        return usuario;
+		TableDynamicColumnsController.logger.info("[GET - findBy_PK] : Obtener Usuarios por PK");
+        return new Resource<Usuario>(usuario);
 	}
 	
+	@UDALink(name = "getFiltroSimple")
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		
 		return "tableDynamicColumns";
 	}
 	
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
-	 * indicados en el objeto pasado como parámetro.
+	 * indicados en el objeto pasado como parÃ¡metro.
 	 * 
 	 * @param Usuario
-	 *            Objeto que contiene los parámetros de filtrado utilizados en
-	 *            la búsqueda.
-	 * @return Lista de objetos correspondientes a la búsqueda realizada.
+	 *            Objeto que contiene los parÃ¡metros de filtrado utilizados en
+	 *            la bÃºsqueda.
+	 * @return Lista de objetos correspondientes a la bÃºsqueda realizada.
 	 */
+	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/all",method = RequestMethod.GET)
-	public @ResponseBody List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
+	public @ResponseBody List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableDynamicColumnsController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
-		return this.tableUsuarioService.findAllLike(usuarioFilter, null, false);
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.findAllLike(usuarioFilter, null, false));
 	}
 	
 	/**
-	 * Operación CRUD Edit. Modificación del bean indicado.
+	 * OperaciÃ³n CRUD Edit. ModificaciÃ³n del bean indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la información a modificar.
-	 * @return Bean resultante de la modificación.
+	 *            Bean que contiene la informaciÃ³n a modificar.
+	 * @return Bean resultante de la modificaciÃ³n.
 	 */
+	@UDALink(name = "edit")
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
+    public @ResponseBody Resource<Usuario> edit(@Validated @RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
         Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
-        return usuarioAux;
+        return new Resource<Usuario>(usuarioAux);
     }
 	
+	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
-    public @ResponseBody Usuario editar(
+    public @ResponseBody Resource<Usuario> editar(
     		@Validated @ModelAttribute Usuario usuario,
     		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
     HttpServletRequest request, HttpServletResponse response){
@@ -161,45 +164,47 @@ public class TableDynamicColumnsController  {
         }
         Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
-        return usuarioAux;
+        return new Resource<Usuario>(usuarioAux);
     }
 
 	/**
-	 * Operación CRUD Create. Creación de un nuevo registro a partir del bean
+	 * OperaciÃ³n CRUD Create. CreaciÃ³n de un nuevo registro a partir del bean
 	 * indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la información con la que se va a crear el
+	 *            Bean que contiene la informaciÃ³n con la que se va a crear el
 	 *            nuevo registro.
-	 * @return Bean resultante del proceso de creación.
+	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
+	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
         Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
-    	return usuarioAux;
+    	return new Resource<Usuario>(usuarioAux);
 	}
 	
 
 	/**
-	 * Operación CRUD Delete. Borrado del registro correspondiente al
+	 * OperaciÃ³n CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 * 
 	 * @param id
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return Bean eliminado.
 	 */
+	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.OK)
-    public @ResponseBody Usuario remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
+    public @ResponseBody Resource<Usuario> remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
         usuario.setId(id);
         this.tableUsuarioService.remove(usuario);
         logger.info("Entity correctly deleted!");
-        return usuario;
+        return new Resource<Usuario>(usuario);
     }
 	
 	
@@ -209,40 +214,42 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * Operación de filtrado del componente RUP_TABLE.
+	 * OperaciÃ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
+	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		TableDynamicColumnsController.logger.info("[POST - jqGrid] : Obtener Usuarios");
+		TableDynamicColumnsController.logger.info("[POST - table] : Obtener Usuarios");
 		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 	
 	/**
-	 * Operación de búsqueda del componente RUP_TABLE.
+	 * OperaciÃ³n de bÃºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterUsuario
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
 	 * @param searchUsuario
-	 *            Bean que contiene los parámetros de búsqueda a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Bean que contiene los parÃ¡metros de bÃºsqueda a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parámetros de búsqueda.
+	 *         que se ajustan a los parÃ¡metros de bÃºsqueda.
 	 * 
 	 */
+	@UDALink(name = "search")
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -253,13 +260,14 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * Borrado múltiple de registros
+	 * Borrado mÃºltiple de registros
 	 * 
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -279,7 +287,8 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param tableRequestDto TableRequestDto
-	 */	
+	 */
+	@UDALink(name = "clipboardReport")
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<Usuario> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
@@ -293,6 +302,7 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -300,11 +310,12 @@ public class TableDynamicColumnsController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -322,15 +333,18 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
+	 */
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	protected @ResponseBody void generatePDFReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -342,7 +356,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -350,15 +364,18 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
+	 */
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	protected @ResponseBody void generateODSReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -370,7 +387,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -378,15 +395,18 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
+	 */
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	protected @ResponseBody void generateCSVReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -398,6 +418,6 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
