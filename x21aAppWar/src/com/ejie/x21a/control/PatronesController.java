@@ -294,6 +294,7 @@ public class PatronesController {
     }
 
     //Tabs con carga ajax
+    @UDALink(name = "getTabsAjax", linkTo = { @UDALinkAllower(name = "tabsContent"), @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content")})  
     @RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
     public String getTabsAjax(Model model) {
         return "tabsAjax";
