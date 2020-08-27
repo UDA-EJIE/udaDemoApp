@@ -557,7 +557,8 @@ public class TableUsuarioController  {
 		return "tableDialogDetail";
 	}
 	
-	@UDALink(name = "getTableDialog", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+	@UDALink(name = "getTableDialog", linkTo = {@UDALinkAllower(name = "getTableDialogAjax"),
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
