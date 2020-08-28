@@ -16,9 +16,9 @@
 jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
 	    var tableColModelsComarca = [{
-	        name: 'code',
-	        index: 'code',
-	        editable: true,
+	        name: 'nid',
+	        index: 'nid',
+	        editable: false,
 	        hidden: false,
 	        width: 80,
 	        formoptions: {
@@ -57,9 +57,9 @@ jQuery(function ($) {
 	        }
 	    },
 	    {
-	        name: 'provincia.code',
-	        index: 'provincia.code',
-	        editable: true,
+	        name: 'provincia.nid',
+	        index: 'provincia.nid',
+	        editable: false,
 	        hidden: false,
 	        formoptions: {
 	            rowpos: 5,
@@ -117,9 +117,9 @@ jQuery(function ($) {
 	    });
 	
 	    var tableColModelsLocalidad = [{
-	        name: 'code',
-	        index: 'code',
-	        editable: true,
+	        name: 'nid',
+	        index: 'nid',
+	        editable: false,
 	        hidden: false,
 	        width: 80,
 	        formoptions: {
@@ -160,7 +160,6 @@ jQuery(function ($) {
 	    ];
 	
 	    $('#localidad').rup_table({
-	
 	        primaryKey: 'code',
 	        loadOnStartUp: false,
 	        filter: {
@@ -187,11 +186,10 @@ jQuery(function ($) {
 	    			$('#css_detail_tableComarca').val(datos.css);
 	    		});
 	        }
-	
 	    });
 	
 	    $('#provinciaRemote').rup_combo({
-	        source: '../jqGridComarca/provincia',
+	        source: '../tableComarca/provincia',
 	        sourceParam: {
 	            label: 'desc' + $.rup_utils.capitalizedLang(),
 	            value: 'code',
