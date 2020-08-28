@@ -164,6 +164,7 @@ public class PatronesController {
     }
 
     //Dialog
+    @UDALink(name = "getDialog", linkTo = {@UDALinkAllower(name = "dialogJSP")})
     @RequestMapping(value = "dialog", method = RequestMethod.GET)
     public String getDialog(Model model) {
         return "dialog";
