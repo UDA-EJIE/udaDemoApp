@@ -17,7 +17,8 @@
 <h2>Tabla con selección desde otra tabla</h2> <!-- Titulo pagina -->
 <h2>Comarca</h2>
 	<div id="comarca_filter_div"  class="rup-table-filter">
-		<form:form modelAttribute="comarca" id="comarca_filter_form">
+		<spring:url value="../tableComarca/filter" var="url"/>
+		<form:form modelAttribute="comarca" id="comarca_filter_form" action="${url}">
 			<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
@@ -64,15 +65,15 @@
 	</div>
 
 <table id="comarca" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="../jqGridComarca"
+	data-url-base="../tableComarca"
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
-            <th data-col-prop="code">code</th>
+            <th data-col-prop="nid" data-col-sidx="code" data-col-edit="false">code</th>
             <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
             <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
             <th data-col-prop="css" >css</th>
-            <th data-col-prop="provincia.code" data-col-sidx="provincia.code" >provincia.code</th>
+            <th data-col-prop="provincia.nid" data-col-sidx="provincia.code" data-col-edit="false">provincia.code</th>
             <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
         </tr>
     </thead>
@@ -88,13 +89,15 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form:form modelAttribute="comarca" id="comarca_detail_form">
+		<spring:url value="../tableComarca" var="url"/>
+		<form:form modelAttribute="comarca" id="comarca_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="comarca_detail_feedback"></div>
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-			    	<form:input path="code" id="code_detailForm_tableComarca" />
+					<form:input path="code" class="d-none" />
+			    	<input type="text" name="nid" id="code_detailForm_tableComarca"/>
 					<label for="code_detailForm_table">code</label>
 			    </div>			    
 			    <div class="form-groupMaterial col-sm">
@@ -141,7 +144,8 @@
 <h2>Localidad</h2>
 <h3>Seleccione una Localidad para cargar el css en la Comarca</h3>
 	<div id="localidad_filter_div"  class="rup-table-filter">
-		<form:form modelAttribute="localidad" id="localidad_filter_form">
+		<spring:url value="../tableLocalidad/filter" var="url"/>
+		<form:form modelAttribute="localidad" id="localidad_filter_form" action="${url}">
 			<div  id="localidad_filter_toolbar" class="formulario_legend"></div>
 			<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 			    <legend></legend>
@@ -189,11 +193,11 @@
 	</div>
 	
 <table id="localidad" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="../jqGridLocalidad"
+	data-url-base="../tableLocalidad"
 	data-filter-form="#localidad_filter_form">
 	<thead>
 		<tr>
-			<th data-col-prop="code" data-col-sidx="code">code</th>
+			<th data-col-prop="nid" data-col-sidx="code" data-col-edit="false">code</th>
 		    <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
 		    <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
 		    <th data-col-prop="css">css</th>
