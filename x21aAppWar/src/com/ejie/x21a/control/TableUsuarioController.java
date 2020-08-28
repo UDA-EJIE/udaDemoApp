@@ -524,6 +524,8 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "remove", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "get", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "search"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -544,6 +546,12 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "remove", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "search"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -641,6 +649,7 @@ public class TableUsuarioController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -663,7 +672,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	@UDALink(name = "excelReport2")
@@ -690,7 +699,7 @@ public class TableUsuarioController  {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -698,6 +707,7 @@ public class TableUsuarioController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -720,7 +730,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	@UDALink(name = "pdfReport2")
@@ -747,7 +757,7 @@ public class TableUsuarioController  {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -755,6 +765,7 @@ public class TableUsuarioController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -777,7 +788,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	@UDALink(name = "odsReport2")
@@ -804,7 +815,7 @@ public class TableUsuarioController  {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         	
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -812,6 +823,7 @@ public class TableUsuarioController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -834,7 +846,7 @@ public class TableUsuarioController  {
 		TableUsuarioController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	@UDALink(name = "csvReport2")
@@ -861,6 +873,6 @@ public class TableUsuarioController  {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
