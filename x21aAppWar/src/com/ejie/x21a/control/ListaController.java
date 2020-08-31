@@ -18,6 +18,7 @@ import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 
@@ -45,7 +46,8 @@ public class ListaController {
     	model.addAttribute("usuario", new Usuario());
     	return "listaDoble";
     }
-
+    
+    @UDALink(name = "getListaNoTemplateView")
     @GetMapping (value = "/noTemplate")
     public String getListaNoTemplateView(Model model) {
         model.addAttribute("usuario", new Usuario());

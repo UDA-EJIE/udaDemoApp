@@ -296,7 +296,7 @@ public class PatronesController {
     }
 
     //Tabs con carga ajax
-    @UDALink(name = "getTabsAjax", linkTo = { @UDALinkAllower(name = "tabsContent"), @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content")})  
+    @UDALink(name = "getTabsAjax", linkTo = { @UDALinkAllower(name = "tabsContent"), @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content"), @UDALinkAllower(name = "tabSub"), @UDALinkAllower(name = "tabSubAna"), @UDALinkAllower(name = "tabsMaint"), @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
     @RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
     public String getTabsAjax(Model model) {
         return "tabsAjax";
@@ -309,7 +309,8 @@ public class PatronesController {
     }
 
     //Tabs Multiples mantenimientos
-    @RequestMapping(value = "maintTab", method = RequestMethod.GET)
+    @UDALink(name = "tabsMaint")
+    @RequestMapping(value = {"maintTab", "pruebaSub3Maint"}, method = RequestMethod.GET)
     public String getMaintTab(Model model) {
         return "maintTab";
     }
@@ -806,6 +807,18 @@ public class PatronesController {
     @RequestMapping(value = {"tab3Fragment"}, method = RequestMethod.GET)
     public String tabs3Content(Model model) {
         return "tabsContent_3";
+    }
+
+    @UDALink(name = "tabSub")
+    @RequestMapping(value = "pruebaSub", method = RequestMethod.GET)
+    public String tabSub(Model model) {
+        return "tabsContent_1";
+    }
+    
+    @UDALink(name = "tabSubAna")
+    @RequestMapping(value = "pruebaSubAna", method = RequestMethod.GET)
+    public String tabSubAna(Model model) {
+        return "tabsContent_2";
     }
 
     // rupCharts
