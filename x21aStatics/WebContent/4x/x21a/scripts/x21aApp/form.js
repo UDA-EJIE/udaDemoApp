@@ -105,9 +105,9 @@ jQuery(function($) {
     jQuery('#feedbackMensajes').rup_feedback({ 
         type: 'ok',
         closeLink: true,
-        delay: 1000,
+        delay: 2000,
         fadeSpeed: 500,
-        block:true
+        block: false
     });
     
     // Combo sexo
