@@ -23,19 +23,22 @@
                 <div class="page-header w-100 mb-3">
                     <div class="pull-right form-inline">
                         <div class="btn-group mb-3">
-                            <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                                class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
-                            </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
-                                class="btn btn-primary" data-calendar-nav="next">
-                                Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="prev">
+                            	<i class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>
+                            	&nbsp;Prev.
+                            </span>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="today">Hoy</span>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="next">
+                                Sig.&nbsp;
+                                <i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="pl-3 d-xs-none"></div>
                         <div class="btn-group mb-3">
-                            <span class="btn btn-light" data-calendar-view="year">Año</span> <span
-                                class="btn btn-light active" data-calendar-view="month">Mes</span>
-                            <span class="btn btn-light" data-calendar-view="week">Semana</span>
-                            <span class="btn btn-light" data-calendar-view="day">Día</span>
+                            <span class="btn-material" data-calendar-view="year">Año</span>
+                            <span class="btn-material active" data-calendar-view="month">Mes</span>
+                            <span class="btn-material" data-calendar-view="week">Semana</span>
+                            <span class="btn-material" data-calendar-view="day">Día</span>
                         </div>
                     </div>
                     <h3></h3>
@@ -54,19 +57,22 @@
                 <div class="page-header w-100 mb-3">
                     <div class="pull-right form-inline">
                         <div class="btn-group mb-3">
-                            <span class="btn btn-primary" data-calendar-nav="prev"> <i
-                                class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>&nbsp;Prev.
-                            </span> <span class="btn light" data-calendar-nav="today">Hoy</span> <span
-                                class="btn btn-primary" data-calendar-nav="next">
-                                Sig.&nbsp;<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="prev">
+                            	<i class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>
+                            	&nbsp;Prev.
+                            </span>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="today">Hoy</span>
+                            <span class="btn-material btn-material-primary" data-calendar-nav="next">
+                                Sig.&nbsp;
+                                <i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="pl-3 d-xs-none"></div>
                         <div class="btn-group mb-3">
-                            <span class="btn btn-light" data-calendar-view="year">Año</span> <span
-                                class="btn btn-light active" data-calendar-view="month">Mes</span>
-                            <span class="btn btn-light" data-calendar-view="week">Semana</span>
-                            <span class="btn btn-light" data-calendar-view="day">Día</span>
+                            <span class="btn-material" data-calendar-view="year">Año</span>
+                            <span class="btn-material active" data-calendar-view="month">Mes</span>
+                            <span class="btn-material" data-calendar-view="week">Semana</span>
+                            <span class="btn-material" data-calendar-view="day">Día</span>
                         </div>
                     </div>
                     <h3></h3>
