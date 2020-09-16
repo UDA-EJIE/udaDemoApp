@@ -28,6 +28,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.NoEntity;
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,7 +140,8 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" )})
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario> get2(@PathVariable String id) {
+	public @ResponseBody Resource<Usuario> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
+			@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
@@ -182,7 +185,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sí");
+		comboEjie.put("1", "Sï¿½");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "table";
@@ -215,7 +218,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sí");
+		comboEjie.put("1", "Sï¿½");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDouble";
@@ -258,7 +261,8 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "edit2")
 	@RequestMapping(value = "/{bis}", method = RequestMethod.PUT)
-    public @ResponseBody Resource<Usuario> edit2(@RequestJsonBody Usuario usuario) {
+    public @ResponseBody Resource<Usuario> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
+    		@RequestJsonBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
@@ -307,7 +311,9 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get2" )})
 	@RequestMapping(value = "/{bis}", method = RequestMethod.POST)
-	public @ResponseBody Resource<Usuario> add2(@Validated @RequestBody Usuario usuario) {		
+	public @ResponseBody Resource<Usuario> add2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
+			@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
@@ -361,6 +367,10 @@ public class TableUsuarioController  {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios");
+		return filterUsuario(filterUsuario, tableRequestDto);
+	}
+
+	private TableResourceResponseDto<Usuario> filterUsuario(final Usuario filterUsuario, final TableRequestDto tableRequestDto) {
 		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 
@@ -369,15 +379,17 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
 	@ResponseBody()
 	public TableResourceResponseDto<Usuario2> filter2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios 2");
 		try {
 			tableRequestDto.setSidx(tableRequestDto.getSidx().substring(0, tableRequestDto.getSidx().length()-1));
-			TableResourceResponseDto<Usuario> rdo1 = this.filter(filterUsuario, tableRequestDto);
+			TableResourceResponseDto<Usuario> rdo1 = this.filterUsuario(filterUsuario, tableRequestDto);
 			List<Usuario2> rows = new ArrayList<Usuario2>();
-			for (Usuario usuario : (List<Usuario>)rdo1.getRows()) {
+			for (Resource<Usuario> usuarioResource : (List<Resource<Usuario>>) rdo1.getRows()) {
 				Usuario2 aux = new Usuario2();
+				Usuario usuario = usuarioResource.getContent();
 				aux.setId(usuario.getId());
 				aux.setNombre(usuario.getNombre());
 				aux.setApellido1(usuario.getApellido1());
@@ -610,7 +622,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sí");
+		comboEjie.put("1", "Sï¿½");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDialogAjax";
@@ -638,6 +650,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "clipboardReport2")
 	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<Usuario> getClipboardReport2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
@@ -678,6 +691,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "excelReport2")
 	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateExcelReport2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -736,6 +750,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "pdfReport2")
 	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generatePDFReport2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -794,6 +809,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "odsReport2")
 	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateODSReport2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -852,6 +868,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "csvReport2")
 	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateCSVReport2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
