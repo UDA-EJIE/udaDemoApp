@@ -2,8 +2,7 @@ package com.ejie.x21a.model;
 
 import java.util.Date;
 
-import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.TrustAssertion;
+import org.hdiv.services.SecureIdentifiable;
 
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
@@ -15,10 +14,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class UsuarioJerarquia implements java.io.Serializable, SecureIdContainer {
+public class UsuarioJerarquia implements java.io.Serializable, SecureIdentifiable<String> {
 
 	private static final long serialVersionUID = 1L;
-	@TrustAssertion(idFor=UsuarioJerarquia.class)
 	private String id;
 	private String nombre;
 	private String apellido1;

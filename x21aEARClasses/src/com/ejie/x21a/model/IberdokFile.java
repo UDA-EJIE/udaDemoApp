@@ -1,16 +1,14 @@
 package com.ejie.x21a.model;
 
-import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.TrustAssertion;
+import org.hdiv.services.SecureIdentifiable;
 
-public class IberdokFile implements java.io.Serializable, SecureIdContainer {
+public class IberdokFile implements java.io.Serializable, SecureIdentifiable<String> {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@TrustAssertion(idFor=IberdokFile.class)
 	private String id;	
 	private String idModelo;
 	private String semilla;
