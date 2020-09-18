@@ -21,6 +21,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,8 @@ import com.ejie.x21a.service.JQGridLocalidadService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 
@@ -62,13 +65,14 @@ public class TableLocalidadController  {
 	 * @param code BigDecimal
 	 * @return localidad Localidad
 	 */
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public @ResponseBody Localidad getById(@PathVariable BigDecimal code) {
+	public @ResponseBody Resource<Localidad> getById(@PathVariable BigDecimal code) {
         Localidad localidad = new Localidad();
 		localidad.setCode(code);
         localidad = this.localidadService.find(localidad);
         TableLocalidadController.logger.info("[GET - findBy_PK] : Obtener Localidad por PK");
-        return localidad;
+        return new Resource<Localidad>(localidad);
 	}
 	
 	/**
