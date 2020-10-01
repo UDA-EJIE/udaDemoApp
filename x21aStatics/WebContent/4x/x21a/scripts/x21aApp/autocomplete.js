@@ -45,12 +45,21 @@ jQuery(function($) {
             source : 'autocomplete/remote',
             sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
             menuMaxHeight: 325,
-            minLength:3,
+            minLength: 3,
             combobox: true,
-            contains:true,
-            select:function(){
-                var value=$('#comboboxRemoto').rup_autocomplete('getRupValue');
-                alert('Seleccionado: '+value);
+            contains: true,
+            select: function() {
+                let selected = $('#comboboxRemoto').rup_autocomplete('getRupValue');
+                let data = $('#comboboxRemoto_label').data('tmp.data');
+                if (data !== undefined) {
+                    $.grep(data, function (v) {
+                        if (selected === v.value) {
+                            selected = v.nid;
+                        }
+                    })
+                }
+
+                alert('Seleccionado: '+ selected);
             }
         });
         
