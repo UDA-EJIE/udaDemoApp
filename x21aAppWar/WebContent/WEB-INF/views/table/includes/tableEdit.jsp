@@ -66,7 +66,7 @@
 			    </div>
 			</div>
 			<div class="form-row">
-			    <div class="col-sm checkbox-material">
+			    <div class="checkbox-material col-sm">
 			    	<form:checkbox path="ejie" id="ejie_detail_table" value="1" />
 			    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
 			    </div> 
