@@ -185,7 +185,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sï¿½");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "table";
@@ -218,7 +218,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sï¿½");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDouble";
@@ -583,11 +583,12 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "get", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "add", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "remove", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "search", linkClass = TableMultiPkController.class)})
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
@@ -600,11 +601,12 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "get", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "add", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "remove", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "search", linkClass = TableMultiPkController.class)})
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());

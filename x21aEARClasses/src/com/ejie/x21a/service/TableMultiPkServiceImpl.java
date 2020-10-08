@@ -34,6 +34,7 @@ import com.ejie.x21a.dao.TableMultiPkDao;
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
@@ -139,23 +140,23 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<MultiPk>
+	 * @return TableResourceResponseDto<MultiPk>
 	 */	
-	public TableResponseDto< MultiPk> filter(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith){
+	public TableResourceResponseDto<MultiPk> filter(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
 		List<MultiPk> listaMultiPk =  this.multiPkDao.findAllLike(filterMultiPk, tableRequestDto, false);
 		Long recordNum =  this.multiPkDao.findAllLikeCount(filterMultiPk != null ? filterMultiPk: new MultiPk (),false);
 		
-		TableResponseDto<MultiPk> usuarioDto = new TableResponseDto<MultiPk>(tableRequestDto, recordNum, listaMultiPk);
+		TableResourceResponseDto<MultiPk> usuarioDto = new TableResourceResponseDto<MultiPk>(tableRequestDto, recordNum, listaMultiPk);
 		
 		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
-			List< TableRowDto< MultiPk>> reorderSelection = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
+			List<TableRowDto<MultiPk>> reorderSelection = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
 		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
-			List< TableRowDto< MultiPk>> reorderSeeker = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
+			List<TableRowDto<MultiPk>> reorderSeeker = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);
 			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
 		}
@@ -170,7 +171,7 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @param startsWith Boolean
 	 * @return List<TableRowDto<MultiPk>>
 	 */	
-    public List< TableRowDto< MultiPk>> search(MultiPk filterMultiPk, MultiPk searchMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
+    public List< TableRowDto<MultiPk>> search(MultiPk filterMultiPk, MultiPk searchMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
 		return this.multiPkDao.search(filterMultiPk, searchMultiPk, tableRequestDto, startsWith);
 	}
     

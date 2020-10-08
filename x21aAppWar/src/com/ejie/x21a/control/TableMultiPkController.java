@@ -1,7 +1,6 @@
 package com.ejie.x21a.control;
 
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -16,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -32,10 +32,13 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableMultiPkService;
+import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 
 
 /**
@@ -60,21 +63,26 @@ public class TableMultiPkController  {
 	/**
 	 * Operacion CRUD Read. Devuelve el bean correspondiente al identificador indicado.
 	 * 
-	 * @param ida BigDecimal
-	 * @param idb BigDecimal
+	 * @param id String
 	 * @return MultiPk 
 	 *            Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/{ida}/{idb}", method = RequestMethod.GET)
-	public @ResponseBody MultiPk get(@PathVariable BigDecimal ida, @PathVariable BigDecimal idb) {
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public @ResponseBody Resource<MultiPk> get(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
-		multiPk.setIda(ida);
-		multiPk.setIdb(idb);
+		multiPk.setId(id);
         multiPk = this.multiPkService.find(multiPk);
         TableMultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
-        return multiPk;
+        return new Resource<MultiPk>(multiPk);
 	}
 	
+	@UDALink(name = "getFiltroSimple", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search")})
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -82,6 +90,12 @@ public class TableMultiPkController  {
 		return "tableMultipk";
 	}
 	
+	@UDALink(name = "getFiltroSimpleDoble", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search")})
 	@RequestMapping(method = RequestMethod.GET,value = "/double")
 	public String getFiltroSimpleDoble (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -116,10 +130,11 @@ public class TableMultiPkController  {
 	 * @return List<MultiPk> 
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
+	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public @ResponseBody List<MultiPk> getAll(@ModelAttribute MultiPk filterMultiPk) {
+	public @ResponseBody List<Resource<MultiPk>> getAll(@ModelAttribute MultiPk filterMultiPk) {
 		TableMultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
-	    return this.multiPkService.findAll(filterMultiPk, null);
+	    return ResourceUtils.fromListToResource(this.multiPkService.findAll(filterMultiPk, null));
 	}
 
 	/**
@@ -130,11 +145,12 @@ public class TableMultiPkController  {
 	 * @return MultiPk 
 	 *            Bean resultante de la modificacion.
 	 */
+	@UDALink(name = "edit")
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody MultiPk edit(@RequestBody MultiPk multiPk) {		
+    public @ResponseBody Resource<MultiPk> edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
 		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
-        return multiPkAux;
+        return new Resource<MultiPk>(multiPkAux);
     }
 
 	/**
@@ -147,32 +163,32 @@ public class TableMultiPkController  {
 	 * @return MultiPk
 	 *            Bean resultante del proceso de creacion.
 	 */
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody MultiPk add(@RequestBody MultiPk multiPk) {		
+	public @ResponseBody Resource<MultiPk> add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
         TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
-    	return multiPkAux;
+        return new Resource<MultiPk>(multiPkAux);
 	}
 
 	/**
 	 * Operacion CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 *
-	 * @param ida BigDecimal
-	 * @param idb BigDecimal
+	 * @param id String
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return MultiPk
 	 *            Bean eliminado.
 	 */
-	@RequestMapping(value = "/{ida}/{idb}", method = RequestMethod.DELETE)
+	@UDALink(name = "remove")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody MultiPk remove(@PathVariable BigDecimal ida, @PathVariable BigDecimal idb) {
+    public @ResponseBody Resource<MultiPk> remove(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
-        multiPk.setIda(ida);
-        multiPk.setIdb(idb);
+        multiPk.setId(id);
         this.multiPkService.remove(multiPk);
        	TableMultiPkController.logger.info("[DELETE] : MultiPk borrado correctamente");
-       	return multiPk;
+       	return new Resource<MultiPk>(multiPk);
     }
     
 	
@@ -187,6 +203,12 @@ public class TableMultiPkController  {
 	 * @param model Model
 	 * @return String
 	 */
+	@UDALink(name = "getFormEdit", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search")})
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		TableMultiPkController.logger.info("[GET - View] : multipk");
@@ -205,16 +227,18 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<MultiPk> filter(
+	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks");
 		return this.multiPkService.filter(filterMultiPk, tableRequestDto, false);
 	}
 	
+	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove")})
 	@RequestMapping(value = "/filter2", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<MultiPk> filter2() {
+	public @ResponseBody TableResourceResponseDto<MultiPk> filter2() {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
 		return this.multiPkService.filter(new MultiPk(), new TableRequestDto(), false);
 	}
@@ -233,6 +257,7 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado de la busqueda realizada por el
 	 *            componente RUP_TABLE. 
 	 */
+	@UDALink(name = "search")
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<MultiPk>> search(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -254,6 +279,7 @@ public class TableMultiPkController  {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -273,7 +299,8 @@ public class TableMultiPkController  {
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 */	
+	 */
+	@UDALink(name = "clipboardReport")
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	protected @ResponseBody List<MultiPk> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
@@ -294,6 +321,7 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -322,6 +350,7 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -350,6 +379,7 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -378,6 +408,7 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 

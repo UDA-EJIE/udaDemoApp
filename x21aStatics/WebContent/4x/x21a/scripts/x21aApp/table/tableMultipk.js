@@ -90,7 +90,6 @@ jQuery(function ($) {
 
         var plugins = {};
 
-        plugins.primaryKey = 'ida;idb';
         plugins.loadOnStartUp = true;
 
         var fixedHeader = {

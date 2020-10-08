@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -90,9 +91,9 @@ public interface TableMultiPkService {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<MultiPk>
+	 * @return TableResourceResponseDto<MultiPk>
 	 */	
-	TableResponseDto<MultiPk> filter(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith);
+	TableResourceResponseDto<MultiPk> filter(MultiPk filterMultiPk, TableRequestDto tableRequestDto,  Boolean startsWith);
     
     /**
 	 * Searches rows in the MultiPk table.
