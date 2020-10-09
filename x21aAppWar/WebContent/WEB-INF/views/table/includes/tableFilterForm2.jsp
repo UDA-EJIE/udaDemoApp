@@ -21,11 +21,6 @@
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table2" />
-			<label for="id_filter_table2">ID</label>
-	    </div>
-	    
-	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_filter_table2" />
 	    	<label for="nombre_filter_table2">Nombre</label>
 	    </div>
@@ -39,14 +34,14 @@
 	    	<form:input path="apellido2" id="apellido2_filter_table2" />
 	    	<label for="apellido2_filter_table2">Segundo apellido</label>
 	    </div>
-	</div>
-    
-    <div class="form-row">
+	    
     	<div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaAlta" id="fechaAlta_filter_table2" />
 	    	<label for="fechaAlta_filter_table2">Fecha de alta</label>
 	    </div>
-	    
+	</div>
+    
+    <div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaBaja" id="fechaBaja_filter_table2" />
 	    	<label for="fechaBaja_filter_table2">Fecha de baja</label>
@@ -68,12 +63,16 @@
     	<!-- Bot�n de limpiar -->
         <button id="example2_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
-        	<span>Limpiar</span>
+        	<span>
+				<spring:message code="clear" />
+			</span>
         </button>
         <!-- Bot�n de filtrado -->
         <button id="example2_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-filter"></i>
-        	<span>Filtrar</span>        	
+        	<span>
+				<spring:message code="filter" />
+			</span>        	
         </button>
     </div>
         

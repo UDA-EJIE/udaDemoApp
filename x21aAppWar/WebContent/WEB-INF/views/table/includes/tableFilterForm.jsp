@@ -21,11 +21,6 @@
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table" />
-			<label for="id_filter_table">ID</label>
-	    </div>
-	    
-	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_filter_table" />
 	    	<label for="nombre_filter_table">Nombre</label>
 	    </div>
@@ -39,14 +34,14 @@
 	    	<form:input path="apellido2" id="apellido2_filter_table" />
 	    	<label for="apellido2_filter_table">Segundo apellido</label>
 	    </div>
-	</div>
-    
-    <div class="form-row">
+	    
     	<div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaAlta" id="fechaAlta_filter_table" />
 	    	<label for="fechaAlta_filter_table">Fecha de alta</label>
 	    </div>
-	    
+	</div>
+    
+    <div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaBaja" id="fechaBaja_filter_table" />
 	    	<label for="fechaBaja_filter_table">Fecha de baja</label>

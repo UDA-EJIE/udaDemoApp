@@ -27,9 +27,6 @@ jQuery(function($){
          ];
 
          var tableColModelsSimple = [
- 	        { name: "id", index: "id", editable:true, hidden:false, width: 80
- 	            , formoptions:{rowpos:1, colpos:1}
- 	        },
  	        { name: "nombre", index: "nombre", editable:true, hidden:false
  	            , formoptions:{rowpos:2, colpos:1}
  	        },
@@ -175,7 +172,6 @@ jQuery(function($){
                 detailForm: "#example_detail_div",
                 validate:{
                     rules:{
-                        "id":{required:true},
                         "nombre":{required:true},
                         "apellido1":{required:true},
                         "fechaAlta":{required:true},

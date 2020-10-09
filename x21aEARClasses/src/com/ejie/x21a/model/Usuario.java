@@ -113,6 +113,16 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
         this.fechaBaja = fechaBaja;
         this.rol = rol;
     }
+    
+    public Usuario(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+    }
 
     /**
 	 * Method 'getId'.

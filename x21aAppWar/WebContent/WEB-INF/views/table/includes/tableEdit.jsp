@@ -33,44 +33,35 @@
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
-					<form:input path="id" class="d-none" />
-			    	<input type="text" name="nid" id="id_detailForm_table"/>
-					<label for="id_detailForm_table"><spring:message code="id" /></label>
-			    </div>
-			    
-			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="nombre" id="nombre_detail_table" />
 			    	<label for="nombre_detail_table"><spring:message code="nombre" /></label>
-			    </div>
-			</div>
-			<div class="form-row">       
+			    </div>       
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="apellido1" id="apellido1_detail_table" />
 			    	<label for="apellido1_detail_table"><spring:message code="apellido1" /></label>
-			    </div>  
-			    
+			    </div>
+			</div>
+			<div class="form-row">
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="apellido2" id="apellido2_detail_table" />
 			    	<label for="apellido2_detail_table"><spring:message code="apellido2" /></label>
-			    </div>
-			</div>
-			<div class="form-row">       
+			    </div>       
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="fechaBaja" id="fechaBaja_detail_table" />
 			    	<label for="fechaBaja_detail_table"><spring:message code="fechaBaja" /></label>
 			    </div>
-			    
+			</div>
+			<div class="form-row">
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="fechaAlta" id="fechaAlta_detail_table" />
 			    	<label for="fechaAlta_detail_table"><spring:message code="fechaAlta" /></label>
 			    </div>
-			</div>
-			<div class="form-row">
 			    <div class="checkbox-material col-sm">
 			    	<form:checkbox path="ejie" id="ejie_detail_table" value="1" />
 			    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
-			    </div> 
-			    
+			    </div>
+			</div>
+			<div class="form-row">
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="rol" id="rol_detail_table" />
 			    	<label for="rol_detail_table"><spring:message code="rol" /></label>

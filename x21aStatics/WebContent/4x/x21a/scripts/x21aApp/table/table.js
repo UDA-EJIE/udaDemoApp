@@ -14,8 +14,6 @@
  * que establece la Licencia.
  */
 jQuery(function ($) {
-	
-	
 	$('#example').on('tableEditFormAddEditBeforeShowForm', function (event,ctx) {
 		//ctx = $('#example').rup_table('getContext'); es el contexto de la tabla
 		console.log('Este es un ejemplo de trigger, para ver más activar la opción "Activar Triggers en Consola". '+ctx.oInit.formEdit.actionType)
@@ -48,18 +46,8 @@ jQuery(function ($) {
         }
         ];
 
-        var tableColModels = [{
-                name: 'nid',
-                index: 'nid',
-                editable: false,
-                hidden: false,
-                width: 80,
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 1
-                }
-            },
-            {
+        var tableColModels = [
+        	{
                 name: 'nombre',
                 index: 'nombre',
                 editable: true,
@@ -123,7 +111,7 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaBaja',
-                index: 'fechaAlta_detail_table',
+                index: 'fechaBaja_detail_table',
                 editable: false,
                 hidden: false,
                 width: 120,
@@ -173,8 +161,8 @@ jQuery(function ($) {
         jQuery('#fechaBaja_filter_table').rup_date();
 
         //Formulario de detalle
-        /*jQuery('#fechaAlta_detail_table').rup_date();
-        jQuery('#fechaBaja_detail_table').rup_date();*/
+        /*jQuery('#fechaAlta_detail_table').rup_date();*/
+        jQuery('#fechaBaja_detail_table').rup_date();
 
         var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 
@@ -249,9 +237,6 @@ jQuery(function ($) {
                     detailForm: '#example_detail_div',
                     validate: {
                         rules: {
-                            'id': {
-                                required: true
-                            },
                             'nombre': {
                                 required: true
                             },
@@ -303,7 +288,6 @@ jQuery(function ($) {
                           detailForm: "#example_detail_div",
                           validate:{
                               rules:{
-                                  "id":{required:true},
                                   "nombre":{required:true},
                                   "apellido1":{required:true},
                                   "fechaAlta":{date:true},
@@ -316,9 +300,6 @@ jQuery(function ($) {
                     deselect: true,
                     validate: {
                         rules: {
-                            'id': {
-                                required: true
-                            },
                             'nombre': {
                                 required: true
                             },

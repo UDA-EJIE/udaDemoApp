@@ -70,6 +70,11 @@ public class Usuario2 extends Usuario {
 		super(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, rol);
 	}
 
+	public Usuario2(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta,
+	        Date fechaBaja, String rol) {
+		super(nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, rol);
+	}
+
 	/**
 	 * Method 'getId'.
 	 *

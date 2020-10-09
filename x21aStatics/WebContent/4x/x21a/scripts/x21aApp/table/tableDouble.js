@@ -179,9 +179,6 @@ function _init() {
                     titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption'),
                     saveContinueEdit: false //true pasa a edición; false seguir añadiendo
                 };
-                formEdit.validate.rules['id' + num] = {
-                    required: true
-                };
                 formEdit.validate.rules['nombre' + num] = {
                     required: true
                 };
@@ -209,9 +206,6 @@ function _init() {
                 validate: {
                     rules: {}
                 }
-            };
-            inlineEdit.validate.rules['id' + num] = {
-                required: true
             };
             inlineEdit.validate.rules['nombre' + num] = {
                 required: true
@@ -373,124 +367,114 @@ function _init() {
         ];
 
         // Para cualquier tabla que no sea la primera se oculta el nombre
-        if (num) {
+        /*if (num) {
             plugins.columnDefs.push({
                 'className': 'never',
                 'targets': [2] }
             );
-        }
+        }*/
 
-        plugins.colModel = [{
-            name: 'nid',
-            index: 'nid',
-            editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 1,
-                colpos: 1
-            }
-        },
-        {
-            name: 'nombre' + num,
-            index: 'nombre' + num,
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 2,
-                colpos: 1
-            }
-        },
-        {
-            name: 'apellido1' + num,
-            index: 'apellido1' + num,
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 3,
-                colpos: 1
-            },
-            classes: 'ui-ellipsis'
-        },
-        {
-            name: 'ejie' + num,
-            index: 'ejie' + num,
-            editable: true,
-            hidden: false,
-            width: 60,
-            edittype: 'checkbox',
-            formatter: 'checkbox',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            align: 'center',
-            editoptions: {
-                value: '1:0'
-            },
-            formoptions: {
-                rowpos: 5,
-                colpos: 1
-            }
-        },
-        {
-            name: 'fechaAlta' + num,
-            index: 'fechaAlta' + num,
-            editable: true,
-            hidden: false,
-            width: 120,
-            rupType: 'date',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            editoptions: {
-                labelMaskId: 'fecha-mask',
-                showButtonPanel: true,
-                showOtherMonths: true,
-                noWeekend: true
-            },
-            formoptions: {
-                rowpos: 2,
-                colpos: 2
-            }
-        },
-        {
-            name: 'fechaBaja' + num,
-            index: 'fechaBaja' + num,
-            editable: false,
-            hidden: false,
-            width: 120,
-            rupType: 'date',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            editoptions: {
-                labelMaskId: 'fecha-mask',
-                showButtonPanel: true,
-                showOtherMonths: true,
-                noWeekend: true
-            },
-            formoptions: {
-                rowpos: 3,
-                colpos: 2
-            }
-        },
-        {
-            name: 'rol' + num,
-            index: 'rol' + num,
-            editable: true,
-            hidden: false,
-            width: 140,
-            rupType: 'combo',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            formatter: 'rup_combo',
-            editoptions: {
-                source: $.map(combo, function (elem) {
-                    return {
-                        label: elem.rol,
-                        value: elem.codTipoSubsanacion
-                    };
-
-                })
-            },
-            formoptions: {
-                rowpos: 3,
-                colpos: 2
-            }
-        }
+        plugins.colModel = [
+	        {
+	            name: 'nombre' + num,
+	            index: 'nombre' + num,
+	            editable: true,
+	            hidden: false,
+	            formoptions: {
+	                rowpos: 2,
+	                colpos: 1
+	            }
+	        },
+	        {
+	            name: 'apellido1' + num,
+	            index: 'apellido1' + num,
+	            editable: true,
+	            hidden: false,
+	            formoptions: {
+	                rowpos: 3,
+	                colpos: 1
+	            },
+	            classes: 'ui-ellipsis'
+	        },
+	        {
+	            name: 'ejie' + num,
+	            index: 'ejie' + num,
+	            editable: true,
+	            hidden: false,
+	            width: 60,
+	            edittype: 'checkbox',
+	            formatter: 'checkbox',
+	            rwdClasses: 'hidden-xs hidden-sm hidden-md',
+	            align: 'center',
+	            editoptions: {
+	                value: '1:0'
+	            },
+	            formoptions: {
+	                rowpos: 5,
+	                colpos: 1
+	            }
+	        },
+	        {
+	            name: 'fechaAlta' + num,
+	            index: 'fechaAlta' + num,
+	            editable: true,
+	            hidden: false,
+	            width: 120,
+	            rupType: 'date',
+	            rwdClasses: 'hidden-xs hidden-sm hidden-md',
+	            editoptions: {
+	                labelMaskId: 'fecha-mask',
+	                showButtonPanel: true,
+	                showOtherMonths: true,
+	                noWeekend: true
+	            },
+	            formoptions: {
+	                rowpos: 2,
+	                colpos: 2
+	            }
+	        },
+	        {
+	            name: 'fechaBaja' + num,
+	            index: 'fechaBaja' + num,
+	            editable: false,
+	            hidden: false,
+	            width: 120,
+	            rupType: 'date',
+	            rwdClasses: 'hidden-xs hidden-sm hidden-md',
+	            editoptions: {
+	                labelMaskId: 'fecha-mask',
+	                showButtonPanel: true,
+	                showOtherMonths: true,
+	                noWeekend: true
+	            },
+	            formoptions: {
+	                rowpos: 3,
+	                colpos: 2
+	            }
+	        },
+	        {
+	            name: 'rol' + num,
+	            index: 'rol' + num,
+	            editable: true,
+	            hidden: false,
+	            width: 140,
+	            rupType: 'combo',
+	            rwdClasses: 'hidden-xs hidden-sm hidden-md',
+	            formatter: 'rup_combo',
+	            editoptions: {
+	                source: $.map(combo, function (elem) {
+	                    return {
+	                        label: elem.rol,
+	                        value: elem.codTipoSubsanacion
+	                    };
+	
+	                })
+	            },
+	            formoptions: {
+	                rowpos: 3,
+	                colpos: 2
+	            }
+	        }
         ];
 
         delete localStorage['plugins' + num];
