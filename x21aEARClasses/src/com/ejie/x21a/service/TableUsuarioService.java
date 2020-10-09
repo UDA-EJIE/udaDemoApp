@@ -24,9 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -81,7 +78,7 @@ public interface TableUsuarioService {
 	 * @param pagination Pagination
 	 * @return List
 	 */
-	List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto);
+	List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
 
 	/**
 	 * Finds rows in the Usuario table using like.
@@ -127,14 +124,6 @@ public interface TableUsuarioService {
 	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
 	Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
-
-	
-	/*
-	 * OPERACIONES RUP_TABLE JERARQUIA
-	 */
-	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
-	
-	JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto);
 	
 	/*
 	 * EXPORTACIONES DE DATOS

@@ -63,13 +63,9 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.Usuario2;
-import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -92,9 +88,6 @@ public class TableUsuarioController  {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
 	public static final String MODEL_OPTIONS = "options";
-
-	@Autowired
-	private JQGridUsuarioService jqGridUsuarioService;
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -224,6 +217,88 @@ public class TableUsuarioController  {
 		return "tableDouble";
 	}
 	
+	@UDALink(name = "getSimpleMasterDetail", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search"),
+			@UDALinkAllower(name = "multifilterAdd"),
+			@UDALinkAllower(name = "multifilterDelete"),
+			@UDALinkAllower(name = "multifilterDefault"),
+			@UDALinkAllower(name = "multifilterGetAll")})
+	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
+	public String getSimpleMasterDetail(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("comarca", new Comarca());
+		Localidad localidad = new Localidad();
+		localidad.setComarca(new Comarca());
+		model.addAttribute("localidad", localidad);
+		return "tableMasterDetail";
+	}
+	
+	@UDALink(name = "getMasterDialog", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search"),
+			@UDALinkAllower(name = "multifilterAdd"),
+			@UDALinkAllower(name = "multifilterDelete"),
+			@UDALinkAllower(name = "multifilterDefault"),
+			@UDALinkAllower(name = "multifilterGetAll")})
+	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
+	public String getMasterDialog(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("localidad", new Localidad());
+		return "tableDialogDetail";
+	}
+	
+	@UDALink(name = "getTableDialog", linkTo = {@UDALinkAllower(name = "getTableDialogAjax"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "search")})
+	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
+	public String getTableDialog(Model model) {
+		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
+		model.addAttribute("multiPk", new MultiPk());
+		return "tableDialog";
+	}
+	
+	@UDALink(name = "getTableDialogAjax", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "search")})
+	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
+	public String getTableDialogAjax (Model model) {
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("administrador", "Administrador");
+		comboRol.put("desarrollador", "Desarrollador");
+		comboRol.put("espectador", "Espectador");
+		comboRol.put("informador", "Informador");
+		comboRol.put("manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "S�");
+		model.addAttribute("comboEjie", comboEjie);
+		
+		return "tableDialogAjax";
+	}
+	
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
 	 * indicados en el objeto pasado como parÃ¡metro.
@@ -250,7 +325,7 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "edit")
 	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Resource<Usuario> edit(@RequestJsonBody Usuario usuario) {
+    public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
@@ -262,7 +337,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "edit2")
 	@RequestMapping(value = "/{bis}", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
-    		@RequestJsonBody Usuario usuario) {
+    		@RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
@@ -271,7 +346,7 @@ public class TableUsuarioController  {
 		return new Resource<Usuario>(usuarioAux);
     }
 	
-	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
+	@UDALink(name = "editar")
 	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
     public @ResponseBody Resource<Usuario> editar(
     		@Validated @ModelAttribute Usuario usuario,
@@ -334,7 +409,7 @@ public class TableUsuarioController  {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.OK)
-    public @ResponseBody Resource<Usuario> remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
+    public @ResponseBody Resource<Usuario> remove(@PathVariable String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
         usuario.setId(id);
         this.tableUsuarioService.remove(usuario);
@@ -480,154 +555,6 @@ public class TableUsuarioController  {
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return tableRequestDto.getMultiselection().getSelectedIds();
-	}
-	
-	/*
-	 * METODOS COMPONENTE RUP_TABLE - JERARQUÃ�A
-	 */
-	
-	/**
-	 * OperaciÃ³n de filtrado del componente RUP_TABLE para presentar los
-	 * registros medainte una visualizaciÃ³n jerÃ¡rquica.
-	 * 
-	 * @param filterUsuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
-	 * @param jqGridRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return Dto que contiene el resultado del filtrado realizado por el
-	 *         componente RUP_TABLE.
-	 * 
-	 */
-	@RequestMapping(value = "/jerarquia/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto< JerarquiaDto< Usuario>> jerarquia(
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		TableUsuarioController.logger.info("[POST - jerarquia] : Obtener Usuarios Jerarquia");
-		return this.jqGridUsuarioService.jerarquia(filterUsuario, jqGridRequestDto, false);
-	}
-	
-	/**
-	 * Recupera los hijos de los registros desplegados en la visualizaciÃ³n jerÃ¡rquica.
-	 * 
-	 * @param filterUsuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
-	 * @param jqGridRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return Dto que contiene el resultado a mostrar en el componente RUP_TABLE.
-	 * 
-	 */
-	@RequestMapping(value = "/jerarquiaChildren", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
-		TableUsuarioController.logger.info("[GET - jqGrid] : Obtener Jerarquia - Hijos");
-		return this.jqGridUsuarioService.jerarquiaChildren(filterUsuario, jqGridRequestDto);
-	}
-	
-	@UDALink(name = "getSimpleMasterDetail", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "remove", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "get", linkClass = TableLocalidadController.class),
-			@UDALinkAllower(name = "search"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
-	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
-	public String getSimpleMasterDetail(Model model) {
-		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("comarca", new Comarca());
-		Localidad localidad = new Localidad();
-		localidad.setComarca(new Comarca());
-		model.addAttribute("localidad", localidad);
-		return "tableMasterDetail";
-	}
-	
-	@UDALink(name = "getMasterDialog", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "remove", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "search"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
-	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
-	public String getMasterDialog(Model model) {
-		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("comarca", new Comarca());
-		model.addAttribute("localidad", new Localidad());
-		return "tableDialogDetail";
-	}
-	
-	@UDALink(name = "getTableDialog", linkTo = {@UDALinkAllower(name = "getTableDialogAjax"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "get", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "edit", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "add", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "remove", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "filter", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "search", linkClass = TableMultiPkController.class)})
-	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
-	public String getTableDialog(Model model) {
-		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("multiPk", new MultiPk());
-		return "tableDialog";
-	}
-	
-	@UDALink(name = "getTableDialogAjax", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "get", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "edit", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "add", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "remove", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "filter", linkClass = TableMultiPkController.class),
-			@UDALinkAllower(name = "search", linkClass = TableMultiPkController.class)})
-	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
-	public String getTableDialogAjax (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
-		
-		Map<String,String> comboRol = new LinkedHashMap<String,String>();
-		comboRol.put("", "---");
-		comboRol.put("administrador", "Administrador");
-		comboRol.put("desarrollador", "Desarrollador");
-		comboRol.put("espectador", "Espectador");
-		comboRol.put("informador", "Informador");
-		comboRol.put("manager", "Manager");
-		model.addAttribute("comboRol", comboRol);
-		
-		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
-		comboEjie.put("", "---");
-		comboEjie.put("0", "No");
-		comboEjie.put("1", "S�");
-		model.addAttribute("comboEjie", comboEjie);
-		
-		return "tableDialogAjax";
 	}
 	
 	/*

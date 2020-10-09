@@ -47,9 +47,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.dao.TableUsuarioDao;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -128,8 +125,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param pagination Pagination
 	 * @return List
 	 */
-	public List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto) {
-		return (List<Usuario>) this.jqGridUsuarioDao.findAll(usuario, jqGridRequestDto);
+	public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
+		return (List<Usuario>) this.tableUsuarioDao.findAll(usuario, tableRequestDto);
 	}
     
 
@@ -195,22 +192,6 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
 		}
 		return usuarioDto; 
-	}
-	
-	/*
-	 * OPERACIONES RUP_TABLE JERARQUIA
-	 */
-
-	public JQGridResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		List<JerarquiaDto<Usuario>> listaUsuario =  this.jqGridUsuarioDao.findAllLikeJerarquia(filterUsuario, jqGridRequestDto);
-		Long recordNum = this.jqGridUsuarioDao.findAllLikeCountJerarquia(filterUsuario, jqGridRequestDto);
-		return new JQGridResponseDto<JerarquiaDto<Usuario>>(jqGridRequestDto, recordNum, listaUsuario);
-	}
-	
-	public JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto){
-		JQGridResponseDto<JerarquiaDto<Usuario>> jqGridResponseDto = new JQGridResponseDto<JerarquiaDto<Usuario>>();
-		jqGridResponseDto.addAdditionalParam(JQGridResponseDto.CHILDREN, this.jqGridUsuarioDao.findAllChild(filterUsuario, jqGridRequestDto));
-		return jqGridResponseDto;
 	}
 	
 	/*

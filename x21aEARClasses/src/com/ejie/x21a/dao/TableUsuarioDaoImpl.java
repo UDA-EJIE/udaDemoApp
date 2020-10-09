@@ -33,10 +33,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JQGridManager;
-import com.ejie.x38.dto.JQGridManagerJerarquia;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -132,7 +128,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     * @return List 
     */
 	@Transactional (readOnly = true)
-    public List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto) {
+    public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
 		StringBuilder query = new StringBuilder("SELECT  t1.ID ID, t1.NOMBRE NOMBRE, t1.APELLIDO1 APELLIDO1, t1.APELLIDO2 APELLIDO2, t1.EJIE EJIE, t1.FECHA_ALTA FECHA_ALTA, t1.FECHA_BAJA FECHA_BAJA, t1.ROL ROL "); 
 		query.append("FROM USUARIO t1 ");
 		
@@ -144,8 +140,8 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<Usuario>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -327,125 +323,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		
-	}
-	
-	@Override
-	public List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto) {
-		
-		//SELECT
-		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.NOMBRE NOMBRE, t1.APELLIDO1 APELLIDO1, t1.APELLIDO2 APELLIDO2, t1.EJIE EJIE, t1.FECHA_ALTA FECHA_ALTA, t1.FECHA_BAJA FECHA_BAJA, t1.ID_PADRE IDPADRE, t1.GRUPO GRUPO ");
-		
-		//TABLAS
-		List<String> from = new ArrayList<String>();
-		from.add("USUARIO_JERARQUIA");
-		
-		//TABLAS_ALIAS
-		List<String> from_alias = new ArrayList<String>();
-		from_alias.add("t1");
-		
-		//JOINS TABLAS
-		StringBuilder joins = new StringBuilder("");
-		joins.append("AND 666=666");
-		
-		//CONDICIONES (negocio)
-		StringBuilder businessFilters = new StringBuilder();
-		List<Object> businessParams = new ArrayList<Object>();
-		businessFilters.append("   AND t1.EJIE = ? AND t1.EJIE = ? AND t1.EJIE = ?   ");
-		businessParams.add("1");
-		businessParams.add("1");
-		businessParams.add("1");
-
-		//FILTRO
-		Map<String, ?> mapaWhere = this.getWhereLikeMap(filterUsuario, false);
-		
-		//JERARQUIA
-		sbSQL = JQGridManagerJerarquia.getQuery(jqGridRequestDto, sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias);
-//		sbSQL = PaginationManagerJerarquia.getQuery(pagination, sbSQL, mapaWhere, "ID", "ID_PADRE", "NOMBRE", from, from_alias, joins, businessFilters, businessParams);
-
-		//PAGINACIÓN
-		if (jqGridRequestDto != null) {
-			sbSQL = JQGridManagerJerarquia.getPaginationQuery(jqGridRequestDto, sbSQL, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
-		}
-
-		List<?> params = (List<?>) mapaWhere.get("params");
-		
-		return this.jdbcTemplate.query(sbSQL.toString(), this.rwMapJerarquia, params.toArray());
-		
-	}
-
-	
-
-	@Override
-	public Long findAllLikeCountJerarquia(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto) {
-		
-		//TABLAS
-		List<String> from = new ArrayList<String>();
-		from.add("USUARIO_JERARQUIA");
-		
-		//TABLAS_ALIAS
-		List<String> from_alias = new ArrayList<String>();
-		from_alias.add("t1");
-		
-		//JOINS TABLAS
-		StringBuilder joins = new StringBuilder("");
-		joins.append("AND 666=666");
-		
-		//CONDICIONES (negocio)
-		StringBuilder businessFilters = new StringBuilder();
-		List<Object> businessParams = new ArrayList<Object>();
-		businessFilters.append("   AND t1.EJIE = ? AND t1.EJIE = ? AND t1.EJIE = ?   ");
-		businessParams.add("1");
-		businessParams.add("1");
-		businessParams.add("1");
-
-		//FILTRO
-		Map<String, ?> mapaWhere = this.getWhereLikeMap(filterUsuario, false);
-		
-		//JERARQUIA
-		StringBuilder sbSQL = JQGridManagerJerarquia.getQueryCount(jqGridRequestDto, mapaWhere, "ID", "ID_PADRE", from, from_alias);
-//		StringBuilder sbSQL = PaginationManagerJerarquia.getQueryCount(pagination, mapaWhere, "ID", "ID_PADRE", from, from_alias, joins, businessFilters, businessParams);
-
-		List<?> params = (List<?>) mapaWhere.get("params");
-		
-		return this.jdbcTemplate.queryForObject(sbSQL.toString(), params.toArray(), Long.class);
-	}
-
-	@Override
-	public List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto) {
-		
-		//TABLAS
-		List<String> from = new ArrayList<String>();
-		from.add("USUARIO_JERARQUIA");
-		
-		//TABLAS_ALIAS
-		List<String> from_alias = new ArrayList<String>();
-		from_alias.add("t1");
-		
-		//JOINS TABLAS
-		StringBuilder joins = new StringBuilder("");
-		joins.append("AND 666=666");
-		
-		//CONDICIONES (negocio)
-		StringBuilder businessFilters = new StringBuilder();
-		List<Object> businessParams = new ArrayList<Object>();
-		businessFilters.append("   AND t1.EJIE = ? AND t1.EJIE = ? AND t1.EJIE = ?   ");
-		businessParams.add("1");
-		businessParams.add("1");
-		businessParams.add("1");
-
-		//FILTRO
-		Map<String, ?> mapaWhere = this.getWhereLikeMap(filterUsuario, false);
-		
-		//MULTISELECCION
-		StringBuilder sbSQL = JQGridManagerJerarquia.getQueryChildren(jqGridRequestDto, mapaWhere, "ID", "ID_PADRE", from, from_alias);
-//		StringBuilder sbSQL = PaginationManagerJerarquia.getQueryChildren(pagination, mapaWhere, "ID", "ID_PADRE", from, from_alias, joins, businessFilters, businessParams);
-
-		List<?> params = (List<?>) mapaWhere.get("params");
-		
-		return this.jdbcTemplate.query(sbSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, "id"), params.toArray());
-
-	}
-	
+	}	
 	
 	/*
 	 * MÉTODOS PRIVADOS
@@ -608,30 +486,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		public Usuario mapRow(ResultSet resultSet, int rowNum)
 				throws SQLException {
 			return new Usuario(resultSet.getString("ID"));
-		}
-	};
-
-	private RowMapper<JerarquiaDto<Usuario>> rwMapJerarquia = new RowMapper<JerarquiaDto<Usuario>>() {
-		public JerarquiaDto<Usuario> mapRow(ResultSet resultSet, int rowNum)
-				throws SQLException {
-
-			Usuario usuario = new Usuario(resultSet.getString("ID"),
-					resultSet.getString("NOMBRE"),
-					resultSet.getString("APELLIDO1"),
-					resultSet.getString("APELLIDO2"),
-					resultSet.getString("EJIE"),
-					resultSet.getDate("FECHA_ALTA"),
-					resultSet.getDate("FECHA_BAJA"));
-
-			JerarquiaDto<Usuario> jerarquia = new JerarquiaDto<Usuario>();
-			jerarquia.setModel(usuario);
-			jerarquia.setLevel(resultSet.getBigDecimal("LEVEL").intValue());
-			jerarquia.setParentNodes(resultSet.getString("PARENTNODES"));
-			jerarquia.setIsLeaf(Boolean.parseBoolean(resultSet
-					.getString("ISLEAF")));
-			jerarquia.setFilter(Boolean.parseBoolean(resultSet
-					.getString("FILTER")));
-			return jerarquia;
 		}
 	};
 }

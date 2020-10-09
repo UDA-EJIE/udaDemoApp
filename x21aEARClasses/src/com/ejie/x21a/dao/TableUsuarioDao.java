@@ -18,8 +18,6 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -73,7 +71,7 @@ public interface TableUsuarioDao {
      * @param pagination Pagination
      * @return List
      */
-    List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto);
+    List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
 
 	/**
      * Finds rows in the Usuario table using like.
@@ -114,17 +112,6 @@ public interface TableUsuarioDao {
     
     List<TableRowDto<Usuario>> reorderSelection(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
-
-    /*
-	 * OPERACIONES RUP_TABLE JERARQUIA
-	 */
-    
-	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario,JQGridRequestDto jqGridRequestDto);
-	
-	Long findAllLikeCountJerarquia(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto);
-	
-	List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario,JQGridRequestDto jqGridRequestDto);
-	
+    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);	
 }
 
