@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-md-2" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px gray solid;">
-                        <strong><span id="nid_label" /></strong>: <span id="nid_value"/>
+                        <strong><span id="fechaAlta_label" /></strong>: <span id="fechaAlta_value"/>
                     </div>
                     <div>
                         <strong><span id="nombre_label"/></strong>: <span id="nombre_value"/>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-4" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px solid gray;">
-                        <span id="apellido2_label"></span>: <span id="apellido2_value"></span>
+                        <span id="rol_label"></span>: <span id="rol_value"></span>
                     </div>
                     <div>
                         <span id="ejie_label"></span>: <span id="ejie_value"></span>
@@ -256,7 +256,7 @@
                 </div>
                 <div class="col-md-2" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px gray solid;">
-                        <strong><span id="nid_label" /></strong>: <span id="nid_value"/>
+                        <strong><span id="fechaAlta_label" /></strong>: <span id="fechaAlta_value"/>
                     </div>
                     <div>
                         <strong><span id="nombre_label"/></strong>: <span id="nombre_value"/>
@@ -269,7 +269,7 @@
                 </div>
                 <div class="col-md-4" style="border-right: 1px solid gray;display:flex;align-items:center;flex-direction:column;">
                     <div style="border-bottom: 1px solid gray;">
-                        <span id="apellido2_label"></span>: <span id="apellido2_value"></span>
+                        <span id="rol_label"></span>: <span id="rol_value"></span>
                     </div>
                     <div>
                         <span id="ejie_label"></span>: <span id="ejie_value"></span>
