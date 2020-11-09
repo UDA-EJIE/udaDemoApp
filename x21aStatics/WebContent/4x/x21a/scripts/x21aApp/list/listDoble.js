@@ -481,7 +481,7 @@ jQuery(function ($) {
     $('#listFilterFormLeft').find('#listFilterLimpiar').on('click', function (e) {
         e.stopImmediatePropagation();
         e.preventDefault();
-        $('#listFilterFormLeft').find('input').val('');
+        $('#listFilterFormLeft').rup_form("resetForm");
         $('#rup-list-left').rup_list('filter');
     });
     $('#listFilterFormLeft').find('#listFilterAceptar').on('click', function (e) {
@@ -494,7 +494,7 @@ jQuery(function ($) {
     $('#listFilterFormRight').find('#listFilterLimpiar').on('click', function (e) {
         e.stopImmediatePropagation();
         e.preventDefault();
-        $('#listFilterFormRight').find('input').val('');
+        $('#listFilterFormRight').rup_form("resetForm");
         $('#rup-list-right').rup_list('filter');
     });
     $('#listFilterFormRight').find('#listFilterAceptar').on('click', function (e) {
