@@ -430,7 +430,24 @@
                     contentType: 'application/json',
                     async: false,
                     success: function (data) {
-                        row = data;
+                    	row = data;
+                    	if(ctx.oInit.primaryKey !== undefined && ctx.oInit.primaryKey.length === 1){//si hdiv esta activo.
+	                        // Actualizar el nuevo id que viene de HDIV.
+                    		let idHdiv = data[ctx.oInit.primaryKey];
+	                        if (pk === ctx.multiselection.lastSelectedId) {
+	                            ctx.multiselection.lastSelectedId = idHdiv;
+	                        }
+	                        let pos = jQuery.inArray(pk, ctx.multiselection.selectedIds);
+	                        if (pos >= 0) {
+	                            ctx.multiselection.selectedIds[pos] = idHdiv;
+	                        }
+	                        let result = $.grep(ctx.multiselection.selectedRowsPerPage, function (v) {
+	                                return v.id === pk;
+	                            });
+	                        if (result !== undefined && result.length > 0) {
+	                            result[0].id = idHdiv;
+	                        }
+                    	}
                     },
                     error: function (xhr) {
                         var divErrorFeedback = feed; //idTableDetail.find('#'+feed[0].id + '_ok');
@@ -1503,26 +1520,28 @@
     function _editFormSerialize(idForm) {
         let serializedForm = '';
         let idFormArray = idForm.formToArray();
-        let length = idFormArray.length;
         let ultimo = '';
-        let count = 1;
+        let count = 0;
 
         $.each(idFormArray, function (key, obj) {
-        	let ruptype = idForm.find('[name="'+obj.name+'"]').attr('ruptype');
-        	if(ruptype === undefined){
-        		ruptype = idForm.find('[name="'+obj.name+'"]').data('ruptype');
+        	if (ultimo != obj.name) {
+        		count = 0;
+    		}	
+        	let ruptype = idForm.find('[name="' + obj.name + '"]').attr('ruptype');
+        	if (ruptype === undefined) {
+        		ruptype = idForm.find('[name="' + obj.name + '"]').data('ruptype');
         	}
-        	if(obj.type !== 'hidden' || ruptype === 'autocomplete' || ruptype === 'custom'){
+        	if (obj.type !== 'hidden' || ruptype === 'autocomplete' || ruptype === 'custom') {
         		let valor = '';
-        		if(ultimo === obj.name){//Se mete como lista
-        			//se hace replace del primer valor
-        			serializedForm = serializedForm.replace(ultimo+'=',ultimo+'[0]=');
-        			valor = '['+count+']'; //y se mete el array
-        			count++;
-        		}else{
-        			count = 1;
+        		if ($(idForm).find('[name=' + obj.name + ']').prop('multiple')) {
+        			valor = '[' + count++ + ']';
         		}
-	            serializedForm += (obj.name + valor+'=' + obj.value);
+        		else if (ultimo === obj.name) {//Se mete como lista
+        			//se hace replace del primer valor
+        			serializedForm = serializedForm.replace(ultimo + '=', ultimo + '[' + count++ + ']=');
+        			valor = '[' + count++ + ']'; //y se mete el array
+        		}
+	            serializedForm += (obj.name + valor + '=' + obj.value);
                 serializedForm += '&';
                 ultimo = obj.name;
         	}

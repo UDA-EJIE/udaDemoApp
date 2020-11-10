@@ -1,7 +1,7 @@
 /*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -198,7 +198,6 @@
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  -ms-overflow-style: scrollbar;
 }
 
 .r01gContainer figure {
@@ -266,10 +265,6 @@
   text-transform: none;
 }
 
-.r01gContainer [role="button"] {
-  cursor: pointer;
-}
-
 .r01gContainer select {
   word-wrap: normal;
 }
@@ -300,6 +295,13 @@
 .r01gContainer input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
+}
+
+.r01gContainer input[type="date"],
+.r01gContainer input[type="time"],
+.r01gContainer input[type="datetime-local"],
+.r01gContainer input[type="month"] {
+  -webkit-appearance: listbox;
 }
 
 .r01gContainer textarea {
@@ -743,7 +745,6 @@
 .r01gContainer .col {
   flex-basis: 0;
   flex-grow: 1;
-  min-width: 0;
   max-width: 100%;
 }
 
@@ -951,7 +952,6 @@
   .r01gContainer .col-sm {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -1164,7 +1164,6 @@
   .r01gContainer .col-md {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -1377,7 +1376,6 @@
   .r01gContainer .col-lg {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -1590,7 +1588,6 @@
   .r01gContainer .col-xl {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -2197,13 +2194,6 @@
   opacity: 1;
 }
 
-.r01gContainer input[type="date"].form-control,
-.r01gContainer input[type="time"].form-control,
-.r01gContainer input[type="datetime-local"].form-control,
-.r01gContainer input[type="month"].form-control {
-  appearance: none;
-}
-
 .r01gContainer select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #fff;
@@ -2639,6 +2629,7 @@
   color: #212529;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -2669,10 +2660,6 @@
 .r01gContainer .btn.disabled,
 .r01gContainer .btn:disabled {
   opacity: 0.65;
-}
-
-.r01gContainer .btn:not(:disabled):not(.disabled) {
-  cursor: pointer;
 }
 
 .r01gContainer a.btn.disabled,
@@ -3310,6 +3297,7 @@
 .r01gContainer .btn-link:focus,
 .r01gContainer .btn-link.focus {
   text-decoration: underline;
+  box-shadow: none;
 }
 
 .r01gContainer .btn-link:disabled,
@@ -3774,8 +3762,7 @@
 .r01gContainer .input-group > .custom-select,
 .r01gContainer .input-group > .custom-file {
   position: relative;
-  flex: 1 1 auto;
-  width: 1%;
+  flex: 1 1 0%;
   min-width: 0;
   margin-bottom: 0;
 }
@@ -4863,7 +4850,7 @@
 }
 
 .r01gContainer .navbar-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .r01gContainer .navbar-light .navbar-text {
@@ -4914,7 +4901,7 @@
 }
 
 .r01gContainer .navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .r01gContainer .navbar-dark .navbar-text {
@@ -4947,21 +4934,14 @@
   margin-left: 0;
 }
 
-.r01gContainer .card > .list-group {
-  border-top: inherit;
-  border-bottom: inherit;
+.r01gContainer .card > .list-group:first-child .list-group-item:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
-.r01gContainer .card > .list-group:first-child {
-  border-top-width: 0;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
-}
-
-.r01gContainer .card > .list-group:last-child {
-  border-bottom-width: 0;
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px);
+.r01gContainer .card > .list-group:last-child .list-group-item:last-child {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .r01gContainer .card-body {
@@ -5173,10 +5153,6 @@
   list-style: none;
   background-color: #e9ecef;
   border-radius: 0.25rem;
-}
-
-.r01gContainer .breadcrumb-item {
-  display: flex;
 }
 
 .r01gContainer .breadcrumb-item + .breadcrumb-item {
@@ -5640,7 +5616,6 @@
   display: flex;
   height: 1rem;
   overflow: hidden;
-  line-height: 0;
   font-size: 0.75rem;
   background-color: #e9ecef;
   border-radius: 0.25rem;
@@ -5693,7 +5668,6 @@
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
-  border-radius: 0.25rem;
 }
 
 .r01gContainer .list-group-item-action {
@@ -5724,13 +5698,13 @@
 }
 
 .r01gContainer .list-group-item:first-child {
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .r01gContainer .list-group-item:last-child {
-  border-bottom-right-radius: inherit;
-  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .r01gContainer .list-group-item.disabled,
@@ -5760,26 +5734,26 @@
   flex-direction: row;
 }
 
-.r01gContainer .list-group-horizontal > .list-group-item:first-child {
+.r01gContainer .list-group-horizontal .list-group-item:first-child {
   border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0;
 }
 
-.r01gContainer .list-group-horizontal > .list-group-item:last-child {
+.r01gContainer .list-group-horizontal .list-group-item:last-child {
   border-top-right-radius: 0.25rem;
   border-bottom-left-radius: 0;
 }
 
-.r01gContainer .list-group-horizontal > .list-group-item.active {
+.r01gContainer .list-group-horizontal .list-group-item.active {
   margin-top: 0;
 }
 
-.r01gContainer .list-group-horizontal > .list-group-item + .list-group-item {
+.r01gContainer .list-group-horizontal .list-group-item + .list-group-item {
   border-top-width: 1px;
   border-left-width: 0;
 }
 
-.r01gContainer .list-group-horizontal > .list-group-item + .list-group-item.active {
+.r01gContainer .list-group-horizontal .list-group-item + .list-group-item.active {
   margin-left: -1px;
   border-left-width: 1px;
 }
@@ -5789,26 +5763,26 @@
     flex-direction: row;
   }
 
-  .r01gContainer .list-group-horizontal-sm > .list-group-item:first-child {
+  .r01gContainer .list-group-horizontal-sm .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-sm > .list-group-item:last-child {
+  .r01gContainer .list-group-horizontal-sm .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-sm > .list-group-item.active {
+  .r01gContainer .list-group-horizontal-sm .list-group-item.active {
     margin-top: 0;
   }
 
-  .r01gContainer .list-group-horizontal-sm > .list-group-item + .list-group-item {
+  .r01gContainer .list-group-horizontal-sm .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0;
   }
 
-  .r01gContainer .list-group-horizontal-sm > .list-group-item + .list-group-item.active {
+  .r01gContainer .list-group-horizontal-sm .list-group-item + .list-group-item.active {
     margin-left: -1px;
     border-left-width: 1px;
   }
@@ -5819,26 +5793,26 @@
     flex-direction: row;
   }
 
-  .r01gContainer .list-group-horizontal-md > .list-group-item:first-child {
+  .r01gContainer .list-group-horizontal-md .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-md > .list-group-item:last-child {
+  .r01gContainer .list-group-horizontal-md .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-md > .list-group-item.active {
+  .r01gContainer .list-group-horizontal-md .list-group-item.active {
     margin-top: 0;
   }
 
-  .r01gContainer .list-group-horizontal-md > .list-group-item + .list-group-item {
+  .r01gContainer .list-group-horizontal-md .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0;
   }
 
-  .r01gContainer .list-group-horizontal-md > .list-group-item + .list-group-item.active {
+  .r01gContainer .list-group-horizontal-md .list-group-item + .list-group-item.active {
     margin-left: -1px;
     border-left-width: 1px;
   }
@@ -5849,26 +5823,26 @@
     flex-direction: row;
   }
 
-  .r01gContainer .list-group-horizontal-lg > .list-group-item:first-child {
+  .r01gContainer .list-group-horizontal-lg .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-lg > .list-group-item:last-child {
+  .r01gContainer .list-group-horizontal-lg .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-lg > .list-group-item.active {
+  .r01gContainer .list-group-horizontal-lg .list-group-item.active {
     margin-top: 0;
   }
 
-  .r01gContainer .list-group-horizontal-lg > .list-group-item + .list-group-item {
+  .r01gContainer .list-group-horizontal-lg .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0;
   }
 
-  .r01gContainer .list-group-horizontal-lg > .list-group-item + .list-group-item.active {
+  .r01gContainer .list-group-horizontal-lg .list-group-item + .list-group-item.active {
     margin-left: -1px;
     border-left-width: 1px;
   }
@@ -5879,40 +5853,42 @@
     flex-direction: row;
   }
 
-  .r01gContainer .list-group-horizontal-xl > .list-group-item:first-child {
+  .r01gContainer .list-group-horizontal-xl .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-xl > .list-group-item:last-child {
+  .r01gContainer .list-group-horizontal-xl .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
   }
 
-  .r01gContainer .list-group-horizontal-xl > .list-group-item.active {
+  .r01gContainer .list-group-horizontal-xl .list-group-item.active {
     margin-top: 0;
   }
 
-  .r01gContainer .list-group-horizontal-xl > .list-group-item + .list-group-item {
+  .r01gContainer .list-group-horizontal-xl .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0;
   }
 
-  .r01gContainer .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
+  .r01gContainer .list-group-horizontal-xl .list-group-item + .list-group-item.active {
     margin-left: -1px;
     border-left-width: 1px;
   }
 }
 
-.r01gContainer .list-group-flush {
+.r01gContainer .list-group-flush .list-group-item {
+  border-right-width: 0;
+  border-left-width: 0;
   border-radius: 0;
 }
 
-.r01gContainer .list-group-flush > .list-group-item {
-  border-width: 0 0 1px;
+.r01gContainer .list-group-flush .list-group-item:first-child {
+  border-top-width: 0;
 }
 
-.r01gContainer .list-group-flush > .list-group-item:last-child {
+.r01gContainer .list-group-flush:last-child .list-group-item:last-child {
   border-bottom-width: 0;
 }
 
@@ -6076,6 +6052,7 @@
   padding: 0;
   background-color: transparent;
   border: 0;
+  appearance: none;
 }
 
 .r01gContainer a.close.disabled {
@@ -6201,7 +6178,6 @@
 .r01gContainer .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - 1rem);
-  height: min-content;
   content: "";
 }
 
@@ -6319,7 +6295,6 @@
 
   .r01gContainer .modal-dialog-centered::before {
     height: calc(100vh - 3.5rem);
-    height: min-content;
   }
 
   .r01gContainer .modal-sm {
@@ -6861,7 +6836,6 @@
 
   50% {
     opacity: 1;
-    transform: none;
   }
 }
 
@@ -8152,18 +8126,6 @@
   }
 }
 
-.r01gContainer .user-select-all {
-  user-select: all !important;
-}
-
-.r01gContainer .user-select-auto {
-  user-select: auto !important;
-}
-
-.r01gContainer .user-select-none {
-  user-select: none !important;
-}
-
 .r01gContainer .overflow-auto {
   overflow: auto !important;
 }
@@ -8316,6 +8278,18 @@
 
 .r01gContainer .vh-100 {
   height: 100vh !important;
+}
+
+.r01gContainer .stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .r01gContainer .m-0 {
@@ -10486,18 +10460,6 @@
   }
 }
 
-.r01gContainer .stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: auto;
-  content: "";
-  background-color: rgba(0, 0, 0, 0);
-}
-
 .r01gContainer .text-monospace {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
@@ -10729,7 +10691,8 @@
 }
 
 .r01gContainer .text-break {
-  word-wrap: break-word !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .r01gContainer .text-reset {
@@ -15822,7 +15785,12 @@
 }
 
 .r01gContainer .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status .ui-icon {
-  margin-top: -0.8rem;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: .43rem;
+  background-size: contain;
 }
 
 .r01gContainer .ui-selectmenu-dropdown span.ui-selectmenu-status {
@@ -18119,7 +18087,7 @@
 
 .r01gContainer table.dataTable thead th,
 .r01gContainer table.dataTable thead td {
-  padding: 10px 18px;
+  padding: 10px 6px;
   border-bottom: 1px solid #111;
 }
 
@@ -18849,9 +18817,9 @@
 
 .r01gContainer .rup-table_checkmenu_arrow {
   position: absolute;
-  margin-top: 4px;
+  margin-top: 10px;
   cursor: pointer;
-  background-position: -64px -16px;
+  background-position: -68px -16px;
 }
 
 .r01gContainer table.dataTable thead th:hover,
@@ -19475,13 +19443,6 @@
   background-color: #1472a4;
 }
 
-.r01gContainer footer .footer-row-base {
-  background-image: url(images/web01-2014_oina_logo_atzekoa.gif);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-color: #1F1F1F;
-}
-
 .r01gContainer fieldset {
   border-radius: 5px;
 }
@@ -19963,6 +19924,109 @@
   font-size: 1.6rem;
 }
 
+/* ESTILOS PARA UN GRUPO DE BOTONES */
+
+.r01gContainer .btn-group .btn-material {
+  line-height: 1.5;
+  margin: 0 -2px;
+  text-align: center;
+  border-radius: initial;
+  /* COLORES POR DEFECTO (SECONDARY) */
+  background-color: #c4c7cb;
+  /* COLORES DEFINIDOS SEGUN LA CLASE */
+}
+
+.r01gContainer .btn-group .btn-material:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.r01gContainer .btn-group .btn-material:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.r01gContainer .btn-group .btn-material:not(.active) {
+  cursor: pointer;
+}
+
+.r01gContainer .btn-group .btn-material > i.mdi {
+  line-height: 0.9;
+}
+
+.r01gContainer .btn-group .btn-material:hover:not(.active) {
+  background-color: #a6acb1;
+  color: #FFFFFF;
+}
+
+.r01gContainer .btn-group .btn-material.active {
+  background-color: #899097;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary {
+  background-color: #a1c6da;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary:hover:not(.active) {
+  background-color: #72aac8;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary.active {
+  background-color: #428eb6;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success {
+  background-color: #b7dfb9;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success:hover:not(.active) {
+  background-color: #93cf96;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success.active {
+  background-color: #6fbf72;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger {
+  background-color: #f1aeb4;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger:hover:not(.active) {
+  background-color: #ea858f;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger.active {
+  background-color: #e35d6a;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning {
+  background-color: #ffe69b;
+  color: #212529;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning:hover:not(.active) {
+  background-color: #ffd96a;
+  color: #212529;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning.active {
+  background-color: #ffcd38;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info {
+  background-color: #a0cdd5;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info:hover:not(.active) {
+  background-color: #71b5c0;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info.active {
+  background-color: #429cab;
+}
+
 .r01gContainer .form-groupMaterial {
   /* ESTILOS DE LOS CONTENEDORES DE INPUTS */
   position: relative;
@@ -20003,6 +20067,10 @@
   color: transparent;
 }
 
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
 .r01gContainer .form-groupMaterial input[type="file"] {
   /* TODO: SON ESTILOS TEMPORALES PARA LOS INPUTS DE TIPO FILE */
 }
@@ -20025,8 +20093,24 @@
   -webkit-transition: 0.2s ease all;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label,
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label,
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:required ~ label {
   top: -10px;
   font-size: .9rem;
@@ -20036,13 +20120,44 @@
   background-image: none;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled,
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
   background-color: #e9ecef;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label,
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled ~ label {
   top: -10px;
   font-size: .9rem;
   color: #999;
@@ -20118,9 +20233,38 @@
   color: transparent;
 }
 
-.r01gContainer .form-groupMaterial textarea:focus:enabled ~ label,
-.r01gContainer .form-groupMaterial textarea:valid:enabled ~ label,
+.r01gContainer .form-groupMaterial textarea:-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
+.r01gContainer .form-groupMaterial textarea:focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial textarea:valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial textarea:placeholder-shown:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial textarea:-ms-input-placeholder:required ~ label {
   top: -10px;
   font-size: .9rem;
   color: #1472a4;
@@ -20185,8 +20329,15 @@
   background-repeat: no-repeat;
   background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
   background-size: 5px 5px, 5px 5px;
+  /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
   /* Añade un asterisco al label de los campos obligatorios */
   /* ELIMINA UN OUTLINE INTERNO ESPECIFICO DE FIREFOX */
+}
+
+.r01gContainer .form-groupMaterial select::-ms-expand,
+.r01gContainer .form-groupMaterial .ui-multiselect::-ms-expand,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown::-ms-expand {
+  display: none;
 }
 
 .r01gContainer .form-groupMaterial select:hover:enabled,
@@ -20212,12 +20363,34 @@
   color: transparent;
 }
 
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
 .r01gContainer .form-groupMaterial select:focus:enabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:focus:enabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:valid:enabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:valid:enabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:placeholder-shown:required ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
@@ -20229,21 +20402,58 @@
   background-image: none;
 }
 
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:required ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:required ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:disabled,
 .r01gContainer .form-groupMaterial .ui-multiselect:disabled,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
 .r01gContainer .form-groupMaterial select:placeholder-shown:disabled,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:disabled,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
   background-color: #e9ecef;
 }
 
-.r01gContainer .form-groupMaterial select:disabled ~ label,
-.r01gContainer .form-groupMaterial .ui-multiselect:disabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label,
 .r01gContainer .form-groupMaterial select:placeholder-shown:disabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled ~ label {
   top: -10px;
   font-size: .9rem;
   color: #999;
@@ -20451,6 +20661,24 @@
   color: #1472a4;
 }
 
+.r01gContainer .form-radioGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+}
+
+.r01gContainer .form-radioGroupMaterial .radio-material {
+  padding: .5rem 5rem;
+  margin: .8rem 0;
+}
+
+.r01gContainer .form-radioGroupMaterial .radio-material > span:not(:last-child) {
+  margin-right: 2rem;
+}
+
 @keyframes ripple-checkbox-hover {
   0% {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
@@ -20481,7 +20709,7 @@
 
 .r01gContainer .checkbox-material {
   position: relative;
-  margin: 0.5em 0;
+  margin: 1.2em 0;
   text-align: left;
 }
 
@@ -20600,6 +20828,32 @@
   left: 6px;
 }
 
+.r01gContainer .form-checkboxGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span {
+  position: relative;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span label:not(:empty) {
+  padding-left: 2em;
+}
+
 /* REDONDEAMOS LOS BORDES DE LA TABLA */
 
 .r01gContainer table.table-material {
@@ -20651,6 +20905,10 @@
   font-weight: bold;
   vertical-align: middle;
   font-size: 1.35rem;
+}
+
+.r01gContainer table.table-material .checkbox-material {
+  margin: .5em 0;
 }
 
 /* ESTILOS ESPECIFICOS PARA CUANDO EL AUTOCOMPLETE SE ENCUENTRA DENTRO DE UN FORM-ROW */
@@ -20918,7 +21176,7 @@
   left: 11px;
 }
 
-.r01gContainer a.select-material span:first-child {
+.r01gContainer a.select-material > span:first-child {
   color: #495057;
   font-size: 1rem;
   font-weight: 400;
@@ -20932,8 +21190,12 @@
   overflow: hidden;
 }
 
-.r01gContainer a.select-material span:last-child {
+.r01gContainer a.select-material > span:not(.ui-selectmenu-status):not(.rup-combo_loading):last-child {
   display: none;
+}
+
+.r01gContainer a.select-material > span.rup-combo_loading {
+  right: 2.5rem;
 }
 
 .r01gContainer a.select-material.ui-selectmenu {
@@ -20953,10 +21215,13 @@
   box-shadow: none;
   outline: none;
   padding-left: 17px;
+  /* EVITA QUE EL ICONO DE DROPDOWN SE DESPLACE */
+  background-position: calc(100% - 13.5px) calc(0.71em), calc(100% - 8.5px) calc(0.71em);
+  /* EVITA QUE EL TEXTO SE DESPLACE */
 }
 
-.r01gContainer a.select-material.ui-selectmenu:focus span:first-child {
-  left: 11px;
+.r01gContainer a.select-material.ui-selectmenu:focus span:not(.ui-icon):first-child {
+  top: -1px;
 }
 
 .r01gContainer .form-groupMaterial {
@@ -21109,6 +21374,82 @@
   box-shadow: none;
   outline: none;
   padding-left: 17px;
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span {
+  /* OCULTA EL ICONO DEL DROPDOWN EN FAVOR DEL GENERADO VIA CSS */
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.rup-combo_loading,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.rup-combo_loading {
+  float: right;
+  margin-top: 0;
+  margin-right: 2.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.ui-icon,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.ui-icon {
+  display: none;
 }
 
 @keyframes ripple-slider {
@@ -43539,10 +43880,13 @@
  * que establece la Licencia.
  */
 
+/*.rup-combo {}*/
+
 .r01gContainer .rup-combo_loading {
   background-image: url(images/rup.ajaxLoader.gif) !important;
   color: black;
   font-weight: bold;
+  background-repeat: no-repeat;
 }
 
 .r01gContainer .rup-combo_loadingText {
@@ -43560,6 +43904,8 @@
   text-decoration: none;
   overflow: hidden;
 }
+
+/*.ui-selectmenu-focus { }*/
 
 .r01gContainer .ui-selectmenu-icon {
   position: absolute;
@@ -43585,6 +43931,8 @@
 .r01gContainer .ui-selectmenu-menu-popup {
   margin-top: -1px;
 }
+
+/*.ui-selectmenu-menu-dropdown {}*/
 
 .r01gContainer .ui-selectmenu-menu li {
   padding: 0;
@@ -43618,14 +43966,19 @@
 .r01gContainer .ui-selectmenu-menu li .ui-icon,
 .r01gContainer .ui-selectmenu-status .ui-icon {
   position: absolute;
-  top: 1em;
-  margin-top: -12px;
+  top: 1.2em;
   left: 0;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
 }
 
 .r01gContainer .ui-selectmenu-status {
   line-height: 1.4em;
 }
+
+/*.ui-selectmenu-open li.ui-selectmenu-item-focus a {  }
+.ui-selectmenu-open li.ui-selectmenu-item-selected { }*/
 
 .r01gContainer .ui-selectmenu-menu li span,
 .r01gContainer .ui-selectmenu-status span {
@@ -43636,6 +43989,8 @@
 .r01gContainer .ui-selectmenu-menu li .ui-selectmenu-item-header {
   font-weight: bold;
 }
+
+/*.ui-selectmenu-menu li .ui-selectmenu-item-content {  }*/
 
 /*.ui-selectmenu-menu li .ui-selectmenu-item-footer { opacity: .8; }*/
 
@@ -43722,14 +44077,6 @@
   padding-left: 20px;
   position: relative;
   margin-left: 5px;
-}
-
-.r01gContainer .ui-selectmenu-menu li .ui-icon,
-.r01gContainer .ui-selectmenu-status .ui-icon {
-  position: absolute;
-  top: 1em;
-  margin-top: -12px;
-  left: 0;
 }
 
 .r01gContainer .ui-selectmenu-status {
@@ -43907,19 +44254,19 @@
 
 /*** ESTILOS PROPIOS ***/
 
-.r01gContainer .ui-selectmenu,
-.r01gContainer .ui-selectmenu-status {
-  /* 	background: #d5d5d2 50% 50%; */
-}
+/*.ui-selectmenu,
+.ui-selectmenu-status {
+	background: #d5d5d2 50% 50%;
+}*/
 
 .r01gContainer .ui-selectmenu-menu li.ui-selectmenu-group ul {
   overflow-y: hidden;
 }
 
-.r01gContainer .ui-selectmenu-menu-dropdown,
-.r01gContainer .ui-selectmenu-menu-popup {
-  /* 	background: #eaeaea 50% 50%; */
-}
+/*.ui-selectmenu-menu-dropdown,
+.ui-selectmenu-menu-popup { 
+	background: #eaeaea 50% 50%;
+}*/
 
 /*select with custom icons*/
 
@@ -43929,15 +44276,24 @@
   background-repeat: no-repeat;
 }
 
-.r01gContainer .delete .ui-selectmenu-item-icon {
+.r01gContainer a.delete span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer a.delete .ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .delete span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .delete .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/borrar.png);
 }
 
-.r01gContainer .filter .ui-selectmenu-item-icon {
+.r01gContainer a.filter span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer a.filter .ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .filter span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .filter .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/filtrar.png);
 }
 
-.r01gContainer .print .ui-selectmenu-item-icon {
+.r01gContainer a.print span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer a.print .ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .print span.ui-selectmenu-item-icon.ui-icon,
+.r01gContainer .print .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/imprimir.png);
 }
 
@@ -51263,7 +51619,12 @@
 }
 
 .r01gContainer .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status .ui-icon {
-  margin-top: -0.8rem;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: .43rem;
+  background-size: contain;
 }
 
 .r01gContainer .ui-selectmenu-dropdown span.ui-selectmenu-status {
@@ -53560,7 +53921,7 @@
 
 .r01gContainer table.dataTable thead th,
 .r01gContainer table.dataTable thead td {
-  padding: 10px 18px;
+  padding: 10px 6px;
   border-bottom: 1px solid #111;
 }
 
@@ -54290,9 +54651,9 @@
 
 .r01gContainer .rup-table_checkmenu_arrow {
   position: absolute;
-  margin-top: 4px;
+  margin-top: 10px;
   cursor: pointer;
-  background-position: -64px -16px;
+  background-position: -68px -16px;
 }
 
 .r01gContainer table.dataTable thead th:hover,
@@ -54916,13 +55277,6 @@
   background-color: #1472a4;
 }
 
-.r01gContainer footer .footer-row-base {
-  background-image: url(images/web01-2014_oina_logo_atzekoa.gif);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-color: #1F1F1F;
-}
-
 .r01gContainer fieldset {
   border-radius: 5px;
 }
@@ -55404,6 +55758,109 @@
   font-size: 1.6rem;
 }
 
+/* ESTILOS PARA UN GRUPO DE BOTONES */
+
+.r01gContainer .btn-group .btn-material {
+  line-height: 1.5;
+  margin: 0 -2px;
+  text-align: center;
+  border-radius: initial;
+  /* COLORES POR DEFECTO (SECONDARY) */
+  background-color: #c4c7cb;
+  /* COLORES DEFINIDOS SEGUN LA CLASE */
+}
+
+.r01gContainer .btn-group .btn-material:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.r01gContainer .btn-group .btn-material:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.r01gContainer .btn-group .btn-material:not(.active) {
+  cursor: pointer;
+}
+
+.r01gContainer .btn-group .btn-material > i.mdi {
+  line-height: 0.9;
+}
+
+.r01gContainer .btn-group .btn-material:hover:not(.active) {
+  background-color: #a6acb1;
+  color: #FFFFFF;
+}
+
+.r01gContainer .btn-group .btn-material.active {
+  background-color: #899097;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary {
+  background-color: #a1c6da;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary:hover:not(.active) {
+  background-color: #72aac8;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-primary.active {
+  background-color: #428eb6;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success {
+  background-color: #b7dfb9;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success:hover:not(.active) {
+  background-color: #93cf96;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-success.active {
+  background-color: #6fbf72;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger {
+  background-color: #f1aeb4;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger:hover:not(.active) {
+  background-color: #ea858f;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-danger.active {
+  background-color: #e35d6a;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning {
+  background-color: #ffe69b;
+  color: #212529;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning:hover:not(.active) {
+  background-color: #ffd96a;
+  color: #212529;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-warning.active {
+  background-color: #ffcd38;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info {
+  background-color: #a0cdd5;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info:hover:not(.active) {
+  background-color: #71b5c0;
+}
+
+.r01gContainer .btn-group .btn-material.btn-material-info.active {
+  background-color: #429cab;
+}
+
 .r01gContainer .form-groupMaterial {
   /* ESTILOS DE LOS CONTENEDORES DE INPUTS */
   position: relative;
@@ -55444,6 +55901,10 @@
   color: transparent;
 }
 
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
 .r01gContainer .form-groupMaterial input[type="file"] {
   /* TODO: SON ESTILOS TEMPORALES PARA LOS INPUTS DE TIPO FILE */
 }
@@ -55466,8 +55927,24 @@
   -webkit-transition: 0.2s ease all;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label,
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label,
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:required ~ label {
   top: -10px;
   font-size: .9rem;
@@ -55477,13 +55954,44 @@
   background-image: none;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled,
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
   background-color: #e9ecef;
 }
 
-.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label,
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled ~ label {
   top: -10px;
   font-size: .9rem;
   color: #999;
@@ -55559,9 +56067,38 @@
   color: transparent;
 }
 
-.r01gContainer .form-groupMaterial textarea:focus:enabled ~ label,
-.r01gContainer .form-groupMaterial textarea:valid:enabled ~ label,
+.r01gContainer .form-groupMaterial textarea:-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
+.r01gContainer .form-groupMaterial textarea:focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial textarea:valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial textarea:placeholder-shown:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial textarea:-ms-input-placeholder:required ~ label {
   top: -10px;
   font-size: .9rem;
   color: #1472a4;
@@ -55626,8 +56163,15 @@
   background-repeat: no-repeat;
   background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
   background-size: 5px 5px, 5px 5px;
+  /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
   /* Añade un asterisco al label de los campos obligatorios */
   /* ELIMINA UN OUTLINE INTERNO ESPECIFICO DE FIREFOX */
+}
+
+.r01gContainer .form-groupMaterial select::-ms-expand,
+.r01gContainer .form-groupMaterial .ui-multiselect::-ms-expand,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown::-ms-expand {
+  display: none;
 }
 
 .r01gContainer .form-groupMaterial select:hover:enabled,
@@ -55653,12 +56197,34 @@
   color: transparent;
 }
 
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+  color: transparent;
+}
+
 .r01gContainer .form-groupMaterial select:focus:enabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:focus:enabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:valid:enabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:valid:enabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:placeholder-shown:required ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
@@ -55670,21 +56236,58 @@
   background-image: none;
 }
 
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:required ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:required ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:required ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
 .r01gContainer .form-groupMaterial select:disabled,
 .r01gContainer .form-groupMaterial .ui-multiselect:disabled,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
 .r01gContainer .form-groupMaterial select:placeholder-shown:disabled,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:disabled,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
   background-color: #e9ecef;
 }
 
-.r01gContainer .form-groupMaterial select:disabled ~ label,
-.r01gContainer .form-groupMaterial .ui-multiselect:disabled ~ label,
-.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label,
 .r01gContainer .form-groupMaterial select:placeholder-shown:disabled ~ label,
 .r01gContainer .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label,
 .r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+  top: -10px;
+  font-size: .9rem;
+  color: #999;
+  padding: 0 5px;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select:-ms-input-placeholder:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled ~ label {
   top: -10px;
   font-size: .9rem;
   color: #999;
@@ -55892,6 +56495,24 @@
   color: #1472a4;
 }
 
+.r01gContainer .form-radioGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+}
+
+.r01gContainer .form-radioGroupMaterial .radio-material {
+  padding: .5rem 5rem;
+  margin: .8rem 0;
+}
+
+.r01gContainer .form-radioGroupMaterial .radio-material > span:not(:last-child) {
+  margin-right: 2rem;
+}
+
 @keyframes ripple-checkbox-hover {
   0% {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
@@ -55922,7 +56543,7 @@
 
 .r01gContainer .checkbox-material {
   position: relative;
-  margin: 0.5em 0;
+  margin: 1.2em 0;
   text-align: left;
 }
 
@@ -56041,6 +56662,32 @@
   left: 6px;
 }
 
+.r01gContainer .form-checkboxGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span {
+  position: relative;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.r01gContainer .form-checkboxGroupMaterial .checkbox-material > span label:not(:empty) {
+  padding-left: 2em;
+}
+
 /* REDONDEAMOS LOS BORDES DE LA TABLA */
 
 .r01gContainer table.table-material {
@@ -56092,6 +56739,10 @@
   font-weight: bold;
   vertical-align: middle;
   font-size: 1.35rem;
+}
+
+.r01gContainer table.table-material .checkbox-material {
+  margin: .5em 0;
 }
 
 /* ESTILOS ESPECIFICOS PARA CUANDO EL AUTOCOMPLETE SE ENCUENTRA DENTRO DE UN FORM-ROW */
@@ -56359,7 +57010,7 @@
   left: 11px;
 }
 
-.r01gContainer a.select-material span:first-child {
+.r01gContainer a.select-material > span:first-child {
   color: #495057;
   font-size: 1rem;
   font-weight: 400;
@@ -56373,8 +57024,12 @@
   overflow: hidden;
 }
 
-.r01gContainer a.select-material span:last-child {
+.r01gContainer a.select-material > span:not(.ui-selectmenu-status):not(.rup-combo_loading):last-child {
   display: none;
+}
+
+.r01gContainer a.select-material > span.rup-combo_loading {
+  right: 2.5rem;
 }
 
 .r01gContainer a.select-material.ui-selectmenu {
@@ -56394,10 +57049,13 @@
   box-shadow: none;
   outline: none;
   padding-left: 17px;
+  /* EVITA QUE EL ICONO DE DROPDOWN SE DESPLACE */
+  background-position: calc(100% - 13.5px) calc(0.71em), calc(100% - 8.5px) calc(0.71em);
+  /* EVITA QUE EL TEXTO SE DESPLACE */
 }
 
-.r01gContainer a.select-material.ui-selectmenu:focus span:first-child {
-  left: 11px;
+.r01gContainer a.select-material.ui-selectmenu:focus span:not(.ui-icon):first-child {
+  top: -1px;
 }
 
 .r01gContainer .form-groupMaterial {
@@ -56550,6 +57208,82 @@
   box-shadow: none;
   outline: none;
   padding-left: 17px;
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span {
+  /* OCULTA EL ICONO DEL DROPDOWN EN FAVOR DEL GENERADO VIA CSS */
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.rup-combo_loading,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.rup-combo_loading,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.rup-combo_loading,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.rup-combo_loading,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.rup-combo_loading {
+  float: right;
+  margin-top: 0;
+  margin-right: 2.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.r01gContainer select.rup_combo ~ button.select-material span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ button.select-material span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.ui-icon,
+.r01gContainer select.rup_combo ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.ui-icon,
+.r01gContainer select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.ui-icon,
+.r01gContainer .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.ui-icon,
+.r01gContainer .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.ui-icon {
+  display: none;
 }
 
 @keyframes ripple-slider {
