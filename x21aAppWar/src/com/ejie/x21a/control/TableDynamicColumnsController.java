@@ -304,6 +304,7 @@ public class TableDynamicColumnsController  {
 	protected @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -313,7 +314,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -331,6 +332,7 @@ public class TableDynamicColumnsController  {
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generatePDFReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -340,7 +342,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -358,6 +360,7 @@ public class TableDynamicColumnsController  {
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateODSReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -367,7 +370,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -385,6 +388,7 @@ public class TableDynamicColumnsController  {
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	protected @ResponseBody void generateCSVReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -394,6 +398,6 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }

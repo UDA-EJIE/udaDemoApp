@@ -210,7 +210,7 @@
 			<artifactId>x38ShLibClasses-cache</artifactId>
 			<version>${com.ejie.x38.version}</version>
 		</dependency>
-
+		
 		<!-- CACHE -->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>

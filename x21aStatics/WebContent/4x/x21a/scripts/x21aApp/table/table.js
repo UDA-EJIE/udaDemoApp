@@ -459,6 +459,7 @@ jQuery(function ($) {
                     title: 'Exportación (título personalizado)',
                     message: 'Su archivo está siendo generado... (mensaje personalizado)',
                     columns: ["id", "nombre", "apellido1", "ejie", "fechaAlta"],
+                    columnsName: ["id2", "nombre2", "apellido1", "ejie", "fechaAlta"],
                     reportsParams: {
                         "isInline": false
                     }

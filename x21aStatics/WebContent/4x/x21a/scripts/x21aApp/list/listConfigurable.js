@@ -67,7 +67,7 @@ function setFunctionOnBtn() {
     $('#listFilterLimpiar').on('click', function (e) {
         e.stopImmediatePropagation();
         e.preventDefault();
-        $('#listFilterForm').find('input').val('');
+        $('#listFilterForm').rup_form("resetForm");
         $('#rup-list').rup_list('filter');
     });
     $('#listFilterAceptar').on('click', function (e) {

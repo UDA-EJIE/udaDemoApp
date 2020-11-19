@@ -18,7 +18,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <h1>Pestañas de navegación</h1>
-<string:url value="#" var="urlHashtag" htmlEscape="true"/>
+<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
 <p id="docu"><a target="_blank" href="${urlHashtag}">Descargar documentación</a></p>
 <br>
 
