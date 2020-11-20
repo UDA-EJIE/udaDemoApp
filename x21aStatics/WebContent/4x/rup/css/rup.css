@@ -1,7 +1,7 @@
 /*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
@@ -154,8 +154,7 @@ samp {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
-  overflow: auto;
-  -ms-overflow-style: scrollbar; }
+  overflow: auto; }
 
 figure {
   margin: 0 0 1rem; }
@@ -210,9 +209,6 @@ button,
 select {
   text-transform: none; }
 
-[role="button"] {
-  cursor: pointer; }
-
 select {
   word-wrap: normal; }
 
@@ -239,6 +235,12 @@ input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0; }
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: listbox; }
 
 textarea {
   overflow: auto;
@@ -508,7 +510,6 @@ pre {
 .col {
   flex-basis: 0;
   flex-grow: 1;
-  min-width: 0;
   max-width: 100%; }
 
 .row-cols-1 > * {
@@ -670,7 +671,6 @@ pre {
   .col-sm {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%; }
   .row-cols-sm-1 > * {
     flex: 0 0 100%;
@@ -789,7 +789,6 @@ pre {
   .col-md {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%; }
   .row-cols-md-1 > * {
     flex: 0 0 100%;
@@ -908,7 +907,6 @@ pre {
   .col-lg {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%; }
   .row-cols-lg-1 > * {
     flex: 0 0 100%;
@@ -1027,7 +1025,6 @@ pre {
   .col-xl {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%; }
   .row-cols-xl-1 > * {
     flex: 0 0 100%;
@@ -1435,12 +1432,6 @@ pre {
     background-color: #e9ecef;
     opacity: 1; }
 
-input[type="date"].form-control,
-input[type="time"].form-control,
-input[type="datetime-local"].form-control,
-input[type="month"].form-control {
-  appearance: none; }
-
 select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #fff; }
@@ -1759,6 +1750,7 @@ textarea.form-control {
   color: #212529;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -1778,8 +1770,6 @@ textarea.form-control {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .btn.disabled, .btn:disabled {
     opacity: 0.65; }
-  .btn:not(:disabled):not(.disabled) {
-    cursor: pointer; }
 
 a.btn.disabled,
 fieldset:disabled a.btn {
@@ -2169,7 +2159,8 @@ fieldset:disabled a.btn {
     color: #0056b3;
     text-decoration: underline; }
   .btn-link:focus, .btn-link.focus {
-    text-decoration: underline; }
+    text-decoration: underline;
+    box-shadow: none; }
   .btn-link:disabled, .btn-link.disabled {
     color: #6c757d;
     pointer-events: none; }
@@ -2517,8 +2508,7 @@ input[type="button"].btn-block {
   .input-group > .custom-select,
   .input-group > .custom-file {
     position: relative;
-    flex: 1 1 auto;
-    width: 1%;
+    flex: 1 1 0%;
     min-width: 0;
     margin-bottom: 0; }
     .input-group > .form-control + .form-control,
@@ -3261,7 +3251,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1); }
 
 .navbar-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
 .navbar-light .navbar-text {
   color: rgba(0, 0, 0, 0.5); }
@@ -3293,7 +3283,7 @@ input[type="button"].btn-block {
   border-color: rgba(255, 255, 255, 0.1); }
 
 .navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
 .navbar-dark .navbar-text {
   color: rgba(255, 255, 255, 0.5); }
@@ -3315,17 +3305,12 @@ input[type="button"].btn-block {
   .card > hr {
     margin-right: 0;
     margin-left: 0; }
-  .card > .list-group {
-    border-top: inherit;
-    border-bottom: inherit; }
-    .card > .list-group:first-child {
-      border-top-width: 0;
-      border-top-left-radius: calc(0.25rem - 1px);
-      border-top-right-radius: calc(0.25rem - 1px); }
-    .card > .list-group:last-child {
-      border-bottom-width: 0;
-      border-bottom-right-radius: calc(0.25rem - 1px);
-      border-bottom-left-radius: calc(0.25rem - 1px); }
+  .card > .list-group:first-child .list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem; }
+  .card > .list-group:last-child .list-group-item:last-child {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem; }
 
 .card-body {
   flex: 1 1 auto;
@@ -3481,21 +3466,22 @@ input[type="button"].btn-block {
   background-color: #e9ecef;
   border-radius: 0.25rem; }
 
-.breadcrumb-item {
-  display: flex; }
-  .breadcrumb-item + .breadcrumb-item {
-    padding-left: 0.5rem; }
-    .breadcrumb-item + .breadcrumb-item::before {
-      display: inline-block;
-      padding-right: 0.5rem;
-      color: #6c757d;
-      content: "/"; }
-  .breadcrumb-item + .breadcrumb-item:hover::before {
-    text-decoration: underline; }
-  .breadcrumb-item + .breadcrumb-item:hover::before {
-    text-decoration: none; }
-  .breadcrumb-item.active {
-    color: #6c757d; }
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem; }
+  .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/"; }
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: underline; }
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: none; }
+
+.breadcrumb-item.active {
+  color: #6c757d; }
 
 .pagination {
   display: flex;
@@ -3797,7 +3783,6 @@ input[type="button"].btn-block {
   display: flex;
   height: 1rem;
   overflow: hidden;
-  line-height: 0;
   font-size: 0.75rem;
   background-color: #e9ecef;
   border-radius: 0.25rem; }
@@ -3837,8 +3822,7 @@ input[type="button"].btn-block {
   display: flex;
   flex-direction: column;
   padding-left: 0;
-  margin-bottom: 0;
-  border-radius: 0.25rem; }
+  margin-bottom: 0; }
 
 .list-group-item-action {
   width: 100%;
@@ -3860,11 +3844,11 @@ input[type="button"].btn-block {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125); }
   .list-group-item:first-child {
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit; }
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem; }
   .list-group-item:last-child {
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit; }
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem; }
   .list-group-item.disabled, .list-group-item:disabled {
     color: #6c757d;
     pointer-events: none;
@@ -3882,99 +3866,102 @@ input[type="button"].btn-block {
 
 .list-group-horizontal {
   flex-direction: row; }
-  .list-group-horizontal > .list-group-item:first-child {
+  .list-group-horizontal .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0; }
-  .list-group-horizontal > .list-group-item:last-child {
+  .list-group-horizontal .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0; }
-  .list-group-horizontal > .list-group-item.active {
+  .list-group-horizontal .list-group-item.active {
     margin-top: 0; }
-  .list-group-horizontal > .list-group-item + .list-group-item {
+  .list-group-horizontal .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0; }
-    .list-group-horizontal > .list-group-item + .list-group-item.active {
+    .list-group-horizontal .list-group-item + .list-group-item.active {
       margin-left: -1px;
       border-left-width: 1px; }
 
 @media (min-width: 576px) {
   .list-group-horizontal-sm {
     flex-direction: row; }
-    .list-group-horizontal-sm > .list-group-item:first-child {
+    .list-group-horizontal-sm .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-sm > .list-group-item:last-child {
+    .list-group-horizontal-sm .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-sm > .list-group-item.active {
+    .list-group-horizontal-sm .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-sm > .list-group-item + .list-group-item {
+    .list-group-horizontal-sm .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-sm > .list-group-item + .list-group-item.active {
+      .list-group-horizontal-sm .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 768px) {
   .list-group-horizontal-md {
     flex-direction: row; }
-    .list-group-horizontal-md > .list-group-item:first-child {
+    .list-group-horizontal-md .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-md > .list-group-item:last-child {
+    .list-group-horizontal-md .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-md > .list-group-item.active {
+    .list-group-horizontal-md .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-md > .list-group-item + .list-group-item {
+    .list-group-horizontal-md .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-md > .list-group-item + .list-group-item.active {
+      .list-group-horizontal-md .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 992px) {
   .list-group-horizontal-lg {
     flex-direction: row; }
-    .list-group-horizontal-lg > .list-group-item:first-child {
+    .list-group-horizontal-lg .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-lg > .list-group-item:last-child {
+    .list-group-horizontal-lg .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-lg > .list-group-item.active {
+    .list-group-horizontal-lg .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-lg > .list-group-item + .list-group-item {
+    .list-group-horizontal-lg .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-lg > .list-group-item + .list-group-item.active {
+      .list-group-horizontal-lg .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 1200px) {
   .list-group-horizontal-xl {
     flex-direction: row; }
-    .list-group-horizontal-xl > .list-group-item:first-child {
+    .list-group-horizontal-xl .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-xl > .list-group-item:last-child {
+    .list-group-horizontal-xl .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-xl > .list-group-item.active {
+    .list-group-horizontal-xl .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-xl > .list-group-item + .list-group-item {
+    .list-group-horizontal-xl .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
+      .list-group-horizontal-xl .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
-.list-group-flush {
+.list-group-flush .list-group-item {
+  border-right-width: 0;
+  border-left-width: 0;
   border-radius: 0; }
-  .list-group-flush > .list-group-item {
-    border-width: 0 0 1px; }
-    .list-group-flush > .list-group-item:last-child {
-      border-bottom-width: 0; }
+  .list-group-flush .list-group-item:first-child {
+    border-top-width: 0; }
+
+.list-group-flush:last-child .list-group-item:last-child {
+  border-bottom-width: 0; }
 
 .list-group-item-primary {
   color: #004085;
@@ -4081,7 +4068,8 @@ input[type="button"].btn-block {
 button.close {
   padding: 0;
   background-color: transparent;
-  border: 0; }
+  border: 0;
+  appearance: none; }
 
 a.close.disabled {
   pointer-events: none; }
@@ -4171,7 +4159,6 @@ a.close.disabled {
   .modal-dialog-centered::before {
     display: block;
     height: calc(100vh - 1rem);
-    height: min-content;
     content: ""; }
   .modal-dialog-centered.modal-dialog-scrollable {
     flex-direction: column;
@@ -4258,8 +4245,7 @@ a.close.disabled {
   .modal-dialog-centered {
     min-height: calc(100% - 3.5rem); }
     .modal-dialog-centered::before {
-      height: calc(100vh - 3.5rem);
-      height: min-content; }
+      height: calc(100vh - 3.5rem); }
   .modal-sm {
     max-width: 300px; } }
 
@@ -4650,8 +4636,7 @@ a.close.disabled {
   0% {
     transform: scale(0); }
   50% {
-    opacity: 1;
-    transform: none; } }
+    opacity: 1; } }
 
 .spinner-grow {
   display: inline-block;
@@ -5435,15 +5420,6 @@ button.bg-dark:focus {
   .float-xl-none {
     float: none !important; } }
 
-.user-select-all {
-  user-select: all !important; }
-
-.user-select-auto {
-  user-select: auto !important; }
-
-.user-select-none {
-  user-select: none !important; }
-
 .overflow-auto {
   overflow: auto !important; }
 
@@ -5563,6 +5539,17 @@ button.bg-dark:focus {
 
 .vh-100 {
   height: 100vh !important; }
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0); }
 
 .m-0 {
   margin: 0 !important; }
@@ -6922,17 +6909,6 @@ button.bg-dark:focus {
   .mx-xl-auto {
     margin-left: auto !important; } }
 
-.stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: auto;
-  content: "";
-  background-color: rgba(0, 0, 0, 0); }
-
 .text-monospace {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important; }
 
@@ -7092,7 +7068,8 @@ a.text-dark:hover, a.text-dark:focus {
   text-decoration: none !important; }
 
 .text-break {
-  word-wrap: break-word !important; }
+  word-break: break-word !important;
+  overflow-wrap: break-word !important; }
 
 .text-reset {
   color: inherit !important; }
@@ -10919,7 +10896,12 @@ select, select.form-control, select.form-control-sm {
 .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status {
   padding-left: 1.5rem; }
   .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status .ui-icon {
-    margin-top: -0.8rem; }
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: .43rem;
+    background-size: contain; }
 
 .ui-selectmenu-dropdown span.ui-selectmenu-status {
   padding: 3px 4px; }
@@ -12510,7 +12492,7 @@ table.dataTable tfoot th {
 
 table.dataTable thead th,
 table.dataTable thead td {
-  padding: 10px 18px;
+  padding: 10px 6px;
   border-bottom: 1px solid #111; }
 
 table.dataTable thead th:active,
@@ -13105,9 +13087,9 @@ div.dataTables_wrapper span.select-item {
 
 .rup-table_checkmenu_arrow {
   position: absolute;
-  margin-top: 4px;
+  margin-top: 10px;
   cursor: pointer;
-  background-position: -64px -16px; }
+  background-position: -68px -16px; }
 
 table.dataTable thead th:hover,
 table.dataTable tfoot th:hover {
@@ -13553,12 +13535,6 @@ ul.dtr-details .dtr-data {
 footer .footer-row-content {
   background-color: #1472a4; }
 
-footer .footer-row-base {
-  background-image: url(images/web01-2014_oina_logo_atzekoa.gif);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-color: #1F1F1F; }
-
 fieldset {
   border-radius: 5px; }
 
@@ -13869,6 +13845,65 @@ fieldset {
   .btn-material-lg > i.mdi {
     font-size: 1.6rem; }
 
+/* ESTILOS PARA UN GRUPO DE BOTONES */
+.btn-group .btn-material {
+  line-height: 1.5;
+  margin: 0 -2px;
+  text-align: center;
+  border-radius: initial;
+  /* COLORES POR DEFECTO (SECONDARY) */
+  background-color: #c4c7cb;
+  /* COLORES DEFINIDOS SEGUN LA CLASE */ }
+  .btn-group .btn-material:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .btn-group .btn-material:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .btn-group .btn-material:not(.active) {
+    cursor: pointer; }
+  .btn-group .btn-material > i.mdi {
+    line-height: 0.9; }
+  .btn-group .btn-material:hover:not(.active) {
+    background-color: #a6acb1;
+    color: #FFFFFF; }
+  .btn-group .btn-material.active {
+    background-color: #899097;
+    color: #FFFFFF;
+    cursor: default; }
+  .btn-group .btn-material.btn-material-primary {
+    background-color: #a1c6da; }
+    .btn-group .btn-material.btn-material-primary:hover:not(.active) {
+      background-color: #72aac8; }
+    .btn-group .btn-material.btn-material-primary.active {
+      background-color: #428eb6; }
+  .btn-group .btn-material.btn-material-success {
+    background-color: #b7dfb9; }
+    .btn-group .btn-material.btn-material-success:hover:not(.active) {
+      background-color: #93cf96; }
+    .btn-group .btn-material.btn-material-success.active {
+      background-color: #6fbf72; }
+  .btn-group .btn-material.btn-material-danger {
+    background-color: #f1aeb4; }
+    .btn-group .btn-material.btn-material-danger:hover:not(.active) {
+      background-color: #ea858f; }
+    .btn-group .btn-material.btn-material-danger.active {
+      background-color: #e35d6a; }
+  .btn-group .btn-material.btn-material-warning {
+    background-color: #ffe69b;
+    color: #212529; }
+    .btn-group .btn-material.btn-material-warning:hover:not(.active) {
+      background-color: #ffd96a;
+      color: #212529; }
+    .btn-group .btn-material.btn-material-warning.active {
+      background-color: #ffcd38; }
+  .btn-group .btn-material.btn-material-info {
+    background-color: #a0cdd5; }
+    .btn-group .btn-material.btn-material-info:hover:not(.active) {
+      background-color: #71b5c0; }
+    .btn-group .btn-material.btn-material-info.active {
+      background-color: #429cab; }
+
 .form-groupMaterial {
   /* ESTILOS DE LOS CONTENEDORES DE INPUTS */
   position: relative;
@@ -13899,6 +13934,8 @@ fieldset {
     padding-left: 17px; }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
     color: transparent; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+    color: transparent; }
   .form-groupMaterial input[type="file"] {
     /* TODO: SON ESTILOS TEMPORALES PARA LOS INPUTS DE TIPO FILE */ }
     .form-groupMaterial input[type="file"]:enabled {
@@ -13915,8 +13952,20 @@ fieldset {
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label,
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:required ~ label {
     top: -10px;
     font-size: .9rem;
@@ -13924,11 +13973,32 @@ fieldset {
     padding: 0 5px;
     background-color: #FFFFFF;
     background-image: none; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:required ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled {
+    background-color: #e9ecef; }
+    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #999;
+      padding: 0 5px;
+      background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
     background-color: #e9ecef; }
-    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label,
     .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #999;
+      padding: 0 5px;
+      background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+    background-color: #e9ecef; }
+    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled ~ label {
       top: -10px;
       font-size: .9rem;
       color: #999;
@@ -13936,7 +14006,8 @@ fieldset {
       background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):required ~ label:after {
     content: " *"; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):read-only ~ label, .form-groupMaterial input:not([type="checkbox"]):not([type="radio"])[type="hidden"] ~ label {
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):read-only ~ label,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"])[type="hidden"] ~ label {
     top: -10px;
     font-size: .9rem;
     color: #1472a4;
@@ -13984,9 +14055,30 @@ fieldset {
       padding: 4px 17px; }
     .form-groupMaterial textarea:placeholder-shown:disabled {
       color: transparent; }
-    .form-groupMaterial textarea:focus:enabled ~ label,
-    .form-groupMaterial textarea:valid:enabled ~ label,
+    .form-groupMaterial textarea:-ms-input-placeholder:disabled {
+      color: transparent; }
+    .form-groupMaterial textarea:focus:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial textarea:valid:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
     .form-groupMaterial textarea:placeholder-shown:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial textarea:-ms-input-placeholder:required ~ label {
       top: -10px;
       font-size: .9rem;
       color: #1472a4;
@@ -14040,8 +14132,11 @@ fieldset {
     background-repeat: no-repeat;
     background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
     background-size: 5px 5px, 5px 5px;
+    /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
     /* Añade un asterisco al label de los campos obligatorios */
     /* ELIMINA UN OUTLINE INTERNO ESPECIFICO DE FIREFOX */ }
+    .form-groupMaterial select::-ms-expand, .form-groupMaterial .ui-multiselect::-ms-expand, .form-groupMaterial .ui-selectmenu-dropdown::-ms-expand {
+      display: none; }
     .form-groupMaterial select:hover:enabled, .form-groupMaterial .ui-multiselect:hover:enabled, .form-groupMaterial .ui-selectmenu-dropdown:hover:enabled {
       border-color: #212529; }
     .form-groupMaterial select:focus:enabled, .form-groupMaterial .ui-multiselect:focus:enabled, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled {
@@ -14053,22 +14148,55 @@ fieldset {
       padding-left: 17px; }
     .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
       color: transparent; }
-    .form-groupMaterial select:focus:enabled ~ label, .form-groupMaterial .ui-multiselect:focus:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label,
-    .form-groupMaterial select:valid:enabled ~ label,
-    .form-groupMaterial .ui-multiselect:valid:enabled ~ label,
-    .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label,
-    .form-groupMaterial select:placeholder-shown:required ~ label,
-    .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label,
-    .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
+    .form-groupMaterial select:-ms-input-placeholder:disabled, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+      color: transparent; }
+    .form-groupMaterial select:focus:enabled ~ label, .form-groupMaterial .ui-multiselect:focus:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label {
       top: -10px;
       font-size: .9rem;
       color: #1472a4;
       padding: 0 5px;
       background-color: #FFFFFF;
       background-image: none; }
-    .form-groupMaterial select:disabled, .form-groupMaterial .ui-multiselect:disabled, .form-groupMaterial .ui-selectmenu-dropdown:disabled, .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
+    .form-groupMaterial select:valid:enabled ~ label, .form-groupMaterial .ui-multiselect:valid:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:placeholder-shown:required ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:-ms-input-placeholder:required ~ label, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:required ~ label, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:disabled, .form-groupMaterial .ui-multiselect:disabled, .form-groupMaterial .ui-selectmenu-dropdown:disabled {
       background-color: #e9ecef; }
-      .form-groupMaterial select:disabled ~ label, .form-groupMaterial .ui-multiselect:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label, .form-groupMaterial select:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+      .form-groupMaterial select:disabled ~ label, .form-groupMaterial .ui-multiselect:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label {
+        top: -10px;
+        font-size: .9rem;
+        color: #999;
+        padding: 0 5px;
+        background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+    .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
+      background-color: #e9ecef; }
+      .form-groupMaterial select:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+        top: -10px;
+        font-size: .9rem;
+        color: #999;
+        padding: 0 5px;
+        background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+    .form-groupMaterial select:-ms-input-placeholder:disabled, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+      background-color: #e9ecef; }
+      .form-groupMaterial select:-ms-input-placeholder:disabled ~ label, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled ~ label {
         top: -10px;
         font-size: .9rem;
         color: #999;
@@ -14197,6 +14325,20 @@ fieldset {
     font-size: .9rem;
     color: #1472a4; }
 
+.form-radioGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px; }
+
+.form-radioGroupMaterial .radio-material {
+  padding: .5rem 5rem;
+  margin: .8rem 0; }
+  .form-radioGroupMaterial .radio-material > span:not(:last-child) {
+    margin-right: 2rem; }
+
 @keyframes ripple-checkbox-hover {
   0% {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0); }
@@ -14215,7 +14357,7 @@ fieldset {
 
 .checkbox-material {
   position: relative;
-  margin: 0.5em 0;
+  margin: 1.2em 0;
   text-align: left; }
   .checkbox-material.checkbox-material-inline {
     display: inline-block;
@@ -14293,6 +14435,24 @@ table div.checkbox-material-inline label::before, table div.checkbox-material-in
 .dialog-content-material .checkbox-material label::before, .dialog-content-material .checkbox-material label::after {
   left: 6px; }
 
+.form-checkboxGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px; }
+
+.form-checkboxGroupMaterial .checkbox-material {
+  padding: .5rem 1rem;
+  margin: .8rem 0; }
+  .form-checkboxGroupMaterial .checkbox-material > span {
+    position: relative; }
+    .form-checkboxGroupMaterial .checkbox-material > span:not(:last-child) {
+      margin-right: 2rem; }
+    .form-checkboxGroupMaterial .checkbox-material > span label:not(:empty) {
+      padding-left: 2em; }
+
 /* REDONDEAMOS LOS BORDES DE LA TABLA */
 table.table-material {
   border-top-left-radius: 7px;
@@ -14323,6 +14483,8 @@ table.table-material {
     font-weight: bold;
     vertical-align: middle;
     font-size: 1.35rem; }
+  table.table-material .checkbox-material {
+    margin: .5em 0; }
 
 /* ESTILOS ESPECIFICOS PARA CUANDO EL AUTOCOMPLETE SE ENCUENTRA DENTRO DE UN FORM-ROW */
 :not(.form-row) .form-groupMaterial {
@@ -14486,7 +14648,7 @@ a.select-material {
     padding-left: 17px; }
     a.select-material:focus span:first-child {
       left: 11px; }
-  a.select-material span:first-child {
+  a.select-material > span:first-child {
     color: #495057;
     font-size: 1rem;
     font-weight: 400;
@@ -14498,8 +14660,10 @@ a.select-material {
     width: calc(100% - 60px);
     height: 22.8px;
     overflow: hidden; }
-  a.select-material span:last-child {
+  a.select-material > span:not(.ui-selectmenu-status):not(.rup-combo_loading):last-child {
     display: none; }
+  a.select-material > span.rup-combo_loading {
+    right: 2.5rem; }
   a.select-material.ui-selectmenu {
     border: 1px solid #757575;
     font-size: 1rem;
@@ -14512,9 +14676,12 @@ a.select-material {
       border-width: 2px;
       box-shadow: none;
       outline: none;
-      padding-left: 17px; }
-      a.select-material.ui-selectmenu:focus span:first-child {
-        left: 11px; }
+      padding-left: 17px;
+      /* EVITA QUE EL ICONO DE DROPDOWN SE DESPLACE */
+      background-position: calc(100% - 13.5px) calc(0.71em), calc(100% - 8.5px) calc(0.71em);
+      /* EVITA QUE EL TEXTO SE DESPLACE */ }
+      a.select-material.ui-selectmenu:focus span:not(.ui-icon):first-child {
+        top: -1px; }
 
 .form-groupMaterial {
   /* ESTABLECE LOS ESTILOS ESPECIFICOS DE LAS VALIDACIONES CON ERROR */ }
@@ -14572,6 +14739,16 @@ select.rup_combo ~ button.select-material, .rup_combo.ui-multiselect ~ button.se
     box-shadow: none;
     outline: none;
     padding-left: 17px; }
+  select.rup_combo ~ button.select-material span, .rup_combo.ui-multiselect ~ button.select-material span, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span, select.rup_combo ~ .select-material.ui-button.rup-button span, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span {
+    /* OCULTA EL ICONO DEL DROPDOWN EN FAVOR DEL GENERADO VIA CSS */ }
+    select.rup_combo ~ button.select-material span.rup-combo_loading, .rup_combo.ui-multiselect ~ button.select-material span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.rup-combo_loading, select.rup_combo ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.rup-combo_loading, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.rup-combo_loading, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.rup-combo_loading, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.rup-combo_loading {
+      float: right;
+      margin-top: 0;
+      margin-right: 2.5rem;
+      width: 16px;
+      height: 16px; }
+    select.rup_combo ~ button.select-material span.ui-icon, .rup_combo.ui-multiselect ~ button.select-material span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.ui-icon, select.rup_combo ~ .select-material.ui-button.rup-button span.ui-icon, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.ui-icon, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.ui-icon, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.ui-icon, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.ui-icon, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.ui-icon {
+      display: none; }
 
 @keyframes ripple-slider {
   0% {
@@ -31192,10 +31369,12 @@ button.ui-button-icon-only.rup-dropdown-button, .ui-button-icon-only.rup-dropdow
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
+/*.rup-combo {}*/
 .rup-combo_loading {
   background-image: url(images/rup.ajaxLoader.gif) !important;
   color: black;
-  font-weight: bold; }
+  font-weight: bold;
+  background-repeat: no-repeat; }
 
 .rup-combo_loadingText {
   color: black;
@@ -31210,6 +31389,7 @@ button.ui-button-icon-only.rup-dropdown-button, .ui-button-icon-only.rup-dropdow
   text-decoration: none;
   overflow: hidden; }
 
+/*.ui-selectmenu-focus { }*/
 .ui-selectmenu-icon {
   position: absolute;
   right: 6px;
@@ -31231,6 +31411,7 @@ button.ui-button-icon-only.rup-dropdown-button, .ui-button-icon-only.rup-dropdow
 .ui-selectmenu-menu-popup {
   margin-top: -1px; }
 
+/*.ui-selectmenu-menu-dropdown {}*/
 .ui-selectmenu-menu li {
   padding: 0;
   margin: 0;
@@ -31257,13 +31438,17 @@ button.ui-button-icon-only.rup-dropdown-button, .ui-button-icon-only.rup-dropdow
 
 .ui-selectmenu-menu li .ui-icon, .ui-selectmenu-status .ui-icon {
   position: absolute;
-  top: 1em;
-  margin-top: -12px;
-  left: 0; }
+  top: 1.2em;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-size: contain; }
 
 .ui-selectmenu-status {
   line-height: 1.4em; }
 
+/*.ui-selectmenu-open li.ui-selectmenu-item-focus a {  }
+.ui-selectmenu-open li.ui-selectmenu-item-selected { }*/
 .ui-selectmenu-menu li span, .ui-selectmenu-status span {
   display: block;
   margin-bottom: .2em; }
@@ -31271,6 +31456,7 @@ button.ui-button-icon-only.rup-dropdown-button, .ui-button-icon-only.rup-dropdow
 .ui-selectmenu-menu li .ui-selectmenu-item-header {
   font-weight: bold; }
 
+/*.ui-selectmenu-menu li .ui-selectmenu-item-content {  }*/
 /*.ui-selectmenu-menu li .ui-selectmenu-item-footer { opacity: .8; }*/
 /*for optgroups*/
 .ui-selectmenu-menu .ui-selectmenu-group {
@@ -31338,12 +31524,6 @@ ul.ui-selectmenu-menu-popup {
   padding-left: 20px;
   position: relative;
   margin-left: 5px; }
-
-.ui-selectmenu-menu li .ui-icon, .ui-selectmenu-status .ui-icon {
-  position: absolute;
-  top: 1em;
-  margin-top: -12px;
-  left: 0; }
 
 .ui-selectmenu-status {
   line-height: 1.4em; }
@@ -31480,30 +31660,30 @@ ul.ui-selectmenu-menu-popup {
   vertical-align: text-bottom; }
 
 /*** ESTILOS PROPIOS ***/
-.ui-selectmenu,
+/*.ui-selectmenu,
 .ui-selectmenu-status {
-  /* 	background: #d5d5d2 50% 50%; */ }
-
+	background: #d5d5d2 50% 50%;
+}*/
 .ui-selectmenu-menu li.ui-selectmenu-group ul {
   overflow-y: hidden; }
 
-.ui-selectmenu-menu-dropdown,
-.ui-selectmenu-menu-popup {
-  /* 	background: #eaeaea 50% 50%; */ }
-
+/*.ui-selectmenu-menu-dropdown,
+.ui-selectmenu-menu-popup { 
+	background: #eaeaea 50% 50%;
+}*/
 /*select with custom icons*/
 .ui-selectmenu-item-icon {
   height: 24px;
   width: 24px;
   background-repeat: no-repeat; }
 
-.delete .ui-selectmenu-item-icon {
+a.delete span.ui-selectmenu-item-icon.ui-icon, a.delete .ui-selectmenu-item-icon.ui-icon, .delete span.ui-selectmenu-item-icon.ui-icon, .delete .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/borrar.png); }
 
-.filter .ui-selectmenu-item-icon {
+a.filter span.ui-selectmenu-item-icon.ui-icon, a.filter .ui-selectmenu-item-icon.ui-icon, .filter span.ui-selectmenu-item-icon.ui-icon, .filter .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/filtrar.png); }
 
-.print .ui-selectmenu-item-icon {
+a.print span.ui-selectmenu-item-icon.ui-icon, a.print .ui-selectmenu-item-icon.ui-icon, .print span.ui-selectmenu-item-icon.ui-icon, .print .ui-selectmenu-item-icon.ui-icon {
   background-image: url(images/imprimir.png); }
 
 /* PIJAMA */
@@ -37015,7 +37195,12 @@ select, select.form-control, select.form-control-sm {
 .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status {
   padding-left: 1.5rem; }
   .ui-selectmenu-dropdown.ui-selectmenu-hasIcon span.ui-selectmenu-status .ui-icon {
-    margin-top: -0.8rem; }
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: .43rem;
+    background-size: contain; }
 
 .ui-selectmenu-dropdown span.ui-selectmenu-status {
   padding: 3px 4px; }
@@ -38606,7 +38791,7 @@ table.dataTable tfoot th {
 
 table.dataTable thead th,
 table.dataTable thead td {
-  padding: 10px 18px;
+  padding: 10px 6px;
   border-bottom: 1px solid #111; }
 
 table.dataTable thead th:active,
@@ -39201,9 +39386,9 @@ div.dataTables_wrapper span.select-item {
 
 .rup-table_checkmenu_arrow {
   position: absolute;
-  margin-top: 4px;
+  margin-top: 10px;
   cursor: pointer;
-  background-position: -64px -16px; }
+  background-position: -68px -16px; }
 
 table.dataTable thead th:hover,
 table.dataTable tfoot th:hover {
@@ -39649,12 +39834,6 @@ ul.dtr-details .dtr-data {
 footer .footer-row-content {
   background-color: #1472a4; }
 
-footer .footer-row-base {
-  background-image: url(images/web01-2014_oina_logo_atzekoa.gif);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-color: #1F1F1F; }
-
 fieldset {
   border-radius: 5px; }
 
@@ -39965,6 +40144,65 @@ fieldset {
   .btn-material-lg > i.mdi {
     font-size: 1.6rem; }
 
+/* ESTILOS PARA UN GRUPO DE BOTONES */
+.btn-group .btn-material {
+  line-height: 1.5;
+  margin: 0 -2px;
+  text-align: center;
+  border-radius: initial;
+  /* COLORES POR DEFECTO (SECONDARY) */
+  background-color: #c4c7cb;
+  /* COLORES DEFINIDOS SEGUN LA CLASE */ }
+  .btn-group .btn-material:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .btn-group .btn-material:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .btn-group .btn-material:not(.active) {
+    cursor: pointer; }
+  .btn-group .btn-material > i.mdi {
+    line-height: 0.9; }
+  .btn-group .btn-material:hover:not(.active) {
+    background-color: #a6acb1;
+    color: #FFFFFF; }
+  .btn-group .btn-material.active {
+    background-color: #899097;
+    color: #FFFFFF;
+    cursor: default; }
+  .btn-group .btn-material.btn-material-primary {
+    background-color: #a1c6da; }
+    .btn-group .btn-material.btn-material-primary:hover:not(.active) {
+      background-color: #72aac8; }
+    .btn-group .btn-material.btn-material-primary.active {
+      background-color: #428eb6; }
+  .btn-group .btn-material.btn-material-success {
+    background-color: #b7dfb9; }
+    .btn-group .btn-material.btn-material-success:hover:not(.active) {
+      background-color: #93cf96; }
+    .btn-group .btn-material.btn-material-success.active {
+      background-color: #6fbf72; }
+  .btn-group .btn-material.btn-material-danger {
+    background-color: #f1aeb4; }
+    .btn-group .btn-material.btn-material-danger:hover:not(.active) {
+      background-color: #ea858f; }
+    .btn-group .btn-material.btn-material-danger.active {
+      background-color: #e35d6a; }
+  .btn-group .btn-material.btn-material-warning {
+    background-color: #ffe69b;
+    color: #212529; }
+    .btn-group .btn-material.btn-material-warning:hover:not(.active) {
+      background-color: #ffd96a;
+      color: #212529; }
+    .btn-group .btn-material.btn-material-warning.active {
+      background-color: #ffcd38; }
+  .btn-group .btn-material.btn-material-info {
+    background-color: #a0cdd5; }
+    .btn-group .btn-material.btn-material-info:hover:not(.active) {
+      background-color: #71b5c0; }
+    .btn-group .btn-material.btn-material-info.active {
+      background-color: #429cab; }
+
 .form-groupMaterial {
   /* ESTILOS DE LOS CONTENEDORES DE INPUTS */
   position: relative;
@@ -39995,6 +40233,8 @@ fieldset {
     padding-left: 17px; }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
     color: transparent; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+    color: transparent; }
   .form-groupMaterial input[type="file"] {
     /* TODO: SON ESTILOS TEMPORALES PARA LOS INPUTS DE TIPO FILE */ }
     .form-groupMaterial input[type="file"]:enabled {
@@ -40011,8 +40251,20 @@ fieldset {
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label,
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):valid:enabled ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:required ~ label {
     top: -10px;
     font-size: .9rem;
@@ -40020,11 +40272,32 @@ fieldset {
     padding: 0 5px;
     background-color: #FFFFFF;
     background-image: none; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:required ~ label {
+    top: -10px;
+    font-size: .9rem;
+    color: #1472a4;
+    padding: 0 5px;
+    background-color: #FFFFFF;
+    background-image: none; }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled {
+    background-color: #e9ecef; }
+    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #999;
+      padding: 0 5px;
+      background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled {
     background-color: #e9ecef; }
-    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):disabled ~ label,
     .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):placeholder-shown:disabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #999;
+      padding: 0 5px;
+      background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled {
+    background-color: #e9ecef; }
+    .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):-ms-input-placeholder:disabled ~ label {
       top: -10px;
       font-size: .9rem;
       color: #999;
@@ -40032,7 +40305,8 @@ fieldset {
       background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
   .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):required ~ label:after {
     content: " *"; }
-  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):read-only ~ label, .form-groupMaterial input:not([type="checkbox"]):not([type="radio"])[type="hidden"] ~ label {
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]):read-only ~ label,
+  .form-groupMaterial input:not([type="checkbox"]):not([type="radio"])[type="hidden"] ~ label {
     top: -10px;
     font-size: .9rem;
     color: #1472a4;
@@ -40080,9 +40354,30 @@ fieldset {
       padding: 4px 17px; }
     .form-groupMaterial textarea:placeholder-shown:disabled {
       color: transparent; }
-    .form-groupMaterial textarea:focus:enabled ~ label,
-    .form-groupMaterial textarea:valid:enabled ~ label,
+    .form-groupMaterial textarea:-ms-input-placeholder:disabled {
+      color: transparent; }
+    .form-groupMaterial textarea:focus:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial textarea:valid:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
     .form-groupMaterial textarea:placeholder-shown:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial textarea:-ms-input-placeholder:required ~ label {
       top: -10px;
       font-size: .9rem;
       color: #1472a4;
@@ -40136,8 +40431,11 @@ fieldset {
     background-repeat: no-repeat;
     background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
     background-size: 5px 5px, 5px 5px;
+    /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
     /* Añade un asterisco al label de los campos obligatorios */
     /* ELIMINA UN OUTLINE INTERNO ESPECIFICO DE FIREFOX */ }
+    .form-groupMaterial select::-ms-expand, .form-groupMaterial .ui-multiselect::-ms-expand, .form-groupMaterial .ui-selectmenu-dropdown::-ms-expand {
+      display: none; }
     .form-groupMaterial select:hover:enabled, .form-groupMaterial .ui-multiselect:hover:enabled, .form-groupMaterial .ui-selectmenu-dropdown:hover:enabled {
       border-color: #212529; }
     .form-groupMaterial select:focus:enabled, .form-groupMaterial .ui-multiselect:focus:enabled, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled {
@@ -40149,22 +40447,55 @@ fieldset {
       padding-left: 17px; }
     .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
       color: transparent; }
-    .form-groupMaterial select:focus:enabled ~ label, .form-groupMaterial .ui-multiselect:focus:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label,
-    .form-groupMaterial select:valid:enabled ~ label,
-    .form-groupMaterial .ui-multiselect:valid:enabled ~ label,
-    .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label,
-    .form-groupMaterial select:placeholder-shown:required ~ label,
-    .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label,
-    .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
+    .form-groupMaterial select:-ms-input-placeholder:disabled, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+      color: transparent; }
+    .form-groupMaterial select:focus:enabled ~ label, .form-groupMaterial .ui-multiselect:focus:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:focus:enabled ~ label {
       top: -10px;
       font-size: .9rem;
       color: #1472a4;
       padding: 0 5px;
       background-color: #FFFFFF;
       background-image: none; }
-    .form-groupMaterial select:disabled, .form-groupMaterial .ui-multiselect:disabled, .form-groupMaterial .ui-selectmenu-dropdown:disabled, .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
+    .form-groupMaterial select:valid:enabled ~ label, .form-groupMaterial .ui-multiselect:valid:enabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:valid:enabled ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:placeholder-shown:required ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:required ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:-ms-input-placeholder:required ~ label, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:required ~ label, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:required ~ label {
+      top: -10px;
+      font-size: .9rem;
+      color: #1472a4;
+      padding: 0 5px;
+      background-color: #FFFFFF;
+      background-image: none; }
+    .form-groupMaterial select:disabled, .form-groupMaterial .ui-multiselect:disabled, .form-groupMaterial .ui-selectmenu-dropdown:disabled {
       background-color: #e9ecef; }
-      .form-groupMaterial select:disabled ~ label, .form-groupMaterial .ui-multiselect:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label, .form-groupMaterial select:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+      .form-groupMaterial select:disabled ~ label, .form-groupMaterial .ui-multiselect:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:disabled ~ label {
+        top: -10px;
+        font-size: .9rem;
+        color: #999;
+        padding: 0 5px;
+        background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+    .form-groupMaterial select:placeholder-shown:disabled, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled {
+      background-color: #e9ecef; }
+      .form-groupMaterial select:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-multiselect:placeholder-shown:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:placeholder-shown:disabled ~ label {
+        top: -10px;
+        font-size: .9rem;
+        color: #999;
+        padding: 0 5px;
+        background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%); }
+    .form-groupMaterial select:-ms-input-placeholder:disabled, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled {
+      background-color: #e9ecef; }
+      .form-groupMaterial select:-ms-input-placeholder:disabled ~ label, .form-groupMaterial .ui-multiselect:-ms-input-placeholder:disabled ~ label, .form-groupMaterial .ui-selectmenu-dropdown:-ms-input-placeholder:disabled ~ label {
         top: -10px;
         font-size: .9rem;
         color: #999;
@@ -40293,6 +40624,20 @@ fieldset {
     font-size: .9rem;
     color: #1472a4; }
 
+.form-radioGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px; }
+
+.form-radioGroupMaterial .radio-material {
+  padding: .5rem 5rem;
+  margin: .8rem 0; }
+  .form-radioGroupMaterial .radio-material > span:not(:last-child) {
+    margin-right: 2rem; }
+
 @keyframes ripple-checkbox-hover {
   0% {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0); }
@@ -40311,7 +40656,7 @@ fieldset {
 
 .checkbox-material {
   position: relative;
-  margin: 0.5em 0;
+  margin: 1.2em 0;
   text-align: left; }
   .checkbox-material.checkbox-material-inline {
     display: inline-block;
@@ -40389,6 +40734,24 @@ table div.checkbox-material-inline label::before, table div.checkbox-material-in
 .dialog-content-material .checkbox-material label::before, .dialog-content-material .checkbox-material label::after {
   left: 6px; }
 
+.form-checkboxGroupMaterial > label {
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px; }
+
+.form-checkboxGroupMaterial .checkbox-material {
+  padding: .5rem 1rem;
+  margin: .8rem 0; }
+  .form-checkboxGroupMaterial .checkbox-material > span {
+    position: relative; }
+    .form-checkboxGroupMaterial .checkbox-material > span:not(:last-child) {
+      margin-right: 2rem; }
+    .form-checkboxGroupMaterial .checkbox-material > span label:not(:empty) {
+      padding-left: 2em; }
+
 /* REDONDEAMOS LOS BORDES DE LA TABLA */
 table.table-material {
   border-top-left-radius: 7px;
@@ -40419,6 +40782,8 @@ table.table-material {
     font-weight: bold;
     vertical-align: middle;
     font-size: 1.35rem; }
+  table.table-material .checkbox-material {
+    margin: .5em 0; }
 
 /* ESTILOS ESPECIFICOS PARA CUANDO EL AUTOCOMPLETE SE ENCUENTRA DENTRO DE UN FORM-ROW */
 :not(.form-row) .form-groupMaterial {
@@ -40582,7 +40947,7 @@ a.select-material {
     padding-left: 17px; }
     a.select-material:focus span:first-child {
       left: 11px; }
-  a.select-material span:first-child {
+  a.select-material > span:first-child {
     color: #495057;
     font-size: 1rem;
     font-weight: 400;
@@ -40594,8 +40959,10 @@ a.select-material {
     width: calc(100% - 60px);
     height: 22.8px;
     overflow: hidden; }
-  a.select-material span:last-child {
+  a.select-material > span:not(.ui-selectmenu-status):not(.rup-combo_loading):last-child {
     display: none; }
+  a.select-material > span.rup-combo_loading {
+    right: 2.5rem; }
   a.select-material.ui-selectmenu {
     border: 1px solid #757575;
     font-size: 1rem;
@@ -40608,9 +40975,12 @@ a.select-material {
       border-width: 2px;
       box-shadow: none;
       outline: none;
-      padding-left: 17px; }
-      a.select-material.ui-selectmenu:focus span:first-child {
-        left: 11px; }
+      padding-left: 17px;
+      /* EVITA QUE EL ICONO DE DROPDOWN SE DESPLACE */
+      background-position: calc(100% - 13.5px) calc(0.71em), calc(100% - 8.5px) calc(0.71em);
+      /* EVITA QUE EL TEXTO SE DESPLACE */ }
+      a.select-material.ui-selectmenu:focus span:not(.ui-icon):first-child {
+        top: -1px; }
 
 .form-groupMaterial {
   /* ESTABLECE LOS ESTILOS ESPECIFICOS DE LAS VALIDACIONES CON ERROR */ }
@@ -40668,6 +41038,16 @@ select.rup_combo ~ button.select-material, .rup_combo.ui-multiselect ~ button.se
     box-shadow: none;
     outline: none;
     padding-left: 17px; }
+  select.rup_combo ~ button.select-material span, .rup_combo.ui-multiselect ~ button.select-material span, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span, select.rup_combo ~ .select-material.ui-button.rup-button span, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span {
+    /* OCULTA EL ICONO DEL DROPDOWN EN FAVOR DEL GENERADO VIA CSS */ }
+    select.rup_combo ~ button.select-material span.rup-combo_loading, .rup_combo.ui-multiselect ~ button.select-material span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.rup-combo_loading, select.rup_combo ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.rup-combo_loading, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.rup-combo_loading, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.rup-combo_loading, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.rup-combo_loading, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.rup-combo_loading, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.rup-combo_loading, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.rup-combo_loading, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.rup-combo_loading, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.rup-combo_loading, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.rup-combo_loading {
+      float: right;
+      margin-top: 0;
+      margin-right: 2.5rem;
+      width: 16px;
+      height: 16px; }
+    select.rup_combo ~ button.select-material span.ui-icon, .rup_combo.ui-multiselect ~ button.select-material span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ button.select-material span.ui-icon, select.rup_combo ~ .select-material.ui-button.rup-button span.ui-icon, .rup_combo.ui-multiselect ~ .select-material.ui-button.rup-button span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ .select-material.ui-button.rup-button span.ui-icon, .rup-dropdown-btn-group select.rup_combo ~ .select-material.rup-dropdown-button span.ui-icon, .rup-dropdown-btn-group .rup_combo.ui-multiselect ~ .select-material.rup-dropdown-button span.ui-icon, .rup-dropdown-btn-group .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-dropdown-button span.ui-icon, select.rup_combo ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup_combo.ui-multiselect ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-toolbar_menuButton.ui-button span.ui-icon, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_next span.ui-icon, .rup-wizard select.rup_combo ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ a.select-material.rup-wizard_prev span.ui-icon, .rup-wizard select.rup_combo ~ .select-material.rup-wizard_submitButton span.ui-icon, .rup-wizard .rup_combo.ui-multiselect ~ .select-material.rup-wizard_submitButton span.ui-icon, .rup-wizard .rup_combo.ui-selectmenu-dropdown ~ .select-material.rup-wizard_submitButton span.ui-icon {
+      display: none; }
 
 @keyframes ripple-slider {
   0% {
