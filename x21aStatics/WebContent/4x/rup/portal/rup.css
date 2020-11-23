@@ -21018,6 +21018,20 @@
   border-right-style: hidden;
 }
 
+.r01gContainer ul.rup-breadCrumb_main li a:focus ~ ul,
+.r01gContainer ul.rup-breadCrumb_main li a:hover ~ ul {
+  display: block;
+}
+
+.r01gContainer ul.rup-breadCrumb_main li ul {
+  display: none;
+}
+
+.r01gContainer ul.rup-breadCrumb_main li ul:focus,
+.r01gContainer ul.rup-breadCrumb_main li ul:hover {
+  display: block;
+}
+
 .r01gContainer .rup-breadCrumb_logoutDiv .rup-breadCrumb_link i.mdi {
   vertical-align: text-bottom;
   margin-right: .5rem;
@@ -43630,10 +43644,6 @@
   padding: 0;
 }
 
-.r01gContainer .rup-breadCrumb_main UL {
-  display: none;
-}
-
 /*  Base style of rup-breadCrumb_main  */
 
 /*  Top Level  */
@@ -56850,6 +56860,20 @@
 
 .r01gContainer .form-groupMaterial.rup-validate-field-error .rup-combobox input:not([type="checkbox"]):not([type="radio"]):focus:enabled {
   border-right-style: hidden;
+}
+
+.r01gContainer ul.rup-breadCrumb_main li a:focus ~ ul,
+.r01gContainer ul.rup-breadCrumb_main li a:hover ~ ul {
+  display: block;
+}
+
+.r01gContainer ul.rup-breadCrumb_main li ul {
+  display: none;
+}
+
+.r01gContainer ul.rup-breadCrumb_main li ul:focus,
+.r01gContainer ul.rup-breadCrumb_main li ul:hover {
+  display: block;
 }
 
 .r01gContainer .rup-breadCrumb_logoutDiv .rup-breadCrumb_link i.mdi {
