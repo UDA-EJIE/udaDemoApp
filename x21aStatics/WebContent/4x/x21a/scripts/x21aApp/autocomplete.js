@@ -54,7 +54,7 @@ jQuery(function($) {
                 if (data !== undefined) {
                     $.grep(data, function (v) {
                         if (selected === v.value) {
-                            selected = v.nid;
+                            selected = v.label;
                         }
                     })
                 }
