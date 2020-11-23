@@ -13,6 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <!-- Titulo pagina -->
 <!-- <h2>table</h2> -->
@@ -25,7 +26,8 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form:form modelAttribute="usuario" id="example_detail_form">
+		<spring:url value="/table/2/edit" var="url"/>
+		<form:form modelAttribute="usuario2" id="example_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="example_detail_feedback"></div>	
 			<div class="form-row">

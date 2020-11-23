@@ -15,67 +15,47 @@
  */
 jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
-	    var tableColModelsComarca = [{
-	        name: 'nid',
-	        index: 'nid',
-	        editable: false,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 1,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEs',
-	        index: 'descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 2,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEu',
-	        index: 'descEu',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 3,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'css',
-	        index: 'css',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 4,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'provincia.nid',
-	        index: 'provincia.nid',
-	        editable: false,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 5,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'provincia.descEs',
-	        index: 'provincia.descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 6,
-	            colpos: 1
-	        }
-	    }
+	    var tableColModelsComarca = [
+		    {
+		        name: 'descEs',
+		        index: 'descEs',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 2,
+		            colpos: 1
+		        }
+		    },
+		    {
+		        name: 'descEu',
+		        index: 'descEu',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 3,
+		            colpos: 1
+		        }
+		    },
+		    {
+		        name: 'css',
+		        index: 'css',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 4,
+		            colpos: 1
+		        }
+		    },
+		    {
+		        name: 'provincia.descEs',
+		        index: 'provincia.descEs',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 6,
+		            colpos: 1
+		        }
+		    }
 	    ];
 	
 	    $('#comarca').rup_table({
@@ -102,7 +82,7 @@ jQuery(function ($) {
 	        },
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
-	            validate: {
+	            /*validate: {
 	                rules: {
 	                    'code': {
 	                        required: true
@@ -111,52 +91,42 @@ jQuery(function ($) {
 	                        range: [1, 3]
 	                    }
 	                }
-	            },
+	            },*/
 	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
 	        }
 	    });
 	
-	    var tableColModelsLocalidad = [{
-	        name: 'nid',
-	        index: 'nid',
-	        editable: false,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 1,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEs',
-	        index: 'descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 2,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEu',
-	        index: 'descEu',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 3,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'css',
-	        index: 'css',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 4,
-	            colpos: 1
-	        }
-	    }
+	    var tableColModelsLocalidad = [
+		    {
+		        name: 'descEs',
+		        index: 'descEs',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 2,
+		            colpos: 1
+		        }
+		    },
+		    {
+		        name: 'descEu',
+		        index: 'descEu',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 3,
+		            colpos: 1
+		        }
+		    },
+		    {
+		        name: 'css',
+		        index: 'css',
+		        editable: true,
+		        hidden: false,
+		        formoptions: {
+		            rowpos: 4,
+		            colpos: 1
+		        }
+		    }
 	    ];
 	
 	    $('#localidad').rup_table({

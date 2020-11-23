@@ -23,26 +23,22 @@
 			<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
-						<form:input path="code" id="code_filter_comarca" />
-						<label for="code_filter_comarca">code</label>
-					</div>
-					<div class="form-groupMaterial col-sm">
-						<form:input path="provincia.code" id="provinciaCode_filter_comarca" />
-						<label for="provinciaCode_filter_comarca">provinciaCode</label>
-					</div>
-					<div class="form-groupMaterial col-sm">
 						<form:input path="descEs" id="descEs_filter_comarca" />
 						<label for="descEs_filter_comarca">descEs</label>
 					</div>
-				</div>
-				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="descEu" id="descEu_filter_comarca" />
 						<label for="descEu_filter_comarca">descEu</label>
 					</div>
+				</div>
+				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="css" id="css_filter_comarca" />
 						<label for="css_filter_comarca">css</label>
+					</div>
+					<div class="form-groupMaterial col-sm">
+						<form:input path="provincia.descEs" id="provinciaDescEs_filter_comarca" />
+						<label for="provinciaDescEs_filter_comarca">provinciaDescEs</label>
 					</div>
 				</div>
 				<div id="comarca_filter_buttonSet" class="text-right">
@@ -69,11 +65,9 @@
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
-            <th data-col-prop="nid" data-col-sidx="code" data-col-edit="false">code</th>
             <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
             <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
             <th data-col-prop="css">css</th>
-            <th data-col-prop="provincia.nid" data-col-sidx="provincia.code" data-col-edit="false">provincia.code</th>
             <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
         </tr>
     </thead>
@@ -94,22 +88,17 @@
 			<!-- Feedback del formulario de detalle -->
 			<div id ="comarca_detail_feedback"></div>
 			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
-				<div class="form-groupMaterial col-sm">
-					<form:input path="code" class="d-none" />
-			    	<input type="text" name="nid" id="code_detailForm_tableComarca"/>
-					<label for="code_detailForm_tableComarca">code</label>
-			    </div>			    
+				<!-- Campos del formulario de detalle -->	    
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="descEs" id="descEs_detailForm_tableComarca" />
 			    	<label for="descEs_detailForm_tableComarca">descEs</label>
-			    </div>
-			</div>
-			<div class="form-row">       
+			    </div>       
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="descEu" id="descEu_detailForm_tableComarca" />
 			    	<label for="descEu_detailForm_tableComarca">descEu</label>
-			    </div>			    
+			    </div>
+			</div>
+			<div class="form-row">			    
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="css" id="css_detailForm_tableComarca" />
 			    	<label for="css_detailForm_tableComarca">css</label>
@@ -159,19 +148,15 @@
 
 				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
-						<form:input path="code" id="code_filter_localidad" />
-						<label for="code_filter_localidad">code</label>
-					</div>
-					<div class="form-groupMaterial col-sm">
 						<form:input path="descEs" id="descEs_filter_localidad" />
 						<label for="descEs_filter_localidad">descEs</label>
 					</div>
-				</div>
-				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="descEu" id="descEu_filter_localidad" />
 						<label for="descEu_filter_localidad">descEu</label>
 					</div>
+				</div>
+				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
 						<form:input path="css" id="css_filter_localidad" />
 						<label for="css_filter_localidad">css</label>
@@ -200,7 +185,6 @@
 	data-filter-form="#localidad_filter_form">
 	<thead>
 		<tr>
-			<th data-col-prop="nid" data-col-sidx="code" data-col-edit="false">code</th>
 		    <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
 		    <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
 		    <th data-col-prop="css">css</th>
@@ -223,35 +207,22 @@
 			<!-- Feedback del formulario de detalle -->
 			<div id ="localidad_detail_feedback"></div>
 			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
-				<div class="form-groupMaterial col-sm">
-					<form:input path="code" class="d-none" />
-			    	<input type="text" name="nid" id="code_detailForm_tableLocalidad"/>
-					<label for="code_detailForm_tableLocalidad">code</label>
-			    </div>
-			    
+				<!-- Campos del formulario de detalle -->			    
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="descEs" id="descEs_detail_tableLocalidad" />
 			    	<label for="descEs_detail_tableLocalidad">descEs</label>
-			    </div>
-			</div>
-			<div class="form-row">       
+			    </div>       
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="descEu" id="descEu_detail_tableLocalidad" />
 			    	<label for="descEu_detail_tableLocalidad">descEu</label>
-			    </div>  
-			    
+			    </div> 
+			</div>
+			<div class="form-row">
 			    <div class="form-groupMaterial col-sm">
 			    	<form:input path="css" id="css_detail_tableLocalidad" />
 			    	<label for="css_detail_tableLocalidad">css</label>
 			    </div>
-			</div>
-			<div class="form-row">  <!--  
-			    <div class="form-group col-sm">
-			    	<select id="comarcaRemote" name="comarca.code"><option>&nbsp;</option></select>
-			    	<label for="comarcaRemote">Comarca</label>
-			    </div> -->
-			    <div class="form-groupMaterial col-sm d-none">
+				<div class="form-groupMaterial col-sm d-none">
 			    	<form:input path="comarca.css" id="comarcaCss_detail_tableLocalidad" />
 			    	<label for="comarcaCss_detail_tableLocalidad">comarca.css</label>
 			    </div>

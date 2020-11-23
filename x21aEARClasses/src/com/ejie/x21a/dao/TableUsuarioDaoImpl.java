@@ -32,6 +32,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.Usuario2;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableRequestDto;
@@ -92,6 +93,18 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
      * @return Usuario
      */
     public Usuario update(Usuario usuario) {
+		String query = "UPDATE USUARIO SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, EJIE=?, FECHA_ALTA=?, FECHA_BAJA=?, ROL=?, FECHA_MODIF=sysdate WHERE ID=?";
+		this.jdbcTemplate.update(query, usuario.getNombre(), usuario.getApellido1(), usuario.getApellido2(), usuario.getEjie(), usuario.getFechaAlta(), usuario.getFechaBaja(), usuario.getRol(), usuario.getId());
+		return usuario;
+	}
+
+    /**
+     * Updates a single row in the Usuario2 table.
+     *
+     * @param usuario Pagination
+     * @return Usuario2
+     */
+    public Usuario2 update(Usuario2 usuario) {
 		String query = "UPDATE USUARIO SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, EJIE=?, FECHA_ALTA=?, FECHA_BAJA=?, ROL=?, FECHA_MODIF=sysdate WHERE ID=?";
 		this.jdbcTemplate.update(query, usuario.getNombre(), usuario.getApellido1(), usuario.getApellido2(), usuario.getEjie(), usuario.getFechaAlta(), usuario.getFechaBaja(), usuario.getRol(), usuario.getId());
 		return usuario;

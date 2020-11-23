@@ -133,7 +133,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" )})
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
+	public @ResponseBody Resource<Usuario2> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
@@ -147,7 +147,7 @@ public class TableUsuarioController  {
 		aux.setFechaBaja2(usuario.getFechaBaja());
 		aux.setRol2(usuario.getRol());
 
-		return new Resource<Usuario>(aux);
+		return new Resource<Usuario2>(aux);
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {@UDALinkAllower(name = "clipboardReport"),
@@ -246,7 +246,8 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class)})
 	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
@@ -324,7 +325,7 @@ public class TableUsuarioController  {
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
 	@UDALink(name = "edit")
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -335,15 +336,15 @@ public class TableUsuarioController  {
     }
 	
 	@UDALink(name = "edit2")
-	@RequestMapping(value = "/{bis}", method = RequestMethod.PUT)
-    public @ResponseBody Resource<Usuario> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
-    		@RequestBody Usuario usuario) {
+	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
+    public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
+    		@RequestBody Usuario2 usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
-		return new Resource<Usuario>(usuarioAux);
+		return new Resource<Usuario2>(usuarioAux);
     }
 	
 	@UDALink(name = "editar")
@@ -499,7 +500,7 @@ public class TableUsuarioController  {
 	public @ResponseBody Resource<Filter> filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - jqGrid] : getDefault filter");
+		TableUsuarioController.logger.info("[get - table] : getDefault filter");
 		return ResourceUtils.toResource(filterService.getDefault(filterSelector, filterUser));
 	}
 	
@@ -510,7 +511,7 @@ public class TableUsuarioController  {
 		@RequestParam(value = "q", required = false) String filterQ,
 		@RequestParam(value = "c", required = true) String filterC,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - jqGrid] : GetAll filter");
+		TableUsuarioController.logger.info("[get - table] : GetAll filter");
 		return ResourceUtils.fromListToResource(filterService.getAllFilters(filterSelector, filterUser));
 	}
 	

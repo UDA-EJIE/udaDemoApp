@@ -26,7 +26,7 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<spring:url value="/table" var="url"/>
+		<spring:url value="/table/edit" var="url"/>
 		<form:form modelAttribute="usuario" id="example_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="example_detail_feedback"></div>	

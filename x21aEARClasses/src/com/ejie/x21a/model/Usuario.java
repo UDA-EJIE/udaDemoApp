@@ -103,7 +103,7 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
         this(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, null);
     }
     
-    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -114,7 +114,7 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
         this.rol = rol;
     }
     
-    public Usuario(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
+    public Usuario(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -122,6 +122,17 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.rol = rol;
+    }
+    
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol, Provincia provincia) {	
+    	this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+        this.provincia = provincia;
     }
 
     /**

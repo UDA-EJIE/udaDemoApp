@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.Usuario2;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -54,6 +55,14 @@ public interface TableUsuarioService {
 	 * @return Usuario
 	 */
 	Usuario update(Usuario usuario);
+
+	/**
+	 * Updates a single row in the Usuario2 table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	Usuario2 update(Usuario2 usuario);
 
 	/**
 	 * Finds a single row in the Usuario table.
