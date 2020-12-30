@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2011 E.J.I.E., S.A.
+ -- Copyright 2020 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  -- Solo podrá usarse esta obra si se respeta la Licencia.
@@ -14,4 +14,4 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<script src="${staticsUrl}/x21a/scripts/x21aApp/autocomplete.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/autocomplete/autocompleteEnlazadoMultiple.js" type="text/javascript"></script>

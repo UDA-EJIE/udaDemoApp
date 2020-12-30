@@ -19,7 +19,7 @@
 <section class="row">
 	<div class="col-12">
 
-		<h2>Autocomplete</h2>
+		<h2><spring:message code="patron.autocomplete" /></h2>
 		<hr>
 		
 		<div class="row">
@@ -48,7 +48,7 @@
 				<div class="form-groupMaterial col-sm-12">
 					<select id="comboRemoto" name="comboRemoto"></select> 
 					<label for="comboRemoto">Combo remoto</label>
-					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+					<p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
 				</div>
 			</div>
 			

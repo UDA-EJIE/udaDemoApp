@@ -144,11 +144,36 @@ public class PatronesController {
         return "accordion";
     }
 
-    //Autocomplete
-    @UDALink(name = "getAutocomplete", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete"), @UDALinkAllower(name = "getComboRemote")})
+    // Autocomplete
+    @UDALink(name = "getAutocomplete", linkTo = {
+    		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getComboRemote")
+    })
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
     public String getAutocomplete(Model model) {
         return "autocomplete";
+    }
+
+    // Autocomplete Enlazado
+    @UDALink(name = "getAutocompleteEnlazado", linkTo = {
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
+    })
+    @RequestMapping(value = "autocompleteEnlazado", method = RequestMethod.GET)
+    public String getAutocompleteEnlazado(Model model) {
+        return "autocompleteEnlazado";
+    }
+
+    // Autocomplete Enlazado Multiple
+    @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
+    		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    })
+    @RequestMapping(value = "autocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    public String getAutocompleteEnlazadoMultiple(Model model) {
+        return "autocompleteEnlazadoMultiple";
     }
 
     //Button (
@@ -555,7 +580,137 @@ public class PatronesController {
         }
         return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO
+     */
+    @UDALink(name = "getProvinciaEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Provincia>> getProvinciaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getComarcaEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoComarca", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Comarca>> getComarcaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "provincia", required = false) BigDecimal codProvincia) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(codProvincia);
+        
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(comarcaService.findAllLike(comarca, null, !c));
+    }
+    
+    @UDALink(name = "getLocalidadEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoLocalidad", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "comarca", required = false) BigDecimal codComarca) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Comarca comarca = new Comarca();
+        comarca.setCode(codComarca);
+        
+        Localidad localidad = new Localidad();
+        localidad.setComarca(comarca);
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(localidadService.findAllLike(localidad, null, !c));
+    }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO M�LTIPLE
+     */
+    @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Departamento>> getDepartamentoEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return ResourceUtils.fromListToResource(departamentoService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getProvinciaEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Provincia>> getProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
 
     /**
      * COMBO SIMPLE

@@ -342,10 +342,27 @@
                             Formularios
                         </a>
                         <div class="dropdown-menu menu-right">
-                            <spring:url value="/patrones/autocomplete" var="autocomplete" htmlEscape="true"/>
-                            <a class="dropdown-item" href="${autocomplete}">
-                                <spring:message code="autocomplete" />
-                            </a>
+                        	<div class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">
+                                    <spring:message code="autocomplete" />
+                                </a>
+                                <div class="dropdown-menu menu-right">
+                                	<spring:url value="/patrones/autocomplete" var="autocomplete" htmlEscape="true"/>
+		                            <a class="dropdown-item" href="${autocomplete}">
+		                                <spring:message code="autocomplete" />
+		                            </a>
+                                    <spring:url value="/patrones/autocompleteEnlazado" var="autocompleteEnlazado" htmlEscape="true"/>
+                                    <a class="dropdown-item"
+                                        href="${autocompleteEnlazado}">
+                                        <spring:message code="autocompleteEnlazado" />
+                                    </a>
+                                    <spring:url value="/patrones/autocompleteEnlazadoMultiple" var="autocompleteEnlazadoMultiple" htmlEscape="true"/>
+                                    <a class="dropdown-item"
+                                        href="${autocompleteEnlazadoMultiple}">
+                                        <spring:message code="autocompleteEnlazadoMultiple" />
+                                    </a>
+                                </div>
+                            </div>
 
                             <div class="dropdown-submenu">
                                 <a class="dropdown-item dropdown-toggle" href="#">

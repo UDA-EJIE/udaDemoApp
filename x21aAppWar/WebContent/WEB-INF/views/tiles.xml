@@ -197,9 +197,23 @@
 
 	<definition extends="template" name="autocomplete">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/autocomplete.jsp" />
+			value="/WEB-INF/views/patrones/autocomplete/autocomplete.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/autocomplete-includes.jsp" />
+			value="/WEB-INF/views/patrones/autocomplete/includes/autocomplete-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="autocompleteEnlazado">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/autocomplete/autocompleteEnlazado.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/autocomplete/includes/autocompleteEnlazado-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="autocompleteEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/autocomplete/autocompleteEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/autocomplete/includes/autocompleteEnlazadoMultiple-includes.jsp" />
 	</definition>
 
 	<definition extends="template" name="date">
