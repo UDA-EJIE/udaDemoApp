@@ -72,6 +72,98 @@ jQuery(function($) {
             contains: false,
             combobox: true
         });
+        
+        // MIXTO I (LOCAL, LOCAL y REMOTO)
+        $('#abueloMixtoI').rup_autocomplete({
+        	source: [
+                {i18nCaption: 'Ayuntamiento', value: '1'},
+                {i18nCaption: 'Diputación', value: '2'},
+                {i18nCaption: 'Policía', value: '3'},
+                {i18nCaption: 'Bomberos', value: '4'}
+            ],
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });	
+        
+        $('#padreMixtoI').rup_autocomplete({
+        	source: [
+                {i18nCaption: 'Alava', value: '1'},
+                {i18nCaption: 'Vizcaya', value: '2'},
+                {i18nCaption: 'Gipuzcoa', value: '3'}
+            ],
+            contains: false,
+            combobox: true
+        });
+        
+        $('#hijoMixtoI').rup_autocomplete({
+        	parent: ['abueloMixtoI', 'padreMixtoI'],
+        	source : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });
+        
+        // MIXTO II (REMOTO, REMOTO y LOCAL)
+        $('#abueloMixtoII').rup_autocomplete({
+        	source : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });	
+        
+        $('#padreMixtoII').rup_autocomplete({
+        	source : 'autocomplete/remoteEnlazadoMultipleProvincia',
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });
+        
+        $('#hijoMixtoII').rup_autocomplete({
+        	parent: ['abueloMixtoII', 'padreMixtoII'],
+        	source: {
+                '1##1'	:['Ayuntamiento de Álava'],
+                '1##2'	:['Ayuntamiento de Vizcaya'],
+                '1##3'	:['Ayuntamiento de Gipúzcoa'],
+                '2##1'	:['Diputación de Álava'],
+                '2##2'	:['Diputación de Vizcaya'],
+                '2##3'	:['Diputación de Gipúzcoa'],
+                '3##1'	:['Policía de Álava'],
+                '3##2'	:['Policía de Vizcaya'],
+                '3##3'	:['Policía de Gipúzcoa'],
+                '4##1'	:['Bomberos de Álava'],
+                '4##2'	:['Bomberos de Vizcaya'],
+                '4##3'	:['Bomberos de Gipúzcoa']
+            },
+            contains: false,
+            combobox: true
+        });
+        
+        // MIXTO III (REMOTO, LOCAL y REMOTO)
+        $('#abueloMixtoIII').rup_autocomplete({
+        	source : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });	
+        
+        $('#padreMixtoIII').rup_autocomplete({
+        	source: [
+                {i18nCaption: 'Alava', value: '1'},
+                {i18nCaption: 'Vizcaya', value: '2'},
+                {i18nCaption: 'Gipuzcoa', value: '3'}
+            ],
+            contains: false,
+            combobox: true
+        });
+        
+        $('#hijoMixtoIII').rup_autocomplete({
+        	parent: ['abueloMixtoIII', 'padreMixtoIII'],
+        	source : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+            contains: false,
+            combobox: true
+        });
 
         $('.contenedor').addClass('show');
     });

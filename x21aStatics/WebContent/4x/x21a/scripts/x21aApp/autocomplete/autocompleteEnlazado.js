@@ -149,34 +149,22 @@ jQuery(function($) {
         	parent: ['abueloMixto'],
         	source: {
                 '1': [{
-                    i18nCaption: 'a1',
-                    value: 'a1_value'
-                }, {
-                    i18nCaption: 'a2',
-                    value: 'a2_value'
-                }, {
-                    i18nCaption: 'a3',
-                    value: 'a3_value'
+                    i18nCaption: 'Las Arenas',
+                    value: '5'
                 }],
                 '2': [{
-                    i18nCaption: 'b1',
-                    value: 'b1_value'
+                    i18nCaption: 'Getxo',
+                    value: '6'
                 }, {
-                    i18nCaption: 'b2',
-                    value: 'b2_value'
-                }, {
-                    i18nCaption: 'b3',
-                    value: 'b3_value'
+                    i18nCaption: 'Portugalete',
+                    value: '8'
                 }],
                 '3': [{
-                    i18nCaption: 'g1',
-                    value: 'g1_value'
+                    i18nCaption: 'Yurre',
+                    value: '10'
                 }, {
-                    i18nCaption: 'g2',
-                    value: 'g2_value'
-                }, {
-                    i18nCaption: 'g3',
-                    value: 'g3_value'
+                    i18nCaption: 'Bilbao',
+                    value: '112'
                 }]
             },
             contains: false,

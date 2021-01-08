@@ -20,7 +20,7 @@
 	<h2><spring:message code="patron.autocompleteEnlazadoMultiple" /></h2>
 	<hr>
 	<div class="form-row">
-		<fieldset id="local" class="col-md col-12 px-3">
+		<fieldset id="local" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
 				<input id="abueloLocal" /> 
@@ -36,7 +36,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset id="remote" class="col-md col-12 px-3 mx-md-5 my-md-0 my-4">
+		<fieldset id="remote" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Remoto</legend>
 			<div class="form-groupMaterial">
 				<input id="abueloRemoto" name="departamento" /> 
@@ -47,24 +47,56 @@
 				<label for="padreRemoto">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoRemoto" /> 
+				<input id="hijoRemoto" name="departamentoProvincia" /> 
 				<label for="hijoRemoto">Hijo</label>
 			</div>
 		</fieldset>
 		
-		<fieldset id="mixto" class="col-md col-12 px-3">
-			<legend>Mixto I</legend>
+		<fieldset id="mixtoI" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+			<legend>Mixto I (LOCAL, LOCAL y REMOTO)</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloMixto" name="departamento" /> 
-				<label for="abueloMixto">Abuelo</label>
+				<input id="abueloMixtoI" name="departamento" /> 
+				<label for="abueloMixtoI">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreMixto" name="provincia" /> 
-				<label for="padreMixto">Padre</label>
+				<input id="padreMixtoI" name="provincia" /> 
+				<label for="padreMixtoI">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoMixto" /> 
-				<label for="hijoMixto">Hijo</label>
+				<input id="hijoMixtoI" name="departamentoProvincia" /> 
+				<label for="hijoMixtoI">Hijo</label>
+			</div>
+		</fieldset>
+		
+		<fieldset id="mixtoII" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+			<legend>Mixto II (REMOTO, REMOTO y LOCAL)</legend>
+			<div class="form-groupMaterial">
+				<input id="abueloMixtoII" name="departamento" /> 
+				<label for="abueloMixtoII">Abuelo</label>
+			</div>
+			<div class="form-groupMaterial">
+				<input id="padreMixtoII" name="provincia" /> 
+				<label for="padreMixtoII">Padre</label>
+			</div>
+			<div class="form-groupMaterial">
+				<input id="hijoMixtoII" name="departamentoProvincia" /> 
+				<label for="hijoMixtoII">Hijo</label>
+			</div>
+		</fieldset>
+		
+		<fieldset id="mixtoIII" class="col-md col-12 px-3 my-md-0 my-2">
+			<legend>Mixto III (REMOTO, LOCAL y REMOTO)</legend>
+			<div class="form-groupMaterial">
+				<input id="abueloMixtoIII" name="departamento" /> 
+				<label for="abueloMixtoIII">Abuelo</label>
+			</div>
+			<div class="form-groupMaterial">
+				<input id="padreMixtoIII" name="provincia" /> 
+				<label for="padreMixtoIII">Padre</label>
+			</div>
+			<div class="form-groupMaterial">
+				<input id="hijoMixtoIII" name="departamentoProvincia" /> 
+				<label for="hijoMixtoIII">Hijo</label>
 			</div>
 		</fieldset>
 	</div>
