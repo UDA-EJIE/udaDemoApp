@@ -34,6 +34,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -606,7 +607,7 @@ public class PatronesController {
     List<Resource<Comarca>> getComarcaEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "provincia", required = false) BigDecimal codProvincia) {
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
@@ -630,7 +631,7 @@ public class PatronesController {
     List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "comarca", required = false) BigDecimal codComarca) {
+            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal codComarca) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
@@ -689,8 +690,8 @@ public class PatronesController {
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
