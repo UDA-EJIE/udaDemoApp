@@ -197,6 +197,13 @@ jQuery(function ($) {
                         target: 'td'
                     }
                 };*/
+            
+            plugins.filter = {
+                rules: {
+                    fechaAlta: 'date',
+                    fechaBaja: 'date'
+                }
+            }
 
             if (localStorage.plugins.indexOf('multiSelection') > -1) {
                 var multiSelect = {
@@ -455,24 +462,14 @@ jQuery(function ($) {
                $('#sinFiltro').prop('checked', true);
                plugins.filter = 'noFilter';
             }else{
-                var filter = {
-                        id: 'example_filter_form',
-                        filterToolbar: 'example_filter_toolbar',
-                        collapsableLayerId: 'example_filter_fieldset'
-                    };
-                plugins.filter = filter;
+            	plugins.filter.id = 'example_filter_form';
+            	plugins.filter.filterToolbar = 'example_filter_toolbar';
+            	plugins.filter.collapsableLayerId = 'example_filter_fieldset';
                 $('#sinFiltro').prop('checked', false);
             }
 
             //Col model es obligatorio,se mete como generico
             plugins.colModel = tableColModels;
-
-            plugins.filter = {
-                rules: {
-                    fechaAlta: 'date',
-                    fechaBaja: 'date'
-                }
-            }
 
             localStorage.clear();
             return plugins;
