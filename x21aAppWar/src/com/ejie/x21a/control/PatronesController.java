@@ -737,17 +737,21 @@ public class PatronesController {
         return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
     
-    @UDALink(name = "getRemoteComboGrupos", linkTo = { @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @UDALink(name = "getRemoteComboGrupos")
     @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<HashMap<String, List<?>>>> getRemoteComboGrupos() {
-        return this.getRemoteComboGruposEnlazado(null);
+        return this.setRemoteComboGruposEnlazado(null);
     }
     
     @UDALink(name = "getRemoteComboGruposEnlazado")
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    	return this.setRemoteComboGruposEnlazado(provincia_code);
+    }
+    
+    private List<Resource<HashMap<String, List<?>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
@@ -833,7 +837,7 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<Comarca>> getEnlazadoComarca(
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
 
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
@@ -852,7 +856,7 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<Localidad>> getEnlazadoLocalidad(
-            @RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
+            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal comarca_code) {
 
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
