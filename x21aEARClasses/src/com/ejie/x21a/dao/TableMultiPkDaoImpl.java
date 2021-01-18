@@ -157,7 +157,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA,IDB" ));
+    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "ida", "idb"));
     	
     	
     	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
@@ -291,7 +291,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");
 
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "IDA,IDB" );
+		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "ida", "idb");
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -332,7 +332,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
 
 		// SQL
-		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "IDA,IDB");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "ida", "idb");
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -344,7 +344,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
      */
 	@Override
 	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", "ida", "idb");
 		
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
 		List<String> params = new ArrayList<String>();
@@ -530,7 +530,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.query(query.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, "IDA,IDB"), params.toArray());
+		return this.jdbcTemplate.query(query.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, "ida", "idb"), params.toArray());
 	}
 
 	/*
