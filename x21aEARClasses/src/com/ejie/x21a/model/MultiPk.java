@@ -184,6 +184,7 @@ public class MultiPk implements java.io.Serializable, SecureIdentifiable<String>
      */
 	@Override
 	public String getId() {
+		// Si cambias la constante PK_TOKEN, es posible que en los logs comience a mostrarse el siguiente aviso: La lista de parámetros recibida no es la misma que la aportada.
 		return (this.ida.toString() + Constants.PK_TOKEN + this.idb.toString()).replaceAll(" ", "_space_");
 	}
 
@@ -196,6 +197,7 @@ public class MultiPk implements java.io.Serializable, SecureIdentifiable<String>
 	public void setId(String id) {
 		if (id != null && !"".equals(id)) {
 			id = id.replaceAll("_space_", " ");
+			// Si cambias la constante PK_TOKEN, es posible que en los logs comience a mostrarse el siguiente aviso: La lista de parámetros recibida no es la misma que la aportada.
 			String[] parts = id.split(Constants.PK_TOKEN);
 			ida = new BigDecimal(parts[0]);
 			idb = new BigDecimal(parts[1]);
