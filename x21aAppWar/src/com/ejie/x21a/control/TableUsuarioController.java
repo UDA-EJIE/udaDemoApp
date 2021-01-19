@@ -226,7 +226,8 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class)})
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
