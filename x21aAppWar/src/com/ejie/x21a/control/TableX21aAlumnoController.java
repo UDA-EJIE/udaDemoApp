@@ -277,11 +277,13 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto TableRequestDto
 	 */	
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<X21aAlumno> getClipboardReport(
+	public @ResponseBody List<Resource<X21aAlumno>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - clipboardReport] : Copiar multiples X21aAlumnos");
-		return this.x21aAlumnoService.getDataForReports(filterX21aAlumno, tableRequestDto);
+		return ResourceUtils.fromListToResource(this.x21aAlumnoService.getDataForReports(filterX21aAlumno, tableRequestDto));
 	}
 	
 	/**
@@ -297,7 +299,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */	
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport(
+	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -325,7 +327,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */	
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(
+	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -353,7 +355,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */	
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(
+	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -381,7 +383,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */	
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(
+	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 

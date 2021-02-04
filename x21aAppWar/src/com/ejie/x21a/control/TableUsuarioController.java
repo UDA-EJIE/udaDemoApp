@@ -571,21 +571,25 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "clipboardReport")
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<Usuario> getClipboardReport(
+	public @ResponseBody List<Resource<Usuario>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
-		return this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto);
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
 	}
 	
 	@UDALink(name = "clipboardReport2")
 	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<Usuario> getClipboardReport2(
+	public @ResponseBody List<Resource<Usuario>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
-		return this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto);
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto));
 	}
 	
 	/**
@@ -603,7 +607,7 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport(
+	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
@@ -621,7 +625,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "excelReport2")
 	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport2(
+	public @ResponseBody void generateExcelReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
@@ -662,7 +666,7 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(
+	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -680,7 +684,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "pdfReport2")
 	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport2(
+	public @ResponseBody void generatePDFReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
@@ -721,7 +725,7 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(
+	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -739,7 +743,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "odsReport2")
 	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport2(
+	public @ResponseBody void generateODSReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
@@ -780,7 +784,7 @@ public class TableUsuarioController  {
 	 */
 	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(
+	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
@@ -798,7 +802,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "csvReport2")
 	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport2(
+	public @ResponseBody void generateCSVReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns2, 
