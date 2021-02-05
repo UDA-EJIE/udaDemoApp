@@ -65,8 +65,8 @@
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
-            <th data-col-prop="descEs" data-col-sidx="t1.desc_Es">descEs</th>
-            <th data-col-prop="descEu" data-col-sidx="t1.desc_Eu">descEu</th>
+            <th data-col-prop="descEs">descEs</th>
+            <th data-col-prop="descEu">descEu</th>
             <th data-col-prop="css">css</th>
             <th data-col-prop="provincia.descEs" data-col-sidx="provincia.descEs">provincia.descEs</th>
         </tr>
