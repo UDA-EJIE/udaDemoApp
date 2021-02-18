@@ -172,9 +172,16 @@
                         _cancelPopup(ctx);
                         ctx.oInit.formEdit.okCallBack = true;
                         ctx.oInit.formEdit.detailForm.rup_dialog('close');
+                        $('#' + ctx.sTableId).triggerHandler('tableMessageOk',ctx);
                     },
                     CANCELFunction: function () {
                         ctx.oInit.formEdit.okCallBack = false;
+                        $('#' + ctx.sTableId).triggerHandler('tableMessageCancel',ctx);
+                    }
+                    ,
+                    CLOSEFunction: function () {
+                        ctx.oInit.formEdit.okCallBack = false;
+                        $('#' + ctx.sTableId).triggerHandler('tableMessageClose',ctx);
                     }
                 });
 
@@ -187,7 +194,8 @@
 
         });
         ctx.oInit.formEdit.detailForm.settings = {
-            type: $.rup.dialog.DIV
+            type: ctx.oInit.formEdit.type !== undefined ? ctx.oInit.formEdit.type : $.rup.dialog.DIV,
+            width: ctx.oInit.formEdit.width !== undefined ? ctx.oInit.formEdit.width : 569
         };
 
         $(window).on('resize.dtr', DataTable.util.throttle(function () { //Se calcula el responsive
@@ -574,6 +582,7 @@
             	
             	_callSaveAjax(actionType, dt, row, idRow, false, idTableDetail, '');
             }
+            $('#' + ctx.sTableId).triggerHandler('tableButtonSave',ctx);
         });
 
 
@@ -626,6 +635,7 @@
             	
             	_callSaveAjax(actionSaveContinue, dt, row, idRow, true, idTableDetail, '');
             }
+            $('#' + ctx.sTableId).triggerHandler('tableButtonSaveContinue',ctx);
         });
 
         $('#' + ctx.sTableId).triggerHandler('tableEditFormAddEditAfterShowForm',ctx);
@@ -1475,13 +1485,14 @@
      */
     function _deleteAllSelects(dt) {
         var ctx = dt.settings()[0];
-        var idRow = 0;
-        var regex = new RegExp(ctx.oInit.multiplePkToken, 'g');
+        let idRow = 0;
+        let regex = new RegExp(ctx.oInit.multiplePkToken, 'g');
         $.rup_messages('msgConfirm', {
             message: $.rup.i18nParse($.rup.i18n.base, 'rup_table.deleteAll'),
             title: $.rup.i18nParse($.rup.i18n.base, 'rup_table.delete'),
             OKFunction: function () {
-                var row = {};
+                let row = {};
+                row.filter = window.form2object(ctx.oInit.filter.$filterContainer[0]);
                 if (ctx.multiselection.selectedIds.length > 1) {
                     row.core = {
                         'pkToken': ctx.oInit.multiplePkToken,
@@ -1784,7 +1795,7 @@
                 autoOpen: false,
                 modal: true,
                 resizable: '',
-                width: 569,
+                width: ctx.oInit.formEdit.detailForm.settings.width,
                 create: function () {
                     /* Se encarga de eliminar la clase que oculta los campos del formEdit. Esta clase esta presente
                      * en el formEdit para evitar un bug visual en el que hacia que sus campos apareciesen 
