@@ -12,6 +12,7 @@
 		<property environment="env" />
 		<artifact:dependencies settingsFile="${env.M2_HOME}/conf/settings.xml"/>
 		<artifact:mvn pom="pom.xml" mavenHome="${env.M2_HOME}" fork="true">
+			<jvmarg value="-Dmaven.multiModuleProjectDirectory=${env.M2_HOME}" />
 			<arg value="package"/>
 		</artifact:mvn>			
 	</target>
