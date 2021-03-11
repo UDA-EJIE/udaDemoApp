@@ -438,7 +438,7 @@ public class TableUsuarioController  {
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -452,7 +452,7 @@ public class TableUsuarioController  {
 	}
 
 	@SuppressWarnings("unchecked")
-	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter2")})
 	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
 	@ResponseBody()
 	public TableResourceResponseDto<Usuario2> filter2(

@@ -100,7 +100,7 @@ public class ListaController {
         return "listaNoTemplate";
     }
     
-    @UDALink(name = "filter")
+    @UDALink(name = "filter", linkTo = {@UDALinkAllower(name = "filter")})
     @PostMapping(value = "/filter")
     public @ResponseBody
     TableResourceResponseDto<Usuario> filter(

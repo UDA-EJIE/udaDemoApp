@@ -160,7 +160,7 @@ public class TableComarcaController {
 	/**
 	 * RUP_TABLE
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,

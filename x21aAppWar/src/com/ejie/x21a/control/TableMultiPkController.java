@@ -227,7 +227,7 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -236,7 +236,7 @@ public class TableMultiPkController  {
 		return this.multiPkService.filter(filterMultiPk, tableRequestDto, false);
 	}
 	
-	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter2")})
 	@RequestMapping(value = "/filter2", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter2() {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
