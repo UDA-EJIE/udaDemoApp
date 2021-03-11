@@ -76,8 +76,8 @@ jQuery(function($) {
                     'configurable' : { 'i18nCaption' : 'listaConfigurable' },
                     'doble' : { 'i18nCaption' : 'listaDoble' },
                     'subLevel':[
-                        {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/lista/configurable' },
-                        {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/lista/doble' }
+                        {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/patrones/lista/configurable' },
+                        {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/patrones/lista/doble' }
                     ]
                 },
                 'calendar' : {
