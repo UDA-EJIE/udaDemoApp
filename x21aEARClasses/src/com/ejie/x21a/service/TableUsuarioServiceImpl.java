@@ -84,7 +84,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario add(Usuario usuario) {
-		return this.jqGridUsuarioDao.add(usuario);
+		return this.tableUsuarioDao.add(usuario);
 	}
 
 	/**

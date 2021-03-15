@@ -42,8 +42,6 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
 
 	private static final long serialVersionUID = 1L;
             
-	@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
-	@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
 	private String id;
 	@NotBlank(message="validacion.required")
 	@Length(max=25, message="validacion.maxLength")

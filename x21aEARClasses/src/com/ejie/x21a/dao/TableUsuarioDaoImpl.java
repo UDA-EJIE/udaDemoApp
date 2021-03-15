@@ -79,10 +79,12 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
      * @return Usuario
      */
 	public Usuario add(Usuario usuario) {
+		// Obtenemos el identificador de la entidad mediante una secuencia
 		final String nextId = jdbcTemplate.queryForObject("SELECT USUARIO_SEQ.NEXTVAL FROM DUAL", String.class);
+		usuario.setId(nextId);
 		
     	String query = "INSERT INTO USUARIO (ID, NOMBRE, APELLIDO1, APELLIDO2, EJIE, FECHA_ALTA, FECHA_BAJA, ROL, FECHA_MODIF) VALUES (?,?,?,?,?,?,?,?,sysdate)";
-		this.jdbcTemplate.update(query, nextId, usuario.getNombre(), usuario.getApellido1(), usuario.getApellido2(), usuario.getEjie(), usuario.getFechaAlta(), usuario.getFechaBaja(), usuario.getRol());
+		this.jdbcTemplate.update(query, usuario.getId(), usuario.getNombre(), usuario.getApellido1(), usuario.getApellido2(), usuario.getEjie(), usuario.getFechaAlta(), usuario.getFechaBaja(), usuario.getRol());
 		return usuario;
 	}
 
