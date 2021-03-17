@@ -20968,41 +20968,46 @@
   border-bottom-right-radius: unset;
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):hover:enabled ~ a {
-  border-color: #212529;
-}
-
-.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ a {
-  border-color: #1472a4;
-  border-width: 2px;
-}
-
-.r01gContainer .form-groupMaterial .rup-combobox a {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a {
   width: 26.4px;
   margin-left: -4px;
   border: 1px solid #757575;
   border-left-style: hidden;
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a:focus {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a:focus {
   background-color: #1472a4;
   /* USAR CON ICONOS MATERIAL
-				i {
-					color: $white-color;
-				}*/
+					i {
+						color: $white-color;
+					}*/
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a:focus span {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a:focus span {
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #FFFFFF 50%), linear-gradient(135deg, #FFFFFF 50%, transparent 50%);
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a span {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a span {
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
   background-repeat: no-repeat;
   background-position: calc(100% - 8px) calc(0.5em), calc(100% - 3px) calc(0.5em);
   background-size: 5px 5px, 5px 5px;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):disabled + a {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):hover:enabled + a {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):focus:enabled + a {
+  border-color: #1472a4;
+  border-width: 2px;
 }
 
 .r01gContainer .form-groupMaterial .rup-combobox ~ input[ruptype="autocomplete"][type="hidden"] ~ label {
@@ -56802,41 +56807,46 @@
   border-bottom-right-radius: unset;
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):hover:enabled ~ a {
-  border-color: #212529;
-}
-
-.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):focus:enabled ~ a {
-  border-color: #1472a4;
-  border-width: 2px;
-}
-
-.r01gContainer .form-groupMaterial .rup-combobox a {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a {
   width: 26.4px;
   margin-left: -4px;
   border: 1px solid #757575;
   border-left-style: hidden;
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a:focus {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a:focus {
   background-color: #1472a4;
   /* USAR CON ICONOS MATERIAL
-				i {
-					color: $white-color;
-				}*/
+					i {
+						color: $white-color;
+					}*/
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a:focus span {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a:focus span {
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #FFFFFF 50%), linear-gradient(135deg, #FFFFFF 50%, transparent 50%);
 }
 
-.r01gContainer .form-groupMaterial .rup-combobox a span {
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]) + a span {
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
   background-repeat: no-repeat;
   background-position: calc(100% - 8px) calc(0.5em), calc(100% - 3px) calc(0.5em);
   background-size: 5px 5px, 5px 5px;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):disabled + a {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):hover:enabled + a {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial .rup-combobox input:not([type="checkbox"]):not([type="radio"]):focus:enabled + a {
+  border-color: #1472a4;
+  border-width: 2px;
 }
 
 .r01gContainer .form-groupMaterial .rup-combobox ~ input[ruptype="autocomplete"][type="hidden"] ~ label {
