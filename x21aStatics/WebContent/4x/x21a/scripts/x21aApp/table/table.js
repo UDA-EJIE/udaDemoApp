@@ -48,6 +48,16 @@ jQuery(function ($) {
 
         var tableColModels = [
         	{
+                name: 'id',
+                index: 'id',
+                editable: false,
+                hidden: true,
+                formoptions: {
+                    rowpos: 1,
+                    colpos: 1
+                }
+            },
+        	{
                 name: 'nombre',
                 index: 'nombre',
                 editable: true,
@@ -470,6 +480,11 @@ jQuery(function ($) {
 
             //Col model es obligatorio,se mete como generico
             plugins.colModel = tableColModels;
+            
+            plugins.columnDefs = [{
+        	   'targets': [plugins.multiSelect !== undefined ? 1 : 0],
+        	   'visible': false
+        	}];
 
             localStorage.clear();
             return plugins;

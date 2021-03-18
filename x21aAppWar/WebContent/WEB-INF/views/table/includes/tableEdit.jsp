@@ -32,6 +32,7 @@
 			<div id ="example_detail_feedback"></div>	
 			<div class="form-row">
 				<!-- Campos del formulario de detalle -->
+				<form:input path="id" id="id_detail_table" type="hidden" />
 				<div class="form-groupMaterial col-sm">
 			    	<form:input path="nombre" id="nombre_detail_table" />
 			    	<label for="nombre_detail_table"><spring:message code="nombre" /></label>
