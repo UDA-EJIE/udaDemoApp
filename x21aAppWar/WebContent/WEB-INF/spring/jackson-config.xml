@@ -19,11 +19,6 @@
     <bean id="udaMappingJackson2HttpMessageConverter" class="com.ejie.x38.serialization.UdaMappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes" ref="jacksonSupportedMediaTypes" />
         <property name="udaModule" ref="udaModule" />
-        <property name="extraModules" >
-            <list>
-                <ref bean="secureSerializerModule" />
-            </list>
-        </property>
     </bean>
     
     <!-- Modulo de UDA para Jackson -->
