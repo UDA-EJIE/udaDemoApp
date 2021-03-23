@@ -109,7 +109,17 @@ public class TableDynamicColumnsController  {
         return new Resource<Usuario>(usuario);
 	}
 	
-	@UDALink(name = "getFiltroSimple")
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "multifilterAdd"),
+			@UDALinkAllower(name = "multifilterDelete"),
+			@UDALinkAllower(name = "multifilterDefault"),
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		return "tableDynamicColumns";

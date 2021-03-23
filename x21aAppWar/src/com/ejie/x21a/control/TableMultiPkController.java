@@ -77,12 +77,13 @@ public class TableMultiPkController  {
         return new Resource<MultiPk>(multiPk);
 	}
 	
-	@UDALink(name = "getFiltroSimple", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search")})
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -90,12 +91,13 @@ public class TableMultiPkController  {
 		return "tableMultipk";
 	}
 	
-	@UDALink(name = "getFiltroSimpleDoble", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+	@UDALink(name = "getFiltroSimpleDoble", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search")})
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(method = RequestMethod.GET,value = "/double")
 	public String getFiltroSimpleDoble (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -203,12 +205,13 @@ public class TableMultiPkController  {
 	 * @param model Model
 	 * @return String
 	 */
-	@UDALink(name = "getFormEdit", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+	@UDALink(name = "getFormEdit", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search")})
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		TableMultiPkController.logger.info("[GET - View] : multipk");

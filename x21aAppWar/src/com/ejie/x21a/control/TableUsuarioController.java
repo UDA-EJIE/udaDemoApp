@@ -150,16 +150,17 @@ public class TableUsuarioController  {
 		return new Resource<Usuario2>(aux);
 	}
 	
-	@UDALink(name = "getFiltroSimple", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		Usuario usuario = new Usuario();
@@ -184,16 +185,17 @@ public class TableUsuarioController  {
 		return "table";
 	}
 	
-	@UDALink(name = "getTableDouble", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
+	@UDALink(name = "getTableDouble", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll")})
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
@@ -217,17 +219,18 @@ public class TableUsuarioController  {
 		return "tableDouble";
 	}
 	
-	@UDALink(name = "getSimpleMasterDetail", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
+	@UDALink(name = "getSimpleMasterDetail", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class)})
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
@@ -238,17 +241,18 @@ public class TableUsuarioController  {
 		return "tableMasterDetail";
 	}
 	
-	@UDALink(name = "getMasterDialog", linkTo = {@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search"),
+	@UDALink(name = "getMasterDialog", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class)})
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
@@ -257,13 +261,18 @@ public class TableUsuarioController  {
 		return "tableDialogDetail";
 	}
 	
-	@UDALink(name = "getTableDialog", linkTo = {@UDALinkAllower(name = "getTableDialogAjax"),
+	@UDALink(name = "getTableDialog", linkTo = {
+			@UDALinkAllower(name = "getTableDialogAjax"),
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "multifilterAdd"),
+			@UDALinkAllower(name = "multifilterDelete"),
+			@UDALinkAllower(name = "multifilterDefault"),
+			@UDALinkAllower(name = "multifilterGetAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "search")})
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
@@ -271,13 +280,17 @@ public class TableUsuarioController  {
 		return "tableDialog";
 	}
 	
-	@UDALink(name = "getTableDialogAjax", linkTo = {@UDALinkAllower(name = "clipboardReport"),
+	@UDALink(name = "getTableDialogAjax", linkTo = {
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "multifilterAdd"),
+			@UDALinkAllower(name = "multifilterDelete"),
+			@UDALinkAllower(name = "multifilterDefault"),
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "filter"),
-			@UDALinkAllower(name = "search")})
+			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
