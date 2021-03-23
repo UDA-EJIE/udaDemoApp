@@ -580,7 +580,8 @@
                 _callFeedbackOk(ctx, divErrorFeedback, $.rup.i18nParse($.rup.i18n.base, 'rup_global.charError'), 'error');
                 $('#' + ctx.sTableId).triggerHandler('tableEditFormErrorCallSaveAjaxNotRow',ctx);
             } else {
-            	_callSaveAjax(actionType, dt, row, idRow, false, idTableDetail, '', false);
+            	let url = actionType == 'POST' ? '/add' : '/edit';
+            	_callSaveAjax(actionType, dt, row, idRow, false, idTableDetail, url, false);
             }
             $('#' + ctx.sTableId).triggerHandler('tableButtonSave',ctx);
         });
@@ -632,8 +633,8 @@
                 _callFeedbackOk(ctx, divErrorFeedback, $.rup.i18nParse($.rup.i18n.base, 'rup_global.charError'), 'error');
                 $('#' + ctx.sTableId).triggerHandler('tableEditFormErrorCallSaveAjaxNotRow',ctx);
             } else {
-            	
-            	_callSaveAjax(actionSaveContinue, dt, row, idRow, true, idTableDetail, '', false);
+            	let url = actionType == 'POST' ? '/add' : '/edit';
+            	_callSaveAjax(actionSaveContinue, dt, row, idRow, true, idTableDetail, url, false);
             }
             $('#' + ctx.sTableId).triggerHandler('tableButtonSaveContinue',ctx);
         });
@@ -864,17 +865,27 @@
                 })
             };
 
-            if (url !== '/deleteAll' && actionType !== 'DELETE') {
-                ctx.oInit.formEdit.idForm.rup_form('ajaxNotSubmit', ajaxOptions);
+            // Se cambia el data
+            if (ajaxOptions.data == '') {
+                delete ajaxOptions.data;
             } else {
-                //Se cambia el data
-                if (ajaxOptions.data == '') {
-                    delete ajaxOptions.data;
-                } else {
-                    ajaxOptions.data = JSON.stringify(ajaxOptions.data);
+            	// Elimina los campos _label generados por los autocompletes que no forman parte de la entidad
+                $.fn.deleteAutocompleteLabelFromObject(ajaxOptions.data);
+                
+                // Elimina los campos autogenerados por los multicombos que no forman parte de la entidad
+                $.fn.deleteMulticomboLabelFromObject(ajaxOptions.data, ctx.oInit.formEdit.detailForm);
+                
+            	// Obtener el valor del parámetro HDIV_STATE (en caso de no estar disponible se devolverá vacío) siempre y cuando no se trate de un deleteAll porque en ese caso ya lo contiene el filtro
+                if (url.indexOf('deleteAll') === -1) {
+                	var hdivStateParamValue = $.fn.getHDIV_STATE();
+                    if (hdivStateParamValue !== '') {
+                    	ajaxOptions.data._HDIV_STATE_ = hdivStateParamValue;
+                    }
                 }
-                $.rup_ajax(ajaxOptions);
+                
+                ajaxOptions.data = JSON.stringify(ajaxOptions.data);
             }
+            $.rup_ajax(ajaxOptions);
         }
         
         if (ctx.oInit.formEdit.detailForm.settings.saveDialog && !isDeleting) {
@@ -1549,7 +1560,7 @@
     }
 
     /**
-     * Metodo que serializa los datos del formulario.
+     * Método que serializa los datos del formulario.
      *
      * @name _editFormSerialize
      * @function
@@ -1569,12 +1580,13 @@
         $.each(idFormArray, function (key, obj) {
         	if (ultimo != obj.name) {
         		count = 0;
-    		}	
-        	let ruptype = idForm.find('[name="' + obj.name + '"]').attr('ruptype');
+    		}
+        	let element = idForm.find('[name="' + obj.name + '"]');
+        	let ruptype = element.attr('ruptype');
         	if (ruptype === undefined) {
-        		ruptype = idForm.find('[name="' + obj.name + '"]').data('ruptype');
+        		ruptype = element.data('ruptype');
         	}
-        	if (obj.type !== 'hidden' || ruptype === 'autocomplete' || ruptype === 'custom') {
+        	if ((obj.type === 'hidden' && element.attr('id') !== undefined) || obj.type !== 'hidden' || ruptype === 'autocomplete' || ruptype === 'custom') {
         		let valor = '';
         		if ($(idForm).find('[name="' + obj.name + '"]').prop('multiple')) {
         			valor = '[' + count++ + ']';

@@ -627,7 +627,9 @@
          */
         _ajaxRequestData(data, ctx) {
             //Para añadir un id de busqueda distinto al value, como por ejemplo la fecha.
-            data.columns[data.order[0].column].colSidx = ctx.aoColumns[data.order[0].column].colSidx;
+        	if (ctx.oInit.ordering) {
+        		data.columns[data.order[0].column].colSidx = ctx.aoColumns[data.order[0].column].colSidx;
+        	}
             //El data viene del padre:Jquery.table y como no tiene el prefijo de busqueda se añade.
             if (ctx.oInit.filter.$filterContainer) {
                 data.filter = window.form2object(ctx.oInit.filter.$filterContainer[0]);
@@ -654,7 +656,7 @@
             // Elimina los campos _label generados en los autocompletes del filtro
             $.fn.deleteAutocompleteLabelFromObject(data.filter);
             
-            // Elimina del filtro los campos autogenerados por lo multicombos que no forman parte de la entidad
+            // Elimina del filtro los campos autogenerados por los multicombos que no forman parte de la entidad
             $.fn.deleteMulticomboLabelFromObject(data.filter, ctx.oInit.filter.$filterContainer);
 
             var tableRequest = new TableRequest(data);
@@ -1639,6 +1641,7 @@
         order: [
             [1, 'asc']
         ],
+        ordering: true,
         showMultiSelectedZero: true,
         filterMessage: true,
         noEdit: false

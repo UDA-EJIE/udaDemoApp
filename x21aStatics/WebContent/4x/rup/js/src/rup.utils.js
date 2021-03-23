@@ -295,17 +295,44 @@
 				}
 			}
 
-			var nvp = queryString.split('&'),
-				data = {},
+			var nvp = [],
+				nvpBruto = queryString.split('&'), data = {},
 				pair, name, value, path, first;
+			
+			//Se revisa la correcta gestion de los campos
+			for (var i = 0; i < nvpBruto.length; i++) {
+				pair = nvpBruto[i].split('=');
+				
+				if(pair.length >= 2){
+					nvp.push(nvpBruto[i]); 
+				} else if(pair.length == 1){
+					nvp[i-1] = nvp[i-1] + '&' + nvpBruto[i]; 
+				}
+			}
 
 			for (var i = 0; i < nvp.length; i++) {
 				pair = nvp[i].split('=');
+				
+				if(pair.length > 2){
+					var pairAux = '';
+					for (var j = 1; j < pair.length; j++) {
+						if(j = 1){
+							pairAux = pair[j];
+							
+						} else {
+							pairAux = pairAux + "=" + pair[j] 
+							
+						}
+					}
+					
+					pair[pair.length -1] = pairAux;
+				}
+				
 				name = decodeURIComponent(pair[0]);
-				if(pair[1].includes("%")) {
+				if(pair[pair.length -1].includes("%")) {
 					return false;
 				}
-				value = decodeURIComponent(pair[1]);
+				value = decodeURIComponent(pair[pair.length -1]);
 
                 path = name.match(/(^[^[]+)(\[.*\]$)?/);
 				first = path[1];
@@ -979,10 +1006,12 @@
 			}).get();
 	};
 	
-	$.fn.deleteMulticomboLabelFromObject = function (obj, $filterContainer) {
-		if (obj !== undefined && obj !== null && $filterContainer !== undefined && $filterContainer !== null) {
+	$.fn.deleteMulticomboLabelFromObject = function (obj, container) {
+		if (obj !== undefined && obj !== null && container !== undefined && container !== null) {
 			Object.keys(obj).filter(function (keys) {
-				let element = $filterContainer.find("[name$=" + keys + "]");
+				// Si container es un fila de la tabla (tr) significa que la función ha sido llamada desde rup.table.inlineEdit y es necesario añadir el sufijo _inline
+				let suffix = container.is('tr') ? '_inline' : '';
+				let element = container.find("[name$=" + keys + suffix + "]");
 	        	if (element.length > 1 && $(element[0]).prop('multiple')) {
 	        		delete obj["_" + keys];
 				}
@@ -1012,14 +1041,19 @@
 		return /(.+)-([0-9a-fA-F]{3})-(.{8}-([0-9a-fA-FU]{1,33})-\d+-.+)/.test(paramToCheck);
 	};
 	
-	$.fn.hasHDIV_STATE = function (hasMoreParams) {
+	$.fn.getHDIV_STATE = function (hasMoreParams) {
 		// Si el parámetro HDIV_STATE está disponible se obtiene y se devuelve, en caso contrario, se devuelve vacío
 		let searchParams = new URLSearchParams(window.location.search);
 		let hdivStateParam = searchParams.get('_HDIV_STATE_');
-		let prefix = hasMoreParams ? '&' : '?';
+		let prefix = '';
+		
+		// Si se ha especificado un valor booleano en el parámetro recibido es porque se trata de una petición GET
+		if (hasMoreParams !== undefined && hasMoreParams !== null && typeof hasMoreParams === "boolean") {
+			prefix = hasMoreParams ? '&' : '?' + '_HDIV_STATE_=';
+		}
 	    
 	    if (hdivStateParam != undefined && hdivStateParam != null && hdivStateParam != '') {
-	    	hdivStateParam = prefix + '_HDIV_STATE_=' + hdivStateParam;
+	    	hdivStateParam = prefix + hdivStateParam;
 	    } else {
 	    	hdivStateParam = '';
 	    }
