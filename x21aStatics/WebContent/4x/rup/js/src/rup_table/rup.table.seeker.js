@@ -162,7 +162,7 @@
                 }
 
                 // Comprobamos si queremos deshabilitar la búsqueda de la columna
-                if (ctx.oInit.seeker.colModel != undefined && ctx.oInit.seeker.colModel[colModelIndex].hidden) {
+                if (ctx.oInit.colModel != undefined && ctx.oInit.colModel[colModelIndex].hidden) {
                     $(this).empty();
                 } else {
                     var nombre = $('#' + idTabla + ' thead th:nth-child(' + position + ')').attr('data-col-prop');
@@ -542,18 +542,21 @@
 	
 	                var colModelName = cellColModel.name;
 	                var $elem = $('[name=\'' + colModelName + '\']', ctx.seeker.searchForm);
-	                // Se añade el title de los elementos de acuerdo al colname
-	                $elem.attr({
-	                    'title': $('#' + cellColModel.name + '_seeker').attr('placeholder'),
-	                    'class': 'editable customelement form-control-customer'
-	                }).removeAttr('readOnly');
-	
-	                // En caso de tratarse de un componente rup, se inicializa de acuerdo a la configuracón especificada en el colModel
-	                if (searchRupType !== undefined) {
-	                    searchEditOptions = cellColModel.searchoptions || cellColModel.editoptions;
-	
-	                    // Invocación al componente RUP
-	                    $elem['rup_' + searchRupType](searchEditOptions);
+	                
+	                if($elem.length == 1){
+	                	// Se añade el title de los elementos de acuerdo al colname
+	                	$elem.attr({
+	                		'title': $('#' + cellColModel.name + '_seeker').attr('placeholder'),
+	                		'class': 'editable customelement form-control-customer'
+	                	}).removeAttr('readOnly');
+	                	
+	                	// En caso de tratarse de un componente rup, se inicializa de acuerdo a la configuracón especificada en el colModel
+	                	if (searchRupType !== undefined) {
+	                		searchEditOptions = cellColModel.searchoptions || cellColModel.editoptions;
+	                		
+	                		// Invocación al componente RUP
+	                		$elem['rup_' + searchRupType](searchEditOptions);
+	                	}
 	                }
             	}
             });
