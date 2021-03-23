@@ -331,6 +331,7 @@ public class TableMultiPkController  {
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -340,7 +341,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -360,6 +361,7 @@ public class TableMultiPkController  {
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -369,7 +371,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -389,6 +391,7 @@ public class TableMultiPkController  {
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -398,7 +401,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -418,6 +421,7 @@ public class TableMultiPkController  {
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -427,6 +431,6 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }	

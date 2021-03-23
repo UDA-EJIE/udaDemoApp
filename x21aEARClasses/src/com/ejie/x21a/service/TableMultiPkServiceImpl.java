@@ -227,6 +227,7 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -234,7 +235,7 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(MultiPk filterMultiPk, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+	public void generateReport(MultiPk filterMultiPk, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
 		// Accede a la DB para recuperar datos
 		List<MultiPk> filteredData = getDataForReports(filterMultiPk, tableRequestDto);
 		String extension = null;
@@ -267,6 +268,11 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	        }
 	        columns = tempColumns.toArray(new String[0]);
         }
+        
+        // Si no se definen los nombres de las columnas se dejan las definidas por defecto
+        if (columnsName == null) {
+        	columnsName = columns;
+        }
 		
 		String servletPath = request.getServletPath();
 		String reportType = null;
@@ -278,19 +284,19 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 		
 		if (reportType.equals("xlsReport")) {
 			extension = ".xls";
-			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("xlsxReport")) {
 			extension = ".xlsx";
-			generateExcelReport(filteredData, columns, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("pdfReport")) {
 			extension = ".pdf";
-			generatePDFReport(filteredData, columns, fileName, response);
+			generatePDFReport(filteredData, columns, columnsName, fileName, response);
 		} else if (reportType.equals("odsReport")) {
 			extension = ".ods";
-			generateODSReport(filteredData, columns, fileName, sheetTitle, response);
+			generateODSReport(filteredData, columns, columnsName, fileName, sheetTitle, response);
 		} else if (reportType.equals("csvReport")) {
 			extension = ".csv";
-			generateCSVReport(filteredData, columns, fileName, sheetTitle, language, response);
+			generateCSVReport(filteredData, columns, columnsName, fileName, sheetTitle, language, response);
 		}
 	}
 
@@ -317,13 +323,14 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filteredData List<MultiPk>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param extension String
 	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generateExcelReport(List<MultiPk> filteredData, String[] columns, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generateExcelReport(List<MultiPk> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
 			// Creacion del Excel
 			Workbook workbook = null;
@@ -356,10 +363,10 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	        // Se crea la fila para insertar los titulos de las columnas
 	        Row row = sheet.createRow(rowNumber++);
 	        
-	        // Aï¿½adir titulos
-	        for(int i = 0; i < columns.length; i++) {
+	        // Añadir titulos
+	        for(int i = 0; i < columnsName.length; i++) {
 	        	Cell cell = row.createCell(i);
-	            cell.setCellValue(columns[i]);
+	            cell.setCellValue(columnsName[i]);
 	            cell.setCellStyle(headerCellStyle);
 	        }
 	        
@@ -400,10 +407,11 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filteredData List<MultiPk>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param response HttpServletResponse
 	 */
-	private void generatePDFReport(List<MultiPk> filteredData, String[] columns, String fileName, HttpServletResponse response) {
+	private void generatePDFReport(List<MultiPk> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
 		try {
 			// Se aï¿½ade el fichero excel al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
@@ -445,11 +453,12 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filteredData List<MultiPk>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param response HttpServletResponse
 	 */
-	private void generateODSReport(List<MultiPk> filteredData, String[] columns, String fileName, String sheetTitle, HttpServletResponse response) {
+	private void generateODSReport(List<MultiPk> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
 		try {
 			// Se aï¿½ade el fichero ods al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
@@ -497,12 +506,13 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filteredData List<MultiPk>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param language String
 	 * @param response HttpServletResponse
 	 */
-	private void generateCSVReport(List<MultiPk> filteredData, String[] columns, String fileName, String sheetTitle, String language, HttpServletResponse response) {
+	private void generateCSVReport(List<MultiPk> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
 		try {
 		    // Se aï¿½ade el fichero excel al response y se aï¿½ade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");

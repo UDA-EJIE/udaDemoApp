@@ -337,7 +337,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**

@@ -151,6 +151,7 @@ public interface TableUsuarioService {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -158,7 +159,6 @@ public interface TableUsuarioService {
 	 * @param locale Locale
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 * @param columnsName 
 	 */
-	public void generateReport(Usuario filterUsuario, String[] columns,String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
+	public void generateReport(Usuario filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
 }
