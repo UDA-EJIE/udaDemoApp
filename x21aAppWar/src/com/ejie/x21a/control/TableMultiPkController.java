@@ -257,7 +257,7 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado de la busqueda realizada por el
 	 *            componente RUP_TABLE. 
 	 */
-	@UDALink(name = "search")
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<MultiPk>> search(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,

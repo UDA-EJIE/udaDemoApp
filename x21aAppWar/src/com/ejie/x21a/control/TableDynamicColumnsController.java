@@ -249,7 +249,7 @@ public class TableDynamicColumnsController  {
 	 *         que se ajustan a los parÃ¡metros de bÃºsqueda.
 	 * 
 	 */
-	@UDALink(name = "search")
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,

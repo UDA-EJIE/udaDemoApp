@@ -202,7 +202,7 @@ public class TableComarcaController {
 		return ResourceUtils.fromListToResource(filterService.getAllFilters(filterSelector, filterComarca));
 	}
 	
-	@UDALink(name = "search")	
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Comarca>> search(
 			@RequestJsonBody(param="filter") final Comarca comarcaFilter,
