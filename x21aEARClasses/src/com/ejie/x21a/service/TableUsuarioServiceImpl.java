@@ -162,12 +162,13 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-	 * @param usuarioList List
-	 * @return
-	 */
+	 * @param Usuario filterUsuario
+	 * @param TableRequestDto tableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.tableUsuarioDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

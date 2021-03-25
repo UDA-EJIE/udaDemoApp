@@ -107,9 +107,11 @@ public interface TableUsuarioService {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
+	 * @param Usuario filterUsuario
 	 * @param TableRequestDto tableRequestDto
+	 * @param startsWith Boolean	 
 	 */	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Usuario table via inverse select.

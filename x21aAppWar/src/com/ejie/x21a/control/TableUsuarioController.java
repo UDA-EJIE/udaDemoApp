@@ -556,6 +556,8 @@ public class TableUsuarioController  {
 	/**
 	 * Borrado mÃºltiple de registros
 	 * 
+	 * @param filterUsuario Usuario
+	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
 	 * @param TableRequestDto
 	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
 	 *            RUP_TABLE a aplicar en la bÃºsqueda.
@@ -564,9 +566,11 @@ public class TableUsuarioController  {
 	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
-	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
+	public @ResponseBody List<String> removeMultiple(
+			@RequestJsonBody(param="filter") Usuario filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.tableUsuarioService.removeMultiple(tableRequestDto);
+	    this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return tableRequestDto.getMultiselection().getSelectedIds();

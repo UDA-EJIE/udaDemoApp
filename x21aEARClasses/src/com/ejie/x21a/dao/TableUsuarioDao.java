@@ -97,8 +97,14 @@ public interface TableUsuarioDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
-	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param Usuario filterUsuario
+	 * @param TableRequestDto tableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
