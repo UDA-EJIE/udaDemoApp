@@ -313,17 +313,19 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-	 * @param Usuario filterUsuario
-	 * @param TableRequestDto tableRequestDto
+	 * @param filterUsuario Usuario
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean	 
 	 */	
 	@Override
 	public void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
-		//Where clause & Params
+		// Like clause and params
     	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterUsuario, startsWith);
     	
+    	// Delete query
 		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Usuario.class, "USUARIO", "t1", new String[]{"ID"});
 		
+		// Params list. Includes needed params for like and IN/NOT IN clauses
 		@SuppressWarnings("unchecked")
 		List<Object> params = (List<Object>) mapaWhereLike.get("params");
 		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
