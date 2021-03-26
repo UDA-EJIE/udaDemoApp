@@ -47,6 +47,14 @@ public interface TableUsuarioService {
 	 * @return Usuario
 	 */
     Usuario add(Usuario usuario);
+    
+    /**
+	 * Inserts a single row in the Usuario2 table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+    Usuario2 add(Usuario2 usuario);
 
 	/**
 	 * Updates a single row in the Usuario table.

@@ -86,6 +86,17 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	public Usuario add(Usuario usuario) {
 		return this.tableUsuarioDao.add(usuario);
 	}
+	
+	/**
+	 * Inserts a single row in the Usuario2 table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public Usuario2 add(Usuario2 usuario) {
+		return this.tableUsuarioDao.add(usuario);
+	}
 
 	/**
 	 * Updates a single row in the Usuario table.
