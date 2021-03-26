@@ -192,10 +192,15 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll"),
 			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "clipboardReport2"),
 			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "excelReport2"),
 			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "pdfReport2"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "csvReport2")})
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
@@ -338,7 +343,7 @@ public class TableUsuarioController  {
 	 *            Bean que contiene la informaciÃ³n a modificar.
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
-	@UDALink(name = "edit")
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
@@ -349,7 +354,7 @@ public class TableUsuarioController  {
         return new Resource<Usuario>(usuarioAux);
     }
 	
-	@UDALink(name = "edit2")
+	@UDALink(name = "edit2", linkTo = { @UDALinkAllower(name = "filter2")})
 	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
     		@RequestBody Usuario2 usuario) {
@@ -388,8 +393,8 @@ public class TableUsuarioController  {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
-	@RequestMapping(method = RequestMethod.POST)
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -399,17 +404,17 @@ public class TableUsuarioController  {
         return new Resource<Usuario>(usuarioAux);
 	}
 	
-	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get2" )})
-	@RequestMapping(value = "/{bis}", method = RequestMethod.POST)
-	public @ResponseBody Resource<Usuario> add2(
+	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get2" ), @UDALinkAllower(name = "filter2")})
+	@RequestMapping(value = "/{bis}/add", method = RequestMethod.POST)
+	public @ResponseBody Resource<Usuario2> add2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
-			@Validated @RequestBody Usuario usuario) {		
+			@Validated @RequestBody Usuario2 usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
-        return new Resource<Usuario>(usuarioAux);
+        return new Resource<Usuario2>(usuarioAux);
 	}
 	
 
