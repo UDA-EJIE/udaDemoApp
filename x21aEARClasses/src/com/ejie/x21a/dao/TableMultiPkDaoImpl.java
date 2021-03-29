@@ -23,6 +23,7 @@ import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableManagerJerarquia;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.util.Constants;
 
 
 
@@ -338,19 +339,27 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 	}
 
 	/**
-	 * Remove multiple method for rup_table
-     *
-     * @param tableRequestDto TableRequestDto
+	 * Removes rows from the MultiPk table.
+	 *
+	 * @param filterMultiPk MultiPk
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
      */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", "ida", "idb");
+	public void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterMultiPk, startsWith);
 		
+    	// Delete query
+    	StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, MultiPk.class, "MULTI_PK", "t1", "ida", "idb");
+		
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapWhereLike.get("params");
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
-		List<String> params = new ArrayList<String>();
 		
 		for(String row : selectedIds) {
-			String[] parts = row.split(tableRequestDto.getCore().getPkToken());
+			String[] parts = row.split(Constants.PK_TOKEN);
 			for(String param : parts) {
 				params.add(param);
 			}

@@ -128,10 +128,13 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	/**
 	 * Removes rows from the MultiPk table.
 	 *
+	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 */	
-	public void removeMultiple(TableRequestDto tableRequestDto){
-		this.multiPkDao.removeMultiple(tableRequestDto);
+	 * @param startsWith Boolean
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.multiPkDao.removeMultiple(filterMultiPk, tableRequestDto, startsWith);
 	}
         
 	/**

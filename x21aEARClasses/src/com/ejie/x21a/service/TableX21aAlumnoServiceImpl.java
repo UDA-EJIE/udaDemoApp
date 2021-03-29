@@ -130,7 +130,8 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	public void removeMultiple(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto,  Boolean startsWith){
+	@Transactional(rollbackFor = Throwable.class)
+	public void removeMultiple(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto,  Boolean startsWith) {
 		this.x21aAlumnoDao.removeMultiple(filterX21aAlumno, tableRequestDto, startsWith);
 	}
         

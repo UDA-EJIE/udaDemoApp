@@ -270,19 +270,21 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * Borrado mÃºltiple de registros
+	 * Borrado mÃƒÂºltiple de registros
 	 * 
+	 * @param filterUsuario Usuario
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en la bÃºsqueda.
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
-	@RequestJsonBody(param="filter") Usuario filterUsuario,
-	@RequestJsonBody TableRequestDto tableRequestDto) {
+			@RequestJsonBody(param="filter") Usuario filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableDynamicColumnsController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 	    this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
 	    TableDynamicColumnsController.logger.info("All entities correctly deleted!");
