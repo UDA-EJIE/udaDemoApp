@@ -595,6 +595,8 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
 	</definition>
+	
+	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
 
 	<definition extends="template" name="tableDouble">
 		<put-attribute name="content"

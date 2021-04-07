@@ -57,6 +57,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.exception.X21aRuntimeException;
+import com.ejie.x21a.model.AutocompleteComboGenericPOJO;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.MultiPk;
@@ -151,6 +152,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -186,6 +188,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getTableDouble", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -225,6 +228,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getSimpleMasterDetail", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -247,6 +251,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -267,6 +272,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getTableDialog", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableDialogAjax"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -286,6 +292,7 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getTableDialogAjax", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -317,6 +324,75 @@ public class TableUsuarioController  {
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDialogAjax";
+	}
+	
+	@UDALink(name = "getTableEditForm", linkTo = {
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "filter2")})
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableEditForm";
+	}
+	
+	@UDALink(name = "getApellidos")
+	@RequestMapping(value = "/apellidos", method = RequestMethod.GET)
+	public @ResponseBody List<AutocompleteComboGenericPOJO> getApellidos (
+			@RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "c", required = false) Boolean c) {
+		List<AutocompleteComboGenericPOJO> apellidos = new ArrayList<AutocompleteComboGenericPOJO>();
+		apellidos.add(new AutocompleteComboGenericPOJO("García", "García"));
+		apellidos.add(new AutocompleteComboGenericPOJO("González", "González"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Fernández", "Fernández"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Rodríguez", "Rodríguez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("López", "López"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Martínez", "Martínez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Sánchez", "Sánchez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Pérez", "Pérez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Gómez", "Gómez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Martín", "Martín"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Jiménez", "Jiménez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Ruiz", "Ruiz"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Hernández", "Hernández"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Díaz", "Díaz"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Moreno", "Moreno"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Álvarez", "Álvarez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Muñoz", "Muñoz"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Romero", "Romero"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Alonso", "Alonso"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Gutiérrez", "Gutiérrez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Navarro", "Navarro"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Torres", "Torres"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Domínguez", "Domínguez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Vázquez", "Vázquez"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Ramos", "Ramos"));
+		
+		return apellidos;
+	}
+	
+	@UDALink(name = "getRoles")
+	@RequestMapping(value = "/roles", method = RequestMethod.GET)
+	public @ResponseBody List<AutocompleteComboGenericPOJO> getRoles (
+			@RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "c", required = false) Boolean c) {	
+		List<AutocompleteComboGenericPOJO> roles = new ArrayList<AutocompleteComboGenericPOJO>();
+		roles.add(new AutocompleteComboGenericPOJO("Administrador", "Administrador"));
+		roles.add(new AutocompleteComboGenericPOJO("Desarrollador", "Desarrollador"));
+		roles.add(new AutocompleteComboGenericPOJO("Espectador", "Espectador"));
+		roles.add(new AutocompleteComboGenericPOJO("Informador", "Informador"));
+		roles.add(new AutocompleteComboGenericPOJO("Manager", "Manager"));
+		
+		return roles;
 	}
 	
 	/**

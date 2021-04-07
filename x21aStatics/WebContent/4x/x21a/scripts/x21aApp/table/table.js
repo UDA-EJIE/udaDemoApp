@@ -72,16 +72,40 @@ jQuery(function ($) {
                 index: 'apellido1',
                 editable: true,
                 hidden: false,
+                rupType: 'autocomplete',
+                editoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    menuMaxHeight: 200,
+                    minLength: 3,
+                    combobox: true,
+                    contains: true
+                },
                 formoptions: {
                     rowpos: 3,
                     colpos: 1
                 },
                 classes: 'ui-ellipsis'
             },
-            /*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
-                        , formoptions:{rowpos:4, colpos:1}
-                        , classes:'ui-ellipsis'
-                    },*/
+            { 
+            	name: "apellido2", 
+            	index: "apellido2", 
+            	editable: true, 
+            	hidden: false,
+            	rupType: 'combo',
+                editoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    blank: '',
+                    width: '100%',
+                    customClasses: ['select-material']
+                },
+            	formoptions:{
+            		rowpos: 4, 
+            		colpos: 1
+            	},
+            	classes: 'ui-ellipsis'
+            },
             {
                 name: 'ejie',
                 index: 'ejie_detail_table',
@@ -122,7 +146,7 @@ jQuery(function ($) {
             {
                 name: 'fechaBaja',
                 index: 'fechaBaja_detail_table',
-                editable: false,
+                editable: true,
                 hidden: false,
                 width: 120,
                 rupType: 'date',
@@ -148,13 +172,9 @@ jQuery(function ($) {
                 rwdClasses: 'hidden-xs hidden-sm hidden-md',
                 formatter: 'rup_combo',
                 editoptions: {
-                    source: $.map(combo, function (elem) {
-                        return {
-                            label: elem.rol,
-                            value: elem.codTipoSubsanacion
-                        };
-
-                    }),
+                    source : './roles',
+                    sourceParam : {label: 'label', value: 'value'},
+                    blank: '',
                     width: '100%',
                     customClasses: ['select-material']
                 },
@@ -169,10 +189,6 @@ jQuery(function ($) {
         //Formulario de filtrado
         jQuery('#fechaAlta_filter_table').rup_date();
         jQuery('#fechaBaja_filter_table').rup_date();
-
-        //Formulario de detalle
-        /*jQuery('#fechaAlta_detail_table').rup_date();*/
-        jQuery('#fechaBaja_detail_table').rup_date();
 
         var listaPlugins = 'editForm,colReorder,multiSelection,seeker,buttons,';
 
@@ -261,7 +277,8 @@ jQuery(function ($) {
                                 required: true
                             },
                             'fechaAlta': {
-                                required: true
+                                required: true,
+                                date: true
                             },
                             'fechaBaja': {
                                 date: true
