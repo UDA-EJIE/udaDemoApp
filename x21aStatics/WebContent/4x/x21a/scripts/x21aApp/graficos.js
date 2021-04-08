@@ -45,7 +45,8 @@ function fncInitialize(vista) {
         labels: $.rup.i18n.app.charts.mesesLabels,
         datasets: [{
             label: $.rup.i18n.app.charts.datasetRadar.dataset1,
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: [65, null, 80, 81, 56, 55, 40],
+            spanGaps: true
         }]
     };
     vista.colorsData = {
