@@ -19,12 +19,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -179,8 +183,51 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 			query = TableManager.getPaginationQuery(tableRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
+		//Prueba de control idiomatico 
+		controlIdiomatico();
 				
 		return (List<Usuario>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
+	}
+	
+	private void controlIdiomatico() {
+		
+		final Logger logger = LoggerFactory.getLogger(TableUsuarioDaoImpl.class);
+		
+		List<Map<String, Object>> databasePrameters = this.jdbcTemplate.queryForList("select * from nls_database_parameters");
+		List<Map<String, Object>> sessionPrameters = this.jdbcTemplate.queryForList("select * from nls_session_parameters");
+		List<Map<String, Object>> instancePrameters = this.jdbcTemplate.queryForList("select * from nls_instance_parameters");
+		
+		StringBuilder ver = new StringBuilder();
+		
+		ver.append("================= datos session ==================").append(System.getProperty("line.separator"));
+		
+		for (Iterator<Map<String, Object>> iterator = sessionPrameters.iterator(); iterator.hasNext();) {
+			Map<String, Object> map = iterator.next();
+			
+			Iterator<Entry<String, Object>> it = map.entrySet().iterator();
+			while (it.hasNext()) {
+				Map.Entry<String, Object> pair = it.next();
+				ver.append(pair.getKey()).append(" => ").append(String.valueOf(pair.getValue())).append(System.getProperty("line.separator"));
+			}
+		}
+		
+		ver.append(System.getProperty("line.separator"));
+		ver.append(System.getProperty("line.separator"));
+		
+		ver.append("================= datos instance ==================").append(System.getProperty("line.separator"));
+		
+		for (Iterator<Map<String, Object>> iterator = instancePrameters.iterator(); iterator.hasNext();) {
+			Map<String, Object> map = iterator.next();
+			
+			Iterator<Entry<String, Object>> it = map.entrySet().iterator();
+			while (it.hasNext()) {
+				Map.Entry<String, Object> pair = it.next();
+				ver.append(pair.getKey()).append(" => ").append(String.valueOf(pair.getValue())).append(System.getProperty("line.separator"));
+			}
+		}
+		
+		logger.info(ver.toString());
+		
 	}
 	
 	/*
