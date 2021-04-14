@@ -208,7 +208,6 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 			query = TableManager.getPaginationQuery(tableRequestDto, query, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
-				
 		return (List<Usuario>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
 	}
 	
