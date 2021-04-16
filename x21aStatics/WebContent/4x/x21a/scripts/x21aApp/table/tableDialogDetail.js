@@ -16,6 +16,16 @@
 jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
 	    var tableColModelsComarca = [
+	    	{
+		        name: 'code',
+		        index: 'code',
+		        editable: false,
+		        hidden: true,
+		        formoptions: {
+		            rowpos: 1,
+		            colpos: 1
+		        }
+		    },
 		    {
 		        name: 'descEs',
 		        index: 'descEs',
@@ -47,6 +57,29 @@ jQuery(function ($) {
 		        }
 		    },
 		    {
+		        name: 'provincia.code',
+		        index: 'provincia.code',
+		        editable: true,
+		        hidden: false,
+		        rupType: 'combo',
+                editoptions: {
+                	source : '../tableComarca/provincia',
+                    sourceParam : {
+                    	label: 'desc' + $.rup_utils.capitalizedLang(), 
+                    	value: 'code',
+        	            style: 'css'
+                    },
+        	        rowStriping: true,
+        	        blank: '',
+                    width: '100%',
+                    customClasses: ['select-material']
+                },
+		        formoptions: {
+		            rowpos: 5,
+		            colpos: 1
+		        }
+		    },
+		    {
 		        name: 'provincia.descEs',
 		        index: 'provincia.descEs',
 		        editable: true,
@@ -59,7 +92,6 @@ jQuery(function ($) {
 	    ];
 	
 	    $('#comarca').rup_table({
-	
 	        primaryKey: 'code',
 	        loadOnStartUp: true,
 	        filter: {
@@ -67,9 +99,16 @@ jQuery(function ($) {
 	            filterToolbar: 'comarca_filter_toolbar',
 	            collapsableLayerId: 'comarca_filter_fieldset'
 	        },
+	        colModel: tableColModelsComarca,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
+	        columnDefs: [
+	        	{
+	        		'targets': 0,
+	        	   	'visible': false
+	        	}
+	        ],
 	        seeker: {
 	            activate: true,
 	            colModel: tableColModelsComarca
@@ -80,8 +119,10 @@ jQuery(function ($) {
 	        select: {
 	            style: 'multi'
 	        },
+            enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
+	            url: '../table/editFormComarca',
 	            /*validate: {
 	                rules: {
 	                    'code': {
@@ -92,11 +133,21 @@ jQuery(function ($) {
 	                    }
 	                }
 	            },*/
-	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
 	        }
 	    });
 	
 	    var tableColModelsLocalidad = [
+	    	{
+		        name: 'code',
+		        index: 'code',
+		        editable: false,
+		        hidden: true,
+		        formoptions: {
+		            rowpos: 1,
+		            colpos: 1
+		        }
+		    },
 		    {
 		        name: 'descEs',
 		        index: 'descEs',
@@ -137,9 +188,16 @@ jQuery(function ($) {
 	            filterToolbar: 'localidad_filter_toolbar',
 	            collapsableLayerId: 'localidad_filter_fieldset'
 	        },
+	        colModel: tableColModelsLocalidad,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
+	        columnDefs: [
+	        	{
+	        		'targets': 0,
+	        	   	'visible': false
+	        	}
+	        ],
 	        buttons: {
 	            activate: true
 	        },
@@ -156,19 +214,6 @@ jQuery(function ($) {
 	    			$('#css_detail_tableComarca').val(datos.css);
 	    		});
 	        }
-	    });
-	
-	    $('#provinciaRemote').rup_combo({
-	        source: '../tableComarca/provincia',
-	        sourceParam: {
-	            label: 'desc' + $.rup_utils.capitalizedLang(),
-	            value: 'code',
-	            style: 'css'
-	        },
-	        rowStriping: true,
-	        blank: '',
-	        width: '100%',
-	        customClasses: ['select-material']
 	    });
 	
 	    $('.contenedor').addClass('show');

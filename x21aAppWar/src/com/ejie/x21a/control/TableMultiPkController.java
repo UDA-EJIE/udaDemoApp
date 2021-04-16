@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -48,7 +49,7 @@ import com.ejie.x38.hdiv.annotation.UDALinkAllower;
  
 @Controller
 @RequestMapping (value = "/table/multipk")
-public class TableMultiPkController  {
+public class TableMultiPkController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableMultiPkController.class);
 
@@ -78,6 +79,7 @@ public class TableMultiPkController  {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
@@ -92,6 +94,8 @@ public class TableMultiPkController  {
 	}
 	
 	@UDALink(name = "getFiltroSimpleDoble", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
@@ -120,6 +124,19 @@ public class TableMultiPkController  {
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableMultipkDoble";
+	}
+	
+	@UDALink(name = "getTableEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableMultiPkEditForm";
 	}
 
 	/**

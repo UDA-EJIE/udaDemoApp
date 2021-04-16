@@ -14,38 +14,12 @@
  * que establece la Licencia.
  */
 jQuery(function ($) {
-	$('#example').on('tableEditFormAddEditBeforeShowForm', function (event,ctx) {
+	$('#example').on('tableEditFormAddEditBeforeShowForm', function (event, ctx) {
 		//ctx = $('#example').rup_table('getContext'); es el contexto de la tabla
-		console.log('Este es un ejemplo de trigger, para ver más activar la opción "Activar Triggers en Consola". '+ctx.oInit.formEdit.actionType)
+		console.log('Este es un ejemplo de trigger, para ver más activar la opción "Activar Triggers en Consola". ' + ctx.oInit.formEdit.actionType)
 	});
     window.initRupI18nPromise.then(function () {
         //FILTRO Y DETALLE
-        var combo = [{
-            rol: '---',
-            codTipoSubsanacion: ''
-        },
-        {
-            rol: 'Administrador',
-            codTipoSubsanacion: 'administrador'
-        },
-        {
-            rol: 'Desarrollador',
-            codTipoSubsanacion: 'desarrollador'
-        },
-        {
-            rol: 'Espectador',
-            codTipoSubsanacion: 'espectador'
-        },
-        {
-            rol: 'Informador',
-            codTipoSubsanacion: 'informador'
-        },
-        {
-            rol: 'Manager',
-            codTipoSubsanacion: 'manager'
-        }
-        ];
-
         var tableColModels = [
         	{
                 name: 'id',
@@ -108,7 +82,7 @@ jQuery(function ($) {
             },
             {
                 name: 'ejie',
-                index: 'ejie_detail_table',
+                index: 'ejie',
                 editable: true,
                 hidden: false,
                 width: 60,
@@ -126,7 +100,26 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaAlta',
-                index: 'fechaAlta_detail_table',
+                index: 'fechaAlta',
+                editable: true,
+                hidden: false,
+                width: 120,
+                rupType: 'date',
+                rwdClasses: 'hidden-xs hidden-sm hidden-md',
+                editoptions: {
+                    labelMaskId: 'fecha-mask',
+                    showButtonPanel: true,
+                    showOtherMonths: true,
+                    noWeekend: true
+                },
+                formoptions: {
+                    rowpos: 1,
+                    colpos: 2
+                }
+            },
+            {
+                name: 'fechaBaja',
+                index: 'fechaBaja',
                 editable: true,
                 hidden: false,
                 width: 120,
@@ -144,27 +137,8 @@ jQuery(function ($) {
                 }
             },
             {
-                name: 'fechaBaja',
-                index: 'fechaBaja_detail_table',
-                editable: true,
-                hidden: false,
-                width: 120,
-                rupType: 'date',
-                rwdClasses: 'hidden-xs hidden-sm hidden-md',
-                editoptions: {
-                    labelMaskId: 'fecha-mask',
-                    showButtonPanel: true,
-                    showOtherMonths: true,
-                    noWeekend: true
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 2
-                }
-            },
-            {
                 name: 'rol',
-                index: 'rol_detail_table',
+                index: 'rol',
                 editable: true,
                 hidden: false,
                 width: 140,
@@ -268,6 +242,9 @@ jQuery(function ($) {
 
                 var formEdit = {
                     detailForm: '#example_detail_div',
+                    data: {
+                    	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
+                    },
                     validate: {
                         rules: {
                             'nombre': {
@@ -285,7 +262,7 @@ jQuery(function ($) {
                             }
                         }
                     },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption'),
+                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption'),
                     cancelDeleteFunction: cancelClicked
                 };
                 plugins.validarModificarContinuar = function customGuardar(ctx){
@@ -310,6 +287,7 @@ jQuery(function ($) {
                 	}
                 	return false;//Paso la validacion
                 };
+                plugins.enableDynamicForms = true;
                 plugins.formEdit = formEdit;
 
                 $('#editForm').prop('checked', true);
@@ -328,7 +306,7 @@ jQuery(function ($) {
                                   "fechaBaja":{date:true}
                               }
                           },
-                          titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_jqtable.edit.editCaption')
+                          titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
                       }*/
                 var inlineEdit = {
                     deselect: true,

@@ -1,16 +1,16 @@
 /*
 * Copyright 2019 E.J.I.E., S.A.
 *
-* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
-* Solo podrá usarse esta obra si se respeta la Licencia.
+* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
 * Puede obtenerse una copia de la Licencia en
 *
 * http://ec.europa.eu/idabc/eupl.html
 *
-* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
-* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
 package com.ejie.x21a.control;
@@ -67,7 +67,6 @@ import com.ejie.x38.util.DateTimeManager;
 @Controller
 @RequestMapping (value = "/table/dynamicColumns")
 public class TableDynamicColumnsController  {
-
 	private static final Logger logger = LoggerFactory.getLogger(TableDynamicColumnsController.class);
 
 	@Autowired
@@ -92,7 +91,7 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * OperaciÃ³n CRUD Read. Devuelve el bean correspondiente al identificador
+	 * OperaciÃƒÂ³n CRUD Read. Devuelve el bean correspondiente al identificador
 	 * indicado.
 	 * 
 	 * @param id
@@ -110,29 +109,27 @@ public class TableDynamicColumnsController  {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport")})
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
+		model.addAttribute("usuario", new Usuario());
+		
 		return "tableDynamicColumns";
 	}
 	
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
-	 * indicados en el objeto pasado como parÃ¡metro.
+	 * indicados en el objeto pasado como parÃƒÂ¡metro.
 	 * 
 	 * @param Usuario
-	 *            Objeto que contiene los parÃ¡metros de filtrado utilizados en
-	 *            la bÃºsqueda.
-	 * @return Lista de objetos correspondientes a la bÃºsqueda realizada.
+	 *            Objeto que contiene los parÃƒÂ¡metros de filtrado utilizados en
+	 *            la bÃƒÂºsqueda.
+	 * @return Lista de objetos correspondientes a la bÃƒÂºsqueda realizada.
 	 */
 	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/all",method = RequestMethod.GET)
@@ -142,13 +139,13 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * OperaciÃ³n CRUD Edit. ModificaciÃ³n del bean indicado.
+	 * OperaciÃƒÂ³n CRUD Edit. ModificaciÃƒÂ³n del bean indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la informaciÃ³n a modificar.
-	 * @return Bean resultante de la modificaciÃ³n.
+	 *            Bean que contiene la informaciÃƒÂ³n a modificar.
+	 * @return Bean resultante de la modificaciÃƒÂ³n.
 	 */
-	@UDALink(name = "edit")
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@Validated @RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
@@ -159,7 +156,7 @@ public class TableDynamicColumnsController  {
         return new Resource<Usuario>(usuarioAux);
     }
 	
-	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
+	@UDALink(name = "editar")
 	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
     public @ResponseBody Resource<Usuario> editar(
     		@Validated @ModelAttribute Usuario usuario,
@@ -178,15 +175,15 @@ public class TableDynamicColumnsController  {
     }
 
 	/**
-	 * OperaciÃ³n CRUD Create. CreaciÃ³n de un nuevo registro a partir del bean
+	 * OperaciÃƒÂ³n CRUD Create. CreaciÃƒÂ³n de un nuevo registro a partir del bean
 	 * indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la informaciÃ³n con la que se va a crear el
+	 *            Bean que contiene la informaciÃƒÂ³n con la que se va a crear el
 	 *            nuevo registro.
-	 * @return Bean resultante del proceso de creaciÃ³n.
+	 * @return Bean resultante del proceso de creaciÃƒÂ³n.
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
@@ -199,7 +196,7 @@ public class TableDynamicColumnsController  {
 	
 
 	/**
-	 * OperaciÃ³n CRUD Delete. Borrado del registro correspondiente al
+	 * OperaciÃƒÂ³n CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 * 
 	 * @param id
@@ -224,12 +221,12 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * OperaciÃ³n de filtrado del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
@@ -246,17 +243,17 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * OperaciÃ³n de bÃºsqueda del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de bÃƒÂºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterUsuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param searchUsuario
-	 *            Bean que contiene los parÃ¡metros de bÃºsqueda a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de bÃƒÂºsqueda a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en la bÃºsqueda.
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parÃ¡metros de bÃºsqueda.
+	 *         que se ajustan a los parÃƒÂ¡metros de bÃƒÂºsqueda.
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
@@ -270,13 +267,13 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * Borrado mÃƒÂºltiple de registros
+	 * Borrado mÃƒÆ’Ã‚Âºltiple de registros
 	 * 
 	 * @param filterUsuario Usuario
-	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÆ’Ã‚Â¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
-	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
+	 *            Dto que contiene los parÃƒÆ’Ã‚Â¡mtros de configuraciÃƒÆ’Ã‚Â³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÆ’Ã‚Âºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")

@@ -84,8 +84,7 @@ import com.ejie.x38.util.DateTimeManager;
 
 @Controller
 @RequestMapping (value = "/table")
-public class TableUsuarioController  {
-
+public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
 	public static final String MODEL_OPTIONS = "options";
@@ -153,6 +152,8 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -189,6 +190,9 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "getTableDouble", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableDoubleEditForm"),
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -228,9 +232,10 @@ public class TableUsuarioController  {
 	}
 	
 	@UDALink(name = "getSimpleMasterDetail", linkTo = {
-			@UDALinkAllower(name = "getTableEditForm"),
-			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getTableComarcaEditForm"),
+			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -243,17 +248,22 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("comarca", new Comarca());
+		
+		Comarca comarca = new Comarca();
 		Localidad localidad = new Localidad();
-		localidad.setComarca(new Comarca());
+		localidad.setComarca(comarca);
+		
+		model.addAttribute("comarca", comarca);
 		model.addAttribute("localidad", localidad);
+		
 		return "tableMasterDetail";
 	}
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
-			@UDALinkAllower(name = "getTableEditForm"),
-			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getTableComarcaEditForm"),
+			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -266,13 +276,19 @@ public class TableUsuarioController  {
 	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
-		model.addAttribute("comarca", new Comarca());
-		model.addAttribute("localidad", new Localidad());
+
+		Comarca comarca = new Comarca();
+		Localidad localidad = new Localidad();
+		localidad.setComarca(comarca);
+		
+		model.addAttribute("comarca", comarca);
+		model.addAttribute("localidad", localidad);
+		
 		return "tableDialogDetail";
 	}
 	
 	@UDALink(name = "getTableDialog", linkTo = {
-			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableEditForm", linkClass = TableMultiPkController.class),
 			@UDALinkAllower(name = "getTableDialogAjax"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -293,6 +309,7 @@ public class TableUsuarioController  {
 	
 	@UDALink(name = "getTableDialogAjax", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -320,7 +337,7 @@ public class TableUsuarioController  {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sï¿½");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDialogAjax";
@@ -330,19 +347,67 @@ public class TableUsuarioController  {
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "get"),
-			@UDALinkAllower(name = "get2"),
 			@UDALinkAllower(name = "add"),
-			@UDALinkAllower(name = "add2"),
 			@UDALinkAllower(name = "edit"),
-			@UDALinkAllower(name = "edit2"),
-			@UDALinkAllower(name = "filter"),
-			@UDALinkAllower(name = "filter2")})
+			@UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableEditForm (@RequestParam String actionType, Model model) {
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String fixedMessage,
+			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute("actionType", actionType);
+		if (fixedMessage != null) {
+			model.addAttribute("fixedMessage", fixedMessage);
+		}
 		
 		return "tableEditForm";
+	}
+	
+	@UDALink(name = "getTableDoubleEditForm", linkTo = {
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "filter2")})
+	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
+	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("usuario2", new Usuario2());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableDoubleEditForm";
+	}
+	
+	@UDALink(name = "getTableComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class)})
+	@RequestMapping(value = "/editFormComarca", method = RequestMethod.POST)
+	public String getTableComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableComarcaEditForm";
+	}
+	
+	@UDALink(name = "getTableLocalidadEditForm", linkTo = {
+			@UDALinkAllower(name = "get", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "add", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableLocalidadController.class)})
+	@RequestMapping(value = "/editFormLocalidad", method = RequestMethod.POST)
+	public String getTableLocalidadEditForm (@RequestParam String actionType, Model model) {
+		Comarca comarca = new Comarca();
+		Localidad localidad = new Localidad();
+		localidad.setComarca(comarca);
+		
+		model.addAttribute("comarca", comarca);
+		model.addAttribute("localidad", localidad);
+		model.addAttribute("actionType", actionType);
+		
+		return "tableLocalidadEditForm";
 	}
 	
 	@UDALink(name = "getApellidos")

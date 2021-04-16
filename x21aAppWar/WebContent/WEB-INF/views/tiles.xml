@@ -597,6 +597,14 @@
 	</definition>
 	
 	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
+	
+	<definition name="tableDoubleEditForm" template="/WEB-INF/views/table/includes/tableDoubleEditForm.jsp" />
+	
+	<definition name="tableMultiPkEditForm" template="/WEB-INF/views/table/includes/tableMultiPkEditForm.jsp" />
+	
+	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
+	
+	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
 
 	<definition extends="template" name="tableDouble">
 		<put-attribute name="content"

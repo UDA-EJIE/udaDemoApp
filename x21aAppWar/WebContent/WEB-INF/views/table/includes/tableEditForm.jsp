@@ -19,14 +19,16 @@
 <%@ taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
-<!-- TODO: el valor del spring:url tiene que ser recibido desde el JS -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/${endpoint}" var="url"/>
 <form:form modelAttribute="usuario" id="example_detail_form" action="${url}">
 	<!-- Feedback del formulario de detalle -->
-	<div id ="example_detail_feedback"></div>	
+	<div id ="example_detail_feedback"></div>
+	<c:if test="${not empty fixedMessage}">
+		<p>${fixedMessage}</p>
+	</c:if>
+	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
-		<!-- Campos del formulario de detalle -->
 		<c:if test="${endpoint == 'edit'}">
 			<form:input path="id" id="id_detail_table" type="hidden" />
 		</c:if>

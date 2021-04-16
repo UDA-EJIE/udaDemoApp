@@ -27,8 +27,8 @@
 		<form:form modelAttribute="usuario" id="usuario_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
 			<div id ="usuario_detail_feedback"></div>
+			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
 				<div class="form-groupMaterial col-sm">
 					<form:input path="id" id="id_detail_table"/>
 					<label for="id_detail_table"><spring:message code="id"/></label>
@@ -67,7 +67,6 @@
 					<form:input path="fechaModif" id="fechaModif_detail_table"/>
 					<label for="fechaModif_detail_table"><spring:message code="fechaModif"/></label>
 				</div>
-				<!-- Fin campos del formulario de detalle -->	
 			</div>
 		</form:form>
 	</div>

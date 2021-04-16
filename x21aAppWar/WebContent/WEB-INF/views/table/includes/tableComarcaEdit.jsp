@@ -19,27 +19,27 @@
 <!-- <h2>table</h2> -->
 
 <!-- Formulario de detalle -->
-<div id="example_detail_div" class="rup-table-formEdit-detail d-none">
+<div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegaciï¿½n del detalle -->
-	<div id ="example_detail_navigation" class="row no-gutters"></div>
+	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
-	<div id="example_detail_form_container" class="dialog-content-material">
+	<div id="comarca_detail_form_container" class="dialog-content-material">
 		<!-- El Formulario será insertado mediante JavaScript -->
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">
 		<div class="text-right">
 			<!-- Botï¿½n cancelar -->
-			<button id="example_detail_button_cancel" type="button">
+			<button id="comarca_detail_button_cancel" type="button">
 				<spring:message code="cancel" />
 			</button>
 			<!-- Botï¿½n guardar -->
-			<button id="example_detail_button_save" type="button">
+			<button id="comarca_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
 			<!-- Botï¿½n guardar y continuar -->
-			<button id="example_detail_button_save_repeat" type="button">
+			<button id="comarca_detail_button_save_repeat" type="button">
 				<spring:message code="saveAndContinue" />
 			</button>
 		</div>

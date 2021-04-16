@@ -18,36 +18,11 @@ function _init() {
     'use strict';
     
     //FILTRO Y DETALLE
-    var combo = [{
-        rol: '---',
-        codTipoSubsanacion: ''
-	    },
-	    {
-	        rol: 'Administrador',
-	        codTipoSubsanacion: 'administrador'
-	    },
-	    {
-	        rol: 'Desarrollador',
-	        codTipoSubsanacion: 'desarrollador'
-	    },
-	    {
-	        rol: 'Espectador',
-	        codTipoSubsanacion: 'espectador'
-	    },
-	    {
-	        rol: 'Informador',
-	        codTipoSubsanacion: 'informador'
-	    },
-	    {
-	        rol: 'Manager',
-	        codTipoSubsanacion: 'manager'
-    }];
     var allowedPluginsBySelecionType = {
         multiSelection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'multiSelection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
         selection: ['editForm', 'colReorder', 'seeker', 'buttons', 'groups', 'selection', 'multiFilter', 'triggers', 'inlineEdit', 'multiPart'],
         noSelection: ['colReorder', 'seeker', 'groups', 'noSelection', 'multiFilter', 'triggers', 'multiPart']
     };
-
 
     function copyPluginsForm(num) {
         var $formPlugins = $('#example_tableConfiguration').clone();
@@ -58,23 +33,6 @@ function _init() {
             $(e).attr('for', $(e).attr('for') + num);
         });
         $('#example_tableConfiguration' + num).append($formPlugins.html());
-    }
-
-    function copyFormEdit(num) {
-        var $formDetail = $('#example_detail_div').clone();
-        $formDetail.attr('id', $formDetail.attr('id') + num);
-        $formDetail.find('[id^="example_"]').each(function (i, e) {
-            var id = $(e).attr('id');
-            $(e).attr('id', 'example' + num + '_' + id.split('example_')[1]);
-        });
-        $formDetail.find('input').each(function (i, e) {
-            $(e).attr('id', $(e).attr('id') + num);
-            $(e).attr('name', $(e).attr('name') + num);
-        });
-        $formDetail.find('label [for]').each(function (i, e) {
-            $(e).attr('for', $(e).attr('for') + num);
-        });
-        $('#example_tableConfiguration' + num).before($formDetail);
     }
 
     function listaPlugins(num) {
@@ -118,7 +76,6 @@ function _init() {
 
 
     function loadPlugins(num) {
-
         if (localStorage['plugins' + num] === undefined) { //si esta undefined es que es la primera vez.
             localStorage['plugins' + num] = listaPlugins(num);
         }
@@ -172,7 +129,8 @@ function _init() {
         if (localStorage['plugins' + num].indexOf('editForm') > -1) {
             window.initRupI18nPromise.then(function () {
                 var formEdit = {
-                    detailForm: '#example_detail_div' + num,
+                    detailForm: '#example' + num + '_detail_div',
+                    url: num == '2' ? './editFormDouble' : undefined,
                     validate: {
                         rules: {}
                     },
@@ -192,6 +150,7 @@ function _init() {
                     date: true
                 };
 
+                plugins.enableDynamicForms = true;
                 plugins.formEdit = formEdit;
 
                 $('#editForm' + num).prop('checked', true);
@@ -267,7 +226,7 @@ function _init() {
                         $('#imagenAlumno' + num).prop('disabled', true);
                     }
                 });
-                $('#example_detail_div' + num).on('dialogbeforeclose', function (event) {
+                $('#example' + num + '_detail_div').on('dialogbeforeclose', function (event) {
                     var dt = $('#example' + num).DataTable();
                     var ctx = dt.context[0];
                     if (ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.multiPart) {
@@ -349,21 +308,26 @@ function _init() {
             $('#triggers' + num).prop('checked', false);
         }
 
-        plugins.columnDefs = [{
-            'targets': [5],
-            'render': function (data) {
-                if (data !== undefined && data !== null) {
-                    return data.replace('/', '/');
-                }
-            }
-        },
-        {
-            'name': 'Nombre',
-            'targets': 'Nombre',
-            'render': function (data) {
-                return data.replace('a', '.');
-            }
-        }
+        plugins.columnDefs = [
+        	{
+	     	   'targets': [plugins.multiSelect !== undefined ? 1 : 0],
+	    	   'visible': false
+	    	},
+	    	{
+	            'targets': [5],
+	            'render': function (data) {
+	                if (data !== undefined && data !== null) {
+	                    return data.replace('/', '/');
+	                }
+	            }
+	        },
+	        {
+	            'name': 'Nombre',
+	            'targets': 'Nombre',
+	            'render': function (data) {
+	                return data.replace('a', '.');
+	            }
+	        }
         ];
 
         // Para cualquier tabla que no sea la primera se oculta el nombre
@@ -375,7 +339,17 @@ function _init() {
         }*/
 
         plugins.colModel = [
-	        {
+        	{
+                name: 'id' + num,
+                index: 'id' + num,
+                editable: false,
+                hidden: true,
+                formoptions: {
+                    rowpos: 1,
+                    colpos: 1
+                }
+            },
+        	{
 	            name: 'nombre' + num,
 	            index: 'nombre' + num,
 	            editable: true,
@@ -389,13 +363,41 @@ function _init() {
 	            name: 'apellido1' + num,
 	            index: 'apellido1' + num,
 	            editable: true,
-	            hidden: false,
-	            formoptions: {
-	                rowpos: 3,
-	                colpos: 1
-	            },
-	            classes: 'ui-ellipsis'
+                hidden: false,
+                rupType: 'autocomplete',
+                editoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    menuMaxHeight: 200,
+                    minLength: 3,
+                    combobox: true,
+                    contains: true
+                },
+                formoptions: {
+                    rowpos: 3,
+                    colpos: 1
+                },
+                classes: 'ui-ellipsis'
 	        },
+	        { 
+            	name: 'apellido2' + num, 
+            	index: 'apellido2' + num, 
+            	editable: true, 
+            	hidden: false,
+            	rupType: 'combo',
+                editoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    blank: '',
+                    width: '100%',
+                    customClasses: ['select-material']
+                },
+            	formoptions:{
+            		rowpos: 4, 
+            		colpos: 1
+            	},
+            	classes: 'ui-ellipsis'
+            },
 	        {
 	            name: 'ejie' + num,
 	            index: 'ejie' + num,
@@ -429,14 +431,14 @@ function _init() {
 	                noWeekend: true
 	            },
 	            formoptions: {
-	                rowpos: 2,
+	                rowpos: 1,
 	                colpos: 2
 	            }
 	        },
 	        {
 	            name: 'fechaBaja' + num,
 	            index: 'fechaBaja' + num,
-	            editable: false,
+	            editable: true,
 	            hidden: false,
 	            width: 120,
 	            rupType: 'date',
@@ -448,7 +450,7 @@ function _init() {
 	                noWeekend: true
 	            },
 	            formoptions: {
-	                rowpos: 3,
+	                rowpos: 2,
 	                colpos: 2
 	            }
 	        },
@@ -456,24 +458,22 @@ function _init() {
 	            name: 'rol' + num,
 	            index: 'rol' + num,
 	            editable: true,
-	            hidden: false,
-	            width: 140,
-	            rupType: 'combo',
-	            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-	            formatter: 'rup_combo',
-	            editoptions: {
-	                source: $.map(combo, function (elem) {
-	                    return {
-	                        label: elem.rol,
-	                        value: elem.codTipoSubsanacion
-	                    };
-	
-	                })
-	            },
-	            formoptions: {
-	                rowpos: 3,
-	                colpos: 2
-	            }
+                hidden: false,
+                width: 140,
+                rupType: 'combo',
+                rwdClasses: 'hidden-xs hidden-sm hidden-md',
+                formatter: 'rup_combo',
+                editoptions: {
+                    source : './roles',
+                    sourceParam : {label: 'label', value: 'value'},
+                    blank: '',
+                    width: '100%',
+                    customClasses: ['select-material']
+                },
+                formoptions: {
+                    rowpos: 3,
+                    colpos: 2
+                }
 	        }
         ];
 
@@ -482,27 +482,16 @@ function _init() {
         return plugins;
     }
 
-
     jQuery(function ($) {
         copyPluginsForm(2);
-        copyFormEdit(2);
         
         //Formulario de filtrado
         $('[id="fechaAlta_filter_table"]').rup_date();
         $('[id="fechaBaja_filter_table"]').rup_date();
-        
-        //Formulario de detalle
-        $('[id="fechaAlta_detail_table"]').rup_date();
-        $('[id="fechaBaja_detail_table"]').rup_date();
 	    //--------------------------------------------
-        
-        //Formulario de filtrado
         $('[id="fechaAlta_filter_table2"]').rup_date();
         $('[id="fechaBaja_filter_table2"]').rup_date();
-
-        //Formulario de detalle
-        $('[id="fechaAlta_detail_table2"]').rup_date();
-        $('[id="fechaBaja_detail_table2"]').rup_date();
+        
         window.initRupI18nPromise.then(function () {
 	        loadTable();
 	        loadTable(2);

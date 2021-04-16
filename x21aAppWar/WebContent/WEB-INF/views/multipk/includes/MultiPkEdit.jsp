@@ -1,15 +1,16 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-
 <!-- Formulario de detalle -->
 <div id="MultiPk_detail_div" class="rup-table-formEdit-detail">
-	<div id ="MultiPk_detail_navigation"></div>			<!-- Barra de navegación del detalle -->
+	<!-- Barra de navegación del detalle -->
+	<div id ="MultiPk_detail_navigation"></div>
 	<div class="ui-dialog-content ui-widget-content" >
-		<!-- <form id="MultiPk_detail_form">	 -->				<!-- Formulario -->
+		<!-- Formulario -->
 		<form:form id="MultiPk_detail_form" modelAttribute="multiPk" method="put">
-			<div id ="MultiPk_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
+			<!-- Feedback del formulario de detalle -->
+			<div id ="MultiPk_detail_feedback"></div>
+			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
 				<div class="form-group col-sm">
 					<label for="ida_detail_table" class="formulario_linea_label"><spring:message code="ida"/></label>
 					<form:input path="ida" class="formulario_linea_input form-control" id="ida_detail_table"/>
@@ -32,7 +33,6 @@
 					<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2"/></label>
 					<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table"/>
 				</div>
-				<!-- Fin campos del formulario de detalle -->
 			</div>
 		</form:form>
 	</div>

@@ -15,59 +15,60 @@
  */
 jQuery(function ($) {
     function inicio() {
-        var tableColModels = [{
-            name: 'ida',
-            index: 'ida',
-            editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 1,
-                colpos: 1
-            }
-        },
-        {
-            name: 'idb',
-            index: 'idb',
-            editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 2,
-                colpos: 1
-            }
-        },
-        {
-            name: 'nombre',
-            index: 'nombre',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 3,
-                colpos: 1
-            }
-        },
-        {
-            name: 'apellido1',
-            index: 'apellido1',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 4,
-                colpos: 1
-            },
-            classes: 'ui-ellipsis'
-        },
-        {
-            name: 'apellido2',
-            index: 'apellido2',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 5,
-                colpos: 1
-            }
-        }
+    	var tableColModels = [
+        	{
+    	        name: 'ida',
+    	        index: 'ida',
+    	        editable: false,
+    	        hidden: false,
+    	        width: 80,
+    	        formoptions: {
+    	            rowpos: 1,
+    	            colpos: 1
+    	        }
+    	    },
+    	    {
+    	        name: 'idb',
+    	        index: 'idb',
+    	        editable: false,
+    	        hidden: false,
+    	        width: 80,
+    	        formoptions: {
+    	            rowpos: 2,
+    	            colpos: 1
+    	        }
+    	    },
+    	    {
+    	        name: 'nombre',
+    	        index: 'nombre',
+    	        editable: true,
+    	        hidden: false,
+    	        formoptions: {
+    	            rowpos: 3,
+    	            colpos: 1
+    	        }
+    	    },
+    	    {
+    	        name: 'apellido1',
+    	        index: 'apellido1',
+    	        editable: true,
+    	        hidden: false,
+    	        formoptions: {
+    	            rowpos: 4,
+    	            colpos: 1
+    	        },
+    	        classes: 'ui-ellipsis'
+    	    },
+    	    {
+    	        name: 'apellido2',
+    	        index: 'apellido2',
+    	        editable: true,
+    	        hidden: false,
+    	        formoptions: {
+    	            rowpos: 5,
+    	            colpos: 1
+    	        }
+    	    }
         ];
 
         var listaPlugins = 'editForm,colReorder,selection,seeker,buttons,';
@@ -160,8 +161,9 @@ jQuery(function ($) {
                             }
                         }
                     },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
                 };
+                plugins.enableDynamicForms = true;
                 plugins.formEdit = formEdit;
 
                 $('#editForm').prop('checked', true);
@@ -191,7 +193,7 @@ jQuery(function ($) {
                             }
                         }
                     },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
                 };
                 var inlineEdit = {
                     deselect: true,
