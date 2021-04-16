@@ -627,7 +627,7 @@
          */
         _ajaxRequestData(data, ctx) {
             //Para añadir un id de busqueda distinto al value, como por ejemplo la fecha.
-        	if (ctx.oInit.ordering) {
+        	if (ctx.oInit.ordering && data.order[0] != undefined && data.order[0].column != undefined) {
         		data.columns[data.order[0].column].colSidx = ctx.aoColumns[data.order[0].column].colSidx;
         	}
             //El data viene del padre:Jquery.table y como no tiene el prefijo de busqueda se añade.
@@ -780,12 +780,22 @@
          *
          */
         _clearFilter(options) {
-            var $self = this;
+            let $self = this;
             $('#' + options.id).triggerHandler('tableFilterReset',options);
             options.filter.$filterContainer.resetForm();
             
             // Reinicia por completo los autocomplete ya que sino siguen filtrando
             $.fn.resetAutocomplete('hidden', options.filter.$filterContainer);
+            
+            //si es Maestro-Detalle restaura el valor del padre.
+            if(options.masterDetail !== undefined){
+	            let tableMaster = $(options.masterDetail.master).DataTable();
+	            let rowSelected = tableMaster.rows('.selected').indexes();
+	            let row = tableMaster.rows(rowSelected).data();
+	            let id = DataTable.Api().rupTable.getIdPk(row[0], tableMaster.context[0].oInit);
+	            let $hiddenPKMaster = $('#' + options.id + '_filter_masterPK');
+	            $hiddenPKMaster.val('' + id);
+        	}
             
             $self.DataTable().ajax.reload();
             options.filter.$filterSummary.html(' <i></i>');
@@ -855,9 +865,9 @@
              */
             
             // Se define el selector del formulario de filtrado por preferencia "JSP > JS > Default"
-            if(options.filterForm){
+            if (options.filterForm) {
                 filterOpts.id = $(options.filterForm).attr('id');
-            } else if(!filterOpts.id) {
+            } else if (!filterOpts.id) {
                 filterOpts.id = tableId + '_filter_form';
             }
             filterOpts.$filterContainer = jQuery('#' + filterOpts.id);
@@ -1285,6 +1295,11 @@
                 }
 
                 var options = $.extend(true, {}, $.fn.rup_table.defaults, $self[0].dataset, args[0]);
+                
+                //Se valida que se haya definido una ordenacion de columnas, por defecto 
+                if(!options.defaultOrder){
+                	options.order = [];
+                 }
 
                 $self.triggerHandler('tableBeforeInit',options);
 
@@ -1293,6 +1308,15 @@
                 $self.triggerHandler('tableInit',options);
                 if (args[0].primaryKey !== undefined) {
                     options.primaryKey = args[0].primaryKey.split(';');
+                }
+                
+                //Si vienen los columnsDefs con columnas ocultas,se asegura la clase para que no se vean.
+                if( options.columnDefs !== undefined &&  options.columnDefs.length > 0){
+                	$.each(options.columnDefs, function () {
+	                    if(this.visible === false){
+	                    	this.className = 'never';
+	                    }
+	                });
                 }
 
                 //Comprobar plugin dependientes
@@ -1398,16 +1422,39 @@
                 $self._initFeedback(options);
 
                 // Se inicializa el filtro de la tabla
-                if (args[0].filter !== 'noFilter') {
-                    //Se añade filter por defecto
-                    $.fn.rup_table.defaults.filter = {
-                        id: $self[0].id + '_filter_form',
-                        filterToolbar: $self[0].id + '_filter_toolbar',
-                        collapsableLayerId: $self[0].id + '_filter_fieldset'
-                    };
-                    $self._initFilter(options);
+            	let filterOptions = args[0].filter;
+            	let hasOptions = false;
+            	
+            	if (filterOptions !== undefined && filterOptions !== 'noFilter') {
+            		hasOptions = true;
+            	}
+            	
+                // Añadir filter por defecto o el definido por el usuario
+                $.fn.rup_table.defaults.filter = {
+                    id: hasOptions ? filterOptions.id : $self[0].id + '_filter_form',
+                    filterToolbar: hasOptions ? filterOptions.filterToolbar : $self[0].id + '_filter_toolbar',
+                    collapsableLayerId: hasOptions ? filterOptions.collapsableLayerId : $self[0].id + '_filter_fieldset'
+                };
+                
+                // Gestionar la inicialización del formulario de filtrado
+                if (filterOptions !== 'noFilter') {
+                	// En caso de que no haya sido definido por el usuario, se usa el por defecto
+                	if (filterOptions === undefined) {
+                		options.filter = $.fn.rup_table.defaults.filter;
+                	}
+                	$self._initFilter(options);
+                } else if (filterOptions === 'noFilter' && options.filterForm !== undefined) {
+                	// Garantizar la posibilidad del envío del parámetro HDIV_STATE cuando el formulario de filtrado no esté habilitado
+                	options.filter = {};
+                	if (options.filterForm) {
+                		options.filter.id = $(options.filterForm).attr('id');
+                    } else {
+                    	options.filter.id = $self[0].id + '_filter_form';
+                    }
+                	options.filter.$filterContainer = jQuery('#' + options.filter.id);
                 } else {
-                    args[0].filter = undefined;
+                	// Para casos en los que no se quiera usar el formulario de filtrado y Hdiv no esté activado
+                	args[0].filter = undefined;
                 }
 
                 if (options.loadOnStartUp !== undefined && !options.loadOnStartUp) {
@@ -1627,6 +1674,7 @@
         multiplePkToken: '~',
         primaryKey: ['id'],
         blockPKeditForm: true,
+        enableDynamicForms: false,
         searchPaginator: true,
         pagingType: 'full',
         createdRow: function (row) {
@@ -1642,6 +1690,7 @@
             [1, 'asc']
         ],
         ordering: true,
+        defaultOrder: true,
         showMultiSelectedZero: true,
         filterMessage: true,
         noEdit: false
