@@ -59,6 +59,8 @@ jQuery(function($) {
             closeLink: true,
             block:false
         });
+        
+        jQuery('#dateField').rup_date();
 
         $('#formHorizontalMaterial').rup_validate({
             adapter: 'validate_material',
@@ -99,6 +101,9 @@ jQuery(function($) {
                     required: true
                 },
                 'autocompleteCombobox2': {
+                    required: true
+                },
+                'dateField': {
                     required: true
                 },
                 'textarea': {

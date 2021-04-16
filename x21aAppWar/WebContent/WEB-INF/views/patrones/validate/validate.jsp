@@ -201,10 +201,16 @@
 					<label for="autocompleteName2">Autocomplete by Name</label>
 				</div>
 
-				<div class="form-groupMaterial col-sm-12">
+				<div class="form-groupMaterial col-sm-6">
 					<form:input path="autocompleteCombobox2" id="autocompleteCombobox2"/>
 					<label for="autocompleteCombobox2">Autocomplete Combobox</label>
 				</div>
+				<div class="form-groupMaterial col-sm-6">
+					<form:input path="dateField" id="dateField"/>
+					<label for="dateField">Fecha Alta</label>
+				</div>
+				
+
 
 				<div class="form-groupMaterial col-sm-12">
 					<form:textarea path="textarea" id="textarea" rows="5" />
