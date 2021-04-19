@@ -27,7 +27,7 @@
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
 		<c:if test="${endpoint == 'edit'}">
-			<form:input path="id2" id="id_detail_table2" type="hidden" />
+			<form:input path="id2" id="id_detail_table2" class="d-none" />
 		</c:if>
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre2" id="nombre_detail_table2" />

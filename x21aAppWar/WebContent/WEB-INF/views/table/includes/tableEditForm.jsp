@@ -30,7 +30,7 @@
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
 		<c:if test="${endpoint == 'edit'}">
-			<form:input path="id" id="id_detail_table" type="hidden" />
+			<form:input path="id" id="id_detail_table" class="d-none" />
 		</c:if>
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table" />
