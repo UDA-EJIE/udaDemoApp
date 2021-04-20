@@ -266,7 +266,7 @@ jQuery(function ($) {
                     cancelDeleteFunction: cancelClicked
                 };
                 plugins.validarModificarContinuar = function customGuardar(ctx){
-                	if($('#apellido1_detail_table').val() !== 'ruiz'){
+                	if($('#apellido1_detail_table').val() !== 'Ruiz'){
 	                	//Ejemplo de validación personalizada
 	                	 let idTableDetail = ctx.oInit.formEdit.detailForm;
 	                	 let feedback = idTableDetail.find('#' + ctx.sTableId + '_detail_feedback');
@@ -277,7 +277,7 @@ jQuery(function ($) {
 	                     }
 	
 	                     feedback.rup_feedback({
-	                         message: 'No validado, validación personal, solo se valida si el primer apellido es ruiz.',
+	                         message: 'No validado, validación personal, solo se valida si el primer apellido es Ruiz.',
 	                         type: 'error',
 	                         block: false,
 	                         gotoTop: false,
