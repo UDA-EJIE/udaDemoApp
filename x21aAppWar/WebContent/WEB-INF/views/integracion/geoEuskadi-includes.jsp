@@ -24,9 +24,10 @@
         <!-- Variables globales de la aplicacion -->
         <script type="text/javascript" src="https://www.geo.euskadi.eus/bisorea/v3/js/imports_lite.js"></script>
         
-        
-
-<script src="${staticsUrl}/x21a/scripts/x21aApp/geoEuskadi.js"
-	type="text/javascript"></script>
+     
+<script type="text/javascript" src="http://www1.geo.jakina.ejiedes.net/sidl/sidljQuery/lib/sidl-dynamic-form-jquery.js"></script>
+<script type="text/javascript" src="http://www1.geo.jakina.ejiedes.net/sidl/sidljQuery/lib/jquery/jquery-geoEuskadi.js"></script>
+<script type="text/javascript" src="http://www1.geo.jakina.ejiedes.net/sidl/sidljQuery/lib/jquery/jquery-ui-1.8.18.custom.min.js"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/geoEuskadi.js"	type="text/javascript"></script> 
 	
 	
