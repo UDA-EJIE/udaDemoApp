@@ -136,6 +136,7 @@ jQuery(function($) {
         
         $('#patron').rup_autocomplete({
             source : 'autocomplete/remote',
+            disabledCache: true,
             sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
             minLength: 4
         });
