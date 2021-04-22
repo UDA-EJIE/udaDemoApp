@@ -173,7 +173,7 @@ jQuery(function ($) {
 
         if (localStorage.plugins.indexOf('inlineEdit') > -1) {
             formEdit = {
-                detailForm: '#example_detail_div',
+                detailForm: '#MultiPk_detail_div',
                 validate: {
                     rules: {
                         'ida': {

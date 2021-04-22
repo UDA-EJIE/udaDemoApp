@@ -330,6 +330,7 @@ jQuery(function ($) {
                         }
                     }
                 };
+                plugins.enableDynamicForms = true;
                 plugins.inlineEdit = inlineEdit;
 
                 $('#inlineEdit').prop('checked', true);

@@ -122,7 +122,7 @@ jQuery(function ($) {
             enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
-	            url: '../table/editFormComarca',
+	            url: '../table/editFormDialogComarca',
 	            /*validate: {
 	                rules: {
 	                    'code': {
