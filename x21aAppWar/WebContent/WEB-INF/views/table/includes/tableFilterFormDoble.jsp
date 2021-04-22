@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <spring:url value="/table/filter" var="url"/>
-<form:form modelAttribute="usuario" id="example_filter_form" action="${url}">
+<form:form modelAttribute="usuario" id="example_filter_form" action="${url}" method="POST">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     

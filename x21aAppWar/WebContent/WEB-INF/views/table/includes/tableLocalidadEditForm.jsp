@@ -21,7 +21,7 @@
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="../tableLocalidad/${endpoint}" var="url"/>
-<form:form modelAttribute="localidad" id="localidad_detail_form" action="${url}">
+<form:form modelAttribute="localidad" id="localidad_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id ="localidad_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->

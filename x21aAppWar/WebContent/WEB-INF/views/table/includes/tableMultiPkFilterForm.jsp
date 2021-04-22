@@ -14,12 +14,15 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
+<!-- Formulario de filtrado -->
 <spring:url value="/table/multipk/filter" var="url"/>
-<form:form modelAttribute="multiPk" id="MultiPk_filter_form" action="${url}">						<!-- Formulario de filtrado -->
-	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>	<!-- Barra de herramientas del formulario de filtrado -->
+<form:form modelAttribute="multiPk" id="MultiPk_filter_form" action="${url}" method="POST">
+	<!-- Barra de herramientas del formulario de filtrado -->
+	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
+		<!-- Campos del formulario de filtrado -->
 		<div class="form-row">
-			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
 				<form:input path="ida" id="ida_filter_table"/>
 				<label for="ida_filter_table">
@@ -52,7 +55,6 @@
 					<spring:message code="apellido2"/>
 				</label>
 			</div>
-			<!-- Fin campos del formulario de filtrado -->
 		</div>
 		<!-- Botonera del formulario de filtrado -->
 		<div id="MultiPk_filter_buttonSet" class="text-right">

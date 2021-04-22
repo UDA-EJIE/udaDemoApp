@@ -16,7 +16,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <spring:url value="../tableComarca/filter" var="url"/>
-<form:form modelAttribute="comarca" id="comarca_filter_form" action="${url}">
+<form:form modelAttribute="comarca" id="comarca_filter_form" action="${url}" method="POST">
 	<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
 		<div class="form-row">

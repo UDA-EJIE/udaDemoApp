@@ -21,7 +21,7 @@
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/${endpoint}" var="url"/>
-<form:form modelAttribute="usuario" id="example_detail_form" action="${url}">
+<form:form modelAttribute="usuario" id="example_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id ="example_detail_feedback"></div>
 	<c:if test="${not empty fixedMessage}">
