@@ -120,8 +120,8 @@ public class TableComarcaController {
  	 * @param comarca Comarca 
  	 * @return Comarca
  	 */
-	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.PUT)
+	@UDALink(name = "edit", linkTo = {@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Comarca> edit(@Validated @RequestBody final Comarca comarca) {		
         final Comarca comarcaAux = this.comarcaService.update(comarca);
 		logger.info("Entity correctly updated!");
@@ -133,8 +133,8 @@ public class TableComarcaController {
 	 * @param comarca Comarca 
 	 * @return Comarca
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.POST)
+	@UDALink(name = "add", linkTo = {@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Comarca> add(@Validated @RequestBody final Comarca comarca) {		
 		final Comarca comarcaAux = this.comarcaService.add(comarca);
 		logger.info("Entity correctly inserted!");
