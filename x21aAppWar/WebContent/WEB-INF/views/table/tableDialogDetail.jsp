@@ -28,7 +28,7 @@
             <th data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
             <th data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
             <th data-col-prop="css">css</th>
-            <th data-col-prop="provincia.descEs" data-col-sidx="ProvinciaDESCES">provincia.descEs</th>
+            <th data-col-prop="provincia.descEs" data-col-sidx="ProvinciaDESCES">DescEs provincia</th>
         </tr>
     </thead>
 </table>
