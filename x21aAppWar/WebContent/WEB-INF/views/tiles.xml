@@ -604,7 +604,11 @@
 	
 	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
 	
+	<definition name="tableDialogComarcaEditForm" template="/WEB-INF/views/table/includes/tableDialogComarcaEditForm.jsp" />
+	
 	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
+	
+	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
 
 	<definition extends="template" name="tableDouble">
 		<put-attribute name="content"
