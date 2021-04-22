@@ -518,10 +518,7 @@ public class TableUsuarioController {
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return new Resource<Usuario>(usuarioAux);
     }
@@ -530,10 +527,7 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
     		@RequestBody Usuario2 usuario) {
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
+		Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
 		return new Resource<Usuario2>(usuarioAux);
     }
@@ -545,9 +539,6 @@ public class TableUsuarioController {
     		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
     		HttpServletRequest request, HttpServletResponse response){
 		System.out.print("USUARIO::::"+usuario.getId()+" --- "+new Date()+"\n");
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
 		if (imagen!=null){
 			System.out.print("IMAGEN::::"+imagen);
         }
@@ -565,26 +556,20 @@ public class TableUsuarioController {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
         return new Resource<Usuario>(usuarioAux);
 	}
 	
-	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get2" ), @UDALinkAllower(name = "filter2")})
+	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Usuario2> add2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@Validated @RequestBody Usuario2 usuario) {		
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
+		Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
         return new Resource<Usuario2>(usuarioAux);
 	}
