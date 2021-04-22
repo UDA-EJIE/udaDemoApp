@@ -152,6 +152,7 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
@@ -233,6 +234,7 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getSimpleMasterDetail", linkTo = {
 			@UDALinkAllower(name = "getTableComarcaEditForm"),
+			@UDALinkAllower(name = "getTableDialogComarcaEditForm"),
 			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "deleteAll"),
@@ -261,6 +263,7 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
 			@UDALinkAllower(name = "getTableComarcaEditForm"),
+			@UDALinkAllower(name = "getTableDialogComarcaEditForm"),
 			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "deleteAll"),
@@ -392,6 +395,19 @@ public class TableUsuarioController {
 		return "tableComarcaEditForm";
 	}
 	
+	@UDALink(name = "getTableDialogComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class)})
+	@RequestMapping(value = "/editFormDialogComarca", method = RequestMethod.POST)
+	public String getTableDialogComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableDialogComarcaEditForm";
+	}
+	
 	@UDALink(name = "getTableLocalidadEditForm", linkTo = {
 			@UDALinkAllower(name = "get", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "add", linkClass = TableLocalidadController.class),
@@ -408,6 +424,21 @@ public class TableUsuarioController {
 		model.addAttribute("actionType", actionType);
 		
 		return "tableLocalidadEditForm";
+	}
+	
+	@UDALink(name = "getTableInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	public String getTableInlineEdit (
+			@RequestParam(required = true) String actionType,
+			Model model) {
+		model.addAttribute("entity", new Usuario());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableInlineEditAuxForm";
 	}
 	
 	@UDALink(name = "getApellidos")
