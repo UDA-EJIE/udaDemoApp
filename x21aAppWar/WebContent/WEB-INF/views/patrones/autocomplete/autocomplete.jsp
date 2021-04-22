@@ -82,7 +82,7 @@
 			</div>
 			
 			<div class="col-sm-4">
-				<h3 class="col-sm-12">Autocomplete remoto</h3>
+				<h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
 				<div class="form-groupMaterial col-sm-12">
 					<input id="patron" name="patron" /> 
 					<label for="patron">Departamento-Provincia</label>
