@@ -48,10 +48,7 @@ public class CacheController  {
 	
 	@RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.cacheService.update(usuario, Boolean.TRUE);
+		Usuario usuarioAux = this.cacheService.update(usuario, Boolean.TRUE);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }

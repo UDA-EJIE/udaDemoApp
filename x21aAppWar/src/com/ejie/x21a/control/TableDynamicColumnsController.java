@@ -145,13 +145,10 @@ public class TableDynamicColumnsController  {
 	 *            Bean que contiene la informaciÃƒÂ³n a modificar.
 	 * @return Bean resultante de la modificaciÃƒÂ³n.
 	 */
-	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.PUT)
+	@UDALink(name = "edit", linkTo = {@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@Validated @RequestBody Usuario usuario) {
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return new Resource<Usuario>(usuarioAux);
     }
@@ -163,9 +160,6 @@ public class TableDynamicColumnsController  {
     		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
     HttpServletRequest request, HttpServletResponse response){
 		System.out.print("USUARIO::::"+usuario.getId()+" --- "+new Date()+"\n");
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
 		if (imagen!=null){
 			System.out.print("IMAGEN::::"+imagen);
         }
@@ -183,13 +177,10 @@ public class TableDynamicColumnsController  {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaciÃƒÂ³n.
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.POST)
+	@UDALink(name = "add", linkTo = {@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
     	return new Resource<Usuario>(usuarioAux);
 	}
