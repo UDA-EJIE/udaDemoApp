@@ -20,5 +20,5 @@
 
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="/table/${endpoint}" var="url"/>
+<spring:url value="${mapping}/${endpoint}" var="url"/>
 <form:form modelAttribute="${entity}" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}"/>

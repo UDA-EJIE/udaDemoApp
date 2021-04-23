@@ -109,6 +109,7 @@ public class TableDynamicColumnsController  {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "excelReport"),
@@ -120,6 +121,30 @@ public class TableDynamicColumnsController  {
 		model.addAttribute("usuario", new Usuario());
 		
 		return "tableDynamicColumns";
+	}
+	
+	@UDALink(name = "getTableInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	public String getTableInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String mapping,
+			Model model) {
+		model.addAttribute("entity", new Usuario());
+		model.addAttribute("actionType", actionType);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table/dynamicColumns";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "tableInlineEditAuxForm";
 	}
 	
 	/**

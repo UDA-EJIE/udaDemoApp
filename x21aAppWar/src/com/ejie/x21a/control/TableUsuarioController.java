@@ -434,9 +434,18 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String mapping,
 			Model model) {
 		model.addAttribute("entity", new Usuario());
 		model.addAttribute("actionType", actionType);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
 		
 		return "tableInlineEditAuxForm";
 	}
