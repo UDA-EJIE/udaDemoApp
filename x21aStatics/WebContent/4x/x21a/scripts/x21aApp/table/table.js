@@ -120,7 +120,7 @@ jQuery(function ($) {
             {
                 name: 'fechaBaja',
                 index: 'fechaBaja',
-                editable: true,
+                editable: false,
                 hidden: false,
                 width: 120,
                 rupType: 'date',
