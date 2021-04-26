@@ -1416,7 +1416,7 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
         if (ajaxOptions.data == '') {
             delete ajaxOptions.data;
             $.rup_ajax(ajaxOptions);
-        } else if (isDeleting || ctx.oInit.inlineEdit.idForm.valid()) { // FIXME: esta comprobación hay que hacerla después de llamar a la función _loadAuxForm que es la encargada de obtener el formulario.
+        } else if (isDeleting || $('#' + ctx.sTableId + '_search_searchForm').valid()) {
         	// Obtener el valor del parámetro HDIV_STATE (en caso de no estar disponible se devolverá vacío) siempre y cuando no se trate de un deleteAll porque en ese caso ya lo contiene el filtro
             if (url.indexOf('deleteAll') === -1) {
             	// Elimina los campos _label generados por los autocompletes que no forman parte de la entidad
@@ -1474,24 +1474,43 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
  */
 function _loadAuxForm(ctx, actionType) {
 	var idForm = ctx.oInit.inlineEdit !== undefined ? ctx.oInit.inlineEdit.idForm : undefined;
+	
 	// Servirá para saber si la última llamada a inlineEdit fue para añadir, editar o si aún no ha sido inicializado
 	let lastAction = ctx.oInit.inlineEdit.actionType;
 	
-	// TODO: comprobar si aquí hace falta hacer la gestión de CLONE
+	// En caso de ser clonado el method ha de ser POST
+	let currentPost = ctx.oInit.inlineEdit.currentPos
+    if (currentPost !== undefined && currentPost.actionType === 'CLONE') {
+        actionType = 'POST';
+    }
 	
 	// Si el usuario ha activado los formularios dinámicos y la última acción no es la misma que la actual, es necesario volver a obtener el formulario
 	if (ctx.oInit.enableDynamicForms && lastAction !== actionType) {
-		// Si existe un formulario previo, se elimina
-		if (idForm !== undefined) {
-			$(idForm).remove();
-		}
+		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType.
+		let defaultData = {
+				'actionType': actionType,
+				'tableID': ctx.sTableId
+			};
+		let data = ctx.oInit.inlineEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.inlineEdit.data) : defaultData;
 		
-		return $.post(ctx.oInit.inlineEdit.url !== undefined ? ctx.oInit.inlineEdit.url : ctx.oInit.urlBase + '/inlineEdit', {'actionType': actionType}, function (form) {
+		return $.post(ctx.oInit.inlineEdit.url !== undefined ? ctx.oInit.inlineEdit.url : ctx.oInit.urlBase + '/inlineEdit', data, function (form) {
+			// Guardar anterior formulario para poder comprobarlo con el recién recibido
+			let tempForm = idForm !== undefined ? idForm : undefined;
+			
+			// Guardar referencia del formulario recibido
+			let receivedForm = $(form).find("form").addBack('form');
+			
+			// Si existe un formulario previo con el mismo identificador que el recibido, se elimina
+			if (tempForm !== undefined && tempForm.length === 1 && tempForm.attr("id") === receivedForm.attr("id")) {
+				tempForm.remove();
+			}
+			
 			let tableWrapper = $('#' + ctx.sTableId + '_wrapper');
-			tableWrapper.prepend(form);
+			tableWrapper.prepend(receivedForm);
 			ctx.oInit.inlineEdit.actionType = actionType;
 			ctx.oInit.inlineEdit.idForm = tableWrapper.find("form").first();
 			
+			// TODO: es posible que no haga falta hacer esto porque antes de entrar por aquí se llaman a las validaciones y funcionan
 			// Añadir validaciones
 			_addValidation(ctx);
     	}, 'html');
@@ -1500,6 +1519,7 @@ function _loadAuxForm(ctx, actionType) {
 		let deferred = $.Deferred();		
     	ctx.oInit.inlineEdit.actionType = actionType;
     	
+    	// TODO: es posible que no haga falta hacer esto porque antes de entrar por aquí se llaman a las validaciones y funcionan
 		// Añadir validaciones
 		_addValidation(ctx);
 		
@@ -1954,7 +1974,7 @@ $(document).on( 'plugin-init.dt', function (e, ctx) {
 		return;
 	}
 
-	if(ctx.oInit.inlineEdit !== undefined){
+	if(ctx.oInit.inlineEdit !== undefined && ctx.oInit.inlineEdit.activate !== false){
 		DataTable.inlineEdit.init( new DataTable.Api( ctx ) );
 		
 		if (ctx.oInit.inlineEdit.cancelDeleteFunction === undefined) {
