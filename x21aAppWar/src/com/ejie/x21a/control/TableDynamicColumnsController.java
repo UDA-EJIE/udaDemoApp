@@ -131,10 +131,12 @@ public class TableDynamicColumnsController  {
 	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) String tableID,
 			@RequestParam(required = false) String mapping,
 			Model model) {
 		model.addAttribute("entity", new Usuario());
 		model.addAttribute("actionType", actionType);
+		model.addAttribute("tableID", tableID);
 		
 		// Controlar que el mapping siempre se añada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
