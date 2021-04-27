@@ -69,7 +69,7 @@ jQuery(function ($) {
     		t17_nora_i18n: $.rup.lang,
     		t17_nora_tipo: 3,
     		title: $.rup.i18nParse($.rup.i18n.app, "nora.seleccionarDireccion"),
-    		url: "http://www1.geo.jakina.ejiedes.net" + "/sidl/sidljQuery/dynamic_modal_form3.html"
+    		url: "https://www1.geo.jakina.ejiedes.net" + "/sidl/sidljQuery/dynamic_modal_form3.html"
     	};
 
     	if (tipo == 0) {
