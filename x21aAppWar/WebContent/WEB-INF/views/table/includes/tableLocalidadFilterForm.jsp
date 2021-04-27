@@ -20,8 +20,11 @@
 	<div id="localidad_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 	    <legend></legend>
-		
-		<div class="form-row">
+	    
+	    <div class="form-row">
+			<!-- PK de la tabla padre (NECESARIO) -->
+       		<form:input id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
+       		
 			<div class="form-groupMaterial col-sm">
 				<form:input path="descEs" id="descEs_filter_localidad" />
 				<label for="descEs_filter_localidad">descEs</label>
