@@ -17,24 +17,13 @@ jQuery(function ($) {
 	window.initRupI18nPromise.then(function () {
 		let tableColModel = [
 			{
-	            name: 'id',
-	            index: 'id',
-	            editable: false,
-	            hidden: true,
-	            compulsory: true,
-	            formoptions: {
-	                rowpos: 1,
-	                colpos: 1
-	            }
-	        },
-	        {
 	            name: 'nombre',
 	            index: 'nombre',
 	            editable: true,
 	            hidden: false,
 	            compulsory: true,
 	            formoptions: {
-	                rowpos: 2,
+	                rowpos: 1,
 	                colpos: 1
 	            }
 	        },
@@ -53,7 +42,7 @@ jQuery(function ($) {
                     contains: true
                 },
                 formoptions: {
-                    rowpos: 3,
+                    rowpos: 2,
                     colpos: 1
                 },
                 classes: 'ui-ellipsis'
@@ -72,7 +61,7 @@ jQuery(function ($) {
                     customClasses: ['select-material']
                 },
             	formoptions:{
-            		rowpos: 4, 
+            		rowpos: 3, 
             		colpos: 1
             	},
             	classes: 'ui-ellipsis'
@@ -91,7 +80,7 @@ jQuery(function ($) {
 	                value: '1:0'
 	            },
 	            formoptions: {
-	                rowpos: 5,
+	                rowpos: 4,
 	                colpos: 1
 	            }
 	        },
@@ -160,23 +149,23 @@ jQuery(function ($) {
 		let optionalColumns = [
 			{
 	            label: 'apellido1',
-	            value: '3'
+	            value: '2'
 	        },
 	        {
 	            label: 'apellido2',
-	            value: '4'
+	            value: '3'
 	        },
 	        {
 	            label: 'ejie',
-	            value: '5'
+	            value: '4'
 	        },
 	        {
 	            label: 'fechaBaja',
-	            value: '7'
+	            value: '6'
 	        },
 	        {
 	            label: 'rol',
-	            value: '8'
+	            value: '7'
 	        }
         ];
 
@@ -208,11 +197,11 @@ jQuery(function ($) {
 	    });
 	    
 	    function loadTable(tableColModel) {
-	    	let valores = localStorage.columnas.replace('apellido1','3');
-	    	valores = valores.replace('apellido2','4');
-	    	valores = valores.replace('ejie','5');
-	    	valores = valores.replace('fechaBaja','7');
-	    	valores = valores.replace('rol','8');
+	    	let valores = localStorage.columnas.replace('apellido1','2');
+	    	valores = valores.replace('apellido2','3');
+	    	valores = valores.replace('ejie','4');
+	    	valores = valores.replace('fechaBaja','6');
+	    	valores = valores.replace('rol','7');
 	    	$('#columsSelector').rup_combo('setRupValue', valores);
 	        tableColModel = jQuery.grep(tableColModel, function (item) {
 	            let temp = '';
@@ -252,9 +241,6 @@ jQuery(function ($) {
 	                deselect: true,
 	                validate: {
 	                    rules: {
-	                        'id': {
-	                            required: true
-	                        },
 	                        'nombre': {
 	                            required: true
 	                        },
