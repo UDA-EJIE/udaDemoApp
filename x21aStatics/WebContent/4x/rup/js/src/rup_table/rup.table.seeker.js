@@ -172,25 +172,29 @@
         });
 
       dt.columns().eq(0).each(function (colIdx) {
+    	  	
             if (colIdx > 0 || ctx.oInit.multiSelect === undefined) {//evitar el checkbox
-                $('input', $('#' + idTabla + ' tfoot')[0].rows[0].cells[colIdx]).on('keypress', function (ev) {
-                    this.focus();
-                    if (ev.keyCode === 13 && this.value !== '') { //Se hace la llamada de busqueda.
-                    	let customBuscar = ctx.oInit.validarBuscar;
-                    	if($.isFunction(customBuscar) && customBuscar(ctx)){
-                    		return false;
-                    	}
-                        ctx.seeker.ajaxOption.data = _getDatos(ctx);
-                        var ajaxOptions = $.extend(true, [], ctx.seeker.ajaxOption);
-                        $('#' + ctx.sTableId).triggerHandler('tableSeekerBeforeSearch',ctx);
-                        if (!jQuery.isEmptyObject(ajaxOptions.data.search)) {
-                            $('#' + idTabla + '_search_searchForm').rup_form();
-                            $('#' + idTabla + '_search_searchForm').rup_form('ajaxSubmit', ajaxOptions);
-                        }
-                        $('#' + ctx.sTableId).triggerHandler('tableSeekerAfterSearch',ctx);
-
-                    }
-                });
+            	let celda = $('#' + idTabla + ' tfoot')[0].rows[0].cells[colIdx];
+            	if(celda !== undefined){
+	                $('input', celda).on('keypress', function (ev) {
+	                    this.focus();
+	                    if (ev.keyCode === 13 && this.value !== '') { //Se hace la llamada de busqueda.
+	                    	let customBuscar = ctx.oInit.validarBuscar;
+	                    	if($.isFunction(customBuscar) && customBuscar(ctx)){
+	                    		return false;
+	                    	}
+	                        ctx.seeker.ajaxOption.data = _getDatos(ctx);
+	                        var ajaxOptions = $.extend(true, [], ctx.seeker.ajaxOption);
+	                        $('#' + ctx.sTableId).triggerHandler('tableSeekerBeforeSearch',ctx);
+	                        if (!jQuery.isEmptyObject(ajaxOptions.data.search)) {
+	                            $('#' + idTabla + '_search_searchForm').rup_form();
+	                            $('#' + idTabla + '_search_searchForm').rup_form('ajaxSubmit', ajaxOptions);
+	                        }
+	                        $('#' + ctx.sTableId).triggerHandler('tableSeekerAfterSearch',ctx);
+	
+	                    }
+	                });
+            	}
             }
         });
 
@@ -386,7 +390,7 @@
                     rowSelected = dt.rows().nodes()[idx];
                 }
                 var result = $.grep(rows, function (v) {
-                    return DataTable.Api().rupTable.getIdPk(v.pk) === DataTable.Api().rupTable.getIdPk(value);
+                	return DataTable.Api().rupTable.comparePKs(v.pk, value);
                 });
                 if (result.length === 1) {
                     var searchIcon = $('<i></i>').addClass('mdi mdi-magnify ui-icon-rupInfoCol filtered-row');
@@ -397,9 +401,8 @@
             });
             var rowUnique = rows[ctx.seeker.search.pos];
             var rowList = ctx.json.rows[rowUnique.pageLine - 1];
-            if (rowSelected !== '' && rowSelected.className.indexOf('selected') < 0 && rowUnique.page === Number(ctx.json.page) &&
-                DataTable.Api().rupTable.getIdPk(rowUnique.pk) === DataTable.Api().rupTable.getIdPk(rowList) &&
-                (ctx.oInit.formEdit === undefined || ctx.oInit.formEdit.$navigationBar.funcionParams === undefined || ctx.oInit.formEdit.$navigationBar.funcionParams.length === undefined)) { //si no esta ya seleccionada.
+            if (rowSelected !== '' && rowSelected.className.indexOf('selected') < 0 && rowUnique.page === Number(ctx.json.page) && DataTable.Api().rupTable.comparePKs(rowUnique.pk, rowList) 
+            		&& (ctx.oInit.formEdit === undefined || ctx.oInit.formEdit.$navigationBar.funcionParams === undefined || ctx.oInit.formEdit.$navigationBar.funcionParams.length === undefined)) { //si no esta ya seleccionada.
                 if (ctx.oInit.multiSelect !== undefined) {
                     dt['row'](rowUnique.pageLine - 1).multiSelect();
                 } else if (ctx.oInit.select !== undefined) {

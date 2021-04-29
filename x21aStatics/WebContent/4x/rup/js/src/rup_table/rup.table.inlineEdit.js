@@ -124,6 +124,25 @@ DataTable.inlineEdit.init = function ( dt ) {
 		var $searchForm = jQuery('<form>').attr('id',ctx.sTableId+'_search_searchForm');
         $('#'+ctx.sTableId).wrapAll($searchForm);
 	}
+	
+	// Se añaden las validaciones
+    let feed = ctx.oInit.feedback.$feedbackContainer;
+    let validaciones;
+    if(ctx.oInit.inlineEdit.validate !== undefined){
+    	validaciones = ctx.oInit.inlineEdit.validate.rules;
+    }
+    
+    let propertiesDefault = {
+        liveCheckingErrors: false,
+        showFieldErrorAsDefault: true,
+        showErrorsInFeedback: true,
+        showFieldErrorsInFeedback:true
+    };
+    let propertiesValidate = $.extend(true, {}, propertiesDefault,ctx.oInit.inlineEdit.propertiesValidate);
+    propertiesValidate.feedback = feed;
+    propertiesValidate.rules = validaciones;
+	
+    $('#' + ctx.sTableId + '_search_searchForm').rup_validate(propertiesValidate);
     
     let borrarGuardar = false;
     let borrarCancelar = false;
@@ -626,29 +645,30 @@ function _getRowSelected(dt,actionType){
 * @since UDA 3.7.0 // Table 1.0.0
 *
 *
-* @param {object} dt - Es el objeto table.
+* @param {object} dt - Objeto table.
 * @param {object} ctx - Contexto del Datatable.
 * @param {integer} line - Número de la fila.
 *
 */
-function _cloneLine(dt,ctx,line){
-	$('#'+ctx.sTableId).triggerHandler('tableEditInlineClone',ctx);
-	dt.row(0).data(dt.row(line+1).data());
-	if(ctx.oInit.inlineEdit.rowDefault !== undefined){
+function _cloneLine(dt, ctx, line){
+	$('#' + ctx.sTableId).triggerHandler('tableEditInlineClone', ctx);
+	
+	dt.row(0).data(dt.row(line + 1).data());
+	
+	if (ctx.oInit.inlineEdit.rowDefault !== undefined) {
 		ctx.oInit.inlineEdit.rowDefault.line = 0;
 	}
+	
 	ctx.multiselection.selectedIds = [];
-        ctx.multiselection.lastSelectedId = '';
+	ctx.multiselection.lastSelectedId = '';
 	ctx.multiselection.numSelected = 0;
-	$.each(ctx.oInit.primaryKey,function() {
-            dt.row(0).data()[this] = '';
+	
+	$.each(ctx.oInit.primaryKey, function() {
+		dt.row(0).data()[this] = '';
 	});
-        var columnsHide = dt.columns().responsiveHidden().reduce(function (a, b) {
-            return b === false ? a + 1 : a;
-        }, 0);
-	if(columnsHide === 0){//si no hay responsive se pone como nuevo, si hay responsive ya se encarga de poner el new
-		$('#'+ctx.sTableId+' tbody tr:eq(0)').addClass('new');
-	}
+        
+	// Añadir clase necesaria para su futura gestión a la hora de guardar el registro
+	$('#' + ctx.sTableId + ' tbody tr:eq(0)').addClass('new');
 }
 
 /**
@@ -1478,12 +1498,6 @@ function _loadAuxForm(ctx, actionType) {
 	// Servirá para saber si la última llamada a inlineEdit fue para añadir, editar o si aún no ha sido inicializado
 	let lastAction = ctx.oInit.inlineEdit.actionType;
 	
-	// En caso de ser clonado el method ha de ser POST
-	let currentPost = ctx.oInit.inlineEdit.currentPos
-    if (currentPost !== undefined && currentPost.actionType === 'CLONE') {
-        actionType = 'POST';
-    }
-	
 	// Si el usuario ha activado los formularios dinámicos y la última acción no es la misma que la actual, es necesario volver a obtener el formulario
 	if (ctx.oInit.enableDynamicForms && lastAction !== actionType) {
 		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType.
@@ -1509,22 +1523,7 @@ function _loadAuxForm(ctx, actionType) {
 			tableWrapper.prepend(receivedForm);
 			ctx.oInit.inlineEdit.actionType = actionType;
 			ctx.oInit.inlineEdit.idForm = tableWrapper.find("form").first();
-			
-			// TODO: es posible que no haga falta hacer esto porque antes de entrar por aquí se llaman a las validaciones y funcionan
-			// Añadir validaciones
-			_addValidation(ctx);
     	}, 'html');
-    } else if (!ctx.oInit.enableDynamicForms && lastAction === undefined) {
-    	// Entrará por aquí cuando los formularios dinámicos hayan sido desactivados (comportamiento por defecto) y se necesite inicializar las validaciones por ser la primera llamada
-		let deferred = $.Deferred();		
-    	ctx.oInit.inlineEdit.actionType = actionType;
-    	
-    	// TODO: es posible que no haga falta hacer esto porque antes de entrar por aquí se llaman a las validaciones y funcionan
-		// Añadir validaciones
-		_addValidation(ctx);
-		
-    	deferred.resolve();
-		return deferred.promise();
     } else {
     	// Para cuando el formulario actual sigue siendo válido o los formularios dinámicos están desactivados
     	let deferred = $.Deferred();
@@ -1533,37 +1532,6 @@ function _loadAuxForm(ctx, actionType) {
 		return deferred.promise();
     }
 }
-
-/**
- * Función que añade las validaciones a la fila a editar.
- *
- * @name addValidation
- * @function
- * @since UDA 5.0.0 // Table 1.0.0
- *
- * @param {object} ctx - Contexto del Datatable.
- *
- */
-function _addValidation(ctx) {
-    let feed = ctx.oInit.feedback.$feedbackContainer;
-    let validaciones;
-    if(ctx.oInit.inlineEdit.validate !== undefined){
-    	validaciones = ctx.oInit.inlineEdit.validate.rules;
-    }
-    
-    let propertiesDefault = {
-        liveCheckingErrors: false,
-        showFieldErrorAsDefault: true,
-        showErrorsInFeedback: true,
-        showFieldErrorsInFeedback: true
-    };
-    let propertiesValidate = $.extend(true, {}, propertiesDefault, ctx.oInit.inlineEdit.propertiesValidate);
-    propertiesValidate.feedback = feed;
-    propertiesValidate.rules = validaciones;
-	
-    $('#' + ctx.sTableId + '_search_searchForm').rup_validate(propertiesValidate);
-}
-
 
 /**
  * Llamada para crear el feedback dentro del dialog.
@@ -1579,6 +1547,9 @@ function _addValidation(ctx) {
  *
  */
 function _callFeedbackOk(ctx, msgFeedBack, type) {
+	if(ctx.oInit.inlineEdit.disabledFeedback){//no muestra el feedback
+		return false;
+	}
     $('#' + ctx.sTableId).triggerHandler('tableEditInLineFeedbackShow',ctx);
     ctx.oInit.feedback.$feedbackContainer.rup_feedback('set', msgFeedBack, type);
     ctx.oInit.feedback.$feedbackContainer.rup_feedback('show');
