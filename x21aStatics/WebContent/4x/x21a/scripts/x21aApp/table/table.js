@@ -473,14 +473,26 @@ jQuery(function ($) {
             	plugins.filter.collapsableLayerId = 'example_filter_fieldset';
                 $('#sinFiltro').prop('checked', false);
             }
-
-            //Col model es obligatorio,se mete como generico
-            plugins.colModel = tableColModels;
             
             plugins.columnDefs = [{
         	   'targets': [plugins.multiSelect !== undefined ? 1 : 0],
         	   'visible': false
         	}];
+            
+            // Cuando inlineEdit está activo se eliminan del colModel los campos ocultos con columnDefs
+            if (localStorage.plugins.indexOf('inlineEdit') > -1) {
+            	// Tiene en cuenta la multiselección
+            	let fixIndex = plugins.multiSelect !== undefined ? 1 : 0;
+            	
+            	$.each(plugins.columnDefs, function (key, value) {
+                	if (!value.visible && $.inArray(value.targets - fixIndex, tableColModels)) {
+                		tableColModels.splice(value.targets - fixIndex, 1);
+                	}
+                });
+            }
+
+            // El colModel es obligatorio, se mete como genérico
+            plugins.colModel = tableColModels;
 
             localStorage.clear();
             return plugins;
