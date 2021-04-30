@@ -8,7 +8,6 @@
 	data-filter-form="#usuario_filter_form">
 	<thead>
         <tr>
-            <th data-col-prop="id" data-col-sidx="ID" >id</th>
             <th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
             <th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
             <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
@@ -20,7 +19,6 @@
     </thead>
     <tfoot>
     	<tr>
-        	<th>id</th>
 			<th>nombre</th>
 			<th>apellido1</th>
 			<th>apellido2</th>

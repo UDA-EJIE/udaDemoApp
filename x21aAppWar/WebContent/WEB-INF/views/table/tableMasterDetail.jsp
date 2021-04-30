@@ -24,7 +24,6 @@
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
-        	<th data-col-prop="code">code</th>
             <th data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
             <th data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
             <th data-col-prop="css">css</th>
@@ -44,7 +43,6 @@
 	data-filter-form="#localidad_filter_form">
 	<thead>
 		<tr>
-			<th data-col-prop="code" data-col-sidx="code">code</th>
 		    <th data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
 		    <th data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
 		    <th data-col-prop="css">css</th>

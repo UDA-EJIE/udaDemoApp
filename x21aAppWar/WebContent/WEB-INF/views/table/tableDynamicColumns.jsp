@@ -35,7 +35,6 @@
 	data-filter-form="#columnasDinamicas_filter_form">
         <thead>
 			<tr>
-				<th data-col-prop="id" data-col-edit="false">ID</th>
 				<th data-col-prop="nombre" data-col-edit="true">Nombre</th>
 				<th data-col-prop="apellido1">Primer apellido</th>
 				<th data-col-prop="apellido2">Segundo apellido</th>

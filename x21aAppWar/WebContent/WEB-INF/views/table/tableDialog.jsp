@@ -33,8 +33,6 @@
 			data-filter-form="#MultiPk_filter_form">
 	        <thead>
 	            <tr>
-					<th data-col-prop="ida" data-col-sidx="IDA">IDa</th>
-					<th data-col-prop="idb" data-col-sidx="IDB">IDb</th>
 					<th data-col-prop="nombre" data-col-sidx="NOMBRE">Nombre</th>
 					<th data-col-prop="apellido1" data-col-sidx="APELLIDO1">Primer apellido</th>
 					<th data-col-prop="apellido2" data-col-sidx="APELLIDO2">Segundo apellido</th>
