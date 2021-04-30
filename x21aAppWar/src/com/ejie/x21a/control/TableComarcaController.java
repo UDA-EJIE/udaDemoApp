@@ -106,7 +106,7 @@ public class TableComarcaController {
 	 * @param  id String
 	 * @return String
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Comarca> getById(@PathVariable final BigDecimal id) {
         Comarca comarca = new Comarca();

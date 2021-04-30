@@ -65,7 +65,7 @@ public class TableLocalidadController {
 	 * @param code BigDecimal
 	 * @return localidad Localidad
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Localidad> getById(@PathVariable BigDecimal code) {
         Localidad localidad = new Localidad();

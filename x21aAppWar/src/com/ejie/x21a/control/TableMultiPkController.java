@@ -68,7 +68,7 @@ public class TableMultiPkController {
 	 * @return MultiPk 
 	 *            Objeto correspondiente al identificador indicado.
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<MultiPk> get(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
