@@ -483,6 +483,12 @@ public class TableUsuarioController {
 		apellidos.add(new AutocompleteComboGenericPOJO("Domínguez", "Domínguez"));
 		apellidos.add(new AutocompleteComboGenericPOJO("Vázquez", "Vázquez"));
 		apellidos.add(new AutocompleteComboGenericPOJO("Ramos", "Ramos"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Prueba", "Prueba"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Pedroche", "Pedroche"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Zangano", "Zangano"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Perurena", "Perurena"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Neymar", "Neymar"));
+		apellidos.add(new AutocompleteComboGenericPOJO("Tranquilino", "Tranquilino"));
 		
 		return apellidos;
 	}
