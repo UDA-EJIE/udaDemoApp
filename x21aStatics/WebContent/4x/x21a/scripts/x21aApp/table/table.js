@@ -21,7 +21,6 @@ jQuery(function ($) {
     window.initRupI18nPromise.then(function () {
         //FILTRO Y DETALLE
         var tableColModels = [
-
         	{
                 name: 'nombre',
                 index: 'nombre',

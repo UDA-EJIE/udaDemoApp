@@ -310,10 +310,6 @@ function _init() {
 
         plugins.columnDefs = [
         	{
-	     	   'targets': [plugins.multiSelect !== undefined ? 1 : 0],
-	    	   'visible': false
-	    	},
-	    	{
 	            'targets': [5],
 	            'render': function (data) {
 	                if (data !== undefined && data !== null) {
@@ -330,40 +326,24 @@ function _init() {
 	        }
         ];
 
-        // Para cualquier tabla que no sea la primera se oculta el nombre
-        /*if (num) {
-            plugins.columnDefs.push({
-                'className': 'never',
-                'targets': [2] }
-            );
-        }*/
-
         plugins.colModel = [
-        	{
-                name: 'id' + num,
-                index: 'id' + num,
-                editable: false,
-                hidden: true,
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 1
-                }
-            },
         	{
 	            name: 'nombre' + num,
 	            index: 'nombre' + num,
 	            editable: true,
-	            hidden: false,
-	            formoptions: {
-	                rowpos: 2,
-	                colpos: 1
-	            }
+	            hidden: false
 	        },
 	        {
 	            name: 'apellido1' + num,
 	            index: 'apellido1' + num,
 	            editable: true,
-                hidden: false,
+                hidden: false
+	        },
+	        { 
+            	name: 'apellido2' + num, 
+            	index: 'apellido2' + num, 
+            	editable: true, 
+            	hidden: false,
                 rupType: 'autocomplete',
                 editoptions: {
                 	source : './apellidos',
@@ -372,31 +352,7 @@ function _init() {
                     minLength: 3,
                     combobox: true,
                     contains: true
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 1
-                },
-                classes: 'ui-ellipsis'
-	        },
-	        { 
-            	name: 'apellido2' + num, 
-            	index: 'apellido2' + num, 
-            	editable: true, 
-            	hidden: false,
-            	rupType: 'combo',
-                editoptions: {
-                	source : './apellidos',
-                    sourceParam : {label: 'label', value: 'value'},
-                    blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
-                },
-            	formoptions:{
-            		rowpos: 4, 
-            		colpos: 1
-            	},
-            	classes: 'ui-ellipsis'
+                }
             },
 	        {
 	            name: 'ejie' + num,
@@ -410,10 +366,6 @@ function _init() {
 	            align: 'center',
 	            editoptions: {
 	                value: '1:0'
-	            },
-	            formoptions: {
-	                rowpos: 5,
-	                colpos: 1
 	            }
 	        },
 	        {
@@ -429,10 +381,6 @@ function _init() {
 	                showButtonPanel: true,
 	                showOtherMonths: true,
 	                noWeekend: true
-	            },
-	            formoptions: {
-	                rowpos: 1,
-	                colpos: 2
 	            }
 	        },
 	        {
@@ -448,10 +396,6 @@ function _init() {
 	                showButtonPanel: true,
 	                showOtherMonths: true,
 	                noWeekend: true
-	            },
-	            formoptions: {
-	                rowpos: 2,
-	                colpos: 2
 	            }
 	        },
 	        {
@@ -469,10 +413,6 @@ function _init() {
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 2
                 }
 	        }
         ];

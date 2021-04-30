@@ -17,57 +17,22 @@ jQuery(function ($) {
 
     var tableColModels = [
     	{
-	        name: 'ida',
-	        index: 'ida',
-	        editable: false,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 1,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'idb',
-	        index: 'idb',
-	        editable: false,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 2,
-	            colpos: 1
-	        }
-	    },
-	    {
 	        name: 'nombre',
 	        index: 'nombre',
 	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 3,
-	            colpos: 1
-	        }
+	        hidden: false
 	    },
 	    {
 	        name: 'apellido1',
 	        index: 'apellido1',
 	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 4,
-	            colpos: 1
-	        },
-	        classes: 'ui-ellipsis'
+	        hidden: false
 	    },
 	    {
 	        name: 'apellido2',
 	        index: 'apellido2',
 	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 5,
-	            colpos: 1
-	        }
+	        hidden: false
 	    }
     ];
 
@@ -144,12 +109,6 @@ jQuery(function ($) {
                 fillDataMethod: 'clientSide',
                 validate: {
                     rules: {
-                        'ida': {
-                            required: true
-                        },
-                        'idb': {
-                            required: true
-                        },
                         'nombre': {
                             required: false
                         },
@@ -176,13 +135,7 @@ jQuery(function ($) {
                 detailForm: '#MultiPk_detail_div',
                 validate: {
                     rules: {
-                        'ida': {
-                            required: true
-                        },
                         'nombre': {
-                            required: true
-                        },
-                        'idb': {
                             required: true
                         },
                         'apellido1': {
@@ -199,13 +152,7 @@ jQuery(function ($) {
                 deselect: true,
                 validate: {
                     rules: {
-                        'ida': {
-                            required: true
-                        },
                         'nombre': {
-                            required: true
-                        },
-                        'idb': {
                             required: true
                         },
                         'apellido1': {

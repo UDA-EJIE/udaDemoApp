@@ -21,21 +21,13 @@ jQuery(function ($) {
 	            index: 'nombre',
 	            editable: true,
 	            hidden: false,
-	            compulsory: true,
-	            formoptions: {
-	                rowpos: 1,
-	                colpos: 1
-	            }
+	            compulsory: true
 	        },
 	        {
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false,
-                formoptions: {
-                    rowpos: 2,
-                    colpos: 1
-                }
+                hidden: false
             },
             { 
             	name: "apellido2", 
@@ -50,11 +42,7 @@ jQuery(function ($) {
                     minLength: 3,
                     combobox: true,
                     contains: true
-                },
-            	formoptions:{
-            		rowpos: 3, 
-            		colpos: 1
-            	}
+                }
             },
 	        {
 	            name: 'ejie',
@@ -68,10 +56,6 @@ jQuery(function ($) {
 	            align: 'center',
 	            editoptions: {
 	                value: '1:0'
-	            },
-	            formoptions: {
-	                rowpos: 4,
-	                colpos: 1
 	            }
 	        },
 	        {
@@ -88,10 +72,6 @@ jQuery(function ($) {
 	                showButtonPanel: true,
 	                showOtherMonths: true,
 	                noWeekend: true
-	            },
-	            formoptions: {
-	                rowpos: 1,
-	                colpos: 2
 	            }
 	        },
 	        {
@@ -107,10 +87,6 @@ jQuery(function ($) {
 	                showButtonPanel: true,
 	                showOtherMonths: true,
 	                noWeekend: true
-	            },
-	            formoptions: {
-	                rowpos: 2,
-	                colpos: 2
 	            }
 	        },
 	        {
@@ -128,10 +104,6 @@ jQuery(function ($) {
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 2
                 }
             }
 	    ];
@@ -216,10 +188,6 @@ jQuery(function ($) {
 	
 	        $('#columnasDinamicas').rup_table({
 	            colModel: tableColModel,
-	            columnDefs: [{
-	         	   'targets': 0,
-	         	   'visible': false
-	         	}],
 	            buttons: {
 	                activate: true
 	            },

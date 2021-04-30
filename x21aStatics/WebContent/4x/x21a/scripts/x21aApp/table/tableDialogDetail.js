@@ -17,44 +17,22 @@ jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
 	    var tableColModelsComarca = [
 	    	{
-		        name: 'code',
-		        index: 'code',
-		        editable: false,
-		        hidden: true,
-		        formoptions: {
-		            rowpos: 1,
-		            colpos: 1
-		        }
-		    },
-		    {
 		        name: 'descEs',
 		        index: 'descEs',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 2,
-		            colpos: 1
-		        }
+		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
 		        index: 'descEu',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 3,
-		            colpos: 1
-		        }
+		        hidden: false
 		    },
 		    {
 		        name: 'css',
 		        index: 'css',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 4,
-		            colpos: 1
-		        }
+		        hidden: false
 		    },
 		    {
 		        name: 'provincia.code',
@@ -73,21 +51,13 @@ jQuery(function ($) {
         	        blank: '',
                     width: '100%',
                     customClasses: ['select-material']
-                },
-		        formoptions: {
-		            rowpos: 5,
-		            colpos: 1
-		        }
+                }
 		    },
 		    {
 		        name: 'provincia.descEs',
 		        index: 'provincia.descEs',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 6,
-		            colpos: 1
-		        }
+		        hidden: false
 		    }
 	    ];
 	
@@ -103,12 +73,6 @@ jQuery(function ($) {
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
-	        columnDefs: [
-	        	{
-	        		'targets': 0,
-	        	   	'visible': false
-	        	}
-	        ],
 	        seeker: {
 	            activate: true,
 	            colModel: tableColModelsComarca
@@ -139,44 +103,22 @@ jQuery(function ($) {
 	
 	    var tableColModelsLocalidad = [
 	    	{
-		        name: 'code',
-		        index: 'code',
-		        editable: false,
-		        hidden: true,
-		        formoptions: {
-		            rowpos: 1,
-		            colpos: 1
-		        }
-		    },
-		    {
 		        name: 'descEs',
 		        index: 'descEs',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 2,
-		            colpos: 1
-		        }
+		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
 		        index: 'descEu',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 3,
-		            colpos: 1
-		        }
+		        hidden: false
 		    },
 		    {
 		        name: 'css',
 		        index: 'css',
 		        editable: true,
-		        hidden: false,
-		        formoptions: {
-		            rowpos: 4,
-		            colpos: 1
-		        }
+		        hidden: false
 		    }
 	    ];
 	
@@ -192,12 +134,6 @@ jQuery(function ($) {
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
-	        columnDefs: [
-	        	{
-	        		'targets': 0,
-	        	   	'visible': false
-	        	}
-	        ],
 	        buttons: {
 	            activate: true
 	        },

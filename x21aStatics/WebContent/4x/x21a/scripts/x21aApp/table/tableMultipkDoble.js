@@ -17,30 +17,22 @@ jQuery(function($){
 	initRupI18nPromise.then(function(){
 		var tableColModelsSimple = [
 			{
-                name: 'id',
-                index: 'id',
-                editable: false,
-                hidden: true,
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 1
-                }
-            },
-        	{
                 name: 'nombre',
                 index: 'nombre',
                 editable: true,
-                hidden: false,
-                formoptions: {
-                    rowpos: 2,
-                    colpos: 1
-                }
+                hidden: false
             },
             {
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false,
+                hidden: false
+            },
+            { 
+            	name: "apellido2", 
+            	index: "apellido2", 
+            	editable: true, 
+            	hidden: false,
                 rupType: 'autocomplete',
                 editoptions: {
                 	source : '../apellidos',
@@ -49,31 +41,7 @@ jQuery(function($){
                     minLength: 3,
                     combobox: true,
                     contains: true
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 1
-                },
-                classes: 'ui-ellipsis'
-            },
-            { 
-            	name: "apellido2", 
-            	index: "apellido2", 
-            	editable: true, 
-            	hidden: false,
-            	rupType: 'combo',
-                editoptions: {
-                	source : '../apellidos',
-                    sourceParam : {label: 'label', value: 'value'},
-                    blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
-                },
-            	formoptions:{
-            		rowpos: 4, 
-            		colpos: 1
-            	},
-            	classes: 'ui-ellipsis'
+                }
             },
             {
                 name: 'ejie',
@@ -87,10 +55,6 @@ jQuery(function($){
                 align: 'center',
                 editoptions: {
                     value: '1:0'
-                },
-                formoptions: {
-                    rowpos: 5,
-                    colpos: 1
                 }
             },
             {
@@ -106,10 +70,6 @@ jQuery(function($){
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
-                },
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 2
                 }
             },
             {
@@ -125,10 +85,6 @@ jQuery(function($){
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
-                },
-                formoptions: {
-                    rowpos: 2,
-                    colpos: 2
                 }
             },
             {
@@ -146,10 +102,6 @@ jQuery(function($){
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 2
                 }
             }
         ];
@@ -160,57 +112,22 @@ jQuery(function($){
 		
 		var tableColModels = [
 			{ 
-				name: "ida", 
-				index: "ida", 
-				editable: false, 
-				hidden: false,
-				width: 80,
-				formoptions: {
-					rowpos: 1, 
-					colpos: 1
-				}
-			},
-			{ 
-				name: "idb", 
-				index: "idb", 
-				editable: false, 
-				hidden: false, 
-				width: 80, 
-				formoptions: {
-					rowpos: 2, 
-					colpos: 1
-				}
-			},
-			{ 
 				name: "nombre", 
 				index: "nombre", 
 				editable: true, 
-				hidden: false,
-				formoptions: {
-					rowpos: 3, 
-					colpos: 1
-				}
+				hidden: false
 			},
 			{ 
 				name: "apellido1", 
 				index: "apellido1", 
 				editable: true, 
-				hidden: false,
-				formoptions: {
-					rowpos: 4, 
-					colpos: 1
-				},
-				classes:'ui-ellipsis'
+				hidden: false
 			},
 			{ 
 				name: "apellido2", 
 				index: "apellido2", 
 				editable: true, 
-				hidden: false,
-				formoptions: {
-					rowpos: 5, 
-					colpos: 1
-				}
+				hidden: false
 			}
 		];
 	         
@@ -330,12 +247,6 @@ jQuery(function($){
     			fillDataMethod: "clientSide",
              	validate:{ 
         			rules:{
-        				"ida":{
-    						required: true
-        				},
-        				"idb":{
-    						required: true
-        				},
         				"nombre":{
     						required: false
         				},
