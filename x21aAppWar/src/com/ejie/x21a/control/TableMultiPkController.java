@@ -96,6 +96,7 @@ public class TableMultiPkController {
 	@UDALink(name = "getFiltroSimpleDoble", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
