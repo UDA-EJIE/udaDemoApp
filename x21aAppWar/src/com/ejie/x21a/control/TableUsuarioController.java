@@ -121,7 +121,7 @@ public class TableUsuarioController {
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario> get(@PathVariable String id) {
         Usuario usuario = new Usuario();
@@ -131,7 +131,7 @@ public class TableUsuarioController {
         return new Resource<Usuario>(usuario);
 	}
 	
-	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" )})
+	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "filter2")})
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario2> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable String id) {

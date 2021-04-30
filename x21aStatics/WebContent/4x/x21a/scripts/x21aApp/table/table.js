@@ -21,35 +21,18 @@ jQuery(function ($) {
     window.initRupI18nPromise.then(function () {
         //FILTRO Y DETALLE
         var tableColModels = [
-        	{
-                name: 'id',
-                index: 'id',
-                editable: false,
-                hidden: true,
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 1
-                }
-            },
+
         	{
                 name: 'nombre',
                 index: 'nombre',
                 editable: true,
-                hidden: false,
-                formoptions: {
-                    rowpos: 2,
-                    colpos: 1
-                }
+                hidden: false
             },
             {
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false,
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 1
-                }
+                hidden: false
             },
             { 
             	name: "apellido2", 
@@ -64,11 +47,7 @@ jQuery(function ($) {
                     minLength: 3,
                     combobox: true,
                     contains: true
-                },
-            	formoptions:{
-            		rowpos: 4, 
-            		colpos: 1
-            	}
+                }
             },
             {
                 name: 'ejie',
@@ -82,10 +61,6 @@ jQuery(function ($) {
                 align: 'center',
                 editoptions: {
                     value: '1:0'
-                },
-                formoptions: {
-                    rowpos: 5,
-                    colpos: 1
                 }
             },
             {
@@ -101,10 +76,6 @@ jQuery(function ($) {
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
-                },
-                formoptions: {
-                    rowpos: 1,
-                    colpos: 2
                 }
             },
             {
@@ -120,10 +91,6 @@ jQuery(function ($) {
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
-                },
-                formoptions: {
-                    rowpos: 2,
-                    colpos: 2
                 }
             },
             {
@@ -141,10 +108,6 @@ jQuery(function ($) {
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
-                },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 2
                 }
             }
         ];
@@ -464,23 +427,6 @@ jQuery(function ($) {
                 $('#sinFiltro').prop('checked', false);
             }
             
-            plugins.columnDefs = [{
-        	   'targets': [plugins.multiSelect !== undefined ? 1 : 0],
-        	   'visible': false
-        	}];
-            
-            // Cuando inlineEdit está activo se eliminan del colModel los campos ocultos con columnDefs
-            if (localStorage.plugins.indexOf('inlineEdit') > -1) {
-            	// Tiene en cuenta la multiselección
-            	let fixIndex = plugins.multiSelect !== undefined ? 1 : 0;
-            	
-            	$.each(plugins.columnDefs, function (key, value) {
-                	if (!value.visible && $.inArray(value.targets - fixIndex, tableColModels)) {
-                		tableColModels.splice(value.targets - fixIndex, 1);
-                	}
-                });
-            }
-
             // El colModel es obligatorio, se mete como genérico
             plugins.colModel = tableColModels;
 
