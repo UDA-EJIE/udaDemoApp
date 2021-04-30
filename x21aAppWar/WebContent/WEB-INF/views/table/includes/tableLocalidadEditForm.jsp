@@ -26,10 +26,7 @@
 	<div id ="localidad_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row"> 
-		<c:if test="${endpoint == 'edit'}">
-			<form:input path="code" id="code_detail_tableLocalidad" class="d-none" />
-		</c:if>    
-	    <div class="form-groupMaterial col-sm">
+		<div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detail_tableLocalidad" />
 	    	<label for="descEs_detail_tableLocalidad">descEs</label>
 	    </div>       

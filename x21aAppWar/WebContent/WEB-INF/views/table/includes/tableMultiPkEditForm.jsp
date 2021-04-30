@@ -27,14 +27,6 @@
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:input path="ida" id="ida_multipk_detail_table"/>
-			<label for="ida_multipk_detail_table"><spring:message code="ida"/></label>
-		</div>
-		<div class="form-groupMaterial col-sm">
-			<form:input path="idb" id="idb_multipk_detail_table"/>
-			<label for="idb_multipk_detail_table"><spring:message code="idb"/></label>
-		</div>
-		<div class="form-groupMaterial col-sm">
 			<form:input path="nombre" id="nombre_multipk_detail_table"/>
 			<label for="nombre_multipk_detail_table"><spring:message code="nombre"/></label>
 		</div>

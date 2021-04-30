@@ -25,10 +25,7 @@
 	<!-- Feedback del formulario de detalle -->
 	<div id ="comarca_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
-	<div class="form-row"> 
-		<c:if test="${endpoint == 'edit'}">
-			<form:input path="code" id="code_detail_tableComarca" class="d-none" />
-		</c:if>   
+	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detailForm_tableComarca" />
 	    	<label for="descEs_detailForm_tableComarca">descEs</label>

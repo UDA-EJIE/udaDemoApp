@@ -24,25 +24,11 @@
 		<!-- Campos del formulario de filtrado -->
 		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
-				<form:input path="ida" id="ida_filter_table"/>
-				<label for="ida_filter_table">
-					<spring:message code="ida"/>
-				</label>
-			</div>
-			<div class="form-groupMaterial col-sm">
-				<form:input path="idb" id="idb_filter_table"/>
-				<label for="idb_filter_table">
-					<spring:message code="idb"/>
-				</label>
-			</div>
-			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
 				<label for="nombre_filter_table" >
 					<spring:message code="nombre"/>
 				</label>
 			</div>
-		</div>
-		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="apellido1" id="apellido1_filter_table"/>
 				<label for="apellido1_filter_table">

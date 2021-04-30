@@ -26,10 +26,7 @@
 	<div id ="example2_detail_feedback"></div>	
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
-		<c:if test="${endpoint == 'edit'}">
-			<form:input path="id2" id="id_detail_table2" class="d-none" />
-		</c:if>
-	    <div class="form-groupMaterial col-sm">
+		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre2" id="nombre_detail_table2" />
 	    	<label for="nombre_detail_table2"><spring:message code="nombre" /></label>
 	    </div>
