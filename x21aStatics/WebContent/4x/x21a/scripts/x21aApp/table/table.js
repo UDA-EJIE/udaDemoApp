@@ -46,7 +46,17 @@ jQuery(function ($) {
                 index: 'apellido1',
                 editable: true,
                 hidden: false,
-                rupType: 'autocomplete',
+                formoptions: {
+                    rowpos: 3,
+                    colpos: 1
+                }
+            },
+            { 
+            	name: "apellido2", 
+            	index: "apellido2", 
+            	editable: true, 
+            	hidden: false,
+            	rupType: 'autocomplete',
                 editoptions: {
                 	source : './apellidos',
                     sourceParam : {label: 'label', value: 'value'},
@@ -55,30 +65,10 @@ jQuery(function ($) {
                     combobox: true,
                     contains: true
                 },
-                formoptions: {
-                    rowpos: 3,
-                    colpos: 1
-                },
-                classes: 'ui-ellipsis'
-            },
-            { 
-            	name: "apellido2", 
-            	index: "apellido2", 
-            	editable: true, 
-            	hidden: false,
-            	rupType: 'combo',
-                editoptions: {
-                	source : './apellidos',
-                    sourceParam : {label: 'label', value: 'value'},
-                    blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
-                },
             	formoptions:{
             		rowpos: 4, 
             		colpos: 1
-            	},
-            	classes: 'ui-ellipsis'
+            	}
             },
             {
                 name: 'ejie',
