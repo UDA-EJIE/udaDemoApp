@@ -310,18 +310,11 @@ function _init() {
 
         plugins.columnDefs = [
         	{
-	            'targets': [5],
+	            'targets': [plugins.multiSelect !== undefined ? 4 : 3],
 	            'render': function (data) {
 	                if (data !== undefined && data !== null) {
-	                    return data.replace('/', '/');
+	                    return data.replace(new RegExp('/', 'g'), '-');
 	                }
-	            }
-	        },
-	        {
-	            'name': 'Nombre',
-	            'targets': 'Nombre',
-	            'render': function (data) {
-	                return data.replace('a', '.');
 	            }
 	        }
         ];
