@@ -49,7 +49,7 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
 	@Length(max=25, message="validacion.maxLength")
 	private String apellido2;
 	//@NotBlank(message="validacion.required")
-	private String ejie ;
+	private String ejie;
 	private String tipo;
 	private String subtipo;
 	@NotNull(message="validacion.required")

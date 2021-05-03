@@ -84,6 +84,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario add(Usuario usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.add(usuario);
 	}
 	
@@ -95,6 +96,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario2 add(Usuario2 usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.add(usuario);
 	}
 
@@ -106,6 +108,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario update(Usuario usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.update(usuario);
 	}
 
@@ -117,6 +120,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario2 update(Usuario2 usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.update(usuario);
 	}
 
@@ -216,6 +220,36 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
 		}
 		return usuarioDto; 
+	}
+	
+	/*
+	 * UTILIDADES
+	 */
+	
+	/**
+	 * Si el campo "ejie" no tiene un valor definido le establece uno por defecto. No se hace en la entidad para evitar que el filtro siempre filtre por el valor por defecto.
+	 *
+	 * @param usuario Usuario
+	 * @return Usuario
+	 */
+	private Usuario setEjieDefault(Usuario usuario) {
+		if (usuario.getEjie() == null) {
+			usuario.setEjie("0");
+		}
+		return usuario;
+	}
+	
+	/**
+	 * Si el campo "ejie" no tiene un valor definido le establece uno por defecto. No se hace en la entidad para evitar que el filtro siempre filtre por el valor por defecto.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario
+	 */
+	private Usuario2 setEjieDefault(Usuario2 usuario) {
+		if (usuario.getEjie() == null) {
+			usuario.setEjie("0");
+		}
+		return usuario;
 	}
 	
 	/*
