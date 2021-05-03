@@ -45,7 +45,8 @@ jQuery(function ($) {
                     menuMaxHeight: 200,
                     minLength: 3,
                     combobox: true,
-                    contains: true
+                    contains: true,
+                    showDefault: true
                 }
             },
             {
