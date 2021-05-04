@@ -173,11 +173,11 @@ public class TableUsuarioController {
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
-		comboRol.put("administrador", "Administrador");
-		comboRol.put("desarrollador", "Desarrollador");
-		comboRol.put("espectador", "Espectador");
-		comboRol.put("informador", "Informador");
-		comboRol.put("manager", "Manager");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
 		
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
@@ -216,11 +216,11 @@ public class TableUsuarioController {
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
-		comboRol.put("administrador", "Administrador");
-		comboRol.put("desarrollador", "Desarrollador");
-		comboRol.put("espectador", "Espectador");
-		comboRol.put("informador", "Informador");
-		comboRol.put("manager", "Manager");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
 		
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
@@ -330,11 +330,11 @@ public class TableUsuarioController {
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
-		comboRol.put("administrador", "Administrador");
-		comboRol.put("desarrollador", "Desarrollador");
-		comboRol.put("espectador", "Espectador");
-		comboRol.put("informador", "Informador");
-		comboRol.put("manager", "Manager");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
 		
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
