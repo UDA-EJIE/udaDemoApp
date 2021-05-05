@@ -197,6 +197,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
+			@UDALinkAllower(name = "getMultiFilterForm2"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -691,6 +692,35 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
 		model.addAttribute("entity", new Usuario());
+		model.addAttribute("tableID", tableID);
+		model.addAttribute("containerClass", containerClass);
+		model.addAttribute("labelClass", labelClass);
+		model.addAttribute("defaultContainerClass", defaultContainerClass);
+		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table/multiFilter";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "multiFilterForm";
+	}
+	
+	// Obtiene el formulario del multi filtro
+	@UDALink(name = "getMultiFilterForm2")
+	@RequestMapping(value = "{bis}/multiFilter", method = RequestMethod.POST)
+	public String getMultiFilterForm2 (
+			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = true) String containerClass,
+			@RequestParam(required = true) String labelClass,
+			@RequestParam(required = true) String defaultContainerClass,
+			@RequestParam(required = true) String defaultCheckboxClass,
+			Model model) {
+		model.addAttribute("entity", new Usuario2());
 		model.addAttribute("tableID", tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);

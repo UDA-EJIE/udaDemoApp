@@ -296,6 +296,11 @@ function _init() {
                 labelSize: 255,
                 userFilter: 'udaPruebas'
             };
+            
+            if (num == "2") {
+            	plugins.multiFilter.url = './../multiFilter';
+            }
+            
             $('#multiFilter' + num).prop('checked', true);
         } else {
             $('#multiFilter' + num).prop('checked', false);
