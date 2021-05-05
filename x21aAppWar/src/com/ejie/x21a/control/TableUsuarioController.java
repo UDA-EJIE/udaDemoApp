@@ -156,6 +156,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -195,6 +196,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -238,6 +240,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -267,6 +270,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -294,6 +298,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableEditForm", linkClass = TableMultiPkController.class),
 			@UDALinkAllower(name = "getTableDialogAjax"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -314,6 +319,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -673,38 +679,70 @@ public class TableUsuarioController {
 		}
 	}
 	
+	// Obtiene el formulario del multi filtro
+	@UDALink(name = "getMultiFilterForm")
+	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	public String getMultiFilterForm (
+			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = true) String containerClass,
+			@RequestParam(required = true) String labelClass,
+			@RequestParam(required = true) String defaultContainerClass,
+			@RequestParam(required = true) String defaultCheckboxClass,
+			Model model) {
+		model.addAttribute("entity", new Usuario());
+		model.addAttribute("tableID", tableID);
+		model.addAttribute("containerClass", containerClass);
+		model.addAttribute("labelClass", labelClass);
+		model.addAttribute("defaultContainerClass", defaultContainerClass);
+		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table/multiFilter";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "multiFilterForm";
+	}
+	
+	// Añade o actualiza un filtro
 	@UDALink(name = "multifilterAdd")
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
-	public @ResponseBody Resource<Filter> filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
+	public @ResponseBody Resource<Filter> filterAdd(@RequestBody Filter filtro){
 		TableUsuarioController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
 	}
-
+	
+	// Elimina un filtro
 	@UDALink(name = "multifilterDelete")
 	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
-	public @ResponseBody Resource<Filter> filterDelete(
-			@RequestJsonBody(param="filtro") Filter filtro) {
+	public @ResponseBody Resource<Filter> filterDelete(@RequestBody Filter filtro) {
 		TableUsuarioController.logger.info("[POST - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	
+	// Obtiene el filtro por defecto
 	@UDALink(name = "multifilterDefault")
 	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
 	public @ResponseBody Resource<Filter> filterGetDefault(
-		@RequestParam(value = "filterSelector", required = true) String filterSelector,
-		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - table] : getDefault filter");
+			@RequestParam(value = "filterSelector", required = true) String filterSelector,
+			@RequestParam(value = "user", required = true) String filterUser) {
+		TableUsuarioController.logger.info("[GET - table] : getDefault filter");
 		return ResourceUtils.toResource(filterService.getDefault(filterSelector, filterUser));
 	}
 	
+	// Obtiene los filtros disponibles
 	@UDALink(name = "multifilterGetAll")
 	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
-		@RequestParam(value = "filterSelector", required = true) String filterSelector,
-		@RequestParam(value = "q", required = false) String filterQ,
-		@RequestParam(value = "c", required = true) String filterC,
-		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - table] : GetAll filter");
+			@RequestParam(value = "q", required = false) String filterQ,
+			@RequestParam(value = "c", required = false) Boolean filterC,
+			@RequestParam(value = "filterSelector", required = true) String filterSelector,
+			@RequestParam(value = "user", required = true) String filterUser) {
+		TableUsuarioController.logger.info("[GET - table] : GetAll filter");
 		return ResourceUtils.fromListToResource(filterService.getAllFilters(filterSelector, filterUser));
 	}
 	

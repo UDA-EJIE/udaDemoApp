@@ -609,6 +609,8 @@
 	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
 	
 	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
+	
+	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
 
 	<definition extends="template" name="tableDouble">
 		<put-attribute name="content"

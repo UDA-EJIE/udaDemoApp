@@ -21,15 +21,9 @@
 
 	</bean>
 
-
+	<!-- Inyección de dependencias del FilterService -->
 	<bean id="x21aFilterService"
 		class="com.ejie.x38.rup.table.filter.service.FilterServiceImpl">
 		<property name="filterDao" ref="x21aFilterDao" />
 	</bean>
-	<!-- <bean id="jQGridUsuarioController" class="com.ejie.x21a.control.JQGridUsuarioController"> -->
-	<!-- <property name="filterService" ref="x21aFilterService" /> -->
-
-	<!-- </bean> -->
-
-
 </beans>
