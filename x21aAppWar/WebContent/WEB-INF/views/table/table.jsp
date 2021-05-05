@@ -36,7 +36,7 @@
 
 <jsp:include page="includes/tableEdit.jsp"></jsp:include>
 
-<form:form modelAttribute="options" method="POST" id="example_tableConfiguration" model class="mt-5">
+<form:form modelAttribute="options" method="POST" id="example_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">
 		<div class="row">

@@ -24,17 +24,6 @@ function _init() {
         noSelection: ['colReorder', 'seeker', 'groups', 'noSelection', 'multiFilter', 'triggers', 'multiPart']
     };
 
-    function copyPluginsForm(num) {
-        var $formPlugins = $('#example_tableConfiguration').clone();
-        $formPlugins.find('[id]').each(function (i, e) {
-            $(e).attr('id', $(e).attr('id') + num);
-        });
-        $formPlugins.find('[for]').each(function (i, e) {
-            $(e).attr('for', $(e).attr('for') + num);
-        });
-        $('#example_tableConfiguration' + num).append($formPlugins.html());
-    }
-
     function listaPlugins(num) {
         switch (num) {
         case '2':
@@ -52,9 +41,14 @@ function _init() {
                 localStorage['plugins' + num] = '';
             }
 
-            var selectionType = $('input[name=\'tipoSeleccionTabla\']:checked')[0].id;
+            var selectionType = $('#example_tableConfiguration' + num + ' input[name=\'tipoSeleccionTabla\']:checked')[0].id;
 
             if (num.length > 0) {
+                // Comprobar si el identificador lleva el número al final y eliminarlo en caso de que lo lleve para que no falle al obtener la propiedad del objeto "allowedPluginsBySelecionType"
+                if (new RegExp(num + "$", "").test(selectionType)) {
+                	selectionType = selectionType.slice(0, -1);
+                }
+                
                 $.each($('#example_tableConfiguration' + num + ' .pluginsControl input'), function () {
                     if ($('#' + this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id.substring(0, this.id.length - 1)) > -1) {
                         localStorage['plugins' + num] = localStorage['plugins' + num] + this.id + ',';
@@ -421,8 +415,6 @@ function _init() {
     }
 
     jQuery(function ($) {
-        copyPluginsForm(2);
-        
         //Formulario de filtrado
         $('[id="fechaAlta_filter_table"]').rup_date();
         $('[id="fechaBaja_filter_table"]').rup_date();

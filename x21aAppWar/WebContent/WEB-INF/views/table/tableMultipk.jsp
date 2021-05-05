@@ -18,7 +18,7 @@
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
-<form:form modelAttribute="options" id="multipk_tableConfiguration">
+<form:form modelAttribute="options" method="POST" id="multipk_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
