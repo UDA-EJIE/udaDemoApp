@@ -138,7 +138,12 @@ jQuery(function($) {
             source : 'autocomplete/remote',
             disabledCache: true,
             sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
-            minLength: 4
+            minLength: 4,
+            select:function(){
+                var value=$('#patron').rup_autocomplete('getRupValue');
+                console.log('Seleccionado: '+value);
+                return true;
+            }
         });
 
 
