@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -503,16 +504,59 @@ public class PatronesController {
 
 
     //All (todos los patrones en una pagina)
+    @UDALink(name = "getAll", linkTo = { 
+    		@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
+    		@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableUsuarioController.class),
+    		@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
+    		@UDALinkAllower(name = "getEnlazadoProvincia"),
+    		@UDALinkAllower(name = "getEnlazadoComarca"),
+    		@UDALinkAllower(name = "getRemoteComboGrupos"),
+    		@UDALinkAllower(name = "tabsContent"),
+    		@UDALinkAllower(name = "tabs2Content"),
+    		@UDALinkAllower(name = "tabs3Content"),
+    		@UDALinkAllower(name = "getAllDialog") })
     @RequestMapping(value = "all", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute("usuario", new Usuario());
+    	model.addAttribute("comarca", new Comarca());
         return "all";
     }
 
     //AllDialog (todos los patrones en un dialogo)
+    @UDALink(name = "getAllDialog", linkTo = { 
+    		@UDALinkAllower(name = "filter", linkClass = TableUsuarioController.class),
+    		@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableUsuarioController.class) })
     @RequestMapping(value = "allDialog", method = RequestMethod.GET)
     public String getAllDialog(Model model) {
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("randomForm", new RandomForm());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "Sí");
+		model.addAttribute("comboEjie", comboEjie);
+        
         return "allDialog";
     }
 

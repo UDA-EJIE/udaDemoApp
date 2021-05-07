@@ -13,19 +13,33 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<label for="textDNI" style="color:red;">*</label>
-<label for="textDNI">DNI</label>
-<label for="textDNI" style="font-size: 0.9em ;color:#808080" >(ej.:&nbsp;45818777M)</label>
-<input id="textDNI" type="text" class="textBox" name="dni" size="30" /><br>
+<div class="form-row">    
+	<div class="form-groupMaterial col-sm">
+		<input id="textDNI" type="text" name="dni" size="30" required />
+		<label for="textDNI">
+			<span>DNI&nbsp;</span>
+			<span style="font-size: 0.9em ;color:#808080">(ej.::&nbsp;45818777M)</span>
+		</label>
+	</div>
+</div>
 
-<label for="textNombre" style="color:red;">*</label>
-<label for="textNombre">Nombre: </label>
-<input id="textNombre" type="text" class="textBox" name="nombre" size="30" /><br>
+<div class="form-row">    
+	<div class="form-groupMaterial col-sm">
+		<input id="textNombre" type="text" class="textBox" name="nombre" size="30" required />
+		<label for="textNombre">Nombre</label>
+	</div>
+</div>
 
-<label for="textApe1" style="color:red;">*</label>
-<label for="textApe1">Apellido 1: </label>
-<input id="textApe1" type="text" class="alineacionDchaTextBox" name="ape1" size="30" /><br>
+<div class="form-row">    
+	<div class="form-groupMaterial col-sm">
+		<input id="textApe1" type="text" class="alineacionDchaTextBox" name="ape1" size="30" required />
+		<label for="textApe1">Apellido 1</label>
+	</div>
+</div>
 
-<label for="textApe2" style="color:red;">*</label>
-<label for="textApe2">Apellido 2: </label>
-<input id="textApe2" type="text" name="ape2" size="30" class="alineacionDchaTextBox" /><br>
+<div class="form-row">    
+	<div class="form-groupMaterial col-sm">
+		<input id="textApe2" type="text" name="ape2" size="30" class="alineacionDchaTextBox" required />
+		<label for="textApe2">Apellido 2</label>
+	</div>
+</div>

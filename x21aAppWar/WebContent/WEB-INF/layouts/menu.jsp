@@ -393,7 +393,7 @@
                                         con mantenimiento</a>
                                 </div>
                             </div>
-
+							
                             <spring:url value="/patrones/slider" var="slider" htmlEscape="true"/>
                             <a class="dropdown-item" href="${slider}">
                                 <i class="mdi mdi-tune" aria-hidden="true"></i>
@@ -408,6 +408,11 @@
                             <a class="dropdown-item" href="${form}">
                                 <i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
                                 <spring:message code="form" />
+                            </a>
+                            <spring:url value="/patrones/all" var="all" htmlEscape="true"/>
+                            <a class="dropdown-item" href="${all}">
+                                <i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
+                                <spring:message code="all" />
                             </a>
                             <spring:url value="/patrones/time" var="time" htmlEscape="true"/>
                             <a class="dropdown-item" href="${time}">

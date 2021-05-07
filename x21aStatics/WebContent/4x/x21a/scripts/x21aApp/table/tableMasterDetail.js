@@ -15,7 +15,7 @@
  */
 jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
-	    var tableColModelsComarca = [
+		 var tableColModelsComarca = [
 		    {
 		        name: 'descEs',
 		        index: 'descEs',

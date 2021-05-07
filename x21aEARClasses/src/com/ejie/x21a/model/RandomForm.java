@@ -2,9 +2,13 @@ package com.ejie.x21a.model;
 
 import java.util.List;
 
-public class RandomForm implements java.io.Serializable {
+import org.hdiv.services.SecureIdentifiable;
+
+public class RandomForm implements java.io.Serializable, SecureIdentifiable<String> {
 
     private static final long serialVersionUID = 1L;
+
+    private String id;
 
     private String nombre;
 
@@ -250,7 +254,15 @@ public class RandomForm implements java.io.Serializable {
 
     private List<String> alertEdad;
 
-    public String getNombre() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
         return nombre;
     }
 
@@ -899,6 +911,7 @@ public class RandomForm implements java.io.Serializable {
 	}
 	
 	public class Autonomia implements java.io.Serializable {
+		private static final long serialVersionUID = 7583827664692414748L;
 		private String codeAutonomia;
 		
 		public String getCodeAutonomia() {
@@ -911,6 +924,7 @@ public class RandomForm implements java.io.Serializable {
 	}
 	
 	public class Municipio implements java.io.Serializable {
+		private static final long serialVersionUID = 3654880606085517600L;
 		private String codeMunicipio;
 		
 		public String getCodeMunicipio() {
@@ -923,6 +937,7 @@ public class RandomForm implements java.io.Serializable {
 	}
 	
 	public class Localidad implements java.io.Serializable {
+		private static final long serialVersionUID = 4539974135392813199L;
 		private String codeLocalidad;
 		
 		public String getCodeLocalidad() {

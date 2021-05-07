@@ -161,6 +161,7 @@ public interface ComarcaService {
 	 *
 	 * @param filterComarca Comarca
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -169,5 +170,5 @@ public interface ComarcaService {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(Comarca filterComarca, String[] columns, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
+	public void generateReport(Comarca filterComarca, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
 }

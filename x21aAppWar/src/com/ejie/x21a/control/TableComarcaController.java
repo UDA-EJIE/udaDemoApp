@@ -16,16 +16,22 @@
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -210,6 +216,171 @@ public class TableComarcaController {
 			@RequestJsonBody final TableRequestDto tableRequestDto){	
 		TableComarcaController.logger.info("[GET - search] : Obtener Comarcas por filtro");
 		return comarcaService.search(comarcaFilter, comarcaSearch, tableRequestDto, true);
+	}
+	
+	/*
+	 * EXPORTACIONES DE DATOS
+	 */
+	
+	/**
+	 * Devuelve los datos exportados de la tabla.
+	 *
+	 * @param filterComarca Comarca
+	 * @param tableRequestDto TableRequestDto
+	 */
+	@UDALink(name = "clipboardReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	public @ResponseBody List<Resource<Comarca>> getClipboardReport(
+			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
+		return ResourceUtils.fromListToResource(this.comarcaService.getDataForReports(filterComarca, tableRequestDto));
+	}
+	
+	/**
+	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterComarca Comarca
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "excelReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateExcelReport(
+			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response) throws ServletException{
+		TableComarcaController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.comarcaService.generateReport(filterComarca, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+    }
+	
+	/**
+	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterComarca Comarca
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "pdfReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generatePDFReport(
+			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableComarcaController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.comarcaService.generateReport(filterComarca, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterComarca Comarca
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "odsReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateODSReport(
+			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableComarcaController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.comarcaService.generateReport(filterComarca, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterComarca Comarca
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "csvReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "clipboardReport")})
+	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateCSVReport(
+			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableComarcaController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.comarcaService.generateReport(filterComarca, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 		
 	/*
