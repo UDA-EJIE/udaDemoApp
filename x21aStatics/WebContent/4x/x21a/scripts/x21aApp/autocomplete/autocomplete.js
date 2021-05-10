@@ -63,6 +63,17 @@ jQuery(function($) {
             }
         });
         
+        $('#autocompleteGet').rup_autocomplete({
+            source : 'autocomplete/remote',
+            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
+            menuMaxHeight: 200,
+            minLength: 3,
+            combobox: true,
+            contains: true,
+            showDefault: true,
+            accentFolding:true
+        });
+        
         $('#comboRemoto').rup_combo({
             source : 'comboSimple/remote',
             sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},

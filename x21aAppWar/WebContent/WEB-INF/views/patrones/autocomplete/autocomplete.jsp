@@ -55,7 +55,7 @@
 			<div class="col-sm-6">
 				<h3 class="col-sm-12">Autocomplete remoto (el combobox remoto cambia sus valores)</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="autocompleteGet" name="autocompleteGet" readonly="readonly" /> 
+					<input id="autocompleteGet" name="autocompleteGet"/> 
 					<label for="autocompleteGet">Departamento-Provincia</label>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>

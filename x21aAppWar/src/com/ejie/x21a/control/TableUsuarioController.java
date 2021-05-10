@@ -16,6 +16,7 @@
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
+import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -465,37 +466,57 @@ public class TableUsuarioController {
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {
 		List<AutocompleteComboGenericPOJO> apellidos = new ArrayList<AutocompleteComboGenericPOJO>();
-		apellidos.add(new AutocompleteComboGenericPOJO("García", "García"));
-		apellidos.add(new AutocompleteComboGenericPOJO("González", "González"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Fernández", "Fernández"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Rodríguez", "Rodríguez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("López", "López"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Martínez", "Martínez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Sánchez", "Sánchez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Pérez", "Pérez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Gómez", "Gómez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Martín", "Martín"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Jiménez", "Jiménez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Ruiz", "Ruiz"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Hernández", "Hernández"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Díaz", "Díaz"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Moreno", "Moreno"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Álvarez", "Álvarez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Muñoz", "Muñoz"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Romero", "Romero"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Alonso", "Alonso"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Gutiérrez", "Gutiérrez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Navarro", "Navarro"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Torres", "Torres"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Domínguez", "Domínguez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Vázquez", "Vázquez"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Ramos", "Ramos"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Prueba", "Prueba"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Pedroche", "Pedroche"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Zangano", "Zangano"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Perurena", "Perurena"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Neymar", "Neymar"));
-		apellidos.add(new AutocompleteComboGenericPOJO("Tranquilino", "Tranquilino"));
+		if(q != null){
+			q = Normalizer.normalize(q, Normalizer.Form.NFD);
+			q = q.replaceAll("[^\\p{ASCII}]", "");
+			q = q.toUpperCase();
+		}else{
+			q = "";
+		}
+
+		List<String> listaApellidos = new ArrayList();
+		listaApellidos.add("García");
+		listaApellidos.add("González");
+		listaApellidos.add("Fernández");
+		listaApellidos.add("Rodríguez");
+		listaApellidos.add("López");
+		listaApellidos.add("Martínez");
+		listaApellidos.add("Sánchez");
+		listaApellidos.add("Pérez");
+		listaApellidos.add("Gómez");
+		listaApellidos.add("Martín");
+		listaApellidos.add("Jiménez");
+		listaApellidos.add("Ruiz");
+		listaApellidos.add("Hernández");
+		listaApellidos.add("Díaz");
+		listaApellidos.add("Moreno");
+		listaApellidos.add("Álvarez");
+		listaApellidos.add("Muñoz");
+		listaApellidos.add("Romero");
+		listaApellidos.add("Alonso");
+		listaApellidos.add("Gutiérrez");
+		listaApellidos.add("Navarro");
+		listaApellidos.add("Torres");
+		listaApellidos.add("Domínguez");
+		listaApellidos.add("Vázquez");
+		listaApellidos.add("Ramos");
+		listaApellidos.add("Prueba");
+		listaApellidos.add("Pedroche");
+		listaApellidos.add("Zangano");
+		listaApellidos.add("Perurena");
+		listaApellidos.add("Neymar");
+		listaApellidos.add("Tranquilino");
+		
+		for(String str : listaApellidos)
+		{
+			String original = str;
+			str = Normalizer.normalize(str, Normalizer.Form.NFD);
+			str = str.toUpperCase();
+			str = str.replaceAll("[^\\p{ASCII}]", "");
+			if(q.equals("") || str.indexOf(q) >= 0){
+				apellidos.add(new AutocompleteComboGenericPOJO(original, original));
+			}
+		}
 		
 		return apellidos;
 	}
