@@ -15,16 +15,16 @@
  */
 jQuery(document).ready(function () {
 
-    $('#progressbar').rup_progressbar({
+    $('#progressBar').rup_progressbar({
         value: 37
     });
 
-    $('#progressbarLabel').rup_progressbar({
+    $('#progressBarLabel').rup_progressbar({
         value: 37
         //        label: $.rup.i18n.base.rup_progressbar.progress
     });
 
-    $('#progressbarValueFalse').rup_progressbar({
+    $('#progressBarValueFalse').rup_progressbar({
         value: false
         //        label: $.rup.i18n.base.rup_progressbar.loading
     });

@@ -298,10 +298,10 @@ public class PatronesController {
         return "message";
     }
 
-    //Progressbar
-    @RequestMapping(value = "progressbar", method = RequestMethod.GET)
-    public String getProgressbar(Model model) {
-        return "progressbar";
+    //ProgressBar
+    @RequestMapping(value = "progressBar", method = RequestMethod.GET)
+    public String getProgressBar(Model model) {
+        return "progressBar";
     }
 
     //Slider

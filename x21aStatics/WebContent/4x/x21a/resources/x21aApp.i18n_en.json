@@ -122,6 +122,7 @@
 			"menu" :"Menú Horizontal_en",
 			"menuVertical":"Menú Vertical_en",
 			"menuMixto":"Menú Mixto_en",
+			"progressBar" : "Progess bar",
 			"tabs" :"Pestañas_en",
 				"tabsStatic":"Pestañas carga estática_en",
 				"tabsAjax":"Pestañas carga Ajax_en",

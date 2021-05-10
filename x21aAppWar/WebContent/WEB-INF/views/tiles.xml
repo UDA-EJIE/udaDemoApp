@@ -304,11 +304,11 @@
 			value="/WEB-INF/views/patrones/message-includes.jsp" />
 	</definition>
 
-	<definition extends="template" name="progressbar">
+	<definition extends="template" name="progressBar">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/progressbar.jsp" />
+			value="/WEB-INF/views/patrones/progressBar.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/progressbar-includes.jsp" />
+			value="/WEB-INF/views/patrones/progressBar-includes.jsp" />
 	</definition>
 
 	<definition extends="template" name="slider">

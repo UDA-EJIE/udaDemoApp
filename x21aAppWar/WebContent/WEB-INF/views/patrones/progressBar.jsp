@@ -18,14 +18,16 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Barra de progreso</h2>
+		<h2>
+			<spring:message code="progressBar" />
+		</h2>
 		<hr>
 
 		<div class="card">
 			<div class="card-header">Barra de progreso simple</div>
 			<div class="card-body">
 				<blockquote class="blockquote">
-					<div id="progressbar"></div>
+					<div id="progressBar"></div>
 				</blockquote>
 			</div>
 		</div>
@@ -34,7 +36,7 @@
 			<div class="card-header">Barra de progreso mostrando un mensaje</div>
 			<div class="card-body">
 				<blockquote class="blockquote">
-					<div id="progressbarLabel"></div>
+					<div id="progressBarLabel"></div>
 			</div>
 		</div>
 
@@ -43,7 +45,7 @@
 				concreto</div>
 			<div class="card-body">
 				<blockquote class="blockquote">
-					<div id="progressbarValueFalse"></div>
+					<div id="progressBarValueFalse"></div>
 				</blockquote>
 			</div>
 		</div>

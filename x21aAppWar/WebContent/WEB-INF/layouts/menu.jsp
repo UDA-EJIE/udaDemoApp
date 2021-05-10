@@ -62,8 +62,8 @@
                                 <i class="mdi mdi-forum" aria-hidden="true"></i>
                                 <spring:message code="dialog" />
                             </a>
-                            <spring:url value="/patrones/progressbar" var="progressbar" htmlEscape="true"/>
-                            <a class="dropdown-item" href="${progressbar}">
+                            <spring:url value="/patrones/progressBar" var="progressBar" htmlEscape="true"/>
+                            <a class="dropdown-item" href="${progressBar}">
                                 <i class="mdi mdi-timer-sand" aria-hidden="true"></i>
                                 <spring:message code="progressBar" />
                             </a>

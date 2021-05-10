@@ -123,6 +123,7 @@
 			"menu" :"Menú Horizontal",
 			"menuVertical":"Menú Vertical",
 			"menuMixto":"Menú Mixto",
+			"progressBar" : "Barra de progreso",
 			"tabs" :"Pestañas",
 				"tabsStatic":"Pestañas carga estática",
 				"tabsAjax":"Pestañas carga Ajax",

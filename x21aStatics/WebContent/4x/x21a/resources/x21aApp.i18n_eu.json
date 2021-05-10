@@ -123,6 +123,7 @@
 				"menuHorizontal" :"Horizontala",
 				"menuVertical":"Bertikala",
 				"menuMixto":"Mixto",
+			"progressBar" : "Barra de progreso_eu",
 			"tabs" :"Erlaitz",
 				"tabsStatic":"Erlaitz carga estática_eu",
 				"tabsAjax":"Erlaitz carga Ajax_eu",
