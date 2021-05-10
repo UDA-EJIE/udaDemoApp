@@ -149,7 +149,8 @@ jQuery(function ($) {
 	        ],
 	        masterDetail: {
 	            master: '#comarca',
-	            masterPrimaryKey: 'comarca.code'
+	            masterPrimaryKey: 'comarca.code',
+	            masterPrimaryNid: true
 	        },
             enableDynamicForms: true,
 	        formEdit: {
