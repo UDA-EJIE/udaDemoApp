@@ -71,7 +71,7 @@
 				<label for="autocomplete">Autocomplete (lenguaje)</label>
 		    </div>
 			<div class="form-groupMaterial col-sm mt-5">
-		    	<input id="tooltip" name="tooltip" title="Introduzca su nombre."/>
+		    	<input id="tooltip" name="tooltip" title="Introduzca su nombre" />
 				<label for="tooltip">Tooltip</label>
 		    </div>
 		    
