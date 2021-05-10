@@ -336,7 +336,7 @@ public class PatronesController {
     }
 
     //Tabs Multiples mantenimientos
-    @UDALink(name = "tabsMaint")
+    @UDALink(name = "tabsMaint", linkTo = { @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
     @RequestMapping(value = {"maintTab", "pruebaSub3Maint"}, method = RequestMethod.GET)
     public String getMaintTab(Model model) {
         return "maintTab";

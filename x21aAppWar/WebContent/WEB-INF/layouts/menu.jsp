@@ -263,11 +263,14 @@
                                     <a class="dropdown-item" href="${tabsMixto}">
                                         <spring:message code="tabsMixto" />
                                     </a>
+                                    <spring:url value="/patrones/maintTab" var="maintTab" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${maintTab}">
+                                        <spring:message code="maintTab" />
+                                    </a>
                                     <spring:url value="/patrones/tabsScrollable" var="tabsScrollable" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${tabsScrollable}">
                                         <spring:message code="tabsScrollable" />
                                     </a>
-
                                 </div>
                             </div>
 
