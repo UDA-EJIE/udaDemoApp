@@ -21,7 +21,6 @@ jQuery(function($) {
     
     //rastro de migas
     jQuery('#x21aAppWar_migas').rup_breadCrumb({
-        logOutUrl: '/x21aAppWar/logout',
         breadCrumb: {
             'patrones' : {
                 //Literal
