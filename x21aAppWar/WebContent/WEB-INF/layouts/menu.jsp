@@ -247,6 +247,41 @@
 
                             <div class="dropdown-submenu">
                                 <a class="dropdown-item dropdown-toggle" href="#">
+                                    <i class="mdi mdi-file-tree" aria-hidden="true"></i>
+                                    <spring:message code="tree" />
+                                </a>
+                                <div class="dropdown-menu menu-right">
+                                    <spring:url value="/patrones/trees" var="trees" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${trees}">
+                                        <spring:message code="tree_multiple_configuraciones" />
+                                    </a>
+                                    <spring:url value="/patrones/treeDAD" var="treeDAD" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${treeDAD}">
+                                        <spring:message code="tree_multiple_d&d" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-submenu">
+                                <spring:url value="/patrones/" var="" htmlEscape="true"/>
+                                <a class="dropdown-item dropdown-toggle" href="#">
+                                    <i class="mdi mdi-calendar" aria-hidden="true"></i>
+                                    <spring:message code="calendario" />
+                                </a>
+                                <div class="dropdown-menu menu-right" aria-labelledby="calendarDropdown">
+                                    <spring:url value="/patrones/calendar/page" var="calendar" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${calendar}">
+                                        <spring:message code="calendario.simple" />
+                                    </a>
+                                    <spring:url value="/patrones/calendar/pageDouble" var="calendarDouble" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${calendarDouble}">
+                                        <spring:message code="calendario.doble" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">
                                     <i class="mdi mdi-tab" aria-hidden="true"></i>
                                     <spring:message code="tabs" />
                                 </a>
@@ -299,41 +334,6 @@
                                     <spring:url value="/patrones/wizard_dinamico" var="wizard_dinamico" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${wizard_dinamico}">
                                         <spring:message code="wizardE" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">
-                                    <i class="mdi mdi-file-tree" aria-hidden="true"></i>
-                                    <spring:message code="tree" />
-                                </a>
-                                <div class="dropdown-menu menu-right">
-                                    <spring:url value="/patrones/trees" var="trees" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${trees}">
-                                        <spring:message code="tree_multiple_configuraciones" />
-                                    </a>
-                                    <spring:url value="/patrones/treeDAD" var="treeDAD" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${treeDAD}">
-                                        <spring:message code="tree_multiple_d&d" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="dropdown-submenu">
-                                <spring:url value="/patrones/" var="" htmlEscape="true"/>
-                                <a class="dropdown-item dropdown-toggle" href="#">
-                                    <i class="mdi mdi-calendar" aria-hidden="true"></i>
-                                    <spring:message code="calendario" />
-                                </a>
-                                <div class="dropdown-menu menu-right" aria-labelledby="calendarDropdown">
-                                    <spring:url value="/patrones/calendar/page" var="calendar" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${calendar}">
-                                        <spring:message code="calendario.simple" />
-                                    </a>
-                                    <spring:url value="/patrones/calendar/pageDouble" var="calendarDouble" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${calendarDouble}">
-                                        <spring:message code="calendario.doble" />
                                     </a>
                                 </div>
                             </div>
