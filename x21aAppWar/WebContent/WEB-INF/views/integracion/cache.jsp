@@ -15,21 +15,29 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Cache</h2> <!-- Titulo pagina -->
+<!-- Título página -->
+<h2>
+	<spring:message code="integracion.cache" />
+</h2>
 
-<br/>
-<span> Weblogic Name : <%=System.getProperty("weblogic.Name")%></span>
+<h3>Weblogic Name : <%=System.getProperty("weblogic.Name")%></h3>
 
+<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
+<spring:url value="/integracion/cache" var="url"/>
+<form:form modelAttribute="usuario" id="table_filter_form" class="d-none" action="${url}"/>
 
-<br/><br/>
-<button type="button" id="btnRecargarTabla">Recargar tabla</button>
-<div id="table_div" class="rup-table-container">
-	<div id="table_feedback"></div>
-
-	<div id="table_grid_div">
-		<!-- Tabla -->
-		<table id="table"></table>
-		<!-- Barra de paginación -->
-		<div id="table_pager"></div>
-	</div>
-</div>	
+<table id="table" class="tableFit table-striped table-bordered table-material" 
+	data-url-base="."
+	data-filter-form="#table_filter_form">
+        <thead>
+			<tr>
+				<th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+				<th data-col-prop="apellido1">Primer apellido</th>
+				<th data-col-prop="apellido2">Segundo apellido</th>
+				<th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+				<th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+				<th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+				<th data-col-prop="rol" data-col-type="combo">Rol</th>
+			</tr>
+        </thead>
+</table>
