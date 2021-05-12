@@ -122,7 +122,8 @@ public class TableUsuarioController {
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), 
+			@UDALinkAllower(name = "getRoles"),@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario> get(@PathVariable String id) {
         Usuario usuario = new Usuario();
@@ -132,7 +133,8 @@ public class TableUsuarioController {
         return new Resource<Usuario>(usuario);
 	}
 	
-	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "filter2")})
+	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), 
+			@UDALinkAllower(name = "remove" ),@UDALinkAllower(name = "getRoles"), @UDALinkAllower(name = "filter2")})
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario2> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable String id) {
@@ -242,6 +244,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableLocalidadEditForm"),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -278,6 +281,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll"),
 			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
@@ -307,6 +311,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterGetAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport")})
@@ -321,6 +326,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
@@ -394,6 +400,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class)})
 	@RequestMapping(value = "/editFormComarca", method = RequestMethod.POST)
 	public String getTableComarcaEditForm (@RequestParam String actionType, Model model) {
@@ -406,6 +413,7 @@ public class TableUsuarioController {
 	@UDALink(name = "getTableDialogComarcaEditForm", linkTo = {
 			@UDALinkAllower(name = "get", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "add", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "edit", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class)})
 	@RequestMapping(value = "/editFormDialogComarca", method = RequestMethod.POST)
@@ -420,6 +428,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "add", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "edit", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "filter", linkClass = TableLocalidadController.class)})
 	@RequestMapping(value = "/editFormLocalidad", method = RequestMethod.POST)
 	public String getTableLocalidadEditForm (@RequestParam String actionType, Model model) {
@@ -437,6 +446,7 @@ public class TableUsuarioController {
 	@UDALink(name = "getTableInlineEdit", linkTo = {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
@@ -545,7 +555,9 @@ public class TableUsuarioController {
 	 *            la bÃºsqueda.
 	 * @return Lista de objetos correspondientes a la bÃºsqueda realizada.
 	 */
-	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
+	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), 
+			@UDALinkAllower(name = "remove" ), 
+			@UDALinkAllower(name = "getRoles"),@UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/all",method = RequestMethod.GET)
 	public @ResponseBody
 	List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
@@ -658,7 +670,9 @@ public class TableUsuarioController {
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"),
+	@UDALinkAllower(name = "getRoles"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -672,7 +686,11 @@ public class TableUsuarioController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter2"), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), 
+	@UDALinkAllower(name = "remove")
+	, @UDALinkAllower(name = "filter2"),
+	@UDALinkAllower(name = "getRoles")
+	, @UDALinkAllower(name = "deleteAll")})
 	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
 	@ResponseBody()
 	public TableResourceResponseDto<Usuario2> filter2(
@@ -838,7 +856,7 @@ public class TableUsuarioController {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
+	   // this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return tableRequestDto.getMultiselection().getSelectedIds();

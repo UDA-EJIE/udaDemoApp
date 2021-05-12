@@ -147,7 +147,7 @@ jQuery(function ($) {
 	    		$('#localidad tr[role="row"]').on('tableSelectAfterSelectRow', function () {
 	    			let line = ctx.multiselection.selectedRowsPerPage[0].line;
 	    			let datos = ctx.json.rows[line]; //se carga el dato
-	    			$('#css_detail_tableComarca').val(datos.css);
+	    			$('#css_detailForm_tableComarca').val(datos.css);
 	    		});
 	        }
 	    });

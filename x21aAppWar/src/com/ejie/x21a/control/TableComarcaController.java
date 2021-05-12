@@ -166,7 +166,9 @@ public class TableComarcaController {
 	/**
 	 * RUP_TABLE
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")
+	, @UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class), @UDALinkAllower(name = "deleteAll")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,
