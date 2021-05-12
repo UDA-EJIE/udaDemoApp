@@ -3,7 +3,7 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Alumno;
-import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -53,29 +53,35 @@ public interface TableAlumnoDao {
      * Finds a List of rows in the Alumno table.
      *
      * @param alumno Alumno
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
-    List<Alumno> findAll(Alumno alumno, JQGridRequestDto jqGridRequestDto);
+    List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto);
 
 	
 	/**
      * Finds rows in the Alumno table using like.
      *
      * @param alumno Alumno
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
-	List<Alumno> findAllLike(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 
 	/*
 	 * OPERACIONES RUP_TABLE
 	 */
 	
-	
-	void removeMultiple(Alumno filterAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	/**
+	 * Deletes multiple rows in the Alumno table.
+	 *
+	 * @param filterAlumno Alumno
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
+	void removeMultiple(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
     /**
      * Counts rows in the Alumno table using like.
@@ -94,9 +100,9 @@ public interface TableAlumnoDao {
      */
     Long findAllCount(Alumno alumno);
     
-    List<TableRowDto<Alumno>> reorderSelection(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+    List<TableRowDto<Alumno>> reorderSelection(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Alumno>> search(Alumno filterParams, Alumno searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+    List<TableRowDto<Alumno>> search(Alumno filterParams, Alumno searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	
     /**

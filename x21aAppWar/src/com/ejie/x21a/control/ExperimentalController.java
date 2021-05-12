@@ -47,8 +47,6 @@ import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.log.LoggingEditor;

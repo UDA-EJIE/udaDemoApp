@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -20,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JQGridManager;
-import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 @Repository
@@ -32,11 +30,10 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * StringBuilder initilization value
 	 */
 	public static final int STRING_BUILDER_INIT = 4099;
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "ID_MODELO", "SEMILLA", "ID_DOCUMENTO", "ESTADO", "NOMBRE"};
 
 	private JdbcTemplate jdbcTemplate;
-
-	@Autowired
-	private Properties appConfiguration;
 
 	/**
 	 * Method use to set the datasource.
@@ -145,15 +142,13 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
-	public List<IberdokFile> findAll(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto) {
-		StringBuilder query = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE");
+	public List<IberdokFile> findAll(IberdokFile file, TableRequestDto tableRequestDto) {
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE");
 		query.append("FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
@@ -164,8 +159,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, IberdokFileDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<IberdokFile>) this.jdbcTemplate.query(query.toString(),
@@ -177,8 +172,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @param startsWith
 	 *            Boolean
 	 * @return List
@@ -186,10 +181,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 */
 	@Transactional(readOnly = true)
-	public List<IberdokFile> findAllLike(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		StringBuilder query = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE ");
+	public List<IberdokFile> findAllLike(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE ");
 		query.append("FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
@@ -200,8 +193,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, IberdokFileDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		List<IberdokFile> aux = null;
 		try {
@@ -228,8 +221,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public Long findAllCount(IberdokFile file) {
-		StringBuilder query = new StringBuilder(
-				"SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
+		StringBuilder query = new StringBuilder("SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
 		Map<String, ?> mapaWhere = this.getWhereMap(file);
@@ -239,8 +231,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -254,8 +245,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public Long findAllLikeCount(IberdokFile file, Boolean startsWith) {
-		StringBuilder query = new StringBuilder(
-				"SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
+		StringBuilder query = new StringBuilder("SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(file, startsWith);
@@ -265,17 +255,14 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	@Override
-	public List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
 
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
 
 		// FROM
 		sbSQL.append("FROM IBERDOK_FILES t1 ");
@@ -287,25 +274,18 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 		// Parámetros de filtrado
 		@SuppressWarnings("unchecked")
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");
+		
+		// SQL para la reordenaci�n
+		StringBuilder sbReorderSelectionSQL = TableManager.getReorderQuery(sbSQL, tableRequestDto, IberdokFile.class, filterParamList, "ID");
 
-		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(
-				sbSQL, jqGridRequestDto, IberdokFile.class, filterParamList,
-				"ID");
-
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(),
-				new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK,
-						jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	@Override
-	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams,
-			IberdokFile searchParams, JQGridRequestDto jqGridRequestDto,
-			Boolean startsWith) {
+	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams, IberdokFile searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
 
 		// FROM
 		sbSQL.append("FROM IBERDOK_FILES t1 ");
@@ -316,34 +296,25 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		// FILTRADO
 		// Mapa de filtrado
-		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(
-				filterParams, startsWith);
+		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(filterParams, startsWith);
 		// Claula where de filtrado
 		sbSQL.append(" WHERE 1=1 ").append(mapaWhereFilter.get("query"));
 		// Parámetros de filtrado
 		@SuppressWarnings("unchecked")
-		List<Object> filterParamList = (List<Object>) mapaWhereFilter
-				.get("params");
+		List<Object> filterParamList = (List<Object>) mapaWhereFilter.get("params");
 
 		// BUSQUEDA
-		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(
-				searchParams, startsWith);
+		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(searchParams, startsWith);
 		// Claula where de búsqueda
-		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query"))
-				.toString();
+		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query")).toString();
 		// Parámetros de búsqueda
 		@SuppressWarnings("unchecked")
-		List<Object> searchParamList = (List<Object>) mapaWhereSearch
-				.get("params");
+		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getSearchQuery(
-				sbSQL, jqGridRequestDto, IberdokFile.class, filterParamList,
-				searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, IberdokFile.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
 
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(),
-				new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK,
-						jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	/*
@@ -351,28 +322,18 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 
 	@Override
-	public void removeMultiple(IberdokFile filterIberdokFile,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public void removeMultiple(IberdokFile filterIberdokFile, TableRequestDto tableRequestDto, Boolean startsWith) {		
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterIberdokFile, startsWith);
 
-		StringBuilder query = new StringBuilder("SELECT  t1.ID  ");
-		query.append("FROM IBERDOK_FILES t1 ");
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, IberdokFile.class, "IBERDOK_FILES", "t1", new String[]{"ID"});
 
-		// Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterIberdokFile,
-				startsWith);
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
-		query.append(where);
-
+		// Params list. Includes needed params for like and IN/NOT IN clauses
 		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-
-		StringBuilder sbRemoveMultipleSQL = JQGridManager
-				.getRemoveMultipleQuery(jqGridRequestDto, IberdokFile.class,
-						query, params, "ID");
-
-		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(),
-				params.toArray());
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
+		
+		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 
 	}
 

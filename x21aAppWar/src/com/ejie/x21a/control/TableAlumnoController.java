@@ -60,8 +60,8 @@ import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
 import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.validation.ValidationManager;
@@ -96,9 +96,6 @@ public class TableAlumnoController  {
 		NumberFormat numberFormat = NumberFormat.getInstance(LocaleContextHolder.getLocale());
 		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, numberFormat, true));
 	}
-	
-	
-	
 	
 	/**
 	 * Method 'getCreateForm'.
@@ -270,21 +267,19 @@ public class TableAlumnoController  {
        	TableAlumnoController.logger.info("[DELETE] : Alumno borrado correctamente");
        	return alumno;
     }
-	
-	
-	
+		
 	/*
 	 * METODOS COMPONENTE RUP_TABLE
 	 * 
 	 */
 	
 	/**
-	 * Operación de filtrado del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Alumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
@@ -292,38 +287,37 @@ public class TableAlumnoController  {
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<Alumno> filter(
+	public @ResponseBody TableResourceResponseDto<Alumno> filter(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		
-		TableAlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
-		return this.alumnoService.filter(filterAlumno, jqGridRequestDto, false);
+		TableAlumnoController.logger.info("[POST - table] : Obtener Alumnos");
+		return this.alumnoService.filter(filterAlumno, tableRequestDto, false);
 	}
 	
 	/**
-	 * Operación de búsqueda del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de bÃƒÂºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterAlumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param searchAlumno
-	 *            Bean que contiene los parámetros de búsqueda a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Bean que contiene los parÃƒÂ¡metros de bÃƒÂºsqueda a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parámetros de búsqueda.
+	 *         que se ajustan a los parÃƒÂ¡metros de bÃƒÂºsqueda.
 	 * 
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Alumno>> search(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody(param="search") Alumno searchAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+			@RequestJsonBody TableRequestDto tableRequestDto){
 		
 		TableAlumnoController.logger.info("[POST - search] : Buscar Alumnos");
-		return this.alumnoService.search(filterAlumno, searchAlumno, jqGridRequestDto, false);
+		return this.alumnoService.search(filterAlumno, searchAlumno, tableRequestDto, false);
 	}
-	
 	
 	/**
 	 * Method 'removeAll'.
@@ -335,14 +329,13 @@ public class TableAlumnoController  {
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableAlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.alumnoService.removeMultiple(filterAlumno, jqGridRequestDto, false);
+	    this.alumnoService.removeMultiple(filterAlumno, tableRequestDto, false);
 	    TableAlumnoController.logger.info("All entities correctly deleted!");
 	    
-	    return jqGridRequestDto.getMultiselection().getSelectedIds();
+	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}	
-	
 	
 	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
 	public void getImagenAlumno(@PathVariable BigDecimal id, HttpServletResponse response) throws IOException {
@@ -353,7 +346,5 @@ public class TableAlumnoController  {
         byte[] fileByteArray = alumno.getImagen();
         response.setContentLength(fileByteArray.length);
         FileCopyUtils.copy(fileByteArray, response.getOutputStream());
-	}
-	
+	}	
 }	
-	

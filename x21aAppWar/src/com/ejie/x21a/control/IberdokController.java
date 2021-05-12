@@ -28,8 +28,8 @@ import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
@@ -41,8 +41,7 @@ public class IberdokController {
 	@Autowired
 	private Properties appConfiguration;
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(IberdokController.class);
+	private static final Logger logger = LoggerFactory.getLogger(IberdokController.class);
 
 	@Autowired
 	private IberdokFileService iberdokFileService;
@@ -86,8 +85,7 @@ public class IberdokController {
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<IberdokFile> getAll(
 			@ModelAttribute() IberdokFile fileFilter) {
-		IberdokController.logger
-				.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
+		IberdokController.logger.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
 		return this.iberdokFileService.findAllLike(fileFilter, null, false);
 	}
 
@@ -153,7 +151,7 @@ public class IberdokController {
 	 * 
 	 * @param IberdokFile
 	 *            Bean que contiene los par�metros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los par�mtros de configuraci�n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
@@ -163,18 +161,17 @@ public class IberdokController {
 	// @Json(mixins={@JsonMixin(target=IberdokFile.class,
 	// mixin=IberdokFileMixIn.class)})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<IberdokFile> filter(
+	public @ResponseBody TableResourceResponseDto<IberdokFile> filter(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		IberdokController.logger.info("[POST - jqGrid] : Obtener IberdokFiles");
-		return iberdokFileService.filter(filterIberdokFile, jqGridRequestDto,
-				false);
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		IberdokController.logger.info("[POST - table] : Obtener IberdokFiles");
+		return iberdokFileService.filter(filterIberdokFile, tableRequestDto, false);
 	}
 
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Filter filterAdd(
 			@RequestJsonBody(param = "filtro") Filter filtro) {
-		IberdokController.logger.info("[POST - jqGrid] : add filter");
+		IberdokController.logger.info("[POST - table] : add filter");
 
 		return filterService.insert(filtro);
 	}
@@ -182,7 +179,7 @@ public class IberdokController {
 	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
 	public @ResponseBody Filter filterDelete(
 			@RequestJsonBody(param = "filtro") Filter filtro) {
-		IberdokController.logger.info("[POST - jqGrid] : delete filter");
+		IberdokController.logger.info("[POST - table] : delete filter");
 		return filterService.delete(filtro);
 	}
 
@@ -190,7 +187,7 @@ public class IberdokController {
 	public @ResponseBody Filter filterGetDefault(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "user", required = true) String filterDocument) {
-		IberdokController.logger.info("[get - jqGrid] : getDefault filter");
+		IberdokController.logger.info("[get - table] : getDefault filter");
 		return filterService.getDefault(filterSelector, filterDocument);
 	}
 
@@ -198,7 +195,7 @@ public class IberdokController {
 	public @ResponseBody List<Filter> filterGetAll(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "user", required = true) String filterDocument) {
-		IberdokController.logger.info("[get - jqGrid] : GetAll filter");
+		IberdokController.logger.info("[get - table] : GetAll filter");
 		return filterService.getAllFilters(filterSelector, filterDocument);
 	}
 
@@ -209,7 +206,7 @@ public class IberdokController {
 	 *            Bean que contiene los par�metros de filtrado a emplear.
 	 * @param searchIberdokFile
 	 *            Bean que contiene los par�metros de b�squeda a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los par�mtros de configuraci�n propios del
 	 *            RUP_TABLE a aplicar en la b�squeda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
@@ -220,10 +217,9 @@ public class IberdokController {
 	public @ResponseBody List<TableRowDto<IberdokFile>> search(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody(param = "search") IberdokFile searchIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		IberdokController.logger.info("[POST - search] : Buscar IberdokFiles");
-		return iberdokFileService.search(filterIberdokFile, searchIberdokFile,
-				jqGridRequestDto, false);
+		return iberdokFileService.search(filterIberdokFile, searchIberdokFile, tableRequestDto, false);
 	}
 
 	/**
@@ -231,7 +227,7 @@ public class IberdokController {
 	 * 
 	 * @param filterIberdokFile
 	 *            Bean que contiene los par�metros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los par�mtros de configuraci�n propios del
 	 *            RUP_TABLE a aplicar en la b�squeda.
 	 * @return Lista de los identificadores de los registros eliminados.
@@ -240,14 +236,13 @@ public class IberdokController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		IberdokController.logger
 				.info("[POST - removeMultiple] : Eliminar multiples documentos iberdok");
-		this.iberdokFileService.removeMultiple(filterIberdokFile,
-				jqGridRequestDto, false);
+		this.iberdokFileService.removeMultiple(filterIberdokFile, tableRequestDto, false);
 		IberdokController.logger.info("All entities correctly deleted!");
 
-		return jqGridRequestDto.getMultiselection().getSelectedIds();
+		return tableRequestDto.getMultiselection().getSelectedIds();
 	}
 
 	// Iberdok

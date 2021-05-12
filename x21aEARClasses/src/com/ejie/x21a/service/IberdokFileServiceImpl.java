@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.IberdokFileDao;
 import com.ejie.x21a.model.IberdokFile;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 @Service(value = "iberdokFileService")
@@ -82,14 +82,12 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 	 *
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @return List
 	 */
-	public List<IberdokFile> findAll(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto) {
-		return (List<IberdokFile>) this.iberdokDao.findAll(file,
-				jqGridRequestDto);
+	public List<IberdokFile> findAll(IberdokFile file, TableRequestDto tableRequestDto) {
+		return (List<IberdokFile>) this.iberdokDao.findAll(file, tableRequestDto);
 	}
 
 	/**
@@ -97,16 +95,14 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 	 *
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @param startsWith
 	 *            Boolean
 	 * @return List
 	 */
-	public List<IberdokFile> findAllLike(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return (List<IberdokFile>) this.iberdokDao.findAllLike(file,
-				jqGridRequestDto, startsWith);
+	public List<IberdokFile> findAllLike(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return (List<IberdokFile>) this.iberdokDao.findAllLike(file, tableRequestDto, startsWith);
 	}
 
 	/*
@@ -116,47 +112,46 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 	/**
 	 * Deletes multiple rows in the IberdokFile table.
 	 *
-	 * @param fileList
-	 *            List
-	 * @return
+	 * @param filterFile
+	 *            IberdokFile
+	 * @param tableRequestDto
+	 *            TableRequestDto
+	 * @param startsWith
+	 *            Boolean
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(IberdokFile filterFile,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		this.iberdokDao.removeMultiple(filterFile, jqGridRequestDto,
-				startsWith);
+	public void removeMultiple(IberdokFile filterFile, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.iberdokDao.removeMultiple(filterFile, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.iberdokDao.reorderSelection(file,
-				jqGridRequestDto, startsWith);
+	public Object reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.iberdokDao.reorderSelection(file, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams,
-			IberdokFile searchParams, JQGridRequestDto jqGridRequestDto,
-			Boolean startsWith) {
-		return this.iberdokDao.search(filterParams, searchParams,
-				jqGridRequestDto, startsWith);
+	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams, IberdokFile searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.iberdokDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
-
-	public JQGridResponseDto<IberdokFile> filter(IberdokFile filterFile,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		List<IberdokFile> listaIberdokFile = this.iberdokDao.findAllLike(
-				filterFile, jqGridRequestDto, false);
-		Long recordNum = this.iberdokDao.findAllLikeCount(
-				filterFile != null ? filterFile : new IberdokFile(), false);
-		if (jqGridRequestDto.getMultiselection().getSelectedIds() != null) {
-			List<TableRowDto<IberdokFile>> reorderSelection = this.iberdokDao
-					.reorderSelection(filterFile, jqGridRequestDto,
-							startsWith);
-			return new JQGridResponseDto<IberdokFile>(jqGridRequestDto, recordNum,
-					listaIberdokFile, reorderSelection);
+	
+	@Override
+	public TableResourceResponseDto<IberdokFile> filter(IberdokFile filterFile, TableRequestDto tableRequestDto, Boolean startsWith) {
+		List<IberdokFile> listaIberdokFile =  this.iberdokDao.findAllLike(filterFile, tableRequestDto, false);
+		Long recordNum = this.iberdokDao.findAllLikeCount(filterFile != null ? filterFile: new IberdokFile(), false);
+		TableResourceResponseDto<IberdokFile> iberdokDto = new TableResourceResponseDto<IberdokFile>(tableRequestDto, recordNum, listaIberdokFile);
+		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+			List<TableRowDto<IberdokFile>> reorderSelection = this.iberdokDao.reorderSelection(filterFile, tableRequestDto, startsWith);
+			iberdokDto.setReorderedSelection(reorderSelection);
+			iberdokDto.addAdditionalParam("reorderedSelection", reorderSelection);
+			iberdokDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		return new JQGridResponseDto<IberdokFile>(jqGridRequestDto, recordNum,
-				listaIberdokFile);
+		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
+			List<TableRowDto<IberdokFile>> reorderSeeker = this.iberdokDao.reorderSelection(filterFile, tableRequestDto, startsWith);
+			iberdokDto.setReorderedSeeker(reorderSeeker);
+			iberdokDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
+		}
+		return iberdokDto; 
 	}
 
 	@Override
