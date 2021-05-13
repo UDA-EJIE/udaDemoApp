@@ -195,9 +195,13 @@ jQuery(function($) {
             },
             'experimental' : {
                 //Literal
-                'i18nCaption' : 'experimental'
+                'i18nCaption' : 'experimental',
                 //Elementos (url)
-
+                'logLevel' : {'i18nCaption' : 'logLevel' },
+                //Submenu
+                'subLevel':[
+                    {'i18nCaption':'logLevel', 'url': '/x21aAppWar/experimental/logLevel' }
+                ]
             },
             'integracion' : {
                 //Literal
