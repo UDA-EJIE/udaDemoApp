@@ -484,7 +484,7 @@ public class TableUsuarioController {
 			q = "";
 		}
 
-		List<String> listaApellidos = new ArrayList();
+		List<String> listaApellidos = new ArrayList<String>();
 		listaApellidos.add("García");
 		listaApellidos.add("González");
 		listaApellidos.add("Fernández");
