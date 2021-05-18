@@ -16,7 +16,7 @@
 
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.NoraAutonomia;
@@ -42,10 +42,10 @@ public interface NoraAutonomiaDao {
      * Finds a List of rows in the NoraAutonomia table.
      *
      * @param autonomia NoraAutonomia
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
-    List<NoraAutonomia> findAll(NoraAutonomia autonomia, Pagination pagination);
+    List<NoraAutonomia> findAll(NoraAutonomia autonomia, TableRequestDto tableRequestDto);
 
     /**
      * Counts rows in the NoraAutonomia table.
@@ -59,10 +59,10 @@ public interface NoraAutonomiaDao {
      * Finds rows in the NoraAutonomia table using like.
      *
      * @param autonomia NoraAutonomia
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
-	List<NoraAutonomia> findAllLike(NoraAutonomia autonomia, Pagination pagination, Boolean startsWith);
+	List<NoraAutonomia> findAllLike(NoraAutonomia autonomia, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 

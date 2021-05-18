@@ -822,7 +822,7 @@ public class TableUsuarioController {
 	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
 	 * @param searchUsuario
 	 *            Bean que contiene los parÃ¡metros de bÃºsqueda a emplear.
-	 * @param jqGridRequestDto
+	 * @param tableRequestDto
 	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
 	 *            RUP_TABLE a aplicar en la bÃºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros

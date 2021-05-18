@@ -51,7 +51,6 @@ jQuery(function($){
                 width: 60,
                 edittype: 'checkbox',
                 formatter: 'checkbox',
-                rwdClasses: 'hidden-xs hidden-sm hidden-md',
                 align: 'center',
                 editoptions: {
                     value: '1:0'
@@ -64,7 +63,6 @@ jQuery(function($){
                 hidden: false,
                 width: 120,
                 rupType: 'date',
-                rwdClasses: 'hidden-xs hidden-sm hidden-md',
                 editoptions: {
                     labelMaskId: 'fecha-mask',
                     showButtonPanel: true,
@@ -79,7 +77,6 @@ jQuery(function($){
                 hidden: false,
                 width: 120,
                 rupType: 'date',
-                rwdClasses: 'hidden-xs hidden-sm hidden-md',
                 editoptions: {
                     labelMaskId: 'fecha-mask',
                     showButtonPanel: true,
@@ -94,7 +91,6 @@ jQuery(function($){
                 hidden: false,
                 width: 140,
                 rupType: 'combo',
-                rwdClasses: 'hidden-xs hidden-sm hidden-md',
                 formatter: 'rup_combo',
                 editoptions: {
                     source : '../roles',

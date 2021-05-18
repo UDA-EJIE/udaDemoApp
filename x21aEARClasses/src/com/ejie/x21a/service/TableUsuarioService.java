@@ -101,7 +101,7 @@ public interface TableUsuarioService {
 	 * Finds rows in the Usuario table using like.
 	 *
 	 * @param usuario Usuario
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
@@ -125,7 +125,7 @@ public interface TableUsuarioService {
 	 * Finds a List of rows in the Usuario table via inverse select.
 	 *
 	 * @param filterUsuario Usuario
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
@@ -135,14 +135,14 @@ public interface TableUsuarioService {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param searchUsuario Usuario
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 
-	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith) ;
+	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
-	Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/*
 	 * EXPORTACIONES DE DATOS

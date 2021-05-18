@@ -1,7 +1,7 @@
 package com.ejie.x21a.service;
 
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +42,10 @@ public interface NoraCalleService {
 	 * Finds a List of rows in the Calle table.
 	 *
 	 * @param calle Calle
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<NoraCalle> findAll(NoraCalle calle, Pagination pagination);
+	List<NoraCalle> findAll(NoraCalle calle, TableRequestDto tableRequestDto);
 
 	/**
 	 * Counts rows in the Calle table.
@@ -59,11 +59,11 @@ public interface NoraCalleService {
 	 * Finds rows in the Calle table using like.
 	 *
 	 * @param calle Calle
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<NoraCalle> findAllLike(NoraCalle calle, Pagination pagination, Boolean startsWith) ;
+	List<NoraCalle> findAllLike(NoraCalle calle, TableRequestDto tableRequestDto, Boolean startsWith) ;
   
 	/**
 	 * Deletes a single row in the Calle table.
@@ -79,8 +79,5 @@ public interface NoraCalleService {
 	 * @param calleList  ArrayList
 	 * @return 
 	 */	
-	void removeMultiple(ArrayList<NoraCalle> calleList);
-    
+	void removeMultiple(ArrayList<NoraCalle> calleList);    
 }
-
-

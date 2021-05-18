@@ -173,40 +173,5 @@ public class TableLocalidadController {
 			@RequestJsonBody final TableRequestDto tableRequestDto){
 		TableLocalidadController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return localidadService.search(localidadFilter, localidadSearch, tableRequestDto, true);
-	}
-		
-	/**
-	 * N/A	
-	 */
-		
-		/**
-		 * Method 'getAllCount'.
-		 * @param filterUsuario Usuario 
-		 * @return Long
-//		 */
-//		@RequestMapping(value = "/count", method = RequestMethod.GET)
-//		public @ResponseBody Long getAllCount(@RequestParam(value = "usuario", required = false) Usuario  filterUsuario) {
-//			return jqGridUsuarioService.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
-//		}
-		
-		
-//		 /**
-//		 * Method 'removeAll'.
-//		 * @param  usuarioIds  ArrayList
-//		 *
-//		 */	
-//		@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
-//		@ResponseStatus(value=HttpStatus.OK)
-//		public @ResponseBody List<List<String>> removeMultiple(@RequestBody List<List<String>> usuarioIds) {
-//		List<Localidad> usuarioList = new ArrayList<Localidad>();
-//        for (List<String> usuarioId:usuarioIds) {
-//		    Iterator<String> iterator = usuarioId.iterator();
-//		    	Localidad usuario = new Localidad();
-//		        usuario.setCode(code)(usuarioId);
-//			    usuarioList.add(usuario);
-//	    }
-//        this.localidadService.removeMultiple(usuarioList);
-//        logger.info("All entities correctly deleted!");
-//        return usuarioIds;
-//	}	
+	}	
 }

@@ -16,7 +16,7 @@
 
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.NoraMunicipio;
@@ -64,10 +64,10 @@ public interface NoraMunicipioDao {
      * Finds a List of rows in the NoraMunicipio table.
      *
      * @param municipio NoraMunicipio
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
-    List<NoraMunicipio> findAll(NoraMunicipio municipio, Pagination pagination);
+    List<NoraMunicipio> findAll(NoraMunicipio municipio, TableRequestDto tableRequestDto);
 
     /**
      * Counts rows in the NoraMunicipio table.
@@ -81,10 +81,10 @@ public interface NoraMunicipioDao {
      * Finds rows in the NoraMunicipio table using like.
      *
      * @param municipio NoraMunicipio
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
-	List<NoraMunicipio> findAllLike(NoraMunicipio municipio, Pagination pagination, Boolean startsWith);
+	List<NoraMunicipio> findAllLike(NoraMunicipio municipio, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 

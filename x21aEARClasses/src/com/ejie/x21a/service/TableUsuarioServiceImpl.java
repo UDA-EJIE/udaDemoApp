@@ -44,7 +44,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.dao.TableUsuarioDao;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.Usuario2;
@@ -65,9 +64,6 @@ import com.lowagie.text.pdf.PdfWriter;
 
 @Service(value = "tableUsuarioService")
 public class TableUsuarioServiceImpl implements TableUsuarioService {
-
-	@Autowired
-	private JQGridUsuarioDao jqGridUsuarioDao;
 	
 	@Autowired
 	private TableUsuarioDao tableUsuarioDao;
@@ -131,7 +127,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @return Usuario
 	 */
 	public Usuario find(Usuario usuario) {
-		return (Usuario) this.jqGridUsuarioDao.find(usuario);
+		return (Usuario) this.tableUsuarioDao.find(usuario);
 	}
 	
 	/**
@@ -142,7 +138,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public void remove(Usuario usuario) {
-		this.jqGridUsuarioDao.remove(usuario);
+		this.tableUsuarioDao.remove(usuario);
 	}
 	
 	/**
@@ -187,19 +183,19 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
-	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.tableUsuarioDao.getMultiple(filterUsuario, jqGridRequestDto, startsWith);
+	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto,
+	public Object reorderSelection(Usuario usuario, TableRequestDto tableRequestDto,
 			Boolean startsWith) {
-		return this.tableUsuarioDao.reorderSelection(usuario, jqGridRequestDto, startsWith);
+		return this.tableUsuarioDao.reorderSelection(usuario, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.tableUsuarioDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
 
 	@Override
