@@ -166,6 +166,14 @@
         	let dt = $('#' + this[0].id).DataTable();
             let ctx = dt.context[0];
             return ctx.multiselection.selectedRowsPerPage;
+        },
+        //$("#idTable").rup_table("clear");
+        clear: function () {
+        	$('#' + this[0].id + ' tbody').empty();
+        },
+        //$("#idTable").rup_table("reload");
+        reload: function () {
+        	$('#' + this[0].id).DataTable().ajax.reload();
         }
     });
 
@@ -208,7 +216,7 @@
             //Se cargan los metodos en la API, Se referencia al Register
             var apiRegister = DataTable.Api.register;
 
-            DataTable.Api.register('rupTable.selectPencil()', function (ctx, idRow) {
+            apiRegister('rupTable.selectPencil()', function (ctx, idRow) {
                 //Se elimina el lapicero indicador.
                 $('#' + ctx.sTableId + ' tbody tr td.select-checkbox i.selected-pencil').remove();
                 //se añade el span con el lapicero
@@ -220,8 +228,10 @@
 
             apiRegister('rupTable.reorderDataFromServer()', function (json, ctx) {
                 //Se mira la nueva reordenacion y se ordena.
-                ctx.multiselection.selectedIds = [];
-                ctx.multiselection.selectedRowsPerPage = [];
+            	if(ctx.multiselection !== undefined){
+            		ctx.multiselection.selectedIds = [];
+            		ctx.multiselection.selectedRowsPerPage = [];
+            	}
 
                 //Viene del servidor por eso la linea de la pagina es 1 menos.
                 $.each(json.reorderedSelection, function (index, p) {
@@ -233,7 +243,7 @@
                     ctx.multiselection.selectedIds.splice(index, 0, arra.id);
                     ctx.multiselection.selectedRowsPerPage.splice(index, 0, arra);
                 });
-                if (!ctx.multiselection.selectedAll) {
+                if (ctx.multiselection !== undefined && !ctx.multiselection.selectedAll) {
                     ctx.multiselection.numSelected = ctx.multiselection.selectedIds.length;
                 }
 
@@ -933,7 +943,7 @@
                 toggleIcon2Tmpl = jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.templates.filter.toggleIcon2');
 
                 $toggleIcon1 = $($.rup_utils.format(toggleIcon1Tmpl, filterOpts.toggleIcon1Id));
-                $toggleLabel = $($.rup_utils.format(toggleLabelTmpl, filterOpts.toggleLabelId, $.rup.i18n.base.rup_jqtable.plugins.filter.filterCriteria));
+                $toggleLabel = $($.rup_utils.format(toggleLabelTmpl, filterOpts.toggleLabelId, $.rup.i18n.base.rup_table.plugins.filter.filterCriteria));
                 $filterSummary = $($.rup_utils.format(filterSummaryTmpl, filterOpts.filterSummaryId));
                 $toggleIcon2 = $($.rup_utils.format(toggleIcon2Tmpl, filterOpts.toggleIcon2Id));
 
@@ -1102,7 +1112,12 @@
                         fieldName = label.html();
                     } else {
                         if ($(field).attr('ruptype') !== 'combo') {
+                        	//Mirar si es masterDetail
                             fieldName = $('[name=\'' + aux[i].name + '\']', searchForm).prev('div').find('label').first().html();
+                            if(settings.masterDetail !== undefined && settings.masterDetail.masterPrimaryKey === aux[i].name){
+                            	let md = settings.masterDetail;
+                            	fieldName = (md.masterPrimaryLabel !== undefined) ? md.masterPrimaryLabel : md.masterPrimaryKey;
+                            }
                         } else {
                             // Buscamos el label asociado al combo
                             // Primero por id
@@ -1132,7 +1147,14 @@
 	                        if ($(field)[0].type === 'checkbox' || $(field)[0].type === 'radio') {
 	                            fieldValue += label.html();
 	                        } else {
-	                            fieldValue += $(field).val();
+	                        	//Mirar si es masterDetail
+	                            
+	                            if(settings.masterDetail !== undefined && settings.masterDetail.masterPrimaryKey === aux[i].name){
+	                            	let md = settings.masterDetail;
+	                            	fieldValue += (md.masterPrimaryNid) ? field.data('nid') : $(field).val();
+	                            }else{
+	                            	fieldValue += $(field).val();
+	                            }
 	                        }
 	                        break;
 	                        //Rup-tree
@@ -1228,8 +1250,10 @@
                         }
 
                     }
-                    DataTable.editForm.fnOpenSaveDialog(params[0], params[1], params[2], null);
-                    ctx.oInit.formEdit.$navigationBar.funcionParams = {};
+                      
+                    $.when(DataTable.editForm.fnOpenSaveDialog(params[0], params[1], params[2], null)).then(function () {
+                    	ctx.oInit.formEdit.$navigationBar.funcionParams = {};;
+                      });
                 }
 
             });

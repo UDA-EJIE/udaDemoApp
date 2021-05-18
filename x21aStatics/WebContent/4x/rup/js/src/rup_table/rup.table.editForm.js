@@ -366,10 +366,11 @@
      *
      * @param {object} ctx - Contexto del Datatable.
      * @param {string} actionType - Acción a ajecutar en el formulario para ir al controller, basado en REST.
+     * @param {object} row - Datos del formulario para cargar lo.
      *
      * @return {object}
      */
-    function _loadSaveDialogForm(ctx, actionType) {
+    function _loadSaveDialogForm(ctx, actionType, row) {
     	var idForm = ctx.oInit.formEdit !== undefined ? ctx.oInit.formEdit.idForm : undefined;
     	
     	// Servirá para saber si la última llamada a editForm fue para añadir, editar o si aún no ha sido inicializado
@@ -425,6 +426,10 @@
 						let element = insertedForm.find('[name="' + column.name + '"]');
 						// Comprobar que es un componente RUP y editable. En caso de no ser editable, se añade la propiedad readonly
 						if (column.rupType && column.editable) {
+							//Los combos tienen otra comprobación por el deferred
+							if(row !== undefined && column.rupType === 'combo'){
+								column.editoptions.selected = row[column.name];
+							}
 							element['rup_' + column.rupType](column.editoptions);
 						} else if (!column.editable) {
 							element.prop('readonly', true);
@@ -473,9 +478,16 @@
      */
     DataTable.editForm.fnOpenSaveDialog = function _openSaveDialog(actionType, dt, idRow, customTitle) {
         var ctx = dt.settings()[0];
+        if (idRow == null || idRow == undefined || idRow < 0) {
+            idRow = 1;
+        }
+        let row;
+        if(ctx.json !== undefined && actionType !== 'POST'){//si acción es add, no hace falta coger el row.
+        	row = ctx.json.rows[idRow];
+        }
         
         // Comprobar si existe un formulario, en caso de no existir o de no contener el action requerido, lo crea
-        $.when(_loadSaveDialogForm(ctx, actionType)).then(function () {
+        $.when(_loadSaveDialogForm(ctx, actionType,row)).then(function () {
             let loadPromise = $.Deferred();
         	var idForm = ctx.oInit.formEdit.idForm;
         	// Limpiar los errores en caso de haberlos
@@ -494,14 +506,9 @@
 	        // Botón de guardar y continuar
 	        var buttonContinue = ctx.oInit.formEdit.detailForm.find('#' + ctx.sTableId + '_detail_button_save_repeat');
 	
-	        if (idRow < 0) {
-	            idRow = 1;
-	        }
+
 	        $('#' + ctx.sTableId).triggerHandler('tableEditFormAddEditBeforeInitData',ctx);
-	        let row;
-	        if(ctx.json !== undefined){
-	        	row = ctx.json.rows[idRow];
-	        }
+
 	        let rowArray = $.rup_utils.jsontoarray(row);
 	        
 	        let title = customTitle != (undefined && null) ? customTitle : "";
@@ -609,6 +616,10 @@
 	            // Comprobamos si se desea bloquear la edicion de las claves primarias
 	            DataTable.Api().rupTable.blockPKEdit(ctx, actionType);
 	        } else if (actionType === 'POST') {
+	        	//al ser add, s elimpian los combos
+	        	jQuery.each($('select.rup_combo', idForm), function (index, elem) {
+	                jQuery(elem).rup_combo('setRupValue','')
+	            });
 	            $.rup_utils.populateForm(rowArray, idForm);
 	            ctx.oInit.formEdit.$navigationBar.hide();
 	            // Si no se ha definido un 'customTitle' asignamos un valor a la variable del título del formulario
@@ -660,9 +671,11 @@
 	            //listas checkbox
 	            row = _addListType(idForm,row);
 	            
-                $.each(ctx.oInit.primaryKey, function (index, key) {
-                	row[key] = ctx.json.rows[idRow][key];
-                });            
+	            if (actionType === 'PUT') {//Solo al modificar
+	                $.each(ctx.oInit.primaryKey, function (index, key) {
+	                	row[key] = ctx.json.rows[idRow][key];
+	                });   
+	            }
 	            
 	        	let idTableDetail = ctx.oInit.formEdit.detailForm;
 	            
@@ -714,9 +727,11 @@
 	            //listas checkbox
 	            row = _addListType(idForm,row);
 	            
-                $.each(ctx.oInit.primaryKey, function (index, key) {
-                	row[key] = ctx.json.rows[idRow][key];
-                });
+	            if (actionType === 'PUT') {//Solo al modificar
+	                $.each(ctx.oInit.primaryKey, function (index, key) {
+	                	row[key] = ctx.json.rows[idRow][key];
+	                });
+	            }
                 
 	            let idTableDetail = ctx.oInit.formEdit.detailForm;
 	            
@@ -1231,9 +1246,8 @@
 
             // Actualizar la última posición movida
             ctx.oInit.formEdit.$navigationBar.currentPos = rowSelected;
-            // Se añade el parámetro 7 mientras estén en convivencia el rup.jqtable(entrar) y rup.table
-            return [linkType, execute, changePage, index - 1, npos, newPage, newPageIndex - 1, ''];
-
+            
+            return [linkType, execute, changePage, index - 1, npos, newPage, newPageIndex - 1];
         };
 
         ctx.oInit.formEdit.$navigationBar.data('settings', settings);
@@ -1333,9 +1347,8 @@
             }
             //Se actualiza la ultima posicion movida.
             //ctx.oInit.formEdit.$navigationBar.currentPos = rowSelected;
-            // Se añade el parametro 7 mientras esten en convivencia el rup.jqtable(entrar) y rup.table
-            return [linkType, execute, changePage, index - 1, npos, newPage, newPageIndex - 1, ''];
-
+            
+            return [linkType, execute, changePage, index - 1, npos, newPage, newPageIndex - 1];
         };
 
 
@@ -1887,8 +1900,8 @@
         _updateDetailPagination(ctx, currentRowNum, totalRowNum);
     });
     
-    apiRegister('editForm.loadSaveDialogForm()', function (ctx, actionType) {
-    	return _loadSaveDialogForm(ctx, actionType);
+    apiRegister('editForm.loadSaveDialogForm()', function (ctx, actionType, row) {
+    	return _loadSaveDialogForm(ctx, actionType, row);
     });
 
     apiRegister('editForm.getRowSelected()', function (dt, actionType) {
@@ -1942,7 +1955,7 @@
 	                     * en el formEdit para evitar un bug visual en el que hacia que sus campos apareciesen 
 	                     * bajo la tabla y fueran visibles previa a la inicializacion del componente rup.dialog.
 	                     */
-	                    $('div.rup-table-formEdit-detail').removeClass('d-none');
+	                    $('#'+ctx.sTableId+'_detail_div.rup-table-formEdit-detail').removeClass('d-none');
 	                }
 	            }, {}));
 	            if (ctx.oInit.formEdit.cancelDeleteFunction === undefined) {
