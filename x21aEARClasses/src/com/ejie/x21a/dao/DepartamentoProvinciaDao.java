@@ -15,7 +15,7 @@
 */
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.DepartamentoProvincia;
@@ -63,10 +63,10 @@ public interface DepartamentoProvinciaDao {
      * Finds a List of rows in the DepartamentoProvincia table.
      *
      * @param departamentoprovincia DepartamentoProvincia
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
-    List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoprovincia, Pagination pagination);
+    List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoprovincia, TableRequestDto tableRequestDto);
 
     /**
      * Counts rows in the DepartamentoProvincia table.
@@ -80,11 +80,11 @@ public interface DepartamentoProvinciaDao {
      * Finds rows in the DepartamentoProvincia table using like.
      *
      * @param departamentoprovincia DepartamentoProvincia
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
-	List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoprovincia, Pagination pagination, Boolean startsWith);
+	List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoprovincia, TableRequestDto tableRequestDto, Boolean startsWith);
 	
     /**
      * Counts rows in the DepartamentoProvincia table using like.

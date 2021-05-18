@@ -15,7 +15,9 @@
 */
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,7 +42,11 @@ import com.ejie.x21a.model.Departamento;
 @Repository
 @Transactional
 public class DepartamentoDaoImpl implements DepartamentoDao {
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"CODE", "DESCES", "DESCEU", "CSS"};
+	
     private JdbcTemplate jdbcTemplate;
+	
 	private RowMapper<Departamento> rwMap = new RowMapper<Departamento>() {
 		public Departamento mapRow(ResultSet resultSet, int rowNum) throws SQLException {
            return new Departamento(
@@ -111,11 +117,11 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
     * Finds a List of rows in the Departamento table.
     * 
     * @param departamento Departamento
-    * @param pagination Pagination
+    * @param tableRequestDto TableRequestDto
     * @return List 
     */
 	@Transactional (readOnly = true)
-    public List<Departamento> findAll(Departamento departamento, Pagination pagination) {
+    public List<Departamento> findAll(Departamento departamento, TableRequestDto tableRequestDto) {
 		StringBuilder query = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESCES,t1.DESC_EU DESCEU,t1.CSS CSS "); 
 		query.append("FROM DEPARTAMENTO t1 ");
 		
@@ -127,8 +133,8 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (pagination != null) {
-			query = pagination.getPaginationQuery(query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, DepartamentoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<Departamento>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -164,7 +170,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
      * @return List 
      */
 	@Transactional (readOnly = true)
-    public List<Departamento> findAllLike(Departamento departamento, Pagination pagination, Boolean startsWith) {
+    public List<Departamento> findAllLike(Departamento departamento, TableRequestDto tableRequestDto, Boolean startsWith) {
 		StringBuilder query = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESCES,t1.DESC_EU DESCEU,t1.CSS CSS "); 
         query.append("FROM DEPARTAMENTO t1 ");
       	
@@ -176,8 +182,8 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (pagination != null) {
-			query = pagination.getPaginationQuery(query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, DepartamentoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<Departamento>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
