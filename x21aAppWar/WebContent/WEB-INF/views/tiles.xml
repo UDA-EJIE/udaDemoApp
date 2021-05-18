@@ -517,6 +517,8 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/experimental/iberdok-includes.jsp" />
 	</definition>
+	
+	<definition name="iberdokEditForm" template="/WEB-INF/views/experimental/iberdokEditForm.jsp" />
 
 
 	<!-- Integracion -->

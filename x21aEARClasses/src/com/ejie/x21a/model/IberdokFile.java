@@ -4,9 +4,6 @@ import org.hdiv.services.SecureIdentifiable;
 
 public class IberdokFile implements java.io.Serializable, SecureIdentifiable<String> {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String id;	
@@ -17,6 +14,27 @@ public class IberdokFile implements java.io.Serializable, SecureIdentifiable<Str
 	private String documentoFinal;
 	private String file;
 	private String nombre;
+	
+	public IberdokFile() {
+		super();
+	}
+	public IberdokFile(String id) {
+		super();
+		this.id = id;
+	}
+	public IberdokFile(String idModelo, String semilla, String idDocumento, String estado) {
+		this.idModelo = idModelo;
+		this.semilla = semilla;
+		this.idDocumento = idDocumento;
+		this.estado = estado;
+	}
+	public IberdokFile(String id, String idModelo, String semilla, String idDocumento, String estado) {
+		this.id = id;
+		this.idModelo = idModelo;
+		this.semilla = semilla;
+		this.idDocumento = idDocumento;
+		this.estado = estado;
+	}
 	
 	public String getFile() {
 		return file;
@@ -60,23 +78,10 @@ public class IberdokFile implements java.io.Serializable, SecureIdentifiable<Str
 	public void setDocumentoFinal(String documentoFinal) {
 		this.documentoFinal = documentoFinal;
 	}
-	public IberdokFile() {
-		super();
-	}
-	public IberdokFile(String id, String idModelo, String semilla,
-			String idDocumento, String estado) {
-	}
-	public IberdokFile(String id) {
-		// TODO Auto-generated constructor stub
-	}
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
-
 }

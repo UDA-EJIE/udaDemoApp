@@ -198,9 +198,11 @@ jQuery(function($) {
                 'i18nCaption' : 'experimental',
                 //Elementos (url)
                 'logLevel' : {'i18nCaption' : 'logLevel' },
+                //'iberdok' : {'i18nCaption' : 'iberdok' },
                 //Submenu
                 'subLevel':[
-                    {'i18nCaption':'logLevel', 'url': '/x21aAppWar/experimental/logLevel' }
+                    {'i18nCaption':'logLevel', 'url': '/x21aAppWar/experimental/logLevel' }/*,
+                    {'i18nCaption':'iberdok', 'url': '/x21aAppWar/iberdok/view' }*/
                 ]
             },
             'integracion' : {
