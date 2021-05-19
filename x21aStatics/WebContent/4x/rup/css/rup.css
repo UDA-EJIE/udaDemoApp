@@ -14486,6 +14486,56 @@ table.dataTable tbody td::-moz-selection {
 table.dataTable tbody td::selection {
   background-color: transparent; }
 
+/* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
+.paginationContainer .searchPaginator input {
+  padding: 1px;
+  border: 1px solid #757575;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #495057;
+  background-image: none;
+  background-color: #FFFFFF; }
+  .paginationContainer .searchPaginator input:hover {
+    border-color: #212529; }
+  .paginationContainer .searchPaginator input:focus {
+    outline: none;
+    border-color: #1472a4;
+    caret-color: #1472a4;
+    border-width: 2px;
+    box-shadow: none;
+    padding: initial; }
+
+.paginationContainer .dataTables_length label {
+  margin: initial; }
+  .paginationContainer .dataTables_length label select, .paginationContainer .dataTables_length label .ui-multiselect, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
+    padding: 0 20px 0 13px;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #495057;
+    background-image: none;
+    background-color: #FFFFFF;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+    /* ICONO DROPDOWN */
+    background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
+    background-size: 5px 5px, 5px 5px;
+    /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */ }
+    .paginationContainer .dataTables_length label select::-ms-expand, .paginationContainer .dataTables_length label .ui-multiselect::-ms-expand, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown::-ms-expand {
+      display: none; }
+    .paginationContainer .dataTables_length label select:hover, .paginationContainer .dataTables_length label .ui-multiselect:hover, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown:hover {
+      border-color: #212529; }
+    .paginationContainer .dataTables_length label select:focus, .paginationContainer .dataTables_length label .ui-multiselect:focus, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown:focus {
+      outline: none;
+      border-color: #1472a4;
+      caret-color: #1472a4;
+      border-width: 2px;
+      box-shadow: none; }
+
 form + div.paginationContainer {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px; }
@@ -39978,6 +40028,56 @@ table.dataTable tbody td::-moz-selection {
 
 table.dataTable tbody td::selection {
   background-color: transparent; }
+
+/* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
+.paginationContainer .searchPaginator input {
+  padding: 1px;
+  border: 1px solid #757575;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #495057;
+  background-image: none;
+  background-color: #FFFFFF; }
+  .paginationContainer .searchPaginator input:hover {
+    border-color: #212529; }
+  .paginationContainer .searchPaginator input:focus {
+    outline: none;
+    border-color: #1472a4;
+    caret-color: #1472a4;
+    border-width: 2px;
+    box-shadow: none;
+    padding: initial; }
+
+.paginationContainer .dataTables_length label {
+  margin: initial; }
+  .paginationContainer .dataTables_length label select, .paginationContainer .dataTables_length label .ui-multiselect, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
+    padding: 0 20px 0 13px;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #495057;
+    background-image: none;
+    background-color: #FFFFFF;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+    /* ICONO DROPDOWN */
+    background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
+    background-size: 5px 5px, 5px 5px;
+    /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */ }
+    .paginationContainer .dataTables_length label select::-ms-expand, .paginationContainer .dataTables_length label .ui-multiselect::-ms-expand, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown::-ms-expand {
+      display: none; }
+    .paginationContainer .dataTables_length label select:hover, .paginationContainer .dataTables_length label .ui-multiselect:hover, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown:hover {
+      border-color: #212529; }
+    .paginationContainer .dataTables_length label select:focus, .paginationContainer .dataTables_length label .ui-multiselect:focus, .paginationContainer .dataTables_length label .ui-selectmenu-dropdown:focus {
+      outline: none;
+      border-color: #1472a4;
+      caret-color: #1472a4;
+      border-width: 2px;
+      box-shadow: none; }
 
 form + div.paginationContainer {
   border-bottom-left-radius: 7px;
