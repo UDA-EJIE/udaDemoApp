@@ -184,6 +184,9 @@ public class MultiPk implements java.io.Serializable, SecureIdentifiable<String>
      */
 	@Override
 	public String getId() {
+		if (ida == null || idb == null) {
+			return null;
+		}
 		// Si cambias la constante PK_TOKEN, es posible que en los logs comience a mostrarse el siguiente aviso: La lista de parámetros recibida no es la misma que la aportada.
 		return (this.ida.toString() + Constants.PK_TOKEN + this.idb.toString()).replaceAll(" ", "_space_");
 	}

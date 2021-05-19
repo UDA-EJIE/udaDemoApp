@@ -166,7 +166,7 @@ public class TableMultiPkController {
 	 *            Bean resultante de la modificacion.
 	 */
 	@UDALink(name = "edit")
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<MultiPk> edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
 		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
@@ -184,7 +184,7 @@ public class TableMultiPkController {
 	 *            Bean resultante del proceso de creacion.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<MultiPk> add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
         TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
