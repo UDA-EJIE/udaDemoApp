@@ -123,7 +123,11 @@ public class TableLocalidadController {
 	/**
 	 * RUP_TABLE
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Localidad> filter(
 			@RequestJsonBody(param="filter") Localidad localidad,
@@ -173,5 +177,170 @@ public class TableLocalidadController {
 			@RequestJsonBody final TableRequestDto tableRequestDto){
 		TableLocalidadController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return localidadService.search(localidadFilter, localidadSearch, tableRequestDto, true);
-	}	
+	}
+	
+	/*
+	 * EXPORTACIONES DE DATOS
+	 */
+	
+	/**
+	 * Devuelve los datos exportados de la tabla.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 */
+	@UDALink(name = "clipboardReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
+	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	public @ResponseBody List<Resource<Localidad>> getClipboardReport(
+			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableLocalidadController.logger.info("[POST - clipboardReport] : Copiar multiples Localidades");
+		return ResourceUtils.fromListToResource(this.localidadService.getDataForReports(filterLocalidad, tableRequestDto));
+	}
+	
+	/**
+	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "excelReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateExcelReport(
+			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response) throws ServletException{
+		TableLocalidadController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.localidadService.generateReport(filterLocalidad, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+    }
+	
+	/**
+	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "pdfReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generatePDFReport(
+			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableLocalidadController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.localidadService.generateReport(filterLocalidad, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "odsReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "csvReport")})
+	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateODSReport(
+			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableLocalidadController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.localidadService.generateReport(filterLocalidad, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
+	
+	/**
+	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	@UDALink(name = "csvReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "clipboardReport")})
+	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateCSVReport(
+			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
+			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "fileName", required = false) String fileName, 
+			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
+			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
+			@RequestJsonBody TableRequestDto tableRequestDto,
+			HttpServletRequest request,
+			HttpServletResponse response){
+		TableLocalidadController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
+		//Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+		this.localidadService.generateReport(filterLocalidad, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+	}
 }

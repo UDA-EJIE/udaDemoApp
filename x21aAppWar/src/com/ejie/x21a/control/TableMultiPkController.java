@@ -248,9 +248,13 @@ public class TableMultiPkController {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
 			@UDALinkAllower(name = "getTableEditForm"),
-			@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"), 
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -325,12 +329,16 @@ public class TableMultiPkController {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport")
+	@UDALink(name = "clipboardReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	public @ResponseBody List<Resource<MultiPk>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - clipboardReport] : Copiar multiples multipk");
 		return ResourceUtils.fromListToResource(this.multiPkService.getDataForReports(filterMultiPk, tableRequestDto));
@@ -348,7 +356,11 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "excelReport")
+	@UDALink(name = "excelReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -378,7 +390,11 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "pdfReport")
+	@UDALink(name = "pdfReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -408,7 +424,11 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "odsReport")
+	@UDALink(name = "odsReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
@@ -438,7 +458,11 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "csvReport")
+	@UDALink(name = "csvReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport") })
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 

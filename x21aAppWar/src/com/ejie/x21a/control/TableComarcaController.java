@@ -166,9 +166,12 @@ public class TableComarcaController {
 	/**
 	 * RUP_TABLE
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
-			@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")
-	, @UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = {
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"), 
+			@UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,
@@ -234,14 +237,14 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	public @ResponseBody List<Resource<Comarca>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
+		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples Comarcas");
 		return ResourceUtils.fromListToResource(this.comarcaService.getDataForReports(filterComarca, tableRequestDto));
 	}
 	

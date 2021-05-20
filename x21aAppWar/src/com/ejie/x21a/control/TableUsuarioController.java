@@ -239,22 +239,25 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getSimpleMasterDetail", linkTo = {
-			@UDALinkAllower(name = "getTableComarcaEditForm"),
-			@UDALinkAllower(name = "getTableDialogComarcaEditForm"),
-			@UDALinkAllower(name = "getTableLocalidadEditForm"),
+			@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getTableDialogComarcaEditForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getTableLocalidadEditForm", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getRoles"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "getMultiFilterForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterAdd", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterDelete", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterDefault", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterGetAll", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
@@ -270,22 +273,25 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
-			@UDALinkAllower(name = "getTableComarcaEditForm"),
-			@UDALinkAllower(name = "getTableDialogComarcaEditForm"),
-			@UDALinkAllower(name = "getTableLocalidadEditForm"),
+			@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getTableDialogComarcaEditForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "getTableLocalidadEditForm", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
-			@UDALinkAllower(name = "multifilterAdd"),
-			@UDALinkAllower(name = "multifilterDelete"),
-			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "getRoles"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "getMultiFilterForm", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterAdd", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterDelete", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterDefault", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "multifilterGetAll", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "clipboardReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "excelReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "pdfReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
+			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
 	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
@@ -670,9 +676,13 @@ public class TableUsuarioController {
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
-			@UDALinkAllower(name = "remove"),
-	@UDALinkAllower(name = "getRoles"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"), 
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -686,11 +696,13 @@ public class TableUsuarioController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), 
-	@UDALinkAllower(name = "remove")
-	, @UDALinkAllower(name = "filter2"),
-	@UDALinkAllower(name = "getRoles")
-	, @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter2", linkTo = { 
+			@UDALinkAllower(name = "get2"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter2"),
+			@UDALinkAllower(name = "getRoles"), 
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport2") })
 	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
 	@ResponseBody()
 	public TableResourceResponseDto<Usuario2> filter2(
@@ -876,24 +888,28 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	public @ResponseBody List<Resource<Usuario>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
 	}
 	
-	@UDALink(name = "clipboardReport2")
+	@UDALink(name = "clipboardReport2", linkTo = { 
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
 	public @ResponseBody List<Resource<Usuario>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto));
@@ -916,7 +932,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -934,7 +950,11 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
-	@UDALink(name = "excelReport2")
+	@UDALink(name = "excelReport2", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -976,10 +996,10 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -997,7 +1017,11 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "pdfReport2")
+	@UDALink(name = "pdfReport2", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1039,10 +1063,10 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1060,7 +1084,11 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "odsReport2")
+	@UDALink(name = "odsReport2", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1102,10 +1130,10 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "clipboardReport")})
+			@UDALinkAllower(name = "odsReport") })
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1123,7 +1151,11 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "csvReport2")
+	@UDALink(name = "csvReport2", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "odsReport2") })
 	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
