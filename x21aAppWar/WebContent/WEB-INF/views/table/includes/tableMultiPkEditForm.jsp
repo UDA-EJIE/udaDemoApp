@@ -25,8 +25,21 @@
 	<!-- Feedback del formulario de detalle -->
 	<div id ="MultiPk_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${actionType == 'POST'}">
+		<div class="form-row">
+			<div class="form-groupMaterial col-sm">
+				<form:input path="ida" id="ida_multipk_detail_table"/>
+				<label for="ida_multipk_detail_table"><spring:message code="ida"/></label>
+			</div>
+			<div class="form-groupMaterial col-sm">
+				<form:input path="idb" id="idb_multipk_detail_table"/>
+				<label for="idb_multipk_detail_table"><spring:message code="idb"/></label>
+			</div>
+		</div>
+	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
+		
 			<form:input path="nombre" id="nombre_multipk_detail_table"/>
 			<label for="nombre_multipk_detail_table"><spring:message code="nombre"/></label>
 		</div>
