@@ -79,7 +79,6 @@ public class TableComarcaController {
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	/*@UDALink(name = "getSimpleMasterDetail", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -95,7 +94,6 @@ public class TableComarcaController {
 	}
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
