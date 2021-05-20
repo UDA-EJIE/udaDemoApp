@@ -33,6 +33,7 @@ import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
@@ -65,13 +66,17 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno 
 	 *            Objeto correspondiente al identificador indicado.
 	 */
+	@UDALink(name = "get", linkTo = { 
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody X21aAlumno get(@PathVariable BigDecimal id) {
+	public @ResponseBody Resource<X21aAlumno> get(@PathVariable BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
         x21aAlumno = this.x21aAlumnoService.find(x21aAlumno);
         TableX21aAlumnoController.logger.info("[GET - findBy_PK] : Obtener X21aAlumno por PK");
-        return x21aAlumno;
+        return new Resource<X21aAlumno>(x21aAlumno);
 	}
 
 	/**
@@ -84,10 +89,14 @@ public class TableX21aAlumnoController  {
 	 * @return List<X21aAlumno> 
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<X21aAlumno> getAll(@ModelAttribute X21aAlumno filterX21aAlumno) {
+	@UDALink(name = "getall", linkTo = { 
+			@UDALinkAllower(name = "edit"), 
+			@UDALinkAllower(name = "remove"),
+			@UDALinkAllower(name = "get") })
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public @ResponseBody List<Resource<X21aAlumno>> getAll(@ModelAttribute X21aAlumno filterX21aAlumno) {
 		TableX21aAlumnoController.logger.info("[GET - find_ALL] : Obtener X21aAlumno por filtro");
-	    return this.x21aAlumnoService.findAll(filterX21aAlumno, null);
+	    return ResourceUtils.fromListToResource(this.x21aAlumnoService.findAll(filterX21aAlumno, null));
 	}
 
 	/**
@@ -98,11 +107,12 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno 
 	 *            Bean resultante de la modificacion.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody X21aAlumno edit(@RequestBody X21aAlumno x21aAlumno) {		
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public @ResponseBody Resource<X21aAlumno> edit(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.update(x21aAlumno);
 		TableX21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
-        return x21aAlumnoAux;
+        return new Resource<X21aAlumno>(x21aAlumnoAux);
     }
 
 	/**
@@ -115,11 +125,12 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody X21aAlumno add(@RequestBody X21aAlumno x21aAlumno) {		
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody Resource<X21aAlumno> add(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.add(x21aAlumno);
         TableX21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
-    	return x21aAlumnoAux;
+        return new Resource<X21aAlumno>(x21aAlumnoAux);
 	}
 
 	/**
@@ -131,14 +142,15 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno
 	 *            Bean eliminado.
 	 */
+	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody X21aAlumno remove(@PathVariable BigDecimal id) {
+    public @ResponseBody Resource<X21aAlumno> remove(@PathVariable BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
         x21aAlumno.setId(id);
         this.x21aAlumnoService.remove(x21aAlumno);
        	TableX21aAlumnoController.logger.info("[DELETE] : X21aAlumno borrado correctamente");
-       	return x21aAlumno;
+       	return new Resource<X21aAlumno>(x21aAlumno);
     }
     
 	
@@ -153,10 +165,32 @@ public class TableX21aAlumnoController  {
 	 * @param model Model
 	 * @return String
 	 */
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		TableX21aAlumnoController.logger.info("[GET - View] : x21aalumno");
 		return "x21aalumno";
+	}
+	
+	@UDALink(name = "getTableEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String fixedMessage,
+			Model model) {
+		model.addAttribute("X21aAlumno", new X21aAlumno());
+		model.addAttribute("actionType", actionType);
+		if (fixedMessage != null) {
+			model.addAttribute("fixedMessage", fixedMessage);
+		}
+		
+		return "tableX21aAlumnoEditForm";
 	}
 	 
 	 /**
@@ -171,8 +205,14 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<X21aAlumno> filter(
+	public @ResponseBody TableResourceResponseDto<X21aAlumno> filter(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - filter] : Obtener X21aAlumnos");
@@ -193,6 +233,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado de la busqueda realizada por el
 	 *            componente RUP_TABLE. 
 	 */
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<X21aAlumno>> search(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
@@ -214,6 +255,7 @@ public class TableX21aAlumnoController  {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
