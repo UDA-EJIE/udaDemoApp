@@ -122,8 +122,11 @@ public class TableUsuarioController {
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), 
-			@UDALinkAllower(name = "getRoles"),@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
+	@UDALink(name = "get", linkTo = { 
+			@UDALinkAllower(name = "edit"), 
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario> get(@PathVariable String id) {
         Usuario usuario = new Usuario();
@@ -133,8 +136,11 @@ public class TableUsuarioController {
         return new Resource<Usuario>(usuario);
 	}
 	
-	@UDALink(name = "get2", linkTo = { @UDALinkAllower(name = "edit2" ), 
-			@UDALinkAllower(name = "remove" ),@UDALinkAllower(name = "getRoles"), @UDALinkAllower(name = "filter2")})
+	@UDALink(name = "get2", linkTo = { 
+			@UDALinkAllower(name = "edit2" ), 
+			@UDALinkAllower(name = "remove" ),
+			@UDALinkAllower(name = "getRoles"), 
+			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario2> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable String id) {
@@ -168,7 +174,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		Usuario usuario = new Usuario();
@@ -214,7 +220,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "odsReport2"),
 			@UDALinkAllower(name = "csvReport"),
-			@UDALinkAllower(name = "csvReport2")})
+			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
@@ -320,7 +326,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
@@ -342,7 +348,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
@@ -372,7 +378,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
-			@UDALinkAllower(name = "filter")})
+			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
@@ -393,7 +399,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get2"),
 			@UDALinkAllower(name = "add2"),
 			@UDALinkAllower(name = "edit2"),
-			@UDALinkAllower(name = "filter2")})
+			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
 	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
 		model.addAttribute("usuario2", new Usuario2());
@@ -514,10 +520,12 @@ public class TableUsuarioController {
 	 *            la bÃºsqueda.
 	 * @return Lista de objetos correspondientes a la bÃºsqueda realizada.
 	 */
-	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), 
-			@UDALinkAllower(name = "remove" ), 
-			@UDALinkAllower(name = "getRoles"),@UDALinkAllower(name = "get" )})
-	@RequestMapping(value = "/all",method = RequestMethod.GET)
+	@UDALink(name = "getall", linkTo = { 
+			@UDALinkAllower(name = "edit"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get") })
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
@@ -531,7 +539,7 @@ public class TableUsuarioController {
 	 *            Bean que contiene la informaciÃ³n a modificar.
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
-	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
@@ -539,7 +547,7 @@ public class TableUsuarioController {
         return new Resource<Usuario>(usuarioAux);
     }
 	
-	@UDALink(name = "edit2", linkTo = { @UDALinkAllower(name = "filter2")})
+	@UDALink(name = "edit2", linkTo = { @UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
     		@RequestBody Usuario2 usuario) {
@@ -794,7 +802,7 @@ public class TableUsuarioController {
 	 *         que se ajustan a los parÃ¡metros de bÃºsqueda.
 	 * 
 	 */
-	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
