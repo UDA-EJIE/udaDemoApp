@@ -42,8 +42,7 @@ public class CacheController {
 	@UDALink(name = "getCreateForm", linkTo = {
 			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "filter") })
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		logger.info("[GET - View] : cache");

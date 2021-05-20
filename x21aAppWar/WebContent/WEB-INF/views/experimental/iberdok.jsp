@@ -5,7 +5,7 @@
 
 <!-- TABLA DOCUMENTOS -->
 <!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
-<spring:url value="/iberdok" var="url"/>
+<spring:url value="/iberdok/filter" var="url"/>
 <form:form modelAttribute="randomForm" id="iberdokTable_filter_form" class="d-none" action="${url}"/>
 
 <table id="iberdokTable" class="tableFit table-striped table-bordered table-material"

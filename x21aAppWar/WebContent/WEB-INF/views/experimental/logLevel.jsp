@@ -22,7 +22,7 @@
 
 <h3>Weblogic Name : <%=System.getProperty("weblogic.Name")%></h3>
 
-<spring:url value="/experimental/logLevel" var="url"/>
+<spring:url value="/experimental/filter" var="url"/>
 <form:form modelAttribute="randomForm" id="table_filter_form" action="${url}" method="POST">
 	<div id="table_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">

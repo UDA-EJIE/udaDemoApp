@@ -86,8 +86,7 @@ public class ExperimentalController {
 	//logLevel
 	@UDALink(name = "getLogLevel", linkTo = {
 			@UDALinkAllower(name = "getTableInlineEdit"),
-			@UDALinkAllower(name = "getLevel"),
-			@UDALinkAllower(name = "filter") })
+			@UDALinkAllower(name = "getLevel") })
 	@RequestMapping(value = "logLevel", method = RequestMethod.GET)
 	public String getLogLevel(Model model) {
 		model.addAttribute("randomForm", new RandomForm());

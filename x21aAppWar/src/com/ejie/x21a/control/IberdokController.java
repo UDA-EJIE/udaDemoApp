@@ -227,7 +227,6 @@ public class IberdokController {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
-			@UDALinkAllower(name = "filter"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getPDF") })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
