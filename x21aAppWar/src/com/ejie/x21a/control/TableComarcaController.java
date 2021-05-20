@@ -33,6 +33,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -107,6 +108,32 @@ public class TableComarcaController {
 		return "tableDialogDetail";
 	}*/
 	
+	@UDALink(name = "getTableComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableComarcaEditForm";
+	}
+	
+	@UDALink(name = "getTableDialogComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editFormDialog", method = RequestMethod.POST)
+	public String getTableDialogComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableDialogComarcaEditForm";
+	}
+	
 	/**
 	 * Method 'getById'.
 	 * @param  id String
@@ -178,6 +205,35 @@ public class TableComarcaController {
 			@RequestJsonBody final TableRequestDto tableRequestDto) {
 		TableComarcaController.logger.info("[GET - table] : Obtener Comarcas");	
 		return comarcaService.filter(comarca, tableRequestDto, false);
+	}
+	
+	// Obtiene el formulario del multi filtro
+	@UDALink(name = "getMultiFilterForm")
+	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	public String getMultiFilterForm (
+			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = true) String containerClass,
+			@RequestParam(required = true) String labelClass,
+			@RequestParam(required = true) String defaultContainerClass,
+			@RequestParam(required = true) String defaultCheckboxClass,
+			Model model) {
+		model.addAttribute("entity", new Comarca());
+		model.addAttribute("tableID", tableID);
+		model.addAttribute("containerClass", containerClass);
+		model.addAttribute("labelClass", labelClass);
+		model.addAttribute("defaultContainerClass", defaultContainerClass);
+		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/tableComarca/multiFilter";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "multiFilterForm";
 	}
 	
 	@UDALink(name = "multifilterAdd")

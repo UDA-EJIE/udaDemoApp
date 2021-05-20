@@ -16,14 +16,23 @@
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +41,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.service.LocalidadService;
 import com.ejie.x21a.util.ResourceUtils;
@@ -58,6 +68,24 @@ public class TableLocalidadController {
 	
 	@Autowired
 	private FilterService filterService;
+	
+	@UDALink(name = "getTableLocalidadEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableLocalidadEditForm (@RequestParam String actionType, Model model) {
+		Comarca comarca = new Comarca();
+		Localidad localidad = new Localidad();
+		localidad.setComarca(comarca);
+		
+		model.addAttribute("comarca", comarca);
+		model.addAttribute("localidad", localidad);
+		model.addAttribute("actionType", actionType);
+		
+		return "tableLocalidadEditForm";
+	}
 	
 	/**
 	 * Method 'getById'.
