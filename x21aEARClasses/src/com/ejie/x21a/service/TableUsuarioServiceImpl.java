@@ -351,7 +351,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
 	 * @param columnsName String[]
 	 * @param fileName String
@@ -360,7 +360,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generateExcelReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generateExcelReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
 			// Creacion del Excel
 			Workbook workbook = null;
@@ -408,14 +408,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(formatter.toPattern()));
 	        
 	        // Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	int cellNumber = 0;
 	        	row = sheet.createRow(rowNumber++);
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
 	        		Cell cellUsuario = row.createCell(cellNumber++);
-	        		cellUsuario.setCellValue(getCellValue(column, rowUsuario));
+	        		cellUsuario.setCellValue(getCellValue(column, rowObject));
 	        	}
 	        }
 	        
@@ -435,13 +435,13 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
 	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param response HttpServletResponse
 	 */
-	private void generatePDFReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
+	private void generatePDFReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
 		try {
 			// Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
@@ -463,10 +463,10 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
         	}
 			
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		table.addCell(getCellValue(column, rowUsuario));
+	        		table.addCell(getCellValue(column, rowObject));
 	        	}
 	        }
 			
@@ -481,14 +481,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
 	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param response HttpServletResponse
 	 */
-	private void generateODSReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
+	private void generateODSReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
 		try {
 			// Se añade el fichero ods al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
@@ -514,13 +514,13 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        }
 
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	row = table.getRowByIndex(rowNumber++);
 				int cellNumber = 0;
 				
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowUsuario));
+        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowObject));
 	        	}
 	        }
 			
@@ -534,7 +534,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
 	 * @param columnsName String[]
 	 * @param fileName String
@@ -542,7 +542,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param language String
 	 * @param response HttpServletResponse
 	 */
-	private void generateCSVReport(List<Usuario> filteredData, String[] columns,String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
+	private void generateCSVReport(List<?> filteredData, String[] columns,String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
 		try {
 		    // Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
@@ -560,14 +560,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		    boolean addTitles = true;
 			
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	int cellNumber = 1;
 	        	StringBuilder columnsTitles = new StringBuilder();
 	        	StringBuilder row = new StringBuilder();
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		String cellValue = getCellValue(column, rowUsuario);
+	        		String cellValue = getCellValue(column, rowObject);
 	        		
 	        		if (cellNumber < columns.length) {
         				if (addTitles) {
@@ -609,12 +609,12 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * Obtiene los valores de las celdas.
 	 *
 	 * @param column String
-	 * @param rowUsuario Usuario
+	 * @param row Object
 	 */
-	private String getCellValue(String column, Usuario rowUsuario) {
+	private String getCellValue(String column, Object row) {
 		String cellValue = "";
 		try {
-			cellValue = BeanUtils.getProperty(rowUsuario, column) != null ? BeanUtils.getProperty(rowUsuario, column) : "";
+			cellValue = BeanUtils.getProperty(row, column) != null ? BeanUtils.getProperty(row, column) : "";
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
