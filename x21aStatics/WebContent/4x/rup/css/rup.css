@@ -12245,8 +12245,9 @@ table.dataTable tbody > tr:hover {
 
 /* SE USA EL ':not(.DTCR_clonedTable)' PARA EVITAR QUE ESTOS ESTILOS SE APLIQUEN TAMBIEN AL COLREORDER */
 table.tableFit:not(.DTCR_clonedTable) {
-  width: calc(100% - 1px) !important;
-  max-width: calc(100% - 1px);
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
   margin-bottom: 0; }
 
 table.tableFit.DTCR_clonedTable {
@@ -37788,8 +37789,9 @@ table.dataTable tbody > tr:hover {
 
 /* SE USA EL ':not(.DTCR_clonedTable)' PARA EVITAR QUE ESTOS ESTILOS SE APLIQUEN TAMBIEN AL COLREORDER */
 table.tableFit:not(.DTCR_clonedTable) {
-  width: calc(100% - 1px) !important;
-  max-width: calc(100% - 1px);
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
   margin-bottom: 0; }
 
 table.tableFit.DTCR_clonedTable {
