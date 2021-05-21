@@ -506,7 +506,7 @@ public class PatronesController {
     //All (todos los patrones en una pagina)
     @UDALink(name = "getAll", linkTo = { 
     		@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
-    		@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableUsuarioController.class),
+    		@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableComarcaController.class),
     		@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "clipboardReport", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "excelReport", linkClass = TableComarcaController.class),

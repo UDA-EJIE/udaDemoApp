@@ -86,7 +86,7 @@ jQuery(function($){
             enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
-	            url: '../table/editFormComarca',
+	            url: '../tableComarca/editForm',
 	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
 	        }
 	    });
