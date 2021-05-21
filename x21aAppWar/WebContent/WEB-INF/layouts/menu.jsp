@@ -163,7 +163,7 @@
                                         <spring:message code="tabla.dynamicColumns" />
                                     </a>
                                     <a class="dropdown-item" href="${staticsUrl}/x21a/scripts/x21aApp/testJasmine/specRunner.html" >
-                                        <spring:message code="Test para la tabla" />
+                                        <spring:message code="tabla.tableTests" />
                                     </a>
                                 </div>
                             </div>
