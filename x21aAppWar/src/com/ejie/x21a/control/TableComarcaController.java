@@ -297,6 +297,7 @@ public class TableComarcaController {
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples Comarcas");
 		return ResourceUtils.fromListToResource(this.comarcaService.getDataForReports(filterComarca, tableRequestDto));

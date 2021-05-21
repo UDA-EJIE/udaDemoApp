@@ -333,6 +333,7 @@ public class TableX21aAlumnoController  {
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - clipboardReport] : Copiar multiples X21aAlumnos");
 		return ResourceUtils.fromListToResource(this.x21aAlumnoService.getDataForReports(filterX21aAlumno, tableRequestDto));

@@ -855,6 +855,7 @@ public class TableUsuarioController {
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
@@ -871,6 +872,7 @@ public class TableUsuarioController {
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto));

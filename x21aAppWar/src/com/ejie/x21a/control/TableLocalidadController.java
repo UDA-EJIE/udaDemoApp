@@ -227,6 +227,7 @@ public class TableLocalidadController {
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableLocalidadController.logger.info("[POST - clipboardReport] : Copiar multiples Localidades");
 		return ResourceUtils.fromListToResource(this.localidadService.getDataForReports(filterLocalidad, tableRequestDto));

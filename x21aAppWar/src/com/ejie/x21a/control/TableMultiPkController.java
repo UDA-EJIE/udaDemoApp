@@ -339,6 +339,7 @@ public class TableMultiPkController {
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
 			@RequestParam(required = false) String[] columns, 
 			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - clipboardReport] : Copiar multiples multipk");
 		return ResourceUtils.fromListToResource(this.multiPkService.getDataForReports(filterMultiPk, tableRequestDto));
