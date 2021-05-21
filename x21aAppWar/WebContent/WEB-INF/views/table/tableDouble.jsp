@@ -16,7 +16,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>Tabla doble</h2>
 <!-- Titulo pagina -->
-<div class="row mt-5">
+<div class="row">
     <div class="col-xl-6">
     	<div class="row">
 		  <div class="col-xl-12">
@@ -121,7 +121,7 @@
         </form:form>
     </div>
 
-    <div class="col-xl-6 tableDoubleBorder">
+    <div class="mt-lg-5 mt-xl-0 col-xl-6 tableDoubleBorder">
     	<div class="row">
 		  <div class="col-xl-12">
 		      <jsp:include page="includes/tableFilterForm2.jsp"></jsp:include>
