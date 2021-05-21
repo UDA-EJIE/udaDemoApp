@@ -33,6 +33,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -78,7 +79,6 @@ public class TableComarcaController {
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	/*@UDALink(name = "getSimpleMasterDetail", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -94,7 +94,6 @@ public class TableComarcaController {
 	}
 	
 	@UDALink(name = "getMasterDialog", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
@@ -106,6 +105,32 @@ public class TableComarcaController {
 		model.addAttribute("localidad", new Localidad());
 		return "tableDialogDetail";
 	}*/
+	
+	@UDALink(name = "getTableComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableComarcaEditForm";
+	}
+	
+	@UDALink(name = "getTableDialogComarcaEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/editFormDialog", method = RequestMethod.POST)
+	public String getTableDialogComarcaEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("comarca", new Comarca());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableDialogComarcaEditForm";
+	}
 	
 	/**
 	 * Method 'getById'.
@@ -166,15 +191,47 @@ public class TableComarcaController {
 	/**
 	 * RUP_TABLE
 	 */
-	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), 
-			@UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")
-	, @UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class), @UDALinkAllower(name = "deleteAll")})
+	@UDALink(name = "filter", linkTo = {
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"), 
+			@UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "clipboardReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,
 			@RequestJsonBody final TableRequestDto tableRequestDto) {
 		TableComarcaController.logger.info("[GET - table] : Obtener Comarcas");	
 		return comarcaService.filter(comarca, tableRequestDto, false);
+	}
+	
+	// Obtiene el formulario del multi filtro
+	@UDALink(name = "getMultiFilterForm")
+	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	public String getMultiFilterForm (
+			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = true) String containerClass,
+			@RequestParam(required = true) String labelClass,
+			@RequestParam(required = true) String defaultContainerClass,
+			@RequestParam(required = true) String defaultCheckboxClass,
+			Model model) {
+		model.addAttribute("entity", new Comarca());
+		model.addAttribute("tableID", tableID);
+		model.addAttribute("containerClass", containerClass);
+		model.addAttribute("labelClass", labelClass);
+		model.addAttribute("defaultContainerClass", defaultContainerClass);
+		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/tableComarca/multiFilter";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "multiFilterForm";
 	}
 	
 	@UDALink(name = "multifilterAdd")
@@ -234,14 +291,14 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
 	public @ResponseBody List<Resource<Comarca>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
-			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
-		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
+		TableComarcaController.logger.info("[POST - clipboardReport] : Copiar multiples Comarcas");
 		return ResourceUtils.fromListToResource(this.comarcaService.getDataForReports(filterComarca, tableRequestDto));
 	}
 	

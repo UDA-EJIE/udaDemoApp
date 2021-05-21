@@ -40,7 +40,7 @@ import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 
 /**
- * ExperimentalController
+ * IntegracionController
  *
  * @author UDA
  */

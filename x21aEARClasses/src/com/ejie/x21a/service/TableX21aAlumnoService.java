@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -91,9 +92,9 @@ public interface TableX21aAlumnoService {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<X21aAlumno>
+	 * @return TableResourceResponseDto<X21aAlumno>
 	 */	
-	TableResponseDto<X21aAlumno> filter(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto,  Boolean startsWith);
+	TableResourceResponseDto<X21aAlumno> filter(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto,  Boolean startsWith);
     
     /**
 	 * Searches rows in the X21aAlumno table.

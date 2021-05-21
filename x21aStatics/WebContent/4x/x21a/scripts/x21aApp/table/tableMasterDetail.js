@@ -86,7 +86,7 @@ jQuery(function ($) {
             enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
-	            url: '../table/editFormComarca',
+	            url: '../tableComarca/editForm',
 	            /*validate: {
 	                rules: {
 	                    'code': {
@@ -155,7 +155,7 @@ jQuery(function ($) {
             enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#localidad_detail_div',
-	            url: '../table/editFormLocalidad',
+	            url: '../tableLocalidad/editForm',
 	            /*validate: {
 	                rules: {
 	                    'code': {
