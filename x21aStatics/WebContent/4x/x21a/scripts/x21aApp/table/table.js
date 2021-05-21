@@ -414,6 +414,7 @@ jQuery(function ($) {
             
             if (localStorage.plugins !== undefined && localStorage.plugins.indexOf('sinFiltro') > -1) {
                $('#example_filter_form').remove();
+               $('#example').attr('data-filter-form', '#example_noFilter_form');
                $('#sinFiltro').prop('checked', true);
                plugins.filter = 'noFilter';
             }else{

@@ -18,6 +18,10 @@
 
 <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 
+<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="example_noFilter_form" class="d-none" action="${url}"/>
+
 <table id="example" class="tableFit table-striped table-bordered table-material"
 	data-url-base="."
 	data-filter-form="#example_filter_form">
