@@ -3,7 +3,7 @@
 
 describe('RUP Feedback Tests', () => {
     beforeAll((done) => {
-        testutils.loadCss(done);
+        loadCss(done);
     });
 
     describe('> Invocación de un RUP Feedback por defecto', () => {
