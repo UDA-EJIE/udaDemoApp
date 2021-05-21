@@ -9,7 +9,7 @@ describe('Test Accordion > ', () => {
         if ($('#content').length == 0) {
             $('body').append('<div id="content" class="container mt-4"></div>');
         }
-        testutils.loadCss(done);
+        loadCss(done);
     });
 
     beforeEach(() => {

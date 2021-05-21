@@ -162,7 +162,7 @@
                                     <a class="dropdown-item" href="${tableDynamicColumns}">
                                         <spring:message code="tabla.dynamicColumns" />
                                     </a>
-                                    <a class="dropdown-item" href="${staticsUrl}/x21a/scripts/x21aApp/testJasmine/specRunner.html" >
+                                    <a class="dropdown-item" href="${staticsUrl}/x21a/scripts/x21aApp/testJasmine/specRunner.html" target="_blank">
                                         <spring:message code="tabla.tableTests" />
                                     </a>
                                 </div>
