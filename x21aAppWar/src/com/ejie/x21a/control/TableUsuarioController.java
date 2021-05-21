@@ -496,7 +496,7 @@ public class TableUsuarioController {
 		return apellidos;
 	}
 	
-	@UDALink(name = "getRoles")
+	@UDALink(name = "getRoles",linkTo = { @UDALinkAllower(name = "getApellidos" )})
 	@RequestMapping(value = "/roles", method = RequestMethod.GET)
 	public @ResponseBody List<AutocompleteComboGenericPOJO> getRoles (
 			@RequestParam(value = "q", required = false) String q,
