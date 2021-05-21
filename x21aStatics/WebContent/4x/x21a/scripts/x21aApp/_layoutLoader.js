@@ -125,7 +125,7 @@ jQuery(function($) {
                 'doubleMultipk' : { 'i18nCaption' : 'tableDoubleMultipk' },
                 'multipk' : { 'i18nCaption' : 'tableMultipk' },
                 'masterDetail' : { 'i18nCaption' : 'tableMasterDetail' },
-                'tableMasterDialog' : { 'i18nCaption' : 'tableMasterDialog' },
+                'masterDialog' : { 'i18nCaption' : 'tableMasterDialog' },
                 'tableDialog' : { 'i18nCaption' : 'tableDialog' },
                 'dynamicColumns' : { 'i18nCaption' : 'tableDynamicColumns' },
                 'subLevel':[
