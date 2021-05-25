@@ -49,7 +49,7 @@ public interface TableUsuarioService {
     Usuario add(Usuario usuario);
     
     /**
-	 * Inserts a single row in the Usuario2 table.
+	 * Inserts a single row in the Usuario table.
 	 *
 	 * @param usuario Usuario2
 	 * @return Usuario2
@@ -65,7 +65,7 @@ public interface TableUsuarioService {
 	Usuario update(Usuario usuario);
 
 	/**
-	 * Updates a single row in the Usuario2 table.
+	 * Updates a single row in the Usuario table.
 	 *
 	 * @param usuario Usuario2
 	 * @return Usuario2
@@ -79,6 +79,14 @@ public interface TableUsuarioService {
 	 * @return Usuario
 	 */
 	Usuario find(Usuario usuario);
+
+	/**
+	 * Finds a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	Usuario2 find(Usuario2 usuario);
 
 	/**
 	 * Deletes a single row in the Usuario table.
@@ -141,6 +149,8 @@ public interface TableUsuarioService {
 	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 
 	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
+
+	TableResourceResponseDto<Usuario2> filter(Usuario2 usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	Object reorderSelection(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
@@ -157,6 +167,14 @@ public interface TableUsuarioService {
 	public List<Usuario> getDataForReports(Usuario filterUsuario, TableRequestDto tableRequestDto);
 	
 	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<Usuario2> getDataForReports(Usuario2 filterUsuario, TableRequestDto tableRequestDto);
+	
+	/**
 	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
 	 *
 	 * @param filterUsuario Usuario
@@ -171,4 +189,20 @@ public interface TableUsuarioService {
 	 * @param response HttpServletResponse
 	 */
 	public void generateReport(Usuario filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
+	
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param locale Locale
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(Usuario2 filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response);
 }

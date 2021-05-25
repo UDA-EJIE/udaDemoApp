@@ -85,7 +85,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	/**
-	 * Inserts a single row in the Usuario2 table.
+	 * Inserts a single row in the Usuario table.
 	 *
 	 * @param usuario Usuario2
 	 * @return Usuario2
@@ -109,7 +109,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 
 	/**
-	 * Updates a single row in the Usuario2 table.
+	 * Updates a single row in the Usuario table.
 	 *
 	 * @param usuario Usuario2
 	 * @return Usuario2
@@ -128,6 +128,16 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	public Usuario find(Usuario usuario) {
 		return (Usuario) this.tableUsuarioDao.find(usuario);
+	}
+
+	/**
+	 * Finds a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	public Usuario2 find(Usuario2 usuario) {
+		return (Usuario2) this.tableUsuarioDao.find(usuario);
 	}
 	
 	/**
@@ -200,18 +210,38 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 
 	@Override
 	public TableResourceResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Usuario> listaUsuario =  this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
-		Long recordNum =  this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
+		List<Usuario> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario(), false);
 		TableResourceResponseDto<Usuario> usuarioDto = new TableResourceResponseDto<Usuario>(tableRequestDto, recordNum, listaUsuario);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null){
 			List<TableRowDto<Usuario>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null){
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Usuario>> reorderSeeker = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
+			usuarioDto.setReorderedSeeker(reorderSeeker);
+			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
+		}
+		return usuarioDto; 
+	}
+
+	@Override
+	public TableResourceResponseDto<Usuario2> filter(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		List<Usuario2> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario2(), false);
+		TableResourceResponseDto<Usuario2> usuarioDto = new TableResourceResponseDto<Usuario2>(tableRequestDto, recordNum, listaUsuario);
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null){
+			List<TableRowDto<Usuario2>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
+			usuarioDto.setReorderedSelection(reorderSelection);
+			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
+			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
+		}
+		if (tableRequestDto.getSeeker().getSelectedIds() != null){
+			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
+			List<TableRowDto<Usuario2>> reorderSeeker = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);
 			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
 		}
@@ -329,6 +359,84 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 			generateCSVReport(filteredData, columns, columnsName, fileName, sheetTitle, language, response);
 		}
 	}
+	
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(Usuario2 filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+		// Accede a la DB para recuperar datos
+		List<Usuario2> filteredData = getDataForReports(filterUsuario, tableRequestDto);
+		String extension = null;
+		
+		// Obtener idioma
+		String language = locale.getLanguage();
+		
+		// Comprobar si las siguientes variables estan vacias, en caso de estarlo se las asigna un valor generico
+		fileName = (fileName != null && !fileName.isEmpty()) ? fileName : "report";
+		sheetTitle = (sheetTitle != null && !sheetTitle.isEmpty()) ? sheetTitle : Usuario2.class.getSimpleName();
+		
+		// Obtener el formato de fecha especifico del locale
+        SimpleDateFormat formatter = DateTimeManager.getDateTimeFormat(locale);
+		
+		// Cuando no se definen columnas porque se quieren obtener todas
+        if (columns == null) {
+        	Field[] fields = Usuario.class.getDeclaredFields();
+        	ArrayList<String> tempColumns = new ArrayList<String>();
+	        
+	        for(int i = 0; i < fields.length; i++) {
+	        	try {
+	        		String methodName = fields[i].getName();
+	        		methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
+    				Usuario.class.getMethod("get" + methodName);
+    				tempColumns.add(fields[i].getName());
+    			} catch (NoSuchMethodException e) {
+    				e.printStackTrace();
+    			}
+	        	
+	        }
+	        columns = tempColumns.toArray(new String[0]);
+        }
+        
+        // Si no se definen los nombres de las columnas se dejan las definidas por defecto
+        if (columnsName == null) {
+        	columnsName = columns;
+        }
+		
+		String servletPath = request.getServletPath();
+		String reportType = null;
+		if (servletPath.contains("/") && (servletPath.lastIndexOf("/") + 1 != servletPath.length())) {
+			reportType = servletPath.substring(servletPath.lastIndexOf("/") + 1, servletPath.length());
+		} else {
+			reportType = servletPath.substring(0, servletPath.length());
+		}
+		
+		if (reportType.equals("xlsReport")) {
+			extension = ".xls";
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("xlsxReport")) {
+			extension = ".xlsx";
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("pdfReport")) {
+			extension = ".pdf";
+			generatePDFReport(filteredData, columns, columnsName, fileName, response);
+		} else if (reportType.equals("odsReport")) {
+			extension = ".ods";
+			generateODSReport(filteredData, columns, columnsName, fileName, sheetTitle, response);
+		} else if (reportType.equals("csvReport")) {
+			extension = ".csv";
+			generateCSVReport(filteredData, columns, columnsName, fileName, sheetTitle, language, response);
+		}
+	}
 
 	/**
 	 * Devuelve los datos recuperados de la DB.
@@ -342,6 +450,24 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 				return this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
 			} else {
 				return this.tableUsuarioDao.findAll(new Usuario(), null);
+			}
+		} else {
+			return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, false);
+		}
+	}
+
+	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<Usuario2> getDataForReports(Usuario2 filterUsuario, TableRequestDto tableRequestDto) {
+		if (tableRequestDto.getMultiselection().getSelectedAll() && tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
+			if (filterUsuario != null) {
+				return this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+			} else {
+				return this.tableUsuarioDao.findAll(new Usuario2(), null);
 			}
 		} else {
 			return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, false);

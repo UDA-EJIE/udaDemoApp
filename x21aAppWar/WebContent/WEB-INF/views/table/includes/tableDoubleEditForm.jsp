@@ -27,27 +27,27 @@
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="nombre2" id="nombre_detail_table2" />
+	    	<form:input path="nombre" id="nombre_detail_table2" />
 	    	<label for="nombre_detail_table2"><spring:message code="nombre" /></label>
 	    </div>
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="apellido12" id="apellido1_detail_table2" />
+	    	<form:input path="apellido1" id="apellido1_detail_table2" />
 	    	<label for="apellido1_detail_table2"><spring:message code="apellido1" /></label>
 	    </div> 
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="apellido22" id="apellido2_detail_table2" />
+	    	<form:input path="apellido2" id="apellido2_detail_table2" />
 	    	<label for="apellido2_detail_table2"><spring:message code="apellido2" /></label>
 	    </div>
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="fechaBaja2" id="fechaBaja_detail_table2" />
+	    	<form:input path="fechaBaja" id="fechaBaja_detail_table2" />
 	    	<label for="fechaBaja_detail_table2"><spring:message code="fechaBaja" /></label>
 	    </div>
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="fechaAlta2" id="fechaAlta_detail_table2" />
+	    	<form:input path="fechaAlta" id="fechaAlta_detail_table2" />
 	    	<label for="fechaAlta_detail_table2"><spring:message code="fechaAlta" /></label>
 	    </div>
 	    <div class="col-sm checkbox-material">
@@ -57,7 +57,7 @@
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="rol2" id="rol_detail_table2" />
+	    	<form:input path="rol" id="rol_detail_table2" />
 	    	<label for="rol_detail_table2"><spring:message code="rol" /></label>
 	    </div>
 	</div>	

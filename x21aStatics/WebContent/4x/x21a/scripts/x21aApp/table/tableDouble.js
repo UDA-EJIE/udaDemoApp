@@ -320,20 +320,20 @@ function _init() {
 
         plugins.colModel = [
         	{
-	            name: 'nombre' + num,
-	            index: 'nombre' + num,
+	            name: 'nombre',
+	            index: 'nombre',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
-	            name: 'apellido1' + num,
-	            index: 'apellido1' + num,
+	            name: 'apellido1',
+	            index: 'apellido1',
 	            editable: true,
                 hidden: false
 	        },
 	        { 
-            	name: 'apellido2' + num, 
-            	index: 'apellido2' + num, 
+            	name: 'apellido2', 
+            	index: 'apellido2', 
             	editable: true, 
             	hidden: false,
                 rupType: 'autocomplete',
@@ -347,8 +347,8 @@ function _init() {
                 }
             },
 	        {
-	            name: 'ejie' + num,
-	            index: 'ejie' + num,
+	            name: 'ejie',
+	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
 	            width: 60,
@@ -360,8 +360,8 @@ function _init() {
 	            }
 	        },
 	        {
-	            name: 'fechaAlta' + num,
-	            index: 'fechaAlta' + num,
+	            name: 'fechaAlta',
+	            index: 'fechaAlta',
 	            editable: true,
 	            hidden: false,
 	            width: 120,
@@ -374,8 +374,8 @@ function _init() {
 	            }
 	        },
 	        {
-	            name: 'fechaBaja' + num,
-	            index: 'fechaBaja' + num,
+	            name: 'fechaBaja',
+	            index: 'fechaBaja',
 	            editable: true,
 	            hidden: false,
 	            width: 120,
@@ -388,8 +388,8 @@ function _init() {
 	            }
 	        },
 	        {
-	            name: 'rol' + num,
-	            index: 'rol' + num,
+	            name: 'rol',
+	            index: 'rol',
 	            editable: true,
                 hidden: false,
                 width: 140,

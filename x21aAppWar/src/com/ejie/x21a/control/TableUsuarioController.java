@@ -57,7 +57,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
-import com.ejie.x21a.exception.X21aRuntimeException;
 import com.ejie.x21a.model.AutocompleteComboGenericPOJO;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
@@ -142,21 +141,14 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario2> get2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
+	public @ResponseBody Resource<Usuario2> get2(
+			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable String id) {
-        Usuario usuario = new Usuario();
+        Usuario2 usuario = new Usuario2();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
-
-		Usuario2 aux = new Usuario2();
-		aux.setId2(usuario.getId());
-		aux.setNombre2(usuario.getNombre());
-		aux.setApellido12(usuario.getApellido1());
-		aux.setFechaAlta2(usuario.getFechaAlta());
-		aux.setFechaBaja2(usuario.getFechaBaja());
-		aux.setRol2(usuario.getRol());
-
-		return new Resource<Usuario2>(aux);
+        TableUsuarioController.logger.info("[GET - findBy_PK] : Obtener Usuarios por PK");
+		return new Resource<Usuario2>(usuario);
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
@@ -224,6 +216,7 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute("usuario2", new Usuario2());
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -649,14 +642,9 @@ public class TableUsuarioController {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios");
-		return filterUsuario(filterUsuario, tableRequestDto);
-	}
-
-	private TableResourceResponseDto<Usuario> filterUsuario(final Usuario filterUsuario, final TableRequestDto tableRequestDto) {
 		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 
-	@SuppressWarnings("unchecked")
 	@UDALink(name = "filter2", linkTo = { 
 			@UDALinkAllower(name = "get2"), 
 			@UDALinkAllower(name = "remove"), 
@@ -665,31 +653,12 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport2") })
 	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
-	@ResponseBody()
-	public TableResourceResponseDto<Usuario2> filter2(
+	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - table] : Obtener Usuarios 2");
-		try {
-			tableRequestDto.setSidx(tableRequestDto.getSidx().substring(0, tableRequestDto.getSidx().length()-1));
-			TableResourceResponseDto<Usuario> rdo1 = this.filterUsuario(filterUsuario, tableRequestDto);
-			List<Usuario2> rows = new ArrayList<Usuario2>();
-			for (Resource<Usuario> usuarioResource : (List<Resource<Usuario>>) rdo1.getRows()) {
-				Usuario2 aux = new Usuario2();
-				Usuario usuario = usuarioResource.getContent();
-				aux.setId(usuario.getId());
-				aux.setNombre(usuario.getNombre());
-				aux.setApellido1(usuario.getApellido1());
-				aux.setFechaAlta(usuario.getFechaAlta());
-				aux.setFechaBaja(usuario.getFechaBaja());
-				aux.setRol(usuario.getRol());
-				rows.add(aux);
-			}
-			return new TableResourceResponseDto<Usuario2>(tableRequestDto, Long.valueOf(rdo1.getRecords()), Long.valueOf(rdo1.getRecords()), rows);
-		} catch (Exception e) {
-			throw new X21aRuntimeException(e);
-		}
+		return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
 	}
 	
 	// Obtiene el formulario del multi filtro
@@ -867,7 +836,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport2"),
 			@UDALinkAllower(name = "csvReport2") })
 	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
-	public @ResponseBody List<Resource<Usuario>> getClipboardReport2(
+	public @ResponseBody List<Resource<Usuario2>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
 			@RequestParam(required = false) String[] columns, 
@@ -875,7 +844,7 @@ public class TableUsuarioController {
 			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - clipboardReport2] : Copiar multiples usuarios");
-		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports((Usuario) filterUsuario, tableRequestDto));
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
 	}
 	
 	/**
@@ -942,7 +911,7 @@ public class TableUsuarioController {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -1009,7 +978,7 @@ public class TableUsuarioController {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -1076,7 +1045,7 @@ public class TableUsuarioController {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         	
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -1143,6 +1112,6 @@ public class TableUsuarioController {
         }
         String[] columns = tempColumns.toArray(new String[0]);
         
-		this.tableUsuarioService.generateReport((Usuario) filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }
