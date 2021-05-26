@@ -42,7 +42,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.ejie.x21a.model.AutocompleteComboGenericPOJO;
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.RandomForm;
@@ -53,6 +52,7 @@ import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
+import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.log.LoggingEditor;

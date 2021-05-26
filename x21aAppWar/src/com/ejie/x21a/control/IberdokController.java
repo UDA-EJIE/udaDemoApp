@@ -30,13 +30,13 @@ import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.FileUtils;
-import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.util.ResourceUtils;
 
 @Controller
 @RequestMapping(value = "/iberdok")

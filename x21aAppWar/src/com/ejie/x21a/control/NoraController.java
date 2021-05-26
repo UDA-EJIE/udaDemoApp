@@ -20,8 +20,8 @@ import com.ejie.x21a.service.NoraCalleService;
 import com.ejie.x21a.service.NoraMunicipioService;
 import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.service.NoraProvinciaService;
-import com.ejie.x21a.util.ResourceUtils;
 import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.util.ResourceUtils;
 
 @Controller
 @RequestMapping(value = "/nora")
