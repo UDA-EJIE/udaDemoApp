@@ -52,6 +52,7 @@ import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
+import com.ejie.x38.generic.model.AutocompleteComboPKsPOJO;
 import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
@@ -86,6 +87,7 @@ public class ExperimentalController {
 	//logLevel
 	@UDALink(name = "getLogLevel", linkTo = {
 			@UDALinkAllower(name = "getTableInlineEdit"),
+			@UDALinkAllower(name = "getName"),
 			@UDALinkAllower(name = "getLevel") })
 	@RequestMapping(value = "logLevel", method = RequestMethod.GET)
 	public String getLogLevel(Model model) {
@@ -130,19 +132,18 @@ public class ExperimentalController {
 		return "tableInlineEditAuxForm";
 	}
 	
+	@UDALink(name = "getName")
+	@RequestMapping(value = "/name", method = RequestMethod.GET)
+	public @ResponseBody List<Resource<AutocompleteComboPKsPOJO>> getName(
+			@RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "c", required = false) Boolean c) {
+		return LoggingEditor.getNames(q);
+	}
+	
 	@UDALink(name = "getLevel")
 	@RequestMapping(value = "/level", method = RequestMethod.GET)
-	public @ResponseBody List<AutocompleteComboGenericPOJO> getLevel (
-			@RequestParam(value = "q", required = false) String q,
-            @RequestParam(value = "c", required = false) Boolean c) {	
-		List<AutocompleteComboGenericPOJO> roles = new ArrayList<AutocompleteComboGenericPOJO>();
-		roles.add(new AutocompleteComboGenericPOJO("TRACE", "TRACE"));
-		roles.add(new AutocompleteComboGenericPOJO("DEBUG", "DEBUG"));
-		roles.add(new AutocompleteComboGenericPOJO("INFO", "INFO"));
-		roles.add(new AutocompleteComboGenericPOJO("WARN", "WARN"));
-		roles.add(new AutocompleteComboGenericPOJO("ERROR", "ERROR"));
-		
-		return roles;
+	public @ResponseBody List<Resource<AutocompleteComboGenericPOJO>> getLevel() {	
+		return LoggingEditor.getLevels();
 	}
 
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})

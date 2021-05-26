@@ -22,7 +22,17 @@ $(document).ready(function () {
                     customClasses: ['select-material']
                 }
             }
-	    ];	
+	    ];
+		
+		$('#nameLog_filter_table').rup_autocomplete({
+			source : './name',
+            sourceParam : {label: 'label', value: 'value'},
+            menuMaxHeight: 200,
+            minLength: 3,
+            combobox: true,
+            contains: true,
+            showDefault: true
+        });
 	
 	    $('#table').rup_table({
 	        primaryKey: 'nameLog',

@@ -32,7 +32,7 @@
 				<label for="nameLog_filter_table">Nombre</label>
 			</div>
 			<div class="form-groupMaterial col-sm">
-				<form:input path="levelLog" id="levelLog_filter_table" />
+				<form:select path="levelLog" id="levelLog_filter_table" items="${comboLevel}" />
 				<label for="levelLog_filter_table">Nivel</label>
 			</div>
 		</div>
