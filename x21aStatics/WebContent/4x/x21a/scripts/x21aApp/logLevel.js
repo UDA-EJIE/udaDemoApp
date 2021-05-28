@@ -29,7 +29,6 @@ $(document).ready(function () {
             sourceParam : {label: 'label', value: 'value'},
             menuMaxHeight: 200,
             minLength: 3,
-            combobox: true,
             contains: true,
             showDefault: true
         });
