@@ -46,9 +46,9 @@ $(document).ready(function () {
                 activate: true,
                 blackListButtons: ['addButton', 'cloneButton', 'deleteButton', 'reportsButton']
             },
-	        select: {
-	        	activate: true
-	        },
+	        multiSelect: {
+            	style: 'multi'
+            },
 	        enableDynamicForms: true,
 	        inlineEdit:{
 	        	url: './inlineEdit',

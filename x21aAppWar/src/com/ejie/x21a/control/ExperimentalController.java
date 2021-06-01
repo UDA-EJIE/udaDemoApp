@@ -152,7 +152,7 @@ public class ExperimentalController {
 	public @ResponseBody TableResourceResponseDto<LogModel> filter(
 			@RequestJsonBody(param="filter") LogModel filterLogModel,
 			@RequestJsonBody TableRequestDto tableRequestDto) {	
-		return LoggingEditor.getLoggersFiltered(filterLogModel);
+		return LoggingEditor.getLoggersFiltered(filterLogModel, tableRequestDto);
 	}
 	
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "filter") })
