@@ -798,7 +798,7 @@ public class TableUsuarioController {
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	   // this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
+		this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return tableRequestDto.getMultiselection().getSelectedIds();
