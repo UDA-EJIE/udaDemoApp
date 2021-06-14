@@ -191,6 +191,7 @@ jQuery(function ($) {
 
                 var formEdit = {
                     detailForm: '#example_detail_div',
+                    loadSpinner: true,
                     data: {
                     	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
                     },
