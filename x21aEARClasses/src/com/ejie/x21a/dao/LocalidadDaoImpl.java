@@ -15,6 +15,7 @@
 */
 package com.ejie.x21a.dao;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,13 +81,17 @@ public class LocalidadDaoImpl implements LocalidadDao {
      * @return Localidad
      */
 	public Localidad add(Localidad localidad) {
-    	String query = "INSERT INTO LOCALIDAD (CODE, CODE_COMARCA, DESC_ES, DESC_EU, CSS) VALUES (?,?,?,?,?)";
-				   Object getComarcaCodeAux=null;
-		     if (localidad.getComarca()!= null  && localidad.getComarca().getCode()!=null ){
-			     getComarcaCodeAux=localidad.getComarca().getCode();
-		   	  }
-		this.jdbcTemplate.update(query, localidad.getCode(), getComarcaCodeAux, localidad.getDescEs(), localidad.getDescEu(), localidad.getCss());
-		return localidad;
+		// Obtenemos el identificador de la entidad mediante una secuencia
+		final BigDecimal nextCode = jdbcTemplate.queryForObject("SELECT LOCALIDAD_SEQ.NEXTVAL FROM DUAL", BigDecimal.class);
+		localidad.setCode(nextCode);
+		
+		String query = "INSERT INTO LOCALIDAD (CODE, CODE_COMARCA, DESC_ES, DESC_EU, CSS) VALUES (?,?,?,?,?)";
+    	Object getComarcaCodeAux = null;
+    	if (localidad.getComarca() != null && localidad.getComarca().getCode() != null) {
+    		getComarcaCodeAux = localidad.getComarca().getCode();
+    	}
+    	this.jdbcTemplate.update(query, localidad.getCode(), getComarcaCodeAux, localidad.getDescEs(), localidad.getDescEu(), localidad.getCss());
+    	return localidad;
 	}
 
     /**
@@ -97,10 +102,10 @@ public class LocalidadDaoImpl implements LocalidadDao {
      */
     public Localidad update(Localidad localidad) {
 		String query = "UPDATE LOCALIDAD SET CODE_COMARCA=?, DESC_ES=?, DESC_EU=?, CSS=? WHERE CODE=?";
-				Object getComarcaCodeAux=null;
-				if (localidad.getComarca()!= null   && localidad.getComarca().getCode()!=null ){
-					getComarcaCodeAux=localidad.getComarca().getCode();
-				}
+		Object getComarcaCodeAux = null;
+		if (localidad.getComarca() != null && localidad.getComarca().getCode() != null) {
+			getComarcaCodeAux=localidad.getComarca().getCode();
+		}
 		this.jdbcTemplate.update(query, getComarcaCodeAux, localidad.getDescEs(), localidad.getDescEu(), localidad.getCss(), localidad.getCode());
 		return localidad;
 	}

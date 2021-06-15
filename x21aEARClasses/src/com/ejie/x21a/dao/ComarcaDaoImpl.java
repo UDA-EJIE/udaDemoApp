@@ -15,6 +15,7 @@
 */
 package com.ejie.x21a.dao;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,11 +82,15 @@ public class ComarcaDaoImpl implements ComarcaDao {
      * @return Comarca
      */
 	public Comarca add(Comarca comarca) {
+		// Obtenemos el identificador de la entidad mediante una secuencia
+		final BigDecimal nextCode = jdbcTemplate.queryForObject("SELECT COMARCA_SEQ.NEXTVAL FROM DUAL", BigDecimal.class);
+		comarca.setCode(nextCode);
+				
     	String query = "INSERT INTO COMARCA (CODE, CODE_PROVINCIA, DESC_ES, DESC_EU, CSS) VALUES (?,?,?,?,?)";
-				   Object getProvinciaCodeAux=null;
-		     if (comarca.getProvincia()!= null  && comarca.getProvincia().getCode()!=null ){
-			     getProvinciaCodeAux=comarca.getProvincia().getCode();
-		   	  }
+    	Object getProvinciaCodeAux = null;
+    	if (comarca.getProvincia() != null && comarca.getProvincia().getCode() != null) {
+    		getProvinciaCodeAux = comarca.getProvincia().getCode();
+    	}
 		this.jdbcTemplate.update(query, comarca.getCode(), getProvinciaCodeAux, comarca.getDescEs(), comarca.getDescEu(), comarca.getCss());
 		return comarca;
 	}
@@ -98,10 +103,10 @@ public class ComarcaDaoImpl implements ComarcaDao {
      */
     public Comarca update(Comarca comarca) {
 		String query = "UPDATE COMARCA SET CODE_PROVINCIA=?, DESC_ES=?, DESC_EU=?, CSS=? WHERE CODE=?";
-				Object getProvinciaCodeAux=null;
-				if (comarca.getProvincia()!= null   && comarca.getProvincia().getCode()!=null ){
-					getProvinciaCodeAux=comarca.getProvincia().getCode();
-				}
+		Object getProvinciaCodeAux = null;
+		if (comarca.getProvincia() != null && comarca.getProvincia().getCode() != null) {
+			getProvinciaCodeAux=comarca.getProvincia().getCode();
+		}
 		this.jdbcTemplate.update(query, getProvinciaCodeAux, comarca.getDescEs(), comarca.getDescEu(), comarca.getCss(), comarca.getCode());
 		return comarca;
 	}

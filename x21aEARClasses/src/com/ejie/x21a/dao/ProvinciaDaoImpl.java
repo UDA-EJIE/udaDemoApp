@@ -15,6 +15,7 @@
 */
 package com.ejie.x21a.dao;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,6 +81,10 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
      * @return Provincia
      */
 	public Provincia add(Provincia provincia) {
+		// Obtenemos el identificador de la entidad mediante una secuencia
+		final BigDecimal nextCode = jdbcTemplate.queryForObject("SELECT PROVINCIA_SEQ.NEXTVAL FROM DUAL", BigDecimal.class);
+		provincia.setCode(nextCode);
+		
     	String query = "INSERT INTO PROVINCIA (CODE, DESC_ES, DESC_EU, CSS) VALUES (?,?,?,?)";
 		this.jdbcTemplate.update(query, provincia.getCode(), provincia.getDescEs(), provincia.getDescEu(), provincia.getCss());
 		return provincia;
