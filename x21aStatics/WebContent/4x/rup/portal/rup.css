@@ -15096,6 +15096,48 @@
   color: #818a91;
 }
 
+.r01gContainer div.formEdit_dialog_loading_container div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  animation: fadeIn-overlay 0.75s ease-out forwards;
+}
+
+.r01gContainer div.formEdit_dialog_loading_container span {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  z-index: 101;
+  animation: fadeIn-spinner 1.25s ease-out forwards;
+}
+
+@keyframes fadeIn-overlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.3;
+    background-color: #050505;
+  }
+}
+
+@keyframes fadeIn-spinner {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    color: #333333;
+  }
+}
+
 .r01gContainer .rup-date-input-group {
   display: inline-table;
   vertical-align: middle;
@@ -21471,7 +21513,7 @@
 .r01gContainer .paginationContainer .dataTables_length label select,
 .r01gContainer .paginationContainer .dataTables_length label .ui-multiselect,
 .r01gContainer .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
-  padding: 0 20px 0 13px;
+  padding: 0 15px 0 5px;
   border: 1px solid #757575;
   border-radius: 5px;
   box-sizing: border-box;
@@ -21485,7 +21527,7 @@
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
   background-repeat: no-repeat;
-  background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
+  background-position: calc(100% - 9.5px) calc(0.8em), calc(100% - 4.5px) calc(0.8em);
   background-size: 5px 5px, 5px 5px;
   /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
 }
@@ -21510,6 +21552,18 @@
   caret-color: #1472a4;
   border-width: 2px;
   box-shadow: none;
+}
+
+/* PARA TABLAS DOBLES */
+
+@media (min-width: 1200px) {
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label select,
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label .ui-multiselect,
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
+    padding: 0 10px 0 0;
+    /* ICONO DROPDOWN */
+    background-position: calc(100% - 7.5px) calc(0.8em), calc(100% - 2.5px) calc(0.8em);
+  }
 }
 
 .r01gContainer form + div.paginationContainer {
@@ -49887,6 +49941,48 @@
   color: #818a91;
 }
 
+.r01gContainer div.formEdit_dialog_loading_container div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  animation: fadeIn-overlay 0.75s ease-out forwards;
+}
+
+.r01gContainer div.formEdit_dialog_loading_container span {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  z-index: 101;
+  animation: fadeIn-spinner 1.25s ease-out forwards;
+}
+
+@keyframes fadeIn-overlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.3;
+    background-color: #050505;
+  }
+}
+
+@keyframes fadeIn-spinner {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    color: #333333;
+  }
+}
+
 .r01gContainer .rup-date-input-group {
   display: inline-table;
   vertical-align: middle;
@@ -56262,7 +56358,7 @@
 .r01gContainer .paginationContainer .dataTables_length label select,
 .r01gContainer .paginationContainer .dataTables_length label .ui-multiselect,
 .r01gContainer .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
-  padding: 0 20px 0 13px;
+  padding: 0 15px 0 5px;
   border: 1px solid #757575;
   border-radius: 5px;
   box-sizing: border-box;
@@ -56276,7 +56372,7 @@
   /* ICONO DROPDOWN */
   background-image: linear-gradient(45deg, transparent 50%, #555555 50%), linear-gradient(135deg, #555555 50%, transparent 50%);
   background-repeat: no-repeat;
-  background-position: calc(100% - 14.5px) calc(0.8em), calc(100% - 9.5px) calc(0.8em);
+  background-position: calc(100% - 9.5px) calc(0.8em), calc(100% - 4.5px) calc(0.8em);
   background-size: 5px 5px, 5px 5px;
   /* ELIMINA EL ICONO DE DROPDOWN NATIVO EN IE 10/11 */
 }
@@ -56301,6 +56397,18 @@
   caret-color: #1472a4;
   border-width: 2px;
   box-shadow: none;
+}
+
+/* PARA TABLAS DOBLES */
+
+@media (min-width: 1200px) {
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label select,
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label .ui-multiselect,
+  .r01gContainer .col-xl-6 .paginationContainer .dataTables_length label .ui-selectmenu-dropdown {
+    padding: 0 10px 0 0;
+    /* ICONO DROPDOWN */
+    background-position: calc(100% - 7.5px) calc(0.8em), calc(100% - 2.5px) calc(0.8em);
+  }
 }
 
 .r01gContainer form + div.paginationContainer {

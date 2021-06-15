@@ -61,7 +61,7 @@ describe('Test Autocomplete > ', () => {
         if ($('#content').length == 0) {
             $('body').append('<div id="content" class="container mt-4"></div>');
         }
-        loadCss(done);
+        testutils.loadCss(done);
     });
     beforeEach((done) => {
         createAutocomplete(done);

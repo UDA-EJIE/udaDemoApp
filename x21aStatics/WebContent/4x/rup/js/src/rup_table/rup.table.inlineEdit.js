@@ -552,86 +552,96 @@ function _editInline ( dt,ctx, idRow ){
 }
 
 /**
-* Metodo que obtiene la fila siguiente seleccionada.
+* Método que obtiene la fila siguiente seleccionada.
 *
 * @name getRowSelected
 * @function
 * @since UDA 3.7.0 // Table 1.0.0
 *
-* @param {object} dt - Es el objeto table.
-* @param {string} actionType - Es el objeto table.
+* @param {object} dt - Instancia de la tabla.
+* @param {string} actionType - Acción a ajecutar en el formulario para ir al controller, basado en REST.
 *
-* @return {object} que contiene  el identificador, la pagina y la linea de la fila seleccionada
+* @return {object} Contiene el identificador, la página y la línea de la fila seleccionada.
 *
 */
-function _getRowSelected(dt,actionType){
+function _getRowSelected(dt, actionType){
 	var ctx = dt.settings()[0];
-        var rowDefault = {
-            id: 0,
-            page: 1,
-            line: 0
-        };
+	var rowDefault = {
+			id: 0,
+			page: 1,
+			line: 0
+		};
 	var lastSelectedId = ctx.multiselection.lastSelectedId;
-	if(!ctx.multiselection.selectedAll){
-		//Si no hay un ultimo señalado se coge el ultimo
-		if(lastSelectedId === undefined || lastSelectedId === ''){
+	if (!ctx.multiselection.selectedAll) {
+		// Si no hay un último señalado, obtiene el último
+		if (lastSelectedId === undefined || lastSelectedId === '') {
 			ctx.multiselection.lastSelectedId = ctx.multiselection.selectedRowsPerPage[0].id;
 		}
-		$.each(ctx.multiselection.selectedRowsPerPage,function(index,p) {
-			if(p.id == ctx.multiselection.lastSelectedId){
+		
+		let staticID = $.fn.getStaticHdivID(ctx.multiselection.lastSelectedId);
+		$.each(ctx.multiselection.selectedRowsPerPage, function(index, p) {
+			// Obtener el último seleccionado para tener el identificador actualizado (solamente es necesario cuando se usa Hdiv porque cambia el cifrado entre peticiones)
+			if ($.fn.isHdiv(p.id) && staticID === $.fn.getStaticHdivID(p.id)) {
+				ctx.multiselection.lastSelectedId = p.id;
+			}
+			
+			if (p.id == ctx.multiselection.lastSelectedId) {
 				rowDefault.id = p.id;
 				rowDefault.page = p.page;
 				rowDefault.line = p.line;
 				rowDefault.indexSelected = index;
-				if(ctx.oInit.inlineEdit !== undefined){
+				if (ctx.oInit.inlineEdit !== undefined) {
 					ctx.oInit.inlineEdit.currentPos = rowDefault;
 				}
 				return false;
 			}
 		});
-	}else{
-		if(ctx.oInit.inlineEdit !== undefined){
-			ctx.oInit.inlineEdit.numPosition = 0;//variable para indicar los mostrados cuando es selectAll y no se puede calcular. El inicio es 0.
+	} else {
+		if (ctx.oInit.inlineEdit !== undefined) {
+			// Indica los mostrados cuando es selectAll y no se puede calcular. El inicio es 0.
+			ctx.oInit.inlineEdit.numPosition = 0;
 		}
-		if(lastSelectedId === undefined || lastSelectedId === ''){
-			rowDefault.page = _getNextPageSelected (ctx,1,'next');//Como arranca de primeras la pagina es la 1.
-			rowDefault.line = _getLineByPageSelected(ctx,-1);
-		}else{
-			//buscar la posicion y pagina
+		if (lastSelectedId === undefined || lastSelectedId === '') {
+			// Como arranca de primeras, la página es la 1
+			rowDefault.page = _getNextPageSelected(ctx, 1, 'next');
+			rowDefault.line = _getLineByPageSelected(ctx, -1);
+		} else {
+			// Buscar la posición y la página
 			var result = $.grep(ctx.multiselection.selectedRowsPerPage, function(v) {
 				return v.id == ctx.multiselection.lastSelectedId;
 			});
 			rowDefault.page = result[0].page;
 			rowDefault.line = result[0].line;
-			var index = ctx._iDisplayLength * (Number(rowDefault.page)-1);
-			index = index+1+rowDefault.line;
-			//Hay que restar los deselecionados.
-			 result = $.grep(ctx.multiselection.deselectedRowsPerPage, function(v) {
-					return Number(v.page) < Number(rowDefault.page) || (Number(rowDefault.page) === Number(v.page) && Number(v.line) < Number(rowDefault.line));
-				});
-			rowDefault.indexSelected = index-result.length;//Buscar indice
-			if(ctx.oInit.inlineEdit !== undefined){
-				ctx.oInit.inlineEdit.numPosition = rowDefault.indexSelected-1;
+			var index = ctx._iDisplayLength * (Number(rowDefault.page) -1);
+			index = index + 1 + rowDefault.line;
+			// Restar los deselecionados
+			result = $.grep(ctx.multiselection.deselectedRowsPerPage, function(v) {
+				return Number(v.page) < Number(rowDefault.page) || (Number(rowDefault.page) === Number(v.page) && Number(v.line) < Number(rowDefault.line));
+			});
+			// Buscar índice
+			rowDefault.indexSelected = index - result.length;
+			if (ctx.oInit.inlineEdit !== undefined) {
+				ctx.oInit.inlineEdit.numPosition = rowDefault.indexSelected - 1;
 			}
 		}
-		if(ctx.oInit.inlineEdit !== undefined){
+		if (ctx.oInit.inlineEdit !== undefined) {
 			ctx.oInit.inlineEdit.currentPos = rowDefault;
 		}
 	}
 
-	//En caso de estar en una pagina distinta , navegamos a ella
-	if(dt.page()+1 !== Number(rowDefault.page)){
-		var table = $('#'+ctx.sTableId).DataTable();
-		table.page( rowDefault.page-1 ).draw( 'page' );
-		if(ctx.oInit.inlineEdit !== undefined){
+	// En caso de estar en una página distinta, navegamos a ella
+	if (dt.page() + 1 !== Number(rowDefault.page)) {
+		var table = $('#' + ctx.sTableId).DataTable();
+		table.page(rowDefault.page - 1).draw('page');
+		if (ctx.oInit.inlineEdit !== undefined) {
 			rowDefault.actionType = actionType;
 			ctx.oInit.inlineEdit.rowDefault = rowDefault;
 		}
-	}else{
-		if(actionType === 'PUT'){
-			_editInline(dt,ctx,rowDefault.line);
-		}else if(actionType === 'CLONE'){
-			dt.ajax.reload( undefined,false );
+	} else {
+		if (actionType === 'PUT') {
+			_editInline(dt, ctx, rowDefault.line);
+		} else if (actionType === 'CLONE') {
+			dt.ajax.reload(undefined, false);
 			rowDefault.actionType = actionType;
 			ctx.oInit.inlineEdit.rowDefault = rowDefault;
 		}
@@ -661,14 +671,6 @@ function _cloneLine(dt, ctx, line){
 	if (ctx.oInit.inlineEdit.rowDefault !== undefined) {
 		ctx.oInit.inlineEdit.rowDefault.line = 0;
 	}
-	
-	ctx.multiselection.selectedIds = [];
-	ctx.multiselection.lastSelectedId = '';
-	ctx.multiselection.numSelected = 0;
-	
-	$.each(ctx.oInit.primaryKey, function() {
-		dt.row(0).data()[this] = '';
-	});
         
 	// Añadir clase necesaria para su futura gestión a la hora de guardar el registro
 	$('#' + ctx.sTableId + ' tbody tr:eq(0)').addClass('new');
@@ -1314,57 +1316,72 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
 		}
 	
 		var ajaxOptions = {
-			url : ctx.oInit.urlBase + url,
-	            accepts: {
-	                '*': '*/*',
-	                'html': 'text/html',
-	                'json': 'application/json, text/javascript',
-	                'script':'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript',
-	                'text': 'text/plain',
-	                'xml': 'application/xml, text/xml'
-	            },
-			type : actionType,
-			data : row,
-			dataType : 'json',
-			showLoading : false,
-			contentType : 'application/json',
-			async : true,
-			success : function(data, status, xhr) {
+			url: ctx.oInit.urlBase + url,
+            accepts: {
+                '*': '*/*',
+                'html': 'text/html',
+                'json': 'application/json, text/javascript',
+                'script':'text/javascript, application/javascript, application/ecmascript, application/x-ecmascript',
+                'text': 'text/plain',
+                'xml': 'application/xml, text/xml'
+            },
+			type: actionType,
+			data: row,
+			dataType: 'json',
+			showLoading: false,
+			contentType: 'application/json',
+			async: true,
+			success: function(data, status, xhr) {
 				$('#' + ctx.sTableId+'saveButton_1').prop('disabled', true);
 				$('#' + ctx.sTableId+'saveButton_1_contextMenuToolbar').addClass('disabledButtonsTable');
 				$('#' + ctx.sTableId+'cancelButton_1').prop('disabled', true);
 				$('#' + ctx.sTableId+'cancelButton_1_contextMenuToolbar').addClass('disabledButtonsTable');
 				ctx.oInit.inlineEdit.alta = undefined;
-				var dt = $('#'+ctx.sTableId).DataTable();
-				if(url !== '/deleteAll' && actionType !== 'DELETE'){
-	
-					_callFeedbackOk(ctx, msgFeedBack, 'ok');//Se informa feedback de la tabla
+				var dt = $('#' + ctx.sTableId).DataTable();
+				var idPk = DataTable.Api().rupTable.getIdPk(data, ctx.oInit);
+				
+				if (url !== '/deleteAll' && actionType !== 'DELETE') {
+					// Se informa al feedback de la tabla
+					_callFeedbackOk(ctx, msgFeedBack, 'ok');
 					
-					if(actionType === 'PUT'){//Modificar
-						dt.row($fila.index()).data(row);// se actualiza al editar
-						ctx.json.rows[$fila.index()] = row;
-						// Actualizamos el ultimo id seleccionado (por si ha sido editado)
-						var posicion = 0;
-						$.each(ctx.multiselection.selectedRowsPerPage,function(index,p) {
-							if(p.id == ctx.multiselection.lastSelectedId){
+					if(actionType === 'PUT'){
+						// Modificar
+						dt.row($fila.index()).data(data);
+						ctx.json.rows[$fila.index()] = data;
+						
+						// Actualizamos el último id seleccionado (por si ha sido editado)
+						let posicion = 0;
+						$.each(ctx.multiselection.selectedRowsPerPage, function(index, p) {
+							if (p.id == ctx.multiselection.lastSelectedId) {
 								posicion = index;
 								return;
 							}
 						});
-	                        if (ctx.seeker !== undefined && !jQuery.isEmptyObject(ctx.seeker.ajaxOption.data.search) &&
-	                            ctx.seeker.search.funcionParams !== undefined && ctx.seeker.search.funcionParams.length > 0) {
-							_comprobarSeeker(row,ctx,$fila.index());
+						
+						if (ctx.seeker !== undefined && !jQuery.isEmptyObject(ctx.seeker.ajaxOption.data.search) && ctx.seeker.search.funcionParams !== undefined && ctx.seeker.search.funcionParams.length > 0) {
+							_comprobarSeeker(data, ctx, $fila.index());
 						}
-						ctx.multiselection.lastSelectedId = DataTable.Api().rupTable.getIdPk(row,ctx.oInit);
-						ctx.multiselection.selectedRowsPerPage[posicion].id = DataTable.Api().rupTable.getIdPk(row,ctx.oInit);
-					}else{// dar alta
-						var idPk = DataTable.Api().rupTable.getIdPk(row,ctx.oInit);
-						ctx.multiselection.selectedIds = [idPk];
+						
 						ctx.multiselection.lastSelectedId = idPk;
-						ctx.multiselection.numSelected = 1;
+						ctx.multiselection.selectedRowsPerPage[posicion].id = idPk;
+					} else {
+						// Alta o clonado
+						if (ctx.oInit.inlineEdit.currentPos !== undefined && ctx.oInit.inlineEdit.currentPos.actionType === 'CLONE') {
+							// Clonado (se mantiene seleccionado el registro original)
+							ctx.multiselection.selectedIds.push(idPk);
+							// Si la multiselección está activada se suma el nuevo registro seleccionado, en los demás casos, se establece a uno los registros seleccionados
+							ctx.multiselection.numSelected = ctx.oInit.multiSelect ? ctx.multiselection.numSelected + 1 : 1;
+						} else {
+							// Alta nueva
+							ctx.multiselection.selectedIds = [idPk];
+							ctx.multiselection.numSelected = 1;
+						}
+						ctx.multiselection.lastSelectedId = idPk;
+						ctx.multiselection.selectedRowsPerPage[0].id = idPk;
 					}
-					ctx.inlineEdit.row = row;
-				} else { // Eliminar
+					ctx.inlineEdit.row = data;
+				} else {
+					// Eliminar
 				    ctx.oInit.feedback.type = 'eliminar';
 				    ctx.oInit.feedback.msgFeedBack = msgFeedBack;
 				    if (ctx.oInit.multiSelect !== undefined) {
@@ -1373,25 +1390,21 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
 				        DataTable.Api().select.deselect(ctx);
 				        _callFeedbackOk(ctx, msgFeedBack, 'ok'); //Se informa feedback de la tabla
 				    }
-				    $('#' + ctx.sTableId).triggerHandler('tableEditInLineAfterDelete',ctx);
-	
+				    $('#' + ctx.sTableId).triggerHandler('tableEditInLineAfterDelete', ctx);
 				}
+				ctx.inlineEdit.row = undefined;
 				ctx.inlineEdit.lastRow = undefined;
 				ctx._buttons[0].inst.s.disableAllButttons = undefined;
 	
 				DataTable.Api().seeker.disabledButtons(ctx);
 			
-					// Recargar datos
-					// Primer parametro para mandar una funcion a ejecutar, segundo parametro bloquear la pagina si pones false
-					dt.ajax.reload( function (  ) {
-						_addChildIcons(ctx);
-					},false );
-			
-				
-				$('#' + ctx.sTableId).triggerHandler('tableEditInLineSuccessCallSaveAjax',ctx);
+				// Recargar datos (el primer parámetro es el callback y el segundo permite permanecer en la página actual cuando es false)
+				dt.ajax.reload(function() {
+					_addChildIcons(ctx);
+				}, false);
 			},
-			complete : function() {
-				$('#' + ctx.sTableId).triggerHandler('tableEditInLineCompleteCallSaveAjax',ctx);
+			complete: function() {
+				$('#' + ctx.sTableId).triggerHandler('tableEditInLineCompleteCallSaveAjax', ctx);
 			},
 			error: function (xhr) {
 				if (xhr.status === 406 && xhr.responseText !== '') {

@@ -478,6 +478,17 @@
      */
     DataTable.editForm.fnOpenSaveDialog = function _openSaveDialog(actionType, dt, idRow, customTitle) {
         var ctx = dt.settings()[0];
+
+    	// Mostrar spinner de carga hasta que el formulario sea visible (sólo si fue activado). La segunda comprobación, evita que aparezca el spinner cuando se pagina dentro de editForm entre registros porque para ese caso, ya existe otro spinner
+    	if (ctx.oInit.formEdit.loadSpinner && $('#' + ctx.sTableId + '_detail_div_loading').length == 0) {
+    		$('body').append(
+    				'<div id="' + ctx.sTableId + '_formEdit_dialog_loading" class="formEdit_dialog_loading_container">' +
+    					'<div></div>' +
+    					'<span><i class="mx-auto mdi mdi-spin mdi-loading" aria-hidden="true"></i></span>' +
+    				'</div>'
+    			);
+    	}
+        
         if (idRow == null || idRow == undefined || idRow < 0) {
             idRow = 1;
         }
@@ -636,6 +647,11 @@
 	        ctx.oInit.formEdit.detailForm.rup_dialog(ctx.oInit.formEdit.detailForm.settings);
 	        ctx.oInit.formEdit.detailForm.rup_dialog('setOption', 'title', title);
 	        ctx.oInit.formEdit.detailForm.rup_dialog('open');
+	        
+	        // Quitar spinner de carga porque el formulario ya es visible (si fue activado)
+	    	if ($('#' + ctx.sTableId + '_formEdit_dialog_loading').length > 0) {
+	    		$('#' + ctx.sTableId + '_formEdit_dialog_loading').remove();
+	    	}
 	
 	        // Establecemos el foco al primer elemento input o select que se
 	        // encuentre habilitado en el formulario
@@ -917,19 +933,25 @@
     	                        }
                             }
                             
+                            /* 
+                             * Filtrar para colocar cada registro en su lugar correspondiente. 
+                             * Si no se filtra, aparece un error visual en la selección de registros y otro en el paginador del formulario de edición.
+                             */
+                            dt.ajax.reload();
+                            
                             $('#' + ctx.sTableId).triggerHandler('tableEditFormAfterInsertRow',actionType,ctx);
                         }
                         if(actionType === 'PUT'){
 	                        dt.ajax.reload(function () {
 	                            $('#' + ctx.sTableId).trigger('tableEditFormSuccessCallSaveAjax',actionType,ctx);
 	                        }, false);
-                        }else{
+                        } else {
                         	if (ctx.oInit.multiSelect === undefined) {
                         		let arra = {
-                        	            id: DataTable.Api().rupTable.getIdPk(row, ctx.oInit),
-                        	            page: Number(ctx.json.page),
-                        	            line: 0
-                        	          };
+                        				id: DataTable.Api().rupTable.getIdPk(row, ctx.oInit),
+                        				page: Number(ctx.json.page),
+                        				line: 0
+                        	    	};
                         		ctx.multiselection.selectedRowsPerPage[0] = arra;
                         		DataTable.Api().select.drawSelectId(ctx);
                         	}
@@ -1381,26 +1403,26 @@
      * @function
      * @since UDA 3.4.0 // Table 1.0.0
      *
-     * @param {object} dt - Es el objeto table.
-     * @param {string} actionType - Es el objeto table.
+     * @param {object} dt - Instancia de la tabla.
+     * @param {string} actionType - Acción a ajecutar en el formulario para ir al controller, basado en REST.
      *
-     * @return {object} que contiene  el identificador, la pagina y la linea de la fila seleccionada
+     * @return {object} Contiene el identificador, la página y la línea de la fila seleccionada.
      *
      */
     function _getRowSelected(dt, actionType) {
         var ctx = dt.settings()[0];
         var rowDefault = {
-            id: 0,
-            page: 1,
-            line: 0
-        };
+        		id: 0,
+        		page: 1,
+        		line: 0
+        	};
         var lastSelectedId = ctx.multiselection.lastSelectedId;
         if (!ctx.multiselection.selectedAll) {
-            //Si no hay un ultimo señalado se coge el ultimo;
-
-            if (lastSelectedId === undefined || lastSelectedId === '') {
+            // Si no hay un último señalado, obtiene el último
+        	if (lastSelectedId === undefined || lastSelectedId === '') {
                 ctx.multiselection.lastSelectedId = ctx.multiselection.selectedRowsPerPage[0].id;
             }
+        	
             $.each(ctx.multiselection.selectedRowsPerPage, function (index, p) {
                 if (p.id == ctx.multiselection.lastSelectedId) {
                     rowDefault.id = p.id;
@@ -1415,13 +1437,15 @@
             });
         } else {
             if (ctx.oInit.formEdit !== undefined) {
-                ctx.oInit.formEdit.$navigationBar.numPosition = 0; //variable para indicar los mostrados cuando es selectAll y no se puede calcular,El inicio es 0.
+            	// Indica los mostrados cuando es selectAll y no se puede calcular. El inicio es 0.
+                ctx.oInit.formEdit.$navigationBar.numPosition = 0;
             }
             if (lastSelectedId === undefined || lastSelectedId === '') {
-                rowDefault.page = _getNextPageSelected(ctx, 1, 'next'); //Como arranca de primeras la pagina es la 1.
+            	// Como arranca de primeras, la página es la 1
+                rowDefault.page = _getNextPageSelected(ctx, 1, 'next');
                 rowDefault.line = _getLineByPageSelected(ctx, -1);
             } else {
-                //buscar la posicion y pagina
+                // Buscar la posición y la página
                 var result = $.grep(ctx.multiselection.selectedRowsPerPage, function (v) {
                     return v.id == ctx.multiselection.lastSelectedId;
                 });
@@ -1429,11 +1453,12 @@
                 rowDefault.line = result[0].line;
                 var index = ctx._iDisplayLength * (Number(rowDefault.page) - 1);
                 index = index + 1 + rowDefault.line;
-                //Hay que restar los deselecionados.
+                // Restar los deselecionados
                 result = $.grep(ctx.multiselection.deselectedRowsPerPage, function (v) {
                     return Number(v.page) < Number(rowDefault.page) || (Number(rowDefault.page) === Number(v.page) && Number(v.line) < Number(rowDefault.line));
                 });
-                rowDefault.indexSelected = index - result.length; //Buscar indice
+                // Buscar índice
+                rowDefault.indexSelected = index - result.length;
                 if (ctx.oInit.formEdit !== undefined) {
                     ctx.oInit.formEdit.$navigationBar.numPosition = rowDefault.indexSelected - 1;
                 }

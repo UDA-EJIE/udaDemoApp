@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 /* eslint-env jasmine, jquery */
 
+import 'jquery';
 
-const DIST = '/dist';
-const DEMO = '/demo';
+export const DIST = '/dist';
+export const DEMO = '/demo';
 
-function testTrace(title, toTrace) {
+export function testTrace(title, toTrace) {
     console.info('\n\n*****************************************************\n\n' +
         title +
         '\n--------------------------------\n\n' +
@@ -13,7 +14,7 @@ function testTrace(title, toTrace) {
         '\n\n*****************************************************\n\n');
 }
 
-function loadCss(callback) {
+export function loadCss(callback) {
     $('head > style').remove();
     $('head').append('<style></style>');
     return $.when($.ajax(DIST + '/css/rup.min.css'))
