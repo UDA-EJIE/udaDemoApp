@@ -211,15 +211,15 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	@Override
 	public TableResourceResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		List<Usuario> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
-		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario(), false);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario : new Usuario(), false);
 		TableResourceResponseDto<Usuario> usuarioDto = new TableResourceResponseDto<Usuario>(tableRequestDto, recordNum, listaUsuario);
-		if (tableRequestDto.getMultiselection().getSelectedIds() != null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Usuario>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds() != null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Usuario>> reorderSeeker = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);
@@ -233,7 +233,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		List<Usuario2> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
 		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario2(), false);
 		TableResourceResponseDto<Usuario2> usuarioDto = new TableResourceResponseDto<Usuario2>(tableRequestDto, recordNum, listaUsuario);
-		if (tableRequestDto.getMultiselection().getSelectedIds() != null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Usuario2>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);

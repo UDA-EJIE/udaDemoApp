@@ -201,16 +201,16 @@ public class LocalidadServiceImpl implements LocalidadService {
 
 	@Override
 	public TableResourceResponseDto<Localidad> filter(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Localidad> listaLocalidad =  this.localidadDao.findAllLike(filterLocalidad, tableRequestDto, false);
-		Long recordNum =  this.localidadDao.findAllLikeCount(filterLocalidad != null ? filterLocalidad: new Localidad (),false);
+		List<Localidad> listaLocalidad = this.localidadDao.findAllLike(filterLocalidad, tableRequestDto, false);
+		Long recordNum = this.localidadDao.findAllLikeCount(filterLocalidad != null ? filterLocalidad : new Localidad(), false);
 		TableResourceResponseDto<Localidad> localidadDto = new TableResourceResponseDto<Localidad>(tableRequestDto, recordNum, listaLocalidad);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Localidad>> reorderSelection = this.localidadDao.reorderSelection(filterLocalidad, tableRequestDto, startsWith);
 			localidadDto.setReorderedSelection(reorderSelection);
 			localidadDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			localidadDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Localidad>> reorderSeeker = this.localidadDao.reorderSelection(filterLocalidad, tableRequestDto, startsWith);
 			localidadDto.setReorderedSeeker(reorderSeeker);

@@ -145,18 +145,18 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @return TableResourceResponseDto<X21aAlumno>
 	 */	
 	public TableResourceResponseDto<X21aAlumno> filter(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith){
-		List<X21aAlumno> listaX21aAlumno =  this.x21aAlumnoDao.findAllLike(filterX21aAlumno, tableRequestDto, false);
-		Long recordNum = this.x21aAlumnoDao.findAllLikeCount(filterX21aAlumno != null ? filterX21aAlumno: new X21aAlumno (),false);
+		List<X21aAlumno> listaX21aAlumno = this.x21aAlumnoDao.findAllLike(filterX21aAlumno, tableRequestDto, false);
+		Long recordNum = this.x21aAlumnoDao.findAllLikeCount(filterX21aAlumno != null ? filterX21aAlumno : new X21aAlumno(), false);
 		
 		TableResourceResponseDto<X21aAlumno> usuarioDto = new TableResourceResponseDto<X21aAlumno>(tableRequestDto, recordNum, listaX21aAlumno);
 		
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List< TableRowDto< X21aAlumno>> reorderSelection = this.x21aAlumnoDao.reorderSelection(filterX21aAlumno, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List< TableRowDto< X21aAlumno>> reorderSeeker = this.x21aAlumnoDao.reorderSelection(filterX21aAlumno, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);

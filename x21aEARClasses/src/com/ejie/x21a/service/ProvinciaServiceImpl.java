@@ -201,16 +201,16 @@ public class ProvinciaServiceImpl implements ProvinciaService {
 
 	@Override
 	public TableResourceResponseDto<Provincia> filter(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Provincia> listaProvincia =  this.provinciaDao.findAllLike(filterProvincia, tableRequestDto, false);
-		Long recordNum =  this.provinciaDao.findAllLikeCount(filterProvincia != null ? filterProvincia: new Provincia (),false);
+		List<Provincia> listaProvincia = this.provinciaDao.findAllLike(filterProvincia, tableRequestDto, false);
+		Long recordNum = this.provinciaDao.findAllLikeCount(filterProvincia != null ? filterProvincia : new Provincia(), false);
 		TableResourceResponseDto<Provincia> provinciaDto = new TableResourceResponseDto<Provincia>(tableRequestDto, recordNum, listaProvincia);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Provincia>> reorderSelection = this.provinciaDao.reorderSelection(filterProvincia, tableRequestDto, startsWith);
 			provinciaDto.setReorderedSelection(reorderSelection);
 			provinciaDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			provinciaDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Provincia>> reorderSeeker = this.provinciaDao.reorderSelection(filterProvincia, tableRequestDto, startsWith);
 			provinciaDto.setReorderedSeeker(reorderSeeker);

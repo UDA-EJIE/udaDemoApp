@@ -201,16 +201,16 @@ public class ComarcaServiceImpl implements ComarcaService {
 
 	@Override
 	public TableResourceResponseDto<Comarca> filter(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Comarca> listaComarca =  this.comarcaDao.findAllLike(filterComarca, tableRequestDto, false);
-		Long recordNum =  this.comarcaDao.findAllLikeCount(filterComarca != null ? filterComarca: new Comarca (),false);
+		List<Comarca> listaComarca = this.comarcaDao.findAllLike(filterComarca, tableRequestDto, false);
+		Long recordNum = this.comarcaDao.findAllLikeCount(filterComarca != null ? filterComarca : new Comarca(), false);
 		TableResourceResponseDto<Comarca> comarcaDto = new TableResourceResponseDto<Comarca>(tableRequestDto, recordNum, listaComarca);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Comarca>> reorderSelection = this.comarcaDao.reorderSelection(filterComarca, tableRequestDto, startsWith);
 			comarcaDto.setReorderedSelection(reorderSelection);
 			comarcaDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			comarcaDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Comarca>> reorderSeeker = this.comarcaDao.reorderSelection(filterComarca, tableRequestDto, startsWith);
 			comarcaDto.setReorderedSeeker(reorderSeeker);

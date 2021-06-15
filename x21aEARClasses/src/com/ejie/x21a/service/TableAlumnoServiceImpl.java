@@ -201,15 +201,15 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	@Override
 	public TableResourceResponseDto<Alumno> filter(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		List<Alumno> listaAlumno = this.alumnoDao.findAllLike(filterAlumno, tableRequestDto, false);
-		Long recordNum = this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno: new Alumno(),false);
+		Long recordNum = this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno : new Alumno(), false);
 		TableResourceResponseDto<Alumno> alumnoDto = new TableResourceResponseDto<Alumno>(tableRequestDto, recordNum, listaAlumno);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Alumno>> reorderSelection = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
 			alumnoDto.setReorderedSelection(reorderSelection);
 			alumnoDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			alumnoDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Alumno>> reorderSeeker = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
 			alumnoDto.setReorderedSeeker(reorderSeeker);

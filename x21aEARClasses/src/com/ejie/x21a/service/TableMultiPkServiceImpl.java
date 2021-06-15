@@ -146,18 +146,18 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @return TableResourceResponseDto<MultiPk>
 	 */	
 	public TableResourceResponseDto<MultiPk> filter(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
-		List<MultiPk> listaMultiPk =  this.multiPkDao.findAllLike(filterMultiPk, tableRequestDto, false);
-		Long recordNum =  this.multiPkDao.findAllLikeCount(filterMultiPk != null ? filterMultiPk: new MultiPk (),false);
+		List<MultiPk> listaMultiPk = this.multiPkDao.findAllLike(filterMultiPk, tableRequestDto, false);
+		Long recordNum = this.multiPkDao.findAllLikeCount(filterMultiPk != null ? filterMultiPk : new MultiPk(), false);
 		
 		TableResourceResponseDto<MultiPk> usuarioDto = new TableResourceResponseDto<MultiPk>(tableRequestDto, recordNum, listaMultiPk);
 		
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<MultiPk>> reorderSelection = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<MultiPk>> reorderSeeker = this.multiPkDao.reorderSelection(filterMultiPk, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);

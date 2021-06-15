@@ -137,15 +137,15 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 	@Override
 	public TableResourceResponseDto<IberdokFile> filter(IberdokFile filterFile, TableRequestDto tableRequestDto, Boolean startsWith) {
 		List<IberdokFile> listaIberdokFile =  this.iberdokDao.findAllLike(filterFile, tableRequestDto, false);
-		Long recordNum = this.iberdokDao.findAllLikeCount(filterFile != null ? filterFile: new IberdokFile(), false);
+		Long recordNum = this.iberdokDao.findAllLikeCount(filterFile != null ? filterFile : new IberdokFile(), false);
 		TableResourceResponseDto<IberdokFile> iberdokDto = new TableResourceResponseDto<IberdokFile>(tableRequestDto, recordNum, listaIberdokFile);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<IberdokFile>> reorderSelection = this.iberdokDao.reorderSelection(filterFile, tableRequestDto, startsWith);
 			iberdokDto.setReorderedSelection(reorderSelection);
 			iberdokDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			iberdokDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<IberdokFile>> reorderSeeker = this.iberdokDao.reorderSelection(filterFile, tableRequestDto, startsWith);
 			iberdokDto.setReorderedSeeker(reorderSeeker);
