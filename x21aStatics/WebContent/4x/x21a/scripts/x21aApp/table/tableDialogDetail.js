@@ -96,8 +96,7 @@ jQuery(function ($) {
 	                        range: [1, 3]
 	                    }
 	                }
-	            },*/
-	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
+	            }*/
 	        }
 	    });
 	

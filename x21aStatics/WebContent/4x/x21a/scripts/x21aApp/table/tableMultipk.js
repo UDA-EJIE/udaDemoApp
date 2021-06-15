@@ -119,8 +119,7 @@ jQuery(function ($) {
                             required: false
                         }
                     }
-                },
-                titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
+                }
             };
             plugins.enableDynamicForms = true;
             plugins.formEdit = formEdit;
@@ -131,23 +130,6 @@ jQuery(function ($) {
         }
 
         if (localStorage.plugins.indexOf('inlineEdit') > -1) {
-            formEdit = {
-                detailForm: '#MultiPk_detail_div',
-                validate: {
-                    rules: {
-                        'nombre': {
-                            required: true
-                        },
-                        'apellido1': {
-                            required: false
-                        },
-                        'apellido2': {
-                            required: false
-                        }
-                    }
-                },
-                titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption')
-            };
             var inlineEdit = {
                 deselect: true,
                 validate: {

@@ -212,7 +212,7 @@ jQuery(function ($) {
                             }
                         }
                     },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.edit.editCaption'),
+                    customTitle: jQuery.rup.i18nParse(jQuery.rup.i18n.app, 'table.sampleTitle'),
                     cancelDeleteFunction: cancelClicked
                 };
                 plugins.validarModificarContinuar = function customGuardar(ctx){
@@ -227,7 +227,7 @@ jQuery(function ($) {
 	                     }
 	
 	                     feedback.rup_feedback({
-	                         message: 'No validado, validación personal, solo se valida si el primer apellido es Ruiz.',
+	                         message: jQuery.rup.i18nParse(jQuery.rup.i18n.app, 'table.sampleValidate'),
 	                         type: 'error',
 	                         block: false,
 	                         gotoTop: false,
@@ -246,18 +246,6 @@ jQuery(function ($) {
             }
 
             if (localStorage.plugins.indexOf('inlineEdit') > -1) {
-                /*      var formEdit = {
-                          detailForm: "#example_detail_div",
-                          validate:{
-                              rules:{
-                                  "nombre":{required:true},
-                                  "apellido1":{required:true},
-                                  "fechaAlta":{date:true},
-                                  "fechaBaja":{date:true}
-                              }
-                          },
-                          titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')
-                      }*/
                 var inlineEdit = {
                     deselect: true,
                     validate: {

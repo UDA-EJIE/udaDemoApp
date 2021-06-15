@@ -188,7 +188,6 @@ jQuery(function($){
                         }
                     }
                 },
-                titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption'),
                 cancelDeleteFunction:cancelClicked
             }
             plugins.enableDynamicForms = true;
@@ -253,8 +252,7 @@ jQuery(function($){
     						required: false
         				}
         			}
-             	},
-    			titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base,'rup_table.edit.editCaption')  
+             	} 
     		}
             plugins.enableDynamicForms = true;
 		    plugins.formEdit = formEdit;
