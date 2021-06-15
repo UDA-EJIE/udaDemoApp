@@ -590,7 +590,9 @@
 		"ejie" : "Ejie_eu",
 		"fechaAlta":"Fecha de alta_eu",
 		"fechaBaja":"Fecha de baja_eu",
-		"rol":"Rol_eu"
+		"rol":"Rol_eu",
+		"sampleTitle": "Título establecido con la propiedad 'customTitle'_eu",
+		"sampleValidate": "No validado, validación personal, sólo se valida si el primer apellido es Ruiz._eu"
 	},
 	"GRID_simple##rol" : {
 		"administrador" : "administrador_eu",
