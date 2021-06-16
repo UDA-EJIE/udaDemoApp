@@ -109,8 +109,8 @@ public class TableLocalidadController {
 	 * @param localidad Localidad 
 	 * @return Localidad
 	 */
-	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.PUT)
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<Localidad> edit(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.update(localidad);
         TableLocalidadController.logger.info("[PUT] : Localidad actualizado correctamente");
@@ -123,8 +123,8 @@ public class TableLocalidadController {
 	 * @param localidad Localidad 
 	 * @return Localidad
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" ), @UDALinkAllower(name = "filter")})
-	@RequestMapping(method = RequestMethod.POST)
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Localidad> add(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.add(localidad);
         TableLocalidadController.logger.info("[POST] : Localidad insertado correctamente");

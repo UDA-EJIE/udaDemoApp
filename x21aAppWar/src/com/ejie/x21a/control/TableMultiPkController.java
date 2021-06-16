@@ -164,7 +164,7 @@ public class TableMultiPkController {
 	 * @return MultiPk 
 	 *            Bean resultante de la modificacion.
 	 */
-	@UDALink(name = "edit")
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Resource<MultiPk> edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
@@ -182,7 +182,7 @@ public class TableMultiPkController {
 	 * @return MultiPk
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<MultiPk> add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
