@@ -142,12 +142,14 @@ jQuery(function ($) {
 	        order: [
 	            [1, 'desc']
 	        ],
-	        drawCallback: function( ctx ) {
-	    		$('#localidad tr[role="row"]').on('tableSelectAfterSelectRow', function () {
-	    			let line = ctx.multiselection.selectedRowsPerPage[0].line;
-	    			let datos = ctx.json.rows[line]; //se carga el dato
-	    			$('#css_detailForm_tableComarca').val(datos.css);
-	    		});
+	        drawCallback: function(ctx) {
+	        	$('#localidad tr[role="row"]').on('tableSelectAfterSelectRow', function () {
+	        		if (ctx.multiselection.selectedRowsPerPage.length > 0) {
+	        			let line = ctx.multiselection.selectedRowsPerPage[0].line;
+	        			let datos = ctx.json.rows[line]; //se carga el dato
+	        			$('#css_detailForm_tableComarca').val(datos.css);
+	        		}
+	        	});
 	        }
 	    });
 	
