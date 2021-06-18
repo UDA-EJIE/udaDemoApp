@@ -83,7 +83,6 @@ jQuery(function ($) {
 	        select: {
 	            style: 'multi'
 	        },
-            enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
 	            url: '../tableComarca/editFormDialog',

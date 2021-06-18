@@ -237,7 +237,6 @@ jQuery(function ($) {
                 	}
                 	return false;//Paso la validacion
                 };
-                plugins.enableDynamicForms = true;
                 plugins.formEdit = formEdit;
 
                 $('#editForm').prop('checked', true);
@@ -268,7 +267,6 @@ jQuery(function ($) {
                         }
                     }
                 };
-                plugins.enableDynamicForms = true;
                 plugins.inlineEdit = inlineEdit;
 
                 $('#inlineEdit').prop('checked', true);

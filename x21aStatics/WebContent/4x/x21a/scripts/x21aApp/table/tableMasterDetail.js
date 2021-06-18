@@ -83,7 +83,6 @@ jQuery(function ($) {
 	        select: {
 	            style: 'multi'
 	        },
-            enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
 	            url: '../tableComarca/editForm',
@@ -151,7 +150,6 @@ jQuery(function ($) {
 	            masterPrimaryKey: 'comarca.code',
 	            masterPrimaryNid: true
 	        },
-            enableDynamicForms: true,
 	        formEdit: {
 	            detailForm: '#localidad_detail_div',
 	            url: '../tableLocalidad/editForm',

@@ -21,7 +21,6 @@ jQuery(function ($) {
             filterToolbar: 'usuario_filter_toolbar',
             collapsableLayerId: 'usuario_filter_fieldset'
         },
-        enableDynamicForms: true,
         formEdit: {
             detailForm: '#usuario_detail_div',
             fillDataMethod: 'clientSide',

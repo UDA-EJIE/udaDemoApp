@@ -142,8 +142,7 @@ function _init() {
                 formEdit.validate.rules['fechaBaja' + num] = {
                     date: true
                 };
-
-                plugins.enableDynamicForms = true;
+                
                 plugins.formEdit = formEdit;
 
                 $('#editForm' + num).prop('checked', true);

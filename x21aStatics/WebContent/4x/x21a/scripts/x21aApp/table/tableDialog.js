@@ -121,7 +121,6 @@ jQuery(function ($) {
                         }
                     }
                 };
-                plugins.enableDynamicForms = true;
                 plugins.formEdit = formEdit;
 
                 $('#editForm').prop('checked', true);

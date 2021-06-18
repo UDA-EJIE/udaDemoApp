@@ -190,7 +190,6 @@ jQuery(function($){
                 },
                 cancelDeleteFunction:cancelClicked
             }
-            plugins.enableDynamicForms = true;
             plugins.formEdit = formEdit;
 
             var buttons = {
@@ -254,7 +253,6 @@ jQuery(function($){
         			}
              	} 
     		}
-            plugins.enableDynamicForms = true;
 		    plugins.formEdit = formEdit;
 
 		    var buttons = {

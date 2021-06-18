@@ -126,7 +126,6 @@ jQuery(function($){
             select: {
                 activate: true
             },
-	        enableDynamicForms: true,
 	        inlineEdit: {
 	            deselect: true,
 	            url: './inlineEdit',

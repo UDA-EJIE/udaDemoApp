@@ -124,7 +124,6 @@ function addTableIberdok() {
         select: {
             activate: true
         },
-        enableDynamicForms: true,
         formEdit: {
             detailForm: '#iberdokTable_detail_div'
         },

@@ -49,7 +49,6 @@ $(document).ready(function () {
 	        multiSelect: {
             	style: 'multi'
             },
-	        enableDynamicForms: true,
 	        inlineEdit:{
 	        	url: './inlineEdit',
 	            validate:{
