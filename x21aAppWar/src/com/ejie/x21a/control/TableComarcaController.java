@@ -196,7 +196,11 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,

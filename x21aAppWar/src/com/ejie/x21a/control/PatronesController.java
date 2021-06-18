@@ -508,11 +508,6 @@ public class PatronesController {
     		@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
     		@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableComarcaController.class),
     		@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "clipboardReport", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "excelReport", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "pdfReport", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "odsReport", linkClass = TableComarcaController.class),
-			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
     		@UDALinkAllower(name = "getEnlazadoProvincia"),
     		@UDALinkAllower(name = "getEnlazadoComarca"),
     		@UDALinkAllower(name = "getRemoteComboGrupos"),
@@ -531,12 +526,7 @@ public class PatronesController {
     		@UDALinkAllower(name = "filter", linkClass = TableUsuarioController.class),
     		@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "clipboardReport", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "excelReport", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "pdfReport", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "odsReport", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "csvReport", linkClass = TableUsuarioController.class) })
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
     @RequestMapping(value = "allDialog", method = RequestMethod.GET)
     public String getAllDialog(Model model) {
         model.addAttribute("usuario", new Usuario());

@@ -155,7 +155,11 @@ public class TableLocalidadController {
 			@UDALinkAllower(name = "get"), 
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Localidad> filter(
 			@RequestJsonBody(param="filter") Localidad localidad,

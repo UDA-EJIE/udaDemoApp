@@ -111,11 +111,7 @@ public class TableDynamicColumnsController  {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -256,7 +252,11 @@ public class TableDynamicColumnsController  {
 			@UDALinkAllower(name = "remove"),
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,

@@ -79,12 +79,7 @@ public class TableMultiPkController {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -96,12 +91,7 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(method = RequestMethod.GET,value = "/double")
 	public String getFiltroSimpleDoble (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -222,13 +212,7 @@ public class TableMultiPkController {
 	 * @param model Model
 	 * @return String
 	 */
-	@UDALink(name = "getFormEdit", linkTo = {
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+	@UDALink(name = "getFormEdit", linkTo = { @UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		TableMultiPkController.logger.info("[GET - View] : multipk");
@@ -253,7 +237,11 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,

@@ -161,12 +161,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+			@UDALinkAllower(name = "multifilterGetAll") })
 	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		Usuario usuario = new Usuario();
@@ -636,7 +631,11 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,

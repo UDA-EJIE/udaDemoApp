@@ -210,7 +210,11 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "clipboardReport") })
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
 	public @ResponseBody TableResourceResponseDto<X21aAlumno> filter(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
