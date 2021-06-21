@@ -21,11 +21,11 @@
 <!-- Formulario de detalle -->
 <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegaciï¿½n del detalle -->
-	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
+	<div id="comarca_detail_navigation" class="row no-gutters"></div>
 	<!-- Separador -->
 	<hr class="m-1">
 	<div id="comarca_detail_form_container" class="dialog-content-material">
-		<!-- El Formulario será insertado mediante JavaScript -->
+		<!-- El formulario será insertado mediante una llamada Ajax -->
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">

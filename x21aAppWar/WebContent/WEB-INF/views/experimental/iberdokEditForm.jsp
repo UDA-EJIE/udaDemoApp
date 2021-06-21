@@ -13,17 +13,18 @@
  -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@ taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/iberdok/${endpoint}" var="url"/>
 <form:form modelAttribute="randomForm" id="iberdokTable_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
-	<div id ="iberdokTable_detail_feedback"></div>
+	<div id="iberdokTable_detail_feedback"></div>
 	<h3>
 		<spring:message code="iberdok.dialog.editor" />
 	</h3>

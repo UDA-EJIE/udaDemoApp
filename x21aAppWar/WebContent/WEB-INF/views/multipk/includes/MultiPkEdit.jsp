@@ -8,7 +8,7 @@
 		<!-- Formulario -->
 		<form:form id="MultiPk_detail_form" modelAttribute="multiPk" method="put">
 			<!-- Feedback del formulario de detalle -->
-			<div id ="MultiPk_detail_feedback"></div>
+			<div id="MultiPk_detail_feedback"></div>
 			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
 				<div class="form-group col-sm">

@@ -8,7 +8,7 @@
 		<!-- Formulario -->
 		<form:form modelAttribute="alumno" id="x21aAlumno_detail_form">
 			<!-- Feedback del formulario de detalle -->
-			<div id ="x21aAlumno_detail_feedback"></div>
+			<div id="x21aAlumno_detail_feedback"></div>
 			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
 				<div class="form-group col-sm">

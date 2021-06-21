@@ -26,7 +26,7 @@
 		<spring:url value="/table" var="url"/>
 		<form:form modelAttribute="usuario" id="usuario_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
-			<div id ="usuario_detail_feedback"></div>
+			<div id="usuario_detail_feedback"></div>
 			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
 				<div class="form-groupMaterial col-sm">
