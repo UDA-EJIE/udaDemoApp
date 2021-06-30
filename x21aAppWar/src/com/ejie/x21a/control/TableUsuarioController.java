@@ -811,6 +811,9 @@ public class TableUsuarioController {
 	 * Devuelve los datos exportados de la tabla.
 	 *
 	 * @param filterUsuario Usuario
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 */
 	@UDALink(name = "clipboardReport", linkTo = { 
