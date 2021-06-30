@@ -1,5 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla con multiples PKs</h2>
+
+<h2>Tabla con múltiples PKs</h2>
 
 <jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 
@@ -8,18 +9,16 @@
 	data-filter-form="#MultiPk_filter_form">
     <thead>
 		<tr>
-			<th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
-			<th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
-			<th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
-			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
-			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
+			<th data-col-prop="nombre" data-col-sidx="NOMBRE">Nombre</th>
+			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1">Primer apellido</th>
+			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2">Segundo apellido</th>
 		</tr>
 	</thead>
 </table>
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
-<form:form modelAttribute="options" id="multipk_tableConfiguration">
+<form:form modelAttribute="options" method="POST" id="multipk_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">

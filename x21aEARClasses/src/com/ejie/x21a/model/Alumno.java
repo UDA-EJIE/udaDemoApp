@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.validation.Valid;
 import javax.validation.groups.Default;
 
-
+import org.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,57 +31,57 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 @AlumnoDireccion(groups={AlumnoAddValidation.class, AlumnoEditValidation.class})
-public class Alumno  implements java.io.Serializable {
+public class Alumno implements java.io.Serializable, SecureIdentifiable<BigDecimal> {
 
 	
 	private static final long serialVersionUID = 1L;
-            private BigDecimal id;
-            @NotEmpty(message="validacion.required",groups={Default.class, AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo2Validation.class})
-            @Length(min=4, message="validacion.minLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class})
-            private String usuario;
-            @NotEmpty(message="validacion.required",groups={AlumnoAddValidation.class, AlumnoEjemplo2Validation.class})
-            @Length(min=6, message="validacion.minLength", groups={AlumnoAddValidation.class})
-            private String password;
-            private String password_confirm;
-            @NotEmpty(message="validacion.required", groups={Default.class,AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-            @Length(max=20, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-            private String nombre;
-            @NotEmpty(message="validacion.required", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-            @Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-            private String apellido1;
-            @Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-            private String apellido2;
-            private String sexo;
-            private Date fechaNacimiento;
-            private String telefono;
-            private String email;
-            private String email_confirm;
-            private String idioma;
-            @Valid()
-            private NoraPais pais;
-            private NoraProvincia provincia;
-            private NoraAutonomia autonomia;
-            private BigDecimal localidad;
-            private BigDecimal comarca;
-            private NoraMunicipio municipio;
-            private NoraCalle calle;
-            private String dni;
-            private String nombreImagen;
-            private String direccion;
-            private BigDecimal importeMatricula;
-            private byte[] imagen;
-            private Integer ejie;
-            private HashMap<String,String> randomData;
-            
-            public HashMap<String, String> getRandomData() {
-				return randomData;
-			}
+	private BigDecimal id;
+	@NotEmpty(message="validacion.required",groups={Default.class, AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo2Validation.class})
+	@Length(min=4, message="validacion.minLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class})
+	private String usuario;
+	@NotEmpty(message="validacion.required",groups={AlumnoAddValidation.class, AlumnoEjemplo2Validation.class})
+	@Length(min=6, message="validacion.minLength", groups={AlumnoAddValidation.class})
+	private String password;
+	private String password_confirm;
+	@NotEmpty(message="validacion.required", groups={Default.class,AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	@Length(max=20, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	private String nombre;
+	@NotEmpty(message="validacion.required", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	@Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	private String apellido1;
+	@Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	private String apellido2;
+	private String sexo;
+	private Date fechaNacimiento;
+	private String telefono;
+	private String email;
+	private String email_confirm;
+	private String idioma;
+	@Valid()
+	private NoraPais pais;
+	private NoraProvincia provincia;
+	private NoraAutonomia autonomia;
+	private BigDecimal localidad;
+	private BigDecimal comarca;
+	private NoraMunicipio municipio;
+	private NoraCalle calle;
+	private String dni;
+	private String nombreImagen;
+	private String direccion;
+	private BigDecimal importeMatricula;
+	private byte[] imagen;
+	private Integer ejie;
+	private HashMap<String,String> randomData;
+	
+	public HashMap<String, String> getRandomData() {
+		return randomData;
+	}
 
-			public void setRandomData(HashMap<String, String> randomData) {
-				this.randomData = randomData;
-			}
+	public void setRandomData(HashMap<String, String> randomData) {
+		this.randomData = randomData;
+	}
 
-			private String gender;
+	private String gender;
             
 	/** Method 'Alumno'.
 	*

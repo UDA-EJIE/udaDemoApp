@@ -67,7 +67,7 @@ jQuery(function($) {
             idTab: 'pestana0',
             position: 2,
             label: 'pestanaAna',
-            url: '/x21aAppWar/lista/noTemplate'
+            url: '/x21aAppWar/patrones/lista/noTemplate'
         });
     });
     

@@ -14,6 +14,7 @@
 * que establece la Licencia.
 */
 package com.ejie.x21a.service;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -25,8 +26,8 @@ import org.springframework.validation.Errors;
 
 import com.ejie.x21a.dao.TableAlumnoDao;
 import com.ejie.x21a.model.Alumno;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -81,11 +82,11 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	 * Finds a List of rows in the Alumno table.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	public List<Alumno> findAll(Alumno alumno, JQGridRequestDto jqGridRequestDto) {
-		return (List<Alumno>) this.alumnoDao.findAll(alumno, jqGridRequestDto);
+	public List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto) {
+		return (List<Alumno>) this.alumnoDao.findAll(alumno, tableRequestDto);
 	}
     
 	
@@ -93,12 +94,12 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	 * Finds rows in the Alumno table using like.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 * @return List
 	 */
-	public List<Alumno> findAllLike(Alumno alumno,  JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return (List<Alumno>) this.alumnoDao.findAllLike(alumno, jqGridRequestDto, startsWith);
+	public List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return (List<Alumno>) this.alumnoDao.findAllLike(alumno, tableRequestDto, startsWith);
 	}
     
 	/**
@@ -117,8 +118,8 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	 * @param alumnoList ArrayList
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(Alumno filterAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		this.alumnoDao.removeMultiple(filterAlumno, jqGridRequestDto, startsWith);
+	public void removeMultiple(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.alumnoDao.removeMultiple(filterAlumno, tableRequestDto, startsWith);
 	}
 
 
@@ -192,26 +193,33 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 		}
 	}
 
-
 	@Override
-	public List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.alumnoDao.search(filterAlumno, searchAlumno, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.alumnoDao.search(filterAlumno, searchAlumno, tableRequestDto, startsWith);
 	}
-
+	
 	@Override
-	public JQGridResponseDto<Alumno> filter(Alumno filterAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		List<Alumno> listaUsuario =  this.alumnoDao.findAllLike(filterAlumno, jqGridRequestDto, startsWith);
-		Long recordNum =  this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno: new Alumno (), startsWith);
-		if (jqGridRequestDto.getMultiselection().getSelectedIds()!=null){
-			List<TableRowDto<Alumno>> reorderSelection = this.alumnoDao.reorderSelection(filterAlumno, jqGridRequestDto, startsWith);
-			return new JQGridResponseDto<Alumno>(jqGridRequestDto, recordNum, listaUsuario, reorderSelection);
+	public TableResourceResponseDto<Alumno> filter(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
+		List<Alumno> listaAlumno = this.alumnoDao.findAllLike(filterAlumno, tableRequestDto, false);
+		Long recordNum = this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno : new Alumno(), false);
+		TableResourceResponseDto<Alumno> alumnoDto = new TableResourceResponseDto<Alumno>(tableRequestDto, recordNum, listaAlumno);
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
+			List<TableRowDto<Alumno>> reorderSelection = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
+			alumnoDto.setReorderedSelection(reorderSelection);
+			alumnoDto.addAdditionalParam("reorderedSelection", reorderSelection);
+			alumnoDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		return new JQGridResponseDto<Alumno>(jqGridRequestDto, recordNum, listaUsuario);  
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
+			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
+			List<TableRowDto<Alumno>> reorderSeeker = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
+			alumnoDto.setReorderedSeeker(reorderSeeker);
+			alumnoDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
+		}
+		return alumnoDto; 
 	}
 
 	@Override
-	public Object reorderSelection(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.alumnoDao.reorderSelection(alumno, jqGridRequestDto, startsWith);
+	public Object reorderSelection(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.alumnoDao.reorderSelection(alumno, tableRequestDto, startsWith);
 	}
 }
-

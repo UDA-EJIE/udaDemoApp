@@ -15,6 +15,7 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
 <h2>Visor geoeuskadi</h2>
  
  
@@ -23,6 +24,6 @@
  <div class="example">
 			<button type="button" id="marcador"> <spring:message code="integracion.geoeuskadi.marcador" /></button>
 			<button type="button" id="centrar"> <spring:message code="integracion.geoeuskadi.centrar" /></button>
-			
+			<button type="button" id="buscar"> <spring:message code="buscar" /></button>
 		</div>
  

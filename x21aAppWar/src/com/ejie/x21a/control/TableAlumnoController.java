@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,10 +61,13 @@ import com.ejie.x21a.service.NoraPaisService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
 import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.util.DateTimeManager;
+import com.ejie.x38.util.ResourceUtils;
 import com.ejie.x38.validation.ValidationManager;
 
 /**
@@ -97,15 +101,13 @@ public class TableAlumnoController  {
 		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, numberFormat, true));
 	}
 	
-	
-	
-	
 	/**
 	 * Method 'getCreateForm'.
 	 *
 	 * @param model Model
 	 * @return String
 	 */
+	@UDALink(name = "getCreateForm")
 	@RequestMapping(value = "maint", method = RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		
@@ -142,13 +144,17 @@ public class TableAlumnoController  {
 	 * @param id BigDecimal
 	 * @return alumno Alumno
 	 */
+	@UDALink(name = "get", linkTo = { 
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Alumno get(final @PathVariable BigDecimal id) {
+	public @ResponseBody Resource<Alumno> get(final @PathVariable BigDecimal id) {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
         alumno = this.alumnoService.find(alumno);
         TableAlumnoController.logger.info("[GET - findBy_PK] : Obtener Alumno por PK");
-        return alumno;
+        return new Resource<Alumno>(alumno);
 	}
 
 	/**
@@ -157,10 +163,14 @@ public class TableAlumnoController  {
 	 * @param filterAlumno Alumno
 	 * @return List
 	 */
+	@UDALink(name = "getall", linkTo = { 
+			@UDALinkAllower(name = "edit"), 
+			@UDALinkAllower(name = "remove"),
+			@UDALinkAllower(name = "get") })
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<Alumno> getAll(@ModelAttribute Alumno filterAlumno) {
+	public @ResponseBody List<Resource<Alumno>> getAll(@ModelAttribute Alumno filterAlumno) {
 		TableAlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
-	    return this.alumnoService.findAll(filterAlumno, null);
+	    return ResourceUtils.fromListToResource(this.alumnoService.findAll(filterAlumno, null));
 	}
 
 	/**
@@ -169,8 +179,9 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.POST, produces="application/json")
-	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/add", method = RequestMethod.POST, produces="application/json")
+	public @ResponseBody Resource<Object> add(@Validated(AlumnoAddValidation.class) 
 			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
 		
@@ -192,7 +203,7 @@ public class TableAlumnoController  {
         	return null;
         }
         TableAlumnoController.logger.info("[POST] : Alumno insertado correctamente");
-    	return alumnoAux;
+    	return new Resource<Object>(alumnoAux);
 	}
 	
 	/**
@@ -201,8 +212,9 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.PUT, produces="application/json")
-	public @ResponseBody Alumno edit(
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces="application/json")
+	public @ResponseBody Resource<Alumno> edit(
 			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,
 			@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
@@ -230,7 +242,7 @@ public class TableAlumnoController  {
         	return null;
         }
 		TableAlumnoController.logger.info("[PUT] : Alumno actualizado correctamente");
-        return alumnoAux;
+        return new Resource<Alumno>(alumnoAux);
     }
 	
 // EJEMPLO ENVIO application/json
@@ -261,69 +273,74 @@ public class TableAlumnoController  {
 	 * @param id BigDecimal
 	 * @return alumno
 	 */
+	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Alumno remove(@PathVariable BigDecimal id) {
+    public @ResponseBody Resource<Alumno> remove(@PathVariable BigDecimal id) {
         Alumno alumno = new Alumno();
         alumno.setId(id);
         this.alumnoService.remove(alumno);
        	TableAlumnoController.logger.info("[DELETE] : Alumno borrado correctamente");
-       	return alumno;
+       	return new Resource<Alumno>(alumno);
     }
-	
-	
-	
+		
 	/*
 	 * METODOS COMPONENTE RUP_TABLE
 	 * 
 	 */
 	
 	/**
-	 * Operación de filtrado del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Alumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "getImagenAlumno"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<Alumno> filter(
+	public @ResponseBody TableResourceResponseDto<Alumno> filter(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		
-		TableAlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
-		return this.alumnoService.filter(filterAlumno, jqGridRequestDto, false);
+		TableAlumnoController.logger.info("[POST - table] : Obtener Alumnos");
+		return this.alumnoService.filter(filterAlumno, tableRequestDto, false);
 	}
 	
 	/**
-	 * Operación de búsqueda del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de bÃƒÂºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterAlumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param searchAlumno
-	 *            Bean que contiene los parámetros de búsqueda a emplear.
-	 * @param JQGridRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Bean que contiene los parÃƒÂ¡metros de bÃƒÂºsqueda a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parámetros de búsqueda.
+	 *         que se ajustan a los parÃƒÂ¡metros de bÃƒÂºsqueda.
 	 * 
 	 */
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<Alumno>> search(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody(param="search") Alumno searchAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+			@RequestJsonBody TableRequestDto tableRequestDto){
 		
 		TableAlumnoController.logger.info("[POST - search] : Buscar Alumnos");
-		return this.alumnoService.search(filterAlumno, searchAlumno, jqGridRequestDto, false);
+		return this.alumnoService.search(filterAlumno, searchAlumno, tableRequestDto, false);
 	}
-	
 	
 	/**
 	 * Method 'removeAll'.
@@ -331,19 +348,23 @@ public class TableAlumnoController  {
 	 * @param alumnoIds List
 	 * @return alumnoList
 	 */	
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableAlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.alumnoService.removeMultiple(filterAlumno, jqGridRequestDto, false);
+	    this.alumnoService.removeMultiple(filterAlumno, tableRequestDto, false);
 	    TableAlumnoController.logger.info("All entities correctly deleted!");
 	    
-	    return jqGridRequestDto.getMultiselection().getSelectedIds();
+	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}	
 	
-	
+	@UDALink(name = "getImagenAlumno", linkTo = { 
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
 	public void getImagenAlumno(@PathVariable BigDecimal id, HttpServletResponse response) throws IOException {
 		Alumno alumno = new Alumno();
@@ -353,7 +374,5 @@ public class TableAlumnoController  {
         byte[] fileByteArray = alumno.getImagen();
         response.setContentLength(fileByteArray.length);
         FileCopyUtils.copy(fileByteArray, response.getOutputStream());
-	}
-	
+	}	
 }	
-	

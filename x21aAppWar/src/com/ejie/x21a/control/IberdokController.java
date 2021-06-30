@@ -2,7 +2,9 @@ package com.ejie.x21a.control;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,11 +31,12 @@ import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.IberdokFileService;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.rup.table.filter.model.Filter;
-import com.ejie.x38.rup.table.filter.service.FilterService;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.util.ResourceUtils;
 
 @Controller
 @RequestMapping(value = "/iberdok")
@@ -41,20 +45,15 @@ public class IberdokController {
 	@Autowired
 	private Properties appConfiguration;
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(IberdokController.class);
+	private static final Logger logger = LoggerFactory.getLogger(IberdokController.class);
 
 	@Autowired
 	private IberdokFileService iberdokFileService;
 
-	@Autowired
-	private FilterService filterService;
-
 	/*
 	 * OPERACIONES CRUD
 	 * 
-	 * Metodos correspondientes a las operaciones CRUD (Create, Read, Update,
-	 * Delete).
+	 * Metodos correspondientes a las operaciones CRUD (Create, Read, Update, Delete).
 	 */
 
 	/**
@@ -65,13 +64,14 @@ public class IberdokController {
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody IberdokFile get(@PathVariable String id) {
+	public @ResponseBody Resource<IberdokFile> get(@PathVariable String id) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		file = this.iberdokFileService.find(file);
-
-		return file;
+		IberdokController.logger.info("[GET - findBy_PK] : Obtener ficheros de iberdok por PK");
+		return new Resource<IberdokFile>(file);
 	}
 
 	/**
@@ -83,12 +83,12 @@ public class IberdokController {
 	 *            la bï¿½squeda.
 	 * @return Lista de objetos correspondientes a la bï¿½squeda realizada.
 	 */
+	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<IberdokFile> getAll(
+	public @ResponseBody List<Resource<IberdokFile>> getAll(
 			@ModelAttribute() IberdokFile fileFilter) {
-		IberdokController.logger
-				.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
-		return this.iberdokFileService.findAllLike(fileFilter, null, false);
+		IberdokController.logger.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
+		return ResourceUtils.fromListToResource(this.iberdokFileService.findAllLike(fileFilter, null, false));
 	}
 
 	/**
@@ -98,13 +98,14 @@ public class IberdokController {
 	 *            Bean que contiene la informaciï¿½n a modificar.
 	 * @return Bean resultante de la modificaciï¿½n.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
-	public @ResponseBody IberdokFile edit(
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	public @ResponseBody Resource<IberdokFile> edit(
 			@Validated @RequestBody IberdokFile file) {
 
 		IberdokFile fileAux = this.iberdokFileService.update(file);
 		logger.info("Entity correctly updated!");
-		return fileAux;
+		return new Resource<IberdokFile>(fileAux);
 	}
 
 	/**
@@ -116,13 +117,14 @@ public class IberdokController {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaciï¿½n.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody IberdokFile add(
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody Resource<IberdokFile> add(
 			@Validated @RequestBody IberdokFile file) {
 
 		IberdokFile fileAux = this.iberdokFileService.add(file);
 		logger.info("Entity correctly inserted!");
-		return fileAux;
+		return new Resource<IberdokFile>(fileAux);
 	}
 
 	/**
@@ -133,15 +135,16 @@ public class IberdokController {
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return Bean eliminado.
 	 */
+	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public @ResponseBody IberdokFile remove(
+	public @ResponseBody Resource<IberdokFile> remove(
 			@PathVariable(value = "id") String id, HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		this.iberdokFileService.remove(file);
 		logger.info("Entity correctly deleted!");
-		return file;
+		return new Resource<IberdokFile>(file);
 	}
 
 	/*
@@ -153,7 +156,7 @@ public class IberdokController {
 	 * 
 	 * @param IberdokFile
 	 *            Bean que contiene los parï¿½metros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parï¿½mtros de configuraciï¿½n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
@@ -162,44 +165,13 @@ public class IberdokController {
 	 */
 	// @Json(mixins={@JsonMixin(target=IberdokFile.class,
 	// mixin=IberdokFileMixIn.class)})
+	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<IberdokFile> filter(
+	public @ResponseBody TableResourceResponseDto<IberdokFile> filter(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		IberdokController.logger.info("[POST - jqGrid] : Obtener IberdokFiles");
-		return iberdokFileService.filter(filterIberdokFile, jqGridRequestDto,
-				false);
-	}
-
-	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
-	public @ResponseBody Filter filterAdd(
-			@RequestJsonBody(param = "filtro") Filter filtro) {
-		IberdokController.logger.info("[POST - jqGrid] : add filter");
-
-		return filterService.insert(filtro);
-	}
-
-	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
-	public @ResponseBody Filter filterDelete(
-			@RequestJsonBody(param = "filtro") Filter filtro) {
-		IberdokController.logger.info("[POST - jqGrid] : delete filter");
-		return filterService.delete(filtro);
-	}
-
-	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
-	public @ResponseBody Filter filterGetDefault(
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterDocument) {
-		IberdokController.logger.info("[get - jqGrid] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterDocument);
-	}
-
-	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
-	public @ResponseBody List<Filter> filterGetAll(
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterDocument) {
-		IberdokController.logger.info("[get - jqGrid] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterDocument);
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		IberdokController.logger.info("[POST - table] : Obtener IberdokFiles");
+		return iberdokFileService.filter(filterIberdokFile, tableRequestDto, false);
 	}
 
 	/**
@@ -209,21 +181,21 @@ public class IberdokController {
 	 *            Bean que contiene los parï¿½metros de filtrado a emplear.
 	 * @param searchIberdokFile
 	 *            Bean que contiene los parï¿½metros de bï¿½squeda a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parï¿½mtros de configuraciï¿½n propios del
 	 *            RUP_TABLE a aplicar en la bï¿½squeda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
 	 *         que se ajustan a los parï¿½metros de bï¿½squeda.
 	 * 
 	 */
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<IberdokFile>> search(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody(param = "search") IberdokFile searchIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		IberdokController.logger.info("[POST - search] : Buscar IberdokFiles");
-		return iberdokFileService.search(filterIberdokFile, searchIberdokFile,
-				jqGridRequestDto, false);
+		return iberdokFileService.search(filterIberdokFile, searchIberdokFile, tableRequestDto, false);
 	}
 
 	/**
@@ -231,26 +203,32 @@ public class IberdokController {
 	 * 
 	 * @param filterIberdokFile
 	 *            Bean que contiene los parï¿½metros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parï¿½mtros de configuraciï¿½n propios del
 	 *            RUP_TABLE a aplicar en la bï¿½squeda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		IberdokController.logger
 				.info("[POST - removeMultiple] : Eliminar multiples documentos iberdok");
-		this.iberdokFileService.removeMultiple(filterIberdokFile,
-				jqGridRequestDto, false);
+		this.iberdokFileService.removeMultiple(filterIberdokFile, tableRequestDto, false);
 		IberdokController.logger.info("All entities correctly deleted!");
 
-		return jqGridRequestDto.getMultiselection().getSelectedIds();
+		return tableRequestDto.getMultiselection().getSelectedIds();
 	}
 
 	// Iberdok
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
+			@UDALinkAllower(name = "getXhtml"),
+			@UDALinkAllower(name = "getPDF") })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
 	public String getIberdok(Model model) {
 
@@ -277,6 +255,38 @@ public class IberdokController {
 
 		model.addAttribute("randomForm", new RandomForm());
 		return "iberdok";
+	}
+	
+	@UDALink(name = "getTableEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String fixedMessage,
+			Model model) {
+		model.addAttribute("randomForm", new RandomForm());
+		model.addAttribute("actionType", actionType);
+		if (fixedMessage != null) {
+			model.addAttribute("fixedMessage", fixedMessage);
+		}
+		
+		Map<String,String> lang = new LinkedHashMap<String,String>();
+		lang.put("es", "Castellano");
+		lang.put("eu", "Euskera");
+		lang.put("en", "Inglés");
+		model.addAttribute("lang", lang);
+		
+		Map<String,String> modo = new LinkedHashMap<String,String>();
+		modo.put("1", "Crear documento");
+		modo.put("2", "Editar documento finalizado");
+		modo.put("7", "Editar documento no finalizado");
+		modo.put("8", "Copiar documento");
+		model.addAttribute("modo", modo);
+		
+		return "iberdokEditForm";
 	}
 
 	/** url demo para probar en local la url de finalizacion */
@@ -339,6 +349,7 @@ public class IberdokController {
 	 * 
 	 *
 	 */
+	@UDALink(name = "getXhtml")
 	@RequestMapping(value = "/getXhtml", method = RequestMethod.GET)
 	@ResponseBody
 	public String getXhtml(
@@ -365,6 +376,7 @@ public class IberdokController {
 	 * 
 	 *
 	 */
+	@UDALink(name = "getPDF")
 	@RequestMapping(value = "/getPdf", method = RequestMethod.GET)
 	@ResponseBody
 	public void getPDF(

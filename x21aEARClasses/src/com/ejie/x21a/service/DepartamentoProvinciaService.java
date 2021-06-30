@@ -15,8 +15,7 @@
 */
 package com.ejie.x21a.service;
 
-
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.DepartamentoProvincia;
@@ -56,10 +55,10 @@ public interface DepartamentoProvinciaService {
 	 * Finds a List of rows in the DepartamentoProvincia table.
 	 *
 	 * @param departamentoProvincia DepartamentoProvincia
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoProvincia, Pagination pagination);
+	List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoProvincia, TableRequestDto tableRequestDto);
 
 	/**
 	 * Counts rows in the DepartamentoProvincia table.
@@ -73,11 +72,11 @@ public interface DepartamentoProvinciaService {
 	 * Finds rows in the DepartamentoProvincia table using like.
 	 *
 	 * @param departamentoProvincia DepartamentoProvincia
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoProvincia, Pagination pagination, Boolean startsWith) ;
+	List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoProvincia, TableRequestDto tableRequestDto, Boolean startsWith) ;
 
 	/**
 	 * Counts rows in the DepartamentoProvincia table using like.
@@ -103,7 +102,4 @@ public interface DepartamentoProvinciaService {
 	 * @return 
 	 */	
 	void removeMultiple(List<DepartamentoProvincia> departamentoProvinciaList);
-    
 }
-
-

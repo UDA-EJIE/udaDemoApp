@@ -256,6 +256,8 @@ jQuery(function ($) {
         $('#listConfigHideAnimation')[0].disabled = true;
         $('#listConfigHideDelay')[0].disabled = true;
     }
+    
+    $('#listFilterFechaAlta').rup_date();
 
     //Generamos el componente
     $('#rup-list').rup_list(valor);

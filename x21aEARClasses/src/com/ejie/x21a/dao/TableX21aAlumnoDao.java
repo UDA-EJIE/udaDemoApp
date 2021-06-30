@@ -70,14 +70,13 @@ public interface TableX21aAlumnoDao {
 	 */
 	 
 	/**
-	 * Filter in the X21aAlumno table.
+	 * Removes rows from the X21aAlumno table.
 	 *
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
 	 void removeMultiple(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
-	
 	
     /**
      * Counts rows in the X21aAlumno table using like.

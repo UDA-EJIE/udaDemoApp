@@ -14,10 +14,7 @@
  * que establece la Licencia.
  */
 jQuery(function ($) {
-
     $('#usuario').rup_table({
-
-        primaryKey: 'id',
         loadOnStartUp: true,
         filter: {
             id: 'usuario_filter_form',
@@ -29,9 +26,6 @@ jQuery(function ($) {
             fillDataMethod: 'clientSide',
             validate: {
                 rules: {
-                    'id': {
-                        required: true
-                    },
                     'nombre': {
                         required: false
                     },
@@ -57,8 +51,7 @@ jQuery(function ($) {
                         required: false
                     }
                 }
-            },
-            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+            }
         },
         colReorder: {
             fixedColumnsLeft: 1

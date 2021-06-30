@@ -1,16 +1,16 @@
 /*
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2020 E.J.I.E., S.A.
  *
- * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+ * Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
  * Puede obtenerse una copia de la Licencia en
  *
  * http://ec.europa.eu/idabc/eupl.html
  *
- * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
- * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+ * SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+ * VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
 package com.ejie.x21a.control;
@@ -23,23 +23,25 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
@@ -84,11 +86,14 @@ import com.ejie.x21a.validation.group.AlumnoEjemplo1Validation;
 import com.ejie.x21a.validation.group.AlumnoEjemplo2Validation;
 import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
 import com.ejie.x38.json.MessageWriter;
 import com.ejie.x38.util.DateTimeManager;
+import com.ejie.x38.util.ResourceUtils;
 import com.ejie.x38.validation.ValidationManager;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -119,7 +124,7 @@ public class PatronesController {
     private UploadService uploadService;
 
 
-    @Resource
+    @javax.annotation.Resource
     private ReloadableResourceBundleMessageSource messageSource;
 
     @InitBinder
@@ -135,15 +140,42 @@ public class PatronesController {
     }
 
     //Accordion
+    @UDALink(name = "getAccordion", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete")})
     @RequestMapping(value = "accordion", method = RequestMethod.GET)
     public String getAccordion(Model model) {
         return "accordion";
     }
 
-    //Autocomplete
+    // Autocomplete
+    @UDALink(name = "getAutocomplete", linkTo = {
+    		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getComboRemote")
+    })
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
     public String getAutocomplete(Model model) {
         return "autocomplete";
+    }
+
+    // Autocomplete Enlazado
+    @UDALink(name = "getAutocompleteEnlazado", linkTo = {
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
+    })
+    @RequestMapping(value = "autocompleteEnlazado", method = RequestMethod.GET)
+    public String getAutocompleteEnlazado(Model model) {
+        return "autocompleteEnlazado";
+    }
+
+    // Autocomplete Enlazado Multiple
+    @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
+    		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    })
+    @RequestMapping(value = "autocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    public String getAutocompleteEnlazadoMultiple(Model model) {
+        return "autocompleteEnlazadoMultiple";
     }
 
     //Button (
@@ -159,30 +191,35 @@ public class PatronesController {
     }
 
     //Dialog
+    @UDALink(name = "getDialog", linkTo = {@UDALinkAllower(name = "dialogJSP")})
     @RequestMapping(value = "dialog", method = RequestMethod.GET)
     public String getDialog(Model model) {
         return "dialog";
     }
 
-    //Dialog (petición Ajax)
+    //Dialog (peticiÃ³n Ajax)
+    @UDALink(name = "dialogJSP")
     @RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
     public String dialogJSP(Model model) {
         return "dialogAjax";
     }
 
     //Combos
+    @UDALink(name = "getComboSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "comboSimple", method = RequestMethod.GET)
     public String getComboSimple(Model model) {
         return "combo";
     }
 
     //CombosEnlazado - simple
+    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad")})
     @RequestMapping(value = "comboEnlazadoSimple", method = RequestMethod.GET)
     public String getComboEnlazadoSimple(Model model) {
         return "comboEnlazado";
     }
 
     //CombosEnlazado - multiple
+    @UDALink(name = "getEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
     @RequestMapping(value = "comboEnlazadoMultiple", method = RequestMethod.GET)
     public String getEnlazadoMultiple(Model model) {
         return "comboEnlazadoMultiple";
@@ -208,6 +245,7 @@ public class PatronesController {
     }
 
     //Form
+    @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp" ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String getForm(Model model) {
 
@@ -260,10 +298,10 @@ public class PatronesController {
         return "message";
     }
 
-    //Progressbar
-    @RequestMapping(value = "progressbar", method = RequestMethod.GET)
-    public String getProgressbar(Model model) {
-        return "progressbar";
+    //ProgressBar
+    @RequestMapping(value = "progressBar", method = RequestMethod.GET)
+    public String getProgressBar(Model model) {
+        return "progressBar";
     }
 
     //Slider
@@ -285,6 +323,7 @@ public class PatronesController {
     }
 
     //Tabs con carga ajax
+    @UDALink(name = "getTabsAjax", linkTo = { @UDALinkAllower(name = "tabsContent"), @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content"), @UDALinkAllower(name = "tabSub"), @UDALinkAllower(name = "tabSubAna"), @UDALinkAllower(name = "tabsMaint"), @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
     @RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
     public String getTabsAjax(Model model) {
         return "tabsAjax";
@@ -297,7 +336,8 @@ public class PatronesController {
     }
 
     //Tabs Multiples mantenimientos
-    @RequestMapping(value = "maintTab", method = RequestMethod.GET)
+    @UDALink(name = "tabsMaint", linkTo = { @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
+    @RequestMapping(value = {"maintTab", "pruebaSub3Maint"}, method = RequestMethod.GET)
     public String getMaintTab(Model model) {
         return "maintTab";
     }
@@ -327,6 +367,7 @@ public class PatronesController {
     }
 
     //Upload
+    @UDALink(name = "getUpload", linkTo = { @UDALinkAllower(name = "addFormSimple"), @UDALinkAllower(name = "add", linkClass = UploadController.class), @UDALinkAllower(name = "addForm", linkClass = UploadController.class), @UDALinkAllower(name = "addFormSimple", linkClass = UploadController.class), @UDALinkAllower(name = "addPifFormFile", linkClass = UploadController.class), @UDALinkAllower(name = "downloadPif", linkClass = UploadController.class), @UDALinkAllower(name = "removePif", linkClass = UploadController.class), @UDALinkAllower(name = "remove", linkClass = UploadController.class), @UDALinkAllower(name = "download", linkClass = UploadController.class)})
     @RequestMapping(value = "upload", method = RequestMethod.GET)
     public String getUpload(Model model) {
         model.addAttribute("alumno", new Alumno());
@@ -375,6 +416,7 @@ public class PatronesController {
     }
 
     //Tree
+    @UDALink(name = "getTrees", linkTo = { @UDALinkAllower(name = "getTreeAjax" )})
     @RequestMapping(value = "trees", method = RequestMethod.GET)
     public String getTrees(Model model) {
         return "trees";
@@ -384,7 +426,8 @@ public class PatronesController {
     public String getTreeDragAndDrop(Model model) {
         return "treeDAD";
     }
-
+    
+    @UDALink(name = "getTreeAjax")
     @RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
     public Object getTreeAjax(Model model, HttpServletResponse response) {
 
@@ -461,16 +504,49 @@ public class PatronesController {
 
 
     //All (todos los patrones en una pagina)
+    @UDALink(name = "getAll", linkTo = { 
+    		@UDALinkAllower(name = "filter", linkClass = TableComarcaController.class),
+    		@UDALinkAllower(name = "getTableComarcaEditForm", linkClass = TableComarcaController.class),
+    		@UDALinkAllower(name = "getProvincias", linkClass = TableComarcaController.class),
+    		@UDALinkAllower(name = "getEnlazadoProvincia"),
+    		@UDALinkAllower(name = "getEnlazadoComarca"),
+    		@UDALinkAllower(name = "getRemoteComboGrupos"),
+    		@UDALinkAllower(name = "tabsContent"),
+    		@UDALinkAllower(name = "tabs2Content"),
+    		@UDALinkAllower(name = "tabs3Content"),
+    		@UDALinkAllower(name = "getAllDialog") })
     @RequestMapping(value = "all", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute("usuario", new Usuario());
+    	model.addAttribute("comarca", new Comarca());
         return "all";
     }
 
     //AllDialog (todos los patrones en un dialogo)
+    @UDALink(name = "getAllDialog", linkTo = { 
+    		@UDALinkAllower(name = "filter", linkClass = TableUsuarioController.class),
+    		@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
     @RequestMapping(value = "allDialog", method = RequestMethod.GET)
     public String getAllDialog(Model model) {
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("randomForm", new RandomForm());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "S�");
+		model.addAttribute("comboEjie", comboEjie);
+        
         return "allDialog";
     }
 
@@ -505,14 +581,15 @@ public class PatronesController {
 
     @Autowired
     private DepartamentoProvinciaService departamentoProvinciaService;
-
-
+    
+    
     /**
      * AUTOCOMPLETE REMOTO
      */
+    @UDALink(name = "getRemoteAutocomplete")
     @RequestMapping(value = "autocomplete/remote", method = RequestMethod.GET)
     public @ResponseBody
-    List<DepartamentoProvincia> getRemoteAutocomplete(
+    List<Resource<DepartamentoProvincia>> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
             @RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia) {
@@ -537,9 +614,139 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO
+     */
+    @UDALink(name = "getProvinciaEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Provincia>> getProvinciaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getComarcaEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoComarca", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Comarca>> getComarcaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(codProvincia);
+        
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(comarcaService.findAllLike(comarca, null, !c));
+    }
+    
+    @UDALink(name = "getLocalidadEnlazadoAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoLocalidad", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal codComarca) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Comarca comarca = new Comarca();
+        comarca.setCode(codComarca);
+        
+        Localidad localidad = new Localidad();
+        localidad.setComarca(comarca);
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(localidadService.findAllLike(localidad, null, !c));
+    }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO M�LTIPLE
+     */
+    @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Departamento>> getDepartamentoEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return ResourceUtils.fromListToResource(departamentoService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getProvinciaEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Provincia>> getProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
 
     /**
      * COMBO SIMPLE
@@ -552,35 +759,42 @@ public class PatronesController {
         int getDescEs();
     }
 
+    @UDALink(name = "getComboRemote")
     @Json(mixins = {@JsonMixin(target = Provincia.class, mixin = ProvinciaMixIn.class)})
     @RequestMapping(value = "comboSimple/remote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getComboRemote() {
+    List<Resource<Provincia>> getComboRemote() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
-
+    
+    @UDALink(name = "getRemoteComboGrupos")
     @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
     public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGrupos() {
-        return this.getRemoteComboGruposEnlazado(null);
+    List<Resource<HashMap<String, List<?>>>> getRemoteComboGrupos() {
+        return this.setRemoteComboGruposEnlazado(null);
     }
-
+    
+    @UDALink(name = "getRemoteComboGruposEnlazado")
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    	return this.setRemoteComboGruposEnlazado(provincia_code);
+    }
+    
+    private List<Resource<HashMap<String, List<?>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
 
-        //Retorno del método
+        //Retorno del mÃ©todo
         List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
 
-        //Nombres de los grupos según idioma
+        //Nombres de los grupos segÃºn idioma
         String provincia = null, comarca = null, localidad = null;
         if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
             provincia = "Provincia_eu";
@@ -635,30 +849,32 @@ public class PatronesController {
         }
         retorno.add(group);
 
-        return retorno;
+        return ResourceUtils.fromListToResource(retorno);
     }
 
 
     /**
      * COMBO ENLAZADO SIMPLE
      */
+    @UDALink(name = "getEnlazadoProvincia")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getEnlazadoProvincia() {
+    List<Resource<Provincia>> getEnlazadoProvincia() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
-
+    
+    @UDALink(name = "getEnlazadoComarca")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
     public @ResponseBody
-    List<Comarca> getEnlazadoComarca(
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    List<Resource<Comarca>> getEnlazadoComarca(
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
         Comarca comarca = new Comarca();
@@ -668,15 +884,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return comarcaService.findAll(comarca, null);
+        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
     }
 
+    @UDALink(name = "getEnlazadoLocalidad")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
     public @ResponseBody
-    List<Localidad> getEnlazadoLocalidad(
-            @RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
+    List<Resource<Localidad>> getEnlazadoLocalidad(
+            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal comarca_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
         Localidad localidad = new Localidad();
@@ -687,7 +904,7 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return localidadService.findAll(localidad, null);
+        return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
     }
 
 
@@ -695,37 +912,40 @@ public class PatronesController {
      * COMBO ENLAZADO MULTIPLE
      */
     /**
-     * Combos Enlazados (múltiple)
+     * Combos Enlazados (mÃºltiple)
      */
+    @UDALink(name = "getEnlMultDpto")
     @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Departamento> getEnlMultDpto() {
+    List<Resource<Departamento>> getEnlMultDpto() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoService.findAll(null, null);
+        return ResourceUtils.fromListToResource(departamentoService.findAll(null, null));
     }
 
+    @UDALink(name = "getEnlMultProv")
     @RequestMapping(value = "comboEnlazadoMultiple/provinciaRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<Provincia> getEnlMultProv() {
+    List<Resource<Provincia>> getEnlMultProv() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return provinciaService.findAll(null, null);
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
 
+    @UDALink(name = "getEnlMultDptoProv")
     @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
     public @ResponseBody
-    List<DepartamentoProvincia> getEnlMultDptoProv(
+    List<Resource<DepartamentoProvincia>> getEnlMultDptoProv(
             @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
             @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
         departamento.setCode(departamento_code);
         Provincia provincia = new Provincia();
@@ -739,15 +959,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return departamentoProvinciaService.findAll(departamentoProvincia, null);
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
     }
 
+    @UDALink(name = "getComarcaLocalidad")
     @RequestMapping(value = "comboEnlazado/comarcaLocalidad", method = RequestMethod.GET)
     public @ResponseBody
-    List<Localidad> getComarcaLocalidad(
+    List<Resource<Localidad>> getComarcaLocalidad(
             @RequestParam(value = "comarcaId", required = false) BigDecimal comarca_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Localidad localidad = new Localidad();
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
@@ -759,28 +980,44 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return localidadService.findAll(localidad, null);
+        return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
     }
 
     /**
      * TABS -> Contenidos
      */
+    @UDALink(name = "tabsContent")
     @RequestMapping(value = {"fragmento1", "fragmento2", "fragmento3"}, method = RequestMethod.GET)
     public String tabsContent(Model model) {
         return "tabsContent_1";
     }
-
+    
+    @UDALink(name = "tabs2Content")
     @RequestMapping(value = {"tab2Fragment"}, method = RequestMethod.GET)
     public String tabs2Content(Model model) {
         return "tabsContent_2";
     }
 
+    @UDALink(name = "tabs3Content")
     @RequestMapping(value = {"tab3Fragment"}, method = RequestMethod.GET)
     public String tabs3Content(Model model) {
         return "tabsContent_3";
     }
 
+    @UDALink(name = "tabSub")
+    @RequestMapping(value = "pruebaSub", method = RequestMethod.GET)
+    public String tabSub(Model model) {
+        return "tabsContent_1";
+    }
+    
+    @UDALink(name = "tabSubAna")
+    @RequestMapping(value = "pruebaSubAna", method = RequestMethod.GET)
+    public String tabSubAna(Model model) {
+        return "tabsContent_2";
+    }
+
     // rupCharts
+    @UDALink(name = "getCharts")
     @RequestMapping(value = "charts", method = RequestMethod.GET)
     public String getCharts(Model model) {
         return "charts";
@@ -888,6 +1125,7 @@ public class PatronesController {
      * MAINT (Usuarios) [form.jsp]
      */
     //Form http submit
+    @UDALink(name = "getFormHttp")
     @RequestMapping(value = "form/ejemplo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormHttp(@RequestBody Alumno alumno) {
@@ -896,7 +1134,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("El formulario se ha enviado correctamente.");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(new JSONObject(alumno).toString());
         messageWriter.endSubLevel();
@@ -921,6 +1159,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
+    @UDALink(name = "getFormmMultientidades")
     @RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidades(
@@ -931,7 +1170,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(alumno != null ? new JSONObject(alumno).toString() : "");
         messageWriter.endSubLevel();
@@ -941,6 +1180,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
+    @UDALink(name = "getFormmMultientidadesMismoTipo")
     @RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
     public @ResponseBody
     Object getFormmMultientidadesMismoTipo(
@@ -953,7 +1193,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(comarca1 != null ? new JSONObject(comarca1).toString() : "");
         messageWriter.endSubLevel();
@@ -962,7 +1202,8 @@ public class PatronesController {
         return messageWriter.toString();
 
     }
-
+    
+    @UDALink(name = "addFormSimple")
     @RequestMapping(value = "form/subidaArchivos", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     Object addFormSimple(
@@ -1104,7 +1345,7 @@ public class PatronesController {
 
 
     /**
-     * Método para obtener la vista el calendarios
+     * MÃ©todo para obtener la vista el calendarios
      *
      * @param model el modelo.
      * @return string la view.
@@ -1115,7 +1356,7 @@ public class PatronesController {
     }
 
     /**
-     * Método para obtener la vista con dos calendarios
+     * MÃ©todo para obtener la vista con dos calendarios
      *
      * @param model el modelo.
      * @return string la view.

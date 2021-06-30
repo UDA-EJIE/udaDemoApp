@@ -50,6 +50,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.service.UploadService;
 import com.ejie.x21a.util.PifUtils;
+import com.ejie.x38.hdiv.annotation.UDALink;
 
 /**
  * UploadController
@@ -78,7 +79,8 @@ public class UploadController   {
 		binder.registerCustomEditor(byte[].class,new ByteArrayMultipartFileEditor());
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@UDALink(name = "add")
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String, Object>> add(@RequestParam(value="filename", required=false) String filename ,@RequestParam(value="nombre", required=false) String nombre,@RequestParam(value="files[]", required=false) MultipartFile file, HttpServletResponse response, HttpServletRequest request) {
 		
 		if(!file.isEmpty()){
@@ -91,6 +93,7 @@ public class UploadController   {
 		return filesMetaInfo;
 	}
 	
+	@UDALink(name = "addForm")
 	@RequestMapping(value="form", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String,Object>> addForm(@RequestParam(value="nombre", required=false) String nombre,
 			@RequestParam(value="apellido1", required=false) String apellido1,
@@ -110,6 +113,7 @@ public class UploadController   {
 		
 	}
 	
+	@UDALink(name = "addFormSimple")
 	@RequestMapping(value="formSimple", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String,Object>> addFormSimple(@RequestParam(value="nombre", required=false) String nombre,
 			@ModelAttribute UploadBean uploadBean,
@@ -195,6 +199,7 @@ public class UploadController   {
 //		return filesMetaInfo;
 //	}
 	
+	@UDALink(name = "addPifFormFile")
 	@RequestMapping(value="pifForm", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String,Object>> addPifFormFile(
 			@RequestParam(value="nombre", required=false) String nombre,
@@ -214,6 +219,7 @@ public class UploadController   {
 		return filesMetaInfo;
 	}
 	
+	@UDALink(name = "downloadPif")
 	@RequestMapping(value="pifForm", method = RequestMethod.GET)
 	@ResponseStatus( HttpStatus.OK )
 	 public ModelAndView downloadPif(@RequestParam(value="fileName", required=true) String fileName,
@@ -231,6 +237,7 @@ public class UploadController   {
 	        return null;
 	 }
 	
+	@UDALink(name = "removePif")
 	@RequestMapping(value="pifForm", method = RequestMethod.DELETE)
 	@ResponseStatus( HttpStatus.OK )
 	 public void removePif(@RequestParam(value="fileName", required=true) String fileName,
@@ -247,7 +254,7 @@ public class UploadController   {
         
 	}
 	
-	
+	@UDALink(name = "remove")
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseStatus( HttpStatus.OK )
 	 public @ResponseBody Map<String, Object> remove(@RequestParam(value="fileName", required=true) String fileName,
@@ -264,7 +271,7 @@ public class UploadController   {
         
 	}
 	
-	
+	@UDALink(name = "download")
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus( HttpStatus.OK )
 	 public ModelAndView download(@RequestParam(value="fileName", required=true) String fileName,
@@ -308,4 +315,3 @@ public class UploadController   {
 	}
 	
 }	
-	

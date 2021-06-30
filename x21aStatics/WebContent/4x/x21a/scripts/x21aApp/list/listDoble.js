@@ -465,6 +465,9 @@ jQuery(function ($) {
         $('#listConfigRightHideAnimation')[0].disabled = true;
         $('#listConfigRightHideDelay')[0].disabled = true;
     }
+    
+    $('#listFilterFechaAltaLeft').rup_date();
+    $('#listFilterFechaAltaRight').rup_date();
 
     //Generamos el componente
     $('#rup-list-left').rup_list(valorLeft);

@@ -1,5 +1,6 @@
 package com.ejie.x21a.model;
 
+import org.hdiv.services.SecureIdentifiable;
 
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
@@ -15,33 +16,33 @@ import java.util.Date;
  * @author UDA
  */
 
-public class X21aAlumno  implements java.io.Serializable {
+public class X21aAlumno implements java.io.Serializable, SecureIdentifiable<BigDecimal> {
 
 	private static final long serialVersionUID = 1L;
-            private BigDecimal id;
-            private String usuario;
-            private String password;
-            private String nombre;
-            private String apellido1;
-            private String apellido2;
-            private Date fechaNacimiento;
-            private String telefono;
-            private String email;
-            private String idioma;
-            private String paisId;
-            private String provinciaId;
-            private Long localidadId;
-            private String comarcaId;
-            private String municipioId;
-            private Long calleId;
-            private Blob imagen;
-            private String sexo;
-            private String dni;
-            private String autonomiaId;
-            private String nombreImagen;
-            private String calle;
-            private String direccion;
-            private BigDecimal importeMatricula;
+	private BigDecimal id;
+	private String usuario;
+	private String password;
+	private String nombre;
+	private String apellido1;
+	private String apellido2;
+	private Date fechaNacimiento;
+	private String telefono;
+	private String email;
+	private String idioma;
+	private String paisId;
+	private String provinciaId;
+	private Long localidadId;
+	private String comarcaId;
+	private String municipioId;
+	private Long calleId;
+	private Blob imagen;
+	private String sexo;
+	private String dni;
+	private String autonomiaId;
+	private String nombreImagen;
+	private String calle;
+	private String direccion;
+	private BigDecimal importeMatricula;
 
 	/** 
 	 * Method 'X21aAlumno'.

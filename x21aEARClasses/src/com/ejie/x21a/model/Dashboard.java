@@ -1,17 +1,15 @@
 package com.ejie.x21a.model;
 
-public class Dashboard {
+import org.hdiv.services.SecureIdentifiable;
 
+public class Dashboard implements SecureIdentifiable<String> {
+	
 	private String id;
 	
 	private String nombre;
 	
 	private String serializedArray;
 
-	
-	
-	
-	
 	public Dashboard() {
 		super();
 		// TODO Auto-generated constructor stub

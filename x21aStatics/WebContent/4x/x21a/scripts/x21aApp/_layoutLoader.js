@@ -21,7 +21,6 @@ jQuery(function($) {
     
     //rastro de migas
     jQuery('#x21aAppWar_migas').rup_breadCrumb({
-        logOutUrl: '/x21aAppWar/logout',
         breadCrumb: {
             'patrones' : {
                 //Literal
@@ -36,6 +35,8 @@ jQuery(function($) {
                 'autocomplete' : { 'i18nCaption' : 'autocomplete' }, 
                 'button' : { 'i18nCaption' : 'button' }, 
                 'toolbar' : { 'i18nCaption' : 'toolbar' },
+                'page' : { 'i18nCaption' : 'calendarioSimple' },
+                'pageDouble' : { 'i18nCaption' : 'calendarioDoble' },
                 'comboSimple' : {'i18nCaption':'comboSimple' },
                 'comboEnlazadoSimple' : { 'i18nCaption':'comboEnlazadoSimple' },
                 'comboEnlazadoMultiple' : { 'i18nCaption':'comboEnlazadoMulti' },
@@ -48,11 +49,11 @@ jQuery(function($) {
                 'form' : { 'i18nCaption' : 'form' },
                 'charts' : { 'i18nCaption' : 'charts' },
                 'time' : { 'i18nCaption' : 'time' },
+                'configurable' : { 'i18nCaption' : 'listaConfigurable' },
+                'doble' : { 'i18nCaption' : 'listaDoble' },
                 'message' : { 'i18nCaption' : 'message' },
-                'menu' : {'i18nCaption':'menu'},	
-                'menuVertical' : {'i18nCaption':'menuVertical'},
-                'menuMixto' : {'i18nCaption':'menuMixto'},
                 'contextMenu' : { 'i18nCaption' : 'contextMenu' },
+                'progressBar' : { 'i18nCaption' : 'progressBar' },
                 'tabsStatic' : {'i18nCaption':'tabsStatic'},
                 'tabsAjax' : {'i18nCaption':'tabsAjax'},
                 'tabsMixto' : {'i18nCaption':'tabsMixto'},
@@ -60,7 +61,6 @@ jQuery(function($) {
                 'maintTab' : {'i18nCaption':'maintTab'},
                 'validateRules' : { 'i18nCaption' : 'validateRules' },
                 'spinner' : { 'i18nCaption' : 'spinner' },
-                'grid' : { 'i18nCaption' : 'grid' },
                 'tooltip' : { 'i18nCaption' : 'tooltip' },
                 'upload' : { 'i18nCaption' : 'upload' },
                 'validate' : { 'i18nCaption' : 'validate' },
@@ -69,28 +69,6 @@ jQuery(function($) {
                 'wizard_jspInclude' : {'i18nCaption':'wizardC' },
                 'wizard_jstlImport' : {'i18nCaption':'wizardD' },
                 'wizard_dinamico' : {'i18nCaption':'wizardE' },
-                'lista' : {
-                    //Literal
-                    'i18nCaption' : 'lista',
-                    //Elementos (url)
-                    'configurable' : { 'i18nCaption' : 'listaConfigurable' },
-                    'doble' : { 'i18nCaption' : 'listaDoble' },
-                    'subLevel':[
-                        {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/lista/configurable' },
-                        {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/lista/doble' }
-                    ]
-                },
-                'calendar' : {
-                    //Literal
-                    'i18nCaption' : 'calendario',
-                    //Elementos (url)
-                    'page' : { 'i18nCaption' : 'calendarioSimple' },
-                    'pageDouble' : { 'i18nCaption' : 'calendarioDoble' },
-                    'subLevel':[
-                        {'i18nCaption': 'calendarioSimple', 'url': '/x21aAppWar/calendar/page' },
-                        {'i18nCaption': 'calendarioDoble', 'url': '/x21aAppWar/calendar/pageDouble' }
-                    ]
-                },
                 //Submenu
                 'subLevel':[
                     {'i18nCaption':'all', 'url': '/x21aAppWar/patrones/all' },
@@ -100,8 +78,11 @@ jQuery(function($) {
                     {'i18nCaption':'trees', 'url': '/x21aAppWar/patrones/trees' },
                     //	                {"i18nCaption":"treesFormats", "url": "/x21aAppWar/patrones/trees" },
                     {'i18nCaption':'autocomplete', 'url': '/x21aAppWar/patrones/autocomplete' },
+                    {'i18nCaption':'progressBar', 'url': '/x21aAppWar/patrones/progressBar' },
                     {'i18nCaption':'button', 'url': '/x21aAppWar/patrones/button' },
                     {'i18nCaption':'toolbar', 'url': '/x21aAppWar/patrones/toolbar' },
+                    {'i18nCaption':'calendarioSimple', 'url': '/x21aAppWar/patrones/calendar/page' },
+                    {'i18nCaption':'calendarioDoble', 'url': '/x21aAppWar/patrones/calendar/pageDouble' },
                     {'i18nCaption':'comboSimple', 'url': '/x21aAppWar/patrones/comboSimple', 'newWindow': true },
                     {'i18nCaption':'comboEnlazadoSimple', 'url': '/x21aAppWar/patrones/comboEnlazadoSimple' },
                     {'i18nCaption':'comboEnlazadoMulti', 'url': '/x21aAppWar/patrones/comboEnlazadoMultiple' },
@@ -114,11 +95,10 @@ jQuery(function($) {
                     {'i18nCaption':'form', 'url': '/x21aAppWar/patrones/form' },
                     {'i18nCaption':'charts', 'url': '/x21aAppWar/patrones/charts' },
                     {'i18nCaption':'time', 'url': '/x21aAppWar/patrones/time' },
+                    {'i18nCaption':'listaConfigurable', 'url': '/x21aAppWar/patrones/lista/configurable' },
+                    {'i18nCaption':'listaDoble', 'url': '/x21aAppWar/patrones/lista/doble' },
                     {'i18nCaption':'message', 'url': '/x21aAppWar/patrones/message' },
                     {'i18nCaption':'contextMenu', 'url': '/x21aAppWar/patrones/contextMenu' },
-                    {'i18nCaption':'menu', 'url': '/x21aAppWar/patrones/menu' },
-                    {'i18nCaption':'menuVertical', 'url': '/x21aAppWar/patrones/menuVertical' },
-                    {'i18nCaption':'menuMixto', 'url': '/x21aAppWar/patrones/menuMixto' },
                     {'i18nCaption':'tabsStatic', 'url': '/x21aAppWar/patrones/tabsStatic' },
                     {'i18nCaption':'tabsAjax', 'url': '/x21aAppWar/patrones/tabsAjax' },
                     {'i18nCaption':'tabsMixto', 'url': '/x21aAppWar/patrones/tabsMixto' },
@@ -126,7 +106,6 @@ jQuery(function($) {
                     {'i18nCaption':'maintTab', 'url': '/x21aAppWar/patrones/maintTab' },
                     {'i18nCaption':'validateRules', 'url': '/x21aAppWar/patrones/validateRules' },
                     {'i18nCaption':'spinner', 'url': '/x21aAppWar/patrones/spinner' },
-                    {'i18nCaption':'grid', 'url': '/x21aAppWar/patrones/grid' },
                     {'i18nCaption':'tooltip', 'url': '/x21aAppWar/patrones/tooltip' },
                     {'i18nCaption':'upload', 'url': '/x21aAppWar/patrones/upload' },
                     {'i18nCaption':'validate', 'url': '/x21aAppWar/patrones/validate' },
@@ -134,11 +113,7 @@ jQuery(function($) {
                     {'i18nCaption':'wizardB', 'url': '/x21aAppWar/patrones/wizard_includeFile' },
                     {'i18nCaption':'wizardC', 'url': '/x21aAppWar/patrones/wizard_jspInclude' },
                     {'i18nCaption':'wizardD', 'url': '/x21aAppWar/patrones/wizard_jstlImport' },
-                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' },
-                    {'i18nCaption': 'calendarioSimple', 'url': '/x21aAppWar/calendar/page' },
-                    {'i18nCaption': 'calendarioDoble', 'url': '/x21aAppWar/calendar/pageDouble' },
-                    {'i18nCaption': 'listaConfigurable', 'url': '/x21aAppWar/lista/configurable' },
-                    {'i18nCaption': 'listaDoble', 'url': '/x21aAppWar/lista/doble' }
+                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' }
                 ]
             },
             'table' : {
@@ -147,16 +122,19 @@ jQuery(function($) {
                 //Elementos (url)
                 'configurable' : { 'i18nCaption' : 'tableConfigurable' },
                 'double' : { 'i18nCaption' : 'tableDouble' },
+                'doubleMultipk' : { 'i18nCaption' : 'tableDoubleMultipk' },
                 'multipk' : { 'i18nCaption' : 'tableMultipk' },
                 'masterDetail' : { 'i18nCaption' : 'tableMasterDetail' },
+                'masterDialog' : { 'i18nCaption' : 'tableMasterDialog' },
                 'tableDialog' : { 'i18nCaption' : 'tableDialog' },
                 'dynamicColumns' : { 'i18nCaption' : 'tableDynamicColumns' },
-                /* METER LA TABLA EN DIALOGO */
                 'subLevel':[
                     {'i18nCaption': 'tableConfigurable', 'url': '/x21aAppWar/table/configurable' },
                     {'i18nCaption': 'tableDouble', 'url': '/x21aAppWar/table/double' },
+                    {'i18nCaption': 'tableDoubleMultipk', 'url': '/x21aAppWar/table/multipk/double' },
                     {'i18nCaption': 'tableMultipk', 'url': '/x21aAppWar/table/multipk' },
                     {'i18nCaption': 'tableMasterDetail', 'url': '/x21aAppWar/table/masterDetail' },
+                    {'i18nCaption': 'tableMasterDialog', 'url': '/x21aAppWar/table/masterDialog' },
                     {'i18nCaption': 'tableDialog', 'url': '/x21aAppWar/table/tableDialog' },
                     {'i18nCaption': 'tableDynamicColumns', 'url': '/x21aAppWar/table/dynamicColumns' }
                 ]
@@ -217,9 +195,15 @@ jQuery(function($) {
             },
             'experimental' : {
                 //Literal
-                'i18nCaption' : 'experimental'
+                'i18nCaption' : 'experimental',
                 //Elementos (url)
-
+                'logLevel' : {'i18nCaption' : 'logLevel' },
+                //'iberdok' : {'i18nCaption' : 'iberdok' },
+                //Submenu
+                'subLevel':[
+                    {'i18nCaption':'logLevel', 'url': '/x21aAppWar/experimental/logLevel' }/*,
+                    {'i18nCaption':'iberdok', 'url': '/x21aAppWar/iberdok/view' }*/
+                ]
             },
             'integracion' : {
                 //Literal

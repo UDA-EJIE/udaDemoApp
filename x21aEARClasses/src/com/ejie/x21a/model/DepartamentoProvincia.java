@@ -18,6 +18,9 @@ package com.ejie.x21a.model;
 
 import java.math.BigDecimal;
 
+import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.TrustAssertion;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -25,15 +28,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author UDA
  */
 
-public class DepartamentoProvincia  implements java.io.Serializable {
+public class DepartamentoProvincia implements java.io.Serializable, SecureIdContainer {
 
-    private static final long serialVersionUID = 1L;
-         private BigDecimal code;
-         private Provincia provincia;
-         private Departamento departamento;
-         private String descEs;
-         private String descEu;
-         private String css;
+  private static final long serialVersionUID = 1L;
+  @TrustAssertion(idFor = DepartamentoProvincia.class)
+  private BigDecimal code;
+  private Provincia provincia;
+  private Departamento departamento;
+  private String descEs;
+  private String descEu;
+  private String css;
 
 /** Method 'DepartamentoProvincia'.
 *

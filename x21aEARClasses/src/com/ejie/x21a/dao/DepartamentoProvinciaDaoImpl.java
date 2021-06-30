@@ -17,7 +17,9 @@ package com.ejie.x21a.dao;
 
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.Provincia;
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,7 +44,11 @@ import com.ejie.x21a.model.DepartamentoProvincia;
 @Repository
 @Transactional
 public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"CODE", "DESCES", "DESCEU", "CSS", "ProvinciaCODE", "ProvinciaDESCES", "ProvinciaDESCEU", "ProvinciaCSS", "DepartamentoCODE", "DepartamentoDESCES", "DepartamentoDESCEU", "DepartamentoCSS"};
+	
     private JdbcTemplate jdbcTemplate;
+	
 	private RowMapper<DepartamentoProvincia> rwMap = new RowMapper<DepartamentoProvincia>() {
 		public DepartamentoProvincia mapRow(ResultSet resultSet, int rowNum) throws SQLException {
            return new DepartamentoProvincia(
@@ -129,11 +135,11 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
     * Finds a List of rows in the DepartamentoProvincia table.
     * 
     * @param departamentoprovincia DepartamentoProvincia
-    * @param pagination Pagination
+    * @param tableRequestDto TableRequestDto
     * @return List 
     */
 	@Transactional (readOnly = true)
-    public List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoprovincia, Pagination pagination) {
+    public List<DepartamentoProvincia> findAll(DepartamentoProvincia departamentoprovincia, TableRequestDto tableRequestDto) {
 		StringBuilder query = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESCES,t1.DESC_EU DESCEU,t1.CSS CSS,t2.CODE PROVINCIACODE,t2.DESC_ES PROVINCIADESCES,t2.DESC_EU PROVINCIADESCEU,t2.CSS PROVINCIACSS,t3.CODE DEPARTAMENTOCODE,t3.DESC_ES DEPARTAMENTODESCES,t3.DESC_EU DEPARTAMENTODESCEU,t3.CSS DEPARTAMENTOCSS "); 
 		query.append("FROM DEPARTAMENTO_PROVINCIA t1 ,PROVINCIA t2 ,DEPARTAMENTO t3 ");
 		
@@ -145,8 +151,8 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (pagination != null) {
-			query = pagination.getPaginationQuery(query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, DepartamentoProvinciaDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<DepartamentoProvincia>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());
@@ -177,12 +183,12 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 	 * Finds rows in the DepartamentoProvincia table using like.
      * 
      * @param departamentoprovincia DepartamentoProvincia
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List 
      */
 	@Transactional (readOnly = true)
-    public List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoprovincia, Pagination pagination, Boolean startsWith) {
+    public List<DepartamentoProvincia> findAllLike(DepartamentoProvincia departamentoprovincia, TableRequestDto tableRequestDto, Boolean startsWith) {
 		StringBuilder query = new StringBuilder("SELECT  t1.CODE CODE,t1.DESC_ES DESCES,t1.DESC_EU DESCEU,t1.CSS CSS,t2.CODE PROVINCIACODE,t2.DESC_ES PROVINCIADESCES,t2.DESC_EU PROVINCIADESCEU,t2.CSS PROVINCIACSS,t3.CODE DEPARTAMENTOCODE,t3.DESC_ES DEPARTAMENTODESCES,t3.DESC_EU DEPARTAMENTODESCEU,t3.CSS DEPARTAMENTOCSS "); 
         query.append("FROM DEPARTAMENTO_PROVINCIA t1 ,PROVINCIA t2 ,DEPARTAMENTO t3 ");
       	
@@ -194,8 +200,8 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (pagination != null) {
-			query = pagination.getPaginationQuery(query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, DepartamentoProvinciaDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		
 		return (List<DepartamentoProvincia>) this.jdbcTemplate.query(query.toString(), this.rwMap, params.toArray());

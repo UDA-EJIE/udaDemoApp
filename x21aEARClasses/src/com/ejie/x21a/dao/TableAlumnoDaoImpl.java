@@ -40,8 +40,8 @@ import com.ejie.x21a.model.NoraCalle;
 import com.ejie.x21a.model.NoraMunicipio;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.NoraProvincia;
-import com.ejie.x38.dto.JQGridManager;
-import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -50,14 +50,16 @@ import com.ejie.x38.dto.TableRowDto;
  * @author UDA
  */
 
-// Prueba de tildes áéíóú
+// Prueba de tildes Ã¡Ã©Ã­Ã³Ãº
 
 @Repository
 @Transactional
 public class TableAlumnoDaoImpl implements TableAlumnoDao {
-
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "USUARIO" , "PASSWORD", "NOMBRE", "APELLIDO1", "APELLIDO2", "DNI", "FECHA_NACIMIENTO", "TELEFONO", "EMAIL", "IDIOMA", "SEXO", "NOMBRE_IMAGEN", "PAIS_ID" ,"AUTONOMIA_ID", "PROVINCIA_ID", "MUNICIPIO_ID", "CALLE_ID", "IMAGEN" ,"DIRECCION", "IMPORTE_MATRICULA"};
+		
 	private JdbcTemplate jdbcTemplate;
-
+	
 	@Autowired
 	private LobHandler lobHandler;
 
@@ -378,12 +380,12 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * 
 	 * @param alumno
 	 *            Alumno
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
-	public List<Alumno> findAll(Alumno alumno, JQGridRequestDto jqGridRequestDto) {
+	public List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto) {
 		StringBuffer where = new StringBuffer(3000);
 		List<Object> params = new ArrayList<Object>();
 		where.append(" WHERE t1.MUNICIPIO_ID=t2.ID and T1.PROVINCIA_ID=t2.PROVINCIA_ID	");
@@ -422,10 +424,11 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		}
 
 		query.append(where);
-
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
+		
 		return (List<Alumno>) this.jdbcTemplate.query(query.toString(),
 				findAllRowMapper, params.toArray());
 	}
@@ -502,15 +505,14 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * 
 	 * @param alumno
 	 *            Alumno
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @param startsWith
 	 *            Boolean
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
-	public List<Alumno> findAllLike(Alumno alumno, JQGridRequestDto jqGridRequestDto,
-			Boolean startsWith) {
+	public List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto,	Boolean startsWith) {
 		List<Object> params = new ArrayList<Object>();
 
 //		StringBuilder query = new StringBuilder(
@@ -523,11 +525,11 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 
 		query.append(this.getFindAllLikeWhere(alumno, params, startsWith));
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
-		return (List<Alumno>) this.jdbcTemplate.query(query.toString(),
-				findAllRowMapper, params.toArray());
+		
+		return (List<Alumno>) this.jdbcTemplate.query(query.toString(), findAllRowMapper, params.toArray());
 	}
 
 	@Override
@@ -618,24 +620,20 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	}
 
 	@Override
-	public void removeMultiple(Alumno filterAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public void removeMultiple(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<TableRowDto<Alumno>> reorderSelection(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<Alumno>> reorderSelection(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<TableRowDto<Alumno>> search(Alumno filterParams, Alumno searchParams, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<Alumno>> search(Alumno filterParams, Alumno searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	
-	
-	
+	}	
 }

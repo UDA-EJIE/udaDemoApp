@@ -16,7 +16,7 @@
 
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.NoraPais;
@@ -42,10 +42,10 @@ public interface NoraPaisDao {
      * Finds a List of rows in the NoraPais table.
      *
      * @param pais NoraPais
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
-    List<NoraPais> findAll(NoraPais pais, Pagination pagination);
+    List<NoraPais> findAll(NoraPais pais, TableRequestDto tableRequestDto);
 
     /**
      * Counts rows in the NoraPais table.
@@ -59,10 +59,10 @@ public interface NoraPaisDao {
      * Finds rows in the NoraPais table using like.
      *
      * @param pais NoraPais
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
-	List<NoraPais> findAllLike(NoraPais pais, Pagination pagination, Boolean startsWith);
+	List<NoraPais> findAllLike(NoraPais pais, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 

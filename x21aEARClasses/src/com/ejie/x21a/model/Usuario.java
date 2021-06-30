@@ -19,15 +19,12 @@ package com.ejie.x21a.model;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.groups.Default;
 
-
-
+import org.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ejie.x21a.validation.group.UsuarioEditValidation;
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,37 +36,35 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class Usuario  implements java.io.Serializable {
+public class Usuario implements java.io.Serializable, SecureIdentifiable<String> {
 
 	private static final long serialVersionUID = 1L;
             
-			@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
-			@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
-            private String id;
-            @NotBlank(message="validacion.required")
-            @Length(max=25, message="validacion.maxLength")
-            private String nombre;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido1;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido2;
-//            @NotBlank(message="validacion.required")
-            private String ejie;
-            private String tipo;
-            private String subtipo;
-            @NotNull(message="validacion.required")
-            private Date fechaAlta;
-            private Date fechaBaja;
-            private Date fechaModif;
-//            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
-            private Provincia provincia;
-            private String rol;
-            private String idPadre;
-            private MultipartFile imagenAlumno;
+	private String id;
+	@NotBlank(message="validacion.required")
+	@Length(max=25, message="validacion.maxLength")
+	private String nombre;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido1;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido2;
+	//@NotBlank(message="validacion.required")
+	private String ejie;
+	private String tipo;
+	private String subtipo;
+	@NotNull(message="validacion.required")
+	private Date fechaAlta;
+	private Date fechaBaja;
+	private Date fechaModif;
+	//private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
+	private Provincia provincia;
+	private String rol;
+	private String idPadre;
+	private MultipartFile imagenAlumno;
 
 	public MultipartFile getImagenAlumno() {
-				return imagenAlumno;
-			}
+		return imagenAlumno;
+	}
 
 	@JsonIgnore
 	public void setImagenAlumno(MultipartFile imagenAlumno) {
@@ -104,7 +99,7 @@ public class Usuario  implements java.io.Serializable {
         this(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, null);
     }
     
-    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -114,13 +109,34 @@ public class Usuario  implements java.io.Serializable {
         this.fechaBaja = fechaBaja;
         this.rol = rol;
     }
+    
+    public Usuario(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+    }
+    
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol, Provincia provincia) {	
+    	this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+        this.provincia = provincia;
+    }
 
     /**
 	 * Method 'getId'.
 	 *
 	 * @return String
 	 */
-    @JsonSerialize()
+    @Override
     public String getId() {
 		return this.id;
 	}

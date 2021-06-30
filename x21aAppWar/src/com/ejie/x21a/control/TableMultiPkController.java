@@ -1,10 +1,10 @@
 package com.ejie.x21a.control;
 
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -32,8 +34,11 @@ import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableMultiPkService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
-import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.util.ResourceUtils;
 
 
 /**
@@ -43,7 +48,7 @@ import com.ejie.x38.dto.TableRowDto;
  
 @Controller
 @RequestMapping (value = "/table/multipk")
-public class TableMultiPkController  {
+public class TableMultiPkController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TableMultiPkController.class);
 
@@ -58,21 +63,23 @@ public class TableMultiPkController  {
 	/**
 	 * Operacion CRUD Read. Devuelve el bean correspondiente al identificador indicado.
 	 * 
-	 * @param ida BigDecimal
-	 * @param idb BigDecimal
+	 * @param id String
 	 * @return MultiPk 
 	 *            Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/{ida}/{idb}", method = RequestMethod.GET)
-	public @ResponseBody MultiPk get(@PathVariable BigDecimal ida, @PathVariable BigDecimal idb) {
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public @ResponseBody Resource<MultiPk> get(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
-		multiPk.setIda(ida);
-		multiPk.setIdb(idb);
+		multiPk.setId(id);
         multiPk = this.multiPkService.find(multiPk);
         TableMultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
-        return multiPk;
+        return new Resource<MultiPk>(multiPk);
 	}
 	
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
@@ -80,12 +87,46 @@ public class TableMultiPkController  {
 		return "tableMultipk";
 	}
 	
+	@UDALink(name = "getFiltroSimpleDoble", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(method = RequestMethod.GET,value = "/double")
 	public String getFiltroSimpleDoble (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
 		model.addAttribute("usuario", new Usuario());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("administrador", "Administrador");
+		comboRol.put("desarrollador", "Desarrollador");
+		comboRol.put("espectador", "Espectador");
+		comboRol.put("informador", "Informador");
+		comboRol.put("manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "Sí");
+		model.addAttribute("comboEjie", comboEjie);
+		
 		return "tableMultipkDoble";
+	}
+	
+	@UDALink(name = "getTableEditForm", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter")})
+	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	public String getTableEditForm (@RequestParam String actionType, Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("actionType", actionType);
+		
+		return "tableMultiPkEditForm";
 	}
 
 	/**
@@ -98,10 +139,11 @@ public class TableMultiPkController  {
 	 * @return List<MultiPk> 
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
+	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public @ResponseBody List<MultiPk> getAll(@ModelAttribute MultiPk filterMultiPk) {
+	public @ResponseBody List<Resource<MultiPk>> getAll(@ModelAttribute MultiPk filterMultiPk) {
 		TableMultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
-	    return this.multiPkService.findAll(filterMultiPk, null);
+	    return ResourceUtils.fromListToResource(this.multiPkService.findAll(filterMultiPk, null));
 	}
 
 	/**
@@ -112,11 +154,12 @@ public class TableMultiPkController  {
 	 * @return MultiPk 
 	 *            Bean resultante de la modificacion.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody MultiPk edit(@RequestBody MultiPk multiPk) {		
+	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public @ResponseBody Resource<MultiPk> edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
 		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
-        return multiPkAux;
+        return new Resource<MultiPk>(multiPkAux);
     }
 
 	/**
@@ -129,32 +172,32 @@ public class TableMultiPkController  {
 	 * @return MultiPk
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody MultiPk add(@RequestBody MultiPk multiPk) {		
+	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public @ResponseBody Resource<MultiPk> add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
         TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
-    	return multiPkAux;
+        return new Resource<MultiPk>(multiPkAux);
 	}
 
 	/**
 	 * Operacion CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 *
-	 * @param ida BigDecimal
-	 * @param idb BigDecimal
+	 * @param id String
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return MultiPk
 	 *            Bean eliminado.
 	 */
-	@RequestMapping(value = "/{ida}/{idb}", method = RequestMethod.DELETE)
+	@UDALink(name = "remove")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody MultiPk remove(@PathVariable BigDecimal ida, @PathVariable BigDecimal idb) {
+    public @ResponseBody Resource<MultiPk> remove(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
-        multiPk.setIda(ida);
-        multiPk.setIdb(idb);
+        multiPk.setId(id);
         this.multiPkService.remove(multiPk);
        	TableMultiPkController.logger.info("[DELETE] : MultiPk borrado correctamente");
-       	return multiPk;
+       	return new Resource<MultiPk>(multiPk);
     }
     
 	
@@ -169,6 +212,7 @@ public class TableMultiPkController  {
 	 * @param model Model
 	 * @return String
 	 */
+	@UDALink(name = "getFormEdit", linkTo = { @UDALinkAllower(name = "deleteAll") })
 	@RequestMapping(value = "/maint", method = RequestMethod.GET)
 	public String getFormEdit(Model model) {
 		TableMultiPkController.logger.info("[GET - View] : multipk");
@@ -187,16 +231,28 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
+	@UDALink(name = "filter", linkTo = { 
+			@UDALinkAllower(name = "get"), 
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "filter"), 
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<MultiPk> filter(
+	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks");
 		return this.multiPkService.filter(filterMultiPk, tableRequestDto, false);
 	}
 	
+	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter2"), @UDALinkAllower(name = "deleteAll")})
 	@RequestMapping(value = "/filter2", method = RequestMethod.POST)
-	public @ResponseBody TableResponseDto<MultiPk> filter2() {
+	public @ResponseBody TableResourceResponseDto<MultiPk> filter2() {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
 		return this.multiPkService.filter(new MultiPk(), new TableRequestDto(), false);
 	}
@@ -215,6 +271,7 @@ public class TableMultiPkController  {
 	 *            Dto que contiene el resultado de la busqueda realizada por el
 	 *            componente RUP_TABLE. 
 	 */
+	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public @ResponseBody List<TableRowDto<MultiPk>> search(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -236,11 +293,14 @@ public class TableMultiPkController  {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
+	@UDALink(name = "deleteAll")
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
+	public @ResponseBody List<String> removeMultiple(
+			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples MultiPks");
-		this.multiPkService.removeMultiple(tableRequestDto);
+		this.multiPkService.removeMultiple(filterMultiPk, tableRequestDto, false);
 		TableMultiPkController.logger.info("All entities correctly deleted!");
 		
 		return tableRequestDto.getMultiselection().getSelectedIds();
@@ -255,13 +315,21 @@ public class TableMultiPkController  {
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 */	
+	 */
+	@UDALink(name = "clipboardReport", linkTo = { 
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<MultiPk> getClipboardReport(
+	public @ResponseBody List<Resource<MultiPk>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - clipboardReport] : Copiar multiples multipk");
-		return this.multiPkService.getDataForReports(filterMultiPk, tableRequestDto);
+		return ResourceUtils.fromListToResource(this.multiPkService.getDataForReports(filterMultiPk, tableRequestDto));
 	}
 	
 	/**
@@ -276,10 +344,16 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "excelReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport(
+	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -289,7 +363,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -304,10 +378,16 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "pdfReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(
+	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -317,7 +397,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -332,10 +412,16 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "odsReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(
+	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -345,7 +431,7 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -360,10 +446,16 @@ public class TableMultiPkController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
+	@UDALink(name = "csvReport", linkTo = { 
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "odsReport") })
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(
+	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -373,6 +465,6 @@ public class TableMultiPkController  {
 		TableMultiPkController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.multiPkService.generateReport(filterMultiPk, columns, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.multiPkService.generateReport(filterMultiPk, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }	

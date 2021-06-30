@@ -15,71 +15,53 @@
  */
 jQuery(function ($) {
 	 window.initRupI18nPromise.then(function () {
-	    var tableColModelsComarca = [{
-	        name: 'code',
-	        index: 'code',
-	        editable: true,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 1,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEs',
-	        index: 'descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 2,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEu',
-	        index: 'descEu',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 3,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'css',
-	        index: 'css',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 4,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'provincia.code',
-	        index: 'provincia.code',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 5,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'provincia.descEs',
-	        index: 'provincia.descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 6,
-	            colpos: 1
-	        }
-	    }
+	    var tableColModelsComarca = [
+	    	{
+		        name: 'descEs',
+		        index: 'descEs',
+		        editable: true,
+		        hidden: false
+		    },
+		    {
+		        name: 'descEu',
+		        index: 'descEu',
+		        editable: true,
+		        hidden: false
+		    },
+		    {
+		        name: 'css',
+		        index: 'css',
+		        editable: true,
+		        hidden: false
+		    },
+		    {
+		        name: 'provincia.code',
+		        index: 'provincia.code',
+		        editable: true,
+		        hidden: false,
+		        rupType: 'combo',
+                editoptions: {
+                	source : '../tableComarca/provincia',
+                    sourceParam : {
+                    	label: 'desc' + $.rup_utils.capitalizedLang(), 
+                    	value: 'code',
+        	            style: 'css'
+                    },
+        	        rowStriping: true,
+        	        blank: '',
+                    width: '100%',
+                    customClasses: ['select-material']
+                }
+		    },
+		    {
+		        name: 'provincia.descEs',
+		        index: 'provincia.descEs',
+		        editable: true,
+		        hidden: false
+		    }
 	    ];
 	
 	    $('#comarca').rup_table({
-	
 	        primaryKey: 'code',
 	        loadOnStartUp: true,
 	        filter: {
@@ -87,6 +69,7 @@ jQuery(function ($) {
 	            filterToolbar: 'comarca_filter_toolbar',
 	            collapsableLayerId: 'comarca_filter_fieldset'
 	        },
+	        colModel: tableColModelsComarca,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
@@ -102,7 +85,8 @@ jQuery(function ($) {
 	        },
 	        formEdit: {
 	            detailForm: '#comarca_detail_div',
-	            validate: {
+	            url: '../tableComarca/editFormDialog',
+	            /*validate: {
 	                rules: {
 	                    'code': {
 	                        required: true
@@ -111,56 +95,32 @@ jQuery(function ($) {
 	                        range: [1, 3]
 	                    }
 	                }
-	            },
-	            titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+	            }*/
 	        }
 	    });
 	
-	    var tableColModelsLocalidad = [{
-	        name: 'code',
-	        index: 'code',
-	        editable: true,
-	        hidden: false,
-	        width: 80,
-	        formoptions: {
-	            rowpos: 1,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEs',
-	        index: 'descEs',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 2,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'descEu',
-	        index: 'descEu',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 3,
-	            colpos: 1
-	        }
-	    },
-	    {
-	        name: 'css',
-	        index: 'css',
-	        editable: true,
-	        hidden: false,
-	        formoptions: {
-	            rowpos: 4,
-	            colpos: 1
-	        }
-	    }
+	    var tableColModelsLocalidad = [
+	    	{
+		        name: 'descEs',
+		        index: 'descEs',
+		        editable: true,
+		        hidden: false
+		    },
+		    {
+		        name: 'descEu',
+		        index: 'descEu',
+		        editable: true,
+		        hidden: false
+		    },
+		    {
+		        name: 'css',
+		        index: 'css',
+		        editable: true,
+		        hidden: false
+		    }
 	    ];
 	
 	    $('#localidad').rup_table({
-	
 	        primaryKey: 'code',
 	        loadOnStartUp: false,
 	        filter: {
@@ -168,6 +128,7 @@ jQuery(function ($) {
 	            filterToolbar: 'localidad_filter_toolbar',
 	            collapsableLayerId: 'localidad_filter_fieldset'
 	        },
+	        colModel: tableColModelsLocalidad,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
@@ -180,27 +141,15 @@ jQuery(function ($) {
 	        order: [
 	            [1, 'desc']
 	        ],
-	        drawCallback: function( ctx ) {
-	    		$('#localidad tr[role="row"]').on('tableSelectAfterSelectRow', function () {
-	    			let line = ctx.multiselection.selectedRowsPerPage[0].line;
-	    			let datos = ctx.json.rows[line]; //se carga el dato
-	    			$('#css_detail_tableComarca').val(datos.css);
-	    		});
+	        drawCallback: function(ctx) {
+	        	$('#localidad tr[role="row"]').on('tableSelectAfterSelectRow', function () {
+	        		if (ctx.multiselection.selectedRowsPerPage.length > 0) {
+	        			let line = ctx.multiselection.selectedRowsPerPage[0].line;
+	        			let datos = ctx.json.rows[line]; //se carga el dato
+	        			$('#css_detailForm_tableComarca').val(datos.css);
+	        		}
+	        	});
 	        }
-	
-	    });
-	
-	    $('#provinciaRemote').rup_combo({
-	        source: '../jqGridComarca/provincia',
-	        sourceParam: {
-	            label: 'desc' + $.rup_utils.capitalizedLang(),
-	            value: 'code',
-	            style: 'css'
-	        },
-	        rowStriping: true,
-	        blank: '',
-	        width: '100%',
-	        customClasses: ['select-material']
 	    });
 	
 	    $('.contenedor').addClass('show');

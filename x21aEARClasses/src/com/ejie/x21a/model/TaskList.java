@@ -1,17 +1,15 @@
 package com.ejie.x21a.model;
 
-public class TaskList {
+import org.hdiv.services.SecureIdentifiable;
+
+public class TaskList implements SecureIdentifiable<Integer> {
 	
 	private Integer id;
 	private String name;
 	private String userId;
 	private String description;
 	
-	
 	private Integer taskNum;
-	
-	
-	
 	
 	public TaskList() {
 		super();
@@ -21,7 +19,6 @@ public class TaskList {
 		super();
 		this.id = id;
 	}
-
 
 	public TaskList(Integer id, String name, String description, String userId) {
 		super();
@@ -40,27 +37,17 @@ public class TaskList {
 		this.taskNum = taskNum;
 	}
 
-
 	public Integer getId() {
 		return id;
 	}
-
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
-
 	public String getName() {
 		return name;
 	}
-
-
-
 
 	public void setName(String name) {
 		this.name = name;
@@ -89,10 +76,5 @@ public class TaskList {
 	public void setTaskNum(Integer taskNum) {
 		this.taskNum = taskNum;
 	}
-	
-	
-	
-	
-	
 
 }

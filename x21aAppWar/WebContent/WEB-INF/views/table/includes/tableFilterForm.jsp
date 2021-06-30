@@ -14,17 +14,14 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<form:form modelAttribute="usuario" id="example_filter_form">
+
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="example_filter_form" action="${url}" method="POST">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table" />
-			<label for="id_filter_table">ID</label>
-	    </div>
-	    
-	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_filter_table" />
 	    	<label for="nombre_filter_table">Nombre</label>
 	    </div>
@@ -38,26 +35,26 @@
 	    	<form:input path="apellido2" id="apellido2_filter_table" />
 	    	<label for="apellido2_filter_table">Segundo apellido</label>
 	    </div>
-	</div>
-    
-    <div class="form-row">
+	    
     	<div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaAlta" id="fechaAlta_filter_table" />
 	    	<label for="fechaAlta_filter_table">Fecha de alta</label>
 	    </div>
-	    
+	</div>
+    
+    <div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaBaja" id="fechaBaja_filter_table" />
 	    	<label for="fechaBaja_filter_table">Fecha de baja</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="ejie" id="ejie_filter_table" />
+	    	<form:select path="ejie" id="ejie_filter_table" items="${comboEjie}" />
 	    	<label for="ejie_filter_table">EJIE</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="rol" id="rol_filter_table" />
+	    	<form:select path="rol" id="rol_filter_table" items="${comboRol}" />
 	    	<label for="rol_filter_table">ROL</label>
 	    </div>
 	</div>
@@ -67,12 +64,16 @@
     	<!-- Bot�n de limpiar -->
         <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
         	<i class="mdi mdi-eraser"></i>
-        	<span>Limpiar</span>
+        	<span>
+				<spring:message code="clear" />
+			</span>
         </button>
         <!-- Bot�n de filtrado -->
         <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-filter"></i>
-        	<span>Filtrar</span>        	
+        	<span>
+				<spring:message code="filter" />
+			</span>        	
         </button>
     </div>
         

@@ -20,6 +20,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.TrustAssertion;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -27,14 +30,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author UDA
  */
 
-public class Departamento  implements java.io.Serializable {
+public class Departamento implements java.io.Serializable, SecureIdContainer {
 
     private static final long serialVersionUID = 1L;
-         private BigDecimal code;
-         private String descEs;
-         private String descEu;
-         private String css;
-         private List<DepartamentoProvincia> departamentoProvincias = new ArrayList<DepartamentoProvincia>();
+      @TrustAssertion(idFor = Departamento.class)
+      private BigDecimal code;
+      private String descEs;
+      private String descEu;
+      private String css;
+      private List<DepartamentoProvincia> departamentoProvincias = new ArrayList<DepartamentoProvincia>();
 
 /** Method 'Departamento'.
 *
