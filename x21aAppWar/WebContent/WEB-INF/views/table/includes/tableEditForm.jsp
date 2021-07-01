@@ -26,7 +26,7 @@
 	<!-- Feedback del formulario de detalle -->
 	<div id="example_detail_feedback"></div>
 	<c:if test="${not empty fixedMessage}">
-		<p>${fixedMessage}</p>
+		<p><c:out value="${fixedMessage}"/></p>
 	</c:if>
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
