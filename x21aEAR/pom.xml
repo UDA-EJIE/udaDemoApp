@@ -14,13 +14,27 @@
 		<org.springframework.security.version>4.2.11.RELEASE</org.springframework.security.version>
 		<org.logback.version>1.2.3</org.logback.version>
 		<org.slf4j.version>1.7.25</org.slf4j.version>
-		<com.ejie.x38.version>5.0.0-SNAPSHOT</com.ejie.x38.version>
+		<com.ejie.x38.version>5.0.0-RELEASE</com.ejie.x38.version>
 		<org.apache.tiles.version>3.0.8</org.apache.tiles.version>
 		<!-- <org.jackson.version>2.8.11.3</org.jackson.version> -->
 		<org.jackson.version>2.7.9.5</org.jackson.version>
+		<hdiv.version>3.5.0.RC3</hdiv.version>
+		<hdivsecurity.version>2.4.1</hdivsecurity.version>
 	</properties>
 	
 	<dependencies>
+		<!-- Hdiv -->
+		<dependency>
+			<groupId>org.hdiv</groupId>
+			<artifactId>hdiv-services</artifactId>
+			<version>${hdiv.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.hdivsecurity</groupId>
+		    <artifactId>hdiv-for-services</artifactId>
+		    <version>${hdivsecurity.version}</version>
+		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -688,6 +702,7 @@
 			<url>http://www.otc.ejiedes.net/archiva/repository/repoCACRep</url>
 			<snapshots>
 				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
 	</repositories>
