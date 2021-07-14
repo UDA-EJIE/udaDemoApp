@@ -94,7 +94,7 @@ jQuery(function ($) {
         },
         {
             name: 'fechaAlta',
-            index: 'fecha_alta',
+            index: 'fechaAlta',
             editable: true,
             hidden: false,
             width: 120,
@@ -114,7 +114,7 @@ jQuery(function ($) {
         },
         {
             name: 'fechaBaja',
-            index: 'fecha_baja',
+            index: 'fechaBaja',
             editable: false,
             hidden: false,
             width: 120,

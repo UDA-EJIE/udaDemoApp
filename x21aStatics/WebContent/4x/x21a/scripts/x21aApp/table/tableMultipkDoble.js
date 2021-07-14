@@ -59,7 +59,7 @@ jQuery(function($){
  	            }*/
  	            , formoptions:{rowpos:5, colpos:1}
  	        },
- 	        { name: "fechaAlta",  index: "fecha_alta", editable:true, hidden:false, width: 120,
+ 	        { name: "fechaAlta",  index: "fechaAlta", editable:true, hidden:false, width: 120,
  	            rupType: "date",
  	            rwdClasses:"hidden-xs hidden-sm hidden-md",
  	            editoptions:{
@@ -70,7 +70,7 @@ jQuery(function($){
  	            }
  	            , formoptions:{rowpos:2, colpos:2}
  	        },
- 	        { name: "fechaBaja", index: "fecha_baja", editable:false, hidden:false, width: 120,
+ 	        { name: "fechaBaja", index: "fechaBaja", editable:false, hidden:false, width: 120,
  	            rupType: "date",
  	            rwdClasses:"hidden-xs hidden-sm hidden-md",
  	            editoptions:{
