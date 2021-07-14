@@ -87,6 +87,7 @@ jQuery(function ($) {
 	            filterToolbar: 'comarca_filter_toolbar',
 	            collapsableLayerId: 'comarca_filter_fieldset'
 	        },
+	        colModel: tableColModelsComarca,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },
@@ -168,6 +169,7 @@ jQuery(function ($) {
 	            filterToolbar: 'localidad_filter_toolbar',
 	            collapsableLayerId: 'localidad_filter_fieldset'
 	        },
+	        colModel: tableColModelsLocalidad,
 	        colReorder: {
 	            fixedColumnsLeft: 1
 	        },

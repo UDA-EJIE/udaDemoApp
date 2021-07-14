@@ -86,7 +86,7 @@ jQuery(function ($) {
                     },*/
             {
                 name: 'ejie',
-                index: 'ejie_detail_table',
+                index: 'ejie',
                 editable: true,
                 hidden: false,
                 width: 60,
@@ -104,7 +104,7 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaAlta',
-                index: 'fechaAlta_detail_table',
+                index: 'fechaAlta',
                 editable: true,
                 hidden: false,
                 width: 120,
@@ -123,7 +123,7 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaBaja',
-                index: 'fechaAlta_detail_table',
+                index: 'fechaBaja',
                 editable: false,
                 hidden: false,
                 width: 120,
@@ -142,7 +142,7 @@ jQuery(function ($) {
             },
             {
                 name: 'rol',
-                index: 'rol_detail_table',
+                index: 'rol',
                 editable: true,
                 hidden: false,
                 width: 140,
