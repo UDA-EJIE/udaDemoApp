@@ -404,7 +404,6 @@ function _init() {
         ];
 
         delete localStorage['plugins' + num];
-        plugins.responsive=true;
         return plugins;
     }
 
