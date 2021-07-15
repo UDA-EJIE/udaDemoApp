@@ -137,7 +137,7 @@ public class TableDynamicColumnsController  {
 	 *            Bean que contiene la información a modificar.
 	 * @return Bean resultante de la modificación.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -173,7 +173,7 @@ public class TableDynamicColumnsController  {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creación.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");

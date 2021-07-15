@@ -77,7 +77,7 @@ public class JQGridLocalidadController  {
 	 * @param localidad Localidad 
 	 * @return Localidad
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Localidad edit(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.update(localidad);
         JQGridLocalidadController.logger.info("[PUT] : Localidad actualizado correctamente");
@@ -90,7 +90,7 @@ public class JQGridLocalidadController  {
 	 * @param localidad Localidad 
 	 * @return Localidad
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Localidad add(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.add(localidad);
         JQGridLocalidadController.logger.info("[POST] : Localidad insertado correctamente");

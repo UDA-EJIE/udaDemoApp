@@ -169,7 +169,7 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.POST, produces="application/json")
+	@RequestMapping(value = "/add", method = RequestMethod.POST, produces="application/json")
 	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
 			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
@@ -201,7 +201,7 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(method = RequestMethod.PUT, produces="application/json")
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces="application/json")
 	public @ResponseBody Alumno edit(
 			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,

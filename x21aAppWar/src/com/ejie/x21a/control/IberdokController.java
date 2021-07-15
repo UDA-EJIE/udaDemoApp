@@ -98,7 +98,7 @@ public class IberdokController {
 	 *            Bean que contiene la informaci�n a modificar.
 	 * @return Bean resultante de la modificaci�n.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	public @ResponseBody IberdokFile edit(
 			@Validated @RequestBody IberdokFile file) {
 
@@ -116,7 +116,7 @@ public class IberdokController {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaci�n.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody IberdokFile add(
 			@Validated @RequestBody IberdokFile file) {
 

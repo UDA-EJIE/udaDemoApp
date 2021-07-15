@@ -78,7 +78,7 @@ public class UploadController   {
 		binder.registerCustomEditor(byte[].class,new ByteArrayMultipartFileEditor());
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String, Object>> add(@RequestParam(value="filename", required=false) String filename ,@RequestParam(value="nombre", required=false) String nombre,@RequestParam(value="files[]", required=false) MultipartFile file, HttpServletResponse response, HttpServletRequest request) {
 		
 		if(!file.isEmpty()){

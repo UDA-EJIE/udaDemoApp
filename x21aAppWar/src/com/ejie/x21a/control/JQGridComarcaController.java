@@ -83,7 +83,7 @@ public class JQGridComarcaController  {
 		 * @param comarca Comarca 
 		 * @return Comarca
 		 */
-		@RequestMapping(method = RequestMethod.PUT)
+		@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	    public @ResponseBody Comarca edit(@Validated @RequestBody Comarca comarca) {		
 	        Comarca comarcaAux = this.comarcaService.update(comarca);
 			logger.info("Entity correctly updated!");
@@ -95,7 +95,7 @@ public class JQGridComarcaController  {
 		 * @param comarca Comarca 
 		 * @return Comarca
 		 */
-		@RequestMapping(method = RequestMethod.POST)
+		@RequestMapping(value = "/add", method = RequestMethod.POST)
 		public @ResponseBody Comarca add(@Validated @RequestBody Comarca comarca) {		
 	        Comarca comarcaAux = this.comarcaService.add(comarca);
 	        logger.info("Entity correctly inserted!");

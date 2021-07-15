@@ -114,7 +114,7 @@ public class ExperimentalController {
 		}
 		
 		
-		@RequestMapping(method = RequestMethod.PUT)
+		@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	    public @ResponseBody LogModel edit(@Validated @RequestBody LogModel log) {
 			
 			

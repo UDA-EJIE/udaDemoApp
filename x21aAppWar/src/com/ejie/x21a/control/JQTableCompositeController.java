@@ -143,7 +143,7 @@ public class JQTableCompositeController  {
 	 * @param usuario Usuario 
 	 * @return Usuario
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {		
         Usuario usuarioAux = this.usuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
@@ -155,7 +155,7 @@ public class JQTableCompositeController  {
 	 * @param usuario Usuario 
 	 * @return Usuario
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
         Usuario usuarioAux = this.usuarioService.add(usuario);
         logger.info("Entity correctly inserted!");

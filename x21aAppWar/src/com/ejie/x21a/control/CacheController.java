@@ -46,7 +46,7 @@ public class CacheController  {
 		return "cache";
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");

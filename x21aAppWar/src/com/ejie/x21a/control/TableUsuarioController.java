@@ -194,7 +194,7 @@ public class TableUsuarioController  {
 	 *            Bean que contiene la informaciÃ³n a modificar.
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit(@RequestJsonBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -204,7 +204,7 @@ public class TableUsuarioController  {
         return usuarioAux;
     }
 	
-	@RequestMapping(value = "/{bis}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit2(@RequestJsonBody Usuario usuario) {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -240,7 +240,7 @@ public class TableUsuarioController  {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
@@ -250,7 +250,7 @@ public class TableUsuarioController  {
     	return usuarioAux;
 	}
 	
-	@RequestMapping(value = "/{bis}", method = RequestMethod.POST)
+	@RequestMapping(value = "/{bis}/add", method = RequestMethod.POST)
 	public @ResponseBody Usuario add2(@Validated @RequestBody Usuario usuario) {		
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");

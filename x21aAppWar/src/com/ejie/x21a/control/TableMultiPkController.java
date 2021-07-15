@@ -112,7 +112,7 @@ public class TableMultiPkController  {
 	 * @return MultiPk 
 	 *            Bean resultante de la modificacion.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody MultiPk edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
 		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
@@ -129,7 +129,7 @@ public class TableMultiPkController  {
 	 * @return MultiPk
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody MultiPk add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
         TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");

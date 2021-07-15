@@ -93,7 +93,7 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno 
 	 *            Bean resultante de la modificacion.
 	 */
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public @ResponseBody X21aAlumno edit(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.update(x21aAlumno);
 		TableX21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
@@ -110,7 +110,7 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public @ResponseBody X21aAlumno add(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.add(x21aAlumno);
         TableX21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
