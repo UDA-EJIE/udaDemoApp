@@ -111,7 +111,7 @@ function _init() {
 
     function copyFormEdit(num) {
         var $formDetail = $('#example_detail_div').clone();
-        $formDetail.attr('id', $formDetail.attr('id') + num);
+        $formDetail.attr('id', 'example' + num + '_' + $formDetail.attr('id').split('example_')[1]);
         $formDetail.find('[id^="example_"]').each(function (i, e) {
             var id = $(e).attr('id');
             $(e).attr('id', 'example' + num + '_' + id.split('example_')[1]);
@@ -143,9 +143,14 @@ function _init() {
                 localStorage['plugins' + num] = '';
             }
 
-            var selectionType = $('input[name=\'tipoSeleccionTabla\']:checked')[0].id;
+            var selectionType = $('#example_tableConfiguration' + num + ' input[name=\'tipoSeleccionTabla\']:checked')[0].id;
 
             if (num.length > 0) {
+                // Comprobar si el identificador lleva el número al final y eliminarlo en caso de que lo lleve para que no falle al obtener la propiedad del objeto "allowedPluginsBySelecionType"
+                if (new RegExp(num + "$", "").test(selectionType)) {
+                	selectionType = selectionType.slice(0, -1);
+                }
+                
                 $.each($('#example_tableConfiguration' + num + ' .pluginsControl input'), function () {
                     if ($('#' + this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id.substring(0, this.id.length - 1)) > -1) {
                         localStorage['plugins' + num] = localStorage['plugins' + num] + this.id + ',';
@@ -221,7 +226,7 @@ function _init() {
         if (localStorage['plugins' + num].indexOf('editForm') > -1) {
             window.initRupI18nPromise.then(function () {
                 var formEdit = {
-                    detailForm: '#example_detail_div' + num,
+                    detailForm: '#example' + num + '_detail_div',
                     validate: {
                         rules: {}
                     },
@@ -322,7 +327,7 @@ function _init() {
                         $('#imagenAlumno' + num).prop('disabled', true);
                     }
                 });
-                $('#example_detail_div' + num).on('dialogbeforeclose', function (event) {
+                $('#example' + num + '_detail_div').on('dialogbeforeclose', function (event) {
                     var dt = $('#example' + num).DataTable();
                     var ctx = dt.context[0];
                     if (ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.multiPart) {
