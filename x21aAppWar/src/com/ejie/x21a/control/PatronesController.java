@@ -212,7 +212,7 @@ public class PatronesController {
     }
 
     //CombosEnlazado - simple
-    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad")})
+    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "comboEnlazadoSimple", method = RequestMethod.GET)
     public String getComboEnlazadoSimple(Model model) {
         return "comboEnlazado";
