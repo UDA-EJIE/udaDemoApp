@@ -55,6 +55,7 @@
 			</div>
 		</fieldset>
 		
+		<!--
 		<fieldset id="mixto" class="col-sm">
 			<legend>Mixto I</legend>
 			
@@ -73,11 +74,13 @@
 				<select id="mixto_comboHijoRemoto"><option>&nbsp;</option></select>
 			</div>
 		</fieldset>
+		-->
 	</div>
 </div>
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
+		<!--
 		<div id="mixto2" class="col-sm">
 			<fieldset class="combo_fieldset mr-sm-3">
 				<legend class="combo_legend">Mixto II</legend>
@@ -98,7 +101,8 @@
 				</div>
 			</fieldset>
 		</div>
-
+		-->
+		
 		<div id="remoteGroup" class="col-sm">
 			<fieldset>
 				<legend>Remoto agrupado</legend>
