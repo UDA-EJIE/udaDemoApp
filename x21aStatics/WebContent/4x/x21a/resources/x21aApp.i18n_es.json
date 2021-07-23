@@ -595,11 +595,11 @@
 		"rol":"Rol"
 	},
 	"GRID_simple##rol" : {
-		"administrador" : "administrador",
-		"desarrollador" : "desarrollador",
-		"espectador" : "espectador",
-		"informador" : "informador",
-		"manager" : "manager"
+		"administrador" : "Administrador",
+		"desarrollador" : "Desarrollador",
+		"espectador" : "Espectador",
+		"informador" : "Informador",
+		"manager" : "Manager"
 	},	
 	"tabsScrollableExample" : {
 		"pestana1" : "Tab 1",

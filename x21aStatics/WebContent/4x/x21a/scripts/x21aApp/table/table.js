@@ -28,23 +28,23 @@ jQuery(function ($) {
         },
         {
             rol: 'Administrador',
-            codTipoSubsanacion: 'administrador'
+            codTipoSubsanacion: 'Administrador'
         },
         {
             rol: 'Desarrollador',
-            codTipoSubsanacion: 'desarrollador'
+            codTipoSubsanacion: 'Desarrollador'
         },
         {
             rol: 'Espectador',
-            codTipoSubsanacion: 'espectador'
+            codTipoSubsanacion: 'Espectador'
         },
         {
             rol: 'Informador',
-            codTipoSubsanacion: 'informador'
+            codTipoSubsanacion: 'Informador'
         },
         {
             rol: 'Manager',
-            codTipoSubsanacion: 'manager'
+            codTipoSubsanacion: 'Manager'
         }
         ];
 
@@ -191,23 +191,23 @@ jQuery(function ($) {
                 },
                 {
                     label: $.rup.i18n.app['GRID_simple##rol'].administrador,
-                    value: 'administrador'
+                    value: 'Administrador'
                 },
                 {
                     label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
-                    value: 'desarrollador'
+                    value: 'Desarrollador'
                 },
                 {
                     label: $.rup.i18n.app['GRID_simple##rol'].espectador,
-                    value: 'espectador'
+                    value: 'Espectador'
                 },
                 {
                     label: $.rup.i18n.app['GRID_simple##rol'].informador,
-                    value: 'informador'
+                    value: 'Informador'
                 },
                 {
                     label: $.rup.i18n.app['GRID_simple##rol'].manager,
-                    value: 'manager'
+                    value: 'Manager'
                 }
                 ],
                 width: '100%',

@@ -584,11 +584,11 @@
 		"rol":"Rol_en"
 	},
 	"GRID_simple##rol" : {
-		"administrador" : "administrador_en",
-		"desarrollador" : "desarrollador_en",
-		"espectador" : "espectador_en",
-		"informador" : "informador_en",
-		"manager" : "manager_en"
+		"administrador" : "Administrador_en",
+		"desarrollador" : "Desarrollador_en",
+		"espectador" : "Espectador_en",
+		"informador" : "Informador_en",
+		"manager" : "Manager_en"
 	}
 	,
 	   "charts": {

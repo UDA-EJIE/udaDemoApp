@@ -579,11 +579,11 @@
 		"rol":"Rol_fr"
 	},
 	"GRID_simple##rol" : {
-		"administrador" : "administrador_fr",
-		"desarrollador" : "desarrollador_fr",
-		"espectador" : "espectador_fr",
-		"informador" : "informador_fr",
-		"manager" : "manager_fr"
+		"administrador" : "Administrador_fr",
+		"desarrollador" : "Desarrollador_fr",
+		"espectador" : "Espectador_fr",
+		"informador" : "Informador_fr",
+		"manager" : "Manager_fr"
 	},
 	
 	   "charts": {

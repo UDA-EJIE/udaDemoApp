@@ -585,11 +585,11 @@
 		"rol":"Rol_eu"
 	},
 	"GRID_simple##rol" : {
-		"administrador" : "administrador_eu",
-		"desarrollador" : "desarrollador_eu",
-		"espectador" : "espectador_eu",
-		"informador" : "informador_eu",
-		"manager" : "manager_eu"
+		"administrador" : "Administrador_eu",
+		"desarrollador" : "Desarrollador_eu",
+		"espectador" : "Espectador_eu",
+		"informador" : "Informador_eu",
+		"manager" : "Manager_eu"
 	},	
 	 "iberdokTable":{
 	 	"abrirDocumento": "Abrir documento_eu",
