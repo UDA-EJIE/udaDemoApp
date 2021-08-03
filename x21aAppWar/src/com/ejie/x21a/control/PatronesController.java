@@ -237,6 +237,13 @@ public class PatronesController {
         model.addAttribute("alumno", new Alumno());
         return "comboMantenimiento";
     }
+    
+    //Select Simple
+    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getSelectRemote"), @UDALinkAllower(name = "getRemoteSelectGrupos"), @UDALinkAllower(name = "getRemoteSelectGruposEnlazado")})
+    @RequestMapping(value = "selectSimple", method = RequestMethod.GET)
+    public String getSelectSimple(Model model) {
+        return "selectSimple";
+    }
 
     //Feedback
     @RequestMapping(value = "feedback", method = RequestMethod.GET)

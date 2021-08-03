@@ -238,7 +238,7 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/button-includes.jsp" />
 	</definition>
-
+<!-- RUP_Combo -->
 	<definition extends="template" name="combo">
 		<put-attribute name="content"
 			value="/WEB-INF/views/patrones/combo/combo.jsp" />
@@ -269,6 +269,40 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
 	</definition>
+<!-- FIN RUP_Combo -->
+
+<!-- RUP_Select -->
+	<definition extends="template" name="selectSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/selectSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="multiselect">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/multiselect.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/multiselect-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectMantenimiento">
+		<put-attribute name="content"
+			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
+	</definition>
+<!-- FIN RUP_Select -->
 
 	<definition extends="template" name="feedback">
 		<put-attribute name="content"
