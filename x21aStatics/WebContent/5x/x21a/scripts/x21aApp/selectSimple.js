@@ -16,69 +16,127 @@
 $(function () {
     window.initRupI18nPromise.then(function () {
         $('#selectSimple').rup_select({
-            source: [{
-                i18nCaption: 'asp',
-                value: 'asp_value'
+            data: [{
+                id: '-1',
+                text: 'Seleccione'
+            },{
+                id: 'asp',
+                text: 'asp_value'
             },
             {
-                i18nCaption: 'c',
-                value: 'c_value'
+            	id: 'c',
+            	text: 'c_value'
             },
             {
-                i18nCaption: 'c++',
-                value: 'c++_value'
+            	id: 'c++',
+            	text: 'c++_value'
             },
             {
-                i18nCaption: 'coldfusion',
-                value: 'coldfusion_value'
+            	id: 'coldfusion',
+            	text: 'coldfusion_value'
             },
             {
-                i18nCaption: 'groovy',
-                value: 'groovy_value'
+            	id: 'groovy',
+            	text: 'groovy_value'
             },
             {
-                i18nCaption: 'haskell',
-                value: 'haskell_value'
+                id: 'haskell',
+                text: 'haskell_value'
             },
             {
-                i18nCaption: 'java',
-                value: 'java_value'
+            	id: 'java',
+            	text: 'java_value'
             },
             {
-                i18nCaption: 'javascript',
-                value: 'javascript_value'
+            	id: 'javascript',
+            	text: 'javascript_value'
             },
             {
-                i18nCaption: 'perl',
-                value: 'perl_value'
+            	id: 'perl',
+            	text: 'perl_value'
             },
             {
-                i18nCaption: 'php',
-                value: 'php_value'
+            	id: 'php',
+            	text: 'php_value'
             },
             {
-                i18nCaption: 'python',
-                value: 'python_value'
+                id: 'python',
+                text: 'python_value'
             },
             {
-                i18nCaption: 'ruby',
-                value: 'ruby_value'
+                id: 'ruby',
+                text: 'ruby_value'
             },
             {
-                i18nCaption: 'scala',
-                value: 'scala_value'
+            	id: 'scala',
+                text: 'scala_value'
             }
             ],
-            selected: 'perl_value',
-            width: '98%',
-            customClasses: ['select-material'],
-            blank: '0',
-            rowStriping: true,
-            inputText: true,
-            change: function () {
-                console.log('combo:::Changed');
+            placeholder: 'Seleccione',
+            allowClear: false,
+            tags: true
+         });
+        
+        $('#comboRemoto').rup_select({
+            data: [{
+                id: '-1',
+                text: 'Seleccione'
+            },{
+                id: 'asp',
+                text: 'asp_value'
+            },
+            {
+            	id: 'c',
+            	text: 'c_value'
+            },
+            {
+            	id: 'c++',
+            	text: 'c++_value'
+            },
+            {
+            	id: 'coldfusion',
+            	text: 'coldfusion_value'
+            },
+            {
+            	id: 'groovy',
+            	text: 'groovy_value'
+            },
+            {
+                id: 'haskell',
+                text: 'haskell_value'
+            },
+            {
+            	id: 'java',
+            	text: 'java_value'
+            },
+            {
+            	id: 'javascript',
+            	text: 'javascript_value'
+            },
+            {
+            	id: 'perl',
+            	text: 'perl_value'
+            },
+            {
+            	id: 'php',
+            	text: 'php_value'
+            },
+            {
+                id: 'python',
+                text: 'python_value'
+            },
+            {
+                id: 'ruby',
+                text: 'ruby_value'
+            },
+            {
+            	id: 'scala',
+                text: 'scala_value'
             }
-        });
+            ],
+            placeholder: 'Seleccione',
+            allowClear: true
+         });
 
 
     });

@@ -17,7 +17,7 @@
 <div class="container-fluid">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
-			<label for="select">Select simple local</label>
+			<label for="selectSimple">Select simple local</label>
 			<select id="selectSimple"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
