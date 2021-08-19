@@ -21,12 +21,16 @@
 			<select id="selectSimple"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboRemoto">Combo remoto</label>
-			<select id="comboRemoto"></select>
+			<label for="selectRemoto">Select remoto</label>
+			<select id="selectRemoto"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboLargo">Combo con texto largo</label>
-			<select id="comboLargo"></select>
+			<label for="selectLargoMulti">Select Multi con texto largo</label>
+			<select id="selectLargoMulti"></select>
+		</div>
+		<div class="form-groupMaterial col-sm">  
+			<label for="selectLargo">Select Simple con texto largo</label>
+			<select id="selectLargo"></select>
 		</div>
 	</div>
 </div>

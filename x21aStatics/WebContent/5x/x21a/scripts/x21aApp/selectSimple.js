@@ -17,9 +17,6 @@ $(function () {
     window.initRupI18nPromise.then(function () {
         $('#selectSimple').rup_select({
             data: [{
-                id: '-1',
-                text: 'Seleccione'
-            },{
                 id: 'asp',
                 text: 'asp_value'
             },
@@ -72,71 +69,71 @@ $(function () {
                 text: 'scala_value'
             }
             ],
-            placeholder: 'Seleccione',
-            allowClear: false,
-            tags: true
+            placeholder: '[Seleccione un elemento]',
+            allowClear: false
          });
         
-        $('#comboRemoto').rup_select({
-            data: [{
-                id: '-1',
-                text: 'Seleccione'
-            },{
-                id: 'asp',
-                text: 'asp_value'
-            },
-            {
-            	id: 'c',
-            	text: 'c_value'
-            },
-            {
-            	id: 'c++',
-            	text: 'c++_value'
-            },
-            {
-            	id: 'coldfusion',
-            	text: 'coldfusion_value'
-            },
-            {
-            	id: 'groovy',
-            	text: 'groovy_value'
-            },
-            {
-                id: 'haskell',
-                text: 'haskell_value'
-            },
-            {
-            	id: 'java',
-            	text: 'java_value'
-            },
-            {
-            	id: 'javascript',
-            	text: 'javascript_value'
-            },
-            {
-            	id: 'perl',
-            	text: 'perl_value'
-            },
-            {
-            	id: 'php',
-            	text: 'php_value'
-            },
-            {
-                id: 'python',
-                text: 'python_value'
-            },
-            {
-                id: 'ruby',
-                text: 'ruby_value'
-            },
-            {
-            	id: 'scala',
-                text: 'scala_value'
-            }
-            ],
-            placeholder: 'Seleccione',
+        $('#selectRemoto').rup_select({
+        	url:'comboSimple/remote',
+            placeholder: '[Seleccione un elemento]',
             allowClear: true
          });
+        
+        $('#selectLargoMulti').rup_select({
+        	data: [{
+                i18nCaption: 'jon_doe',
+                id: 'jon'
+            },
+            {
+                i18nCaption: 'jane_doe',
+                id: 'jane'
+            },
+            {
+                i18nCaption: 'joseph_doe',
+                id: 'joseph'
+            },
+            {
+                i18nCaption: 'mad_doe',
+                id: 'mad'
+            }
+            ],
+            selected: 'joseph',
+            width: '98%',
+            multiple:true,
+            format: 'default',
+            change: function () {
+                console.log('comboLargo:::Changed');
+            },
+            i18nId:'comboLargo'
+        });
+        
+        $('#selectLargo').rup_select({
+        	data: [{
+                i18nCaption: 'jon_doe',
+                id: 'jon'
+            },
+            {
+                i18nCaption: 'jane_doe',
+                id: 'jane'
+            },
+            {
+                i18nCaption: 'joseph_doe',
+                id: 'joseph'
+            },
+            {
+                i18nCaption: 'mad_doe',
+                id: 'mad'
+            }
+            ],
+            selected: 'joseph',
+            width: '98%',
+            multiple:false,
+            format: 'default',
+            change: function () {
+                console.log('comboLargo:::Changed');
+            },
+            i18nId:'comboLargo'
+        });
 
 
     });
