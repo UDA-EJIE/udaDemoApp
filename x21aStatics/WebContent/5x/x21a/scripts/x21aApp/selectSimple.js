@@ -75,6 +75,11 @@ $(function () {
         
         $('#selectRemoto').rup_select({
         	url:'comboSimple/remote',
+            sourceParam: {
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
+                style: 'css'
+            },
             placeholder: '[Seleccione un elemento]',
             allowClear: true
          });
