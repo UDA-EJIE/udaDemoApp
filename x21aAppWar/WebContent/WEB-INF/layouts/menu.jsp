@@ -365,7 +365,7 @@
                                 <div class="dropdown-menu menu-right">
                                 <spring:url value="/patrones/selectSimple" var="selectSimple" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${selectSimple}">
-                                        <spring:message code="comboSimple" />
+                                        <spring:message code="selectSimple" />
                                     </a>
                                     <spring:url value="/patrones/selectEnlazadoSimple" var="selectEnlazadoSimple" htmlEscape="true"/>
                                     <a class="dropdown-item"

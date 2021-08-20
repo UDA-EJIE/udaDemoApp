@@ -1566,18 +1566,6 @@
 	                    attrsJson = {},
 	                    attrs;
 	
-	                // Se sobreescribe el change:
-	                if (settings.change) {
-	                    settings.userChange = settings.change;
-	                }
-	                if (settings.userChange) {
-	                    settings.change = function () {
-	                        if ($('#' + settings.id).is('.inited')) {
-	                            settings.userChange();
-	                        }
-	                    };
-	                }
-	
 	                //Se recoge el tabindex indicado en el elemento
 	                settings.tabindex = $(this).attr('tabindex');
 	
@@ -1607,18 +1595,7 @@
 	                    ruptype: 'select'
 	                });
 	
-	                //Contenido combo
-	                html = $('<select>').attr(attrsJson).addClass('rup_combo');
-	
-	                if ($(this).hasClass('validableElem')) {
-	                    isValidableElem = true;
-	                    html.addClass('validableElem');
-	                }
-	                if ($(this).hasClass('customelement')) {
-	                    isValidableElem = true;
-	                    html.addClass('customelement');
-	                }
-	
+	                //Revisar apra el select
 	                if (settings.firstLoad === null && ($(this).is('select') && settings.loadFromSelect)) {
 	                    loadAsLocal = true;
 	                }
@@ -1689,12 +1666,31 @@
 	                	if(settings.data !== undefined){//PAra añadir más parametros de busqueda
 	                		settings.ajax.data = settings.data;
 	                	}
-	                	if(settings.sourceParams){//modifica el header para parsear la response
+	                	if(settings.sourceParam){//modifica el header para parsear la response
 	                		settings.ajax.headers = {'RUP':$.toJSON(settings.sourceParam)};
 	                	}
 	                	if(settings.processResults){//modifica los results
 	                		settings.ajax.processResults = settings.processResults;
 	                	}
+	                }
+	                
+	                //Init eventos: El resto van en el propio subyacente
+	                //Change
+	                if(settings.change){
+	                	$('#' + settings.id).on('select2:select', function (e) {
+	                		settings.change(e);
+	                	});
+	                	if(!settings.clean){
+		                	$('#' + settings.id).on('select2:clean', function (e) {
+		                		settings.change(e);
+		                	});
+	                	}
+	                }
+	                //clean
+	                if(settings.clean){
+	                	$('#' + settings.id).on('select2:clean', function (e) {
+	                		settings.clean(e);
+	                	});
 	                }
 	                
 	                $('#' + settings.id).select2(settings);

@@ -70,7 +70,10 @@ $(function () {
             }
             ],
             placeholder: '[Seleccione un elemento]',
-            allowClear: false
+            allowClear: false,
+            change: function (e) {
+                console.log('selectSimple:::Changed');
+            }
          });
         
         $('#selectRemoto').rup_select({
@@ -81,7 +84,10 @@ $(function () {
                 style: 'css'
             },
             placeholder: '[Seleccione un elemento]',
-            allowClear: true
+            allowClear: true,
+            change: function () {
+                console.log('selectLoad:::Changed');
+            }
          });
         
         $('#selectLargoMulti').rup_select({
