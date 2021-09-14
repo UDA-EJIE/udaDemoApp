@@ -86,7 +86,10 @@ $(function () {
             placeholder: '[Seleccione un elemento]',
             allowClear: true,
             change: function () {
-                console.log('selectLoad:::Changed');
+                console.log('selectRemoto:::Changed');
+            },
+            clean: function (e) {
+                console.log('selectRemoto:::clean');
             }
          });
         

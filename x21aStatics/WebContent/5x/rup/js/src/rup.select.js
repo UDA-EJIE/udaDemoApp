@@ -1653,24 +1653,61 @@
 	                if (settings.data) {//local
 	                	settings.data = this._parseLOCAL(settings);
 	                }else if(!settings.ajax){//remoto
-	                	settings.ajax = {
-	            		    url: settings.url,
-	            		    dataType: settings.dataType,
-	            		    processResults: function (response) {//Require id y text, podemos permitir que no venga.
-	            		    		     return {
-	            		    		        results: response
-	            		    		     };
-	            		    		   },
-	            		    cache: false
-	                	};
-	                	if(settings.data !== undefined){//PAra añadir más parametros de busqueda
-	                		settings.ajax.data = settings.data;
+		                	settings.ajax = {
+		            		    url: settings.url,
+		            		    dataType: settings.dataType,
+		            		    processResults: function (response) {//Require id y text, podemos permitir que no venga.
+		            		    		     return {
+		            		    		        results: response
+		            		    		     };
+		            		    		   },
+		            		    cache: false
+
+		                	};
+		                if(settings.cache){//si existe cacheo
+	                		let __cache = [];
+	                		let __lastQuery = null;
+		                	settings.ajax.transport = function(params, success, failure) {
+	                			//retrieve the cached key or default to _ALL_
+	                	        var __cachekey = params.data.q || '_ALL_';
+	                	        if (__lastQuery !== __cachekey) {
+	                	          //remove caches not from last query
+	                	          __cache = [];
+	                	        }
+	                	        __lastQuery = __cachekey;
+	                	        if ('undefined' !== typeof __cache[__cachekey]) {
+	                	          //display the cached results
+	                	          success(__cache[__cachekey]);
+	                	          return; /* noop */
+	                	        }
+	                	        var $request = $.ajax(params);
+	                	        $request.then(function(data) {
+	                	          //store data in cache
+	                	          __cache[__cachekey] = data;
+	                	          //display the results
+	                	          success(__cache[__cachekey]);
+	                	        });
+	                	        $request.fail(failure);
+	                	        return $request;
+	                		}
+		                }	
+		                	
+	                	if(settings.ajax !== undefined){
+		                	if(settings.data !== undefined){//PAra añadir más parametros de busqueda
+		                		settings.ajax.data = settings.data;
+		                	}
+		                	if(settings.sourceParam){//modifica el header para parsear la response
+		                		settings.ajax.headers = {'RUP':$.toJSON(settings.sourceParam)};
+		                	}
+		                	if(settings.processResults){//modifica los results
+		                		settings.ajax.processResults = settings.processResults;
+		                	}
 	                	}
-	                	if(settings.sourceParam){//modifica el header para parsear la response
-	                		settings.ajax.headers = {'RUP':$.toJSON(settings.sourceParam)};
-	                	}
-	                	if(settings.processResults){//modifica los results
-	                		settings.ajax.processResults = settings.processResults;
+	                	
+	                	if(settings.sortered === undefined){//PAra añadir ordenación
+	                		settings.sorter = data => data.sort((a, b) => a.text.localeCompare(b.text));
+	                	}else if(settings.sortered !== false){
+	                		settings.sorter = settings.sortered;
 	                	}
 	                }
 	                
@@ -1681,14 +1718,14 @@
 	                		settings.change(e);
 	                	});
 	                	if(!settings.clean){
-		                	$('#' + settings.id).on('select2:clean', function (e) {
+		                	$('#' + settings.id).on('select2:clearing', function (e) {
 		                		settings.change(e);
 		                	});
 	                	}
 	                }
 	                //clean
 	                if(settings.clean){
-	                	$('#' + settings.id).on('select2:clean', function (e) {
+	                	$('#' + settings.id).on('select2:clearing', function (e) {
 	                		settings.clean(e);
 	                	});
 	                }
