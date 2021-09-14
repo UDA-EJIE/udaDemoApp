@@ -22827,6 +22827,12 @@
   font-size: 5rem;
 }
 
+/* NOTA: ELIMINAR CUANDO SE ACTUALICE BOOTSTRAP A LA VERSIÓN 5.0 O SUPERIOR */
+
+.r01gContainer .text-decoration-underline {
+  text-decoration: underline !important;
+}
+
 /* MaterialDesignIcons.com */
 
 @font-face {
@@ -58754,6 +58760,12 @@
 
 .r01gContainer .font-size-5rem {
   font-size: 5rem;
+}
+
+/* NOTA: ELIMINAR CUANDO SE ACTUALICE BOOTSTRAP A LA VERSIÓN 5.0 O SUPERIOR */
+
+.r01gContainer .text-decoration-underline {
+  text-decoration: underline !important;
 }
 
 /* MaterialDesignIcons.com */
