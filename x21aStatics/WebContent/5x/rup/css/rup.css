@@ -14686,6 +14686,10 @@ i.mdi.error {
 .font-size-5rem {
   font-size: 5rem; }
 
+/* NOTA: ELIMINAR CUANDO SE ACTUALICE BOOTSTRAP A LA VERSIÓN 5.0 O SUPERIOR */
+.text-decoration-underline {
+  text-decoration: underline !important; }
+
 /* MaterialDesignIcons.com */
 @font-face {
   font-family: "Material Design Icons";
@@ -40268,6 +40272,10 @@ i.mdi.error {
 
 .font-size-5rem {
   font-size: 5rem; }
+
+/* NOTA: ELIMINAR CUANDO SE ACTUALICE BOOTSTRAP A LA VERSIÓN 5.0 O SUPERIOR */
+.text-decoration-underline {
+  text-decoration: underline !important; }
 
 /* MaterialDesignIcons.com */
 @font-face {
