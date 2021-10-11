@@ -585,8 +585,33 @@
 		"informador" : "Informador_fr",
 		"manager" : "Manager_fr"
 	},
-	
-	   "charts": {
+	"iberdokTable": {
+	 	"abrirDocumento": "Abrir documento_fr",
+	 	"editarEnIberdok":"Editar en IberDok!_fr",
+	 	"id":"id_fr",
+	 	"nombre":"nombre_fr",
+	 	"idModelo":"idModelo_fr",
+	 	"idDocumento":"idDocumento_fr",
+	 	"estado":"estado_fr",
+	 	"nuevo":"Nuevo_fr",
+	 	"copiar":"Copiar_fr",
+	 	"editar":"Editar_fr",
+	 	"ver":"Visualizar_fr",
+	 	"finalizado":"Finalizado_fr",
+	 	"elaboracion":"Elaboración_fr",
+	 	"es":"Castellano_fr",
+	 	"eu":"Euskera_fr",
+	 	"en":"Inglés_fr",
+	 	"modo1":"Crear documento_fr",
+	 	"modo2":"Editar documento finalizado_fr",
+	 	"modo7":"Editar documento no finalizado_fr",
+	 	"modo8":"Copiar documento_fr",
+	 	"dialog":"Lanzar IberDok!_fr",
+	 	"errorFichero":"No se ha definido el fichero a cargar_fr",
+	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación_fr => ",
+	 	"errorParseo2":".<br> Error devuelto_fr:<br>"
+	},
+	"charts": {
         "charts": "Gráficos_fr",
         "line": "Líneas_fr",
         "bar": "Barras_fr",
