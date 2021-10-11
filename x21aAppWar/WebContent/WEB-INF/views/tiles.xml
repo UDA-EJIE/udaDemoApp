@@ -280,9 +280,9 @@
 	</definition>
 	<definition extends="template" name="selectEnlazadoSimple">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple.jsp" />
+			value="/WEB-INF/views/patrones/select/selectEnlazadoSimple.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/selectEnlazadoSimple-includes.jsp" />
 	</definition>
 	<definition extends="template" name="selectEnlazadoMultiple">
 		<put-attribute name="content"

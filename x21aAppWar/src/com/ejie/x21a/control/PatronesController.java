@@ -122,6 +122,8 @@ public class PatronesController {
 
     @Autowired
     private UploadService uploadService;
+    
+    int provincia = 0;
 
 
     @javax.annotation.Resource
@@ -243,6 +245,13 @@ public class PatronesController {
     @RequestMapping(value = "selectSimple", method = RequestMethod.GET)
     public String getSelectSimple(Model model) {
         return "selectSimple";
+    }
+    
+    //SelectEnlazado - simple
+    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @RequestMapping(value = "selectEnlazadoSimple", method = RequestMethod.GET)
+    public String getSelectEnlazadoSimple(Model model) {
+        return "selectEnlazadoSimple";
     }
 
     //Feedback
@@ -776,7 +785,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
+        List<Provincia> listaProvincias = provinciaService.findAll(null, null);
+        if(provincia == 0){
+        	provincia = 1;
+        }else{
+        	provincia = 0;
+        	Provincia provi = new Provincia(new BigDecimal(33), "Hugo", "Hugo", "Hugo");
+        	listaProvincias.remove(0);
+			listaProvincias.add(provi );
+        }
+        return ResourceUtils.fromListToResource(listaProvincias);
     }
     
     @UDALink(name = "getRemoteComboGrupos")

@@ -38,29 +38,20 @@
 <div class="container-fluid mt-4">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboGrupos">Combo con 'optgroups'</label>
-			<select id="comboGrupos"></select>
+			<label for="selectGrupos">Select con 'optgroups'</label>
+			<select id="selectGrupos"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboGruposRemoto">Combo con 'optgroups' remoto</label>
-			<select id="comboGruposRemoto"></select>
+			<label for="selectGruposRemoto">Select con 'optgroups' remoto</label>
+			<select id="selectGruposRemoto"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboImgs">Combo (no i18n) con imagenes</label>
-			<select id="comboImgs"></select>
-		</div>
-	</div>
-</div>
-
-<div class="container-fluid mt-4">
-	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
-			<label for="comboInput">Combo sobre <strong>Input</strong></label>
-			<input type="text" name="comboInput" id="comboInput" value="python" />
+			<label for="selectImgs">Select (no i18n) con imagenes</label>
+			<select id="selectImgs"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboLoadFromSelect">Combo carga inicial desde <strong>HTML</strong></label>
-			<select id="comboLoadFromSelect">
+			<label for="SelectLoadFromSelect">Select carga inicial desde <strong>HTML</strong></label>
+			<select id="SelectLoadFromSelect">
 				<option value="1">Alava</option>
 				<option value="3">Gipuzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>
