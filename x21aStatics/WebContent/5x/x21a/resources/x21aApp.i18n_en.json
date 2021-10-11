@@ -599,9 +599,34 @@
 		"espectador" : "espectador_en",
 		"informador" : "informador_en",
 		"manager" : "manager_en"
-	}
-	,
-	   "charts": {
+	},
+	"iberdokTable": {
+	 	"abrirDocumento": "Open document",
+	 	"editarEnIberdok":"Edit on IberDok!",
+	 	"id":"id",
+	 	"nombre":"name",
+	 	"idModelo":"modelId",
+	 	"idDocumento":"documentId",
+	 	"estado":"status",
+	 	"nuevo":"New",
+	 	"copiar":"Copy",
+	 	"editar":"Edit",
+	 	"ver":"View",
+	 	"finalizado":"Finished",
+	 	"elaboracion":"Elaboration",
+	 	"es":"Spanish",
+	 	"eu":"Basque",
+	 	"en":"English",
+	 	"modo1":"Create document",
+	 	"modo2":"Edit finished document",
+	 	"modo7":"Edit unfinished document",
+	 	"modo8":"Copy document",
+	 	"dialog":"Launch IberDok!",
+	 	"errorFichero":"The file to load has not been defined",
+	 	"errorParseo":"An error occured while parsing the JSON file of the applicaction => ",
+	 	"errorParseo2":".<br> Returned Error:<br>"
+	},
+	"charts": {
         "charts": "Gráficos_en",
         "line": "Líneas_en",
         "bar": "Barras_en",
