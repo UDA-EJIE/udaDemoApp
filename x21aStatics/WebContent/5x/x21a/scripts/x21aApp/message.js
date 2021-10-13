@@ -23,7 +23,8 @@ jQuery(document).ready(function () {
     $('#btnError').bind('click', function () {
         $.rup_messages('msgError', {
             title: 'Error grave',
-            message: '<p>Se ha producido un error a la hora de intentar guardar el registro.<br>Consulte con el administrador.</p>'
+            message: '<p>Se ha producido un error a la hora de intentar guardar el registro.<br>Consulte con el administrador.</p>',
+            buttonText: 'Prueba error'
         });
     });
     
@@ -32,21 +33,25 @@ jQuery(document).ready(function () {
             message: '¿Está seguro que desea cancelar?',
             title: 'Confirmación',
             OKFunction : acceptPulsed,
-            CANCELFunction: cancelPulsed
+            OKText: 'Sí',
+            CANCELFunction: cancelPulsed,
+            CANCELText: 'No'
         });
     });
     
     $('#btnOK').bind('click', function () {
         $.rup_messages('msgOK', {
             title: 'Correcto',
-            message: 'Todo ha ido OK.'
+            message: 'Todo ha ido OK.',
+            buttonText: 'Prueba OK'
         });
     });
     
     $('#btnAlert').bind('click', function () {
         $.rup_messages('msgAlert', {
             title: 'Alerta',
-            message: 'Esto es una alerta.'
+            message: 'Esto es una alerta.',
+            buttonText: 'Prueba alert'
         });
     });
     
