@@ -600,10 +600,31 @@
 		"espectador" : "espectador_eu",
 		"informador" : "informador_eu",
 		"manager" : "manager_eu"
-	},	
-	 "iberdokTable":{
+	},
+	"tabsScrollableExample" : {
+		"pestana1" : "Tab 1",
+		"pestana2" : "Tab 2",
+		"pestana3" : "sub03",
+		"pestana4" : "sub04",
+		"pestana5" : "sub05",
+		"pestana6" : "sub06",
+		"pestana7" : "sub07",
+		"pestana8" : "sub08",
+		"pestana9" : "sub09",
+		"pestana10" : "Tab 10",
+		"pestana11" : "Tab 11",
+		"pestana12" : "sub012",
+		"pestana13" : "sub013",
+		"pestana14" : "sub014",
+		"pestana15" : "sub15",
+		"pestana16" : "sub16",
+		"pestana17" : "tab17",
+		"pestana18" : "sub18",
+		"pestana19" : "sub19"
+	},
+	"iberdokTable": {
 	 	"abrirDocumento": "Abrir documento_eu",
-	 	"editarEnIberdok":"Editar en Iberdok_eu",
+	 	"editarEnIberdok":"Editar en IberDok!_eu",
 	 	"id":"id_eu",
 	 	"nombre":"nombre_eu",
 	 	"idModelo":"idModelo_eu",
@@ -622,11 +643,11 @@
 	 	"modo2":"Editar documento finalizado_eu",
 	 	"modo7":"Editar documento no finalizado_eu",
 	 	"modo8":"Copiar documento_eu",
-	 	"dialog":"Lanzar Iberdok_eu",
+	 	"dialog":"Lanzar IberDok!_eu",
 	 	"errorFichero":"No se ha definido el fichero a cargar_eu",
 	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación => _eu",
 	 	"errorParseo2":".<br> Error devuelto:<br>_eu"
-	 },
+	},
 	"charts": {
 			"charts": "Gráficos_eu",
 			"line": "Líneas_eu",

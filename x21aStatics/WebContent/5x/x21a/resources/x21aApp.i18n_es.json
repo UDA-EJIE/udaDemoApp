@@ -632,9 +632,9 @@
 		"pestana18" : "sub18",
 		"pestana19" : "sub19"
 	},
-	 "iberdokTable":{
+	"iberdokTable": {
 	 	"abrirDocumento": "Abrir documento",
-	 	"editarEnIberdok":"Editar en Iberdok",
+	 	"editarEnIberdok":"Editar en IberDok!",
 	 	"id":"id",
 	 	"nombre":"nombre",
 	 	"idModelo":"idModelo",
@@ -653,12 +653,12 @@
 	 	"modo2":"Editar documento finalizado",
 	 	"modo7":"Editar documento no finalizado",
 	 	"modo8":"Copiar documento",
-	 	"dialog":"Lanzar Iberdok",
+	 	"dialog":"Lanzar IberDok!",
 	 	"errorFichero":"No se ha definido el fichero a cargar",
 	 	"errorParseo":"Se ha producido un error en el parseo del fichero JSON de la aplicación => ",
 	 	"errorParseo2":".<br> Error devuelto:<br>"
-	 },
-	   "charts": {
+	},
+	"charts": {
         "charts": "Gráficos",
         "line": "Líneas",
         "bar": "Barras",
