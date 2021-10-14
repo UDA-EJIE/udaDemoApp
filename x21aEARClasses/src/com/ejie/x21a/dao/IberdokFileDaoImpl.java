@@ -118,10 +118,16 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public IberdokFile find(IberdokFile file) {
-		String query = "SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE FROM IBERDOK_FILES t1  WHERE t1.ID_DOCUMENTO = ?  ";
-
-		List<IberdokFile> fileList = this.jdbcTemplate.query(query, this.rwMap,
-				file.getIdDocumento());
+		String query = "SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE FROM IBERDOK_FILES t1  WHERE   ";
+		String identificador = "";
+		if(file.getIdDocumento() != null){
+			query = query + "t1.ID_DOCUMENTO = ?";
+			identificador = file.getIdDocumento();
+		}else{
+			query = query + "t1.ID = ?";
+			identificador = file.getId();
+		}
+		List<IberdokFile> fileList = this.jdbcTemplate.query(query, this.rwMap,identificador);
 		return (IberdokFile) DataAccessUtils.uniqueResult(fileList);
 	}
 
