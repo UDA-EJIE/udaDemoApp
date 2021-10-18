@@ -16,29 +16,27 @@
 $(function () {
     window.initRupI18nPromise.then(function () {
         //LOCAL
-        $('#comboAbuelo').rup_select({
-            source: [{
-                id: 'a',
-                text: '01'
+        $('#selectAbuelo').rup_select({
+            data: [{
+            	text: 'a',
+                id: '01'
             },
             {
-                id: 'b',
-                text: '02'
+            	text: 'b',
+                id: '02'
             },
             {
-                id: 'g',
-                text: '03'
+            	text: 'g',
+                id: '03'
             }
             ],
             selected: '02',
-            width: '99%',
-            customClasses: ['select-material'],
             blank: ''
         });
 
-        $('#comboPadre').rup_select({
-            parent: ['comboAbuelo'],
-            source: {
+        $('#selectPadre').rup_select({
+            parent: ['selectAbuelo'],
+            data: {
                 '01': [{
                     id: 'a1',
                     text: 'a1_text'
@@ -71,93 +69,85 @@ $(function () {
                 }]
 
             },
-            selected: 'b1_text',
-            width: '99%',
-            customClasses: ['select-material']
+            selected: 'b1'
         });
 
-        $('#comboHijo').rup_select({
-            parent: ['comboPadre'],
-            source: {
-                'b1_text': [{
-                    id: 'Bilbao',
-                    text: 'b1_1_text'
+        $('#selectHijo').rup_select({
+            parent: ['selectPadre'],
+            data: {
+                'b1': [{
+                    text: 'Bilbao',
+                    id: 'b1_1_text'
                 }, {
-                    id: 'Basauri',
-                    text: 'b1_2_text'
+                	text: 'Basauri',
+                    id: 'b1_2_text'
                 }, {
-                    id: 'Galdakao',
-                    text: 'b1_3_text'
+                	text: 'Galdakao',
+                    id: 'b1_3_text'
                 }],
-                'b2_text': [{
-                    id: 'Leioa',
-                    text: 'b2_1_text'
+                'b2': [{
+                	text: 'Leioa',
+                    id: 'b2_1_text'
                 }, {
-                    id: 'Las Arenas',
-                    text: 'b2_2_text'
+                	text: 'Las Arenas',
+                    id: 'b2_2_text'
                 }, {
-                    id: 'Getxo',
-                    text: 'b2_3_text'
+                	text: 'Getxo',
+                    id: 'b2_3_text'
                 }],
-                'b3_text': [{
-                    id: 'Sestao',
-                    text: 'b3_1_text'
+                'b3': [{
+                	text: 'Sestao',
+                    id: 'b3_1_text'
                 }, {
-                    id: 'Barakaldo',
-                    text: 'b3_2_text'
+                	text: 'Barakaldo',
+                    id: 'b3_2_text'
                 }, {
-                    id: 'Portu',
-                    text: 'b3_3_text'
+                	text: 'Portu',
+                    id: 'b3_3_text'
                 }]
 
             },
-            selected: 'b1_2_text',
-            width: '99%',
-            customClasses: ['select-material']
-
+            selected: 'b1_2_text'
         });
 
 
         //REMOTO
-        $('#comboAbueloRemoto').rup_combo({
-            source: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
+        $('#selectAbueloRemoto').rup_select({
+            url: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
             sourceParam: {
-                label: 'desc' + $.rup_utils.capitalizedLang(),
-                text: 'code',
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
                 style: 'css'
             },
             blank: '',
             selected: '2',
-            width: '99%',
-            customClasses: ['select-material']
+            change: function () {
+                console.log('selectAbueloRemoto:::Changed');
+            }
         });
 
-        $('#comboPadreRemoto').rup_combo({
-            parent: ['comboAbueloRemoto'],
-            source: 'comboEnlazadoSimple/remoteEnlazadoComarca',
+        $('#selectPadreRemoto').rup_select({
+            parent: 'selectAbueloRemoto',
+            url: 'comboEnlazadoSimple/remoteEnlazadoComarca',
             sourceParam: {
-                label: 'desc' + $.rup_utils.capitalizedLang(),
-                text: 'code',
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
                 style: 'css'
             },
             blank: '',
-            selected: '7',
-            width: '99%',
-            customClasses: ['select-material']
+            selected: '7'
         });
 
-        $('#comboHijoRemoto').rup_combo({
-            parent: ['comboPadreRemoto'],
-            source: 'comboEnlazadoSimple/remoteEnlazadoLocalidad',
+        $('#selectHijoRemoto').rup_select({
+            parent: 'selectPadreRemoto',
+            url: 'comboEnlazadoSimple/remoteEnlazadoLocalidad',
             sourceParam: {
-                label: 'desc' + $.rup_utils.capitalizedLang(),
-                text: 'code',
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
                 style: 'css'
             },
             blank: '',
-            selected: '8',
-            width: '99%',
-            customClasses: ['select-material']
+            selected: '8'
         });
 
 
@@ -270,7 +260,7 @@ $(function () {
             customClasses: ['select-material']
         });*/
 
-
+/*
         // Remote group
         $('#remoteGroup_comboPadre').rup_combo({
             source: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
@@ -297,6 +287,7 @@ $(function () {
             customClasses: ['select-material'],
             multiselect: true
         });
+        */
     });
     $('.contenedor').addClass('show');
 });
