@@ -949,8 +949,8 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getEnlMultDptoProv(
-            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
 
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
