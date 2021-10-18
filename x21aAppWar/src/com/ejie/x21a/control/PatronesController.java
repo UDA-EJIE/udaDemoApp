@@ -227,12 +227,13 @@ public class PatronesController {
     }
 
     //Multicombo
+    @UDALink(name = "getMulticombo", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "multicombo", method = RequestMethod.GET)
     public String getMulticombo(Model model) {
         return "multicombo";
     }
 
-    //Multicombo
+    // Combo con mantenimiento
     @UDALink(name = "getForm", linkTo = {
     		@UDALinkAllower(name = "getTableEditForm", linkClass = TableX21aAlumnoController.class),
 			@UDALinkAllower(name = "deleteAll", linkClass = TableX21aAlumnoController.class) })
