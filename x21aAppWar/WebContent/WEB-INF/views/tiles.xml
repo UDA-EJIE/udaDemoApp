@@ -746,6 +746,8 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
 	</definition>
+	
+	<definition name="tableX21aAlumnoEditForm" template="/WEB-INF/views/x21aalumno/includes/x21aAlumnoEditForm.jsp" />
 
 	<definition extends="template" name="calendar">
 		<put-attribute name="content"

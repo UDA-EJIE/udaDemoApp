@@ -329,10 +329,10 @@
                                     <a class="dropdown-item" href="${multicombo}">
                                         <spring:message code="multicombo" />
                                     </a>
-                                    <spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
+                                    <!--<spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
                                     <a class="dropdown-item"
                                         href="${comboMantenimiento}">Combo anidado
-                                        con mantenimiento</a>
+                                        con mantenimiento</a>-->
                                 </div>
                             </div>
 							

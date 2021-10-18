@@ -74,6 +74,7 @@ import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -232,9 +233,12 @@ public class PatronesController {
     }
 
     //Multicombo
+    @UDALink(name = "getForm", linkTo = {
+    		@UDALinkAllower(name = "getTableEditForm", linkClass = TableX21aAlumnoController.class),
+			@UDALinkAllower(name = "deleteAll", linkClass = TableX21aAlumnoController.class) })
     @RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
     public String getComboMantenimiento(Model model) {
-        model.addAttribute("alumno", new Alumno());
+		model.addAttribute("X21aAlumno", new X21aAlumno());
         return "comboMantenimiento";
     }
     

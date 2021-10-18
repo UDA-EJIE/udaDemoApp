@@ -20,20 +20,6 @@
 			<th data-col-prop="autonomiaId" data-col-sidx="AUTONOMIA_ID" >autonomiaId</th>
 	    </tr>
 	</thead>
-	<tfoot>
-		<tr>
-			<th>id</th>
-			<th>usuario</th>
-			<th>password</th>
-			<th>nombre</th>
-			<th>apellido1</th>
-			<th>provinciaId</th>
-			<th>localidadId</th>
-			<th>comarcaId</th>
-			<th>municipioId</th>
-			<th>autonomiaId</th>
-		</tr>
-	</tfoot>
 </table>
 
 <jsp:include page="includes/x21aAlumnoEdit.jsp"></jsp:include>
