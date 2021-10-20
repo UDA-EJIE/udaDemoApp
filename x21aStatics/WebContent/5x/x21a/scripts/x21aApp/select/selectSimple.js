@@ -73,7 +73,7 @@ $(function () {
             placeholder: '[Seleccione un elemento]',
             allowClear: false,
             selected:'ruby',
-            multiple:true,
+            multiple:false,
             change: function (e) {
                 console.log('selectSimple:::Changed');
             }

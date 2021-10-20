@@ -21,17 +21,17 @@
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
 				<label for="selectAbuelo">Provincia</label>
-				<select id="selectAbuelo"><option>&nbsp;</option></select>
+				<select id="selectAbuelo"></select>
 			</div>
 			
 			<div class="form-groupMaterial">
 				<label for="selectPadre">Comarca</label>
-				<select id="selectPadre"><option>&nbsp;</option></select>
+				<select id="selectPadre"></select>
 			</div>
 			
 			<div class="form-groupMaterial">
 				<label for="selectHijo">Localidad</label>
-				<select id="selectHijo"><option>&nbsp;</option></select>
+				<select id="selectHijo"></select>
 			</div>
 		</fieldset>
 		

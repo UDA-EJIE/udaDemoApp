@@ -31,7 +31,7 @@ $(function () {
             }
             ],
             selected: '02',
-            blank: ''
+            placeholder: ''
         });
 
         $('#selectPadre').rup_select({
