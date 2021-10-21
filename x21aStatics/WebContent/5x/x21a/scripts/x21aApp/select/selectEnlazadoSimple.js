@@ -69,7 +69,8 @@ $(function () {
                 }]
 
             },
-            selected: 'b1'
+            selected: 'b1',
+            placeholder: '[Seleccione]'
         });
 
         $('#selectHijo').rup_select({
@@ -119,7 +120,7 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            blank: '',
+            placeholder: '[Seleccionar]',
             selected: '2',
             change: function () {
                 console.log('selectAbueloRemoto:::Changed');
@@ -134,7 +135,7 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            blank: '',
+            placeholder: '',
             selected: '7'
         });
 
@@ -146,7 +147,7 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            blank: '',
+            placeholder: '',
             selected: '8'
         });
 

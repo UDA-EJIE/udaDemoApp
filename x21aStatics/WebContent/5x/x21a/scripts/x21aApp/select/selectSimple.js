@@ -87,7 +87,7 @@ $(function () {
                 style: 'css'
             },
             placeholder: '[Seleccione un elemento]',
-            allowClear: true,
+            allowClear: false,
             change: function () {
                 console.log('selectRemoto:::Changed');
             },
