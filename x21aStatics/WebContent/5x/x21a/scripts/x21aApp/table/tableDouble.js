@@ -349,10 +349,7 @@ function _init() {
 	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
-	            width: 60,
 	            edittype: 'checkbox',
-	            formatter: 'checkbox',
-	            align: 'center',
 	            editoptions: {
 	                value: '1:0'
 	            }
@@ -362,7 +359,6 @@ function _init() {
 	            index: 'fechaAlta',
 	            editable: true,
 	            hidden: false,
-	            width: 120,
 	            rupType: 'date',
 	            editoptions: {
 	                labelMaskId: 'fecha-mask',
@@ -376,7 +372,6 @@ function _init() {
 	            index: 'fechaBaja',
 	            editable: true,
 	            hidden: false,
-	            width: 120,
 	            rupType: 'date',
 	            editoptions: {
 	                labelMaskId: 'fecha-mask',
@@ -390,9 +385,7 @@ function _init() {
 	            index: 'rol',
 	            editable: true,
                 hidden: false,
-                width: 140,
                 rupType: 'combo',
-                formatter: 'rup_combo',
                 editoptions: {
                     source : './roles',
                     sourceParam : {label: 'label', value: 'value'},

@@ -49,10 +49,7 @@ jQuery(function ($) {
 	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
-	            width: 60,
 	            edittype: 'checkbox',
-	            formatter: 'checkbox',
-	            align: 'center',
 	            editoptions: {
 	                value: '1:0'
 	            }
@@ -62,7 +59,6 @@ jQuery(function ($) {
 	            index: 'fecha_alta',
 	            editable: true,
 	            hidden: false,
-	            width: 120,
 	            compulsory: true,
 	            rupType: 'date',
 	            editoptions: {
@@ -77,7 +73,6 @@ jQuery(function ($) {
 	            index: 'fecha_baja',
 	            editable: false,
 	            hidden: false,
-	            width: 120,
 	            rupType: 'date',
 	            editoptions: {
 	                labelMaskId: 'fecha-mask',
@@ -91,9 +86,7 @@ jQuery(function ($) {
                 index: 'rol',
                 editable: true,
                 hidden: false,
-                width: 140,
                 rupType: 'combo',
-                formatter: 'rup_combo',
                 editoptions: {
                     source : '../table/roles',
                     sourceParam : {label: 'label', value: 'value'},
