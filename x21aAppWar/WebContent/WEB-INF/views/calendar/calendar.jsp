@@ -52,7 +52,7 @@
 	</div>
 </div>
 
-<div id="divLeyenda" class="row">
+<div id="divLeyenda" class="row px-4">
 	<div class="col-xs-5 noPadding">
 		<div id="divLegend" class="">
 			<span class="separator" style="color: #666;"> Leyenda: </span>
