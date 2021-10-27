@@ -51,8 +51,8 @@
 		<div class="form-groupMaterial col-sm"> 
 			<label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label>
 			<select id="multicomboLoadFromSelect" multiple="multiple">
-				<option value="1" selected="selected">Alava</option>
-				<option value="3">Gipuzcoa</option>
+				<option value="1" selected="selected">Álava</option>
+				<option value="3">Gipúzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>
 			</select>
 		</div>

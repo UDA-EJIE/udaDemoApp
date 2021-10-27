@@ -14,6 +14,7 @@
  -- que establece la Licencia.
  --%>
 <h2>Combo</h2>
+
 <div class="container-fluid">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
@@ -42,7 +43,7 @@
 			<select id="comboGruposRemoto"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="comboImgs">Combo (no i18n) con imagenes</label>
+			<label for="comboImgs">Combo (no i18n) con imágenes</label>
 			<select id="comboImgs"></select>
 		</div>
 	</div>
@@ -57,8 +58,8 @@
 		<div class="form-groupMaterial col-sm">  
 			<label for="comboLoadFromSelect">Combo carga inicial desde <strong>HTML</strong></label>
 			<select id="comboLoadFromSelect">
-				<option value="1">Alava</option>
-				<option value="3">Gipuzcoa</option>
+				<option value="1">Álava</option>
+				<option value="3">Gipúzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>
 			</select>
 		</div>
