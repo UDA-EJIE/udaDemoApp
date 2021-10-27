@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Combo Enlazado (simple)</h2>
+<h2 class="title mb-3">Combo Enlazado (simple)</h2>
 
 <div class="container-fluid">
 	<div class="form-row">

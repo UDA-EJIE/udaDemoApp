@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Hora</h2>
-		<hr>
+		<h2 class="title mb-3">Hora</h2>
 
 		<p>El usuario puede introducir y seleccionar una hora tanto de
 			forma manual como visual, moviéndose fácilmente por las horas y los

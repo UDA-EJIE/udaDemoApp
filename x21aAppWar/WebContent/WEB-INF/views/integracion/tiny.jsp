@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>TinyMCE</h2>
+<h2 class="title mb-3">TinyMCE</h2>
 
 <textarea id="editor" rows="20" style="width:100%" class="tinymce">
 &lt;p&gt;

@@ -20,7 +20,7 @@
 <section id="row">
 	<div class="col-12">
 
-<h2>Nora</h2>
+<h2 class="title mb-3">Nora</h2>
 	<hr>
 <div id="error" style="display: none"></div>
 	<form:form modelAttribute="randomForm" id="searchForm" style="margin: 0 0.5em 0 0.5em;">

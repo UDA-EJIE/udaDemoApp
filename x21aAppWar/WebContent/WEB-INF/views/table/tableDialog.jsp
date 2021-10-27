@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla en diálogo</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Tabla en diálogo</h2> <!-- Titulo pagina -->
 
 <button id="btnTablaDialog_div" class="btn-material btn-material-primary-high-emphasis" type="button">
 	<span>Tabla en formulario (DIV)</span>

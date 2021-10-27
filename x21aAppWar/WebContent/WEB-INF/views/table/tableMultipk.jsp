@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>Tabla con múltiples PKs</h2>
+<h2 class="title mb-3">Tabla con múltiples PKs</h2>
 
 <jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 

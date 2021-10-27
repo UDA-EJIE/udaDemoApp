@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>x21aAlumno</h2>
+<h2 class="title mb-3">x21aAlumno</h2>
 
 <jsp:include page="includes/x21aAlumnoFilterForm.jsp"></jsp:include>
 

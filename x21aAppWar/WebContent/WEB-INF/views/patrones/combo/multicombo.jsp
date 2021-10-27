@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2><spring:message code="multicombo" /></h2>
+<h2 class="title mb-3"><spring:message code="multicombo" /></h2>
 
 <div class="container-fluid">
 	<div class="form-row">

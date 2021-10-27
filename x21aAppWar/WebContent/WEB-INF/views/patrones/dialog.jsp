@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Diálogo</h2>
-		<hr>
+		<h2 class="title mb-3">Diálogo</h2>
 		<p>Permite lanzar un subproceso o un mensaje de confirmación
 			dentro de un proceso principal sin salirse de este. Es una evolución
 			del patrón mensaje.</p>

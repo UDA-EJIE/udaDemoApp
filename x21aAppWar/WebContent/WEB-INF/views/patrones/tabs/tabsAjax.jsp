@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2><spring:message code="tab.ajaxLoad" /></h2>
+<h2 class="title mb-3"><spring:message code="tab.ajaxLoad" /></h2>
 <div id="tabs"></div>
 
 <div id="testButtons" style="padding-top: 0.8em">

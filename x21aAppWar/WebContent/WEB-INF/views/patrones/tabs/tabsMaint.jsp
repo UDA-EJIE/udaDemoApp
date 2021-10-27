@@ -16,5 +16,5 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2><spring:message code="tab.maintTab" /></h2>
+<h2 class="title mb-3"><spring:message code="tab.maintTab" /></h2>
 <div id="tabsMaint"></div>

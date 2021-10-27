@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla configurable</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Tabla configurable</h2> <!-- Titulo pagina -->
 
 <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 

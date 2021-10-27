@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>Tabla con columnas dinámicas</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Tabla con columnas dinámicas</h2> <!-- Titulo pagina -->
 
 <div id="columsSelectorContainer" class="form-groupMaterial">
 	<input type="text" name="columsSelector" id="columsSelector" />

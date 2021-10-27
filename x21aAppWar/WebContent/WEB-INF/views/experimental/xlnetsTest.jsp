@@ -1,5 +1,5 @@
 <body>
-<h2>XLNETS Test</h2>
+<h2 class="title mb-3">XLNETS Test</h2>
 
 
 </body>

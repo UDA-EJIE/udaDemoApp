@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2><spring:message code="lista.configurable.title" /></h2>
+<h2 class="title mb-3"><spring:message code="lista.configurable.title" /></h2>
 
 <jsp:include page="includes/listFilterForm.jsp"></jsp:include>
 

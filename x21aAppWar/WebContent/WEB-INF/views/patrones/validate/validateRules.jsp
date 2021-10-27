@@ -18,7 +18,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>	
 
 <section>
-	<h2>
+	<h2 class="title mb-3">
 		Reglas de validación 
 	</h2>
 	<p>

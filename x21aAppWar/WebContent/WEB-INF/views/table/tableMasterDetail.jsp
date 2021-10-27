@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla Maestro - Detalle</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Tabla Maestro - Detalle</h2> <!-- Titulo pagina -->
 <h3>Comarca</h3>
 
 <jsp:include page="includes/tableComarcaFilterForm.jsp"></jsp:include>
@@ -34,7 +34,7 @@
 
 <jsp:include page="includes/tableComarcaEdit.jsp"></jsp:include>
 
-<h3>Localidad</h3>
+<h3 class="mt-5">Localidad</h3>
 
 <jsp:include page="includes/tableLocalidadFilterForm.jsp"></jsp:include>
 

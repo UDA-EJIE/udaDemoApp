@@ -15,7 +15,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>Calendario</h2>
+<h2 class="title mb-3">Calendario</h2>
 <!-- Titulo pagina -->
 
 <div class="row">

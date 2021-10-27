@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>Visor geoeuskadi</h2>
+<h2 class="title mb-3">Visor geoeuskadi</h2>
  
  
  <div id="mi_mapa" style="width: 100%; height: 100%; position:relative;max-height: 600px;"></div>
