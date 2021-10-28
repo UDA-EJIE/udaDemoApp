@@ -400,6 +400,20 @@
 		template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp" />
 	<definition name="tabsContent_3"
 		template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp" />
+		
+	<definition extends="templateNoHeads" name="tabsTable_4">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTable-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tabsTableMultiPk_5">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipk.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTableMultipk-includes.jsp" />
+	</definition>
 
 	<definition extends="template" name="time">
 		<put-attribute name="content"
