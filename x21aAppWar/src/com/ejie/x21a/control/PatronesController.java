@@ -68,10 +68,12 @@ import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
+import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.RandomForm;
+import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.X21aAlumno;
@@ -342,6 +344,7 @@ public class PatronesController {
     }
 
     //Tabs Mixto
+    @UDALink(name = "tabsMixto", linkTo = { @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content"), @UDALinkAllower(name = "tabs4Table"), @UDALinkAllower(name = "tabs5TableMultiPk") })
     @RequestMapping(value = "tabsMixto", method = RequestMethod.GET)
     public String getTabsMixto(Model model) {
         return "tabsMixto";
@@ -1015,6 +1018,51 @@ public class PatronesController {
     public String tabs3Content(Model model) {
         return "tabsContent_3";
     }
+    
+    @UDALink(name = "tabs4Table", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getTableInlineEdit", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "deleteAll", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "getMultiFilterForm", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "multifilterAdd", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "multifilterDelete", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "multifilterDefault", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "multifilterGetAll", linkClass = TableUsuarioController.class) })
+	@RequestMapping(value = "/tabs4Table", method = RequestMethod.GET)
+	public String tabs4Table (Model model) {
+		Usuario usuario = new Usuario();
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("options", new TableOptions());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "Sí");
+		model.addAttribute("comboEjie", comboEjie);
+		
+		return "tabsTable_4";
+	}
+	
+	@UDALink(name = "tabs5TableMultiPk", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm", linkClass = TableMultiPkController.class),
+			@UDALinkAllower(name = "deleteAll", linkClass = TableMultiPkController.class) })
+	@RequestMapping(value = "/tabs5TableMultiPk", method = RequestMethod.GET)
+	public String tabs5TableMultiPk (Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("options", new TableOptions());
+		return "tabsTableMultiPk_5";
+	}
 
     @UDALink(name = "tabSub")
     @RequestMapping(value = "pruebaSub", method = RequestMethod.GET)
