@@ -1,18 +1,18 @@
 /*
-* Copyright 2012 E.J.I.E., S.A.
-*
-* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
-* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
-* Puede obtenerse una copia de la Licencia en
-*
-* http://ec.europa.eu/idabc/eupl.html
-*
-* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
-* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
-* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
-* que establece la Licencia.
-*/
+ * Copyright 2012 E.J.I.E., S.A.
+ *
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ * http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ */
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
@@ -45,9 +45,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -88,6 +91,7 @@ public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
 	public static final String MODEL_OPTIONS = "options";
+	public static final String MODEL_ACTIONTYPE = "actionType";
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -153,7 +157,10 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableEditFormMultipart"),
 			@UDALinkAllower(name = "getTableInlineEdit"),
+			@UDALinkAllower(name = "addFromNewWindow"),
+			@UDALinkAllower(name = "editFromNewWindow"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
@@ -180,7 +187,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "S�");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "table";
@@ -226,7 +233,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "S�");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDouble";
@@ -354,7 +361,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "S�");
+		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDialogAjax";
@@ -370,10 +377,14 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) boolean enableMultipart,
 			@RequestParam(required = false) String fixedMessage,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		if (enableMultipart) {
+			model.addAttribute("enableMultipart", enableMultipart);
+		}
 		if (fixedMessage != null) {
 			model.addAttribute("fixedMessage", fixedMessage);
 		}
@@ -391,9 +402,28 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
 	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
 		model.addAttribute("usuario2", new Usuario2());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		
 		return "tableDoubleEditForm";
+	}
+	
+	@UDALink(name = "getTableEditFormMultipart", linkTo = {
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "addMultipart"),
+			@UDALinkAllower(name = "editMultipart"),
+			@UDALinkAllower(name = "filter") })
+	@PostMapping(value = "/editFormMultipart")
+	public String getTableEditFormMultipart (
+			@RequestParam(required = true) String actionType,
+			Model model) {
+		model.addAttribute(MODEL_USUARIO, new Usuario());
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute("enableMultipart", true);
+		
+		return "tableEditForm";
 	}
 	
 	@UDALink(name = "getTableInlineEdit", linkTo = {
@@ -409,10 +439,10 @@ public class TableUsuarioController {
 			@RequestParam(required = false) String mapping,
 			Model model) {
 		model.addAttribute("entity", new Usuario());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		model.addAttribute("tableID", tableID);
 		
-		// Controlar que el mapping siempre se a�ada al modelo de la manera esperada
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table";
 		} else if (mapping.endsWith("/")) {
@@ -422,6 +452,26 @@ public class TableUsuarioController {
 		
 		return "tableInlineEditAuxForm";
 	}
+	
+	@UDALink(name = "editFromNewWindow")
+	@GetMapping(value = "/editFromNewWindow")
+    public String editFromNewWindow(Model model) {
+		Usuario usuario = new Usuario();
+		model.addAttribute(MODEL_USUARIO, usuario);
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		model.addAttribute(MODEL_ACTIONTYPE, "PUT");
+		
+		return "tableEditFormNewWindow";
+    }
 	
 	@UDALink(name = "getApellidos")
 	@RequestMapping(value = "/apellidos", method = RequestMethod.GET)
@@ -438,37 +488,31 @@ public class TableUsuarioController {
 		}
 
 		List<String> listaApellidos = new ArrayList<String>();
-		listaApellidos.add("Garc�a");
-		listaApellidos.add("Gonz�lez");
-		listaApellidos.add("Fern�ndez");
-		listaApellidos.add("Rodr�guez");
-		listaApellidos.add("L�pez");
-		listaApellidos.add("Mart�nez");
-		listaApellidos.add("S�nchez");
-		listaApellidos.add("P�rez");
-		listaApellidos.add("G�mez");
-		listaApellidos.add("Mart�n");
-		listaApellidos.add("Jim�nez");
+		listaApellidos.add("García");
+		listaApellidos.add("González");
+		listaApellidos.add("Fernández");
+		listaApellidos.add("Rodríguez");
+		listaApellidos.add("López");
+		listaApellidos.add("Martínez");
+		listaApellidos.add("Sánchez");
+		listaApellidos.add("Pérez");
+		listaApellidos.add("Gómez");
+		listaApellidos.add("Martín");
+		listaApellidos.add("Jiménez");
 		listaApellidos.add("Ruiz");
-		listaApellidos.add("Hern�ndez");
-		listaApellidos.add("D�az");
+		listaApellidos.add("Hernández");
+		listaApellidos.add("Díaz");
 		listaApellidos.add("Moreno");
-		listaApellidos.add("�lvarez");
-		listaApellidos.add("Mu�oz");
+		listaApellidos.add("Álvarez");
+		listaApellidos.add("Muñoz");
 		listaApellidos.add("Romero");
 		listaApellidos.add("Alonso");
-		listaApellidos.add("Guti�rrez");
+		listaApellidos.add("Gutiérrez");
 		listaApellidos.add("Navarro");
 		listaApellidos.add("Torres");
-		listaApellidos.add("Dom�nguez");
-		listaApellidos.add("V�zquez");
-		listaApellidos.add("Ramos");
-		listaApellidos.add("Prueba");
-		listaApellidos.add("Pedroche");
-		listaApellidos.add("Zangano");
+		listaApellidos.add("Domínguez");
+		listaApellidos.add("Vázquez");
 		listaApellidos.add("Perurena");
-		listaApellidos.add("Neymar");
-		listaApellidos.add("Tranquilino");
 		
 		for(String str : listaApellidos)
 		{
@@ -544,15 +588,29 @@ public class TableUsuarioController {
 		return new Resource<Usuario2>(usuarioAux);
     }
 	
-	@UDALink(name = "editar")
-	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
+	@UDALink(name = "editMultipart", linkTo = { @UDALinkAllower(name = "filter") })
+	@PutMapping(value = "/editMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario> editMultipart(
+    		@RequestBody Usuario usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+		logger.info("Entity correctly updated!");
+		return new Resource<Usuario>(usuarioAux);
+    }
+	
+	@Deprecated
+	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "filter") })
+	@PutMapping(value = "/editar", produces = "application/json")
     public @ResponseBody Resource<Usuario> editar(
     		@Validated @ModelAttribute Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
-    		HttpServletRequest request, HttpServletResponse response){
-		System.out.print("USUARIO::::"+usuario.getId()+" --- "+new Date()+"\n");
-		if (imagen!=null){
-			System.out.print("IMAGEN::::"+imagen);
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
         }
         Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
@@ -586,6 +644,39 @@ public class TableUsuarioController {
         return new Resource<Usuario2>(usuarioAux);
 	}
 	
+	@UDALink(name = "addMultipart", linkTo = { @UDALinkAllower(name = "filter") })
+	@PostMapping(value = "/addMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario> addMultipart(
+    		@Validated @RequestBody Usuario usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		logger.info("Entity correctly inserted!");
+		return new Resource<Usuario>(usuarioAux);
+    }
+	
+	@UDALink(name = "addFromNewWindow")
+	@GetMapping(value = "/addFromNewWindow")
+    public String addFromNewWindow(Model model) {
+		Usuario usuario = new Usuario();
+		model.addAttribute(MODEL_USUARIO, usuario);
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		model.addAttribute(MODEL_ACTIONTYPE, "POST");
+		
+		return "tableEditFormNewWindow";
+    }
 
 	/**
 	 * OperaciÃ³n CRUD Delete. Borrado del registro correspondiente al
@@ -678,7 +769,7 @@ public class TableUsuarioController {
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
 		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
 		
-		// Controlar que el mapping siempre se a�ada al modelo de la manera esperada
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table/multiFilter";
 		} else if (mapping.endsWith("/")) {
@@ -707,7 +798,7 @@ public class TableUsuarioController {
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
 		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
 		
-		// Controlar que el mapping siempre se a�ada al modelo de la manera esperada
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table/multiFilter";
 		} else if (mapping.endsWith("/")) {
@@ -718,7 +809,7 @@ public class TableUsuarioController {
 		return "multiFilterForm";
 	}
 	
-	// A�ade o actualiza un filtro
+	// Añade o actualiza un filtro
 	@UDALink(name = "multifilterAdd")
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Filter> filterAdd(@RequestBody Filter filtro){
@@ -757,7 +848,7 @@ public class TableUsuarioController {
 	}
 	
 	/**
-	 * OperaciÃ³n de bÃºsqueda del componente RUP_TABLE.
+	 * Operación de búsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterUsuario
 	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.

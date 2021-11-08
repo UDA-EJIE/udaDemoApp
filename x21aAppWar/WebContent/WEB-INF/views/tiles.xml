@@ -646,6 +646,13 @@
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
 	</definition>
 	
+	<definition extends="template" name="tableEditFormNewWindow">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableEditFormNewWindow.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableEditFormNewWindow-includes.jsp" />
+	</definition>
+	
 	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
 	
 	<definition name="tableDoubleEditForm" template="/WEB-INF/views/table/includes/tableDoubleEditForm.jsp" />

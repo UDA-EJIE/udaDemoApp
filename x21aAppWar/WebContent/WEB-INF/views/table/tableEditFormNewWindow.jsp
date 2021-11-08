@@ -13,28 +13,19 @@
  -- VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
 <%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
-<c:choose>
-	<c:when test="${enableMultipart eq true}">
-		<c:set value="${actionType == 'POST' ? 'addMultipart': 'editMultipart'}" var="endpoint" />
-	</c:when>
-	<c:when test="${!enableMultipart}">
-		<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-	</c:when>
-</c:choose>
-
+<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/${endpoint}" var="url"/>
 <form:form modelAttribute="usuario" id="example_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="example_detail_feedback"></div>
-	<c:if test="${not empty fixedMessage}">
-		<p><c:out value="${fixedMessage}"/></p>
+	<c:if test="${actionType != 'POST'}">
+		<form:input path="id" id="id_detail_table" class="d-none" />
 	</c:if>
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
@@ -69,16 +60,28 @@
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="rol" id="rol_detail_table" />
+	    	<form:select path="rol" id="rol_detail_table" items="${comboRol}" />
 	    	<label for="rol_detail_table"><spring:message code="rol" /></label>
 	    </div>
 	</div>
-	<c:if test="${enableMultipart eq true}">
-	<div class="form-row">	
-		<div class="form-groupMaterial col-sm">
-			<form:input path="imagenAlumno" type="file" id="imagenAlumno_detail_table" />
-			<label for="imagenAlumno_detail_table"><spring:message code="subidaImg" /></label>
-		</div>	
-	</div>
-	</c:if>
+	
+	<!-- Botonera del formulario -->
+    <div id="example_detail_buttonSet" class="text-right">
+    	<!-- Botón de limpiar -->
+        <button id="closeEditFormWindow" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        	<i class="mdi mdi-exit-to-app"></i>
+        	<span>
+				Cerrar formulario
+			</span>
+        </button>
+        <!-- Botón de guardado -->
+        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis" data-action-type="${actionType}">
+        	<i class="mdi mdi-content-save"></i>
+        	<span>
+				Enviar entidad
+			</span>        	
+        </button>
+    </div>
 </form:form>
+
+<div id="closeEditFormWindowDialog" style="display: none"></div>
