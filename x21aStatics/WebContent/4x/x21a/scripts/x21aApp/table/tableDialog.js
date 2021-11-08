@@ -298,6 +298,7 @@ jQuery(function ($) {
     }
     inicio();
     jQuery('#tableDialog_layer_div').rup_dialog({
+    	title: 'Tabla en formulario (DIV)',
         type: $.rup.dialog.DIV,
         autoOpen: false,
         width: 1200
@@ -309,6 +310,7 @@ jQuery(function ($) {
 
     jQuery('#btnTablaDialog_ajax').on('click', function () {
         jQuery('#tableDialog_layer_div').rup_dialog({
+        	title: 'Tabla en formulario (AJAX)',
             type: $.rup.dialog.AJAX,
             url: '../table/tableDialogAjax',
             autoOpen: true,
