@@ -41,7 +41,7 @@ function _init() {
                 localStorage['plugins' + num] = '';
             }
 
-            var selectionType = $('#example_tableConfiguration' + num + ' input[name=\'tipoSeleccionTabla\']:checked')[0].id;
+            var selectionType = $('#example_tableConfiguration' + num + ' input[name=\'selectionType\']:checked')[0].id;
 
             if (num.length > 0) {
                 // Comprobar si el identificador lleva el número al final y eliminarlo en caso de que lo lleve para que no falle al obtener la propiedad del objeto "allowedPluginsBySelecionType"

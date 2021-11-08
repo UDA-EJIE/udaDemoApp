@@ -212,7 +212,7 @@ jQuery(function ($) {
             localStorage.plugins = '';
         }
 
-        var selectionType = $('#multipk_tableConfiguration input[name = "tipoSeleccionTabla"]:checked')[0].id;
+        var selectionType = $('#multipk_tableConfiguration input[name = "selectionType"]:checked')[0].id;
 
         $.each($('#multipk_tableConfiguration .pluginsControl input'), function () {
             if ($('#' + this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id) > -1) {

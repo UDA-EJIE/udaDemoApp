@@ -56,15 +56,15 @@
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
 			    <div class="radio-material pluginsControl">
-			        <form:radiobutton id="multiSelection" path="tipoSeleccionTabla" value="2"/>
+			        <form:radiobutton id="multiSelection" path="selectionType" value="2"/>
 			        <label for="multiSelection">Multiselección</label>
 			    </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton id="selection" path="tipoSeleccionTabla" value="4"/>
+		            <form:radiobutton id="selection" path="selectionType" value="4"/>
 		            <label for="selection">Selección Simple</label>
 		        </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton id="noSelection" path="tipoSeleccionTabla" value="7"/>
+		            <form:radiobutton id="noSelection" path="selectionType" value="7"/>
 		            <label for="noSelection">Sin selección</label>
 		        </div>
 	        </div>

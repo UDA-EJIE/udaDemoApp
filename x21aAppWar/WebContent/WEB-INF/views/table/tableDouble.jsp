@@ -87,15 +87,15 @@
                     <legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
                     <div class="col-sm-10">
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="multiSelection" path="tipoSeleccionTabla" value="7"/>
+                        	<form:radiobutton id="multiSelection" path="selectionType" value="7"/>
                         	<label for="multiSelection">Multiselección</label>
                         </div>
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="selection" path="tipoSeleccionTabla" value="8"/>
+                        	<form:radiobutton id="selection" path="selectionType" value="8"/>
                         	<label for="selection">Selección Simple</label>
                         </div>
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="noSelection" path="tipoSeleccionTabla" value="9"/>
+                        	<form:radiobutton id="noSelection" path="selectionType" value="9"/>
                         	<label for="noSelection">Sin selección</label>
                         </div>
                     </div>
@@ -191,15 +191,15 @@
                     <legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
                     <div class="col-sm-10">
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="multiSelection2" path="tipoSeleccionTabla" value="7"/>
+                        	<form:radiobutton id="multiSelection2" path="selectionType" value="7"/>
                         	<label for="multiSelection2">Multiselección</label>
                         </div>
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="selection2" path="tipoSeleccionTabla" value="8"/>
+                        	<form:radiobutton id="selection2" path="selectionType" value="8"/>
                         	<label for="selection2">Selección Simple</label>
                         </div>
                         <div class="radio-material pluginsControl">
-                        	<form:radiobutton id="noSelection2" path="tipoSeleccionTabla" value="9"/>
+                        	<form:radiobutton id="noSelection2" path="selectionType" value="9"/>
                         	<label for="noSelection2">Sin selección</label>
                         </div>
                     </div>
