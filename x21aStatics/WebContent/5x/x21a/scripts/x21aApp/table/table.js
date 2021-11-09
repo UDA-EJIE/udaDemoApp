@@ -149,7 +149,8 @@ jQuery(function ($) {
                 }
             }
             
-            if (localStorage.plugins.indexOf('multiFilter') > -1) {
+            // Se usan comas para asegurarse de que la opción se busca de manera exacta.
+            if (localStorage.plugins.indexOf(',multiFilter,') > -1) {
                 plugins.multiFilter = {
                     idFilter: 'generated',
                     labelSize: 255,
@@ -161,13 +162,13 @@ jQuery(function ($) {
                 $('#multiFilter').prop('checked', false);
             }
 
-            if (localStorage.plugins.indexOf('simpleFilter') > -1) {
+            if (localStorage.plugins.indexOf(',simpleFilter,') > -1) {
                 $('#simpleFilter').prop('checked', true);
             } else {
                 $('#simpleFilter').prop('checked', false);
             }
             
-            if (localStorage.plugins.indexOf('noFilter') > -1) {
+            if (localStorage.plugins.indexOf(',noFilter,') > -1) {
                $('#example_filter_form').remove();
                $('#example').attr('data-filter-form', '#example_noFilter_form');
                $('#noFilter').prop('checked', true);
@@ -180,7 +181,7 @@ jQuery(function ($) {
             }
             
             // SELECCIÓN
-            if (localStorage.plugins.indexOf('multiSelection') > -1) {
+            if (localStorage.plugins.indexOf(',multiSelection,') > -1) {
                 plugins.multiSelect = {
                     style: 'multi'
                 };
@@ -192,7 +193,7 @@ jQuery(function ($) {
                 $('#multiSelection').prop('checked', false);
             }
 
-            if (localStorage.plugins.indexOf('selection') > -1) {
+            if (localStorage.plugins.indexOf(',selection,') > -1) {
             	plugins.select = {
                     activate: true
                 };
@@ -202,14 +203,14 @@ jQuery(function ($) {
                 $('#selection').prop('checked', false);
             }
 
-            if (localStorage.plugins.indexOf('noSelection') > -1) {
+            if (localStorage.plugins.indexOf(',noSelection,') > -1) {
                 $('#noSelection').prop('checked', true);
             } else {
                 $('#noSelection').prop('checked', false);
             }
             
             // BOTONERA Y EDICIÓN
-            if (localStorage.plugins.indexOf('buttons') > -1) {
+            if (localStorage.plugins.indexOf(',buttons,') > -1) {
             	plugins.buttons = {
                     activate: true
                 };
@@ -226,7 +227,7 @@ jQuery(function ($) {
                     }
                 };
 
-	            if (localStorage.plugins.indexOf('editForm') > -1) {
+	            if (localStorage.plugins.indexOf(',editForm,') > -1) {
 	            	const formEdit = {
 	                    detailForm: '#example_detail_div',
 	                    loadSpinner: true,
@@ -285,7 +286,7 @@ jQuery(function ($) {
 	                $('#editForm').prop('checked', false);
 	            }
 	
-	            if (localStorage.plugins.indexOf('inlineEdit') > -1) {
+	            if (localStorage.plugins.indexOf(',inlineEdit,') > -1) {
 	            	const inlineEdit = {
 	                    deselect: true,
 	                    validate: {
@@ -316,7 +317,7 @@ jQuery(function ($) {
 	                $('#inlineEdit').prop('checked', false);
 	            }
 	            
-	            if (localStorage.plugins.indexOf('editFormTargetBlank') > -1) {
+	            if (localStorage.plugins.indexOf(',editFormTargetBlank,') > -1) {
 	            	// Crear botón para añadir registros desde una nueva pestaña
 	                const optionButtonEditFormTargetBlankAdd = {
 	                    text: function () {
@@ -368,14 +369,13 @@ jQuery(function ($) {
 	                $('#editFormTargetBlank').prop('checked', false);
 	            }
 	
-	            if (localStorage.plugins.indexOf('noEdit') > -1) {
+	            if (localStorage.plugins.indexOf(',noEdit,') > -1) {
 	                $('#noEdit').prop('checked', true);
 	            } else {
 	                $('#noEdit').prop('checked', false);
 	            }
                 
-	            // Se usa la coma en la segunda comprobación para diferenciarlo fácilmente de la opción "editFormTargetBlank".
-                if (localStorage.plugins.indexOf('multipart') > -1 && localStorage.plugins.indexOf('editForm,') > -1) {
+	            if (localStorage.plugins.indexOf(',multipart,') > -1 && localStorage.plugins.indexOf(',editForm,') > -1) {
                 	plugins.formEdit.direct = true;
                 	plugins.formEdit.multipart = true;
                 	plugins.formEdit.url = './editFormMultipart';
@@ -394,7 +394,7 @@ jQuery(function ($) {
             }
             
             // BUSCADOR
-            if (localStorage.plugins.indexOf('seeker') > -1) {
+            if (localStorage.plugins.indexOf(',seeker,') > -1) {
             	plugins.seeker = {
                     activate: true
                 };
@@ -404,7 +404,7 @@ jQuery(function ($) {
             }
             
             // REORDENACIÓN DE COLUMNAS
-            if (localStorage.plugins.indexOf('colReorder') > -1) {
+            if (localStorage.plugins.indexOf('colReorder,') > -1) {
             	plugins.colReorder = {
                     fixedColumnsLeft: 1
                 };
@@ -414,7 +414,7 @@ jQuery(function ($) {
             }
             
             // AGRUPACIÓN
-            if (localStorage.plugins.indexOf('groups') > -1) {
+            if (localStorage.plugins.indexOf(',groups,') > -1) {
             	plugins.rowGroup = {
             		startRender: function (rows, group) {
             			return $('<tr/>').append('<td colspan="8"><b>' + group + ' - ' + rows[0].length + ' Elemento(s) </b></td>');
@@ -428,7 +428,7 @@ jQuery(function ($) {
             }
             
             // TRIGGERS
-            if (localStorage.plugins.indexOf('triggers') > -1) {
+            if (localStorage.plugins.indexOf(',triggers,') > -1) {
                 window.cargarPruebasTriggers();
                 $('#triggers').prop('checked', true);
             } else {
