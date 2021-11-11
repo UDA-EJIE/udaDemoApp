@@ -426,9 +426,9 @@
 						let element = insertedForm.find('[name="' + column.name + '"]');
 						// Comprobar que es un componente RUP y editable. En caso de no ser editable, se añade la propiedad readonly
 						if (column.rupType && column.editable) {
-							//Los combos tienen otra comprobación por el deferred
+							// Los combos tienen que ser comprobados para poder establecer su valor
 							if(row !== undefined && column.rupType === 'combo'){
-								column.editoptions.selected = row[column.name];
+								column.editoptions.selected = column.name.includes('.') ? $.fn.flattenJSON(row)[column.name] : row[column.name];
 							}
 							element['rup_' + column.rupType](column.editoptions);
 						} else if (!column.editable) {
@@ -545,7 +545,8 @@
 	        actionType = ctx.oInit.formEdit.actionType;
 	
 	        if (actionType === 'PUT') {
-	            if (ctx.oInit.formEdit.direct === undefined) { //Si existe esta variable, no accedemos a bbdd a por el registro.
+	        	// Si la opción 'direct' es verdadera, no se solicita el registro a BBDD, en su lugar, se obtiene de la tabla directamente.
+	        	if (!ctx.oInit.formEdit.direct) {
 	                //se obtiene el row entero de bbdd, meter parametro opcional.
 	                var pk = DataTable.Api().rupTable.getIdPk(row, ctx.oInit);
 	                //se evita slash en la url GET como parámetros.Formateo de fecha.
@@ -725,6 +726,13 @@
 	                $('#' + ctx.sTableId).triggerHandler('tableEditFormErrorCallSaveAjaxNotRow',ctx);
 	            } else {
 	            	let url = actionType == 'POST' ? '/add' : '/edit';
+	            	
+	            	// Comprobar si se ha definido otra URL en las propiedades, en caso afirmativo, se aplica.
+	            	const property = url.substring(1) + 'Url';
+	            	if (ctx.oInit.formEdit[property]) {
+	            		url = ctx.oInit.formEdit[property];
+	            	}
+	            	
 	            	_callSaveAjax(actionType, dt, row, idRow, false, idTableDetail, url, false);
 	            }
 	            $('#' + ctx.sTableId).triggerHandler('tableButtonSave',ctx);
@@ -781,6 +789,13 @@
 	                $('#' + ctx.sTableId).triggerHandler('tableEditFormErrorCallSaveAjaxNotRow',ctx);
 	            } else {
 	            	let url = actionType == 'POST' ? '/add' : '/edit';
+	            	
+	            	// Comprobar si se ha definido otra URL en las propiedades, en caso afirmativo, se aplica.
+	            	const property = url.substring(1) + 'Url';
+	            	if (ctx.oInit.formEdit[property]) {
+	            		url = ctx.oInit.formEdit[property];
+	            	}
+	            	
 	            	_callSaveAjax(actionSaveContinue, dt, row, idRow, true, idTableDetail, url, false);
 	            }
 	            $('#' + ctx.sTableId).triggerHandler('tableButtonSaveContinue', ctx);
@@ -2012,7 +2027,7 @@
             return;
         }
 
-        if (ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.activate !== false) {
+        if (!ctx.oInit.noEdit && ctx.oInit.formEdit !== undefined && ctx.oInit.formEdit.activate !== false) {
 	        DataTable.editForm.preConfigure(new DataTable.Api(ctx));
 	        
         	$('#' + ctx.sTableId).on('tableEditFormInitialize', function(event, ctx) {

@@ -257,7 +257,7 @@
 
                 // Detecta cuando se pulsa sobre el boton de filtrado o de limpiar lo filtrado
                 if (options.buttons !== undefined && ctx._buttons !== undefined) {
-                    ctx._buttons[0].inst.s.disableAllButttons = undefined;
+                    ctx._buttons[0].inst.s.disableAllButtons = undefined;
                     DataTable.Api().buttons.displayRegex(ctx);
                 }
                 $('#' + ctx.sTableId).triggerHandler('tableAfterReorderData',ctx);
@@ -501,6 +501,10 @@
          */
         _getColumns(options) {
             var $self = this;
+            
+            // Indica si la primera columna ha sido generada por el componente RUP
+            let rupSelectColumn = false;
+            
             //Se crea la columna del select.
             if (options.columnDefs !== undefined && options.columnDefs.length > 0 &&
                 options.columnDefs[0].className !== undefined && options.columnDefs[0].className.indexOf('select-checkbox') > -1 &&
@@ -521,7 +525,20 @@
                 if (options.multiSelect !== undefined && options.multiSelect.hideMultiselect) {
                     options.columnDefs[0].visible = false;
                 }
+                
+                rupSelectColumn = true;
             }
+            
+            // Se ocultan las columnas que así hayan sido definidas en el colModel
+            $.each(options.colModel, function (index, column) {
+            	if (column.hidden) {
+            		options.columnDefs.push({
+            			targets: rupSelectColumn ? index + 1 : index,
+            			visible: false,
+            			className: 'never'
+            		})
+            	}
+            });
 
             //se crea el tfoot
             var $tfoot = $('<tfoot>').appendTo($self[0]);
@@ -946,7 +963,7 @@
                 }
 
                 toggleIcon1Tmpl = "<span id='{0}' class='collapse_icon mdi mdi-arrow-down-drop-circle'></span>";
-                toggleLabelTmpl = "<a id='{0}' class='text-primary text-decoration-underline' href='#0'>{1}:</a>";
+                toggleLabelTmpl = "<a id='{0}' class='text-primary text-decoration-underline font-weight-bold' href='#0'>{1}:</a>";
                 filterSummaryTmpl = "<span id='{0}'></span>";
                 toggleIcon2Tmpl = "<span id='{0}' class='collapse_icon_right mdi mdi-arrow-up-drop-circle'></span>";
 
