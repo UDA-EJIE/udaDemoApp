@@ -324,7 +324,7 @@ jQuery(function ($) {
 	                        return 'Añadir registro desde nueva pestaña';
 	                    },
 	                    id: 'exampleEditFormTargetBlankAdd', // Campo obligatorio si se quiere usar desde el contextMenu
-	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnAdd order-first',
+	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnAdd',
 	                    displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
 	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 	                    type: 'add',
@@ -339,7 +339,7 @@ jQuery(function ($) {
 	                        return 'Editar registro desde nueva pestaña';
 	                    },
 	                    id: 'exampleEditFormTargetBlankEdit', // Campo obligatorio si se quiere usar desde el contextMenu
-	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit order-1',
+	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit',
 	                    displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
 	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 	                    type: 'edit',
@@ -353,11 +353,7 @@ jQuery(function ($) {
 	                    }
 	                };
 	                
-	                plugins.buttons.blackListButtons = ['addButton', 'editButton', 'cloneButton'];
-	                
-	                $('#example').on('tableButtonsAfterToolbarInit', function () {
-	                	$('#exampledeleteButton_1').addClass('order-2');
-	                });
+	                plugins.noEdit = true;
 	                
 	                if (plugins.buttons.myButtons == undefined) {
 	                	plugins.buttons.myButtons = [];
@@ -370,6 +366,7 @@ jQuery(function ($) {
 	            }
 	
 	            if (localStorage.plugins.indexOf(',noEdit,') > -1) {
+	            	plugins.noEdit = true;
 	                $('#noEdit').prop('checked', true);
 	            } else {
 	                $('#noEdit').prop('checked', false);
