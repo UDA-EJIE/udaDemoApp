@@ -107,6 +107,8 @@ public interface IberdokFileDao {
     List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith);
     
     List<TableRowDto<IberdokFile>> search(IberdokFile filterParams, IberdokFile searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
+
+	IberdokFile findLastByIdCorrelacion(String idModelo, String idCorrelacion);
     
 }
 

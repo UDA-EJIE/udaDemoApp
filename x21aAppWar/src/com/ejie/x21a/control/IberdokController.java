@@ -2,11 +2,14 @@ package com.ejie.x21a.control;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -14,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.RandomForm;
@@ -37,6 +43,9 @@ import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.util.ResourceUtils;
+import com.sun.org.apache.xpath.internal.XPathAPI;
+
+import n38c.exe.N38API;
 
 @Controller
 @RequestMapping(value = "/iberdok")
@@ -57,7 +66,7 @@ public class IberdokController {
 	 */
 
 	/**
-	 * Operaci�n CRUD Read. Devuelve el bean correspondiente al identificador
+	 * Operación CRUD Read. Devuelve el bean correspondiente al identificador
 	 * indicado.
 	 * 
 	 * @param id
@@ -66,22 +75,24 @@ public class IberdokController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<IberdokFile> get(@PathVariable String id) {
+	public @ResponseBody Resource<IberdokFile> get(@PathVariable String id,HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		file = this.iberdokFileService.find(file);
 		IberdokController.logger.info("[GET - findBy_PK] : Obtener ficheros de iberdok por PK");
+		
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		return new Resource<IberdokFile>(file);
 	}
 
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
-	 * indicados en el objeto pasado como par�metro.
+	 * indicados en el objeto pasado como parámetro.
 	 * 
 	 * @param IberdokFile
-	 *            Objeto que contiene los par�metros de filtrado utilizados en
-	 *            la b�squeda.
-	 * @return Lista de objetos correspondientes a la b�squeda realizada.
+	 *            Objeto que contiene los parï¿½metros de filtrado utilizados en
+	 *            la búsqueda.
+	 * @return Lista de objetos correspondientes a la búsqueda realizada.
 	 */
 	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
 	@RequestMapping(method = RequestMethod.GET)
@@ -92,16 +103,24 @@ public class IberdokController {
 	}
 
 	/**
-	 * Operaci�n CRUD Edit. Modificaci�n del bean indicado.
+	 * Operación CRUD Edit. Modificación del bean indicado.
 	 * 
 	 * @param IberdokFile
-	 *            Bean que contiene la informaci�n a modificar.
-	 * @return Bean resultante de la modificaci�n.
+	 *            Bean que contiene la información a modificar.
+	 * @return Bean resultante de la modificación.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
 	public @ResponseBody Resource<IberdokFile> edit(
-			@Validated @RequestBody IberdokFile file) {
+			@Validated @RequestBody IberdokFile file, HttpServletRequest request) {
+		try{
+			N38API miApi = new N38API(request);
+			Document miDoc = miApi.n38ItemSesion();
+			String sUsu = DatoSesion(miDoc, "n38login");
+			file.setUsuario(sUsu);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 
 		IberdokFile fileAux = this.iberdokFileService.update(file);
 		logger.info("Entity correctly updated!");
@@ -109,13 +128,13 @@ public class IberdokController {
 	}
 
 	/**
-	 * Operaci�n CRUD Create. Creaci�n de un nuevo registro a partir del bean
+	 * Operación CRUD Create. Creación de un nuevo registro a partir del bean
 	 * indicado.
 	 * 
 	 * @param IberdokFile
-	 *            Bean que contiene la informaci�n con la que se va a crear el
+	 *            Bean que contiene la información con la que se va a crear el
 	 *            nuevo registro.
-	 * @return Bean resultante del proceso de creaci�n.
+	 * @return Bean resultante del proceso de creación.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -128,7 +147,7 @@ public class IberdokController {
 	}
 
 	/**
-	 * Operaci�n CRUD Delete. Borrado del registro correspondiente al
+	 * Operación CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 * 
 	 * @param id
@@ -152,12 +171,12 @@ public class IberdokController {
 	 */
 
 	/**
-	 * Operaci�n de filtrado del componente RUP_TABLE.
+	 * Operaciï¿½n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param IberdokFile
-	 *            Bean que contiene los par�metros de filtrado a emplear.
+	 *            Bean que contiene los parámetros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los par�mtros de configuraci�n propios del
+	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
@@ -175,17 +194,17 @@ public class IberdokController {
 	}
 
 	/**
-	 * Operaci�n de b�squeda del componente RUP_TABLE.
+	 * Operación de búsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterIberdokFile
-	 *            Bean que contiene los par�metros de filtrado a emplear.
+	 *            Bean que contiene los parámetros de filtrado a emplear.
 	 * @param searchIberdokFile
-	 *            Bean que contiene los par�metros de b�squeda a emplear.
+	 *            Bean que contiene los parámetros de bï¿½squeda a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los par�mtros de configuraci�n propios del
-	 *            RUP_TABLE a aplicar en la b�squeda.
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los par�metros de b�squeda.
+	 *         que se ajustan a los parámetros de búsqueda.
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
@@ -199,13 +218,13 @@ public class IberdokController {
 	}
 
 	/**
-	 * Borrado m�ltiple de registros
+	 * Borrado múltiple de registros
 	 * 
 	 * @param filterIberdokFile
-	 *            Bean que contiene los par�metros de filtrado a emplear.
+	 *            Bean que contiene los parámetros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los par�mtros de configuraci�n propios del
-	 *            RUP_TABLE a aplicar en la b�squeda.
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")
@@ -230,7 +249,7 @@ public class IberdokController {
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getPDF") })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
-	public String getIberdok(Model model) {
+	public String getIberdok(Model model, HttpServletRequest request, HttpServletResponse response) {
 
 		// anadimos los datos de configuracion de iberdok al cliente desde el
 		// properties
@@ -257,6 +276,132 @@ public class IberdokController {
 		return "iberdok";
 	}
 	
+	// Iberdok
+	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "getMultiFilterForm"),
+			@UDALinkAllower(name = "getXhtml"),
+			@UDALinkAllower(name = "getXhtml"),
+			@UDALinkAllower(name = "view") })
+	@RequestMapping(value = "viewIberdok", method = RequestMethod.GET)
+	public String viewIberdok(Model model,HttpServletResponse response,@RequestParam(required = false) String idCorrelacion,@RequestParam(required = false) String idModelo) {
+
+		// anadimos los datos de configuracion de iberdok al cliente desde el
+		// properties
+
+		model.addAttribute("idUsuario",
+				appConfiguration.getProperty("iberdok.idUsuario"));
+		model.addAttribute("urlFinalizacion",
+				appConfiguration.getProperty("iberdok.urlFinalizacion"));
+		model.addAttribute("urlRetorno",
+				appConfiguration.getProperty("iberdok.urlRetorno"));
+		model.addAttribute("idModelo",
+				appConfiguration.getProperty("iberdok.idModelo"));
+		model.addAttribute("token",
+				appConfiguration.getProperty("iberdok.token"));
+		model.addAttribute("lang", appConfiguration.getProperty("iberdok.lang"));
+		model.addAttribute("urlNuevoDocumento",
+				appConfiguration.getProperty("iberdok.urlNuevoDocumento"));
+		model.addAttribute("urlEditarDocumento",
+				appConfiguration.getProperty("iberdok.urlEditarDocumento"));
+		model.addAttribute("urlEditorDocumentos",
+				appConfiguration.getProperty("iberdok.urlEditorDocumentos"));
+		RandomForm random = new RandomForm();
+		String idDocumento = "";
+		try{
+			if(idModelo != null || idCorrelacion != null){
+				IberdokFile file = iberdokFileService.findLastByIdCorrelacion(idModelo,idCorrelacion);
+				idDocumento = file.getIdDocumento();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		random.setIdDocumento(idDocumento);
+		model.addAttribute("randomForm", random);
+		model.addAttribute("idDocumento", idDocumento);
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
+		return "iberdok";
+	}
+	
+	@RequestMapping(value="/urlFinalizacion",consumes = MediaType.APPLICATION_JSON_VALUE)  //this url should map which you configured in step 5
+    public void success(@RequestBody(required = false) IberdokFile bean, HttpServletRequest request) throws Exception{
+		
+		IberdokController.logger.info("[POST - iber/succes] : ENTRO AL SUCCESS3 con paramas");
+       
+        if(bean != null){
+        	
+        	IberdokController.logger.info("[POST - iber/succes] : ENTRO AL SUCCESS3 con paramas");
+        	IberdokController.logger.info("[POST - iber/succes] : " + bean.toString());
+  
+        	//FAlta semilla e idModelo
+        	
+        	bean.setNombre(bean.getIdCorrelacion());
+			if(bean.getIdDocumento() != null){
+				IberdokFile fileSearch = new IberdokFile();
+				fileSearch.setIdDocumento(bean.getIdDocumento());
+				String idRecibido = iberdokFileService.existsFile(fileSearch );
+				IberdokController.logger.info("[POST - iber/ADDoUPDATE] : " + idRecibido);
+				try{
+					N38API miApi = new N38API(request);
+					Document miDoc = miApi.n38ItemSesion();
+					String sUsu = DatoSesion(miDoc, "n38login");
+					bean.setUsuario(sUsu);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				Timestamp ts=new Timestamp(new Date().getTime());  
+				bean.setFechaIberdok(ts);
+				if(idRecibido != null){
+					bean.setId(idRecibido);
+					iberdokFileService.update(bean );
+				}else{
+					iberdokFileService.add(bean );
+				}
+				IberdokController.logger.info("[POST - iber/GUARDO] : ");
+				//Guardar elzip
+				if(bean.getFile() != null){
+					IberdokController.logger.info("[POST - iber/GUARDOZIP : ");
+					String iberdokFolderPath = appConfiguration.getProperty("iberdokFolder");
+					String zipPath = iberdokFolderPath + "/" + bean.getIdDocumento() + ".zip";
+					FileUtils.saveFile(bean.getFile(), zipPath);
+					
+					// crear carpeta si no existe
+					String outputUnzipFolder = createFolderIfNotExists(
+							bean.getIdDocumento(), iberdokFolderPath);
+
+					// descomprimir el zip
+					File unzipFile = new File(zipPath);
+					FileUtils.unzipFile(unzipFile, outputUnzipFolder);
+					IberdokController.logger.info("[POST - iber/FIN_GUARDOZIP : ");
+				}
+			}
+        }
+        
+        
+	}
+	
+	private String DatoSesion(Document miDoc, String tag) {
+		NodeList elemento = null;
+		try {
+			elemento = XPathAPI.selectNodeList(miDoc,
+					"//elementos/elemento/parametro[@id=\"" + tag + "\"]/valor/text()");
+		} catch (Exception e) {
+			logger.error("DatoSesion: "+tag);
+			return null;
+		}
+		if (null == elemento) { 
+								
+								
+			return null;
+		}
+		if (1 != elemento.getLength()) { 
+											
+			return null;
+		}
+		return elemento.item(0).getNodeValue();
+	}
+	
 	@UDALink(name = "getTableEditForm", linkTo = {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
@@ -266,7 +411,7 @@ public class IberdokController {
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String fixedMessage,
-			Model model) {
+			Model model, HttpServletResponse response) {
 		model.addAttribute("randomForm", new RandomForm());
 		model.addAttribute("actionType", actionType);
 		if (fixedMessage != null) {
@@ -276,73 +421,19 @@ public class IberdokController {
 		Map<String,String> lang = new LinkedHashMap<String,String>();
 		lang.put("es", "Castellano");
 		lang.put("eu", "Euskera");
-		lang.put("en", "Ingl�s");
+		lang.put("en", "Inglés");
 		model.addAttribute("lang", lang);
 		
 		Map<String,String> modo = new LinkedHashMap<String,String>();
 		modo.put("1", "Crear documento");
-		modo.put("2", "Editar documento finalizado");
+		modo.put("2", "Editar documento en elaboración con xhtml");
 		modo.put("7", "Editar documento no finalizado");
 		modo.put("8", "Copiar documento");
 		model.addAttribute("modo", modo);
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		
 		return "iberdokEditForm";
 	}
-
-	/** url demo para probar en local la url de finalizacion */
-	// @RequestMapping(value = "/urlDemo", method = RequestMethod.POST)
-	// public String urlDemo(@RequestBody IberdokFile file) {
-	// logger.info("urlFinalizacion-start");
-	// logger.info("urlFinalizacion-idDOcumento: " + file.getIdDocumento());
-	// logger.info("urlFinalizacion-file: " + file.getFile());
-	// logger.info("urlFinalizacion-modelo: " + file.getIdModelo());
-	//
-	// // path de la carpeta donde se guardan los ficheros
-	// String iberdokFolderPath = appConfiguration
-	// .getProperty("iberdokFolder");
-	// // path del fichero
-	// String zipPath = null;
-	//
-	// IberdokFile auxFile = new IberdokFile();
-	// auxFile.setIdDocumento(file.getIdDocumento());
-	// // auxFile.setIdModelo(idModelo);
-	//
-	// if (file.getFile() != "") {
-	// logger.info("documento Finalizado");
-	// // documento finalizado
-	// auxFile.setEstado("2");
-	//
-	// zipPath = iberdokFolderPath + "/" + file.getIdDocumento() + ".zip";
-	// // guardar el zip de iberdok en el path del properties iberdokFolder
-	// FileUtils.saveFile(file.getFile(), zipPath);
-	// // crear carpeta si no existe
-	// String outputUnzipFolder = createFolderIfNotExists(
-	// file.getIdDocumento(), iberdokFolderPath);
-	//
-	// // descomprimir el zip
-	// File unzipFile = new File(zipPath);
-	// FileUtils.unzipFile(unzipFile, outputUnzipFolder);
-	//
-	// } else {
-	// // documento en elaboracion
-	// logger.info("documento Finalizado");
-	// auxFile.setEstado("1");
-	// }
-	//
-	// // check if the file already exists
-	// if (this.iberdokFileService.existsFile(auxFile)) {
-	// logger.info("documento existente, actualizar datos en bd");
-	// // if exists, update estado
-	// this.iberdokFileService.updateIdDocumento(auxFile);
-	// } else {
-	// logger.info("documento NO existente, nuevo registro en bd");
-	// // else update the last record created
-	// this.iberdokFileService.updateLastRecord(auxFile);
-	// }
-	//
-	// logger.info("urlFinalizacion-end");
-	// return "iberdok";
-	// }
 
 	/**
 	 * Dado un idDocumento obtiene el xhtml alojado en weblogic
@@ -406,88 +497,29 @@ public class IberdokController {
 
 	}
 	
-//	@RequestMapping(value = "/urlFinalizacion")
-//	public String urlFinalizacion(@RequestBody IberdokFile file,
-////			@RequestParam(value = "idModelo") String idModelo) {
-//		 @RequestParam(value = "idModelo") String idModelo,
-//		 @RequestParam(value = "nombre") String nombre) {
-//		logger.info("urlFinalizacion-start");
-//		logger.info("urlFinalizacion-idDOcumento: " + file.getIdDocumento());
-//		logger.info("urlFinalizacion-file: " + file.getFile());
-//		logger.info("urlFinalizacion-modelo: " + file.getIdModelo());
-//		logger.info("urlFinalizacion-idModelo: " + idModelo);
-//
-//		// path de la carpeta donde se guardan los ficheros
-//		String iberdokFolderPath = appConfiguration
-//				.getProperty("iberdokFolder");
-//		// path del fichero
-//		String zipPath = null;
-//
-//		IberdokFile auxFile = new IberdokFile();
-//		auxFile.setIdDocumento(file.getIdDocumento());
-//		auxFile.setIdModelo(idModelo);
-//		auxFile.setNombre(nombre);
-//
-//		if (file.getFile() != "") {
-//			logger.info("documento Finalizado");
-//			// documento finalizado
-//			auxFile.setEstado("2");
-//
-//			zipPath = iberdokFolderPath + "/" + file.getIdDocumento() + ".zip";
-//			// guardar el zip de iberdok en el path del properties iberdokFolder
-//			FileUtils.saveFile(file.getFile(), zipPath);
-//			// crear carpeta si no existe
-//			String outputUnzipFolder = createFolderIfNotExists(
-//					file.getIdDocumento(), iberdokFolderPath);
-//
-//			// descomprimir el zip
-//			File unzipFile = new File(zipPath);
-//			FileUtils.unzipFile(unzipFile, outputUnzipFolder);
-//
-//		} else {
-//			// documento en elaboracion
-//			logger.info("documento Finalizado");
-//			auxFile.setEstado("1");
-//		}
-//
-//		// check if the file already exists
-//		if (this.iberdokFileService.existsFile(auxFile)) {
-//			logger.info("documento existente, actualizar datos en bd");
-//			// if exists, update estado
-//			this.iberdokFileService.updateIdDocumento(auxFile);
-//		} else {
-//			logger.info("documento NO existente, nuevo registro en bd");
-//			// else update the last record created
-//			this.iberdokFileService.add(auxFile);
-//		}
-//
-//		logger.info("urlFinalizacion-end");
-//		return "iberdok";
-//	}
+	/**
+	 * Funci�n comprueba si existe una carpeta con el nombre del fichero y en
+	 * caso contrario la crea, deuelve el path de la carpeta
+	 * 
+	 * @param idDocumento
+	 *            idDocumento del fichero
+	 * @param fileFolder
+	 *            path de la carpeta donde deberia estar el fichero
+	 * 
+	 * @return String path of the folder
+	 */
+	private String createFolderIfNotExists(String idDocumento, String fileFolder) {
+		logger.info("createFolderIfNotExists-start");
 
-//	/**
-//	 * Funci�n comprueba si existe una carpeta con el nombre del fichero y en
-//	 * caso contrario la crea, deuelve el path de la carpeta
-//	 * 
-//	 * @param idDocumento
-//	 *            idDocumento del fichero
-//	 * @param fileFolder
-//	 *            path de la carpeta donde deberia estar el fichero
-//	 * 
-//	 * @return String path of the folder
-//	 */
-//	private String createFolderIfNotExists(String idDocumento, String fileFolder) {
-//		logger.info("createFolderIfNotExists-start");
-//
-//		// create output directory is not exists
-//		File folderIdDocumento = new File(fileFolder + "/" + idDocumento);
-//		if (!folderIdDocumento.exists()) {
-//			folderIdDocumento.mkdir();
-//		}
-//
-//		logger.info("createFolderIfNotExists-end");
-//		return folderIdDocumento.getPath();
-//	}
+		// create output directory is not exists
+		File folderIdDocumento = new File(fileFolder + "/" + idDocumento);
+		if (!folderIdDocumento.exists()) {
+			folderIdDocumento.mkdir();
+		}
+
+		logger.info("createFolderIfNotExists-end");
+		return folderIdDocumento.getPath();
+	}
 
 
 }

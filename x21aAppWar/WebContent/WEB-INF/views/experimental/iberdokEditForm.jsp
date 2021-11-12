@@ -20,9 +20,9 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="/iberdok/${endpoint}" var="url"/>
-<form:form modelAttribute="randomForm" id="iberdokTable_detail_form" action="${url}" method="${actionType}">
+
+<spring:url value="https://apps.euskadi.ejiedes.eus/euskodok/editor_documentos/acceso.htm" var="url"/>
+<form:form modelAttribute="randomForm" id="iberdokTable_detail_form" action="${url}" method="post" accept-charset="windows-1252">
 	<!-- Feedback del formulario de detalle -->
 	<div id="iberdokTable_detail_feedback"></div>
 	<h3>
