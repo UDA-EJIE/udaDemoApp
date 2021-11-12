@@ -104,7 +104,16 @@ jQuery(function ($) {
         ];
 
 
-        //Formulario de filtrado
+        // Formulario de filtrado.
+        $('#apellido2_filter_table').rup_autocomplete({
+        	source : './apellidos',
+        	sourceParam : {label: 'label', value: 'value'},
+        	menuMaxHeight: 175,
+        	minLength: 3,
+        	combobox: true,
+        	contains: true,
+        	showDefault: true
+        });
         $('#fechaAlta_filter_table').rup_date();
         $('#fechaBaja_filter_table').rup_date();
 
