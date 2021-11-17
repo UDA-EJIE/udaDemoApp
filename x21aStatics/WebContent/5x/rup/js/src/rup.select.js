@@ -453,7 +453,7 @@
             let retorno = '';
             let id = settings.parent;                 
             
-            if (id != undefined && remote && $('#' + id).val().trim() !== '') {
+            if (id != undefined && remote && $('#' + id).val() != null && $('#' + id).val().trim() !== '') {
                 retorno += $('#' + id).attr('name') + '=' + $('#' + id).val() + '&';
             } 
             
@@ -610,14 +610,16 @@
  		     		};
 		    	},
 		    cache: false,
-		    data: this._getParentsValues(settings, true)
-
+		    data: function () {
+		    			return _this._getParentsValues(settings, true);
+		    		}
     	};
         	 	
         	 	if(settings.selected){
         	 		settings.firstLoad = true;
         	 	}
-        	 	if(settings.parent != undefined && $('#' + settings.parent).val().trim() === ''){
+        	 	if(settings.parent != undefined 
+        	 			&& ($('#' + settings.parent).val() == null || $('#' + settings.parent).val().trim() === '')){
         	 		settings.firstLoad = false;
         	 	}
         	 	
@@ -654,6 +656,7 @@
     				            		let newOption = new Option(data.text, data.id, false, false);
     				            		if(data.style != null){
     				            			newOption.setAttribute('style',data.style);
+    				            			newOption.setAttribute('imgStyle',data.imgStyle);
     				            		}
     				            		$('#' + settings.id).append(newOption);
     				            		$('#' + settings.id).val(data.id).trigger('change');
@@ -661,6 +664,9 @@
     			            		settings.options = datos;
     			    		    	$('#' + settings.id).data('settings', settings)
     			            		$('#' + settings.id).triggerHandler('selectAjaxSuccess', [data]);
+    			            	}else{
+    			            		//entro al refresco,y no encuentra se limpia
+    			            		$('#' + settings.id).rup_select("clear");
     			            	}
     			            },
     			            error: function (xhr, textStatus, errorThrown) {
@@ -847,6 +853,7 @@
 		                	settings.templateResult = function (data,span) {
 		                		if(data.style === undefined && data.element !== undefined){//mirar estilo
 		                			data.style = data.element.getAttribute('style');
+		                			data.imgStyle = data.element.getAttribute('imgStyle');
 		                		}
 		                		if (data.id === settings.blank) {
 		                			return $('<span class="select2-selection__placeholder">' + data.text + '</span>');
@@ -860,6 +867,7 @@
 		                	settings.templateResult = function (data,span) {
 		                		if(data.style === undefined && data.element !== undefined){//mirar estilo
 		                			data.style = data.element.getAttribute('style');
+		                			data.imgStyle = data.element.getAttribute('imgStyle');
 		                		}
 		                		if (data.style != null && data.id !== settings.blank) { // adjust for custom placeholder values, restaurar
 		                			return _this._textIcon(data);
@@ -994,7 +1002,14 @@
 		                	}else{//si soy Remoto
 		                		console.log('cambiando remoto');
 		                		settings.callAjaxOptions.data = _this._getParentsValues(settings, true);
-		                		$.rup_ajax(settings.callAjaxOptions);
+		                		$("#"+ settings.id).val(null);
+		                		//Sola llamar si el padre tiene valor.
+		                		if(settings.callAjaxOptions.data != ''){
+		                			$.rup_ajax(settings.callAjaxOptions);
+		                		}else{
+		                			//Se llama al cambio del trigger.
+		                			$("#" + settings.id).trigger('change');
+		                		}
 		                	}
 		                	
 		                });

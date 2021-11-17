@@ -253,6 +253,14 @@ public class PatronesController {
     public String getSelectEnlazadoSimple(Model model) {
         return "selectEnlazadoSimple";
     }
+    
+    //selectEnlazado - multiple
+    @UDALink(name = "getSelectEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
+    @RequestMapping(value = "selectEnlazadoMultiple", method = RequestMethod.GET)
+    public String getSelectEnlazadoMultiple(Model model) {
+        return "selectEnlazadoMultiple";
+    }
+    
 
     //Feedback
     @RequestMapping(value = "feedback", method = RequestMethod.GET)
@@ -560,7 +568,7 @@ public class PatronesController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sí");
+		comboEjie.put("1", "Sï¿½");
 		model.addAttribute("comboEjie", comboEjie);
         
         return "allDialog";
@@ -701,7 +709,7 @@ public class PatronesController {
     }
     
     /**
-     * AUTOCOMPLETE REMOTO ENLAZADO MÚLTIPLE
+     * AUTOCOMPLETE REMOTO ENLAZADO Mï¿½LTIPLE
      */
     @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
     @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento", method = RequestMethod.GET)
