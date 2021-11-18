@@ -196,6 +196,12 @@ public class TableUsuarioController {
 	@UDALink(name = "getTableDouble", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableDoubleEditForm"),
+			@UDALinkAllower(name = "getTableInlineEdit"),
+			@UDALinkAllower(name = "getTableDoubleInlineEdit"),
+			@UDALinkAllower(name = "getTableEditFormMultipart"),
+			@UDALinkAllower(name = "getTableDoubleEditFormMultipart"),
+			@UDALinkAllower(name = "addFromNewWindow"),
+			@UDALinkAllower(name = "editFromNewWindow"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
@@ -426,6 +432,25 @@ public class TableUsuarioController {
 		return "tableEditForm";
 	}
 	
+	@UDALink(name = "getTableDoubleEditFormMultipart", linkTo = {
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "addMultipart2"),
+			@UDALinkAllower(name = "editMultipart2"),
+			@UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/editFormDoubleMultipart")
+	public String getTableDoubleEditFormMultipart (
+			@RequestParam(required = true) String actionType,
+			Model model) {
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute("enableMultipart", true);
+		
+		return "tableDoubleEditForm";
+	}
+	
 	@UDALink(name = "getTableInlineEdit", linkTo = {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
@@ -445,6 +470,33 @@ public class TableUsuarioController {
 		// Controlar que el mapping siempre se añada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "tableInlineEditAuxForm";
+	}
+	
+	@UDALink(name = "getTableDoubleInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/inlineEditDouble")
+	public String getTableDoubleInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = false) String mapping,
+			Model model) {
+		model.addAttribute("entity", new Usuario2());
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute("tableID", tableID);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table/2";
 		} else if (mapping.endsWith("/")) {
 			mapping = mapping.substring(0, mapping.length() - 1);
 		}
@@ -611,6 +663,20 @@ public class TableUsuarioController {
 		return new Resource<Usuario>(usuarioAux);
     }
 	
+	@UDALink(name = "editMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PutMapping(value = "/{bis}/editMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario2> editMultipart2(
+    		@RequestBody Usuario2 usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
+		logger.info("Entity correctly updated!");
+		return new Resource<Usuario2>(usuarioAux);
+    }
+	
 	@Deprecated
 	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "filter") })
 	@PutMapping(value = "/editar", produces = "application/json")
@@ -665,6 +731,20 @@ public class TableUsuarioController {
         Usuario usuarioAux = this.tableUsuarioService.add(usuario);
 		logger.info("Entity correctly inserted!");
 		return new Resource<Usuario>(usuarioAux);
+    }
+	
+	@UDALink(name = "addMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/{bis}/addMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario2> addMultipart2(
+    		@Validated @RequestBody Usuario2 usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
+		logger.info("Entity correctly inserted!");
+		return new Resource<Usuario2>(usuarioAux);
     }
 	
 	@UDALink(name = "addFromNewWindow")
