@@ -436,6 +436,41 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 				
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
+	
+	@Override
+	public List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// SELECT 
+		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
+		
+		// FROM
+		sbSQL.append("FROM USUARIO t1 ");
+      	
+		//TABLAS_ALIAS
+		List<String> from_alias = new ArrayList<String>();
+		from_alias.add("t1");
+		
+		// FILTRADO
+		// Mapa de filtrado
+		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(filterParams, startsWith); 
+		// Claula where  de filtrado
+		sbSQL.append(" WHERE 1=1 ").append(mapaWhereFilter.get("query"));
+		// Parámetros de filtrado
+		@SuppressWarnings("unchecked")
+		List<Object> filterParamList = (List<Object>) mapaWhereFilter.get("params");
+		
+		// BUSQUEDA
+		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(searchParams, startsWith);
+		// Claula where  de búsqueda
+		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query")).toString();
+		// Parámetros de búsqueda
+		@SuppressWarnings("unchecked")
+		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
+		
+		// SQL para la busqueda
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Usuario2.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+				
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario2>(this.rwMapPK2, tableRequestDto), filterParamList.toArray());
+	}
 
 	
 	/*

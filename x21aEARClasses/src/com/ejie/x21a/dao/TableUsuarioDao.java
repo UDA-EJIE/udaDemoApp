@@ -175,6 +175,8 @@ public interface TableUsuarioDao {
     
     List<TableRowDto<Usuario2>> reorderSelection(Usuario2 usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);	
+    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
+    
+    List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 

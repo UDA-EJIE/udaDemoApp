@@ -209,6 +209,11 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 
 	@Override
+	public List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
+	}
+
+	@Override
 	public TableResourceResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		List<Usuario> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
 		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario : new Usuario(), false);

@@ -147,6 +147,16 @@ public interface TableUsuarioService {
 	 * @param startsWith Boolean
 	 */	
 	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	/**
+	 * Searches in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param searchUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */	
+	List<TableRowDto<Usuario2>> search(Usuario2 filterUsuario, Usuario2 searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 
 	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 

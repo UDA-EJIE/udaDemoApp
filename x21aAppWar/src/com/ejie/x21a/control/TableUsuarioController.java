@@ -970,6 +970,30 @@ public class TableUsuarioController {
 	}
 	
 	/**
+	 * Operación de búsqueda del componente RUP_TABLE.
+	 * 
+	 * @param filterUsuario
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param searchUsuario
+	 *            Bean que contiene los parámetros de búsqueda a emplear.
+	 * @param tableRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
+	 * @return Lista de lineas de la tabla que se corresponden con los registros
+	 *         que se ajustan a los parámetros de búsqueda.
+	 * 
+	 */
+	@UDALink(name = "search2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/{bis}/search")
+	public @ResponseBody List<TableRowDto<Usuario2>> search2(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
+			@RequestJsonBody(param="search") Usuario2 searchUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto){
+		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
+		return tableUsuarioService.search(filterUsuario, searchUsuario, tableRequestDto, false);
+	}
+	
+	/**
 	 * Borrado mÃºltiple de registros
 	 * 
 	 * @param filterUsuario Usuario
