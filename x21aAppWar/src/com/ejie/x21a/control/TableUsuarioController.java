@@ -90,6 +90,7 @@ import com.ejie.x38.util.ResourceUtils;
 public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
+	public static final String MODEL_USUARIO2 = "usuario2";
 	public static final String MODEL_OPTIONS = "options";
 	public static final String MODEL_ACTIONTYPE = "actionType";
 	
@@ -224,7 +225,7 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute("usuario2", new Usuario2());
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -407,7 +408,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
 	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
-		model.addAttribute("usuario2", new Usuario2());
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		
 		return "tableDoubleEditForm";
@@ -512,7 +513,7 @@ public class TableUsuarioController {
     		Model model) {
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
-			model.addAttribute("usuario2", usuario);
+			model.addAttribute(MODEL_USUARIO2, usuario);
 			model.addAttribute("isDouble", true);
 		} else {
 			Usuario usuario = new Usuario();
@@ -754,7 +755,7 @@ public class TableUsuarioController {
     		Model model) {
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
-			model.addAttribute("usuario2", usuario);
+			model.addAttribute(MODEL_USUARIO2, usuario);
 			model.addAttribute("isDouble", true);
 		} else {
 			Usuario usuario = new Usuario();
