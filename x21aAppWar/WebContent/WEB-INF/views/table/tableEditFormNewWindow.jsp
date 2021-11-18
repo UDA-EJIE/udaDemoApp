@@ -19,9 +19,10 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
+<c:set value="${isDouble eq true ? '2/' : ''}" var="pathVariable" />
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="/table/${endpoint}" var="url"/>
-<form:form modelAttribute="usuario" id="example_detail_form" action="${url}" method="${actionType}">
+<spring:url value="/table/${pathVariable}${endpoint}" var="url"/>
+<form:form modelAttribute="${isDouble eq true ? 'usuario2' : 'usuario'}" id="example_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="example_detail_feedback"></div>
 	<c:if test="${actionType != 'POST'}">
@@ -75,7 +76,7 @@
 			</span>
         </button>
         <!-- Botón de guardado -->
-        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis" data-action-type="${actionType}">
+        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis" data-path-variable="${pathVariable}" data-action-type="${actionType}">
         	<i class="mdi mdi-content-save"></i>
         	<span>
 				Enviar entidad

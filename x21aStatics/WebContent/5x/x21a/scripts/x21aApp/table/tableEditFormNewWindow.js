@@ -13,9 +13,11 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
+const pathVariable = './' + $('#sendEntity').data('pathVariable');
+
 function setEntityData (id) {	
-	$.get("./" + id, function(data) {
-		let entity = JSON.parse(data);
+	$.get(pathVariable + id, function(data) {
+		const entity = JSON.parse(data);
 		
 		$("#id_detail_table").val(entity.id);
 		$("#nombre_detail_table").val(entity.nombre);
@@ -30,8 +32,7 @@ function setEntityData (id) {
 
 function serializeFormJSON (id) {
     let json = {};
-    let array = $('#' + id).serializeArray();
-    $.each(array, function () {
+    $.each($('#' + id).serializeArray(), function () {
         if (json[this.name]) {
             if (!json[this.name].push) {
                 json[this.name] = [json[this.name]];
@@ -97,7 +98,7 @@ jQuery(function($) {
 				
 				$.ajax({
 			        type: actionType,
-			        url: actionType == 'POST' ? './add' : './edit',
+			        url: pathVariable + (actionType == 'POST' ? 'add' : 'edit'),
 			        data: JSON.stringify(serializeFormJSON('example_detail_form')),
 			        contentType: 'application/json',
 			        success: function() {

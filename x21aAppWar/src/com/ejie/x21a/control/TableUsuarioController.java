@@ -455,9 +455,18 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "editFromNewWindow")
 	@GetMapping(value = "/editFromNewWindow")
-    public String editFromNewWindow(Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
+    public String editFromNewWindow(
+    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
+    		Model model) {
+		if (isDouble)  {
+			Usuario2 usuario = new Usuario2();
+			model.addAttribute("usuario2", usuario);
+			model.addAttribute("isDouble", true);
+		} else {
+			Usuario usuario = new Usuario();
+			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute("isDouble", false);
+		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -660,9 +669,18 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "addFromNewWindow")
 	@GetMapping(value = "/addFromNewWindow")
-    public String addFromNewWindow(Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
+    public String addFromNewWindow(
+    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
+    		Model model) {
+		if (isDouble)  {
+			Usuario2 usuario = new Usuario2();
+			model.addAttribute("usuario2", usuario);
+			model.addAttribute("isDouble", true);
+		} else {
+			Usuario usuario = new Usuario();
+			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute("isDouble", false);
+		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
