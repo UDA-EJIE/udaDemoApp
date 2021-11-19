@@ -37,22 +37,56 @@
 		
 		<fieldset id="remote" class="col-sm mr-sm-5">
 			<legend>Remoto</legend>
-			
-			<input class="d-none" id="hiddenAbueloRemoto" name="provincia" value="02" />
+
 			<div class="form-groupMaterial">
 				<label for="selectAbueloRemoto">Provincia</label>
-				<select id="selectAbueloRemoto" name="provincia"><option>&nbsp;</option></select>
+				<select id="selectAbueloRemoto" name="provincia"></select>
 			</div>
 			
 			<div class="form-groupMaterial">
 				<label for="selectPadreRemoto">Comarca</label>
-				<select id="selectPadreRemoto" name="comarca"><option>&nbsp;</option></select>
+				<select id="selectPadreRemoto" name="comarca"></select>
 			</div>
 			
 			<div class="form-groupMaterial">
 				<label for="selectHijoRemoto">Localidad</label>
-				<select id="selectHijoRemoto"><option>&nbsp;</option></select>
+				<select id="selectHijoRemoto"></select>
 			</div>
+		</fieldset>
+		
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="form-row">
+		<fieldset id="local" class="col-sm mr-sm-5">
+			<legend>Local a Remoto</legend>
+			<div class="form-groupMaterial">
+				<label for="selectLocalAbuelo">Provincia Local</label>
+				<select id="selectLocalAbuelo" name="provincia"></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="selectRemotoPadre">Comarca Remoto</label>
+				<select id="selectRemotoPadre"></select>
+			</div>
+
+		</fieldset>
+		
+		<fieldset id="remote" class="col-sm mr-sm-5">
+			<legend>Remoto a Local</legend>
+			
+			
+			<div class="form-groupMaterial">
+				<label for="selectRemotoAbuelo">Provincia Remoto</label>
+				<select id="selectRemotoAbuelo" name="provincia"><option>&nbsp;</option></select>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<label for="selectLocalPadre">Comarca Local</label>
+				<select id="selectLocalPadre" name="comarca"><option>&nbsp;</option></select>
+			</div>
+
 		</fieldset>
 		
 	</div>

@@ -14,13 +14,13 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2><spring:message code="multicombo" /></h2>
+<h2><spring:message code="multiSelect" /></h2>
 
 <div class="container-fluid">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
-			<label for="multicombo">Multicombo local</label>
-			<select id="multicombo"></select>
+			<label for="multiSelect">MultiSelect local</label>
+			<select id="multiselect"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
 			<label for="multicomboRemoto">MultiCombo remoto</label>

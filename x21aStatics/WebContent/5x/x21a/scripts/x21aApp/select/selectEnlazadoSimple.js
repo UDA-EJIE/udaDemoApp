@@ -121,7 +121,7 @@ $(function () {
                 style: 'css'
             },
             placeholder: '[Seleccionar]',
-            selected: '2',
+          //  selected: '2',
             change: function () {
                 console.log('selectAbueloRemoto:::Changed');
             }
@@ -135,7 +135,7 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            placeholder: '',
+            placeholder: '[Seleccionar]',
             selected: '7'
         });
 
@@ -147,7 +147,7 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            placeholder: '',
+            placeholder: '[Seleccionar]',
             selected: '8'
         }); 
 
@@ -174,6 +174,135 @@ $(function () {
             },
             groups: true
         }); 
+    	
+        //Local -> Remote
+    	  $('#selectLocalAbuelo').rup_select({
+	        data: [{
+	        	text: 'Alava',
+	            id: '1'
+	        },
+	        {
+	        	text: 'Bizkaia',
+	            id: '2'
+	        },
+	        {
+	        	text: 'Gipuzcoa',
+	            id: '3'
+	        },
+	        {
+	        	text: 'Burgos',
+	            id: '4'
+	        },
+	        {
+	        	text: 'Cantabria',
+	            id: '5'
+	        },
+	        {
+	        	text: 'La rioja',
+	            id: '6'
+	        }
+	        ],
+	        selected: '2',
+	        placeholder: ''
+    	});
+    	
+        $('#selectRemotoPadre').rup_select({
+            parent: 'selectLocalAbuelo',
+            url: 'comboEnlazadoSimple/remoteEnlazadoComarca',
+            sourceParam: {
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
+                style: 'css'
+            },
+            placeholder: '',
+            selected: 7,
+            cache: true
+        });
+        
+      //Remote -> Local
+        
+        $('#selectRemotoAbuelo').rup_select({
+            url: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
+            sourceParam: {
+                text: 'desc' + $.rup_utils.capitalizedLang(),
+                id: 'code',
+                style: 'css'
+            },
+            placeholder: '[Seleccionar]',
+            selected: '2',
+            change: function () {
+                console.log('selectRemotoAbuelo:::Changed');
+            }
+        });
+        
+     	  $('#selectLocalPadre').rup_select({
+     		parent: 'selectRemotoAbuelo',
+  		  data: {
+              '1': [{
+                  id: 'a1',
+                  text: 'Alavesa'
+              }, {
+                  id: 'a2',
+                  text: 'Oyonesa'
+              }, {
+                  id: 'a3',
+                  text: 'Gamarresa'
+              }],
+              '2': [{
+                  id: 'b1',
+                  text: 'Pequeño Bilbao'
+              }, {
+                  id: 'b2',
+                  text: 'Las Playas'
+              }, {
+                  id: 'b3',
+                  text: 'Gran Bilbao'
+              }],
+              '3': [{
+                  id: 'g1',
+                  text: 'Komarca 1'
+              }, {
+                  id: 'g2',
+                  text: 'Komarca 2'
+              }, {
+                  id: 'g3',
+                  text: 'Komarca 3'
+              }],
+              '4': [{
+                  id: 'g1',
+                  text: 'Burgos'
+              }, {
+                  id: 'g2',
+                  text: 'Aranda de Duero'
+              }, {
+                  id: 'g3',
+                  text: 'Miranda de Ebro'
+              }],
+              '5': [{
+                  id: 'g1',
+                  text: 'Noja'
+              }, {
+                  id: 'g2',
+                  text: 'Sanatander'
+              }, {
+                  id: 'g3',
+                  text: 'Ajo'
+              }],
+              '6': [{
+                  id: 'g1',
+                  text: 'Portal de Haro'
+              }, {
+                  id: 'g2',
+                  text: 'La calzado'
+              }, {
+                  id: 'g3',
+                  text: 'Casalareina'
+              }]
+
+  		  		},
+  	        selected: 'b2',
+  	        placeholder: ''
+      	});
         
     });
     $('.contenedor').addClass('show');

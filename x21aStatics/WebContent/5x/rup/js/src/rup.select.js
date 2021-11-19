@@ -115,8 +115,14 @@
  	              	let data = $.grep(settings.options, function (v) {
 	                    return v.id === param;
 	                  });
- 	              	if(data[0] !== undefined){
- 	              		$('#' + settings.id).append('<option value="'+param+'">'+data[0].text+'</option>');
+ 	              	if(data[0] !== undefined && $('#'+ settings.id).find("option[value='" + data[0] .id + "']").length == 0){
+ 	              	   data = data[0];
+ 	              	   let newOption = new Option(data.text, data.id, false, false);
+ 	                   if (data.style != null) {
+ 	                      newOption.setAttribute('style', data.style);
+ 	                      newOption.setAttribute('imgStyle', data.imgStyle);
+ 	                    }
+ 	              		$('#' + settings.id).append(newOption);
  	              	}
             	}
             	$self.val(param).trigger('change');
@@ -454,7 +460,11 @@
             let id = settings.parent;                 
             
             if (id != undefined && remote && $('#' + id).val() != null && $('#' + id).val().trim() !== '') {
-                retorno += $('#' + id).attr('name') + '=' + $('#' + id).val() + '&';
+            	if(settings.blank == $('#' + id).val()){
+            		retorno = '';
+            	}else{
+            		retorno += $('#' + id).attr('name') + '=' + $('#' + id).val() + '&';
+            	}
             } 
             
             //Evitar & o multiValueToken finales
@@ -473,25 +483,30 @@
          *
          * @function  _parseLOCAL
          * @private
-         * @param {object[]} array - Array de registros obtenidos a partir del origen de datos.
-         * @param {object} settings - Objeto de propiedades de configuración con el que se ha inicializado el componente.
-         * @param {jQuery} html - Referencia al objeto jQuery que contiene los elementos.
+         * @param {object[]} data - Array de registros obtenidos a partir del origen de datos.
+         * @param {object} i18nId - Opciones de idioma.
+         * @param {jQuery} isParent - Si tiene datos en forma parent.
          */
-        _parseLOCAL: function (data,i18nId) {
+        _parseLOCAL: function (data,i18nId,isParent) {
             let text;
             let array = data;
-          
-            for (let i = 0; i < array.length; i = i + 1) {
-                if (typeof array[i] === 'object') { //multi-idioma
-                    if (array[i].i18nCaption) {
-                        text = $.rup.i18nParse($.rup.i18n.app[i18nId], array[i].i18nCaption);
-                    } else {
-                        text = array[i].text;
-                    }
-                    array[i].text = text;
-                }else{
-                	return ;
-                }
+            if(isParent){//Si es padre llamar a la recursividad
+            	$.each(data, function (key, value) {
+            		 _this._parseLOCAL(data[key],i18nId,false);
+            	});
+            }else{
+	            for (let i = 0; i < array.length; i = i + 1) {
+	                if (typeof array[i] === 'object') { //multi-idioma
+	                    if (array[i].i18nCaption) {
+	                        text = $.rup.i18nParse($.rup.i18n.app[i18nId], array[i].i18nCaption);
+	                    } else {
+	                        text = array[i].text;
+	                    }
+	                    array[i].text = text;
+	                }else{
+	                	return ;
+	                }
+	            }
             }
             
             return array;
@@ -587,11 +602,14 @@
 		    dataType: settings.dataType,
 		    processResults: function (response) 
 		    	{//Require id y text, podemos permitir que no venga.
-		    	if(settings.placeholder != undefined){
-	                response.unshift({
-	                    id: settings.blank,
-	                    text: settings.placeholder
-	                  });
+		    	if(settings.placeholder != undefined ){
+		    		let elBlank = response.find(x => x.id == settings.blank);
+		    		if(elBlank == undefined){
+		                response.unshift({
+		                    id: settings.blank,
+		                    text: settings.placeholder
+		                  });
+		    		}
 		    	}
 		    		if(settings.groups){//PArsear para grupos.
 		    			let results = [];
@@ -612,7 +630,15 @@
 		    cache: false,
 		    data: function () {
 		    			return _this._getParentsValues(settings, true);
-		    		}
+		    		},
+		    error: function (xhr, textStatus, errorThrown) {
+		               if (settings.onLoadError !== null) {
+		                   jQuery(settings.onLoadError(xhr, textStatus, errorThrown));
+		               } else {
+		               	//rupSelect._ajaxError(xhr, textStatus, errorThrown);
+		            	   console.log(textStatus);
+		               }
+		    }		
     	};
         	 	
         	 	if(settings.selected){
@@ -622,93 +648,57 @@
         	 			&& ($('#' + settings.parent).val() == null || $('#' + settings.parent).val().trim() === '')){
         	 		settings.firstLoad = false;
         	 	}
-        	 	
-        	 	// CArgar los Datos
-        	 	settings.callAjaxOptions = {
-    		            url: settings.url,
-    			           // data: settings.data,
-    			            dataType: settings.dataType,
-    			            contentType: 'application/json',
-    			            beforeSend: function (xhr) {
-    			            	//Cabecera RUP
-    			                xhr.setRequestHeader('RUP', $.toJSON(settings.sourceParam));
-    			            },
-    			            success: function (datos) {
-    				    		if(settings.groups){//PArsear para grupos.
-    				    			let results = [];
-    				    			$.each(datos, function (index, value) {
-    				    				let key = Object.keys(value)[0];
-    				    				$.each(value[key], function () {//each hijos
-    					    				results.push(this);
-    					    			});
-    				    				
-    				    			});
 
-    				    			datos =  results;
-    				    		}
-    			            	let data = $.grep(datos, function (v) {
-    			                    return v.id == settings.selected;
-    			                  });
-    			            	if(data !== undefined && data.length == 1){
-    			            		if(settings.selected){
-    				            		data = data[0];
-    				      
-    				            		let newOption = new Option(data.text, data.id, false, false);
-    				            		if(data.style != null){
-    				            			newOption.setAttribute('style',data.style);
-    				            			newOption.setAttribute('imgStyle',data.imgStyle);
-    				            		}
-    				            		$('#' + settings.id).append(newOption);
-    				            		$('#' + settings.id).val(data.id).trigger('change');
-    			            		}
-    			            		settings.options = datos;
-    			    		    	$('#' + settings.id).data('settings', settings)
-    			            		$('#' + settings.id).triggerHandler('selectAjaxSuccess', [data]);
-    			            	}else{
-    			            		//entro al refresco,y no encuentra se limpia
-    			            		$('#' + settings.id).rup_select("clear");
-    			            	}
-    			            },
-    			            error: function (xhr, textStatus, errorThrown) {
-    			                if (settings.onLoadError !== null) {
-    			                    jQuery(settings.onLoadError(xhr, textStatus, errorThrown));
-    			                } else {
-    			                	rupSelect._ajaxError(xhr, textStatus, errorThrown);
-    			                }
-    			            },
-    			            data: this._getParentsValues(settings, true)
-    			};
-    	    
-        	 	if(settings.firstLoad){//ejecutar los datos
-	    			$.rup_ajax(settings.callAjaxOptions); 
-        	 	}
-		     if(settings.cache){//si existe cacheo
 				let __cache = [];
 				let __lastQuery = null;
 		    	settings.ajax.transport = function(params, success, failure) {
 					//retrieve the cached key or default to _ALL_
-			        var __cachekey = params.data.q || '_ALL_';
+			        var __cachekey = params.data || '_ALL_';
 			        if (__lastQuery !== __cachekey) {
 			          //remove caches not from last query
 			          __cache = [];
 			        }
 			        __lastQuery = __cachekey;
-			        if ('undefined' !== typeof __cache[__cachekey]) {
+			        if (settings.cache == true && 'undefined' !== typeof __cache[__cachekey]) {
 			          //display the cached results
 			          success(__cache[__cachekey]);
 			          return; 
 			        }
-			        var $request = $.ajax(params);
-			        $request.then(function(data) {
-			          //store data in cache
-			          __cache[__cachekey] = data;
-			          //display the results
-			          success(__cache[__cachekey]);
-			        });
-			        $request.fail(failure);
+			        
+			        let $request = undefined;
+			        if (settings.parent) {
+			        	var datosParent = _this._getParentsValues(settings, true);
+			        	if(datosParent != ''){
+			        		$request = $.ajax(params);
+			        	}
+			        }else{
+			        	$request = $.ajax(params);
+			        }
+			        if($request != undefined){
+				        $request.then(function(data) {
+				          //store data in cache
+				          __cache[__cachekey] = data;
+				          //display the results
+				          success(__cache[__cachekey]);
+				          let seleccionado = $.grep(data, function (v) {
+			                    return v.id == settings.selected;
+			                  });
+				          //Si es el mismo, no cambia porque esta abirendo
+				          if(seleccionado !== undefined && seleccionado.length == 1 && $('#' + settings.id).rup_select('getRupValue') != seleccionado[0].id){
+				        	  $('#' + settings.id).rup_select('setRupValue',seleccionado[0].id);
+				          }else{
+				        	  //$("#" + settings.id).trigger('change');
+				          }
+				          $('#' + settings.id).data('settings', settings);
+	              		  $('#' + settings.id).triggerHandler('selectAjaxSuccess', [data]);
+				        });
+				        $request.fail(failure);
+			        }else{//cerrar
+			        	$('#' + settings.id).select2('close');
+			        }
 			        return $request;
 				}
-		    }	
+		    	
 		    	
 			if(settings.ajax !== undefined){
 		    	if(settings.data !== undefined){//PAra añadir más parametros de busqueda
@@ -722,7 +712,13 @@
 		    	}
 			}
 	
-			$('#' + settings.id).select2(settings);
+			let selectInit = $('#' + settings.id).select2(settings);
+    	 	if(settings.firstLoad){//ejecutar los datos
+    	 		var $el = $('#' + settings.id);
+    	 		let $search = $el.data('select2').dropdown.$search || $el.data('select2').selection.$search;
+    	 		$search.trigger('keyup');
+    	 		$el.select2('close');
+    	 	}
  
         },
         /**
@@ -823,6 +819,13 @@
 		                        if (data.id === settings.blank) { // adjust for custom placeholder values, restaurar
 		                        	return $('<span class="select2-selection__placeholder">' + data.text + '</span>');
 		                        }
+		                        
+		                        chargedStyles(data);
+		                		
+		                        if (data.style != null && data.id !== settings.blank) {
+		                            // adjust for custom placeholder values, restaurar
+		                            return _this._textIcon(data);
+		                          }
 	
 		                        return data.text;
 		                      }
@@ -851,10 +854,7 @@
 	                if( settings.templateResult === undefined){
 	                	if(settings.templateSelection !== undefined){// mirar los iconos
 		                	settings.templateResult = function (data,span) {
-		                		if(data.style === undefined && data.element !== undefined){//mirar estilo
-		                			data.style = data.element.getAttribute('style');
-		                			data.imgStyle = data.element.getAttribute('imgStyle');
-		                		}
+		                		chargedStyles(data);
 		                		if (data.id === settings.blank) {
 		                			return $('<span class="select2-selection__placeholder">' + data.text + '</span>');
 		                		}else  if (data.style != null && data.id !== settings.blank) { // adjust for custom placeholder values, restaurar
@@ -865,10 +865,7 @@
 		                      }
 		                }else{
 		                	settings.templateResult = function (data,span) {
-		                		if(data.style === undefined && data.element !== undefined){//mirar estilo
-		                			data.style = data.element.getAttribute('style');
-		                			data.imgStyle = data.element.getAttribute('imgStyle');
-		                		}
+		                		chargedStyles(data);
 		                		if (data.style != null && data.id !== settings.blank) { // adjust for custom placeholder values, restaurar
 		                			return _this._textIcon(data);
 		                        }
@@ -925,11 +922,11 @@
 		    				settings.sorter = settings.sortered;
 		    			}
 		            	if(settings.dataGroups === undefined){//LOcal
-		            		settings.data = this._parseLOCAL(settings.data,settings.i18nId);
+		            		settings.data = this._parseLOCAL(settings.data,settings.i18nId,settings.parent);
 		            	}else{//grupos
 		            	      for (var i = 0; i < settings.dataGroups.length; i = i + 1) {
 		            	          if (typeof settings.dataGroups[i] === 'object') {
-		            	        	  settings.dataGroups[i].children = this._parseLOCAL(settings.dataGroups[i].children,settings.i18nId);
+		            	        	  settings.dataGroups[i].children = this._parseLOCAL(settings.dataGroups[i].children,settings.i18nId,settings.parent);
 		            	          } 
 		            	      }
 		            	      settings.data = settings.dataGroups;
@@ -971,8 +968,10 @@
 	                		if(settings.dataParents === undefined){//la primera vez carga los datos fijos.
 	                			settings.dataParents = settings.data;
 	                		}
-	                		let valores = settings.dataParents[val];
-	                		settings.data = valores;
+	                		if(val != null && val.trim() != ''){
+	                			let valores = settings.dataParents[val];
+	                			settings.data = valores;
+	                		}
 	                	}
 		                $('#' + settings.id).select2(settings);
 		                if(settings.selected){
@@ -991,24 +990,34 @@
 		                	if(settings.data !== undefined){
 		                		console.log('cambiando local');
 		                		let val = $('#'+settings.parent).rup_select('getRupValue');
-		                		let valores = settings.dataParents[val];
-		                		settings.data = settings.dataParents;
-		                		if(valores == undefined){//Si no hay valor, se inicializa
-		                			valores =[];
+		                		if(val != settings.blank && val != ''){
+			                		let valores = settings.dataParents[val];
+			                		settings.data = settings.dataParents;
+			                		if(valores == undefined){//Si no hay valor, se inicializa
+			                			valores =[];
+			                		}
+			                		$('#'+settings.id).rup_select("setSource", valores);
 		                		}
-		                		$('#'+settings.id).rup_select("setSource", valores);
 		                		//Aseguramos el valor limpio al cambiar el padre
 		                		$('#'+settings.id).rup_select("setRupValue",settings.blank);
 		                	}else{//si soy Remoto
-		                		console.log('cambiando remoto');
-		                		settings.callAjaxOptions.data = _this._getParentsValues(settings, true);
-		                		$("#"+ settings.id).val(null);
+		                		console.log('cambiando remoto  '+ settings.id);
+		                		let datosParent = _this._getParentsValues(settings, true);
+		                		//$("#"+ settings.id).val(null);
 		                		//Sola llamar si el padre tiene valor.
-		                		if(settings.callAjaxOptions.data != ''){
-		                			$.rup_ajax(settings.callAjaxOptions);
-		                		}else{
+		                		if(datosParent != ''){
+                		          //ejecutar los datos
+                		          var $el = $('#' + settings.id);
+                		          var $search = $el.data('select2').dropdown.$search || $el.data('select2').selection.$search;
+                		          $search.trigger('keyup');
+                		          $el.select2('close');
+                		          console.log('Buscar PAdre  ' + datosParent);
+                		          if($("#" + settings.id).val() != null && $("#" + settings.id).val().trim() != ''){
+                		        	  $("#" + settings.id).val(null).trigger('change');
+                		          }
+		                		}else if($("#" + settings.id).val() != null && $("#" + settings.id).val().trim() != ''){
 		                			//Se llama al cambio del trigger.
-		                			$("#" + settings.id).trigger('change');
+		                			$("#" + settings.id).val(null).trigger('change');
 		                		}
 		                	}
 		                	
@@ -1103,26 +1112,15 @@
 
 }));
 
-function optGroupRemoteHTML($, optGroup, html, self, settings) {
-    $.each(optGroup, function (key, elemGroup) {
-        html.append($('<optgroup>').attr('label', key));
-        html = $(html).children('optgroup:last-child');
-        self._parseREMOTE(elemGroup, settings, html, key);
-        html = $(html).parent();
-    });
-    return html;
-}
-
-function optGroupHTML($, optGroup, html, settings, self) {
-    $.each(optGroup, function (key, elemGroup) {
-        if (typeof (elemGroup[0]) !== 'string') {
-            html.append($('<optgroup>').attr('label', $.rup.i18nParse($.rup.i18n.app[settings.i18nId], key)));
-        } else {
-            html.append($('<optgroup>').attr('label', key));
-        }
-        html = $(html).children('optgroup:last-child');
-        self._parseLOCAL(elemGroup, settings, html);
-        html = $(html).parent();
-    });
-    return html;
+function chargedStyles(data){
+	if(data.style === undefined && data.element !== undefined){//mirar estilo
+		data.style = data.element.getAttribute('style');
+		data.imgStyle = data.element.getAttribute('imgStyle');
+		if(data.style == null || data.style == 'undefined'){
+			data.style = undefined;
+		}
+		if(data.style == null || data.imgStyle == 'undefined'){
+			data.imgStyle = undefined;
+		}
+	}
 }
