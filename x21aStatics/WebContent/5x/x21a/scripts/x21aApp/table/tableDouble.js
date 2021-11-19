@@ -346,7 +346,7 @@ function _init() {
 
         plugins.columnDefs = [
         	{
-	            'targets': [plugins.multiSelect !== undefined ? 4 : 3],
+	            'targets': [plugins.multiSelect !== undefined ? 5 : 4],
 	            'render': function (data) {
 	                if (data !== undefined && data !== null) {
 	                    return data.replace(new RegExp('/', 'g'), '-');
