@@ -388,10 +388,7 @@ function _init() {
 	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
-	            edittype: 'checkbox',
-	            editoptions: {
-	                value: '1:0'
-	            }
+	            edittype: 'checkbox'
 	        },
 	        {
 	            name: 'fechaAlta',

@@ -52,12 +52,7 @@ jQuery(function ($) {
                 index: 'ejie',
                 editable: true,
                 hidden: false,
-                edittype: 'checkbox',
-                formatter: 'checkbox',
-                align: 'center',
-                editoptions: {
-                    value: '1:0'
-                }
+                edittype: 'checkbox'
             },
             {
                 name: 'fechaAlta',
