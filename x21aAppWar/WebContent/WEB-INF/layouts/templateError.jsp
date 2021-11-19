@@ -27,6 +27,11 @@
 	<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
 	<%-- Estilos Aplicación --%>
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
+	
+	<script>
+		// Habilitar el envío de trazas a PIB.
+		window.IS_EJIE = true;
+	</script>
 </head>	
 <body>
 	<div class="contenedor fade">
