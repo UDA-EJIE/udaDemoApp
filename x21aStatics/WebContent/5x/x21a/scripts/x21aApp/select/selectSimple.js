@@ -15,7 +15,7 @@
  */
 $(function () {
     window.initRupI18nPromise.then(function () {
-   /*     $('#selectSimple').rup_select({
+        $('#selectSimple').rup_select({
             data: [{
                 id: 'asp',
                 text: 'asp_value'
@@ -78,7 +78,7 @@ $(function () {
                 console.log('selectSimple:::Changed');
             }
          }); 
-        */
+        
         $('#selectRemoto').rup_select({
         	url:'comboSimple/remote',
             sourceParam: {
@@ -95,7 +95,7 @@ $(function () {
                 console.log('selectRemoto:::clean');
             }
          });
-        /*
+        
         $('#selectLargoMulti').rup_select({
         	data: [{
                 i18nCaption: 'jon_doe',
@@ -246,7 +246,7 @@ $(function () {
             }
          });
 
-*/
+
     });
     $('.contenedor').addClass('show');
 });

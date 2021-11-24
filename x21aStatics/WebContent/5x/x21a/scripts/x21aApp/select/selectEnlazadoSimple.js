@@ -128,7 +128,7 @@ $(function () {
         });
 
         $('#selectPadreRemoto').rup_select({
-            parent: 'selectAbueloRemoto',
+            parent: ['selectAbueloRemoto'],
             url: 'comboEnlazadoSimple/remoteEnlazadoComarca',
             sourceParam: {
                 text: 'desc' + $.rup_utils.capitalizedLang(),

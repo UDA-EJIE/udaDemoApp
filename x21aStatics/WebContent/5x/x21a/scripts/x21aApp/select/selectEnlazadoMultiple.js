@@ -18,7 +18,7 @@ jQuery(function($) {
     
     window.initRupI18nPromise.then(function () {
         //LOCAL
-        $('#departamento').rup_select({
+       $('#departamento').rup_select({
             data: [
             	{id:'Ayuntamiento',text:'Ayuntamiento'},
             	{id:'Diputacion',text:'Diputación'},
@@ -26,11 +26,11 @@ jQuery(function($) {
             	{id:'Policia',text:'Policía'}
             	],
             blank:'-1',
-            selected:1,
+            selected:'Ayuntamiento',
             width: '99%',
             customClasses: ['select-material'],
             change: function () {
-                console.log('comboDepartamento:::Changed');
+                console.log('selectDepartamento:::Changed');
             }
         });
         $('#provincia').rup_select({
@@ -39,8 +39,9 @@ jQuery(function($) {
             	{id:'Gipuzcoa',text:'Gipúzcoa'},
             	{id:'Vizcaya',text:'Vizcaya'}
             	],
+            selected:'Vizcaya',
             change: function () {
-                console.log('comboProvincia:::Changed');
+                console.log('selectProvincia:::Changed');
             }
         });
         $('#dptoProv').rup_select({
@@ -67,77 +68,62 @@ jQuery(function($) {
             }],
             multiValueToken: '@@',
             change: function () {
-                console.log('comboDptoProv:::Changed');
+                console.log('selectDptoProv:::Changed');
             }
         });
-
+         
         //REMOTE
-        $('#departamentoRemote').rup_combo({
-            source : 'comboEnlazadoMultiple/departamentoRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+        $('#departamentoRemote').rup_select({
+        	url : 'comboEnlazadoMultiple/departamentoRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             blank: '-1',
             selected:1,
-            width: '99%',
-            customClasses: ['select-material'],
             change: function () {
                 console.log('comboDepartamentosRemote:::Changed');
             }
         });
-        $('#provinciaRemote').rup_combo({
-            source : 'comboEnlazadoMultiple/provinciaRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-            width: '99%',
-            customClasses: ['select-material'],
+        $('#provinciaRemote').rup_select({
+        	url : 'comboEnlazadoMultiple/provinciaRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             change: function () {
                 console.log('comboProvinciaRemote:::Changed');
             }
         });
-        $('#dptoProvRemote').rup_combo({
+        $('#dptoProvRemote').rup_select({
             parent: [ 'departamentoRemote', 'provinciaRemote' ],
-            source : 'comboEnlazadoMultiple/dptoProvRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-            width: '99%',
-            customClasses: ['select-material'],
+            url : 'comboEnlazadoMultiple/dptoProvRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             change: function () {
                 console.log('comboDptoProvRemote:::Changed');
             }
         });
         
-        $('#dptoProvRemote').on('change', function(){
-            console.log('change');
-        });
+        
         
         //MIXTO I
-        $('#mixto_departamentoRemote').rup_combo({
-            source : 'comboEnlazadoMultiple/departamentoRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+        $('#mixto_departamentoRemote').rup_select({
+            url : 'comboEnlazadoMultiple/departamentoRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             blank: '-1',
             selected:1,
-            width: '99%',
-            customClasses: ['select-material'],
             change: function () {
                 console.log('comboMixtoDepartamentoRemote:::Changed');
             }
         });
-        $('#mixto_provincia').rup_combo({
-            //source: ["Álava","Vizcaya","Gipúzcoa"]
-            source: [
-                {i18nCaption: 'a', value:'1'},
-                {i18nCaption: 'b', value:'2'},
-                {i18nCaption: 'g', value:'3'}
+        $('#mixto_provincia').rup_select({
+            data: [
+                {i18nCaption: 'a', id:'1'},
+                {i18nCaption: 'b', id:'2'},
+                {i18nCaption: 'g', id:'3'}
             ],
-            width: '99%',
-            customClasses: ['select-material'],
             change: function () {
                 console.log('comboMixtoProvincia:::Changed');
             }
         });
-        $('#mixto_dptoProvRemote').rup_combo({
+        $('#mixto_dptoProvRemote').rup_select({
             parent: [ 'mixto_departamentoRemote', 'mixto_provincia' ],
-            source : 'comboEnlazadoMultiple/dptoProvRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-            width: '99%',
-            customClasses: ['select-material'],
+            url : 'comboEnlazadoMultiple/dptoProvRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             change: function () {
                 console.log('comboMixtoDptoProvRemote:::Changed');
             }
@@ -145,52 +131,48 @@ jQuery(function($) {
         
         
         //MIXTO II
-        $('#mixto2_departamento').rup_combo({
-            source: [
-                {i18nCaption: 'ayto', value:'1'},
-                {i18nCaption: 'dipu', value:'2'},
-                {i18nCaption: 'poli', value:'3'},
-                {i18nCaption: 'bomb', value:'4'}
+        $('#mixto2_departamento').rup_select({
+            data: [
+                {i18nCaption: 'ayto', id:'1'},
+                {i18nCaption: 'dipu', id:'2'},
+                {i18nCaption: 'poli', id:'3'},
+                {i18nCaption: 'bomb', id:'4'}
             ],
             blank: '-1',
             selected:1,
-            width: '99%',
-            customClasses: ['select-material'],
             change: function () {
                 console.log('comboMixto2Departamento:::Changed');
             }
         });
-        $('#mixto2_provinciaRemote').rup_combo({
-            source : 'comboEnlazadoMultiple/provinciaRemote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-            width: '99%',
-            customClasses: ['select-material'],
+        $('#mixto2_provinciaRemote').rup_select({
+            url : 'comboEnlazadoMultiple/provinciaRemote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
+            selected:1,
             change: function () {
                 console.log('comboMixto2ProvinciaRemote:::Changed');
             }
         });
-        $('#mixto2_dptoProv').rup_combo({
+        $('#mixto2_dptoProv').rup_select({
             parent: [ 'mixto2_departamento', 'mixto2_provinciaRemote' ],
-            source: {
-                '1##1':['Ayuntamiento de Álava'],
-                '1##2':['Ayuntamiento de Vizcaya'],
-                '1##3':['Ayuntamiento de Gipúzcoa'],
-                '2##1':['Diputación de Álava'],
-                '2##2':['Diputación de Vizcaya'],
-                '2##3':['Diputación de Gipúzcoa'],
-                '3##1':['Policía de Álava'],
-                '3##2':['Policía de Vizcaya'],
-                '3##3':['Policía de Gipúzcoa'],
-                '4##1':['Bomberos de Álava'],
-                '4##2':['Bomberos de Vizcaya'],
-                '4##3':['Bomberos de Gipúzcoa']
-            },
-            width: '99%',
-            customClasses: ['select-material'],
+            data: [{
+                '1##1':[{id: 'Ayuntamiento de Álava',text: 'Ayuntamiento de Álava'}],
+                '1##2':[{id:'Ayuntamiento de Vizcaya',text: 'Ayuntamiento de Vizcaya'}],
+                '1##3':[{id:'Ayuntamiento de Gipúzcoa',text: 'Ayuntamiento de Gipúzcoa'}],
+                '2##1':[{id:'Diputación de Álava',text: 'Diputación de Álava'}],
+                '2##2':[{id:'Diputación de Vizcaya',text: 'Diputación de Vizcaya'}],
+                '2##3':[{id:'Diputación de Gipúzcoa',text: 'Diputación de Gipúzcoa'}],
+                '3##1':[{id:'Policía de Álava',text: 'Policía de Álava'}],
+                '3##2':[{id:'Policía de Vizcaya',text: 'Policía de Vizcaya'}],
+                '3##3':[{id:'Policía de Gipúzcoa',text: 'Policía de Gipúzcoa'}],
+                '4##1':[{id:'Bomberos de Álava',text: 'Bomberos de Álava'}],
+                '4##2':[{id:'Bomberos de Vizcaya',text: 'Bomberos de Vizcaya'}],
+                '4##3':[{id:'Bomberos de Gipúzcoa',text: 'Bomberos de Gipúzcoa'}],
+            }],
+            multiValueToken: '##',
             change: function () {
                 console.log('comboMixto2DptoProv:::Changed');
             }
-        });
+        }); 
     });
     $('.contenedor').addClass('show');
 });
