@@ -364,9 +364,9 @@
      * @function
      * @since UDA 5.0.0 // Table 1.0.0
      *
-     * @param {object} ctx - Contexto del Datatable.
+     * @param {object} ctx - Contexto de la tabla.
      * @param {string} actionType - Acción a ajecutar en el formulario para ir al controller, basado en REST.
-     * @param {object} row - Datos del formulario para cargar lo.
+     * @param {object} row - Datos para alimentar los campos del formulario.
      *
      * @return {object}
      */
@@ -420,22 +420,7 @@
 				}
 				
 				// Detectar componentes RUP e inicializarlos
-				if (ctx.oInit.colModel !== undefined && (ctx.oInit.multiSelect !== undefined || ctx.oInit.select !== undefined)) {
-					let insertedForm = $(formContainerID + ' #' + receivedForm.attr("id"));
-					$.each(ctx.oInit.colModel, function (key, column) {
-						let element = insertedForm.find('[name="' + column.name + '"]');
-						// Comprobar que es un componente RUP y editable. En caso de no ser editable, se añade la propiedad readonly
-						if (column.rupType && column.editable) {
-							// Los combos tienen que ser comprobados para poder establecer su valor
-							if(row !== undefined && column.rupType === 'combo'){
-								column.editoptions.selected = column.name.includes('.') ? $.fn.flattenJSON(row)[column.name] : row[column.name];
-							}
-							element['rup_' + column.rupType](column.editoptions);
-						} else if (!column.editable) {
-							element.prop('readonly', true);
-						}
-					});
-				}
+				_formInitializeRUP(ctx, row, $(formContainerID + ' #' + receivedForm.attr("id")));
 				
 				// Añadir validaciones
 				_addValidation(ctx);
@@ -449,21 +434,7 @@
         		let deferred = $.Deferred();
         		
         		// Detectar componentes RUP e inicializarlos
-				if (ctx.oInit.colModel !== undefined && (ctx.oInit.multiSelect !== undefined || ctx.oInit.select !== undefined)) {
-					$.each(ctx.oInit.colModel, function (key, column) {
-						let element = idForm.find('[name="' + column.name + '"]');
-						// Comprobar que es un componente RUP y editable. En caso de no ser editable, se añade la propiedad readonly
-						if (column.rupType && column.editable) {
-							//Los combos tienen otra comprobación por el deferred
-							if(row !== undefined && column.rupType === 'combo'){
-								column.editoptions.selected = row[column.name];
-							}
-							element['rup_' + column.rupType](column.editoptions);
-						} else if (!column.editable) {
-							element.prop('readonly', true);
-						}
-					});
-				}
+        		_formInitializeRUP(ctx, row, idForm);
 				
 				// Añadir validaciones
 				_addValidation(ctx);
@@ -478,6 +449,47 @@
         	deferred.resolve();
     		return deferred.promise();
         }
+    }
+    
+    /**
+     * Detecta los componentes RUP del formulario y los inicializa.
+     *
+     * @name formInitializeRUP
+     * @function
+     * @since UDA 5.0.2 // Table 1.0.0
+     *
+     * @param {object} ctx - Contexto de la tabla.
+     * @param {object} row - Datos para alimentar los campos del formulario.
+     * @param {object} form - Formulario en el que hay que inicializar los componentes.
+     */
+    function _formInitializeRUP(ctx, row, form) {
+    	if (ctx.oInit.colModel !== undefined && (ctx.oInit.multiSelect !== undefined || ctx.oInit.select !== undefined)) {
+    		$.each(ctx.oInit.colModel, function (key, column) {
+    			const element = form.find('[name="' + column.name + '"]');
+    			// Comprobar que es un componente RUP y editable. En caso de no ser editable, se añade la propiedad readonly.
+    			if (column.rupType && column.editable) {
+    				if (column.editoptions !== undefined) {
+    					// Los combos tienen que ser comprobados para poder establecer su valor.
+    					if (column.rupType === 'combo' && row !== undefined) {
+    						column.editoptions.selected = column.name.includes('.') ? $.fn.flattenJSON(row)[column.name] : row[column.name];
+    						// Cuando no se haya definido un elemento al que hacer el append del menú del combo, se hace al "body" para evitar problemas de CSS.
+    						if (column.editoptions.appendTo === undefined) {
+    							column.editoptions.appendTo = 'body';
+    						}
+    					} else if (column.rupType == 'autocomplete' && column.editoptions.menuAppendTo === undefined) {
+    						// Cuando no se haya definido un elemento al que hacer el append del menú del autocomplete, se hace al "body" para evitar problemas de CSS.
+    						column.editoptions.menuAppendTo = 'body';
+    					}
+    					// Inicializar componente.
+    					element['rup_' + column.rupType](column.editoptions);
+    				} else {
+    					console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongColModel'), column.name));
+    				}
+    			} else if (!column.editable) {
+    				element.prop('readonly', true);
+    			}
+    		});
+    	}
     }
 
     /**
