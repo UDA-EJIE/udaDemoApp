@@ -90,6 +90,14 @@ public interface TableUsuarioDao {
     void remove(Usuario usuario);
 
     /**
+     * Deletes a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return 
+     */
+    void remove(Usuario2 usuario);
+
+    /**
      * Finds a List of rows in the Usuario table.
      *
      * @param usuario Usuario
@@ -140,6 +148,15 @@ public interface TableUsuarioDao {
 	 * @param startsWith Boolean	 
 	 */	
 	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	

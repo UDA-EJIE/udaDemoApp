@@ -152,6 +152,17 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	/**
+	 * Deletes a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public void remove(Usuario2 usuario) {
+		this.tableUsuarioDao.remove(usuario);
+	}
+	
+	/**
 	 * Finds a List of rows in the Usuario table.
 	 *
 	 * @param usuario Usuario
@@ -189,6 +200,18 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */	
 	@Transactional(rollbackFor = Throwable.class)
 	public void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
+	}
+	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	@Transactional(rollbackFor = Throwable.class)
+	public void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 	

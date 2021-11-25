@@ -95,6 +95,14 @@ public interface TableUsuarioService {
 	 * @return 
 	 */
 	void remove(Usuario usuario);
+
+	/**
+	 * Deletes a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return 
+	 */
+	void remove(Usuario2 usuario);
 	
 	/**
 	 * Finds a List of rows in the Usuario table.
@@ -128,6 +136,15 @@ public interface TableUsuarioService {
 	 * @param startsWith Boolean	 
 	 */	
 	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Usuario table via inverse select.

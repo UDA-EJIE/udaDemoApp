@@ -45,6 +45,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -142,7 +143,7 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "get2", linkTo = { 
 			@UDALinkAllower(name = "edit2" ), 
-			@UDALinkAllower(name = "remove" ),
+			@UDALinkAllower(name = "remove2" ),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
@@ -206,6 +207,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "deleteAll2"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getMultiFilterForm2"),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -795,6 +797,25 @@ public class TableUsuarioController {
         logger.info("Entity correctly deleted!");
         return new Resource<Usuario>(usuario);
     }
+
+	/**
+	 * Operación CRUD Delete. Borrado del registro correspondiente al
+	 * identificador especificado.
+	 * 
+	 * @param id
+	 *            Identificador del objeto que se desea eliminar.
+	 * @return Bean eliminado.
+	 */
+	@UDALink(name = "remove2")
+	@DeleteMapping(value = "/{bis}/{id}")
+	@ResponseStatus(value=HttpStatus.OK)
+    public @ResponseBody Resource<Usuario2> remove2(@PathVariable String id, HttpServletResponse response) {
+        Usuario2 usuario = new Usuario2();
+        usuario.setId(id);
+        this.tableUsuarioService.remove(usuario);
+        logger.info("Entity correctly deleted!");
+        return new Resource<Usuario2>(usuario);
+    }
 	
 	
 	/*
@@ -836,12 +857,12 @@ public class TableUsuarioController {
 
 	@UDALink(name = "filter2", linkTo = { 
 			@UDALinkAllower(name = "get2"), 
-			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "remove2"), 
 			@UDALinkAllower(name = "filter2"),
 			@UDALinkAllower(name = "getRoles"), 
-			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "deleteAll2"),
 			@UDALinkAllower(name = "clipboardReport2") })
-	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
+	@RequestMapping(value = "/{bis}/filter", method = RequestMethod.POST)
 	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -1009,6 +1030,29 @@ public class TableUsuarioController {
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
+		this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
+	    TableUsuarioController.logger.info("All entities correctly deleted!");
+	    
+	    return tableRequestDto.getMultiselection().getSelectedIds();
+	}
+	
+	/**
+	 * Borrado múltiple de registros
+	 * 
+	 * @param filterUsuario Usuario2
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
+	 * @return Lista de los identificadores de los registros eliminados.
+	 */
+	@UDALink(name = "deleteAll2")
+	@PostMapping(value = "/{bis}/deleteAll")
+	@ResponseStatus(value=HttpStatus.OK)
+	public @ResponseBody List<String> removeMultiple2(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 		this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
