@@ -358,36 +358,6 @@
                                 <spring:message code="time" />
                             </a>
                             
-                           <div class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">
-                                    <spring:message code="select" />
-                                </a>
-                                <div class="dropdown-menu menu-right">
-                                <spring:url value="/patrones/selectSimple" var="selectSimple" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${selectSimple}">
-                                        <spring:message code="comboSimple" />
-                                    </a>
-                                    <spring:url value="/patrones/selectEnlazadoSimple" var="selectEnlazadoSimple" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${selectEnlazadoSimple}">
-                                        <spring:message code="selectEnlazadoSimple" />
-                                    </a>
-                                    <spring:url value="/patrones/selectEnlazadoMultiple" var="selectEnlazadoMultiple" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${selectEnlazadoMultiple}">
-                                        <spring:message code="selectEnlazadoMulti" />
-                                    </a>
-                                    <spring:url value="/patrones/multiselect" var="multiselect" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${multiselect}">
-                                        <spring:message code="multiselect" />
-                                    </a>
-                                    <spring:url value="/patrones/selectMantenimiento" var="selectMantenimiento" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${selectMantenimiento}">Select anidado
-                                        con mantenimiento</a>
-                                </div>
-                            </div>
-                            
                             <spring:url value="/patrones/spinner" var="spinner" htmlEscape="true"/>
                             <a class="dropdown-item" href="${spinner}">
                                 <i class="mdi mdi-arrow-up-down-bold" aria-hidden="true"></i>
