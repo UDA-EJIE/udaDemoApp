@@ -81,7 +81,6 @@ public class IberdokController {
 		file = this.iberdokFileService.find(file);
 		IberdokController.logger.info("[GET - findBy_PK] : Obtener ficheros de iberdok por PK");
 		
-		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		return new Resource<IberdokFile>(file);
 	}
 
@@ -273,6 +272,9 @@ public class IberdokController {
 				appConfiguration.getProperty("iberdok.urlEditorDocumentos"));
 
 		model.addAttribute("randomForm", new RandomForm());
+		
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
+		
 		return "iberdok";
 	}
 	
@@ -430,7 +432,6 @@ public class IberdokController {
 		modo.put("7", "Editar documento no finalizado");
 		modo.put("8", "Copiar documento");
 		model.addAttribute("modo", modo);
-		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		
 		return "iberdokEditForm";
 	}
