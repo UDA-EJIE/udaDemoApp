@@ -115,6 +115,16 @@ public interface TableUsuarioDao {
      */
     List<Usuario2> findAll(Usuario2 usuario, TableRequestDto tableRequestDto);
 
+    /**
+     * Finds a List of rows containing the PK field values in the Usuario table.
+     *
+     * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+     * @return List<Usuario>
+     */
+    List<Usuario> findAllIds(Usuario usuario, boolean startsWith);
+
 	/**
      * Finds rows in the Usuario table using like.
      *

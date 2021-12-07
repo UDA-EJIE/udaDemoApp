@@ -100,6 +100,14 @@ jQuery(function ($) {
 
 
         // Formulario de filtrado.
+        $('#id_filter_table').rup_autocomplete({
+        	source : './allIds',
+        	sourceParam : {label: 'nid', value: 'id'},
+        	menuMaxHeight: 175,
+        	combobox: true,
+        	contains: true,
+        	showDefault: true
+        });
         $('#apellido2_filter_table').rup_autocomplete({
         	source : './apellidos',
         	sourceParam : {label: 'label', value: 'value'},

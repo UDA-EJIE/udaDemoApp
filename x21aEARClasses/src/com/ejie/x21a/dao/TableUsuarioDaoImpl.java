@@ -232,6 +232,31 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		return (List<Usuario2>) this.jdbcTemplate.query(query.toString(), this.rwMap2, params.toArray());
 	}
 	
+   /**
+    * Finds a List of rows containing the PK field values in the Usuario table.
+    * 
+    * @param usuario Usuario
+	* @param startsWith boolean
+	* 
+    * @return List<Usuario>
+    */
+	@Transactional (readOnly = true)
+    public List<Usuario> findAllIds(Usuario usuario, boolean startsWith) {
+		// SELECT
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID FROM USUARIO t1"); 
+		
+		// WHERE clause & Params
+		Map<String, ?> mapaWhere = this.getWhereLikeMap(usuario, startsWith); 
+		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+		where.append(mapaWhere.get("query"));
+		query.append(where);
+
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhere.get("params");
+
+		return this.jdbcTemplate.query(query.toString(), this.rwMapPK, params.toArray());
+	}
+	
 	
 	/**
 	 * Finds rows in the Usuario table using like.

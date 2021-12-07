@@ -172,6 +172,18 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
 		return (List<Usuario>) this.tableUsuarioDao.findAll(usuario, tableRequestDto);
 	}
+	
+	/**
+	 * Finds a List of rows containing the PK field values in the Usuario table.
+	 *
+	 * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+	 * @return List<Usuario>
+	 */
+	public List<Usuario> findAllIds(Usuario usuario, boolean startsWith) {
+		return this.tableUsuarioDao.findAllIds(usuario, startsWith);
+	}
     
 
 	/**

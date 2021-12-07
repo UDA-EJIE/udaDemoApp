@@ -158,6 +158,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getAllIds"),
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableEditFormMultipart"),
 			@UDALinkAllower(name = "getTableInlineEdit"),
@@ -626,6 +627,25 @@ public class TableUsuarioController {
 	List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.findAllLike(usuarioFilter, null, false));
+	}
+	
+	/**
+	 * Devuelve una lista de identificadores.
+	 *
+	 * @param param String Contiene el valor del campo a buscar.
+	 * @param startsWith boolean Define si se usará un comodín al inicio.
+	 *
+	 * @return List<Usuario> Lista de objetos correspondientes a la búsqueda realizada.
+	 */
+	@UDALink(name = "getAllIds")
+	@GetMapping(value = "/allIds")
+	public @ResponseBody
+	List<Resource<Usuario>> getAllIds(
+			@RequestParam(value = "q", required = true) String param,
+            @RequestParam(value = "c", required = true) boolean startsWith) {
+		TableUsuarioController.logger.info("[GET - find_ALL_ID] : Obtener CPs de Usuario");
+		Usuario usuario = new Usuario(param);
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.findAllIds(usuario, startsWith));
 	}
 	
 	/**
