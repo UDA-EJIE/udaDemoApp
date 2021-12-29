@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla con selección desde otra tabla</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Tabla con selección desde otra tabla</h2> <!-- Titulo pagina -->
 <h3>Comarca</h3>
 	
 <jsp:include page="includes/tableComarcaFilterForm.jsp"></jsp:include>

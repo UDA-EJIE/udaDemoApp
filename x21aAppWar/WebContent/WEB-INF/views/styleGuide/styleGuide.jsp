@@ -18,7 +18,7 @@
 
 
   <section>
-    <h2 class="page-header">Tipografía</h2>
+    <h2 class="title mb-3 page-header">Tipografía</h2>
 
 
     <p>El tema por defecto de UDA define una serie de estilos predeterminados para las aplicaciones.</p>

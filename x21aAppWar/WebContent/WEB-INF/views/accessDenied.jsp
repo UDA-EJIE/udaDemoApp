@@ -13,4 +13,4 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Access Denied!</h2>
+<h2 class="title mb-3">Access Denied!</h2>

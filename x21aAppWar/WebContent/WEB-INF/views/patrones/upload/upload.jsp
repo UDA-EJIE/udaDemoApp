@@ -19,7 +19,7 @@
 
 
 <section>
-	<h2><spring:message code="upload.title" /></h2>
+	<h2 class="title mb-3"><spring:message code="upload.title" /></h2>
 	<p>
       	<spring:message code="upload.paragraph.line1" />
     </p>

@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>
+<h2 class="title mb-3">
 	<spring:message code="iberdok.title" />
 </h2>
 

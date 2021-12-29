@@ -49,12 +49,7 @@ jQuery(function($){
 	            editable: true,
 	            hidden: false,
 	            width: 60,
-	            edittype: 'checkbox',
-	            formatter: 'checkbox',
-	            align: 'center',
-	            editoptions: {
-	                value: '1:0'
-	            }
+	            edittype: 'checkbox'
 	        },
 	        {
 	            name: 'fechaAlta',

@@ -329,10 +329,10 @@
                                     <a class="dropdown-item" href="${multicombo}">
                                         <spring:message code="multicombo" />
                                     </a>
-                                    <spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
+                                    <!--<spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
                                     <a class="dropdown-item"
                                         href="${comboMantenimiento}">Combo anidado
-                                        con mantenimiento</a>
+                                        con mantenimiento</a>-->
                                 </div>
                             </div>
 							
@@ -351,21 +351,25 @@
                                 <i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
                                 <spring:message code="form" />
                             </a>
-                            <spring:url value="/patrones/all" var="all" htmlEscape="true"/>
-                            <a class="dropdown-item" href="${all}">
-                                <i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
-                                <spring:message code="all" />
-                            </a>
+
                             <spring:url value="/patrones/time" var="time" htmlEscape="true"/>
                             <a class="dropdown-item" href="${time}">
                                 <i class="mdi mdi-timer" aria-hidden="true"></i>
                                 <spring:message code="time" />
                             </a>
+                            
                             <spring:url value="/patrones/spinner" var="spinner" htmlEscape="true"/>
                             <a class="dropdown-item" href="${spinner}">
                                 <i class="mdi mdi-arrow-up-down-bold" aria-hidden="true"></i>
                                 <spring:message code="spinner" />
                             </a>
+                            
+                            <spring:url value="/patrones/all" var="all" htmlEscape="true"/>
+                            <a class="dropdown-item" href="${all}">
+                                <i class="mdi mdi-card-text-outline" aria-hidden="true"></i>
+                                <spring:message code="all" />
+                            </a>
+                            
                             <spring:url value="/patrones/upload" var="upload" htmlEscape="true"/>
                             <a class="dropdown-item" href="${upload}">
                                 <i class="mdi mdi-cloud-upload" aria-hidden="true"></i>
@@ -478,10 +482,10 @@
 					<a class="dropdown-item" href="${logLevel}">
 						<spring:message code="experimental.logLevel" />
 					</a>
-                    <!--<spring:url value="/iberdok/view" var="iberdok" htmlEscape="true"/>
+                    <spring:url value="/iberdok/view" var="iberdok" htmlEscape="true"/>
 					<a class="dropdown-item" href="${iberdok}">
 						<spring:message code="experimental.iberdok" />
-					</a>-->
+					</a>
 				</div>
 			</li>
 			

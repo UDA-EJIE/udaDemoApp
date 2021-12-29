@@ -17,8 +17,8 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="container-fluid">
-	<h2><spring:message code="patron.autocompleteEnlazadoMultiple" /></h2>
-	<hr>
+	<h2 class="title mb-3"><spring:message code="patron.autocompleteEnlazadoMultiple" /></h2>
+	
 	<div class="form-row">
 		<fieldset id="local" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Local</legend>

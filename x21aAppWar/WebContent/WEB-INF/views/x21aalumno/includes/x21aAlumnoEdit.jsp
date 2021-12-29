@@ -1,69 +1,44 @@
+<%--  
+ -- Copyright 2021 E.J.I.E., S.A.
+ --
+ -- Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ -- Solo podrá usarse esta obra si se respeta la Licencia.
+ -- Puede obtenerse una copia de la Licencia en
+ --
+ --      http://ec.europa.eu/idabc/eupl.html
+ --
+ -- Salvo cuando lo exija la legislación aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ -- SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- que establece la Licencia.
+ --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <!-- Formulario de detalle -->
 <div id="x21aAlumno_detail_div" class="rup-table-formEdit-detail d-none">
 	<!-- Barra de navegación del detalle -->
-	<div id ="x21aAlumno_detail_navigation"></div>
-	<div class="ui-dialog-content ui-widget-content" >
-		<!-- Formulario -->
-		<form:form modelAttribute="alumno" id="x21aAlumno_detail_form">
-			<!-- Feedback del formulario de detalle -->
-			<div id="x21aAlumno_detail_feedback"></div>
-			<!-- Campos del formulario de detalle -->
-			<div class="form-row">
-				<div class="form-group col-sm">
-					<label for="id_detail_table"><spring:message code="id"/></label>
-					<form:input path="id" class="formulario_linea_input form-control" id="id_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="usuario_detail_table"><spring:message code="usuario"/></label>
-					<form:input path="usuario" class="formulario_linea_input form-control" id="usuario_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="password_detail_table"><spring:message code="password"/></label>
-					<form:input path="password" class="formulario_linea_input form-control" id="password_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="nombre_detail_table"><spring:message code="nombre"/></label>
-					<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
-					<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="provinciaId_detail_table"><spring:message code="provinciaId"/></label>
-					<form:input path="provincia.id" class="formulario_linea_input form-control" id="provinciaId_detail_table"/>
-				</div>		
-				<div class="form-group col-sm">
-					<label for="comarcaId_detail_table"><spring:message code="comarcaId"/></label>
-					<form:input path="comarca" class="formulario_linea_input form-control" id="comarcaId_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="localidadId_detail_table"><spring:message code="localidadId"/></label>
-					<form:input path="localidad" class="formulario_linea_input form-control" id="localidadId_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="municipioId_detail_table"><spring:message code="municipioId"/></label>
-					<form:input path="municipio.id" class="formulario_linea_input form-control" id="municipioId_detail_table"/>
-				</div>
-				<div class="form-group col-sm">
-					<label for="autonomiaId_detail_table"><spring:message code="autonomiaId"/></label>
-					<form:input path="autonomia.id" class="formulario_linea_input form-control" id="autonomiaId_detail_table"/>
-				</div>
-			</div>
-		</form:form>
+	<div id ="x21aAlumno_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div id="x21aAlumno_detail_form_container" class="dialog-content-material">
+		<!-- El formulario será insertado mediante una llamada Ajax -->
 	</div>
 	<!-- Botonera del formulario de detalle -->
-	<div class="rup-table-buttonpane ui-widget-content ui-helper-clearfix">
-		<div class="ui-dialog-buttonset rup_tableEdit_buttonsContainerResposive">
-			<!-- Botón Guardar -->
-			<button id="x21aAlumno_detail_button_save" class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button">
+	<div class="rup-table-buttonpanel-material">
+		<div class="text-right">
+			<!-- Botón cancelar -->
+			<button id="x21aAlumno_detail_button_cancel" type="button">
+				<spring:message code="cancel" />
+			</button>
+			<!-- Botón guardar -->
+			<button id="x21aAlumno_detail_button_save" type="button">
 				<spring:message code="save" />
 			</button>
-			<!-- Botón cancelar -->
-			<button id="x21aAlumno_detail_button_cancel"
-				 class="btn btn-outline-primary rup_tableEdit_buttonsResposive" type="button"><spring:message code="cancel" /></a>
+			<!-- Botón guardar y continuar -->
+			<button id="x21aAlumno_detail_button_save_repeat" type="button">
+				<spring:message code="saveAndContinue" />
+			</button>
 		</div>
 	</div>	
 </div>

@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>USUARIO</h2>
+<h2 class="title mb-3">USUARIO</h2>
 
 <jsp:include page="includes/tableUsuarioFilterForm.jsp"></jsp:include>
 

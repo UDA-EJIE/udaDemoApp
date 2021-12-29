@@ -15,8 +15,8 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<!-- Título página -->
-<h2>
+<!-- Tï¿½tulo pï¿½gina -->
+<h2 class="title mb-3">
 	<spring:message code="experimental.logLevel" />
 </h2>
 

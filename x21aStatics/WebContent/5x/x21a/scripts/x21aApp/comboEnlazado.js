@@ -162,7 +162,7 @@ $(function () {
 
 
         //MIXTO I
-        $('#mixto_comboAbueloRemoto').rup_combo({
+        /*$('#mixto_comboAbueloRemoto').rup_combo({
             source: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
             sourceParam: {
                 label: 'desc' + $.rup_utils.capitalizedLang(),
@@ -223,11 +223,11 @@ $(function () {
             },
             width: '99%',
             customClasses: ['select-material']
-        });
+        });*/
 
 
         //MIXTO II
-        $('#mixto2_comboAbuelo').rup_combo({
+        /*$('#mixto2_comboAbuelo').rup_combo({
             source: [{
                 i18nCaption: 'a',
                 value: '1'
@@ -268,7 +268,7 @@ $(function () {
             },
             width: '98%',
             customClasses: ['select-material']
-        });
+        });*/
 
 
         // Remote group

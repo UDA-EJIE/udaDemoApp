@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Deslizador</h2>
-		<hr>
+		<h2 class="title mb-3">Deslizador</h2>
 		<div class="slider-examples">
 			<div class="example">
 				<div id="slider" class="rup-slider-material"></div>

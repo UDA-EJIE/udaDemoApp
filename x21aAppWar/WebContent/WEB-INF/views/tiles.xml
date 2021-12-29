@@ -238,7 +238,7 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/button-includes.jsp" />
 	</definition>
-
+<!-- RUP_Combo -->
 	<definition extends="template" name="combo">
 		<put-attribute name="content"
 			value="/WEB-INF/views/patrones/combo/combo.jsp" />
@@ -269,6 +269,40 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
 	</definition>
+<!-- FIN RUP_Combo -->
+
+<!-- RUP_Select -->
+	<definition extends="template" name="selectSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/selectSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="multiselect">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/multiselect.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/multiselect-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectMantenimiento">
+		<put-attribute name="content"
+			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
+	</definition>
+<!-- FIN RUP_Select -->
 
 	<definition extends="template" name="feedback">
 		<put-attribute name="content"
@@ -366,6 +400,20 @@
 		template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp" />
 	<definition name="tabsContent_3"
 		template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp" />
+		
+	<definition extends="templateNoHeads" name="tabsTable_4">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTable-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tabsTableMultiPk_5">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipk.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTableMultipk-includes.jsp" />
+	</definition>
 
 	<definition extends="template" name="time">
 		<put-attribute name="content"
@@ -598,6 +646,13 @@
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
 	</definition>
 	
+	<definition extends="template" name="tableEditFormNewWindow">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableEditFormNewWindow.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableEditFormNewWindow-includes.jsp" />
+	</definition>
+	
 	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
 	
 	<definition name="tableDoubleEditForm" template="/WEB-INF/views/table/includes/tableDoubleEditForm.jsp" />
@@ -712,6 +767,8 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
 	</definition>
+	
+	<definition name="tableX21aAlumnoEditForm" template="/WEB-INF/views/x21aalumno/includes/x21aAlumnoEditForm.jsp" />
 
 	<definition extends="template" name="calendar">
 		<put-attribute name="content"

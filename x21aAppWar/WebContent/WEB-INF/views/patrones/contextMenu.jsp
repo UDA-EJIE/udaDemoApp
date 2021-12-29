@@ -19,8 +19,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Context Menu</h2>
-		<hr>
+		<h2 class="title mb-3">Context Menu</h2>
 
 		<div id="contextMenu" class="card text-white"
 			style="background-color: #333; border-color: #333;">

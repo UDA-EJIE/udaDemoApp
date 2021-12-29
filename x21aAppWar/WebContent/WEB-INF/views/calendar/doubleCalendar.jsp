@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Dos calendarios</h2> <!-- Titulo pagina -->
+<h2 class="title mb-3">Dos calendarios</h2> <!-- Titulo pagina -->
 
 <div class="row">
     <div class="cal-1 col-md-6">

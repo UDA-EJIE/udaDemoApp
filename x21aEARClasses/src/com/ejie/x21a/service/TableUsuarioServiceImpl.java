@@ -152,6 +152,17 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	/**
+	 * Deletes a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public void remove(Usuario2 usuario) {
+		this.tableUsuarioDao.remove(usuario);
+	}
+	
+	/**
 	 * Finds a List of rows in the Usuario table.
 	 *
 	 * @param usuario Usuario
@@ -160,6 +171,18 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
 		return (List<Usuario>) this.tableUsuarioDao.findAll(usuario, tableRequestDto);
+	}
+	
+	/**
+	 * Finds a List of rows containing the PK field values in the Usuario table.
+	 *
+	 * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+	 * @return List<Usuario>
+	 */
+	public List<Usuario> findAllIds(Usuario usuario, boolean startsWith) {
+		return this.tableUsuarioDao.findAllIds(usuario, startsWith);
 	}
     
 
@@ -192,6 +215,18 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	@Transactional(rollbackFor = Throwable.class)
+	public void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
+	}
+	
 	@Transactional(rollbackFor = Throwable.class)
 	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, startsWith);
@@ -205,6 +240,11 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 
 	@Override
 	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
+	}
+
+	@Override
+	public List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
 

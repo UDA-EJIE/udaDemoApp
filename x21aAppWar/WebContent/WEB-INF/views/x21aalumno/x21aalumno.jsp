@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>x21aAlumno</h2>
+<h2 class="title mb-3">x21aAlumno</h2>
 
 <jsp:include page="includes/x21aAlumnoFilterForm.jsp"></jsp:include>
 
@@ -20,20 +20,6 @@
 			<th data-col-prop="autonomiaId" data-col-sidx="AUTONOMIA_ID" >autonomiaId</th>
 	    </tr>
 	</thead>
-	<tfoot>
-		<tr>
-			<th>id</th>
-			<th>usuario</th>
-			<th>password</th>
-			<th>nombre</th>
-			<th>apellido1</th>
-			<th>provinciaId</th>
-			<th>localidadId</th>
-			<th>comarcaId</th>
-			<th>municipioId</th>
-			<th>autonomiaId</th>
-		</tr>
-	</tfoot>
 </table>
 
 <jsp:include page="includes/x21aAlumnoEdit.jsp"></jsp:include>

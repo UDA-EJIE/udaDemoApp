@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Spinner</h2>
-		<hr>
+		<h2 class="title mb-3">Spinner</h2>
 		<p>
 			<label for="spinner">Seleccione un valor:</label> <input id="spinner"
 				name="value">

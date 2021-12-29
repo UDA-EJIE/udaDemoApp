@@ -4,7 +4,7 @@
     <div class="col-xl-6">
 		<div class="row">
 			<div class="col-12">
-				<h2>Tabla con múltiples PKs</h2>
+				<h2 class="title mb-3">Tabla con múltiples PKs</h2>
 			</div>
 		</div>
     	<div class="row">
@@ -33,7 +33,7 @@
     <div class="mt-lg-5 mt-xl-0 col-xl-6 tableDoubleBorder">
 		<div class="row">
 			<div class="col-12">
-				<h2>Tabla Simple</h2>
+				<h2 class="title mb-3">Tabla Simple</h2>
 			</div>
 		</div>
 		<div class="row">

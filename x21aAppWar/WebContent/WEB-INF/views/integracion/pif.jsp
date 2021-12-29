@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>PIF</h2>
+<h2 class="title mb-3">PIF</h2>
 	<link href="http://svc.integracion.jakina.ejiedes.net/trasegador/css/swfdefault.css" rel="stylesheet" type="text/css" ></link>
 
 	<script type="text/javascript" src="http://svc.integracion.jakina.ejiedes.net/trasegador/js/prototype.js"></script>

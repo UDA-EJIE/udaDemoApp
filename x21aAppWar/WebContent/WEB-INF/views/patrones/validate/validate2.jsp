@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Validacion</h2>
+<h2 class="title mb-3">Validacion</h2>
 
 
 <div id="feedbackErroresValidaciones"></div>
