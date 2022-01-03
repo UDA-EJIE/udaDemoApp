@@ -20,7 +20,7 @@
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
 			<label for="multiSelect">MultiSelect local</label>
-			<select id="multiselect"></select>
+			<select id="multiSelect"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
 			<label for="multicomboRemoto">MultiCombo remoto</label>

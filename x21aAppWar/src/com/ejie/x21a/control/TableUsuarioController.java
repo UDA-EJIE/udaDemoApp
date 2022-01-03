@@ -152,7 +152,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
-			@UDALinkAllower(name = "getTableEditForm"),
+			//@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
@@ -180,7 +180,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "SÌ");
+		comboEjie.put("1", "SÔøΩ");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "table";
@@ -226,7 +226,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "SÌ");
+		comboEjie.put("1", "SÔøΩ");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDouble";
@@ -354,7 +354,7 @@ public class TableUsuarioController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "SÌ");
+		comboEjie.put("1", "SÔøΩ");
 		model.addAttribute("comboEjie", comboEjie);
 		
 		return "tableDialogAjax";
@@ -412,7 +412,7 @@ public class TableUsuarioController {
 		model.addAttribute("actionType", actionType);
 		model.addAttribute("tableID", tableID);
 		
-		// Controlar que el mapping siempre se aÒada al modelo de la manera esperada
+		// Controlar que el mapping siempre se aÔøΩada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table";
 		} else if (mapping.endsWith("/")) {
@@ -438,30 +438,30 @@ public class TableUsuarioController {
 		}
 
 		List<String> listaApellidos = new ArrayList<String>();
-		listaApellidos.add("GarcÌa");
-		listaApellidos.add("Gonz·lez");
-		listaApellidos.add("Fern·ndez");
-		listaApellidos.add("RodrÌguez");
-		listaApellidos.add("LÛpez");
-		listaApellidos.add("MartÌnez");
-		listaApellidos.add("S·nchez");
-		listaApellidos.add("PÈrez");
-		listaApellidos.add("GÛmez");
-		listaApellidos.add("MartÌn");
-		listaApellidos.add("JimÈnez");
+		listaApellidos.add("Garc√≠a");
+		listaApellidos.add("Gonz√°lez");
+		listaApellidos.add("Fern√°ndez");
+		listaApellidos.add("Rodr√≠guez");
+		listaApellidos.add("L√≥pez");
+		listaApellidos.add("Mart√≠nez");
+		listaApellidos.add("S√°nchez");
+		listaApellidos.add("P√©rez");
+		listaApellidos.add("G√≥mez");
+		listaApellidos.add("Mart√≠n");
+		listaApellidos.add("Jim√©nez");
 		listaApellidos.add("Ruiz");
-		listaApellidos.add("Hern·ndez");
-		listaApellidos.add("DÌaz");
+		listaApellidos.add("Hern√°ndez");
+		listaApellidos.add("D√≠az");
 		listaApellidos.add("Moreno");
-		listaApellidos.add("¡lvarez");
-		listaApellidos.add("MuÒoz");
+		listaApellidos.add("√Ålvarez");
+		listaApellidos.add("Mu√±oz");
 		listaApellidos.add("Romero");
 		listaApellidos.add("Alonso");
-		listaApellidos.add("GutiÈrrez");
+		listaApellidos.add("Guti√©rrez");
 		listaApellidos.add("Navarro");
 		listaApellidos.add("Torres");
-		listaApellidos.add("DomÌnguez");
-		listaApellidos.add("V·zquez");
+		listaApellidos.add("Dom√≠nguez");
+		listaApellidos.add("V√°zquez");
 		listaApellidos.add("Ramos");
 		listaApellidos.add("Prueba");
 		listaApellidos.add("Pedroche");
@@ -678,7 +678,7 @@ public class TableUsuarioController {
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
 		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
 		
-		// Controlar que el mapping siempre se aÒada al modelo de la manera esperada
+		// Controlar que el mapping siempre se aÔøΩada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table/multiFilter";
 		} else if (mapping.endsWith("/")) {
@@ -707,7 +707,7 @@ public class TableUsuarioController {
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
 		model.addAttribute("defaultCheckboxClass", defaultCheckboxClass);
 		
-		// Controlar que el mapping siempre se aÒada al modelo de la manera esperada
+		// Controlar que el mapping siempre se aÔøΩada al modelo de la manera esperada
 		if (mapping == null || mapping.isEmpty()) {
 			mapping = "/table/multiFilter";
 		} else if (mapping.endsWith("/")) {
@@ -718,7 +718,7 @@ public class TableUsuarioController {
 		return "multiFilterForm";
 	}
 	
-	// AÒade o actualiza un filtro
+	// AÔøΩade o actualiza un filtro
 	@UDALink(name = "multifilterAdd")
 	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
 	public @ResponseBody Resource<Filter> filterAdd(@RequestBody Filter filtro){

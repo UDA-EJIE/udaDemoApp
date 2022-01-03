@@ -233,7 +233,7 @@ public class PatronesController {
         return "multicombo";
     }
 
-    //Multicombo
+    //combo en mantenimiento
     @RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
     public String getComboMantenimiento(Model model) {
         model.addAttribute("alumno", new Alumno());
@@ -259,6 +259,19 @@ public class PatronesController {
     @RequestMapping(value = "selectEnlazadoMultiple", method = RequestMethod.GET)
     public String getSelectEnlazadoMultiple(Model model) {
         return "selectEnlazadoMultiple";
+    }
+    
+    //MultiSelect
+    @RequestMapping(value = "multiselect", method = RequestMethod.GET)
+    public String getMultiSelect(Model model) {
+        return "multiselect";
+    }
+
+    //select en mantenimiento
+    @RequestMapping(value = "selectMantenimiento", method = RequestMethod.GET)
+    public String getSelectMantenimiento(Model model) {
+        model.addAttribute("alumno", new Alumno());
+        return "selectMantenimiento";
     }
     
 

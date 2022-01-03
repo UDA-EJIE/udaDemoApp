@@ -71,7 +71,7 @@ $(function () {
             }
             ],
             placeholder: '[Seleccione un elemento]',
-            allowClear: false,
+            allowClear: true,
             selected:'ruby',
             multiple:false,
             change: function (e) {
