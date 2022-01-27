@@ -13,7 +13,8 @@
   },
   "rup_autocomplete": {
     "ajaxError": "en_Se ha producido un error al recuperar los datos del servidor",
-    "showAllItems": "Show all items"
+    "showAllItems": "Show all items",
+	"menuAppendToError": "en_En el autocomplete con identificador {0}, es necesario especificar un selector válido para la propiedad menuAppendTo."
   },
   "rup_blockUI": {
     "cargando": "en_Procesando, espere por favor"
@@ -32,6 +33,7 @@
     "ajaxError": "en_Se ha producido un error al recuperar los datos del servidor",
     "blankNotDefined": "en_[Falta literal]",
     "loadingText": "en_Cargando...",
+	"appendToError": "en_En el combo con identificador {0}, es necesario especificar un selector válido para la propiedad appendTo.",
     "multiselect": {
       "checkAllText": "Check all",
       "checkAllTitle": "Check all elements",
@@ -679,6 +681,7 @@
       "model": "en_Las columnas de nombres son diferentes de las columnas de modelo",
       "norecords": "en_No hay datos para procesar",
       "nourl": "en_No se ha especificado una URL",
+      "wrongColModel": "There is no 'editoptions' for '{0}'. The properties of the element have not been well defined in the 'colModel' of the table.",
       "noMasterPKField": {
         "msg": "en_Se ha producido un error a la hora de inicializar la rup_table de detalle, no se ha incluído en el formulario de filtrado \"#{0}\" el input de la clave del padre \"{1}\".",
         "title": "en_Error en la inicialización de la tabla"
@@ -692,7 +695,7 @@
       "validateError": "en_Se han producido los siguientes errores:<br/>"
     },
     "filter": "en_Filtrar",
-    "first": "en_Primero",
+    "first": "First",
     "formatter": {
       "baseLinkUrl": "",
       "checkbox": {
@@ -795,7 +798,7 @@
     "insertError": "en_Error al insertar el elemento.",
     "insertOK": "en_El elemento se ha añadido correctamente.",
     "invalidRowId": "en_El identificador de la fila no es válido. No se puede completar la acción",
-    "last": "en_Ultimo",
+    "last": "Last",
     "modify": "en_Editar",
     "modifyOK": "en_El elemento se ha modificado correctamente.",
     "multiselectHeader": "en_Seleccionar todos los elementos de la página",
@@ -816,7 +819,7 @@
       "viewtitle": "Ver fila seleccionada"
     },
     "new": "en_Añadir",
-    "next": "en_Siguiente",
+    "next": "Next",
     "noGrid": "en_No es posible crear un mantenimiento sin un grid.",
     "noRecordsFound": "en_No hay registros.",
     "noReg": "en_Seleccione un registro.",
@@ -871,7 +874,7 @@
         "searchCriteria": "en_Criterios de búsqueda"
       }
     },
-    "previous": "en_Anterior",
+    "previous": "Previous",
     "save": "en_Guardar",
     "saveAndContinue": "en_Se perderan los cambios en los datos modificados, ¿desea continuar?",
     "search": {

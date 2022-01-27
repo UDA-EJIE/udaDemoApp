@@ -716,16 +716,19 @@ input.
 							return null;
 						}
 						response($.map(data, function (item) {
-							//Si hay sourcePAram se serielizan los paramtros desde el js y no desde el bean.
-							if(settings.sourceParam !== undefined && settings.sourceParam.category !== undefined && settings.sourceParam.category === 'filter'){
-								if(settings.sourceParam.label !== undefined){
+							// Si se define un sourceParam se serializan los parámetros desde el cliente en vez de desde el bean.
+							if (settings.sourceParam !== undefined) {
+								if (settings.sourceParam.label !== undefined) {
 									item.label = item[settings.sourceParam.label];
 								}
-								if(settings.sourceParam.data !== undefined){
-									item.value = item[settings.sourceParam.data];
-								}
-								if(settings.sourceParam.category !== undefined){
-									item.category = item[settings.sourceParam.category];
+								
+								if (settings.sourceParam.category !== undefined && settings.sourceParam.category === 'filter') {
+									if (settings.sourceParam.data !== undefined) {
+										item.value = item[settings.sourceParam.data];
+									}
+									if (settings.sourceParam.category !== undefined) {
+										item.category = item[settings.sourceParam.category];
+									}
 								}
 							}
 							var labelLimpio = item.label;
@@ -1038,23 +1041,16 @@ input.
 					jQuery('#' + settings.id + '_menu').removeClass('ui-front');
 				});
 				
-				//Buscar el UL del autocomplete y colocarlo tras el elemento sobre el que debe ir
-				//$("#"+settings.id).after($("body > .ui-autocomplete"));
-
-
-				//Buscar el UL del autocomplete y colocarlo tras el elemento sobre el que debe ir
-
-				if (settings.menuAppendTo !== null) {
-					if (jQuery(settings.menuAppendTo).length === 0) {
-						alert('Es necesario especificar un selector válido para la propiedad menuAppendTo');
+				// Buscar el UL del autocomplete y colocarlo tras el elemento sobre el que debe ir
+				if (settings.menuAppendTo != undefined) {
+					if (settings.menuAppendTo.length == 0 || settings.menuAppendTo.length == undefined) {
+						console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_autocomplete.menuAppendToError'), settings.id));
+						$('#' + settings.id).parent().append(settings.$menu);
 					} else {
 						jQuery(settings.menuAppendTo).append(settings.$menu);
 					}
 				} else {
-					if ($.rup_utils.aplicatioInPortal()) {
-						//						$("div.r01gContainer").append($("body > .ui-autocomplete"));
-						$('div.r01gContainer').append(settings.$menu);
-					}
+					$('#' + settings.id).parent().append(settings.$menu);
 				}
 
 				//Deshabilitar
