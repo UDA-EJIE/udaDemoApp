@@ -145,12 +145,6 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${org.logback.version}</version>
 		</dependency>
-		<!-- Jdbcdslog -->
-		<dependency>
-			<groupId>org</groupId>
-			<artifactId>jdbcdslog</artifactId>
-			<version>1.0.5</version>
-		</dependency>
 
 		<!-- Hibernate Validator -->
 		<!-- Hibernate Validator -->
