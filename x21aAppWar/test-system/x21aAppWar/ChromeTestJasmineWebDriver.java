@@ -33,7 +33,7 @@ public class ChromeTestJasmineWebDriver {
 	 List<WebElement> tests = null;
 	 List<Integer> results = new ArrayList<Integer>();
 	 System.out.println("Starting test " + new Object(){}.getClass().getEnclosingMethod().getName());
-     driver.get(path+"/5x/x21a/scripts/x21aApp/testJasmine/specRunner.html");	
+     driver.get(path+"/x21a/scripts/x21aApp/testJasmine/specRunner.html");	
      try{
     	 tests = driver.findElements(By.className("jasmine-bar,jasmine-passed"));
 	 }catch (Exception e){
