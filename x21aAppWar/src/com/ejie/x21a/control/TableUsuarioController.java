@@ -45,6 +45,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -90,6 +91,7 @@ import com.ejie.x38.util.ResourceUtils;
 public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
+	public static final String MODEL_USUARIO2 = "usuario2";
 	public static final String MODEL_OPTIONS = "options";
 	public static final String MODEL_ACTIONTYPE = "actionType";
 	
@@ -141,7 +143,7 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "get2", linkTo = { 
 			@UDALinkAllower(name = "edit2" ), 
-			@UDALinkAllower(name = "remove" ),
+			@UDALinkAllower(name = "remove2" ),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
@@ -156,6 +158,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
+			@UDALinkAllower(name = "getAllIds"),
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableEditFormMultipart"),
 			@UDALinkAllower(name = "getTableInlineEdit"),
@@ -196,9 +199,16 @@ public class TableUsuarioController {
 	@UDALink(name = "getTableDouble", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "getTableDoubleEditForm"),
+			@UDALinkAllower(name = "getTableInlineEdit"),
+			@UDALinkAllower(name = "getTableDoubleInlineEdit"),
+			@UDALinkAllower(name = "getTableEditFormMultipart"),
+			@UDALinkAllower(name = "getTableDoubleEditFormMultipart"),
+			@UDALinkAllower(name = "addFromNewWindow"),
+			@UDALinkAllower(name = "editFromNewWindow"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "deleteAll2"),
 			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getMultiFilterForm2"),
 			@UDALinkAllower(name = "multifilterAdd"),
@@ -218,7 +228,7 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/double", method = RequestMethod.GET)
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute("usuario2", new Usuario2());
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -401,7 +411,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
 	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
-		model.addAttribute("usuario2", new Usuario2());
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		
 		return "tableDoubleEditForm";
@@ -424,6 +434,25 @@ public class TableUsuarioController {
 		model.addAttribute("enableMultipart", true);
 		
 		return "tableEditForm";
+	}
+	
+	@UDALink(name = "getTableDoubleEditFormMultipart", linkTo = {
+			@UDALinkAllower(name = "getApellidos"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "addMultipart2"),
+			@UDALinkAllower(name = "editMultipart2"),
+			@UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/editFormDoubleMultipart")
+	public String getTableDoubleEditFormMultipart (
+			@RequestParam(required = true) String actionType,
+			Model model) {
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute("enableMultipart", true);
+		
+		return "tableDoubleEditForm";
 	}
 	
 	@UDALink(name = "getTableInlineEdit", linkTo = {
@@ -453,11 +482,47 @@ public class TableUsuarioController {
 		return "tableInlineEditAuxForm";
 	}
 	
+	@UDALink(name = "getTableDoubleInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get2"),
+			@UDALinkAllower(name = "add2"),
+			@UDALinkAllower(name = "getRoles"),
+			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/inlineEditDouble")
+	public String getTableDoubleInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) String tableID,
+			@RequestParam(required = false) String mapping,
+			Model model) {
+		model.addAttribute("entity", new Usuario2());
+		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute("tableID", tableID);
+		
+		// Controlar que el mapping siempre se añada al modelo de la manera esperada
+		if (mapping == null || mapping.isEmpty()) {
+			mapping = "/table/2";
+		} else if (mapping.endsWith("/")) {
+			mapping = mapping.substring(0, mapping.length() - 1);
+		}
+		model.addAttribute("mapping", mapping);
+		
+		return "tableInlineEditAuxForm";
+	}
+	
 	@UDALink(name = "editFromNewWindow")
 	@GetMapping(value = "/editFromNewWindow")
-    public String editFromNewWindow(Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
+    public String editFromNewWindow(
+    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
+    		Model model) {
+		if (isDouble)  {
+			Usuario2 usuario = new Usuario2();
+			model.addAttribute(MODEL_USUARIO2, usuario);
+			model.addAttribute("isDouble", true);
+		} else {
+			Usuario usuario = new Usuario();
+			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute("isDouble", false);
+		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -565,6 +630,25 @@ public class TableUsuarioController {
 	}
 	
 	/**
+	 * Devuelve una lista de identificadores.
+	 *
+	 * @param param String Contiene el valor del campo a buscar.
+	 * @param startsWith boolean Define si se usará un comodín al inicio.
+	 *
+	 * @return List<Usuario> Lista de objetos correspondientes a la búsqueda realizada.
+	 */
+	@UDALink(name = "getAllIds")
+	@GetMapping(value = "/allIds")
+	public @ResponseBody
+	List<Resource<Usuario>> getAllIds(
+			@RequestParam(value = "q", required = true) String param,
+            @RequestParam(value = "c", required = true) boolean startsWith) {
+		TableUsuarioController.logger.info("[GET - find_ALL_ID] : Obtener CPs de Usuario");
+		Usuario usuario = new Usuario(param);
+		return ResourceUtils.fromListToResource(this.tableUsuarioService.findAllIds(usuario, startsWith));
+	}
+	
+	/**
 	 * OperaciÃ³n CRUD Edit. ModificaciÃ³n del bean indicado.
 	 * 
 	 * @param usuario
@@ -600,6 +684,20 @@ public class TableUsuarioController {
         Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
 		return new Resource<Usuario>(usuarioAux);
+    }
+	
+	@UDALink(name = "editMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PutMapping(value = "/{bis}/editMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario2> editMultipart2(
+    		@RequestBody Usuario2 usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
+		logger.info("Entity correctly updated!");
+		return new Resource<Usuario2>(usuarioAux);
     }
 	
 	@Deprecated
@@ -658,11 +756,34 @@ public class TableUsuarioController {
 		return new Resource<Usuario>(usuarioAux);
     }
 	
+	@UDALink(name = "addMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/{bis}/addMultipart", produces = "application/json")
+    public @ResponseBody Resource<Usuario2> addMultipart2(
+    		@Validated @RequestBody Usuario2 usuario,
+    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
+		if (imagen != null) {
+			logger.info("IMAGEN:::: {}", imagen);
+        }
+        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
+		logger.info("Entity correctly inserted!");
+		return new Resource<Usuario2>(usuarioAux);
+    }
+	
 	@UDALink(name = "addFromNewWindow")
 	@GetMapping(value = "/addFromNewWindow")
-    public String addFromNewWindow(Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
+    public String addFromNewWindow(
+    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
+    		Model model) {
+		if (isDouble)  {
+			Usuario2 usuario = new Usuario2();
+			model.addAttribute(MODEL_USUARIO2, usuario);
+			model.addAttribute("isDouble", true);
+		} else {
+			Usuario usuario = new Usuario();
+			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute("isDouble", false);
+		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -695,6 +816,25 @@ public class TableUsuarioController {
         this.tableUsuarioService.remove(usuario);
         logger.info("Entity correctly deleted!");
         return new Resource<Usuario>(usuario);
+    }
+
+	/**
+	 * Operación CRUD Delete. Borrado del registro correspondiente al
+	 * identificador especificado.
+	 * 
+	 * @param id
+	 *            Identificador del objeto que se desea eliminar.
+	 * @return Bean eliminado.
+	 */
+	@UDALink(name = "remove2")
+	@DeleteMapping(value = "/{bis}/{id}")
+	@ResponseStatus(value=HttpStatus.OK)
+    public @ResponseBody Resource<Usuario2> remove2(@PathVariable String id, HttpServletResponse response) {
+        Usuario2 usuario = new Usuario2();
+        usuario.setId(id);
+        this.tableUsuarioService.remove(usuario);
+        logger.info("Entity correctly deleted!");
+        return new Resource<Usuario2>(usuario);
     }
 	
 	
@@ -737,12 +877,12 @@ public class TableUsuarioController {
 
 	@UDALink(name = "filter2", linkTo = { 
 			@UDALinkAllower(name = "get2"), 
-			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "remove2"), 
 			@UDALinkAllower(name = "filter2"),
 			@UDALinkAllower(name = "getRoles"), 
-			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "deleteAll2"),
 			@UDALinkAllower(name = "clipboardReport2") })
-	@RequestMapping(value = "{bis}/filter", method = RequestMethod.POST)
+	@RequestMapping(value = "/{bis}/filter", method = RequestMethod.POST)
 	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -872,6 +1012,30 @@ public class TableUsuarioController {
 	}
 	
 	/**
+	 * Operación de búsqueda del componente RUP_TABLE.
+	 * 
+	 * @param filterUsuario
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param searchUsuario
+	 *            Bean que contiene los parámetros de búsqueda a emplear.
+	 * @param tableRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
+	 * @return Lista de lineas de la tabla que se corresponden con los registros
+	 *         que se ajustan a los parámetros de búsqueda.
+	 * 
+	 */
+	@UDALink(name = "search2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/{bis}/search")
+	public @ResponseBody List<TableRowDto<Usuario2>> search2(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
+			@RequestJsonBody(param="search") Usuario2 searchUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto){
+		TableUsuarioController.logger.info("[POST - search] : Buscar Usuarios");
+		return tableUsuarioService.search(filterUsuario, searchUsuario, tableRequestDto, false);
+	}
+	
+	/**
 	 * Borrado mÃºltiple de registros
 	 * 
 	 * @param filterUsuario Usuario
@@ -886,6 +1050,29 @@ public class TableUsuarioController {
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
+			@RequestJsonBody TableRequestDto tableRequestDto) {
+		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
+		this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
+	    TableUsuarioController.logger.info("All entities correctly deleted!");
+	    
+	    return tableRequestDto.getMultiselection().getSelectedIds();
+	}
+	
+	/**
+	 * Borrado múltiple de registros
+	 * 
+	 * @param filterUsuario Usuario2
+	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 * @param TableRequestDto
+	 *            Dto que contiene los parámtros de configuración propios del
+	 *            RUP_TABLE a aplicar en la búsqueda.
+	 * @return Lista de los identificadores de los registros eliminados.
+	 */
+	@UDALink(name = "deleteAll2")
+	@PostMapping(value = "/{bis}/deleteAll")
+	@ResponseStatus(value=HttpStatus.OK)
+	public @ResponseBody List<String> removeMultiple2(
+			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 		this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);

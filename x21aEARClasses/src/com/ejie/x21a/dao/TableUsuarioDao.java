@@ -90,6 +90,14 @@ public interface TableUsuarioDao {
     void remove(Usuario usuario);
 
     /**
+     * Deletes a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return 
+     */
+    void remove(Usuario2 usuario);
+
+    /**
      * Finds a List of rows in the Usuario table.
      *
      * @param usuario Usuario
@@ -106,6 +114,16 @@ public interface TableUsuarioDao {
      * @return List
      */
     List<Usuario2> findAll(Usuario2 usuario, TableRequestDto tableRequestDto);
+
+    /**
+     * Finds a List of rows containing the PK field values in the Usuario table.
+     *
+     * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+     * @return List<Usuario>
+     */
+    List<Usuario> findAllIds(Usuario usuario, boolean startsWith);
 
 	/**
      * Finds rows in the Usuario table using like.
@@ -141,6 +159,15 @@ public interface TableUsuarioDao {
 	 */	
 	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Usuario2> getMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
@@ -175,6 +202,8 @@ public interface TableUsuarioDao {
     
     List<TableRowDto<Usuario2>> reorderSelection(Usuario2 usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);	
+    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
+    
+    List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 
