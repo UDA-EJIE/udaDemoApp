@@ -12,6 +12,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.xpath.XPathAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,6 @@ import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.util.ResourceUtils;
-import com.sun.org.apache.xpath.internal.XPathAPI;
 
 import n38c.exe.N38API;
 
