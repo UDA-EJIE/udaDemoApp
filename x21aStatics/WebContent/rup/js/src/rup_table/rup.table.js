@@ -529,15 +529,24 @@
                 rupSelectColumn = true;
             }
             
-            // Se ocultan las columnas que así hayan sido definidas en el colModel
             $.each(options.colModel, function (index, column) {
+            	// Se ocultan las columnas que así hayan sido definidas en el colModel.
             	if (column.hidden) {
             		options.columnDefs.push({
             			targets: rupSelectColumn ? index + 1 : index,
             			visible: false,
             			className: 'never'
             		})
+            	} else if (column.orderable === false) {
+            		// Se bloquea la ordenación de las columnas que así hayan sido definidas en el colModel. Solo se hace esta comprobación cuando la columna no ha sido ocultada.
+            		options.columnDefs.push({
+            			targets: rupSelectColumn ? index + 1 : index,
+            			orderable: false
+            		})
             	}
+            });
+            
+            $.each(options.colModel, function (index, column) {
             });
 
             //se crea el tfoot
@@ -555,7 +564,7 @@
                         data: '',
                         render: function (data) {
                             var iconCheck = 'mdi-close';
-                            if (data === '1') {
+                            if (data == '1') {
                                 iconCheck = 'mdi-check';
                             }
                             return `
@@ -1490,18 +1499,31 @@
                     options.responsive = responsive;
                 }
 
-                // Se añaden los CSS para las flechas.
+                // Se añaden las clases CSS de los títulos y flechas de las columnas.
+                const displayStyle = {
+                	'block': 'd-block',
+                	'inline': 'd-inline ml-1',
+                	'none': 'd-none',
+                	'default': 'd-block'
+                };
+                const arrowsStyle = displayStyle[options.columnOrderArrows.display] || displayStyle['default'];
                 $.each($('#' + $self[0].id + ' thead th'), function () {
-                    var titulo = $(this).text();
-                    $(this).text('');
-                    var span1 = $('<span></span>').addClass('d-block').text(titulo);
-                    var span2 = $('<span></span>').addClass('mdi mdi-arrow-down mr-2 mr-xl-0');
-                    var span3 = $('<span></span>').addClass('mdi mdi-arrow-up');
-                    $(this).append(span1);
-                    var div1 = $('<div></div>').addClass('d-block');
-                    div1.append(span2);
-                    div1.append(span3);
-                    $(this).append(div1);
+                	const $this = $(this);
+                	
+                	// Reubicar título de la columna.
+                	const $columnTitle = $('<span></span>').addClass('d-inline').text($this.text());
+                	
+                	// Si se activó la opción, se mostrarán únicamente las flechas que estén ordenando los datos.
+                	if (options.columnOrderArrows.showOnlyActive) $this.addClass('sorting_active_only');
+                	
+                	// Crear elementos para las flechas de ordenación.
+                	const $columnDownArrow = $('<span></span>').addClass('mdi mdi-arrow-down mr-2 mr-xl-0');
+                	const $columnUpArrow = $('<span></span>').addClass('mdi mdi-arrow-up');
+                	const $columnArrowsContainer = $('<div></div>').addClass(arrowsStyle).append($columnDownArrow, $columnUpArrow);
+
+                	$this.text('');
+                	$this.append($columnTitle);
+                	$this.append($columnArrowsContainer);
                 });
 
                 // Se completan las opciones de configuración del componente
@@ -1774,6 +1796,10 @@
             }
         },
         columnDefs: [],
+        columnOrderArrows: {
+        	showOnlyActive: false,
+        	display: 'block'
+        },
         adapter: 'table_material',
         order: [
             [1, 'asc']
