@@ -31,6 +31,11 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		return "/mockLoginPage";
 	}
 	
+	@Override
+    public void configure(SecurityConfigBuilder builder) {
+        builder.errorPage("/error");
+    }
+	
 	protected String getDashboardUser() {
 		return "dashboard-admin";
 	}
@@ -56,9 +61,4 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	protected List<Link> getStaticLinks() {
 		return null;
 	}
-	
-	@Override
-    public void configure(SecurityConfigBuilder builder) {
-        builder.errorPage("/error.jsp");
-    }
 }
