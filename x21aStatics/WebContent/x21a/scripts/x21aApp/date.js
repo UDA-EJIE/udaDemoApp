@@ -50,10 +50,10 @@ jQuery(function($) {
 	        showButtonPanel : true,
 	        showOtherMonths : true,
 	        noWeekend : true,
-	        mask: 'dd/mm/yyyy hh:mm',
+	        mask: 'dd/mm/yyyy HH:mm',
 	        showSecond: false,
 	        dateFormat: 'dd/mm/yy',
-	        timeFormat: 'hh:mm'
+	        timeFormat: 'HH:mm'
 	    });
 	
 	    $('#fecha_inline').rup_date({
