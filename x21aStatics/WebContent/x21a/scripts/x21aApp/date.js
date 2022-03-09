@@ -14,59 +14,60 @@
  * que establece la Licencia.
  */
 jQuery(function($) {
-    
-    $('#fecha').rup_date({
-        labelMaskId : 'fecha-mask',
-        showButtonPanel : true,
-        showOtherMonths : true,
-        noWeekend : true
-    });
-    
-    $('#fechaPlaceholder').rup_date({
-        placeholderMask : true,
-        showButtonPanel : true,
-        showOtherMonths : true,
-        noWeekend : true
-    });
-    
-    $('#fecha_multi').rup_date({
-        multiSelect: 3,
-        placeholderMask : true,
-    });
-    
-    $.rup_date({		
-        from: 'desde',
-        to: 'hasta',
-        placeholderMask : true,
-        numberOfMonths: 3
-    });
-    
-    $.rup_date({		
-        from: 'desdeDateTime',
-        to: 'hastaDateTime',
-        placeholderMask : true,
-        numberOfMonths: 3,
-        datetimepicker:true,
-        showButtonPanel : true,
-        showOtherMonths : true,
-        noWeekend : true,
-        mask: 'dd/mm/yyyy hh:mm',
-        showSecond: false,
-        dateFormat: 'dd/mm/yy',
-        timeFormat: 'hh:mm'
-    });
-
-    $('#fecha_inline').rup_date({
-        changeMonth : false,
-        changeYear	: false,
-        numberOfMonths : [2, 3],
-        stepMonths : 6,
-        showWeek: true,
-        minDate: $.rup_utils.createDate(1, 1, 2012),
-        maxDate: $.rup_utils.createDate(31, 12, 2012)		
-    });
-    
-    $('#fecha').rup_date('setDate', new Date());
-
-    $('.contenedor').addClass('show');
+	window.initRupI18nPromise.then(function () {
+	    $('#fecha').rup_date({
+	        labelMaskId : 'fecha-mask',
+	        showButtonPanel : true,
+	        showOtherMonths : true,
+	        noWeekend : true
+	    });
+	    
+	    $('#fechaPlaceholder').rup_date({
+	        placeholderMask : true,
+	        showButtonPanel : true,
+	        showOtherMonths : true,
+	        noWeekend : true
+	    });
+	    
+	    $('#fecha_multi').rup_date({
+	        multiSelect: 3,
+	        placeholderMask : true,
+	    });
+	    
+	    $.rup_date({		
+	        from: 'desde',
+	        to: 'hasta',
+	        placeholderMask : true,
+	        numberOfMonths: 3
+	    });
+	    
+	    $.rup_date({		
+	        from: 'desdeDateTime',
+	        to: 'hastaDateTime',
+	        placeholderMask : true,
+	        numberOfMonths: 3,
+	        datetimepicker:true,
+	        showButtonPanel : true,
+	        showOtherMonths : true,
+	        noWeekend : true,
+	        mask: 'dd/mm/yyyy HH:mm',
+	        showSecond: false,
+	        dateFormat: 'dd/mm/yy',
+	        timeFormat: 'HH:mm'
+	    });
+	
+	    $('#fecha_inline').rup_date({
+	        changeMonth : false,
+	        changeYear	: false,
+	        numberOfMonths : [2, 3],
+	        stepMonths : 6,
+	        showWeek: true,
+	        minDate: $.rup_utils.createDate(1, 1, 2012),
+	        maxDate: $.rup_utils.createDate(31, 12, 2012)		
+	    });
+	    
+	    $('#fecha').rup_date('setDate', new Date());
+	});
+	
+	$('.contenedor').addClass('show');
 });
