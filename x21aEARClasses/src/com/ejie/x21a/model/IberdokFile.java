@@ -1,6 +1,9 @@
 package com.ejie.x21a.model;
 
-public class IberdokFile  implements java.io.Serializable {
+import java.sql.Timestamp;
+import java.util.Date;
+
+public class IberdokFile implements java.io.Serializable {
 	
 	/**
 	 * 
@@ -11,16 +14,35 @@ public class IberdokFile  implements java.io.Serializable {
 	private String idModelo;
 	private String semilla;
 	private String idDocumento;
-	private String estado;
+	private Integer docFinalizado;
 	private String documentoFinal;
 	private String file;
 	private String nombre;
+	private String idCorrelacion;
+	private String usuario;
+	private Timestamp fechaApp;
+	private Timestamp fechaIberdok;
 	
-	
-	
-	
-	
-	
+	public IberdokFile() {
+		super();
+	}
+	public IberdokFile(String id) {
+		super();
+		this.id = id;
+	}
+	public IberdokFile(String idModelo, String semilla, String idDocumento, Integer docFinalizado) {
+		this.idModelo = idModelo;
+		this.semilla = semilla;
+		this.idDocumento = idDocumento;
+		this.docFinalizado = docFinalizado;
+	}
+	public IberdokFile(String id, String idModelo, String semilla, String idDocumento, Integer docFinalizado) {
+		this.id = id;
+		this.idModelo = idModelo;
+		this.semilla = semilla;
+		this.idDocumento = idDocumento;
+		this.docFinalizado = docFinalizado;
+	}
 	
 	public String getFile() {
 		return file;
@@ -52,11 +74,11 @@ public class IberdokFile  implements java.io.Serializable {
 	public void setIdDocumento(String idDocumento) {
 		this.idDocumento = idDocumento;
 	}
-	public String getEstado() {
-		return estado;
+	public Integer getDocFinalizado() {
+		return docFinalizado;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setDocFinalizado(Integer docFinalizado) {
+		this.docFinalizado = docFinalizado;
 	}
 	public String getDocumentoFinal() {
 		return documentoFinal;
@@ -64,14 +86,8 @@ public class IberdokFile  implements java.io.Serializable {
 	public void setDocumentoFinal(String documentoFinal) {
 		this.documentoFinal = documentoFinal;
 	}
-	public IberdokFile() {
-		super();
-	}
 	public IberdokFile(String id, String idModelo, String semilla,
 			String idDocumento, String estado) {
-	}
-	public IberdokFile(String id) {
-		// TODO Auto-generated constructor stub
 	}
 	public String getNombre() {
 		return nombre;
@@ -79,8 +95,34 @@ public class IberdokFile  implements java.io.Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
-
+	public String getIdCorrelacion() {
+		return idCorrelacion;
+	}
+	public void setIdCorrelacion(String idCorrelacion) {
+		this.idCorrelacion = idCorrelacion;
+	}
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public Date getFechaApp() {
+		return fechaApp;
+	}
+	public void setFechaApp(Timestamp fechaApp) {
+		this.fechaApp = fechaApp;
+	}
+	public Timestamp getFechaIberdok() {
+		return fechaIberdok;
+	}
+	public void setFechaIberdok(Timestamp fechaIberdok) {
+		this.fechaIberdok = fechaIberdok;
+	}
+	@Override
+	public String toString() {
+		return "IberdokFile [id=" + id + ", idModelo=" + idModelo + ", semilla=" + semilla + ", idDocumento="
+				+ idDocumento + ", docFinalizado=" + docFinalizado + ", documentoFinal=" + documentoFinal + ", file="
+				+ file + ", nombre=" + nombre + ", idCorrelacion=" + idCorrelacion + "]";
+	}
 }

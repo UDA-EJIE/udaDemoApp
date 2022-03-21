@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JQGridManager;
-import com.ejie.x38.dto.JQGridRequestDto;
+import com.ejie.x38.dto.TableManager;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
 @Repository
@@ -32,11 +32,12 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * StringBuilder initilization value
 	 */
 	public static final int STRING_BUILDER_INIT = 4099;
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "ID_MODELO", "SEMILLA", "ID_DOCUMENTO", "ESTADO", "NOMBRE","USUARIO","FECHA_APP","FECHA_IBERDOK"};
 
 	private JdbcTemplate jdbcTemplate;
-
-	@Autowired
-	private Properties appConfiguration;
+	
+	private static final Logger logger = LoggerFactory.getLogger(IberdokFileDaoImpl.class);
 
 	/**
 	 * Method use to set the datasource.
@@ -65,11 +66,13 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		final long nextId = jdbcTemplate
 				.queryForObject("SELECT IBERDOK_SEQ.NEXTVAL FROM DUAL", Long.class);
-
-		String query = "INSERT INTO IBERDOK_FILES (ID, ID_MODELO, SEMILLA, ID_DOCUMENTO, ESTADO, NOMBRE) VALUES (?,?,?,?,?,?)";
+		
+		String query = "INSERT INTO IBERDOK_FILES (ID, ID_MODELO, SEMILLA, ID_DOCUMENTO, ESTADO, NOMBRE, USUARIO, FECHA_APP, FECHA_IBERDOK) VALUES (?,?,?,?,?,?,?,?,?)";
+		IberdokFileDaoImpl.logger.info("[IBERDOKDAO - ADD - QUERY] : " + query);
 		this.jdbcTemplate.update(query, nextId, file.getIdModelo(),
-				file.getSemilla(), file.getIdDocumento(), file.getEstado(),
-				file.getNombre());
+				file.getSemilla(), file.getIdDocumento(), file.getDocFinalizado(),
+				file.getNombre(),file.getUsuario(),file.getFechaApp(),file.getFechaIberdok());
+		IberdokFileDaoImpl.logger.info("[IBERDOKDAO - ADD] : " + file.toString());
 		return file;
 	}
 
@@ -81,9 +84,9 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * @return IberdokFile
 	 */
 	public IberdokFile update(IberdokFile file) {
-		String query = "UPDATE IBERDOK_FILES SET ID_MODELO=?, SEMILLA=?, ID_DOCUMENTO=?, ESTADO=? WHERE ID=?";
-		this.jdbcTemplate.update(query, file.getIdModelo(), file.getSemilla(),
-				file.getIdDocumento(), file.getEstado(), file.getId());
+		String query = "UPDATE IBERDOK_FILES SET NOMBRE=?, ID_DOCUMENTO=?, ESTADO=?, USUARIO=?, FECHA_APP=?, FECHA_IBERDOK=? WHERE ID=?";
+		this.jdbcTemplate.update(query, file.getNombre(),
+				file.getIdDocumento(), file.getDocFinalizado(), file.getUsuario(), file.getFechaApp(), file.getFechaIberdok(),file.getId());
 		return file;
 	}
 
@@ -97,7 +100,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	public IberdokFile updateIdDocumento(IberdokFile file) {
 
 		String query = "UPDATE IBERDOK_FILES SET  ID_DOCUMENTO=?, ESTADO=? WHERE ID_DOCUMENTO=?";
-		this.jdbcTemplate.update(query, file.getIdDocumento(), file.getEstado(), file.getIdDocumento());
+		this.jdbcTemplate.update(query, file.getIdDocumento(), file.getDocFinalizado(), file.getIdDocumento());
 		return file;
 	}
 
@@ -108,7 +111,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		String query = "UPDATE IBERDOK_FILES SET  ID_DOCUMENTO=?, ESTADO=? WHERE ID=?";
 		this.jdbcTemplate.update(query, file.getIdDocumento(),
-				file.getEstado(), lastId);
+				file.getDocFinalizado(), lastId);
 		return file;
 	}
 
@@ -121,10 +124,18 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public IberdokFile find(IberdokFile file) {
-		String query = "SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE FROM IBERDOK_FILES t1  WHERE t1.ID_DOCUMENTO = ?  ";
-
-		List<IberdokFile> fileList = this.jdbcTemplate.query(query, this.rwMap,
-				file.getIdDocumento());
+		String query = "SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, "
+				+ "t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE, t1.USUARIO, t1.FECHA_APP, t1.FECHA_IBERDOK FROM IBERDOK_FILES t1  WHERE ";
+		String buscarCampo = "";
+		if(file.getId() != null){
+			query = query + "t1.ID = ?";
+			buscarCampo = file.getId();
+		}
+		if(file.getIdDocumento() != null){
+			query = query + "t1.ID_DOCUMENTO = ?";
+			buscarCampo = file.getIdDocumento();
+		}
+		List<IberdokFile> fileList = this.jdbcTemplate.query(query, this.rwMap,buscarCampo);
 		return (IberdokFile) DataAccessUtils.uniqueResult(fileList);
 	}
 
@@ -145,15 +156,14 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
-	public List<IberdokFile> findAll(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto) {
-		StringBuilder query = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE");
+	public List<IberdokFile> findAll(IberdokFile file, TableRequestDto tableRequestDto) {
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, "
+				+ "t1.ESTADO ESTADO , t1.NOMBRE NOMBRE, t1.USUARIO USUARIO, t1.FECHA_APP FECHA_APP, t1.FECHA_IBERDOK FECHA_IBERDOK");
 		query.append("FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
@@ -164,8 +174,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, IberdokFileDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 
 		return (List<IberdokFile>) this.jdbcTemplate.query(query.toString(),
@@ -177,8 +187,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 * @param file
 	 *            IberdokFile
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @param startsWith
 	 *            Boolean
 	 * @return List
@@ -186,10 +196,9 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * 
 	 */
 	@Transactional(readOnly = true)
-	public List<IberdokFile> findAllLike(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		StringBuilder query = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE ");
+	public List<IberdokFile> findAllLike(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, "
+				+ "t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.NOMBRE NOMBRE , t1.USUARIO USUARIO, t1.FECHA_APP FECHA_APP, t1.FECHA_IBERDOK FECHA_IBERDOK ");
 		query.append("FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
@@ -200,8 +209,8 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		if (jqGridRequestDto != null) {
-			query = JQGridManager.getPaginationQuery(jqGridRequestDto, query);
+		if (tableRequestDto != null) {
+			query = TableManager.getPaginationQuery(tableRequestDto, query, IberdokFileDaoImpl.ORDER_BY_WHITE_LIST);
 		}
 		List<IberdokFile> aux = null;
 		try {
@@ -228,8 +237,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public Long findAllCount(IberdokFile file) {
-		StringBuilder query = new StringBuilder(
-				"SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
+		StringBuilder query = new StringBuilder("SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
 		Map<String, ?> mapaWhere = this.getWhereMap(file);
@@ -239,8 +247,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -254,8 +261,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 	@Transactional(readOnly = true)
 	public Long findAllLikeCount(IberdokFile file, Boolean startsWith) {
-		StringBuilder query = new StringBuilder(
-				"SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
+		StringBuilder query = new StringBuilder("SELECT COUNT(1) FROM IBERDOK_FILES t1 ");
 
 		// Where clause & Params
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(file, startsWith);
@@ -265,17 +271,15 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	@Override
-	public List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public List<TableRowDto<IberdokFile>> reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) {
 
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO,"
+				+ " t1.ESTADO ESTADO , t1.USUARIO USUARIO, t1.FECHA_APP FECHA_APP, t1.FECHA_IBERDOK FECHA_IBERDOK");
 
 		// FROM
 		sbSQL.append("FROM IBERDOK_FILES t1 ");
@@ -284,28 +288,22 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 		Map<String, ?> mapaWhere = this.getWhereLikeMap(file, startsWith);
 		// Claula where de filtrado
 		sbSQL.append(" WHERE 1=1 ").append(mapaWhere.get("query"));
-		// Parámetros de filtrado
+		// ParÃ¡metros de filtrado
 		@SuppressWarnings("unchecked")
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");
-
+		
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getReorderQuery(
-				sbSQL, jqGridRequestDto, IberdokFile.class, filterParamList,
-				"ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getReorderQuery(sbSQL, tableRequestDto, IberdokFile.class, filterParamList, "ID");
 
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(),
-				new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK,
-						jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	@Override
-	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams,
-			IberdokFile searchParams, JQGridRequestDto jqGridRequestDto,
-			Boolean startsWith) {
+	public List<TableRowDto<IberdokFile>> search(IberdokFile filterParams, IberdokFile searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 
 		// SELECT
-		StringBuilder sbSQL = new StringBuilder(
-				"SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO ");
+		StringBuilder sbSQL = new StringBuilder("SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, "
+				+ "t1.ID_DOCUMENTO ID_DOCUMENTO, t1.ESTADO ESTADO , t1.USUARIO USUARIO, t1.FECHA_APP FECHA_APP, t1.FECHA_IBERDOK FECHA_IBERDOK");
 
 		// FROM
 		sbSQL.append("FROM IBERDOK_FILES t1 ");
@@ -316,34 +314,25 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		// FILTRADO
 		// Mapa de filtrado
-		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(
-				filterParams, startsWith);
+		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(filterParams, startsWith);
 		// Claula where de filtrado
 		sbSQL.append(" WHERE 1=1 ").append(mapaWhereFilter.get("query"));
-		// Parámetros de filtrado
+		// ParÃ¡metros de filtrado
 		@SuppressWarnings("unchecked")
-		List<Object> filterParamList = (List<Object>) mapaWhereFilter
-				.get("params");
+		List<Object> filterParamList = (List<Object>) mapaWhereFilter.get("params");
 
 		// BUSQUEDA
-		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(
-				searchParams, startsWith);
-		// Claula where de búsqueda
-		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query"))
-				.toString();
-		// Parámetros de búsqueda
+		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(searchParams, startsWith);
+		// Claula where de bÃºsqueda
+		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query")).toString();
+		// ParÃ¡metros de bÃºsqueda
 		@SuppressWarnings("unchecked")
-		List<Object> searchParamList = (List<Object>) mapaWhereSearch
-				.get("params");
+		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
 
 		// SQL para la busqueda
-		StringBuilder sbReorderSelectionSQL = JQGridManager.getSearchQuery(
-				sbSQL, jqGridRequestDto, IberdokFile.class, filterParamList,
-				searchSQL, searchParamList, from_alias, "ID");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, IberdokFile.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
 
-		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(),
-				new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK,
-						jqGridRequestDto), filterParamList.toArray());
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<IberdokFile>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	/*
@@ -351,33 +340,23 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 */
 
 	@Override
-	public void removeMultiple(IberdokFile filterIberdokFile,
-			JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
+	public void removeMultiple(IberdokFile filterIberdokFile, TableRequestDto tableRequestDto, Boolean startsWith) {		
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterIberdokFile, startsWith);
 
-		StringBuilder query = new StringBuilder("SELECT  t1.ID  ");
-		query.append("FROM IBERDOK_FILES t1 ");
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, IberdokFile.class, "IBERDOK_FILES", "t1", new String[]{"ID"});
 
-		// Where clause & Params
-		Map<String, Object> mapaWhere = this.getWhereLikeMap(filterIberdokFile,
-				startsWith);
-		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
-		where.append(mapaWhere.get("query"));
-		query.append(where);
-
+		// Params list. Includes needed params for like and IN/NOT IN clauses
 		@SuppressWarnings("unchecked")
-		List<Object> params = (List<Object>) mapaWhere.get("params");
-
-		StringBuilder sbRemoveMultipleSQL = JQGridManager
-				.getRemoveMultipleQuery(jqGridRequestDto, IberdokFile.class,
-						query, params, "ID");
-
-		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(),
-				params.toArray());
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
+		
+		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 
 	}
 
 	/*
-	 * MÉTODOS PRIVADOS
+	 * MÃ‰TODOS PRIVADOS
 	 */
 
 	/**
@@ -390,7 +369,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 *         key params stores the parameter values to be used in the
 	 *         condition sentence.
 	 */
-	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:OFF CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	private Map<String, ?> getWhereMap(IberdokFile file) {
 
 		StringBuffer where = new StringBuffer(
@@ -413,9 +392,20 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 			where.append(" AND t1.ID_DOCUMENTO = ?");
 			params.add(file.getIdDocumento());
 		}
-		if (file != null && file.getEstado() != null) {
+		if (file != null && file.getDocFinalizado() != null) {
+			if(file.getDocFinalizado() == 1){
+				params.add("1");	
+			}else if(file.getDocFinalizado() == 2 ){
+				params.add("2");
+			}else{
+				params.add("0");
+			}
 			where.append(" AND t1.ESTADO = ?");
-			params.add(file.getEstado());
+			
+		}
+		if (file != null && file.getNombre() != null) {
+			where.append(" AND t1.NOMBRE = ?");
+			params.add(file.getNombre());
 		}
 
 		Map<String, Object> mapWhere = new HashMap<String, Object>();
@@ -425,7 +415,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 		return mapWhere;
 	}
 
-	// CHECKSTYLE:ON CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:ON CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 
 	/**
 	 * Returns a map with the needed value to create the conditions to filter by
@@ -439,7 +429,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 *         key params stores the parameter values to be used in the
 	 *         condition sentence.
 	 */
-	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:OFF CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 	private Map<String, Object> getWhereLikeMap(IberdokFile file,
 			Boolean startsWith) {
 
@@ -483,14 +473,28 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 			}
 			where.append(" AND t1.ID_DOCUMENTO IS NOT NULL");
 		}
-		if (file != null && file.getEstado() != null) {
-			where.append(" AND UPPER(t1.ESTADO) like ? ESCAPE  '\\'");
-			if (startsWith) {
-				params.add(file.getEstado().toUpperCase() + "%");
-			} else {
-				params.add("%" + file.getEstado().toUpperCase() + "%");
+		if (file != null && file.getDocFinalizado() != null) {
+			if (file != null && file.getDocFinalizado() != null) {
+				if(file.getDocFinalizado() == 1){
+					params.add("1");	
+				}else if(file.getDocFinalizado() == 2 ){
+					params.add("2");
+				}else{
+					params.add("0");
+				}
+				where.append(" AND t1.ESTADO = ?");
+				
 			}
-			where.append(" AND t1.ESTADO IS NOT NULL");
+			where.append(" AND t1.ESTADO = ?");
+		}
+		if (file != null && file.getNombre()!= null) {
+			where.append(" AND UPPER(t1.NOMBRE) like ? ESCAPE  '\\'");
+			if (startsWith) {
+				params.add(file.getNombre().toUpperCase() + "%");
+			} else {
+				params.add("%" + file.getNombre().toUpperCase() + "%");
+			}
+			where.append(" AND t1.NOMBRE IS NOT NULL");
 		}
 
 		Map<String, Object> mapWhere = new HashMap<String, Object>();
@@ -500,7 +504,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 		return mapWhere;
 	}
 
-	// CHECKSTYLE:ON CyclomaticComplexity - Generación de código de UDA
+	// CHECKSTYLE:ON CyclomaticComplexity - GeneraciÃ³n de cÃ³digo de UDA
 
 	/*
 	 * ROW_MAPPERS
@@ -514,8 +518,11 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 			file.setIdModelo(resultSet.getString("ID_MODELO"));
 			file.setSemilla(resultSet.getString("SEMILLA"));
 			file.setIdDocumento(resultSet.getString("ID_DOCUMENTO"));
-			file.setEstado(resultSet.getString("ESTADO"));
+			file.setDocFinalizado(resultSet.getInt("ESTADO"));
 			file.setNombre(resultSet.getString("NOMBRE"));
+			file.setUsuario(resultSet.getString("USUARIO"));
+			file.setFechaApp(resultSet.getTimestamp("FECHA_APP"));
+			file.setFechaIberdok(resultSet.getTimestamp("FECHA_IBERDOK"));
 
 			return file;
 		}
@@ -527,5 +534,31 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 			return new IberdokFile(resultSet.getString("ID"));
 		}
 	};
+
+	
+	public IberdokFile findLastByIdCorrelacion(String idModelo, String idCorrelacion) {
+		String query = "SELECT t1.ID ID, t1.ID_MODELO ID_MODELO, t1.SEMILLA SEMILLA, t1.ID_DOCUMENTO ID_DOCUMENTO, "
+				+ "t1.ESTADO ESTADO , t1.NOMBRE, t1.USUARIO USUARIO, t1.FECHA_APP FECHA_APP, t1.FECHA_IBERDOK FECHA_IBERDOK FROM IBERDOK_FILES t1  WHERE ";
+		String and = "";
+		List<Object> params = new ArrayList<Object>();
+		if(idModelo != null){
+			query = query + "t1.ID_MODELO = ?";
+			params.add(idModelo);
+			and = " AND ";
+		}
+		if(idCorrelacion != null){
+			query = query + and+" t1.NOMBRE = ?";
+			params.add(idCorrelacion);
+		}
+		
+		query = query + " ORDER BY t1.id DESC";
+		
+		List<IberdokFile> fileList = this.jdbcTemplate.query(query, this.rwMap,params.toArray());
+		IberdokFile file = null;
+		if(fileList != null && fileList.size() > 0){
+			file = fileList.get(0);
+		}
+		return file;
+	}
 
 }

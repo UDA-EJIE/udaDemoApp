@@ -3,8 +3,8 @@ package com.ejie.x21a.service;
 import java.util.List;
 
 import com.ejie.x21a.model.IberdokFile;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 public interface IberdokFileService {
@@ -48,7 +48,7 @@ public interface IberdokFileService {
 	 * @param file IberdokFile
 	 * @return true if exists
 	 */
-	Boolean existsFile(IberdokFile file);
+	String existsFile(IberdokFile file);
 	
 	
 	/**
@@ -63,20 +63,20 @@ public interface IberdokFileService {
 	 * Finds a List of rows in the IberdokFile table.
 	 *
 	 * @param file IberdokFile
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<IberdokFile> findAll(IberdokFile file, JQGridRequestDto jqGridRequestDto);
+	List<IberdokFile> findAll(IberdokFile file, TableRequestDto tableRequestDto);
 
 	/**
 	 * Finds rows in the IberdokFile table using like.
 	 *
 	 * @param file IberdokFile
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<IberdokFile> findAllLike(IberdokFile file, JQGridRequestDto jqGridRequestDto, Boolean startsWith) ;
+	List<IberdokFile> findAllLike(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
 	
 	/*
@@ -87,22 +87,24 @@ public interface IberdokFileService {
 	 * Deletes multiple rows in the IberdokFile table.
 	 *
 	 * @param filterIberdokFile IberdokFile
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	void removeMultiple(IberdokFile filterIberdokFile, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	void removeMultiple(IberdokFile filterIberdokFile, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Searches in the IberdokFile table.
 	 *
 	 * @param filterIberdokFile IberdokFile
 	 * @param searchIberdokFile IberdokFile
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<IberdokFile>> search(IberdokFile filterIberdokFile, IberdokFile searchIberdokFile, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	List<TableRowDto<IberdokFile>> search(IberdokFile filterIberdokFile, IberdokFile searchIberdokFile, TableRequestDto tableRequestDto, Boolean startsWith);
 
-	JQGridResponseDto<IberdokFile> filter(IberdokFile file, JQGridRequestDto jqGridRequestDto, Boolean startsWith) ;
+	TableResponseDto<IberdokFile> filter(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith);
 	
-	Object reorderSelection(IberdokFile file, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	IberdokFile findLastByIdCorrelacion(String idModelo, String idCorrelacion);
 }
