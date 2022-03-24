@@ -127,6 +127,9 @@
             }
         }
         
+        // Establece el valor de las propiedades del formulario de edición.
+        ctx.oInit.formEdit.loadSpinner = $.type(ctx.oInit.formEdit.loadSpinner) === 'boolean' ? ctx.oInit.formEdit.loadSpinner : true;
+        
         ctx.oInit.formEdit.detailForm.settings = {
             type: ctx.oInit.formEdit.type !== undefined ? ctx.oInit.formEdit.type : $.rup.dialog.DIV,
             width: ctx.oInit.formEdit.width !== undefined ? ctx.oInit.formEdit.width : 569,
@@ -484,7 +487,7 @@
     					}
     					// Inicializar componente.
     					element['rup_' + column.rupType](column.editoptions);
-    				} else {
+    				} else if (column.searchoptions === undefined) {
     					console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongColModel'), column.name));
     				}
     			} else if (!column.editable) {
@@ -624,6 +627,8 @@
 	                //Se carga desde bbdd y se actualiza la fila
 	                dt.row(idRow).data(row);
 	                ctx.json.rows[idRow] = row;
+	                // Recrear iconos del responsive en caso de ser necesario.
+	                _addChildIcons(ctx);
 	                //Se mantiene el checked sin quitar.
 	                var identy = idRow + 1;
 	                $('#' + ctx.sTableId + ' > tbody > tr:nth-child(' + identy + ') > td.select-checkbox input[type="checkbox"]').prop('checked', true);
@@ -959,10 +964,7 @@
                                 ctx.oInit.formEdit.detailForm.buttonSaveContinue.actionType = 'PUT';
                                 DataTable.Api().rupTable.blockPKEdit(ctx, 'PUT');
                             } else { //mantener y borrar
-                                var idForm = ctx.oInit.formEdit.idForm;
-                                idForm.resetForm();
-                                jQuery('.ui-selectmenu-status', idForm).text('--');
-                                jQuery('[ruptype=\'combo\']', idForm).rup_combo('clear');
+                            	ctx.oInit.formEdit.idForm.resetForm();
                             }
 
                             ctx.oInit.formEdit.dataOrigin = _editFormSerialize(ctx.oInit.formEdit.idForm);
@@ -1350,6 +1352,16 @@
                 		', #back_' + tableId+'_detail_navigation' +
                 		', #forward_' + tableId+'_detail_navigation' +
                 		', #last_' + tableId+'_detail_navigation', ctx.oInit.formEdit.detailForm).prop('disabled', true);
+                
+                // Reiniciar los componentes rup_combo que pueda contener el formulario de edición.
+                if (ctx.oInit.colModel !== undefined) {
+            		$.each(ctx.oInit.colModel, function (key, column) {
+            			// Comprobar que es un componente combo y editable.
+            			if (column.editable && column.rupType === 'combo') {
+            				ctx.oInit.formEdit.idForm.find('[name="' + column.name + '"]')['rup_combo']('hardReset');
+            			}
+            		});
+            	}
             });
 
             // Actualizar la última posición movida

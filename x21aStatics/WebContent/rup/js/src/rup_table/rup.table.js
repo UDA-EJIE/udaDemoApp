@@ -64,10 +64,12 @@
     // DEFINICIÓN DE MÉTODOS RUP
     //*******************************
     $.fn.rup_table('extend', {
-        getRupValue: function () {
-            return null;
+    	getRupValue: function () {
+        	return console.warn($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.warnings.methodNotAvailable')));
         },
-        setRupValue: function () {}
+        setRupValue: function () {
+        	return console.warn($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.warnings.methodNotAvailable')));
+        }
     });
 
     //*******************************
@@ -77,12 +79,49 @@
         foo: function () {
             return this;
         },
-        createButton: function (props, pos) {
-            var dt = $('#' + this[0].id).DataTable();
-            var ctx = dt.context[0];
-            if (pos === undefined) {
-                pos = 0;
-            }
+        /**
+         * Indica si un rup_table ya ha sido inicializado sobre el elemento con el identificador provisto.
+         *
+         * @function isInitialized
+         * @since UDA 5.0.3
+         * @return {boolean} - Indica si ya ha sido inicializada una tabla sobre el elemento.
+         * @example
+         * $("#idTable").rup_table("isInitialized");
+         */
+        isInitialized: function () {
+        	return $(this).attr('ruptype') === 'table' ? true : false;
+        },
+        /**
+         * Crea y añade un botón en la botonera de la tabla.
+         *
+         * @function createButton
+         * @since UDA 3.7.1
+         * @param {Object} - Propiedades del botón.
+         * @param {number} - Posición en la que situar el botón.
+         * @example
+         * $("#idTable").rup_table("createButton", {
+				text: function (dt) {
+					return $.rup.i18nParse($.rup.i18n.base, 'rup_table.toolbar.edit');
+				},
+				id: idTable + 'editButton_1', // Campo obligatorio si se quiere usar desde el contextMenu
+				className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit order-2',
+				displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
+				insideContextMenu: ctx.oInit.buttons.contextMenu, // Independientemente de este valor, sera 'false' si no tiene un id definido
+				type: 'edit',
+				init: function (dt, button, config) {
+					ctx.ext.buttons.editButton.eventDT = dt;
+				},
+				action: function (e, dt, button, config) {
+					$('#' + ctx.sTableId).triggerHandler('tableButtonsBeforeEditClick', [dt, button, config]);
+					DataTable.Api().buttons.actions(dt, config);
+					$('#' + ctx.sTableId).triggerHandler('tableButtonsAfterEditClick', [dt, button, config]);
+				}
+			}, 0);
+         */
+        createButton: function (props, pos = 0) {
+            const dt = $(this).DataTable();
+            const ctx = dt.context[0];
+            
             if (ctx.oInit.buttons !== undefined && props !== undefined) {
                 if (props.custom === undefined) {
                     props.custom = true;
@@ -101,58 +140,127 @@
                     custom: props.custom
                 });
             } else {
-                alert('Esta función requiere el plugin de buttons y 2 parámetros.');
+            	console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongParams')));
             }
-
         },
+        /**
+         * Elimina el botón especificado.
+         *
+         * @function removeButton
+         * @since UDA 3.7.1
+         * @param {Object} - Selector que contenga un botón de la tabla.
+         * @example
+         * $("#idTable").rup_table("removeButton", $('#exampleeditButton_1'));
+         */
         removeButton: function (selector) {
-            var dt = $('#' + this[0].id).DataTable();
-            var ctx = dt.context[0];
+        	const dt = $(this).DataTable();
+        	const ctx = dt.context[0];
 
-            if (ctx.oInit.buttons !== undefined) {
+            if (ctx.oInit.buttons !== undefined && selector !== undefined) {
                 dt.buttons(selector).remove();
+            } else {
+            	console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongParam')));
             }
         },
+        /**
+         * Deshabilita el botón especificado.
+         *
+         * @function disableButton
+         * @since UDA 3.7.1
+         * @param {Object} - Selector que contenga un botón de la tabla.
+         * @param {boolean} - Permite deshabilitar el botón del menú contextual.
+         * @example
+         * $("#idTable").rup_table("disableButton", $('#exampleeditButton_1'), true);
+         */
         disableButton: function (selector, contextMenu) {
-            var dt = $('#' + this[0].id).DataTable();
-            var ctx = dt.context[0];
+        	const dt = $(this).DataTable();
+        	const ctx = dt.context[0];
 
-            if (ctx.oInit.buttons !== undefined) {
+            if (ctx.oInit.buttons !== undefined && selector !== undefined && contextMenu !== undefined) {
                 dt.buttons(selector).disable(contextMenu);
+            } else {
+            	console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongParams')));
             }
         },
+        /**
+         * Habilita el botón especificado.
+         *
+         * @function enableButton
+         * @since UDA 3.7.1
+         * @param {Object} - Selector que contenga un botón de la tabla.
+         * @param {boolean} - Permite habilitar o deshabilitar el botón de la botonera.
+         * @param {boolean} - Permite habilitar el botón del menú contextual.
+         * @example
+         * $("#idTable").rup_table("enableButton", $('#exampleeditButton_1'), true, false);
+         */
         enableButton: function (selector, flag, contextMenu) {
-            var dt = $('#' + this[0].id).DataTable();
-            var ctx = dt.context[0];
+        	const dt = $(this).DataTable();
+        	const ctx = dt.context[0];
 
-            if (ctx.oInit.buttons !== undefined) {
+            if (ctx.oInit.buttons !== undefined && selector !== undefined && flag !== undefined && contextMenu !== undefined) {
                 dt.buttons(selector).enable(flag, contextMenu);
+            } else {
+            	console.error($.rup_utils.format(jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_table.errors.wrongParams')));
             }
         },
-        //$("#idTable").rup_table("getContext");
+        /**
+         * Permite obtener el contexto de la tabla. 
+         *
+         * @function getContext
+         * @since UDA 3.7.1
+         * @return {Object} - Contexto de la tabla.
+         * @example
+         * $("#idTable").rup_table("getContext");
+         */
         getContext: function () {
-            let dt = $('#' + this[0].id).DataTable();
-            return dt.context[0];
+            return $(this).DataTable().context[0];
         },
-        //$("#idTable").rup_table("getSelectedIds");
+        /**
+         * Devuelve los identificadores de los elementos seleccionados.
+         *
+         * @function getSelectedIds
+         * @since UDA 4.2.1
+         * @return {Object[]} - Identificadores de los elementos seleccionados.
+         * @example
+         * $("#idTable").rup_table("getSelectedIds");
+         */
         getSelectedIds: function () {
-            let dt = $('#' + this[0].id).DataTable();
-            let ctx = dt.context[0];
-            return ctx.multiselection.selectedIds;
+            return $(this).DataTable().context[0].multiselection.selectedIds;
         },
-        //$("#idTable").rup_table("getSelectedRows");
+        /**
+         * Devuelve el identificador de la última fila seleccionada.
+         *
+         * @function getLastSelectedId
+         * @since UDA 5.0.3
+         * @return {string} - Identificador del último registro seleccionado.
+         * @example
+         * $("#idTable").rup_table("getLastSelectedId");
+         */
+        getLastSelectedId: function () {
+        	return $(this).DataTable().context[0].multiselection.lastSelectedId;
+        },
+        /**
+         * Devuelve los campos y valores de las filas seleccionadas.
+         *
+         * @function getSelectedRows
+         * @since UDA 4.2.1
+         * @return {Object[]} - Objeto con los campos y valores de las filas seleccionadas.
+         * @example
+         * $("#idTable").rup_table("getSelectedRows");
+         */
         getSelectedRows: function () {
-        	let dt = $('#' + this[0].id).DataTable();
-            let ctx = dt.context[0];
-            let page = dt.page() + 1;
-            let rows = '';
-            if(ctx.json !== undefined && ctx.json.rows !== undefined && ctx.json.rows.length > 0){
-            	let selecteds = $.grep(ctx.multiselection.selectedRowsPerPage, function (v) {
+        	const dt = $(this).DataTable();
+        	const ctx = dt.context[0];
+        	const page = dt.page() + 1;
+            let rows = [];
+            
+            if (ctx.json !== undefined && ctx.json.rows !== undefined && ctx.json.rows.length > 0) {
+            	const selecteds = $.grep(ctx.multiselection.selectedRowsPerPage, function (v) {
                     return v.page === page;
                 });
-            	if(selecteds.length === 1){
+            	if (selecteds.length === 1) {
             		rows = ctx.json.rows[selecteds[0].line];
-            	}else if(selecteds.length > 1){
+            	} else if (selecteds.length > 1) {
             		rows = [];
                     $.each(selecteds, function (index) {
                     	rows.push(ctx.json.rows[selecteds[index].line]);
@@ -161,19 +269,39 @@
             }
             return rows;
         },
-        //$("#idTable").rup_table("getSelectedRowPerPage");
+        /**
+         * Devuelve las posiciones de todas las filas seleccionadas en la tabla.
+         *
+         * @function getSelectedRowPerPage
+         * @since UDA 4.2.1
+         * @return {Object[]} - Objeto con la posición de cada fila seleccionada en la tabla.
+         * @example
+         * $("#idTable").rup_table("getSelectedRowPerPage");
+         */
         getSelectedRowPerPage: function () {
-        	let dt = $('#' + this[0].id).DataTable();
-            let ctx = dt.context[0];
-            return ctx.multiselection.selectedRowsPerPage;
+        	return $(this).DataTable().context[0].multiselection.selectedRowsPerPage;
         },
-        //$("#idTable").rup_table("clear");
+        /**
+         * Limpia todas las filas de la tabla y la deja vacía.
+         *
+         * @function clear
+         * @since UDA 4.3.0
+         * @example
+         * $("#idTable").rup_table("clear");
+         */
         clear: function () {
         	$('#' + this[0].id + ' tbody').empty();
         },
-        //$("#idTable").rup_table("reload");
+        /**
+         * Recarga la tabla.
+         *
+         * @function reload
+         * @since UDA 4.3.0
+         * @example
+         * $("#idTable").rup_table("reload");
+         */
         reload: function () {
-        	$('#' + this[0].id).DataTable().ajax.reload();
+        	$(this).DataTable().ajax.reload();
         }
     });
 
