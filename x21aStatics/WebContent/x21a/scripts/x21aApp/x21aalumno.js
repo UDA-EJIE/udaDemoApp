@@ -9,7 +9,6 @@ jQuery(function ($) {
 	        },
 	        formEdit: {
 	            detailForm: '#x21aAlumno_detail_div',
-                loadSpinner: true,
 	            validate: {
 	                rules: {
 	                    'id': {
