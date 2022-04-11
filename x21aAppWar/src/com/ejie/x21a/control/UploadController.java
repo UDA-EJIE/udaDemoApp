@@ -16,6 +16,7 @@
 package com.ejie.x21a.control;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -38,6 +44,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -145,55 +152,70 @@ public class UploadController   {
 //		
 //	}
 	
-//	@RequestMapping(value="pifForm", method = RequestMethod.POST)
-//	public @ResponseBody List<Map<String,Object>> addPifForm(
-//			@RequestParam(value="nombre", required=false) String nombre,
-//			@RequestParam(value="apellido1", required=false) String apellido1,
-//			@RequestParam(value="apellido2", required=false) String apellido2,
-////			@RequestParam(value="file", required=false) MultipartFile file,
-//			HttpServletRequest httpRequest
-//			) {
-//	
-//		
-//		ServletFileUpload upload = new ServletFileUpload();
-//		FileItemIterator iter;
-//		try {
-//			iter = upload.getItemIterator(httpRequest);
-//			while (iter.hasNext()) {
-//				
-//				FileItemStream item = iter.next();
-//				String name = item.getFieldName();
-//				InputStream stream = item.openStream();
-//				if (item.isFormField()) {
-//					System.out.println("Form field " + name + " with value "
-//							+ Streams.asString(stream) + " detected.");
-//				} else {
-//					System.out.println("File field " + name + " with file name "
-//							+ item.getName() + " detected.");
-//					// Process the input stream
-//					PifUtils.put(item.getName(), stream);
-//					
-//				}
-//				
-//			}
-//		} catch (FileUploadException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//
-//		
-////		PifUtils.put(file);
-//		
-//		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
-//
-////		filesMetaInfo.add(this.getFileReturnMap(file));
-//		
-//		return filesMetaInfo;
-//	}
+	@RequestMapping(value="pifForm22", method = RequestMethod.POST)
+	public @ResponseBody List<Map<String,Object>> addPifForm(
+			@RequestParam(value="nombre", required=false) String nombre,
+			@RequestParam(value="apellido1", required=false) String apellido1,
+			@RequestParam(value="apellido2", required=false) String apellido2,
+			@RequestParam(value="file", required=false) MultipartFile file,
+			HttpServletRequest httpRequest
+			) {
+	
+		
+		ServletFileUpload upload = new ServletFileUpload();
+		FileItemIterator iter;
+		try {
+			iter = upload.getItemIterator(httpRequest);
+			while (iter.hasNext()) {
+				
+				FileItemStream item = iter.next();
+				String name = item.getFieldName();
+				InputStream stream = item.openStream();
+				if (item.isFormField()) {
+					System.out.println("Form field " + name + " with value "
+							+ Streams.asString(stream) + " detected.");
+				} else {
+					System.out.println("File field " + name + " with file name "
+							+ item.getName() + " detected.");
+					// Process the input stream
+					PifUtils.put(item.getName(), stream);
+					
+				}
+				
+			}
+		} catch (FileUploadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		
+//		PifUtils.put(file);
+		
+		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
+
+//		filesMetaInfo.add(this.getFileReturnMap(file));
+		
+		return filesMetaInfo;
+	}
+	
+	@PostMapping(value = "/aportarDocumento")
+	public @ResponseBody List<Map<String, Object>> aportarDocumento(
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido1", required = false) String apellido1,
+			@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) {
+
+
+
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
+
+
+		return filesMetaInfo;
+
+	}
 	
 	@RequestMapping(value="pifForm", method = RequestMethod.POST)
 	public @ResponseBody List<Map<String,Object>> addPifFormFile(
@@ -204,7 +226,7 @@ public class UploadController   {
 			HttpServletRequest httpRequest
 			) {
 	
-				
+		
 		PifUtils.put(file);
 		
 		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
