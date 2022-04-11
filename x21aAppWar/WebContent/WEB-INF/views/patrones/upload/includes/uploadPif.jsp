@@ -66,4 +66,5 @@
 				</div>
 			</div>
 		</fieldset>
+	</form:form>
 </div>
