@@ -174,8 +174,10 @@
          * $("#idCombo").rup_combo("reset");
          */
         reset: function () {
-        	const $self = $(this);
+            var $self = $(this);
+
             $self.rup_combo('select', $self.find('option[selected]').attr('value'));
+
         },
         /**
          * Reinicia por completo el componente, incluyendo sus ajustes. 
@@ -188,12 +190,12 @@
         hardReset: function () {
         	const $self = $(this),
         		settings = $self.data('settings');
-            
-            settings.disabled = undefined;
-            settings.selected = undefined;
-            settings.ultimaLlamada = undefined;
-            settings.ultimosValores = undefined;
-            $self.rup_combo('select', '');
+        	
+        	settings.disabled = undefined;
+        	settings.selected = undefined;
+        	settings.ultimaLlamada = undefined;
+        	settings.ultimosValores = undefined;
+        	$self.rup_combo('select', '');
         },
         /**
          * Selecciona todos los elementos en el caso de tratarse de un combo multilesección.
@@ -276,7 +278,7 @@
                     var hijos = $(this).data('childs');
                     if (hijos !== undefined) {
                         for (let i = 0; i < hijos.length; i = i + 1) {
-                            $('#' + hijos[i]).rup_combo('reload', hijos[i]);
+                            $('#' + hijos[i]).rup_combo('reload');
                         }
                     }
                 }
@@ -1805,7 +1807,7 @@
 	
 	                    //Comprobar si los padres ya tienen datos seleccionados (si son LOCALES puede suceder)
 	                    if (this._getParentsValues(settings.parent) !== null && (settings.firstLoad === null && settings.loadFromSelect === false)) {
-	                        $('#' + settings.id).rup_combo('reload', settings.id);
+	                        $('#' + settings.id).rup_combo('reload');
 	                    }
 	                    multiChange(settings);
 	                    $('#' + settings.id).addClass('inited');
@@ -1938,7 +1940,7 @@
 	                    var hijos = $(this).data('childs');
 	                    if (hijos !== undefined) {
 	                        for (let i = 0; i < hijos.length; i = i + 1) {
-	                            $('#' + hijos[i]).rup_combo('reload', hijos[i]);
+	                            $('#' + hijos[i]).rup_combo('reload');
 	                        }
 	                    }
 	                });

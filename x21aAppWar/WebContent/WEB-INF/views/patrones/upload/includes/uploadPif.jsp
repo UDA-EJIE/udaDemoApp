@@ -2,8 +2,8 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <div id="fileupload_pif_form">
-	<!-- <form action="../upload/pifForm" id="uploadPifForm" enctype="multipart/form-data" method="POST"> -->
-	<form:form action="../upload/pifForm" id="uploadPifForm" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
+	<spring:url value="../upload/pifForm" var="url"/>
+	<form:form action="${url}" id="uploadPifForm" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
 			<div id="feedback_fileupload_form"></div>
 			<div class="row">
@@ -48,7 +48,9 @@
 				        <span class="btn btn-success fileinput-button">
 						      <i class="mdi mdi-plus"></i>
 						      <span><spring:message code="upload.button.addFiles"/></span>
-						      <input id="file_pif_form" type="file" name="file" multiple="multiple">
+						      <input id="file_pif_form" type="file" name="file" multiple>
+						 
+						      
 						</span>
 				      
 					    <div class="fileupload-content">
@@ -59,10 +61,9 @@
 			    </div>
 			  </div>
 			  <div class="row">
-			 	 <div class="col-md-12"  >
-					<button id="sendPifButton" type="submit">Enviar formulario</button>
+			 	 <div class="col-md-12 fileupload-buttonbar"  >
+					<button id="sendPifButton" type="submit" class="start">Enviar formulario</button>
 				</div>
 			</div>
 		</fieldset>
-	</form:form>
 </div>
