@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <section class="content">
-	<h2>
+	<h2 class="title mb-3">
 		<spring:message code="tree.trees" />
 	</h2>
 

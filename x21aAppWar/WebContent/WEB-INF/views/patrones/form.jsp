@@ -18,10 +18,9 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>
+		<h2 class="title mb-3">
 			<spring:message code="patron.formulario.titulo" />
 		</h2>
-		<hr>
 
 		<div id="feedbackMensajes"></div>
 		<div id="tabsFormulario"></div>

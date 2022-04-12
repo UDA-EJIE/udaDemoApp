@@ -329,10 +329,10 @@
                                     <a class="dropdown-item" href="${multicombo}">
                                         <spring:message code="multicombo" />
                                     </a>
-                                    <spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
+                                    <!--<spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
                                     <a class="dropdown-item"
                                         href="${comboMantenimiento}">Combo anidado
-                                        con mantenimiento</a>
+                                        con mantenimiento</a>-->
                                 </div>
                             </div>
 							
@@ -512,10 +512,10 @@
 					<a class="dropdown-item" href="${logLevel}">
 						<spring:message code="experimental.logLevel" />
 					</a>
-                    <!--<spring:url value="/iberdok/view" var="iberdok" htmlEscape="true"/>
+                    <spring:url value="/iberdok/view" var="iberdok" htmlEscape="true"/>
 					<a class="dropdown-item" href="${iberdok}">
 						<spring:message code="experimental.iberdok" />
-					</a>-->
+					</a>
 				</div>
 			</li>
 			

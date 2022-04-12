@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Botón</h2>
-		<hr>
+		<h2 class="title mb-3">Botón</h2>
 
 		<h4>Botón básico</h4>
 		<p>

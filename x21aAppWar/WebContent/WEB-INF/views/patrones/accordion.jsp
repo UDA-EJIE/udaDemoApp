@@ -18,9 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-
-		<h2>Accordion</h2>
-		<hr>
+		<h2 class="title mb-3">Accordion</h2>
 
 		<div id="accordionExample1" class="rup_accordion">
 

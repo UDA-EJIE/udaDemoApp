@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h2><spring:message code="lista.configurableLeft" /></h2>
+        <h2 class="title mb-3"><spring:message code="lista.configurableLeft" /></h2>
         
         <jsp:include page="includes/listFilterFormDobleLeft.jsp"></jsp:include>
         
@@ -197,7 +197,7 @@
     </div>
 
     <div class="col-md-6">
-        <h2><spring:message code="lista.configurableRight" /></h2>
+        <h2 class="title mb-3"><spring:message code="lista.configurableRight" /></h2>
         
         <jsp:include page="includes/listFilterFormDobleRight.jsp"></jsp:include>
         

@@ -13,7 +13,7 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Combo Enlazado (multiple)</h2>
+<h2 class="title mb-3">Combo Enlazado (múltiple)</h2>
 
 <!-- Feedback -->
 <div id="x21aAppWar_feedback"></div><br/>

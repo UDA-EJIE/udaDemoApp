@@ -48,7 +48,7 @@ public interface IberdokFileService {
 	 * @param file IberdokFile
 	 * @return true if exists
 	 */
-	Boolean existsFile(IberdokFile file);
+	String existsFile(IberdokFile file);
 	
 	
 	/**
@@ -105,4 +105,6 @@ public interface IberdokFileService {
 	TableResourceResponseDto<IberdokFile> filter(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	Object reorderSelection(IberdokFile file, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	IberdokFile findLastByIdCorrelacion(String idModelo, String idCorrelacion);
 }

@@ -16,7 +16,7 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <div class="container-fluid">
-    <h2 style="float:none;">ERROR</h2> <br>
+    <h2 class="title mb-3">ERROR</h2> <br>
     <spring:url value="/" var="urlError" htmlEscape="true"/>
     <a href="${urlError}"><spring:message code="error.volver" /></a>
 

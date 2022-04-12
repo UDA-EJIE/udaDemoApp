@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Todos los patrones</h2>
+<h2 class="title mb-3">Todos los patrones</h2>
 
 <jsp:include page="../table/includes/tableComarcaFilterForm.jsp"></jsp:include>
 

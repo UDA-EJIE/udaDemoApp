@@ -95,6 +95,14 @@ public interface TableUsuarioService {
 	 * @return 
 	 */
 	void remove(Usuario usuario);
+
+	/**
+	 * Deletes a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return 
+	 */
+	void remove(Usuario2 usuario);
 	
 	/**
 	 * Finds a List of rows in the Usuario table.
@@ -104,6 +112,16 @@ public interface TableUsuarioService {
 	 * @return List
 	 */
 	List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
+	
+	/**
+	 * Finds a List of rows containing the PK field values in the Usuario table.
+	 *
+	 * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+	 * @return List<Usuario>
+	 */
+	List<Usuario> findAllIds(Usuario usuario, boolean startsWith);
 
 	/**
 	 * Finds rows in the Usuario table using like.
@@ -128,6 +146,15 @@ public interface TableUsuarioService {
 	 * @param startsWith Boolean	 
 	 */	
 	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Usuario table via inverse select.
@@ -147,6 +174,16 @@ public interface TableUsuarioService {
 	 * @param startsWith Boolean
 	 */	
 	List<TableRowDto<Usuario>> search(Usuario filterUsuario, Usuario searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	/**
+	 * Searches in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param searchUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */	
+	List<TableRowDto<Usuario2>> search(Usuario2 filterUsuario, Usuario2 searchUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 
 	TableResourceResponseDto<Usuario> filter(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 

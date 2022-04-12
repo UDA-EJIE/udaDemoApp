@@ -19,8 +19,7 @@
 <section class="row">
 	<div class="col-12">
 
-		<h2><spring:message code="patron.autocomplete" /></h2>
-		<hr>
+		<h2 class="title mb-3"><spring:message code="patron.autocomplete" /></h2>
 		
 		<div class="row">
 			<div class="col-sm-6">

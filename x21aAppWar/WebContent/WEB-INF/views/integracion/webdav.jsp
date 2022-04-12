@@ -14,10 +14,8 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Webdav</h2>
+<h2 class="title mb-3">Webdav</h2>
 
-<br/>
-<br/>
 <object id="winFirefoxPlugin" type="application/x-sharepoint" width="0" height="0" style="visibility: hidden;"></object>
 <button id="webdavEdit">WebDAV edit</button>
 

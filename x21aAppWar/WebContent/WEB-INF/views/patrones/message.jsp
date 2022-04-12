@@ -18,8 +18,7 @@
 
 <section class="row">
 	<div class="col-12">
-		<h2>Mensaje</h2>
-		<hr>
+		<h2 class="title mb-3">Mensaje</h2>
 		<p>El componente tiene como objetivo mostrar al usuario de forma
 			homogénea, clara y llamativa, los posibles mensajes que pueden
 			desencadenar las acciones en la aplicación.</p>

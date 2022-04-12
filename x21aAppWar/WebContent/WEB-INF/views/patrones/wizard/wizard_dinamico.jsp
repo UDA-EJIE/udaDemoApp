@@ -16,7 +16,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<h2>Wizard dinamico</h2>
+<h2 class="title mb-3">Wizard dinamico</h2>
 
 <div id="wizard_options">
 	<fieldset>

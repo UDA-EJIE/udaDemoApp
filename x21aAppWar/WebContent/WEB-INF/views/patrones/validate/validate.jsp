@@ -15,7 +15,7 @@
  --%>
  <%@include file="/WEB-INF/includeTemplate.inc"%>
 <section>
-	<h2>Validacion de formularios</h2>
+	<h2 class="title mb-3">Validacion de formularios</h2>
 	<p>
 		Ejemplos de validación de formularios en distintas disposiciones.
 	<p>

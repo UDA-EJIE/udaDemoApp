@@ -166,6 +166,17 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		String query = "DELETE FROM USUARIO WHERE ID=?";
 		this.jdbcTemplate.update(query, usuario.getId());
     }
+
+    /**
+     * Removes a single row in the Usuario table.
+     *
+     * @param usuario2 Pagination
+     * @return
+     */
+    public void remove(Usuario2 usuario) {
+		String query = "DELETE FROM USUARIO WHERE ID=?";
+		this.jdbcTemplate.update(query, usuario.getId());
+    }
     
    /**
     * Finds a List of rows in the Usuario table.
@@ -219,6 +230,31 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 		}
 		
 		return (List<Usuario2>) this.jdbcTemplate.query(query.toString(), this.rwMap2, params.toArray());
+	}
+	
+   /**
+    * Finds a List of rows containing the PK field values in the Usuario table.
+    * 
+    * @param usuario Usuario
+	* @param startsWith boolean
+	* 
+    * @return List<Usuario>
+    */
+	@Transactional (readOnly = true)
+    public List<Usuario> findAllIds(Usuario usuario, boolean startsWith) {
+		// SELECT
+		StringBuilder query = new StringBuilder("SELECT t1.ID ID FROM USUARIO t1"); 
+		
+		// WHERE clause & Params
+		Map<String, ?> mapaWhere = this.getWhereLikeMap(usuario, startsWith); 
+		StringBuilder where = new StringBuilder(" WHERE 1=1 ");
+		where.append(mapaWhere.get("query"));
+		query.append(where);
+
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhere.get("params");
+
+		return this.jdbcTemplate.query(query.toString(), this.rwMapPK, params.toArray());
 	}
 	
 	
@@ -436,6 +472,41 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 				
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
+	
+	@Override
+	public List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// SELECT 
+		StringBuilder sbSQL = new StringBuilder("SELECT  t1.ID ID,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.EJIE EJIE,t1.FECHA_ALTA FECHAALTA,t1.FECHA_BAJA FECHABAJA,t1.ROL ROL ");
+		
+		// FROM
+		sbSQL.append("FROM USUARIO t1 ");
+      	
+		//TABLAS_ALIAS
+		List<String> from_alias = new ArrayList<String>();
+		from_alias.add("t1");
+		
+		// FILTRADO
+		// Mapa de filtrado
+		Map<String, Object> mapaWhereFilter = this.getWhereLikeMap(filterParams, startsWith); 
+		// Claula where  de filtrado
+		sbSQL.append(" WHERE 1=1 ").append(mapaWhereFilter.get("query"));
+		// Parámetros de filtrado
+		@SuppressWarnings("unchecked")
+		List<Object> filterParamList = (List<Object>) mapaWhereFilter.get("params");
+		
+		// BUSQUEDA
+		Map<String, Object> mapaWhereSearch = this.getWhereLikeMap(searchParams, startsWith);
+		// Claula where  de búsqueda
+		String searchSQL = ((StringBuffer) mapaWhereSearch.get("query")).toString();
+		// Parámetros de búsqueda
+		@SuppressWarnings("unchecked")
+		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
+		
+		// SQL para la busqueda
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(sbSQL, tableRequestDto, Usuario2.class, filterParamList, searchSQL, searchParamList, from_alias, "ID");
+				
+		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<Usuario2>(this.rwMapPK2, tableRequestDto), filterParamList.toArray());
+	}
 
 	
 	/*
@@ -456,6 +527,29 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     	
     	// Delete query
 		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Usuario.class, "USUARIO", "t1", new String[]{"ID"});
+		
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
+		
+		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
+	}
+	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	@Override
+	public void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterUsuario, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Usuario2.class, "USUARIO", "t1", new String[]{"ID"});
 		
 		// Params list. Includes needed params for like and IN/NOT IN clauses
 		@SuppressWarnings("unchecked")

@@ -20,7 +20,15 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
+<c:choose>
+	<c:when test="${enableMultipart eq true}">
+		<c:set value="${actionType == 'POST' ? 'addMultipart': 'editMultipart'}" var="endpoint" />
+	</c:when>
+	<c:when test="${!enableMultipart}">
+		<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
+	</c:when>
+</c:choose>
+
 <spring:url value="/table/2/${endpoint}" var="url"/>
 <form:form modelAttribute="usuario2" id="example2_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
@@ -61,11 +69,13 @@
 	    	<form:input path="rol" id="rol_detail_table2" />
 	    	<label for="rol_detail_table2"><spring:message code="rol" /></label>
 	    </div>
-	</div>	
-	<div class="form-row d-none">	
-		<div class="form-groupMaterial col-sm" id="divImagenAlumno2">
-			<input type="file" name="imagenAlumno2" id="imagenAlumno2" disabled/>
-			<label for="imagenAlumno2"><spring:message code="subidaImg" /></label>
+	</div>
+	<c:if test="${enableMultipart eq true}">
+	<div class="form-row">	
+		<div class="form-groupMaterial col-sm">
+			<form:input path="imagenAlumno" type="file" id="imagenAlumno_detail_table2" />
+			<label for="imagenAlumno_detail_table2"><spring:message code="subidaImg" /></label>
 		</div>	
-	</div>	
+	</div>
+	</c:if>	
 </form:form>

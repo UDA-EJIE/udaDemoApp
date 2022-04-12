@@ -19,8 +19,7 @@
 <section class="row">
 	<div class="col-12">
 
-		<h2>Botonera</h2>
-		<hr>
+		<h2 class="title mb-3">Botonera</h2>
 
 		<p>Se les presenta a los usuarios una barra de botones con
 			diversas funcionalidades relacionadas a elementos de la página.

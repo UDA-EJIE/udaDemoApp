@@ -14,13 +14,15 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+<c:set var="urlUdaMini" value="${staticsUrl}/rup/css/images/uda-mini-micro2.png"/>
+
 <div class="container">
 
 	<div class="row">
 		<div class="col-12">
 			<h1>
 				<img alt="El contenido estático no está correctamente desplegado."
-					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v5.0.1
+					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v5.0.3
 				<small>(Portal demostrativo)</small>
 			</h1>
 			<hr>
@@ -31,8 +33,6 @@
 			<section id="mainContent">
 			
 				<p>
-					<spring:url value="${staticsUrl}/rup/css/images/uda-mini-micro2.png" var ="urlUdaMini" htmlEscape="true"/>
-					<spring:url value="${staticsUrl}/rup/css/images/uda-mini-micro2.png" var ="urlComponentesGH" htmlEscape="true"/>
 					<spring:url value="https://es.wikipedia.org/wiki/Rich_Internet_Application" var ="urlRIA" htmlEscape="true"/>
 					<spring:url value="https://es.wikipedia.org/wiki/AJAX" var ="urlAJAX" htmlEscape="true"/>
 					<spring:url value="https://github.com/UDA-EJIE/uda-ejie.github.io/wiki/Patrones#14._Mantenimiento_con_formulario" var ="urlMantFormGH" htmlEscape="true"/>
@@ -45,7 +45,7 @@
 						style="max-width: 100%;"
 						src="${urlUdaMini}"></a>
 					es el conjunto de <a
-						href="${urlComponentesGH}">utilidades,
+						href="${urlUdaMini}">utilidades,
 						herramientas, librerías, plugins, guías, y recomendaciones
 						funcionales y técnicas</a> que permiten acelerar el proceso de
 					desarrollo de sistemas software con tecnología Java.<br> <br>

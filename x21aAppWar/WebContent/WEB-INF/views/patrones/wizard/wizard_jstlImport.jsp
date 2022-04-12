@@ -14,7 +14,7 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Wizard &lt;c:import&gt;</h2>
+<h2 class="title mb-3">Wizard &lt;c:import&gt;</h2>
 
 <div id="wizard_options">
 	<fieldset>

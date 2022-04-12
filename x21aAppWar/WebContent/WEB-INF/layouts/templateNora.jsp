@@ -73,6 +73,11 @@
 	left: 10px;
 }
 </style>
+	
+	<script>
+		// Habilitar el envío de trazas a PIB.
+		window.IS_EJIE = true;
+	</script>
 </head>
 <body>
 	<div class="contenedor">
