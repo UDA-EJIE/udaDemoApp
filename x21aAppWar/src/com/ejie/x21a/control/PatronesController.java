@@ -248,16 +248,17 @@ public class PatronesController {
     }
     
     //Select Simple
-    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getSelectRemote"), @UDALinkAllower(name = "getRemoteSelectGrupos"), @UDALinkAllower(name = "getRemoteSelectGruposEnlazado")})
+    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "selectSimple", method = RequestMethod.GET)
     public String getSelectSimple(Model model) {
         return "selectSimple";
     }
     
     //SelectEnlazado - simple
-    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoComarcaNoParam"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "selectEnlazadoSimple", method = RequestMethod.GET)
     public String getSelectEnlazadoSimple(Model model) {
+    	model.addAttribute("Comarca", new Comarca());
         return "selectEnlazadoSimple";
     }
     
@@ -931,6 +932,28 @@ public class PatronesController {
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
+    }
+    
+    @UDALink(name = "getEnlazadoComarcaNoParam")
+    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Comarca>> getEnlazadoComarcaNoParam(
+            @RequestParam(value = "provincia", required = true) Integer provincia_code) throws Exception {
+
+    	if(provincia_code < 1 || provincia_code > 6){
+    		throw new Exception("Identificador no valido");
+    	}
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
         Comarca comarca = new Comarca();
         comarca.setProvincia(provincia);
         try {

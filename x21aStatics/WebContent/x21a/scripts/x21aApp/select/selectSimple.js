@@ -88,6 +88,8 @@ $(function () {
             },
             placeholder: '[Seleccione un elemento]',
             allowClear: false,
+            selected:"3",
+            multiple:false,
             change: function () {
                 console.log('selectRemoto:::Changed');
             },
@@ -114,7 +116,7 @@ $(function () {
                 id: 'mad'
             }
             ],
-            selected: 'joseph',
+            selected: ['jane','mad'],
             width: '98%',
             multiple:true,
             format: 'default',

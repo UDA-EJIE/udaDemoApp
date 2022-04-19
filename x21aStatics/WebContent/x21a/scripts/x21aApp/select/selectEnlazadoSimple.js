@@ -208,7 +208,7 @@ $(function () {
     	
         $('#selectRemotoPadre').rup_select({
             parent: 'selectLocalAbuelo',
-            url: 'comboEnlazadoSimple/remoteEnlazadoComarca',
+            url: 'comboEnlazadoSimple/remoteEnlazadoComarcaNoParam',
             sourceParam: {
                 text: 'desc' + $.rup_utils.capitalizedLang(),
                 id: 'code',

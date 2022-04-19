@@ -13,7 +13,9 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2>Select Enlazado (simple)</h2>
+<form:form id="select_enlazado_form"  method="post" action="/post" modelAttribute="Comarca">
 
 <div class="container-fluid">
 	<div class="form-row">
@@ -63,7 +65,7 @@
 			<legend>Local a Remoto</legend>
 			<div class="form-groupMaterial">
 				<label for="selectLocalAbuelo">Provincia Local</label>
-				<select id="selectLocalAbuelo" name="provincia"></select>
+				<form:select id="selectLocalAbuelo" path="provincia"></form:select>
 			</div>
 			
 			<div class="form-groupMaterial">
@@ -111,3 +113,4 @@
 		</div>
 	</div>
 </div>
+</form:form>
