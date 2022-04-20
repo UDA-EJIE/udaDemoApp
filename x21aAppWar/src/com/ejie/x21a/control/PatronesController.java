@@ -942,6 +942,30 @@ public class PatronesController {
         return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
     }
     
+    @UDALink(name = "getEnlMultDptoProvNoParam")
+    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getEnlMultDptoProvNoParam(
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) Integer provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
+    }
+    
     @UDALink(name = "getEnlazadoComarcaNoParam")
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
     public @ResponseBody
@@ -991,7 +1015,8 @@ public class PatronesController {
     /**
      * Combos Enlazados (mÃºltiple)
      */
-    @UDALink(name = "getEnlMultDpto")
+    @UDALink(name = "getEnlMultDpto", linkTo = {
+			@UDALinkAllower(name = "getEnlMultDptoProvNoParam") })
     @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<Departamento>> getEnlMultDpto() {

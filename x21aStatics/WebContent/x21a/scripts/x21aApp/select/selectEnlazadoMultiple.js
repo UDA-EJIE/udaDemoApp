@@ -122,7 +122,7 @@ jQuery(function($) {
         });
         $('#mixto_dptoProvRemote').rup_select({
             parent: [ 'mixto_departamentoRemote', 'mixto_provincia' ],
-            url : 'comboEnlazadoMultiple/dptoProvRemote',
+            url : 'comboEnlazadoMultiple/dptoProvRemoteNoParam',
             sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             change: function () {
                 console.log('comboMixtoDptoProvRemote:::Changed');
