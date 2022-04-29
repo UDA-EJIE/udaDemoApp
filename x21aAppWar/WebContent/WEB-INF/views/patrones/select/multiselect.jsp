@@ -23,8 +23,8 @@
 			<select id="multiSelect"></select>
 		</div>
 		<div class="form-groupMaterial col-sm">  
-			<label for="multicomboRemoto">MultiCombo remoto</label>
-			<select id="multicomboRemoto"></select>
+			<label for="multiSelectRemoto">MultiSelect remoto</label>
+			<select id="multiSelectRemoto"></select>
 		</div>
 	</div>
 </div>
@@ -32,12 +32,12 @@
 <div class="container-fluid mt-4">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
-			<label for="multicomboGrupos">MultiCombo con 'optgroups'</label>
-			<select id="multicomboGrupos"></select>
+			<label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
+			<select id="multiSelectGrupos"></select>
 		</div>
 		<div class="form-groupMaterial col-sm"> 
-			<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
-			<select id="multicomboGruposRemoto"></select>
+			<label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto</label>
+			<select id="multiSelectGruposRemoto"></select>
 		</div>
 	</div>
 </div>

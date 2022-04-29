@@ -44,6 +44,7 @@
                 <entry key="#{T(com.ejie.x21a.model.Buzones)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.IberdokFile)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x38.log.model.LogModel)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.DivisionTerritorialDto)}" value-ref="customSerializer" />
              </util:map>
       	</property>
       	<property name="serializationInclusions" ref="serializationInclusions" />

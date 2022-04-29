@@ -72,6 +72,8 @@ $(function () {
             ],
             placeholder: '[Seleccione un elemento]',
             allowClear: true,
+            deleteOnDeselect: true,
+            closeOnSelect : false,
             selected:'ruby',
             multiple:false,
             change: function (e) {
@@ -152,7 +154,7 @@ $(function () {
         //GROUPS
         $('#selectGrupos').rup_select({
             dataGroups: [{
-            	
+            	'id':'',
             	'text': 'futbol',
                 'children': [{
                     i18nCaption: 'alaves',
@@ -174,6 +176,7 @@ $(function () {
                 ],style:'soccer'
             },
             {
+            	'id':'',
             	'text':'baloncesto',
                 'children': [{
                     i18nCaption: 'laboral',
@@ -190,7 +193,8 @@ $(function () {
                 ],style:'basketball'
             },
             {
-                'text':'formula1',
+            	'id':'',
+            	'text':'formula1',
             	'children': [{
                     i18nCaption: 'falonso',
                     id: 'falonso_value'
@@ -246,7 +250,7 @@ $(function () {
             change: function (e) {
                 console.log('SelectLoadFromSelect:::Changed');
             }
-         });
+         }); 
 
 
     });

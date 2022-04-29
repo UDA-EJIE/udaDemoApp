@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -66,6 +67,7 @@ import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.MultiPk;
@@ -270,6 +272,7 @@ public class PatronesController {
     }
     
     //MultiSelect
+    @UDALink(name = "getSelectMultiselect", linkTo = {@UDALinkAllower(name = "getComboRemote"),@UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "multiselect", method = RequestMethod.GET)
     public String getMultiSelect(Model model) {
         return "multiselect";
@@ -830,24 +833,24 @@ public class PatronesController {
     @UDALink(name = "getRemoteComboGrupos")
     @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
     public @ResponseBody
-    List<Resource<HashMap<String, List<?>>>> getRemoteComboGrupos() {
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGrupos() {
         return this.setRemoteComboGruposEnlazado(null);
     }
     
     @UDALink(name = "getRemoteComboGruposEnlazado")
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
     	return this.setRemoteComboGruposEnlazado(provincia_code);
     }
     
-    private List<Resource<HashMap<String, List<?>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
+    private List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
 
         //Retorno del mÃ©todo
-        List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
+        List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> retorno = new ArrayList<HashMap<String, List<Resource<DivisionTerritorialDto>>>>();
 
         //Nombres de los grupos segÃºn idioma
         String provincia = null, comarca = null, localidad = null;
@@ -868,12 +871,26 @@ public class PatronesController {
         }
 
         //Provincia
-        HashMap<String, List<?>> group = new HashMap<String, List<?>>();
+        HashMap<String, List<Resource<DivisionTerritorialDto>>> group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
 
         Provincia provinciaFilter = null;
 
         if (provincia_code == null) {
-            group.put(provincia, provinciaService.findAll(null, null));
+
+        	List<Provincia> lista = provinciaService.findAll(null, null);
+
+			try {
+				List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(lista,"Prov");
+				group.put(provincia, listaDivision);
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        	
             retorno.add(group);
         } else {
             provinciaFilter = new Provincia();
@@ -881,34 +898,92 @@ public class PatronesController {
         }
 
         //Comarca
-        group = new HashMap<String, List<?>>();
+        group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
+        List<Comarca> listaComarca = new ArrayList<Comarca>();
         if (provincia_code != null) {
             Comarca comarcaFilter = new Comarca();
             comarcaFilter.setProvincia(provinciaFilter);
-            group.put(comarca, comarcaService.findAll(comarcaFilter, null));
+            listaComarca = comarcaService.findAll(comarcaFilter, null);
+            
         } else {
-            group.put(comarca, comarcaService.findAll(null, null));
+        	listaComarca = comarcaService.findAll(null, null);
         }
+                
+		try {
+			List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(listaComarca,"Coma");
+			group.put(comarca, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         retorno.add(group);
 
         //Localidad
-        group = new HashMap<String, List<?>>();
+        group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
+        List<Localidad> listaLocalidad = new ArrayList<Localidad>();
         if (provincia_code != null) {
             Localidad localidadFilter = new Localidad();
             Comarca comarcaFilter = new Comarca();
             comarcaFilter.setProvincia(provinciaFilter);
             localidadFilter.setComarca(comarcaFilter);
-            group.put(localidad, localidadService.findAll(localidadFilter, null));
+            listaLocalidad= localidadService.findAll(localidadFilter, null);
         } else {
-            group.put(localidad, localidadService.findAll(null, null));
+        	listaLocalidad= localidadService.findAll(null, null);
         }
+        
+		try {
+			List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(listaLocalidad,"Loca");
+			group.put(localidad, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
         retorno.add(group);
 
-        return ResourceUtils.fromListToResource(retorno);
+        return retorno;
     }
 
 
-    /**
+    private List<Resource<DivisionTerritorialDto>> listToDivisionResource(List<?> lista, String tipo) throws SecurityException, NoSuchFieldException {
+    	List<DivisionTerritorialDto> listaDivision = new ArrayList<DivisionTerritorialDto>();
+    	for (int i = 0; i < lista.size(); i++) {
+    		
+    		Object obj = lista.get(i);
+    		Class<?> c = obj.getClass();
+    		Field code = c.getDeclaredField("code");
+    		Field descEs = c.getDeclaredField("descEs");
+    		Field descEu = c.getDeclaredField("descEu");
+    		Field css = c.getDeclaredField("css");
+    		code.setAccessible(true);
+    		descEs.setAccessible(true);
+    		descEu.setAccessible(true);
+    		css.setAccessible(true);
+    		try {
+				DivisionTerritorialDto dt = new DivisionTerritorialDto(code.get(obj) + tipo,(String) descEs.get(obj), (String) descEu.get(obj),(String) css.get(obj));
+				listaDivision.add(dt );
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
+
+		}
+		return ResourceUtils.fromListToResource(listaDivision);
+	}
+
+	/**
      * COMBO ENLAZADO SIMPLE
      */
     @UDALink(name = "getEnlazadoProvincia")

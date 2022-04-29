@@ -35,71 +35,109 @@ jQuery(function($) {
 	        ordered: false,
 	        multiple: true,
 	        udaSkill: false,
+	        //placeholder: '',// para que no venga una seleccionado, si no esta el selected y no es multiple
 	        closeOnSelect : false,
-	        placeholder: '[Seleccione]',
 	        change: function () {
 	            console.log('selectMultiLocal:::Changed');
 	        }
-	    });
+	    }); 
 		
-	    $('#multicomboRemoto').rup_combo({
-	        source : 'comboSimple/remote',
-	        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-	        selected: [1], //index
-	        width: '97%',
-	        height: 75,
+    $('#multiSelectRemoto').rup_select({
+	        url : 'comboSimple/remote',
+	        sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
 	        customClasses: ['select-material'],
-	        multiselect: true,
+	        multiple: true,
+	        //placeholder: '[Seleccione gracias..]',
+	        closeOnSelect : false,
 	        change: function () {
-	            console.log('comboMultiRemoto:::Changed');
+	            console.log('selectMultiRemoto:::Changed');
 	        }
 	    });
-		
-	    $('#multicomboGrupos').rup_combo({
-	        /*sourceGroup : [ 
-	            {"Futbol" : ["Alaves", "Athletic", "Real Sociedad"]},
-	            {"Baloncesto" : ["Caja Laboral", "BBB", "Lagun Aro"]},
-	            {"Formula 1" : [ "Fernando Alonso", "Hamilton", "Vettel"]}
-	        ],
-	        */
-	        sourceGroup : [ 
-	            {'futbol' : [
-	                {i18nCaption: 'alaves', value:'alaves_value', style:'delete'},
-	                {i18nCaption: 'ath', value:'ath_value', style:'filter'},
-	                {i18nCaption: 'real', value:'real_value', style:'print'}
-	            ]},
-	            {'baloncesto' : [
-	                {i18nCaption: 'laboral', value:'laboral_value'},
-	                {i18nCaption: 'bilbao', value:'bilbao_value'},
-	                {i18nCaption: 'lagun aro', value:'lagun aro_value'}
-	            ]},
-	            {'formula1' : [
-	                {i18nCaption: 'falonso', value:'falonso_value'},
-	                {i18nCaption: 'hamilton', value:'hamilton_value'},
-	                {i18nCaption: 'vettel', value:'vettel_value'}
-	            ]}
-	        ],
-	        width: '97%',
+   			
+	    $('#multiSelectGrupos').rup_select({
+            dataGroups: [{
+            	'id':'1',
+            	'text': 'futbol',
+                'children': [{
+                    i18nCaption: 'alaves',
+                    id: 'alaves_value',
+                    style: 'garage',
+                    stylePosition:'A' //B - Before , M - middle , A - After
+                },
+                {
+                    i18nCaption: 'ath',
+                    id: 'ath_value',
+                    style: 'heart text-danger'
+                },
+                {
+                    i18nCaption: 'real',
+                    id: 'real_value',
+                    style:'delete',
+                    stylePosition:'B'
+                }
+                ],style:'soccer'
+            },
+            {
+            	'id':'2',
+            	'text':'baloncesto',
+                'children': [{
+                    i18nCaption: 'laboral',
+                    id: 'laboral_value'
+                },
+                {
+                    i18nCaption: 'bilbao',
+                    id: 'bilbao_value'
+                },
+                {
+                    i18nCaption: 'lagun aro',
+                    id: 'lagun aro_value'
+                }
+                ],style:'basketball'
+            },
+            {
+            	'id':'3',
+            	'text':'formula1',
+            	'children': [{
+                    i18nCaption: 'falonso',
+                    id: 'falonso_value'
+                    
+                },
+                {
+                    i18nCaption: 'hamilton',
+                    id: 'hamilton_value'
+                },
+                {
+                    i18nCaption: 'vettel',
+                    id: 'vettel_value'
+                }
+                ],
+                style: 'car'
+            }
+            ],
 	        height: 300,
 	        customClasses: ['select-material'],
-	        multiselect: true,
-	        multiOptgroupIconText: false,
-	        rowStriping : true,
+	        placeholder: '[Seleccione gracias..]',
+	        //allowClear: true,
+	        multiple: true,
 	        change: function () {
-	            console.log('comboMultiGroups:::Changed');
+	            console.log('selectMultiGroups:::Changed');
 	        }
 	    });
 	    
-	    $('#multicomboGruposRemoto').rup_combo({
-	        sourceGroup : 'comboSimple/remoteGroupEnlazado',
-	        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
-	        width: '97%',
-	        customClasses: ['select-material'],
-	        multiselect: true,
-	        change: function () {
-	            console.log('comboMultiGroupsRemote:::Changed');
-	        }
-	    });
+	    $("#multiSelectGruposRemoto").rup_select(
+	    	{
+	            url : 'comboSimple/remoteGroupEnlazado',
+	            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
+	            customClasses: ['select-material'],
+	            multiple: true,
+	            //placeholder: '[Seleccione gracias..]',
+	            closeOnSelect : false,
+	            groups:true,
+	            change: function () {
+	                console.log('multicomboGruposRemoto:::Changed');
+	            }
+	    	});
+	    /*    
 	    
 	    $('#multicomboInput').rup_combo({
 	        source : ['asp', 'c', 'c++', 'coldfusion', 'groovy', 'haskell', 'java', 'javascript', 'perl', 'php', 'python', 'ruby', 'scala'],
@@ -120,7 +158,7 @@ jQuery(function($) {
 	        change: function () {
 	            console.log('comboMultiLoadFromSelect:::Changed');
 	        }
-	    });	    
+	    });	    */
 	});
 	$('.contenedor').addClass('show');
 });
