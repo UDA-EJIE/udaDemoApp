@@ -943,6 +943,13 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 					var searchEditOptions = cellColModel.editoptions;
 					if(searchRupType === 'combo'){//se marca el selected
 						searchEditOptions.selected = ctx.inlineEdit.lastRow.cellValues[cont]
+						searchEditOptions.inlineEditFieldName = cellColModel.name;
+					} else if (searchRupType === 'autocomplete') {
+						const cellValue = ctx.inlineEdit.lastRow.cellValues[cont];
+						searchEditOptions.loadValue = cellValue;
+						if(cellValue != null){
+							searchEditOptions.loadObjectsAuto = {[cellValue]:cellValue};
+						}
 					}
 					
 					//Se Comprueba que los elemnetos menu estan eliminados.
@@ -952,13 +959,6 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 					
 					// Invocación al componente RUP
 					$elem['rup_'+searchRupType](searchEditOptions);
-					if(searchRupType === 'combo'){//asignar el valor
-						global.initRupI18nPromise.then(() => {
-							$('#' + $elem.attr('id')).rup_combo('setRupValue', ctx.inlineEdit.lastRow.cellValues[cont - 1]);
-						}).catch((error) => {
-							console.error('Error al establecer el valor:\n', error);
-						});
-					}
 				}else if(cellColModel.edittype === 'checkbox'){
 					$elem
 						.prop('type', 'checkbox')
