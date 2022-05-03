@@ -155,15 +155,18 @@ public class IberdokFileServiceImpl implements IberdokFileService {
 	}
 
 	@Override
-	public Boolean existsFile(IberdokFile file) {
+	public String existsFile(IberdokFile file) {
 		IberdokFile fileExists= (IberdokFile) this.iberdokDao.find(file);
-		Boolean resultado;
-		if (fileExists!=null){
-			resultado=true; 
-		}else{
-			resultado=false;
+		String id = null;
+		if (fileExists !=null ){
+			id = fileExists.getId(); 
 		}
-		return resultado;
+		return id;
+	}
+	
+	@Override
+	public IberdokFile findLastByIdCorrelacion(String idModelo, String idCorrelacion) {
+		return (IberdokFile) this.iberdokDao.findLastByIdCorrelacion(idModelo,idCorrelacion);
 	}
 
 }

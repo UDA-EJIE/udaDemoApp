@@ -324,7 +324,7 @@ public class ExperimentalController {
 		if (file.getFile() != "") {
 			logger.info("documento Finalizado");
 			// documento finalizado
-			auxFile.setEstado("2");
+			auxFile.setDocFinalizado(1);
 
 			zipPath = iberdokFolderPath + "/" + file.getIdDocumento() + ".zip";
 			// guardar el zip de iberdok en el path del properties iberdokFolder
@@ -340,11 +340,11 @@ public class ExperimentalController {
 		} else {
 			// documento en elaboracion
 			logger.info("documento Finalizado");
-			auxFile.setEstado("1");
+			auxFile.setDocFinalizado(0);
 		}
 
 		// check if the file already exists
-		if (this.iberdokFileService.existsFile(auxFile)) {
+	/*	if (this.iberdokFileService.existsFile(auxFile)) {
 			logger.info("documento existente, actualizar datos en bd");
 			// if exists, update estado
 			this.iberdokFileService.updateIdDocumento(auxFile);
@@ -352,7 +352,7 @@ public class ExperimentalController {
 			logger.info("documento NO existente, nuevo registro en bd");
 			// else update the last record created
 			this.iberdokFileService.add(auxFile);
-		}
+		}*/
 
 		logger.info("urlFinalizacion-end");
 		return "iberdok";
@@ -465,7 +465,7 @@ public class ExperimentalController {
 		if (file.getFile() != "") {
 			logger.info("documento Finalizado");
 			// documento finalizado
-			auxFile.setEstado("2");
+			auxFile.setDocFinalizado(1);
 
 			zipPath = iberdokFolderPath + "/" + file.getIdDocumento() + ".zip";
 			// guardar el zip de iberdok en el path del properties iberdokFolder
@@ -481,11 +481,11 @@ public class ExperimentalController {
 		} else {
 			// documento en elaboracion
 			logger.info("documento Finalizado");
-			auxFile.setEstado("1");
+			auxFile.setDocFinalizado(0);
 		}
 
 		// check if the file already exists
-		if (this.iberdokFileService.existsFile(auxFile)) {
+/*		if (this.iberdokFileService.existsFile(auxFile)) {
 			logger.info("documento existente, actualizar datos en bd");
 			// if exists, update estado
 			this.iberdokFileService.updateIdDocumento(auxFile);
@@ -494,7 +494,7 @@ public class ExperimentalController {
 			// else update the last record created
 			this.iberdokFileService.add(auxFile);
 		}
-
+*/
 		logger.info("urlDemo-end");
 		return "iberdok";
 	}
@@ -521,7 +521,7 @@ public class ExperimentalController {
 		if (file.getFile() != "") {
 			logger.info("documento Finalizado");
 			// documento finalizado
-			auxFile.setEstado("2");
+			auxFile.setDocFinalizado(1);
 
 			zipPath = iberdokFolderPath + "/" + file.getIdDocumento() + ".zip";
 			// guardar el zip de iberdok en el path del properties iberdokFolder
@@ -537,11 +537,11 @@ public class ExperimentalController {
 		} else {
 			// documento en elaboracion
 			logger.info("documento Finalizado");
-			auxFile.setEstado("1");
+			auxFile.setDocFinalizado(0);
 		}
 
 		// check if the file already exists
-		if (this.iberdokFileService.existsFile(auxFile)) {
+/*		if (this.iberdokFileService.existsFile(auxFile)) {
 			logger.info("documento existente, actualizar datos en bd");
 			// if exists, update estado
 			this.iberdokFileService.updateIdDocumento(auxFile);
@@ -550,7 +550,7 @@ public class ExperimentalController {
 			// else update the last record created
 			this.iberdokFileService.add(auxFile);
 		}
-
+*/
 		logger.info("urlTest-end");
 		return "iberdok";
 	}

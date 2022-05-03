@@ -32,7 +32,7 @@ public class JasmineWebDriver {
  public void valid_testComponentUda(){
 
 	 System.out.println("Starting test " + new Object(){}.getClass().getEnclosingMethod().getName());
-     driver.get(path+"/5x/x21a/scripts/x21aApp/testJasmine/specRunner.html");
+     driver.get(path+"/x21a/scripts/x21aApp/testJasmine/specRunner.html");
      try{
 		 element = driver.findElement (By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='14 specs, 0 failures'])[1]"));
 	 }catch (Exception e){
