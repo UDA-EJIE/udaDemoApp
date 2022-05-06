@@ -501,7 +501,8 @@
 	},
 	"tabsFormulario":{
 		"ejemploYFunciones":"Ejemplo y métodos_en",
-		"multiplesEntidades":"Envío de varias entidades_en"
+		"multiplesEntidades":"Envío de varias entidades_en",
+		"usoModelView":"Ejemplo con model & view_en"
 	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario _en'",

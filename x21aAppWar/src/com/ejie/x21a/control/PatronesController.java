@@ -49,9 +49,11 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,6 +61,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.AlumnoDepartamento;
@@ -91,6 +94,7 @@ import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.controller.model.IdentifiableModelWrapperImpl;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
@@ -259,7 +263,7 @@ public class PatronesController {
     }
 
     //Form
-    @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp" ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
+    @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp",allowSubEntities = true ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
     public String getForm(Model model) {
 
@@ -559,7 +563,7 @@ public class PatronesController {
 		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
 		comboEjie.put("", "---");
 		comboEjie.put("0", "No");
-		comboEjie.put("1", "Sí");
+		comboEjie.put("1", "Sï¿½");
 		model.addAttribute("comboEjie", comboEjie);
         
         return "allDialog";
@@ -700,7 +704,7 @@ public class PatronesController {
     }
     
     /**
-     * AUTOCOMPLETE REMOTO ENLAZADO MÚLTIPLE
+     * AUTOCOMPLETE REMOTO ENLAZADO Mï¿½LTIPLE
      */
     @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
     @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento", method = RequestMethod.GET)
@@ -1186,7 +1190,7 @@ public class PatronesController {
      */
     //Form http submit
     @UDALink(name = "getFormHttp")
-    @RequestMapping(value = "form/ejemplo", method = RequestMethod.POST)
+    @PostMapping(value = "form/ejemplo")
     public @ResponseBody
     Object getFormHttp(@RequestBody Alumno alumno) {
 
@@ -1201,6 +1205,57 @@ public class PatronesController {
         messageWriter.endMessageList();
 
         return messageWriter.toString();
+    }
+    
+    /**
+     * MAINT (Usuarios) [form.jsp]
+     */
+    //Form http submit
+    @UDALink(name = "getFormModelView", linkTo = {@UDALinkAllower(name = "getAutocompleteEnlazadoMultiple")})
+    @PostMapping(value = "form/ejemploModelView")
+    public @ResponseBody Resource<Alumno> getFormModelView(Model model, @RequestBody Alumno alumno) {
+
+        List<NoraPais> paises = noraPaisService.findAll(null, null);
+        model.addAttribute("paises", paises);
+
+        List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
+        model.addAttribute("autonomias", autonomias);
+
+        //model.addAttribute("comarca", new Comarca());
+
+        //model.addAttribute("formComarcas", new FormComarcas());
+        alumno.setId(new BigDecimal(1300));
+        model.addAttribute("alumno", alumno);
+
+        return new Resource<Alumno>(alumno);
+    }
+    
+    @UDALink(name = "getFormNavigate", linkTo = {@UDALinkAllower(name = "get", linkClass = TableUsuarioController.class)})
+    @PostMapping(value = "form/ejemploFormNavigate")
+    public String getFormNavigate(Model model, @ModelAttribute  Alumno alumno) {
+
+        List<NoraPais> paises = noraPaisService.findAll(null, null);
+        model.addAttribute("paises", paises);
+
+        List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
+        model.addAttribute("autonomias", autonomias);
+
+        //model.addAttribute("comarca", new Comarca());
+
+        //model.addAttribute("formComarcas", new FormComarcas());
+        Usuario usuario = new Usuario();
+        
+        if(alumno != null){
+        	alumno.setId(new BigDecimal(1300));
+        }
+        usuario.setId(alumno.getId()+"");
+        usuario.setNombre(alumno.getNombre());
+        model.addAttribute("alumno", alumno);
+
+        model.addAttribute("usuarioDATA",
+				new IdentifiableModelWrapperImpl<Usuario>(usuario, "id"));
+
+        return "formModelView";
     }
 
 
