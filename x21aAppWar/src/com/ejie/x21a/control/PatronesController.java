@@ -281,7 +281,7 @@ public class PatronesController {
     //select en mantenimiento
     @RequestMapping(value = "selectMantenimiento", method = RequestMethod.GET)
     public String getSelectMantenimiento(Model model) {
-        model.addAttribute("alumno", new Alumno());
+        model.addAttribute("X21aAlumno", new Alumno());
         return "selectMantenimiento";
     }
     

@@ -50,27 +50,27 @@
 		</div>
 		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
-				<form:input path="provinciaId" id="provinciaId_filter_table"/>
+				<form:input path="provincia" id="provinciaId_filter_table"/>
 				<label for="provinciaId_filter_table"><spring:message code="provinciaId"/></label>
 			</div>
 			
 			<div class="form-groupMaterial col-sm">
-				<form:input path="comarcaId" id="comarcaId_filter_table"/>
+				<form:input path="comarca" id="comarcaId_filter_table"/>
 				<label for="comarcaId_filter_table"><spring:message code="comarcaId"/></label>
 			</div>
 			
 			<div class="form-groupMaterial col-sm">
-				<form:input path="localidadId" id="localidadId_filter_table"/>
+				<form:input path="localidad" id="localidadId_filter_table"/>
 				<label for="localidadId_filter_table"><spring:message code="localidadId"/></label>
 			</div>
 			
 			<div class="form-groupMaterial col-sm">
-				<form:input path="municipioId" id="municipioId_filter_table"/>
+				<form:input path="municipio" id="municipioId_filter_table"/>
 				<label for="municipioId_filter_table"><spring:message code="municipioId"/></label>
 			</div>
 			
 			<div class="form-groupMaterial col-sm">
-				<form:input path="autonomiaId" id="autonomiaId_filter_table"/>
+				<form:input path="autonomia" id="autonomiaId_filter_table"/>
 				<label for="autonomiaId_filter_table"><spring:message code="autonomiaId"/></label>
 			</div>
 		</div>

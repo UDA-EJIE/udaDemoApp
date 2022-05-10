@@ -44,13 +44,9 @@
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
-			<label for="multicomboInput">MultiCombo sobre <strong>Input</strong></label>
-			<input type="text" name="multicomboInput" id="multicomboInput" value="coldfusion##python" />
-		</div>
 		<div class="form-groupMaterial col-sm"> 
-			<label for="multicomboLoadFromSelect">MultiCombo carga inicial desde <strong>HTML</strong></label>
-			<select id="multicomboLoadFromSelect" multiple="multiple">
+			<label for="multiSelectLoadFromSelect">MultiSelect carga inicial desde <strong>HTML</strong></label>
+			<select id="multiSelectLoadFromSelect" multiple="multiple">
 				<option value="1" selected="selected">Alava</option>
 				<option value="3">Gipuzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>

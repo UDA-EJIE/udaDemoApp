@@ -209,6 +209,8 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "get"), 
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),

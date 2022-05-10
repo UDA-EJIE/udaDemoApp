@@ -137,28 +137,18 @@ jQuery(function($) {
 	                console.log('multicomboGruposRemoto:::Changed');
 	            }
 	    	});
-	    /*    
+	        
 	    
-	    $('#multicomboInput').rup_combo({
-	        source : ['asp', 'c', 'c++', 'coldfusion', 'groovy', 'haskell', 'java', 'javascript', 'perl', 'php', 'python', 'ruby', 'scala'],
-	        width: '97%',
-	        customClasses: ['select-material'],
-	        multiselect: true,
-	        change: function () {
-	            console.log('comboMultiInput:::Changed');
-	        }
-	    });
-	
-	    $('#multicomboLoadFromSelect').rup_combo({
+
+	    $('#multiSelectLoadFromSelect').rup_select({
 	        loadFromSelect: true,
-	        width: '97%',
-	        height: 75,
 	        customClasses: ['select-material'],
-	        multiselect: true,
+	        multiple: true,
+	        closeOnSelect : false,
 	        change: function () {
-	            console.log('comboMultiLoadFromSelect:::Changed');
+	            console.log('selectMultiLoadFromSelect:::Changed');
 	        }
-	    });	    */
+	    });	    
 	});
 	$('.contenedor').addClass('show');
 });
