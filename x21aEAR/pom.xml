@@ -361,31 +361,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${org.jackson.version}</version>
 		</dependency>
-		
-		<!-- CACHE -->
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>2.10.9.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.ehcache</groupId>
-					<artifactId>ehcache-root</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-jmsreplication</artifactId>
-			<version>0.5</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.ehcache</groupId>
-					<artifactId>ehcache-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 
 		<!-- Reports -->
 		<!-- odf -->
