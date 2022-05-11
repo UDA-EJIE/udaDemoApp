@@ -21,7 +21,6 @@
 	<import resource="mvc-config.xml" />
 	<import resource="security-core-config.xml" />
 	<import resource="security-config.xml" />
-	<import resource="reports-config.xml" />
 	<import resource="webdav-config.xml" />
 	<import resource="pif-config.xml" />
 	<import resource="rup-config.xml" />
