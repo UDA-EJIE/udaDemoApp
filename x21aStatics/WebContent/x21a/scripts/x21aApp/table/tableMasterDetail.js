@@ -39,12 +39,12 @@ jQuery(function ($) {
 		        index: 'provincia.code',
 		        editable: true,
 		        hidden: false,
-		        rupType: 'combo',
+		        rupType: 'select',
                 editoptions: {
-                	source : '../tableComarca/provincia',
+                	url : '../tableComarca/provincia',
                     sourceParam : {
-                    	label: 'desc' + $.rup_utils.capitalizedLang(), 
-                    	value: 'code',
+                    	text: 'desc' + $.rup_utils.capitalizedLang(), 
+                    	id: 'code',
         	            style: 'css'
                     },
         	        rowStriping: true,

@@ -1,5 +1,85 @@
 jQuery(function ($) {
 	window.initRupI18nPromise.then(function () {
+        const tableColModels = [
+        	{
+                name: 'usuario',
+                index: 'usuario',
+                editable: true,
+                hidden: false
+            },
+            {
+                name: 'password',
+                index: 'password',
+                editable: true,
+                hidden: false
+            },
+            {
+                name: 'nombre',
+                index: 'nombre',
+                editable: true,
+                hidden: false
+            },
+            { 
+            	name: "apellido1", 
+            	index: "apellido1", 
+            	editable: true, 
+            	hidden: false,
+            	rupType: 'autocomplete',
+                editoptions: {
+                	source : '../table/apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    menuMaxHeight: 200,
+                    minLength: 3,
+                    combobox: true,
+                    contains: true,
+                    showDefault: true
+                }
+            },
+            {
+                name: 'provincia.code',
+                index: 'provincia.code',
+                editable: true,
+                hidden: false,
+                rupType: 'select',
+                editoptions: {
+                    url : '../tableComarca/provincia',
+                    sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
+                    blank: '',
+                    width: '100%',
+                    customClasses: ['select-material'],
+                    cifradoHdiv: true
+                }
+            },
+            {
+                name: 'comarcaId',
+                index: 'comarcaId',
+                editable: true,
+                hidden: false,
+                rupType: 'select',
+                editoptions: {
+                    url : '../tableComarca/comarca',
+                    sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
+                    blank: '',
+                    width: '100%',
+                    customClasses: ['select-material'],
+                    cifradoHdiv: true
+                }
+            },
+            {
+                name: 'localidad',
+                index: 'localidad',
+                editable: true,
+                hidden: false
+            },
+            {
+                name: 'municipio',
+                index: 'municipio',
+                editable: true,
+                hidden: false
+            }
+
+        ];
+		
 	    $('#x21aAlumno').rup_table({
 	        loadOnStartUp: true,
 	        filter: {
@@ -94,7 +174,8 @@ jQuery(function ($) {
 	        },
 	        buttons: {
 	            activate: true
-	        }
+	        },
+	        colModel :tableColModels
 	    });
 	});
 });

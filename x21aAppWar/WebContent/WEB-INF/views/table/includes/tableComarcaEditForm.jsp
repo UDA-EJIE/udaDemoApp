@@ -44,7 +44,7 @@
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="provincia.code" id="provinciaCode_detailForm_table" />
+	    	<form:select path="provincia.code" id="provinciaCode_detailForm_table" />
 	    	<label for="provinciaCode_detailForm_table">Provincia</label>
 	    </div>
 	</div>	
