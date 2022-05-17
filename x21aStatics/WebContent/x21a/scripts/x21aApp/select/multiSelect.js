@@ -135,7 +135,8 @@ jQuery(function($) {
 	            groups:true,
 	            change: function () {
 	                console.log('multicomboGruposRemoto:::Changed');
-	            }
+	            },
+	            selected: ['4Prov']
 	    	});
 	        
 	    

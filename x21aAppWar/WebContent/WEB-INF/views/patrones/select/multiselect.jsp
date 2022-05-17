@@ -36,7 +36,7 @@
 			<select id="multiSelectGrupos"></select>
 		</div>
 		<div class="form-groupMaterial col-sm"> 
-			<label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto</label>
+			<label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto y preselecionado</label>
 			<select id="multiSelectGruposRemoto"></select>
 		</div>
 	</div>

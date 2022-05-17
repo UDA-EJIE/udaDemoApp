@@ -46,8 +46,7 @@ jQuery(function ($) {
                     sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
                     blank: '',
                     width: '100%',
-                    customClasses: ['select-material'],
-                    cifradoHdiv: true
+                    customClasses: ['select-material']
                 }
             },
             {
@@ -61,8 +60,7 @@ jQuery(function ($) {
                     sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
                     blank: '',
                     width: '100%',
-                    customClasses: ['select-material'],
-                    cifradoHdiv: true
+                    customClasses: ['select-material']
                 }
             },
             {

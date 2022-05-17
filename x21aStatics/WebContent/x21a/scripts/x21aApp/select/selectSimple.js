@@ -227,7 +227,8 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            selected: '7Coma',
+            multiple: true,
+            selected: ['7Coma'],
             change: function () {
                 console.log('selectGruposRemoto:::Changed');
             },
