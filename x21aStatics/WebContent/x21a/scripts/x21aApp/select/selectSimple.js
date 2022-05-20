@@ -74,13 +74,14 @@ $(function () {
             allowClear: true,
             deleteOnDeselect: true,
             closeOnSelect : false,
+            tags: true,
             selected:'ruby',
             multiple:false,
             change: function (e) {
                 console.log('selectSimple:::Changed');
             }
          }); 
-        
+  /*      
         $('#selectRemoto').rup_select({
         	url:'comboSimple/remote',
             sourceParam: {
@@ -215,6 +216,7 @@ $(function () {
             selected: 'ath_value',
             customClasses: ['select-material'],
             rowStriping: true,
+            groups: true,
             change: function () {
                 console.log('selectGrupos:::Changed');
             }
@@ -227,7 +229,6 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
-            multiple: true,
             selected: ['7Coma'],
             change: function () {
                 console.log('selectGruposRemoto:::Changed');
@@ -252,7 +253,7 @@ $(function () {
                 console.log('SelectLoadFromSelect:::Changed');
             }
          }); 
-
+*/
 
     });
     $('.contenedor').addClass('show');

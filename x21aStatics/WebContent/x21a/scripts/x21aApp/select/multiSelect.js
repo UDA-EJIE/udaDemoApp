@@ -119,6 +119,7 @@ jQuery(function($) {
 	        placeholder: '[Seleccione gracias..]',
 	        //allowClear: true,
 	        multiple: true,
+	        groups:true,
 	        change: function () {
 	            console.log('selectMultiGroups:::Changed');
 	        }
