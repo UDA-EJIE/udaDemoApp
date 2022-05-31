@@ -81,7 +81,7 @@ $(function () {
                 console.log('selectSimple:::Changed');
             }
          }); 
-  /*      
+        
         $('#selectRemoto').rup_select({
         	url:'comboSimple/remote',
             sourceParam: {
@@ -253,7 +253,7 @@ $(function () {
                 console.log('SelectLoadFromSelect:::Changed');
             }
          }); 
-*/
+
 
     });
     $('.contenedor').addClass('show');

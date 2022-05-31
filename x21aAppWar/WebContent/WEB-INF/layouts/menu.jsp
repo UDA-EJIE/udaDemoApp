@@ -385,6 +385,18 @@
                                     <a class="dropdown-item"
                                         href="${selectMantenimiento}">Select anidado
                                         con mantenimiento</a>
+                                    <spring:url value="/patrones/selectAutocomplete" var="selectAutocomplete" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocomplete}">
+                                        <spring:message code="selectAutocomplete" />
+                                    </a>  
+                                    <spring:url value="/patrones/selectAutocompleteEnlazado" var="selectAutocompleteEnlazado" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocompleteEnlazado}">
+                                        <spring:message code="selectAutocompleteEnlazado" />
+                                    </a> 
+                                    <spring:url value="/patrones/selectAutocompleteEnlazadoMultiple" var="selectAutocompleteEnlazadoMultiple" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocompleteEnlazadoMultiple}">
+                                        <spring:message code="selectAutocompleteEnlazadoMultiple" />
+                                    </a>   
                                 </div>
                             </div>
                             

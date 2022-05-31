@@ -285,6 +285,38 @@ public class PatronesController {
         return "selectMantenimiento";
     }
     
+    // Select Autocomplete
+    @UDALink(name = "getSelectAutocomplete", linkTo = {
+    		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getComboRemote")
+    })
+    @RequestMapping(value = "selectAutocomplete", method = RequestMethod.GET)
+    public String getSelectAutocomplete(Model model) {
+        return "selectAutocomplete";
+    }
+
+    // Select Autocomplete Enlazado
+    @UDALink(name = "getSelectAutocompleteEnlazado", linkTo = {
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
+    })
+    @RequestMapping(value = "selectautocompleteEnlazado", method = RequestMethod.GET)
+    public String getSelectAutocompleteEnlazado(Model model) {
+        return "selectAutocompleteEnlazado";
+    }
+
+    // Select Autocomplete Enlazado Multiple
+    @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
+    		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    })
+    @RequestMapping(value = "selectAutocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    public String getSelectAutocompleteEnlazadoMultiple(Model model) {
+        return "selectAutocompleteEnlazadoMultiple";
+    }
+    
 
     //Feedback
     @RequestMapping(value = "feedback", method = RequestMethod.GET)

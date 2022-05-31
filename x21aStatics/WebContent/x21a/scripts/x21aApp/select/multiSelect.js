@@ -31,7 +31,7 @@ jQuery(function($) {
 	            {i18nCaption: 'coldfusion', id:'coldfusion_value'},
 	            {i18nCaption: 'perl', id:'perl_value'}
 	        ],
-	        selected: ['perl_value', 'javascript_value', 'ruby_value'], //value && index
+	       // selected: ['perl_value', 'javascript_value', 'ruby_value'], //value && index
 	        ordered: false,
 	        multiple: true,
 	        udaSkill: false,
@@ -47,7 +47,7 @@ jQuery(function($) {
 	        sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
 	        customClasses: ['select-material'],
 	        multiple: true,
-	        //placeholder: '[Seleccione gracias..]',
+	        placeholder: '[Seleccione gracias..]',
 	        closeOnSelect : false,
 	        change: function () {
 	            console.log('selectMultiRemoto:::Changed');
