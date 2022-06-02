@@ -185,7 +185,6 @@
 			"grouping" : "Agrupamiento_eu",
 			"masterDetail" : "Maestro - detalle_eu",
 			"tableLoadOnStartUp" : "LoadOnStartUp = false_eu",
-			"tableDialog" : "Tabla en diálogo_eu",
 			"tableRadiobutton" : "Tabla radiobutton_eu",
 			"tableTabs" : "En pestañas_eu",
 		"bootstrap" : "Grid responsivo_eu",
@@ -201,8 +200,6 @@
 			"listaConfigurable" : "Listado configurable_eu",
 			"listaDoble" : "Listado doble_eu"
 	},
-	
-"_comment":"PATRONES",	
 	"autocomplete" :{ 
 		"asp":"asp_eu",
 		"c":"c_eu",
@@ -218,132 +215,128 @@
 		"ruby":"ruby_eu",
 		"scala":"scala_eu"
 	},
-	"_comment":"COMBO_SIMPLE",	
-		"combo" :{ 
-			"_blank":"[Elementu bat aukeratu]",
-			"asp":"asp_eu",
-			"c":"c_eu",
-			"c++":"c++_eu",
-			"coldfusion":"coldfusion_eu",
-			"groovy":"groovy_eu",
-			"haskell":"haskell_eu",
-			"java":"java_eu",
-			"javascript":"javascript_eu",
-			"perl":"perl_eu",
-			"php":"php_eu",
-			"python":"python_eu",
-			"ruby":"ruby_eu",
-			"scala":"scala_eu"
-		},
-		"comboGrupos" :{ 
-			"futbol":"Futbola",
-			"alaves":"Alaves_eu",
-			"ath":"Athletic_eu",
-			"real":"Real Sociedad_eu",
-			"baloncesto":"Saskibaloia",
-			"laboral":"Caja Laboral_eu",
-			"bilbao":"BBB_eu",
-			"lagun aro":"Lagun Aro_eu",
-			"formula1":"1 Formula",
-			"falonso":"Fernando Alonso_eu",
-			"hamilton":"Lewis Hamilton_eu",
-			"vettel":"Sebastian Vettel_eu"
-		},
-		"comboLargo":{
-			"jon_doe":"John Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)",
-			"jane_doe":"Jane Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
-			"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
-			"mad_doe":"Mad Doe Kiiid - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)"
-		},
-	"_coment":"COMBO_ENLAZADO",
-		"comboAbuelo":{
-			"_blank":"[Selecciona Abuelo_eu]",
-			"a":"Álava_eu",
-			"b":"Vizcaya_eu",
-			"g":"Gipúzcoa_eu"
-		},
-		"comboPadre":{
-			"a1":"A-Zona1_eu",
-			"a2":"A-Zona2_eu",
-			"a3":"A-Zona3_eu",
-			"b1":"Gran Bilbao_eu",
-			"b2":"Margen Derecha_eu",
-			"b3":"Margen Izquierda_eu",
-			"g1":"G-Zona1_eu",
-			"g2":"G-Zona2_eu",
-			"g3":"G-Zona3_eu"
-		},
-		"comboHijo":{
-			"_blank":"[Selecciona Hijo_eu]"
-		},
-		"comboAbueloRemoto":{
-			"_blank":"[Selecciona Abuelo Remoto_eu]"
-		},
-		"mixto_comboPadre":{
-			"a1":"A-Zona1_eu",
-			"a2":"A-Zona2_eu",
-			"a3":"A-Zona3_eu",
-			"b1":"Gran Bilbao_eu",
-			"b2":"Margen Derecha_eu",
-			"b3":"Margen Izquierda_eu",
-			"g1":"G-Zona1_eu",
-			"g2":"G-Zona2_eu",
-			"g3":"G-Zona3_eu"
-		},
-		"mixto2_comboAbuelo":{
-			"_blank":"[Selecciona Abuelo_eu]",
-			"a":"Álava_eu",
-			"b":"Vizcaya_eu",
-			"g":"Gipúzcoa_eu"
-		},
-	"_coment":"COMBO_ENLAZADO_MULTIPLE",
-		"departamentoRemote":{
-			"_blank":"[Selecciona Dpto._eu]"
-		},
-		"provinciaRemote":{
-			"_blank":"[Selecciona Prov._eu]"
-		},
-		"mixto_provincia":{
-			"a":"Álava_eu",
-			"b":"Vizcaya_eu",
-			"g":"Gipúzcoa_eu"
-		},
-		"mixto2_departamento":{
-			"ayto":"Ayuntamiento_eu",
-			"dipu":"Diputación_eu",
-			"poli":"Policía_eu",
-			"bomb":"Bomberos_eu"
-		},
-	"_comment":"MULTI_COMBO",	
-		"multicombo" :{ 
-			"asp":"asp_eu",
-			"c":"c_eu",
-			"c++":"c++_eu",
-			"coldfusion":"coldfusion_eu",
-			"groovy":"groovy_eu",
-			"haskell":"haskell_eu",
-			"java":"java_eu",
-			"javascript":"javascript_eu",
-			"perl":"perl_eu",
-			"php":"php_eu",
-			"python":"python_eu",
-			"ruby":"ruby_eu",
-			"scala":"scala_eu"
-		},
-		"multicomboGrupos" :{ 
-			"futbol":"Futbola",
-			"alaves":"Alaves_eu",
-			"ath":"Athletic_eu",
-			"real":"Real Sociedad_eu",
-			"baloncesto":"Saskibaloia",
-			"laboral":"Caja Laboral_eu",
-			"bilbao":"BBB_eu",
-			"lagun aro":"Lagun Aro_eu",
-			"formula1":"1 Formula",
-			"falonso":"Fernando Alonso_eu",
-			"hamilton":"Lewis Hamilton_eu",
-			"vettel":"Sebastian Vettel_eu"
-		},
+	"combo" :{ 
+		"_blank":"[Elementu bat aukeratu]",
+		"asp":"asp_eu",
+		"c":"c_eu",
+		"c++":"c++_eu",
+		"coldfusion":"coldfusion_eu",
+		"groovy":"groovy_eu",
+		"haskell":"haskell_eu",
+		"java":"java_eu",
+		"javascript":"javascript_eu",
+		"perl":"perl_eu",
+		"php":"php_eu",
+		"python":"python_eu",
+		"ruby":"ruby_eu",
+		"scala":"scala_eu"
+	},
+	"comboGrupos" :{ 
+		"futbol":"Futbola",
+		"alaves":"Alaves_eu",
+		"ath":"Athletic_eu",
+		"real":"Real Sociedad_eu",
+		"baloncesto":"Saskibaloia",
+		"laboral":"Caja Laboral_eu",
+		"bilbao":"BBB_eu",
+		"lagun aro":"Lagun Aro_eu",
+		"formula1":"1 Formula",
+		"falonso":"Fernando Alonso_eu",
+		"hamilton":"Lewis Hamilton_eu",
+		"vettel":"Sebastian Vettel_eu"
+	},
+	"comboLargo":{
+		"jon_doe":"John Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)",
+		"jane_doe":"Jane Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
+		"joseph_doe":"Joseph Doe - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)", 
+		"mad_doe":"Mad Doe Kiiid - 78 West Main St Apt 3A | Bloomsburg, PA 12345 (footer text)"
+	},
+	"comboAbuelo":{
+		"_blank":"[Selecciona Abuelo_eu]",
+		"a":"Álava_eu",
+		"b":"Vizcaya_eu",
+		"g":"Gipúzcoa_eu"
+	},
+	"comboPadre":{
+		"a1":"A-Zona1_eu",
+		"a2":"A-Zona2_eu",
+		"a3":"A-Zona3_eu",
+		"b1":"Gran Bilbao_eu",
+		"b2":"Margen Derecha_eu",
+		"b3":"Margen Izquierda_eu",
+		"g1":"G-Zona1_eu",
+		"g2":"G-Zona2_eu",
+		"g3":"G-Zona3_eu"
+	},
+	"comboHijo":{
+		"_blank":"[Selecciona Hijo_eu]"
+	},
+	"comboAbueloRemoto":{
+		"_blank":"[Selecciona Abuelo Remoto_eu]"
+	},
+	"mixto_comboPadre":{
+		"a1":"A-Zona1_eu",
+		"a2":"A-Zona2_eu",
+		"a3":"A-Zona3_eu",
+		"b1":"Gran Bilbao_eu",
+		"b2":"Margen Derecha_eu",
+		"b3":"Margen Izquierda_eu",
+		"g1":"G-Zona1_eu",
+		"g2":"G-Zona2_eu",
+		"g3":"G-Zona3_eu"
+	},
+	"mixto2_comboAbuelo":{
+		"_blank":"[Selecciona Abuelo_eu]",
+		"a":"Álava_eu",
+		"b":"Vizcaya_eu",
+		"g":"Gipúzcoa_eu"
+	},
+	"departamentoRemote":{
+		"_blank":"[Selecciona Dpto._eu]"
+	},
+	"provinciaRemote":{
+		"_blank":"[Selecciona Prov._eu]"
+	},
+	"mixto_provincia":{
+		"a":"Álava_eu",
+		"b":"Vizcaya_eu",
+		"g":"Gipúzcoa_eu"
+	},
+	"mixto2_departamento":{
+		"ayto":"Ayuntamiento_eu",
+		"dipu":"Diputación_eu",
+		"poli":"Policía_eu",
+		"bomb":"Bomberos_eu"
+	},
+	"multicombo" :{ 
+		"asp":"asp_eu",
+		"c":"c_eu",
+		"c++":"c++_eu",
+		"coldfusion":"coldfusion_eu",
+		"groovy":"groovy_eu",
+		"haskell":"haskell_eu",
+		"java":"java_eu",
+		"javascript":"javascript_eu",
+		"perl":"perl_eu",
+		"php":"php_eu",
+		"python":"python_eu",
+		"ruby":"ruby_eu",
+		"scala":"scala_eu"
+	},
+	"multicomboGrupos" :{ 
+		"futbol":"Futbola",
+		"alaves":"Alaves_eu",
+		"ath":"Athletic_eu",
+		"real":"Real Sociedad_eu",
+		"baloncesto":"Saskibaloia",
+		"laboral":"Caja Laboral_eu",
+		"bilbao":"BBB_eu",
+		"lagun aro":"Lagun Aro_eu",
+		"formula1":"1 Formula",
+		"falonso":"Fernando Alonso_eu",
+		"hamilton":"Lewis Hamilton_eu",
+		"vettel":"Sebastian Vettel_eu"
+	},
 	"tabs" :{
 		"pestana0" 	:"Tab 0_eu",
 		"sub00" 	:"sub00_eu",
@@ -665,14 +658,7 @@
 			},
 			"colorLabels": ["rojo_eu", "azul_eu", "amarillo_eu"],
 			"radarLabels": ["Comida_eu", "Bebida_eu", "Dormir_eu", "Diseño_eu", "Programacion_eu", "Bicicleta_eu", "Correr_eu"],
-			"mesesLabels": ["Enero_eu", "Febrero_eu", "Marzo_eu", "Abril_eu", "Mayo_eu", "Junio_eu", "Julio_eu"],
-			"pie": "Tarta_eu",
-			"doughnut": "Donut_eu",
-			"bubble": "Burbuja_eu",
-			"datasetRadar": {
-					"dataset1": "dataset 1_eu",
-					"dataset2": "dataset 2_eu"
-			}
+			"mesesLabels": ["Enero_eu", "Febrero_eu", "Marzo_eu", "Abril_eu", "Mayo_eu", "Junio_eu", "Julio_eu"]
 	},
 	"validacion":{
 		"nombre":"Debe de especificar un nombre obligatoriamente._eu",
