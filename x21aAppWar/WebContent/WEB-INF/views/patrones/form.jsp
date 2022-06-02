@@ -137,8 +137,8 @@
 							<label for="nombre" class="label"><spring:message code="pais" /></label>
 						</div>
 						<div class="form-groupMaterial col-sm">
-							<form:select path="autonomia.id" id="autonomia">
-								<form:options items="${model.autonomias}" itemLabel="dsO" itemValue="id" />
+							<form:select path="autonomia" id="autonomia">
+								<form:options items="${model.autonomias}" itemLabel="dsO" itemValue="rowId" />
 							</form:select>
 							<label for="autonomia" class="label"><spring:message code="autonomia" /></label>
 						</div>
@@ -246,6 +246,82 @@
 
 
 			</fieldset>
+		</div>
+		
+	<div id="divModelView" class="m-3">
+
+
+			<form:form id="formModelView" action='../patrones/form/ejemploFormNavigate' modelAttribute="alumno" method="post">
+
+				<fieldset class="alumnoFieldset">
+					<legend>
+						<spring:message code="datosPersonales" />
+					</legend>
+					
+					<div class="form-row">
+						<div class="form-groupMaterial col-sm">
+							<form:input path="nombre" size="20" id="nombreModel" required="true"/>
+							<label for="nombre" class="label"><spring:message code="nombre" /></label>
+						</div>
+
+						<div class="form-groupMaterial col-sm">
+							<form:input path="apellido1" size="30" id="apellido1Model"/>
+							<label for="apellido1" class="label"><spring:message code="apellido1" /></label>
+						</div>
+
+						<div class="form-groupMaterial col-sm">
+							<form:input path="apellido2" size="30" id="apellido2Model"/>
+							<label for="apellido2" class="label"><spring:message code="apellido2" /></label>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-groupMaterial col-sm">
+							<form:input path="sexo" id="sexoModel"/>
+							<label for="sexo" class="label"><spring:message code="sexo" /></label>
+						</div>
+						
+						<div class="form-groupMaterial col-sm">
+							<form:input path="dni" id="dniModel"/>
+							<label for="dni" class="label"><spring:message code="dni" /></label>
+						</div>
+
+						<div class="form-groupMaterial col-sm">
+							<form:input path="telefono" id="telefonoModel"/>
+							<label for="telefono" class="label"><spring:message code="telefono" /></label>
+						</div>
+					</div>
+
+				</fieldset>
+				<fieldset class="alumnoFieldset">
+					<legend>
+						<spring:message code="datosDomicilio" />
+					</legend>
+
+					<div class="form-row">
+						<div class="form-groupMaterial col-sm">
+							<form:select path="pais.id" id="paisModel">
+								<form:options items="${model.paises}" itemLabel="dsO" itemValue="id" />
+							</form:select>
+							<label for="nombre" class="label"><spring:message code="pais" /></label>
+						</div>
+						<div class="form-groupMaterial col-sm">
+							<form:select path="autonomia" id="autonomiaModel">
+								<form:options items="${model.autonomias}" itemLabel="dsO" itemValue="rowId" />
+							</form:select>
+							<label for="autonomia" class="label"><spring:message code="autonomia" /></label>
+						</div>
+						<div class="form-groupMaterial col-sm">
+							<form:input path="provincia.id" id="provinciaModel"/>
+							<label for="provincia" class="label"><spring:message code="provincia" /></label>
+						</div>
+					</div>
+
+				</fieldset>
+
+				<button class="btn-material btn-material-primary-high-emphasis mt-2" type="submit">Enviar</button>
+
+			</form:form>
 		</div>
 
 		<div id="divMultiplesEntidades" class="m-3">

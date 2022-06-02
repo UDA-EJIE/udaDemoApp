@@ -324,6 +324,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/form-includes.jsp" />
 	</definition>
+	
+	<definition extends="template" name="formModelView">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/formModelView.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/formModelView-includes.jsp" />
+	</definition>
 
 	<definition extends="template" name="menu">
 		<put-attribute name="content"

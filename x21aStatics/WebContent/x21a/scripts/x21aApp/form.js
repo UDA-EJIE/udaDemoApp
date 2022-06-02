@@ -15,7 +15,7 @@
  */
 jQuery(function($) {
     
-    
+window.initRupI18nPromise.then(function () {    
     // Definicion de las pestanas
     $('#tabsFormulario').rup_tabs({
         tabs : [ {
@@ -27,6 +27,9 @@ jQuery(function($) {
         }, {
             i18nCaption : 'subidaArchivos',
             layer : '#divSubidaFicheros'
+        }, {
+            i18nCaption : 'usoModelView',
+            layer : '#divModelView'
         }
         ]
     });
@@ -123,7 +126,7 @@ jQuery(function($) {
     jQuery('#pais').rup_combo({
         source : '../nora/pais',
         sourceParam : {label:'dsO', value:'id'},
-        blank : '0'
+        blank : ''
     });
     
     // Combo autonomia
@@ -264,7 +267,17 @@ jQuery(function($) {
             $('#feedbackMensajes').rup_feedback('set',$.rup_utils.printMsg(xhr),'ok');
         }
     });
-
+    
+ /*   $('#formModelView').rup_form({
+        url:$.rup.CTX_PATH+'patrones/form/ejemploModelView',
+        feedback:$('#feedbackMensajes'),
+        dataType: 'json',
+        success:function(xhr){
+            $('#feedbackMensajes').rup_feedback('set',JSON.stringify(xhr),'ok');
+        }
+    });
+*/
 
     $('.contenedor').addClass('show');
+});
 });
