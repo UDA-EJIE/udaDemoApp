@@ -160,6 +160,7 @@ public class PatronesController {
     // Autocomplete
     @UDALink(name = "getAutocomplete", linkTo = {
     		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComboRemote")
     })
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
@@ -292,6 +293,7 @@ public class PatronesController {
     // Select Autocomplete
     @UDALink(name = "getSelectAutocomplete", linkTo = {
     		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComboRemote")
     })
     @RequestMapping(value = "selectAutocomplete", method = RequestMethod.GET)
@@ -305,7 +307,7 @@ public class PatronesController {
     		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
     })
-    @RequestMapping(value = "selectautocompleteEnlazado", method = RequestMethod.GET)
+    @RequestMapping(value = "selectAutocompleteEnlazado", method = RequestMethod.GET)
     public String getSelectAutocompleteEnlazado(Model model) {
         return "selectAutocompleteEnlazado";
     }
@@ -677,7 +679,7 @@ public class PatronesController {
     List<Resource<DepartamentoProvincia>> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia) {
+            @RequestParam(value = "codProvincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
         //Filtro
         DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
 
@@ -702,6 +704,7 @@ public class PatronesController {
         return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
     
+    
     /**
      * AUTOCOMPLETE REMOTO ENLAZADO
      */
@@ -717,8 +720,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    	
-        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    	Provincia provincia = new Provincia();
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+                provincia.setDescEu(q);
+            } else {
+                provincia.setDescEs(q);
+            }
+    	}
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(provincia, null, !c));
     }
     
     @UDALink(name = "getComarcaEnlazadoAutocomplete")

@@ -17,21 +17,21 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="container-fluid">
-	<h2 class="title mb-3"><spring:message code="patron.autocompleteEnlazado" /></h2>
+	<h2 class="title mb-3">Select autocomplet enlazado</h2>
 	
 	<div class="form-row">
 		<fieldset id="local" class="col-md col-12 px-3">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloLocal" /> 
+				<select id="abueloLocal" ></select> 
 				<label for="abueloLocal">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreLocal" /> 
+				<select id="padreLocal" ></select> 
 				<label for="padreLocal">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoLocal" /> 
+				<select id="hijoLocal" ></select>  
 				<label for="hijoLocal">Hijo</label>
 			</div>
 		</fieldset>

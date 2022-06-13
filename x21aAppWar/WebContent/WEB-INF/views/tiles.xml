@@ -309,6 +309,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/select/includes/selectAutocomplete-includes.jsp" />
 	</definition>
+	
+	<definition extends="template" name="selectAutocompleteEnlazado">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocompleteEnlazado.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocompleteEnlazado-includes.jsp" />
+	</definition>
 <!-- FIN RUP_Select -->
 
 	<definition extends="template" name="feedback">

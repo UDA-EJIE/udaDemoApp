@@ -37,7 +37,8 @@ jQuery(function($) {
             allowClear: true,
             searchZero:true,
             combo:true,
-            selected:"php_value",
+            deleteOnDeselect: true,
+            defaultValue:"c++",
             minimumResultsForSearch:2,
             width: '100%'
         });	
@@ -48,106 +49,115 @@ jQuery(function($) {
                 placeholder: "Select an option", 
                 allowClear: true,
                 autocomplete: true,
+                defaultValue:"ayuntamiento",
                 minimumResultsForSearch:2,
                 combo:true,
+                deleteOnDeselect: true,
                 width: '100%'
             });	
         
- /*       $('#autocompleteGet').rup_autocomplete({
-            source : 'autocomplete/remote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
-            menuMaxHeight: 200,
-            minLength: 3,
-            combobox: true,
-            contains: true,
-            showDefault: true,
-            accentFolding:true
-        });
-        
-        $('#comboRemoto').rup_combo({
-            source : 'comboSimple/remote',
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+        $('#selectRemoto').rup_select({
+            url : 'autocomplete/remoteEnlazadoProvincia',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             selected: '3',
             width: '99%',
+            combobox: true,
+            autocomplete: true,
+            searchZero: true,
             customClasses: ['select-material'],
             change: function () {
-                console.log('comboRemote:::Changed');
+                console.log('selectRemote:::Changed');
             },
             select : function() {
-                var valor = $('#comboRemoto').rup_combo('getRupValue');
+                var valor = $('#'+this.id).rup_select('getRupValue');
                 $('#autocompleteGet').prop("readonly", false);
-                $('#autocompleteGet').rup_autocomplete({
-                    source : 'autocomplete/remote?codProvincia='+valor,
-                    sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
-                    minLength: 4
-                });
-                jQuery('#autocompleteGet_label').data('tmp.loadObjects.term','notLoad');
+                $('#autocompleteGet').rup_select('setSource','autocomplete/remote?codProvincia='+valor);
             }
         });	
         
-        $('#autocomplete').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'},
-                {i18nCaption: 'haskell', value:'haskell_value'},
-                {i18nCaption: 'java', value:'java_value'},
-                {i18nCaption: 'javascript', value:'javascript_value'},
-                {i18nCaption: 'perl', value:'perl_value'},
-                {i18nCaption: 'php', value:'php_value'},
-                {i18nCaption: 'python', value:'python_value'},
-                {i18nCaption: 'ruby', value:'ruby_value'},
-                {i18nCaption: 'scala', value:'scala_value'},
-                {label: 'scál2a', value:'scala_value'}
+        $('#autocompleteGet').rup_select({
+            url : 'autocomplete/remote',
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'},
+            menuMaxHeight: 200,
+            minLength: 3,
+            combobox: true,
+            autocomplete: true
+        });
+        
+         
+        $('#autocomplete').rup_select({
+            data : [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'},
+                {i18nCaption: 'haskell', id:'haskell_value'},
+                {i18nCaption: 'java', id:'java_value'},
+                {i18nCaption: 'javascript', id:'javascript_value'},
+                {i18nCaption: 'perl', id:'perl_value'},
+                {i18nCaption: 'php', id:'php_value'},
+                {i18nCaption: 'python', id:'python_value'},
+                {i18nCaption: 'ruby', id:'ruby_value'},
+                {i18nCaption: 'scala', id:'scala_value'},
+                {text: 'scál2a', id:'scala_value'}
             ],
             menuMaxHeight: 40,
             defaultValue : 'java',
             contains : false,
+            minimumResultsForSearch: 1,
+            autocomplete:true,
             select:function(){
-                var value=$('#autocomplete').rup_autocomplete('getRupValue');
-                alert('Seleccionado: '+value);
+                let value = $('#autocomplete').rup_select('getRupValue');
+                let datos = $('#autocomplete').rup_select('getDataSelected');
+                alert('Seleccionado: '+value + ' Datos:' + datos.text);
             }
         });
         
-        $('#autocompleteNotAccent').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'},
-                {i18nCaption: 'haskell', value:'haskell_value'},
-                {i18nCaption: 'java', value:'java_value'},
-                {i18nCaption: 'javascript', value:'javascript_value'},
-                {i18nCaption: 'perl', value:'perl_value'},
-                {i18nCaption: 'php', value:'php_value'},
-                {i18nCaption: 'python', value:'python_value'},
-                {i18nCaption: 'ruby', value:'ruby_value'},
-                {i18nCaption: 'scala', value:'scala_value'},
-                {label: 'scál2a', value:'scala_value'},
-                {label: 'scáLa4', value:'scala_value'},
-                {label: 'scála3', value:'scala_value'}
+        $('#autocompleteNotAccent').rup_select({
+            data : [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'},
+                {i18nCaption: 'haskell', id:'haskell_value'},
+                {i18nCaption: 'java', id:'java_value'},
+                {i18nCaption: 'javascript', id:'javascript_value'},
+                {i18nCaption: 'perl', id:'perl_value'},
+                {i18nCaption: 'php', id:'php_value'},
+                {i18nCaption: 'python', id:'python_value'},
+                {i18nCaption: 'ruby', id:'ruby_value'},
+                {i18nCaption: 'scala', id:'scala_value'},
+                {text: 'scál2a', id:'scala_value2'},
+                {text: 'scáLa4', id:'scala_value3'},
+                {text: 'scála3', id:'scala_value4'}
             ],
-            defaultValue : 'java',
-            contains : false,
-            accentFolding:false
+            selected : 'java_value',
+            autocomplete:true,
+            minimumResultsForSearch: 2,
+            accentFolding:false,
+            placeholder: "Select an option",
+            allowClear: true,
+            searchZero:true,
+            deleteOnDeselect: true,
+            width: '100%'
         });
         
-        $('#patron').rup_autocomplete({
-            source : 'autocomplete/remote',
-            disabledCache: true,
-            sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
-            minLength: 4,
+        $('#patron').rup_select({
+            url : 'autocomplete/remote',
+            cache: false,
+            autocomplete:true,
+            sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'},
+            minimumResultsForSearch: 4,
             select:function(){
-                var value=$('#patron').rup_autocomplete('getRupValue');
+                var value=$('#patron').rup_select('getRupValue');
                 console.log('Seleccionado: '+value);
                 return true;
             }
         });
 
-*/
+
         $('.contenedor').addClass('show');
     });
 });

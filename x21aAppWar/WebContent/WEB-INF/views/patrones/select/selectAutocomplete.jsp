@@ -43,18 +43,18 @@
 		
 		<div class="row mt-4">
 			<div class="col-sm-6">
-				<h3 class="col-sm-12">Combobox remoto (con evento en el select)</h3>
+				<h3 class="col-sm-12">Selectbox remoto (con evento en el select)</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<select id="comboRemoto" name="comboRemoto"></select> 
-					<label for="comboRemoto">Combo remoto</label>
+					<select id="selectRemoto" name="selectRemoto"></select> 
+					<label for="selectRemoto">Select remoto</label>
 					<p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
 				</div>
 			</div>
 			
 			<div class="col-sm-6">
-				<h3 class="col-sm-12">Autocomplete remoto (el combobox remoto cambia sus valores)</h3>
+				<h3 class="col-sm-12">Autocomplete remoto (el selectbox remoto cambia sus valores)</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="autocompleteGet" name="autocompleteGet"/> 
+					<select id="autocompleteGet" name="autocompleteGet"></select> 
 					<label for="autocompleteGet">Departamento-Provincia</label>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>
@@ -65,7 +65,7 @@
 			<div class="col-sm-4">
 				<h3 class="col-sm-12">Autocomplete local con función select</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="autocomplete" name="autocomplete" /> 
+					<select id="autocomplete" name="autocomplete" /> </select> 
 					<label for="autocomplete">Lenguaje</label>
 					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
 				</div>
@@ -74,7 +74,7 @@
 			<div class="col-sm-4">
 				<h3 class="col-sm-12">Autocomplete local sin acentos</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="autocompleteNotAccent" name="autocompleteNotAccent" /> 
+					<select id="autocompleteNotAccent" name="autocompleteNotAccent" > </select> 
 					<label for="autocompleteNotAccent">Lenguaje</label>
 					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
 				</div>
@@ -83,7 +83,7 @@
 			<div class="col-sm-4">
 				<h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="patron" name="patron" /> 
+					<select id="patron" name="patron" ></select> 
 					<label for="patron">Departamento-Provincia</label>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>
