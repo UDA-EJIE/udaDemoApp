@@ -17565,7 +17565,8 @@
 .r01gContainer .dataTables_wrapper {
   position: relative;
   clear: both;
-  zoom: 1;
+  transform: scale(1);
+  transform-origin: 0 0;
   padding-left: 2px;
   padding-right: 3px;
   margin-top: 5px;
@@ -43293,7 +43294,7 @@
 /* Selectmenu
 ----------------------------------*/
 
-/*.ui-selectmenu { display: block; display: inline-block; position: relative; height: 1.4em; vertical-align: middle; text-decoration: none; overflow: hidden; zoom: 1; }*/
+/*.ui-selectmenu { display: block; display: inline-block; position: relative; height: 1.4em; vertical-align: middle; text-decoration: none; overflow: hidden; transform: scale(1); transform-origin: 0 0; }*/
 
 /*.ui-selectmenu-icon { position:absolute; right:6px; margin-top:-8px; top: 50%; }*/
 
@@ -44368,10 +44369,11 @@
   position: absolute;
 }
 
-/* .ui-menu .ui-menu-item { margin: 0; padding: 0; zoom: 1; width: 100%; } */
+/* .ui-menu .ui-menu-item { margin: 0; padding: 0; transform: scale(1); transform-origin: 0 0; width: 100%; } */
 
 .r01gContainer .ui-menu .ui-menu-item {
-  zoom: 1;
+  transform: scale(1);
+  transform-origin: 0 0;
 }
 
 .r01gContainer .ui-menu .ui-menu-divider {
@@ -44385,7 +44387,8 @@
   text-decoration: none;
   display: block;
   line-height: 1.5;
-  zoom: 1;
+  transform: scale(1);
+  transform-origin: 0 0;
   padding-top: 0.1em;
 }
 
@@ -52484,7 +52487,8 @@
 .r01gContainer .dataTables_wrapper {
   position: relative;
   clear: both;
-  zoom: 1;
+  transform: scale(1);
+  transform-origin: 0 0;
   padding-left: 2px;
   padding-right: 3px;
   margin-top: 5px;
