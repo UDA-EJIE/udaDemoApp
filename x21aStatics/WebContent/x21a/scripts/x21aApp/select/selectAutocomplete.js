@@ -61,7 +61,7 @@ jQuery(function($) {
             sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             selected: '3',
             width: '99%',
-            combobox: true,
+            combo: true,
             autocomplete: true,
             searchZero: true,
             customClasses: ['select-material'],
@@ -80,7 +80,7 @@ jQuery(function($) {
             sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'},
             menuMaxHeight: 200,
             minLength: 3,
-            combobox: true,
+            combo: true,
             autocomplete: true
         });
         

@@ -39,15 +39,15 @@
 		<fieldset id="remote" class="col-md col-12 px-3 mx-md-5 my-md-0 my-4">
 			<legend>Remoto</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloRemoto" name="provincia" /> 
+				<select id="abueloRemoto" name="provincia" > </select> 
 				<label for="abueloRemoto">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreRemoto" name="comarca" /> 
+				<select id="padreRemoto" name="comarca" > </select> 
 				<label for="padreRemoto">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoRemoto" name="localidad" /> 
+				<select id="hijoRemoto" name="localidad" > </select> 
 				<label for="hijoRemoto">Hijo</label>
 			</div>
 		</fieldset>
@@ -55,15 +55,15 @@
 		<fieldset id="mixto" class="col-md col-12 px-3">
 			<legend>Mixto I</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloMixto" name="provincia" /> 
+				<select id="abueloMixto" name="provincia" > </select>
 				<label for="abueloMixto">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreMixto" name="comarca" /> 
+				<select id="padreMixto" name="comarca" > </select>
 				<label for="padreMixto">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoMixto" name="localidad" /> 
+				<select id="hijoMixto" name="localidad" > </select>
 				<label for="hijoMixto">Hijo</label>
 			</div>
 		</fieldset>

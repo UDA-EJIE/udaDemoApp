@@ -115,44 +115,49 @@ jQuery(function($) {
             combo: true,
             autocomplete:true
         });
-      /*  
+      
         // REMOTO
         $('#abueloRemoto').rup_select({
-        	source : 'autocomplete/remoteEnlazadoProvincia',
+        	url : 'autocomplete/remoteEnlazadoProvincia',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
-            combo: true
+            combo: true,
+            autocomplete:true,
+            customClasses: ['select-material']
         });	
         
         $('#padreRemoto').rup_select({
         	parent: ['abueloRemoto'],
-        	source : 'autocomplete/remoteEnlazadoComarca',
+        	url : 'autocomplete/remoteEnlazadoComarca',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
-            combo: true
+            combo: true,
+            autocomplete:true
         });
         
         $('#hijoRemoto').rup_select({
         	parent: ['padreRemoto'],
-        	source : 'autocomplete/remoteEnlazadoLocalidad',
+        	url : 'autocomplete/remoteEnlazadoLocalidad',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
-            combo: true
+            combo: true,
+            autocomplete:true
         });
-        
+         
         // MIXTO
         $('#abueloMixto').rup_select({
-        	source : 'autocomplete/remoteEnlazadoProvincia',
+        	url : 'autocomplete/remoteEnlazadoProvincia',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
-            combo: true
+            combo: true,
+            autocomplete:true
         });	
         
         $('#padreMixto').rup_select({
         	parent: ['abueloMixto'],
-        	source: {
+        	data: {
                 '1': [{
-                    i18nCaption: 'Las Arenas',
+                    i18nCaption: 'Vitoria',
                     id: '5'
                 }],
                 '2': [{
@@ -163,24 +168,26 @@ jQuery(function($) {
                     id: '8'
                 }],
                 '3': [{
-                    i18nCaption: 'Yurre',
+                    i18nCaption: 'Donosti',
                     id: '10'
                 }, {
-                    i18nCaption: 'Bilbao',
+                    i18nCaption: 'Sansebastian',
                     id: '112'
                 }]
             },
             contains: false,
-            combo: true
+            combo: true,
+            autocomplete:true
         });
         
         $('#hijoMixto').rup_select({
         	parent: ['padreMixto'],
-        	source : 'autocomplete/remoteEnlazadoLocalidad',
+        	url : 'autocomplete/remoteEnlazadoLocalidad',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
-            combo: true
-        }); */
+            combo: true,
+            autocomplete:true
+        }); 
 
         $('.contenedor').addClass('show');
     });

@@ -1,7 +1,7 @@
 /*!
- * Bootstrap v4.5.1 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
+ * Bootstrap v4.6.1 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -32,7 +32,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -64,7 +64,7 @@
 
 .r01gContainer body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -229,6 +229,7 @@
 
 .r01gContainer th {
   text-align: inherit;
+  text-align: -webkit-match-parent;
 }
 
 .r01gContainer label {
@@ -240,9 +241,8 @@
   border-radius: 0;
 }
 
-.r01gContainer button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+.r01gContainer button:focus:not(:focus-visible) {
+  outline: 0;
 }
 
 .r01gContainer input,
@@ -617,7 +617,6 @@
 
 .r01gContainer .row {
   display: flex;
-  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
@@ -2138,11 +2137,6 @@
   border: 0;
 }
 
-.r01gContainer .form-control:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #495057;
-}
-
 .r01gContainer .form-control:focus {
   color: #495057;
   background-color: #fff;
@@ -2167,6 +2161,11 @@
 .r01gContainer input[type="datetime-local"].form-control,
 .r01gContainer input[type="month"].form-control {
   appearance: none;
+}
+
+.r01gContainer select.form-control:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #495057;
 }
 
 .r01gContainer select.form-control:focus::-ms-value {
@@ -2327,6 +2326,11 @@
   border-radius: 0.25rem;
 }
 
+.r01gContainer .form-row > .col > .valid-tooltip,
+.r01gContainer .form-row > [class*="col-"] > .valid-tooltip {
+  left: 5px;
+}
+
 .r01gContainer .was-validated :valid ~ .valid-feedback,
 .r01gContainer .was-validated :valid ~ .valid-tooltip,
 .r01gContainer .is-valid ~ .valid-feedback,
@@ -2337,7 +2341,7 @@
 .r01gContainer .was-validated .form-control:valid,
 .r01gContainer .form-control.is-valid {
   border-color: #28a745;
-  padding-right: calc(1.5em + 0.75rem);
+  padding-right: calc(1.5em + 0.75rem) !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -2350,6 +2354,12 @@
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
+.r01gContainer .was-validated select.form-control:valid,
+.r01gContainer select.form-control.is-valid {
+  padding-right: 3rem !important;
+  background-position: right 1.5rem center;
+}
+
 .r01gContainer .was-validated textarea.form-control:valid,
 .r01gContainer textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
@@ -2359,8 +2369,8 @@
 .r01gContainer .was-validated .custom-select:valid,
 .r01gContainer .custom-select.is-valid {
   border-color: #28a745;
-  padding-right: calc(0.75em + 2.3125rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  padding-right: calc(0.75em + 2.3125rem) !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .r01gContainer .was-validated .custom-select:valid:focus,
@@ -2442,6 +2452,11 @@
   border-radius: 0.25rem;
 }
 
+.r01gContainer .form-row > .col > .invalid-tooltip,
+.r01gContainer .form-row > [class*="col-"] > .invalid-tooltip {
+  left: 5px;
+}
+
 .r01gContainer .was-validated :invalid ~ .invalid-feedback,
 .r01gContainer .was-validated :invalid ~ .invalid-tooltip,
 .r01gContainer .is-invalid ~ .invalid-feedback,
@@ -2452,7 +2467,7 @@
 .r01gContainer .was-validated .form-control:invalid,
 .r01gContainer .form-control.is-invalid {
   border-color: #dc3545;
-  padding-right: calc(1.5em + 0.75rem);
+  padding-right: calc(1.5em + 0.75rem) !important;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right calc(0.375em + 0.1875rem) center;
@@ -2465,6 +2480,12 @@
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
+.r01gContainer .was-validated select.form-control:invalid,
+.r01gContainer select.form-control.is-invalid {
+  padding-right: 3rem !important;
+  background-position: right 1.5rem center;
+}
+
 .r01gContainer .was-validated textarea.form-control:invalid,
 .r01gContainer textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
@@ -2474,8 +2495,8 @@
 .r01gContainer .was-validated .custom-select:invalid,
 .r01gContainer .custom-select.is-invalid {
   border-color: #dc3545;
-  padding-right: calc(0.75em + 2.3125rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  padding-right: calc(0.75em + 2.3125rem) !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .r01gContainer .was-validated .custom-select:invalid:focus,
@@ -3569,7 +3590,7 @@
 .r01gContainer .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #e9ecef;
 }
 
 .r01gContainer .dropdown-item.active,
@@ -3581,7 +3602,7 @@
 
 .r01gContainer .dropdown-item.disabled,
 .r01gContainer .dropdown-item:disabled {
-  color: #6c757d;
+  color: #adb5bd;
   pointer-events: none;
   background-color: transparent;
 }
@@ -3772,12 +3793,6 @@
   z-index: 4;
 }
 
-.r01gContainer .input-group > .form-control:not(:last-child),
-.r01gContainer .input-group > .custom-select:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .r01gContainer .input-group > .form-control:not(:first-child),
 .r01gContainer .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
@@ -3798,6 +3813,22 @@
 .r01gContainer .input-group > .custom-file:not(:first-child) .custom-file-label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.r01gContainer .input-group:not(.has-validation) > .form-control:not(:last-child),
+.r01gContainer .input-group:not(.has-validation) > .custom-select:not(:last-child),
+.r01gContainer .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label,
+.r01gContainer .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.r01gContainer .input-group.has-validation > .form-control:nth-last-child(n + 3),
+.r01gContainer .input-group.has-validation > .custom-select:nth-last-child(n + 3),
+.r01gContainer .input-group.has-validation > .custom-file:nth-last-child(n + 3) .custom-file-label,
+.r01gContainer .input-group.has-validation > .custom-file:nth-last-child(n + 3) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .r01gContainer .input-group-prepend,
@@ -3897,8 +3928,10 @@
 
 .r01gContainer .input-group > .input-group-prepend > .btn,
 .r01gContainer .input-group > .input-group-prepend > .input-group-text,
-.r01gContainer .input-group > .input-group-append:not(:last-child) > .btn,
-.r01gContainer .input-group > .input-group-append:not(:last-child) > .input-group-text,
+.r01gContainer .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
+.r01gContainer .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
+.r01gContainer .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn,
+.r01gContainer .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .input-group-text,
 .r01gContainer .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .r01gContainer .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
@@ -3921,6 +3954,7 @@
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
+  color-adjust: exact;
 }
 
 .r01gContainer .custom-control-inline {
@@ -3994,7 +4028,7 @@
   width: 1rem;
   height: 1rem;
   content: "";
-  background: no-repeat 50% / 50% 50%;
+  background: 50% / 50% 50% no-repeat;
 }
 
 .r01gContainer .custom-checkbox .custom-control-label::before {
@@ -4080,7 +4114,7 @@
   line-height: 1.5;
   color: #495057;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   appearance: none;
@@ -4148,6 +4182,7 @@
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   margin: 0;
+  overflow: hidden;
   opacity: 0;
 }
 
@@ -4177,6 +4212,7 @@
   z-index: 1;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
+  overflow: hidden;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -4211,7 +4247,7 @@
 }
 
 .r01gContainer .custom-range:focus {
-  outline: none;
+  outline: 0;
 }
 
 .r01gContainer .custom-range:focus::-webkit-slider-thumb {
@@ -4397,11 +4433,8 @@
   border-bottom: 1px solid #dee2e6;
 }
 
-.r01gContainer .nav-tabs .nav-item {
-  margin-bottom: -1px;
-}
-
 .r01gContainer .nav-tabs .nav-link {
+  margin-bottom: -1px;
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -4548,8 +4581,12 @@
   height: 1.5em;
   vertical-align: middle;
   content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
+  background: 50% / 100% 100% no-repeat;
+}
+
+.r01gContainer .navbar-nav-scroll {
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 @media (max-width: 575.98px) {
@@ -4590,6 +4627,10 @@
   .r01gContainer .navbar-expand-sm > .container-lg,
   .r01gContainer .navbar-expand-sm > .container-xl {
     flex-wrap: nowrap;
+  }
+
+  .r01gContainer .navbar-expand-sm .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .r01gContainer .navbar-expand-sm .navbar-collapse {
@@ -4642,6 +4683,10 @@
     flex-wrap: nowrap;
   }
 
+  .r01gContainer .navbar-expand-md .navbar-nav-scroll {
+    overflow: visible;
+  }
+
   .r01gContainer .navbar-expand-md .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
@@ -4690,6 +4735,10 @@
   .r01gContainer .navbar-expand-lg > .container-lg,
   .r01gContainer .navbar-expand-lg > .container-xl {
     flex-wrap: nowrap;
+  }
+
+  .r01gContainer .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .r01gContainer .navbar-expand-lg .navbar-collapse {
@@ -4742,6 +4791,10 @@
     flex-wrap: nowrap;
   }
 
+  .r01gContainer .navbar-expand-xl .navbar-nav-scroll {
+    overflow: visible;
+  }
+
   .r01gContainer .navbar-expand-xl .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
@@ -4787,6 +4840,10 @@
 .r01gContainer .navbar-expand > .container-lg,
 .r01gContainer .navbar-expand > .container-xl {
   flex-wrap: nowrap;
+}
+
+.r01gContainer .navbar-expand .navbar-nav-scroll {
+  overflow: visible;
 }
 
 .r01gContainer .navbar-expand .navbar-collapse {
@@ -5151,16 +5208,12 @@
   border-radius: 0.25rem;
 }
 
-.r01gContainer .breadcrumb-item {
-  display: flex;
-}
-
 .r01gContainer .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;
 }
 
 .r01gContainer .breadcrumb-item + .breadcrumb-item::before {
-  display: inline-block;
+  float: left;
   padding-right: 0.5rem;
   color: #6c757d;
   content: "/";
@@ -5486,6 +5539,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
   padding: 0.75rem 1.25rem;
   color: inherit;
 }
@@ -5646,7 +5700,7 @@
 }
 
 .r01gContainer .progress-bar-animated {
-  animation: progress-bar-stripes 1s linear infinite;
+  animation: 1s linear infinite progress-bar-stripes;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6322,7 +6376,7 @@
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6447,7 +6501,7 @@
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6708,8 +6762,11 @@
   align-items: center;
   justify-content: center;
   width: 15%;
+  padding: 0;
   color: #fff;
   text-align: center;
+  background: none;
+  border: 0;
   opacity: 0.5;
   transition: opacity 0.15s ease;
 }
@@ -6744,7 +6801,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: no-repeat 50% / 100% 100%;
+  background: 50% / 100% 100% no-repeat;
 }
 
 .r01gContainer .carousel-control-prev-icon {
@@ -6818,11 +6875,11 @@
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  vertical-align: text-bottom;
+  vertical-align: -0.125em;
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: spinner-border .75s linear infinite;
+  animation: .75s linear infinite spinner-border;
 }
 
 .r01gContainer .spinner-border-sm {
@@ -6846,16 +6903,23 @@
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  vertical-align: text-bottom;
+  vertical-align: -0.125em;
   background-color: currentColor;
   border-radius: 50%;
   opacity: 0;
-  animation: spinner-grow .75s linear infinite;
+  animation: .75s linear infinite spinner-grow;
 }
 
 .r01gContainer .spinner-grow-sm {
   width: 1rem;
   height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .r01gContainer .spinner-border,
+  .r01gContainer .spinner-grow {
+    animation-duration: 1.5s;
+  }
 }
 
 .r01gContainer .align-baseline {
@@ -10707,7 +10771,7 @@
 
 .r01gContainer .text-break {
   word-break: break-word !important;
-  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
 }
 
 .r01gContainer .text-reset {
@@ -10746,10 +10810,6 @@
   .r01gContainer blockquote {
     border: 1px solid #adb5bd;
     page-break-inside: avoid;
-  }
-
-  .r01gContainer thead {
-    display: table-header-group;
   }
 
   .r01gContainer tr,
@@ -15710,7 +15770,7 @@
 }
 
 .r01gContainer .select2-container {
-  min-width: 400px;
+  min-width: 180px;
 }
 
 .r01gContainer .select2-results__option {
@@ -15772,7 +15832,6 @@
 }
 
 .r01gContainer .select2-container--open .select2-dropdown--below {
-  border-radius: 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -22097,6 +22156,97 @@
   border-bottom-right-radius: 0;
 }
 
+.r01gContainer .form-groupMaterial label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span:hover span.select2-selection {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection {
+  outline: none;
+  border-color: #1472a4;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered {
+  padding-left: 17px;
+  padding-right: 19px;
+  line-height: 1.65;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus + label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b {
+  border-color: transparent transparent #555555 transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b {
+  border-color: #555555 transparent transparent transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border: 1px solid #757575;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 29px;
+}
+
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {
   height: 0;
   margin-top: 0.8em;
@@ -22352,6 +22502,7 @@
 
 .r01gContainer .form-groupMaterial.rup-validate-field-error {
   /* SELECT */
+  /* SELECT2 */
   /* TEXTAREA */
   /* AUTOCOMPLETE COMBOBOX */
   /* RUP.DATE */
@@ -22479,6 +22630,40 @@
   right: 25px;
 }
 
+.r01gContainer .form-groupMaterial.rup-validate-field-error label.select-material {
+  color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border-color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span:hover span.select2-selection {
+  border-color: #d43f3a;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection {
+  border: 2px solid #d43f3a;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span.select2-container--focus ~ label,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span.select2-container--focus ~ label,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus ~ label {
+  color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span + i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span + i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span + i.mdi.error {
+  right: 45px;
+}
+
 .r01gContainer .form-groupMaterial.rup-validate-field-error textarea {
   padding-right: 35px;
 }
@@ -22600,6 +22785,20 @@
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 400;
+}
+
+/* AYUDA A MOSTRAR EN CONJUNTO LOS ICONOS DE APERTURA Y ERROR DE RUP_SELECT */
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] select[ruptype="select"] ~ i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-multiselect[ruptype="select"] ~ i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ i.mdi.error {
+  right: 35px;
+}
+
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] select[ruptype="select"] ~ i.mdi.error,
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-multiselect[ruptype="select"] ~ i.mdi.error,
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ i.mdi.error {
+  right: 45px;
 }
 
 /* ESTILOS GENERALES */
@@ -50720,7 +50919,7 @@
 }
 
 .r01gContainer .select2-container {
-  min-width: 400px;
+  min-width: 180px;
 }
 
 .r01gContainer .select2-results__option {
@@ -50782,7 +50981,6 @@
 }
 
 .r01gContainer .select2-container--open .select2-dropdown--below {
-  border-radius: 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -57107,6 +57305,97 @@
   border-bottom-right-radius: 0;
 }
 
+.r01gContainer .form-groupMaterial label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span:hover span.select2-selection {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection {
+  outline: none;
+  border-color: #1472a4;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered {
+  padding-left: 17px;
+  padding-right: 19px;
+  line-height: 1.65;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus + label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b {
+  border-color: transparent transparent #555555 transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b {
+  border-color: #555555 transparent transparent transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border: 1px solid #757575;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 29px;
+}
+
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {
   height: 0;
   margin-top: 0.8em;
@@ -57362,6 +57651,7 @@
 
 .r01gContainer .form-groupMaterial.rup-validate-field-error {
   /* SELECT */
+  /* SELECT2 */
   /* TEXTAREA */
   /* AUTOCOMPLETE COMBOBOX */
   /* RUP.DATE */
@@ -57489,6 +57779,40 @@
   right: 25px;
 }
 
+.r01gContainer .form-groupMaterial.rup-validate-field-error label.select-material {
+  color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border-color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span:hover span.select2-selection {
+  border-color: #d43f3a;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection {
+  border: 2px solid #d43f3a;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span.select2-container--focus ~ label,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span.select2-container--focus ~ label,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus ~ label {
+  color: #d9534f;
+}
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error select[ruptype="select"] + span + i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-multiselect[ruptype="select"] + span + i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error .ui-selectmenu-dropdown[ruptype="select"] + span + i.mdi.error {
+  right: 45px;
+}
+
 .r01gContainer .form-groupMaterial.rup-validate-field-error textarea {
   padding-right: 35px;
 }
@@ -57610,6 +57934,20 @@
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 400;
+}
+
+/* AYUDA A MOSTRAR EN CONJUNTO LOS ICONOS DE APERTURA Y ERROR DE RUP_SELECT */
+
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] select[ruptype="select"] ~ i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-multiselect[ruptype="select"] ~ i.mdi.error,
+.r01gContainer .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ i.mdi.error {
+  right: 35px;
+}
+
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] select[ruptype="select"] ~ i.mdi.error,
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-multiselect[ruptype="select"] ~ i.mdi.error,
+.r01gContainer :not(.form-row) > .form-groupMaterial.rup-validate-field-error[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ i.mdi.error {
+  right: 45px;
 }
 
 /* ESTILOS GENERALES */

@@ -316,7 +316,9 @@ public class PatronesController {
     @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
     		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
     		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
-    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
     })
     @RequestMapping(value = "selectAutocompleteEnlazadoMultiple", method = RequestMethod.GET)
     public String getSelectAutocompleteEnlazadoMultiple(Model model) {
@@ -746,6 +748,14 @@ public class PatronesController {
         
         Comarca comarca = new Comarca();
         comarca.setProvincia(provincia);
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	comarca.setDescEu(q);
+            } else {
+            	comarca.setDescEs(q);
+            }
+    	}
         
         try {
             Thread.sleep(1000);
@@ -762,7 +772,7 @@ public class PatronesController {
     List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal codComarca) {
+            @RequestParam(value = "comarca", required = false) BigDecimal codComarca) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
@@ -770,6 +780,15 @@ public class PatronesController {
         
         Localidad localidad = new Localidad();
         localidad.setComarca(comarca);
+        
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	localidad.setDescEu(q);
+            } else {
+            	localidad.setDescEs(q);
+            }
+    	}
 
         try {
             Thread.sleep(1000);
@@ -834,6 +853,88 @@ public class PatronesController {
         DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
         departamentoProvincia.setDepartamento(departamento);
         departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
 
         try {
             Thread.sleep(1000);

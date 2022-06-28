@@ -17,21 +17,21 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="container-fluid">
-	<h2 class="title mb-3"><spring:message code="patron.autocompleteEnlazadoMultiple" /></h2>
+	<h2 class="title mb-3">Select <spring:message code="patron.autocompleteEnlazadoMultiple"/></h2>
 	
 	<div class="form-row">
 		<fieldset id="local" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloLocal" /> 
+				<select id="abueloLocal" ></select>
 				<label for="abueloLocal">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreLocal" /> 
+				<select id="padreLocal"></select> 
 				<label for="padreLocal">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoLocal" /> 
+				<select id="hijoLocal"></select> 
 				<label for="hijoLocal">Hijo</label>
 			</div>
 		</fieldset>
@@ -39,15 +39,15 @@
 		<fieldset id="remote" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Remoto</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloRemoto" name="departamento" /> 
+				<select id="abueloRemoto" name="departamento"></select> 
 				<label for="abueloRemoto">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreRemoto" name="provincia" /> 
+				<select id="padreRemoto" name="provincia"></select> 
 				<label for="padreRemoto">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoRemoto" name="departamentoProvincia" /> 
+				<select id="hijoRemoto" name="departamentoProvincia"></select> 
 				<label for="hijoRemoto">Hijo</label>
 			</div>
 		</fieldset>
@@ -55,15 +55,15 @@
 		<fieldset id="mixtoI" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Mixto I (LOCAL, LOCAL y REMOTO)</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloMixtoI" name="departamento" /> 
+				<select id="abueloMixtoI" name="departamento"></select> 
 				<label for="abueloMixtoI">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreMixtoI" name="provincia" /> 
+				<select id="padreMixtoI" name="provincia"></select> 
 				<label for="padreMixtoI">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoMixtoI" name="departamentoProvincia" /> 
+				<select id="hijoMixtoI" name="departamentoProvincia"></select> 
 				<label for="hijoMixtoI">Hijo</label>
 			</div>
 		</fieldset>
@@ -71,15 +71,15 @@
 		<fieldset id="mixtoII" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
 			<legend>Mixto II (REMOTO, REMOTO y LOCAL)</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloMixtoII" name="departamento" /> 
+				<select id="abueloMixtoII" name="departamento"></select> 
 				<label for="abueloMixtoII">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreMixtoII" name="provincia" /> 
+				<select id="padreMixtoII" name="provincia"></select> 
 				<label for="padreMixtoII">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoMixtoII" name="departamentoProvincia" /> 
+				<select id="hijoMixtoII" name="departamentoProvincia"></select> 
 				<label for="hijoMixtoII">Hijo</label>
 			</div>
 		</fieldset>
@@ -87,15 +87,15 @@
 		<fieldset id="mixtoIII" class="col-md col-12 px-3 my-md-0 my-2">
 			<legend>Mixto III (REMOTO, LOCAL y REMOTO)</legend>
 			<div class="form-groupMaterial">
-				<input id="abueloMixtoIII" name="departamento" /> 
+				<select id="abueloMixtoIII" name="departamento"></select> 
 				<label for="abueloMixtoIII">Abuelo</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="padreMixtoIII" name="provincia" /> 
+				<select id="padreMixtoIII" name="provincia"></select> 
 				<label for="padreMixtoIII">Padre</label>
 			</div>
 			<div class="form-groupMaterial">
-				<input id="hijoMixtoIII" name="departamentoProvincia" /> 
+				<select id="hijoMixtoIII" name="departamentoProvincia"></select> 
 				<label for="hijoMixtoIII">Hijo</label>
 			</div>
 		</fieldset>
