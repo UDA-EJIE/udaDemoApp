@@ -133,7 +133,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario> get(@PathVariable String id) {
+	public @ResponseBody Resource<Usuario> get(
+			@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
