@@ -20,6 +20,7 @@ import javax.validation.groups.Default;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.SecureIdentifiable;
 import org.hdiv.services.TrustAssertion;
 
 /**
@@ -27,7 +28,7 @@ import org.hdiv.services.TrustAssertion;
  * @author UDA
  */
 
-public class NoraPais implements java.io.Serializable, SecureIdContainer {
+public class NoraPais implements java.io.Serializable, SecureIdentifiable<String> {
 
 	private static final long serialVersionUID = 1L;
     //Clave compuesta
@@ -37,7 +38,7 @@ public class NoraPais implements java.io.Serializable, SecureIdContainer {
 	private String dsO;
 
 	//ID
-	@TrustAssertion(idFor = NoraPais.class)
+
 	private transient String rowId;
 
 	/** Method 'NoraPais'.
@@ -68,15 +69,11 @@ public class NoraPais implements java.io.Serializable, SecureIdContainer {
      * @return String
      */
 
-	public String getRowId() {
+/*	public String getRowId() {
 		return this.id + "~" + this.dsO;
 	}
 
-	/**
-     * Method 'setRowId'.
-     *
-     * @return String
-     */
+
 
 	public void setRowId(String rowId) {
 		if(rowId != null && !"".equals(rowId)) {
@@ -84,7 +81,7 @@ public class NoraPais implements java.io.Serializable, SecureIdContainer {
 			id = parts[0];
 			dsO = parts[1];
 		}
-	}
+	}*/
 
 	/**
      * Method 'getId'.

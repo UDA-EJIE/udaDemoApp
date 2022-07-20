@@ -17,7 +17,8 @@
 
 <!-- Include de los elementos comunes -->
 <script type="text/javascript">
-var	APP_RESOURCES = 'x21a',
+var	IS_EJIE = '${isEjie}',
+	APP_RESOURCES = 'x21a',
 	CTX_PATH = '<%= request.getContextPath()%>/',
 	STATICS = '${staticsUrl}',
 	RUP = '${staticsUrl}/rup',
