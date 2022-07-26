@@ -663,7 +663,7 @@
          * @param {boolean} orderAsNumber - Indica si se debe ordenar como valores numéricos en vez de alfabéticos.
          * @param {boolean} skipFirst - Determina si se debe obviar el primer elemento.
          * @example
-         * $("#idCombo").rup_combo("order", orderedByValue, orderAsNumber, skipFirst);
+         * $("#idSelect").rup_select("order", orderedByValue, orderAsNumber, skipFirst);
          */
         order: function (groups,orderedByValue, orderAsNumber) {
         	/* Get options */
@@ -700,21 +700,26 @@
         	}
         },
 		/**
-         * Lanza una búsqueda en el autocomplete con el parámetro indicado y el foco va a parar al
-    input.
+         * Lanza una búsqueda en el autocomplete con el parámetro indicado y el foco va a parar al input.
          *
          * @param {string} term - Cadena de texto utilizada para realizar la búsqueda.
+         * @param {boolean} notOthersClose - Si deseas cerrar el resto de componentes.
          * @function search
+         * 
          * @example
-         * $("#idAutocomplete").rup_autocomplete("search", "java");
+         * $("#idSelect").rup_select("search", "java");
          */
-    	search: function (term) {
+    	search: function (term,notOthersClose) {
     		let $search = $(this).data('select2').dropdown.$search ||$(this).data('select2').mySelect.selection.$search;
-	          
+           	if(!notOthersClose){
+        		$('.select2-hidden-accessible').select2('close');
+        	}
+           	$(this).data('select2').$container.find('input').val(term);  
 	        if($search != undefined){
 	          $search.val(term);	
 	          $search.trigger('keyup');
 	        }
+	        
     	},
     	/**
          * Permite consultar y modificar la configuración del componente.
@@ -737,7 +742,51 @@
         		$(this).find('option').remove();
         	}
         	$(this).rup_select(settings);
-		}
+		},
+    	/**
+         * Permite abrir el componente.
+         *
+         * @param {boolean} notOthersClose - Si deseas cerrar el resto de componentes.
+         * @function open
+         * @example
+         * // Establecer una propiedad
+         * $("#idSelect").rup_select("option", true);
+         */
+		open: function (notOthersClose) {
+        	if(!notOthersClose){
+        		$('.select2-hidden-accessible').select2('close');
+        	}
+        	$(this).select2('open');
+        	
+		},
+    	/**
+         * Permite cerrar el componente.
+         *
+         * @param {boolean} notOthersClose - Si deseas cerrar el resto de componentes.
+         * @function close
+         * @example
+         * // Establecer una propiedad
+         * $("#idSelect").rup_select("option", true);
+         */
+		close: function (notOthersClose) {
+        	if(!notOthersClose){
+        		$('.select2-hidden-accessible').select2('close');
+	       	}
+	        $(this).select2('close');      	
+		},
+		/**
+         * Elimina el autocomplete.
+         *
+         * @function destroy
+         * @example
+         * $("#idSelect").rup_select("destroy");
+         */
+		destroy: function (notRemoveOptions) {
+			$(this).select2("destroy");
+        	if(!notRemoveOptions){
+        		$(this).find('option').remove();
+        	}
+		},
     });
 
     // *******************************

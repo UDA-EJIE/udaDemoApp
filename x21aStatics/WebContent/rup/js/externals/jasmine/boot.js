@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2008-2022 Pivotal Labs
+Copyright (c) 2008-2019 Pivotal Labs
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,10 +21,6 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 /**
-
- NOTE: This file is deprecated and will be removed in a future release.
- Include both boot0.js and boot1.js (in that order) instead.
-
  Starting with version 2.0, this file "boots" Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project's specs. This file should be loaded after `jasmine.js` and `jasmine_html.js`, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.
 
  If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
@@ -35,16 +31,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 (function() {
-  var jasmineRequire = window.jasmineRequire || require('./jasmine.js');
 
   /**
    * ## Require &amp; Instantiate
    *
    * Require Jasmine's core files. Specifically, this requires and attaches all of Jasmine's code to the `jasmine` reference.
    */
-  var jasmine = jasmineRequire.core(jasmineRequire),
-    global = jasmine.getGlobal();
-  global.jasmine = jasmine;
+  window.jasmine = jasmineRequire.core(jasmineRequire);
 
   /**
    * Since this is being run in a browser and the results should populate to an HTML page, require the HTML-specific Jasmine code, injecting the same reference.
@@ -66,7 +59,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   /**
    * Add all of the Jasmine global/public interface to the global scope, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
    */
-  extend(global, jasmineInterface);
+  extend(window, jasmineInterface);
 
   /**
    * ## Runner Parameters
@@ -81,8 +74,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   var filterSpecs = !!queryString.getParam("spec");
 
   var config = {
-    stopOnSpecFailure: queryString.getParam("failFast"),
-    stopSpecOnExpectationFailure: queryString.getParam("oneFailurePerSpec"),
+    failFast: queryString.getParam("failFast"),
+    oneFailurePerSpec: queryString.getParam("oneFailurePerSpec"),
     hideDisabled: queryString.getParam("hideDisabled")
   };
 
@@ -162,6 +155,4 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     return destination;
   }
 
-  env.deprecated('boot.js is deprecated. Please use boot0.js and boot1.js instead.',
-    { ignoreRunnable: true });
 }());
