@@ -19,7 +19,9 @@
 <section class="row">
 	<div class="col-12">
 
-		<h2 class="title mb-3">Select Autocomplete</h2>
+		<h2 class="title mb-3">
+			<spring:message code="selectAutocomplete.title" />
+		</h2>
 		
 		<div class="row mt-4">
 			<div class="col-sm-6">

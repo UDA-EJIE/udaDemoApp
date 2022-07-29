@@ -14,7 +14,9 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2><spring:message code="multiSelect" /></h2>
+<h2>
+	<spring:message code="selectMultiselect.title" />
+</h2>
 
 <div class="container-fluid">
 	<div class="form-row">

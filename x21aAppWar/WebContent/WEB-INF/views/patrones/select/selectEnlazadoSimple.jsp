@@ -14,7 +14,9 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Select Enlazado (simple)</h2>
+<h2>
+	<spring:message code="selectEnlazadoSimple.title" />
+</h2>
 <form:form id="select_enlazado_form"  method="post" action="/post" modelAttribute="Comarca">
 
 <div class="container-fluid">

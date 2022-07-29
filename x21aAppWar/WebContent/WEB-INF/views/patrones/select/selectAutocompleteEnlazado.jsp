@@ -17,7 +17,9 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <section class="container-fluid">
-	<h2 class="title mb-3">Select autocomplet enlazado</h2>
+	<h2 class="title mb-3">
+		<spring:message code="selectAutocompleteEnlazado.title" />
+	</h2>
 	
 	<div class="form-row">
 		<fieldset id="local" class="col-md col-12 px-3">

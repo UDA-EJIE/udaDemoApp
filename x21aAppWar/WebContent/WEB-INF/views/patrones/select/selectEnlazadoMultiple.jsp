@@ -13,7 +13,15 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Select Enlazado (multiple)</h2>
+
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+
+<h2>
+	<spring:message code="selectEnlazadoMulti.title" />
+</h2>
 
 <!-- Feedback -->
 <div id="x21aAppWar_feedback"></div><br/>

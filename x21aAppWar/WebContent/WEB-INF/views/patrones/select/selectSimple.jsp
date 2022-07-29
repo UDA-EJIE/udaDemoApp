@@ -13,7 +13,15 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-<h2>Select</h2>
+
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+
+<h2>
+	<spring:message code="selectSimple.title" />
+</h2>
 <div class="container-fluid">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
