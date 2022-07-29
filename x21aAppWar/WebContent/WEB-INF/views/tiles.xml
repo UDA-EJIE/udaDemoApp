@@ -290,11 +290,11 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/select/includes/selectEnlazadoMultiple-includes.jsp" />
 	</definition>
-	<definition extends="template" name="multiselect">
+	<definition extends="template" name="selectMultiselect">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/select/multiselect.jsp" />
+			value="/WEB-INF/views/patrones/select/selectMultiselect.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/includes/multiselect-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/includes/selectMultiselect-includes.jsp" />
 	</definition>
 	<definition extends="template" name="selectMantenimiento">
 		<put-attribute name="content"

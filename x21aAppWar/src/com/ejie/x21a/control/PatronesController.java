@@ -278,9 +278,9 @@ public class PatronesController {
     
     //MultiSelect
     @UDALink(name = "getSelectMultiselect", linkTo = {@UDALinkAllower(name = "getComboRemote"),@UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "multiselect", method = RequestMethod.GET)
-    public String getMultiSelect(Model model) {
-        return "multiselect";
+    @RequestMapping(value = "selectMultiselect", method = RequestMethod.GET)
+    public String getSelectMultiSelect(Model model) {
+        return "selectMultiselect";
     }
 
     //select en mantenimiento
