@@ -15106,6 +15106,9 @@ div.rup-message {
   font-size: 1.2rem;
   text-align: center; }
 
+.select2-search--dropdown {
+  display: none; }
+
 div.rup-slider-material.ui-slider-horizontal {
   height: 0;
   margin-top: 0.8em;
@@ -40896,6 +40899,9 @@ div.rup-message {
   background-color: #1472a4;
   font-size: 1.2rem;
   text-align: center; }
+
+.select2-search--dropdown {
+  display: none; }
 
 div.rup-slider-material.ui-slider-horizontal {
   height: 0;

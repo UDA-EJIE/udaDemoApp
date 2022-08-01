@@ -22341,6 +22341,10 @@
   text-align: center;
 }
 
+.r01gContainer .select2-search--dropdown {
+  display: none;
+}
+
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {
   height: 0;
   margin-top: 0.8em;
@@ -57584,6 +57588,10 @@
   background-color: #1472a4;
   font-size: 1.2rem;
   text-align: center;
+}
+
+.r01gContainer .select2-search--dropdown {
+  display: none;
 }
 
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {
