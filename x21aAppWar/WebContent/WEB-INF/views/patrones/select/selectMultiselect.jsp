@@ -20,39 +20,39 @@
 
 <div class="container-fluid">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="multiSelect"></select>  
 			<label for="multiSelect">MultiSelect local</label>
-			<select id="multiSelect"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="multiSelectRemoto"></select>  
 			<label for="multiSelectRemoto">MultiSelect remoto</label>
-			<select id="multiSelectRemoto"></select>
 		</div>
 	</div>
 </div>
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="multiSelectGrupos"></select>  
 			<label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
-			<select id="multiSelectGrupos"></select>
 		</div>
-		<div class="form-groupMaterial col-sm"> 
+		<div class="form-groupMaterial col-sm">
+			<select id="multiSelectGruposRemoto"></select> 
 			<label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto y preselecionado</label>
-			<select id="multiSelectGruposRemoto"></select>
 		</div>
 	</div>
 </div>
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm"> 
-			<label for="multiSelectLoadFromSelect">MultiSelect carga inicial desde <strong>HTML</strong></label>
+		<div class="form-groupMaterial col-sm">
 			<select id="multiSelectLoadFromSelect" multiple="multiple">
 				<option value="1" selected="selected">Alava</option>
 				<option value="3">Gipuzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>
-			</select>
+			</select> 
+			<label for="multiSelectLoadFromSelect">MultiSelect carga inicial desde <strong>HTML</strong></label>
 		</div>
 	</div>
 </div>

@@ -32,18 +32,18 @@
 			<legend>Local (no i18n)</legend>
 			
 			<div class="form-groupMaterial">
-				<label for="departamento">Departamento</label>
 				<select id="departamento"><option>&nbsp;</option></select>
+				<label for="departamento">Departamento</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="provincia">Provincia</label>
 				<select id="provincia"><option>&nbsp;</option></select>
+				<label for="provincia">Provincia</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="dptoProv">Departamento-Provincia</label>
 				<select id="dptoProv"><option>&nbsp;</option></select>
+				<label for="dptoProv">Departamento-Provincia</label>
 			</div>
 		</fieldset>
 	
@@ -51,18 +51,18 @@
 			<legend>Remoto</legend>
 			
 			<div class="form-groupMaterial">
-				<label for="departamentoRemote">Departamento</label>
 				<select id="departamentoRemote" name="departamento"><option>&nbsp;</option></select>
+				<label for="departamentoRemote">Departamento</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="provinciaRemote">Provincia</label>
 				<select id="provinciaRemote" name="provincia"><option>&nbsp;</option></select>
+				<label for="provinciaRemote">Provincia</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="dptoProvRemote">Departamento-Provincia</label>
 				<select id="dptoProvRemote"><option>&nbsp;</option></select>
+				<label for="dptoProvRemote">Departamento-Provincia</label>
 			</div>
 		</fieldset>
 	</div>
@@ -74,18 +74,18 @@
 			<legend>Mixto I</legend>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto_departamentoRemote">Departamento (remoto)</label>
 				<select id="mixto_departamentoRemote" name="departamento"><option>&nbsp;</option></select>
+				<label for="mixto_departamentoRemote">Departamento (remoto)</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto_provincia">Provincia (local)</label>
 				<select id="mixto_provincia" name="provincia"><option>&nbsp;</option></select>
+				<label for="mixto_provincia">Provincia (local)</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
 				<select id="mixto_dptoProvRemote"><option>&nbsp;</option></select>
+				<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
 			</div>
 		</fieldset>
 
@@ -93,18 +93,18 @@
 			<legend>Mixto II</legend>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto2_departamento">Departamento (local)</label>
 				<select id="mixto2_departamento"><option>&nbsp;</option></select>
+				<label for="mixto2_departamento">Departamento (local)</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
 				<select id="mixto2_provinciaRemote"><option>&nbsp;</option></select>
+				<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 				<select id="mixto2_dptoProv"><option>&nbsp;</option></select>
+				<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 			</div>
 		</fieldset>
 	</div>

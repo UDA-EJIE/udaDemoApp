@@ -24,46 +24,46 @@
 </h2>
 <div class="container-fluid">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectSimple"></select>  
 			<label for="selectSimple">Select simple local</label>
-			<select id="selectSimple"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectRemoto"></select>  
 			<label for="selectRemoto">Select remoto</label>
-			<select id="selectRemoto"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectLargoMulti"></select>  
 			<label for="selectLargoMulti">Select Multi con texto largo</label>
-			<select id="selectLargoMulti"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectLargo"></select>  
 			<label for="selectLargo">Select Simple con texto largo</label>
-			<select id="selectLargo"></select>
 		</div>
 	</div>
 </div>
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectGrupos"></select>  
 			<label for="selectGrupos">Select con 'optgroups'</label>
-			<select id="selectGrupos"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectGruposRemoto"></select>  
 			<label for="selectGruposRemoto">Select con 'optgroups' remoto</label>
-			<select id="selectGruposRemoto"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
+		<div class="form-groupMaterial col-sm">
+			<select id="selectImgs"></select>  
 			<label for="selectImgs">Select (no i18n) con imagenes</label>
-			<select id="selectImgs"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
-			<label for="SelectLoadFromSelect">Select carga inicial desde <strong>HTML</strong></label>
+		<div class="form-groupMaterial col-sm">
 			<select id="SelectLoadFromSelect">
 				<option value="1">Alava</option>
 				<option value="3">Gipuzcoa</option>
 				<option value="2" selected="selected">Vizcaya</option>
-			</select>
+			</select>  
+			<label for="SelectLoadFromSelect">Select carga inicial desde <strong>HTML</strong></label>
 		</div>
 	</div>
 </div>
