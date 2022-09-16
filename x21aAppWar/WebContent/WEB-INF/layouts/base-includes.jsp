@@ -29,6 +29,7 @@ var	IS_EJIE = '${isEjie}',
 	LOCALE_COOKIE_NAME = "${localeResolver.cookieName}",
 	LOCALE_PARAM_NAME = "${mvcInterceptor.paramName}",
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
+	DEFAULT_LANG = "${mvcInterceptor.defaultLanguage}",
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
