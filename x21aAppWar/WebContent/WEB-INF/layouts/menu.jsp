@@ -500,8 +500,36 @@
 					</a>
 				</div>
 			</li>
-
-
+			
+			
+			<!-- Experimental -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#"
+					id="experimentalDropdown" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<spring:message code="experimental" />
+				</a>
+				<div class="dropdown-menu" aria-labelledby="experimentalDropdown">
+                    <spring:url value="/experimental/logLevel" var="logLevel" htmlEscape="true"/>
+					<a class="dropdown-item" href="${logLevel}">
+						<spring:message code="experimental.logLevel" />
+					</a>
+                    <spring:url value="/iberdok/iberdokWellcome" var="iberdok" htmlEscape="true"/>
+					<a class="dropdown-item" href="${iberdok}">
+						<spring:message code="experimental.iberdok" />
+					</a>
+				</div>
+			</li>
+			
+			<!-- Mantenimientos generados con el plugin -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#"
+					id="mantenimientosDropdown" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<spring:message code="mantenimientos" />
+				</a>
+				<%@include file="menuMantenimientos.jsp"%>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav float-md-right rup-nav-tools">
 			<li class="nav-item">
