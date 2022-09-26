@@ -43,6 +43,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.security.XlnetCore;
 import com.ejie.x38.util.ResourceUtils;
 
 import n38c.exe.N38API;
@@ -276,6 +277,18 @@ public class IberdokController {
 		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		
 		return "iberdok";
+	}
+	
+	// Iberdok
+	@UDALink(name = "getWellcome", linkTo = {
+			@UDALinkAllower(name = "view"),})
+	@RequestMapping(value = "iberdokWellcome", method = RequestMethod.GET)
+	public String getIberdokWellcome(Model model, HttpServletRequest request, HttpServletResponse response) {
+		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
+		if(udaXLNetsSessionId != null) {
+			return "iberdok";
+		}
+		return "iberdokWellcome";
 	}
 	
 	// Iberdok

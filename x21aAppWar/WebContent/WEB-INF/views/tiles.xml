@@ -595,6 +595,11 @@
 	</definition>
 	
 	<definition name="iberdokEditForm" template="/WEB-INF/views/experimental/iberdokEditForm.jsp" />
+	
+	<definition extends="template" name="iberdokWellcome">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/iberdokWellcome.jsp" />
+	</definition>
 
 
 	<!-- Integracion -->

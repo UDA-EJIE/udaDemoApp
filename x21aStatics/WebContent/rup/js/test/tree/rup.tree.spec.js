@@ -22,7 +22,7 @@ function testTree (type) {
         return;
     }
     describe('Test Tree ['+type+'] >', () => {
-        var $tree;
+        var $tree = '';
         beforeAll((done) => {
             testutils.loadCss(done);
         });
@@ -31,9 +31,10 @@ function testTree (type) {
         });
         beforeEach((done) => {
             treeCreator[type](() => {
-                $tree = $('#exampleTree');
-                done();
+
             });
+            $tree = $('#exampleTree');
+            done();
         });
         afterEach(() => {
             $('#content').html('');
