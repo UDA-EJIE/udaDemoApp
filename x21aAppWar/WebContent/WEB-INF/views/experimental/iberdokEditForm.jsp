@@ -43,12 +43,7 @@
 	    	<label for="token_detail_table"><spring:message code="iberdok.token" /></label>
 	    </div> 
 	</div>
-	<div class="form-row d-none">      
-	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="idUsuario" id="idUsuario_detail_table" />
-	    	<label for="idUsuario_detail_table"><spring:message code="iberdok.idUsuario" /></label>
-	    </div>
-	</div>
+
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="urlRetorno" id="urlRetorno_detail_table" />

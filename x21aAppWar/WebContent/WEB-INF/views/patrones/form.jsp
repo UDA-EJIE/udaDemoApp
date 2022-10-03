@@ -78,10 +78,10 @@
 						</div>
 
 						<div class="form-groupMaterial col-sm">
-							<form:input path="fechaNacimiento" id="fechaNacimiento"/>
+							<form:input path="fechaNacimiento2" id="fechaNacimiento"/>
 							<label for="fechaNacimiento" class="label"><spring:message code="fechaNacimiento" /></label>
 						</div>
-
+		
 						<div class="form-groupMaterial col-sm">
 							<form:input path="telefono" id="telefono"/>
 							<label for="telefono" class="label"><spring:message code="telefono" /></label>

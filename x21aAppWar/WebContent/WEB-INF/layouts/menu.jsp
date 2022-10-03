@@ -524,7 +524,7 @@
 					<a class="dropdown-item" href="${logLevel}">
 						<spring:message code="experimental.logLevel" />
 					</a>
-                    <spring:url value="/iberdok/iberdokWellcome" var="iberdok" htmlEscape="true"/>
+                    <spring:url value="/iberdok/iberdokWelcome" var="iberdok" htmlEscape="true"/>
 					<a class="dropdown-item" href="${iberdok}">
 						<spring:message code="experimental.iberdok" />
 					</a>

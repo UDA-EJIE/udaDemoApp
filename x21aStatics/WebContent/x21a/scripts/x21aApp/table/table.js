@@ -117,7 +117,19 @@ jQuery(function ($) {
         	contains: true,
         	showDefault: true
         });
-        $('#fechaAlta_filter_table').rup_date();
+        $('#fechaAlta_filter_table').rup_date({
+        	labelMaskId : 'fecha-mask',
+            showButtonPanel : true,
+            showOtherMonths : true,
+            noWeekend : true,
+            datetimepicker : true,
+            placeholderMask : true,
+            mask: 'dd/mm/yyyy hh:mm:ss',
+            showSecond: true,
+            dateFormat: 'dd/mm/yy',
+            timeFormat: 'hh:mm:ss',
+            timezoneOffset:120
+        });
         $('#fechaBaja_filter_table').rup_date();
 
         const listaPlugins = 'colReorder,seeker,buttons,simpleFilter,multiSelection,editForm,';
@@ -156,7 +168,6 @@ jQuery(function ($) {
             // FILTROS
             plugins.filter = {
                 rules: {
-                    fechaAlta: 'date',
                     fechaBaja: 'date'
                 }
             }
@@ -254,8 +265,7 @@ jQuery(function ($) {
 	                                required: true
 	                            },
 	                            'fechaAlta': {
-	                                required: true,
-	                                date: true
+	                                required: true
 	                            },
 	                            'fechaBaja': {
 	                                date: true

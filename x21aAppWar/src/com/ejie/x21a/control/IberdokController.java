@@ -280,15 +280,43 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@UDALink(name = "getWellcome", linkTo = {
+	@UDALink(name = "getWelcome", linkTo = {
 			@UDALinkAllower(name = "view"),})
-	@RequestMapping(value = "iberdokWellcome", method = RequestMethod.GET)
-	public String getIberdokWellcome(Model model, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
+	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
+		// anadimos los datos de configuracion de iberdok al cliente desde el
+		// properties
+
+		model.addAttribute("idUsuario",
+				appConfiguration.getProperty("iberdok.idUsuario"));
+		model.addAttribute("urlFinalizacion",
+				appConfiguration.getProperty("iberdok.urlFinalizacion"));
+		model.addAttribute("urlRetorno",
+				appConfiguration.getProperty("iberdok.urlRetorno"));
+		model.addAttribute("idModelo",
+				appConfiguration.getProperty("iberdok.idModelo"));
+		model.addAttribute("token",
+				appConfiguration.getProperty("iberdok.token"));
+		model.addAttribute("lang", appConfiguration.getProperty("iberdok.lang"));
+		model.addAttribute("urlNuevoDocumento",
+				appConfiguration.getProperty("iberdok.urlNuevoDocumento"));
+		model.addAttribute("urlEditarDocumento",
+				appConfiguration.getProperty("iberdok.urlEditarDocumento"));
+		model.addAttribute("urlEditorDocumentos",
+				appConfiguration.getProperty("iberdok.urlEditorDocumentos"));
+
+		model.addAttribute("randomForm", new RandomForm());
+		
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		if(udaXLNetsSessionId != null) {
-			return "iberdok";
+			try {
+				response.sendRedirect("view");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		return "iberdokWellcome";
+		return "iberdokWelcome";
 	}
 	
 	// Iberdok

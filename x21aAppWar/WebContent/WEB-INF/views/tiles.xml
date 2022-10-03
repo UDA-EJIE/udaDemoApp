@@ -596,9 +596,9 @@
 	
 	<definition name="iberdokEditForm" template="/WEB-INF/views/experimental/iberdokEditForm.jsp" />
 	
-	<definition extends="template" name="iberdokWellcome">
+	<definition extends="template" name="iberdokWelcome">
 		<put-attribute name="content"
-			value="/WEB-INF/views/experimental/iberdokWellcome.jsp" />
+			value="/WEB-INF/views/experimental/iberdokWelcome.jsp" />
 	</definition>
 
 

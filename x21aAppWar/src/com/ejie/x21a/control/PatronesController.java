@@ -50,7 +50,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,7 +61,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.AlumnoDepartamento;
@@ -335,7 +333,7 @@ public class PatronesController {
     //Form
     @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp",allowSubEntities = true ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
-    public String getForm(Model model) {
+    public String getForm(Model model){
 
         List<NoraPais> paises = noraPaisService.findAll(null, null);
         model.addAttribute("paises", paises);
