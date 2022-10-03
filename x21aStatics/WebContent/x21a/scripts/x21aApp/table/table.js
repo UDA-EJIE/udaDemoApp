@@ -215,9 +215,38 @@ jQuery(function ($) {
             };
 
 
-        //Formulario de filtrado
-        jQuery('#ejie_filter_table').rup_combo(options_ejie_combo);
-        jQuery('#rol_filter_table').rup_combo(options_role_combo);
+        // Formulario de filtrado.
+        $('#id_filter_table').rup_autocomplete({
+        	source : './allIds',
+        	sourceParam : {label: 'nid', value: 'id'},
+        	menuMaxHeight: 175,
+        	combobox: true,
+        	contains: true,
+        	showDefault: true
+        });
+        $('#apellido2_filter_table').rup_autocomplete({
+        	source : './apellidos',
+        	sourceParam : {label: 'label', value: 'value'},
+        	menuMaxHeight: 175,
+        	minLength: 3,
+        	combobox: true,
+        	contains: true,
+        	showDefault: true
+        });
+        $('#fechaAlta_filter_table').rup_date({
+        	labelMaskId : 'fecha-mask',
+            showButtonPanel : true,
+            showOtherMonths : true,
+            noWeekend : true,
+            datetimepicker : true,
+            placeholderMask : true,
+            mask: 'dd/mm/yyyy hh:mm:ss',
+            showSecond: true,
+            dateFormat: 'dd/mm/yy',
+            timeFormat: 'hh:mm:ss',
+            timezoneOffset:120
+        });
+        $('#fechaBaja_filter_table').rup_date();
 
         jQuery('#fechaAlta_filter_table').rup_date();
         jQuery('#fechaBaja_filter_table').rup_date();
@@ -255,12 +284,32 @@ jQuery(function ($) {
             };
             plugins.fixedHeader = fixedHeader;
             plugins.selector = 'td';
-            /*    plugins.responsive =  {
-                    details: {
-                        type: 'column',
-                        target: 'td'
-                    }
-                };*/
+            /*plugins.responsive =  {
+            	details: {
+            		type: 'column',
+            		target: 'td'
+            	}
+            };*/
+            
+            // FILTROS
+            plugins.filter = {
+                rules: {
+                    fechaBaja: 'date'
+                }
+            }
+            
+            // Se usan comas para asegurarse de que la opción se busca de manera exacta.
+            if (localStorage.plugins.indexOf(',multiFilter,') > -1) {
+                plugins.multiFilter = {
+                    idFilter: 'generated',
+                    labelSize: 255,
+                    userFilter: 'udaPruebas',
+                    url: "/multiFilter"
+                };
+                $('#multiFilter').prop('checked', true);
+            } else {
+                $('#multiFilter').prop('checked', false);
+            }
 
             if (localStorage.plugins.indexOf('multiSelection') > -1) {
                 var multiSelect = {
@@ -464,6 +513,162 @@ jQuery(function ($) {
                         "isInline": false
                     }
                 };
+
+	            if (localStorage.plugins.indexOf(',editForm,') > -1) {
+	            	const formEdit = {
+	                    detailForm: '#example_detail_div',
+	                    data: {
+	                    	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
+	                    },
+	                    validate: {
+	                        rules: {
+	                            'nombre': {
+	                                required: true
+	                            },
+	                            'apellido1': {
+	                                required: true
+	                            },
+	                            'fechaAlta': {
+	                                required: true
+	                            },
+	                            'fechaBaja': {
+	                                date: true
+	                            }
+	                        }
+	                    },
+	                    customTitle: $.rup.i18nParse($.rup.i18n.app, 'table.sampleTitle'),
+	                    cancelDeleteFunction: function () {
+		                    console.log('Ha cancelado eliminar.');
+		                }
+	                };
+	                plugins.validarModificarContinuar = function customGuardar(ctx){
+	                	if($('#apellido1_detail_table').val() !== 'Ruiz'){
+		                	//Ejemplo de validación personalizada
+		                	 let idTableDetail = ctx.oInit.formEdit.detailForm;
+		                	 let feedback = idTableDetail.find('#' + ctx.sTableId + '_detail_feedback');
+		                     try {//Se destruye para asegurar la inicialización.
+		                         feedback.rup_feedback('destroy');
+		                     } catch (ex) {
+		                      
+		                     }
+		
+		                     feedback.rup_feedback({
+		                         message: $.rup.i18nParse($.rup.i18n.app, 'table.sampleValidate'),
+		                         type: 'error',
+		                         block: false,
+		                         gotoTop: false,
+		                         delay: 2000
+		                     });
+		                	return true;//no paso la validacion
+	                	}
+	                	return false;//Paso la validacion
+	                };
+	                
+	                plugins.formEdit = formEdit;
+	
+	                $('#editForm').prop('checked', true);
+	            } else {
+	                $('#editForm').prop('checked', false);
+	            }
+	
+	            if (localStorage.plugins.indexOf(',inlineEdit,') > -1) {
+	            	const inlineEdit = {
+	                    deselect: true,
+	                    validate: {
+	                        rules: {
+	                            'nombre': {
+	                                required: true
+	                            },
+	                            'apellido1': {
+	                                required: true
+	                            },
+	                            'fechaAlta': {
+	                                required: true
+	                            },
+	                            'fechaBaja': {
+	                                date: true
+	                            }
+	                        },
+	                        messages: {
+	                            required: 'Campo requerido'
+	                        }
+	                    }
+	                };
+	            	
+	                plugins.inlineEdit = inlineEdit;
+	
+	                $('#inlineEdit').prop('checked', true);
+	            } else {
+	                $('#inlineEdit').prop('checked', false);
+	            }
+	            
+	            if (localStorage.plugins.indexOf(',editFormTargetBlank,') > -1) {
+	            	// Crear botón para añadir registros desde una nueva pestaña
+	                const optionButtonEditFormTargetBlankAdd = {
+	                    text: function () {
+	                        return 'Añadir registro desde nueva pestaña';
+	                    },
+	                    id: 'exampleEditFormTargetBlankAdd', // Campo obligatorio si se quiere usar desde el contextMenu
+	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnAdd',
+	                    displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
+	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
+	                    type: 'add',
+	                    action: function () {
+	                    	window.open($('#editFormTargetBlank').data('addNewWindowUrl'), '_blank');
+	                    }
+	                };
+	                
+	            	// Crear botón para editar registros desde una nueva pestaña
+	                const optionButtonEditFormTargetBlankEdit = {
+	                    text: function () {
+	                        return 'Editar registro desde nueva pestaña';
+	                    },
+	                    id: 'exampleEditFormTargetBlankEdit', // Campo obligatorio si se quiere usar desde el contextMenu
+	                    className: 'btn-material-primary-high-emphasis table_toolbar_btnEdit',
+	                    displayRegex: /^[1-9][0-9]*$/, // Se muestra siempre que sea un numero mayor a 0
+	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
+	                    type: 'edit',
+	                    action: function (e, dt) {
+	                    	let ctx = dt.context[0];
+	                    	
+	                    	let childWindowHandler = window.open($('#editFormTargetBlank').data('editNewWindowUrl'), '_blank');
+	                    	childWindowHandler.addEventListener('load', function () {
+	                    		childWindowHandler.setEntityData(ctx.multiselection.lastSelectedId);                  		
+	                		}, false);
+	                    }
+	                };
+	                
+	                plugins.noEdit = true;
+	                
+	                if (plugins.buttons.myButtons == undefined) {
+	                	plugins.buttons.myButtons = [];
+	                }
+	                plugins.buttons.myButtons.push(optionButtonEditFormTargetBlankAdd, optionButtonEditFormTargetBlankEdit);
+	                
+	                $('#editFormTargetBlank').prop('checked', true);
+	            } else {
+	                $('#editFormTargetBlank').prop('checked', false);
+	            }
+	
+	            if (localStorage.plugins.indexOf(',noEdit,') > -1) {
+	            	plugins.noEdit = true;
+	                $('#noEdit').prop('checked', true);
+	            } else {
+	                $('#noEdit').prop('checked', false);
+	            }
+                
+	            if (localStorage.plugins.indexOf(',multipart,') > -1 && localStorage.plugins.indexOf(',editForm,') > -1) {
+                	plugins.formEdit.direct = true;
+                	plugins.formEdit.multipart = true;
+                	plugins.formEdit.url = './editFormMultipart';
+                	plugins.formEdit.addUrl = '/addMultipart';
+                	plugins.formEdit.editUrl = '/editMultipart';
+                	plugins.formEdit.data = {};
+                    
+                    $('#multipart').prop('checked', true);
+                } else {
+                	$('#multipart').prop('checked', false);
+                }
             } else {
                 $('#buttons').prop('checked', false);
             }
