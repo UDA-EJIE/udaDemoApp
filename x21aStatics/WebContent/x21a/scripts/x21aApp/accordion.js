@@ -16,7 +16,7 @@
 jQuery(function($) {
     
     $('.rup_accordion').rup_accordion({
-        animated: 'bounceslide',
+        animate: 'linear',
         active: false,
         autoHeight: false,
         collapsible: true
