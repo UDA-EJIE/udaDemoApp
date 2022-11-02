@@ -391,19 +391,19 @@ public class PatronesController {
         // S
         JSONArray root = new JSONArray();
 
-        JSONObject padre1 = new JSONObject("{'data':'Padre1', 'attr':{'id':'p1'}, 'metadata':{'nivel':1}}");
+        JSONObject padre1 = new JSONObject("{'id':'p1', 'text':'Padre1'}");
 
-        JSONObject padre11 = new JSONObject("{'data':'Padre1.1', 'attr':{'id':'p11'}, 'metadata':{'nivel':2}}");
+        JSONObject padre11 = new JSONObject("{'id':'p11', 'text':'Padre1.1'}");
 
-        JSONObject hoja111 = new JSONObject("{'data':'Padre1.1.1', 'attr':{'id':'p111'}, 'metadata':{'nivel':3}}");
+        JSONObject hoja111 = new JSONObject("{'id':'p111', 'text':'Padre1.1.1'}");
 
-        JSONObject padre112 = new JSONObject("{'data':'Padre1.1.2', 'attr':{'id':'p112'}, 'metadata':{'nivel':3}}");
+        JSONObject padre112 = new JSONObject("{'id':'p112', 'text':'Padre1.1.2'}");
 
-        JSONObject hoja1121 = new JSONObject("{'data':'Padre1.1.2.1', 'attr':{'id':'p1121'}, 'metadata':{'nivel':4}}");
+        JSONObject hoja1121 = new JSONObject("{'id':'p1121', 'text':'Padre1.1.2.1'}");
 
-        JSONObject hoja1122 = new JSONObject("{'data':'Padre1.1.2.2', 'attr':{'id':'p1122'}, 'metadata':{'nivel':4}}");
+        JSONObject hoja1122 = new JSONObject("{'id':'p1122', 'text':'Padre1.1.2.2'}");
 
-        JSONObject hoja12 = new JSONObject("{'data':'Padre1.2', 'attr':{'id':'p12'}, 'metadata':{'nivel':2}}");
+        JSONObject hoja12 = new JSONObject("{'id':'p12', 'text':'Padre1.2'}");
 
         JSONArray padre112Childs = new JSONArray();
         padre112Childs.put(hoja1121);
@@ -422,7 +422,7 @@ public class PatronesController {
 
         root.put(padre1);
 
-        response.setContentType("text/javascript;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Expires", DateTimeManager.getHttpExpiredDate());
         response.setStatus(HttpServletResponse.SC_OK);
