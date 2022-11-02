@@ -22,7 +22,7 @@ function testTree (type) {
         return;
     }
     describe('Test Tree ['+type+'] >', () => {
-        var $tree = '';
+        var $tree;
         beforeAll((done) => {
             testutils.loadCss(done);
         });
@@ -31,10 +31,9 @@ function testTree (type) {
         });
         beforeEach((done) => {
             treeCreator[type](() => {
-
+                $tree = $('#exampleTree');
+                done();
             });
-            $tree = $('#exampleTree');
-            done();
         });
         afterEach(() => {
             $('#content').html('');
@@ -47,16 +46,18 @@ function testTree (type) {
                 expect($tree.is('.jstree')).toBeTruthy();
             });
             it('Contiene los checkbox:', () => {
-                expect($('ins.jstree-checkbox').length).toBe(3);
+            	$tree.rup_tree('openAll');
+                expect($('i.jstree-checkbox').length).toBe(3);
             });
         });
         describe('Métodos públicos > ', () => {
             describe('Metodos getRupValue y setRupValue > ', () => {
                 beforeEach(() => {
+                	$tree.rup_tree('openAll');
                     $tree.rup_tree('setRupValue',['node11']);
                 });
                 it('La selección se refleja en el DOM:', () => {
-                    expect($('#node11').is('.jstree-checked')).toBeTruthy();
+                    expect($('#node11').is('[aria-selected="true"]')).toBeTruthy();
                 });
                 it('El método getRupValue devuelve el valor esperado:', () => {
                     expect($tree.rup_tree('getRupValue')).toEqual(['node11']);
