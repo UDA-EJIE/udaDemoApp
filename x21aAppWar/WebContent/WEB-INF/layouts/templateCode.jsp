@@ -38,7 +38,7 @@
 		<tiles:insertAttribute name="header" />
 		
 		<!-- Idioma -->
-		<tiles:insertAttribute name="language" /><br/>
+		<!-- <tiles:insertAttribute name="language" /><br/> -->
 		
 		<!-- Menu -->
 		<tiles:insertAttribute name="menu" />
