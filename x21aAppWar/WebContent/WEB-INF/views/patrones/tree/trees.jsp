@@ -25,25 +25,6 @@
 		<div id="javaScriptCode" class="codePanel codePanelRight"></div>
 	</div>
 
-	<div id="tree_example" class="card p-3">
-		<ul>
-			<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
-			<li id="node1"><a href="${urlHashtag}">Padre 1</a>
-				<ul>
-					<li id="node11"><a href="${urlHashtag}">Padre 1.1</a>
-						<ul>
-							<li id="node111"><a href="${urlHashtag}">Hoja 1.1.1</a></li>
-							<li id="node112"><a href="${urlHashtag}">Padre 1.1.2</a>
-								<ul>
-									<li id="node1121"><a href="${urlHashtag}">Hoja 1.1.2.1</a></li>
-									<li id="node1122"><a href="${urlHashtag}">Hoja 1.1.2.2</a></li>
-								</ul></li>
-						</ul></li>
-					<li id="node12"><a href="${urlHashtag}">Hoja 1.2></a></li>
-				</ul></li>
-		</ul>
-	</div>
-
 	<div id="model_example_1" class="model_example_1_code">
 		<ul>
 			<li id="node1"><a href="${urlHashtag}"><spring:message
@@ -136,12 +117,12 @@
 	</div>
 
 	<section class="row">
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.default" />
 				</h3>
-				<div id="defaultDemo" class="rup_tree model_example_1"></div>
+				<div id="defaultDemo" class="rup_tree model_example_1 overflow-auto"></div>
 				<div id="codeDefaultControl" class="controlsMainCode">
 					<button id="btnDefaultDemo">
 						<spring:message code="tree.verCodigo" />
@@ -150,25 +131,25 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
-					<spring:message code="tree.example.specificStyle" />
+					<spring:message code="tree.example.changedTheme" />
 				</h3>
-				<div id="specificStyleDemo" class="rup_tree model_example_1"></div>
-				<div id="codeSpecificStyleControl" class="controlsMainCode">
-					<button id="btnSpecificStyleDemo">
+				<div id="changedThemeDemo" class="rup_tree model_example_1 overflow-auto"></div>
+				<div id="codeChangedThemeControl" class="controlsMainCode">
+					<button id="btnChangedThemeDemo">
 						<spring:message code="tree.verCodigo" />
 					</button>
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.changeView" />
 				</h3>
-				<div id="changeViewDemo" class="rup_tree model_example_1_button"></div>
+				<div id="changeViewDemo" class="rup_tree model_example_1_button overflow-auto"></div>
 
 				<div id="changeViewExampleControl" class="controlsMainExample">
 					<button id="toggle_dots" style="width: 32%">
@@ -189,31 +170,14 @@
 				</div>
 			</div>
 		</div>
-
-
-		<div class="col-xl-3  col-12  col-sm-4">
-			<div class="butstyle">
-				<h3 class="rup_tree_h3">
-					<spring:message code="tree.example.jqueryuiStyles" />
-				</h3>
-				<div id="jqueryuiStylesDemo"
-					class="rup_tree model_example_1_jqueryui"></div>
-
-				<div id="jqueryuiStylesViewControl" class="controlsMainCode">
-					<button id="btnJqueryuiStylesDemo">
-						<spring:message code="tree.verCodigo" />
-					</button>
-				</div>
-			</div>
-		</div>
 	</section>
 	<section class="row">
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-xl-3 col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.select" />
 				</h3>
-				<div id="selectDemo" class="rup_tree model_example_1_button"></div>
+				<div id="selectDemo" class="rup_tree model_example_1_button overflow-auto"></div>
 
 				<div id="selectExampleControl" class="controlsMainExample">
 					<button id="saveSelection" style="width: 32%">
@@ -235,36 +199,12 @@
 			</div>
 		</div>
 
-		<div class="col-xl-3  col-12  col-sm-4">
-			<div class="butstyle">
-				<h3 class="rup_tree_h3">
-					<spring:message code="tree.example.hotkeys" />
-				</h3>
-				<div id="hotkeysDemo" class="rup_tree model_example_1_button"></div>
-
-				<div id="hotkeysExampleControl" class="controlsMainExample">
-					<button id="enableHotkeys" style="width: 49%">
-						<spring:message code="treeExample.enable" />
-					</button>
-					<button id="disableHotkeys" style="width: 49%">
-						<spring:message code="treeExample.disable" />
-					</button>
-				</div>
-
-				<div id="codeHotkeysControl" class="controlsMainCode">
-					<button id="btnHotkeysDemo">
-						<spring:message code="tree.verCodigo" />
-					</button>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-xl-3 col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.sort" />
 				</h3>
-				<div id="sortDemo" class="rup_tree model_example_1_button"></div>
+				<div id="sortDemo" class="rup_tree model_example_1_button overflow-auto"></div>
 
 				<div id="sortExampleControl" class="controlsMainExample">
 					<button id="renameButton" style="width: 50%; text-align: center;">
@@ -280,12 +220,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-xl-3 col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.checkbox" />
 				</h3>
-				<div id="checkboxDemo" class="rup_tree model_example_1_button"></div>
+				<div id="checkboxDemo" class="rup_tree model_example_1_button overflow-auto"></div>
 
 				<div id="checkboxExampleControl" class="controlsMainExample">
 					<button id="checkboxShowHide" style="width: 35%">
@@ -308,14 +248,12 @@
 				</div>
 			</div>
 		</div>
-	</section>
-	<section class="row">
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-xl-3 col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.contextmenu" />
 				</h3>
-				<div id="contextmenuDemo" class="rup_tree model_example_1"></div>
+				<div id="contextmenuDemo" class="rup_tree model_example_1 overflow-auto"></div>
 
 				<div id="codeContextmenuControl" class="controlsMainCode">
 					<button id="btnContextmenuDemo">
@@ -324,13 +262,14 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="col-xl-3  col-12  col-sm-4">
+	</section>
+	<section class="row">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.unique" />
 				</h3>
-				<div id="uniqueDemo" class="rup_tree model_example_1_button"></div>
+				<div id="uniqueDemo" class="rup_tree model_example_1_button overflow-auto"></div>
 
 				<div id="uniqueExampleControl" class="controlsMainExample">
 					<button id="uniqueRenameButton"
@@ -350,10 +289,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos json</h3>
-				<div id="jsonTreeDemo" class="rup_tree model_example_1"></div>
+				<div id="jsonTreeDemo" class="rup_tree model_example_1 overflow-auto"></div>
 
 				<div id="codeJsonTreeControl" class="controlsMainCode">
 					<button id="btnJsonTreeDemo">
@@ -362,24 +301,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3  col-12  col-sm-4">
-			<div class="butstyle">
-				<h3 class="rup_tree_h3">Carga datos xml</h3>
-				<div id="xmlTreeDemo" class="xml_tree model_example_1"></div>
-
-				<div id="codeXmlTreeControl" class="controlsMainCode">
-					<button id="btnXmlTreeDemo">
-						<spring:message code="tree.verCodigo" />
-					</button>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="row">
-		<div class="col-xl-3  col-12  col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos mediante AJAX (json)</h3>
-				<div id="ajaxTreeDemo" class="ajax_tree model_example_1"></div>
+				<div id="ajaxTreeDemo" class="ajax_tree model_example_1 overflow-auto"></div>
 
 				<div id="codeAjaxTreeControl" class="controlsMainCode">
 					<button id="btnAjaxTreeDemo">
