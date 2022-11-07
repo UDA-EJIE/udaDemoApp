@@ -242,7 +242,9 @@ section > h1, section > h2, section > h3, section > h4, section > h5, section > 
   overflow: auto; }
 
 .promotionsDismissalsActionPanel_list .jstree-icon {
-  display: none; }
+  display: inline-block;
+  width: 16px;
+  height: 16px; }
 
 .promotionsDismissalsActionPanel_list li[rel='worker'] > a > .jstree-icon {
   background-image: url("../images/arbol/worker.png");
@@ -254,7 +256,7 @@ section > h1, section > h2, section > h3, section > h4, section > h5, section > 
 
 .promotionsDismissalsActionPanel_list a {
   color: black;
-  display: inline-block;
+  display: block;
   height: 16px;
   line-height: 16px;
   margin: 0;
