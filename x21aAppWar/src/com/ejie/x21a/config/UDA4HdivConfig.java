@@ -61,9 +61,4 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
 		validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("user").rules("text").target(ValidationTargetType.CLIENT_PARAMETERS);
 	}
-
-	@Override
-	protected List<Link> getStaticLinks() {
-		return null;
-	}
 }
