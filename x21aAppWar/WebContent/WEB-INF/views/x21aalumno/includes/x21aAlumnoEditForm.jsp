@@ -28,10 +28,6 @@
 	<!-- Campos del formulario de detalle -->
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:input path="id" id="id_detail_table"/>
-			<label for="id_detail_table"><spring:message code="id"/></label>
-		</div>
-		<div class="form-groupMaterial col-sm">
 			<form:input path="usuario" id="usuario_detail_table"/>
 			<label for="usuario_detail_table"><spring:message code="usuario"/></label>
 		</div>
@@ -52,13 +48,13 @@
 			<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">
-			<form:input path="provinciaId" id="provinciaId_detail_table"/>
+			<form:select path="provincia.code" id="provinciaId_detail_table"/>
 			<label for="provinciaId_detail_table"><spring:message code="provinciaId"/></label>
 		</div>
 	</div>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:input path="comarcaId" id="comarcaId_detail_table"/>
+			<form:select path="comarcaId" id="comarcaId_detail_table"/>
 			<label for="comarcaId_detail_table"><spring:message code="comarcaId"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">
@@ -70,10 +66,6 @@
 		<div class="form-groupMaterial col-sm">
 			<form:input path="municipioId" id="municipioId_detail_table"/>
 			<label for="municipioId_detail_table"><spring:message code="municipioId"/></label>
-		</div>
-		<div class="form-groupMaterial col-sm">
-			<form:input path="autonomiaId" id="autonomiaId_detail_table"/>
-			<label for="autonomiaId_detail_table"><spring:message code="autonomiaId"/></label>
 		</div>
 	</div>
 </form:form>

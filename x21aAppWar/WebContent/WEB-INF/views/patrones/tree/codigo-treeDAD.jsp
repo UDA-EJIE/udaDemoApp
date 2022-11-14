@@ -16,975 +16,1032 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<div id="treeCodeDialog" style="display:none"></div>
+<div id="treeCodeDialog" style="display: none"></div>
 
 <div id="AccordionCode" class="treeAccordionCode">
 
-	<div id="reorderAccordionCode" class="rup_accordion treeAccordionCodeObject">
-	
-		<h1><a><spring:message  code="tree.treeDAD.code.htmlCode" /></a></h1>
+	<div id="reorderAccordionCode"
+		class="rup_accordion treeAccordionCodeObject">
+
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.htmlCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				&lt;!-- Árbol con ordenación --&gt;<br/>
-				&lt;div id="tasksReorderTree"&gt;&lt;/div&gt;<br/>
-			</code>
+			<pre>
+				<code>
+&lt;!-- Árbol con ordenación --&gt;
+&lt;div id="tasksReorderTree" class="ExchangePanel_tree overflow-auto&gt;&lt;/div&gt;
+				</code>
+			</pre>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeCode" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Ejemplo de arbol de tareas pendientes con reordenacion */<br/>
-				$("#tasksReorderTree").rup_tree({<br/>
-				&nbsp;&nbsp;&nbsp;"json_data" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data": tasksTreeJson<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"types" : tasksTreeTypes,<br/>
-				&nbsp;&nbsp;&nbsp;"crrm" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"move" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"check_move" : function (moveObject){<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var moveObjectParent = this._get_parent(moveObject.o);<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!moveObjectParent) return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveObjectParent = moveObjectParent == -1 ? this.get_container() : moveObjectParent;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(moveObjectParent === moveObject.np) return true;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(moveObjectParent[0] && moveObject.np[0] && moveObjectParent[0] === moveObject.np[0]) return true;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"dnd" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enable" : true,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_target" : false,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drag_target" : false<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				});<br/>
-			</code>
+			<pre>
+				<code>
+/* Ejemplo de arbol de tareas pendientes con reordenacion */
+$('#tasksReorderTree').rup_tree({
+	'plugins': ['types', 'dnd'],
+	'core' : {
+		'data': tasksReorderTreeJson,
+		'check_callback': function(operation, node, node_parent, node_position, more) {
+			if (operation === "move_node" &#38;&#38; more.origin.element[0].id === 'tasksReorderTree') {
+				return node.parent === node_parent.id;
+			}
+			return false;
+		}
+	},
+	'types': tasksTreeTypes
+});
+				</code>
+			</pre>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeData" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeData" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Codigo JSon del árbol de tareas */<br/>
-				var tasksTreeJson = [<br/>
-				&nbsp;&nbsp;&nbsp;{"data" : <br/>{ 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"raiz")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"attr" : { "id" : "raiz", "rel" : "tasks"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informes")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informes", "rel" : "forms"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_trimestral")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_gastos_generales")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_desperfectos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_deudas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_calidad")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_perdidas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"transportes")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "transportes", "rel" : "Transportation"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_lujua")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_lujua", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_cemento")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_cemento", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_martillo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_martillo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparaciones")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparaciones", "rel" : "repair"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_fachada")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_fachada", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_indundacion")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_indundacion", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_suelo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_suelo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_ratas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_ratas", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>         
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"suministros")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "suministros", "rel" : "suppliers"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_ladrillos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_ladrillos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_clavos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_clavos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cemento")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_cemento", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_recambios")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_recambios", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_jabon")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_jabon", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_botas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_botas", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cascos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_cascos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>          
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"facturas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "facturas", "rel" : "invoice"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_VH")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_VH", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_Lindo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_Lindo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_devolucion")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_devolucion", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_OM")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_OM", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]}<br/>
-				&nbsp;&nbsp;&nbsp;]},<br/>
-				];<br/>
-			</code>
+			<pre>
+				<code>
+/* Codigo JSON del árbol de tareas con ordenación */
+var tasksTreeJson = [{
+	'id' : 'raizTasks',
+	'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'raiz'),
+	'type' : 'tasks',
+	'state' : {
+		'opened': true,
+		'disabled': false,
+		'selected': false
+	},
+	'children' : [
+		{
+			'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informes'),
+			'id' : 'informes',
+			'type' : 'forms',
+			'state' : {
+				'opened': true,
+				'disabled': false,
+				'selected': false
+			},
+			'children' : [
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_trimestral'),
+					'id' : 'informe_trimestral',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_gastos_generales'),
+					'id' : 'informe_gastos_generales',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_desperfectos'),
+					'id' : 'informe_desperfectos',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_deudas'),
+					'id' : 'informe_deudas',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_calidad'),
+					'id' : 'informe_calidad',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_perdidas'),
+					'id' : 'informe_perdidas',
+					'type' : 'job',
+				}
+			]
+    	},
+        {
+			'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'transportes'),
+			'id' : 'transportes',
+			'type' : 'transportation',
+			'state' : {
+				'opened': true,
+				'disabled': false,
+				'selected': false
+			},
+			'children' : [
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_lujua'),
+					'id' : 'pedido_lujua',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_cemento'),
+					'id' : 'pedido_cemento',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_martillo'),
+					'id' : 'pedido_martillo',
+					'type' : 'job',
+				}
+			]
+		},
+		{
+			'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparaciones'),
+			'id' : 'reparaciones',
+			'type' : 'repair',
+			'state' : {
+				'opened': true,
+				'disabled': false,
+				'selected': false
+			},
+			'children' : [
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_fachada'),
+					'id' : 'reparacion_fachada',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_indundacion'),
+					'id' : 'reparacion_indundacion',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_suelo'),
+					'id' : 'reparacion_suelo',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_ratas'),
+					'id' : 'reparacion_ratas',
+					'type' : 'job',
+				}
+			]
+		},
+		{
+			'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'suministros'),
+			'id' : 'suministros',
+			'type' : 'suppliers',
+			'state' : {
+				'opened': true,
+				'disabled': false,
+				'selected': false
+			},
+			'children' : [
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_ladrillos'),
+					'id' : 'mp_ladrillos',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_clavos'),
+					'id' : 'mp_clavos',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_cemento'),
+					'id' : 'mp_cemento',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_recambios'),
+					'id' : 'mp_recambios',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_jabon'),
+					'id' : 'mp_jabon',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_botas'),
+					'id' : 'mp_botas',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_cascos'),
+					'id' : 'mp_cascos',
+					'type' : 'job',
+				}
+			]
+		},
+		{
+			'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'facturas'),
+			'id' : 'facturas',
+			'type' : 'invoice',
+			'state' : {
+				'opened': true,
+				'disabled': false,
+				'selected': false
+			},
+			'children' : [
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_VH'),
+					'id' : 'factura_VH',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_Lindo'),
+					'id' : 'factura_Lindo',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_devolucion'),
+					'id' : 'factura_devolucion',
+					'type' : 'job',
+				},
+				{
+					'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_OM'),
+					'id' : 'factura_OM',
+					'type' : 'job',
+				}
+			]
+		}
+	]},
+];
+				</code>
+			</pre>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTypesCode" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTypesCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Tipos para la gestión de tareas */<br/>
-				var tasksTreeTypes = {<br/>
-				&nbsp;&nbsp;&nbsp;"valid_children" : ["tasks"],<br/>
-				&nbsp;&nbsp;&nbsp;"types" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tasks" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/PendingWorks.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["forms", "invoice", "repair", "suppliers", "Transportation"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"forms" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/forms.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoice" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/invoice.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"repair" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/repair.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"job" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/job.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["none"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"suppliers" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/suppliers.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Transportation" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/Transportation.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				};<br/>
-			</code>
-		</div>
-	</div>
-	
-	<div id="exchangeAccordionCode" class="rup_accordion treeAccordionCodeObject">
-	
-		<h1><a><spring:message  code="tree.treeDAD.code.htmlCode" /></a></h1>
-		<div class="treeAccordionCodeSecction">
-			<code>
-				&lt;!-- Árboles con intercambio --&gt;<br/>
-				&lt;legend class="treeNodesExchangePanel_legend"&gt;&lt;spring:message code="tree.treeDAD.exchange" /&gt;&lt;/legend&gt;<br/>
-				&lt;div class="treeNodesExchangePanel_left"&gt;<br/>
-				&nbsp;&nbsp;&nbsp;&lt;div id="tasksTree" class="ExchangePanel_tree"&gt;&lt;/div&gt;<br/>
-				&lt;/div&gt;<br/>
-				&lt;div class="treeNodesExchangePanel_center"&gt;<br/>
-				&nbsp;&nbsp;&nbsp;&lt;div class="treeNodesExchangePanel_center_line"&gt;&lt;/div&gt;<br/>
-				&nbsp;&nbsp;&nbsp;&lt;img src="${staticsUrl}/x21a/images/twoWayArrows.png" class="treeNodesExchangePanel_center_img" alt="&lt;spring:message code="tree.treeDAD.Interchange" /&gt;"/&gt;<br/>
-				&lt;/div&gt;<br/>
-				&lt;div class="treeNodesExchangePanel_right"&gt;<br/>
-				&nbsp;&nbsp;&nbsp;&lt;div id="workersTree" class="ExchangePanel_tree"&gt;&lt;/div&gt;<br/>
-				&lt;/div&gt;<br/>	
-			</code>
-		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeCode" /></a></h1>
-		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Ejemplo de arboles con distribucion de tareas (D&D) */<br/>
-				$("#tasksTree").rup_tree({<br/>
-				&nbsp;&nbsp;&nbsp;"json_data" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data": tasksTreeJson<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"crrm" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"move" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"check_move" : function (moveObject) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"types" : tasksTreeTypes,<br/>
-				&nbsp;&nbsp;&nbsp;"dnd" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enable" : true,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_target" : false,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drag_target" : false<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				});<br/>	
-				<br/>
-				$("#workersTree").rup_tree({<br/>
-				&nbsp;&nbsp;&nbsp;"json_data" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data": workersTreeJson<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"crrm" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"move" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"check_move" : function (moveObject) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var moveObjectParent = moveObject.op;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(moveObject.op.parents("#tasksTree").length > 0){<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"types" : workersTreeTypes,<br/>
-				&nbsp;&nbsp;&nbsp;"dnd" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enable" : true,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_target" : false,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drag_target" : false<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				});<br/>
-				<br/>	
-				/* Gestion del panel visual */<br/>
-				var treeNodesExchangePanelPosition = $("#treeNodesExchangePanel").position();<br/>
-				$(".treeNodesExchangePanel_center_img").css("top",treeNodesExchangePanelPosition.top+(($("#treeNodesExchangePanel").height())/2)-(($(".treeNodesExchangePanel_center_img").height())/2))<br/>
-				&nbsp;&nbsp;&nbsp;.css("left",treeNodesExchangePanelPosition.left+(($("#treeNodesExchangePanel").width())/2)-(($(".treeNodesExchangePanel_center_img").width())/2));<br/>
-				$(".treeNodesExchangePanel_center").css("visibility", "visible");<br/>
-				$(".treeNodesExchangePanel_center_img").bind("click", function(){<br/>
-				&nbsp;&nbsp;&nbsp;$.rup_messages("msgError", {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: $.rup.i18nParse($.rup.i18n.app["treeNodesExchangePanel_center"],"errorOp"),<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message: $.rup.i18nParse($.rup.i18n.app["treeNodesExchangePanel_center"],"funtError")<br/>
-				&nbsp;&nbsp;&nbsp;});<br/>
-				});<br/>
-			</code>
-		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeData" /></a></h1>
-		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Codigo JSon del árbol de tareas */<br/>
-				var tasksTreeJson = [<br/>
-				&nbsp;&nbsp;&nbsp;{"data" : <br/>{ 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"raiz")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"attr" : { "id" : "raiz", "rel" : "tasks"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informes")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informes", "rel" : "forms"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_trimestral")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_gastos_generales")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_desperfectos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_deudas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_calidad")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"informe_perdidas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "informe_trimestral", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"transportes")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "transportes", "rel" : "Transportation"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_lujua")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_lujua", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_cemento")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_cemento", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"pedido_martillo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "pedido_martillo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparaciones")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparaciones", "rel" : "repair"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_fachada")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_fachada", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_indundacion")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_indundacion", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_suelo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_suelo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"reparacion_ratas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "reparacion_ratas", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>         
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"suministros")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "suministros", "rel" : "suppliers"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_ladrillos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_ladrillos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_clavos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_clavos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cemento")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_cemento", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_recambios")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_recambios", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_jabon")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_jabon", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_botas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_botas", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"mp_cascos")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "mp_cascos", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>          
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"facturas")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "facturas", "rel" : "invoice"},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_VH")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_VH", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_Lindo")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_Lindo", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_devolucion")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_devolucion", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"factura_OM")<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : { "id" : "factura_OM", "rel" : "job"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]}<br/>
-				&nbsp;&nbsp;&nbsp;]},<br/>
-				];<br/>
-				<br/>
-				<br/>
-				/* Codigo JSon del árbol de trabajadores */<br/>
-				var workersTreeJson = [<br/>
-			   	&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"workers")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"attr" : { "id" : "raiz", "rel" : "workers"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Abanca Rodrigez Silvia"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Almonzon Mendia Juan"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Alonso Ruiz Laura"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Gil Sandia Marta"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Jiménez Arriurtua Francisco"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Mantenimientos Jet"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "enterprise"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Matias S.L."<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "enterprise"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Montajes Loiu"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "enterprise"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Mortaro Filon Sara"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Ortiz Dulon Jose"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Padilla Alcantara Sergio"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Puertas y molduras Sanz"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "enterprise"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Randal Sweder Moly"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Ruiz de Santiesteban Pedro"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Sánchez Rodin Pablo"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;]},<br/>
-				];<br/>
-			</code>
-		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTypesCode" /></a></h1>
-		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Tipos para la gestión de tareas */<br/>
-				var tasksTreeTypes = {<br/>
-				&nbsp;&nbsp;&nbsp;"valid_children" : ["tasks"],<br/>
-				&nbsp;&nbsp;&nbsp;"types" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tasks" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/PendingWorks.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["forms", "invoice", "repair", "suppliers", "Transportation"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"forms" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/forms.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoice" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/invoice.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"repair" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/repair.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"job" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/job.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["none"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"suppliers" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/suppliers.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Transportation" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/Transportation.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				};<br/>
-				<br/>
-				<br/>
-				/* Tipos para la gestion de trabajadores */<br/>
-				var workersTreeTypes = {<br/>
-				&nbsp;&nbsp;&nbsp;"valid_children" : ["workers"],<br/>
-				&nbsp;&nbsp;&nbsp;"types" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enterprise" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/enterprise.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"worker" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/worker.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"workers" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/workers.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["worker", "enterprise"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"job" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/job.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["none"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				};<br/>
-			</code>
+			<pre>
+				<code>
+/* Tipos para la gestión de tareas */
+var tasksTreeTypes = {
+    'valid_children' : ['tasks'],
+    'tasks' : {
+        'icon' : $.rup.STATICS+'/x21a/images/PendingWorks.png',
+        'valid_children' : ['forms', 'invoice', 'repair', 'suppliers', 'transportation']
+    },
+    'forms' : {
+        'icon' : $.rup.STATICS+'/x21a/images/forms.png',
+        'valid_children' : ['job']
+    },
+    'invoice' : {
+        'icon' : $.rup.STATICS+'/x21a/images/invoice.png',
+        'valid_children' : ['job']
+    },
+    'repair' : {
+        'icon' : $.rup.STATICS+'/x21a/images/repair.png',
+        'valid_children' : ['job']
+    },
+    'job' : {
+        'icon' : $.rup.STATICS+'/x21a/images/job.png',
+        'valid_children' : ['none']
+    },
+    'suppliers' : {
+        'icon' : $.rup.STATICS+'/x21a/images/suppliers.png',
+        'valid_children' : ['job']
+    },
+    'transportation' : {
+        'icon' : $.rup.STATICS+'/x21a/images/transportation.png',
+        'valid_children' : ['job']
+    }
+};
+				</code>
+			</pre>
 		</div>
 	</div>
-	
-	<div id="promotionsDismissalsAccordionCode" class="rup_accordion treeAccordionCodeObject">
-	
-		<h1><a><spring:message  code="tree.treeDAD.code.htmlCode" /></a></h1>
+
+	<div id="exchangeAccordionCode"
+		class="rup_accordion treeAccordionCodeObject">
+
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.htmlCode" /></a>
+		</h1>
+		<div class="treeAccordionCodeSecction">
+			<pre>
+				<code>
+<!-- Árboles con intercambio -->
+&lt;fieldset id="treeNodesExchangePanel" class="treeNodesExchangePanel&gt;
+	&lt;legend class="treeNodesExchangePanel_legend&gt;
+		&lt;spring:message code="tree.treeDAD.exchange" /&gt;
+	&lt;/legend&gt;
+	&lt;div class="row&gt;
+		&lt;div class="col-sm-6&gt;
+			&lt;div id="tasksTree" class="ExchangePanel_tree overflow-auto&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col-sm-6 panelRightWorkers&gt;
+			&lt;div id="workersTree" class="ExchangePanel_tree overflow-auto&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div>
+	&lt;div id="tasksExchangeTreeUniqueControl"
+							class="row DADcontrolsMainCode&gt;
+		&lt;button id="btnExchangeTreeUniqueControl"&gt;
+			&lt;spring:message code="tree.verCodigo.intercambio" /&gt;
+		&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/fieldset&gt;
+				</code>
+			</pre>
+		</div>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeCode" /></a>
+		</h1>
+		<div class="treeAccordionCodeSecction">
+			<pre>
+				<code>
+/* Ejemplo de arboles con distribucion de tareas (D&#38;D) */
+$('#tasksTree').rup_tree({
+	'plugins': ['types', 'dnd'],
+    'core' : {
+        'data': tasksTreeJson,
+        'check_callback': function(operation, node, node_parent, node_position, more) {
+        	if (operation === "delete_node") {
+        		return true;
+        	}
+        	return false;
+           }
+    },
+    'types' : tasksTreeTypes
+});	
+
+$('#workersTree').rup_tree({
+	'plugins': ['types', 'dnd'],
+    'core' : {
+        'data': workersTreeJson,
+        'check_callback': function(operation, node, node_parent, node_position, more) {
+        	if (more.origin.element[0].id === 'workersTree') {
+        		return true;
+        	}
+        	return false;
+           }
+    },
+    'types' : workersTreeTypes
+});
+
+/* Gestion del panel visual */
+var treeNodesExchangePanelPosition = $('#treeNodesExchangePanel').position();
+$('.treeNodesExchangePanel_center_img').css('top',treeNodesExchangePanelPosition.top+(($('#treeNodesExchangePanel').height())/2)-(($('.treeNodesExchangePanel_center_img').height())/2))
+    .css('left',treeNodesExchangePanelPosition.left+(($('#treeNodesExchangePanel').width())/2)-(($('.treeNodesExchangePanel_center_img').width())/2));
+$('.treeNodesExchangePanel_center').css('visibility', 'visible');
+$('.treeNodesExchangePanel_center_img').bind('click', function(){
+    $.rup_messages('msgError', {
+        title: $.rup.i18nParse($.rup.i18n.app.treeNodesExchangePanel_center,'errorOp'),
+        message: $.rup.i18nParse($.rup.i18n.app.treeNodesExchangePanel_center,'funtError')
+    });
+});
+				</code>
+			</pre>
+		</div>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeData" /></a>
+		</h1>
+		<div class="treeAccordionCodeSecction">
+			<pre>
+				<code>
+/* Codigo JSON del árbol de tareas con ordenación */
+var tasksTreeJson = [{
+    'id' : 'raizTasks',
+    'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'raiz'),
+    'type' : 'tasks',
+    'state' : {
+    	'opened': true,
+        'disabled': false,
+        'selected': false
+    },
+    'children' : [
+    	{
+         'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informes'),
+         'id' : 'informes',
+         'type' : 'forms',
+         'state' : {
+         	'opened': true,
+             'disabled': false,
+             'selected': false
+         },
+         'children' : [
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_trimestral'),
+         		'id' : 'informe_trimestral',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_gastos_generales'),
+         		'id' : 'informe_gastos_generales',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_desperfectos'),
+         		'id' : 'informe_desperfectos',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_deudas'),
+         		'id' : 'informe_deudas',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_calidad'),
+         		'id' : 'informe_calidad',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'informe_perdidas'),
+         		'id' : 'informe_perdidas',
+         		'type' : 'job',
+         	}
+         ]
+    	},
+        {
+            'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'transportes'),
+            'id' : 'transportes',
+            'type' : 'transportation',
+         'state' : {
+         	'opened': true,
+             'disabled': false,
+             'selected': false
+         },
+         'children' : [
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_lujua'),
+         		'id' : 'pedido_lujua',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_cemento'),
+         		'id' : 'pedido_cemento',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'pedido_martillo'),
+         		'id' : 'pedido_martillo',
+         		'type' : 'job',
+         	}
+         ]
+        },
+        {
+            'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparaciones'),
+            'id' : 'reparaciones',
+            'type' : 'repair',
+         'state' : {
+         	'opened': true,
+             'disabled': false,
+             'selected': false
+         },
+         'children' : [
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_fachada'),
+         		'id' : 'reparacion_fachada',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_indundacion'),
+         		'id' : 'reparacion_indundacion',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_suelo'),
+         		'id' : 'reparacion_suelo',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'reparacion_ratas'),
+         		'id' : 'reparacion_ratas',
+         		'type' : 'job',
+         	}
+         ]
+        },
+        {
+            'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'suministros'),
+            'id' : 'suministros',
+            'type' : 'suppliers',
+         'state' : {
+         	'opened': true,
+             'disabled': false,
+             'selected': false
+         },
+         'children' : [
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_ladrillos'),
+         		'id' : 'mp_ladrillos',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_clavos'),
+         		'id' : 'mp_clavos',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_cemento'),
+         		'id' : 'mp_cemento',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_recambios'),
+         		'id' : 'mp_recambios',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_jabon'),
+         		'id' : 'mp_jabon',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_botas'),
+         		'id' : 'mp_botas',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'mp_cascos'),
+         		'id' : 'mp_cascos',
+         		'type' : 'job',
+         	}
+         ]
+        },
+        {
+            'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'facturas'),
+            'id' : 'facturas',
+            'type' : 'invoice',
+         'state' : {
+         	'opened': true,
+             'disabled': false,
+             'selected': false
+         },
+         'children' : [
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_VH'),
+         		'id' : 'factura_VH',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_Lindo'),
+         		'id' : 'factura_Lindo',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_devolucion'),
+         		'id' : 'factura_devolucion',
+         		'type' : 'job',
+         	},
+         	{
+         		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'factura_OM'),
+         		'id' : 'factura_OM',
+         		'type' : 'job',
+         	}
+         ]
+        }
+    ]},
+];
+
+/* Codigo JSon del árbol de trabajadores */
+var workersTreeJson = [
+    {
+        'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'workers'),
+        'id' : 'raizWorkers',
+        'type' : 'workers',
+        'state' : {
+        	'opened': true,
+            'disabled': false,
+            'selected': false
+        },
+     'children' : [
+        	{
+        		'text' : 'Abanca Rodrigez Silvia',
+        		'id': 'worker_silviaAR',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Almonzon Mendia Juan',
+        		'id': 'worker_juanAM',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Alonso Ruiz Laura',
+        		'id': 'worker_lauraAR',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Gil Sandia Marta',
+        		'id': 'worker_martaGS',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Jiménez Arriurtua Francisco',
+        		'id': 'worker_franciscoJA',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Mantenimientos Jet',
+        		'id': 'enterprise_mantenimientosJet',
+        		'type' : 'enterprise',
+        	},
+        	{
+        		'text' : 'Matias S.L.',
+        		'id': 'enterprise_matiasSL',
+        		'type' : 'enterprise',
+        	},
+        	{
+        		'text' : 'Montajes Loiu',
+        		'id': 'enterprise_montajesLoiu',
+        		'type' : 'enterprise',
+        	},
+        	{
+        		'text' : 'Mortaro Filon Sara',
+        		'id': 'worker_saraMF',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Ortiz Dulon Jose',
+        		'id': 'worker_joseOD',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Padilla Alcantara Sergio',
+        		'id': 'worker_sergioPA',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Puertas y molduras Sanz',
+        		'id': 'enterprise_puertasMoldurasSanz',
+        		'type' : 'enterprise',
+        	},
+        	{
+        		'text' : 'Randal Sweder Moly',
+        		'id': 'worker_molyRS',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Ruiz de Santiesteban Pedro',
+        		'id': 'worker_pedroRS',
+        		'type' : 'worker',
+        	},
+        	{
+        		'text' : 'Sánchez Rodin Pablo',
+        		'id': 'worker_pabloSR',
+        		'type' : 'worker',
+        	}
+     ]
+    },
+];
+				</code>
+			</pre>
+		</div>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTypesCode" /></a>
+		</h1>
+		<div class="treeAccordionCodeSecction">
+			<pre>
+				<code>
+/* Tipos para la gestión de tareas */
+var tasksTreeTypes = {
+    'valid_children' : ['tasks'],
+    'tasks' : {
+        'icon' : $.rup.STATICS+'/x21a/images/PendingWorks.png',
+        'valid_children' : ['forms', 'invoice', 'repair', 'suppliers', 'transportation']
+    },
+    'forms' : {
+        'icon' : $.rup.STATICS+'/x21a/images/forms.png',
+        'valid_children' : ['job']
+    },
+    'invoice' : {
+        'icon' : $.rup.STATICS+'/x21a/images/invoice.png',
+        'valid_children' : ['job']
+    },
+    'repair' : {
+        'icon' : $.rup.STATICS+'/x21a/images/repair.png',
+        'valid_children' : ['job']
+    },
+    'job' : {
+        'icon' : $.rup.STATICS+'/x21a/images/job.png',
+        'valid_children' : ['none']
+    },
+    'suppliers' : {
+        'icon' : $.rup.STATICS+'/x21a/images/suppliers.png',
+        'valid_children' : ['job']
+    },
+    'transportation' : {
+        'icon' : $.rup.STATICS+'/x21a/images/transportation.png',
+        'valid_children' : ['job']
+    }
+};
+
+/* Tipos para la gestion de trabajadores */
+var workersTreeTypes = {
+    'valid_children' : ['workers'],
+    'enterprise' : {
+        'icon' : $.rup.STATICS+'/x21a/images/enterprise.png',
+        'valid_children' : ['job']
+    },
+    'worker' : {
+        'icon' : $.rup.STATICS+'/x21a/images/worker.png',
+        'valid_children' : ['job']
+    },
+    'workers' : {
+        'icon' : $.rup.STATICS+'/x21a/images/workers.png',
+        'valid_children' : ['worker', 'enterprise']
+    },
+    'job' : {
+        'icon' : $.rup.STATICS+'/x21a/images/job.png',
+        'valid_children' : ['none']
+    }
+};
+				</code>
+			</pre>
+		</div>
+	</div>
+
+	<div id="promotionsDismissalsAccordionCode"
+		class="rup_accordion treeAccordionCodeObject">
+
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.htmlCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
 			<div class="">
-				<code>
-					&lt;!-- Árbol con Drag&Drop a paneles --&gt;<br/>
-					&lt;div class="promotionsDismissalsExchangePanel"&gt;<br/>
-					&lt;div class="promotionsDismissalsExchangePanel_left"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div id="promotionsDismissalsTree" class="promotionsDismissals_tree"&gt;&lt;/div&gt;<br/>
-					&lt;/div&gt;<br/>
-					<br/>
-					&lt;div class="promotionsDismissalsExchangePanel_center"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsExchangePanel_center_line"&gt;&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsExchangePanel_center_img_div"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="${staticsUrl}/x21a/images/rightArrow.png" class="promotionsDismissalsExchangePanel_center_img" alt="&lt;spring:message code="tree.treeDAD.rightDirec" /&gt;"/&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
-					&lt;/div&gt;<br/>
-					<br/>
-					&lt;div class="promotionsDismissalsExchangePanel_right"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsActionPanel"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="promotionsDismissalsDestiny"&gt;&lt;spring:message code="tree.treeDAD.promotions" /&gt;&lt;/h3&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="promotionsDismissalsActionPanel_list"&gt;&lt;/ul&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsActionPanel_line"&gt;&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsActionPanel promotionsDismissalsActionPanelCenter"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="promotionsDismissalsDestiny"&gt;&lt;spring:message code="tree.treeDAD.formation" /&gt;&lt;/h3&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="promotionsDismissalsActionPanel_list"&gt;&lt;/ul&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsActionPanel_line"&gt;&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;div class="promotionsDismissalsActionPanel"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3 class="promotionsDismissalsDestiny"&gt;&lt;spring:message code="tree.treeDAD.dismissals" /&gt;&lt;/h3&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="promotionsDismissalsActionPanel_list"&gt;&lt;/ul&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br/>
-					&lt;/div&gt;<br/>
-				</code>
+				<pre>
+					<code>
+&lt;div class="promotionsDismissalsExchangePanel_left overflow-auto&gt;
+	&lt;div id="promotionsDismissalsTree" class="promotionsDismissals_tree"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="promotionsDismissalsExchangePanel_center"&gt;
+	&lt;div class="promotionsDismissalsExchangePanel_center_line"&gt;&lt;/div&gt;
+	&lt;div class="promotionsDismissalsExchangePanel_center_img_div"&gt;
+		&lt;img src="${staticsUrl}/x21a/images/rightArrow.png"
+									class="promotionsDismissalsExchangePanel_center_img"
+									alt="&lt;spring:message code="tree.treeDAD.rightDirec" /&gt;" /&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="promotionsDismissalsExchangePanel_right overflow-auto"&gt;
+	&lt;div class="promotionsDismissalsActionPanel"&gt;
+		&lt;h3 class="promotionsDismissalsDestiny">
+			&lt;spring:message code="tree.treeDAD.promotions" /&gt;
+		&lt;/h3>
+		&lt;ul class="promotionsDismissalsActionPanel_list"&gt;"&lt;/ul&gt;
+	&lt;/div>
+	&lt;div class="promotionsDismissalsActionPanel promotionsDismissalsActionPanelCenter"&gt;
+		&lt;h3 class="promotionsDismissalsDestiny"&gt;
+			&lt;spring:message code="tree.treeDAD.formation" /&gt;
+		&lt;/h3>
+		&lt;ul class="promotionsDismissalsActionPanel_list"&gt;"&lt;/ul&gt;
+	&lt;/div>
+	&lt;div class="promotionsDismissalsActionPanel_line"&gt;"&lt;/div&gt;
+	&lt;div class="promotionsDismissalsActionPanel"&gt;
+		&lt;h3 class="promotionsDismissalsDestiny"&gt;
+			&lt;spring:message code="tree.treeDAD.dismissals" /&gt;
+		&lt;/h3&gt;
+		&lt;ul class="promotionsDismissalsActionPanel_list"&gt;"&lt;/ul&gt;
+	&lt;/div>
+&lt;/div>
+					</code>
+				</pre>
 			</div>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeCode" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Árbol y código asociado a la gestión de ascensos y despidos */<br/>
-				$("#promotionsDismissalsTree").rup_tree({<br/>
-				&nbsp;&nbsp;&nbsp;"json_data" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data": workersDepartmentTreeJson<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"types" : workersTreeTypes,<br/>
-				&nbsp;&nbsp;&nbsp;"crrm" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"move" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"check_move" : function (moveObject) {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var moveObjectParent = this._get_parent(moveObject.o);<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!moveObjectParent) return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveObjectParent = moveObjectParent == -1 ? this.get_container() : moveObjectParent;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(moveObjectParent === moveObject.np) return true;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(moveObjectParent[0] && moveObject.np[0] && moveObjectParent[0] === moveObject.np[0]) return true;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"sort" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enable" : true<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"dnd" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_check" : function (data) {<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((!data.r.hasClass("promotionsDismissalsActionPanel_list"))||(data.o.attr("rel") !== "worker")) {<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;after : false,<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before : false,<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inside : true<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_finish" : function (data) {<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data.r.append(data.o.clone());<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enable" : true,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drag_target" : false,<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"drop_target" : ".promotionsDismissalsActionPanel_list"<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				});<br/>
-			</code>
+			<pre>
+				<code>
+/* Árbol y código asociado a la gestión de ascensos y despidos */
+$('#promotionsDismissalsTree').rup_tree({
+	'plugins': ['types', 'sort', 'dnd'],
+    'core' : {
+        'data': workersDepartmentTreeJson,
+        'check_callback': false
+    },
+    'types' : workersTreeTypes,
+    'dnd' : {
+    	'always_copy': true,
+    	'is_draggable': function(nodes, event) {
+    		if((nodes[0].type !== 'worker')) {
+                return false;
+            }
+            return true;
+    	},
+	'use_html5': false
+    }
+});
+
+$(document).on('dnd_move.vakata', function (data, element) {
+	const $target = $(element.event.target);
+	if ($target.hasClass("promotionsDismissalsActionPanel_list")) {
+		$(element.helper[0]).find('i').toggleClass('jstree-er jstree-ok');
+	}
+});
+
+$(document).on('dnd_stop.vakata', function (data, element) {
+	const $target = $(element.event.target);
+	const $clonedElement = $(element.element).clone();
+	if ($('#' + $clonedElement.prop('id') + '_list').length == 0 &#38;&#38; $target.hasClass("promotionsDismissalsActionPanel_list")) {
+		$target.append($clonedElement.prop('id', $clonedElement.prop('id') + '_list'));
+	}
+});
+				</code>
+			</pre>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTreeData" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTreeData" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Codigo JSon del árbol de trabajadores */<br/>
-				var workersDepartmentTreeJson = [<br/>
-			   	&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depAdmin")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"attr" : { "id" : "department", "rel" : "workers"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "open",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Abanca Rodrigez Silvia"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Alonso Ruiz Laura"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Gil Sandia Marta"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Jiménez Arriurtua Francisco"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Padilla Alcantara Sergio"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Sánchez Rodin Pablo"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depClientes")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;"attr" : { "id" : "department", "rel" : "workers"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "close",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Alzola Urierate Leticia"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Aranguren Loinaz Jose"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Bermejo Solo Ana"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Garzon Alonso Luis"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Jerez Templado Bisball"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Noiz Sapuerta Gordi"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>          
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Ortiz Dulon Jose"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Prudencio Fratan Armand"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Ruiz de Santiesteban Pedro"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depReparaciones")<br/>
-				&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;"attr" : { "id" : "department", "rel" : "workers"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "close",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Anemo Muñoz Jon"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Almonzon Mendia Juan"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Bornaz Satrustegui Armando"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Muleto Delito Afelio"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Gaztedi Jobar Maria"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Zarate Oligarco Ramon"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-			  	&nbsp;&nbsp;&nbsp;]},<br/>
-				&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : $.rup.i18nParse($.rup.i18n.app["tasksTree"],"depSuministros")<br/>
-			    &nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;"attr" : { "id" : "department", "rel" : "workers"},<br/>
-				&nbsp;&nbsp;&nbsp;"state" : "close",<br/>
-				&nbsp;&nbsp;&nbsp;"children" : [<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Eredia Puyol Maider"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Montero Rucio Luis"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Perez Mendia Jone"<br/>
-			  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"data" : {<br/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title" : "Puertas y molduras Sanz"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attr" : {"rel" : "worker"}<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-			    &nbsp;&nbsp;&nbsp;]}<br/>
-				];<br/>
-			</code>
+			<pre>
+				<code>
+/* Codigo JSon del árbol de trabajadores */
+var workersDepartmentTreeJson = [
+	{
+		'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'depAdmin'),
+		'id' : 'departmentAdmin',
+		'type' : 'workers',
+        'state' : {
+        	'opened': true,
+            'disabled': false,
+            'selected': false
+        },
+     'children' : [
+        	{
+        		'text' : 'Abanca Rodrigez Silvia',
+        		'id': 'workerDepartment_silviaAR',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Alonso Ruiz Laura',
+        		'id': 'workerDepartment_lauraAR',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Gil Sandia Marta',
+        		'id': 'workerDepartment_martaGS',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Jiménez Arriurtua Francisco',
+        		'id': 'workerDepartment_franciscoJA',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Padilla Alcantara Sergio',
+        		'id': 'workerDepartment_sergioPA',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Sánchez Rodin Pablo',
+        		'id': 'workerDepartment_pabloSR',
+        		'type' : 'worker'
+        	}
+     ]
+	},
+    {
+        'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'depClientes'),
+        'id' : 'departmentClientes',
+        'type' : 'workers',
+        'state' : {
+        	'opened': true,
+            'disabled': false,
+            'selected': false
+        },
+     'children' : [
+        	{
+        		'text' : 'Alzola Urierate Leticia',
+        		'id': 'workerDepartment_leticiaAU',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Aranguren Loinaz Jose',
+        		'id': 'workerDepartment_joseAL',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Bermejo Solo Ana',
+        		'id': 'workerDepartment_anaBS',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Garzon Alonso Luis',
+        		'id': 'workerDepartment_luisGA',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Jerez Templado Bisball',
+        		'id': 'workerDepartment_bisballJT',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Noiz Sapuerta Gordi',
+        		'id': 'workerDepartment_gordiNS',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Ortiz Dulon Jose',
+        		'id': 'workerDepartment_joseOD',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Prudencio Fratan Armand',
+        		'id': 'workerDepartment_armandPF',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Ruiz de Santiesteban Pedro',
+        		'id': 'workerDepartment_pedroRS',
+        		'type' : 'worker'
+        	}
+     ]
+    },
+    {
+    	'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'depReparaciones'),
+    	'id' : 'departmentReparaciones',
+    	'type' : 'workers',
+        'state' : {
+        	'opened': true,
+            'disabled': false,
+            'selected': false
+        },
+     'children' : [
+        	{
+        		'text' : 'Anemo Muñoz Jon',
+        		'id': 'workerDepartment_jonAM',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Almonzon Mendia Juan',
+        		'id': 'workerDepartment_juanAM',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Bornaz Satrustegui Armando',
+        		'id': 'workerDepartment_armandoBS',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Muleto Delito Afelio',
+        		'id': 'workerDepartment_afelioMD',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Gaztedi Jobar Maria',
+        		'id': 'workerDepartment_mariaGJ',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Zarate Oligarco Ramon',
+        		'id': 'workerDepartment_ramonZO',
+        		'type' : 'worker'
+        	}
+     ]
+    },
+    {
+        'text' : $.rup.i18nParse($.rup.i18n.app.tasksTree,'depSuministros'),
+        'id' : 'departmentSuministros',
+        'type' : 'workers',
+        'state' : {
+        	'opened': true,
+            'disabled': false,
+            'selected': false
+        },
+     'children' : [
+        	{
+        		'text' : 'Eredia Puyol Maider',
+        		'id': 'workerDepartment_maiderEP',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Montero Rucio Luis',
+        		'id': 'workerDepartment_luisMR',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Perez Mendia Jone',
+        		'id': 'workerDepartment_jonePM',
+        		'type' : 'worker'
+        	},
+        	{
+        		'text' : 'Sanz Olabe Gotzon',
+        		'id': 'workerDepartment_gotzonSO',
+        		'type' : 'worker'
+        	}
+     ]
+    }
+];
+				</code>
+			</pre>
 		</div>
-		<h1><a><spring:message  code="tree.treeDAD.code.jsTypesCode" /></a></h1>
+		<h1>
+			<a><spring:message code="tree.treeDAD.code.jsTypesCode" /></a>
+		</h1>
 		<div class="treeAccordionCodeSecction">
-			<code>
-				/* Tipos para la gestion de trabajadores */<br/>
-				var workersTreeTypes = {<br/>
-				&nbsp;&nbsp;&nbsp;"valid_children" : ["workers"],<br/>
-				&nbsp;&nbsp;&nbsp;"types" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enterprise" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/enterprise.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"worker" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/worker.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["job"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"workers" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/workers.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["worker", "enterprise"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"job" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon" : {<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"image" : $.rup.STATICS+"/x21a/images/job.png"<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"valid_children" : ["none"]<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-				&nbsp;&nbsp;&nbsp;}<br/>
-				};<br/>
-			</code>
+			<pre>
+				<code>
+/* Tipos para la gestion de trabajadores */
+var workersTreeTypes = {
+    'valid_children' : ['workers'],
+    'enterprise' : {
+        'icon' : $.rup.STATICS+'/x21a/images/enterprise.png',
+        'valid_children' : ['job']
+    },
+    'worker' : {
+        'icon' : $.rup.STATICS+'/x21a/images/worker.png',
+        'valid_children' : ['job']
+    },
+    'workers' : {
+        'icon' : $.rup.STATICS+'/x21a/images/workers.png',
+        'valid_children' : ['worker', 'enterprise']
+    },
+    'job' : {
+        'icon' : $.rup.STATICS+'/x21a/images/job.png',
+        'valid_children' : ['none']
+    }
+};
+				</code>
+			</pre>
 		</div>
 	</div>
-	
 </div>

@@ -69,6 +69,14 @@ jQuery(function($) {
                 'wizard_jspInclude' : {'i18nCaption':'wizardC' },
                 'wizard_jstlImport' : {'i18nCaption':'wizardD' },
                 'wizard_dinamico' : {'i18nCaption':'wizardE' },
+                'selectSimple' : {'i18nCaption':'selectSimple' },
+                'selectEnlazadoSimple' : {'i18nCaption':'selectEnlazadoSimple' },
+                'selectEnlazadoMulti' : {'i18nCaption':'selectEnlazadoMulti' },
+                'selectMultiselect' : {'i18nCaption':'selectMultiselect' },
+                'selectAnidado' : {'i18nCaption':'selectAnidado' },
+                'selectAutocomplete' : {'i18nCaption':'selectAutocomplete' },
+                'selectAutocompleteEnlazado' : {'i18nCaption':'selectAutocompleteEnlazado' },
+                'selectAutocompleteEnlazadoMultiple' : {'i18nCaption':'selectAutocompleteEnlazadoMultiple' },
                 //Submenu
                 'subLevel':[
                     {'i18nCaption':'all', 'url': '/x21aAppWar/patrones/all' },
@@ -113,7 +121,15 @@ jQuery(function($) {
                     {'i18nCaption':'wizardB', 'url': '/x21aAppWar/patrones/wizard_includeFile' },
                     {'i18nCaption':'wizardC', 'url': '/x21aAppWar/patrones/wizard_jspInclude' },
                     {'i18nCaption':'wizardD', 'url': '/x21aAppWar/patrones/wizard_jstlImport' },
-                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' }
+                    {'i18nCaption':'wizardE', 'url': '/x21aAppWar/patrones/wizard_dinamico' },
+                    {'i18nCaption':'selectSimple', 'url': '/x21aAppWar/patrones/selectSimple' },
+                    {'i18nCaption':'selectEnlazadoSimple', 'url': '/x21aAppWar/patrones/selectEnlazadoSimple' },
+                    {'i18nCaption':'selectEnlazadoMulti', 'url': '/x21aAppWar/patrones/selectEnlazadoMultiple' },
+                    {'i18nCaption':'selectMultiselect', 'url': '/x21aAppWar/patrones/selectMultiselect' },
+                    {'i18nCaption':'selectAnidado', 'url': '/x21aAppWar/patrones/selectMantenimiento' },
+                    {'i18nCaption':'selectAutocomplete', 'url': '/x21aAppWar/patrones/selectAutocomplete' },
+                    {'i18nCaption':'selectAutocompleteEnlazado', 'url': '/x21aAppWar/patrones/selectAutocompleteEnlazado' },
+                    {'i18nCaption':'selectAutocompleteEnlazadoMultiple', 'url': '/x21aAppWar/patrones/selectAutocompleteEnlazadoMultiple' }
                 ]
             },
             'table' : {

@@ -67,8 +67,11 @@ public class TableX21aAlumnoController  {
 	 *            Objeto correspondiente al identificador indicado.
 	 */
 	@UDALink(name = "get", linkTo = { 
-			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "edit", allowSubEntities=true),
 			@UDALinkAllower(name = "remove"), 
+			@UDALinkAllower(name = "getProvincias", linkClass=TableComarcaController.class, allowSubEntities=true), 
+			@UDALinkAllower(name = "getComarcas", linkClass=TableComarcaController.class), 
+			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<X21aAlumno> get(@PathVariable BigDecimal id) {
@@ -177,7 +180,10 @@ public class TableX21aAlumnoController  {
 	@UDALink(name = "getTableEditForm", linkTo = {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
-			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "edit", allowSubEntities=true),
+			@UDALinkAllower(name = "getProvincias", linkClass=TableComarcaController.class, allowSubEntities=true), 
+			@UDALinkAllower(name = "getComarcas", linkClass=TableComarcaController.class), 
+			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
@@ -209,6 +215,8 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "get"), 
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),

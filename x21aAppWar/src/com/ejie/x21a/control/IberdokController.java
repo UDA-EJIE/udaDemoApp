@@ -43,6 +43,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.security.XlnetCore;
 import com.ejie.x38.util.ResourceUtils;
 
 import n38c.exe.N38API;
@@ -276,6 +277,45 @@ public class IberdokController {
 		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
 		
 		return "iberdok";
+	}
+	
+	// Iberdok
+	@UDALink(name = "getWelcome", linkTo = {@UDALinkAllower(name = "view")})
+	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
+	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
+		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
+		// anadimos los datos de configuracion de iberdok al cliente desde el
+		// properties
+
+		model.addAttribute("idUsuario",
+				appConfiguration.getProperty("iberdok.idUsuario"));
+		model.addAttribute("urlFinalizacion",
+				appConfiguration.getProperty("iberdok.urlFinalizacion"));
+		model.addAttribute("urlRetorno",
+				appConfiguration.getProperty("iberdok.urlRetorno"));
+		model.addAttribute("idModelo",
+				appConfiguration.getProperty("iberdok.idModelo"));
+		model.addAttribute("token",
+				appConfiguration.getProperty("iberdok.token"));
+		model.addAttribute("lang", appConfiguration.getProperty("iberdok.lang"));
+		model.addAttribute("urlNuevoDocumento",
+				appConfiguration.getProperty("iberdok.urlNuevoDocumento"));
+		model.addAttribute("urlEditarDocumento",
+				appConfiguration.getProperty("iberdok.urlEditarDocumento"));
+		model.addAttribute("urlEditorDocumentos",
+				appConfiguration.getProperty("iberdok.urlEditorDocumentos"));
+
+		model.addAttribute("randomForm", new RandomForm());
+		
+		response.setHeader("Referrer-Policy", "no-referrer-when-downgrade");
+		if(udaXLNetsSessionId != null) {
+			try {
+				response.sendRedirect("view");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "iberdokWelcome";
 	}
 	
 	// Iberdok

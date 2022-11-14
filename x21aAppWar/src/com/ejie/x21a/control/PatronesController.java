@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -49,7 +50,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,7 +61,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.AlumnoDepartamento;
@@ -69,6 +68,7 @@ import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.MultiPk;
@@ -129,6 +129,8 @@ public class PatronesController {
 
     @Autowired
     private UploadService uploadService;
+    
+    int provincia = 0;
 
 
     @javax.annotation.Resource
@@ -156,6 +158,7 @@ public class PatronesController {
     // Autocomplete
     @UDALink(name = "getAutocomplete", linkTo = {
     		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComboRemote")
     })
     @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
@@ -250,11 +253,76 @@ public class PatronesController {
     }
     
     //Select Simple
-    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getSelectRemote"), @UDALinkAllower(name = "getRemoteSelectGrupos"), @UDALinkAllower(name = "getRemoteSelectGruposEnlazado")})
+    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
     @RequestMapping(value = "selectSimple", method = RequestMethod.GET)
     public String getSelectSimple(Model model) {
         return "selectSimple";
     }
+    
+    //SelectEnlazado - simple
+    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoComarcaNoParam"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @RequestMapping(value = "selectEnlazadoSimple", method = RequestMethod.GET)
+    public String getSelectEnlazadoSimple(Model model) {
+    	model.addAttribute("Comarca", new Comarca());
+        return "selectEnlazadoSimple";
+    }
+    
+    //selectEnlazado - multiple
+    @UDALink(name = "getSelectEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
+    @RequestMapping(value = "selectEnlazadoMultiple", method = RequestMethod.GET)
+    public String getSelectEnlazadoMultiple(Model model) {
+        return "selectEnlazadoMultiple";
+    }
+    
+    //MultiSelect
+    @UDALink(name = "getSelectMultiselect", linkTo = {@UDALinkAllower(name = "getComboRemote"),@UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @RequestMapping(value = "selectMultiselect", method = RequestMethod.GET)
+    public String getSelectMultiSelect(Model model) {
+        return "selectMultiselect";
+    }
+
+    //select en mantenimiento
+    @RequestMapping(value = "selectMantenimiento", method = RequestMethod.GET)
+    public String getSelectMantenimiento(Model model) {
+        model.addAttribute("X21aAlumno", new Alumno());
+        return "selectMantenimiento";
+    }
+    
+    // Select Autocomplete
+    @UDALink(name = "getSelectAutocomplete", linkTo = {
+    		@UDALinkAllower(name = "getRemoteAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getComboRemote")
+    })
+    @RequestMapping(value = "selectAutocomplete", method = RequestMethod.GET)
+    public String getSelectAutocomplete(Model model) {
+        return "selectAutocomplete";
+    }
+
+    // Select Autocomplete Enlazado
+    @UDALink(name = "getSelectAutocompleteEnlazado", linkTo = {
+    		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
+    		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
+    })
+    @RequestMapping(value = "selectAutocompleteEnlazado", method = RequestMethod.GET)
+    public String getSelectAutocompleteEnlazado(Model model) {
+        return "selectAutocompleteEnlazado";
+    }
+
+    // Select Autocomplete Enlazado Multiple
+    @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
+    		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam"),
+    		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
+    })
+    @RequestMapping(value = "selectAutocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    public String getSelectAutocompleteEnlazadoMultiple(Model model) {
+        return "selectAutocompleteEnlazadoMultiple";
+    }
+    
 
     //Feedback
     @RequestMapping(value = "feedback", method = RequestMethod.GET)
@@ -265,7 +333,7 @@ public class PatronesController {
     //Form
     @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp",allowSubEntities = true ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
     @RequestMapping(value = "form", method = RequestMethod.GET)
-    public String getForm(Model model) {
+    public String getForm(Model model){
 
         List<NoraPais> paises = noraPaisService.findAll(null, null);
         model.addAttribute("paises", paises);
@@ -453,19 +521,19 @@ public class PatronesController {
         // S
         JSONArray root = new JSONArray();
 
-        JSONObject padre1 = new JSONObject("{'data':'Padre1', 'attr':{'id':'p1'}, 'metadata':{'nivel':1}}");
+        JSONObject padre1 = new JSONObject("{'id':'p1', 'text':'Padre1'}");
 
-        JSONObject padre11 = new JSONObject("{'data':'Padre1.1', 'attr':{'id':'p11'}, 'metadata':{'nivel':2}}");
+        JSONObject padre11 = new JSONObject("{'id':'p11', 'text':'Padre1.1'}");
 
-        JSONObject hoja111 = new JSONObject("{'data':'Padre1.1.1', 'attr':{'id':'p111'}, 'metadata':{'nivel':3}}");
+        JSONObject hoja111 = new JSONObject("{'id':'p111', 'text':'Padre1.1.1'}");
 
-        JSONObject padre112 = new JSONObject("{'data':'Padre1.1.2', 'attr':{'id':'p112'}, 'metadata':{'nivel':3}}");
+        JSONObject padre112 = new JSONObject("{'id':'p112', 'text':'Padre1.1.2'}");
 
-        JSONObject hoja1121 = new JSONObject("{'data':'Padre1.1.2.1', 'attr':{'id':'p1121'}, 'metadata':{'nivel':4}}");
+        JSONObject hoja1121 = new JSONObject("{'id':'p1121', 'text':'Padre1.1.2.1'}");
 
-        JSONObject hoja1122 = new JSONObject("{'data':'Padre1.1.2.2', 'attr':{'id':'p1122'}, 'metadata':{'nivel':4}}");
+        JSONObject hoja1122 = new JSONObject("{'id':'p1122', 'text':'Padre1.1.2.2'}");
 
-        JSONObject hoja12 = new JSONObject("{'data':'Padre1.2', 'attr':{'id':'p12'}, 'metadata':{'nivel':2}}");
+        JSONObject hoja12 = new JSONObject("{'id':'p12', 'text':'Padre1.2'}");
 
         JSONArray padre112Childs = new JSONArray();
         padre112Childs.put(hoja1121);
@@ -484,7 +552,7 @@ public class PatronesController {
 
         root.put(padre1);
 
-        response.setContentType("text/javascript;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Expires", DateTimeManager.getHttpExpiredDate());
         response.setStatus(HttpServletResponse.SC_OK);
@@ -611,7 +679,7 @@ public class PatronesController {
     List<Resource<DepartamentoProvincia>> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia) {
+            @RequestParam(value = "codProvincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
         //Filtro
         DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
 
@@ -636,6 +704,7 @@ public class PatronesController {
         return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
     
+    
     /**
      * AUTOCOMPLETE REMOTO ENLAZADO
      */
@@ -651,8 +720,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    	
-        return ResourceUtils.fromListToResource(provinciaService.findAllLike(null, null, !c));
+    	Provincia provincia = new Provincia();
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+                provincia.setDescEu(q);
+            } else {
+                provincia.setDescEs(q);
+            }
+    	}
+        return ResourceUtils.fromListToResource(provinciaService.findAllLike(provincia, null, !c));
     }
     
     @UDALink(name = "getComarcaEnlazadoAutocomplete")
@@ -669,6 +746,14 @@ public class PatronesController {
         
         Comarca comarca = new Comarca();
         comarca.setProvincia(provincia);
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	comarca.setDescEu(q);
+            } else {
+            	comarca.setDescEs(q);
+            }
+    	}
         
         try {
             Thread.sleep(1000);
@@ -685,7 +770,7 @@ public class PatronesController {
     List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal codComarca) {
+            @RequestParam(value = "comarca", required = false) BigDecimal codComarca) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
@@ -693,6 +778,15 @@ public class PatronesController {
         
         Localidad localidad = new Localidad();
         localidad.setComarca(comarca);
+        
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	localidad.setDescEu(q);
+            } else {
+            	localidad.setDescEs(q);
+            }
+    	}
 
         try {
             Thread.sleep(1000);
@@ -757,6 +851,88 @@ public class PatronesController {
         DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
         departamentoProvincia.setDepartamento(departamento);
         departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
+    }
+    
+    @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
+    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
 
         try {
             Thread.sleep(1000);
@@ -788,30 +964,39 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
+        List<Provincia> listaProvincias = provinciaService.findAll(null, null);
+        if(provincia == 0){
+        	provincia = 1;
+        }else{
+        	provincia = 0;
+        	Provincia provi = new Provincia(new BigDecimal(33), "Hugo", "Hugo", "Hugo");
+        	listaProvincias.remove(0);
+			listaProvincias.add(provi );
+        }
+        return ResourceUtils.fromListToResource(listaProvincias);
     }
     
     @UDALink(name = "getRemoteComboGrupos")
     @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
     public @ResponseBody
-    List<Resource<HashMap<String, List<?>>>> getRemoteComboGrupos() {
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGrupos() {
         return this.setRemoteComboGruposEnlazado(null);
     }
     
     @UDALink(name = "getRemoteComboGruposEnlazado")
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<Resource<HashMap<String, List<?>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
     	return this.setRemoteComboGruposEnlazado(provincia_code);
     }
     
-    private List<Resource<HashMap<String, List<?>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
+    private List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
 
         //Retorno del mÃ©todo
-        List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
+        List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> retorno = new ArrayList<HashMap<String, List<Resource<DivisionTerritorialDto>>>>();
 
         //Nombres de los grupos segÃºn idioma
         String provincia = null, comarca = null, localidad = null;
@@ -832,12 +1017,26 @@ public class PatronesController {
         }
 
         //Provincia
-        HashMap<String, List<?>> group = new HashMap<String, List<?>>();
+        HashMap<String, List<Resource<DivisionTerritorialDto>>> group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
 
         Provincia provinciaFilter = null;
 
         if (provincia_code == null) {
-            group.put(provincia, provinciaService.findAll(null, null));
+
+        	List<Provincia> lista = provinciaService.findAll(null, null);
+
+			try {
+				List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(lista,"Prov");
+				group.put(provincia, listaDivision);
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        	
             retorno.add(group);
         } else {
             provinciaFilter = new Provincia();
@@ -845,34 +1044,92 @@ public class PatronesController {
         }
 
         //Comarca
-        group = new HashMap<String, List<?>>();
+        group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
+        List<Comarca> listaComarca = new ArrayList<Comarca>();
         if (provincia_code != null) {
             Comarca comarcaFilter = new Comarca();
             comarcaFilter.setProvincia(provinciaFilter);
-            group.put(comarca, comarcaService.findAll(comarcaFilter, null));
+            listaComarca = comarcaService.findAll(comarcaFilter, null);
+            
         } else {
-            group.put(comarca, comarcaService.findAll(null, null));
+        	listaComarca = comarcaService.findAll(null, null);
         }
+                
+		try {
+			List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(listaComarca,"Coma");
+			group.put(comarca, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         retorno.add(group);
 
         //Localidad
-        group = new HashMap<String, List<?>>();
+        group = new HashMap<String, List<Resource<DivisionTerritorialDto>>>();
+        List<Localidad> listaLocalidad = new ArrayList<Localidad>();
         if (provincia_code != null) {
             Localidad localidadFilter = new Localidad();
             Comarca comarcaFilter = new Comarca();
             comarcaFilter.setProvincia(provinciaFilter);
             localidadFilter.setComarca(comarcaFilter);
-            group.put(localidad, localidadService.findAll(localidadFilter, null));
+            listaLocalidad= localidadService.findAll(localidadFilter, null);
         } else {
-            group.put(localidad, localidadService.findAll(null, null));
+        	listaLocalidad= localidadService.findAll(null, null);
         }
+        
+		try {
+			List<Resource<DivisionTerritorialDto>> listaDivision = listToDivisionResource(listaLocalidad,"Loca");
+			group.put(localidad, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
         retorno.add(group);
 
-        return ResourceUtils.fromListToResource(retorno);
+        return retorno;
     }
 
 
-    /**
+    private List<Resource<DivisionTerritorialDto>> listToDivisionResource(List<?> lista, String tipo) throws SecurityException, NoSuchFieldException {
+    	List<DivisionTerritorialDto> listaDivision = new ArrayList<DivisionTerritorialDto>();
+    	for (int i = 0; i < lista.size(); i++) {
+    		
+    		Object obj = lista.get(i);
+    		Class<?> c = obj.getClass();
+    		Field code = c.getDeclaredField("code");
+    		Field descEs = c.getDeclaredField("descEs");
+    		Field descEu = c.getDeclaredField("descEu");
+    		Field css = c.getDeclaredField("css");
+    		code.setAccessible(true);
+    		descEs.setAccessible(true);
+    		descEu.setAccessible(true);
+    		css.setAccessible(true);
+    		try {
+				DivisionTerritorialDto dt = new DivisionTerritorialDto(code.get(obj) + tipo,(String) descEs.get(obj), (String) descEu.get(obj),(String) css.get(obj));
+				listaDivision.add(dt );
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
+
+		}
+		return ResourceUtils.fromListToResource(listaDivision);
+	}
+
+	/**
      * COMBO ENLAZADO SIMPLE
      */
     @UDALink(name = "getEnlazadoProvincia")
@@ -896,6 +1153,52 @@ public class PatronesController {
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
+    }
+    
+    @UDALink(name = "getEnlMultDptoProvNoParam")
+    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getEnlMultDptoProvNoParam(
+            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
+            @RequestParam(value = "provincia", required = false) Integer provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
+    }
+    
+    @UDALink(name = "getEnlazadoComarcaNoParam")
+    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<Comarca>> getEnlazadoComarcaNoParam(
+            @RequestParam(value = "provincia", required = true) Integer provincia_code) throws Exception {
+
+    	if(provincia_code < 1 || provincia_code > 6){
+    		throw new Exception("Identificador no valido");
+    	}
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
         Comarca comarca = new Comarca();
         comarca.setProvincia(provincia);
         try {
@@ -933,7 +1236,8 @@ public class PatronesController {
     /**
      * Combos Enlazados (mÃºltiple)
      */
-    @UDALink(name = "getEnlMultDpto")
+    @UDALink(name = "getEnlMultDpto", linkTo = {
+			@UDALinkAllower(name = "getEnlMultDptoProvNoParam") })
     @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
     public @ResponseBody
     List<Resource<Departamento>> getEnlMultDpto() {

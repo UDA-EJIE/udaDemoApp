@@ -65,10 +65,10 @@
         <div class="col-md-12">
           <!-- Standard button -->
           <button type="button" class="rup-button">Default</button>
-
+			
           <button type="button" id="dropdownHtmlListButton">Lista HTML</button>
           <ul id="dropdownHtmlList" class="rup-dropdown-option-list">
-          	<spring:url value="#" var="urlHashtag"/>
+          	<spring:url value="/styleGuide" var="urlHashtag" htmlEscape="true"/>
           	<li><a href="${urlHashtag}" id="dropdownElem1">Elemento 1</a></li>
           	<li><a href="${urlHashtag}" id="dropdownElem2">Elemento 2</a></li>
           	<li><a href="${urlHashtag}" id="dropdownElem3">Elemento 3</a></li>
@@ -635,4 +635,4 @@
 			</div>
 		</div>
 	</div>
-  </section>
+  </section>  

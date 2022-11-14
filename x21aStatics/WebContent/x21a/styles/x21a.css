@@ -414,7 +414,9 @@ a.ui-selectmenu { text-decoration: none; color: black }
 }
 
 .promotionsDismissalsActionPanel_list .jstree-icon{
-	display: none;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
 }
 
 .promotionsDismissalsActionPanel_list li[rel="worker"] > a > .jstree-icon {
@@ -429,7 +431,7 @@ a.ui-selectmenu { text-decoration: none; color: black }
 
 .promotionsDismissalsActionPanel_list a {
     color: black;
-    display: inline-block;
+    display: block;
     height: 16px;
     line-height: 16px;
     margin: 0;

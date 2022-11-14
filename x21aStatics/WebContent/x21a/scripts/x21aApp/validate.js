@@ -132,18 +132,16 @@ jQuery(function($) {
             }
         });
 
-        $('#rol_detail_table').rup_combo({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
+        $('#rol_detail_table').rup_select({
+            data : [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
             ],
-            width: '100%',
+            placeholder : '',
             blank : '',
-            rowStriping : true,
-            inputText:true,
             customClasses: ['select-material']
         });
 

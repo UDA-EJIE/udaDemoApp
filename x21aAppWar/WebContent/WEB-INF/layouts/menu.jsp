@@ -358,6 +358,48 @@
                                 <spring:message code="time" />
                             </a>
                             
+                           <div class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">
+                                    <spring:message code="select.menu" />
+                                </a>
+                                <div class="dropdown-menu menu-right">
+                                <spring:url value="/patrones/selectSimple" var="selectSimple" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectSimple}">
+                                        <spring:message code="selectSimple.menu" />
+                                    </a>
+                                    <spring:url value="/patrones/selectEnlazadoSimple" var="selectEnlazadoSimple" htmlEscape="true"/>
+                                    <a class="dropdown-item"
+                                        href="${selectEnlazadoSimple}">
+                                        <spring:message code="selectEnlazadoSimple.menu" />
+                                    </a>
+                                    <spring:url value="/patrones/selectEnlazadoMultiple" var="selectEnlazadoMultiple" htmlEscape="true"/>
+                                    <a class="dropdown-item"
+                                        href="${selectEnlazadoMultiple}">
+                                        <spring:message code="selectEnlazadoMulti.menu" />
+                                    </a>
+                                    <spring:url value="/patrones/selectMultiselect" var="multiselect" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${multiselect}">
+                                        <spring:message code="selectMultiselect.menu" />
+                                    </a>
+                                    <spring:url value="/patrones/selectMantenimiento" var="selectMantenimiento" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectMantenimiento}">
+                                        <spring:message code="selectAnidado.menu" />
+                                    </a>
+                                    <spring:url value="/patrones/selectAutocomplete" var="selectAutocomplete" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocomplete}">
+                                        <spring:message code="selectAutocomplete.menu" />
+                                    </a>  
+                                    <spring:url value="/patrones/selectAutocompleteEnlazado" var="selectAutocompleteEnlazado" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocompleteEnlazado}">
+                                        <spring:message code="selectAutocompleteEnlazado.menu" />
+                                    </a> 
+                                    <spring:url value="/patrones/selectAutocompleteEnlazadoMultiple" var="selectAutocompleteEnlazadoMultiple" htmlEscape="true"/>
+                                    <a class="dropdown-item" href="${selectAutocompleteEnlazadoMultiple}">
+                                        <spring:message code="selectAutocompleteEnlazadoMultiple.menu" />
+                                    </a>   
+                                </div>
+                            </div>
+                            
                             <spring:url value="/patrones/spinner" var="spinner" htmlEscape="true"/>
                             <a class="dropdown-item" href="${spinner}">
                                 <i class="mdi mdi-arrow-up-down-bold" aria-hidden="true"></i>
@@ -482,7 +524,7 @@
 					<a class="dropdown-item" href="${logLevel}">
 						<spring:message code="experimental.logLevel" />
 					</a>
-                    <spring:url value="/iberdok/view" var="iberdok" htmlEscape="true"/>
+                    <spring:url value="/iberdok/iberdokWelcome" var="iberdok" htmlEscape="true"/>
 					<a class="dropdown-item" href="${iberdok}">
 						<spring:message code="experimental.iberdok" />
 					</a>

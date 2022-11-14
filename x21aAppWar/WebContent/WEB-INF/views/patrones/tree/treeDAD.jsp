@@ -26,7 +26,7 @@
 		<legend class="treeAreaExchangePanel_legend">
 			<spring:message code="tree.treeDAD.reorder" />
 		</legend>
-		<div id="tasksReorderTree" class="ExchangePanel_tree"></div>
+		<div id="tasksReorderTree" class="ExchangePanel_tree overflow-auto"></div>
 		<div id="tasksReorderTreeUniqueControl" class="DADcontrolsMainCode">
 			<button id="btnReorderTreeUniqueControl">
 				<spring:message code="tree.verCodigo.ordenacion" />
@@ -39,35 +39,34 @@
 		<legend class="treeNodesExchangePanel_legend">
 			<spring:message code="tree.treeDAD.exchange" />
 		</legend>
-		<div>
-			<div class="enLinea panelLeftWorkers">
-				<div id="tasksTree" class="ExchangePanel_tree"></div>
-
+		<div class="row">
+			<div class="col-sm-6">
+				<div id="tasksTree" class="ExchangePanel_tree overflow-auto"></div>
+			</div>
+			<div class="col-sm-6 panelRightWorkers">
+				<div id="workersTree" class="ExchangePanel_tree overflow-auto"></div>
 			</div>
 			<!-- 		<div class="treeNodesExchangePanel_center"> -->
 		<!-- 			<div class="treeNodesExchangePanel_center_line"></div> -->
 		<%-- 			<img src="${staticsUrl}/x21a/images/twoWayArrows.png" --%>
 		<!-- 				class="treeNodesExchangePanel_center_img" -->
 		<%-- 				alt="<spring:message code="tree.treeDAD.Interchange" />" /> --%>
-		<!-- 		</div> -->
-		<div class="enLinea panelRightWorkers">
-			<div id="workersTree" class="ExchangePanel_tree"></div>
-			
 		</div>
-			<div id="tasksExchangeTreeUniqueControl" class="DADcontrolsMainCode">
-				<button id="btnExchangeTreeUniqueControl">
-					<spring:message code="tree.verCodigo.intercambio" />
-				</button>
-			</div>
+		<div id="tasksExchangeTreeUniqueControl" class="row DADcontrolsMainCode">
+			<button id="btnExchangeTreeUniqueControl">
+				<spring:message code="tree.verCodigo.intercambio" />
+			</button>
+		</div>
 	</fieldset>
 
+	<!-- Árbol con Drag&Drop a paneles -->
 	<fieldset id="treeNodeAreaExchangePanel"
 		class="treeNodeAreaExchangePanel">
 		<legend class="treePromotionsDismissalsPanel_legend">
 			<spring:message code="tree.treeDAD.exchange" />
 		</legend>
 		<div class="promotionsDismissalsExchangePanel">
-			<div class="promotionsDismissalsExchangePanel_left">
+			<div class="promotionsDismissalsExchangePanel_left overflow-auto">
 				<div id="promotionsDismissalsTree" class="promotionsDismissals_tree"></div>
 			</div>
 			<div class="promotionsDismissalsExchangePanel_center">
@@ -78,7 +77,7 @@
 						alt="<spring:message code="tree.treeDAD.rightDirec" />" />
 				</div>
 			</div>
-			<div class="promotionsDismissalsExchangePanel_right">
+			<div class="promotionsDismissalsExchangePanel_right overflow-auto">
 				<div class="promotionsDismissalsActionPanel">
 					<h3 class="promotionsDismissalsDestiny">
 						<spring:message code="tree.treeDAD.promotions" />

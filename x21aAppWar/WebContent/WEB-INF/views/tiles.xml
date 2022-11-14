@@ -276,31 +276,52 @@
 		<put-attribute name="content"
 			value="/WEB-INF/views/patrones/select/selectSimple.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/selectSimple-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/includes/selectSimple-includes.jsp" />
 	</definition>
 	<definition extends="template" name="selectEnlazadoSimple">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple.jsp" />
+			value="/WEB-INF/views/patrones/select/selectEnlazadoSimple.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/comboEnlazadoSimple-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/includes/selectEnlazadoSimple-includes.jsp" />
 	</definition>
 	<definition extends="template" name="selectEnlazadoMultiple">
 		<put-attribute name="content"
 			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/includes/selectEnlazadoMultiple-includes.jsp" />
 	</definition>
-	<definition extends="template" name="multiselect">
+	<definition extends="template" name="selectMultiselect">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/select/multiselect.jsp" />
+			value="/WEB-INF/views/patrones/select/selectMultiselect.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/select/multiselect-includes.jsp" />
+			value="/WEB-INF/views/patrones/select/includes/selectMultiselect-includes.jsp" />
 	</definition>
 	<definition extends="template" name="selectMantenimiento">
 		<put-attribute name="content"
 			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocomplete">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocomplete.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocomplete-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocompleteEnlazado">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocompleteEnlazado.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocompleteEnlazado-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocompleteEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocompleteEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocompleteEnlazadoMultiple-includes.jsp" />
 	</definition>
 <!-- FIN RUP_Select -->
 
@@ -574,6 +595,11 @@
 	</definition>
 	
 	<definition name="iberdokEditForm" template="/WEB-INF/views/experimental/iberdokEditForm.jsp" />
+	
+	<definition extends="template" name="iberdokWelcome">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/iberdokWelcome.jsp" />
+	</definition>
 
 
 	<!-- Integracion -->

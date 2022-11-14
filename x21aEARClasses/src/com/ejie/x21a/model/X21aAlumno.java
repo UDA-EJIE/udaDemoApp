@@ -43,6 +43,7 @@ public class X21aAlumno implements java.io.Serializable, SecureIdentifiable<BigD
 	private String calle;
 	private String direccion;
 	private BigDecimal importeMatricula;
+	private Provincia provincia;
 
 	/** 
 	 * Method 'X21aAlumno'.
@@ -90,7 +91,7 @@ public class X21aAlumno implements java.io.Serializable, SecureIdentifiable<BigD
      * @param direccion String
      * @param importeMatricula BigDecimal
      */
-   public X21aAlumno(BigDecimal id, String usuario, String password, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String telefono, String email, String idioma, String paisId, String provinciaId, Long localidadId, String comarcaId, String municipioId, Long calleId, Blob imagen, String sexo, String dni, String autonomiaId, String nombreImagen, String calle, String direccion, BigDecimal importeMatricula) {	
+   public X21aAlumno(BigDecimal id, String usuario, String password, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String telefono, String email, String idioma, String paisId, String provinciaId, Long localidadId, String comarcaId, String municipioId, Long calleId, Blob imagen, String sexo, String dni, String autonomiaId, String nombreImagen, String calle, String direccion, BigDecimal importeMatricula, Provincia provincia) {	
 
            this.id = id;
            this.usuario = usuario;
@@ -116,6 +117,7 @@ public class X21aAlumno implements java.io.Serializable, SecureIdentifiable<BigD
            this.calle = calle;
            this.direccion = direccion;
            this.importeMatricula = importeMatricula;
+           this.provincia = provincia;
     }
 
     /**
@@ -622,6 +624,20 @@ public class X21aAlumno implements java.io.Serializable, SecureIdentifiable<BigD
 	public void setImporteMatricula(BigDecimal importeMatricula) {
 		this.importeMatricula = importeMatricula;
 	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+
+
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
+
+
 
 	/**
 	 * Intended only for logging and debugging.

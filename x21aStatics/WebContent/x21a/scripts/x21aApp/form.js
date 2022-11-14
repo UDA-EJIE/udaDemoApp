@@ -70,7 +70,6 @@ window.initRupI18nPromise.then(function () {
                     'password_confirm': {
                         equalTo: '#password'
                     },
-                    'fechaNacimiento':{date: true},
                     'email':{email: true},
                     'email_confirm': {
                         equalTo: '#email'
@@ -166,7 +165,37 @@ window.initRupI18nPromise.then(function () {
     });
     
     // Fecha
-    jQuery('#fechaNacimiento').rup_date();
+    jQuery('#fechaNacimiento').rup_date({
+    	labelMaskId : 'fecha-mask',
+        showButtonPanel : true,
+        showOtherMonths : true,
+        noWeekend : true,
+        datetimepicker : true,
+        placeholderMask : true,
+        mask: 'dd/mm/yyyy hh:mm:ss',
+        showSecond: true,
+        dateFormat: 'dd/mm/yy',
+        timeFormat: 'hh:mm:ss',
+        timezoneOffset:120
+    });
+    
+    // Fecha
+    jQuery('#fechaNacimiento3').rup_date({
+    	labelMaskId : 'fecha-mask',
+        showButtonPanel : true,
+        showOtherMonths : true,
+        noWeekend : true,
+        datetimepicker : true,
+        placeholderMask : true,
+        mask: 'dd/mm/yyyy hh:mm:ss',
+        showSecond: true,
+        dateFormat: 'dd/mm/yy',
+        timeFormat: 'hh:mm:ss',
+        timezoneOffset:120
+    });
+    
+    $('#fechaNacimiento').rup_date('setDate', jQuery('#fechaNacimiento').val());
+
     
     
     /*

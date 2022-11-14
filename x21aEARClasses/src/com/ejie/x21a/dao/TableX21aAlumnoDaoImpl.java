@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -43,8 +44,12 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 	 */
 	private RowMapper<X21aAlumno> rwMap = new RowMapper<X21aAlumno>() {
 		public X21aAlumno mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+		Provincia provincia = new Provincia();
+		provincia.setCode(resultSet.getBigDecimal("PROVINCIAID"));
+		provincia.setDescEs("Prueba_Es");
+		provincia.setDescEu("Prueba_Eu");
            return new X21aAlumno(
-               resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHANACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAISID"), resultSet.getString("PROVINCIAID"), resultSet.getLong("LOCALIDADID"), resultSet.getString("COMARCAID"), resultSet.getString("MUNICIPIOID"), resultSet.getLong("CALLEID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIAID"), resultSet.getString("NOMBREIMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTEMATRICULA")
+               resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHANACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAISID"), resultSet.getString("PROVINCIAID"), resultSet.getLong("LOCALIDADID"), resultSet.getString("COMARCAID"), resultSet.getString("MUNICIPIOID"), resultSet.getLong("CALLEID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIAID"), resultSet.getString("NOMBREIMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTEMATRICULA"),provincia
            ); } } ;
 
 	private RowMapper<X21aAlumno> rwMapPK = new RowMapper<X21aAlumno>() {
@@ -62,7 +67,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 	private RowMapper<JerarquiaDto< X21aAlumno>> rwMapJerarquia = new RowMapper<JerarquiaDto<X21aAlumno>>() {
 		public JerarquiaDto<X21aAlumno> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-			X21aAlumno x21aalumno = new X21aAlumno(resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHA_NACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAIS_ID"), resultSet.getString("PROVINCIA_ID"), resultSet.getLong("LOCALIDAD_ID"), resultSet.getString("COMARCA_ID"), resultSet.getString("MUNICIPIO_ID"), resultSet.getLong("CALLE_ID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIA_ID"), resultSet.getString("NOMBRE_IMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTE_MATRICULA"));
+			X21aAlumno x21aalumno = new X21aAlumno(resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHA_NACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAIS_ID"), resultSet.getString("PROVINCIA_ID"), resultSet.getLong("LOCALIDAD_ID"), resultSet.getString("COMARCA_ID"), resultSet.getString("MUNICIPIO_ID"), resultSet.getLong("CALLE_ID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIA_ID"), resultSet.getString("NOMBRE_IMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTE_MATRICULA"), new Provincia());
 
 			JerarquiaDto<X21aAlumno> jerarquia = new JerarquiaDto<X21aAlumno>();
 			jerarquia.setModel(x21aalumno);
