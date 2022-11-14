@@ -280,8 +280,7 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@UDALink(name = "getWelcome", linkTo = {
-			@UDALinkAllower(name = "view"),})
+	@UDALink(name = "getWelcome", linkTo = {@UDALinkAllower(name = "view")})
 	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
 	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
