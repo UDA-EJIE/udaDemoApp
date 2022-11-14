@@ -28,9 +28,15 @@
 			<spring:message code="feedback.paragraph.line2" />
 		</p>
 		<ul>
-			<li><spring:message code="feedback.list.typeError" /></li>
-			<li><spring:message code="feedback.list.typeWarning" /></li>
-			<li><spring:message code="feedback.list.typeOk" /></li>
+			<li>
+				<strong><spring:message code="feedback.list.error"/></strong> <spring:message code="feedback.list.typeError"/>
+			</li>
+			<li>
+				<strong><spring:message code="feedback.list.warning"/></strong> <spring:message code="feedback.list.typeWarning"/>
+			</li>
+			<li>
+				<strong><spring:message code="feedback.list.ok"/></strong> <spring:message code="feedback.list.typeOk"/>
+			</li>
 		</ul>
 		<div class="example">
 			<div id="feedbackOk" role="alert"></div>
