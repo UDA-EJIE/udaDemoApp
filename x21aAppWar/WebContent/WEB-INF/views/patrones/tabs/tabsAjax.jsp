@@ -31,7 +31,7 @@
 
 	<h1>Pestañas de navegación</h1>
 	<p id="docu">
-		<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+		<spring:url value="/" var="urlHashtag" htmlEscape="true"/>
 		<a target="_blank" href="${urlHashtag}">Descargar documentación</a>
 	</p>
 	<br>
@@ -77,5 +77,11 @@
 			Organización y jerarquía de pantalla</li>
 		<li style="margin-left: 25px;">2.2.1. Menús de navegación</li>
 	</ul>
+	<form:form class="form-horizontal" method="post" modelAttribute="alumno">
+						<div class="form-groupMaterial col-md-3 col-sm-6 col-xs-12">
+						<form:input id="t06FechaEntradaPaciente" path="fechaNacimiento2" type="text" />
+						<label for="t06FechaEntradaPaciente"><spring:message code="fecha" /><span class="text-muted" id="fecha-mask"></span></label>
+						</div>
+	</form:form>
 
 </div>
