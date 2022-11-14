@@ -26,11 +26,6 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		return "/mockLoginPage";
 	}
 	
-	@Override
-    public void configure(SecurityConfigBuilder builder) {
-        builder.errorPage("/error");
-    }
-	
 	protected String getDashboardUser() {
 		return "dashboard-admin";
 	}
@@ -38,6 +33,11 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	protected String getDashboardPass() {
 		return "password";
 	}
+	
+	@Override
+    public void customConfigure(final SecurityConfigBuilder builder) {
+        builder.errorPage("/error");
+    }
 
 	@Override
 	public void addCustomExclusions(final ExclusionRegistry registry) {
