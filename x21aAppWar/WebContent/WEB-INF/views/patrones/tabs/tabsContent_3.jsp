@@ -18,7 +18,7 @@
 <h1>Descarga gratuita de Java</h1>
 <h3>Descargue ya Java en su equipo.</h3>
 <strong> Version X Update YY </strong> <!--  jvdl0 Download Component -->
-<spring:url value="#" var="urlHashtag" htmlEscape="true"/>
+<spring:url value="/" var="urlHashtag" htmlEscape="true"/>
 <div class="jvdl0 jvdl0v0"><a class="jvdla0" href="${urlHashtag}"
 	onclick="javaScript: alert('Esta pantalla es solo una pantalla de prueba.')">
 <span> Descarga gratuita de Java </span> </a>
