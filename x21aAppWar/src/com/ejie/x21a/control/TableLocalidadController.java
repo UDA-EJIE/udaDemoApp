@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +96,7 @@ public class TableLocalidadController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Localidad> getById(@PathVariable BigDecimal code) {
+	public @ResponseBody Resource<Localidad> getById(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
 		localidad.setCode(code);
         localidad = this.localidadService.find(localidad);
@@ -140,7 +141,7 @@ public class TableLocalidadController {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<Localidad> remove(@PathVariable BigDecimal code) {
+    public @ResponseBody Resource<Localidad> remove(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
         localidad.setCode(code);
         this.localidadService.remove(localidad);

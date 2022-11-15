@@ -36,6 +36,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.NoEntity;
 import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -143,7 +144,7 @@ public class PatronesController {
 
     //Sleep
     @RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
-    public String getSleep(Model model, @PathVariable Integer ms) throws InterruptedException {
+    public String getSleep(Model model, @PathVariable @TrustAssertion(idFor = NoEntity.class) Integer ms) throws InterruptedException {
         Thread.sleep(ms);
         return "accordion";
     }

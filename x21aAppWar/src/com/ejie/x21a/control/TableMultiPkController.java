@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class TableMultiPkController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<MultiPk> get(@PathVariable String id) {
+	public @ResponseBody Resource<MultiPk> get(@PathVariable @TrustAssertion(idFor = MultiPk.class) String id) {
         MultiPk multiPk = new MultiPk();
 		multiPk.setId(id);
         multiPk = this.multiPkService.find(multiPk);
@@ -192,7 +193,7 @@ public class TableMultiPkController {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<MultiPk> remove(@PathVariable String id) {
+    public @ResponseBody Resource<MultiPk> remove(@PathVariable @TrustAssertion(idFor = MultiPk.class) String id) {
         MultiPk multiPk = new MultiPk();
         multiPk.setId(id);
         this.multiPkService.remove(multiPk);

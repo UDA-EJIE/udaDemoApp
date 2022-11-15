@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.xpath.XPathAPI;
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class IberdokController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<IberdokFile> get(@PathVariable String id,HttpServletResponse response) {
+	public @ResponseBody Resource<IberdokFile> get(@PathVariable @TrustAssertion(idFor = IberdokFile.class) String id,HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		file = this.iberdokFileService.find(file);
@@ -158,7 +159,7 @@ public class IberdokController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody Resource<IberdokFile> remove(
-			@PathVariable(value = "id") String id, HttpServletResponse response) {
+			@PathVariable(value = "id") @TrustAssertion(idFor = IberdokFile.class) String id, HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		this.iberdokFileService.remove(file);

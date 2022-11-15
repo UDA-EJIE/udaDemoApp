@@ -27,6 +27,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,7 +150,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Alumno> get(final @PathVariable BigDecimal id) {
+	public @ResponseBody Resource<Alumno> get(final @PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id) {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
         alumno = this.alumnoService.find(alumno);
@@ -276,7 +277,7 @@ public class TableAlumnoController  {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<Alumno> remove(@PathVariable BigDecimal id) {
+    public @ResponseBody Resource<Alumno> remove(@PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id) {
         Alumno alumno = new Alumno();
         alumno.setId(id);
         this.alumnoService.remove(alumno);
@@ -366,7 +367,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
-	public void getImagenAlumno(@PathVariable BigDecimal id, HttpServletResponse response) throws IOException {
+	public void getImagenAlumno(@PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id, HttpServletResponse response) throws IOException {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
 		alumno = this.alumnoService.getImagen(alumno);

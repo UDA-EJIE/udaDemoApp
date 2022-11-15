@@ -3,6 +3,8 @@ package com.ejie.x21a.control;
 import com.ejie.x21a.service.ProvinciaService;
 import java.math.BigDecimal;
 import java.util.List;
+
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class ProvinciaController  {
 	 * @return provincia Provincia
 	 */
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public @ResponseBody Provincia getById(@PathVariable BigDecimal code) {
+	public @ResponseBody Provincia getById(@PathVariable @TrustAssertion(idFor = Provincia.class) BigDecimal code) {
         Provincia provincia = new Provincia();
 		provincia.setCode(code);
         provincia = this.provinciaService.find(provincia);
