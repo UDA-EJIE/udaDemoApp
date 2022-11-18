@@ -11,5 +11,17 @@
         <dependent-module archiveName="x38ShLibClasses.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses/x38ShLibClasses">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="hdiv-config.jar" deploy-path="/lib" handle="module:/resource/hdiv-config/hdiv-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hdiv-core.jar" deploy-path="/lib" handle="module:/resource/hdiv-core/hdiv-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hdiv-services.jar" deploy-path="/lib" handle="module:/resource/hdiv-services/hdiv-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hdiv-spring-mvc.jar" deploy-path="/lib" handle="module:/resource/hdiv-spring-mvc/hdiv-spring-mvc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
