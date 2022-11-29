@@ -26,6 +26,8 @@
 	<!-- Feedback del formulario de detalle -->
 	<div id="localidad_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	
+	<form:input id="localidad_detail_masterPK" path="comarca.code" cssClass="d-none"/>
 	<div class="form-row"> 
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detail_tableLocalidad" />
