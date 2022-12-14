@@ -112,11 +112,12 @@ jQuery(function($) {
         });
         $('#mixto_provincia').rup_combo({
             //source: ["Álava","Vizcaya","Gipúzcoa"]
-            source: [
+            /*source: [
                 {i18nCaption: 'a', value:'1'},
                 {i18nCaption: 'b', value:'2'},
                 {i18nCaption: 'g', value:'3'}
-            ],
+            ],*/
+        	loadFromSelect: true,
             width: '99%',
             customClasses: ['select-material'],
             change: function () {
@@ -137,13 +138,14 @@ jQuery(function($) {
         
         //MIXTO II
         $('#mixto2_departamento').rup_combo({
-            source: [
+            /*source: [
                 {i18nCaption: 'ayto', value:'1'},
                 {i18nCaption: 'dipu', value:'2'},
                 {i18nCaption: 'poli', value:'3'},
                 {i18nCaption: 'bomb', value:'4'}
             ],
-            blank: '-1',
+            blank: '-1',*/
+        	loadFromSelect: true,
             selected:1,
             width: '99%',
             customClasses: ['select-material'],
@@ -162,7 +164,7 @@ jQuery(function($) {
         });
         $('#mixto2_dptoProv').rup_combo({
             parent: [ 'mixto2_departamento', 'mixto2_provinciaRemote' ],
-            source: {
+            /*source: {
                 '1##1':['Ayuntamiento de Álava'],
                 '1##2':['Ayuntamiento de Vizcaya'],
                 '1##3':['Ayuntamiento de Gipúzcoa'],
@@ -175,7 +177,8 @@ jQuery(function($) {
                 '4##1':['Bomberos de Álava'],
                 '4##2':['Bomberos de Vizcaya'],
                 '4##3':['Bomberos de Gipúzcoa']
-            },
+            },*/
+        	loadFromSelect: true,
             width: '99%',
             customClasses: ['select-material'],
             change: function () {

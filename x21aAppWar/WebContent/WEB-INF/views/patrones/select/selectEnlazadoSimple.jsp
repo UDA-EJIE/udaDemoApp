@@ -14,10 +14,15 @@
  -- que establece la Licencia.
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
+
+<!-- URL a usar en formularios -->
+<spring:url value="comboEnlazadoSimple/provinciaComarcaLocalidadDTO" var="remoto"/>
+<spring:url value="comboEnlazadoSimple/provinciaComarcaDTO" var="mixto"/>
+<spring:url value="comboEnlazadoSimple/comarcaLocalidadDTO" var="remotoAgrupado"/>
+
 <h2>
 	<spring:message code="selectEnlazadoSimple.title" />
 </h2>
-<form:form id="select_enlazado_form"  method="post" action="/post" modelAttribute="Comarca">
 
 <div class="container-fluid">
 	<div class="form-row">
@@ -41,21 +46,28 @@
 		
 		<fieldset id="remote" class="col-sm mr-sm-5">
 			<legend>Remoto</legend>
-
-			<div class="form-groupMaterial">
-				<select id="selectAbueloRemoto" name="provincia"></select>
-				<label for="selectAbueloRemoto">Provincia</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="selectPadreRemoto" name="comarca"></select>
-				<label for="selectPadreRemoto">Comarca</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="selectHijoRemoto"></select>
-				<label for="selectHijoRemoto">Localidad</label>
-			</div>
+			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="selectAbueloRemoto" path="codeProvincia">
+						<form:option value="">---</form:option>
+					</form:select>
+					<label for="selectAbueloRemoto">Provincia</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="selectPadreRemoto" path="codeComarca">
+						<form:option value="">---</form:option>
+					</form:select>
+					<label for="selectPadreRemoto">Comarca</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="selectHijoRemoto" path="codeLocalidad">
+						<form:option value="">---</form:option>
+					</form:select>
+					<label for="selectHijoRemoto">Localidad</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 	</div>
@@ -65,32 +77,36 @@
 	<div class="form-row">
 		<fieldset id="local" class="col-sm mr-sm-5">
 			<legend>Local a Remoto</legend>
-			<div class="form-groupMaterial">
-				<form:select id="selectLocalAbuelo" path="provincia"></form:select>
-				<label for="selectLocalAbuelo">Provincia Local</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="selectRemotoPadre"></select>
-				<label for="selectRemotoPadre">Comarca Remoto</label>
-			</div>
-
+			<form:form id="departamentoProvincia_form" modelAttribute="provinciaComarcaDTO" action="${mixto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="selectLocalAbuelo" path="codeProvincia" items="${comboProvincia}" itemLabel="entity.descEs" itemValue="id" />
+					<label for="selectLocalAbuelo">Provincia Local</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="selectRemotoPadre" path="codeComarca">
+						<form:option value="">---</form:option>
+					</form:select>
+					<label for="selectRemotoPadre">Comarca Remoto</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 		<fieldset id="remote" class="col-sm mr-sm-5">
 			<legend>Remoto a Local</legend>
-			
-			
-			<div class="form-groupMaterial">
-				<select id="selectRemotoAbuelo" name="provincia"><option>&nbsp;</option></select>
-				<label for="selectRemotoAbuelo">Provincia Remoto</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="selectLocalPadre" name="comarca"><option>&nbsp;</option></select>
-				<label for="selectLocalPadre">Comarca Local</label>
-			</div>
-
+			<form:form id="departamentoProvincia_form" modelAttribute="provinciaComarcaDTO" action="${mixto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="selectRemotoAbuelo" path="codeProvincia">
+						<form:option value="">---</form:option>
+					</form:select>
+					<label for="selectRemotoAbuelo">Provincia Remoto</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="selectLocalPadre" path="codeComarca" items="${comboComarca}" itemLabel="entity.descEs" itemValue="id" />
+					<label for="selectLocalPadre">Comarca Local</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 	</div>
@@ -102,17 +118,22 @@
 		<div id="remoteGroup" class="col-sm">
 			<fieldset>
 				<legend>Remoto agrupado</legend>
-				<div class="form-groupMaterial">
-					<select id="remoteGroup_selectPadre" name="provincia"></select>
-					<label for="remoteGroup_selectPadre">Provincia</label>
-				</div>
-				
-				<div class="form-groupMaterial">
-					<select id="remoteGroup_selectHijo"></select>
-					<label for="remoteGroup_selectHijo">Comarca y Localidades</label>
-				</div>
+				<form:form id="selectRemotoAgrupado_form" modelAttribute="comarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
+					<div class="form-groupMaterial">
+						<form:select id="remoteGroup_selectPadre" path="codeProvincia">
+							<form:option value="">---</form:option>
+						</form:select>
+						<label for="remoteGroup_selectPadre">Provincia</label>
+					</div>
+					
+					<div class="form-groupMaterial">
+						<form:select id="remoteGroup_selectHijo" path="codeComarcaLocalidad">
+							<form:option value="">---</form:option>
+						</form:select>
+						<label for="remoteGroup_selectHijo">Comarca y Localidades</label>
+					</div>
+				</form:form>
 			</fieldset>
 		</div>
 	</div>
 </div>
-</form:form>
