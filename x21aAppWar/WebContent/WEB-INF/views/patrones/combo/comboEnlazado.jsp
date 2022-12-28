@@ -48,23 +48,17 @@
 			<legend>Remoto</legend>
 			<form:form id="comboRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="comboAbueloRemoto" path="codeProvincia">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="comboAbueloRemoto" path="codeProvincia" />
 					<label for="comboAbueloRemoto">Provincia</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="comboPadreRemoto" path="codeComarca">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="comboPadreRemoto" path="codeComarca" />
 					<label for="comboPadreRemoto">Comarca</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="comboHijoRemoto" path="codeLocalidad">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="comboHijoRemoto" path="codeLocalidad" />
 					<label for="comboHijoRemoto">Localidad</label>
 				</div>
 			</form:form>
@@ -127,16 +121,12 @@
 			<!-- 		<select id="mixto2_comboAbuelo" name="provincia"><option>&nbsp;</option></select>	-->
 			<!-- 	</div>	 -->
 					<div class="form-groupMaterial">
-						<form:select id="remoteGroup_comboPadre" path="codeProvincia">
-							<form:option value=" ">---</form:option>
-						</form:select>
+						<form:select id="remoteGroup_comboPadre" path="codeProvincia" />
 						<label for="remoteGroup_comboPadre">Provincia</label>
 					</div>
 					
 					<div class="form-groupMaterial">
-						<form:select id="remoteGroup_comboHijo" path="codeComarcaLocalidad">
-							<form:option value=" ">---</form:option>
-						</form:select>
+						<form:select id="remoteGroup_comboHijo" path="codeComarcaLocalidad" />
 						<label for="remoteGroup_comboHijo">Comarca y Localidades</label>
 					</div>
 				</form:form>

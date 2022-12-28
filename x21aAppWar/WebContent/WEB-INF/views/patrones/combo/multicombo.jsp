@@ -28,9 +28,7 @@
 		</div>
 		<form:form id="multicomboRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="multicomboRemoto" path="code">
-					<form:option value=" ">---</form:option>
-				</form:select>
+				<form:select id="multicomboRemoto" path="code" />
 				<label for="multicomboRemoto">MultiCombo remoto</label>
 			</div>
 		</form:form>
@@ -45,9 +43,7 @@
 		</div>
 		<form:form id="multicomboGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="multicomboGruposRemoto" path="code">
-					<form:option value=" ">---</form:option>
-				</form:select>   
+				<form:select id="multicomboGruposRemoto" path="code" /> 
 				<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
 			</div>
 		</form:form>

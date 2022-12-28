@@ -30,9 +30,7 @@
 		</div>
 		<form:form id="multiSelectRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="multiSelectRemoto" path="code">
-					<form:option value="">---</form:option>
-				</form:select>
+				<form:select id="multiSelectRemoto" path="code" />
 				<label for="multiSelectRemoto">MultiSelect remoto</label>
 			</div>
 		</form:form>

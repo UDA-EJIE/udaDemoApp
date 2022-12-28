@@ -34,9 +34,7 @@
 		</div>
 		<form:form id="selectRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="selectRemoto" path="code">
-					<form:option value="">---</form:option>
-				</form:select> 
+				<form:select id="selectRemoto" path="code" />
 				<label for="selectRemoto">Select remoto</label>
 			</div>
 		</form:form>
@@ -59,9 +57,7 @@
 		</div>
 		<form:form id="selectGruposRemoto_form" modelAttribute="divisionTerritorialDto" action="${remotoAgrupado}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="selectGruposRemoto" path="code">
-					<form:option value="">---</form:option>
-				</form:select>   
+				<form:select id="selectGruposRemoto" path="code" /> 
 				<label for="selectGruposRemoto">Select con 'optgroups' remoto</label>
 			</div>
 		</form:form>

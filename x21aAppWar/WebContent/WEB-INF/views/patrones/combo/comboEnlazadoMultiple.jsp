@@ -51,23 +51,17 @@
 			<legend>Remoto</legend>
 			<form:form id="departamentoProvincia_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="departamentoRemote" path="codeDepartamento">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="departamentoRemote" path="codeDepartamento" />
 					<label for="departamentoRemote">Departamento</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="provinciaRemote" path="codeProvincia">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="provinciaRemote" path="codeProvincia" />
 					<label for="provinciaRemote">Provincia</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="dptoProvRemote" path="codeDepartamentoProvincia">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="dptoProvRemote" path="codeDepartamentoProvincia" />
 					<label for="dptoProvRemote">Departamento-Provincia</label>
 				</div>
 			</form:form>
@@ -81,9 +75,7 @@
 			<legend>Mixto I</legend>
 			<form:form id="departamentoProvinciaMixto1_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="mixto_departamentoRemote" path="codeDepartamento">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="mixto_departamentoRemote" path="codeDepartamento" />
 					<label for="mixto_departamentoRemote">Departamento (remoto)</label>
 				</div>
 				
@@ -93,9 +85,7 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="mixto_dptoProvRemote" path="codeDepartamentoProvincia">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="mixto_dptoProvRemote" path="codeDepartamentoProvincia" />
 					<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
 				</div>
 			</form:form>
@@ -110,9 +100,7 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="mixto2_provinciaRemote" path="codeProvincia">
-						<form:option value=" ">---</form:option>
-					</form:select>
+					<form:select id="mixto2_provinciaRemote" path="codeProvincia" />
 					<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
 				</div>
 				

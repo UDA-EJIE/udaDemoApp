@@ -48,23 +48,17 @@
 			<legend>Remoto</legend>
 			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="selectAbueloRemoto" path="codeProvincia">
-						<form:option value="">---</form:option>
-					</form:select>
+					<form:select id="selectAbueloRemoto" path="codeProvincia" />
 					<label for="selectAbueloRemoto">Provincia</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="selectPadreRemoto" path="codeComarca">
-						<form:option value="">---</form:option>
-					</form:select>
+					<form:select id="selectPadreRemoto" path="codeComarca" />
 					<label for="selectPadreRemoto">Comarca</label>
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="selectHijoRemoto" path="codeLocalidad">
-						<form:option value="">---</form:option>
-					</form:select>
+					<form:select id="selectHijoRemoto" path="codeLocalidad" />
 					<label for="selectHijoRemoto">Localidad</label>
 				</div>
 			</form:form>
@@ -84,9 +78,7 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="selectRemotoPadre" path="codeComarca">
-						<form:option value="">---</form:option>
-					</form:select>
+					<form:select id="selectRemotoPadre" path="codeComarca" />
 					<label for="selectRemotoPadre">Comarca Remoto</label>
 				</div>
 			</form:form>
@@ -96,9 +88,7 @@
 			<legend>Remoto a Local</legend>
 			<form:form id="departamentoProvincia_form" modelAttribute="provinciaComarcaDTO" action="${mixto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="selectRemotoAbuelo" path="codeProvincia">
-						<form:option value="">---</form:option>
-					</form:select>
+					<form:select id="selectRemotoAbuelo" path="codeProvincia" />
 					<label for="selectRemotoAbuelo">Provincia Remoto</label>
 				</div>
 				
@@ -120,16 +110,12 @@
 				<legend>Remoto agrupado</legend>
 				<form:form id="selectRemotoAgrupado_form" modelAttribute="comarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
 					<div class="form-groupMaterial">
-						<form:select id="remoteGroup_selectPadre" path="codeProvincia">
-							<form:option value="">---</form:option>
-						</form:select>
+						<form:select id="remoteGroup_selectPadre" path="codeProvincia" />
 						<label for="remoteGroup_selectPadre">Provincia</label>
 					</div>
 					
 					<div class="form-groupMaterial">
-						<form:select id="remoteGroup_selectHijo" path="codeComarcaLocalidad">
-							<form:option value="">---</form:option>
-						</form:select>
+						<form:select id="remoteGroup_selectHijo" path="codeComarcaLocalidad" />
 						<label for="remoteGroup_selectHijo">Comarca y Localidades</label>
 					</div>
 				</form:form>
