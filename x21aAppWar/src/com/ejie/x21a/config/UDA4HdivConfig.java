@@ -48,6 +48,9 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("user").rules("text")).setAsClientParameter(true);
 		
+		// Tabla
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/roles").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("rol");
+		
 		// Autocomplete y select
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/autocomplete/remote").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/autocomplete/remoteEnlazadoProvincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
