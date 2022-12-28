@@ -189,13 +189,9 @@ public class TableX21aAlumnoController  {
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
 			Model model) {
 		model.addAttribute("X21aAlumno", new X21aAlumno());
 		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
-		}
 		
 		return "tableX21aAlumnoEditForm";
 	}

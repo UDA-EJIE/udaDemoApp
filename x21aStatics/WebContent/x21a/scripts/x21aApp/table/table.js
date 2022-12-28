@@ -253,9 +253,6 @@ jQuery(function ($) {
 	            if (localStorage.plugins.indexOf(',editForm,') > -1) {
 	            	const formEdit = {
 	                    detailForm: '#example_detail_div',
-	                    data: {
-	                    	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
-	                    },
 	                    validate: {
 	                        rules: {
 	                            'nombre': {

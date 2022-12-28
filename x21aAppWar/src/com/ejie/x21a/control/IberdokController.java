@@ -453,13 +453,9 @@ public class IberdokController {
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
 			Model model, HttpServletResponse response) {
 		model.addAttribute("randomForm", new RandomForm());
 		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
-		}
 		
 		Map<String,String> lang = new LinkedHashMap<String,String>();
 		lang.put("es", "Castellano");

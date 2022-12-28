@@ -389,15 +389,11 @@ public class TableUsuarioController {
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) boolean enableMultipart,
-			@RequestParam(required = false) String fixedMessage,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		if (enableMultipart) {
 			model.addAttribute("enableMultipart", enableMultipart);
-		}
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
 		}
 		
 		return "tableEditForm";
