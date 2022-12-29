@@ -66,7 +66,7 @@
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="rol" id="rol_detail_table" />
+	    	<form:select path="rol" id="rol_detail_table" /> 
 	    	<label for="rol_detail_table"><spring:message code="rol" /></label>
 	    </div>
 	</div>
