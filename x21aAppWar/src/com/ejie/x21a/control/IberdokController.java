@@ -40,10 +40,7 @@ import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.hdiv.annotation.UDALink;
-import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.security.XlnetCore;
-import com.ejie.x38.util.ResourceUtils;
 
 import n38c.exe.N38API;
 
@@ -264,8 +261,6 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@UDALink(name = "getWelcome", linkTo = {
-			@UDALinkAllower(name = "view"),})
 	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
 	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
@@ -304,13 +299,6 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@UDALink(name = "getFiltroSimple", linkTo = {
-			@UDALinkAllower(name = "getTableEditForm"),
-			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
-			@UDALinkAllower(name = "getXhtml"),
-			@UDALinkAllower(name = "getXhtml"),
-			@UDALinkAllower(name = "view") })
 	@RequestMapping(value = "viewIberdok", method = RequestMethod.GET)
 	public String viewIberdok(Model model,HttpServletResponse response,@RequestParam(required = false) String idCorrelacion,@RequestParam(required = false) String idModelo) {
 
