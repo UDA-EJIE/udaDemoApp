@@ -520,16 +520,6 @@
 					</a>
 				</div>
 			</li>
-			
-			<!-- Mantenimientos generados con el plugin -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#"
-					id="mantenimientosDropdown" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false">
-					<spring:message code="mantenimientos" />
-				</a>
-				<%@include file="menuMantenimientos.jsp"%>
-			</li>
 		</ul>
 		<ul class="nav navbar-nav float-md-right rup-nav-tools">
 			<li class="nav-item">
