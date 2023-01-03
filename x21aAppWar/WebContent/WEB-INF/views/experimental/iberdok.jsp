@@ -55,4 +55,4 @@
         </thead>
 </table>
 
-<jsp:include page="iberdokEdit.jsp"></jsp:include>
+<jsp:include page="iberdokEditForm.jsp"></jsp:include>
