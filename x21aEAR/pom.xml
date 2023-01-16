@@ -448,16 +448,6 @@
 		    <version>4.1</version>
 		</dependency>
 
-		<!-- Reports -->
-
-		<!-- RSS -->
-		<dependency>
-			<groupId>net.java.dev.rome</groupId>
-			<artifactId>rome</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
-
 		<!-- INI:PIF 1.4 EN APLICACION UDA -->
 		<dependency>
 			<groupId>com.ejie</groupId>
