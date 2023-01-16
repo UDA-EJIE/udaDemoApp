@@ -13,6 +13,15 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+
+<!-- URL a usar en formularios -->
+<spring:url value="comboEnlazadoSimple/provinciaComarcaLocalidadDTO" var="remoto"/>
+<spring:url value="comboEnlazadoSimple/comarcaLocalidadDTO" var="remotoAgrupado"/>
+
 <h2 class="title mb-3">Combo Enlazado (simple)</h2>
 
 <div class="container-fluid">
@@ -20,39 +29,39 @@
 		<fieldset id="local" class="col-sm mr-sm-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
+				<select id="comboAbuelo"></select>
 				<label for="comboAbuelo">Provincia</label>
-				<select id="comboAbuelo"><option>&nbsp;</option></select>
 			</div>
 			
 			<div class="form-groupMaterial">
+				<select id="comboPadre"></select>
 				<label for="comboPadre">Comarca</label>
-				<select id="comboPadre"><option>&nbsp;</option></select>
 			</div>
 			
 			<div class="form-groupMaterial">
+				<select id="comboHijo"></select>
 				<label for="comboHijo">Localidad</label>
-				<select id="comboHijo"><option>&nbsp;</option></select>
 			</div>
 		</fieldset>
 		
 		<fieldset id="remote" class="col-sm mr-sm-5">
 			<legend>Remoto</legend>
-			
-			<input class="d-none" id="hiddenAbueloRemoto" name="provincia" value="02" />
-			<div class="form-groupMaterial">
-				<label for="comboAbueloRemoto">Provincia</label>
-				<select id="comboAbueloRemoto" name="provincia"><option>&nbsp;</option></select>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<label for="comboPadreRemoto">Comarca</label>
-				<select id="comboPadreRemoto" name="comarca"><option>&nbsp;</option></select>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<label for="comboHijoRemoto">Localidad</label>
-				<select id="comboHijoRemoto"><option>&nbsp;</option></select>
-			</div>
+			<form:form id="comboRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="comboAbueloRemoto" path="codeProvincia" />
+					<label for="comboAbueloRemoto">Provincia</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="comboPadreRemoto" path="codeComarca" />
+					<label for="comboPadreRemoto">Comarca</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="comboHijoRemoto" path="codeLocalidad" />
+					<label for="comboHijoRemoto">Localidad</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 		<!--
@@ -106,19 +115,21 @@
 		<div id="remoteGroup" class="col-sm">
 			<fieldset>
 				<legend>Remoto agrupado</legend>
-		<!--	<div class="form-groupMaterial">	-->
-		<!-- 		<label for="mixto2_comboAbuelo">Provincia (local)</label>	-->
-		<!-- 		<select id="mixto2_comboAbuelo" name="provincia"><option>&nbsp;</option></select>	-->
-		<!-- 	</div>	 -->
-				<div class="form-groupMaterial">
-					<label for="remoteGroup_comboPadre">Provincia</label>
-					<select id="remoteGroup_comboPadre" name="provincia"><option>&nbsp;</option></select>
-				</div>
-				
-				<div class="form-groupMaterial">
-					<label for="remoteGroup_comboHijo">Comarca y Localidades</label>
-					<select id="remoteGroup_comboHijo"><option>&nbsp;</option></select>
-				</div>
+				<form:form id="comboRemotoAgrupado_form" modelAttribute="comarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
+			<!--	<div class="form-groupMaterial">	-->
+			<!-- 		<label for="mixto2_comboAbuelo">Provincia (local)</label>	-->
+			<!-- 		<select id="mixto2_comboAbuelo" name="provincia"><option>&nbsp;</option></select>	-->
+			<!-- 	</div>	 -->
+					<div class="form-groupMaterial">
+						<form:select id="remoteGroup_comboPadre" path="codeProvincia" />
+						<label for="remoteGroup_comboPadre">Provincia</label>
+					</div>
+					
+					<div class="form-groupMaterial">
+						<form:select id="remoteGroup_comboHijo" path="codeComarcaLocalidad" />
+						<label for="remoteGroup_comboHijo">Comarca y Localidades</label>
+					</div>
+				</form:form>
 			</fieldset>
 		</div>
 	</div>

@@ -150,7 +150,7 @@ public class TableUsuarioController {
 	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
 	public @ResponseBody Resource<Usuario2> get2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
-			@PathVariable String id) {
+			@PathVariable @TrustAssertion(idFor = Usuario2.class) String id) {
         Usuario2 usuario = new Usuario2();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
@@ -389,15 +389,11 @@ public class TableUsuarioController {
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) boolean enableMultipart,
-			@RequestParam(required = false) String fixedMessage,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
 		if (enableMultipart) {
 			model.addAttribute("enableMultipart", enableMultipart);
-		}
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
 		}
 		
 		return "tableEditForm";
@@ -811,7 +807,7 @@ public class TableUsuarioController {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.OK)
-    public @ResponseBody Resource<Usuario> remove(@PathVariable String id, HttpServletResponse  response) {
+    public @ResponseBody Resource<Usuario> remove(@PathVariable @TrustAssertion(idFor = Usuario.class) String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
         usuario.setId(id);
         this.tableUsuarioService.remove(usuario);
@@ -830,7 +826,7 @@ public class TableUsuarioController {
 	@UDALink(name = "remove2")
 	@DeleteMapping(value = "/{bis}/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
-    public @ResponseBody Resource<Usuario2> remove2(@PathVariable String id, HttpServletResponse response) {
+    public @ResponseBody Resource<Usuario2> remove2(@PathVariable @TrustAssertion(idFor = Usuario2.class) String id, HttpServletResponse response) {
         Usuario2 usuario = new Usuario2();
         usuario.setId(id);
         this.tableUsuarioService.remove(usuario);

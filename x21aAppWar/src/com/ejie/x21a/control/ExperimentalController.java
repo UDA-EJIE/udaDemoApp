@@ -25,6 +25,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.xpath.XPathAPI;
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,7 +158,7 @@ public class ExperimentalController {
 	
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{nameLog}", method = RequestMethod.GET)
-	public @ResponseBody Resource<LogModel> get(@PathVariable String nameLog) {
+	public @ResponseBody Resource<LogModel> get(@PathVariable @TrustAssertion(idFor = LogModel.class) String nameLog) {
         return new Resource<LogModel>(LoggingEditor.getLogger(nameLog));
 	}
 	

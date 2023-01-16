@@ -44,7 +44,7 @@ jQuery(function ($) {
                 editoptions: {
                     url : '../tableComarca/provincia',
                     sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
-                    blank: '',
+                    //blank: '',
                     width: '100%',
                     customClasses: ['select-material']
                 }
@@ -58,7 +58,7 @@ jQuery(function ($) {
                 editoptions: {
                     url : '../tableComarca/comarca',
                     sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
-                    blank: '',
+                    //blank: '',
                     width: '100%',
                     customClasses: ['select-material']
                 }

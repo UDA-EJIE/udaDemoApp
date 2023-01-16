@@ -25,6 +25,9 @@
 
 <!-- Feedback -->
 <div id="x21aAppWar_feedback"></div><br/>
+
+<!-- URL a usar en formularios -->
+<spring:url value="comboEnlazadoMultiple/departamentoProvinciaDTO" var="remoto"/>
  
 <div class="container-fluid">
 	<div class="form-row">
@@ -32,38 +35,39 @@
 			<legend>Local (no i18n)</legend>
 			
 			<div class="form-groupMaterial">
-				<select id="departamento"><option>&nbsp;</option></select>
+				<select id="departamento"></select>
 				<label for="departamento">Departamento</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<select id="provincia"><option>&nbsp;</option></select>
+				<select id="provincia"></select>
 				<label for="provincia">Provincia</label>
 			</div>
 			
 			<div class="form-groupMaterial">
-				<select id="dptoProv"><option>&nbsp;</option></select>
+				<select id="dptoProv"></select>
 				<label for="dptoProv">Departamento-Provincia</label>
 			</div>
 		</fieldset>
 	
 		<fieldset class="col-sm">
 			<legend>Remoto</legend>
-			
-			<div class="form-groupMaterial">
-				<select id="departamentoRemote" name="departamento"><option>&nbsp;</option></select>
-				<label for="departamentoRemote">Departamento</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="provinciaRemote" name="provincia"><option>&nbsp;</option></select>
-				<label for="provinciaRemote">Provincia</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="dptoProvRemote"><option>&nbsp;</option></select>
-				<label for="dptoProvRemote">Departamento-Provincia</label>
-			</div>
+			<form:form id="departamentoProvincia_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="departamentoRemote" path="codeDepartamento" />
+					<label for="departamentoRemote">Departamento</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="provinciaRemote" path="codeProvincia" />
+					<label for="provinciaRemote">Provincia</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="dptoProvRemote" path="codeDepartamentoProvincia" />
+					<label for="dptoProvRemote">Departamento-Provincia</label>
+				</div>
+			</form:form>
 		</fieldset>
 	</div>
 </div>
@@ -72,40 +76,43 @@
 	<div class="form-row">
 		<fieldset class="col-sm mr-sm-5">
 			<legend>Mixto I</legend>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto_departamentoRemote" name="departamento"><option>&nbsp;</option></select>
-				<label for="mixto_departamentoRemote">Departamento (remoto)</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto_provincia" name="provincia"><option>&nbsp;</option></select>
-				<label for="mixto_provincia">Provincia (local)</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto_dptoProvRemote"><option>&nbsp;</option></select>
-				<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
-			</div>
+			<form:form id="departamentoProvinciaMixto1_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="mixto_departamentoRemote" path="codeDepartamento" />
+					<label for="mixto_departamentoRemote">Departamento (remoto)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto_provincia" path="codeProvincia" items="${comboProvincia}" itemLabel="entity.descEs" itemValue="id" />
+					<label for="mixto_provincia">Provincia (local)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto_dptoProvRemote" path="codeDepartamentoProvincia" />
+					<label for="mixto_dptoProvRemote">Departamento-Provincia (remoto)</label>
+				</div>
+			</form:form>
 		</fieldset>
 
 		<fieldset class="col-sm">
 			<legend>Mixto II</legend>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto2_departamento"><option>&nbsp;</option></select>
-				<label for="mixto2_departamento">Departamento (local)</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto2_provinciaRemote"><option>&nbsp;</option></select>
-				<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<select id="mixto2_dptoProv"><option>&nbsp;</option></select>
-				<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
-			</div>
+			<form:form id="departamentoProvinciaMixto1_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="mixto2_departamento" path="codeDepartamento" items="${comboDepartamento}" itemLabel="entity.descEs" itemValue="id" />
+					<label for="mixto2_departamento">Departamento (local)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto2_provinciaRemote" path="codeProvincia" />
+					<label for="mixto2_provinciaRemote">Provincia (remoto)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" itemLabel="entity.descEs" itemValue="id" />
+					<!-- <select id="mixto2_dptoProv"><option>&nbsp;</option></select> -->
+					<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
+				</div>
+			</form:form>
 		</fieldset>
 	</div>
 </div>

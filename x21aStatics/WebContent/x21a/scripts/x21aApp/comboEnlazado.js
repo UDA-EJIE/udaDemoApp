@@ -286,7 +286,7 @@ $(function () {
         });
 
         $('#remoteGroup_comboHijo').rup_combo({
-            sourceGroup: 'comboSimple/remoteGroupEnlazado',
+            sourceGroup: 'comboEnlazadoSimple/remoteGroupEnlazadoComarcaLocalidad',
             parent: ['remoteGroup_comboPadre'],
             sourceParam: {
                 label: 'desc' + $.rup_utils.capitalizedLang(),

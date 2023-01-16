@@ -48,13 +48,17 @@
 			<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">
-			<form:select path="provincia.code" id="provinciaId_detail_table"/>
+			<form:select path="provincia.code" id="provinciaId_detail_table">
+				<form:option value="">---</form:option>
+			</form:select>
 			<label for="provinciaId_detail_table"><spring:message code="provinciaId"/></label>
 		</div>
 	</div>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:select path="comarcaId" id="comarcaId_detail_table"/>
+			<form:select path="comarcaId" id="comarcaId_detail_table">
+				<form:option value="">---</form:option>
+			</form:select>
 			<label for="comarcaId_detail_table"><spring:message code="comarcaId"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">

@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -139,7 +140,7 @@ public class TableComarcaController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Comarca> getById(@PathVariable final BigDecimal id) {
+	public @ResponseBody Resource<Comarca> getById(@PathVariable @TrustAssertion(idFor = Comarca.class) final BigDecimal id) {
         Comarca comarca = new Comarca();
         comarca.setCode(id);
         comarca = this.comarcaService.find(comarca);
@@ -180,7 +181,7 @@ public class TableComarcaController {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.OK)
-	public @ResponseBody Resource<Comarca> remove(@PathVariable(value="id") final BigDecimal id, final HttpServletResponse  response) {
+	public @ResponseBody Resource<Comarca> remove(@PathVariable(value="id") @TrustAssertion(idFor = Comarca.class) final BigDecimal id, final HttpServletResponse  response) {
 		final Comarca comarca = new Comarca();
 		comarca.setCode(id);
 		this.comarcaService.remove(comarca);

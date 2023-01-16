@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<X21aAlumno> get(@PathVariable BigDecimal id) {
+	public @ResponseBody Resource<X21aAlumno> get(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
         x21aAlumno = this.x21aAlumnoService.find(x21aAlumno);
@@ -148,7 +149,7 @@ public class TableX21aAlumnoController  {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<X21aAlumno> remove(@PathVariable BigDecimal id) {
+    public @ResponseBody Resource<X21aAlumno> remove(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
         x21aAlumno.setId(id);
         this.x21aAlumnoService.remove(x21aAlumno);
@@ -188,13 +189,9 @@ public class TableX21aAlumnoController  {
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
 			Model model) {
 		model.addAttribute("X21aAlumno", new X21aAlumno());
 		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
-		}
 		
 		return "tableX21aAlumnoEditForm";
 	}

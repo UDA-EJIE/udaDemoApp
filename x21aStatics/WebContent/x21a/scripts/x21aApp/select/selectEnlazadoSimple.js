@@ -177,7 +177,7 @@ $(function () {
     	
         //Local -> Remote
     	  $('#selectLocalAbuelo').rup_select({
-	        data: [{
+	        /*data: [{
 	        	text: 'Alava',
 	            id: '1'
 	        },
@@ -201,7 +201,8 @@ $(function () {
 	        	text: 'La rioja',
 	            id: '6'
 	        }
-	        ],
+	        ],*/
+        	loadFromSelect: true,
 	        selected: '2',
 	        placeholder: ''
     	});
@@ -237,7 +238,7 @@ $(function () {
         
      	  $('#selectLocalPadre').rup_select({
      		parent: 'selectRemotoAbuelo',
-  		  data: {
+  		    /*data: {
               '1': [{
                   id: 'a1',
                   text: 'Alavesa'
@@ -298,8 +299,8 @@ $(function () {
                   id: 'g3',
                   text: 'Casalareina'
               }]
-
-  		  		},
+  		    },*/
+        	loadFromSelect: true,
   	        selected: 'b2',
   	        placeholder: ''
       	});

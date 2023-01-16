@@ -36,6 +36,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.NoEntity;
 import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,8 +68,10 @@ import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.AlumnoDepartamento;
 import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
+import com.ejie.x21a.model.ComarcaLocalidadDTO;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.DepartamentoProvinciaDTO;
 import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
@@ -75,6 +79,8 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.ProvinciaComarcaDTO;
+import com.ejie.x21a.model.ProvinciaComarcaLocalidadDTO;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.UploadBean;
@@ -94,7 +100,9 @@ import com.ejie.x38.control.bind.annotation.Json;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.controller.model.IdentifiableModelWrapper;
 import com.ejie.x38.hdiv.controller.model.IdentifiableModelWrapperImpl;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.json.JSONArray;
 import com.ejie.x38.json.JSONObject;
 import com.ejie.x38.json.JsonMixin;
@@ -132,7 +140,6 @@ public class PatronesController {
     
     int provincia = 0;
 
-
     @javax.annotation.Resource
     private ReloadableResourceBundleMessageSource messageSource;
 
@@ -140,10 +147,74 @@ public class PatronesController {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws ServletException {
         binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
     }
+    
+    // Departamentos
+	private Departamento ayuntamiento = new Departamento(new BigDecimal(1), "Ayuntamiento", "Udaletxea", null);
+	private Departamento diputacion = new Departamento(new BigDecimal(2), "Diputación", "Aldundia", null);
+	private Departamento policia = new Departamento(new BigDecimal(3), "Policía", "Polizia", null);
+	private Departamento bomberos = new Departamento(new BigDecimal(4), "Bomberos", "Suhiltzaileak", null);
+	
+	// Provincias
+	private Provincia alava = new Provincia(new BigDecimal(1), "Álava", "Araba", null);
+	private Provincia vizcaya = new Provincia(new BigDecimal(2), "Vizcaya", "Bizkaia", null);
+	private Provincia gipuzcoa = new Provincia(new BigDecimal(3), "Guipúzcoa", "Gipuzkoa", null);
+	
+	// Comarca
+	private Comarca llanadaAlavesa = new Comarca(new BigDecimal(1), "Llanada alavesa", "Arabako lautada", null, alava);
+	private Comarca granBilbao = new Comarca(new BigDecimal(2), "Gran Bilbao", "Bilbo handia", null, vizcaya);
+	private Comarca sanSebastian = new Comarca(new BigDecimal(3), "San Sebastián", "Donostialdea", null, gipuzcoa);
+    
+    private List<IdentifiableModelWrapper<Departamento>> departamentosGenerator() {
+    	List<Departamento> departamentos = new ArrayList<>();
+		departamentos.add(ayuntamiento);
+		departamentos.add(diputacion);
+		departamentos.add(policia);
+		departamentos.add(bomberos);
+		
+		return IdentifiableModelWrapperFactory.getInstance(departamentos, "code");
+    }
+    
+    private List<IdentifiableModelWrapper<Provincia>> provinciasGenerator() {		
+		List<Provincia> provincias = new ArrayList<>();
+		provincias.add(alava);
+		provincias.add(vizcaya);
+		provincias.add(gipuzcoa);
+		
+		return IdentifiableModelWrapperFactory.getInstance(provincias, "code");
+    }
+    
+    private List<IdentifiableModelWrapper<Comarca>> comarcasGenerator() {		
+		List<Comarca> comarcas = new ArrayList<>();
+		comarcas.add(llanadaAlavesa);
+		comarcas.add(granBilbao);
+		comarcas.add(sanSebastian);
+		
+		return IdentifiableModelWrapperFactory.getInstance(comarcas, "code");
+    }
+    
+    private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGenerator() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos));
+    	
+		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
+    }
 
     //Sleep
     @RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
-    public String getSleep(Model model, @PathVariable Integer ms) throws InterruptedException {
+    public String getSleep(Model model, @PathVariable @TrustAssertion(idFor = NoEntity.class) Integer ms) throws InterruptedException {
         Thread.sleep(ms);
         return "accordion";
     }
@@ -215,30 +286,65 @@ public class PatronesController {
     }
 
     //Combos
-    @UDALink(name = "getComboSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "comboSimple", method = RequestMethod.GET)
+    @UDALink(name = "getComboSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos")})
+    @GetMapping(value = "comboSimple")
     public String getComboSimple(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
+    	
         return "combo";
     }
 
     //CombosEnlazado - simple
-    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "comboEnlazadoSimple", method = RequestMethod.GET)
+    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"), @UDALinkAllower(name = "getComarcaLocalidadDTO"), @UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getEnlazadoComarcaLocalidad")})
+    @GetMapping(value = "comboEnlazadoSimple")
     public String getComboEnlazadoSimple(Model model) {
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
         return "comboEnlazado";
     }
 
     //CombosEnlazado - multiple
-    @UDALink(name = "getEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
-    @RequestMapping(value = "comboEnlazadoMultiple", method = RequestMethod.GET)
+    @UDALink(name = "getEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getDepartamentoProvinciaDTO"), @UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
+    @GetMapping(value = "comboEnlazadoMultiple")
     public String getEnlazadoMultiple(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	
+    	// Departamentos
+    	model.addAttribute("comboDepartamento", departamentosGenerator());
+		
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+		// Departamentos y provincias
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGenerator());
+		
+    	/*Map<String, String> comboDepartamentoProvincia = new LinkedHashMap<>();
+    	comboDepartamentoProvincia.put("1#1", "Ayuntamiento de Álava");
+    	comboDepartamentoProvincia.put("1#2", "Ayuntamiento de Vizcaya");
+    	comboDepartamentoProvincia.put("1#3", "Ayuntamiento de Gipúzcoa");
+    	comboDepartamentoProvincia.put("2#1", "Diputación de Álava");
+    	comboDepartamentoProvincia.put("2#2", "Diputación de Vizcaya");
+    	comboDepartamentoProvincia.put("2#3", "Diputación de Gipúzcoa");
+    	comboDepartamentoProvincia.put("3#1", "Policía de Álava");
+    	comboDepartamentoProvincia.put("3#2", "Policía de Vizcaya");
+    	comboDepartamentoProvincia.put("3#3", "Policía de Gipúzcoa");
+    	comboDepartamentoProvincia.put("4#1", "Bomberos de Álava");
+    	comboDepartamentoProvincia.put("4#2", "Bomberos de Vizcaya");
+    	comboDepartamentoProvincia.put("4#3", "Bomberos de Gipúzcoa");
+		model.addAttribute("comboDepartamentoProvincia", comboDepartamentoProvincia);*/
+    	
         return "comboEnlazadoMultiple";
     }
 
     //Multicombo
-    @UDALink(name = "getMulticombo", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "multicombo", method = RequestMethod.GET)
+    @UDALink(name = "getMulticombo", linkTo = {@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"), @UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @GetMapping(value = "multicombo")
     public String getMulticombo(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	
         return "multicombo";
     }
 
@@ -253,31 +359,72 @@ public class PatronesController {
     }
     
     //Select Simple
-    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "selectSimple", method = RequestMethod.GET)
+    @UDALink(name = "getSelectSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos")})
+    @GetMapping(value = "selectSimple")
     public String getSelectSimple(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
+    	
         return "selectSimple";
     }
     
     //SelectEnlazado - simple
-    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoComarcaNoParam"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "selectEnlazadoSimple", method = RequestMethod.GET)
+    @UDALink(name = "getSelectEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"), @UDALinkAllower(name = "getProvinciaComarcaDTO"), @UDALinkAllower(name = "getComarcaLocalidadDTO"), @UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getEnlazadoComarcaNoParam"), @UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @GetMapping(value = "selectEnlazadoSimple")
     public String getSelectEnlazadoSimple(Model model) {
-    	model.addAttribute("Comarca", new Comarca());
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("comboComarca", comarcasGenerator());
+    	
         return "selectEnlazadoSimple";
     }
     
     //selectEnlazado - multiple
-    @UDALink(name = "getSelectEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
-    @RequestMapping(value = "selectEnlazadoMultiple", method = RequestMethod.GET)
+    @UDALink(name = "getSelectEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getDepartamentoProvinciaDTO"), @UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
+    @GetMapping(value = "selectEnlazadoMultiple")
     public String getSelectEnlazadoMultiple(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	
+    	// Departamentos
+    	model.addAttribute("comboDepartamento", departamentosGenerator());
+		
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+		// Departamentos y provincias
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGenerator());
+		
+    	/*Map<String, String> comboDepartamentoProvincia = new LinkedHashMap<>();
+    	comboDepartamentoProvincia.put("1#1", "Ayuntamiento de Álava");
+    	comboDepartamentoProvincia.put("1#2", "Ayuntamiento de Vizcaya");
+    	comboDepartamentoProvincia.put("1#3", "Ayuntamiento de Gipúzcoa");
+    	comboDepartamentoProvincia.put("2#1", "Diputación de Álava");
+    	comboDepartamentoProvincia.put("2#2", "Diputación de Vizcaya");
+    	comboDepartamentoProvincia.put("2#3", "Diputación de Gipúzcoa");
+    	comboDepartamentoProvincia.put("3#1", "Policía de Álava");
+    	comboDepartamentoProvincia.put("3#2", "Policía de Vizcaya");
+    	comboDepartamentoProvincia.put("3#3", "Policía de Gipúzcoa");
+    	comboDepartamentoProvincia.put("4#1", "Bomberos de Álava");
+    	comboDepartamentoProvincia.put("4#2", "Bomberos de Vizcaya");
+    	comboDepartamentoProvincia.put("4#3", "Bomberos de Gipúzcoa");
+		model.addAttribute("comboDepartamentoProvincia", comboDepartamentoProvincia);*/
+		
         return "selectEnlazadoMultiple";
     }
     
     //MultiSelect
-    @UDALink(name = "getSelectMultiselect", linkTo = {@UDALinkAllower(name = "getComboRemote"),@UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
-    @RequestMapping(value = "selectMultiselect", method = RequestMethod.GET)
+    @UDALink(name = "getSelectMultiselect", linkTo = {@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"), @UDALinkAllower(name = "getComboRemote"),@UDALinkAllower(name = "getRemoteComboGruposEnlazado")})
+    @GetMapping(value = "selectMultiselect")
     public String getSelectMultiSelect(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	
         return "selectMultiselect";
     }
 
@@ -294,8 +441,11 @@ public class PatronesController {
     		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComboRemote")
     })
-    @RequestMapping(value = "selectAutocomplete", method = RequestMethod.GET)
+    @GetMapping(value = "selectAutocomplete")
     public String getSelectAutocomplete(Model model) {
+    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
+    	model.addAttribute("provincia", new Provincia());
+    	
         return "selectAutocomplete";
     }
 
@@ -674,12 +824,12 @@ public class PatronesController {
      * AUTOCOMPLETE REMOTO
      */
     @UDALink(name = "getRemoteAutocomplete")
-    @RequestMapping(value = "autocomplete/remote", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remote")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "codProvincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
+            @RequestParam(value = "codProvincia", required = false) BigDecimal codProvincia) {
         //Filtro
         DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
 
@@ -695,12 +845,7 @@ public class PatronesController {
             provincia.setCode(codProvincia);
             departamentoProvincia.setProvincia(provincia);
         }
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        
         return ResourceUtils.fromListToResource(departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c));
     }
     
@@ -709,17 +854,12 @@ public class PatronesController {
      * AUTOCOMPLETE REMOTO ENLAZADO
      */
     @UDALink(name = "getProvinciaEnlazadoAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoProvincia")
     public @ResponseBody
     List<Resource<Provincia>> getProvinciaEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c) {
     	
-    	try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     	Provincia provincia = new Provincia();
     	if(q != null) {
     		Locale locale = LocaleContextHolder.getLocale();
@@ -733,12 +873,12 @@ public class PatronesController {
     }
     
     @UDALink(name = "getComarcaEnlazadoAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoComarca", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoComarca")
     public @ResponseBody
     List<Resource<Comarca>> getComarcaEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal codProvincia) {
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal codProvincia) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Provincia provincia = new Provincia();
@@ -765,14 +905,14 @@ public class PatronesController {
     }
     
     @UDALink(name = "getLocalidadEnlazadoAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoLocalidad", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoLocalidad")
     public @ResponseBody
     List<Resource<Localidad>> getLocalidadEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "comarca", required = false) BigDecimal codComarca) {
+            @RequestParam(value = "codeComarca", required = false) BigDecimal codComarca) {
     	
-    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+    	//Convertir parámetros en entidad para búsqueda
         Comarca comarca = new Comarca();
         comarca.setCode(codComarca);
         
@@ -787,12 +927,6 @@ public class PatronesController {
             	localidad.setDescEs(q);
             }
     	}
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         
         return ResourceUtils.fromListToResource(localidadService.findAllLike(localidad, null, !c));
     }
@@ -833,13 +967,13 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
@@ -870,13 +1004,13 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
@@ -907,13 +1041,13 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
     	
     	//Convertir parÃ¡metros en entidad para bÃºsqueda
         Departamento departamento = new Departamento();
@@ -956,14 +1090,8 @@ public class PatronesController {
 
     @UDALink(name = "getComboRemote")
     @Json(mixins = {@JsonMixin(target = Provincia.class, mixin = ProvinciaMixIn.class)})
-    @RequestMapping(value = "comboSimple/remote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Resource<Provincia>> getComboRemote() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @GetMapping(value = "comboSimple/remote")
+    public @ResponseBody List<Resource<Provincia>> getComboRemote() {
         List<Provincia> listaProvincias = provinciaService.findAll(null, null);
         if(provincia == 0){
         	provincia = 1;
@@ -971,22 +1099,23 @@ public class PatronesController {
         	provincia = 0;
         	Provincia provi = new Provincia(new BigDecimal(33), "Hugo", "Hugo", "Hugo");
         	listaProvincias.remove(0);
-			listaProvincias.add(provi );
+			listaProvincias.add(provi);
         }
         return ResourceUtils.fromListToResource(listaProvincias);
     }
     
     @UDALink(name = "getRemoteComboGrupos")
-    @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
+    @GetMapping(value = "comboSimple/remoteGroup")
     public @ResponseBody
     List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGrupos() {
         return this.setRemoteComboGruposEnlazado(null);
     }
     
     @UDALink(name = "getRemoteComboGruposEnlazado")
-    @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
+    @GetMapping(value = "comboSimple/remoteGroupEnlazado")
     public @ResponseBody
-    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getRemoteComboGruposEnlazado(
+    		@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
     	return this.setRemoteComboGruposEnlazado(provincia_code);
     }
     
@@ -995,10 +1124,10 @@ public class PatronesController {
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
 
-        //Retorno del mÃ©todo
+        //Retorno del método
         List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> retorno = new ArrayList<HashMap<String, List<Resource<DivisionTerritorialDto>>>>();
 
-        //Nombres de los grupos segÃºn idioma
+        //Nombres de los grupos según idioma
         String provincia = null, comarca = null, localidad = null;
         if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
             provincia = "Provincia_eu";
@@ -1008,12 +1137,6 @@ public class PatronesController {
             provincia = "Provincia";
             comarca = "Comarca";
             localidad = "Localidad";
-        }
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         //Provincia
@@ -1132,157 +1255,88 @@ public class PatronesController {
 	/**
      * COMBO ENLAZADO SIMPLE
      */
+    @UDALink(name = "getProvinciaComarcaLocalidadDTO")
+    @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaLocalidadDTO")
+    public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getProvinciaComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return new Resource<>(provinciaComarcaLocalidadDTO);
+    }
+    
+    @UDALink(name = "getProvinciaComarcaDTO")
+    @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaDTO")
+    public @ResponseBody Resource<ProvinciaComarcaDTO> getProvinciaComarcaDTO(
+    		@RequestBody ProvinciaComarcaDTO provinciaComarcaDTO) {
+        return new Resource<>(provinciaComarcaDTO);
+    }
+    
+    @UDALink(name = "getComarcaLocalidadDTO")
+    @GetMapping(value = "comboEnlazadoSimple/comarcaLocalidadDTO")
+    public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return new Resource<>(provinciaComarcaLocalidadDTO);
+    }
+    
     @UDALink(name = "getEnlazadoProvincia")
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia")
     public @ResponseBody
     List<Resource<Provincia>> getEnlazadoProvincia() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
     }
     
     @UDALink(name = "getEnlazadoComarca")
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca")
     public @ResponseBody
     List<Resource<Comarca>> getEnlazadoComarca(
-            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
 
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        //Convertir parámetros en entidad para búsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
         Comarca comarca = new Comarca();
         comarca.setProvincia(provincia);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
-    }
-    
-    @UDALink(name = "getEnlMultDptoProvNoParam")
-    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Resource<DepartamentoProvincia>> getEnlMultDptoProvNoParam(
-            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) Integer provincia_code) {
-
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
-        Departamento departamento = new Departamento();
-        departamento.setCode(departamento_code);
-        Provincia provincia = new Provincia();
-        provincia.setCode(new BigDecimal(provincia_code));
-        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
-        departamentoProvincia.setDepartamento(departamento);
-        departamentoProvincia.setProvincia(provincia);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
-    }
-    
-    @UDALink(name = "getEnlazadoComarcaNoParam")
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Resource<Comarca>> getEnlazadoComarcaNoParam(
-            @RequestParam(value = "provincia", required = true) Integer provincia_code) throws Exception {
-
-    	if(provincia_code < 1 || provincia_code > 6){
-    		throw new Exception("Identificador no valido");
-    	}
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
-        Provincia provincia = new Provincia();
-        provincia.setCode(new BigDecimal(provincia_code));
-        Comarca comarca = new Comarca();
-        comarca.setProvincia(provincia);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        
         return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
     }
 
     @UDALink(name = "getEnlazadoLocalidad")
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad")
     public @ResponseBody
     List<Resource<Localidad>> getEnlazadoLocalidad(
-            @RequestParam(value = "comarca", required = false) @TrustAssertion(idFor = Comarca.class) BigDecimal comarca_code) {
+            @RequestParam(value = "codeComarca", required = false) BigDecimal comarca_code) {
 
         //Convertir parÃ¡metros en entidad para bÃºsqueda
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
         Localidad localidad = new Localidad();
         localidad.setComarca(comarca);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        
         return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
     }
-
-
-    /**
-     * COMBO ENLAZADO MULTIPLE
-     */
-    /**
-     * Combos Enlazados (mÃºltiple)
-     */
-    @UDALink(name = "getEnlMultDpto", linkTo = {
-			@UDALinkAllower(name = "getEnlMultDptoProvNoParam") })
-    @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
+    
+    @UDALink(name = "getEnlazadoComarcaLocalidad")
+    @GetMapping(value = "comboEnlazadoSimple/remoteGroupEnlazadoComarcaLocalidad")
     public @ResponseBody
-    List<Resource<Departamento>> getEnlMultDpto() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return ResourceUtils.fromListToResource(departamentoService.findAll(null, null));
+    List<HashMap<String, List<Resource<DivisionTerritorialDto>>>> getEnlazadoComarcaLocalidad(
+    		@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	return this.setRemoteComboGruposEnlazado(provincia_code);
     }
-
-    @UDALink(name = "getEnlMultProv")
-    @RequestMapping(value = "comboEnlazadoMultiple/provinciaRemote", method = RequestMethod.GET)
+    
+    @UDALink(name = "getEnlazadoComarcaNoParam")
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam")
     public @ResponseBody
-    List<Resource<Provincia>> getEnlMultProv() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
-    }
+    List<Resource<Comarca>> getEnlazadoComarcaNoParam(
+            @RequestParam(value = "codeProvincia", required = true) BigDecimal provincia_code) throws Exception {
 
-    @UDALink(name = "getEnlMultDptoProv")
-    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Resource<DepartamentoProvincia>> getEnlMultDptoProv(
-            @RequestParam(value = "departamento", required = false) @TrustAssertion(idFor = Departamento.class) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) @TrustAssertion(idFor = Provincia.class) BigDecimal provincia_code) {
-
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
-        Departamento departamento = new Departamento();
-        departamento.setCode(departamento_code);
+    	if(provincia_code.intValueExact() < 1 || provincia_code.intValueExact() > 6){
+    		throw new Exception("Identificador no valido");
+    	}
+        //Convertir parámetros en entidad para búsqueda
         Provincia provincia = new Provincia();
         provincia.setCode(provincia_code);
-        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
-        departamentoProvincia.setDepartamento(departamento);
-        departamentoProvincia.setProvincia(provincia);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        return ResourceUtils.fromListToResource(comarcaService.findAll(comarca, null));
     }
 
     @UDALink(name = "getComarcaLocalidad")
@@ -1304,6 +1358,75 @@ public class PatronesController {
             e.printStackTrace();
         }
         return ResourceUtils.fromListToResource(localidadService.findAll(localidad, null));
+    }
+
+
+    /**
+     * COMBO ENLAZADO MULTIPLE
+     */
+    /**
+     * Combos Enlazados (múltiple)
+     */
+    @UDALink(name = "getDepartamentoProvinciaDTO")
+    @GetMapping(value = "comboEnlazadoMultiple/departamentoProvinciaDTO")
+    public @ResponseBody Resource<DepartamentoProvinciaDTO> getDepartamentoProvinciaDTO(
+    		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
+        return new Resource<>(departamentoProvinciaDTO);
+    }
+    
+    @UDALink(name = "getEnlMultDpto", linkTo = {
+			@UDALinkAllower(name = "getEnlMultDptoProvNoParam") })
+    @GetMapping(value = "comboEnlazadoMultiple/departamentoRemote")
+    public @ResponseBody List<Resource<Departamento>> getEnlMultDpto() {
+        return ResourceUtils.fromListToResource(departamentoService.findAll(null, null));
+    }
+
+    @UDALink(name = "getEnlMultProv")
+    @GetMapping(value = "comboEnlazadoMultiple/provinciaRemote")
+    public @ResponseBody List<Resource<Provincia>> getEnlMultProv() {
+        return ResourceUtils.fromListToResource(provinciaService.findAll(null, null));
+    }
+
+    @UDALink(name = "getEnlMultDptoProv")
+    @GetMapping(value = "comboEnlazadoMultiple/dptoProvRemote")
+    public @ResponseBody List<Resource<DepartamentoProvincia>> getEnlMultDptoProv(
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+        
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
+    }
+    
+    @UDALink(name = "getEnlMultDptoProvNoParam")
+    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Resource<DepartamentoProvincia>> getEnlMultDptoProvNoParam(
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) Integer provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResourceUtils.fromListToResource(departamentoProvinciaService.findAll(departamentoProvincia, null));
     }
 
     /**

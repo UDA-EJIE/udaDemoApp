@@ -4,6 +4,7 @@ package com.ejie.x21a.control;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class ComarcaController  {
 	 * @return comarca Comarca
 	 */
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public @ResponseBody Comarca getById(@PathVariable BigDecimal code) {
+	public @ResponseBody Comarca getById(@PathVariable @TrustAssertion(idFor = Comarca.class) BigDecimal code) {
         Comarca comarca = new Comarca();
 		comarca.setCode(code);
         comarca = this.comarcaService.find(comarca);

@@ -16,16 +16,22 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2 class="title mb-3"><spring:message code="multicombo" /></h2>
 
+<!-- URL a usar en formularios -->
+<spring:url value="comboSimple/remote" var="remoto"/>
+<spring:url value="comboEnlazadoSimple/provinciaComarcaLocalidadDTO" var="remotoAgrupado"/>
+
 <div class="container-fluid">
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">  
 			<label for="multicombo">Multicombo local</label>
 			<select id="multicombo"></select>
 		</div>
-		<div class="form-groupMaterial col-sm">  
-			<label for="multicomboRemoto">MultiCombo remoto</label>
-			<select id="multicomboRemoto"></select>
-		</div>
+		<form:form id="multicomboRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET">
+			<div class="form-groupMaterial col-sm">
+				<form:select id="multicomboRemoto" path="code" />
+				<label for="multicomboRemoto">MultiCombo remoto</label>
+			</div>
+		</form:form>
 	</div>
 </div>
 
@@ -35,10 +41,12 @@
 			<label for="multicomboGrupos">MultiCombo con 'optgroups'</label>
 			<select id="multicomboGrupos"></select>
 		</div>
-		<div class="form-groupMaterial col-sm"> 
-			<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
-			<select id="multicomboGruposRemoto"></select>
-		</div>
+		<form:form id="multicomboGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
+			<div class="form-groupMaterial col-sm">
+				<form:select id="multicomboGruposRemoto" path="code" /> 
+				<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
+			</div>
+		</form:form>
 	</div>
 </div>
 
