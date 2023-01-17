@@ -19,12 +19,13 @@ package com.ejie.x21a.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 import com.ejie.x38.util.StaticsContainer;
 
 @Configuration
-public class MvcConfig {
+public class MvcConfig extends DelegatingWebMvcConfiguration {
 
 	/** 
      * Gestiona la locale (idioma) mediante una cookie.
