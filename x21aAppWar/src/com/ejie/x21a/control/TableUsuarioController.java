@@ -696,21 +696,6 @@ public class TableUsuarioController {
 		logger.info("Entity correctly updated!");
 		return new Resource<Usuario2>(usuarioAux);
     }
-	
-	@Deprecated
-	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "filter") })
-	@PutMapping(value = "/editar", produces = "application/json")
-    public @ResponseBody Resource<Usuario> editar(
-    		@Validated @ModelAttribute Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
-		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
-		logger.info("Entity correctly updated!");
-		return new Resource<Usuario>(usuarioAux);
-    }
 
 	/**
 	 * OperaciÃ³n CRUD Create. CreaciÃ³n de un nuevo registro a partir del bean
