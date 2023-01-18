@@ -483,8 +483,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		}
 
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	@Transactional(readOnly = true)
@@ -496,8 +495,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 				"SELECT COUNT(1) FROM ALUMNO t1 LEFT JOIN T17_MUNICIPIO t2 ON t1.MUNICIPIO_ID=t2.ID and T1.PROVINCIA_ID=t2.PROVINCIA_ID  ");
 
 		query.append(this.getFindAllLikeWhere(alumno, params, startsWith));
-		return this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**
@@ -545,8 +543,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 			params.add(alumno.getId());
 		}
 
-		return (this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class) == 0);
+		return (this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray()) == 0);
 	}
 
 	@Override
@@ -558,8 +555,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		params.add(alumno.getId());
 		params.add(oldPassword);
 
-		return (this.jdbcTemplate.queryForObject(query.toString(),
-				params.toArray(), Long.class) == 1);
+		return (this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray()) == 1);
 	}
 	
 	@Override

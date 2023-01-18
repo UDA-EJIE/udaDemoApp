@@ -175,12 +175,14 @@ public class LocalidadServiceImpl implements LocalidadService {
 	/**
 	 * Deletes multiple rows in the Localidad table.
 	 *
-	 * @param localidadList List
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
 	 * @return
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.localidadDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.localidadDao.removeMultiple(filterLocalidad, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

@@ -188,7 +188,7 @@ public class NoraMunicipioDaoImpl implements NoraMunicipioDao {
 			params.add(municipio.getComarcaId());
 		}
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**

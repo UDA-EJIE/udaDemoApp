@@ -72,7 +72,7 @@ import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
-import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
+import com.ejie.x38.generic.model.SelectGeneric;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.rup.table.filter.model.Filter;
@@ -537,10 +537,10 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getApellidos")
 	@RequestMapping(value = "/apellidos", method = RequestMethod.GET)
-	public @ResponseBody List<AutocompleteComboGenericPOJO> getApellidos (
+	public @ResponseBody List<SelectGeneric> getApellidos (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {
-		List<AutocompleteComboGenericPOJO> apellidos = new ArrayList<AutocompleteComboGenericPOJO>();
+		List<SelectGeneric> apellidos = new ArrayList<SelectGeneric>();
 		if(q != null){
 			q = Normalizer.normalize(q, Normalizer.Form.NFD);
 			q = q.replaceAll("[^\\p{ASCII}]", "");
@@ -583,7 +583,7 @@ public class TableUsuarioController {
 			str = str.toUpperCase();
 			str = str.replaceAll("[^\\p{ASCII}]", "");
 			if(q.equals("") || str.indexOf(q) >= 0){
-				apellidos.add(new AutocompleteComboGenericPOJO(original, original));
+				apellidos.add(new SelectGeneric(original, original));
 			}
 		}
 		
@@ -592,15 +592,15 @@ public class TableUsuarioController {
 	
 	@UDALink(name = "getRoles",linkTo = { @UDALinkAllower(name = "getApellidos" )})
 	@RequestMapping(value = "/roles", method = RequestMethod.GET)
-	public @ResponseBody List<AutocompleteComboGenericPOJO> getRoles (
+	public @ResponseBody List<SelectGeneric> getRoles (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {	
-		List<AutocompleteComboGenericPOJO> roles = new ArrayList<AutocompleteComboGenericPOJO>();
-		roles.add(new AutocompleteComboGenericPOJO("Administrador", "Administrador"));
-		roles.add(new AutocompleteComboGenericPOJO("Desarrollador", "Desarrollador"));
-		roles.add(new AutocompleteComboGenericPOJO("Espectador", "Espectador"));
-		roles.add(new AutocompleteComboGenericPOJO("Informador", "Informador"));
-		roles.add(new AutocompleteComboGenericPOJO("Manager", "Manager"));
+		List<SelectGeneric> roles = new ArrayList<SelectGeneric>();
+		roles.add(new SelectGeneric("Administrador", "Administrador"));
+		roles.add(new SelectGeneric("Desarrollador", "Desarrollador"));
+		roles.add(new SelectGeneric("Espectador", "Espectador"));
+		roles.add(new SelectGeneric("Informador", "Informador"));
+		roles.add(new SelectGeneric("Manager", "Manager"));
 		
 		return roles;
 	}

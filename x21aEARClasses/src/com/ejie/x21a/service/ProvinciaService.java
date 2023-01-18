@@ -110,6 +110,19 @@ public interface ProvinciaService {
 	 */	
 	void removeMultiple(List<Provincia> provinciaList);
 	
+	/*
+	 * OPERACIONES RUP_TABLE
+	 */
+
+	/**
+	 * Deletes multiple rows in the Provincia table.
+	 *
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */
+	void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith);
+	
 	/**
 	 * Finds a List of rows in the Provincia table via inverse select.
 	 *

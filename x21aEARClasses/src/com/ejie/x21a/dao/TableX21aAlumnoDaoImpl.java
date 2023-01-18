@@ -246,7 +246,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**
@@ -268,7 +268,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**
@@ -480,7 +480,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**

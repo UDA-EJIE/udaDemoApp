@@ -53,8 +53,8 @@ import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
-import com.ejie.x38.generic.model.AutocompleteComboPKsPOJO;
-import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
+import com.ejie.x38.generic.model.SelectGeneric;
+import com.ejie.x38.generic.model.SelectGenericPKs;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.log.LoggingEditor;
@@ -135,7 +135,7 @@ public class ExperimentalController {
 	
 	@UDALink(name = "getName")
 	@RequestMapping(value = "/name", method = RequestMethod.GET)
-	public @ResponseBody List<Resource<AutocompleteComboPKsPOJO>> getName(
+	public @ResponseBody List<Resource<SelectGenericPKs>> getName(
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {
 		return LoggingEditor.getNames(q);
@@ -143,7 +143,7 @@ public class ExperimentalController {
 	
 	@UDALink(name = "getLevel")
 	@RequestMapping(value = "/level", method = RequestMethod.GET)
-	public @ResponseBody List<Resource<AutocompleteComboGenericPOJO>> getLevel() {	
+	public @ResponseBody List<Resource<SelectGeneric>> getLevel() {	
 		return LoggingEditor.getLevels();
 	}
 

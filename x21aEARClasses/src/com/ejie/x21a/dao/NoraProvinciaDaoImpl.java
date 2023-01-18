@@ -187,7 +187,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
 			params.add(provincia.getAutonomia().getId());
 		}
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**

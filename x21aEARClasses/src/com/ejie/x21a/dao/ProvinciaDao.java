@@ -100,7 +100,14 @@ public interface ProvinciaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 
-	void removeMultiple(TableRequestDto tableRequestDto);
+    /**
+	 * Deletes multiple rows in the Provincia table.
+	 *
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */
+	void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Provincia> getMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith);
     

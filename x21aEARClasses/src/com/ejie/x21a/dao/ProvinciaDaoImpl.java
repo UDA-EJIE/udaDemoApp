@@ -172,7 +172,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**
@@ -222,7 +222,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	@Override
@@ -291,9 +291,18 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
+	/**
+	 * Deletes multiple rows in the Provincia table.
+	 *
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Provincia.class, "PROVINCIA", new String[]{"CODE"});
+	public void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith) {
+		Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterProvincia, startsWith);
+		
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Provincia.class, "PROVINCIA", "t1", new String[]{"CODE"});
 		
 		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
 		
@@ -376,7 +385,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
-	private Map<String, ?> getWhereLikeMap (Provincia provincia, Boolean startsWith){
+	private Map<String, Object> getWhereLikeMap (Provincia provincia, Boolean startsWith){
 		
 		StringBuffer where = new StringBuffer(ProvinciaDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();

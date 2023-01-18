@@ -175,12 +175,14 @@ public class ComarcaServiceImpl implements ComarcaService {
 	/**
 	 * Deletes multiple rows in the Comarca table.
 	 *
-	 * @param comarcaList List
+	 * @param filterComarca Comarca
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
 	 * @return
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.comarcaDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.comarcaDao.removeMultiple(filterComarca, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

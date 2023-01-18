@@ -117,9 +117,11 @@ public interface LocalidadService {
 	/**
 	 * Deletes multiple rows in the Localidad table.
 	 *
-	 * @param TableRequestDto tableRequestDto
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
 	 */	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Localidad table via inverse select.

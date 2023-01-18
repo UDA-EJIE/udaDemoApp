@@ -136,7 +136,7 @@ public class NoraAutonomiaDaoImpl implements NoraAutonomiaDao {
 			params.add(autonomia.getDsO());
 		}
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**

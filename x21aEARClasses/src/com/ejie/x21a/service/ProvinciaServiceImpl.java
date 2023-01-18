@@ -175,12 +175,14 @@ public class ProvinciaServiceImpl implements ProvinciaService {
 	/**
 	 * Deletes multiple rows in the Provincia table.
 	 *
-	 * @param provinciaList List
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
 	 * @return
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.provinciaDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.provinciaDao.removeMultiple(filterProvincia, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

@@ -100,7 +100,14 @@ public interface LocalidadDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 
-	void removeMultiple(TableRequestDto tableRequestDto);
+    /**
+	 * Deletes multiple rows in the Localidad table.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
+	 */
+	void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Localidad> getMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
     
