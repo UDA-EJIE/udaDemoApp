@@ -46,7 +46,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
-		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("user").rules("text")).setAsClientParameter(true);
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("filterSelector", "user").rules("text")).setAsClientParameter(true);
 		
 		// Tabla
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/roles").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("rol");
