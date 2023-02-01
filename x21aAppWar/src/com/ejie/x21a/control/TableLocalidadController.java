@@ -34,7 +34,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -170,17 +172,17 @@ public class TableLocalidadController {
 	}
 	
 	@UDALink(name = "multifilterAdd")
-	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter/add")
 	public @ResponseBody Resource<Filter> filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
 		TableLocalidadController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
 	}	
 	
 	@UDALink(name = "multifilterDelete")
-	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
+	@DeleteMapping(value = "/multiFilter/delete")
 	public @ResponseBody Resource<Filter>  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		TableLocalidadController.logger.info("[POST - table] : delete filter");
+		TableLocalidadController.logger.info("[DELETE - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	

@@ -93,6 +93,7 @@ public class TableUsuarioController {
 	public static final String MODEL_USUARIO = "usuario";
 	public static final String MODEL_USUARIO2 = "usuario2";
 	public static final String MODEL_OPTIONS = "options";
+	public static final String MODEL_FILTER = "filter";
 	public static final String MODEL_ACTIONTYPE = "actionType";
 	
 	@Autowired
@@ -889,7 +890,9 @@ public class TableUsuarioController {
 	}
 	
 	// Obtiene el formulario del multi filtro
-	@UDALink(name = "getMultiFilterForm")
+	@UDALink(name = "getMultiFilterForm", linkTo = { 
+			@UDALinkAllower(name = "multifilterAdd"), 
+			@UDALinkAllower(name = "multifilterDelete") })
 	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
 	public String getMultiFilterForm (
 			@RequestParam(required = false) String mapping,
@@ -899,7 +902,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
+		model.addAttribute(MODEL_FILTER, new Filter());
 		model.addAttribute("tableID", tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
@@ -918,7 +921,9 @@ public class TableUsuarioController {
 	}
 	
 	// Obtiene el formulario del multi filtro
-	@UDALink(name = "getMultiFilterForm2")
+	@UDALink(name = "getMultiFilterForm2", linkTo = { 
+			@UDALinkAllower(name = "multifilterAdd"), 
+			@UDALinkAllower(name = "multifilterDelete") })
 	@RequestMapping(value = "{bis}/multiFilter", method = RequestMethod.POST)
 	public String getMultiFilterForm2 (
 			@RequestParam(required = false) String mapping,
@@ -928,7 +933,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute("entity", new Usuario2());
+		model.addAttribute(MODEL_FILTER, new Filter());
 		model.addAttribute("tableID", tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
@@ -948,7 +953,7 @@ public class TableUsuarioController {
 	
 	// Añade o actualiza un filtro
 	@UDALink(name = "multifilterAdd")
-	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter/add")
 	public @ResponseBody Resource<Filter> filterAdd(@RequestBody Filter filtro){
 		TableUsuarioController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
@@ -956,9 +961,9 @@ public class TableUsuarioController {
 	
 	// Elimina un filtro
 	@UDALink(name = "multifilterDelete")
-	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
+	@DeleteMapping(value = "/multiFilter/delete")
 	public @ResponseBody Resource<Filter> filterDelete(@RequestBody Filter filtro) {
-		TableUsuarioController.logger.info("[POST - table] : delete filter");
+		TableUsuarioController.logger.info("[DELETE - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	
