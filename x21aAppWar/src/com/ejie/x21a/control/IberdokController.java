@@ -246,7 +246,6 @@ public class IberdokController {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getPDF") })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
@@ -323,7 +322,6 @@ public class IberdokController {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "view") })
