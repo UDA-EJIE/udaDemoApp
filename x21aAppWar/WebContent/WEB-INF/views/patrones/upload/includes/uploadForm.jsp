@@ -3,7 +3,8 @@
 
 
 <div id="fileupload_form">
-	<form:form id="uploadForm" action="../upload/form" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
+	<spring:url value="../upload/form" var="url"/>
+	<form:form id="uploadForm" action="${url}" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
 			<div id="feedback_fileupload_form"></div>
 			<div class="row">

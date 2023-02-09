@@ -1,7 +1,8 @@
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<form:form action="../upload/add" id="uploadBasicForm" enctype="multipart/form-data" method="POST" modelAttribute="collection">
+<spring:url value="../upload/add" var="url"/>
+<form:form action="${url}" id="uploadBasicForm" enctype="multipart/form-data" method="POST" modelAttribute="collection">
 <span class="btn btn-success fileinput-button">
       <i class="mdi mdi-plus"></i>
       <span><spring:message code="upload.button.addFiles"/></span>

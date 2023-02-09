@@ -2,7 +2,8 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <div id="fileupload_pif_form">
-	<form:form action="../upload/pifForm" id="uploadPifForm" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
+	<spring:url value="../upload/pifForm" var="url"/>
+	<form:form action="${url}" id="uploadPifForm" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
 			<div id="feedback_fileupload_form"></div>
 			<div class="row">
