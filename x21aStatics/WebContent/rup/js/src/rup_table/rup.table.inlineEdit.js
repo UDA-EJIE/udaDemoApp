@@ -1199,11 +1199,16 @@ function _inlineEditFormSerialize($fila,ctx,child){
 	}
 	//Se vacian las reglas.
 	$.each(selectores,function() {
-		//añadir las columnas parents y child
-		var busqueda = 'td:not([style*="display: none"]):not(".select-checkbox") input,td:not([style*="display: none"]):not(".select-checkbox") select';
-            if (this.hasClass('child')) { //si es el hijo solo buscar los select e inputs que hay.
-                busqueda = 'select,input';
+		// Añadir las columnas parent y child.
+		let busqueda = 'td:not([style*="display: none"]):not(".select-checkbox") input:not([disabled]),' +
+			'td:not([style*="display: none"]):not(".select-checkbox") select:not([disabled]),' +
+			'td:not([style*="display: none"]):not(".select-checkbox") textarea:not([disabled])';
+
+		// Si es el hijo, solo buscar los select, input y textarea que haya.
+		if (this.hasClass('child')) {
+			busqueda = 'select,input,textarea';
 		}
+		
 		$.each( this.find(busqueda), function( i, obj ) {
 			var nombre = obj.id.replace('_inline','').replace('_child','');
 			var value = $(obj).val();
@@ -1524,13 +1529,17 @@ function _loadAuxForm(ctx, actionType) {
 	
 	// Servirá para saber si la última llamada a inlineEdit fue para añadir, editar o si aún no ha sido inicializado
 	let lastAction = ctx.oInit.inlineEdit.actionType;
+    	
+	// Obtiene del formulario el valor del campo que forme la clave primaria. Puede ser undefined.
+	const lastFormPkValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
 	
-	// Si el usuario ha activado los formularios dinámicos y la última acción no es la misma que la actual, es necesario volver a obtener el formulario
-	if (ctx.oInit.enableDynamicForms && lastAction !== actionType) {
-		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType y el identificador de la tabla.
-		let defaultData = {
+	// Si el usuario ha activado los formularios dinámicos, la última acción no es la misma que la actual o el valor del identificador ha cambiado,
+	// es necesario volver a obtener el formulario.
+	if (ctx.oInit.enableDynamicForms && (lastAction !== actionType || lastFormPkValue !== ctx.multiselection.lastSelectedId)) {
+		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType y el valor de la clave primaria siempre y cuando no contenga un string vacío.
+		const defaultData = {
 				'actionType': actionType,
-				'tableID': ctx.sTableId
+				...(ctx.multiselection.lastSelectedId != "" && {'pkValue': ctx.multiselection.lastSelectedId})
 			};
 		let data = ctx.oInit.inlineEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.inlineEdit.data) : defaultData;
 		

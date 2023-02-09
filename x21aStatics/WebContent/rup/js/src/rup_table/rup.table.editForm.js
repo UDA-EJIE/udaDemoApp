@@ -378,6 +378,9 @@
     	
     	// Servirá para saber si la última llamada a editForm fue para añadir, editar o si aún no ha sido inicializado
     	let lastAction = ctx.oInit.formEdit.actionType;
+    	
+    	// Obtiene del formulario el valor del campo que forme la clave primaria. Puede ser undefined.
+    	const lastFormPkValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
 		
 		// Botón de guardar y continuar
         let buttonContinue = ctx.oInit.formEdit.detailForm.find('#' + ctx.sTableId + '_detail_button_save_repeat');
@@ -390,10 +393,14 @@
             buttonContinue.show();
         }
     	
-    	// Si el usuario ha activado los formularios dinámicos y la última acción no es la misma que la actual, es necesario volver a obtener el formulario
-		if (ctx.oInit.enableDynamicForms && lastAction !== actionType) {
-			// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType.
-			const defaultData = {'actionType': actionType};
+    	// Si el usuario ha activado los formularios dinámicos, la última acción no es la misma que la actual o el valor del identificador ha cambiado,
+    	// es necesario volver a obtener el formulario.
+		if (ctx.oInit.enableDynamicForms && (lastAction !== actionType || lastFormPkValue !== ctx.multiselection.lastSelectedId)) {
+			// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType y el valor de la clave primaria siempre y cuando no contenga un string vacío.
+			const defaultData = {
+				'actionType': actionType,
+				...(ctx.multiselection.lastSelectedId != "" && {'pkValue': ctx.multiselection.lastSelectedId})
+			};
 			let data = ctx.oInit.formEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.formEdit.data) : defaultData;
 			
 			$('#' + ctx.sTableId).triggerHandler('tableEditFormBeforeLoad', ctx);
@@ -1831,25 +1838,18 @@
         	if (ultimo != obj.name) {
         		count = 0;
     		}
-        	let element = idForm.find('[name="' + obj.name + '"]');
-        	let ruptype = element.attr('ruptype');
-        	if (ruptype === undefined) {
-        		ruptype = element.data('ruptype');
-        	}
-        	if ((obj.type === 'hidden' && element.attr('id') !== undefined) || obj.type !== 'hidden' || ruptype === 'autocomplete' || ruptype === 'custom') {
-        		let valor = '';
-        		if ($(idForm).find('[name="' + obj.name + '"]').prop('multiple')) {
-        			valor = '[' + count++ + ']';
-        		}
-        		else if (ultimo === obj.name) {//Se mete como lista
-        			//se hace replace del primer valor
-        			serializedForm = serializedForm.replace(ultimo + '=', ultimo + '[' + count++ + ']=');
-        			valor = '[' + count++ + ']'; //y se mete el array
-        		}
-	            serializedForm += (obj.name + valor + '=' + obj.value);
-                serializedForm += serializerSplitter;
-                ultimo = obj.name;
-        	}
+			let valor = '';
+			if ($(idForm).find('[name="' + obj.name + '"]').prop('multiple')) {
+				valor = '[' + count++ + ']';
+			}
+			else if (ultimo === obj.name) {//Se mete como lista
+				//se hace replace del primer valor
+				serializedForm = serializedForm.replace(ultimo + '=', ultimo + '[' + count++ + ']=');
+				valor = '[' + count++ + ']'; //y se mete el array
+			}
+			serializedForm += (obj.name + valor + '=' + obj.value);
+			serializedForm += serializerSplitter;
+			ultimo = obj.name;
         });
         // Evitar que el último carácter sea "&" o el separador definido por el usuario.
         serializedForm = serializedForm.substring(0, serializedForm.length - serializerSplitter.length);
