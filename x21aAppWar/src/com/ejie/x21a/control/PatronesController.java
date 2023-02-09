@@ -604,8 +604,18 @@ public class PatronesController {
     }
 
     //Upload
-    @UDALink(name = "getUpload", linkTo = { @UDALinkAllower(name = "addFormSimple"), @UDALinkAllower(name = "add", linkClass = UploadController.class), @UDALinkAllower(name = "addForm", linkClass = UploadController.class), @UDALinkAllower(name = "addFormSimple", linkClass = UploadController.class), @UDALinkAllower(name = "addPifFormFile", linkClass = UploadController.class), @UDALinkAllower(name = "downloadPif", linkClass = UploadController.class), @UDALinkAllower(name = "removePif", linkClass = UploadController.class), @UDALinkAllower(name = "remove", linkClass = UploadController.class), @UDALinkAllower(name = "download", linkClass = UploadController.class)})
-    @RequestMapping(value = "upload", method = RequestMethod.GET)
+	@UDALink(name = "getUpload", linkTo = { 
+			@UDALinkAllower(name = "addFormSimple"),
+			@UDALinkAllower(name = "add", linkClass = UploadController.class),
+			@UDALinkAllower(name = "addMultiple", linkClass = UploadController.class),
+			@UDALinkAllower(name = "addForm", linkClass = UploadController.class),
+			@UDALinkAllower(name = "addFormSimple", linkClass = UploadController.class),
+			@UDALinkAllower(name = "addPifFormFile", linkClass = UploadController.class),
+			@UDALinkAllower(name = "downloadPif", linkClass = UploadController.class),
+			@UDALinkAllower(name = "removePif", linkClass = UploadController.class),
+			@UDALinkAllower(name = "remove", linkClass = UploadController.class),
+			@UDALinkAllower(name = "download", linkClass = UploadController.class) })
+    @GetMapping(value = "upload")
     public String getUpload(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("collection", new Collection());
