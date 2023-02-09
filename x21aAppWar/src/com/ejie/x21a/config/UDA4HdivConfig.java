@@ -35,9 +35,6 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	public void addCustomExclusions(final ExclusionRegistry registry) {
 		registry.addUrlExclusions("/iberdok/view");
 		registry.addUrlExclusions("/iberdok/urlFinalizacion");
-		registry.addUrlExclusions("/patrones/upload");
-		registry.addUrlExclusions("/pifServlet");
-		registry.addUrlExclusions("/upload/pifForm");
 	}
 
 	@Override
