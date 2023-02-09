@@ -11,6 +11,7 @@ import javax.validation.groups.Default;
 import org.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ejie.x21a.validation.constraints.AlumnoDireccion;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
@@ -75,6 +76,9 @@ public class Alumno implements java.io.Serializable, SecureIdentifiable<BigDecim
 	private byte[] imagen;
 	private Integer ejie;
 	private HashMap<String,String> randomData;
+	private transient MultipartFile foto;
+	private transient MultipartFile fotoMadre;
+	private transient MultipartFile fotoPadre;
 	
 	public HashMap<String, String> getRandomData() {
 		return randomData;
@@ -577,6 +581,48 @@ public class Alumno implements java.io.Serializable, SecureIdentifiable<BigDecim
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	/**
+	 * @return the foto
+	 */
+	public MultipartFile getFoto() {
+		return foto;
+	}
+
+	/**
+	 * @param foto the foto to set
+	 */
+	public void setFoto(MultipartFile foto) {
+		this.foto = foto;
+	}
+
+	/**
+	 * @return the fotoMadre
+	 */
+	public MultipartFile getFotoMadre() {
+		return fotoMadre;
+	}
+
+	/**
+	 * @param fotoMadre the fotoMadre to set
+	 */
+	public void setFotoMadre(MultipartFile fotoMadre) {
+		this.fotoMadre = fotoMadre;
+	}
+
+	/**
+	 * @return the fotoPadre
+	 */
+	public MultipartFile getFotoPadre() {
+		return fotoPadre;
+	}
+
+	/**
+	 * @param fotoPadre the fotoPadre to set
+	 */
+	public void setFotoPadre(MultipartFile fotoPadre) {
+		this.fotoPadre = fotoPadre;
 	}
 
 	/**
