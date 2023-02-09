@@ -43,6 +43,11 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
+		// Upload PIF
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/upload/pifForm").forParameters("base_url", "hadoop_folder_path").rules("partialUrl")).setAsClientParameter(true);
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/upload/pifForm").forParameters("securityToken").rules("text")).setAsClientParameter(true);
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/upload/pifForm").forParameters("hadoop_preserve_name").rules("boolean")).setAsClientParameter(true);
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/upload/pifForm").forParameters("y31_ttl").rules("numeric")).setAsClientParameter(true);
 		
 		// Multifiltro
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter").forParameters("mapping", "tableID", "containerClass", "labelClass", "defaultContainerClass", "defaultCheckboxClass").rules("text")).setAsClientParameter(true);
