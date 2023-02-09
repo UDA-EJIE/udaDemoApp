@@ -174,6 +174,14 @@ jQuery(function ($) {
 	                $('th[data-col-prop=\'' + item.name + '\']').remove();
 	            }
 	        });
+	        
+	        let inlineEditData = {};
+	        
+	        $.each(tableColModel, function(index, column) {
+				if (!column.compulsory) {
+					inlineEditData[column.name] = true;
+				}
+			});
 	
 	        $('#columnasDinamicas').rup_table({
 	            colModel: tableColModel,
@@ -194,7 +202,8 @@ jQuery(function ($) {
 	                            required: true
 	                        }
 	                    }
-	                }
+	                },
+	                data: inlineEditData
 	            },
 	            filter : 'noFilter'
 	        });

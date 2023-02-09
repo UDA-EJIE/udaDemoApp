@@ -48,6 +48,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.ProvinciaService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
@@ -56,6 +57,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 import com.ejie.x38.util.ResourceUtils;
@@ -114,10 +116,17 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableComarcaEditForm (@RequestParam String actionType, Model model) {
+	@PostMapping(value = "/editForm")
+	public String getTableComarcaEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
+			Model model) {
 		model.addAttribute("comarca", new Comarca());
 		model.addAttribute("actionType", actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+		}
 		
 		return "tableComarcaEditForm";
 	}
@@ -127,10 +136,17 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editFormDialog", method = RequestMethod.POST)
-	public String getTableDialogComarcaEditForm (@RequestParam String actionType, Model model) {
+	@PostMapping(value = "/editFormDialog")
+	public String getTableDialogComarcaEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
+			Model model) {
 		model.addAttribute("comarca", new Comarca());
 		model.addAttribute("actionType", actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+		}
 		
 		return "tableDialogComarcaEditForm";
 	}

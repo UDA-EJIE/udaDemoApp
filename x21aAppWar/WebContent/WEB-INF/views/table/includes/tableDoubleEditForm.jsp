@@ -21,7 +21,7 @@
 
 <!-- Formulario -->
 <c:choose>
-	<c:when test="${enableMultipart eq true}">
+	<c:when test="${enableMultipart}">
 		<c:set value="${actionType == 'POST' ? 'addMultipart': 'editMultipart'}" var="endpoint" />
 	</c:when>
 	<c:when test="${!enableMultipart}">
@@ -32,8 +32,11 @@
 <spring:url value="/table/2/${endpoint}" var="url"/>
 <form:form modelAttribute="usuario2" id="example2_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
-	<div id="example2_detail_feedback"></div>	
+	<div id="example2_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${!actionType.equals('POST')}">
+		<form:hidden path="id" value="${pkValue.id}" id="id_detail_table2" />
+	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table2" />
@@ -66,11 +69,11 @@
 	</div>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
-	    	<form:input path="rol" id="rol_detail_table2" />
+	    	<form:select path="rol" id="rol_detail_table2" />
 	    	<label for="rol_detail_table2"><spring:message code="rol" /></label>
 	    </div>
 	</div>
-	<c:if test="${enableMultipart eq true}">
+	<c:if test="${enableMultipart}">
 	<div class="form-row">	
 		<div class="form-groupMaterial col-sm">
 			<form:input path="imagenAlumno" type="file" id="imagenAlumno_detail_table2" />

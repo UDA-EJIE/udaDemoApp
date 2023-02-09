@@ -19,8 +19,10 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +46,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,6 +64,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.util.ResourceUtils;
 
@@ -125,25 +129,39 @@ public class TableDynamicColumnsController  {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = false) String pkValue,
+			@RequestParam(defaultValue = "false") boolean apellido1,
+			@RequestParam(defaultValue = "false") boolean apellido2,
+			@RequestParam(defaultValue = "false") boolean ejie,
+			@RequestParam(defaultValue = "false") boolean fechaBaja,
+			@RequestParam(defaultValue = "false") boolean rol,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
+		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("actionType", actionType);
-		model.addAttribute("tableID", tableID);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/table/dynamicColumns";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
 		}
-		model.addAttribute("mapping", mapping);
 		
-		return "tableInlineEditAuxForm";
+		model.addAttribute("apellido1", apellido1);
+		model.addAttribute("apellido2", apellido2);
+		model.addAttribute("ejie", ejie);
+		model.addAttribute("fechaBaja", fechaBaja);
+		model.addAttribute("rol", rol);
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableDynamicColumnsInlineEditAuxForm";
 	}
 	
 	/**

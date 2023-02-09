@@ -25,10 +25,10 @@
 <form:form modelAttribute="${isDouble eq true ? 'usuario2' : 'usuario'}" id="example_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="example_detail_feedback"></div>
-	<c:if test="${actionType != 'POST'}">
-		<form:input path="id" id="id_detail_table" class="d-none" />
-	</c:if>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${actionType != 'POST'}">
+		<form:hidden path="id" value="${pkValue.id}" id="id_detail_table" />
+	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table" />

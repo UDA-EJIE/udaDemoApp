@@ -57,6 +57,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		
 		// Tabla
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/roles").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("rol");
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/dynamicColumns/inlineEdit").forParameters("apellido1", "apellido2", "ejie", "fechaBaja", "rol").rules("boolean")).setAsClientParameter(true);
 		
 		// Autocomplete y select
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/autocomplete/remote").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");

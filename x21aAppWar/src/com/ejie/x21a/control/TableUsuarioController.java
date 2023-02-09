@@ -75,6 +75,7 @@ import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 import com.ejie.x38.util.DateTimeManager;
@@ -95,6 +96,8 @@ public class TableUsuarioController {
 	public static final String MODEL_OPTIONS = "options";
 	public static final String MODEL_FILTER = "filter";
 	public static final String MODEL_ACTIONTYPE = "actionType";
+	public static final String MODEL_PKVALUE = "pkValue";
+	public static final String MODEL_TABLEID = "tableID";
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -133,7 +136,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<Usuario> get(
 			@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
@@ -148,7 +151,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove2" ),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{bis}/{id}")
 	public @ResponseBody Resource<Usuario2> get2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable @TrustAssertion(idFor = Usuario2.class) String id) {
@@ -174,10 +177,9 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll") })
-	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
+	@GetMapping(value = "/configurable")
 	public String getFiltroSimple (Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
+		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -227,7 +229,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport2"),
 			@UDALinkAllower(name = "csvReport"),
 			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "/double", method = RequestMethod.GET)
+	@GetMapping(value = "/double")
 	public String getTableDouble (Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_USUARIO2, new Usuario2());
@@ -386,13 +388,19 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) boolean enableMultipart,
+			@RequestParam(required = false) String pkValue,
+			@RequestParam(defaultValue = "false") boolean enableMultipart,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
 		if (enableMultipart) {
 			model.addAttribute("enableMultipart", enableMultipart);
 		}
@@ -408,9 +416,21 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "edit2"),
 			@UDALinkAllower(name = "filter2") })
 	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
-	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
+	public String getTableDoubleEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			@RequestParam(defaultValue = "false") boolean enableMultipart,
+			Model model) {
 		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+		}
+				
+		if (enableMultipart) {
+			model.addAttribute("enableMultipart", enableMultipart);
+		}
 		
 		return "tableDoubleEditForm";
 	}
@@ -426,9 +446,15 @@ public class TableUsuarioController {
 	@PostMapping(value = "/editFormMultipart")
 	public String getTableEditFormMultipart (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
 		model.addAttribute("enableMultipart", true);
 		
 		return "tableEditForm";
@@ -445,9 +471,15 @@ public class TableUsuarioController {
 	@PostMapping(value = "/editFormDoubleMultipart")
 	public String getTableDoubleEditFormMultipart (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
 		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+		}
+		
 		model.addAttribute("enableMultipart", true);
 		
 		return "tableDoubleEditForm";
@@ -459,23 +491,26 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
+		model.addAttribute(MODEL_USUARIO, new Usuario());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("tableID", tableID);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/table";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
 		}
-		model.addAttribute("mapping", mapping);
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
 		
 		return "tableInlineEditAuxForm";
 	}
@@ -489,28 +524,32 @@ public class TableUsuarioController {
 	@PostMapping(value = "/inlineEditDouble")
 	public String getTableDoubleInlineEdit (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario2());
+		model.addAttribute(MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("tableID", tableID);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/table/2";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
 		}
-		model.addAttribute("mapping", mapping);
 		
-		return "tableInlineEditAuxForm";
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableDoubleInlineEditAuxForm";
 	}
 	
 	@UDALink(name = "editFromNewWindow")
 	@GetMapping(value = "/editFromNewWindow")
     public String editFromNewWindow(
-    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
+			@RequestParam(required = false) String pkValue,
+    		@RequestParam(required = false) boolean isDouble,
     		Model model) {
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
@@ -520,6 +559,10 @@ public class TableUsuarioController {
 			Usuario usuario = new Usuario();
 			model.addAttribute(MODEL_USUARIO, usuario);
 			model.addAttribute("isDouble", false);
+		}
+		
+		if (pkValue != null) {
+			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(isDouble ? new Usuario2(pkValue) : new Usuario(pkValue)));
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -903,7 +946,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
 		model.addAttribute(MODEL_FILTER, new Filter());
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
@@ -934,7 +977,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
 		model.addAttribute(MODEL_FILTER, new Filter());
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);

@@ -21,11 +21,14 @@
 
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="../tableComarca/${endpoint}" var="url"/>
+<spring:url value="/tableComarca/${endpoint}" var="url"/>
 <form:form modelAttribute="comarca" id="comarca_detail_form" action="${url}" method="${actionType}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="comarca_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${!actionType.equals('POST')}">
+		<form:hidden path="code" value="${pkValue.code}" id="code_detailForm_tableComarca" />
+	</c:if>
 	<div class="form-row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detailForm_tableComarca" />

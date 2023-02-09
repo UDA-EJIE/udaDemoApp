@@ -1,5 +1,5 @@
 <%--  
- -- Copyright 2021 E.J.I.E., S.A.
+ -- Copyright 2023 E.J.I.E., S.A.
  --
  -- Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
  -- Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
@@ -21,18 +21,28 @@
 
 <!-- Formulario -->
 <c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="/table/${endpoint}" var="url"/>
-<form:form modelAttribute="usuario" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}">
+<spring:url value="/table/dynamicColumns/${endpoint}" var="url"/>
+<form:form modelAttribute="usuario" id="columnasDinamicas_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}">
 	<c:if test="${!actionType.equals('POST')}">
-		<form:hidden path="id" value="${pkValue.id}" id="id_inlineEdit_aux_form" />
+		<form:hidden path="id" value="${pkValue.id}" id="id_columnasDinamicas_inlineEdit_aux_form" />
 	</c:if>
-	<form:input path="nombre" id="nombre_inlineEdit_aux_form" />
-	<form:input path="apellido1" id="apellido1_inlineEdit_aux_form" />
-	<form:input path="apellido2" id="apellido2_inlineEdit_aux_form" />
-	<form:input path="fechaBaja" id="fechaBaja_inlineEdit_aux_form" />
-	<form:input path="fechaAlta" id="fechaAlta_inlineEdit_aux_form" />
-	<form:input path="ejie" id="ejie_inlineEdit_aux_form" />
+	<form:input path="nombre" id="nombre_columnasDinamicas_inlineEdit_aux_form" />
+	<c:if test="${apellido1}">
+		<form:input path="apellido1" id="apellido1_columnasDinamicas_inlineEdit_aux_form" />
+	</c:if>
+	<c:if test="${apellido2}">
+		<form:input path="apellido2" id="apellido2_columnasDinamicas_inlineEdit_aux_form" />
+	</c:if>
+	<c:if test="${ejie}">
+		<form:input path="ejie" id="ejie_columnasDinamicas_inlineEdit_aux_form" />
+	</c:if>
+	<c:if test="${fechaBaja}">
+		<form:input path="fechaBaja" id="fechaBaja_columnasDinamicas_inlineEdit_aux_form" />
+	</c:if>
+	<form:input path="fechaAlta" id="fechaAlta_columnasDinamicas_inlineEdit_aux_form" />
 	<!-- <form:radiobutton path="ejie" value="0" id="ejie0_inlineEdit_aux_form" />
 	<form:radiobutton path="ejie" value="1" id="ejie1_inlineEdit_aux_form" /> -->
-	<form:select path="rol" id="rol_inlineEdit_aux_form" items="${comboRol}" />
+	<c:if test="${rol}">
+		<form:select path="rol" id="rol_columnasDinamicas_inlineEdit_aux_form" items="${comboRol}" />
+	</c:if>
 </form:form>

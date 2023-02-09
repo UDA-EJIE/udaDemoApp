@@ -20,8 +20,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +41,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.util.ResourceUtils;
 
 
@@ -80,8 +83,9 @@ public class TableMultiPkController {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
@@ -122,12 +126,43 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableEditForm (@RequestParam String actionType, Model model) {
+	@PostMapping(value = "/editForm")
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("actionType", actionType);
 		
+		if (pkValue != null) {
+			MultiPk multiPk = new MultiPk();
+			multiPk.setId(pkValue);
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
 		return "tableMultiPkEditForm";
+	}
+	
+	@UDALink(name = "getTableInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@PostMapping(value = "/inlineEdit")
+	public String getTableInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("actionType", actionType);
+		
+		if (pkValue != null) {
+			MultiPk multiPk = new MultiPk();
+			multiPk.setId(pkValue);
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
+		return "tableMultiPkInlineEditAuxForm";
 	}
 
 	/**
