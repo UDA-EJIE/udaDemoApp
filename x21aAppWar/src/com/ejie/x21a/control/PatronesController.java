@@ -163,6 +163,11 @@ public class PatronesController {
 	private Comarca llanadaAlavesa = new Comarca(new BigDecimal(1), "Llanada alavesa", "Arabako lautada", null, alava);
 	private Comarca granBilbao = new Comarca(new BigDecimal(2), "Gran Bilbao", "Bilbo handia", null, vizcaya);
 	private Comarca sanSebastian = new Comarca(new BigDecimal(3), "San Sebastián", "Donostialdea", null, gipuzcoa);
+	
+	// Localidad
+	private Localidad vitoriaGasteiz = new Localidad(new BigDecimal(1), "Vitoria-Gasteiz", "Vitoria-Gasteiz", null, llanadaAlavesa);
+	private Localidad bilbo = new Localidad(new BigDecimal(2), "Bilbao", "Bilbo", null, granBilbao);
+	private Localidad donostia = new Localidad(new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastian);
     
     private List<IdentifiableModelWrapper<Departamento>> departamentosGenerator() {
     	List<Departamento> departamentos = new ArrayList<>();
@@ -190,6 +195,15 @@ public class PatronesController {
 		comarcas.add(sanSebastian);
 		
 		return IdentifiableModelWrapperFactory.getInstance(comarcas, "code");
+    }
+    
+    private List<IdentifiableModelWrapper<Localidad>> localidadesGenerator() {		
+		List<Localidad> localidades = new ArrayList<>();
+		localidades.add(vitoriaGasteiz);
+		localidades.add(bilbo);
+		localidades.add(donostia);
+		
+		return IdentifiableModelWrapperFactory.getInstance(localidades, "code");
     }
     
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGenerator() {
@@ -232,30 +246,51 @@ public class PatronesController {
     		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComboRemote")
     })
-    @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete")
     public String getAutocomplete(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	model.addAttribute("provincia", new Provincia());
+    	
         return "autocomplete";
     }
 
     // Autocomplete Enlazado
     @UDALink(name = "getAutocompleteEnlazado", linkTo = {
+    		@UDALinkAllower(name = "getAutocompleteProvinciaComarcaLocalidadDTO"),
     		@UDALinkAllower(name = "getProvinciaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
     })
-    @RequestMapping(value = "autocompleteEnlazado", method = RequestMethod.GET)
+    @GetMapping(value = "autocompleteEnlazado")
     public String getAutocompleteEnlazado(Model model) {
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	
+    	// Comarcas
+    	//model.addAttribute("comboComarca", comarcasGenerator());
+    	
         return "autocompleteEnlazado";
     }
 
     // Autocomplete Enlazado Multiple
     @UDALink(name = "getAutocompleteEnlazadoMultiple", linkTo = {
+    		@UDALinkAllower(name = "getAutocompleteDepartamentoProvinciaDTO"),
     		@UDALinkAllower(name = "getDepartamentoEnlazadoMultipleAutocomplete"),
     		@UDALinkAllower(name = "getProvinciaEnlazadoMultipleAutocomplete"),
     		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
     })
-    @RequestMapping(value = "autocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    @GetMapping(value = "autocompleteEnlazadoMultiple")
     public String getAutocompleteEnlazadoMultiple(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	
+    	// Departamentos
+    	//model.addAttribute("comboDepartamento", departamentosGenerator());
+		
+		// Provincias
+		//model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+		// Departamentos y provincias
+    	//model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGenerator());
+    	
         return "autocompleteEnlazadoMultiple";
     }
 
@@ -863,7 +898,14 @@ public class PatronesController {
     /**
      * AUTOCOMPLETE REMOTO ENLAZADO
      */
-    @UDALink(name = "getProvinciaEnlazadoAutocomplete")
+    @UDALink(name = "getAutocompleteProvinciaComarcaLocalidadDTO")
+    @GetMapping(value = "autocompleteEnlazadoSimple/provinciaComarcaLocalidadDTO")
+    public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getAutocompleteProvinciaComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return new Resource<>(provinciaComarcaLocalidadDTO);
+    }
+    
+	@UDALink(name = "getProvinciaEnlazadoAutocomplete")
     @GetMapping(value = "autocomplete/remoteEnlazadoProvincia")
     public @ResponseBody
     List<Resource<Provincia>> getProvinciaEnlazadoAutocomplete(
@@ -944,8 +986,15 @@ public class PatronesController {
     /**
      * AUTOCOMPLETE REMOTO ENLAZADO M�LTIPLE
      */
+    @UDALink(name = "getAutocompleteDepartamentoProvinciaDTO")
+    @GetMapping(value = "autocompleteEnlazadoMultiple/departamentoProvinciaDTO")
+    public @ResponseBody Resource<DepartamentoProvinciaDTO> getAutocompleteDepartamentoProvinciaDTO(
+    		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
+        return new Resource<>(departamentoProvinciaDTO);
+    }
+    
     @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/departamentoRemote")
     public @ResponseBody
     List<Resource<Departamento>> getDepartamentoEnlazadoMultipleAutocomplete(
             @RequestParam(value = "q", required = true) String q,
@@ -961,7 +1010,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "getProvinciaEnlazadoMultipleAutocomplete")
-    @RequestMapping(value = "autocomplete/remoteEnlazadoMultipleProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/provinciaRemote")
     public @ResponseBody
     List<Resource<Provincia>> getProvinciaEnlazadoMultipleAutocomplete(
             @RequestParam(value = "q", required = true) String q,
@@ -977,7 +1026,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocomplete")
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia")
+    @GetMapping(value = "autocomplete/dptoProvRemote")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
             @RequestParam(value = "q", required = true) String q,
@@ -1014,7 +1063,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam")
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam")
+    @GetMapping(value = "autocomplete/dptoProvRemoteNoParam")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam(
             @RequestParam(value = "q", required = true) String q,
@@ -1051,7 +1100,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno")
+    @GetMapping(value = "autocomplete/dptoProvRemoteNoParamUno")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno(
             @RequestParam(value = "q", required = true) String q,

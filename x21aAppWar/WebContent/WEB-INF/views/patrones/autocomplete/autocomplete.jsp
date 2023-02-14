@@ -16,6 +16,10 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
+<!-- URL a usar en formularios -->
+<spring:url value="autocomplete/remote" var="autocompleteRemoto"/>
+<spring:url value="comboSimple/remote" var="comboRemoto"/>
+
 <section class="row">
 	<div class="col-12">
 
@@ -34,8 +38,10 @@
 			<div class="col-sm-6">
 				<h3 class="col-sm-12">Combobox remoto</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="comboboxRemoto" name="comboboxRemoto" /> 
-					<label for="comboboxRemoto">Departamento-Provincia</label>
+					<form:form id="comboboxRemoto_form" modelAttribute="departamentoProvinciaDTO" action="${autocompleteRemoto}" method="GET">
+						<form:input id="comboboxRemoto" path="codeDepartamentoProvincia" />
+						<label for="comboboxRemoto">Departamento-Provincia</label>
+					</form:form>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>
 			</div>
@@ -45,8 +51,10 @@
 			<div class="col-sm-6">
 				<h3 class="col-sm-12">Combobox remoto (con evento en el select)</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<select id="comboRemoto" name="comboRemoto"></select> 
-					<label for="comboRemoto">Combo remoto</label>
+					<form:form id="comboRemoto_form" modelAttribute="provincia" action="${comboRemoto}" method="GET">
+						<form:select id="comboRemoto" path="code" />
+						<label for="comboRemoto">Combo remoto</label>
+					</form:form>
 					<p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
 				</div>
 			</div>
@@ -54,8 +62,10 @@
 			<div class="col-sm-6">
 				<h3 class="col-sm-12">Autocomplete remoto (el combobox remoto cambia sus valores)</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="autocompleteGet" name="autocompleteGet"/> 
-					<label for="autocompleteGet">Departamento-Provincia</label>
+					<form:form id="autocompleteGet_form" modelAttribute="departamentoProvinciaDTO" action="${autocompleteRemoto}" method="GET">
+						<form:input id="autocompleteGet" path="codeDepartamentoProvincia" />
+						<label for="autocompleteGet">Departamento-Provincia</label>
+					</form:form>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>
 			</div>
@@ -83,8 +93,10 @@
 			<div class="col-sm-4">
 				<h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<input id="patron" name="patron" /> 
-					<label for="patron">Departamento-Provincia</label>
+					<form:form id="patron_form" modelAttribute="departamentoProvinciaDTO" action="${autocompleteRemoto}" method="GET">
+						<form:input id="patron" path="codeDepartamentoProvincia" />
+						<label for="patron">Departamento-Provincia</label>
+					</form:form>
 					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				</div>
 			</div>	

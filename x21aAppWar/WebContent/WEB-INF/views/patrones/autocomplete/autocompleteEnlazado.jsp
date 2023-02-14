@@ -16,6 +16,9 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
+<!-- URL a usar en formularios -->
+<spring:url value="autocompleteEnlazadoSimple/provinciaComarcaLocalidadDTO" var="remoto"/>
+
 <section class="container-fluid">
 	<h2 class="title mb-3"><spring:message code="patron.autocompleteEnlazado" /></h2>
 	
@@ -38,34 +41,41 @@
 		
 		<fieldset id="remote" class="col-md col-12 px-3 mx-md-5 my-md-0 my-4">
 			<legend>Remoto</legend>
-			<div class="form-groupMaterial">
-				<input id="abueloRemoto" name="provincia" /> 
-				<label for="abueloRemoto">Abuelo</label>
-			</div>
-			<div class="form-groupMaterial">
-				<input id="padreRemoto" name="comarca" /> 
-				<label for="padreRemoto">Padre</label>
-			</div>
-			<div class="form-groupMaterial">
-				<input id="hijoRemoto" name="localidad" /> 
-				<label for="hijoRemoto">Hijo</label>
-			</div>
+			<form:form id="autocompleteEnlazadoRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:input id="abueloRemoto" path="codeProvincia" />
+					<label for="abueloRemoto">Provincia</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:input id="padreRemoto" path="codeComarca" />
+					<label for="padreRemoto">Comarca</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:input id="hijoRemoto" path="codeLocalidad" />
+					<label for="hijoRemoto">Localidad</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 		<fieldset id="mixto" class="col-md col-12 px-3">
 			<legend>Mixto I</legend>
-			<div class="form-groupMaterial">
-				<input id="abueloMixto" name="provincia" /> 
-				<label for="abueloMixto">Abuelo</label>
-			</div>
-			<div class="form-groupMaterial">
-				<input id="padreMixto" name="comarca" /> 
-				<label for="padreMixto">Padre</label>
-			</div>
-			<div class="form-groupMaterial">
-				<input id="hijoMixto" name="localidad" /> 
-				<label for="hijoMixto">Hijo</label>
-			</div>
+			<form:form id="autocompleteEnlazadoRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:input id="abueloMixto" path="codeProvincia" /> 
+					<label for="abueloMixto">Provincia (remoto)</label>
+				</div>
+				<div class="form-groupMaterial">
+					<!-- <form:input id="padreMixto" path="codeComarca" items="${comboComarca}" itemLabel="entity.descEs" itemValue="id" /> -->
+					<form:input id="padreMixto" path="codeComarca" />
+					<label for="padreMixto">Comarca (local)</label>
+				</div>
+				<div class="form-groupMaterial">
+					<form:input id="hijoMixto" path="codeLocalidad" /> 
+					<label for="hijoMixto">Localidad (remoto)</label>
+				</div>
+			</form:form>
 		</fieldset>
 	</div>
 </section>
