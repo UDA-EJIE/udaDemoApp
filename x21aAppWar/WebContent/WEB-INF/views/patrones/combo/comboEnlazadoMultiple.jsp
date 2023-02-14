@@ -106,7 +106,6 @@
 				
 				<div class="form-groupMaterial">
 					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" itemLabel="entity.descEs" itemValue="id" />
-					<!-- <form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" /> -->
 					<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 				</div>
 			</form:form>

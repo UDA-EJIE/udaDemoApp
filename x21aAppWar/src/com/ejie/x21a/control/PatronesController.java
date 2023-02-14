@@ -321,7 +321,9 @@ public class PatronesController {
     }
 
     //Combos
-    @UDALink(name = "getComboSimple", linkTo = {@UDALinkAllower(name = "getComboRemote"), @UDALinkAllower(name = "getRemoteComboGrupos")})
+	@UDALink(name = "getComboSimple", linkTo = { 
+			@UDALinkAllower(name = "getComboRemote"),
+			@UDALinkAllower(name = "getRemoteComboGrupos") })
     @GetMapping(value = "comboSimple")
     public String getComboSimple(Model model) {
     	model.addAttribute("provincia", new Provincia());
@@ -331,17 +333,36 @@ public class PatronesController {
     }
 
     //CombosEnlazado - simple
-    @UDALink(name = "getComboEnlazadoSimple", linkTo = {@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"), @UDALinkAllower(name = "getComarcaLocalidadDTO"), @UDALinkAllower(name = "getEnlazadoProvincia"), @UDALinkAllower(name = "getEnlazadoComarca"), @UDALinkAllower(name = "getEnlazadoLocalidad"), @UDALinkAllower(name = "getEnlazadoComarcaLocalidad")})
+	@UDALink(name = "getComboEnlazadoSimple", linkTo = { 
+			@UDALinkAllower(name = "getProvinciaComarcaLocalidadDTO"),
+			@UDALinkAllower(name = "getComarcaLocalidadDTO"),
+			@UDALinkAllower(name = "getEnlazadoProvincia"),
+			@UDALinkAllower(name = "getEnlazadoComarca"),
+			@UDALinkAllower(name = "getEnlazadoLocalidad"),
+			@UDALinkAllower(name = "getEnlazadoComarcaLocalidad") })
     @GetMapping(value = "comboEnlazadoSimple")
     public String getComboEnlazadoSimple(Model model) {
     	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
     	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+		
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+    	// Comarcas
+    	model.addAttribute("comboComarca", comarcasGenerator());
+    	
+		// Localidades
+    	model.addAttribute("comboLocalidad", localidadesGenerator());
     	
         return "comboEnlazado";
     }
 
     //CombosEnlazado - multiple
-    @UDALink(name = "getEnlazadoMultiple", linkTo = {@UDALinkAllower(name = "getDepartamentoProvinciaDTO"), @UDALinkAllower(name = "getEnlMultDpto"), @UDALinkAllower(name = "getEnlMultProv"), @UDALinkAllower(name = "getEnlMultDptoProv")})
+	@UDALink(name = "getEnlazadoMultiple", linkTo = { 
+			@UDALinkAllower(name = "getDepartamentoProvinciaDTO"),
+			@UDALinkAllower(name = "getEnlMultDpto"),
+			@UDALinkAllower(name = "getEnlMultProv"),
+			@UDALinkAllower(name = "getEnlMultDptoProv") })
     @GetMapping(value = "comboEnlazadoMultiple")
     public String getEnlazadoMultiple(Model model) {
     	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());

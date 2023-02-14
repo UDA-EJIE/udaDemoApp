@@ -64,62 +64,56 @@
 			</form:form>
 		</fieldset>
 		
-		<!--
 		<fieldset id="mixto" class="col-sm">
 			<legend>Mixto I</legend>
-			
-			<div class="form-groupMaterial">
-				<label for="mixto_comboAbueloRemoto">Provincia (remoto)</label>
-				<select id="mixto_comboAbueloRemoto" name="provincia"><option>&nbsp;</option></select>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<label for="mixto_comboPadre">Comarca (local)</label>
-				<select id="mixto_comboPadre" name="comarca"><option>&nbsp;</option></select>
-			</div>
-			
-			<div class="form-groupMaterial">
-				<label for="mixto_comboHijoRemoto">Localidad (remoto)</label>
-				<select id="mixto_comboHijoRemoto"><option>&nbsp;</option></select>
-			</div>
+			<form:form id="comboRemotoMixto1_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="mixto_comboAbueloRemoto" path="codeProvincia" />
+					<label for="mixto_comboAbueloRemoto">Provincia (remoto)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto_comboPadre" path="codeComarca" items="${comboComarca}" itemLabel="entity.descEs" itemValue="id" />
+					<label for="mixto_comboPadre">Comarca (local)</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="mixto_comboHijoRemoto" path="codeLocalidad" />
+					<label for="mixto_comboHijoRemoto">Localidad (remoto)</label>
+				</div>
+			</form:form>
 		</fieldset>
-		-->
 	</div>
 </div>
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<!--
 		<div id="mixto2" class="col-sm">
 			<fieldset class="combo_fieldset mr-sm-3">
 				<legend class="combo_legend">Mixto II</legend>
-				
-				<div class="form-groupMaterial">
-					<label for="mixto2_comboAbuelo">Provincia (local)</label>
-					<select id="mixto2_comboAbuelo" name="provincia"><option>&nbsp;</option></select>
-				</div>
-				
-				<div class="form-groupMaterial">
-					<label for="mixto2_comboPadreRemoto">Comarca (remoto)</label>
-					<select id="mixto2_comboPadreRemoto"><option>&nbsp;</option></select>
-				</div>
-				
-				<div class="form-groupMaterial">
-					<label for="mixto2_comboHijo">Localidad (local)</label>
-					<select id="mixto2_comboHijo"><option>&nbsp;</option></select>
-				</div>
+				<form:form id="comboRemotoMixto1_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+					<div class="form-groupMaterial">
+						<form:select id="mixto2_comboAbuelo" path="codeProvincia" items="${comboProvincia}" itemLabel="entity.descEs" itemValue="id" />
+						<label for="mixto2_comboAbuelo">Provincia (local)</label>
+					</div>
+					
+					<div class="form-groupMaterial">
+						<form:select id="mixto2_comboPadreRemoto" path="codeComarca" />
+						<label for="mixto2_comboPadreRemoto">Comarca (remoto)</label>
+					</div>
+					
+					<div class="form-groupMaterial">
+						<form:select id="mixto2_comboHijo" path="codeLocalidad" items="${comboLocalidad}" itemLabel="entity.descEs" itemValue="id" />
+						<label for="mixto2_comboHijo">Localidad (local)</label>
+					</div>
+				</form:form>
 			</fieldset>
 		</div>
-		-->
 		
 		<div id="remoteGroup" class="col-sm">
 			<fieldset>
 				<legend>Remoto agrupado</legend>
 				<form:form id="comboRemotoAgrupado_form" modelAttribute="comarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
-			<!--	<div class="form-groupMaterial">	-->
-			<!-- 		<label for="mixto2_comboAbuelo">Provincia (local)</label>	-->
-			<!-- 		<select id="mixto2_comboAbuelo" name="provincia"><option>&nbsp;</option></select>	-->
-			<!-- 	</div>	 -->
 					<div class="form-groupMaterial">
 						<form:select id="remoteGroup_comboPadre" path="codeProvincia" />
 						<label for="remoteGroup_comboPadre">Provincia</label>
