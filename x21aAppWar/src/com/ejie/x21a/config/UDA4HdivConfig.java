@@ -59,22 +59,22 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/roles").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("rol");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/dynamicColumns/inlineEdit").forParameters("apellido1", "apellido2", "ejie", "fechaBaja", "rol").rules("boolean")).setAsClientParameter(true);
 		
-		// Autocomplete y select
-		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/autocomplete/remote").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
-		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/autocomplete/remoteEnlazadoProvincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
-		
-		// Combos y select simples
+		// Autocomplete, combo y select simples
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/autocomplete/remote").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/autocomplete/remote").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeDepartamentoProvincia");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/comboSimple/.*").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("code");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/tableComarca/provincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("provincia.code");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/tableComarca/comarca").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("comarcaId");
 		
-		// Combos y select enlazados simples
+		// Autocomplete, combo y select enlazados simples
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/autocomplete/remoteEnlazadoComarca").forParameters("codeProvincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeComarca");
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/autocomplete/remoteEnlazadoLocalidad").forParameters("codeComarca").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeLocalidad");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").forParameters("codeProvincia", "codeComarca").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeLocalidad");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").forParameters("codeProvincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeComarcaLocalidad");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeProvincia");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeComarca");
 		
-		// Combos y select enlazados múltiples
+		// Autocomplete, combo y select enlazados múltiples
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").forParameters("codeDepartamento", "codeProvincia").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeDepartamentoProvincia");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeDepartamento");
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/patrones/.*").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("codeProvincia");
