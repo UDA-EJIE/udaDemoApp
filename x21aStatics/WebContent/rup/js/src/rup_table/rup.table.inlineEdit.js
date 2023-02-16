@@ -1478,12 +1478,37 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
                 $.fn.deleteMulticomboLabelFromObject(ajaxOptions.data, $fila);
             	
             	$.when(_loadAuxForm(ctx, actionType)).then(function () {
-	            	var hdivStateParamValue = $.fn.getHDIV_STATE(undefined, ctx.oInit.inlineEdit.idForm);
-	                if (hdivStateParamValue !== '') {
-	                	ajaxOptions.data._HDIV_STATE_ = hdivStateParamValue;
-	                }
-	                ajaxOptions.data = JSON.stringify(ajaxOptions.data);
-	                $.rup_ajax(ajaxOptions);
+					var hdivStateParamValue = $.fn.getHDIV_STATE(undefined, ctx.oInit.inlineEdit.idForm);
+					if (hdivStateParamValue !== '') {
+						ajaxOptions.data._HDIV_STATE_ = hdivStateParamValue;
+					}
+
+					// Comprueba si debe enviarse como multipart.
+					if (ctx.oInit.inlineEdit.multipart === true) {
+						ajaxOptions.enctype = 'multipart/form-data';
+						ajaxOptions.processData = false;
+						ajaxOptions.contentType = false;
+
+						let formData = new FormData();
+
+						$.each(ajaxOptions.data, function(key, value) {
+							const field = $fila.find('input[type="file"][name="' + key + '_inline"]');
+
+							// Gestiona el guardado de ficheros.
+							if (field.length != 0 && field.prop('files').length > 0) {
+								$.each(field.prop('files'), function(fileIndex, fileValue) {
+									formData.append(key, fileValue);
+								});
+							} else {
+								formData.append(key, value);
+							}
+						});
+
+						ajaxOptions.data = formData;
+					} else {
+						ajaxOptions.data = JSON.stringify(ajaxOptions.data);
+					}
+					$.rup_ajax(ajaxOptions);
             	});
             } else {
             	ajaxOptions.data = JSON.stringify(ajaxOptions.data);
@@ -1530,17 +1555,21 @@ function _loadAuxForm(ctx, actionType) {
 	// Servirá para saber si la última llamada a inlineEdit fue para añadir, editar o si aún no ha sido inicializado
 	let lastAction = ctx.oInit.inlineEdit.actionType;
     	
-	// Obtiene del formulario el valor del campo que forme la clave primaria. Puede ser undefined.
-	const lastFormPkValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
+	// Obtiene del formulario el valor del campo que forme la clave primaria. Se utiliza la condición ternaria para garantizar que al menos, siempre
+	// contenga un string vacío al igual que hace "lastSelectedId". Esto evita problemas con la condición previa a la descarga del formulario.
+	const pkFieldValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
+	const lastFormPkValue = pkFieldValue != undefined ? pkFieldValue : '';
 	
 	// Si el usuario ha activado los formularios dinámicos, la última acción no es la misma que la actual o el valor del identificador ha cambiado,
 	// es necesario volver a obtener el formulario.
 	if (ctx.oInit.enableDynamicForms && (lastAction !== actionType || lastFormPkValue !== ctx.multiselection.lastSelectedId)) {
-		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType y el valor de la clave primaria siempre y cuando no contenga un string vacío.
+		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType, un booleano que indique si el formulario es multipart y 
+		// el valor de la clave primaria siempre y cuando no contenga un string vacío.
 		const defaultData = {
-				'actionType': actionType,
-				...(ctx.multiselection.lastSelectedId != "" && {'pkValue': ctx.multiselection.lastSelectedId})
-			};
+			'actionType': actionType,
+			'isMultipart': ctx.oInit.inlineEdit.multipart === true ? true : false,
+			...(ctx.multiselection.lastSelectedId != "" && { 'pkValue': ctx.multiselection.lastSelectedId })
+		};
 		let data = ctx.oInit.inlineEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.inlineEdit.data) : defaultData;
 		
 		return $.post(ctx.oInit.inlineEdit.url !== undefined ? ctx.oInit.inlineEdit.url : ctx.oInit.urlBase + '/inlineEdit', data, function (form) {

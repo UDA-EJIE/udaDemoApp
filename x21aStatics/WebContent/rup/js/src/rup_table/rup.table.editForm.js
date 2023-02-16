@@ -379,8 +379,10 @@
     	// Servirá para saber si la última llamada a editForm fue para añadir, editar o si aún no ha sido inicializado
     	let lastAction = ctx.oInit.formEdit.actionType;
     	
-    	// Obtiene del formulario el valor del campo que forme la clave primaria. Puede ser undefined.
-    	const lastFormPkValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
+		// Obtiene del formulario el valor del campo que forme la clave primaria. Se utiliza la condición ternaria para garantizar que al menos, siempre
+		// contenga un string vacío al igual que hace "lastSelectedId". Esto evita problemas con la condición previa a la descarga del formulario.
+		const pkFieldValue = idForm?.find('input[name="' + ctx.oInit.primaryKey[0] + '"]').val();
+		const lastFormPkValue = pkFieldValue != undefined ? pkFieldValue : '';
 		
 		// Botón de guardar y continuar
         let buttonContinue = ctx.oInit.formEdit.detailForm.find('#' + ctx.sTableId + '_detail_button_save_repeat');
@@ -396,10 +398,12 @@
     	// Si el usuario ha activado los formularios dinámicos, la última acción no es la misma que la actual o el valor del identificador ha cambiado,
     	// es necesario volver a obtener el formulario.
 		if (ctx.oInit.enableDynamicForms && (lastAction !== actionType || lastFormPkValue !== ctx.multiselection.lastSelectedId)) {
-			// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType y el valor de la clave primaria siempre y cuando no contenga un string vacío.
+			// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType, un booleano que indique si el formulario es multipart y 
+			// el valor de la clave primaria siempre y cuando no contenga un string vacío.
 			const defaultData = {
 				'actionType': actionType,
-				...(ctx.multiselection.lastSelectedId != "" && {'pkValue': ctx.multiselection.lastSelectedId})
+				'isMultipart': ctx.oInit.formEdit.multipart === true ? true : false,
+				...(ctx.multiselection.lastSelectedId != "" && { 'pkValue': ctx.multiselection.lastSelectedId })
 			};
 			let data = ctx.oInit.formEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.formEdit.data) : defaultData;
 			
@@ -886,9 +890,7 @@
                 $('#' + ctx.sTableId+'_detail_masterPK').val($('#' + ctx.sTableId + '_filter_masterPK').val());
                 row = jQuery.extend(true, row,masterPkObject);
             }
-            if (ctx.oInit.formEdit.multiPart) { //si es multiPart el row se coje solo.
-                row = {};
-            }
+            
             var ajaxOptions = {
                 url: ctx.oInit.urlBase + url,
                 accepts: {
@@ -1101,22 +1103,48 @@
                 delete ajaxOptions.data;
                 $.rup_ajax(ajaxOptions);
             } else if (isDeleting || ctx.oInit.formEdit.idForm.valid()) {
-            	// Obtener el valor del parámetro HDIV_STATE (en caso de no estar disponible se devolverá vacío) siempre y cuando no se trate de un deleteAll porque en ese caso ya lo contiene el filtro
-                if (url.indexOf('deleteAll') === -1) {
-                	// Elimina los campos _label generados por los autocompletes que no forman parte de la entidad
-                    $.fn.deleteAutocompleteLabelFromObject(ajaxOptions.data);
-                    
-                    // Elimina los campos autogenerados por los multicombos que no forman parte de la entidad
-                    $.fn.deleteMulticomboLabelFromObject(ajaxOptions.data, ctx.oInit.formEdit.detailForm);
-                    
-                	var hdivStateParamValue = $.fn.getHDIV_STATE(undefined, ctx.oInit.formEdit.idForm);
-                    if (hdivStateParamValue !== '') {
-                    	ajaxOptions.data._HDIV_STATE_ = hdivStateParamValue;
-                    }
-                }
-                
-                ajaxOptions.data = JSON.stringify(ajaxOptions.data);
-                $.rup_ajax(ajaxOptions);
+				// Obtener el valor del parámetro HDIV_STATE (en caso de no estar disponible se devolverá vacío) siempre y cuando no se trate de un deleteAll porque en ese caso ya lo contiene el filtro
+				if (url.indexOf('deleteAll') === -1) {
+					// Elimina los campos _label generados por los autocompletes que no forman parte de la entidad
+					$.fn.deleteAutocompleteLabelFromObject(ajaxOptions.data);
+
+					// Elimina los campos autogenerados por los multicombos que no forman parte de la entidad
+					$.fn.deleteMulticomboLabelFromObject(ajaxOptions.data, ctx.oInit.formEdit.detailForm);
+
+					var hdivStateParamValue = $.fn.getHDIV_STATE(undefined, ctx.oInit.formEdit.idForm);
+					if (hdivStateParamValue !== '') {
+						ajaxOptions.data._HDIV_STATE_ = hdivStateParamValue;
+					}
+
+					// Comprueba si debe enviarse como multipart.
+					if (ctx.oInit.formEdit.multipart === true) {
+						ajaxOptions.enctype = 'multipart/form-data';
+						ajaxOptions.processData = false;
+						ajaxOptions.contentType = false;
+
+						let formData = new FormData();
+
+						$.each(ajaxOptions.data, function(key, value) {
+							const field = ctx.oInit.formEdit.idForm.find('input[type="file"][name="' + key + '"]');
+
+							// Gestiona el guardado de ficheros.
+							if (field.length != 0 && field.prop('files').length > 0) {
+								$.each(field.prop('files'), function(fileIndex, fileValue) {
+									formData.append(key, fileValue);
+								});
+							} else {
+								formData.append(key, value);
+							}
+						});
+
+						ajaxOptions.data = formData;
+					}
+				}
+
+				if (ajaxOptions.enctype != 'multipart/form-data') {
+					ajaxOptions.data = JSON.stringify(ajaxOptions.data);
+				}
+				$.rup_ajax(ajaxOptions);
             }
         }
         
