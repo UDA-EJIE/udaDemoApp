@@ -120,7 +120,9 @@ public class TableDynamicColumnsController  {
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFiltroSimple (Model model) {
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		return "tableDynamicColumns";
 	}
