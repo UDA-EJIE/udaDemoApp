@@ -47,6 +47,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.service.LocalidadService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -77,15 +78,23 @@ public class TableLocalidadController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableLocalidadEditForm (@RequestParam String actionType, Model model) {
+	@PostMapping(value = "/editForm")
+	public String getTableLocalidadEditForm (
+			@RequestParam(required = true) String actionType,
+			Model model) {		
 		Comarca comarca = new Comarca();
 		Localidad localidad = new Localidad();
 		localidad.setComarca(comarca);
 		
-		model.addAttribute("comarca", comarca);
-		model.addAttribute("localidad", localidad);
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
+		model.addAttribute(Constants.MODEL_LOCALIDAD, new Localidad());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
 		
 		return "tableLocalidadEditForm";
 	}

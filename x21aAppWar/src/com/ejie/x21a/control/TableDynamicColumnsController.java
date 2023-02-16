@@ -58,6 +58,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableUsuarioService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -139,11 +140,18 @@ public class TableDynamicColumnsController  {
 			@RequestParam(defaultValue = "false") boolean fechaBaja,
 			@RequestParam(defaultValue = "false") boolean rol,
 			Model model) {
-		model.addAttribute("usuario", new Usuario());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		model.addAttribute("apellido1", apellido1);

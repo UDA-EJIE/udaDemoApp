@@ -35,6 +35,7 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableMultiPkService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -131,13 +132,20 @@ public class TableMultiPkController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("multiPk", new MultiPk());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_MULTIPK, new MultiPk());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
 			MultiPk multiPk = new MultiPk();
 			multiPk.setId(pkValue);
-			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(multiPk));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		return "tableMultiPkEditForm";
@@ -153,13 +161,20 @@ public class TableMultiPkController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("multiPk", new MultiPk());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_MULTIPK, new MultiPk());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
 			MultiPk multiPk = new MultiPk();
 			multiPk.setId(pkValue);
-			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(multiPk));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		return "tableMultiPkInlineEditAuxForm";

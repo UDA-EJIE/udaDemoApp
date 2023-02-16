@@ -48,9 +48,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Provincia;
-import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.ProvinciaService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -121,11 +121,18 @@ public class TableComarcaController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) BigDecimal pkValue,
 			Model model) {
-		model.addAttribute("comarca", new Comarca());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		return "tableComarcaEditForm";
@@ -141,11 +148,18 @@ public class TableComarcaController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) BigDecimal pkValue,
 			Model model) {
-		model.addAttribute("comarca", new Comarca());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValue), "code"));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		return "tableDialogComarcaEditForm";

@@ -68,6 +68,7 @@ import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.Usuario2;
 import com.ejie.x21a.service.TableUsuarioService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -91,13 +92,6 @@ import com.ejie.x38.util.ResourceUtils;
 @RequestMapping (value = "/table")
 public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
-	public static final String MODEL_USUARIO = "usuario";
-	public static final String MODEL_USUARIO2 = "usuario2";
-	public static final String MODEL_OPTIONS = "options";
-	public static final String MODEL_FILTER = "filter";
-	public static final String MODEL_ACTIONTYPE = "actionType";
-	public static final String MODEL_PKVALUE = "pkValue";
-	public static final String MODEL_TABLEID = "tableID";
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -179,8 +173,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterGetAll") })
 	@GetMapping(value = "/configurable")
 	public String getFiltroSimple (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -231,9 +225,9 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "csvReport2") })
 	@GetMapping(value = "/double")
 	public String getTableDouble (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -360,8 +354,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "csvReport") })
 	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
 	public String getTableDialogAjax (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -391,18 +385,30 @@ public class TableUsuarioController {
 	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) boolean isMultipart,
 			@RequestParam(required = false) String pkValue,
-			@RequestParam(defaultValue = "false") boolean enableMultipart,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
 		}
 		
-		if (enableMultipart) {
-			model.addAttribute("enableMultipart", enableMultipart);
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		return "tableEditForm";
@@ -415,21 +421,33 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "add2"),
 			@UDALinkAllower(name = "edit2"),
 			@UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
+	@PostMapping(value = "/editFormDouble")
 	public String getTableDoubleEditForm (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) boolean isMultipart,
 			@RequestParam(required = false) String pkValue,
-			@RequestParam(defaultValue = "false") boolean enableMultipart,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
 		}
-				
-		if (enableMultipart) {
-			model.addAttribute("enableMultipart", enableMultipart);
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		return "tableDoubleEditForm";
@@ -448,14 +466,20 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ISMULTIPART, true);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.MULTIPART_FORMDATA);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
 		}
 		
-		model.addAttribute("enableMultipart", true);
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+		}
 		
 		return "tableEditForm";
 	}
@@ -473,14 +497,20 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ISMULTIPART, true);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.MULTIPART_FORMDATA);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
 		}
 		
-		model.addAttribute("enableMultipart", true);
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+		}
 		
 		return "tableDoubleEditForm";
 	}
@@ -494,13 +524,30 @@ public class TableUsuarioController {
 	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) boolean isMultipart,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -524,13 +571,30 @@ public class TableUsuarioController {
 	@PostMapping(value = "/inlineEditDouble")
 	public String getTableDoubleInlineEdit (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) boolean isMultipart,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -551,18 +615,23 @@ public class TableUsuarioController {
 			@RequestParam(required = false) String pkValue,
     		@RequestParam(required = false) boolean isDouble,
     		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
-			model.addAttribute(MODEL_USUARIO2, usuario);
+			model.addAttribute(Constants.MODEL_USUARIO2, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "2/add");
 			model.addAttribute("isDouble", true);
 		} else {
 			Usuario usuario = new Usuario();
-			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute(Constants.MODEL_USUARIO, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
 			model.addAttribute("isDouble", false);
 		}
 		
 		if (pkValue != null) {
-			model.addAttribute(MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(isDouble ? new Usuario2(pkValue) : new Usuario(pkValue)));
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(isDouble ? new Usuario2(pkValue) : new Usuario(pkValue)));
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -573,8 +642,6 @@ public class TableUsuarioController {
 		comboRol.put("Informador", "Informador");
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
-		
-		model.addAttribute(MODEL_ACTIONTYPE, "PUT");
 		
 		return "tableEditFormNewWindow";
     }
@@ -824,13 +891,18 @@ public class TableUsuarioController {
     public String addFromNewWindow(
     		@RequestParam(value = "isDouble", required = false) boolean isDouble,
     		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
-			model.addAttribute(MODEL_USUARIO2, usuario);
+			model.addAttribute(Constants.MODEL_USUARIO2, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "2/add");
 			model.addAttribute("isDouble", true);
 		} else {
 			Usuario usuario = new Usuario();
-			model.addAttribute(MODEL_USUARIO, usuario);
+			model.addAttribute(Constants.MODEL_USUARIO, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
 			model.addAttribute("isDouble", false);
 		}
 		
@@ -842,8 +914,6 @@ public class TableUsuarioController {
 		comboRol.put("Informador", "Informador");
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
-		
-		model.addAttribute(MODEL_ACTIONTYPE, "POST");
 		
 		return "tableEditFormNewWindow";
     }
@@ -953,8 +1023,8 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute(MODEL_FILTER, new Filter());
-		model.addAttribute(MODEL_TABLEID, tableID);
+		model.addAttribute(Constants.MODEL_FILTER, new Filter());
+		model.addAttribute(Constants.MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
@@ -984,8 +1054,8 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute(MODEL_FILTER, new Filter());
-		model.addAttribute(MODEL_TABLEID, tableID);
+		model.addAttribute(Constants.MODEL_FILTER, new Filter());
+		model.addAttribute(Constants.MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);

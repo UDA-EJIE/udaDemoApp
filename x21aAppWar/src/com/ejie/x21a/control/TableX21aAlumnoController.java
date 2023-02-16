@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.TableX21aAlumnoService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
@@ -38,6 +40,7 @@ import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.util.ResourceUtils;
 
 /**
@@ -186,12 +189,24 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "getComarcas", linkClass=TableComarcaController.class), 
 			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
 			Model model) {
-		model.addAttribute("X21aAlumno", new X21aAlumno());
-		model.addAttribute("actionType", actionType);
+		model.addAttribute(Constants.MODEL_X21AALUMNO, new X21aAlumno());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new X21aAlumno(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
 		
 		return "tableX21aAlumnoEditForm";
 	}
