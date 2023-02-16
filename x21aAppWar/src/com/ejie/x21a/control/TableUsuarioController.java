@@ -714,32 +714,36 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "editMultipart", linkTo = { @UDALinkAllower(name = "filter") })
-	@PutMapping(value = "/editMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario> editMultipart(
-    		@RequestBody Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+	@PostMapping(value = "/editMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario> editMultipart(@Validated @ModelAttribute Usuario usuario) {
+		logger.info("[POST - editMultipart] : Editar usuario.");
 		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
+
 		return new Resource<Usuario>(usuarioAux);
-    }
+	}
 	
 	@UDALink(name = "editMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@PutMapping(value = "/{bis}/editMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario2> editMultipart2(
-    		@RequestBody Usuario2 usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
-		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
+	@PostMapping(value = "/{bis}/editMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario2> editMultipart2(@Validated @ModelAttribute Usuario2 usuario) {
+		logger.info("[POST - editMultipart2] : Editar usuario.");
+		logger.info("USUARIO2 :::: {} --- {}\n", usuario.getId(), new Date());
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
+
 		return new Resource<Usuario2>(usuarioAux);
-    }
+	}
 	
 	@Deprecated
 	@UDALink(name = "editar", linkTo = { @UDALinkAllower(name = "filter") })
@@ -784,32 +788,36 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "addMultipart", linkTo = { @UDALinkAllower(name = "filter") })
-	@PostMapping(value = "/addMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario> addMultipart(
-    		@Validated @RequestBody Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+	@PostMapping(value = "/addMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario> addMultipart(@Validated @ModelAttribute Usuario usuario) {
+		logger.info("[POST - addMultipart] : Crear usuario.");
 		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+		
+		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
 		logger.info("Entity correctly inserted!");
+		
 		return new Resource<Usuario>(usuarioAux);
-    }
+	}
 	
 	@UDALink(name = "addMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@PostMapping(value = "/{bis}/addMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario2> addMultipart2(
-    		@Validated @RequestBody Usuario2 usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
-		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
+	@PostMapping(value = "/{bis}/addMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario2> addMultipart2(@Validated @ModelAttribute Usuario2 usuario) {
+		logger.info("[POST - addMultipart2] : Crear usuario.");
+		logger.info("USUARIO2 :::: {} --- {}\n", usuario.getId(), new Date());
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
 		logger.info("Entity correctly inserted!");
+
 		return new Resource<Usuario2>(usuarioAux);
-    }
+	}
 	
 	@UDALink(name = "addFromNewWindow")
 	@GetMapping(value = "/addFromNewWindow")
