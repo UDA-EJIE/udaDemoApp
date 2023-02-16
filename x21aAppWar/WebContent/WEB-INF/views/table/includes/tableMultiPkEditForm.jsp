@@ -20,9 +20,8 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/multipk/${endpoint}" var="url"/>
-<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="MultiPk_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
@@ -39,7 +38,7 @@
 				</div>
 			</div>
 		</c:when>
-		<c:when test="${!actionType.equals('POST')}">
+		<c:when test="${not empty pkValue}">
 			<form:hidden path="id" value="${pkValue.id}" id="id_multipk_detail_table" />
 		</c:when>
 	</c:choose>

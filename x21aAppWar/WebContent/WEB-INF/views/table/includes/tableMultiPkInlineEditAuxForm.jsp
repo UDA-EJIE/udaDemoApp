@@ -20,15 +20,14 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/multipk/${endpoint}" var="url"/>
-<form:form modelAttribute="multiPk" id="multiPk_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}">
+<form:form modelAttribute="multiPk" id="multiPk_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
 	<c:choose>
 		<c:when test="${actionType.equals('POST')}">
 			<form:input path="ida" id="ida_multiPk_detail_table"/>
 			<form:input path="idb" id="idb_multiPk_detail_table"/>
 		</c:when>
-		<c:when test="${!actionType.equals('POST')}">
+		<c:when test="${not empty pkValue}">
 			<form:hidden path="id" value="${pkValue.id}" id="id_multiPk_inlineEdit_aux_form" />
 		</c:when>
 	</c:choose>

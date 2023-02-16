@@ -20,13 +20,12 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/tableComarca/${endpoint}" var="url"/>
-<form:form modelAttribute="comarca" id="comarca_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="comarca" id="comarca_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="comarca_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
-	<c:if test="${!actionType.equals('POST')}">
+	<c:if test="${not empty pkValue}">
 		<form:hidden path="code" value="${pkValue.code}" id="code_detailForm_tableComarca" />
 	</c:if>
 	<div class="form-row">

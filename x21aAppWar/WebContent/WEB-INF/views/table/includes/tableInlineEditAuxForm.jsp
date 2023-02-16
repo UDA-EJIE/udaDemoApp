@@ -20,10 +20,9 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/${endpoint}" var="url"/>
-<form:form modelAttribute="usuario" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}">
-	<c:if test="${!actionType.equals('POST')}">
+<form:form modelAttribute="usuario" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
+	<c:if test="${not empty pkValue}">
 		<form:hidden path="id" value="${pkValue.id}" id="id_inlineEdit_aux_form" />
 	</c:if>
 	<form:input path="nombre" id="nombre_inlineEdit_aux_form" />

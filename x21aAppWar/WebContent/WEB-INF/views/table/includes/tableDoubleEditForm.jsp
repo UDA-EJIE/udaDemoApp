@@ -20,21 +20,12 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:choose>
-	<c:when test="${enableMultipart}">
-		<c:set value="${actionType == 'POST' ? 'addMultipart': 'editMultipart'}" var="endpoint" />
-	</c:when>
-	<c:when test="${!enableMultipart}">
-		<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-	</c:when>
-</c:choose>
-
 <spring:url value="/table/2/${endpoint}" var="url"/>
-<form:form modelAttribute="usuario2" id="example2_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="usuario2" id="example2_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="example2_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
-	<c:if test="${!actionType.equals('POST')}">
+	<c:if test="${not empty pkValue}">
 		<form:hidden path="id" value="${pkValue.id}" id="id_detail_table2" />
 	</c:if>
 	<div class="form-row">
@@ -73,7 +64,7 @@
 	    	<label for="rol_detail_table2"><spring:message code="rol" /></label>
 	    </div>
 	</div>
-	<c:if test="${enableMultipart}">
+	<c:if test="${isMultipart}">
 	<div class="form-row">	
 		<div class="form-groupMaterial col-sm">
 			<form:input path="imagenAlumno" type="file" id="imagenAlumno_detail_table2" />
