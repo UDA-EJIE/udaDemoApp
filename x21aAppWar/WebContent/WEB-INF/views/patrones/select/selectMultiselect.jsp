@@ -43,14 +43,14 @@
 			<select id="multiSelectGrupos"></select>  
 			<label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
 		</div>
-		<!--<form:form id="multiSelectGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
+		<form:form id="multiSelectGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="multiSelectGruposRemoto" path="code">
+				<form:select id="multiSelectGruposRemoto" path="codeProvincia">
 					<form:option value="">---</form:option>
 				</form:select>   
 				<label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto y preselecionado</label>
 			</div>
-		</form:form>-->
+		</form:form>
 	</div>
 </div>
 
