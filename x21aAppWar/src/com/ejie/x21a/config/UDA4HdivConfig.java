@@ -52,8 +52,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		// Multifiltro
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter").forParameters("mapping", "tableID", "containerClass", "labelClass", "defaultContainerClass", "defaultCheckboxClass").rules("text")).setAsClientParameter(true);
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getDefault").forParameters("filterSelector", "user").rules("text")).setAsClientParameter(true);
-		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getAll").forParameters("filterSelector", "user", "q").rules("text")).setAsClientParameter(true);
-		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getAll").forParameters("c").rules("boolean")).setAsClientParameter(true);
+		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/multiFilter/getAll").forParameters("filterSelector", "user").rules("text")).setAsClientParameter(true);
 		
 		// Tabla
 		((EjieEditableValidationConfigurer) validationConfigurer.addValidation(".*/table/roles").rules(Constants.MODIFY_RULE_NAME)).setModifyParameter("rol");
