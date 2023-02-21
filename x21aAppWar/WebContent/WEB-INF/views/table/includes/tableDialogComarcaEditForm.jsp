@@ -26,7 +26,7 @@
 	<div id="comarca_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
 	<c:if test="${not empty pkValue}">
-		<form:hidden path="code" value="${pkValue.code}" id="code_detailForm_tableComarca" />
+		<form:hidden path="code" value="${pkValue.id}" id="code_detailForm_tableComarca" />
 	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
