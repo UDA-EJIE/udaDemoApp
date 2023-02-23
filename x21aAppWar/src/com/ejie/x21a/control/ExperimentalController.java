@@ -34,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,7 @@ import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.IberdokFileService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
@@ -57,6 +59,7 @@ import com.ejie.x38.generic.model.AutocompleteComboPKsPOJO;
 import com.ejie.x38.generic.model.AutocompleteComboGenericPOJO;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.log.LoggingEditor;
 import com.ejie.x38.log.model.LogModel;
 
@@ -111,26 +114,31 @@ public class ExperimentalController {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
-			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
-		model.addAttribute("actionType", actionType);
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_LOGMODEL, new LogModel());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/experimental";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new LogModel(pkValue), "nameLog"));
 		}
-		model.addAttribute("mapping", mapping);
 		
-		logger.info("[POST - View] : tableInlineEditAuxForm");
-		return "tableInlineEditAuxForm";
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		
+		Map<String,String> comboLevel = new LinkedHashMap<String,String>();
+		comboLevel.put("", "---");
+		comboLevel.put("TRACE", "TRACE");
+		comboLevel.put("DEBUG", "DEBUG");
+		comboLevel.put("INFO", "INFO");
+		comboLevel.put("WARN", "WARN");
+		comboLevel.put("ERROR", "ERROR");
+		model.addAttribute("comboLevel", comboLevel);
+		
+		logger.info("[POST - View] : tableExperimentalInlineEditAuxForm");
+		return "tableExperimentalInlineEditAuxForm";
 	}
 	
 	@UDALink(name = "getName")

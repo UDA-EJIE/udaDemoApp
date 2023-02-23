@@ -706,6 +706,8 @@
 	
 	<definition name="tableDynamicColumnsInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDynamicColumnsInlineEditAuxForm.jsp" />
 	
+	<definition name="tableExperimentalInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableExperimentalInlineEditAuxForm.jsp" />
+	
 	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
 
 	<definition extends="template" name="tableDouble">

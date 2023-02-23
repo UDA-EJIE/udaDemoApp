@@ -16,6 +16,8 @@ public class Constants {
 
 	public static final String MODEL_X21AALUMNO = "X21aAlumno";
 
+	public static final String MODEL_LOGMODEL = "logModel";
+
 	public static final String MODEL_FILTER = "filter";
 
 	public static final String MODEL_ACTIONTYPE = "actionType";
