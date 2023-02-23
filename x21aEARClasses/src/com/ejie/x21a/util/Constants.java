@@ -14,7 +14,7 @@ public class Constants {
 
 	public static final String MODEL_MULTIPK = "multiPk";
 
-	public static final String MODEL_X21AALUMNO = "X21aAlumno";
+	public static final String MODEL_X21AALUMNO = "x21aAlumno";
 
 	public static final String MODEL_LOGMODEL = "logModel";
 

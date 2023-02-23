@@ -21,7 +21,7 @@
 
 <!-- Formulario -->
 <spring:url value="/x21aAlumno/${endpoint}" var="url"/>
-<form:form modelAttribute="X21aAlumno" id="x21aAlumno_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
+<form:form modelAttribute="x21aAlumno" id="x21aAlumno_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="x21aAlumno_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
