@@ -427,7 +427,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) boolean isMultipart,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(Constants.MODEL_USUARIO, new Usuario2());
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
 		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
 		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
@@ -497,7 +497,7 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(Constants.MODEL_USUARIO, new Usuario2());
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
 		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
 		model.addAttribute(Constants.MODEL_ISMULTIPART, true);
 		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.MULTIPART_FORMDATA);
