@@ -20,7 +20,7 @@
 <%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<spring:url value="/table/${endpoint}" var="url"/>
+<spring:url value="${endpoint}" var="url"/>
 <form:form modelAttribute="usuario" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
 	<c:if test="${not empty pkValue}">
 		<form:hidden path="id" value="${pkValue.id}" id="id_inlineEdit_aux_form" />

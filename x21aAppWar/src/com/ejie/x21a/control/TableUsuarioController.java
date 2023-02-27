@@ -538,15 +538,15 @@ public class TableUsuarioController {
 		
 		if (actionType.equals("POST")) {
 			if (isMultipart) {
-				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/addMultipart");
 			} else {
-				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/add");
 			}
 		} else {
 			if (isMultipart) {
-				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/editMultipart");
 			} else {
-				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/edit");
 			}
 		}
 		
