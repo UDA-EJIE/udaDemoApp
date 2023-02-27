@@ -29,7 +29,7 @@ import org.hdiv.services.TrustAssertion;
 public class Localidad implements java.io.Serializable, SecureIdContainer {
 
     private static final long serialVersionUID = 1L;
-		@TrustAssertion(idFor = Localidad.class)
+	@TrustAssertion(idFor = Localidad.class)
     private BigDecimal code;
     private Comarca comarca;
     private String descEs;
