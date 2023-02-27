@@ -37,6 +37,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -171,10 +172,10 @@ public class TableComarcaController {
 	 * @return String
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Comarca> getById(@PathVariable @TrustAssertion(idFor = Comarca.class) final BigDecimal id) {
+	@GetMapping(value = "/{code}")
+	public @ResponseBody Resource<Comarca> get(@PathVariable @TrustAssertion(idFor = Comarca.class) final BigDecimal code) {
         Comarca comarca = new Comarca();
-        comarca.setCode(id);
+        comarca.setCode(code);
         comarca = this.comarcaService.find(comarca);
         return new Resource<Comarca>(comarca);
 	}
