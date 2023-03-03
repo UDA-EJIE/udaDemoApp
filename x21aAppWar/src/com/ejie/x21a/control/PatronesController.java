@@ -225,6 +225,27 @@ public class PatronesController {
     	
 		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
     }
+    
+    private List<IdentifiableModelWrapper<Comarca>> comarcasGeneratorSelect() {		
+		List<Comarca> comarcas = new ArrayList<>();
+		comarcas.add(new Comarca(new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(2), "Oyonesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(3), "Gamarresa", "Arabako lautada","1", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(4), "Pequeño Bilbao", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(5), "Las Playas", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(6), "Gran Bilbao", "Arabako lautada","2", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(7), "Donosti", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(8), "Zarautz", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(9), "Eibar", "Arabako lautada","3", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(10), "Aranda de Duero", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(11), "Burgos", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(12), "Miranda de Ebro", "Arabako lautada","4", null));
+		
+		return IdentifiableModelWrapperFactory.getInstance(comarcas, "code");
+    }
 
     //Sleep
     @RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
@@ -436,7 +457,7 @@ public class PatronesController {
 		model.addAttribute("comboProvincia", provinciasGenerator());
 		
 		// Comarcas
-		model.addAttribute("comboComarca", comarcasGenerator());
+		model.addAttribute("comboComarca", comarcasGeneratorSelect());
     	
         return "selectEnlazadoSimple";
     }
