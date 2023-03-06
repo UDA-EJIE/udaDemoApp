@@ -230,6 +230,7 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "editFormDialogComarca", linkClass = TableUsuarioController.class),
+			@UDALinkAllower(name = "filter", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
