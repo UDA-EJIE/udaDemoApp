@@ -226,23 +226,43 @@ public class PatronesController {
 		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
     }
     
+    private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGeneratorSelect() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion,"2##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia,"3##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos,"4##1"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento,"1##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion,"2##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia,"3##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos,"4##2"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento,"1##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion,"2##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia,"3##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos,"4##3"));
+    	
+		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
+    }
+    
     private List<IdentifiableModelWrapper<Comarca>> comarcasGeneratorSelect() {		
 		List<Comarca> comarcas = new ArrayList<>();
-		comarcas.add(new Comarca(new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
-		comarcas.add(new Comarca(new BigDecimal(2), "Oyonesa", "Arabako lautada","1", null));
-		comarcas.add(new Comarca(new BigDecimal(3), "Gamarresa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(1),new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(2),new BigDecimal(1), "Oyonesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(3),new BigDecimal(1), "Gamarresa", "Arabako lautada","1", null));
 		
-		comarcas.add(new Comarca(new BigDecimal(4), "Pequeño Bilbao", "Arabako lautada","2", null));
-		comarcas.add(new Comarca(new BigDecimal(5), "Las Playas", "Arabako lautada","2", null));
-		comarcas.add(new Comarca(new BigDecimal(6), "Gran Bilbao", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(4),new BigDecimal(2), "Pequeño Bilbao", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(5),new BigDecimal(2), "Las Playas", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(6),new BigDecimal(2), "Gran Bilbao", "Arabako lautada","2", null));
 		
-		comarcas.add(new Comarca(new BigDecimal(7), "Donosti", "Arabako lautada","3", null));
-		comarcas.add(new Comarca(new BigDecimal(8), "Zarautz", "Arabako lautada","3", null));
-		comarcas.add(new Comarca(new BigDecimal(9), "Eibar", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(7),new BigDecimal(3), "Donosti", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(8),new BigDecimal(3), "Zarautz", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(9),new BigDecimal(3), "Eibar", "Arabako lautada","3", null));
 		
-		comarcas.add(new Comarca(new BigDecimal(10), "Aranda de Duero", "Arabako lautada","4", null));
-		comarcas.add(new Comarca(new BigDecimal(11), "Burgos", "Arabako lautada","4", null));
-		comarcas.add(new Comarca(new BigDecimal(12), "Miranda de Ebro", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(10),new BigDecimal(4), "Aranda de Duero", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(11),new BigDecimal(4), "Burgos", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(12),new BigDecimal(4), "Miranda de Ebro", "Arabako lautada","4", null));
 		
 		return IdentifiableModelWrapperFactory.getInstance(comarcas, "code");
     }
@@ -475,22 +495,7 @@ public class PatronesController {
 		model.addAttribute("comboProvincia", provinciasGenerator());
     	
 		// Departamentos y provincias
-    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGenerator());
-		
-    	/*Map<String, String> comboDepartamentoProvincia = new LinkedHashMap<>();
-    	comboDepartamentoProvincia.put("1#1", "Ayuntamiento de Álava");
-    	comboDepartamentoProvincia.put("1#2", "Ayuntamiento de Vizcaya");
-    	comboDepartamentoProvincia.put("1#3", "Ayuntamiento de Gipúzcoa");
-    	comboDepartamentoProvincia.put("2#1", "Diputación de Álava");
-    	comboDepartamentoProvincia.put("2#2", "Diputación de Vizcaya");
-    	comboDepartamentoProvincia.put("2#3", "Diputación de Gipúzcoa");
-    	comboDepartamentoProvincia.put("3#1", "Policía de Álava");
-    	comboDepartamentoProvincia.put("3#2", "Policía de Vizcaya");
-    	comboDepartamentoProvincia.put("3#3", "Policía de Gipúzcoa");
-    	comboDepartamentoProvincia.put("4#1", "Bomberos de Álava");
-    	comboDepartamentoProvincia.put("4#2", "Bomberos de Vizcaya");
-    	comboDepartamentoProvincia.put("4#3", "Bomberos de Gipúzcoa");
-		model.addAttribute("comboDepartamentoProvincia", comboDepartamentoProvincia);*/
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorSelect());
 		
         return "selectEnlazadoMultiple";
     }

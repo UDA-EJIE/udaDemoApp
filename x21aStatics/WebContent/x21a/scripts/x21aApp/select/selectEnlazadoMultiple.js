@@ -133,12 +133,6 @@ jQuery(function($) {
         
         //MIXTO II
         $('#mixto2_departamento').rup_select({
-            /*data: [
-                {i18nCaption: 'ayto', id:'1'},
-                {i18nCaption: 'dipu', id:'2'},
-                {i18nCaption: 'poli', id:'3'},
-                {i18nCaption: 'bomb', id:'4'}
-            ],*/
         	loadFromSelect: true,
             blank: '-1',
             selected:1,
@@ -156,20 +150,6 @@ jQuery(function($) {
         });
         $('#mixto2_dptoProv').rup_select({
             parent: [ 'mixto2_departamento', 'mixto2_provinciaRemote' ],
-            /*data: [{
-                '1##1':[{id: 'Ayuntamiento de Álava',text: 'Ayuntamiento de Álava'}],
-                '1##2':[{id:'Ayuntamiento de Vizcaya',text: 'Ayuntamiento de Vizcaya'}],
-                '1##3':[{id:'Ayuntamiento de Gipúzcoa',text: 'Ayuntamiento de Gipúzcoa'}],
-                '2##1':[{id:'Diputación de Álava',text: 'Diputación de Álava'}],
-                '2##2':[{id:'Diputación de Vizcaya',text: 'Diputación de Vizcaya'}],
-                '2##3':[{id:'Diputación de Gipúzcoa',text: 'Diputación de Gipúzcoa'}],
-                '3##1':[{id:'Policía de Álava',text: 'Policía de Álava'}],
-                '3##2':[{id:'Policía de Vizcaya',text: 'Policía de Vizcaya'}],
-                '3##3':[{id:'Policía de Gipúzcoa',text: 'Policía de Gipúzcoa'}],
-                '4##1':[{id:'Bomberos de Álava',text: 'Bomberos de Álava'}],
-                '4##2':[{id:'Bomberos de Vizcaya',text: 'Bomberos de Vizcaya'}],
-                '4##3':[{id:'Bomberos de Gipúzcoa',text: 'Bomberos de Gipúzcoa'}],
-            }],*/
         	loadFromSelect: true,
             multiValueToken: '##',
             change: function () {

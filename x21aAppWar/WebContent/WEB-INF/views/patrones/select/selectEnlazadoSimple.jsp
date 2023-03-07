@@ -95,7 +95,7 @@
 				<div class="form-groupMaterial">
 					<form:select id="selectLocalPadre" path="codeComarca">
 					    <c:forEach var="theComarca" items="${comboComarca}">
-	        				<form:option value="${theComarca.id}" data-idPadre="${theComarca.entity.css}"><c:out value="${theComarca.entity.descEs}"/></form:option>
+	        				<form:option value="${theComarca.id}" data-idPadre="${theComarca.entity.parentCode}"><c:out value="${theComarca.entity.descEs}"/></form:option>
 	   					 </c:forEach>
 					</form:select>
 					<label for="selectLocalPadre">Comarca Local cargado desde jsp</label>

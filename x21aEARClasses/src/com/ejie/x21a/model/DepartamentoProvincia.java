@@ -38,6 +38,7 @@ public class DepartamentoProvincia implements java.io.Serializable, SecureIdCont
   private String descEs;
   private String descEu;
   private String css;
+  private String parentCode;
 
 /** Method 'DepartamentoProvincia'.
 *
@@ -62,6 +63,17 @@ public class DepartamentoProvincia implements java.io.Serializable, SecureIdCont
            this.descEu = descEu;
            this.css = css;
     }
+   
+   public DepartamentoProvincia(BigDecimal code, String descEs, String descEu, String css, Provincia provincia, Departamento departamento, String parentCode) {	
+
+       this.code = code;
+       this.provincia = provincia;
+       this.departamento = departamento;
+       this.descEs = descEs;
+       this.descEu = descEu;
+       this.css = css;
+       this.parentCode = parentCode;
+}
 
     /**
      * Method 'getCode'.
@@ -189,6 +201,14 @@ public class DepartamentoProvincia implements java.io.Serializable, SecureIdCont
       this.css = css;
     }
     	
+
+    public String getParentCode() {
+		return parentCode;
+	}
+
+	public void setParentCode(String parentCode) {
+		this.parentCode = parentCode;
+	}
 
 /**
 * Intended only for logging and debugging.
