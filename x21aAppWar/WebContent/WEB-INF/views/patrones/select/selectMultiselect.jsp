@@ -24,12 +24,12 @@
 
 <div class="container-fluid">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">
+		<div class="form-groupMaterial col-sm-8">
 			<select id="multiSelect"></select>  
 			<label for="multiSelect">MultiSelect local</label>
 		</div>
 		<form:form id="multiSelectRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET">
-			<div class="form-groupMaterial col-sm">
+			<div class="form-groupMaterial col-sm-10">
 				<form:select id="multiSelectRemoto" path="code" />
 				<label for="multiSelectRemoto">MultiSelect remoto</label>
 			</div>
@@ -39,12 +39,12 @@
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">
+		<div class="form-groupMaterial col-sm-8">
 			<select id="multiSelectGrupos"></select>  
 			<label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
 		</div>
 		<form:form id="multiSelectGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
-			<div class="form-groupMaterial col-sm">
+			<div class="form-groupMaterial col-sm-10">
 				<form:select id="multiSelectGruposRemoto" path="codeProvincia">
 					<form:option value="">---</form:option>
 				</form:select>   
@@ -56,7 +56,7 @@
 
 <div class="container-fluid mt-4">
 	<div class="form-row">
-		<div class="form-groupMaterial col-sm">
+		<div class="form-groupMaterial col-sm-8">
 			<select id="multiSelectLoadFromSelect" multiple="multiple">
 				<option value="1" selected="selected">Alava</option>
 				<option value="3">Gipuzcoa</option>

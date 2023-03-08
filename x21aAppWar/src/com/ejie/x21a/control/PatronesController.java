@@ -539,6 +539,17 @@ public class PatronesController {
     })
     @RequestMapping(value = "selectAutocompleteEnlazado", method = RequestMethod.GET)
     public String getSelectAutocompleteEnlazado(Model model) {
+    	
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("selectAutocompleteProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("selectAutocompleteComarca", comarcasGeneratorSelect());
+		
         return "selectAutocompleteEnlazado";
     }
 
@@ -952,7 +963,8 @@ public class PatronesController {
         return new Resource<>(provinciaComarcaLocalidadDTO);
     }
     
-	@UDALink(name = "getProvinciaEnlazadoAutocomplete")
+	@UDALink(name = "getProvinciaEnlazadoAutocomplete", linkTo = {
+			@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete") })
     @GetMapping(value = "autocomplete/remoteEnlazadoProvincia")
     public @ResponseBody
     List<Resource<Provincia>> getProvinciaEnlazadoAutocomplete(
@@ -971,7 +983,8 @@ public class PatronesController {
         return ResourceUtils.fromListToResource(provinciaService.findAllLike(provincia, null, !c));
     }
     
-    @UDALink(name = "getComarcaEnlazadoAutocomplete")
+    @UDALink(name = "getComarcaEnlazadoAutocomplete", linkTo = {
+			@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete") })
     @GetMapping(value = "autocomplete/remoteEnlazadoComarca")
     public @ResponseBody
     List<Resource<Comarca>> getComarcaEnlazadoAutocomplete(
