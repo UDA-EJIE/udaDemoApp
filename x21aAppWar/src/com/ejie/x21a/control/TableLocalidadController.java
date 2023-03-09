@@ -54,6 +54,7 @@ import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 import com.ejie.x38.util.ResourceUtils;
@@ -81,15 +82,22 @@ public class TableLocalidadController {
 	@PostMapping(value = "/editForm")
 	public String getTableLocalidadEditForm (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
+			@RequestParam(required = false) BigDecimal pkValueComarca,
 			Model model) {		
-		Comarca comarca = new Comarca();
-		Localidad localidad = new Localidad();
-		localidad.setComarca(comarca);
-		
-		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
 		model.addAttribute(Constants.MODEL_LOCALIDAD, new Localidad());
+		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
 		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
 		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Localidad(pkValue), "code"));
+		}
+		
+		if (pkValueComarca != null) {
+			model.addAttribute("pkValueComarca", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValueComarca), "code"));
+		}
+		
 		if (actionType.equals("POST")) {
 			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
 		} else {

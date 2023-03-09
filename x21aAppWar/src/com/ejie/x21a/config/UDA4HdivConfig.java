@@ -43,6 +43,12 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 	@Override
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
+		((EjieEditableValidationConfigurer) validationConfigurer
+				.addValidation("/tableLocalidad/editForm")
+				.forParameters("pkValueComarca")
+				.rules("fulltext"))
+				.setAsClientParameter(true);
+		
 		// Upload PIF
 		((EjieEditableValidationConfigurer) validationConfigurer
 				.addValidation(".*/upload/pifForm")
