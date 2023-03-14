@@ -45,7 +45,7 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 	public void customConfigureEditableValidation(final ValidationConfigurer validationConfigurer) {
 		((EjieEditableValidationConfigurer) validationConfigurer
 				.addValidation("/tableLocalidad/editForm")
-				.forParameters("pkValueComarca")
+				.forParameters("pkValueIdPadre")
 				.rules("fulltext"))
 				.setAsClientParameter(true);
 		
@@ -180,6 +180,6 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 		((EjieEditableValidationConfigurer) validationConfigurer
 				.addValidation(".*/patrones/.*")
 				.rules(Constants.MODIFY_RULE_NAME))
-				.setModifyParameter("codeProvincia");		
+				.setModifyParameter("codeProvincia");	
 	}
 }

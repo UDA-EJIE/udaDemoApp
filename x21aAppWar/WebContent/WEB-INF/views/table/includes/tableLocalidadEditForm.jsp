@@ -28,8 +28,8 @@
 	<c:if test="${not empty pkValue}">
 		<form:hidden path="code" value="${pkValue.id}" id="code_detail_tableLocalidad" />
 	</c:if>
-	<c:if test="${not empty pkValueComarca}">
-		<form:hidden path="comarca.code" value="${pkValueComarca.id}" id="comarcaCode_detail_tableLocalidad" />
+	<c:if test="${not empty pkValueIdPadre}">
+		<form:hidden path="comarca.code" value="${pkValueIdPadre.id}" id="localidad_idPadre_masterPK" />
 	</c:if>
 	<div class="form-row"> 
 		<div class="form-groupMaterial col-sm">

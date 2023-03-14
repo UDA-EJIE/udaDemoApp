@@ -87,10 +87,10 @@ jQuery(function ($) {
                 index: 'rol',
                 editable: true,
                 hidden: false,
-                rupType: 'combo',
+                rupType: 'select',
                 editoptions: {
-                    source : './roles',
-                    sourceParam : {label: 'label', value: 'value'},
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']

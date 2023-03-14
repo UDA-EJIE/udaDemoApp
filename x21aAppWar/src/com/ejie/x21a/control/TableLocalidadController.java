@@ -83,7 +83,7 @@ public class TableLocalidadController {
 	public String getTableLocalidadEditForm (
 			@RequestParam(required = true) String actionType,
 			@RequestParam(required = false) BigDecimal pkValue,
-			@RequestParam(required = false) BigDecimal pkValueComarca,
+			@RequestParam(required = false) BigDecimal pkValueIdPadre,
 			Model model) {		
 		model.addAttribute(Constants.MODEL_LOCALIDAD, new Localidad());
 		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
@@ -94,8 +94,8 @@ public class TableLocalidadController {
 			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Localidad(pkValue), "code"));
 		}
 		
-		if (pkValueComarca != null) {
-			model.addAttribute("pkValueComarca", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValueComarca), "code"));
+		if (pkValueIdPadre != null) {
+			model.addAttribute("pkValueIdPadre", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValueIdPadre), "code"));
 		}
 		
 		if (actionType.equals("POST")) {
