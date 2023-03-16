@@ -36,7 +36,7 @@
 	</div>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:input path="password" id="password_detail_table"/>
+			<form:password path="password" id="password_detail_table"/>
 			<label for="password_detail_table"><spring:message code="password"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">
