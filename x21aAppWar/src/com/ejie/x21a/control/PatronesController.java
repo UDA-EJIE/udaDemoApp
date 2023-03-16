@@ -205,6 +205,38 @@ public class PatronesController {
 		
 		return IdentifiableModelWrapperFactory.getInstance(localidades, "code");
     }
+	
+	// Comarca - Local
+	private Comarca llanadaAlavesaLocal = new Comarca(new BigDecimal(1), new BigDecimal(1), "Llanada alavesa", "Arabako lautada", null, alava);
+	private Comarca granBilbaoLocal = new Comarca(new BigDecimal(2), new BigDecimal(2), "Gran Bilbao", "Bilbo handia", null, vizcaya);
+	private Comarca pruebaComarcaLocal = new Comarca(new BigDecimal(4), new BigDecimal(2), "Prueba", "Froga", null, vizcaya);
+	private Comarca sanSebastianLocal = new Comarca(new BigDecimal(3), new BigDecimal(3), "San Sebastián", "Donostialdea", null, gipuzcoa);
+	
+	// Localidad - Local
+	private Localidad vitoriaGasteizLocal = new Localidad(new BigDecimal(1), new BigDecimal(1), "Vitoria-Gasteiz", "Vitoria-Gasteiz", null, llanadaAlavesaLocal);
+	private Localidad bilboLocal = new Localidad(new BigDecimal(2), new BigDecimal(2), "Bilbao", "Bilbo", null, granBilbaoLocal);
+	private Localidad pruebaLocalidadLocal = new Localidad(new BigDecimal(4), new BigDecimal(2), "Prueba", "Froga", null, granBilbaoLocal);
+	private Localidad donostiaLocal = new Localidad(new BigDecimal(3), new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastianLocal);
+    
+    private List<IdentifiableModelWrapper<Comarca>> comarcasGeneratorLocal() {		
+		List<Comarca> comarcas = new ArrayList<>();
+		comarcas.add(llanadaAlavesaLocal);
+		comarcas.add(granBilbaoLocal);
+		comarcas.add(pruebaComarcaLocal);
+		comarcas.add(sanSebastianLocal);
+		
+		return IdentifiableModelWrapperFactory.getInstance(comarcas, "code");
+    }
+    
+    private List<IdentifiableModelWrapper<Localidad>> localidadesGeneratorLocal() {		
+		List<Localidad> localidades = new ArrayList<>();
+		localidades.add(vitoriaGasteizLocal);
+		localidades.add(bilboLocal);
+		localidades.add(pruebaLocalidadLocal);
+		localidades.add(donostiaLocal);
+		
+		return IdentifiableModelWrapperFactory.getInstance(localidades, "code");
+    }
     
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGenerator() {
     	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
@@ -390,10 +422,10 @@ public class PatronesController {
 		model.addAttribute("comboProvincia", provinciasGenerator());
     	
     	// Comarcas
-    	model.addAttribute("comboComarca", comarcasGenerator());
+    	model.addAttribute("comboComarca", comarcasGeneratorLocal());
     	
 		// Localidades
-    	model.addAttribute("comboLocalidad", localidadesGenerator());
+    	model.addAttribute("comboLocalidad", localidadesGeneratorLocal());
     	
         return "comboEnlazado";
     }

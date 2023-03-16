@@ -73,7 +73,13 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="mixto_comboPadre" path="codeComarca" items="${comboComarca}" itemLabel="entity.descEs" itemValue="id" />
+					<form:select id="mixto_comboPadre" path="codeComarca">
+					    <c:forEach var="comarca" items="${comboComarca}">
+	        				<form:option value="${comarca.id}" data-idPadre="${comarca.entity.parentCode}">
+	        					<c:out value="${comarca.entity.descEs}"/>
+	        				</form:option>
+	   					 </c:forEach>
+					</form:select>
 					<label for="mixto_comboPadre">Comarca (local)</label>
 				</div>
 				
@@ -103,7 +109,13 @@
 					</div>
 					
 					<div class="form-groupMaterial">
-						<form:select id="mixto2_comboHijo" path="codeLocalidad" items="${comboLocalidad}" itemLabel="entity.descEs" itemValue="id" />
+						<form:select id="mixto2_comboHijo" path="codeLocalidad">
+						    <c:forEach var="localidad" items="${comboLocalidad}">
+		        				<form:option value="${localidad.id}" data-idPadre="${localidad.entity.parentCode}">
+		        					<c:out value="${localidad.entity.descEs}"/>
+		        				</form:option>
+		   					 </c:forEach>
+						</form:select>
 						<label for="mixto2_comboHijo">Localidad (local)</label>
 					</div>
 				</form:form>
