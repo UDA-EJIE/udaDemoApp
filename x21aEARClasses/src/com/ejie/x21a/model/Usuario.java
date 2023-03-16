@@ -20,7 +20,9 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import org.hdiv.services.SecureIdContainer;
 import org.hdiv.services.SecureIdentifiable;
+import org.hdiv.services.TrustAssertion;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,10 +38,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class Usuario implements java.io.Serializable, SecureIdentifiable<String> {
+public class Usuario implements java.io.Serializable, SecureIdContainer {
 
 	private static final long serialVersionUID = 1L;
-            
+	@TrustAssertion(idFor = Usuario.class)        
 	private String id;
 	@NotBlank(message="validacion.required")
 	@Length(max=25, message="validacion.maxLength")
@@ -136,7 +138,7 @@ public class Usuario implements java.io.Serializable, SecureIdentifiable<String>
 	 *
 	 * @return String
 	 */
-    @Override
+   
     public String getId() {
 		return this.id;
 	}

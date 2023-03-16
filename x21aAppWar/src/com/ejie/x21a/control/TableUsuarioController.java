@@ -745,7 +745,8 @@ public class TableUsuarioController {
 	 *
 	 * @return List<Usuario> Lista de objetos correspondientes a la búsqueda realizada.
 	 */
-	@UDALink(name = "getAllIds")
+	@UDALink(name = "getAllIds", linkTo = { 
+			@UDALinkAllower(name = "filter")})
 	@GetMapping(value = "/allIds")
 	public @ResponseBody
 	List<Resource<Usuario>> getAllIds(
