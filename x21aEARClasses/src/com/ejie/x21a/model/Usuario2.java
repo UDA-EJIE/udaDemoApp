@@ -17,17 +17,20 @@ package com.ejie.x21a.model;
 
 import java.util.Date;
 
+import org.hdiv.services.SecureIdContainer;
+import org.hdiv.services.TrustAssertion;
+
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-public class Usuario2 extends Usuario {
+public class Usuario2 extends Usuario implements SecureIdContainer {
 
 	private static final long serialVersionUID = 1L;
 	
 	// Añadido para que no falle la obtención del campo por instrospección en el método getCampoByIntrospection de la clase TableManager (x38).
-	@SuppressWarnings("unused")
+	@TrustAssertion(idFor = Usuario2.class)  
 	private String id;
 
 	/**
@@ -96,7 +99,6 @@ public class Usuario2 extends Usuario {
 	 *
 	 * @return String
 	 */
-    @Override
     public String getId() {
 		return super.getId();
 	}
