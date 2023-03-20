@@ -21,7 +21,6 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 
 import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.SecureIdentifiable;
 import org.hdiv.services.TrustAssertion;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
