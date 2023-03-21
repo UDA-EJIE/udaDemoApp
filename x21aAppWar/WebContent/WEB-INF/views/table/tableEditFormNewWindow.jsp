@@ -74,7 +74,7 @@
 			</span>
         </button>
         <!-- Botón de guardado -->
-        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis" data-path-variable="${pathVariable}" data-action-type="${actionType}">
+        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-content-save"></i>
         	<span>
 				Enviar entidad

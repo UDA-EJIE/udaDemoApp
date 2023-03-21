@@ -203,6 +203,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableDoubleEditFormMultipart"),
 			@UDALinkAllower(name = "addFromNewWindow"),
 			@UDALinkAllower(name = "editFromNewWindow"),
+			@UDALinkAllower(name = "editFromNewWindowDouble"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
@@ -609,29 +610,82 @@ public class TableUsuarioController {
 		return "tableDoubleInlineEditAuxForm";
 	}
 	
-	@UDALink(name = "editFromNewWindow")
-	@GetMapping(value = "/editFromNewWindow")
-    public String editFromNewWindow(
-			@RequestParam(required = false) String pkValue,
-    		@RequestParam(required = false) boolean isDouble,
+	@UDALink(name = "addFromNewWindow", linkTo = {
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "add2")})
+	@GetMapping(value = "/addFromNewWindow")
+    public String addFromNewWindow(
+    		@RequestParam(value = Constants.IS_DOUBLE, required = false) boolean isDouble,
     		Model model) {
-		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
 		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		if (isDouble)  {
 			Usuario2 usuario = new Usuario2();
 			model.addAttribute(Constants.MODEL_USUARIO2, usuario);
 			model.addAttribute(Constants.MODEL_ENDPOINT, "2/add");
-			model.addAttribute("isDouble", true);
+			model.addAttribute(Constants.IS_DOUBLE, true);
 		} else {
 			Usuario usuario = new Usuario();
 			model.addAttribute(Constants.MODEL_USUARIO, usuario);
 			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
-			model.addAttribute("isDouble", false);
+			model.addAttribute(Constants.IS_DOUBLE, false);
 		}
 		
-		if (pkValue != null) {
-			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(isDouble ? new Usuario2(pkValue) : new Usuario(pkValue)));
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableEditFormNewWindow";
+    }
+	
+	@UDALink(name = "editFromNewWindow", linkTo = {
+			@UDALinkAllower(name = "edit") })
+	@GetMapping(value = "/editFromNewWindow/{id}")
+    public String editFromNewWindow(
+    		@PathVariable @TrustAssertion(idFor = Usuario.class) String id,
+    		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		model.addAttribute(Constants.MODEL_USUARIO, this.tableUsuarioService.find(new Usuario(id)));
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		model.addAttribute(Constants.IS_DOUBLE, false);
+		
+		if (id != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(id)));
+		}
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableEditFormNewWindow";
+    }
+	
+	@UDALink(name = "editFromNewWindowDouble", linkTo = {
+			@UDALinkAllower(name = "edit2") })
+	@GetMapping(value = "/editFromNewWindowDouble/{id}")
+    public String editFromNewWindowDouble(
+    		@PathVariable @TrustAssertion(idFor = Usuario2.class) String id,
+    		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		model.addAttribute(Constants.MODEL_USUARIO2, this.tableUsuarioService.find(new Usuario2(id)));
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		model.addAttribute(Constants.IS_DOUBLE, true);
+		
+		if (id != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(id)));
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -886,38 +940,6 @@ public class TableUsuarioController {
 
 		return new Resource<Usuario2>(usuarioAux);
 	}
-	
-	@UDALink(name = "addFromNewWindow")
-	@GetMapping(value = "/addFromNewWindow")
-    public String addFromNewWindow(
-    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
-    		Model model) {
-		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
-		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
-		
-		if (isDouble)  {
-			Usuario2 usuario = new Usuario2();
-			model.addAttribute(Constants.MODEL_USUARIO2, usuario);
-			model.addAttribute(Constants.MODEL_ENDPOINT, "2/add");
-			model.addAttribute("isDouble", true);
-		} else {
-			Usuario usuario = new Usuario();
-			model.addAttribute(Constants.MODEL_USUARIO, usuario);
-			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
-			model.addAttribute("isDouble", false);
-		}
-		
-		Map<String,String> comboRol = new LinkedHashMap<String,String>();
-		comboRol.put("", "---");
-		comboRol.put("Administrador", "Administrador");
-		comboRol.put("Desarrollador", "Desarrollador");
-		comboRol.put("Espectador", "Espectador");
-		comboRol.put("Informador", "Informador");
-		comboRol.put("Manager", "Manager");
-		model.addAttribute("comboRol", comboRol);
-		
-		return "tableEditFormNewWindow";
-    }
 
 	/**
 	 * OperaciÃ³n CRUD Delete. Borrado del registro correspondiente al
@@ -982,6 +1004,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "editFromNewWindow"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
@@ -1001,6 +1024,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter2"),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "deleteAll2"),
+			@UDALinkAllower(name = "editFromNewWindowDouble"),
 			@UDALinkAllower(name = "clipboardReport2") })
 	@RequestMapping(value = "/{bis}/filter", method = RequestMethod.POST)
 	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(

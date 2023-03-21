@@ -13,23 +13,6 @@
  * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
-const pathVariable = './' + $('#sendEntity').data('pathVariable');
-
-function setEntityData (id) {	
-	$.get(pathVariable + id, function(data) {
-		const entity = JSON.parse(data);
-		
-		$("#id_detail_table").val(entity.id);
-		$("#nombre_detail_table").val(entity.nombre);
-		$("#apellido1_detail_table").val(entity.apellido1);
-		$("#apellido2_detail_table").val(entity.apellido2);
-		$("#fechaBaja_detail_table").val(entity.nombreBaja);
-		$("#fechaAlta_detail_table").val(entity.fechaAlta);
-		$("#ejie_detail_table").val(entity.ejie);
-		$("#rol_detail_table").val(entity.rol);
-	});
-}
-
 function serializeFormJSON (id) {
     let json = {};
     $.each($('#' + id).serializeArray(), function () {
@@ -94,11 +77,9 @@ jQuery(function($) {
 		        }
 		    },
 		    onSubmitHandler: function () {
-		    	const actionType = $('#sendEntity').data('actionType');
-				
-				$.ajax({
-			        type: actionType,
-			        url: pathVariable + (actionType == 'POST' ? 'add' : 'edit'),
+		    	$.ajax({
+			        type: $('#example_detail_form input[name="_method"]').val() ?? $('#example_detail_form').attr('method'),
+			        url: $('#example_detail_form').attr('action'),
 			        data: JSON.stringify(serializeFormJSON('example_detail_form')),
 			        contentType: 'application/json',
 			        success: function() {

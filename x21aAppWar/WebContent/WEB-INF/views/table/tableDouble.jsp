@@ -121,8 +121,7 @@
 					</div>
 					<div class="radio-material pluginsControl">
 						<spring:url value="/table/addFromNewWindow" var="addFromNewWindow"/>
-						<spring:url value="/table/editFromNewWindow" var="editFromNewWindow"/>
-						<form:radiobutton path="editType" id="editFormTargetBlank" value="13" data-add-new-window-url="${addFromNewWindow}" data-edit-new-window-url="${editFromNewWindow}" />
+						<form:radiobutton path="editType" id="editFormTargetBlank" value="13" data-add-new-window-url="${addFromNewWindow}" data-edit-new-window-url="/x21aAppWar/table/editFromNewWindow/" />
 						<label for="editFormTargetBlank">Edición en formulario sobre nueva pestaña (necesita tener los botones activos)</label>
 					</div>
 					<div class="radio-material pluginsControl">
@@ -255,8 +254,7 @@
 					</div>
 					<div class="radio-material pluginsControl">
 						<spring:url value="/table/addFromNewWindow?isDouble=true" var="addFromNewWindow2"/>
-						<spring:url value="/table/editFromNewWindow?isDouble=true" var="editFromNewWindow2"/>
-						<form:radiobutton path="editType" id="editFormTargetBlank2" value="13" data-add-new-window-url="${addFromNewWindow2}" data-edit-new-window-url="${editFromNewWindow2}" />
+						<form:radiobutton path="editType" id="editFormTargetBlank2" value="13" data-add-new-window-url="${addFromNewWindow2}" data-edit-new-window-url="/x21aAppWar/table/editFromNewWindowDouble/" />
 						<label for="editFormTargetBlank2">Edición en formulario sobre nueva pestaña (necesita tener los botones activos)</label>
 					</div>
 					<div class="radio-material pluginsControl">
