@@ -36,4 +36,6 @@ public class Constants {
 
 	public static final String APPLICATION_URLENCODED = "application/x-www-form-urlencoded";
 
+	public static final String IS_DOUBLE = "isDouble";
+
 }
