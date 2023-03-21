@@ -131,7 +131,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
 	@GetMapping(value = "/{id}")
-	public @ResponseBody Resource<Usuario> get(
+	public @ResponseBody Resource<Usuario> getUsuario(
 			@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
@@ -146,7 +146,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
 	@GetMapping(value = "/{bis}/{id}")
-	public @ResponseBody Resource<Usuario2> get2(
+	public @ResponseBody Resource<Usuario2> getUsuario2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable @TrustAssertion(idFor = Usuario2.class) String id) {
         Usuario2 usuario = new Usuario2();
