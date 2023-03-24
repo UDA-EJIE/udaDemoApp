@@ -589,7 +589,7 @@ public class PatronesController {
     		@UDALinkAllower(name = "getComarcaEnlazadoAutocomplete"),
     		@UDALinkAllower(name = "getLocalidadEnlazadoAutocomplete")
     })
-    @RequestMapping(value = "selectAutocompleteEnlazado", method = RequestMethod.GET)
+    @GetMapping(value = "selectAutocompleteEnlazado")
     public String getSelectAutocompleteEnlazado(Model model) {
     	
     	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
