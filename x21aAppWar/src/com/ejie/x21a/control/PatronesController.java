@@ -258,6 +258,26 @@ public class PatronesController {
 		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
     }
     
+    private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGeneratorLocal() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento, "1##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion, "2##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia, "3##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos, "4##1"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento, "1##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion, "2##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia, "3##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos, "4##2"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento, "1##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion, "2##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia, "3##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos, "4##3"));
+    	
+		return IdentifiableModelWrapperFactory.getInstance(departamentoProvincia, "code");
+    }
+    
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGeneratorSelect() {
     	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
@@ -447,7 +467,7 @@ public class PatronesController {
 		model.addAttribute("comboProvincia", provinciasGenerator());
     	
 		// Departamentos y provincias
-    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGenerator());
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorLocal());
 		
     	/*Map<String, String> comboDepartamentoProvincia = new LinkedHashMap<>();
     	comboDepartamentoProvincia.put("1#1", "Ayuntamiento de Álava");
