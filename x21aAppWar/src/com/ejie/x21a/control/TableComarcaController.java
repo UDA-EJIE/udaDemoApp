@@ -171,7 +171,7 @@ public class TableComarcaController {
 	 * @param  id String
 	 * @return String
 	 */
-	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
+	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit", allowSubEntities = true), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@GetMapping(value = "/{code}")
 	public @ResponseBody Resource<Comarca> get(@PathVariable @TrustAssertion(idFor = Comarca.class) final BigDecimal code) {
         Comarca comarca = new Comarca();
