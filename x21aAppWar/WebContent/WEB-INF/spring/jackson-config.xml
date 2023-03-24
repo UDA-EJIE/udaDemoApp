@@ -43,6 +43,7 @@
                 <entry key="#{T(com.ejie.x21a.model.MultiPk)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.Buzones)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.IberdokFile)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.X21aAlumno)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x38.log.model.LogModel)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.DivisionTerritorialDto)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x38.generic.model.AutocompleteComboGenericPOJO)}" value-ref="customSerializer" />
