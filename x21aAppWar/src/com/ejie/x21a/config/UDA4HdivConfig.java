@@ -95,6 +95,11 @@ public class UDA4HdivConfig extends UDA4HdivConfigurerAdapter {
 
 		// Tabla
 		((EjieEditableValidationConfigurer) validationConfigurer
+				.addValidation(".*/table/allIds")
+				.rules(Constants.MODIFY_RULE_NAME))
+				.setModifyParameter("id");
+		
+		((EjieEditableValidationConfigurer) validationConfigurer
 				.addValidation(".*/table/roles")
 				.rules(Constants.MODIFY_RULE_NAME))
 				.setModifyParameter("rol");
