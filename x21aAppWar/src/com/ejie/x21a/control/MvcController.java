@@ -28,6 +28,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ejie.x38.hdiv.annotation.UDALink;
+import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 import com.ejie.x38.hdiv.error.ErrorResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,6 +40,8 @@ public class MvcController {
 	private static final Logger logger = LoggerFactory.getLogger(MvcController.class);
 	private ObjectMapper objectMapper = new ObjectMapper();
 
+	@UDALink(name = "getErrorView", linkTo = { 
+			@UDALinkAllower(name = "getJsonErrorView")})
 	@RequestMapping(value = "/error")
 	public String getErrorView(Model model, HttpServletRequest request) {
 		logger.error("Ha ocurrido un error...");
@@ -53,6 +57,7 @@ public class MvcController {
 		return MediaType.APPLICATION_JSON.isCompatibleWith(requestContentType);
 	}
 
+	@UDALink(name = "getJsonErrorView")
 	@RequestMapping(value = "/jsonError")
 	public void getJsonErrorView(HttpServletRequest request, HttpServletResponse response) {
 		logger.error("Ha ocurrido un error...");
