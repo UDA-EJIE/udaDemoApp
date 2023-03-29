@@ -170,7 +170,17 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll") })
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "csvReport2") })
 	@GetMapping(value = "/configurable")
 	public String getFiltroSimple (Model model) {
 		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
