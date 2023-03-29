@@ -30,7 +30,6 @@
 	<form:input path="apellido2" id="apellido2_inlineEdit_aux_form2" />
 	<form:input path="fechaBaja" id="fechaBaja_inlineEdit_aux_form2" />
 	<form:input path="fechaAlta" id="fechaAlta_inlineEdit_aux_form2" />
-	<form:input path="ejie" id="ejie_inlineEdit_aux_form2" />
-	<!-- <form:checkbox path="ejie" id="ejie_inlineEdit_aux_form2" value="1" /> -->
+	<form:radiobuttons path="ejie" items="${radioEjie}"/>
 	<form:select path="rol" id="rol_inlineEdit_aux_form2" items="${comboRol}" />
 </form:form>

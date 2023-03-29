@@ -560,6 +560,11 @@ public class TableUsuarioController {
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
 		
+		List<String> radioEjie = new ArrayList<String>();
+		radioEjie.add("0");
+		radioEjie.add("1");
+		model.addAttribute("radioEjie", radioEjie);
+		
 		return "tableInlineEditAuxForm";
 	}
 	
@@ -606,6 +611,11 @@ public class TableUsuarioController {
 		comboRol.put("Informador", "Informador");
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
+		
+		List<String> radioEjie = new ArrayList<String>();
+		radioEjie.add("0");
+		radioEjie.add("1");
+		model.addAttribute("radioEjie", radioEjie);
 		
 		return "tableDoubleInlineEditAuxForm";
 	}

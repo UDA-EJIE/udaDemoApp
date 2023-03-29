@@ -1,5 +1,6 @@
 package com.ejie.x21a.control;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +97,11 @@ public class CacheController {
 		comboRol.put("Informador", "Informador");
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
+		
+		List<String> radioEjie = new ArrayList<String>();
+		radioEjie.add("0");
+		radioEjie.add("1");
+		model.addAttribute("radioEjie", radioEjie);
 		
 		logger.info("[POST - View] : tableInlineEditAuxForm");
 		return "tableInlineEditAuxForm";
