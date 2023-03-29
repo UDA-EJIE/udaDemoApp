@@ -24,7 +24,7 @@
 
 <!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 <spring:url value="/integracion/cache/filter" var="url"/>
-<form:form modelAttribute="usuario" id="table_filter_form" class="d-none" action="${url}"/>
+<form:form modelAttribute="usuario" id="table_filter_form" class="d-none" action="${url}" method="POST"/>
 
 <table id="table" class="tableFit table-striped table-bordered table-material" 
 	data-url-base="."
