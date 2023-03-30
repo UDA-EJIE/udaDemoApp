@@ -331,7 +331,7 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Comarca>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
 			@RequestParam(required = false) String[] columns, 

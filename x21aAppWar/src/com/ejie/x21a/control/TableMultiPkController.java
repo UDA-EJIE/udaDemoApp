@@ -372,7 +372,7 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<MultiPk>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
 			@RequestParam(required = false) String[] columns, 

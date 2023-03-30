@@ -352,7 +352,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<X21aAlumno>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
 			@RequestParam(required = false) String[] columns, 

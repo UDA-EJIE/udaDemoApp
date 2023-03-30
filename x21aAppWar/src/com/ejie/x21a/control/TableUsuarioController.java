@@ -1267,7 +1267,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
 			@RequestParam(required = false) String[] columns, 
@@ -1283,7 +1283,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport2"),
 			@UDALinkAllower(name = "odsReport2"),
 			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
+	@PostMapping(value = "{bis}/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario2>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
