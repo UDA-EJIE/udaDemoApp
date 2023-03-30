@@ -1262,11 +1262,7 @@ public class TableUsuarioController {
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "clipboardReport")
 	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
@@ -1278,11 +1274,7 @@ public class TableUsuarioController {
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
 	}
 	
-	@UDALink(name = "clipboardReport2", linkTo = { 
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
+	@UDALink(name = "clipboardReport2")
 	@PostMapping(value = "{bis}/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario2>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1308,11 +1300,7 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1330,11 +1318,7 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
-	@UDALink(name = "excelReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
+	@UDALink(name = "excelReport2")
 	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1375,11 +1359,7 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1397,11 +1377,7 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "pdfReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
+	@UDALink(name = "pdfReport2")
 	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1442,11 +1418,7 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1464,11 +1436,7 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "odsReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "csvReport2") })
+	@UDALink(name = "odsReport2")
 	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
@@ -1509,11 +1477,7 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport") })
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
@@ -1531,11 +1495,7 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "csvReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2") })
+	@UDALink(name = "csvReport2")
 	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,

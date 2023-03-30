@@ -347,11 +347,7 @@ public class TableX21aAlumnoController  {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "clipboardReport")
 	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<X21aAlumno>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
@@ -375,11 +371,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -408,11 +400,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -441,11 +429,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -474,11 +458,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport") })
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
