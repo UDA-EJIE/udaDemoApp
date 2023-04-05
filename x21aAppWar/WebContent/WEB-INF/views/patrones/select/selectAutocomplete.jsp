@@ -16,6 +16,10 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
+<!-- URL a usar en formularios -->
+<spring:url value="autocomplete/remote" var="remoto"/>
+<spring:url value="autocomplete/remoteEnlazadoProvincia" var="remotoEnlazado"/>
+
 <section class="row">
 	<div class="col-12">
 
@@ -34,32 +38,43 @@
 			</div>
 			
 			<div class="col-sm-6">
-				<h3 class="col-sm-12">Selectbox remoto</h3>
-				<div class="form-groupMaterial col-sm-12">
-					<select id="selectboxRemoto" name="selectboxRemoto" ></select> 
-					<label for="selectboxRemoto">Departamento-Provincia</label>
-					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
-				</div>
+				<form:form id="selectboxRemoto_form" modelAttribute="departamentoProvincia" action="${remoto}" method="GET">
+					<h3 class="col-sm-12">Selectbox remoto</h3>
+					<div class="form-groupMaterial col-sm-12">
+						<form:select id="selectboxRemoto" path="code">
+							<form:option value="">---</form:option>
+						</form:select> 
+						<label for="selectboxRemoto">Departamento-Provincia</label>
+						<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+					</div>
+				</form:form>
 			</div>
 		</div>
 		
 		<div class="row mt-4">
 			<div class="col-sm-6">
-				<h3 class="col-sm-12">Selectbox remoto (con evento en el select)</h3>
-				<div class="form-groupMaterial col-sm-12">
-					<select id="selectRemoto" name="selectRemoto"></select> 
-					<label for="selectRemoto">Select remoto</label>
-					<p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
-				</div>
+				<form:form id="selectRemoto_form" modelAttribute="provincia" action="${remotoEnlazado}" method="GET">
+					<h3 class="col-sm-12">Selectbox remoto (con evento en el select)</h3>
+					<div class="form-groupMaterial col-sm-12">
+						<form:select id="selectRemoto" path="code">
+							<form:option value="">---</form:option>
+						</form:select> 
+						<label for="selectRemoto">Select remoto</label>
+						<p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
+					</div>
+				</form:form>
 			</div>
-			
 			<div class="col-sm-6">
-				<h3 class="col-sm-12">Autocomplete remoto (el selectbox remoto cambia sus valores)</h3>
-				<div class="form-groupMaterial col-sm-12">
-					<select id="autocompleteGet" name="autocompleteGet"></select> 
-					<label for="autocompleteGet">Departamento-Provincia</label>
-					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
-				</div>
+				<form:form id="autocompleteGet_form" modelAttribute="departamentoProvincia" action="${remoto}" method="GET">
+					<h3 class="col-sm-12">Autocomplete remoto (el selectbox remoto cambia sus valores)</h3>
+					<div class="form-groupMaterial col-sm-12">
+						<form:select id="autocompleteGet" path="code">
+							<form:option value="">---</form:option>
+						</form:select> 
+						<label for="autocompleteGet">Departamento-Provincia</label>
+						<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+					</div>
+				</form:form>
 			</div>
 		</div>
 		
@@ -83,12 +98,16 @@
 			</div>
 			
 			<div class="col-sm-4">
-				<h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
-				<div class="form-groupMaterial col-sm-12">
-					<select id="patron" name="patron" ></select> 
-					<label for="patron">Departamento-Provincia</label>
-					<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
-				</div>
+				<form:form id="patron_form" modelAttribute="departamentoProvincia" action="${remoto}" method="GET">
+					<h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
+					<div class="form-groupMaterial col-sm-12">
+						<form:select id="patron" path="code">
+							<form:option value="">---</form:option>
+						</form:select> 
+						<label for="patron">Departamento-Provincia</label>
+						<p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+					</div>
+				</form:form>
 			</div>	
 		</div>
 	</div>

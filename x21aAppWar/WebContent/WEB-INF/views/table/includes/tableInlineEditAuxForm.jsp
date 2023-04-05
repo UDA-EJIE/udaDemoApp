@@ -17,9 +17,19 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="${mapping}/${endpoint}" var="url"/>
-<form:form modelAttribute="${entity}" id="${tableID}_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}"/>
+<spring:url value="${endpoint}" var="url"/>
+<form:form modelAttribute="usuario" id="example_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
+	<c:if test="${not empty pkValue}">
+		<form:hidden path="id" value="${pkValue.id}" id="id_inlineEdit_aux_form" />
+	</c:if>
+	<form:input path="nombre" id="nombre_inlineEdit_aux_form" />
+	<form:input path="apellido1" id="apellido1_inlineEdit_aux_form" />
+	<form:input path="apellido2" id="apellido2_inlineEdit_aux_form" />
+	<form:input path="fechaBaja" id="fechaBaja_inlineEdit_aux_form" />
+	<form:input path="fechaAlta" id="fechaAlta_inlineEdit_aux_form" />
+	<form:radiobuttons path="ejie" items="${radioEjie}"/>
+	<form:select path="rol" id="rol_inlineEdit_aux_form" items="${comboRol}" />
+</form:form>

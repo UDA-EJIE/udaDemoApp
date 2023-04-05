@@ -34,5 +34,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/XLNETSWLS12Classpath"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-config"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-services"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-spring-mvc"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

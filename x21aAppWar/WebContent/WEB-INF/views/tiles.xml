@@ -700,6 +700,14 @@
 	
 	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
 	
+	<definition name="tableDoubleInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDoubleInlineEditAuxForm.jsp" />
+	
+	<definition name="tableMultiPkInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableMultiPkInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDynamicColumnsInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDynamicColumnsInlineEditAuxForm.jsp" />
+	
+	<definition name="tableExperimentalInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableExperimentalInlineEditAuxForm.jsp" />
+	
 	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
 
 	<definition extends="template" name="tableDouble">

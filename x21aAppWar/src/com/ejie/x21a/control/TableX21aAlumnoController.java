@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.TableX21aAlumnoService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
@@ -37,6 +40,7 @@ import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.util.ResourceUtils;
 
 /**
@@ -74,7 +78,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<X21aAlumno> get(@PathVariable BigDecimal id) {
+	public @ResponseBody Resource<X21aAlumno> get(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
         x21aAlumno = this.x21aAlumnoService.find(x21aAlumno);
@@ -148,7 +152,7 @@ public class TableX21aAlumnoController  {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<X21aAlumno> remove(@PathVariable BigDecimal id) {
+    public @ResponseBody Resource<X21aAlumno> remove(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
         x21aAlumno.setId(id);
         this.x21aAlumnoService.remove(x21aAlumno);
@@ -185,15 +189,23 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "getComarcas", linkClass=TableComarcaController.class), 
 			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
+			@RequestParam(required = false) BigDecimal pkValue,
 			Model model) {
-		model.addAttribute("X21aAlumno", new X21aAlumno());
-		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
+		model.addAttribute(Constants.MODEL_X21AALUMNO, new X21aAlumno());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute("pkValue", IdentifiableModelWrapperFactory.getInstance(new X21aAlumno(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 		}
 		
 		return "tableX21aAlumnoEditForm";
@@ -335,12 +347,8 @@ public class TableX21aAlumnoController  {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@UDALink(name = "clipboardReport")
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<X21aAlumno>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
 			@RequestParam(required = false) String[] columns, 
@@ -363,11 +371,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -396,11 +400,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -429,11 +429,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "csvReport") })
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
@@ -462,11 +458,7 @@ public class TableX21aAlumnoController  {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport") })
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 

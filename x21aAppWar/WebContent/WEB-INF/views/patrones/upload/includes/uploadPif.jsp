@@ -46,11 +46,9 @@
 				<div class="col-md-12 ">
 			        <div class="rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="mdi mdi-plus"></i>
-						      <span><spring:message code="upload.button.addFiles"/></span>
-						      <input id="file_pif_form" type="file" name="file" multiple>
-						 
-						      
+							<i class="mdi mdi-plus"></i>
+							<span><spring:message code="upload.button.addFiles"/></span>
+							<form:input id="file_pif_form" type="file" path="foto" multiple="multiple" />
 						</span>
 				      
 					    <div class="fileupload-content">

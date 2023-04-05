@@ -17,15 +17,20 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="../tableLocalidad/${endpoint}" var="url"/>
-<form:form modelAttribute="localidad" id="localidad_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="localidad" id="localidad_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="localidad_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${not empty pkValue}">
+		<form:hidden path="code" value="${pkValue.id}" id="code_detail_tableLocalidad" />
+	</c:if>
+	<c:if test="${not empty pkValueIdPadre}">
+		<form:hidden path="comarca.code" value="${pkValueIdPadre.id}" id="localidad_idPadre_masterPK" />
+	</c:if>
 	<div class="form-row"> 
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detail_tableLocalidad" />

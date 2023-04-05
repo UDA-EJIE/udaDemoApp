@@ -38,8 +38,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Usuario implements java.io.Serializable, SecureIdentifiable<String> {
 
-	private static final long serialVersionUID = 1L;
-            
+	private static final long serialVersionUID = 1L;   
 	private String id;
 	@NotBlank(message="validacion.required")
 	@Length(max=25, message="validacion.maxLength")

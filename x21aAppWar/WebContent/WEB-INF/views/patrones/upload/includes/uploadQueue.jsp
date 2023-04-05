@@ -3,8 +3,8 @@
 
 
 <div id="fileupload_only">
-	<!-- <form action="../upload" id="usuarioForm" enctype="multipart/form-data" method="POST"> -->
-	<form:form action="../upload" id="usuarioForm" enctype="multipart/form-data" method="POST" modelAttribute="collection">
+	<spring:url value="../upload/add" var="url"/>
+	<form:form action="${url}" id="usuarioForm" enctype="multipart/form-data" method="POST" modelAttribute="collection">
 		<fieldset id="fieldset_formulario" class="rup-upload">
 			<div class="formulario_columna_cnt">
 				<div class="formulario_linea_izda_float">

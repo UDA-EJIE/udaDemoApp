@@ -51,23 +51,23 @@ jQuery(function($) {
         });
         
         // REMOTO
-        $('#abueloRemoto').rup_autocomplete({
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        $('#departamentoRemote').rup_autocomplete({
+        	source : 'autocomplete/departamentoRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
         });	
         
-        $('#padreRemoto').rup_autocomplete({
-        	source : 'autocomplete/remoteEnlazadoMultipleProvincia',
+        $('#provinciaRemote').rup_autocomplete({
+        	source : 'autocomplete/provinciaRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
         });
         
-        $('#hijoRemoto').rup_autocomplete({
+        $('#dptoProvRemote').rup_autocomplete({
         	parent: ['abueloRemoto', 'padreRemoto'],
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	source : 'autocomplete/dptoProvRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
@@ -98,7 +98,7 @@ jQuery(function($) {
         
         $('#hijoMixtoI').rup_autocomplete({
         	parent: ['abueloMixtoI', 'padreMixtoI'],
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	source : 'autocomplete/dptoProvRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
@@ -106,14 +106,14 @@ jQuery(function($) {
         
         // MIXTO II (REMOTO, REMOTO y LOCAL)
         $('#abueloMixtoII').rup_autocomplete({
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	source : 'autocomplete/departamentoRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
         });	
         
         $('#padreMixtoII').rup_autocomplete({
-        	source : 'autocomplete/remoteEnlazadoMultipleProvincia',
+        	source : 'autocomplete/provinciaRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
@@ -141,7 +141,7 @@ jQuery(function($) {
         
         // MIXTO III (REMOTO, LOCAL y REMOTO)
         $('#abueloMixtoIII').rup_autocomplete({
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	source : 'autocomplete/departamentoRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true
@@ -159,7 +159,7 @@ jQuery(function($) {
         
         $('#hijoMixtoIII').rup_autocomplete({
         	parent: ['abueloMixtoIII', 'padreMixtoIII'],
-        	source : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	source : 'autocomplete/dptoProvRemote',
         	sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
             contains: false,
             combobox: true

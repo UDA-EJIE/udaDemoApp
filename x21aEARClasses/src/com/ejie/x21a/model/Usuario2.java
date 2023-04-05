@@ -96,7 +96,7 @@ public class Usuario2 extends Usuario {
 	 *
 	 * @return String
 	 */
-    @Override
+	@Override
     public String getId() {
 		return super.getId();
 	}

@@ -20,9 +20,9 @@
     <spring:url value="/" var="urlError" htmlEscape="true"/>
     <a href="${urlError}"><spring:message code="error.volver" /></a>
 
-    <h3>Name: </h3>${(empty param)? exception_name : param.exception_name}<br>
-    <h3>Message: </h3>${(empty param)? exception_message : param.exception_message}<br>
-    <h3>Trace: </h3>${(empty param)? exception_trace : param.exception_trace}<br>
+    <h3>Name: </h3><c:out value="${(empty param) ? exception_name : param.exception_name}"/><br>
+    <h3>Message: </h3><c:out value="${(empty param) ? exception_message : param.exception_message}"/><br>
+    <h3>Trace: </h3><c:out value="${(empty param) ? exception_trace : param.exception_trace}"/><br>
 </div>
 
 <script type="text/javascript">
