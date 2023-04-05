@@ -28,7 +28,7 @@
 
 <!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 <spring:url value="/table/dynamicColumns/filter" var="url"/>
-<form:form modelAttribute="usuario" id="columnasDinamicas_filter_form" class="d-none" action="${url}"/>
+<form:form modelAttribute="usuario" id="columnasDinamicas_filter_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}"/>
 
 <table id="columnasDinamicas" class="tableFit table-striped table-bordered table-material d-none" 
 	data-url-base="./dynamicColumns"

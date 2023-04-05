@@ -6,6 +6,10 @@
 		<project>x21aAppWar</project>
 		<project>x21aEARClasses</project>
 		<project>x38ShLibClasses</project>
+		<project>hdiv-config</project>
+		<project>hdiv-core</project>
+		<project>hdiv-services</project>
+		<project>hdiv-spring-mvc</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

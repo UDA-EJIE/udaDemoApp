@@ -29,8 +29,9 @@ import org.hdiv.services.TrustAssertion;
 public class Localidad implements java.io.Serializable, SecureIdContainer {
 
     private static final long serialVersionUID = 1L;
-		@TrustAssertion(idFor = Localidad.class)
+	@TrustAssertion(idFor = Localidad.class)
     private BigDecimal code;
+	private BigDecimal parentCode;
     private Comarca comarca;
     private String descEs;
     private String descEu;
@@ -63,6 +64,23 @@ public class Localidad implements java.io.Serializable, SecureIdContainer {
     }
 
     /**
+	 * @param code
+	 * @param parentCode
+	 * @param descEs
+	 * @param descEu
+	 * @param css
+	 * @param comarca
+	 */
+	public Localidad(BigDecimal code, BigDecimal parentCode, String descEs, String descEu, String css, Comarca comarca) {
+		this.code = code;
+		this.parentCode = parentCode;
+		this.comarca = comarca;
+		this.descEs = descEs;
+		this.descEu = descEu;
+		this.css = css;
+	}
+
+	/**
      * Method 'getCode'.
      *
      * @return BigDecimal
@@ -84,6 +102,20 @@ public class Localidad implements java.io.Serializable, SecureIdContainer {
     }
     	
     /**
+	 * @return the parentCode
+	 */
+	public BigDecimal getParentCode() {
+		return parentCode;
+	}
+
+	/**
+	 * @param parentCode the parentCode to set
+	 */
+	public void setParentCode(BigDecimal parentCode) {
+		this.parentCode = parentCode;
+	}
+
+	/**
      * Method 'getComarca'.
      *
      * @return Comarca

@@ -17,6 +17,18 @@ jQuery(function ($) {
 
     var tableColModels = [
     	{
+	        name: 'ida',
+	        index: 'ida',
+	        editable: true,
+	        hidden: false
+	    },
+    	{
+	        name: 'idb',
+	        index: 'idb',
+	        editable: true,
+	        hidden: false
+	    },
+    	{
 	        name: 'nombre',
 	        index: 'nombre',
 	        editable: true,
@@ -222,6 +234,11 @@ jQuery(function ($) {
 
         location.reload();
     });
+    
+    $('#MultiPk').on('tableInlineEdit', function() {
+		const $rowSelect = $('#MultiPk > tbody > tr.selected.tr-highlight.editable:not(.group)');
+		$rowSelect.find("input[id^=id]").prop('disabled', 'disabled');
+	});
 
     loadTable();
 

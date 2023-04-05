@@ -40,34 +40,38 @@
 		
 		<fieldset id="remote" class="col-md col-12 px-3 mx-md-5 my-md-0 my-4">
 			<legend>Remoto</legend>
-			<div class="form-groupMaterial">
-				<select id="abueloRemoto" name="provincia" > </select> 
-				<label for="abueloRemoto">Abuelo</label>
-			</div>
-			<div class="form-groupMaterial">
-				<select id="padreRemoto" name="comarca" > </select> 
-				<label for="padreRemoto">Padre</label>
-			</div>
-			<div class="form-groupMaterial">
-				<select id="hijoRemoto" name="localidad" > </select> 
-				<label for="hijoRemoto">Hijo</label>
-			</div>
+			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="abueloRemoto" path="codeProvincia"  /> 
+					<label for="abueloRemoto">Abuelo</label>
+				</div>
+				<div class="form-groupMaterial">
+					<form:select id="padreRemoto" path="codeComarca" /> 
+					<label for="padreRemoto">Padre</label>
+				</div>
+				<div class="form-groupMaterial">
+					<form:select id="hijoRemoto" path="codeLocalidad" /> 
+					<label for="hijoRemoto">Hijo</label>
+				</div>
+			</form:form>
 		</fieldset>
 		
 		<fieldset id="mixto" class="col-md col-12 px-3">
 			<legend>Mixto I</legend>
-			<div class="form-groupMaterial">
-				<select id="abueloMixto" name="provincia" > </select>
-				<label for="abueloMixto">Abuelo</label>
-			</div>
-			<div class="form-groupMaterial">
-				<select id="padreMixto" name="comarca" > </select>
-				<label for="padreMixto">Padre</label>
-			</div>
-			<div class="form-groupMaterial">
-				<select id="hijoMixto" name="localidad" > </select>
-				<label for="hijoMixto">Hijo</label>
-			</div>
+			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="abueloMixto" path="codeProvincia" />
+					<label for="abueloMixto">Abuelo</label>
+				</div>
+				<div class="form-groupMaterial">
+					<form:select id="padreMixto" path="codeComarca" />
+					<label for="padreMixto">Padre</label>
+				</div>
+				<div class="form-groupMaterial">
+					<form:select id="hijoMixto" path="codeLocalidad" />
+					<label for="hijoMixto">Hijo</label>
+				</div>
+			</form:form>
 		</fieldset>
 	</div>
 </section>

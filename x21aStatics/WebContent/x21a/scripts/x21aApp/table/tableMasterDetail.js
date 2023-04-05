@@ -153,6 +153,7 @@ jQuery(function ($) {
 	        formEdit: {
 	            detailForm: '#localidad_detail_div',
 	            url: '../tableLocalidad/editForm',
+	            data: {}
 	            /*validate: {
 	                rules: {
 	                    'code': {
@@ -162,7 +163,11 @@ jQuery(function ($) {
 	            }*/
 	        }
 	
-	    });	
+	    });
+	    
+	    $('#localidad').on('buttons-action.dt', function(event, button, dt) {
+			dt.context[0].oInit.formEdit.data.pkValueComarca = $('#comarca').rup_table('getLastSelectedId');
+		});
 	
 	    $('.contenedor').addClass('show');
 	 });

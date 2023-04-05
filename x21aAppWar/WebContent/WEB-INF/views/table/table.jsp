@@ -20,7 +20,7 @@
 
 <!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 <spring:url value="/table/filter" var="url"/>
-<form:form modelAttribute="usuario" id="example_noFilter_form" class="d-none" action="${url}"/>
+<form:form modelAttribute="usuario" id="example_noFilter_form" class="d-none" action="${url}" method="POST"/>
 
 <table id="example" class="tableFit table-striped table-bordered table-material" data-url-base="." data-filter-form="#example_filter_form">
 	<thead>
@@ -108,8 +108,7 @@
 			</div>
 			<div class="radio-material pluginsControl">
 				<spring:url value="/table/addFromNewWindow" var="addFromNewWindow"/>
-				<spring:url value="/table/editFromNewWindow" var="editFromNewWindow"/>
-				<form:radiobutton path="editType" id="editFormTargetBlank" value="13" data-add-new-window-url="${addFromNewWindow}" data-edit-new-window-url="${editFromNewWindow}" />
+				<form:radiobutton path="editType" id="editFormTargetBlank" value="13" data-add-new-window-url="${addFromNewWindow}" data-edit-new-window-url="/x21aAppWar/table/editFromNewWindow/" />
 				<label for="editFormTargetBlank">Edición en formulario sobre nueva pestaña (necesita tener los botones activos)</label>
 			</div>
 			<div class="radio-material pluginsControl">

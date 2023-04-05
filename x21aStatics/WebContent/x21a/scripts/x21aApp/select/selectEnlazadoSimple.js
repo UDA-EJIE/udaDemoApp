@@ -177,31 +177,7 @@ $(function () {
     	
         //Local -> Remote
     	  $('#selectLocalAbuelo').rup_select({
-	        data: [{
-	        	text: 'Alava',
-	            id: '1'
-	        },
-	        {
-	        	text: 'Bizkaia',
-	            id: '2'
-	        },
-	        {
-	        	text: 'Gipuzcoa',
-	            id: '3'
-	        },
-	        {
-	        	text: 'Burgos',
-	            id: '4'
-	        },
-	        {
-	        	text: 'Cantabria',
-	            id: '5'
-	        },
-	        {
-	        	text: 'La rioja',
-	            id: '6'
-	        }
-	        ],
+        	loadFromSelect: true,
 	        selected: '2',
 	        placeholder: ''
     	});
@@ -229,15 +205,22 @@ $(function () {
                 style: 'css'
             },
             placeholder: '[Seleccionar]',
-            selected: '2',
+            selected: '1',
             change: function () {
                 console.log('selectRemotoAbuelo:::Changed');
             }
         });
         
-     	  $('#selectLocalPadre').rup_select({
+   	  $('#selectLocalPadre').rup_select({
+   		parent: 'selectRemotoAbuelo',
+      	loadFromSelect: true,
+	    selected: 'a2',
+	    placeholder: '[Seleccionar]'
+    	});
+        
+     	  $('#selectLocalPadreJs').rup_select({
      		parent: 'selectRemotoAbuelo',
-  		  data: {
+  		    data: {
               '1': [{
                   id: 'a1',
                   text: 'Alavesa'
@@ -297,9 +280,15 @@ $(function () {
               }, {
                   id: 'g3',
                   text: 'Casalareina'
+              }],
+              '10': [{
+                  id: 'h1',
+                  text: 'prueba1o'
+              }, {
+                  id: 'h2',
+                  text: 'prueba2'
               }]
-
-  		  		},
+  		    },
   	        selected: 'b2',
   	        placeholder: ''
       	});

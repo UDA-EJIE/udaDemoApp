@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.xpath.XPathAPI;
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class IberdokController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<IberdokFile> get(@PathVariable String id,HttpServletResponse response) {
+	public @ResponseBody Resource<IberdokFile> get(@PathVariable @TrustAssertion(idFor = IberdokFile.class) String id,HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		file = this.iberdokFileService.find(file);
@@ -158,7 +159,7 @@ public class IberdokController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody Resource<IberdokFile> remove(
-			@PathVariable(value = "id") String id, HttpServletResponse response) {
+			@PathVariable(value = "id") @TrustAssertion(idFor = IberdokFile.class) String id, HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
 		this.iberdokFileService.remove(file);
@@ -245,7 +246,6 @@ public class IberdokController {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getPDF") })
 	@RequestMapping(value = "view", method = RequestMethod.GET)
@@ -322,7 +322,6 @@ public class IberdokController {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll"),
-			@UDALinkAllower(name = "getMultiFilterForm"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "view") })
@@ -452,13 +451,9 @@ public class IberdokController {
 	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
 			Model model, HttpServletResponse response) {
 		model.addAttribute("randomForm", new RandomForm());
 		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
-		}
 		
 		Map<String,String> lang = new LinkedHashMap<String,String>();
 		lang.put("es", "Castellano");

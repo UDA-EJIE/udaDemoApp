@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -118,10 +119,10 @@ public class ListaController {
 	}
 	
     @UDALink(name = "multifilterDelete")
-	@PostMapping(value = "/filter/multiFilter/delete")
+	@DeleteMapping(value = "/filter/multiFilter/delete")
 	public @ResponseBody Resource<Filter> filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		ListaController.logger.info("[POST - table] : delete filter");
+		ListaController.logger.info("[DELETE - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	

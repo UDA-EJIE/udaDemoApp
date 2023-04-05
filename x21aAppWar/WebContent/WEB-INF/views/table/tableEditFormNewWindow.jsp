@@ -16,19 +16,17 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${isDouble eq true ? '2/' : ''}" var="pathVariable" />
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
-<spring:url value="/table/${pathVariable}${endpoint}" var="url"/>
-<form:form modelAttribute="${isDouble eq true ? 'usuario2' : 'usuario'}" id="example_detail_form" action="${url}" method="${actionType}">
+<spring:url value="/table/${endpoint}" var="url"/>
+<form:form modelAttribute="${isDouble eq true ? 'usuario2' : 'usuario'}" id="example_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="example_detail_feedback"></div>
-	<c:if test="${actionType != 'POST'}">
-		<form:input path="id" id="id_detail_table" class="d-none" />
-	</c:if>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${actionType != 'POST'}">
+		<form:hidden path="id" value="${pkValue.id}" id="id_detail_table" />
+	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table" />
@@ -76,7 +74,7 @@
 			</span>
         </button>
         <!-- Botón de guardado -->
-        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis" data-path-variable="${pathVariable}" data-action-type="${actionType}">
+        <button id="sendEntity" type="submit" class="btn-material btn-material-primary-high-emphasis">
         	<i class="mdi mdi-content-save"></i>
         	<span>
 				Enviar entidad

@@ -3,8 +3,8 @@
 
 
 <div id="fileupload_form_multiple">
-	<!-- <form action="../upload/formSimple" id="uploadFormMultiple" enctype="multipart/form-data" method="POST"> -->
-	<form:form action="../upload/formSimple" id="uploadFormMultiple" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
+	<spring:url value="../upload/formSimple" var="url"/>
+	<form:form action="${url}" id="uploadFormMultiple" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
 			<div id="feedback_fileupload_form_multiple"></div>
 			<div class="row">
@@ -43,9 +43,9 @@
 				<div class="col-md-12 ">
 			        <div id="fileupload_file_form_padre" class="rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="mdi mdi-plus"></i>
-						      <span>Seleccione foto padre...</span>
-						      <input id="file_form_padre" type="file" name="fotoPadre"  />
+							<i class="mdi mdi-plus"></i>
+							<span>Seleccione foto padre...</span>
+							<form:input id="file_form_padre" type="file" path="fotoPadre" />
 						</span>
 						<div class="fileupload-content">
 					        <div class="files list-group"></div>
@@ -58,9 +58,9 @@
 				<div class="col-md-12 ">
 			        <div id="fileupload_file_form_madre" class="fileupload_file_form_madre rup-upload">
 				        <span class="btn btn-success fileinput-button">
-						      <i class="mdi mdi-plus"></i>
-						      <span>Seleccione foto madre...</span>
-						      <input id="file_form_madre" type="file" name="fotoMadre"  />
+							<i class="mdi mdi-plus"></i>
+							<span>Seleccione foto madre...</span>
+							<form:input id="file_form_madre" type="file" path="fotoMadre" />
 						</span>
 						<div class="fileupload-content">
 					        <div class="files list-group"></div>

@@ -15,5 +15,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-config"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-services"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-spring-mvc"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

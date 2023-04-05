@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,7 @@ public class DashboardController {
 	}
 	
 	@RequestMapping(value = "get/{id}", method = RequestMethod.GET)
-	public @ResponseBody Dashboard get(@PathVariable String id) {
+	public @ResponseBody Dashboard get(@PathVariable @TrustAssertion(idFor = Dashboard.class) String id) {
 		return dashboardService.get(new Dashboard(id));
 	}
 	

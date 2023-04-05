@@ -53,7 +53,7 @@ var valorLeft = {
         value: '5'
     },
     modElement: function (ev, item, json) {
-        var ejieval = item.find('#ejie_value_' + json.id);
+        var ejieval = item.find($.rup_utils.escapeId('#ejie_value_' + json.id));
         if (json.ejie == 1) {
             ejieval.text($.rup.i18n.app.comun.si);
         } else {
@@ -102,7 +102,7 @@ var valorRight = {
         value: '5'
     },
     modElement: function (ev, item, json) {
-        var ejieval = item.find('#ejie_value_' + json.id);
+        var ejieval = item.find($.rup_utils.escapeId('#ejie_value_' + json.id));
         if (json.ejie == 1) {
             ejieval.text($.rup.i18n.app.comun.si);
         } else {

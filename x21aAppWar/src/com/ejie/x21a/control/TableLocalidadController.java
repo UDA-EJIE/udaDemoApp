@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,12 +47,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.service.LocalidadService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 import com.ejie.x38.util.ResourceUtils;
@@ -74,15 +79,30 @@ public class TableLocalidadController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableLocalidadEditForm (@RequestParam String actionType, Model model) {
-		Comarca comarca = new Comarca();
-		Localidad localidad = new Localidad();
-		localidad.setComarca(comarca);
+	@PostMapping(value = "/editForm")
+	public String getTableLocalidadEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
+			@RequestParam(required = false) BigDecimal pkValueIdPadre,
+			Model model) {		
+		model.addAttribute(Constants.MODEL_LOCALIDAD, new Localidad());
+		model.addAttribute(Constants.MODEL_COMARCA, new Comarca());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
-		model.addAttribute("comarca", comarca);
-		model.addAttribute("localidad", localidad);
-		model.addAttribute("actionType", actionType);
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Localidad(pkValue), "code"));
+		}
+		
+		if (pkValueIdPadre != null) {
+			model.addAttribute("pkValueIdPadre", IdentifiableModelWrapperFactory.getInstance(new Comarca(pkValueIdPadre), "code"));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
 		
 		return "tableLocalidadEditForm";
 	}
@@ -95,7 +115,7 @@ public class TableLocalidadController {
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Localidad> getById(@PathVariable BigDecimal code) {
+	public @ResponseBody Resource<Localidad> getById(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
 		localidad.setCode(code);
         localidad = this.localidadService.find(localidad);
@@ -140,7 +160,7 @@ public class TableLocalidadController {
 	@UDALink(name = "remove")
 	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody Resource<Localidad> remove(@PathVariable BigDecimal code) {
+    public @ResponseBody Resource<Localidad> remove(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
         localidad.setCode(code);
         this.localidadService.remove(localidad);
@@ -169,17 +189,17 @@ public class TableLocalidadController {
 	}
 	
 	@UDALink(name = "multifilterAdd")
-	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter/add")
 	public @ResponseBody Resource<Filter> filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
 		TableLocalidadController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
 	}	
 	
 	@UDALink(name = "multifilterDelete")
-	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
+	@DeleteMapping(value = "/multiFilter/delete")
 	public @ResponseBody Resource<Filter>  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		TableLocalidadController.logger.info("[POST - table] : delete filter");
+		TableLocalidadController.logger.info("[DELETE - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	
@@ -221,12 +241,8 @@ public class TableLocalidadController {
 	 * @param filterLocalidad Localidad
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@UDALink(name = "clipboardReport")
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Localidad>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad,
 			@RequestParam(required = false) String[] columns, 
@@ -250,11 +266,7 @@ public class TableLocalidadController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+	@UDALink(name = "excelReport")
 	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
@@ -285,11 +297,7 @@ public class TableLocalidadController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport")})
+	@UDALink(name = "pdfReport")
 	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
@@ -320,11 +328,7 @@ public class TableLocalidadController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "csvReport")})
+	@UDALink(name = "odsReport")
 	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
@@ -355,11 +359,7 @@ public class TableLocalidadController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "clipboardReport")})
+	@UDALink(name = "csvReport")
 	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 

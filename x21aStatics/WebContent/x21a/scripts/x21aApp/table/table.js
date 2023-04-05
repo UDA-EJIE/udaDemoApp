@@ -87,10 +87,10 @@ jQuery(function ($) {
                 index: 'rol',
                 editable: true,
                 hidden: false,
-                rupType: 'combo',
+                rupType: 'select',
                 editoptions: {
-                    source : './roles',
-                    sourceParam : {label: 'label', value: 'value'},
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
@@ -253,9 +253,6 @@ jQuery(function ($) {
 	            if (localStorage.plugins.indexOf(',editForm,') > -1) {
 	            	const formEdit = {
 	                    detailForm: '#example_detail_div',
-	                    data: {
-	                    	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
-	                    },
 	                    validate: {
 	                        rules: {
 	                            'nombre': {
@@ -365,12 +362,9 @@ jQuery(function ($) {
 	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 	                    type: 'edit',
 	                    action: function (e, dt) {
-	                    	let ctx = dt.context[0];
+	                    	const ctx = dt.context[0];
 	                    	
-	                    	let childWindowHandler = window.open($('#editFormTargetBlank').data('editNewWindowUrl'), '_blank');
-	                    	childWindowHandler.addEventListener('load', function () {
-	                    		childWindowHandler.setEntityData(ctx.multiselection.lastSelectedId);                  		
-	                		}, false);
+	                    	window.open($('#editFormTargetBlank').data('editNewWindowUrl') + ctx.multiselection.lastSelectedId, '_blank');
 	                    }
 	                };
 	                

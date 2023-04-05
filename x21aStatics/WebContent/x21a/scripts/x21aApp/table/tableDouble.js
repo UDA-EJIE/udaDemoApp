@@ -254,12 +254,9 @@ function _init() {
                     insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
                     type: 'edit',
                     action: function (e, dt) {
-                    	let ctx = dt.context[0];
-                    	
-                    	let childWindowHandler = window.open($('#editFormTargetBlank' + num).data('editNewWindowUrl'), '_blank');
-                    	childWindowHandler.addEventListener('load', function () {
-                    		childWindowHandler.setEntityData(ctx.multiselection.lastSelectedId);                  		
-                		}, false);
+                    	const ctx = dt.context[0];
+	                    	
+						window.open($('#editFormTargetBlank' + num).data('editNewWindowUrl') + ctx.multiselection.lastSelectedId, '_blank');
                     }
                 };
                 

@@ -3,8 +3,8 @@
 
 
 <div id="fileupload_form">
-	<!-- <form action="../upload/form" id="uploadForm" enctype="multipart/form-data" method="POST"> -->
-	<form:form id="uploadForm" action="../upload/form" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
+	<spring:url value="../upload/form" var="url"/>
+	<form:form id="uploadForm" action="${url}" enctype="multipart/form-data" method="POST" modelAttribute="alumno">
 		<fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
 			<div id="feedback_fileupload_form"></div>
 			<div class="row">
@@ -42,13 +42,13 @@
 			<div class="row">
 				<div class="col-md-12 ">
 			        <div class="rup-upload">
-				        <span class="btn btn-success fileinput-button">
-						      <i class="mdi mdi-plus"></i>
-						      <span><spring:message code="upload.button.addFiles"/></span>
-						      <input id="file_form" type="file" name="file"  />
+						<span class="btn btn-success fileinput-button">
+							<i class="mdi mdi-plus"></i>
+							<span><spring:message code="upload.button.addFiles" /></span>
+							<form:input id="file_form" type="file" path="foto" />
 						</span>
-				      
-					    <div class="fileupload-content">
+
+						<div class="fileupload-content">
 					        <div class="files list-group"></div>
 					        <div id="fileupload-progressbar" class="fileupload-progressbar"></div>
 					    </div>

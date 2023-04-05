@@ -1,18 +1,18 @@
 /*
- * Copyright 2012 E.J.I.E., S.A.
- *
- * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- * Solo podrá usarse esta obra si se respeta la Licencia.
- * Puede obtenerse una copia de la Licencia en
- *
- * http://ec.europa.eu/idabc/eupl.html
- *
- * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
- * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
- * que establece la Licencia.
- */
+* Copyright 2012 E.J.I.E., S.A.
+*
+* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+* Solo podrá usarse esta obra si se respeta la Licencia.
+* Puede obtenerse una copia de la Licencia en
+*
+* http://ec.europa.eu/idabc/eupl.html
+*
+* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* que establece la Licencia.
+*/
 package com.ejie.x21a.control;
 
 import java.io.File;
@@ -45,6 +45,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,6 +55,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.service.UploadService;
 import com.ejie.x21a.util.PifUtils;
 import com.ejie.x38.hdiv.annotation.UDALink;
@@ -86,145 +88,114 @@ public class UploadController {
 		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
 
-	@UDALink(name = "download")
-	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
-	public ModelAndView download(@RequestParam(value = "fileName", required = true) String fileName,
-			HttpServletResponse response) throws Exception {
-
-		File file = uploadService.getFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
-
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-		byte[] fileByteArray = FileUtils.readFileToByteArray(file);
-		response.setContentLength(fileByteArray.length);
-		FileCopyUtils.copy(fileByteArray, response.getOutputStream());
-
-		logger.info("[GET - download]: Obtener fichero.");
-
-		return null;
-	}
-
 	@UDALink(name = "add")
-	@PostMapping
+	@PostMapping(value = "/add")
 	public @ResponseBody List<Map<String, Object>> add(
 			@RequestParam(value = "filename", required = false) String filename,
 			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "files[]", required = false) MultipartFile file, HttpServletResponse response,
+			@RequestParam(value = "files", required = true) MultipartFile file,
+			HttpServletResponse response,
 			HttpServletRequest request) {
-
+		
 		if (!file.isEmpty()) {
 			uploadService.saveToDisk(file, appConfiguration.getProperty("fileUpload.path"));
+			UploadController.logger.info("[POST - add] : Fichero guardado.");
 		}
 
 		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
 		filesMetaInfo.add(this.getFileReturnMap(file));
-
-		logger.info("[POST - add]: Añadir fichero.");
 
 		return filesMetaInfo;
 	}
 
-	@UDALink(name = "remove")
-	@DeleteMapping
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody Map<String, Object> remove(@RequestParam(value = "fileName", required = true) String fileName,
-			HttpServletResponse response) {
+	@UDALink(name = "addMultiple")
+	@PostMapping(value = "/addMultiple")
+	public @ResponseBody List<Map<String, Object>> add(
+			@RequestParam(value = "filename", required = false) String filename,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "files", required = true) MultipartFile[] files,
+			HttpServletResponse response,
+			HttpServletRequest request) {
 
-		uploadService.deleteFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
+		for (MultipartFile file : files) {
+			uploadService.saveToDisk(file, appConfiguration.getProperty("fileUpload.path"));
+			filesMetaInfo.add(this.getFileReturnMap(file));
+			UploadController.logger.info("[POST - addMultiple] : {} guardado.", filename);
+		}
 
-		response.setContentType("text/javascript;charset=utf-8");
-		response.setHeader("Pragma", "cache");
-		response.setHeader("Expires", "0");
-		response.setHeader("Cache-Control", "private");
-
-		logger.info("[DELETE - remove]: Eliminar fichero.");
-
-		return this.getDeleteFileReturnMap(fileName);
+		return filesMetaInfo;
 	}
 
 	@UDALink(name = "addForm")
-	@PostMapping(value = "form")
+	@PostMapping(value = "/form")
 	public @ResponseBody List<Map<String, Object>> addForm(
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "apellido1", required = false) String apellido1,
 			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "file", required = false) MultipartFile file) {
-
+			@RequestParam(value = "foto", required = false) MultipartFile file) {
+		
 		if (!file.isEmpty()) {
 			uploadService.saveToDisk(file, appConfiguration.getProperty("fileUpload.path"));
+			UploadController.logger.info("[POST - addForm] : Fichero guardado.");
 		}
 
 		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
-		filesMetaInfo.add(this.getFileReturnMap(file));
 
-		logger.info("[POST - addForm]: Añadir fichero mediante formulario.");
+		filesMetaInfo.add(this.getFileReturnMap(file));
 
 		return filesMetaInfo;
 	}
 
 	@UDALink(name = "addFormSimple")
-	@PostMapping(value = "formSimple")
+	@PostMapping(value = "/formSimple")
 	public @ResponseBody List<Map<String, Object>> addFormSimple(
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "fotoPadre", required = false) MultipartFile fotoPadre,
-			@RequestParam(value = "fotoMadre", required = false) MultipartFile fotoMadre) {
-
+			@RequestParam(value = "fotoMadre", required = false) MultipartFile fotoMadre,
+			@ModelAttribute UploadBean uploadBean) {
+		
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
 		if (fotoPadre != null && !fotoPadre.isEmpty()) {
 			uploadService.saveToDisk(fotoPadre, appConfiguration.getProperty("fileUpload.path"));
+			filesMetaInfo.add(this.getFileReturnMap(fotoPadre));
+			UploadController.logger.info("[POST - addFormSimple] : Fichero padre guardado.");
 		}
 		if (fotoMadre != null && !fotoMadre.isEmpty()) {
 			uploadService.saveToDisk(fotoMadre, appConfiguration.getProperty("fileUpload.path"));
+			filesMetaInfo.add(this.getFileReturnMap(fotoMadre));
+			UploadController.logger.info("[POST - addFormSimple] : Fichero madre guardado.");
 		}
-
-		logger.info("[POST - addFormSimple]: Añadir ficheros mediante formulario.");
-
-		return null;
-	}
-
-	@UDALink(name = "downloadPif")
-	@GetMapping(value = "pifForm")
-	@ResponseStatus(HttpStatus.OK)
-	public ModelAndView downloadPif(@RequestParam(value = "fileName", required = true) String fileName,
-			HttpServletResponse response) throws Exception {
-
-		InputStream inputStream = PifUtils.get(fileName);
-		byte[] fileByteArray = IOUtils.toByteArray(inputStream);
-
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-
-		response.setContentLength(fileByteArray.length);
-		FileCopyUtils.copy(fileByteArray, response.getOutputStream());
-
-		logger.info("[GET - downloadPif]: Obtener fichero desde PIF.");
-
-		return null;
-	}
-
-	@UDALink(name = "addPifFormFile")
-	@PostMapping(value = "/pifForm")
-	public @ResponseBody List<Map<String, Object>> addPifFormFile(
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "apellido1", required = false) String apellido1,
-			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest httpRequest) {
-
-		PifUtils.put(file);
-
-		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
-		filesMetaInfo.add(this.getFileReturnMap(file));
-
-		logger.info("[POST - addPifFormFile]: Añadir fichero a PIF mediante formulario.");
 
 		return filesMetaInfo;
 	}
 
-	@PostMapping(value = "pifForm22")
+//	@RequestMapping(value="pifForm", method = RequestMethod.POST)
+//	public @ResponseBody List<Map<String,Object>> addPifForm(@RequestParam(value="nombre", required=false) String nombre,
+//			@RequestParam(value="apellido1", required=false) String apellido1,
+//			@RequestParam(value="apellido2", required=false) String apellido2,
+//			@RequestParam(value="file", required=false) MultipartFile file,
+//			HttpServletRequest httpRequest) {
+//	
+//		
+//		PifUtils.put(file);
+//		
+//		List<Map<String,Object>> filesMetaInfo = new ArrayList<Map<String,Object>>();
+//
+//		filesMetaInfo.add(this.getFileReturnMap(file));
+//		
+//		return filesMetaInfo;
+//		
+//	}
+
+	@PostMapping(value = "/pifForm22")
 	public @ResponseBody List<Map<String, Object>> addPifForm(
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "apellido1", required = false) String apellido1,
 			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest httpRequest) {
-
+			@RequestParam(value = "foto", required = false) MultipartFile file,
+			HttpServletRequest httpRequest) {
+		
 		ServletFileUpload upload = new ServletFileUpload();
 		FileItemIterator iter;
 		try {
@@ -245,50 +216,121 @@ public class UploadController {
 
 			}
 		} catch (FileUploadException e) {
-			logger.error("[POST - addPifForm]: {}", e.getMessage());
+			e.printStackTrace();
 		} catch (IOException e) {
-			logger.error("[POST - addPifForm]: {}", e.getMessage());
+			e.printStackTrace();
 		}
 
-		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
+//		PifUtils.put(file);
 
-		logger.info("[POST - addPifForm]: Añadir fichero a PIF mediante formulario.");
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
+//		filesMetaInfo.add(this.getFileReturnMap(file));
 
 		return filesMetaInfo;
 	}
 
-	@UDALink(name = "removePif")
-	@DeleteMapping(value = "pifForm")
-	@ResponseStatus(HttpStatus.OK)
-	public void removePif(@RequestParam(value = "fileName", required = true) String fileName,
-			HttpServletResponse response) {
+	@UDALink(name = "aportarDocumento", linkTo = {})
+	@PostMapping(value = "/aportarDocumento")
+	public @ResponseBody List<Map<String, Object>> aportarDocumento(
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido1", required = false) String apellido1,
+			@RequestParam(value = "foto", required = false) MultipartFile file,
+			HttpServletRequest request) {
+		
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
 
+		return filesMetaInfo;
+	}
+
+	@UDALink(name = "addPifFormFile")
+	@PostMapping(value = "/pifForm")
+	public @ResponseBody List<Map<String, Object>> addPifFormFile(
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "apellido1", required = false) String apellido1,
+			@RequestParam(value = "apellido2", required = false) String apellido2,
+			@RequestParam(value = "foto", required = false) MultipartFile file,
+			HttpServletRequest httpRequest) {
+		
+		PifUtils.put(file);
+
+		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
+
+		filesMetaInfo.add(this.getFileReturnMap(file));
+
+		return filesMetaInfo;
+	}
+
+	@UDALink(name = "downloadPif")
+	@GetMapping(value = "/pifForm")
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView downloadPif(
+			@RequestParam(value = "fileName", required = true) String fileName,
+			HttpServletResponse response) throws Exception {
+		
+		//File file = uploadService.getFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+		InputStream inputStream = PifUtils.get(fileName);
+		byte[] fileByteArray = IOUtils.toByteArray(inputStream);
+
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+		response.setContentLength(fileByteArray.length);
+		FileCopyUtils.copy(fileByteArray, response.getOutputStream());
+
+		return null;
+	}
+
+	@UDALink(name = "removePif")
+	@DeleteMapping(value = "/pifForm")
+	@ResponseStatus(HttpStatus.OK)
+	public void removePif(
+			@RequestParam(value = "fileName", required = true) String fileName,
+			HttpServletResponse response) {
+		
 		PifUtils.delete(fileName);
+
+		//uploadService.deleteFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+
+		response.setContentType("text/javascript;charset=utf-8");
+		response.setHeader("Pragma", "cache");
+		response.setHeader("Expires", "0");
+		response.setHeader("Cache-Control", "private");
+	}
+
+	@UDALink(name = "remove")
+	@DeleteMapping
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody Map<String, Object> remove(
+			@RequestParam(value = "fileName", required = true) String fileName,
+			HttpServletResponse response) {
+		
+		uploadService.deleteFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
 
 		response.setContentType("text/javascript;charset=utf-8");
 		response.setHeader("Pragma", "cache");
 		response.setHeader("Expires", "0");
 		response.setHeader("Cache-Control", "private");
 
-		logger.info("[DELETE - removePif]: Eliminar fichero en PIF.");
+		return this.getDeleteFileReturnMap(fileName);
 	}
 
-	@UDALink(name = "aportarDocumento")
-	@PostMapping(value = "/aportarDocumento")
-	public @ResponseBody List<Map<String, Object>> aportarDocumento(
-			@RequestParam(value = "nombre", required = false) String nombre,
-			@RequestParam(value = "apellido1", required = false) String apellido1,
-			@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) {
+	@UDALink(name = "download")
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView download(
+			@RequestParam(value = "fileName", required = true) String fileName,
+			HttpServletResponse response) throws Exception {
+		
+		File file = uploadService.getFromDisk(appConfiguration.getProperty("fileUpload.path"), fileName);
+		
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		byte[] fileByteArray = FileUtils.readFileToByteArray(file);
+		response.setContentLength(fileByteArray.length);
+		FileCopyUtils.copy(fileByteArray, response.getOutputStream());
 
-		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
-
-		logger.info("[POST - aportarDocumento]: Añadir fichero.");
-
-		return filesMetaInfo;
+		return null;
 	}
 
 	private Map<String, Object> getFileReturnMap(MultipartFile file) {
-
 		Map<String, Object> mapaRetorno = new HashMap<String, Object>();
 		mapaRetorno.put("url", "../upload?fileName=" + file.getOriginalFilename());
 		mapaRetorno.put("name", file.getOriginalFilename());
@@ -297,19 +339,13 @@ public class UploadController {
 		mapaRetorno.put("delete_url", "../upload?fileName=" + file.getOriginalFilename());
 		mapaRetorno.put("delete_type", "DELETE");
 
-		logger.info("[GET - download]: Obtener fichero");
-
 		return mapaRetorno;
 	}
 
 	private Map<String, Object> getDeleteFileReturnMap(String fileName) {
-
 		Map<String, Object> mapaRetorno = new HashMap<String, Object>();
 		mapaRetorno.put("fileName", Boolean.TRUE);
-
-		logger.info("[GET - download]: Obtener fichero");
-
+		
 		return mapaRetorno;
 	}
-
 }
