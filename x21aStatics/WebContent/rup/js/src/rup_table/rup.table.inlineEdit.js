@@ -204,6 +204,14 @@ DataTable.inlineEdit.init = function ( dt ) {
 					$('#' + ctx.sTableId+'cancelButton_1_contextMenuToolbar').addClass('disabledButtonsTable');
 					ctx.inlineEdit.lastRow = undefined;
 					ctx.oInit.inlineEdit.alta = undefined;
+					
+					// Garantiza la deselección, evitando un error en el filtrado posterior.
+					if (ctx.oInit.multiSelect !== undefined) {
+						DataTable.Api().multiSelect.deselectAll(dt);
+					} else if (ctx.oInit.select !== undefined) {
+						DataTable.Api().select.deselect(ctx);
+					}
+					
 			        dt.ajax.reload(undefined, false);
 				}
 				
@@ -893,9 +901,12 @@ function _recorrerCeldas(ctx,$fila,$celdas,cont){
 				if(cellColModel.rupType !== undefined && cellColModel.rupType === 'select'){
 					$input = $('<select />');
 				}
-				$input.val($celda.text()).attr('name', cellColModel.name+'_inline'+child);
+				$input
+					.val(ctx.oInit.inlineEdit.useLocalValues ? $celda.text() : ctx.json.rows[$fila.idx][cellColModel.name])
+					.attr('name', cellColModel.name+'_inline'+child);
+					
 				var title = cellColModel.name.charAt(0).toUpperCase() + cellColModel.name.slice(1);
-                    $input.attr('id', cellColModel.name + '_inline' + child).attr('oldtitle', title);
+				$input.attr('id', cellColModel.name + '_inline' + child).attr('oldtitle', title);
 				
 				// Si es el primero dejar el focus
 				if(ctx.inlineEdit.lastRow.cellValues[0] === undefined){
@@ -1574,7 +1585,7 @@ function _loadAuxForm(ctx, actionType, row) {
 	
 	// Si el usuario ha activado los formularios dinámicos, la última acción no es la misma que la actual o el valor del identificador ha cambiado,
 	// es necesario volver a obtener el formulario.
-	if (_validarFormulario(ctx,lastAction, actionType)) {
+	if (_validarFormulario(ctx,lastAction, actionType, row)) {
 		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType, un booleano que indique si el formulario es multipart y 
 		// el valor de la clave primaria siempre y cuando no contenga un string vacío.
 		const defaultData = {
@@ -1621,11 +1632,12 @@ function _loadAuxForm(ctx, actionType, row) {
   * @param {object} lastAction - última accion realizado.
  * @param {object} actionType - Tipo de acción.
  */
-function _validarFormulario(ctx,lastAction, actionType){    	
+function _validarFormulario(ctx,lastAction, actionType, row){    	
 	if(ctx.oInit.enableDynamicForms){ 
 		let lastSelectedIdUsed = ctx.oInit.inlineEdit.lastSelectedIdUsed;
-		ctx.oInit.inlineEdit.lastSelectedIdUsed = ctx.multiselection.lastSelectedId ;
-		if(lastAction !== actionType || lastSelectedIdUsed === undefined || ctx.multiselection.lastSelectedId !== lastSelectedIdUsed){
+		let lastSelected = DataTable.Api().rupTable.getIdPk(row, ctx.oInit);
+		ctx.oInit.inlineEdit.lastSelectedIdUsed = lastSelected;
+		if(lastAction !== actionType || lastSelectedIdUsed === undefined || lastSelected !== lastSelectedIdUsed){
 			return true
 		}
 	}
