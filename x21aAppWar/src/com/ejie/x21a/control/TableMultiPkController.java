@@ -345,7 +345,7 @@ public class TableMultiPkController {
 	 * 
 	 */
 	@UDALink(name = "deleteAll")
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,

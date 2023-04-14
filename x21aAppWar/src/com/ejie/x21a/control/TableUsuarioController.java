@@ -1214,7 +1214,7 @@ public class TableUsuarioController {
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -1237,7 +1237,7 @@ public class TableUsuarioController {
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll2")
-	@PostMapping(value = "/{bis}/deleteAll")
+	@PostMapping(value = "{bis}/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple2(
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
