@@ -467,7 +467,7 @@ public class TableComarcaController {
 	 * MAPPING PARA EL COMBO DE PROVINCIAS
 	 */
 	@UDALink(name = "getProvincias")
-	@GetMapping(value = "/provincia", method=RequestMethod.GET)
+	@GetMapping(value = "/provincia")
 	public @ResponseBody List<Resource<Provincia>> getProvincias() {
 		final Provincia filtroProvincia = new Provincia();
 		final List<Provincia> findAll = provinciaService.findAll(filtroProvincia, null);
@@ -478,7 +478,7 @@ public class TableComarcaController {
 	 * MAPPING PARA EL COMBO DE COMARCAS
 	 */
 	@UDALink(name = "getComarcas")
-	@GetMapping(value = "/comarca", method=RequestMethod.GET)
+	@GetMapping(value = "/comarca")
 	public @ResponseBody List<Resource<Comarca>> getComarcas() {
 		final Comarca filtroComarca = new Comarca();
 		final List<Comarca> findAll = comarcaService.findAll(filtroComarca, null);

@@ -172,7 +172,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "edit"), 
 			@UDALinkAllower(name = "remove"),
 			@UDALinkAllower(name = "get") })
-	@GetMapping(method = RequestMethod.GET)
+	@GetMapping
 	public @ResponseBody List<Resource<Alumno>> getAll(@ModelAttribute Alumno filterAlumno) {
 		TableAlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
 	    return ResourceUtils.fromListToResource(this.alumnoService.findAll(filterAlumno, null));
