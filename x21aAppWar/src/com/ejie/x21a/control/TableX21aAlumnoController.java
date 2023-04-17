@@ -19,12 +19,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -77,7 +79,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "getComarcas", linkClass=TableComarcaController.class), 
 			@UDALinkAllower(name = "getApellidos", linkClass=TableUsuarioController.class),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<X21aAlumno> get(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
@@ -100,7 +102,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "edit"), 
 			@UDALinkAllower(name = "remove"),
 			@UDALinkAllower(name = "get") })
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody List<Resource<X21aAlumno>> getAll(@ModelAttribute X21aAlumno filterX21aAlumno) {
 		TableX21aAlumnoController.logger.info("[GET - find_ALL] : Obtener X21aAlumno por filtro");
 	    return ResourceUtils.fromListToResource(this.x21aAlumnoService.findAll(filterX21aAlumno, null));
@@ -115,7 +117,7 @@ public class TableX21aAlumnoController  {
 	 *            Bean resultante de la modificacion.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<X21aAlumno> edit(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.update(x21aAlumno);
 		TableX21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
@@ -133,7 +135,7 @@ public class TableX21aAlumnoController  {
 	 *            Bean resultante del proceso de creacion.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<X21aAlumno> add(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.add(x21aAlumno);
         TableX21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
@@ -150,7 +152,7 @@ public class TableX21aAlumnoController  {
 	 *            Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Resource<X21aAlumno> remove(@PathVariable @TrustAssertion(idFor = X21aAlumno.class) BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
@@ -175,7 +177,7 @@ public class TableX21aAlumnoController  {
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
 			@UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(value = "/maint", method = RequestMethod.GET)
+	@GetMapping(value = "/maint")
 	public String getFormEdit(Model model) {
 		TableX21aAlumnoController.logger.info("[GET - View] : x21aalumno");
 		return "x21aalumno";
@@ -235,7 +237,7 @@ public class TableX21aAlumnoController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<X21aAlumno> filter(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -258,7 +260,7 @@ public class TableX21aAlumnoController  {
 	 *            componente RUP_TABLE. 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<X21aAlumno>> search(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody(param="search") X21aAlumno searchX21aAlumno,
@@ -309,7 +311,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
-	@RequestMapping(value = "/jerarquia/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/jerarquia/filter")
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -329,7 +331,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
-	@RequestMapping(value = "/jerarquiaChildren", method = RequestMethod.POST)
+	@PostMapping(value = "/jerarquiaChildren")
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(
 			@RequestJsonBody(param="filter") X21aAlumno  filterX21aAlumno ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
@@ -372,7 +374,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "excelReport")
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -401,7 +403,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport")
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -430,7 +432,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport")
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -459,7 +461,7 @@ public class TableX21aAlumnoController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport")
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 

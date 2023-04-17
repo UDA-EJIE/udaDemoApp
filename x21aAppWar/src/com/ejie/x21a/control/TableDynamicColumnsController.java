@@ -43,13 +43,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -105,7 +107,7 @@ public class TableDynamicColumnsController  {
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<Usuario> get(@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
@@ -118,7 +120,7 @@ public class TableDynamicColumnsController  {
 			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getFiltroSimple (Model model) {
 		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
 		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
@@ -184,7 +186,7 @@ public class TableDynamicColumnsController  {
 	 * @return Lista de objetos correspondientes a la bÃƒÂºsqueda realizada.
 	 */
 	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
-	@RequestMapping(value = "/all",method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableDynamicColumnsController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.findAllLike(usuarioFilter, null, false));
@@ -198,7 +200,7 @@ public class TableDynamicColumnsController  {
 	 * @return Bean resultante de la modificaciÃƒÂ³n.
 	 */
 	@UDALink(name = "edit", linkTo = {@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Usuario> edit(@Validated @RequestBody Usuario usuario) {
 		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
@@ -206,7 +208,7 @@ public class TableDynamicColumnsController  {
     }
 	
 	@UDALink(name = "editar")
-	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
+	@PutMapping(value = "/editar", produces="application/json")
     public @ResponseBody Resource<Usuario> editar(
     		@Validated @ModelAttribute Usuario usuario,
     		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
@@ -230,7 +232,7 @@ public class TableDynamicColumnsController  {
 	 * @return Bean resultante del proceso de creaciÃƒÂ³n.
 	 */
 	@UDALink(name = "add", linkTo = {@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
@@ -247,7 +249,7 @@ public class TableDynamicColumnsController  {
 	 * @return Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
     public @ResponseBody Resource<Usuario> remove(@PathVariable(value="id") @TrustAssertion(idFor = Usuario.class) String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
@@ -286,7 +288,7 @@ public class TableDynamicColumnsController  {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -309,7 +311,7 @@ public class TableDynamicColumnsController  {
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
@@ -377,7 +379,7 @@ public class TableDynamicColumnsController  {
 	 * @param response HttpServletResponse
 	 */	
 	@UDALink(name = "excelReport")
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -408,7 +410,7 @@ public class TableDynamicColumnsController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport")
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -439,7 +441,7 @@ public class TableDynamicColumnsController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport")
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -470,7 +472,7 @@ public class TableDynamicColumnsController  {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport")
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 

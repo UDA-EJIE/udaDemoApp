@@ -58,7 +58,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -320,7 +319,7 @@ public class PatronesController {
     }
 
     //Sleep
-    @RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
+    @GetMapping(value = "sleep/{ms}")
     public String getSleep(Model model, @PathVariable @TrustAssertion(idFor = NoEntity.class) Integer ms) throws InterruptedException {
         Thread.sleep(ms);
         return "accordion";
@@ -328,7 +327,7 @@ public class PatronesController {
 
     //Accordion
     @UDALink(name = "getAccordion", linkTo = {@UDALinkAllower(name = "getRemoteAutocomplete")})
-    @RequestMapping(value = "accordion", method = RequestMethod.GET)
+    @GetMapping(value = "accordion")
     public String getAccordion(Model model) {
         return "accordion";
     }
@@ -388,27 +387,27 @@ public class PatronesController {
     }
 
     //Button (
-    @RequestMapping(value = "button", method = RequestMethod.GET)
+    @GetMapping(value = "button")
     public String buttonJSP(Model model) {
         return "button";
     }
 
     //Date
-    @RequestMapping(value = "date", method = RequestMethod.GET)
+    @GetMapping(value = "date")
     public String getDate(Model model) {
         return "date";
     }
 
     //Dialog
     @UDALink(name = "getDialog", linkTo = {@UDALinkAllower(name = "dialogJSP")})
-    @RequestMapping(value = "dialog", method = RequestMethod.GET)
+    @GetMapping(value = "dialog")
     public String getDialog(Model model) {
         return "dialog";
     }
 
     //Dialog (peticiÃ³n Ajax)
     @UDALink(name = "dialogJSP")
-    @RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
+    @GetMapping(value = "dialogAjax")
     public String dialogJSP(Model model) {
         return "dialogAjax";
     }
@@ -501,7 +500,7 @@ public class PatronesController {
     @UDALink(name = "getForm", linkTo = {
     		@UDALinkAllower(name = "getTableEditForm", linkClass = TableX21aAlumnoController.class),
 			@UDALinkAllower(name = "deleteAll", linkClass = TableX21aAlumnoController.class) })
-    @RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
+    @GetMapping(value = "comboMantenimiento")
     public String getComboMantenimiento(Model model) {
 		model.addAttribute("X21aAlumno", new X21aAlumno());
         return "comboMantenimiento";
@@ -563,7 +562,7 @@ public class PatronesController {
     }
 
     //select en mantenimiento
-    @RequestMapping(value = "selectMantenimiento", method = RequestMethod.GET)
+    @GetMapping(value = "selectMantenimiento")
     public String getSelectMantenimiento(Model model) {
         model.addAttribute("X21aAlumno", new Alumno());
         return "selectMantenimiento";
@@ -613,21 +612,21 @@ public class PatronesController {
     		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam"),
     		@UDALinkAllower(name = "getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno")
     })
-    @RequestMapping(value = "selectAutocompleteEnlazadoMultiple", method = RequestMethod.GET)
+    @GetMapping(value = "selectAutocompleteEnlazadoMultiple")
     public String getSelectAutocompleteEnlazadoMultiple(Model model) {
         return "selectAutocompleteEnlazadoMultiple";
     }
     
 
     //Feedback
-    @RequestMapping(value = "feedback", method = RequestMethod.GET)
+    @GetMapping(value = "feedback")
     public String getFeedback(Model model) {
         return "feedback";
     }
 
     //Form
     @UDALink(name = "getForm", linkTo = { @UDALinkAllower(name = "getPaises", linkClass = NoraController.class), @UDALinkAllower(name = "getAutonomias", linkClass = NoraController.class), @UDALinkAllower(name = "getProvincias", linkClass = NoraController.class), @UDALinkAllower(name = "getFormHttp",allowSubEntities = true ), @UDALinkAllower(name = "getFormmMultientidades" ), @UDALinkAllower(name = "getFormmMultientidadesMismoTipo" ), @UDALinkAllower(name = "addFormSimple" )})
-    @RequestMapping(value = "form", method = RequestMethod.GET)
+    @GetMapping(value = "form")
     public String getForm(Model model){
 
         List<NoraPais> paises = noraPaisService.findAll(null, null);
@@ -648,102 +647,102 @@ public class PatronesController {
     }
 
     //Grid
-    @RequestMapping(value = "grid", method = RequestMethod.GET)
+    @GetMapping(value = "grid")
     public String getGrid(Model model) {
         return "grid";
     }
 
     //Menu
-    @RequestMapping(value = "menu", method = RequestMethod.GET)
+    @GetMapping(value = "menu")
     public String getMenu(Model model) {
         return "menu";
     }
 
     //Menu Vertical
-    @RequestMapping(value = "menuVertical", method = RequestMethod.GET)
+    @GetMapping(value = "menuVertical")
     public String getMenuVertical(Model model) {
         model.addAttribute("defaultLayout", "vertical");
         return "menuVertical";
     }
 
     //Menu Mixto
-    @RequestMapping(value = "menuMixto", method = RequestMethod.GET)
+    @GetMapping(value = "menuMixto")
     public String getMenuMixto(Model model) {
         model.addAttribute("defaultLayout", "mixto");
         return "menuMixto";
     }
 
     //Message
-    @RequestMapping(value = "message", method = RequestMethod.GET)
+    @GetMapping(value = "message")
     public String getMessage(Model model) {
         return "message";
     }
 
     //ProgressBar
-    @RequestMapping(value = "progressBar", method = RequestMethod.GET)
+    @GetMapping(value = "progressBar")
     public String getProgressBar(Model model) {
         return "progressBar";
     }
 
     //Slider
-    @RequestMapping(value = "slider", method = RequestMethod.GET)
+    @GetMapping(value = "slider")
     public String getSlider(Model model) {
         return "slider";
     }
 
     //Spinner
-    @RequestMapping(value = "spinner", method = RequestMethod.GET)
+    @GetMapping(value = "spinner")
     public String getSpinner(Model model) {
         return "spinner";
     }
 
     //Tabs con carga de la pagina
-    @RequestMapping(value = "tabsStatic", method = RequestMethod.GET)
+    @GetMapping(value = "tabsStatic")
     public String getTabsStatic(Model model) {
         return "tabsStatic";
     }
 
     //Tabs con carga ajax
     @UDALink(name = "getTabsAjax", linkTo = { @UDALinkAllower(name = "tabsContent"), @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content"), @UDALinkAllower(name = "tabSub"), @UDALinkAllower(name = "tabSubAna"), @UDALinkAllower(name = "tabsMaint"), @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
-    @RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
+    @GetMapping(value = "tabsAjax")
     public String getTabsAjax(Model model) {
         return "tabsAjax";
     }
 
     //Tabs Mixto
     @UDALink(name = "tabsMixto", linkTo = { @UDALinkAllower(name = "tabs2Content"), @UDALinkAllower(name = "tabs3Content"), @UDALinkAllower(name = "tabs4Table"), @UDALinkAllower(name = "tabs5TableMultiPk") })
-    @RequestMapping(value = "tabsMixto", method = RequestMethod.GET)
+    @GetMapping(value = "tabsMixto")
     public String getTabsMixto(Model model) {
         return "tabsMixto";
     }
 
     //Tabs Multiples mantenimientos
     @UDALink(name = "tabsMaint", linkTo = { @UDALinkAllower(name = "getPageNoTemplate", linkClass = X21aCalendarController.class), @UDALinkAllower(name = "getListaNoTemplateView", linkClass = ListaController.class)})
-    @RequestMapping(value = {"maintTab", "pruebaSub3Maint"}, method = RequestMethod.GET)
+    @GetMapping(value = {"maintTab", "pruebaSub3Maint"})
     public String getMaintTab(Model model) {
         return "maintTab";
     }
 
     //Tabs Scrollable
-    @RequestMapping(value = "tabsScrollable", method = RequestMethod.GET)
+    @GetMapping(value = "tabsScrollable")
     public String geTabsScrollable(Model model) {
         return "tabsScrollable";
     }
 
     //Time
-    @RequestMapping(value = "time", method = RequestMethod.GET)
+    @GetMapping(value = "time")
     public String getTime(Model model) {
         return "time";
     }
 
     //Toolbar
-    @RequestMapping(value = "toolbar", method = RequestMethod.GET)
+    @GetMapping(value = "toolbar")
     public String getToolbar(Model model) {
         return "toolbar";
     }
 
     //Tooltip
-    @RequestMapping(value = "tooltip", method = RequestMethod.GET)
+    @GetMapping(value = "tooltip")
     public String getTooltip(Model model) {
         return "tooltip";
     }
@@ -768,59 +767,59 @@ public class PatronesController {
     }
 
     //Wizard
-    @RequestMapping(value = "wizard", method = RequestMethod.GET)
+    @GetMapping(value = "wizard")
     public String getWizard(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard";
     }
 
     //Wizard_includeFile
-    @RequestMapping(value = "wizard_includeFile", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_includeFile")
     public String getWizard_includeFile(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_includeFile";
     }
 
     //Wizard_jspInclude
-    @RequestMapping(value = "wizard_jspInclude", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_jspInclude")
     public String getWizard_jspInclude(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_jspInclude";
     }
 
     //Wizard_jstlImport
-    @RequestMapping(value = "wizard_jstlImport", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_jstlImport")
     public String getWizard_jstlImporte(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_jstlImport";
     }
 
     //Wizard dinamico
-    @RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_dinamico")
     public String getWizard_dinamico(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_dinamico";
     }
 
-    @RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_dinamico_content")
     public String getWizard_dinamico_content(Model model) {
         return "wizard_dinamico_content";
     }
 
     //Tree
     @UDALink(name = "getTrees", linkTo = { @UDALinkAllower(name = "getTreeAjax" )})
-    @RequestMapping(value = "trees", method = RequestMethod.GET)
+    @GetMapping(value = "trees")
     public String getTrees(Model model) {
         return "trees";
     }
 
-    @RequestMapping(value = "treeDAD", method = RequestMethod.GET)
+    @GetMapping(value = "treeDAD")
     public String getTreeDragAndDrop(Model model) {
         return "treeDAD";
     }
     
     @UDALink(name = "getTreeAjax")
-    @RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
+    @GetMapping(value = "ajaxTree")
     public Object getTreeAjax(Model model, HttpServletResponse response) {
 
         // S
@@ -872,7 +871,7 @@ public class PatronesController {
     }
 
     //Validate
-    @RequestMapping(value = "validate", method = RequestMethod.GET)
+    @GetMapping(value = "validate")
     public String getValidate(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("randomForm", new RandomForm());
@@ -880,14 +879,14 @@ public class PatronesController {
     }
 
     //Validate
-    @RequestMapping(value = "validateRules", method = RequestMethod.GET)
+    @GetMapping(value = "validateRules")
     public String getValidateRules(Model model) {
 
         model.addAttribute("alumno", new Alumno());
         return "validateRules";
     }
 
-    @RequestMapping(value = "validateRup", method = RequestMethod.GET)
+    @GetMapping(value = "validateRup")
     public String getValidateRup(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("randomForm", new RandomForm());
@@ -907,7 +906,7 @@ public class PatronesController {
     		@UDALinkAllower(name = "tabs2Content"),
     		@UDALinkAllower(name = "tabs3Content"),
     		@UDALinkAllower(name = "getAllDialog") })
-    @RequestMapping(value = "all", method = RequestMethod.GET)
+    @GetMapping(value = "all")
     public String getAll(Model model) {
     	model.addAttribute("comarca", new Comarca());
         return "all";
@@ -919,7 +918,7 @@ public class PatronesController {
     		@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
-    @RequestMapping(value = "allDialog", method = RequestMethod.GET)
+    @GetMapping(value = "allDialog")
     public String getAllDialog(Model model) {
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("randomForm", new RandomForm());
@@ -943,7 +942,7 @@ public class PatronesController {
     }
 
     //Context menu
-    @RequestMapping(value = "contextMenu", method = RequestMethod.GET)
+    @GetMapping(value = "contextMenu")
     public String getContextMenu(Model model) {
         return "contextMenu";
     }
@@ -1511,7 +1510,7 @@ public class PatronesController {
     }
 
     @UDALink(name = "getComarcaLocalidad")
-    @RequestMapping(value = "comboEnlazado/comarcaLocalidad", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazado/comarcaLocalidad")
     public @ResponseBody
     List<Resource<Localidad>> getComarcaLocalidad(
             @RequestParam(value = "comarcaId", required = false) BigDecimal comarca_code) {
@@ -1577,7 +1576,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "getEnlMultDptoProvNoParam")
-    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam")
     public @ResponseBody
     List<Resource<DepartamentoProvincia>> getEnlMultDptoProvNoParam(
             @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
@@ -1604,19 +1603,19 @@ public class PatronesController {
      * TABS -> Contenidos
      */
     @UDALink(name = "tabsContent")
-    @RequestMapping(value = {"fragmento1", "fragmento2", "fragmento3"}, method = RequestMethod.GET)
+    @GetMapping(value = {"fragmento1", "fragmento2", "fragmento3"})
     public String tabsContent(Model model) {
         return "tabsContent_1";
     }
     
     @UDALink(name = "tabs2Content")
-    @RequestMapping(value = {"tab2Fragment"}, method = RequestMethod.GET)
+    @GetMapping(value = {"tab2Fragment"})
     public String tabs2Content(Model model) {
         return "tabsContent_2";
     }
 
     @UDALink(name = "tabs3Content")
-    @RequestMapping(value = {"tab3Fragment"}, method = RequestMethod.GET)
+    @GetMapping(value = {"tab3Fragment"})
     public String tabs3Content(Model model) {
         return "tabsContent_3";
     }
@@ -1632,7 +1631,7 @@ public class PatronesController {
 			@UDALinkAllower(name = "multifilterDelete", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "multifilterDefault", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "multifilterGetAll", linkClass = TableUsuarioController.class) })
-	@RequestMapping(value = "/tabs4Table", method = RequestMethod.GET)
+	@GetMapping(value = "/tabs4Table")
 	public String tabs4Table (Model model) {
 		Usuario usuario = new Usuario();
 		model.addAttribute("usuario", usuario);
@@ -1659,7 +1658,7 @@ public class PatronesController {
 	@UDALink(name = "tabs5TableMultiPk", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm", linkClass = TableMultiPkController.class),
 			@UDALinkAllower(name = "deleteAll", linkClass = TableMultiPkController.class) })
-	@RequestMapping(value = "/tabs5TableMultiPk", method = RequestMethod.GET)
+	@GetMapping(value = "/tabs5TableMultiPk")
 	public String tabs5TableMultiPk (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
@@ -1667,20 +1666,20 @@ public class PatronesController {
 	}
 
     @UDALink(name = "tabSub")
-    @RequestMapping(value = "pruebaSub", method = RequestMethod.GET)
+    @GetMapping(value = "pruebaSub")
     public String tabSub(Model model) {
         return "tabsContent_1";
     }
     
     @UDALink(name = "tabSubAna")
-    @RequestMapping(value = "pruebaSubAna", method = RequestMethod.GET)
+    @GetMapping(value = "pruebaSubAna")
     public String tabSubAna(Model model) {
         return "tabsContent_2";
     }
 
     // rupCharts
     @UDALink(name = "getCharts")
-    @RequestMapping(value = "charts", method = RequestMethod.GET)
+    @GetMapping(value = "charts")
     public String getCharts(Model model) {
         return "charts";
     }
@@ -1873,7 +1872,7 @@ public class PatronesController {
 
     //Form ajax submit
     @UDALink(name = "getFormmMultientidades")
-    @RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
+    @PostMapping(value = "form/multientidades")
     public @ResponseBody
     Object getFormmMultientidades(
             @RequestJsonBody(param = "alumno") Alumno alumno,
@@ -1894,7 +1893,7 @@ public class PatronesController {
 
     //Form ajax submit
     @UDALink(name = "getFormmMultientidadesMismoTipo")
-    @RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
+    @PostMapping(value = "form/multientidadesMismoTipo")
     public @ResponseBody
     Object getFormmMultientidadesMismoTipo(
             @RequestJsonBody(param = "comarca1") Comarca comarca1,
@@ -1917,7 +1916,7 @@ public class PatronesController {
     }
     
     @UDALink(name = "addFormSimple")
-    @RequestMapping(value = "form/subidaArchivos", method = RequestMethod.POST, produces = "application/json")
+    @PostMapping(value = "form/subidaArchivos", produces = "application/json")
     public @ResponseBody
     Object addFormSimple(
             @ModelAttribute UploadBean uploadBean,
@@ -1953,7 +1952,7 @@ public class PatronesController {
      * Validacion
      */
 
-    @RequestMapping(value = "validacion/cliente", method = RequestMethod.POST)
+    @PostMapping(value = "validacion/cliente")
     public @ResponseBody
     Object validacion(Model model) {
 
@@ -1969,7 +1968,7 @@ public class PatronesController {
      * Validacion
      */
 
-    @RequestMapping(value = "validacion/servidor", method = RequestMethod.POST)
+    @PostMapping(value = "validacion/servidor")
     public @ResponseBody
     Object validacion(@Validated(value = {AlumnoEjemplo1Validation.class}) @RequestBody Alumno alumno, Model model) {
 
@@ -1986,7 +1985,7 @@ public class PatronesController {
      * @throws IOException
      */
 
-    @RequestMapping(value = "validacion/servidor2", method = RequestMethod.POST, produces = "application/json")
+    @PostMapping(value = "validacion/servidor2", produces = "application/json")
     public @ResponseBody
     Object validacion2(@RequestBody Alumno alumno, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -2063,7 +2062,7 @@ public class PatronesController {
      * @param model el modelo.
      * @return string la view.
      */
-    @RequestMapping(value = "calendar/page", method = RequestMethod.GET)
+    @GetMapping(value = "calendar/page")
     public String getCalendar(Model model) {
         return "calendar";
     }
@@ -2074,7 +2073,7 @@ public class PatronesController {
      * @param model el modelo.
      * @return string la view.
      */
-    @RequestMapping(value = "calendar/pageDouble", method = RequestMethod.GET)
+    @GetMapping(value = "calendar/pageDouble")
     public String getDoubleCalendar(Model model) {
         return "doubleCalendar";
     }

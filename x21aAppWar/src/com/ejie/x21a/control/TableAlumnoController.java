@@ -42,10 +42,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,9 +60,9 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
-import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
+import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
 import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
@@ -110,7 +113,7 @@ public class TableAlumnoController  {
 	 * @return String
 	 */
 	@UDALink(name = "getCreateForm")
-	@RequestMapping(value = "maint", method = RequestMethod.GET)
+	@GetMapping(value = "maint")
 	public String getCreateForm(Model model) {
 		
 		List<NoraPais> paises = noraPaisService.findAll(null, null);
@@ -150,7 +153,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<Alumno> get(final @PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id) {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
@@ -169,7 +172,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "edit"), 
 			@UDALinkAllower(name = "remove"),
 			@UDALinkAllower(name = "get") })
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Resource<Alumno>> getAll(@ModelAttribute Alumno filterAlumno) {
 		TableAlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
 	    return ResourceUtils.fromListToResource(this.alumnoService.findAll(filterAlumno, null));
@@ -182,7 +185,7 @@ public class TableAlumnoController  {
 	 * @throws IOException 
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST, produces="application/json")
+	@PostMapping(value = "/add", produces="application/json")
 	public @ResponseBody Resource<Object> add(@Validated(AlumnoAddValidation.class) 
 			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
@@ -215,7 +218,7 @@ public class TableAlumnoController  {
 	 * @throws IOException 
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces="application/json")
+	@PutMapping(value = "/edit", produces="application/json")
 	public @ResponseBody Resource<Alumno> edit(
 			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,
@@ -248,7 +251,7 @@ public class TableAlumnoController  {
     }
 	
 // EJEMPLO ENVIO application/json
-//	@RequestMapping(method = RequestMethod.PUT)
+//	@PutMapping
 //	public @ResponseBody Alumno edit(
 //			@RequestBody Alumno alumno,
 //			@RequestParam(value = "oldPassword", required = false) String oldPassword,
@@ -276,7 +279,7 @@ public class TableAlumnoController  {
 	 * @return alumno
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Resource<Alumno> remove(@PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id) {
         Alumno alumno = new Alumno();
@@ -310,7 +313,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter"),
 			@UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Alumno> filter(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -334,7 +337,7 @@ public class TableAlumnoController  {
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Alumno>> search(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody(param="search") Alumno searchAlumno,
@@ -367,7 +370,7 @@ public class TableAlumnoController  {
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/imagen/{id}")
 	public void getImagenAlumno(@PathVariable @TrustAssertion(idFor = Alumno.class) BigDecimal id, HttpServletResponse response) throws IOException {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);

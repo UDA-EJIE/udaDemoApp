@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -89,7 +90,7 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll")})
-	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
+	@GetMapping(value = "masterDetail")
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("comarca", new Comarca());
@@ -104,7 +105,7 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
 			@UDALinkAllower(name = "multifilterGetAll")})
-	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
+	@GetMapping(value = "masterDialog")
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("comarca", new Comarca());
@@ -186,7 +187,7 @@ public class TableComarcaController {
  	 * @return Comarca
  	 */
 	@UDALink(name = "edit", linkTo = {@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Comarca> edit(@Validated @RequestBody final Comarca comarca) {		
         final Comarca comarcaAux = this.comarcaService.update(comarca);
 		logger.info("Entity correctly updated!");
@@ -199,7 +200,7 @@ public class TableComarcaController {
 	 * @return Comarca
 	 */
 	@UDALink(name = "add", linkTo = {@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<Comarca> add(@Validated @RequestBody final Comarca comarca) {		
 		final Comarca comarcaAux = this.comarcaService.add(comarca);
 		logger.info("Entity correctly inserted!");
@@ -212,7 +213,7 @@ public class TableComarcaController {
 	 *
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody Resource<Comarca> remove(@PathVariable(value="id") @TrustAssertion(idFor = Comarca.class) final BigDecimal id, final HttpServletResponse  response) {
 		final Comarca comarca = new Comarca();
@@ -236,7 +237,7 @@ public class TableComarcaController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Comarca> filter(
 			@RequestJsonBody(param="filter") final Comarca comarca,
 			@RequestJsonBody final TableRequestDto tableRequestDto) {
@@ -246,7 +247,7 @@ public class TableComarcaController {
 	
 	// Obtiene el formulario del multi filtro
 	@UDALink(name = "getMultiFilterForm")
-	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter")
 	public String getMultiFilterForm (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
@@ -289,7 +290,7 @@ public class TableComarcaController {
 	}
 	
 	@UDALink(name = "multifilterDefault")
-	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Resource<Filter> filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
 		@RequestParam(value = "comarca", required = true) final String filterComarca) {
@@ -298,7 +299,7 @@ public class TableComarcaController {
 	}
 	
 	@UDALink(name = "multifilterGetAll")
-	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
 		@RequestParam(value = "comarca", required = true) final String filterComarca) {
@@ -307,7 +308,7 @@ public class TableComarcaController {
 	}
 	
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Comarca>> search(
 			@RequestJsonBody(param="filter") final Comarca comarcaFilter,
 			@RequestJsonBody(param="search") final Comarca comarcaSearch,
@@ -352,7 +353,7 @@ public class TableComarcaController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "excelReport")
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -383,7 +384,7 @@ public class TableComarcaController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport")
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -414,7 +415,7 @@ public class TableComarcaController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport")
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -445,7 +446,7 @@ public class TableComarcaController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport")
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -466,7 +467,7 @@ public class TableComarcaController {
 	 * MAPPING PARA EL COMBO DE PROVINCIAS
 	 */
 	@UDALink(name = "getProvincias")
-	@RequestMapping(value = "/provincia", method=RequestMethod.GET)
+	@GetMapping(value = "/provincia", method=RequestMethod.GET)
 	public @ResponseBody List<Resource<Provincia>> getProvincias() {
 		final Provincia filtroProvincia = new Provincia();
 		final List<Provincia> findAll = provinciaService.findAll(filtroProvincia, null);
@@ -477,7 +478,7 @@ public class TableComarcaController {
 	 * MAPPING PARA EL COMBO DE COMARCAS
 	 */
 	@UDALink(name = "getComarcas")
-	@RequestMapping(value = "/comarca", method=RequestMethod.GET)
+	@GetMapping(value = "/comarca", method=RequestMethod.GET)
 	public @ResponseBody List<Resource<Comarca>> getComarcas() {
 		final Comarca filtroComarca = new Comarca();
 		final List<Comarca> findAll = comarcaService.findAll(filtroComarca, null);

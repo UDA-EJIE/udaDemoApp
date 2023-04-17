@@ -13,11 +13,12 @@ import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,7 +51,7 @@ public class CacheController {
 			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "getApellidos", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class) })
-	@RequestMapping(value = "view", method = RequestMethod.GET)
+	@GetMapping(value = "view")
 	public String getCreateForm(Model model) {
 		logger.info("[GET - View] : cache");
 		return "cache";
@@ -108,7 +109,7 @@ public class CacheController {
 	}
 	
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<Usuario> get(@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
@@ -118,7 +119,7 @@ public class CacheController {
 	}
 	
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Usuario> edit(@Validated @RequestBody Usuario usuario) {
 		Usuario usuarioAux = this.cacheService.update(usuario, Boolean.TRUE);
 		logger.info("[PUT - table] : �Entidad correctamente actualizada!");
@@ -126,7 +127,7 @@ public class CacheController {
     }
 	
 	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {

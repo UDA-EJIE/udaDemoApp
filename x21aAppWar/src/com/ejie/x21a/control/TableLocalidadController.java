@@ -35,11 +35,12 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -114,7 +115,7 @@ public class TableLocalidadController {
 	 * @return localidad Localidad
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
+	@GetMapping(value = "/{code}")
 	public @ResponseBody Resource<Localidad> getById(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
 		localidad.setCode(code);
@@ -130,7 +131,7 @@ public class TableLocalidadController {
 	 * @return Localidad
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Localidad> edit(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.update(localidad);
         TableLocalidadController.logger.info("[PUT] : Localidad actualizado correctamente");
@@ -144,7 +145,7 @@ public class TableLocalidadController {
 	 * @return Localidad
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<Localidad> add(@RequestBody Localidad localidad) {		
         Localidad localidadAux = this.localidadService.add(localidad);
         TableLocalidadController.logger.info("[POST] : Localidad insertado correctamente");
@@ -158,7 +159,7 @@ public class TableLocalidadController {
 	 * @return localidad
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{code}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Resource<Localidad> remove(@PathVariable @TrustAssertion(idFor = Localidad.class) BigDecimal code) {
         Localidad localidad = new Localidad();
@@ -180,7 +181,7 @@ public class TableLocalidadController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Localidad> filter(
 			@RequestJsonBody(param="filter") Localidad localidad,
 			@RequestJsonBody final TableRequestDto tableRequestDto) {
@@ -204,7 +205,7 @@ public class TableLocalidadController {
 	}
 	
 	@UDALink(name = "multifilterDefault")
-	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Resource<Filter> filterGetDefault(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "localidad", required = true) String filterLocalidad) {
@@ -213,7 +214,7 @@ public class TableLocalidadController {
 	}
 	
 	@UDALink(name = "multifilterGetAll")
-	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "localidad", required = true) String filterLocalidad) {
@@ -222,7 +223,7 @@ public class TableLocalidadController {
 	}
 	
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Localidad>> search(
 			@RequestJsonBody(param="filter") Localidad localidadFilter,
 			@RequestJsonBody(param="search") Localidad localidadSearch,
@@ -267,7 +268,7 @@ public class TableLocalidadController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "excelReport")
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -298,7 +299,7 @@ public class TableLocalidadController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport")
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -329,7 +330,7 @@ public class TableLocalidadController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport")
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -360,7 +361,7 @@ public class TableLocalidadController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport")
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 

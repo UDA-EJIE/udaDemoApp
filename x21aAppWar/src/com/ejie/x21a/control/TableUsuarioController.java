@@ -54,7 +54,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -278,7 +277,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
-	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
+	@GetMapping(value = "masterDetail")
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		
@@ -312,7 +311,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
-	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
+	@GetMapping(value = "masterDialog")
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 
@@ -341,7 +340,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
+	@GetMapping(value = "tableDialog")
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("multiPk", new MultiPk());
@@ -363,7 +362,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
+	@GetMapping(value = "/tableDialogAjax")
 	public String getTableDialogAjax (Model model) {
 		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
 		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
@@ -721,7 +720,7 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "getApellidos")
-	@RequestMapping(value = "/apellidos", method = RequestMethod.GET)
+	@GetMapping(value = "/apellidos")
 	public @ResponseBody List<AutocompleteComboGenericPOJO> getApellidos (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {
@@ -776,7 +775,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getRoles",linkTo = { @UDALinkAllower(name = "getApellidos" )})
-	@RequestMapping(value = "/roles", method = RequestMethod.GET)
+	@GetMapping(value = "/roles")
 	public @ResponseBody List<AutocompleteComboGenericPOJO> getRoles (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {	
@@ -804,7 +803,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "get") })
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody
 	List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
@@ -839,7 +838,7 @@ public class TableUsuarioController {
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
@@ -847,7 +846,7 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "edit2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/{bis}/edit")
     public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
     		@RequestBody Usuario2 usuario) {
 		Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
@@ -912,7 +911,7 @@ public class TableUsuarioController {
 	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
@@ -920,7 +919,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/add", method = RequestMethod.POST)
+	@PostMapping(value = "/{bis}/add")
 	public @ResponseBody Resource<Usuario2> add2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@Validated @RequestBody Usuario2 usuario) {		
@@ -970,7 +969,7 @@ public class TableUsuarioController {
 	 * @return Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
     public @ResponseBody Resource<Usuario> remove(@PathVariable @TrustAssertion(idFor = Usuario.class) String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
@@ -1030,7 +1029,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -1046,7 +1045,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "deleteAll2"),
 			@UDALinkAllower(name = "editFromNewWindowDouble"),
 			@UDALinkAllower(name = "clipboardReport2") })
-	@RequestMapping(value = "/{bis}/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/{bis}/filter")
 	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -1059,7 +1058,7 @@ public class TableUsuarioController {
 	@UDALink(name = "getMultiFilterForm", linkTo = { 
 			@UDALinkAllower(name = "multifilterAdd"), 
 			@UDALinkAllower(name = "multifilterDelete") })
-	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter")
 	public String getMultiFilterForm (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
@@ -1090,7 +1089,7 @@ public class TableUsuarioController {
 	@UDALink(name = "getMultiFilterForm2", linkTo = { 
 			@UDALinkAllower(name = "multifilterAdd"), 
 			@UDALinkAllower(name = "multifilterDelete") })
-	@RequestMapping(value = "{bis}/multiFilter", method = RequestMethod.POST)
+	@PostMapping(value = "{bis}/multiFilter")
 	public String getMultiFilterForm2 (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
@@ -1135,7 +1134,7 @@ public class TableUsuarioController {
 	
 	// Obtiene el filtro por defecto
 	@UDALink(name = "multifilterDefault")
-	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Resource<Filter> filterGetDefault(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "user", required = true) String filterUser) {
@@ -1145,7 +1144,7 @@ public class TableUsuarioController {
 	
 	// Obtiene los filtros disponibles
 	@UDALink(name = "multifilterGetAll")
-	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 			@RequestParam(value = "q", required = false) String filterQ,
 			@RequestParam(value = "c", required = false) Boolean filterC,
@@ -1170,7 +1169,7 @@ public class TableUsuarioController {
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
@@ -1301,7 +1300,7 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "excelReport")
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1319,7 +1318,7 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "excelReport2")
-	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1360,7 +1359,7 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "pdfReport")
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1378,7 +1377,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "pdfReport2")
-	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "{bis}/pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1419,7 +1418,7 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "odsReport")
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1437,7 +1436,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "odsReport2")
-	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "{bis}/odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1478,7 +1477,7 @@ public class TableUsuarioController {
 	 * @param response HttpServletResponse
 	 */
 	@UDALink(name = "csvReport")
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1496,7 +1495,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "csvReport2")
-	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@PostMapping(value = "{bis}/csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 

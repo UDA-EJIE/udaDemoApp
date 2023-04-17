@@ -170,7 +170,7 @@ public class UploadController {
 		return filesMetaInfo;
 	}
 
-//	@RequestMapping(value="pifForm", method = RequestMethod.POST)
+//	@PostMapping(value="pifForm")
 //	public @ResponseBody List<Map<String,Object>> addPifForm(@RequestParam(value="nombre", required=false) String nombre,
 //			@RequestParam(value="apellido1", required=false) String apellido1,
 //			@RequestParam(value="apellido2", required=false) String apellido2,
