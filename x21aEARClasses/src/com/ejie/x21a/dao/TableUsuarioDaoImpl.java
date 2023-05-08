@@ -576,7 +576,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, "ID"));
+		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Usuario.class, params, TableUsuarioDaoImpl.ORDER_BY_WHITE_LIST, "ID"));
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		
