@@ -43,7 +43,7 @@
 		</div>
 		<form:form id="multicomboGruposRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remotoAgrupado}" method="GET">
 			<div class="form-groupMaterial col-sm">
-				<form:select id="multicomboGruposRemoto" path="code" /> 
+				<form:select id="multicomboGruposRemoto" path="codeProvincia" /> 
 				<label for="multicomboGruposRemoto">MultiCombo con 'optgroups' remoto</label>
 			</div>
 		</form:form>
