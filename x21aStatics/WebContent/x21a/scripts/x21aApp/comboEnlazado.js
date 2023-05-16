@@ -159,6 +159,20 @@ $(function () {
             width: '99%',
             customClasses: ['select-material']
         });
+        
+        // MODELO
+        $('#comarca_comboPadre').rup_combo({
+            loadFromSelect: true,
+            width: '99%',
+            customClasses: ['select-material']
+        });
+
+        $('#localidad_comboHijo').rup_combo({
+            parent: ['comarca_comboPadre'],
+            loadFromSelect: true,
+            width: '99%',
+            customClasses: ['select-material']
+        });
 
 
         //MIXTO I
