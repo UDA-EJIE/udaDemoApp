@@ -3,7 +3,7 @@ package com.ejie.x21a.model;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.hdiv.services.SecureIdentifiable;
+import com.ejie.hdiv.services.SecureIdentifiable;
 
 public class IberdokFile implements java.io.Serializable, SecureIdentifiable<String>{
 	

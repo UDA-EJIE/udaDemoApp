@@ -20,7 +20,7 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
-import org.hdiv.services.SecureIdentifiable;
+import com.ejie.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
