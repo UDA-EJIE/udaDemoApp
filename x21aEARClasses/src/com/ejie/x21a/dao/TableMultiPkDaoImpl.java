@@ -158,7 +158,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "ida", "idb"));
+    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, TableMultiPkDaoImpl.ORDER_BY_WHITE_LIST, "ida", "idb"));
     	
     	
     	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());

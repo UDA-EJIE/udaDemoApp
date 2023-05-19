@@ -164,7 +164,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-		StringBuilder sbMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, "ID"));
+		StringBuilder sbMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, TableX21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST, "ID"));
 		
 		return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
     }
