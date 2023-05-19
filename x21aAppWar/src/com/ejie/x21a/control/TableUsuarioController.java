@@ -391,6 +391,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "addMultipart"),
+			@UDALinkAllower(name = "editMultipart"),
 			@UDALinkAllower(name = "filter") })
 	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
@@ -430,6 +432,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get2"),
 			@UDALinkAllower(name = "add2"),
 			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "addMultipart2"),
+			@UDALinkAllower(name = "editMultipart2"),
 			@UDALinkAllower(name = "filter2") })
 	@PostMapping(value = "/editFormDouble")
 	public String getTableDoubleEditForm (
