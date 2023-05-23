@@ -327,7 +327,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Comarca.class, params, "CODE"));
+		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Comarca.class, params, ComarcaDaoImpl.ORDER_BY_WHITE_LIST, "CODE"));
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		

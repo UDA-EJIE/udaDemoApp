@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.xpath.XPathAPI;
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,14 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -76,7 +79,7 @@ public class IberdokController {
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<IberdokFile> get(@PathVariable @TrustAssertion(idFor = IberdokFile.class) String id,HttpServletResponse response) {
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
@@ -96,7 +99,7 @@ public class IberdokController {
 	 * @return Lista de objetos correspondientes a la búsqueda realizada.
 	 */
 	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public @ResponseBody List<Resource<IberdokFile>> getAll(
 			@ModelAttribute() IberdokFile fileFilter) {
 		IberdokController.logger.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
@@ -111,7 +114,7 @@ public class IberdokController {
 	 * @return Bean resultante de la modificación.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
 	public @ResponseBody Resource<IberdokFile> edit(
 			@Validated @RequestBody IberdokFile file, HttpServletRequest request) {
 		try{
@@ -138,7 +141,7 @@ public class IberdokController {
 	 * @return Bean resultante del proceso de creación.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<IberdokFile> add(
 			@Validated @RequestBody IberdokFile file) {
 
@@ -156,7 +159,7 @@ public class IberdokController {
 	 * @return Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody Resource<IberdokFile> remove(
 			@PathVariable(value = "id") @TrustAssertion(idFor = IberdokFile.class) String id, HttpServletResponse response) {
@@ -186,7 +189,7 @@ public class IberdokController {
 	// @Json(mixins={@JsonMixin(target=IberdokFile.class,
 	// mixin=IberdokFileMixIn.class)})
 	@UDALink(name = "filter", linkTo = { @UDALinkAllower(name = "get"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter"), @UDALinkAllower(name = "deleteAll")})
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<IberdokFile> filter(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -209,7 +212,7 @@ public class IberdokController {
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<IberdokFile>> search(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody(param = "search") IberdokFile searchIberdokFile,
@@ -229,7 +232,7 @@ public class IberdokController {
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
@@ -248,7 +251,7 @@ public class IberdokController {
 			@UDALinkAllower(name = "deleteAll"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getPDF") })
-	@RequestMapping(value = "view", method = RequestMethod.GET)
+	@GetMapping(value = "view")
 	public String getIberdok(Model model, HttpServletRequest request, HttpServletResponse response) {
 
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -281,7 +284,7 @@ public class IberdokController {
 	
 	// Iberdok
 	@UDALink(name = "getWelcome", linkTo = {@UDALinkAllower(name = "view")})
-	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
+	@GetMapping(value = "iberdokWelcome")
 	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -325,7 +328,7 @@ public class IberdokController {
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "getXhtml"),
 			@UDALinkAllower(name = "view") })
-	@RequestMapping(value = "viewIberdok", method = RequestMethod.GET)
+	@GetMapping(value = "viewIberdok")
 	public String viewIberdok(Model model,HttpServletResponse response,@RequestParam(required = false) String idCorrelacion,@RequestParam(required = false) String idModelo) {
 
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -448,7 +451,7 @@ public class IberdokController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
 			Model model, HttpServletResponse response) {
@@ -477,7 +480,7 @@ public class IberdokController {
 	 *
 	 */
 	@UDALink(name = "getXhtml")
-	@RequestMapping(value = "/getXhtml", method = RequestMethod.GET)
+	@GetMapping(value = "/getXhtml")
 	@ResponseBody
 	public String getXhtml(
 			@RequestParam(value = "idDocumento", required = true) String idDocumento) {
@@ -504,7 +507,7 @@ public class IberdokController {
 	 *
 	 */
 	@UDALink(name = "getPDF")
-	@RequestMapping(value = "/getPdf", method = RequestMethod.GET)
+	@GetMapping(value = "/getPdf")
 	@ResponseBody
 	public void getPDF(
 			@RequestParam(value = "idDocumento", required = true) String idDocumento,

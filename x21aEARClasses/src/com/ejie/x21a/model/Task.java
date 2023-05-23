@@ -1,6 +1,6 @@
 package com.ejie.x21a.model;
 
-import org.hdiv.services.SecureIdentifiable;
+import com.ejie.hdiv.services.SecureIdentifiable;
 
 public class Task implements SecureIdentifiable<Integer> {
 

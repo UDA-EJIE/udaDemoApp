@@ -20,8 +20,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.SecureIdContainer;
+import com.ejie.hdiv.services.TrustAssertion;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

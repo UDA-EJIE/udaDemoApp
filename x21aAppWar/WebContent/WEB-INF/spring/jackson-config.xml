@@ -12,10 +12,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
     
 
-	<!-- Serializador utilizado por UDA para serializar unicamente las  -->
+	<!-- Serializador utilizado por UDA  -->
     <bean id="customSerializer" class="com.ejie.x38.serialization.CustomSerializer" />
     
+    <!-- Serializador utilizado por Hdiv  -->
     <bean id="secureSerializerModule" class="com.ejie.x38.serialization.EjieSecureModule" />
+    
     <bean id="udaMappingJackson2HttpMessageConverter" class="com.ejie.x38.serialization.UdaMappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes" ref="jacksonSupportedMediaTypes" />
         <property name="udaModule" ref="udaModule" />

@@ -25,9 +25,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.RandomForm;
@@ -55,22 +55,22 @@ public class BootstrapController {
 	}
 	
 	
-	@RequestMapping(value = "stackedHorizontal", method = RequestMethod.GET)
+	@GetMapping(value = "stackedHorizontal")
 	public String getStackedHorizontal(Model model) {
 		return "stackedHorizontal";
 	}
 	
-	@RequestMapping(value = "mobileDesktop", method = RequestMethod.GET)
+	@GetMapping(value = "mobileDesktop")
 	public String getMobileDesktop(Model model) {
 		return "mobileDesktop";
 	}
 	
-	@RequestMapping(value = "mobileTabletDesktop", method = RequestMethod.GET)
+	@GetMapping(value = "mobileTabletDesktop")
 	public String getMobileTabletDesktop(Model model) {
 		return "mobileTabletDesktop";
 	}
 	
-	@RequestMapping(value = "exampleForm", method = RequestMethod.GET)
+	@GetMapping(value = "exampleForm")
 	public String getExampleForm(Model model) {
 		model.addAttribute("randomForm", new RandomForm());
 		return "exampleForm";

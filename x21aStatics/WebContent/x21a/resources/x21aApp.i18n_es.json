@@ -429,6 +429,28 @@
 		"XLS"		:"XLS",
 		"ZIP"		:"ZIP"
 	},
+	"toolbarMixta" :{
+		"buscar"  	:"Buscar",
+		"otros"	  	:"Otros botones",
+		"nuevo"	  	:"Nuevo",
+		"editar"	:"Editar",
+		"cancelar"	:"Cancelar",
+		"borrar"	:"Borrar",
+		"filtrar"	:"Filtrar",
+		"imprimir"	:"Imprimir",
+		"ficheros"	:"Ficheros",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
+	},
 	"toolbarRight" :{
 		"buscar"  	:"Buscar",
 		"otros"	  	:"Otros botones",

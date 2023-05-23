@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.validation.Valid;
 import javax.validation.groups.Default;
 
-import org.hdiv.services.SecureIdentifiable;
+import com.ejie.hdiv.services.SecureIdentifiable;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;

@@ -19,8 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ejie.x38.hdiv.annotation.UDALink;
 
@@ -35,14 +35,14 @@ public class X21aCalendarController {
 
 	private static final Logger logger = LoggerFactory.getLogger(X21aCalendarController.class);
 
-	@RequestMapping(value = "page", method = RequestMethod.GET)
+	@GetMapping(value = "page")
 	public String getPage(Model model) {
 		logger.info("Request /calendar/page view");
 		return "calendar";
 	}
 
 	@UDALink(name = "getPageNoTemplate")
-	@RequestMapping(value = "noTemplate", method = RequestMethod.GET)
+	@GetMapping(value = "noTemplate")
 	public String getPageNoTemplate(Model model) {
 		logger.info("Request /calendar/noTemplate view");
 		return "calendarNoTemplate";

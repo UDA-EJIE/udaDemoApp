@@ -2,8 +2,8 @@ package com.ejie.x21a.model;
 
 import java.math.BigDecimal;
 
-import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.SecureIdContainer;
+import com.ejie.hdiv.services.TrustAssertion;
 
 public class ComarcaLocalidadDTO implements java.io.Serializable, SecureIdContainer {
 	
