@@ -90,7 +90,7 @@ $(function () {
                 style: 'css'
             },
             placeholder: '[Seleccione un elemento]',
-            allowClear: false,
+            allowClear: true,
             selected:"3",
             multiple:false,
             change: function () {
@@ -120,6 +120,7 @@ $(function () {
             }
             ],
             selected: ['jane','mad'],
+            placeholder: '[Seleccione un elemento]',    
             width: '98%',
             multiple:true,
             format: 'default',
@@ -148,7 +149,7 @@ $(function () {
             }
             ],
             placeholder: '[Seleccione un elemento]',
-            allowClear: false,
+            allowClear: true,
             i18nId:'comboLargo'
         });  
         
@@ -213,6 +214,8 @@ $(function () {
                 style: 'car'
             }
             ],
+             placeholder: '[Seleccione un elemento]',
+            allowClear: true,
             selected: 'ath_value',
             customClasses: ['select-material'],
             rowStriping: true,
@@ -229,6 +232,8 @@ $(function () {
                 id: 'code',
                 style: 'css'
             },
+             placeholder: '[Seleccione un elemento]',
+            allowClear: true,
             selected: ['7Coma'],
             change: function () {
                 console.log('selectGruposRemoto:::Changed');
@@ -242,6 +247,8 @@ $(function () {
         			{id:'Filtrar',text:'Filtrar',style:'filter',imgStyle:true},
         			{id:'Imprimir',text:'Imprimir',style:'printer',imgStyle:false}],
             selected: 'Filtrar',
+             placeholder: '[Seleccione un elemento]',
+            allowClear: true,
             change: function () {
                 console.log('comboImgs:::Changed');
             },
@@ -249,6 +256,9 @@ $(function () {
         });
         
        $('#SelectLoadFromSelect').rup_select({
+	
+			placeholder: '[Seleccione un elemento]',
+            allowClear: true,
             change: function (e) {
                 console.log('SelectLoadFromSelect:::Changed');
             }
