@@ -23,7 +23,7 @@
 <spring:url value="/table/multipk/${endpoint}" var="url"/>
 <form:form modelAttribute="multiPk" id="multiPk_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
 	<c:choose>
-		<c:when test="${actionType.equals('POST')}">
+		<c:when test="${actionType eq 'POST'}">
 			<form:input path="ida" id="ida_multiPk_detail_table"/>
 			<form:input path="idb" id="idb_multiPk_detail_table"/>
 		</c:when>
