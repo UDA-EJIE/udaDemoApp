@@ -126,12 +126,9 @@ jQuery(function ($) {
                     blank: ''
                 },
                 searchoptions: {
-					rupType: 'combo',
-                    source : './roles',
-                    sourceParam : {label: 'label', value: 'value'},
-                    blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
                 }
             }
         ];
