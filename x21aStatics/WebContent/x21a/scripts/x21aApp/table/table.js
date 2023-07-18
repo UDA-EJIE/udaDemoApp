@@ -31,7 +31,17 @@ jQuery(function ($) {
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false
+                hidden: false,
+            	rupType: 'autocomplete',
+                searchoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    menuMaxHeight: 200,
+                    minLength: 3,
+                    combobox: true,
+                    contains: true,
+                    showDefault: true
+                }
             },
             { 
             	name: "apellido2", 
@@ -40,6 +50,16 @@ jQuery(function ($) {
             	hidden: false,
             	rupType: 'autocomplete',
                 editoptions: {
+                	source : './apellidos',
+                    sourceParam : {label: 'label', value: 'value'},
+                    menuMaxHeight: 200,
+                    minLength: 3,
+                    combobox: true,
+                    contains: true,
+                    showDefault: true
+                },
+                searchoptions: {
+					parent: ['apellido1_example_seeker'],
                 	source : './apellidos',
                     sourceParam : {label: 'label', value: 'value'},
                     menuMaxHeight: 200,
@@ -67,6 +87,12 @@ jQuery(function ($) {
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
+                },
+                searchoptions: {
+                    labelMaskId: 'fecha-mask',
+                    showButtonPanel: true,
+                    showOtherMonths: true,
+                    noWeekend: true
                 }
             },
             {
@@ -76,6 +102,12 @@ jQuery(function ($) {
                 hidden: false,
                 rupType: 'date',
                 editoptions: {
+                    labelMaskId: 'fecha-mask',
+                    showButtonPanel: true,
+                    showOtherMonths: true,
+                    noWeekend: true
+                },
+                searchoptions: {
                     labelMaskId: 'fecha-mask',
                     showButtonPanel: true,
                     showOtherMonths: true,
@@ -91,6 +123,12 @@ jQuery(function ($) {
                 editoptions: {
                     url : './roles',
                     sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                },
+                searchoptions: {
+					rupType: 'combo',
+                    source : './roles',
+                    sourceParam : {label: 'label', value: 'value'},
                     blank: '',
                     width: '100%',
                     customClasses: ['select-material']
