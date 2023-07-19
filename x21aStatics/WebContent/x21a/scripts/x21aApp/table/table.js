@@ -32,15 +32,14 @@ jQuery(function ($) {
                 index: 'apellido1',
                 editable: true,
                 hidden: false,
-            	rupType: 'autocomplete',
+            	rupType: 'select',
                 searchoptions: {
-                	source : './apellidos',
-                    sourceParam : {label: 'label', value: 'value'},
-                    menuMaxHeight: 200,
-                    minLength: 3,
-                    combobox: true,
-                    contains: true,
-                    showDefault: true
+                	url : './apellidos',
+                    sourceParam : {text: 'label', id: 'value'},
+					blank: '',
+					autocomplete: true,
+					searchZero: true,
+					combo: true
                 }
             },
             { 
@@ -48,8 +47,9 @@ jQuery(function ($) {
             	index: "apellido2", 
             	editable: true, 
             	hidden: false,
-            	rupType: 'autocomplete',
+            	rupType: 'select',
                 editoptions: {
+					rupType: 'autocomplete',
                 	source : './apellidos',
                     sourceParam : {label: 'label', value: 'value'},
                     menuMaxHeight: 200,
@@ -60,13 +60,12 @@ jQuery(function ($) {
                 },
                 searchoptions: {
 					parent: ['apellido1_example_seeker'],
-                	source : './apellidos',
-                    sourceParam : {label: 'label', value: 'value'},
-                    menuMaxHeight: 200,
-                    minLength: 3,
-                    combobox: true,
-                    contains: true,
-                    showDefault: true
+                	url : './apellidos',
+                    sourceParam : {text: 'label', id: 'value'},
+					blank: '',
+					autocomplete: true,
+					searchZero: true,
+					combo: true
                 }
             },
             {
