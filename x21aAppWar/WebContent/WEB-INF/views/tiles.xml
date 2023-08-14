@@ -694,6 +694,8 @@
 	
 	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
 	
+	<definition name="tableComarcaExtendidaEditForm" template="/WEB-INF/views/table/includes/tableComarcaExtendidaEditForm.jsp" />
+	
 	<definition name="tableDialogComarcaEditForm" template="/WEB-INF/views/table/includes/tableDialogComarcaEditForm.jsp" />
 	
 	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
@@ -729,6 +731,13 @@
 			value="/WEB-INF/views/table/tableMasterDetail.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/tableMasterDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableComarcaExtendida">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableComarcaExtendida.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableComarcaExtendidaDetail-includes.jsp" />
 	</definition>
 	
 	<definition extends="template" name="tableDialogDetail">
