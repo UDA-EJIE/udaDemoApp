@@ -16,4 +16,4 @@
  
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/mockLoginPage.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/mockLoginPage.js" type="text/javascript"></script>
