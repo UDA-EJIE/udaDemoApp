@@ -29,16 +29,16 @@
 	<%@include file="/WEB-INF/layouts/includes/x21a.styles.inc"%>
 
 <link rel="stylesheet"
-	href="http://www1.geo.jakina.ejiedes.net/sidl/css/geolocalizador.css"
+	href="https://www1.geo.jakina.ejiedes.net/sidl/css/geolocalizador.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="http://www1.geo.jakina.ejiedes.net/sidl/css/openlayers/nora-theme/nora-style.css"
+	href="https://www1.geo.jakina.ejiedes.net/sidl/css/openlayers/nora-theme/nora-style.css"
 	type="text/css" />
 <link
-	href="http://www1.geo.jakina.ejiedes.net/sidl/css/themes/default.css"
+	href="https://www1.geo.jakina.ejiedes.net/sidl/css/themes/default.css"
 	rel="stylesheet" type="text/css" />
 <link
-	href="http://www1.geo.jakina.ejiedes.net/sidl/css/themes/alphacube.css"
+	href="https://www1.geo.jakina.ejiedes.net/sidl/css/themes/alphacube.css"
 	rel="stylesheet" type="text/css" />
 
 <style>
