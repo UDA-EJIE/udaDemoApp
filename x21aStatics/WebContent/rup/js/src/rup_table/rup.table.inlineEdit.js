@@ -1366,7 +1366,7 @@ function _callSaveAjax(actionType, ctx, $fila, row, url, isDeleting){
                 'text': 'text/plain',
                 'xml': 'application/xml, text/xml'
             },
-			type: ctx.oInit.inlineEdit.multipart ? 'POST' : actionType,
+			type: ctx.oInit.inlineEdit.multipart || (actionType == 'PUT' && ctx.oInit.inlineEdit.usePostAsEditActionType) ? 'POST' : actionType,
 			data: row,
 			dataType: 'json',
 			showLoading: false,
@@ -1589,9 +1589,9 @@ function _loadAuxForm(ctx, actionType, row) {
 		// Preparar la información a enviar al servidor. Como mínimo se enviará el actionType, un booleano que indique si el formulario es multipart y 
 		// el valor de la clave primaria siempre y cuando no contenga un string vacío.
 		const defaultData = {
-			'actionType': actionType,
+			'actionType': actionType == 'PUT' && ctx.oInit.inlineEdit.usePostAsEditActionType ? 'POST' : actionType,
 			'isMultipart': ctx.oInit.inlineEdit.multipart === true ? true : false,
-			...(DataTable.Api().rupTable.getIdPk(row, ctx.oInit) != "" && { 'pkValue': DataTable.Api().rupTable.getIdPk(row, ctx.oInit) })
+			...(ctx.oInit.inlineEdit.rowDefault?.actionType != "CLONE" && DataTable.Api().rupTable.getIdPk(row, ctx.oInit) != "" && { 'pkValue': DataTable.Api().rupTable.getIdPk(row, ctx.oInit) })
 		};
 		let data = ctx.oInit.inlineEdit.data !== undefined ? $.extend({}, defaultData, ctx.oInit.inlineEdit.data) : defaultData;
 		
@@ -1624,15 +1624,16 @@ function _loadAuxForm(ctx, actionType, row) {
 /**
  * Valida los formularios para no, buscarlos.
  *
- * @name formInitializeRUP
+ * @name validarFormulario
  * @function
  * @since UDA 5.0.2 // Table 1.0.0
  *
  * @param {object} ctx - Contexto de la tabla.
-  * @param {object} lastAction - última accion realizado.
+ * @param {object} lastAction - última accion realizado.
  * @param {object} actionType - Tipo de acción.
+ * @param {object} row - Datos de la fila que se cargan.
  */
-function _validarFormulario(ctx,lastAction, actionType, row){    	
+function _validarFormulario(ctx, lastAction, actionType, row){    	
 	if(ctx.oInit.enableDynamicForms){ 
 		let lastSelectedIdUsed = ctx.oInit.inlineEdit.lastSelectedIdUsed;
 		let lastSelected = DataTable.Api().rupTable.getIdPk(row, ctx.oInit);
