@@ -33,6 +33,7 @@ public class Comarca  implements java.io.Serializable {
             private String descEs;
             private String descEu;
             private String css;
+            private BigDecimal parentCode;
             private List<Localidad> localidads = new ArrayList<Localidad>();
 
 	/** Method 'Comarca'.
@@ -60,7 +61,25 @@ public class Comarca  implements java.io.Serializable {
         this.css = css;
     }
 
-    /**
+    /** Method 'Comarca'.
+    * @param code BigDecimal
+    * @param parentCode BigDecimal
+    * @param descEs String
+    * @param descEu String
+    * @param css String
+    * @param provincia Provincia
+    */
+    public Comarca(BigDecimal code, BigDecimal parentCode, String descEs, String descEu, String css , Provincia provincia) {	
+        this.code = code;
+        this.parentCode = parentCode;
+        this.provincia = provincia;
+        this.descEs = descEs;
+        this.descEu = descEu;
+        this.css = css;
+    }
+    
+
+	/**
 	 * Method 'getCode'.
 	 *
 	 * @return BigDecimal
@@ -148,6 +167,20 @@ public class Comarca  implements java.io.Serializable {
 	public String getCss() {
 		return this.css;
 	}
+	
+	 /**
+		 * @return the parentCode
+		 */
+		public BigDecimal getParentCode() {
+			return parentCode;
+		}
+
+		/**
+		 * @param parentCode the parentCode to set
+		 */
+		public void setParentCode(BigDecimal parentCode) {
+			this.parentCode = parentCode;
+		}
 
 	/**
 	 * Method 'setCss'.

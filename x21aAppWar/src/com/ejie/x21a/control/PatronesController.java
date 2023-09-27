@@ -47,6 +47,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,13 +63,18 @@ import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.AlumnoDepartamento;
 import com.ejie.x21a.model.Collection;
 import com.ejie.x21a.model.Comarca;
+import com.ejie.x21a.model.ComarcaLocalidadDTO;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.DepartamentoProvinciaDTO;
+import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
+import com.ejie.x21a.model.ProvinciaComarcaDTO;
+import com.ejie.x21a.model.ProvinciaComarcaLocalidadDTO;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
@@ -102,6 +108,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PatronesController {
 
     private static final Logger logger = LoggerFactory.getLogger(PatronesController.class);
+    
+    // Departamentos
+	private Departamento ayuntamiento = new Departamento(new BigDecimal(1), "Ayuntamiento", "Udaletxea", null);
+	private Departamento diputacion = new Departamento(new BigDecimal(2), "Diputación", "Aldundia", null);
+	private Departamento policia = new Departamento(new BigDecimal(3), "Policía", "Polizia", null);
+	private Departamento bomberos = new Departamento(new BigDecimal(4), "Bomberos", "Suhiltzaileak", null);
+	
+	// Provincias
+	private Provincia alava = new Provincia(new BigDecimal(1), "Álava", "Araba", null);
+	private Provincia vizcaya = new Provincia(new BigDecimal(2), "Vizcaya", "Bizkaia", null);
+	private Provincia gipuzcoa = new Provincia(new BigDecimal(3), "Guipúzcoa", "Gipuzkoa", null);
+
 
     @Autowired
     private Properties appConfiguration;
@@ -1123,5 +1141,177 @@ public class PatronesController {
     @RequestMapping(value = "calendar/pageDouble", method = RequestMethod.GET)
     public String getDoubleCalendar(Model model) {
         return "doubleCalendar";
+    }
+    
+    private List<Provincia> provinciasGenerator() {		
+		List<Provincia> provincias = new ArrayList<Provincia>();
+		provincias.add(alava);
+		provincias.add(vizcaya);
+		provincias.add(gipuzcoa);
+		
+		return provincias;
+    }
+    
+    private List<Comarca> comarcasGeneratorSelect() {		
+		List<Comarca> comarcas = new ArrayList<Comarca>();
+		comarcas.add(new Comarca(new BigDecimal(1),new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(2),new BigDecimal(1), "Oyonesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(3),new BigDecimal(1), "Gamarresa", "Arabako lautada","1", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(4),new BigDecimal(2), "Pequeño Bilbao", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(5),new BigDecimal(2), "Las Playas", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(6),new BigDecimal(2), "Gran Bilbao", "Arabako lautada","2", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(7),new BigDecimal(3), "Donosti", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(8),new BigDecimal(3), "Zarautz", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(9),new BigDecimal(3), "Eibar", "Arabako lautada","3", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(10),new BigDecimal(4), "Aranda de Duero", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(11),new BigDecimal(4), "Burgos", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(12),new BigDecimal(4), "Miranda de Ebro", "Arabako lautada","4", null));
+		
+		return comarcas;
+    }
+
+    
+    private List<Departamento> departamentosGenerator() {
+    	List<Departamento> departamentos = new ArrayList<Departamento>();
+		departamentos.add(ayuntamiento);
+		departamentos.add(diputacion);
+		departamentos.add(policia);
+		departamentos.add(bomberos);
+		
+		return departamentos;
+    }
+    
+    private List<DepartamentoProvincia> departamentosProvinciasGeneratorSelect() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion,"2##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia,"3##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos,"4##1"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento,"1##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion,"2##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia,"3##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos,"4##2"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento,"1##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion,"2##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia,"3##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos,"4##3"));
+    	
+		return departamentoProvincia;
+    }
+    
+    //Select Simple
+    @GetMapping(value = "selectSimple")
+    public String getSelectSimple(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
+    	
+        return "selectSimple";
+    }
+    
+    //SelectEnlazado - simple
+    @GetMapping(value = "selectEnlazadoSimple")
+    public String getSelectEnlazadoSimple(Model model) {
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("comboComarca", comarcasGeneratorSelect());
+    	
+        return "selectEnlazadoSimple";
+    }
+    
+    //selectEnlazado - multiple
+    @GetMapping(value = "selectEnlazadoMultiple")
+    public String getSelectEnlazadoMultiple(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	
+    	// Departamentos
+    	model.addAttribute("comboDepartamento", departamentosGenerator());
+		
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+		// Departamentos y provincias
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorSelect());
+		
+        return "selectEnlazadoMultiple";
+    }
+    
+    //MultiSelect
+    @GetMapping(value = "selectMultiselect")
+    public String getSelectMultiSelect(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	
+        return "selectMultiselect";
+    }
+
+    //select en mantenimiento
+    @GetMapping(value = "selectMantenimiento")
+    public String getSelectMantenimiento(Model model) {
+        model.addAttribute("X21aAlumno", new Alumno());
+        return "selectMantenimiento";
+    }
+    
+    // Select Autocomplete
+    @GetMapping(value = "selectAutocomplete")
+    public String getSelectAutocomplete(Model model) {
+    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
+    	model.addAttribute("provincia", new Provincia());
+    	
+        return "selectAutocomplete";
+    }
+
+    // Select Autocomplete Enlazado
+    @GetMapping(value = "selectAutocompleteEnlazado")
+    public String getSelectAutocompleteEnlazado(Model model) {
+    	
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("selectAutocompleteProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("selectAutocompleteComarca", comarcasGeneratorSelect());
+		
+        return "selectAutocompleteEnlazado";
+    }
+
+    // Select Autocomplete Enlazado Multiple
+    @GetMapping(value = "selectAutocompleteEnlazadoMultiple")
+    public String getSelectAutocompleteEnlazadoMultiple(Model model) {
+        return "selectAutocompleteEnlazadoMultiple";
+    }
+    
+    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Comarca> getEnlazadoComarcaNoParam(
+            @RequestParam(value = "codeProvincia", required = true) Integer codeProvincia) throws Exception {
+
+    	if(codeProvincia < 1 || codeProvincia > 6){
+    		throw new Exception("Identificador no valido");
+    	}
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(codeProvincia));
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return comarcaService.findAll(comarca, null);
     }
 }
