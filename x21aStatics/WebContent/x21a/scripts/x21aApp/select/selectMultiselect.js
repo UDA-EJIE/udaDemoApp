@@ -17,19 +17,19 @@ jQuery(function($) {
 	window.initRupI18nPromise.then(function () {
 	    $('#multiSelect').rup_select({
 	        data : [
-	            {i18nCaption: 'rubya', id:'ruby_value'},
-	            {i18nCaption: 'c', id:'c_value'},
-	            {i18nCaption: 'scala', id:'scala_value'},
-	            {i18nCaption: 'javascript', id:'javascript_value'},
-	            {i18nCaption: 'c++', id:'c++_value'},
-	            {i18nCaption: 'haskell', id:'haskell_value'},
-	            {i18nCaption: 'asp', id:'asp_value'},
-	            {i18nCaption: 'java', id:'java_value'},
-	            {i18nCaption: 'php', id:'php_value'},
-	            {i18nCaption: 'groovy', id:'groovy_value'},
-	            {i18nCaption: 'python', id:'python_value'},
-	            {i18nCaption: 'coldfusion', id:'coldfusion_value'},
-	            {i18nCaption: 'perl', id:'perl_value'}
+	            {text: 'rubya', id:'ruby_value'},
+	            {text: 'c', id:'c_value'},
+	            {text: 'scala', id:'scala_value'},
+	            {text: 'javascript', id:'javascript_value'},
+	            {text: 'c++', id:'c++_value'},
+	            {text: 'haskell', id:'haskell_value'},
+	            {text: 'asp', id:'asp_value'},
+	            {text: 'java', id:'java_value'},
+	            {text: 'php', id:'php_value'},
+	            {text: 'groovy', id:'groovy_value'},
+	            {text: 'python', id:'python_value'},
+	            {text: 'coldfusion', id:'coldfusion_value'},
+	            {text: 'perl', id:'perl_value'}
 	        ],
 	       // selected: ['perl_value', 'javascript_value', 'ruby_value'], //value && index
 	        ordered: false,
@@ -59,18 +59,18 @@ jQuery(function($) {
             	'id':'1',
             	'text': 'futbol',
                 'children': [{
-                    i18nCaption: 'alaves',
+                    text: 'alaves',
                     id: 'alaves_value',
                     style: 'garage',
                     stylePosition:'A' //B - Before , M - middle , A - After
                 },
                 {
-                    i18nCaption: 'ath',
+                    text: 'ath',
                     id: 'ath_value',
                     style: 'heart text-danger'
                 },
                 {
-                    i18nCaption: 'real',
+                    text: 'real',
                     id: 'real_value',
                     style:'delete',
                     stylePosition:'B'
@@ -81,15 +81,15 @@ jQuery(function($) {
             	'id':'2',
             	'text':'baloncesto',
                 'children': [{
-                    i18nCaption: 'laboral',
+                    text: 'laboral',
                     id: 'laboral_value'
                 },
                 {
-                    i18nCaption: 'bilbao',
+                    text: 'bilbao',
                     id: 'bilbao_value'
                 },
                 {
-                    i18nCaption: 'lagun aro',
+                    text: 'lagun aro',
                     id: 'lagun aro_value'
                 }
                 ],style:'basketball'
@@ -98,16 +98,16 @@ jQuery(function($) {
             	'id':'3',
             	'text':'formula1',
             	'children': [{
-                    i18nCaption: 'falonso',
+                    text: 'falonso',
                     id: 'falonso_value'
                     
                 },
                 {
-                    i18nCaption: 'hamilton',
+                    text: 'hamilton',
                     id: 'hamilton_value'
                 },
                 {
-                    i18nCaption: 'vettel',
+                    text: 'vettel',
                     id: 'vettel_value'
                 }
                 ],

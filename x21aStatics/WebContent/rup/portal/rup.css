@@ -25923,6 +25923,170 @@
   border-bottom-right-radius: 0;
 }
 
+.r01gContainer .form-groupMaterial label.select-material {
+  left: 14px;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"]:enabled + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"]:enabled + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"]:enabled + span:hover span.select2-selection {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"]:enabled + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"]:enabled + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"]:enabled + span.select2-container--focus + label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus {
+  outline: none;
+  border-color: #1472a4;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered {
+  padding-left: 17px;
+  padding-right: 19px;
+  line-height: 1.65;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input {
+  height: calc(2rem - 4px);
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b {
+  border-color: transparent transparent #555555 transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--disabled span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--disabled span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--disabled span.select2-selection--single {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--disabled ~ label {
+  color: #999;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow {
+  height: calc(2rem - 2px);
+  border: none;
+  background-position: center;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b {
+  border-color: #555555 transparent transparent transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border: 1px solid #757575;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled {
+  height: calc(2rem - 2px);
+  padding: 0;
+  background-color: initial;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 14px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .select2-results__option[aria-selected="true"]::before {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  font-family: initial;
+  content: "\2713";
+  color: #FFFFFF;
+  background-color: #1472a4;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.r01gContainer .select2-search--dropdown {
+  display: none;
+}
+
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {
   height: 0;
   margin-top: 0.8em;
@@ -61965,6 +62129,170 @@
 .r01gContainer .form-groupMaterial input:not([type="checkbox"]):not([type="radio"]).rup_multifilter_selector {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.r01gContainer .form-groupMaterial label.select-material {
+  left: 14px;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"]:enabled + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"]:enabled + span:hover span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"]:enabled + span:hover span.select2-selection {
+  border-color: #212529;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"]:enabled + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"]:enabled + span.select2-container--focus + label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"]:enabled + span.select2-container--focus + label {
+  top: -10px;
+  font-size: .9rem;
+  color: #1472a4;
+  padding: 0 5px;
+  background-color: #FFFFFF;
+  background-image: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus {
+  outline: none;
+  border-color: #1472a4;
+  border-width: 2px;
+  box-shadow: none;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered {
+  padding-left: 17px;
+  padding-right: 19px;
+  line-height: 1.65;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--focus span.select2-selection:focus span.select2-selection__rendered input {
+  height: calc(2rem - 4px);
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--open span.select2-selection--single span.select2-selection__arrow b {
+  border-color: transparent transparent #555555 transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--disabled span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--disabled span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--disabled span.select2-selection--single {
+  background-color: #e9ecef;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span.select2-container--disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span.select2-container--disabled ~ label,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span.select2-container--disabled ~ label {
+  color: #999;
+  background: linear-gradient(to top, #e9ecef 0%, #e9ecef 40%, transparent 40%, transparent 100%);
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single {
+  height: 2rem;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow {
+  height: calc(2rem - 2px);
+  border: none;
+  background-position: center;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection--single span.select2-selection__arrow b {
+  border-color: #555555 transparent transparent transparent;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection {
+  border: 1px solid #757575;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered input,
+.r01gContainer .form-groupMaterial select[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] + span span.select2-selection__rendered input:focus:enabled {
+  height: calc(2rem - 2px);
+  padding: 0;
+  background-color: initial;
+}
+
+.r01gContainer .form-groupMaterial select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 14px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 19px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .row .form-groupMaterial[class*="col-"] select[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-multiselect[ruptype="select"] ~ label.select-material,
+.r01gContainer .row .form-groupMaterial[class*="col-"] .ui-selectmenu-dropdown[ruptype="select"] ~ label.select-material {
+  left: 29px;
+}
+
+.r01gContainer .select2-results__option[aria-selected="true"]::before {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  font-family: initial;
+  content: "\2713";
+  color: #FFFFFF;
+  background-color: #1472a4;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.r01gContainer .select2-search--dropdown {
+  display: none;
 }
 
 .r01gContainer div.rup-slider-material.ui-slider-horizontal {

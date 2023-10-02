@@ -590,7 +590,7 @@ public class PatronesController {
 
     @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
     public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+    List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
 
         //Idioma
         Locale locale = LocaleContextHolder.getLocale();
@@ -674,7 +674,7 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
     public @ResponseBody
     List<Comarca> getEnlazadoComarca(
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
 
         //Convertir parámetros en entidad para búsqueda
         Provincia provincia = new Provincia();
@@ -692,7 +692,7 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
     public @ResponseBody
     List<Localidad> getEnlazadoLocalidad(
-            @RequestParam(value = "comarca", required = false) BigDecimal comarca_code) {
+            @RequestParam(value = "codeComarca", required = false) BigDecimal comarca_code) {
 
         //Convertir parámetros en entidad para búsqueda
         Comarca comarca = new Comarca();
@@ -706,6 +706,29 @@ public class PatronesController {
             e.printStackTrace();
         }
         return localidadService.findAll(localidad, null);
+    }
+    
+    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
+    public @ResponseBody
+    List<DepartamentoProvincia> getEnlMultDptoProvNoParam(
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) Integer provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return departamentoProvinciaService.findAll(departamentoProvincia, null);
     }
 
 
@@ -740,8 +763,8 @@ public class PatronesController {
     @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
     public @ResponseBody
     List<DepartamentoProvincia> getEnlMultDptoProv(
-            @RequestParam(value = "departamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "provincia", required = false) BigDecimal provincia_code) {
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
 
         //Convertir parámetros en entidad para búsqueda
         Departamento departamento = new Departamento();
@@ -758,6 +781,90 @@ public class PatronesController {
             e.printStackTrace();
         }
         return departamentoProvinciaService.findAll(departamentoProvincia, null);
+    }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO
+     */
+    @RequestMapping(value = "autocomplete/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Provincia> getProvinciaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	Provincia provincia = new Provincia();
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+                provincia.setDescEu(q);
+            } else {
+                provincia.setDescEs(q);
+            }
+    	}
+        return provinciaService.findAllLike(provincia, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/remoteEnlazadoComarca")
+    public @ResponseBody
+    List<Comarca> getComarcaEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal codProvincia) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(codProvincia);
+        
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	comarca.setDescEu(q);
+            } else {
+            	comarca.setDescEs(q);
+            }
+    	}
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return comarcaService.findAllLike(comarca, null, !c);
+    }
+    
+
+    @GetMapping(value = "autocomplete/remoteEnlazadoLocalidad")
+    public @ResponseBody
+    List<Localidad> getLocalidadEnlazadoAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeComarca", required = false) BigDecimal codComarca) {
+    	
+    	//Convertir parámetros en entidad para búsqueda
+        Comarca comarca = new Comarca();
+        comarca.setCode(codComarca);
+        
+        Localidad localidad = new Localidad();
+        localidad.setComarca(comarca);
+        
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	localidad.setDescEu(q);
+            } else {
+            	localidad.setDescEs(q);
+            }
+    	}
+        
+        return localidadService.findAllLike(localidad, null, !c);
     }
 
     @RequestMapping(value = "comboEnlazado/comarcaLocalidad", method = RequestMethod.GET)
