@@ -78,6 +78,7 @@ import com.ejie.x21a.model.ProvinciaComarcaLocalidadDTO;
 import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
+import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -555,6 +556,76 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+    }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO MúLTIPLE
+     */
+    
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento")
+    public @ResponseBody
+    List<Departamento> getDepartamentoEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return departamentoService.findAllLike(null, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleProvincia")
+    public @ResponseBody
+    List<Provincia> getProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return provinciaService.findAllLike(null, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia")
+    public @ResponseBody
+    List<DepartamentoProvincia> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
     }
 
@@ -1365,7 +1436,7 @@ public class PatronesController {
     //select en mantenimiento
     @GetMapping(value = "selectMantenimiento")
     public String getSelectMantenimiento(Model model) {
-        model.addAttribute("X21aAlumno", new Alumno());
+        model.addAttribute("X21aAlumno", new X21aAlumno());
         return "selectMantenimiento";
     }
     

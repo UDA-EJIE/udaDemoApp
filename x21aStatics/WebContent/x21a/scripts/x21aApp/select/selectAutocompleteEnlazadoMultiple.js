@@ -82,10 +82,10 @@ jQuery(function($) {
         // MIXTO I (LOCAL, LOCAL y REMOTO)
         $('#abueloMixtoI').rup_select({
         	data: [
-                {i18nCaption: 'Ayuntamiento', id: '1'},
-                {i18nCaption: 'Diputación', id: '2'},
-                {i18nCaption: 'Policía', id: '3'},
-                {i18nCaption: 'Bomberos', id: '4'}
+                {text: 'Ayuntamiento', id: '1'},
+                {text: 'Diputación', id: '2'},
+                {text: 'Policía', id: '3'},
+                {text: 'Bomberos', id: '4'}
             ],
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
@@ -95,9 +95,9 @@ jQuery(function($) {
         
         $('#padreMixtoI').rup_select({
         	data: [
-                {i18nCaption: 'Alava', id: '1'},
-                {i18nCaption: 'Vizcaya', id: '2'},
-                {i18nCaption: 'Gipuzcoa', id: '3'}
+                {text: 'Alava', id: '1'},
+                {text: 'Vizcaya', id: '2'},
+                {text: 'Gipuzcoa', id: '3'}
             ],
             contains: false,
             combo: true,
@@ -106,7 +106,7 @@ jQuery(function($) {
         
         $('#hijoMixtoI').rup_select({
         	parent: ['abueloMixtoI', 'padreMixtoI'],
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParam',
+        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -162,9 +162,9 @@ jQuery(function($) {
         
         $('#padreMixtoIII').rup_select({
         	data: [
-                {i18nCaption: 'Alava', id: '1'},
-                {i18nCaption: 'Vizcaya', id: '2'},
-                {i18nCaption: 'Gipuzcoa', id: '3'}
+                {text: 'Alava', id: '1'},
+                {text: 'Vizcaya', id: '2'},
+                {text: 'Gipuzcoa', id: '3'}
             ],
             contains: false,
             combo: true,
@@ -173,7 +173,7 @@ jQuery(function($) {
         
         $('#hijoMixtoIII').rup_select({
         	parent: ['abueloMixtoIII', 'padreMixtoIII'],
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvinciaNoParamUno',
+        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,

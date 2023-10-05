@@ -16,6 +16,7 @@
 package com.ejie.x21a.control;
 
 import java.math.BigDecimal;
+import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +41,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,6 +68,7 @@ import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.SelectGenericPOJO;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -203,6 +206,61 @@ public class TableUsuarioController  {
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
+	
+	@GetMapping(value = "/apellidos")
+	public @ResponseBody List<SelectGenericPOJO> getApellidos (
+			@RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "c", required = false) Boolean c) {
+		List<SelectGenericPOJO> apellidos = new ArrayList<SelectGenericPOJO>();
+		if(q != null){
+			q = Normalizer.normalize(q, Normalizer.Form.NFD);
+			q = q.replaceAll("[^\\p{ASCII}]", "");
+			q = q.toUpperCase();
+		}else{
+			q = "";
+		}
+
+		List<String> listaApellidos = new ArrayList<String>();
+		listaApellidos.add("García");
+		listaApellidos.add("González");
+		listaApellidos.add("Fernández");
+		listaApellidos.add("Rodríguez");
+		listaApellidos.add("López");
+		listaApellidos.add("Martínez");
+		listaApellidos.add("Sánchez");
+		listaApellidos.add("Pérez");
+		listaApellidos.add("Gómez");
+		listaApellidos.add("Martín");
+		listaApellidos.add("Jiménez");
+		listaApellidos.add("Ruiz");
+		listaApellidos.add("Hernández");
+		listaApellidos.add("Díaz");
+		listaApellidos.add("Moreno");
+		listaApellidos.add("Álvarez");
+		listaApellidos.add("Muñoz");
+		listaApellidos.add("Romero");
+		listaApellidos.add("Alonso");
+		listaApellidos.add("Gutiérrez");
+		listaApellidos.add("Navarro");
+		listaApellidos.add("Torres");
+		listaApellidos.add("Domínguez");
+		listaApellidos.add("Vázquez");
+		listaApellidos.add("Perurena");
+		listaApellidos.add("hhhmmmmm");
+		
+		for(String str : listaApellidos)
+		{
+			String original = str;
+			str = Normalizer.normalize(str, Normalizer.Form.NFD);
+			str = str.toUpperCase();
+			str = str.replaceAll("[^\\p{ASCII}]", "");
+			if(q.equals("") || str.indexOf(q) >= 0){
+				apellidos.add(new SelectGenericPOJO(original, original));
+			}
+		}
+		
+		return apellidos;
+	}
 	
 	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
     public @ResponseBody Usuario edit2(@RequestJsonBody Usuario usuario) {

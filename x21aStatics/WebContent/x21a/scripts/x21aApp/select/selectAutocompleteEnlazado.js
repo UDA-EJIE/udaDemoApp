@@ -19,15 +19,15 @@ jQuery(function($) {
         // LOCAL
     	$('#abueloLocal').rup_select({
     		data: [{
-                	i18nCaption: 'a',
+                	text: 'a',
                 	id: '01'
             	},
             	{
-            		i18nCaption: 'b',
+            		text: 'b',
             		id: '02'
 	            },
 	            {
-	                i18nCaption: 'g',
+	                text: 'g',
 	                id: '03'
 	            }
             ],
@@ -40,33 +40,33 @@ jQuery(function($) {
         	parent: ['abueloLocal'],
             data: {
                 '01': [{
-                    i18nCaption: 'a1',
+                    text: 'a1',
                     id: 'a1_id'
                 }, {
-                    i18nCaption: 'a2',
+                    text: 'a2',
                     id: 'a2_id'
                 }, {
-                    i18nCaption: 'a3',
+                    text: 'a3',
                     id: 'a3_id'
                 }],
                 '02': [{
-                    i18nCaption: 'b1',
+                    text: 'b1',
                     id: 'b1_id'
                 }, {
-                    i18nCaption: 'b2',
+                    text: 'b2',
                     id: 'b2_id'
                 }, {
-                    i18nCaption: 'b3',
+                    text: 'b3',
                     id: 'b3_id'
                 }],
                 '03': [{
-                    i18nCaption: 'g1',
+                    text: 'g1',
                     id: 'g1_id'
                 }, {
-                    i18nCaption: 'g2',
+                    text: 'g2',
                     id: 'g2_id'
                 }, {
-                    i18nCaption: 'g3',
+                    text: 'g3',
                     id: 'g3_id'
                 }]
 
@@ -80,33 +80,33 @@ jQuery(function($) {
         	parent: ['padreLocal'],
             data: {
                 'b1_id': [{
-                    i18nCaption: 'Bilbao',
+                    text: 'Bilbao',
                     id: 'b1_1_id'
                 }, {
-                    i18nCaption: 'Basauri',
+                    text: 'Basauri',
                     id: 'b1_2_id'
                 }, {
-                    i18nCaption: 'Galdakao',
+                    text: 'Galdakao',
                     id: 'b1_3_id'
                 }],
                 'b2_id': [{
-                    i18nCaption: 'Leioa',
+                    text: 'Leioa',
                     id: 'b2_1_id'
                 }, {
-                    i18nCaption: 'Las Arenas',
+                    text: 'Las Arenas',
                     id: 'b2_2_id'
                 }, {
-                    i18nCaption: 'Getxo',
+                    text: 'Getxo',
                     id: 'b2_3_id'
                 }],
                 'b3_id': [{
-                    i18nCaption: 'Sestao',
+                    text: 'Sestao',
                     id: 'b3_1_id'
                 }, {
-                    i18nCaption: 'Barakaldo',
+                    text: 'Barakaldo',
                     id: 'b3_2_id'
                 }, {
-                    i18nCaption: 'Portu',
+                    text: 'Portu',
                     id: 'b3_3_id'
                 }]
 
@@ -157,21 +157,21 @@ jQuery(function($) {
         	parent: ['abueloMixto'],
         	data: {
                 '1': [{
-                    i18nCaption: 'Vitoria',
+                    text: 'Vitoria',
                     id: '5'
                 }],
                 '2': [{
-                    i18nCaption: 'Getxo',
+                    text: 'Getxo',
                     id: '6'
                 }, {
-                    i18nCaption: 'Portugalete',
+                    text: 'Portugalete',
                     id: '8'
                 }],
                 '3': [{
-                    i18nCaption: 'Donosti',
+                    text: 'Donosti',
                     id: '10'
                 }, {
-                    i18nCaption: 'Sansebastian',
+                    text: 'Sansebastian',
                     id: '112'
                 }]
             },

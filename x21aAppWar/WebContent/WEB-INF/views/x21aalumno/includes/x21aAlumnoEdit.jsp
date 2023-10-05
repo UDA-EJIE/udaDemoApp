@@ -5,7 +5,7 @@
 <div id="x21aAlumno_detail_div" class="rup-table-formEdit-detail d-none">
 	<div id ="x21aAlumno_detail_navigation"></div>			<!-- Barra de navegación del detalle -->
 	<div class="ui-dialog-content ui-widget-content" >
-		<form:form modelAttribute="alumno" id="x21aAlumno_detail_form">					<!-- Formulario -->
+		<form:form modelAttribute="X21aAlumno" id="x21aAlumno_detail_form">					<!-- Formulario -->
 			<div id ="x21aAlumno_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
 			<div class="form-row">
 			
@@ -32,25 +32,25 @@
 				</div>
 				<div class="form-group col-sm">
 					<label for="provinciaId_detail_table"><spring:message code="provinciaId"/></label>
-					<form:input path="provincia.id" class="formulario_linea_input form-control" id="provinciaId_detail_table"/>
+					<form:select path="provinciaId" class="formulario_linea_input form-control" id="provinciaId_detail_table"/>
 				</div>
 				
 				<div class="form-group col-sm">
 					<label for="comarcaId_detail_table"><spring:message code="comarcaId"/></label>
-					<form:input path="comarca" class="formulario_linea_input form-control" id="comarcaId_detail_table"/>
+					<form:select path="comarcaId" class="formulario_linea_input form-control" id="comarcaId_detail_table"/>
 				</div>
 				<div class="form-group col-sm">
 					<label for="localidadId_detail_table"><spring:message code="localidadId"/></label>
-					<form:input path="localidad" class="formulario_linea_input form-control" id="localidadId_detail_table"/>
+					<form:input path="localidadId" class="formulario_linea_input form-control" id="localidadId_detail_table"/>
 				</div>
 
 				<div class="form-group col-sm">
 					<label for="municipioId_detail_table"><spring:message code="municipioId"/></label>
-					<form:input path="municipio.id" class="formulario_linea_input form-control" id="municipioId_detail_table"/>
+					<form:input path="municipioId" class="formulario_linea_input form-control" id="municipioId_detail_table"/>
 				</div>
 				<div class="form-group col-sm">
 					<label for="autonomiaId_detail_table"><spring:message code="autonomiaId"/></label>
-					<form:input path="autonomia.id" class="formulario_linea_input form-control" id="autonomiaId_detail_table"/>
+					<form:input path="autonomiaId" class="formulario_linea_input form-control" id="autonomiaId_detail_table"/>
 				</div>
 				<!-- Fin campos del formulario de detalle -->
 				

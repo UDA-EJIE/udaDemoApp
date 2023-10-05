@@ -22,7 +22,7 @@
 		<div class="col-12">
 			<h1>
 				<img alt="El contenido estático no está correctamente desplegado."
-					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v4.4.0
+					src="${staticsUrl}/rup/css/images/uda_logo.png" /> v4.5.0
 				<small>(Portal demostrativo)</small>
 			</h1>
 			<hr>
