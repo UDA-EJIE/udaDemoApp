@@ -30,12 +30,12 @@
 					<label for="apellido1_detail_table"><spring:message code="apellido1"/></label>
 					<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
 				</div>
-				<div class="form-group col-sm">
+				<div class="form-groupMaterial">
 					<label for="provinciaId_detail_table"><spring:message code="provinciaId"/></label>
 					<form:select path="provinciaId" class="formulario_linea_input form-control" id="provinciaId_detail_table"/>
 				</div>
 				
-				<div class="form-group col-sm">
+				<div class="form-groupMaterial">
 					<label for="comarcaId_detail_table"><spring:message code="comarcaId"/></label>
 					<form:select path="comarcaId" class="formulario_linea_input form-control" id="comarcaId_detail_table"/>
 				</div>
