@@ -34,12 +34,6 @@ function testDatatable() {
     describe('Test Datatable > ', () => {
         beforeAll((done) => {
             testutils.loadCss(done);
-
-            window.onerror = (event) => {
-                testutils.testTrace('Evento de error detectado en el window',
-                    'namespace: ' + event.namespace +
-                    'target: ' + event.target.id);
-            };
         });
 
         afterEach((done) => {
@@ -67,7 +61,8 @@ function testDatatable() {
                     buscarAceptar().click();
                 });
                 afterEach((done) => {
-                    $.get('/demo/table/reset', done);
+                    $.get('/demo/table/reset');
+                    done();
                 });
                 it('Se ha actualizado el valor: ', () => {
                     expect($('#exampleInline > tbody > tr:eq(0) > td:eq(2)').text()).toBe(nameEdit);
@@ -237,7 +232,8 @@ function testDatatable() {
                         });
 
                         afterEach((done) => {
-                            $.get('/demo/table/reset', done);
+                            $.get('/demo/table/reset');
+                            done();
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -253,13 +249,16 @@ function testDatatable() {
                     describe('Funcionalidad del botón "guardar" > ', () => {
                         beforeEach((done) => {
                             $('#edad_detail_table').val(11);
-                            $('#example').on('tableEditFormSuccessCallSaveAjax', done);
+                            $('#example').on('tableEditFormSuccessCallSaveAjax', () => {
+                                done();
+                            });
                             $('#example_detail_button_save').click();
                             buscarAceptar().click();
                         });
 
                         afterEach((done) => {
-                            $.get('/demo/table/reset', done);
+                            $.get('/demo/table/reset');
+                            done();
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -300,7 +299,8 @@ function testDatatable() {
                         });
 
                         afterEach((done) => {
-                            $.get('/demo/table/reset', done);
+                            $.get('/demo/table/reset');
+                            done();
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -329,7 +329,8 @@ function testDatatable() {
                         });
 
                         afterEach((done) => {
-                            $.get('/demo/table/reset', done);
+                            $.get('/demo/table/reset');
+                            done();
                         });
 
                         it('Se ha actualizado la tabla:', () => {
@@ -375,7 +376,9 @@ function testDatatable() {
 
                 describe('Funcionalidad del seeker > ', () => {
                     beforeEach((done) => {
-                        $('#example').on('tableSeekerAfterSearch', done);
+                        $('#example').on('tableSeekerAfterSearch', () => {
+                            done();
+                        });
                         $('#nombre_example_seeker').val('E');
                         $('#search_nav_button_example').click();
                     });
@@ -727,7 +730,8 @@ function testDatatable() {
                 });
 
                 afterEach((done) => {
-                    $.get('/demo/table/reset', done);
+                    $.get('/demo/table/reset');
+                    done();
                 });
 
                 it('Debe mostrar el feedback del formulario:', () => {
@@ -742,13 +746,20 @@ function testDatatable() {
                     beforeEach((done) => {
                         $('#id_filter_table').val('6');
                         $('#example_filter_filterButton').click();
-                        setTimeout(done, 350);
+                       /* $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
+                            console.log(message);
+                            done();
+                        };*/
+                        $('#example').on('customError', () => {
+                        	done();
+                        });
                     });
 
                     it('El feedback debe comportarse de la manera esperada:', () => {
                         expect($('.rup-message-alert').height()).toBeGreaterThan(0);
+                        //se personaliza el error con el customError
                         expect($('.rup-message-alert').find('#rup_msgDIV_msg').text())
-                            .toBe('DataTables warning: table id=example - Ajax error. For more information about this error, please see http://datatables.net/tn/7');
+                            .toBe('"KABOOM!"');
                     });
                 });
 
@@ -767,7 +778,8 @@ function testDatatable() {
                     });
 
                     afterEach((done) => {
-                        $.get('/demo/table/reset', done);
+                        $.get('/demo/table/reset');
+                        done();
                     });
 
                     it('El feedback debe mostrarse:', () => {
@@ -783,7 +795,10 @@ function testDatatable() {
                         $('#searchCollapsLabel_example').click();
                         $('#edad_example_seeker').val('asd');
                         $('#search_nav_button_example').click();
-                        $('#example').on('tableSeekerSearchError', done);
+
+                        $('#example').on('tableSeekerSearchError', () => {
+                            done();
+                        });
                     });
                     it('El feedback debe mostrarse:', () => {
                         expect($('#rup_feedback_example').height()).toBeGreaterThan(0);
@@ -802,7 +817,8 @@ function testDatatable() {
                     });
 
                     afterEach((done) => {
-                        $.get('/demo/table/reset', done);
+                        $.get('/demo/table/reset');
+                        done();
                     });
 
                     it('Comprobamos que haya cambiado el orden:', () => {
@@ -830,7 +846,8 @@ function testDatatable() {
                     });
 
                     afterEach((done) => {
-                        $.get('/demo/table/reset', done);
+                        $.get('/demo/table/reset');
+                        done();
                     });
 
                     it('Comprobamos que haya cambiado el orden:', () => {
