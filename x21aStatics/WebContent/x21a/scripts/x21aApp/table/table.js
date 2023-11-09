@@ -449,8 +449,12 @@ jQuery(function ($) {
                 var buttons = {
                     activate: true
                 };
+                 var contextMenu = {
+                    activate: false
+                };
 
                 plugins.buttons = buttons;
+                plugins.buttons.contextMenu = contextMenu;
                 $('#buttons').prop('checked', true);
                 if (localStorage.plugins !== undefined && localStorage.plugins.indexOf('multiPart') > -1) {
                     //Crear boton para editar con multiPart PUT
