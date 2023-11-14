@@ -269,7 +269,8 @@ jQuery(function ($) {
             // BOTONERA Y EDICIÓN
             if (localStorage.plugins.indexOf(',buttons,') > -1) {
             	plugins.buttons = {
-                    activate: true
+                    activate: true,
+                    //contextMenu: true
                 };
                 $('#buttons').prop('checked', true);
                 
