@@ -14,24 +14,24 @@
  * que establece la Licencia.
  */
 
-$(function () {
+$(function() {
+	window.initRupI18nPromise.then(function() {
 
-    $('#tabsStatic').rup_tabs({
-        tabs: [{
-            i18nCaption: 'pestana0',
-            layer: '.estiloo'
-        },
-        {
-            i18nCaption: 'pestana1',
-            layer: '#ejemploVisual'
-        },
-        {
-            i18nCaption: 'pestana2',
-            layer: '.estiloo2'
-        }
-        ]
-    });
+		$('#tabsStatic').rup_tabs({
+			tabs : [ {
+				//label : $.rup.i18nParse($.rup.i18n.app, 'pestana0'),
+				i18nCaption : 'pestana0',
+				layer : '.estiloo'
+			}, {
+				i18nCaption : 'pestana1',
+				layer : '#ejemploVisual'
+			}, {
+				i18nCaption : 'pestana2',
+				layer : '.estiloo2'
+			} ]
+		});
 
+	});
 
-    $('.contenedor').addClass('show');
+	$('.contenedor').addClass('show');
 });
