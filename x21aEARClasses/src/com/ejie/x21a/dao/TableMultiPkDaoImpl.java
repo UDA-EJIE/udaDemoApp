@@ -291,7 +291,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");
 
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "IDA,IDB" );
+		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "IDA", "IDB" );
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -332,7 +332,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
 
 		// SQL
-		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "IDA,IDB");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "IDA", "IDB");
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
