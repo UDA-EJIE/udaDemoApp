@@ -28,6 +28,21 @@
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 
+	<!-- HDIV Init Listener -->
+	<listener>
+		<listener-class>com.ejie.hdiv.listener.InitListener</listener-class>
+	</listener>
+
+	<!-- HDIV Validator Filter -->
+	<filter>
+		<filter-name>ValidatorFilter</filter-name>
+		<filter-class>com.ejie.x38.hdiv.filter.EjieValidatorFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ValidatorFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<!-- UDA Filter -->
 	<filter>
 		<filter-name>udaFilter</filter-name>
