@@ -130,6 +130,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
         <property name="securityMetadataSource" >
             <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
            		<security:intercept-url pattern="/webdavServlet/.*" access="isAuthenticated()" />
+          		<security:intercept-url pattern="/iberdok/filter" access="hasRole('ROLE_X21A-IN-0003')" /> 
            		<security:intercept-url pattern="/iberdok/urlFinalizacion" access="" />
           		<security:intercept-url pattern="/iberdok/view.*" access="isAuthenticated()" /> 
 <!--                 <security:intercept-url pattern="/experimental/.*" access="hasRole('ROLE_X21A-IN-0003')" /> -->
