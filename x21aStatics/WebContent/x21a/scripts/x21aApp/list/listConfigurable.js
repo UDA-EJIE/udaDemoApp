@@ -57,6 +57,9 @@ var valor = {
             ejieval.text($.rup.i18n.app.comun.no);
         }
     },
+    beforeLoad: function (e, filter) {
+        console.log("Ejemplo de uso del callback beforeLoad");
+    },
     load: function () {
         $('.contenedor').addClass('show');
     }
