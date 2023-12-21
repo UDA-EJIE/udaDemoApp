@@ -22,7 +22,7 @@
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table" />
+	    	<form:select path="id" id="id_filter_table" />
 	    	<label for="id_filter_table">Identificador</label>
 	    </div>
 	        

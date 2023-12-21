@@ -134,13 +134,11 @@ jQuery(function ($) {
 
 
         // Formulario de filtrado.
-        $('#id_filter_table').rup_autocomplete({
-        	source : './allIds',
-        	sourceParam : {label: 'nid', value: 'id'},
-        	menuMaxHeight: 175,
-        	combobox: true,
-        	contains: true,
-        	showDefault: true
+        $('#id_filter_table').rup_select({
+        	url : './allIds',
+        	sourceParam : {text: 'nid', id: 'id'},      
+        	combo: true,
+        	autocomplete: true
         });
         $('#apellido2_filter_table').rup_autocomplete({
         	source : './apellidos',
