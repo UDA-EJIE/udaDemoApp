@@ -169,7 +169,7 @@ public class PatronesController {
 	private Localidad donostia = new Localidad(new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastian);
     
     private List<IdentifiableModelWrapper<Departamento>> departamentosGenerator() {
-    	List<Departamento> departamentos = new ArrayList<>();
+    	List<Departamento> departamentos = new ArrayList<Departamento>();
 		departamentos.add(ayuntamiento);
 		departamentos.add(diputacion);
 		departamentos.add(policia);
@@ -179,7 +179,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<Provincia>> provinciasGenerator() {		
-		List<Provincia> provincias = new ArrayList<>();
+		List<Provincia> provincias = new ArrayList<Provincia>();
 		provincias.add(alava);
 		provincias.add(vizcaya);
 		provincias.add(gipuzcoa);
@@ -188,7 +188,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<Comarca>> comarcasGenerator() {		
-		List<Comarca> comarcas = new ArrayList<>();
+		List<Comarca> comarcas = new ArrayList<Comarca>();
 		comarcas.add(llanadaAlavesa);
 		comarcas.add(granBilbao);
 		comarcas.add(sanSebastian);
@@ -197,7 +197,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<Localidad>> localidadesGenerator() {		
-		List<Localidad> localidades = new ArrayList<>();
+		List<Localidad> localidades = new ArrayList<Localidad>();
 		localidades.add(vitoriaGasteiz);
 		localidades.add(bilbo);
 		localidades.add(donostia);
@@ -218,7 +218,7 @@ public class PatronesController {
 	private Localidad donostiaLocal = new Localidad(new BigDecimal(3), new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastianLocal);
     
     private List<IdentifiableModelWrapper<Comarca>> comarcasGeneratorLocal() {		
-		List<Comarca> comarcas = new ArrayList<>();
+		List<Comarca> comarcas = new ArrayList<Comarca>();
 		comarcas.add(llanadaAlavesaLocal);
 		comarcas.add(granBilbaoLocal);
 		comarcas.add(pruebaComarcaLocal);
@@ -228,7 +228,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<Localidad>> localidadesGeneratorLocal() {		
-		List<Localidad> localidades = new ArrayList<>();
+		List<Localidad> localidades = new ArrayList<Localidad>();
 		localidades.add(vitoriaGasteizLocal);
 		localidades.add(bilboLocal);
 		localidades.add(pruebaLocalidadLocal);
@@ -238,7 +238,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGenerator() {
-    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia));
@@ -258,7 +258,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGeneratorLocal() {
-    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento, "1##1"));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion, "2##1"));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia, "3##1"));
@@ -278,7 +278,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<DepartamentoProvincia>> departamentosProvinciasGeneratorSelect() {
-    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<>();
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion,"2##1"));
     	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia,"3##1"));
@@ -298,7 +298,7 @@ public class PatronesController {
     }
     
     private List<IdentifiableModelWrapper<Comarca>> comarcasGeneratorSelect() {		
-		List<Comarca> comarcas = new ArrayList<>();
+		List<Comarca> comarcas = new ArrayList<Comarca>();
 		comarcas.add(new Comarca(new BigDecimal(1),new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
 		comarcas.add(new Comarca(new BigDecimal(2),new BigDecimal(1), "Oyonesa", "Arabako lautada","1", null));
 		comarcas.add(new Comarca(new BigDecimal(3),new BigDecimal(1), "Gamarresa", "Arabako lautada","1", null));
@@ -1011,7 +1011,7 @@ public class PatronesController {
     @GetMapping(value = "autocompleteEnlazadoSimple/provinciaComarcaLocalidadDTO")
     public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getAutocompleteProvinciaComarcaLocalidadDTO(
     		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
-        return new Resource<>(provinciaComarcaLocalidadDTO);
+        return new Resource<ProvinciaComarcaLocalidadDTO>(provinciaComarcaLocalidadDTO);
     }
     
 	@UDALink(name = "getProvinciaEnlazadoAutocomplete", linkTo = {
@@ -1101,7 +1101,7 @@ public class PatronesController {
     @GetMapping(value = "autocompleteEnlazadoMultiple/departamentoProvinciaDTO")
     public @ResponseBody Resource<DepartamentoProvinciaDTO> getAutocompleteDepartamentoProvinciaDTO(
     		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
-        return new Resource<>(departamentoProvinciaDTO);
+        return new Resource<DepartamentoProvinciaDTO>(departamentoProvinciaDTO);
     }
     
     @UDALink(name = "getDepartamentoEnlazadoMultipleAutocomplete")
@@ -1429,21 +1429,21 @@ public class PatronesController {
     @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaLocalidadDTO")
     public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getProvinciaComarcaLocalidadDTO(
     		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
-        return new Resource<>(provinciaComarcaLocalidadDTO);
+        return new Resource<ProvinciaComarcaLocalidadDTO>(provinciaComarcaLocalidadDTO);
     }
     
     @UDALink(name = "getProvinciaComarcaDTO")
     @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaDTO")
     public @ResponseBody Resource<ProvinciaComarcaDTO> getProvinciaComarcaDTO(
     		@RequestBody ProvinciaComarcaDTO provinciaComarcaDTO) {
-        return new Resource<>(provinciaComarcaDTO);
+        return new Resource<ProvinciaComarcaDTO>(provinciaComarcaDTO);
     }
     
     @UDALink(name = "getComarcaLocalidadDTO")
     @GetMapping(value = "comboEnlazadoSimple/comarcaLocalidadDTO")
     public @ResponseBody Resource<ProvinciaComarcaLocalidadDTO> getComarcaLocalidadDTO(
     		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
-        return new Resource<>(provinciaComarcaLocalidadDTO);
+        return new Resource<ProvinciaComarcaLocalidadDTO>(provinciaComarcaLocalidadDTO);
     }
     
     @UDALink(name = "getEnlazadoProvincia")
@@ -1541,7 +1541,7 @@ public class PatronesController {
     @GetMapping(value = "comboEnlazadoMultiple/departamentoProvinciaDTO")
     public @ResponseBody Resource<DepartamentoProvinciaDTO> getDepartamentoProvinciaDTO(
     		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
-        return new Resource<>(departamentoProvinciaDTO);
+        return new Resource<DepartamentoProvinciaDTO>(departamentoProvinciaDTO);
     }
     
     @UDALink(name = "getEnlMultDpto", linkTo = {

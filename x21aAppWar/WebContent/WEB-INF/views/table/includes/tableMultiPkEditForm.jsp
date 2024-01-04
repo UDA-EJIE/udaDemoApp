@@ -26,7 +26,7 @@
 	<div id="MultiPk_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
 	<c:choose>
-		<c:when test="${actionType.equals('POST')}">
+		<c:when test="${actionType eq 'POST'}">
 			<div class="form-row">
 				<div class="form-groupMaterial col-sm">
 					<form:input path="ida" id="ida_multipk_detail_table"/>

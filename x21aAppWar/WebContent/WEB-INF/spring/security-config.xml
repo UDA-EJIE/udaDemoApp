@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/util/spring-util.xsd">
 
 
-	<!-- Definicion del Wrapper de seguridad utilizado -->
+	<!-- Definicion del Wrapper de seguridad utilizado (XLNetS) -->
 	<bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">
         <property name="xlnetCachingPeriod" value="0" />
         <property name="specificCredentials" value="com.ejie.x21a.security.MyUserCredentials"/>
@@ -32,6 +32,78 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
 <!-- 		</property> -->
 <!-- 		<property name="alternativeOriginCredentialsApp" ref="aplicacionesAceptadas"/> -->
 	</bean>
+	
+	<!-- Definicion del Wrapper de seguridad utilizado (Mock) -->
+	<!--<bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperMockImpl">
+		<property name="principal">
+			<list>
+				<map>
+					<entry key="userName" value="udaAdministrador" />
+					<entry key="name" value="Uda" />
+					<entry key="surname" value="Administrador" />
+					<entry key="fullName" value="Uda Administrador" />
+					<entry key="nif" value="12121212j" />
+					<entry key="policy" value="1" />
+					<entry key="position" value="01" />
+					<entry key="isCertificate" value="no" />
+					<entry key="roles">
+						<list>
+							<value>ADMIN_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+				</map>
+				<map>
+					<entry key="userName" value="udaUser" />
+					<entry key="name" value="Uda" />
+					<entry key="surname" value="User" />
+					<entry key="fullName" value="Uda User" />
+					<entry key="nif" value="17398234h" />
+					<entry key="policy" value="1" />
+					<entry key="position" value="02" />
+					<entry key="isCertificate" value="no" />
+					<entry key="roles">
+						<list>
+							<value>USER_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+				</map>
+				<map>
+					<entry key="userName" value="udaEmpresa" />
+					<entry key="name" value="Uda" />
+					<entry key="surname" value="Empresa" />
+					<entry key="fullName" value="Uda Empresa" />
+					<entry key="nif" value="11111111H" />
+					<entry key="policy" value="1.3.6.1.4.1.14777.102.7" />
+					<entry key="position" value="03" />
+					<entry key="isCertificate" value="si" />
+					<entry key="roles">
+						<list>
+							<value>USER_UDA</value>
+							<value>X21A-IN-0003</value>
+						</list>
+					</entry>
+					<entry key="subjectCert">
+						<map>
+							<entry key="OID.1.3.6.1.4.1.18838.1.1" value="11111111H" />
+							<entry key="SERIALNUMBER" value="A01017169" />
+							<entry key="surname" value="Uda" />
+							<entry key="GIVENNAME" value="Empresa" />
+							<entry key="CN" value="Uda Empresa" />
+							<entry key="DNQ" value="-cif A06617169" />
+							<entry key="OU" value="Condiciones de uso en www.izenpe.com nola erabili jakiteko" />
+							<entry key="OU" value="Entitatearen ziurtagiria - Certificado de entidad" />
+							<entry key="OU" value="Ziurtagiri onartua - Certificado reconocido" />
+							<entry key="O" value="Uda Empresa" />
+							<entry key="C" value="ES" />
+						</map>
+					</entry>
+				</map>
+			</list>
+		</property>
+		<property name="userChangeUrl" value="/x21AppWar/" />
+	</bean>-->
 	
 	<!-- Se especifica un filtro de exclusión sobre los usuarios validados. Esto permite la limitación del acceso aunque se han usuarios validos de XLNets. -->
 	<bean id="aplicacionesAceptadas" class="com.ejie.x21a.security.ObtencionAplicaciones"/>
@@ -58,6 +130,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/security
         <property name="securityMetadataSource" >
             <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
            		<security:intercept-url pattern="/webdavServlet/.*" access="isAuthenticated()" />
+          		<security:intercept-url pattern="/iberdok/filter" access="hasRole('ROLE_X21A-IN-0003')" /> 
            		<security:intercept-url pattern="/iberdok/urlFinalizacion" access="" />
           		<security:intercept-url pattern="/iberdok/view.*" access="isAuthenticated()" /> 
 <!--                 <security:intercept-url pattern="/experimental/.*" access="hasRole('ROLE_X21A-IN-0003')" /> -->
