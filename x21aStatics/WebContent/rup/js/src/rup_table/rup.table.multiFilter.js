@@ -116,6 +116,7 @@
 	                        text: $.rup.i18n.base.rup_table.plugins.multifilter.save,
 	                        click: function () {
 	                            if (_checkLabel(ctx)) {
+									settings.multiFilter.$dropdownDialogForm = $('#' + ctx.sTableId + '_add_multiFilter_form');
 	                                // creo objeto Filter con los datos del formulario del filtro
 	                                var filter = _createFilterFromForm(ctx);
 
@@ -168,6 +169,7 @@
 	                        text: $.rup.i18n.base.rup_table.plugins.multifilter.remove,
 	                        click: function () {
 	                            if (_checkLabel(ctx)) {
+									settings.multiFilter.$dropdownDialogForm = $('#' + ctx.sTableId + '_delete_multiFilter_form');
 	                                // creo objeto Filter con los datos del formulario del filtro
 	                                var filter = _createFilterFromForm(ctx);
 
@@ -290,7 +292,7 @@
         // delete
         $.rup_ajax({
             url: settings.urlBase + settings.multiFilter.url + '/delete',
-            type: 'POST',
+            type: 'DELETE',
             data: $.toJSON(filter),
             dataType: 'json',
             showLoading: false,
@@ -428,8 +430,33 @@
             if (fecha != null)
                 dataForm[item.name] = fecha.getTime().toString();
         });
+				
+        		filter.filterValue = $.toJSON(dataForm);
+        
+				var objetoJSON = JSON.parse(filter.filterValue);
+				
+				if (hdivStateParamValue !== '') {
+					
+					var clave = settings.primaryKey[0];
+					
+					var $select = $('[name='+ clave+']' );
+					
+					if($('#'+  $select[0].id).attr('ruptype') === 'select'){
+						var label = $('#'+  $select[0].id).rup_select("label");
+					
+						objetoJSON[clave] = label;
+					}
+					
+				}
+				
+				
+				// Crear una nueva cadena con comillas simples por dentro
+				var nuevaCadena = ''
+						+ Object.keys(objetoJSON).map(function(key) {
+							return key + ':' + objetoJSON[key];
+						}).join(', ');
 
-        filter.filterValue = $.toJSON(dataForm);
+				filter.filterValue = nuevaCadena;
 
         if (settings.multiFilter.userFilter != null) {
         	filter.filterUser = settings.multiFilter.userFilter;
@@ -868,6 +895,7 @@
         if (objFiltro.length !== 0) {
             settings.multiFilter.$defaultCheck.attr('checked', objFiltro[0].value);
             var valorFiltro = JSON.parse(objFiltro[0].data);
+
             var xhrArray = $.rup_utils.jsontoarray(valorFiltro);
         }
 

@@ -2,8 +2,8 @@ package com.ejie.x21a.model;
 
 import java.math.BigDecimal;
 
-import org.hdiv.services.SecureIdContainer;
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.SecureIdContainer;
+import com.ejie.hdiv.services.TrustAssertion;
 
 public class ProvinciaComarcaDTO implements java.io.Serializable, SecureIdContainer {
 	
@@ -13,6 +13,8 @@ public class ProvinciaComarcaDTO implements java.io.Serializable, SecureIdContai
 	private BigDecimal codeProvincia;
 	@TrustAssertion(idFor = Comarca.class)
 	private BigDecimal codeComarca;
+	@TrustAssertion(idFor = Comarca.class)
+	private BigDecimal codeAuxiliar;
 	
 	public BigDecimal getCodeProvincia() {
 		return codeProvincia;
@@ -25,5 +27,11 @@ public class ProvinciaComarcaDTO implements java.io.Serializable, SecureIdContai
 	}
 	public void setCodeComarca(BigDecimal codeComarca) {
 		this.codeComarca = codeComarca;
+	}
+	public BigDecimal getCodeAuxiliar() {
+		return codeAuxiliar;
+	}
+	public void setCodeAuxiliar(BigDecimal codeAuxiliar) {
+		this.codeAuxiliar = codeAuxiliar;
 	}
 }

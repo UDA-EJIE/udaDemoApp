@@ -17,27 +17,31 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/table/multipk/${endpoint}" var="url"/>
-<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="multiPk" id="MultiPk_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="MultiPk_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
-	<c:if test="${actionType == 'POST'}">
-		<div class="form-row">
-			<div class="form-groupMaterial col-sm">
-				<form:input path="ida" id="ida_multipk_detail_table"/>
-				<label for="ida_multipk_detail_table"><spring:message code="ida"/></label>
+	<c:choose>
+		<c:when test="${actionType eq 'POST'}">
+			<div class="form-row">
+				<div class="form-groupMaterial col-sm">
+					<form:input path="ida" id="ida_multipk_detail_table"/>
+					<label for="ida_multipk_detail_table"><spring:message code="ida"/></label>
+				</div>
+				<div class="form-groupMaterial col-sm">
+					<form:input path="idb" id="idb_multipk_detail_table"/>
+					<label for="idb_multipk_detail_table"><spring:message code="idb"/></label>
+				</div>
 			</div>
-			<div class="form-groupMaterial col-sm">
-				<form:input path="idb" id="idb_multipk_detail_table"/>
-				<label for="idb_multipk_detail_table"><spring:message code="idb"/></label>
-			</div>
-		</div>
-	</c:if>
+		</c:when>
+		<c:when test="${not empty pkValue}">
+			<form:hidden path="id" value="${pkValue.id}" id="id_multipk_detail_table" />
+		</c:when>
+	</c:choose>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
 		

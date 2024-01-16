@@ -4,16 +4,16 @@ package com.ejie.x21a.control;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ejie.x21a.model.Comarca;
@@ -25,7 +25,7 @@ import com.ejie.x21a.service.ComarcaService;
  */
  
 @Controller
-@RequestMapping (value = "/comarca")
+@RequestMapping(value = "/comarca")
 
 public class ComarcaController  {
 
@@ -40,7 +40,7 @@ public class ComarcaController  {
 	 * @param model Model
 	 * @return String
 	 */
-	@RequestMapping(value = "maint", method = RequestMethod.GET)
+	@GetMapping(value = "maint")
 	public String getCreateForm(Model model) {
 		ComarcaController.logger.info("[GET - View] : comarca");
 		return "comarca";
@@ -52,7 +52,7 @@ public class ComarcaController  {
 	 * @param code BigDecimal
 	 * @return comarca Comarca
 	 */
-	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
+	@GetMapping(value = "/{code}")
 	public @ResponseBody Comarca getById(@PathVariable @TrustAssertion(idFor = Comarca.class) BigDecimal code) {
         Comarca comarca = new Comarca();
 		comarca.setCode(code);
@@ -67,7 +67,7 @@ public class ComarcaController  {
 	 * @param filterComarca Comarca
 	 * @return List
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public @ResponseBody List<Comarca> getAll(@ModelAttribute Comarca filterComarca) {
 		ComarcaController.logger.info("[GET - find_ALL] : Obtener Comarca por filtro");
 	    return this.comarcaService.findAll(filterComarca, null);

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,21 +44,21 @@ public class NoraController {
 	private NoraCalleService calleService;
 	
 	@UDALink(name = "getPaises")
-	@RequestMapping(value = "pais", method=RequestMethod.GET)
+	@GetMapping(value = "pais")
 	public @ResponseBody List<Resource<NoraPais>> getPaises() {
 		List<Resource<NoraPais>> findAll = ResourceUtils.fromListToResource(paisService.findAll(null, null));
 		return findAll;
 	}
 	
 	@UDALink(name = "getAutonomias")
-	@RequestMapping(value = "autonomia", method=RequestMethod.GET)
+	@GetMapping(value = "autonomia")
 	public @ResponseBody List<Resource<NoraAutonomia>> getAutonomias() {
 		List<Resource<NoraAutonomia>> findAll = ResourceUtils.fromListToResource(autonomiaService.findAll(null, null));
 		return findAll;
 	}
 	
 	@UDALink(name = "getProvincias")
-	@RequestMapping(value = "provincia", method=RequestMethod.GET)
+	@GetMapping(value = "provincia")
 	public @ResponseBody List<Resource<NoraProvincia>> getProvincias(
 			@RequestParam(value="autonomia.id", required=false) String autonomiaId) {
 		
@@ -72,7 +72,7 @@ public class NoraController {
 	}
 	
 	@UDALink(name = "getMunicipios")
-	@RequestMapping(value = "municipio", method=RequestMethod.GET)
+	@GetMapping(value = "municipio")
 	public @ResponseBody List<Resource<NoraMunicipio>> getMunicipios(
 			@RequestParam(value = "q", required = true) String q,
 			@RequestParam(value = "c", required = true) Boolean c) {
@@ -84,7 +84,7 @@ public class NoraController {
 	}
 	
 	@UDALink(name = "getCalles")
-	@RequestMapping(value = "calle", method=RequestMethod.GET)
+	@GetMapping(value = "calle")
 	public @ResponseBody List<Resource<NoraCalle>> getCalles(
 			@RequestParam(value = "q", required = true) String q,
 			@RequestParam(value = "c", required = true) Boolean c) {

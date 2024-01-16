@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hdiv.services.TrustAssertion;
+import com.ejie.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -33,12 +36,14 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableMultiPkService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.util.ResourceUtils;
 
 
@@ -69,7 +74,7 @@ public class TableMultiPkController {
 	 *            Objeto correspondiente al identificador indicado.
 	 */
 	@UDALink(name = "get", linkTo = { @UDALinkAllower(name = "edit"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Resource<MultiPk> get(@PathVariable @TrustAssertion(idFor = MultiPk.class) String id) {
         MultiPk multiPk = new MultiPk();
 		multiPk.setId(id);
@@ -80,8 +85,9 @@ public class TableMultiPkController {
 	
 	@UDALink(name = "getFiltroSimple", linkTo = {
 			@UDALinkAllower(name = "getTableEditForm"),
+			@UDALinkAllower(name = "getTableInlineEdit"),
 			@UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
@@ -93,7 +99,7 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "getTableEditForm", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "getRoles", linkClass = TableUsuarioController.class),
 			@UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(method = RequestMethod.GET,value = "/double")
+	@GetMapping(value = "/double")
 	public String getFiltroSimpleDoble (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
@@ -122,12 +128,57 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
-	public String getTableEditForm (@RequestParam String actionType, Model model) {
-		model.addAttribute("multiPk", new MultiPk());
-		model.addAttribute("actionType", actionType);
+	@PostMapping(value = "/editForm")
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			Model model) {
+		model.addAttribute(Constants.MODEL_MULTIPK, new MultiPk());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			MultiPk multiPk = new MultiPk();
+			multiPk.setId(pkValue);
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
 		
 		return "tableMultiPkEditForm";
+	}
+	
+	@UDALink(name = "getTableInlineEdit", linkTo = {
+			@UDALinkAllower(name = "get"),
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "filter") })
+	@PostMapping(value = "/inlineEdit")
+	public String getTableInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			Model model) {
+		model.addAttribute(Constants.MODEL_MULTIPK, new MultiPk());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			MultiPk multiPk = new MultiPk();
+			multiPk.setId(pkValue);
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(multiPk));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
+		
+		return "tableMultiPkInlineEditAuxForm";
 	}
 
 	/**
@@ -141,7 +192,7 @@ public class TableMultiPkController {
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
 	@UDALink(name = "getall", linkTo = { @UDALinkAllower(name = "edit" ), @UDALinkAllower(name = "remove" ), @UDALinkAllower(name = "get" )})
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody List<Resource<MultiPk>> getAll(@ModelAttribute MultiPk filterMultiPk) {
 		TableMultiPkController.logger.info("[GET - find_ALL] : Obtener MultiPk por filtro");
 	    return ResourceUtils.fromListToResource(this.multiPkService.findAll(filterMultiPk, null));
@@ -156,7 +207,7 @@ public class TableMultiPkController {
 	 *            Bean resultante de la modificacion.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<MultiPk> edit(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.update(multiPk);
 		TableMultiPkController.logger.info("[PUT] : MultiPk actualizado correctamente");
@@ -174,7 +225,7 @@ public class TableMultiPkController {
 	 *            Bean resultante del proceso de creacion.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<MultiPk> add(@RequestBody MultiPk multiPk) {		
         MultiPk multiPkAux = this.multiPkService.add(multiPk);
         TableMultiPkController.logger.info("[POST] : MultiPk insertado correctamente");
@@ -191,7 +242,7 @@ public class TableMultiPkController {
 	 *            Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Resource<MultiPk> remove(@PathVariable @TrustAssertion(idFor = MultiPk.class) String id) {
         MultiPk multiPk = new MultiPk();
@@ -214,7 +265,7 @@ public class TableMultiPkController {
 	 * @return String
 	 */
 	@UDALink(name = "getFormEdit", linkTo = { @UDALinkAllower(name = "deleteAll") })
-	@RequestMapping(value = "/maint", method = RequestMethod.GET)
+	@GetMapping(value = "/maint")
 	public String getFormEdit(Model model) {
 		TableMultiPkController.logger.info("[GET - View] : multipk");
 		return "multipk";
@@ -243,7 +294,7 @@ public class TableMultiPkController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -252,7 +303,7 @@ public class TableMultiPkController {
 	}
 	
 	@UDALink(name = "filter2", linkTo = { @UDALinkAllower(name = "get2"), @UDALinkAllower(name = "remove"), @UDALinkAllower(name = "filter2"), @UDALinkAllower(name = "deleteAll")})
-	@RequestMapping(value = "/filter2", method = RequestMethod.POST)
+	@PostMapping(value = "/filter2")
 	public @ResponseBody TableResourceResponseDto<MultiPk> filter2() {
 		TableMultiPkController.logger.info("[POST - filter] : Obtener MultiPks2");
 		return this.multiPkService.filter(new MultiPk(), new TableRequestDto(), false);
@@ -273,7 +324,7 @@ public class TableMultiPkController {
 	 *            componente RUP_TABLE. 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter")})
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<MultiPk>> search(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
 			@RequestJsonBody(param="search") MultiPk searchMultiPk,
@@ -295,7 +346,7 @@ public class TableMultiPkController {
 	 * 
 	 */
 	@UDALink(name = "deleteAll")
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -317,12 +368,8 @@ public class TableMultiPkController {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@UDALink(name = "clipboardReport")
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<MultiPk>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
 			@RequestParam(required = false) String[] columns, 
@@ -345,12 +392,8 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "excelReport")
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -379,12 +422,8 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "pdfReport")
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -413,12 +452,8 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "odsReport")
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -447,12 +482,8 @@ public class TableMultiPkController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */	
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport") })
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "csvReport")
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 

@@ -16,7 +16,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- URL a usar en formularios -->
 <spring:url value="comboEnlazadoMultiple/departamentoProvinciaDTO" var="remoto"/>
@@ -95,7 +95,13 @@
 			<legend>Mixto II</legend>
 			<form:form id="departamentoProvinciaMixto2_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="mixto2_departamento" path="codeDepartamento" items="${comboDepartamento}" itemLabel="entity.descEs" itemValue="id" />
+					<form:select id="mixto2_departamento" path="codeDepartamento">
+					    <c:forEach var="departamento" items="${comboDepartamento}">
+	        				<form:option value="${departamento.id}" data-nid="${departamento.entity.code}">
+	        					<c:out value="${departamento.entity.descEs}"/>
+	        				</form:option>
+	   					 </c:forEach>
+					</form:select>
 					<label for="mixto2_departamento">Departamento (local)</label>
 				</div>
 				
@@ -105,8 +111,13 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" itemLabel="entity.descEs" itemValue="id" />
-					<!-- <form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" /> -->
+					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia">
+					    <c:forEach var="departamentoProvincia" items="${comboDepartamentoProvincia}">
+	        				<form:option value="${departamentoProvincia.id}" data-idPadre="${departamentoProvincia.entity.parentCode}">
+	        					<c:out value="${departamentoProvincia.entity.descEs}"/>
+	        				</form:option>
+	   					 </c:forEach>
+					</form:select>
 					<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 				</div>
 			</form:form>

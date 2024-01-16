@@ -178,7 +178,7 @@ el resto de componentes RUP para estandarizar la asignación del valor al Autoco
 						let settings = data.$labelField.data('settings');
 						if(labelFound !== ''){
 							$('#' + id + '_label').val(labelFound);
-						}else if(settings.showDefault){
+						}else if(settings?.showDefault){
 							$('#' + id + '_label').val(value);
 						}
 					}
@@ -270,7 +270,7 @@ el resto de componentes RUP para estandarizar la asignación del valor al Autoco
 
 			settings = self.data('settings');
 
-			if (settings.combobox) {
+			if (settings?.combobox) {
 				settings.$comboboxToogle.button('disable');
 			}
 
@@ -560,7 +560,7 @@ input.
 			if (settings.parent) {	
 				let parentsValues = settings.$self._getParentsValues(settings);
 				
-				if (parentsValues.selectedSource in settings.data) {
+				if (settings.source === 'object' && parentsValues.selectedSource in settings.data) {// se asegura que es local
 					dataSource = settings.data[parentsValues.selectedSource];
 				}
 			}
@@ -671,7 +671,7 @@ input.
 				});
 			}
 
-			term = request.term.replace(/%/g, '\\%').replace(/_/g, '\\_');
+			term = String(request.term).replace(/%/g, '\\%').replace(/_/g, '\\_');
 			data = $.extend({
 				q: term,
 				c: settings.contains
@@ -691,10 +691,8 @@ input.
 				settings.data = bckData;
 
 			} else {
-
 				$.rup_ajax({
-					url: settings.data,
-					data: data,
+					url: settings._generateUrl(settings, $.param(data)),
 					dataType: 'json',
 					contentType: 'application/json',
 					//Cabecera RUP
@@ -746,7 +744,7 @@ input.
 							}
 							
 							// Limpiar tildes
-							if (settings.accentFolding && labelLimpio !== item.label) {
+							if (settings.accentFolding && labelLimpio !== item.label && (labelLimpio.includes(termLimpio) || item.label.includes(termLimpio))) {
 								// Parte delantera
 								let regex = new RegExp(termLimpio, 'i');
 								var literal = returnValue.label;
@@ -793,6 +791,11 @@ input.
 					}
 				});
 
+			}
+			
+			// Actualiza los autocomplete enlazados con herencias.
+			if ($self.attr('ruptype') === 'autocomplete' && $('#' + settings.id + '_label').length > 0) {
+				document.getElementById(settings.id + '_label').focus();
 			}
 		},
 		/**
@@ -898,6 +901,36 @@ input.
 			
 			return selectedSource;
 		},
+        /**
+         * Gestiona los parámetros a añadir en la URL para que Hdiv permita la llamada.
+         *
+         * @function _generateUrl
+         * @since UDA 5.2.0
+         * @private
+         * @param {object} settings - Configuración del componente.
+         * @param {string} data - Valores de búsqueda e identificador de los padres en caso de ser enlazados.
+         */
+		_generateUrl: function(settings, data) {
+			let $form;
+			
+			if (settings.$forceForm) {
+				$form = settings.$forceForm;
+			} else {
+				$form = settings.inlineEdit?.$auxForm ? settings.inlineEdit?.$auxForm : $('#' + settings.id).closest('form');
+			}
+			
+			const name = settings.inlineEdit?.auxSiblingFieldName ? settings.inlineEdit?.auxSiblingFieldName : settings.name;
+			
+			if ($form.length === 1) {
+				if ($.fn.getHDIV_STATE(undefined, $form) != '') {
+					settings.data += (settings.data.includes('?') ? '&' : '?') + '_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form) + '&MODIFY_FORM_FIELD_NAME=' + name;
+				}
+				
+				// Concatena los datos a enviar.
+				settings.data += ($.fn.getHDIV_STATE(undefined, $form) != '' ? '&' : '?') + data;
+			}
+			return settings.data;
+		},
 		/**
          * Método de inicialización del componente.
          *
@@ -916,13 +949,17 @@ input.
 
 				$(this).attr('ruptype', 'autocomplete');
 
-				//Recopilar datos necesarios
+				// Recopilar datos necesarios.
+				settings.$self = this;
 				settings.id = $(this).attr('id');
+				settings.name = $(this).attr('name');
 				settings.loadObjects = settings.id;
-				settings.data = settings.source; //Guardar los datos en "data" ya que source la emplea autocomplete internamente
-				settings._parseResponse = this._parseResponse; //Guardar referencia a rup.autocomplete para invocar las funciones privadas
-				settings._sourceLOCAL = this._sourceLOCAL; //Guardar referencia a rup.autocomplete para invocar las funciones privadas
-				settings.$self = this; //Guardar referencia a rup.autocomplete para invocar las funciones privadas
+				// Guardar los datos en "data" porque "source" lo usa el subyacente.
+				settings.data = settings.source;
+				// Guardar referencias a algunas funciones privadas.
+				settings._parseResponse = this._parseResponse;
+				settings._sourceLOCAL = this._sourceLOCAL;
+				settings._generateUrl = this._generateUrl;
 
 				//Guardar valor del INPUT
 				settings.loadValue = settings.loadValue ?? $('#' + settings.id).attr('value');

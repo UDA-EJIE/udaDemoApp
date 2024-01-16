@@ -2,7 +2,7 @@ package com.ejie.x21a.model;
 
 import java.util.List;
 
-import org.hdiv.services.SecureIdentifiable;
+import com.ejie.hdiv.services.SecureIdentifiable;
 
 public class RandomForm implements java.io.Serializable, SecureIdentifiable<String> {
 

@@ -12,10 +12,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     
 
-	<!-- Serializador utilizado por UDA para serializar unicamente las  -->
+	<!-- Serializador utilizado por UDA  -->
     <bean id="customSerializer" class="com.ejie.x38.serialization.CustomSerializer" />
     
-    <bean id="secureSerializerModule" class="com.ejie.x38.serialization.EjieSecureModule" />
+    <!-- Serializador utilizado por Hdiv  -->
+    <bean id="secureSerializerModule" class="com.ejie.x38.hdiv.serialization.EjieSecureModule" />
+    
     <bean id="udaMappingJackson2HttpMessageConverter" class="com.ejie.x38.serialization.UdaMappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes" ref="jacksonSupportedMediaTypes" />
         <property name="udaModule" ref="udaModule" />
@@ -43,8 +45,10 @@
                 <entry key="#{T(com.ejie.x21a.model.MultiPk)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.Buzones)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.IberdokFile)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x21a.model.X21aAlumno)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x38.log.model.LogModel)}" value-ref="customSerializer" />
                 <entry key="#{T(com.ejie.x21a.model.DivisionTerritorialDto)}" value-ref="customSerializer" />
+                <entry key="#{T(com.ejie.x38.generic.model.SelectGeneric)}" value-ref="customSerializer" />
              </util:map>
       	</property>
       	<property name="serializationInclusions" ref="serializationInclusions" />

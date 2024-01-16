@@ -17,7 +17,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <h2>
 	<spring:message code="selectEnlazadoMulti.title" />
@@ -98,7 +98,7 @@
 			<legend>Mixto II</legend>
 			<form:form id="departamentoProvinciaMixto1_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">
-					<form:select id="mixto2_departamento" path="codeDepartamento" items="${comboDepartamento}" itemLabel="entity.descEs" itemValue="id" />
+					<form:select id="mixto2_departamento" path="codeDepartamento" items="${comboDepartamento}" itemLabel="entity.descEs" itemValue="entity.code" />
 					<label for="mixto2_departamento">Departamento (local)</label>
 				</div>
 				
@@ -108,8 +108,11 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia" items="${comboDepartamentoProvincia}" itemLabel="entity.descEs" itemValue="id" />
-					<!-- <select id="mixto2_dptoProv"><option>&nbsp;</option></select> -->
+					<form:select id="mixto2_dptoProv" path="codeDepartamentoProvincia">
+					    <c:forEach var="theComarca" items="${comboDepartamentoProvincia}">
+	        				<form:option value="${theComarca.id}" data-idPadre="${theComarca.entity.parentCode}"><c:out value="${theComarca.entity.descEs}"/></form:option>
+	   					 </c:forEach>
+					</form:select>
 					<label for="mixto2_dptoProv">Departamento-Provincia (local)</label>
 				</div>
 			</form:form>

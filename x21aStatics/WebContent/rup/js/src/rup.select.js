@@ -48,7 +48,7 @@
 }(function ($) {
 
     // ****************************************************************************************************************
-    // DEFINICIÓN BASE DEL PATRÁN (definición de la variable privada que
+    // DEFINICIÓN BASE DEL PATRÓN (definición de la variable privada que
 	// contendrá los métodos y la función de jQuery)
     // ****************************************************************************************************************
 
@@ -80,9 +80,9 @@
 
             let values = $self.select2('data')
             
-            if (values == undefined || values.length == 0) {
+            if ((values == undefined || values.length == 0) && !settings.multiple) {
             	value = '';
-            }else if (values.length == 1) {
+            }else if (values.length == 1 && !settings.multiple){
                 value = values[0].id;
             }else{
             	value = [];
@@ -152,7 +152,13 @@
             	let dataSelect2 = $self.data('select2');
             	if(dataSelect2 !== undefined){
 	            	if(dataSelect2.$selection.find('input').length == 1){
-	            		dataSelect2.$selection.find('input').val('');
+	            		
+	            		if(settings.defaultValueAutocompleteNotLoaded == false){
+	            			dataSelect2.$selection.find('input').val('');
+	            		} else{
+	            			dataSelect2.$selection.find('input').val(param);
+	            		}
+	            		
 	            	}
 	            	let $search = dataSelect2.dropdown.$search || dataSelect2.selection.$search;
 	            	if($search != undefined && texto !== undefined){//sifnifica que esta abierto
@@ -214,8 +220,10 @@
         	var $self = $(this);
             // init de select
             if (this.length > 0) {
+            	var dataSelect2 = $self.data('select2');
+            	dataSelect2.$selection.find('input').val('');
                 // Simple y multi
-            	if($self.data('settings').blank !== undefined){
+            	if($self.data('settings').blank !== undefined){           		
             		$self.val($self.data('settings').blank).trigger('change')
             	}else{
             		$self.val(null).trigger('change');
@@ -500,6 +508,10 @@
                 	}
 
             	}
+            	
+            	 if (settings.multiple == true) {
+          $self.rup_select('reload');
+        }
  
         	}
     	},
@@ -515,6 +527,15 @@
             // Tipo de select
         	let data = $(this).select2('data');
             if (!$(this).data('settings').multiple) {
+            	//Validar que venga el nid
+            	if(data[0] != undefined && data[0].nid == undefined && $(this).data('settings').options != undefined){
+            	   let seleccionado = $.grep($(this).data('settings').options, function (v, index) {
+            	        return v.id === data[0].id;
+            	   });
+            	   if (seleccionado != undefined && seleccionado.length == 1) {
+            		   data[0].nid = seleccionado[0].nid;
+            	   }
+            	}
             	 return data[0];
             } else {
                 return data;
@@ -1052,7 +1073,9 @@
         _loadRemote: function (settings,first) {
         	var rupSelect = this;
         	 	settings.ajax = {
-		    url: rupSelect._generateUrl($('#' + settings.id).closest('form'), settings, _this._getParentsValues(settings, true)),
+		    url: function () {
+    			return rupSelect._generateUrl(settings, _this._getParentsValues(settings, true));
+    		},
 		    dataType: settings.dataType,
 		    processResults: function (response) 
 		    	{// Require id y text, podemos permitir que no venga.
@@ -1084,7 +1107,8 @@
 		    cache: false,
 		    data: function () {
 		    	// Es necesario enviarlo vacío para que el componente subyacente no genere parámetros extra que Hdiv bloqueará.
-		    	return '';
+		    	//se hará en el transport
+		    	return  _this._getParentsValues(settings, true);
 		    },
 		    error: function (xhr, textStatus, errorThrown) {
 		               if (settings.onLoadError !== null) {
@@ -1109,8 +1133,13 @@
 				let __cache = [];
 				let __lastQuery = null;
 		    	settings.ajax.transport = function(params, success, failure) {
+
 					// retrieve the cached key or default to _ALL_
 			        let __cachekey = params.data || '_ALL_';
+		    		//Se actualiza el data, para mantener la misma función, con hdiv ya no se mandan los data
+			        if(!settings.autocomplete){
+			        	params.data = "" ;
+			        }
 			        let mySelect = $('#' + settings.id).data('select2');
 			        if(settings.autocomplete){
 			        	params.data.q = mySelect.$container.find('input').val();
@@ -1217,6 +1246,11 @@
 				          }
 				         
 				          let seleccionado = $.grep(data, function (v,index) {
+				        	  
+				        	  if (v.text === undefined && v[settings.sourceParam.text] !== undefined) {
+				                  v.text = v[settings.sourceParam.text];
+				                }
+				        	  
 				        	  	if(v.id == valueSelect){
 				        	  		positions.push(index);
 				        	  	}
@@ -1228,13 +1262,14 @@
 				                  });
 				          }
 				          // Si es el mismo, no cambia porque esta abirendo
+				          let mySelect = $('#' + settings.id).data('select2');
 				          if(seleccionado !== undefined && seleccionado.length == 1 && $('#' + settings.id).rup_select('getRupValue') != seleccionado[0].id){
 				        	  if(settings.multiple){// Revisar varios selects
 				        		  $('#' + settings.id).rup_select('setRupValue',[seleccionado[0].id]);
 				        	  }else{
 				        		  $('#' + settings.id).rup_select('setRupValue',seleccionado[0].id);
 				        	  }
-				        	  let mySelect = $('#' + settings.id).data('select2');
+				        	  
 			                  $.each(positions, function (index,valor) {
 			                	  let $option = mySelect.$results.find('li')[valor];
 			                	  if($option != undefined){
@@ -1242,7 +1277,14 @@
 			                	  }
 			                    });
 				          }else{
-				        	  $('#' + settings.id).rup_select('setRupValue',settings.blank);
+				        	  if(settings.autocomplete){
+				        		  let valorInput = mySelect.selection.$selection.find('input').val() 
+				        		  $('#' + settings.id).rup_select('setRupValue',settings.blank);
+				        		  mySelect.selection.$selection.find('input').val(valorInput); 
+				        		  mySelect.selection.$selection.find('input').focus();
+				        	  }else{
+				        		  $('#' + settings.id).rup_select('setRupValue',settings.blank);
+				          	  }
 				          }
 				          
 				         if (settings.onLoadSuccess !== null && settings.onLoadSuccess !== undefined) {
@@ -1418,20 +1460,32 @@
          * @function _generateUrl
          * @since UDA 5.2.0
          * @private
-         * @param {object} $form - Formulario.
          * @param {object} settings - Configuración del componente.
-         * @param {?object} data - Valores de los padres.
+         * @param {string} [data] - Valores de búsqueda cuando tiene autocompletado e identificador de los padres en caso de ser enlazados.
          */
-        _generateUrl: function ($form, settings, data) {
-        	let url = settings.url + '?_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form);
-        	
-        	if (data) {
-        		// Escapa los caracteres '#' para evitar problemas en la petición.
-        		url += "&" + data.replaceAll('#', '%23');
-        	}
-        	
-        	return url + '&MODIFY_FORM_FIELD_NAME=' + settings.name;
-        },
+		_generateUrl: function(settings, data) {
+			let $form;
+			
+			if (settings.$forceForm) {
+				$form = settings.$forceForm;
+			} else {
+				$form = settings.inlineEdit?.$auxForm ? settings.inlineEdit?.$auxForm : $('#' + settings.id).closest('form');
+			}
+			
+			const name = settings.inlineEdit?.auxSiblingFieldName ? settings.inlineEdit?.auxSiblingFieldName : settings.name;
+			
+			if ($form.length === 1) {
+				if ($.fn.getHDIV_STATE(undefined, $form) != '') {
+					settings.url += (settings.url.includes('?') ? '&' : '?') + '_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form) + '&MODIFY_FORM_FIELD_NAME=' + name;
+				}
+				
+				if (data) {
+					// Escapa los caracteres '#' para evitar problemas en la petición.
+					settings.url += ($.fn.getHDIV_STATE(undefined, $form) != '' ? '&' : '?') + data.replaceAll('#', '%23');
+				}
+			}
+			return settings.url;
+		},
         /**
 		 * Método de inicialización del componente.
 		 * 
@@ -1673,6 +1727,23 @@
 	                	this._loadRemote(settings,true);
 		           } else {// por si viene cargado de un select
 		        	   settings.data = true;
+		        	   if(settings.parent){//convertir el data, formato parent	
+		        		   settings.data = [];
+		        		   $('#'+settings.id).find('option').each(function () {
+		        			   let idPadre = $(this).data('idpadre');
+		        			   if(idPadre != undefined){
+		        				   //si no existe
+		        				   if(settings.data[idPadre] === undefined){
+		        					   settings.data[idPadre] = []; 
+		        					   if (settings.placeholder != undefined || settings.placeholder != '') {
+		        						   settings.data[idPadre].push({id:settings.blank, text:settings.placeholder});
+		        					   }
+		        				   }
+		        				   settings.data[idPadre].push({id:$(this).val(), text:$(this).text()});
+		        			   }
+		        	            
+		        	          });
+		        	   }
 		           }
 	                
 	                // Init eventos: El resto van en el propio subyacente
@@ -1821,8 +1892,8 @@
 	                	}
 	                	// Bucle para eventos Padres
 	                	$.each(parent, function (idx, eventoPadre) {
-		                	$('#' + eventoPadre).off('change.parent');
-			                $('#' + eventoPadre).on('change.parent', function (){// Cambios
+		                	$('#' + eventoPadre).off('change.parent'+ settings.id);
+			                $('#' + eventoPadre).on('change.parent'+  settings.id, function (){// Cambios
 																					// para
 																					// los
 																					// hijos,onchange
@@ -1847,17 +1918,19 @@
 			                			$.each(settings.parent, function (ind, elem) {
 			                				let val = $('#' + elem).rup_select('getRupValue');
 			                		        clave = clave + val + settings.multiValueToken  ;
-			                		        if($('#'+elem).rup_select("getDataSelected") !== undefined){
-			                		        	val = $('#'+elem).rup_select("getDataSelected").nid;
+			                		        let dataSelected = $('#'+elem).rup_select("getDataSelected");
+			                		        if(dataSelected !== undefined){
+			                		        	val = dataSelected.nid || dataSelected.id;
 			                		        	ClaveNoCifrar = ClaveNoCifrar + val + settings.multiValueToken  ;
 			                		        }
 			                		    });
 			                			clave = clave.substring(0,clave.length - settings.multiValueToken.length);
 			                			ClaveNoCifrar = ClaveNoCifrar.substring(0,ClaveNoCifrar.length - settings.multiValueToken.length);
-			                			if(settings.dataParents[0][clave] != undefined || settings.dataParents[0][ClaveNoCifrar] != undefined){// Datos
+			                			let datosParents = settings.dataParents[0] || settings.dataParents;
+			                			if(datosParents[clave] != undefined || datosParents[ClaveNoCifrar] != undefined){// Datos
 																						// Cargados
-			                				let valores = settings.dataParents[0][clave] || settings.dataParents[0][ClaveNoCifrar];
-			                				settings.data = settings.dataParents;
+			                				let valores = datosParents[clave] || datosParents[ClaveNoCifrar];
+			                				settings.data = datosParents;
 			                				$('#'+settings.id).rup_select("setSource", valores);
 			                			}
 			                		}else{// si tiene un solo padre
@@ -2030,6 +2103,7 @@
         dataType: 'json',
         cache: true,
         multiple: false,
+        defaultValueAutocompleteNotLoaded: true,
         multiValueToken:'##'
         };
 

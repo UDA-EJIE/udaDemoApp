@@ -29,8 +29,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hdiv.services.NoEntity;
-import org.hdiv.services.TrustAssertion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,13 +52,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
+import com.ejie.hdiv.services.NoEntity;
+import com.ejie.hdiv.services.TrustAssertion;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Localidad;
 import com.ejie.x21a.model.MultiPk;
@@ -68,6 +66,7 @@ import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.Usuario2;
 import com.ejie.x21a.service.TableUsuarioService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResourceResponseDto;
@@ -75,6 +74,7 @@ import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.generic.model.SelectGeneric;
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
+import com.ejie.x38.hdiv.util.IdentifiableModelWrapperFactory;
 import com.ejie.x38.rup.table.filter.model.Filter;
 import com.ejie.x38.rup.table.filter.service.FilterService;
 import com.ejie.x38.util.DateTimeManager;
@@ -90,10 +90,6 @@ import com.ejie.x38.util.ResourceUtils;
 @RequestMapping (value = "/table")
 public class TableUsuarioController {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
-	public static final String MODEL_USUARIO = "usuario";
-	public static final String MODEL_USUARIO2 = "usuario2";
-	public static final String MODEL_OPTIONS = "options";
-	public static final String MODEL_ACTIONTYPE = "actionType";
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -132,8 +128,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario> get(
+	@GetMapping(value = "/{id}")
+	public @ResponseBody Resource<Usuario> getUsuario(
 			@PathVariable @TrustAssertion(idFor = Usuario.class) String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
@@ -147,8 +143,8 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove2" ),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/{id}", method = RequestMethod.GET)
-	public @ResponseBody Resource<Usuario2> get2(
+	@GetMapping(value = "/{bis}/{id}")
+	public @ResponseBody Resource<Usuario2> getUsuario2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@PathVariable @TrustAssertion(idFor = Usuario2.class) String id) {
         Usuario2 usuario = new Usuario2();
@@ -172,12 +168,21 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "multifilterAdd"),
 			@UDALinkAllower(name = "multifilterDelete"),
 			@UDALinkAllower(name = "multifilterDefault"),
-			@UDALinkAllower(name = "multifilterGetAll") })
-	@RequestMapping(value = "/configurable", method = RequestMethod.GET)
+			@UDALinkAllower(name = "multifilterGetAll"),
+			@UDALinkAllower(name = "clipboardReport"),
+			@UDALinkAllower(name = "clipboardReport2"),
+			@UDALinkAllower(name = "excelReport"),
+			@UDALinkAllower(name = "excelReport2"),
+			@UDALinkAllower(name = "pdfReport"),
+			@UDALinkAllower(name = "pdfReport2"),
+			@UDALinkAllower(name = "odsReport"),
+			@UDALinkAllower(name = "odsReport2"),
+			@UDALinkAllower(name = "csvReport"),
+			@UDALinkAllower(name = "csvReport2") })
+	@GetMapping(value = "/configurable")
 	public String getFiltroSimple (Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute(MODEL_USUARIO, usuario);
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -206,6 +211,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getTableDoubleEditFormMultipart"),
 			@UDALinkAllower(name = "addFromNewWindow"),
 			@UDALinkAllower(name = "editFromNewWindow"),
+			@UDALinkAllower(name = "editFromNewWindowDouble"),
 			@UDALinkAllower(name = "getApellidos"),
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
@@ -226,11 +232,11 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport2"),
 			@UDALinkAllower(name = "csvReport"),
 			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "/double", method = RequestMethod.GET)
+	@GetMapping(value = "/double")
 	public String getTableDouble (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -270,7 +276,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
-	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)
+	@GetMapping(value = "masterDetail")
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 		
@@ -304,7 +310,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "odsReport", linkClass = TableLocalidadController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableComarcaController.class),
 			@UDALinkAllower(name = "csvReport", linkClass = TableLocalidadController.class) })
-	@RequestMapping(value = "masterDialog", method = RequestMethod.GET)
+	@GetMapping(value = "masterDialog")
 	public String getMasterDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tablaMasterDetail", null, LocaleContextHolder.getLocale()));
 
@@ -333,7 +339,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "tableDialog", method = RequestMethod.GET)
+	@GetMapping(value = "tableDialog")
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("multiPk", new MultiPk());
@@ -355,10 +361,10 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/tableDialogAjax", method = RequestMethod.GET)
+	@GetMapping(value = "/tableDialogAjax")
 	public String getTableDialogAjax (Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_OPTIONS, new TableOptions());
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_OPTIONS, new TableOptions());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
 		comboRol.put("", "---");
@@ -384,16 +390,36 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get"),
 			@UDALinkAllower(name = "add"),
 			@UDALinkAllower(name = "edit"),
+			@UDALinkAllower(name = "addMultipart"),
+			@UDALinkAllower(name = "editMultipart"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) boolean enableMultipart,
+			@RequestParam(required = true) boolean isMultipart,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		if (enableMultipart) {
-			model.addAttribute("enableMultipart", enableMultipart);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		return "tableEditForm";
@@ -405,11 +431,37 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "get2"),
 			@UDALinkAllower(name = "add2"),
 			@UDALinkAllower(name = "edit2"),
+			@UDALinkAllower(name = "addMultipart2"),
+			@UDALinkAllower(name = "editMultipart2"),
 			@UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/editFormDouble", method = RequestMethod.POST)
-	public String getTableDoubleEditForm (@RequestParam String actionType, Model model) {
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
+	@PostMapping(value = "/editFormDouble")
+	public String getTableDoubleEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = true) boolean isMultipart,
+			@RequestParam(required = false) String pkValue,
+			Model model) {
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
+		}
 		
 		return "tableDoubleEditForm";
 	}
@@ -425,10 +477,22 @@ public class TableUsuarioController {
 	@PostMapping(value = "/editFormMultipart")
 	public String getTableEditFormMultipart (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO, new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("enableMultipart", true);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ISMULTIPART, true);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.MULTIPART_FORMDATA);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+		}
 		
 		return "tableEditForm";
 	}
@@ -444,10 +508,22 @@ public class TableUsuarioController {
 	@PostMapping(value = "/editFormDoubleMultipart")
 	public String getTableDoubleEditFormMultipart (
 			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute(MODEL_USUARIO2, new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("enableMultipart", true);
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ISMULTIPART, true);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.MULTIPART_FORMDATA);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+		}
 		
 		return "tableDoubleEditForm";
 	}
@@ -458,23 +534,48 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "edit"),
 			@UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) boolean isMultipart,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/table";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(pkValue)));
 		}
-		model.addAttribute("mapping", mapping);
+		
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/add");
+			}
+		} else {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "/table/edit");
+			}
+		}
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		List<String> radioEjie = new ArrayList<String>();
+		radioEjie.add("0");
+		radioEjie.add("1");
+		model.addAttribute("radioEjie", radioEjie);
 		
 		return "tableInlineEditAuxForm";
 	}
@@ -488,37 +589,30 @@ public class TableUsuarioController {
 	@PostMapping(value = "/inlineEditDouble")
 	public String getTableDoubleInlineEdit (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = true) boolean isMultipart,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario2());
-		model.addAttribute(MODEL_ACTIONTYPE, actionType);
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_USUARIO2, new Usuario2());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, isMultipart ? "POST" : actionType);
+		model.addAttribute(Constants.MODEL_ISMULTIPART, isMultipart);
+		model.addAttribute(Constants.MODEL_ENCTYPE, isMultipart ? Constants.MULTIPART_FORMDATA : Constants.APPLICATION_URLENCODED);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/table/2";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(pkValue)));
 		}
-		model.addAttribute("mapping", mapping);
 		
-		return "tableInlineEditAuxForm";
-	}
-	
-	@UDALink(name = "editFromNewWindow")
-	@GetMapping(value = "/editFromNewWindow")
-    public String editFromNewWindow(
-    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
-    		Model model) {
-		if (isDouble)  {
-			Usuario2 usuario = new Usuario2();
-			model.addAttribute(MODEL_USUARIO2, usuario);
-			model.addAttribute("isDouble", true);
+		if (actionType.equals("POST")) {
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "addMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			}
 		} else {
-			Usuario usuario = new Usuario();
-			model.addAttribute(MODEL_USUARIO, usuario);
-			model.addAttribute("isDouble", false);
+			if (isMultipart) {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "editMultipart");
+			} else {
+				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+			}
 		}
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -530,13 +624,106 @@ public class TableUsuarioController {
 		comboRol.put("Manager", "Manager");
 		model.addAttribute("comboRol", comboRol);
 		
-		model.addAttribute(MODEL_ACTIONTYPE, "PUT");
+		List<String> radioEjie = new ArrayList<String>();
+		radioEjie.add("0");
+		radioEjie.add("1");
+		model.addAttribute("radioEjie", radioEjie);
+		
+		return "tableDoubleInlineEditAuxForm";
+	}
+	
+	@UDALink(name = "addFromNewWindow", linkTo = {
+			@UDALinkAllower(name = "add"),
+			@UDALinkAllower(name = "add2")})
+	@GetMapping(value = "/addFromNewWindow")
+    public String addFromNewWindow(
+    		@RequestParam(value = Constants.IS_DOUBLE, required = false) boolean isDouble,
+    		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (isDouble)  {
+			Usuario2 usuario = new Usuario2();
+			model.addAttribute(Constants.MODEL_USUARIO2, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "2/add");
+			model.addAttribute(Constants.IS_DOUBLE, true);
+		} else {
+			Usuario usuario = new Usuario();
+			model.addAttribute(Constants.MODEL_USUARIO, usuario);
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+			model.addAttribute(Constants.IS_DOUBLE, false);
+		}
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableEditFormNewWindow";
+    }
+	
+	@UDALink(name = "editFromNewWindow", linkTo = {
+			@UDALinkAllower(name = "edit") })
+	@GetMapping(value = "/editFromNewWindow/{id}")
+    public String editFromNewWindow(
+    		@PathVariable @TrustAssertion(idFor = Usuario.class) String id,
+    		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		model.addAttribute(Constants.MODEL_USUARIO, this.tableUsuarioService.find(new Usuario(id)));
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		model.addAttribute(Constants.IS_DOUBLE, false);
+		
+		if (id != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario(id)));
+		}
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableEditFormNewWindow";
+    }
+	
+	@UDALink(name = "editFromNewWindowDouble", linkTo = {
+			@UDALinkAllower(name = "edit2") })
+	@GetMapping(value = "/editFromNewWindowDouble/{id}")
+    public String editFromNewWindowDouble(
+    		@PathVariable @TrustAssertion(idFor = Usuario2.class) String id,
+    		Model model) {
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		model.addAttribute(Constants.MODEL_USUARIO2, this.tableUsuarioService.find(new Usuario2(id)));
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		model.addAttribute(Constants.IS_DOUBLE, true);
+		
+		if (id != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, IdentifiableModelWrapperFactory.getInstance(new Usuario2(id)));
+		}
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
 		
 		return "tableEditFormNewWindow";
     }
 	
 	@UDALink(name = "getApellidos")
-	@RequestMapping(value = "/apellidos", method = RequestMethod.GET)
+	@GetMapping(value = "/apellidos")
 	public @ResponseBody List<SelectGeneric> getApellidos (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {
@@ -591,7 +778,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "getRoles",linkTo = { @UDALinkAllower(name = "getApellidos" )})
-	@RequestMapping(value = "/roles", method = RequestMethod.GET)
+	@GetMapping(value = "/roles")
 	public @ResponseBody List<SelectGeneric> getRoles (
 			@RequestParam(value = "q", required = false) String q,
             @RequestParam(value = "c", required = false) Boolean c) {	
@@ -619,7 +806,7 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "remove"), 
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "get") })
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody
 	List<Resource<Usuario>> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
@@ -634,7 +821,8 @@ public class TableUsuarioController {
 	 *
 	 * @return List<Usuario> Lista de objetos correspondientes a la búsqueda realizada.
 	 */
-	@UDALink(name = "getAllIds")
+	@UDALink(name = "getAllIds", linkTo = { 
+			@UDALinkAllower(name = "filter")})
 	@GetMapping(value = "/allIds")
 	public @ResponseBody
 	List<Resource<Usuario>> getAllIds(
@@ -653,7 +841,7 @@ public class TableUsuarioController {
 	 * @return Bean resultante de la modificaciÃ³n.
 	 */
 	@UDALink(name = "edit", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Resource<Usuario> edit(@RequestBody Usuario usuario) {
 		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
@@ -661,7 +849,7 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "edit2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/{bis}/edit")
     public @ResponseBody Resource<Usuario2> edit2(@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
     		@RequestBody Usuario2 usuario) {
 		Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
@@ -670,30 +858,34 @@ public class TableUsuarioController {
     }
 	
 	@UDALink(name = "editMultipart", linkTo = { @UDALinkAllower(name = "filter") })
-	@PutMapping(value = "/editMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario> editMultipart(
-    		@RequestBody Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+	@PostMapping(value = "/editMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario> editMultipart(@Validated @ModelAttribute Usuario usuario) {
+		logger.info("[POST - editMultipart] : Editar usuario.");
 		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
+
 		return new Resource<Usuario>(usuarioAux);
-    }
+	}
 	
 	@UDALink(name = "editMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@PutMapping(value = "/{bis}/editMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario2> editMultipart2(
-    		@RequestBody Usuario2 usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
-		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
+	@PostMapping(value = "/{bis}/editMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario2> editMultipart2(@Validated @ModelAttribute Usuario2 usuario) {
+		logger.info("[POST - editMultipart2] : Editar usuario.");
+		logger.info("USUARIO2 :::: {} --- {}\n", usuario.getId(), new Date());
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario2 usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
+
 		return new Resource<Usuario2>(usuarioAux);
     }
 
@@ -707,7 +899,7 @@ public class TableUsuarioController {
 	 * @return Bean resultante del proceso de creaciÃ³n.
 	 */
 	@UDALink(name = "add", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Resource<Usuario> add(@Validated @RequestBody Usuario usuario) {		
 		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
@@ -715,7 +907,7 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "add2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@RequestMapping(value = "/{bis}/add", method = RequestMethod.POST)
+	@PostMapping(value = "/{bis}/add")
 	public @ResponseBody Resource<Usuario2> add2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis, 
 			@Validated @RequestBody Usuario2 usuario) {		
@@ -725,61 +917,36 @@ public class TableUsuarioController {
 	}
 	
 	@UDALink(name = "addMultipart", linkTo = { @UDALinkAllower(name = "filter") })
-	@PostMapping(value = "/addMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario> addMultipart(
-    		@Validated @RequestBody Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
+	@PostMapping(value = "/addMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario> addMultipart(@Validated @ModelAttribute Usuario usuario) {
+		logger.info("[POST - addMultipart] : Crear usuario.");
 		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
-		logger.info("Entity correctly inserted!");
-		return new Resource<Usuario>(usuarioAux);
-    }
-	
-	@UDALink(name = "addMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
-	@PostMapping(value = "/{bis}/addMultipart", produces = "application/json")
-    public @ResponseBody Resource<Usuario2> addMultipart2(
-    		@Validated @RequestBody Usuario2 usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen) {
-		logger.info("USUARIO :::: {} --- {}\n", usuario.getId(), new Date());
-		if (imagen != null) {
-			logger.info("IMAGEN:::: {}", imagen);
-        }
-        Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
-		logger.info("Entity correctly inserted!");
-		return new Resource<Usuario2>(usuarioAux);
-    }
-	
-	@UDALink(name = "addFromNewWindow")
-	@GetMapping(value = "/addFromNewWindow")
-    public String addFromNewWindow(
-    		@RequestParam(value = "isDouble", required = false) boolean isDouble,
-    		Model model) {
-		if (isDouble)  {
-			Usuario2 usuario = new Usuario2();
-			model.addAttribute(MODEL_USUARIO2, usuario);
-			model.addAttribute("isDouble", true);
-		} else {
-			Usuario usuario = new Usuario();
-			model.addAttribute(MODEL_USUARIO, usuario);
-			model.addAttribute("isDouble", false);
+		
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
 		}
 		
-		Map<String,String> comboRol = new LinkedHashMap<String,String>();
-		comboRol.put("", "---");
-		comboRol.put("Administrador", "Administrador");
-		comboRol.put("Desarrollador", "Desarrollador");
-		comboRol.put("Espectador", "Espectador");
-		comboRol.put("Informador", "Informador");
-		comboRol.put("Manager", "Manager");
-		model.addAttribute("comboRol", comboRol);
+		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		logger.info("Entity correctly inserted!");
 		
-		model.addAttribute(MODEL_ACTIONTYPE, "POST");
-		
-		return "tableEditFormNewWindow";
-    }
+		return new Resource<Usuario>(usuarioAux);
+	}
+	
+	@UDALink(name = "addMultipart2", linkTo = { @UDALinkAllower(name = "filter2") })
+	@PostMapping(value = "/{bis}/addMultipart", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = "application/json")
+	public @ResponseBody Resource<Usuario2> addMultipart2(@Validated @ModelAttribute Usuario2 usuario) {
+		logger.info("[POST - addMultipart2] : Crear usuario.");
+		logger.info("USUARIO2 :::: {} --- {}\n", usuario.getId(), new Date());
+
+		if (!usuario.getImagenAlumno().isEmpty()) {
+			logger.info("IMAGEN :::: {}", usuario.getImagenAlumno().getOriginalFilename());
+		}
+
+		Usuario2 usuarioAux = this.tableUsuarioService.add(usuario);
+		logger.info("Entity correctly inserted!");
+
+		return new Resource<Usuario2>(usuarioAux);
+	}
 
 	/**
 	 * OperaciÃ³n CRUD Delete. Borrado del registro correspondiente al
@@ -790,7 +957,7 @@ public class TableUsuarioController {
 	 * @return Bean eliminado.
 	 */
 	@UDALink(name = "remove")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
     public @ResponseBody Resource<Usuario> remove(@PathVariable @TrustAssertion(idFor = Usuario.class) String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
@@ -844,12 +1011,13 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter"), 
 			@UDALinkAllower(name = "getRoles"),
 			@UDALinkAllower(name = "deleteAll"),
+			@UDALinkAllower(name = "editFromNewWindow"),
 			@UDALinkAllower(name = "clipboardReport"),
 			@UDALinkAllower(name = "excelReport"),
 			@UDALinkAllower(name = "pdfReport"),
 			@UDALinkAllower(name = "odsReport"),
 			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResourceResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -863,8 +1031,9 @@ public class TableUsuarioController {
 			@UDALinkAllower(name = "filter2"),
 			@UDALinkAllower(name = "getRoles"), 
 			@UDALinkAllower(name = "deleteAll2"),
+			@UDALinkAllower(name = "editFromNewWindowDouble"),
 			@UDALinkAllower(name = "clipboardReport2") })
-	@RequestMapping(value = "/{bis}/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/{bis}/filter")
 	public @ResponseBody() TableResourceResponseDto<Usuario2> filter2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -874,8 +1043,10 @@ public class TableUsuarioController {
 	}
 	
 	// Obtiene el formulario del multi filtro
-	@UDALink(name = "getMultiFilterForm")
-	@RequestMapping(value = "/multiFilter", method = RequestMethod.POST)
+	@UDALink(name = "getMultiFilterForm", linkTo = { 
+			@UDALinkAllower(name = "multifilterAdd"), 
+			@UDALinkAllower(name = "multifilterDelete") })
+	@PostMapping(value = "/multiFilter")
 	public String getMultiFilterForm (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
@@ -884,8 +1055,8 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_FILTER, new Filter());
+		model.addAttribute(Constants.MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
@@ -903,8 +1074,10 @@ public class TableUsuarioController {
 	}
 	
 	// Obtiene el formulario del multi filtro
-	@UDALink(name = "getMultiFilterForm2")
-	@RequestMapping(value = "{bis}/multiFilter", method = RequestMethod.POST)
+	@UDALink(name = "getMultiFilterForm2", linkTo = { 
+			@UDALinkAllower(name = "multifilterAdd"), 
+			@UDALinkAllower(name = "multifilterDelete") })
+	@PostMapping(value = "{bis}/multiFilter")
 	public String getMultiFilterForm2 (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
@@ -913,8 +1086,8 @@ public class TableUsuarioController {
 			@RequestParam(required = true) String defaultContainerClass,
 			@RequestParam(required = true) String defaultCheckboxClass,
 			Model model) {
-		model.addAttribute("entity", new Usuario2());
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_FILTER, new Filter());
+		model.addAttribute(Constants.MODEL_TABLEID, tableID);
 		model.addAttribute("containerClass", containerClass);
 		model.addAttribute("labelClass", labelClass);
 		model.addAttribute("defaultContainerClass", defaultContainerClass);
@@ -933,7 +1106,7 @@ public class TableUsuarioController {
 	
 	// Añade o actualiza un filtro
 	@UDALink(name = "multifilterAdd")
-	@RequestMapping(value = "/multiFilter/add", method = RequestMethod.POST)
+	@PostMapping(value = "/multiFilter/add")
 	public @ResponseBody Resource<Filter> filterAdd(@RequestBody Filter filtro){
 		TableUsuarioController.logger.info("[POST - table] : add filter");
 		return new Resource<Filter>(filterService.insert(filtro));
@@ -941,15 +1114,15 @@ public class TableUsuarioController {
 	
 	// Elimina un filtro
 	@UDALink(name = "multifilterDelete")
-	@RequestMapping(value = "/multiFilter/delete", method = RequestMethod.POST)
+	@DeleteMapping(value = "/multiFilter/delete")
 	public @ResponseBody Resource<Filter> filterDelete(@RequestBody Filter filtro) {
-		TableUsuarioController.logger.info("[POST - table] : delete filter");
+		TableUsuarioController.logger.info("[DELETE - table] : delete filter");
 		return new Resource<Filter>(filterService.delete(filtro));
 	}
 	
 	// Obtiene el filtro por defecto
 	@UDALink(name = "multifilterDefault")
-	@RequestMapping(value = "/multiFilter/getDefault", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Resource<Filter> filterGetDefault(
 			@RequestParam(value = "filterSelector", required = true) String filterSelector,
 			@RequestParam(value = "user", required = true) String filterUser) {
@@ -959,7 +1132,7 @@ public class TableUsuarioController {
 	
 	// Obtiene los filtros disponibles
 	@UDALink(name = "multifilterGetAll")
-	@RequestMapping(value = "/multiFilter/getAll", method = RequestMethod.GET)
+	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Resource<Filter>> filterGetAll(
 			@RequestParam(value = "q", required = false) String filterQ,
 			@RequestParam(value = "c", required = false) Boolean filterC,
@@ -984,7 +1157,7 @@ public class TableUsuarioController {
 	 * 
 	 */
 	@UDALink(name = "search", linkTo = { @UDALinkAllower(name = "filter") })
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
@@ -1028,7 +1201,7 @@ public class TableUsuarioController {
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll")
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -1051,7 +1224,7 @@ public class TableUsuarioController {
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
 	@UDALink(name = "deleteAll2")
-	@PostMapping(value = "/{bis}/deleteAll")
+	@PostMapping(value = "{bis}/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple2(
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -1076,12 +1249,8 @@ public class TableUsuarioController {
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@UDALink(name = "clipboardReport", linkTo = { 
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
+	@UDALink(name = "clipboardReport")
+	@PostMapping(value = "/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario>> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
 			@RequestParam(required = false) String[] columns, 
@@ -1092,12 +1261,8 @@ public class TableUsuarioController {
 		return ResourceUtils.fromListToResource(this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto));
 	}
 	
-	@UDALink(name = "clipboardReport2", linkTo = { 
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "{bis}/clipboardReport", method = RequestMethod.POST)
+	@UDALink(name = "clipboardReport2")
+	@PostMapping(value = "{bis}/filter", params = "clipboardReport")
 	public @ResponseBody List<Resource<Usuario2>> getClipboardReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,
@@ -1122,12 +1287,8 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "excelReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "excelReport")
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1144,12 +1305,8 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
-	@UDALink(name = "excelReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "excelReport2")
+	@PostMapping(value = {"{bis}/xlsReport" , "{bis}/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateExcelReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1189,12 +1346,8 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "pdfReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "odsReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "pdfReport")
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1211,12 +1364,8 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "pdfReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "odsReport2"),
-			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "{bis}/pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "pdfReport2")
+	@PostMapping(value = "{bis}/pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generatePDFReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1256,12 +1405,8 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "odsReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "csvReport") })
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "odsReport")
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1278,12 +1423,8 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "odsReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "csvReport2") })
-	@RequestMapping(value = "{bis}/odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "odsReport2")
+	@PostMapping(value = "{bis}/odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateODSReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 
@@ -1323,12 +1464,8 @@ public class TableUsuarioController {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	@UDALink(name = "csvReport", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport"),
-			@UDALinkAllower(name = "excelReport"),
-			@UDALinkAllower(name = "pdfReport"),
-			@UDALinkAllower(name = "odsReport") })
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "csvReport")
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
@@ -1345,12 +1482,8 @@ public class TableUsuarioController {
 		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
-	@UDALink(name = "csvReport2", linkTo = { 
-			@UDALinkAllower(name = "clipboardReport2"),
-			@UDALinkAllower(name = "excelReport2"),
-			@UDALinkAllower(name = "pdfReport2"),
-			@UDALinkAllower(name = "odsReport2") })
-	@RequestMapping(value = "{bis}/csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@UDALink(name = "csvReport2")
+	@PostMapping(value = "{bis}/csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public @ResponseBody void generateCSVReport2(
 			@PathVariable @TrustAssertion(idFor = NoEntity.class) final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario, 

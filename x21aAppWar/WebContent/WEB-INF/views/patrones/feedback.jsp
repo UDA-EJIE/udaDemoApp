@@ -115,7 +115,7 @@
 			<div class="btn-group" role="group">
 				<button id="boton_create" type="button" class="btn btn-secondary">_Create</button>
 				<button id="boton_destroy" type="button" class="btn btn-secondary">Destroy</button>
-				<button id="boton_set" type="button" class="btn btn-secondary">Set</button>
+				<button id="boton_setText" type="button" class="btn btn-secondary">Set_Text</button>
 				<button id="boton_setOptions" type="button"
 					class="btn btn-secondary">Set_options</button>
 				<button id="boton_setType" type="button" class="btn btn-secondary">Set_type</button>

@@ -326,7 +326,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Provincia.class, params, "CODE"));
+		StringBuilder sbRemoveMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, Provincia.class, params, ProvinciaDaoImpl.ORDER_BY_WHITE_LIST, "CODE"));
 		
 		return this.jdbcTemplate.query(sbRemoveMultipleSQL.toString(), this.rwMap, params.toArray());
 		

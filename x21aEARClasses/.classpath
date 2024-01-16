@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS12Classpath"/>
-	<classpathentry exported="true" kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
-	<classpathentry exported="true" kind="con" path="oracle.eclipse.tools.weblogic.lib.system">
-		<attributes>
-			<attribute name="owner.project.facets" value="#system#;jst.utility"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/x38ShLibClasses"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_241">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-config"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-services"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS14Classpath"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-spring-mvc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-services"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-config"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-cache"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-dav"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-hdiv"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-pif"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-rup"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

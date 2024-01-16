@@ -31,7 +31,7 @@ jQuery(function($) {
     
     $('#boton_create').click(feedback_create);
     $('#boton_destroy').click(feedback_destroy);
-    $('#boton_set').click(feedback_set);
+    $('#boton_setText').click(feedback_setText);
     $('#boton_setOptions').click(feedback_setOptions);
     $('#boton_setType').click(feedback_setType);
     $('#boton_setImgClass').click(feedback_setImgClass);
@@ -73,7 +73,7 @@ jQuery(function($) {
         $('#boton_destroy').attr('disabled',true);
         $('#boton_create').attr('disabled',false);
     }
-    function feedback_set(){
+    function feedback_setText(){
         $('#feedback').rup_feedback('set','Este es un ejemplo de <b>Feedback</b>');
     }
     function feedback_setOptions(){

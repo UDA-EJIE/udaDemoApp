@@ -12,9 +12,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<com.ejie.x38.version>6.0.0-SNAPSHOT</com.ejie.x38.version>
-		<org.hdiv.ce.version>3.5.2</org.hdiv.ce.version>
-		<org.springframework.version>5.3.25</org.springframework.version>
-		<org.springframework.security.version>5.8.1</org.springframework.security.version>
+		<com.ejie.hdiv.ce.version>5.1.0-RELEASE</com.ejie.hdiv.ce.version>
+		<org.springframework.version>5.3.31</org.springframework.version>
+		<org.springframework.security.version>5.8.8</org.springframework.security.version>
 		<org.logback.version>1.2.11</org.logback.version>
 		<org.slf4j.version>1.7.30</org.slf4j.version>
 		<org.apache.tiles.version>3.0.8</org.apache.tiles.version>
@@ -24,29 +24,24 @@
 	<dependencies>
 		<!-- Hdiv -->
 		<dependency>
-			<groupId>org.hdiv</groupId>
+			<groupId>com.ejie.hdiv</groupId>
 			<artifactId>hdiv-config</artifactId>
-			<version>${org.hdiv.ce.version}</version>
+			<version>${com.ejie.hdiv.ce.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hdiv</groupId>
+			<groupId>com.ejie.hdiv</groupId>
 			<artifactId>hdiv-core</artifactId>
-			<version>${org.hdiv.ce.version}</version>
+			<version>${com.ejie.hdiv.ce.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hdiv</groupId>
+			<groupId>com.ejie.hdiv</groupId>
 			<artifactId>hdiv-services</artifactId>
-			<version>${org.hdiv.ce.version}</version>
+			<version>${com.ejie.hdiv.ce.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hdiv</groupId>
+			<groupId>com.ejie.hdiv</groupId>
 			<artifactId>hdiv-spring-mvc</artifactId>
-			<version>${org.hdiv.ce.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.6.0.GA</version>
+			<version>${com.ejie.hdiv.ce.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -170,6 +165,13 @@
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- JAKARTA -->
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>1.3.4</version>
+		</dependency>		
 		
 		<!-- COMMONS-IO -->
 		<dependency>
@@ -617,6 +619,11 @@
 			<groupId>commons-httpclient</groupId>
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
 		</dependency>
 		<!-- FIN:PIF 1.4 EN APLICACION UDA -->
 

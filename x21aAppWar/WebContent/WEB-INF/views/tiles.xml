@@ -46,8 +46,8 @@
 			value="/WEB-INF/layouts/header.jsp" />
 		<put-attribute name="language"
 			value="/WEB-INF/layouts/language.jsp" />
-		<put-attribute name="breadCrumb"
-			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/layouts/footer.jsp" />
 		<put-attribute name="base-includes"
@@ -694,11 +694,21 @@
 	
 	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
 	
+	<definition name="tableComarcaExtendidaEditForm" template="/WEB-INF/views/table/includes/tableComarcaExtendidaEditForm.jsp" />
+	
 	<definition name="tableDialogComarcaEditForm" template="/WEB-INF/views/table/includes/tableDialogComarcaEditForm.jsp" />
 	
 	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
 	
 	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDoubleInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDoubleInlineEditAuxForm.jsp" />
+	
+	<definition name="tableMultiPkInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableMultiPkInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDynamicColumnsInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDynamicColumnsInlineEditAuxForm.jsp" />
+	
+	<definition name="tableExperimentalInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableExperimentalInlineEditAuxForm.jsp" />
 	
 	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
 
@@ -721,6 +731,13 @@
 			value="/WEB-INF/views/table/tableMasterDetail.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/tableMasterDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableComarcaExtendida">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableComarcaExtendida.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableComarcaExtendidaDetail-includes.jsp" />
 	</definition>
 	
 	<definition extends="template" name="tableDialogDetail">

@@ -31,15 +31,25 @@ jQuery(function ($) {
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false
+                hidden: false,
+            	rupType: 'select',
+                searchoptions: {
+                	url : './apellidos',
+                    sourceParam : {text: 'label', id: 'value'},
+					blank: '',
+					autocomplete: true,
+					searchZero: true,
+					combo: true
+                }
             },
             { 
             	name: "apellido2", 
             	index: "apellido2", 
             	editable: true, 
             	hidden: false,
-            	rupType: 'autocomplete',
+            	rupType: 'select',
                 editoptions: {
+					rupType: 'autocomplete',
                 	source : './apellidos',
                     sourceParam : {label: 'label', value: 'value'},
                     menuMaxHeight: 200,
@@ -47,6 +57,15 @@ jQuery(function ($) {
                     combobox: true,
                     contains: true,
                     showDefault: true
+                },
+                searchoptions: {
+					parent: ['apellido1_example_seeker'],
+                	url : './apellidos',
+                    sourceParam : {text: 'label', id: 'value'},
+					blank: '',
+					autocomplete: true,
+					searchZero: true,
+					combo: true
                 }
             },
             {
@@ -67,6 +86,12 @@ jQuery(function ($) {
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
+                },
+                searchoptions: {
+                    labelMaskId: 'fecha-mask',
+                    showButtonPanel: true,
+                    showOtherMonths: true,
+                    noWeekend: true
                 }
             },
             {
@@ -80,6 +105,12 @@ jQuery(function ($) {
                     showButtonPanel: true,
                     showOtherMonths: true,
                     noWeekend: true
+                },
+                searchoptions: {
+                    labelMaskId: 'fecha-mask',
+                    showButtonPanel: true,
+                    showOtherMonths: true,
+                    noWeekend: true
                 }
             },
             {
@@ -87,26 +118,27 @@ jQuery(function ($) {
                 index: 'rol',
                 editable: true,
                 hidden: false,
-                rupType: 'combo',
+                rupType: 'select',
                 editoptions: {
-                    source : './roles',
-                    sourceParam : {label: 'label', value: 'value'},
-                    blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                },
+                searchoptions: {
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
                 }
             }
         ];
 
 
         // Formulario de filtrado.
-        $('#id_filter_table').rup_autocomplete({
-        	source : './allIds',
-        	sourceParam : {label: 'nid', value: 'id'},
-        	menuMaxHeight: 175,
-        	combobox: true,
-        	contains: true,
-        	showDefault: true
+        $('#id_filter_table').rup_select({
+        	url : './allIds',
+        	sourceParam : {text: 'nid', id: 'id'},      
+        	combo: true,
+        	autocomplete: true
         });
         $('#apellido2_filter_table').rup_autocomplete({
         	source : './apellidos',
@@ -235,7 +267,8 @@ jQuery(function ($) {
             // BOTONERA Y EDICIÓN
             if (localStorage.plugins.indexOf(',buttons,') > -1) {
             	plugins.buttons = {
-                    activate: true
+                    activate: true,
+                    //contextMenu: true
                 };
                 $('#buttons').prop('checked', true);
                 
@@ -362,12 +395,9 @@ jQuery(function ($) {
 	                    insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
 	                    type: 'edit',
 	                    action: function (e, dt) {
-	                    	let ctx = dt.context[0];
+	                    	const ctx = dt.context[0];
 	                    	
-	                    	let childWindowHandler = window.open($('#editFormTargetBlank').data('editNewWindowUrl'), '_blank');
-	                    	childWindowHandler.addEventListener('load', function () {
-	                    		childWindowHandler.setEntityData(ctx.multiselection.lastSelectedId);                  		
-	                		}, false);
+	                    	window.open($('#editFormTargetBlank').data('editNewWindowUrl') + ctx.multiselection.lastSelectedId, '_blank');
 	                    }
 	                };
 	                

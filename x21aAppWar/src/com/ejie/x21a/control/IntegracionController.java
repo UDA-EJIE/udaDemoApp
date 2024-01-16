@@ -15,6 +15,21 @@
  */
 package com.ejie.x21a.control;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.ejie.x21a.model.NoraCalle;
 import com.ejie.x21a.model.NoraMunicipio;
 import com.ejie.x21a.model.NoraProvincia;
@@ -22,20 +37,6 @@ import com.ejie.x21a.model.RandomForm;
 import com.ejie.x21a.service.NoraCalleService;
 import com.ejie.x21a.service.NoraMunicipioService;
 import com.ejie.x21a.service.NoraProvinciaService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-
 import com.ejie.x38.hdiv.annotation.UDALink;
 import com.ejie.x38.hdiv.annotation.UDALinkAllower;
 
@@ -64,13 +65,13 @@ public class IntegracionController {
 
     //visor geoEuskadi
     @UDALink(name = "getVisorGeoEuskadi", linkTo = { @UDALinkAllower(name = "getVisorGeoEuskadiLayer" )})
-    @RequestMapping(value = "geoEuskadi", method = RequestMethod.GET)
+    @GetMapping(value = "geoEuskadi")
     public String getVisorGeoEuskadi() {
         return "geoEuskadi";
     }
     
     @UDALink(name = "getVisorGeoEuskadiLayer")
-    @RequestMapping(value = "geoEuskadiLayer.kml", method = RequestMethod.GET)
+    @GetMapping(value = "geoEuskadiLayer.kml")
     public @ResponseBody
     void getVisorGeoEuskadiLayer(HttpServletResponse response) {
         BufferedInputStream in;
@@ -86,38 +87,38 @@ public class IntegracionController {
 
 
     //z-index
-    @RequestMapping(value = "z-index", method = RequestMethod.GET)
+    @GetMapping(value = "z-index")
     public String getZIndex(Model model) {
         return "z-index";
     }
 
     //Nora
-    @RequestMapping(value = "nora", method = RequestMethod.GET)
+    @GetMapping(value = "nora")
     public String getNora(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "nora";
     }
 
     //Tiny
-    @RequestMapping(value = "tiny", method = RequestMethod.GET)
+    @GetMapping(value = "tiny")
     public String getTiny(Model model) {
         return "tiny";
     }
 
     //Webdav
-    @RequestMapping(value = "webdav", method = RequestMethod.GET)
+    @GetMapping(value = "webdav")
     public String getWebdav(Model model) {
         return "webdav";
     }
 
     //PIF
-    @RequestMapping(value = "pif", method = RequestMethod.GET)
+    @GetMapping(value = "pif")
     public String getPIf(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "pif";
     }
 
-    @RequestMapping(value = "comboEnlazado/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazado/remoteEnlazadoProvincia")
     public @ResponseBody
     List<NoraProvincia> getEnlazadoProvincia() {
         try {
@@ -129,7 +130,7 @@ public class IntegracionController {
         return findAll;
     }
 
-    @RequestMapping(value = "comboEnlazado/remoteEnlazadoMunicipio", method = RequestMethod.GET)
+    @GetMapping(value = "comboEnlazado/remoteEnlazadoMunicipio")
     public @ResponseBody
     List<NoraMunicipio> getEnlazadoMunicipio(
             @RequestParam(value = "provincia", required = false) String provincia_code) {
@@ -144,7 +145,7 @@ public class IntegracionController {
         return municipioService.findAll(municipio, null);
     }
 
-    @RequestMapping(value = "autocomplete/calleRemote", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/calleRemote")
     public @ResponseBody
     List<NoraCalle> getCalleRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,

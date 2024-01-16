@@ -57,7 +57,7 @@
 }(function ($) {
 
     //****************************************************************************************************************
-    // DEFINICIÓN BASE DEL PATRÁN (definición de la variable privada que contendrá los métodos y la función de jQuery)
+    // DEFINICIÓN BASE DEL PATRÓN (definición de la variable privada que contendrá los métodos y la función de jQuery)
     //****************************************************************************************************************
 
 
@@ -196,6 +196,7 @@
         	
         	settings.disabled = undefined;
         	settings.selected = undefined;
+        	settings.inputValue = undefined;
         	settings.ultimaLlamada = undefined;
         	settings.ultimosValores = undefined;
         	$self.rup_combo('select', '');
@@ -443,7 +444,11 @@
                 }
             }
             //Vaciar combo, deshabilitarlo
-            $(this).empty().append('<option></option>').rup_combo('disable');
+            $(this).empty();
+            if ($(this).data('settings').blank) {
+				$(this).append('<option></option>')
+			}
+			$(this).rup_combo('disable');
             // Eliminar valor seleccionado.
             $(this).data('settings').selected = undefined;
             //Eliminar texto que se muestra
@@ -626,7 +631,7 @@
                 if (typeof settings.source === 'object' || typeof settings.sourceGroup === 'object') {
                     //LOCAL
                     $('#' + settings.id).removeClass('inited');
-                    source = settings.source[this._getParentsValues(settings.parent, false, settings.multiValueToken)];
+                    source = settings.source[this._getParentsValues(settings.parent, false, settings.multiValueToken, settings.loadFromSelect)];
                     if (source !== undefined) {
 
                         if (settings.blank != null) {
@@ -659,7 +664,7 @@
                         }
 
                         //Lanzar cambio para que se recarguen hijos
-                        $('#' + settings.id).rup_combo('change');
+                        $('#' + settings.id).trigger('change');
 
                         setRupValue = $.data($('#' + settings.id)[0], 'setRupValue');
                         if (setRupValue) {
@@ -681,7 +686,7 @@
                     } //Se para la petición porque algún padre no tiene el dato cargado
                     if (settings.ultimaLlamada === undefined || settings.ultimaLlamada === '' || settings.ultimaLlamada !== data || settings.disabledCache) { //si es la misma busqueda, no tiene sentido volver a intentarlo.
                         $.rup_ajax({
-                            url: rupCombo._generateUrl($('#' + settings.id).closest('form'), settings, data),
+                            url: rupCombo._generateUrl(settings, data),
                             dataType: 'json',
                             contentType: 'application/json',
                             beforeSend: function (xhr) {
@@ -906,6 +911,31 @@
             if (multicombo !== true) {
                 //Simple > selectmenu
                 if (typeof param === 'string') {
+                	if($('option[value=\'' + param + '\']', selector).length == 0 && $(selector).data('values') != undefined && $(selector).data('values').length > 0){
+	                	let values = $(selector).data('values');
+                		if($(selector).data().settings.sourceGroup != undefined){//si son grupos
+                			let data = $(selector).data('values');
+                			values = [];
+	                		for (i = 0; i < data.length; i = i + 1) {
+	                            if (typeof (data[i]) === 'object') {
+	                              $.each(data[i], function (key, value) {
+	                                if (typeof (value) === 'object') {
+	                                  $.each(value, function () {
+	                                	  values.push(this);
+	                                  });
+	                                }
+	                              });
+	                            }
+	                          }
+	                	}
+                		
+                		let option = $.grep(values, function (v) {// busca id ofuscado
+	                        return v.nid === param || v.id == param;
+	                      });
+	                	if(option.length == 1){
+	                		param = option[0].value;
+	                	}
+                	}
                     if ($('option[value=\'' + param + '\']', selector).length > 0) { //Controlamos que se intenten seleccionar un valor existente
                         if (markOptSelected === true) {
                             $('option[value=\'' + param + '\']', selector).attr('selected', 'selected');
@@ -939,6 +969,31 @@
                             $($('input[name=\'multiselect_' + $(this).attr('id') + '\']')[param[i]]).attr('checked', true);
                         } else if (typeof param[i] === 'string') { //Acceso por valor
                             $('input[name=\'multiselect_' + $(this).attr('id') + '\'][value=\'' + param[i] + '\']').attr('checked', true);
+                            //busqueda ids Ofuscados
+                        	if($(selector).data('values') != undefined && $(selector).data('values').length > 0){
+        	                	let values = $(selector).data('values');
+                        		if($(selector).data().settings.sourceGroup != undefined){//si son grupos
+                        			let data = $(selector).data('values');
+                        			values = [];
+        	                		for (i = 0; i < data.length; i = i + 1) {
+        	                            if (typeof (data[i]) === 'object') {
+        	                              $.each(data[i], function (key, value) {
+        	                                if (typeof (value) === 'object') {
+        	                                  $.each(value, function () {
+        	                                	  values.push(this);
+        	                                  });
+        	                                }
+        	                              });
+        	                            }
+        	                          }
+        	                	}
+        	                	let option = $.grep(values, function (v) {
+        	                        return v.nid === param || v.id == param;
+        	                      });
+        	                	if(option.length == 1){
+        	                		$('input[name=\'multiselect_' + $(this).attr('id') + '\'][value=\'' + option[0].value+ '\']').attr('checked', true);
+        	                	}
+                        	}
                         }
                     }
                     // Se altualiza el valor almacenado en el objeto HTML select.
@@ -1029,9 +1084,10 @@
          * @param {object[]} array - Array con los elementos a mostrar.
          * @param {boolean} remote - Determina si la fuente de datos es remota o no.
          * @param {string} multiValueToken - Caracter separador en el caso de devolver varios elementos.
+         * @param {boolean} isSonLoadFromSelect - Indica si el hijo es cargado a partir de los datos del HTML.
          * @return {string} - Devuelve los values seleccionados de los combos padres.
          */
-        _getParentsValues: function (array, remote, multiValueToken) {
+        _getParentsValues: function (array, remote, multiValueToken, isSonLoadFromSelect) {
             var retorno = '',
                 id, texto, multiValueTokenAux = multiValueToken != null ? multiValueToken : '',
                 parentBlankValue;
@@ -1067,6 +1123,12 @@
                 // Cuando el componente se use en la edición en línea de la tabla, se utilizará el campo definido por esta. También se evita la inserción de "&" o "multiValueTokenAux" en el último bucle.
                 if (remote) {
                 	retorno += (settings.inlineEditFieldName ?? $('#' + id).attr('name')) + '=' + $('#' + id).val() + (lastLoop ? '' : '&');
+                } else if (isSonLoadFromSelect) {
+                	$.each($('#' + settings.id).data('values'), function(index, option) {
+						if (option.value === $('#' + id).val()) {
+							retorno += (option.nid ?? $($('#' + id + ' option')[index]).data('nid')) + (lastLoop ? '' : multiValueTokenAux);
+						}
+					})
                 } else {
                 	retorno += $('#' + id).val() + (lastLoop ? '' : multiValueTokenAux);
                 }
@@ -1125,7 +1187,7 @@
             if (!settings.multiselect) {
             	// Simple > selectmenu
             	$('#' + settings.id).selectmenu(settings);
-                $('#' + settings.id).rup_combo('setRupValue', settings.selected ?? '');
+                $('#' + settings.id).rup_combo('setRupValue', settings.selected ?? settings.inputValue ?? 0);
             } else {
                 //Multiple > multiselect
                 $('#' + settings.id).width('0'); //Iniciar a tamaño cero para que el multiselect calcule el tamaño
@@ -1151,7 +1213,7 @@
                     return true;
                 });
                 //						$("#rup-multiCombo_remoteGroup_comboHijo").on('keypress', function(event) {
-                $('#' + settings.id).data('echMultiselect').menu.on('label', 'keydown.multiselect', function (event) {
+                $('#' + settings.id).data('echMultiselect').menu.on('keydown.multiselect', 'label', function (event) {
                     if (event.which > 0) {
                         self._typeAheadMultiselect(event.which, 'focus', settings);
                     }
@@ -1186,7 +1248,7 @@
                 if (settings.multiselect) {
                     //Convertir inputValue en array
                     if (Array.isArray(settings.inputValue) === false) {
-                        settings.inputValue = settings.inputValue.split('##');
+                        settings.inputValue = settings.inputValue?.split('##');
                     }
 
                 }
@@ -1318,8 +1380,13 @@
         _parseREMOTE: function (array, settings, html, optGroupKey) {
             var remoteImgs = settings.imgs ? settings.imgs : [],
                 item;
+          
             for (let i = 0; i < array.length; i = i + 1) {
                 item = array[i];
+				if (array[i].label == undefined || array[i].label == null) {
+					item.label = item[settings.sourceParam.label];
+				}
+				
                 if (item.style) {
                     remoteImgs[remoteImgs.length] = {};
                     if (optGroupKey == null) {
@@ -1634,20 +1701,76 @@
          * @function _generateUrl
          * @since UDA 5.2.0
          * @private
-         * @param {object} $form - Formulario.
          * @param {object} settings - Configuración del componente.
-         * @param {?object} data - Valores de los padres.
+         * @param {string} [data] - Valores de los identificadores de los padres en caso de ser enlazados.
          */
-        _generateUrl: function ($form, settings, data) {
-        	let url = (settings.source ? settings.source : settings.sourceGroup) + '?_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form);
-        	
-        	if (data) {
-        		// Escapa los caracteres '#' para evitar problemas en la petición.
-        		url += "&" + data.replaceAll('#', '%23');
-        	}
-        	
-        	return url + '&MODIFY_FORM_FIELD_NAME=' + settings.name;
-        },
+		_generateUrl: function(settings, data) {
+			let $form;
+			
+			if (settings.$forceForm) {
+				$form = settings.$forceForm;
+			} else {
+				$form = settings.inlineEdit?.$auxForm ? settings.inlineEdit?.$auxForm : $('#' + settings.id).closest('form');
+			}
+			
+			const name = settings.inlineEdit?.auxSiblingFieldName ? settings.inlineEdit?.auxSiblingFieldName : settings.name;
+			let source = settings.source ? settings.source : settings.sourceGroup;
+			
+			if ($form.length === 1) {
+				if ($.fn.getHDIV_STATE(undefined, $form) != '') {
+					source += (source.includes('?') ? '&' : '?') + '_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form) + '&MODIFY_FORM_FIELD_NAME=' + name;
+				}
+				
+				if (data) {
+					// Escapa los caracteres '#' para evitar problemas en la petición.
+					source += ($.fn.getHDIV_STATE(undefined, $form) != '' ? '&' : '?') + data.replaceAll('#', '%23');
+				}
+			}
+			return source;
+		},
+		/**
+         * Generar source local a partir del HTML.
+         *
+         * @function _generateLocalSource
+         * @since UDA 5.2.0
+         * @private
+         * @param {object} settings - Ajustes del componente.
+         */
+		_generateLocalSource: function(settings) {
+			let optionData = {};
+			$.each($("#" + this[0].id + ' option'), function(index, option) {
+				const idPadre = $(option).data('idpadre');
+				let optionDataLength = optionData[idPadre]?.length ?? optionData?.length;
+				
+				if (idPadre && !optionDataLength > 0) {
+					optionData[idPadre] = [];
+					optionDataLength = 0;
+				} else if (!idPadre && !optionDataLength > 0) {
+					optionData = [];
+					optionDataLength = 0;
+				}
+				
+				if (idPadre) {
+					optionData[idPadre][optionDataLength] = {};
+					optionData[idPadre][optionDataLength].label = $(option).text();
+					optionData[idPadre][optionDataLength].value = option.value;
+				} else {
+					optionData[optionDataLength] = {};
+					optionData[optionDataLength].label = $(option).text();
+					optionData[optionDataLength].value = option.value;
+				}
+			});
+			
+			if (settings.parent) {
+				settings.source = optionData;
+				
+				// Vaciar el combo para evitar problemas de duplicidad.
+				$('#' + settings.id).empty();
+			}
+			
+			// Almacenar los valores generados.
+			$('#' + settings.id).data('values', optionData);
+		},
         /**
          * Método de inicialización del componente.
          *
@@ -1738,7 +1861,8 @@
 	                }
 	
 	                //Guardar valor del INPUT
-	                settings.inputValue = $('#' + settings.id).val() === null ? $('#' + settings.id).prop('value') : $('#' + settings.id).val();
+	                const savedInputValue = $('#' + settings.id).val() ?? $('#' + settings.id).prop('value');
+	                settings.inputValue = savedInputValue == "" ? undefined : savedInputValue;
 	
 	                attrs = $(this).prop('attributes');
 	
@@ -1787,6 +1911,8 @@
 	                        if (isValidableElem) {
 	                            $('#' + settings.id).removeClass().addClass('validableElem');
 	                        }
+	                        // Generar source local a partir del HTML (solo dependientes).
+	                        this._generateLocalSource(settings);
 	                    }
 	
 	                    this._makeCombo(settings);
@@ -1811,7 +1937,7 @@
 	                    $('#' + settings.id).data('settings', settings);
 	
 	                    //Comprobar si los padres ya tienen datos seleccionados (si son LOCALES puede suceder)
-	                    if (this._getParentsValues(settings.parent) !== null && (settings.firstLoad === null && settings.loadFromSelect === false)) {
+	                    if (this._getParentsValues(settings.parent) !== null && settings.firstLoad === null) {
 	                        $('#' + settings.id).rup_combo('reload');
 	                    }
 	                    multiChange(settings);
@@ -1852,6 +1978,8 @@
 	                        if (isValidableElem) {
 	                            $('#' + settings.id).removeClass().addClass('validableElem');
 	                        }
+	                        // Generar source local a partir del HTML (solo dependientes).
+	                        this._generateLocalSource(settings);
 	                    }
 	
 	                    //Crear combo
@@ -1872,7 +2000,7 @@
 	                    var rupCombo = this,
 	                        self = this;
 	                    $.rup_ajax({
-	                        url: rupCombo._generateUrl($('#' + settings.id).closest('form'), settings),
+	                        url: rupCombo._generateUrl(settings),
 	                        dataType: 'json',
 	                        contentType: 'application/json',
 	                        beforeSend: function (xhr) {

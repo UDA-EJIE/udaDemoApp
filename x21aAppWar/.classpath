@@ -6,12 +6,12 @@
 	<classpathentry kind="src" path="test-system"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS12Classpath">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS14Classpath">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="src" path=".apt_src">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -22,21 +22,22 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
-	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/XLNETSWLS12Classpath"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/XLNETSWLS14JDK11Classpath"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-config"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-services"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/hdiv-spring-mvc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-cache"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-dav"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-hdiv"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-pif"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-rup"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

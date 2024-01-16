@@ -159,10 +159,24 @@ $(function () {
             width: '99%',
             customClasses: ['select-material']
         });
+        
+        // MODELO
+        $('#comarca_comboPadre').rup_combo({
+            loadFromSelect: true,
+            width: '99%',
+            customClasses: ['select-material']
+        });
+
+        $('#localidad_comboHijo').rup_combo({
+            parent: ['comarca_comboPadre'],
+            loadFromSelect: true,
+            width: '99%',
+            customClasses: ['select-material']
+        });
 
 
         //MIXTO I
-        /*$('#mixto_comboAbueloRemoto').rup_combo({
+        $('#mixto_comboAbueloRemoto').rup_combo({
             source: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
             sourceParam: {
                 label: 'desc' + $.rup_utils.capitalizedLang(),
@@ -177,38 +191,7 @@ $(function () {
 
         $('#mixto_comboPadre').rup_combo({
             parent: ['mixto_comboAbueloRemoto'],
-            source: {
-                '1': [{
-                    i18nCaption: 'a1',
-                    value: '1'
-                }, {
-                    i18nCaption: 'a2',
-                    value: '2'
-                }, {
-                    i18nCaption: 'a3',
-                    value: '3'
-                }],
-                '2': [{
-                    i18nCaption: 'b1',
-                    value: '7'
-                }, {
-                    i18nCaption: 'b2',
-                    value: '8'
-                }, {
-                    i18nCaption: 'b3',
-                    value: '9'
-                }],
-                '3': [{
-                    i18nCaption: 'g1',
-                    value: '4'
-                }, {
-                    i18nCaption: 'g2',
-                    value: '5'
-                }, {
-                    i18nCaption: 'g3',
-                    value: '6'
-                }]
-            },
+            loadFromSelect: true,
             width: '99%',
             customClasses: ['select-material']
         });
@@ -223,24 +206,12 @@ $(function () {
             },
             width: '99%',
             customClasses: ['select-material']
-        });*/
+        });
 
 
         //MIXTO II
-        /*$('#mixto2_comboAbuelo').rup_combo({
-            source: [{
-                i18nCaption: 'a',
-                value: '1'
-            },
-            {
-                i18nCaption: 'b',
-                value: '2'
-            },
-            {
-                i18nCaption: 'g',
-                value: '3'
-            }
-            ],
+        $('#mixto2_comboAbuelo').rup_combo({
+            loadFromSelect: true,
             selected: 2,
             blank: '0',
             width: '98%',
@@ -261,14 +232,10 @@ $(function () {
 
         $('#mixto2_comboHijo').rup_combo({
             parent: ['mixto2_comboPadreRemoto'],
-            source: {
-                '7': ['Bilbao', 'Basauri', 'Galdakao'],
-                '8': ['Leioa', 'Las Arenas', 'Getxo'],
-                '9': ['Sestao', 'Barakaldo', 'Portu']
-            },
+            loadFromSelect: true,
             width: '98%',
             customClasses: ['select-material']
-        });*/
+        });
 
 
         // Remote group
@@ -293,7 +260,6 @@ $(function () {
                 value: 'code',
                 style: 'css'
             },
-            //width: '99%',
             customClasses: ['select-material'],
             multiselect: true
         });

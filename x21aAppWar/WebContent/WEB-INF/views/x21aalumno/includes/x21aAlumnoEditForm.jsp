@@ -17,15 +17,17 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
+<%@taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
 
 <!-- Formulario -->
-<c:set value="${actionType == 'POST' ? 'add': 'edit'}" var="endpoint" />
 <spring:url value="/x21aAlumno/${endpoint}" var="url"/>
-<form:form modelAttribute="X21aAlumno" id="x21aAlumno_detail_form" action="${url}" method="${actionType}">
+<form:form modelAttribute="x21aAlumno" id="x21aAlumno_detail_form" action="${url}" method="${actionType}" enctype="${enctype}">
 	<!-- Feedback del formulario de detalle -->
 	<div id="x21aAlumno_detail_feedback"></div>
 	<!-- Campos del formulario de detalle -->
+	<c:if test="${not empty pkValue}">
+		<form:hidden path="id" value="${pkValue.id}" id="id_detail_table" />
+	</c:if>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
 			<form:input path="usuario" id="usuario_detail_table"/>
@@ -34,7 +36,7 @@
 	</div>
 	<div class="form-row">
 		<div class="form-groupMaterial col-sm">
-			<form:input path="password" id="password_detail_table"/>
+			<form:password path="password" id="password_detail_table"/>
 			<label for="password_detail_table"><spring:message code="password"/></label>
 		</div>
 		<div class="form-groupMaterial col-sm">

@@ -85,7 +85,7 @@
 		</fieldset>
 		
 		<fieldset id="remote" class="col-sm mr-sm-5">
-			<legend>Remoto a Local</legend>
+			<legend>Remoto a Local js y jsp(para usar los datos al servidor)</legend>
 			<form:form id="departamentoProvincia_form" modelAttribute="provinciaComarcaDTO" action="${mixto}" method="GET">
 				<div class="form-groupMaterial">
 					<form:select id="selectRemotoAbuelo" path="codeProvincia" />
@@ -93,10 +93,19 @@
 				</div>
 				
 				<div class="form-groupMaterial">
-					<form:select id="selectLocalPadre" path="codeComarca" items="${comboComarca}" itemLabel="entity.descEs" itemValue="id" />
-					<label for="selectLocalPadre">Comarca Local</label>
+					<form:select id="selectLocalPadre" path="codeComarca">
+					    <c:forEach var="theComarca" items="${comboComarca}">
+	        				<form:option value="${theComarca.id}" data-idPadre="${theComarca.entity.parentCode}"><c:out value="${theComarca.entity.descEs}"/></form:option>
+	   					 </c:forEach>
+					</form:select>
+					<label for="selectLocalPadre">Comarca Local cargado desde jsp</label>
 				</div>
+			
 			</form:form>
+			<div class="form-groupMaterial">
+				<select id="selectLocalPadreJs" name="codeAuxiliar"><option>&nbsp;</option></select>
+				<label for="selectLocalPadreJs">Comarca Local cargado con js</label>
+			</div>
 		</fieldset>
 		
 	</div>

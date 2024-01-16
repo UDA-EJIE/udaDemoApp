@@ -34,7 +34,7 @@ jQuery(function(jQuery){
     
 var noraapi_provincias = new window.NORA.provincia({
         asynchronous : false,
-        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        baseUrl : 'https://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
         onSuccess : function(response) {
             var provincias = response.responseText.evalJSON(true);
             for ( var i = 0; i < provincias.data.length; i++) {
@@ -47,7 +47,7 @@ var noraapi_provincias = new window.NORA.provincia({
     }),
     noraapi_municipios = new window.NORA.municipio({
         asynchronous : false,
-        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        baseUrl : 'https://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
         onSuccess : function(response) {
             if (jQuery('#comboProvinciasAPI').rup_combo('index') === 0){
                 jQuery('#comboMunicipiosAPI').rup_combo('disable');
@@ -62,7 +62,7 @@ var noraapi_provincias = new window.NORA.provincia({
     }),
     noraapi_calle = new window.NORA.calle({
         asynchronous : false,
-        baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
+        baseUrl : 'https://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
         onSuccess : function(response) {
             var callejero = response.responseText.evalJSON(true);
                 

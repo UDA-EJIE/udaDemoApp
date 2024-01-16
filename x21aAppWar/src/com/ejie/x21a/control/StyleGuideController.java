@@ -17,8 +17,8 @@ package com.ejie.x21a.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Controller styleGuide
@@ -29,8 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/styleGuide")
 public class StyleGuideController {
 
-
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getZIndex(Model model) {
 		return "styleGuide";
 	}

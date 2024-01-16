@@ -1,27 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                
+    
+    
     <wb-module deploy-name="x21aEAR">
+                                
+        
+        
         <wb-resource deploy-path="/" source-path="/EarContent"/>
-        <dependent-module deploy-path="/lib" handle="module:/resource/x21aEARClasses/x21aEARClasses">
+                                
+        
+        
+        <dependent-module archiveName="hdiv-config.jar" deploy-path="/lib" handle="module:/resource/hdiv-config/hdiv-config">
+                                                
+            
+            
             <dependency-type>uses</dependency-type>
+                                            
+        
+        
         </dependent-module>
+                                
+        
+        
+        <dependent-module archiveName="hdiv-core.jar" deploy-path="/lib" handle="module:/resource/hdiv-core/hdiv-core">
+                                                
+            
+            
+            <dependency-type>uses</dependency-type>
+                                            
+        
+        
+        </dependent-module>
+                                
+        
+        
+        <dependent-module archiveName="hdiv-services.jar" deploy-path="/lib" handle="module:/resource/hdiv-services/hdiv-services">
+                                                
+            
+            
+            <dependency-type>uses</dependency-type>
+                                            
+        
+        
+        </dependent-module>
+                                
+        
+        
+        <dependent-module archiveName="hdiv-spring-mvc.jar" deploy-path="/lib" handle="module:/resource/hdiv-spring-mvc/hdiv-spring-mvc">
+                                                
+            
+            
+            <dependency-type>uses</dependency-type>
+                                            
+        
+        
+        </dependent-module>
+                
         <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
+                        
             <dependent-object/>
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+        <dependent-module archiveName="x21aEARClasses.jar" deploy-path="/lib" handle="module:/resource/x21aEARClasses/x21aEARClasses">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="x38ShLibClasses.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses/x38ShLibClasses">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hdiv-config.jar" deploy-path="/lib" handle="module:/resource/hdiv-config/hdiv-config">
+        <dependent-module archiveName="x38ShLibClasses-cache.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-cache/x38ShLibClasses-cache">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hdiv-core.jar" deploy-path="/lib" handle="module:/resource/hdiv-core/hdiv-core">
+        <dependent-module archiveName="x38ShLibClasses-dav.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-dav/x38ShLibClasses-dav">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hdiv-services.jar" deploy-path="/lib" handle="module:/resource/hdiv-services/hdiv-services">
+        <dependent-module archiveName="x38ShLibClasses-hdiv.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-hdiv/x38ShLibClasses-hdiv">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hdiv-spring-mvc.jar" deploy-path="/lib" handle="module:/resource/hdiv-spring-mvc/hdiv-spring-mvc">
+        <dependent-module archiveName="x38ShLibClasses-pif.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-pif/x38ShLibClasses-pif">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="x38ShLibClasses-rup.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-rup/x38ShLibClasses-rup">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                            
+    
+    
     </wb-module>
+            
+
+
 </project-modules>
