@@ -18,7 +18,6 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -73,7 +72,7 @@ public interface TableUsuarioDao {
      * @param pagination Pagination
      * @return List
      */
-    List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto);
+    List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
 
 	/**
      * Finds rows in the Usuario table using like.
@@ -90,8 +89,14 @@ public interface TableUsuarioDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
-	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+     * @param filterUsuario Usuario
+	 * @param tableRequestDto TableRequestDto
+     * @param startsWith Boolean
+	 */
+	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
@@ -120,11 +125,11 @@ public interface TableUsuarioDao {
 	 * OPERACIONES RUP_TABLE JERARQUIA
 	 */
     
-	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario,JQGridRequestDto jqGridRequestDto);
+	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario,TableRequestDto tableRequestDto);
 	
-	Long findAllLikeCountJerarquia(Usuario filterUsuario, JQGridRequestDto jqGridRequestDto);
+	Long findAllLikeCountJerarquia(Usuario filterUsuario, TableRequestDto tableRequestDto);
 	
-	List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario,JQGridRequestDto jqGridRequestDto);
+	List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario, TableRequestDto tableRequestDto);
 	
 }
 

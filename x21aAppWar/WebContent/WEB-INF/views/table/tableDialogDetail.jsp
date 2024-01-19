@@ -64,7 +64,7 @@
 	</div>
 
 <table id="comarca" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="../jqGridComarca"
+	data-url-base="../tableComarca"
 	data-filter-form="#comarca_filter_form">
     <thead>
         <tr>
@@ -189,7 +189,7 @@
 	</div>
 	
 <table id="localidad" class="tableFit table-striped table-bordered table-material" 
-	data-url-base="../jqGridLocalidad"
+	data-url-base="../tableLocalidad"
 	data-filter-form="#localidad_filter_form">
 	<thead>
 		<tr>

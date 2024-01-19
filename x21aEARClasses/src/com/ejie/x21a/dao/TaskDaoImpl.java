@@ -51,7 +51,7 @@ public class TaskDaoImpl implements TaskDao {
 			task.setName(resultSet.getString("NAME"));
 			task.setDetail(resultSet.getString("DETAIL"));
 			task.setDone(resultSet.getBoolean("DONE"));
-//			if (new Integer(1).equals(resultSet.getBoolean("DONE"))){
+//			if (Integer.valueOf(1).equals(resultSet.getBoolean("DONE"))){
 //				task.setDone(Boolean.TRUE);
 //			}else{
 //				task.setDone(Boolean.FALSE);
@@ -83,7 +83,7 @@ public class TaskDaoImpl implements TaskDao {
 		Integer newPk = this.jdbcTemplate.queryForObject(pkQuery, Integer.class);
 		
     	String query = "INSERT INTO TASK (ID, LIST_ID, NAME, DETAIL, DONE) VALUES (?,?,?,?,?)";
-		this.jdbcTemplate.update(query, newPk, task.getIdList(), task.getName(), task.getDetail(), Boolean.TRUE.equals(task.getDone())?new Integer(1):new Integer(0));
+		this.jdbcTemplate.update(query, newPk, task.getIdList(), task.getName(), task.getDetail(), Boolean.TRUE.equals(task.getDone())?Integer.valueOf(1):Integer.valueOf(0));
 		return task;
 	}
 
@@ -95,7 +95,7 @@ public class TaskDaoImpl implements TaskDao {
      */
     public Task update(Task task) {
 		String query = "UPDATE TASK SET ID=?, LIST_ID=?, NAME=?, DETAIL=?, DONE=?";
-		this.jdbcTemplate.update(query, task.getId(), task.getList().getId(), task.getName(), task.getDetail(), Boolean.TRUE.equals(task.getDone())?new Integer(1):new Integer(0));
+		this.jdbcTemplate.update(query, task.getId(), task.getList().getId(), task.getName(), task.getDetail(), Boolean.TRUE.equals(task.getDone())?Integer.valueOf(1):Integer.valueOf(0));
 		return task;
 	}
 
@@ -129,7 +129,7 @@ public class TaskDaoImpl implements TaskDao {
    @Override
 	public void done(Task task) {
 	   String query = "UPDATE TASK SET DONE=? WHERE ID = ?";
-		this.jdbcTemplate.update(query, Boolean.TRUE.equals(task.getDone())?new Integer(1):new Integer(0), task.getId());
+		this.jdbcTemplate.update(query, Boolean.TRUE.equals(task.getDone())?Integer.valueOf(1):Integer.valueOf(0), task.getId());
 		
 		
 	}

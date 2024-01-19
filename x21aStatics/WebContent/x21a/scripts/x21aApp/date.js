@@ -16,10 +16,13 @@
 jQuery(function($) {
 	window.initRupI18nPromise.then(function () {
 	    $('#fecha').rup_date({
-	        labelMaskId : 'fecha-mask',
+			datetimepicker:true,
+	        placeholderMask : true,
+	        mask: 'dd/mm/yyyy HH:mm:ss.S',
+	        dateFormat: 'dd/mm/yy',
+	        timeFormat: 'HH:mm:ss',
 	        showButtonPanel : true,
-	        showOtherMonths : true,
-	        noWeekend : true
+	        showOtherMonths : true
 	    });
 	    
 	    $('#fechaPlaceholder').rup_date({

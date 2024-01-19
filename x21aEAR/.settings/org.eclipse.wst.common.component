@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="x21aEAR">
+                
         <wb-resource deploy-path="/" source-path="/EarContent"/>
+                
         <dependent-module deploy-path="/lib" handle="module:/resource/x21aEARClasses/x21aEARClasses">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
+                
         <dependent-module archiveName="x21aAppWar.war" deploy-path="/" handle="module:/resource/x21aAppWar/x21aAppWar">
+                        
             <dependent-object/>
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
+                
         <dependent-module archiveName="x38ShLibClasses.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses/x38ShLibClasses">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+        <dependent-module archiveName="x38ShLibClasses-dav.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-dav/x38ShLibClasses-dav">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="x38ShLibClasses-pif.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-pif/x38ShLibClasses-pif">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="x38ShLibClasses-rup.jar" deploy-path="/lib" handle="module:/resource/x38ShLibClasses-rup/x38ShLibClasses-rup">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+            
     </wb-module>
+    
 </project-modules>

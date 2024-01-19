@@ -19,9 +19,9 @@ package com.ejie.x21a.service;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -112,7 +112,7 @@ public interface UsuarioService {
     
 	List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, Pagination<Usuario> pagination, Boolean startsWith);
 
-	JQGridDto<Usuario> filter(Usuario usuario, Pagination<Usuario> pagination, Boolean startsWith) ;
+	TableDto<Usuario> filter(Usuario usuario, Pagination<Usuario> pagination, Boolean startsWith) ;
 	
 	/** JERARQUIA **/
 	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario, Pagination<Usuario> pagination);

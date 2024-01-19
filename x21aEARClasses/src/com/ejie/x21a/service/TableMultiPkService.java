@@ -79,9 +79,11 @@ public interface TableMultiPkService {
 	/**
 	 * Removes rows from the MultiPk table.
 	 *
+     * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
+     * @param startsWith Boolean
 	 */	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith);
    
     
 	/**

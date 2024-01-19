@@ -5,20 +5,19 @@
 	<groupId>com.ejie.x21a</groupId>
 	<artifactId>x21aEAR</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>6.0.0-SNAPSHOT</version>
 	<name>x21aEAR</name>
 	<url>http://www.ejie.eus</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework.version>4.3.22.RELEASE</org.springframework.version>
-		<org.springframework.security.version>4.2.11.RELEASE</org.springframework.security.version>
+		<org.springframework.version>5.3.31</org.springframework.version>
+		<org.springframework.security.version>5.8.8</org.springframework.security.version>
 		<org.logback.version>1.2.11</org.logback.version>
 		<org.slf4j.version>1.7.30</org.slf4j.version>
-		<com.ejie.x38.version>4.5.0-RELEASE</com.ejie.x38.version>
+		<com.ejie.x38.version>6.0.0-SNAPSHOT</com.ejie.x38.version>
 		<org.apache.tiles.version>3.0.8</org.apache.tiles.version>
-		<!-- <org.jackson.version>2.8.11.3</org.jackson.version> -->
-		<org.jackson.version>2.7.9.5</org.jackson.version>
+		<org.jackson.version>2.12.7.1</org.jackson.version>
 	</properties>
 	
 	<dependencies>
@@ -76,6 +75,56 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.springframework.security.version}</version>
+		</dependency>
+		
+		<!-- JAVAX -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- JAKARTA -->
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>1.3.4</version>
+		</dependency>		
+		
+		<!-- COMMONS-IO -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<!-- XALAN -->
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- TILES -->
@@ -148,7 +197,6 @@
 		</dependency>
 
 		<!-- Hibernate Validator -->
-		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -200,37 +248,6 @@
 			<version>${com.ejie.x38.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.ejie.x38</groupId>
-			<artifactId>x38ShLibClasses-cache</artifactId>
-			<version>${com.ejie.x38.version}</version>
-		</dependency>
-		
-		<!-- CACHE -->
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<version>2.6.10</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.ehcache</groupId>
-					<artifactId>ehcache-root</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-jmsreplication</artifactId>
-			<version>0.5</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.ehcache</groupId>
-					<artifactId>ehcache-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<!-- Reports -->
 		<!-- odf -->
 		<dependency>
@@ -258,97 +275,6 @@
 		</dependency>
 
 		<!-- pdf -->
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports</artifactId>
-			<version>4.7.1</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.bouncycastle</groupId>
-					<artifactId>bcmail-jdk14</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>bouncycastle</groupId>
-					<artifactId>bcmail-jdk14</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.bouncycastle</groupId>
-					<artifactId>bcprov-jdk14</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>bouncycastle</groupId>
-					<artifactId>bcprov-jdk14</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.bouncycastle</groupId>
-					<artifactId>bctsp-jdk14</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.codehaus.castor</groupId>
-					<artifactId>castor</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-beanutils</groupId>
-					<artifactId>commons-beanutils</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-collections</groupId>
-					<artifactId>commons-collections</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-digester</groupId>
- 					<artifactId>commons-digester</artifactId>
- 				</exclusion>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.geronimo.specs</groupId>
-  					<artifactId>geronimo-stax-api_1.0_spec</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.codehaus.jackson</groupId>
-					<artifactId>jackson-core-asl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.codehaus.jackson</groupId>
-					<artifactId>jackson-core-lgpl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.codehaus.jackson</groupId>
-					<artifactId>jackson-mapper-asl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.codehaus.jackson</groupId>
-					<artifactId>jackson-mapper-lgpl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>jfree</groupId>
-					<artifactId>jcommon</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>eclipse</groupId>
-					<artifactId>jdtcore</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>jfree</groupId>
-					<artifactId>jfreechart</artifactId>
-				</exclusion>
-	  			<exclusion>
-		    		<artifactId>stax-api</artifactId>
-		      		<groupId>javax.xml.stream</groupId>
-		    	</exclusion>
-		    	<exclusion>
-					<groupId>xml-apis</groupId>
-					<artifactId>xml-apis</artifactId>
-				</exclusion>
-				<exclusion>
-			 		<groupId>org.apache.xmlbeans</groupId>
-    				<artifactId>xmlbeans</artifactId>
-    			</exclusion>
-    		</exclusions>
-		</dependency>
 		<dependency>
 		    <groupId>com.lowagie</groupId>
 		    <artifactId>itext</artifactId>
@@ -415,14 +341,6 @@
 		</dependency>
 
 		<!-- Reports -->
-
-		<!-- RSS -->
-		<dependency>
-			<groupId>net.java.dev.rome</groupId>
-			<artifactId>rome</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
 
 		<!-- INI:PIF 1.4 EN APLICACION UDA -->
 		<dependency>

@@ -51,7 +51,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.exception.X21aRuntimeException;
@@ -61,13 +60,9 @@ import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.Usuario2;
-import com.ejie.x21a.service.JQGridUsuarioService;
 import com.ejie.x21a.service.TableUsuarioService;
 import com.ejie.x21a.service.UsuarioService;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
-import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.SelectGenericPOJO;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -90,9 +85,6 @@ public class TableUsuarioController  {
 	private static final Logger logger = LoggerFactory.getLogger(TableUsuarioController.class);
 	public static final String MODEL_USUARIO = "usuario";
 	public static final String MODEL_OPTIONS = "options";
-
-	@Autowired
-	private JQGridUsuarioService jqGridUsuarioService;
 	
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
@@ -136,7 +128,7 @@ public class TableUsuarioController  {
 	public @ResponseBody Usuario get(@PathVariable String id,Model model) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
-        usuario = this.jqGridUsuarioService.find(usuario);
+        usuario = this.tableUsuarioService.find(usuario);
         return usuario;
 	}
 	
@@ -144,7 +136,7 @@ public class TableUsuarioController  {
 	public @ResponseBody Usuario get2(@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
-        usuario = this.jqGridUsuarioService.find(usuario);
+        usuario = this.tableUsuarioService.find(usuario);
 
 			Usuario2 aux = new Usuario2();
 			aux.setId2(usuario.getId());
@@ -187,7 +179,7 @@ public class TableUsuarioController  {
 	public @ResponseBody
 	List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableUsuarioController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
-		return this.jqGridUsuarioService.findAllLike(usuarioFilter, null, false);
+		return this.tableUsuarioService.findAllLike(usuarioFilter, null, false);
 	}
 	
 	/**
@@ -202,7 +194,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.update(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
@@ -267,24 +259,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.update(usuario);
-		logger.info("Entity correctly updated!");
-        return usuarioAux;
-    }
-	
-	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
-    public @ResponseBody Usuario editar(
-    		@Validated @ModelAttribute Usuario usuario,
-    		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
-    HttpServletRequest request, HttpServletResponse response){
-		System.out.print("USUARIO::::"+usuario.getId()+" --- "+new Date()+"\n");
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-		if (imagen!=null){
-			System.out.print("IMAGEN::::"+imagen);
-        }
-        Usuario usuarioAux = this.jqGridUsuarioService.update(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
@@ -303,7 +278,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.add(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
     	return usuarioAux;
 	}
@@ -313,7 +288,7 @@ public class TableUsuarioController  {
 		if (usuario.getEjie()==null){
 			usuario.setEjie("0");
 		}
-        Usuario usuarioAux = this.jqGridUsuarioService.add(usuario);
+        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
     	return usuarioAux;
 	}
@@ -332,7 +307,7 @@ public class TableUsuarioController  {
     public @ResponseBody Usuario remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
         usuario.setId(id);
-        this.jqGridUsuarioService.remove(usuario);
+        this.tableUsuarioService.remove(usuario);
         logger.info("Entity correctly deleted!");
         return usuario;
     }
@@ -412,7 +387,7 @@ public class TableUsuarioController  {
 	public @ResponseBody Filter filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - jqGrid] : getDefault filter");
+		TableUsuarioController.logger.info("[get - table] : getDefault filter");
 		 return filterService.getDefault(filterSelector, filterUser);
 	}
 	
@@ -423,7 +398,7 @@ public class TableUsuarioController  {
 	public @ResponseBody List<Filter> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		TableUsuarioController.logger.info("[get - jqGrid] : GetAll filter");
+		TableUsuarioController.logger.info("[get - table] : GetAll filter");
 		 return filterService.getAllFilters(filterSelector,filterUser);
 	}
 	
@@ -434,7 +409,7 @@ public class TableUsuarioController  {
 	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
 	 * @param searchUsuario
 	 *            Bean que contiene los parÃ¡metros de bÃºsqueda a emplear.
-	 * @param jqGridRequestDto
+	 * @param tableRequestDto
 	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
 	 *            RUP_TABLE a aplicar en la bÃºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
@@ -453,6 +428,8 @@ public class TableUsuarioController  {
 	/**
 	 * Borrado mÃºltiple de registros
 	 * 
+	 * @param filterUsuario Usuario
+	 *            Bean que contiene los parametros de filtrado a emplear.
 	 * @param TableRequestDto
 	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
 	 *            RUP_TABLE a aplicar en la bÃºsqueda.
@@ -460,56 +437,14 @@ public class TableUsuarioController  {
 	 */
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.OK)
-	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
+	public @ResponseBody List<String> removeMultiple(
+			@RequestJsonBody(param="filter") Usuario filterUsuario, 
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableUsuarioController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.tableUsuarioService.removeMultiple(tableRequestDto);
+	    this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
 	    TableUsuarioController.logger.info("All entities correctly deleted!");
 	    
 	    return tableRequestDto.getMultiselection().getSelectedIds();
-	}
-	
-	/*
-	 * METODOS COMPONENTE RUP_TABLE - JERARQUÃ�A
-	 */
-	
-	/**
-	 * OperaciÃ³n de filtrado del componente RUP_TABLE para presentar los
-	 * registros medainte una visualizaciÃ³n jerÃ¡rquica.
-	 * 
-	 * @param filterUsuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
-	 * @param jqGridRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return Dto que contiene el resultado del filtrado realizado por el
-	 *         componente RUP_TABLE.
-	 * 
-	 */
-	@RequestMapping(value = "/jerarquia/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto< JerarquiaDto< Usuario>> jerarquia(
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
-		TableUsuarioController.logger.info("[POST - jerarquia] : Obtener Usuarios Jerarquia");
-		return this.jqGridUsuarioService.jerarquia(filterUsuario, jqGridRequestDto, false);
-	}
-	
-	/**
-	 * Recupera los hijos de los registros desplegados en la visualizaciÃ³n jerÃ¡rquica.
-	 * 
-	 * @param filterUsuario
-	 *            Bean que contiene los parÃ¡metros de filtrado a emplear.
-	 * @param jqGridRequestDto
-	 *            Dto que contiene los parÃ¡mtros de configuraciÃ³n propios del
-	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return Dto que contiene el resultado a mostrar en el componente RUP_TABLE.
-	 * 
-	 */
-	@RequestMapping(value = "/jerarquiaChildren", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (
-			@RequestJsonBody(param="filter") Usuario filterUsuario,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
-		TableUsuarioController.logger.info("[GET - jqGrid] : Obtener Jerarquia - Hijos");
-		return this.jqGridUsuarioService.jerarquiaChildren(filterUsuario, jqGridRequestDto);
 	}
 	
 	@RequestMapping(value = "masterDetail", method = RequestMethod.GET)

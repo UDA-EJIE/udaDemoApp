@@ -20,13 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.dao.UsuarioDao;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridDto;
-import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -153,15 +151,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return this.usuarioDao.search(filterParams, searchParams, pagination, startsWith);
 	}
 
-	public JQGridDto<Usuario> filter(Usuario usuario, Pagination<Usuario> pagination, Boolean startsWith) {
+	public TableDto<Usuario> filter(Usuario usuario, Pagination<Usuario> pagination, Boolean startsWith) {
 		List<Usuario> usuarios =  this.usuarioDao.findAllLike(usuario, pagination, false);
 		Long recordNum =  this.usuarioDao.findAllLikeCount(usuario != null ? usuario: new Usuario (),false);
 		if (pagination.getMultiselection().getSelectedIds()!=null){
 			List<TableRowDto<Usuario>> reorderSelection = this.usuarioDao.reorderSelection(usuario, pagination, startsWith);
-			return new JQGridDto<Usuario>(pagination, recordNum, usuarios, reorderSelection);
+			return new TableDto<Usuario>(pagination, recordNum, usuarios, reorderSelection);
 		}
 		 
-		return new JQGridDto<Usuario>(pagination, recordNum, usuarios);  
+		return new TableDto<Usuario>(pagination, recordNum, usuarios);  
 	}
 	
 	@Override

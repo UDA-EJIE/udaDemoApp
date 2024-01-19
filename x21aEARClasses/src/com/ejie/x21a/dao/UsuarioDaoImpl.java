@@ -33,8 +33,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JQGridManager;
-import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.dto.PaginationManager;
@@ -164,7 +162,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**
@@ -216,7 +214,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**
@@ -601,7 +599,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForObject(sbSQL.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(sbSQL.toString(), Long.class, params.toArray());
 	}
 
 	@Override

@@ -55,7 +55,7 @@ public class ListaController {
     TableResponseDto<Usuario> filter(
             @RequestJsonBody(param="filter") Usuario filterUsuario,
             @RequestJsonBody TableRequestDto tableRequestDto) {
-        ListaController.logger.info("[POST - jqGrid] : Obtener Usuarios");
+        ListaController.logger.info("[POST - table] : Obtener Usuarios");
         return tableUsuarioService.filter(filterUsuario, tableRequestDto, false);
     }
 	
@@ -63,7 +63,7 @@ public class ListaController {
 	public @ResponseBody List<Filter> filterGetAll(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		ListaController.logger.info("[get - jqGrid] : GetAll filter");
+		ListaController.logger.info("[get - table] : GetAll filter");
 		return filterService.getAllFilters(filterSelector,filterUser);
 	}
 	
@@ -71,20 +71,20 @@ public class ListaController {
 	public @ResponseBody Filter filterGetDefault(
 		@RequestParam(value = "filterSelector", required = true) String filterSelector,
 		@RequestParam(value = "user", required = true) String filterUser) {
-		ListaController.logger.info("[get - jqGrid] : getDefault filter");
+		ListaController.logger.info("[get - table] : getDefault filter");
 		 return filterService.getDefault(filterSelector, filterUser);
 	}
 	
 	@PostMapping(value = "/filter/multiFilter/add")
 	public @ResponseBody Filter filterAdd(@RequestJsonBody(param="filtro") Filter filtro){
-		ListaController.logger.info("[POST - jqGrid] : add filter");
+		ListaController.logger.info("[POST - table] : add filter");
 		 return filterService.insert(filtro);
 	}
 	
 	@PostMapping(value = "/filter/multiFilter/delete")
 	public @ResponseBody Filter  filterDelete(
 			@RequestJsonBody(param="filtro") Filter filtro) {
-		ListaController.logger.info("[POST - jqGrid] : delete filter");
+		ListaController.logger.info("[POST - table] : delete filter");
 		return  filterService.delete(filtro);
 	}
 }

@@ -238,9 +238,11 @@ public class TableMultiPkController  {
 	 */
 	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public @ResponseBody List<String> removeMultiple(@RequestJsonBody TableRequestDto tableRequestDto) {
+	public @ResponseBody List<String> removeMultiple(
+			@RequestJsonBody(param="filter") MultiPk filterMultiPk, 
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableMultiPkController.logger.info("[POST - search] : [POST - removeMultiple] : Eliminar multiples MultiPks");
-		this.multiPkService.removeMultiple(tableRequestDto);
+		this.multiPkService.removeMultiple(filterMultiPk, tableRequestDto, false);
 		TableMultiPkController.logger.info("All entities correctly deleted!");
 		
 		return tableRequestDto.getMultiselection().getSelectedIds();

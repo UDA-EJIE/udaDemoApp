@@ -54,14 +54,14 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import com.ejie.x21a.model.Alumno;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
-import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.service.NoraAutonomiaService;
 import com.ejie.x21a.service.NoraPaisService;
+import com.ejie.x21a.service.TableAlumnoService;
 import com.ejie.x21a.validation.group.AlumnoAddValidation;
 import com.ejie.x21a.validation.group.AlumnoEditValidation;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 import com.ejie.x38.util.DateTimeManager;
 import com.ejie.x38.validation.ValidationManager;
@@ -283,7 +283,7 @@ public class TableAlumnoController  {
 	 * 
 	 * @param Alumno
 	 *            Bean que contiene los parámetros de filtrado a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
@@ -292,12 +292,12 @@ public class TableAlumnoController  {
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
-	public @ResponseBody JQGridResponseDto<Alumno> filter(
+	public @ResponseBody TableResponseDto<Alumno> filter(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		
-		TableAlumnoController.logger.info("[POST - jqGrid] : Obtener Alumnos");
-		return this.alumnoService.filter(filterAlumno, jqGridRequestDto, false);
+		TableAlumnoController.logger.info("[POST - table] : Obtener Alumnos");
+		return this.alumnoService.filter(filterAlumno, tableRequestDto, false);
 	}
 	
 	/**
@@ -307,7 +307,7 @@ public class TableAlumnoController  {
 	 *            Bean que contiene los parámetros de filtrado a emplear.
 	 * @param searchAlumno
 	 *            Bean que contiene los parámetros de búsqueda a emplear.
-	 * @param JQGridRequestDto
+	 * @param TableRequestDto
 	 *            Dto que contiene los parámtros de configuración propios del
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
@@ -318,10 +318,10 @@ public class TableAlumnoController  {
 	public @ResponseBody List<TableRowDto<Alumno>> search(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody(param="search") Alumno searchAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto){
+			@RequestJsonBody TableRequestDto tableRequestDto){
 		
 		TableAlumnoController.logger.info("[POST - search] : Buscar Alumnos");
-		return this.alumnoService.search(filterAlumno, searchAlumno, jqGridRequestDto, false);
+		return this.alumnoService.search(filterAlumno, searchAlumno, tableRequestDto, false);
 	}
 	
 	
@@ -335,12 +335,12 @@ public class TableAlumnoController  {
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
-			@RequestJsonBody JQGridRequestDto jqGridRequestDto) {
+			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableAlumnoController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
-	    this.alumnoService.removeMultiple(filterAlumno, jqGridRequestDto, false);
+	    this.alumnoService.removeMultiple(filterAlumno, tableRequestDto, false);
 	    TableAlumnoController.logger.info("All entities correctly deleted!");
 	    
-	    return jqGridRequestDto.getMultiselection().getSelectedIds();
+	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}	
 	
 	

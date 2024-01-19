@@ -132,7 +132,7 @@ public class NoraPaisDaoImpl implements NoraPaisDao {
 			params.add(pais.getDsO());
 		}
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**

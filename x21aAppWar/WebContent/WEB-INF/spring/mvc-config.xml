@@ -6,11 +6,11 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
-		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
 		http://www.springframework.org/schema/mvc 
-		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd 
 		http://www.springframework.org/schema/context 
-		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- Crea un bean por cada clase anotada con @Component en el paquete 'com.ejie.x21a' -->
 	<context:component-scan base-package="com.ejie.x21a" />
@@ -35,11 +35,6 @@
 		<property name="useCodeAsDefaultMessage" value="true" />
         <property name="fallbackToSystemLocale" value="false" />
 	</bean>
-
-	<!-- Gestiona la locale (idioma) mediante cookie  -->
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="cookieName" value="language" />
-    </bean>
     
     <!-- Gestiona las propiedades del WAR: idioma (cuando se envía el parametro 'locale' en la request '/?locale=en'), layout, idioma disponible... -->
     <bean id="mvcInterceptor" class="com.ejie.x38.control.MvcInterceptor" >
@@ -83,7 +78,7 @@
 	
 
 	<!-- Configurar MVC -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+    <bean class="com.ejie.x38.spring.context.DefaultAnnotationHandlerMapping">
         <property name="order" value="1" />
     </bean>
     
@@ -132,12 +127,4 @@
 	
 	<!-- Audit  -->
 	<bean id="auditController" class="com.ejie.x38.audit.AuditController" />
-	
-	<!-- Reports -->	
-	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
-	   <property name="location">
-	       <value>/WEB-INF/spring/reports-config.xml</value>
-	   </property>
-	   <property name="order" value="0" />
-	</bean>
 </beans>

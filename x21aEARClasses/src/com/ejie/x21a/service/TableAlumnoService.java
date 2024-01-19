@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.validation.Errors;
 
 import com.ejie.x21a.model.Alumno;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
+import com.ejie.x38.dto.TableRequestDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**
@@ -61,7 +61,7 @@ public interface TableAlumnoService {
 	 * @param pagination Pagination
 	 * @return List
 	 */
-	List<Alumno> findAll(Alumno alumno, JQGridRequestDto jqGridRequestDto);
+	List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto);
 
 	/**
 	 * Finds rows in the Alumno table using like.
@@ -71,7 +71,7 @@ public interface TableAlumnoService {
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<Alumno> findAllLike(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) ;
+	List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) ;
   
 	/*
 	 * OPERACIONES RUP_TABLE
@@ -84,7 +84,7 @@ public interface TableAlumnoService {
 	 * @param alumnoList  ArrayList
 	 * @return 
 	 */	
-	void removeMultiple(Alumno filterAlumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	void removeMultiple(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	
 	/**
@@ -92,14 +92,14 @@ public interface TableAlumnoService {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param searchUsuario Usuario
-	 * @param jqGridRequestDto JQGridRequestDto
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, JQGridRequestDto JQGridRequestDto, Boolean startsWith);
+	List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, TableRequestDto TableRequestDto, Boolean startsWith);
 
-	JQGridResponseDto<Alumno> filter(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith) ;
+	TableResponseDto<Alumno> filter(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) ;
 	
-	Object reorderSelection(Alumno alumno, JQGridRequestDto jqGridRequestDto, Boolean startsWith);
+	Object reorderSelection(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/*
 	 * OPERACIONES PROPIAS

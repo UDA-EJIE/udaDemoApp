@@ -44,11 +44,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ejie.x21a.dao.JQGridUsuarioDao;
 import com.ejie.x21a.dao.TableUsuarioDao;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
-import com.ejie.x38.dto.JQGridResponseDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -67,9 +64,6 @@ import com.lowagie.text.pdf.PdfWriter;
 
 @Service(value = "tableUsuarioService")
 public class TableUsuarioServiceImpl implements TableUsuarioService {
-
-	@Autowired
-	private JQGridUsuarioDao jqGridUsuarioDao;
 	
 	@Autowired
 	private TableUsuarioDao tableUsuarioDao;
@@ -86,7 +80,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario add(Usuario usuario) {
-		return this.jqGridUsuarioDao.add(usuario);
+		return this.tableUsuarioDao.add(usuario);
 	}
 
 	/**
@@ -97,7 +91,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario update(Usuario usuario) {
-		return this.jqGridUsuarioDao.update(usuario);
+		return this.tableUsuarioDao.update(usuario);
 	 }
 
 	/**
@@ -107,7 +101,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @return Usuario
 	 */
 	public Usuario find(Usuario usuario) {
-		return (Usuario) this.jqGridUsuarioDao.find(usuario);
+		return (Usuario) this.tableUsuarioDao.find(usuario);
 	}
 	
 	/**
@@ -118,7 +112,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public void remove(Usuario usuario) {
-		this.jqGridUsuarioDao.remove(usuario);
+		this.tableUsuarioDao.remove(usuario);
 	}
 	
 	/**
@@ -128,8 +122,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param pagination Pagination
 	 * @return List
 	 */
-	public List<Usuario> findAll(Usuario usuario, JQGridRequestDto jqGridRequestDto) {
-		return (List<Usuario>) this.jqGridUsuarioDao.findAll(usuario, jqGridRequestDto);
+	public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
+		return (List<Usuario>) this.tableUsuarioDao.findAll(usuario, tableRequestDto);
 	}
     
 
@@ -153,28 +147,29 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-	 * @param usuarioList List
-	 * @return
+     * @param filterUsuario Usuario
+	 * @param tableRequestDto TableRequestDto
+     * @param startsWith Boolean
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.tableUsuarioDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)
-	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.tableUsuarioDao.getMultiple(filterUsuario, jqGridRequestDto, startsWith);
+	public List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public Object reorderSelection(Usuario usuario, TableRequestDto jqGridRequestDto,
+	public Object reorderSelection(Usuario usuario, TableRequestDto tableRequestDto,
 			Boolean startsWith) {
-		return this.tableUsuarioDao.reorderSelection(usuario, jqGridRequestDto, startsWith);
+		return this.tableUsuarioDao.reorderSelection(usuario, tableRequestDto, startsWith);
 	}
 
 	@Override
-	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto jqGridRequestDto, Boolean startsWith) {
-		return this.tableUsuarioDao.search(filterParams, searchParams, jqGridRequestDto, startsWith);
+	public List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
 	}
 
 	@Override
@@ -201,16 +196,16 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * OPERACIONES RUP_TABLE JERARQUIA
 	 */
 
-	public JQGridResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto, Boolean startsWith) {
-		List<JerarquiaDto<Usuario>> listaUsuario =  this.jqGridUsuarioDao.findAllLikeJerarquia(filterUsuario, jqGridRequestDto);
-		Long recordNum = this.jqGridUsuarioDao.findAllLikeCountJerarquia(filterUsuario, jqGridRequestDto);
-		return new JQGridResponseDto<JerarquiaDto<Usuario>>(jqGridRequestDto, recordNum, listaUsuario);
+	public TableResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		List<JerarquiaDto<Usuario>> listaUsuario =  this.tableUsuarioDao.findAllLikeJerarquia(filterUsuario, tableRequestDto);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCountJerarquia(filterUsuario, tableRequestDto);
+		return new TableResponseDto<JerarquiaDto<Usuario>>(tableRequestDto, recordNum, listaUsuario);
 	}
 	
-	public JQGridResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, JQGridRequestDto jqGridRequestDto){
-		JQGridResponseDto<JerarquiaDto<Usuario>> jqGridResponseDto = new JQGridResponseDto<JerarquiaDto<Usuario>>();
-		jqGridResponseDto.addAdditionalParam(JQGridResponseDto.CHILDREN, this.jqGridUsuarioDao.findAllChild(filterUsuario, jqGridRequestDto));
-		return jqGridResponseDto;
+	public TableResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, TableRequestDto tableRequestDto){
+		TableResponseDto<JerarquiaDto<Usuario>> tableResponseDto = new TableResponseDto<JerarquiaDto<Usuario>>();
+		tableResponseDto.addAdditionalParam(TableResponseDto.CHILDREN, this.tableUsuarioDao.findAllChild(filterUsuario, tableRequestDto));
+		return tableResponseDto;
 	}
 	
 	/*

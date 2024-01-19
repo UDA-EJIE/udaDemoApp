@@ -22,7 +22,7 @@
     <listener-class>com.ejie.x38.UdaListener</listener-class>
   </listener>
   <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    <listener-class>com.ejie.x38.spring.context.UdaContextLoaderListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>

@@ -170,7 +170,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 		
 		List<?> params = (List<?>) mapaWhere.get("params");
 		
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**
@@ -220,7 +220,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 	
 	/**

@@ -240,7 +240,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**
@@ -262,7 +262,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**
@@ -339,12 +339,17 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 	/**
 	 * Remove multiple method for rup_table
-     *
-     * @param tableRequestDto TableRequestDto
+	 *
+     * @param filterMultiPk MultiPk
+	 * @param tableRequestDto TableRequestDto
+     * @param startsWith Boolean
      */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, MultiPk.class, "MULTI_PK", new String[]{"IDA","IDB"});
+	public void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+		Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterMultiPk, startsWith);
+		
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, MultiPk.class, "MULTI_PK", "t1", "IDA", "IDB");
 		
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
 		List<String> params = new ArrayList<String>();
@@ -473,7 +478,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
-		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
+		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
 	}
 
 	/**

@@ -18,7 +18,6 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JQGridRequestDto;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.Pagination;
 import com.ejie.x38.dto.TableRequestDto;
