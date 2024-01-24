@@ -102,14 +102,6 @@ public interface ComarcaService {
 	 */
 	void remove(Comarca comarca);
 	
-	/**
-	 * Deletes multiple rows in the Comarca table.
-	 *
-	 * @param comarcaList List
-	 * @return 
-	 */	
-	void removeMultiple(List<Comarca> comarcaList);
-	
 	/*
 	 * OPERACIONES RUP_TABLE
 	 */
@@ -117,9 +109,11 @@ public interface ComarcaService {
 	/**
 	 * Deletes multiple rows in the Comarca table.
 	 *
-	 * @param TableRequestDto tableRequestDto
-	 */	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	 * @param filterComarca Comarca
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
+	void removeMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Comarca table via inverse select.

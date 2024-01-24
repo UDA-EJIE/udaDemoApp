@@ -155,19 +155,6 @@ public class LocalidadServiceImpl implements LocalidadService {
 		this.localidadDao.remove(localidad);
 	}
 	
-	/**
-	 * Deletes multiple rows in the Localidad table.
-	 *
-	 * @param localidadList List
-	 * @return
-	 */
-	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(List<Localidad> localidadList) {
-		for (Localidad  localidadAux:localidadList) {
-			this.localidadDao.remove(localidadAux);
-		}
-	}
-	
 	/*
 	 * OPERACIONES RUP_TABLE
 	 */
@@ -175,12 +162,13 @@ public class LocalidadServiceImpl implements LocalidadService {
 	/**
 	 * Deletes multiple rows in the Localidad table.
 	 *
-	 * @param localidadList List
-	 * @return
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.localidadDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.localidadDao.removeMultiple(filterLocalidad, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

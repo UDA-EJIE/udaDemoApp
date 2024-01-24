@@ -154,19 +154,6 @@ public class ProvinciaServiceImpl implements ProvinciaService {
 	public void remove(Provincia provincia) {
 		this.provinciaDao.remove(provincia);
 	}
-	
-	/**
-	 * Deletes multiple rows in the Provincia table.
-	 *
-	 * @param provinciaList List
-	 * @return
-	 */
-	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(List<Provincia> provinciaList) {
-		for (Provincia  provinciaAux:provinciaList) {
-			this.provinciaDao.remove(provinciaAux);
-		}
-	}
 
 	/*
 	 * OPERACIONES RUP_TABLE
@@ -175,12 +162,13 @@ public class ProvinciaServiceImpl implements ProvinciaService {
 	/**
 	 * Deletes multiple rows in the Provincia table.
 	 *
-	 * @param provinciaList List
-	 * @return
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.provinciaDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.provinciaDao.removeMultiple(filterProvincia, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

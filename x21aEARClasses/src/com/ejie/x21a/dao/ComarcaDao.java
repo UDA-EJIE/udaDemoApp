@@ -100,7 +100,14 @@ public interface ComarcaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 
-	void removeMultiple(TableRequestDto tableRequestDto);
+    /**
+	 * Deletes multiple rows in the Comarca table.
+	 *
+	 * @param filterComarca Comarca
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<Comarca> getMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith);
     

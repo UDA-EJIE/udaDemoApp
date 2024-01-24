@@ -102,14 +102,6 @@ public interface LocalidadService {
 	 */
 	void remove(Localidad localidad);
 	
-	/**
-	 * Deletes multiple rows in the Localidad table.
-	 *
-	 * @param localidadList List
-	 * @return 
-	 */	
-	void removeMultiple(List<Localidad> localidadList);
-	
 	/*
 	 * OPERACIONES RUP_TABLE
 	 */
@@ -117,9 +109,11 @@ public interface LocalidadService {
 	/**
 	 * Deletes multiple rows in the Localidad table.
 	 *
-	 * @param TableRequestDto tableRequestDto
-	 */	
-	void removeMultiple(TableRequestDto tableRequestDto);
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
+	void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finds a List of rows in the Localidad table via inverse select.

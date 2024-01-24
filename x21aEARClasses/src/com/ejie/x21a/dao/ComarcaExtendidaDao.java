@@ -9,7 +9,7 @@
 *
 * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
 * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+* SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
 * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
@@ -100,7 +100,14 @@ public interface ComarcaExtendidaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 
-	void removeMultiple(TableRequestDto tableRequestDto);
+    /**
+	 * Deletes multiple rows in the ComarcaExtendida table.
+	 *
+	 * @param filterComarcaExtendida ComarcaExtendida
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
+	void removeMultiple(ComarcaExtendida filterComarcaExtendida, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	List<ComarcaExtendida> getMultiple(ComarcaExtendida filterComarcaExtendida, TableRequestDto tableRequestDto, Boolean startsWith);
     

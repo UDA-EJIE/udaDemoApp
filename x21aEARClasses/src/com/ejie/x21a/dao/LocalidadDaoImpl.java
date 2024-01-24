@@ -22,8 +22,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -31,8 +33,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.Comarca;
-import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.Localidad;
+import com.ejie.x21a.model.Provincia;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableRequestDto;
@@ -300,11 +302,25 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
+	/**
+	 * Deletes multiple rows in the Localidad table.
+	 *
+	 * @param filterLocalidad Localidad
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Localidad.class, "COMARCA", new String[]{"CODE"});
+	public void removeMultiple(Localidad filterLocalidad, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterLocalidad, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Comarca.class, "LOCALIDAD", "t1", new String[]{"CODE"});
 		
-		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
@@ -405,7 +421,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
-	private Map<String, ?> getWhereLikeMap (Localidad localidad, Boolean startsWith){
+	private Map<String, Object> getWhereLikeMap (Localidad localidad, Boolean startsWith){
 		
 		StringBuffer where = new StringBuffer(LocalidadDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();

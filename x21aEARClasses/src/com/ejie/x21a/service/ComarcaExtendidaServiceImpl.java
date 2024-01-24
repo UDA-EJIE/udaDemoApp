@@ -156,19 +156,6 @@ public class ComarcaExtendidaServiceImpl implements ComarcaExtendidaService {
 		this.comarcaDao.remove(comarca);
 	}
 	
-	/**
-	 * Deletes multiple rows in the ComarcaExtendida table.
-	 *
-	 * @param comarcaList List
-	 * @return
-	 */
-	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(List<ComarcaExtendida> comarcaList) {
-		for (ComarcaExtendida  comarcaAux:comarcaList) {
-			this.comarcaDao.remove(comarcaAux);
-		}
-	}
-	
 	/*
 	 * OPERACIONES RUP_TABLE
 	 */
@@ -176,12 +163,13 @@ public class ComarcaExtendidaServiceImpl implements ComarcaExtendidaService {
 	/**
 	 * Deletes multiple rows in the ComarcaExtendida table.
 	 *
-	 * @param comarcaList List
-	 * @return
+	 * @param filterComarcaExtendida ComarcaExtendida
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
 	 */
 	@Transactional(rollbackFor = Throwable.class)
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		this.comarcaDao.removeMultiple(tableRequestDto);
+	public void removeMultiple(ComarcaExtendida filterComarcaExtendida, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.comarcaDao.removeMultiple(filterComarcaExtendida, tableRequestDto, startsWith);
 	}
 	
 	@Transactional(rollbackFor = Throwable.class)

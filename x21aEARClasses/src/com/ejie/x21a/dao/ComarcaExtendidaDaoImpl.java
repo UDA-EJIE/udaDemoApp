@@ -9,7 +9,7 @@
 *
 * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
 * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+* SIN GARANT�?AS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
 * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
@@ -301,11 +301,25 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
+	/**
+	 * Deletes multiple rows in the ComarcaExtendida table.
+	 *
+	 * @param filterComarcaExtendida ComarcaExtendida
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Comarca.class, "COMARCA", new String[]{"CODE"});
+	public void removeMultiple(ComarcaExtendida filterComarcaExtendida, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterComarcaExtendida, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Comarca.class, "COMARCA", "t1", new String[]{"CODE"});
 		
-		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
@@ -402,7 +416,7 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
-	private Map<String, ?> getWhereLikeMap (ComarcaExtendida comarca, Boolean startsWith){
+	private Map<String, Object> getWhereLikeMap (ComarcaExtendida comarca, Boolean startsWith){
 		
 		StringBuffer where = new StringBuffer(ComarcaExtendidaDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();

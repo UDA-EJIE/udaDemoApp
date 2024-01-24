@@ -32,6 +32,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.TableManager;
@@ -291,11 +292,25 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
+	/**
+	 * Deletes multiple rows in the Provincia table.
+	 *
+	 * @param filterProvincia Provincia
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Provincia.class, "PROVINCIA", new String[]{"CODE"});
+	public void removeMultiple(Provincia filterProvincia, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterProvincia, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Comarca.class, "PROVINCIA", "t1", new String[]{"CODE"});
 		
-		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
@@ -376,7 +391,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
-	private Map<String, ?> getWhereLikeMap (Provincia provincia, Boolean startsWith){
+	private Map<String, Object> getWhereLikeMap (Provincia provincia, Boolean startsWith){
 		
 		StringBuffer where = new StringBuffer(ProvinciaDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();

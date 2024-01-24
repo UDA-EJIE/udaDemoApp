@@ -301,11 +301,25 @@ public class ComarcaDaoImpl implements ComarcaDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
+	/**
+	 * Deletes multiple rows in the Comarca table.
+	 *
+	 * @param filterComarca Comarca
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
 	@Override
-	public void removeMultiple(TableRequestDto tableRequestDto) {
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(tableRequestDto, Comarca.class, "COMARCA", new String[]{"CODE"});
+	public void removeMultiple(Comarca filterComarca, TableRequestDto tableRequestDto, Boolean startsWith) {
+		// Like clause and params
+    	Map<String, Object> mapaWhereLike = this.getWhereLikeMap(filterComarca, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapaWhereLike, tableRequestDto, Comarca.class, "COMARCA", "t1", new String[]{"CODE"});
 		
-		List<String> params = tableRequestDto.getMultiselection().getSelectedIds();
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapaWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
@@ -402,7 +416,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
 	 *         key params stores the parameter values to be used in the condition sentence.
 	 */
 	// CHECKSTYLE:OFF CyclomaticComplexity - Generación de código de UDA
-	private Map<String, ?> getWhereLikeMap (Comarca comarca, Boolean startsWith){
+	private Map<String, Object> getWhereLikeMap (Comarca comarca, Boolean startsWith){
 		
 		StringBuffer where = new StringBuffer(ComarcaDaoImpl.STRING_BUILDER_INIT);
 		List<Object> params = new ArrayList<Object>();
