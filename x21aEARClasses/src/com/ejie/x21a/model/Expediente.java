@@ -15,7 +15,6 @@
 */
 package com.ejie.x21a.model;
 
-
 import java.sql.Date;
 
 /**
@@ -23,7 +22,7 @@ import java.sql.Date;
 * @author UDA
  */
 
-public class Expediente  implements java.io.Serializable {
+public class Expediente implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
    
@@ -46,15 +45,9 @@ public class Expediente  implements java.io.Serializable {
     private String nombreAlertaEs;
     private String nombreAlertaEu;
     
-    
 	public Expediente() {
 		super();
 	}
-
-
-	
-	
-
 
 	public Expediente(Integer id, String titulo, String nombre, String codigo, String buzonTramitador, String nombreTramitador, String email, String pregunta, Integer idFase, String nombreFaseEs, String nombreFaseEu, Date fecha, Date alertaBajaFecha, Date alertaMediaFecha, Date alertaAltaFecha, Integer idAlerta, String nombreAlertaEs, String nombreAlertaEu) {
 		super();
@@ -77,10 +70,6 @@ public class Expediente  implements java.io.Serializable {
 		this.nombreAlertaEs = nombreAlertaEs;
 		this.nombreAlertaEu = nombreAlertaEu;
 	}
-
-
-
-
 
 
 	public Integer getId() {

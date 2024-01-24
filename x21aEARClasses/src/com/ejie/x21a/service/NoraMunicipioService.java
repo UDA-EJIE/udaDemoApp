@@ -1,7 +1,7 @@
 package com.ejie.x21a.service;
 
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +42,10 @@ public interface NoraMunicipioService {
 	 * Finds a List of rows in the NoraMunicipio table.
 	 *
 	 * @param municipio NoraMunicipio
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<NoraMunicipio> findAll(NoraMunicipio municipio, Pagination pagination);
+	List<NoraMunicipio> findAll(NoraMunicipio municipio, TableRequestDto tableRequestDto);
 
 	/**
 	 * Counts rows in the NoraMunicipio table.
@@ -59,11 +59,11 @@ public interface NoraMunicipioService {
 	 * Finds rows in the NoraMunicipio table using like.
 	 *
 	 * @param municipio NoraMunicipio
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<NoraMunicipio> findAllLike(NoraMunicipio municipio, Pagination pagination, Boolean startsWith) ;
+	List<NoraMunicipio> findAllLike(NoraMunicipio municipio, TableRequestDto tableRequestDto, Boolean startsWith) ;
   
 	/**
 	 * Deletes a single row in the NoraMunicipio table.
@@ -80,7 +80,4 @@ public interface NoraMunicipioService {
 	 * @return 
 	 */	
 	void removeMultiple(ArrayList<NoraMunicipio> t17MunicipioList);
-    
 }
-
-

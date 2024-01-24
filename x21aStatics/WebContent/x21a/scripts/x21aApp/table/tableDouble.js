@@ -42,53 +42,49 @@ function _init() {
 	        rol: 'Manager',
 	        codTipoSubsanacion: 'manager'
     }];
-    var options_ejie_combo = {
+    const options_ejie_select = {
         source: [{
-            label: '---',
-            value: ''
+            text: '---',
+            id: ''
         },
         {
             i18nCaption: '0',
-            value: '0'
+            id: '0'
         },
         {
             i18nCaption: '1',
-            value: '1'
+            id: '1'
         }
         ],
-        i18nId: 'GRID_simple##ejie',
-        width: '100%',
-        customClasses: ['select-material']
+        i18nId: 'GRID_simple##ejie'
     };
-    var options_role_combo;
+    let options_role_select;
     window.initRupI18nPromise.then(function () {
-	    options_role_combo = {
+	    options_role_select = {
 	        source: [{
-	            label: '---',
-	            value: ''
+	            text: '---',
+	            id: ''
 	        },
 	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].administrador,
-	            value: 'administrador'
+	            text: $.rup.i18n.app['GRID_simple##rol'].administrador,
+	            id: 'administrador'
 	        },
 	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
-	            value: 'desarrollador'
+	            text: $.rup.i18n.app['GRID_simple##rol'].desarrollador,
+	            id: 'desarrollador'
 	        },
 	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].espectador,
-	            value: 'espectador'
+	            text: $.rup.i18n.app['GRID_simple##rol'].espectador,
+	            id: 'espectador'
 	        },
 	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].informador,
-	            value: 'informador'
+	            text: $.rup.i18n.app['GRID_simple##rol'].informador,
+	            id: 'informador'
 	        },
 	        {
-	            label: $.rup.i18n.app['GRID_simple##rol'].manager,
-	            value: 'manager'
-	        }],
-            width: '100%',
-            customClasses: ['select-material']
+	            text: $.rup.i18n.app['GRID_simple##rol'].manager,
+	            id: 'manager'
+	        }]
 	    };
     });
     var allowedPluginsBySelecionType = {
@@ -438,88 +434,43 @@ function _init() {
             name: 'id' + num,
             index: 'id' + num,
             editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 1,
-                colpos: 1
-            }
+            hidden: false
         },
         {
             name: 'nombre' + num,
             index: 'nombre' + num,
             editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 2,
-                colpos: 1
-            }
+            hidden: false
         },
         {
             name: 'apellido1' + num,
             index: 'apellido1' + num,
             editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 3,
-                colpos: 1
-            },
-            classes: 'ui-ellipsis'
+            hidden: false
         },
         {
             name: 'ejie' + num,
             index: 'ejie' + num,
             editable: true,
-            hidden: false,
-            width: 60,
-            edittype: 'checkbox',
-            formatter: 'checkbox',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            align: 'center',
-            editoptions: {
-                value: '1:0'
-            },
-            formoptions: {
-                rowpos: 5,
-                colpos: 1
-            }
+            hidden: false
         },
         {
             name: 'fechaAlta' + num,
             index: 'fechaAlta' + num,
             editable: true,
-            hidden: false,
-            width: 120,
-            rupType: 'date',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            editoptions: {
-                labelMaskId: 'fecha-mask',
-                showButtonPanel: true,
-                showOtherMonths: true,
-                noWeekend: true
-            },
-            formoptions: {
-                rowpos: 2,
-                colpos: 2
-            }
+            hidden: false
         },
         {
             name: 'fechaBaja' + num,
             index: 'fechaBaja' + num,
             editable: false,
             hidden: false,
-            width: 120,
             rupType: 'date',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
             editoptions: {
                 labelMaskId: 'fecha-mask',
                 showButtonPanel: true,
                 showOtherMonths: true,
                 noWeekend: true
-            },
-            formoptions: {
-                rowpos: 3,
-                colpos: 2
             }
         },
         {
@@ -527,22 +478,15 @@ function _init() {
             index: 'rol' + num,
             editable: true,
             hidden: false,
-            width: 140,
-            rupType: 'combo',
-            rwdClasses: 'hidden-xs hidden-sm hidden-md',
-            formatter: 'rup_combo',
+            rupType: 'select',
             editoptions: {
-                source: $.map(combo, function (elem) {
+                data: $.map(combo, function (elem) {
                     return {
-                        label: elem.rol,
-                        value: elem.codTipoSubsanacion
+                        text: elem.rol,
+                        id: elem.codTipoSubsanacion
                     };
 
                 })
-            },
-            formoptions: {
-                rowpos: 3,
-                colpos: 2
             }
         }
         ];
@@ -565,11 +509,11 @@ function _init() {
         $('[id="fechaBaja_detail_table"]').rup_date();
         window.initRupI18nPromise.then(function () {
 	        //Formulario de filtrado
-	        $('[id="ejie_filter_table"]').rup_combo(options_ejie_combo);
-	        $('[id="rol_filter_table"]').rup_combo(options_role_combo);
+	        $('[id="ejie_filter_table"]').rup_select(options_ejie_select);
+	        $('[id="rol_filter_table"]').rup_select(options_role_select);
 	        
 	        //Formulario de detalle
-	        $('[id="rol_detail_table"]').rup_combo(options_role_combo);
+	        $('[id="rol_detail_table"]').rup_select(options_role_select);
         });
 	    //--------------------------------------------
         
@@ -582,11 +526,11 @@ function _init() {
         $('[id="fechaBaja_detail_table2"]').rup_date();
         window.initRupI18nPromise.then(function () {
 	        //Formulario de filtrado
-	        $('[id="ejie_filter_table2"]').rup_combo(options_ejie_combo);
-	        $('[id="rol_filter_table2"]').rup_combo(options_role_combo);
+	        $('[id="ejie_filter_table2"]').rup_select(options_ejie_select);
+	        $('[id="rol_filter_table2"]').rup_select(options_role_select);
 	        
 	        //Formulario de detalle
-	        $('[id="rol_detail_table2"]').rup_combo(options_role_combo);
+	        $('[id="rol_detail_table2"]').rup_select(options_role_select);
 	
 	        loadTable();
 	        loadTable(2);

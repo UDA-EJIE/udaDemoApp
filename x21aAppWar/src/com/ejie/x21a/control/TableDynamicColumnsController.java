@@ -1,16 +1,16 @@
 /*
 * Copyright 2019 E.J.I.E., S.A.
 *
-* Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
-* Solo podrá usarse esta obra si se respeta la Licencia.
+* Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+* Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
 * Puede obtenerse una copia de la Licencia en
 *
 * http://ec.europa.eu/idabc/eupl.html
 *
-* Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
-* el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
-* SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
-* Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+* Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+* el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+* SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+* VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
 * que establece la Licencia.
 */
 package com.ejie.x21a.control;
@@ -19,8 +19,10 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -40,12 +42,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -54,7 +59,7 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.service.TableUsuarioService;
-import com.ejie.x21a.service.UsuarioService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -65,14 +70,10 @@ import com.ejie.x38.util.DateTimeManager;
 @Controller
 @RequestMapping (value = "/table/dynamicColumns")
 public class TableDynamicColumnsController  {
-
 	private static final Logger logger = LoggerFactory.getLogger(TableDynamicColumnsController.class);
 
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
-	
-	@Autowired
-	private UsuarioService usuarioService;
 	
 	@Resource
 	private ReloadableResourceBundleMessageSource messageSource;
@@ -93,69 +94,108 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * Operación CRUD Read. Devuelve el bean correspondiente al identificador
+	 * OperaciÃƒÂ³n CRUD Read. Devuelve el bean correspondiente al identificador
 	 * indicado.
 	 * 
 	 * @param id
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Usuario get(@PathVariable String id) {
         Usuario usuario = new Usuario();
 		usuario.setId(id);
         usuario = this.tableUsuarioService.find(usuario);
-        
+		TableDynamicColumnsController.logger.info("[GET - findBy_PK] : Obtener Usuarios por PK");
         return usuario;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String getFiltroSimple (Model model) {
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
 		return "tableDynamicColumns";
 	}
 	
+	@PostMapping(value = "/inlineEdit")
+	public String getTableInlineEdit (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) String pkValue,
+			@RequestParam(defaultValue = "false") boolean apellido1,
+			@RequestParam(defaultValue = "false") boolean apellido2,
+			@RequestParam(defaultValue = "false") boolean ejie,
+			@RequestParam(defaultValue = "false") boolean fechaBaja,
+			@RequestParam(defaultValue = "false") boolean rol,
+			Model model) {
+		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, pkValue);
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
+		
+		model.addAttribute("apellido1", apellido1);
+		model.addAttribute("apellido2", apellido2);
+		model.addAttribute("ejie", ejie);
+		model.addAttribute("fechaBaja", fechaBaja);
+		model.addAttribute("rol", rol);
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		return "tableDynamicColumnsInlineEditAuxForm";
+	}
+	
 	/**
 	 * Devuelve una lista de beans correspondientes a los valores de filtrados
-	 * indicados en el objeto pasado como parámetro.
+	 * indicados en el objeto pasado como parÃƒÂ¡metro.
 	 * 
 	 * @param Usuario
-	 *            Objeto que contiene los parámetros de filtrado utilizados en
-	 *            la búsqueda.
-	 * @return Lista de objetos correspondientes a la búsqueda realizada.
+	 *            Objeto que contiene los parÃƒÂ¡metros de filtrado utilizados en
+	 *            la bÃƒÂºsqueda.
+	 * @return Lista de objetos correspondientes a la bÃƒÂºsqueda realizada.
 	 */
-	@RequestMapping(value = "/all",method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody List<Usuario> getAll(@ModelAttribute() Usuario usuarioFilter){
 		TableDynamicColumnsController.logger.info("[GET - find_ALL] : Obtener Usuarios por filtro");
 		return this.tableUsuarioService.findAllLike(usuarioFilter, null, false);
 	}
 	
 	/**
-	 * Operación CRUD Edit. Modificación del bean indicado.
+	 * OperaciÃƒÂ³n CRUD Edit. ModificaciÃƒÂ³n del bean indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la información a modificar.
-	 * @return Bean resultante de la modificación.
+	 *            Bean que contiene la informaciÃƒÂ³n a modificar.
+	 * @return Bean resultante de la modificaciÃƒÂ³n.
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody Usuario edit(@Validated @RequestBody Usuario usuario) {
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
 		logger.info("Entity correctly updated!");
         return usuarioAux;
     }
 	
-	@RequestMapping(value = "/editar", method = RequestMethod.PUT, produces="application/json")
+	@PutMapping(value = "/editar", produces="application/json")
     public @ResponseBody Usuario editar(
     		@Validated @ModelAttribute Usuario usuario,
     		@RequestParam(value = "imagenAlumno", required = false) MultipartFile imagen,
     HttpServletRequest request, HttpServletResponse response){
 		System.out.print("USUARIO::::"+usuario.getId()+" --- "+new Date()+"\n");
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
 		if (imagen!=null){
 			System.out.print("IMAGEN::::"+imagen);
         }
@@ -165,34 +205,31 @@ public class TableDynamicColumnsController  {
     }
 
 	/**
-	 * Operación CRUD Create. Creación de un nuevo registro a partir del bean
+	 * OperaciÃƒÂ³n CRUD Create. CreaciÃƒÂ³n de un nuevo registro a partir del bean
 	 * indicado.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene la información con la que se va a crear el
+	 *            Bean que contiene la informaciÃƒÂ³n con la que se va a crear el
 	 *            nuevo registro.
-	 * @return Bean resultante del proceso de creación.
+	 * @return Bean resultante del proceso de creaciÃƒÂ³n.
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody Usuario add(@Validated @RequestBody Usuario usuario) {		
-		if (usuario.getEjie()==null){
-			usuario.setEjie("0");
-		}
-        Usuario usuarioAux = this.tableUsuarioService.add(usuario);
+		Usuario usuarioAux = this.tableUsuarioService.add(usuario);
         logger.info("Entity correctly inserted!");	
     	return usuarioAux;
 	}
 	
 
 	/**
-	 * Operación CRUD Delete. Borrado del registro correspondiente al
+	 * OperaciÃƒÂ³n CRUD Delete. Borrado del registro correspondiente al
 	 * identificador especificado.
 	 * 
 	 * @param id
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return Bean eliminado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value=HttpStatus.OK)
     public @ResponseBody Usuario remove(@PathVariable(value="id") String id, HttpServletResponse  response) {
         Usuario usuario = new Usuario();
@@ -209,19 +246,19 @@ public class TableDynamicColumnsController  {
 	 */
 	
 	/**
-	 * Operación de filtrado del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Usuario
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResponseDto<Usuario> filter(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -230,20 +267,20 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * Operación de búsqueda del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de bÃƒÂºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterUsuario
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param searchUsuario
-	 *            Bean que contiene los parámetros de búsqueda a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de bÃƒÂºsqueda a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parámetros de búsqueda.
+	 *         que se ajustan a los parÃƒÂ¡metros de bÃƒÂºsqueda.
 	 * 
 	 */
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Usuario>> search(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody(param="search") Usuario searchUsuario,
@@ -253,19 +290,19 @@ public class TableDynamicColumnsController  {
 	}
 	
 	/**
-	 * Borrado múltiple de registros
+	 * Borrado mÃƒÆ’Ã‚Âºltiple de registros
 	 * 
 	 * @param filterUsuario Usuario
-	 *            Bean que contiene los parametros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÆ’Ã‚Â¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Dto que contiene los parÃƒÆ’Ã‚Â¡mtros de configuraciÃƒÆ’Ã‚Â³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÆ’Ã‚Âºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
-			@RequestJsonBody(param="filter") Usuario filterUsuario, 
+			@RequestJsonBody(param="filter") Usuario filterUsuario,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableDynamicColumnsController.logger.info("[POST - removeMultiple] : Eliminar multiples usuarios");
 	    this.tableUsuarioService.removeMultiple(filterUsuario, tableRequestDto, false);
@@ -283,10 +320,13 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param tableRequestDto TableRequestDto
-	 */	
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<Usuario> getClipboardReport(
+	 */
+	@PostMapping(value = "/filter", params = "clipboardReport")
+	public @ResponseBody List<Usuario> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableDynamicColumnsController.logger.info("[POST - clipboardReport] : Copiar multiples usuarios");
 		return this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto);
@@ -297,18 +337,19 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport(
+	 */
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
-			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
+			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
 			@RequestJsonBody(param = "sheetTitle", required = false) String sheetTitle,
 			@RequestJsonBody(param = "reportsParams", required = false) ArrayList<?> reportsParams,
@@ -318,7 +359,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateExcelReport] : Devuelve un fichero excel");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
     }
 	
 	/**
@@ -326,15 +367,17 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	 */
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generatePDFReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -346,7 +389,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generatePDFReport] : Devuelve un fichero pdf");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -354,15 +397,17 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	 */
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateODSReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -374,7 +419,7 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateODSReport] : Devuelve un fichero ods");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 	
 	/**
@@ -382,15 +427,17 @@ public class TableDynamicColumnsController  {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
+	 */
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateCSVReport(
+			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "columnsName", required = false) String[] columnsName,
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -402,6 +449,6 @@ public class TableDynamicColumnsController  {
 		TableDynamicColumnsController.logger.info("[POST - generateCSVReport] : Devuelve un fichero csv");
 		//Idioma
         Locale locale = LocaleContextHolder.getLocale();
-		this.tableUsuarioService.generateReport(filterUsuario, columns,columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
+		this.tableUsuarioService.generateReport(filterUsuario, columns, columnsName, fileName, sheetTitle, reportsParams, tableRequestDto, locale, request, response);
 	}
 }

@@ -15,8 +15,6 @@
  */
 jQuery(function($){
 	initRupI18nPromise.then(function(){
-		
-		
         var combo = [
             {rol: "---", codTipoSubsanacion:""},
             {rol: "Administrador", codTipoSubsanacion:"administrador"},
@@ -27,28 +25,15 @@ jQuery(function($){
          ];
 
          var tableColModelsSimple = [
- 	        { name: "id", index: "id", editable:true, hidden:false, width: 80
- 	            , formoptions:{rowpos:1, colpos:1}
+ 	        { name: "id", index: "id", editable:true, hidden:false
  	        },
  	        { name: "nombre", index: "nombre", editable:true, hidden:false
- 	            , formoptions:{rowpos:2, colpos:1}
  	        },
  	        { name: "apellido1", index: "apellido1", editable:true, hidden:false
- 	            , formoptions:{rowpos:3, colpos:1}
- 	            , classes:'ui-ellipsis'
  	        },
  	    /*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
- 	            , formoptions:{rowpos:4, colpos:1}
- 	            , classes:'ui-ellipsis'
  	        },*/
- 	        { name: "ejie", index: "ejie", editable:true, hidden:false, width: 60,
- 	            edittype: "checkbox",
- 	            formatter: "checkbox",
- 	            rwdClasses:"hidden-xs hidden-sm hidden-md",
- 	            align: "center",
- 	            editoptions: {
- 	                value:"1:0"
- 	            }/*,
+ 	        { name: "ejie", index: "ejie", editable:true, hidden:false/*,
  	            searchoptions:{
  	                rupType: "combo",
  	                source : [
@@ -57,76 +42,62 @@ jQuery(function($){
  	                   {label: "No", value:"0"}
  	                ]
  	            }*/
- 	            , formoptions:{rowpos:5, colpos:1}
  	        },
- 	        { name: "fechaAlta",  index: "fechaAlta", editable:true, hidden:false, width: 120,
+ 	        { name: "fechaAlta",  index: "fechaAlta", editable:true, hidden:false,
  	            rupType: "date",
- 	            rwdClasses:"hidden-xs hidden-sm hidden-md",
  	            editoptions:{
  	                labelMaskId : "fecha-mask",
  	                showButtonPanel : true,
  	                showOtherMonths : true,
  	                noWeekend : true
  	            }
- 	            , formoptions:{rowpos:2, colpos:2}
  	        },
- 	        { name: "fechaBaja", index: "fechaBaja", editable:false, hidden:false, width: 120,
+ 	        { name: "fechaBaja", index: "fechaBaja", editable:false, hidden:false,
  	            rupType: "date",
- 	            rwdClasses:"hidden-xs hidden-sm hidden-md",
  	            editoptions:{
  	                labelMaskId : "fecha-mask",
  	                showButtonPanel : true,
  	                showOtherMonths : true,
  	                noWeekend : true
  	            }
- 	            , formoptions:{rowpos:3, colpos:2}
  	        },
- 	        { name: "rol", index: "rol", editable:true, hidden:false, width: 140,
+ 	        { name: "rol", index: "rol", editable:true, hidden:false,
  	            rupType: "combo",
- 	            rwdClasses:"hidden-xs hidden-sm hidden-md",
- 	            formatter: "rup_combo",
  	            editoptions: {
- 	                source: $.map(combo, function(elem){
+ 	                data: $.map(combo, function(elem){
  	                    return {
- 	                        label: elem.rol,
- 	                        value: elem.codTipoSubsanacion
+ 	                        text: elem.rol,
+ 	                        id: elem.codTipoSubsanacion
  	                    };
  	
- 	                }),
- 	                width: "100%",
- 	                customClasses: ["select-material"]
+ 	                })
  	            }
- 	            , formoptions:{rowpos:3, colpos:2}
  	        }
          ],
- 		options_ejie_combo = {
- 		    source : [
- 		       {label: "---", value:""},
- 		       {i18nCaption: "0", value:"0"},
- 		       {i18nCaption: "1", value:"1"}
+ 		options_ejie_select = {
+ 		    data: [
+ 		       {text: "---", id: ""},
+ 		       {i18nCaption: "0", id: "0"},
+ 		       {i18nCaption: "1", id: "1"}
  		    ],
- 		    i18nId: "GRID_simple##ejie",
- 		    width: "100%",
- 		    customClasses: ["select-material"]
+ 		    i18nId: "GRID_simple##ejie"
          },
-         options_role_combo = {
-             source : [
-                {label: "---", value:""},
-                {label: $.rup.i18n.app["GRID_simple##rol"]["administrador"], value:"administrador"},
-                {label: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], value:"desarrollador"},
-                {label: $.rup.i18n.app["GRID_simple##rol"]["espectador"], value:"espectador"},
-                {label: $.rup.i18n.app["GRID_simple##rol"]["informador"], value:"informador"},
-                {label: $.rup.i18n.app["GRID_simple##rol"]["manager"], value:"manager"}
-             ],
-             width: "100%",
-             customClasses: ["select-material"]
+         options_role_select = {
+             data : [
+                {text: "---", value: ""},
+                {text: $.rup.i18n.app["GRID_simple##rol"]["administrador"], id: "administrador"},
+                {text: $.rup.i18n.app["GRID_simple##rol"]["desarrollador"], id: "desarrollador"},
+                {text: $.rup.i18n.app["GRID_simple##rol"]["espectador"], id: "espectador"},
+                {text: $.rup.i18n.app["GRID_simple##rol"]["informador"], id: "informador"},
+                {text: $.rup.i18n.app["GRID_simple##rol"]["manager"], id: "manager"}
+             ]
          };
 
 
          //Formulario de filtrado
         
-         //jQuery("#ejie_filter_table").rup_combo(options_ejie_combo);
-         //jQuery('#rol_filter_table').rup_combo(options_role_combo);
+         //jQuery("#ejie_filter_table").rup_select(options_ejie_select);
+         //jQuery('#rol_filter_table').rup_select(options_role_select);
 
          //jQuery("#fechaAlta_filter_table").rup_date();
          //jQuery("#fechaBaja_filter_table").rup_date();
@@ -135,24 +106,18 @@ jQuery(function($){
          //jQuery("#fechaAlta_detail_table").rup_date();
          //jQuery("#fechaBaja_detail_table").rup_date();
 
-         //jQuery("#rol_detail_table").rup_combo(options_role_combo)	
+         //jQuery("#rol_detail_table").rup_select(options_role_select)	
 		
 	var tableColModels = [
-		{ name: "ida", index: "ida", editable:true, hidden:false, width: 80
-			, formoptions:{rowpos:1, colpos:1}
+		{ name: "ida", index: "ida", editable:true, hidden:false
 		},
-		{ name: "idb", index: "idb", editable:true, hidden:false, width: 80
-			, formoptions:{rowpos:2, colpos:1}
+		{ name: "idb", index: "idb", editable:true, hidden:false
 		},
 		{ name: "nombre", index: "nombre", editable:true, hidden:false
-			, formoptions:{rowpos:3, colpos:1}
 		},
 		{ name: "apellido1", index: "apellido1", editable:true, hidden:false
-			, formoptions:{rowpos:4, colpos:1}
-			, classes:'ui-ellipsis'
 		},
 		{ name: "apellido2", index: "apellido2", editable:true, hidden:false
-			, formoptions:{rowpos:5, colpos:1}
 		}
 	];
          

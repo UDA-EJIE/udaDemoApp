@@ -16,16 +16,13 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
 <!-- Formulario de filtrado -->
-<form:form modelAttribute="usuario" id="usuario_filter_form">
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="usuario_filter_form" action="${url}" method="POST">
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="usuario_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="usuario_filter_fieldset" class="rup-table-filter-fieldset">
 		<div class="form-row">
 			<!-- Campos del formulario de filtrado -->
-			<div class="form-groupMaterial col-sm">
-				<form:input path="id" id="id_filter_table"/>
-				<label for="id_filter_table"><spring:message code="id"/></label>
-			</div>
 			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
 				<label for="nombre_filter_table"><spring:message code="nombre"/></label>

@@ -6,11 +6,8 @@ public class DepartamentoProvinciaDTO implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-
 	private BigDecimal codeDepartamentoProvincia;
-
 	private BigDecimal codeProvincia;
-
     private BigDecimal codeDepartamento;
 	
 	public BigDecimal getCodeDepartamentoProvincia() {

@@ -14,50 +14,129 @@
  * que establece la Licencia.
  */
 jQuery(function($){
+	window.initRupI18nPromise.then(function () {
+		let tableColModel = [
+			{
+	            name: 'nombre',
+	            index: 'nombre',
+	            editable: true,
+	            hidden: false
+	        },
+	        {
+                name: 'apellido1',
+                index: 'apellido1',
+                editable: true,
+                hidden: false
+            },
+            { 
+            	name: "apellido2", 
+            	index: "apellido2", 
+            	editable: true, 
+            	hidden: false,
+            	rupType: 'select',
+                editoptions: {
+                	url: '../../table/apellidos',
+                    sourceParam : {text: 'label', id: 'value'},
+                    combo: true,
+                    contains: true
+                }
+            },
+	        {
+	            name: 'ejie',
+	            index: 'ejie',
+	            editable: true,
+	            hidden: false
+	        },
+	        {
+	            name: 'fechaAlta',
+	            index: 'fecha_alta',
+	            editable: true,
+	            hidden: false,
+	            rupType: 'date',
+	            editoptions: {
+	                labelMaskId: 'fecha-mask',
+	                showButtonPanel: true,
+	                showOtherMonths: true,
+	                noWeekend: true
+	            }
+	        },
+	        {
+	            name: 'fechaBaja',
+	            index: 'fecha_baja',
+	            editable: false,
+	            hidden: false,
+	            rupType: 'date',
+	            editoptions: {
+	                labelMaskId: 'fecha-mask',
+	                showButtonPanel: true,
+	                showOtherMonths: true,
+	                noWeekend: true
+	            }
+	        },
+	        {
+                name: 'rol',
+                index: 'rol',
+                editable: true,
+                hidden: false,
+                rupType: 'select',
+                editoptions: {
+                    source : '../../table/roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                }
+            }
+	    ];
     
-    var tableColNames = [
-            'Id',
-            'Nombre',
-            'Primer apellido',
-            'Segundo apellido',
-            'Ejie',
-            'Fecha alta',
-            'Fecha baja',
-            'Rol'
-        ],
-        tableColModels = [
-            { name: 'id', editable:true,  index: 'id', width: 80},
-            { name: 'nombre', editable:true,index: 'nombre'},
-            { name: 'apellido1', editable:true, index: 'apellido1'},
-            { name: 'apellido2',  editable:true, index: 'apellido2'},
-            { name: 'ejie', editable:true, index: 'ejie', width: 60},
-            { name: 'fechaAlta', editable:true,  index: 'fecha_alta', width: 120},
-            { name: 'fechaBaja', editable:true, index: 'fecha_baja', width: 120},
-            { name: 'rol', editable:true, index: 'rol', width: 140}
-        ];
-    
-    
-    $('#table').rup_jqtable({
-        url: '../cache',
-        colNames: tableColNames,
-        colModel: tableColModels,
-        primaryKey:['id'],
-        usePlugins:[
-            'feedback',
-            'fluid',
-            'inlineEdit'
-        ],
-        rowNum:10, 
-        rowList:[10,20,30], 
-        sortname: 'id'
-        
-    });
-    
-    
-    $('#btnRecargarTabla').on('click', function(){
-        $('#table').rup_jqtable('reloadGrid');
-    });
-
+	    $('#table').rup_table({
+	        colModel: tableColModel,
+	        pageLength: 100,
+	        buttons: {
+                activate: true,
+                blackListButtons: ['addButton', 'cloneButton', 'deleteButton', 'reportsButton'],
+                myButtons: [{
+            	 	text: function () {
+            	 		return 'Recargar tabla';
+            	 	},
+            	 	id: 'exampleRecargarTabla', // Campo obligatorio si se quiere usar desde el contextMenu
+            	 	className: 'btn-material-primary-high-emphasis table_toolbar_btnReload order-last ml-1 ml-lg-auto',
+            	 	icon: "mdi-refresh",
+            	 	displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
+            	 	insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido
+            	 	type: 'reload',
+            	 	action: function () {
+            	 		$('#table').rup_table('reload');
+            	 	}
+                }]
+            },
+            select: {
+                activate: true
+            },
+	        inlineEdit: {
+	            deselect: true,
+	            url: './inlineEdit',
+	            validate: {
+	                rules: {
+	                    'nombre': {
+	                        required: true
+	                    },
+	                    'apellido1': {
+	                        required: true
+	                    },
+	                    'fechaAlta': {
+	                        required: true
+	                    },
+	                    'fechaBaja': {
+	                        date: true
+	                    }
+	                },
+	                messages: {
+	                    required: 'Campo requerido'
+	                }
+	            }
+	        },
+            filter: 'noFilter'
+	    });
+	});
 
     $('.contenedor').addClass('show');
 });

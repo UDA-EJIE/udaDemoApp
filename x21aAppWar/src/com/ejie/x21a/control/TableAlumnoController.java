@@ -40,11 +40,14 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -97,16 +100,13 @@ public class TableAlumnoController  {
 		binder.registerCustomEditor(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, numberFormat, true));
 	}
 	
-	
-	
-	
 	/**
 	 * Method 'getCreateForm'.
 	 *
 	 * @param model Model
 	 * @return String
 	 */
-	@RequestMapping(value = "maint", method = RequestMethod.GET)
+	@GetMapping(value = "maint")
 	public String getCreateForm(Model model) {
 		
 		List<NoraPais> paises = noraPaisService.findAll(null, null);
@@ -142,7 +142,7 @@ public class TableAlumnoController  {
 	 * @param id BigDecimal
 	 * @return alumno Alumno
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody Alumno get(final @PathVariable BigDecimal id) {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
@@ -157,7 +157,7 @@ public class TableAlumnoController  {
 	 * @param filterAlumno Alumno
 	 * @return List
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public @ResponseBody List<Alumno> getAll(@ModelAttribute Alumno filterAlumno) {
 		TableAlumnoController.logger.info("[GET - find_ALL] : Obtener Alumnos por filtro");
 	    return this.alumnoService.findAll(filterAlumno, null);
@@ -169,7 +169,7 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST, produces="application/json")
+	@PostMapping(value = "/add", produces="application/json")
 	public @ResponseBody Object add(@Validated(AlumnoAddValidation.class) 
 			@ModelAttribute Alumno alumno, Errors errors, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value="imagenAlumno", required=false)MultipartFile imagen) throws IOException {	
@@ -201,7 +201,7 @@ public class TableAlumnoController  {
 	 * @return Alumno
 	 * @throws IOException 
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT, produces="application/json")
+	@PutMapping(value = "/edit", produces="application/json")
 	public @ResponseBody Alumno edit(
 			@Validated(AlumnoEditValidation.class) @ModelAttribute Alumno alumno,
 			Errors errors,
@@ -234,7 +234,7 @@ public class TableAlumnoController  {
     }
 	
 // EJEMPLO ENVIO application/json
-//	@RequestMapping(method = RequestMethod.PUT)
+//	@PutMapping
 //	public @ResponseBody Alumno edit(
 //			@RequestBody Alumno alumno,
 //			@RequestParam(value = "oldPassword", required = false) String oldPassword,
@@ -261,7 +261,7 @@ public class TableAlumnoController  {
 	 * @param id BigDecimal
 	 * @return alumno
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Alumno remove(@PathVariable BigDecimal id) {
         Alumno alumno = new Alumno();
@@ -270,28 +270,26 @@ public class TableAlumnoController  {
        	TableAlumnoController.logger.info("[DELETE] : Alumno borrado correctamente");
        	return alumno;
     }
-	
-	
-	
+		
 	/*
 	 * METODOS COMPONENTE RUP_TABLE
 	 * 
 	 */
 	
 	/**
-	 * Operación de filtrado del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de filtrado del componente RUP_TABLE.
 	 * 
 	 * @param Alumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
 	 * @return Dto que contiene el resultado del filtrado realizado por el
 	 *         componente RUP_TABLE.
 	 * 
 	 */
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResponseDto<Alumno> filter(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -301,20 +299,20 @@ public class TableAlumnoController  {
 	}
 	
 	/**
-	 * Operación de búsqueda del componente RUP_TABLE.
+	 * OperaciÃƒÂ³n de bÃƒÂºsqueda del componente RUP_TABLE.
 	 * 
 	 * @param filterAlumno
-	 *            Bean que contiene los parámetros de filtrado a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de filtrado a emplear.
 	 * @param searchAlumno
-	 *            Bean que contiene los parámetros de búsqueda a emplear.
+	 *            Bean que contiene los parÃƒÂ¡metros de bÃƒÂºsqueda a emplear.
 	 * @param TableRequestDto
-	 *            Dto que contiene los parámtros de configuración propios del
-	 *            RUP_TABLE a aplicar en la búsqueda.
+	 *            Dto que contiene los parÃƒÂ¡mtros de configuraciÃƒÂ³n propios del
+	 *            RUP_TABLE a aplicar en la bÃƒÂºsqueda.
 	 * @return Lista de lineas de la tabla que se corresponden con los registros
-	 *         que se ajustan a los parámetros de búsqueda.
+	 *         que se ajustan a los parÃƒÂ¡metros de bÃƒÂºsqueda.
 	 * 
 	 */
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<Alumno>> search(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
 			@RequestJsonBody(param="search") Alumno searchAlumno,
@@ -324,14 +322,13 @@ public class TableAlumnoController  {
 		return this.alumnoService.search(filterAlumno, searchAlumno, tableRequestDto, false);
 	}
 	
-	
 	/**
 	 * Method 'removeAll'.
 	 *
 	 * @param alumnoIds List
 	 * @return alumnoList
 	 */	
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,
@@ -343,8 +340,7 @@ public class TableAlumnoController  {
 	    return tableRequestDto.getMultiselection().getSelectedIds();
 	}	
 	
-	
-	@RequestMapping(value = "/imagen/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/imagen/{id}")
 	public void getImagenAlumno(@PathVariable BigDecimal id, HttpServletResponse response) throws IOException {
 		Alumno alumno = new Alumno();
 		alumno.setId(id);
@@ -353,7 +349,5 @@ public class TableAlumnoController  {
         byte[] fileByteArray = alumno.getImagen();
         response.setContentLength(fileByteArray.length);
         FileCopyUtils.copy(fileByteArray, response.getOutputStream());
-	}
-	
+	}	
 }	
-	

@@ -17,16 +17,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.TableX21aAlumnoService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
@@ -60,7 +65,7 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno 
 	 *            Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody X21aAlumno get(@PathVariable BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
 		x21aAlumno.setId(id);
@@ -79,7 +84,7 @@ public class TableX21aAlumnoController  {
 	 * @return List<X21aAlumno> 
 	 *            Lista de objetos correspondientes a la busqueda realizada.
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping(value = "/all")
 	public @ResponseBody List<X21aAlumno> getAll(@ModelAttribute X21aAlumno filterX21aAlumno) {
 		TableX21aAlumnoController.logger.info("[GET - find_ALL] : Obtener X21aAlumno por filtro");
 	    return this.x21aAlumnoService.findAll(filterX21aAlumno, null);
@@ -93,7 +98,7 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno 
 	 *            Bean resultante de la modificacion.
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody X21aAlumno edit(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.update(x21aAlumno);
 		TableX21aAlumnoController.logger.info("[PUT] : X21aAlumno actualizado correctamente");
@@ -110,11 +115,11 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno
 	 *            Bean resultante del proceso de creacion.
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody X21aAlumno add(@RequestBody X21aAlumno x21aAlumno) {		
         X21aAlumno x21aAlumnoAux = this.x21aAlumnoService.add(x21aAlumno);
         TableX21aAlumnoController.logger.info("[POST] : X21aAlumno insertado correctamente");
-    	return x21aAlumnoAux;
+        return x21aAlumnoAux;
 	}
 
 	/**
@@ -126,7 +131,7 @@ public class TableX21aAlumnoController  {
 	 * @return X21aAlumno
 	 *            Bean eliminado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody X21aAlumno remove(@PathVariable BigDecimal id) {
         X21aAlumno x21aAlumno = new X21aAlumno();
@@ -148,10 +153,32 @@ public class TableX21aAlumnoController  {
 	 * @param model Model
 	 * @return String
 	 */
-	@RequestMapping(value = "/maint", method = RequestMethod.GET)
+	@GetMapping(value = "/maint")
 	public String getFormEdit(Model model) {
 		TableX21aAlumnoController.logger.info("[GET - View] : x21aalumno");
 		return "x21aalumno";
+	}
+	
+	@PostMapping(value = "/editForm")
+	public String getTableEditForm (
+			@RequestParam(required = true) String actionType,
+			@RequestParam(required = false) BigDecimal pkValue,
+			Model model) {
+		model.addAttribute(Constants.MODEL_X21AALUMNO, new X21aAlumno());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, actionType);
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		
+		if (pkValue != null) {
+			model.addAttribute("pkValue", pkValue);
+		}
+		
+		if (actionType.equals("POST")) {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "add");
+		} else {
+			model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		}
+		
+		return "tableX21aAlumnoEditForm";
 	}
 	 
 	 /**
@@ -166,7 +193,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el 
 	 *            componente RUP_TABLE.
 	 */
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResponseDto<X21aAlumno> filter(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -188,7 +215,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado de la busqueda realizada por el
 	 *            componente RUP_TABLE. 
 	 */
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<X21aAlumno>> search(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody(param="search") X21aAlumno searchX21aAlumno,
@@ -209,7 +236,7 @@ public class TableX21aAlumnoController  {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
@@ -238,7 +265,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
-	@RequestMapping(value = "/jerarquia/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/jerarquia/filter")
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -258,7 +285,7 @@ public class TableX21aAlumnoController  {
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
-	@RequestMapping(value = "/jerarquiaChildren", method = RequestMethod.POST)
+	@PostMapping(value = "/jerarquiaChildren")
 	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(
 			@RequestJsonBody(param="filter") X21aAlumno  filterX21aAlumno ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
@@ -275,10 +302,13 @@ public class TableX21aAlumnoController  {
 	 *
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
-	 */	
-	@RequestMapping(value = "/clipboardReport", method = RequestMethod.POST)
-	protected @ResponseBody List<X21aAlumno> getClipboardReport(
+	 */
+	@PostMapping(value = "/filter", params = "clipboardReport")
+	public @ResponseBody List<X21aAlumno> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
+			@RequestParam(required = false) String[] columns, 
+			@RequestParam(required = false) String[] columnsName,
+			@RequestParam(required = false) ArrayList<?> reportsParams,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - clipboardReport] : Copiar multiples X21aAlumnos");
 		return this.x21aAlumnoService.getDataForReports(filterX21aAlumno, tableRequestDto);
@@ -295,9 +325,9 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = {"/xlsReport" , "/xlsxReport"}, method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateExcelReport(
+	 */
+	@PostMapping(value = {"/xlsReport" , "/xlsxReport"}, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateExcelReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -323,9 +353,9 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "pdfReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generatePDFReport(
+	 */
+	@PostMapping(value = "pdfReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generatePDFReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -351,9 +381,9 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "odsReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateODSReport(
+	 */
+	@PostMapping(value = "odsReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateODSReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 
@@ -379,9 +409,9 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto TableRequestDto
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
-	 */	
-	@RequestMapping(value = "csvReport", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	protected @ResponseBody void generateCSVReport(
+	 */
+	@PostMapping(value = "csvReport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public @ResponseBody void generateCSVReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno, 
 			@RequestJsonBody(param = "columns", required = false) String[] columns, 
 			@RequestJsonBody(param = "fileName", required = false) String fileName, 

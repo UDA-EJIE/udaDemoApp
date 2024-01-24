@@ -486,8 +486,8 @@ function ocultarDivsModos() {
  * 
  */
 function gestionarDatosDivs(modo, idDocumento) {
-    /*$('#modo_detail_table').rup_combo('select', modo);
-    $('#lang_detail_table').rup_combo('select', window.IBERDOK.lang);*/
+    /*$('#modo_detail_table').rup_select('select', modo);
+    $('#lang_detail_table').rup_select('select', window.IBERDOK.lang);*/
 /*    $('#token_detail_table').val(window.IBERDOK.token);
     $('#idUsuario_detail_table').val(window.IBERDOK.idUsuario);
     $('#idModelo_detail_table').val(window.IBERDOK.idModelo);

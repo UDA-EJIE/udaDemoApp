@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -40,21 +40,19 @@ public class NoraController {
 	@Autowired 
 	private NoraCalleService calleService;
 	
-	
-	
-	@RequestMapping(value = "pais", method=RequestMethod.GET)
+	@GetMapping(value = "pais")
 	public @ResponseBody List<NoraPais> getPaises() {
 		List<NoraPais> findAll = paisService.findAll(null, null);
 		return findAll;
 	}
 	
-	@RequestMapping(value = "autonomia", method=RequestMethod.GET)
+	@GetMapping(value = "autonomia")
 	public @ResponseBody List<NoraAutonomia> getAutonomias() {
 		List<NoraAutonomia> findAll = autonomiaService.findAll(null, null);
 		return findAll;
 	}
 	
-	@RequestMapping(value = "provincia", method=RequestMethod.GET)
+	@GetMapping(value = "provincia")
 	public @ResponseBody List<NoraProvincia> getProvincias(
 			@RequestParam(value="autonomia.id", required=false) String autonomiaId) {
 		
@@ -67,7 +65,7 @@ public class NoraController {
 		return findAll;
 	}
 	
-	@RequestMapping(value = "municipio", method=RequestMethod.GET)
+	@GetMapping(value = "municipio")
 	public @ResponseBody List<NoraMunicipio> getMunicipios(
 			@RequestParam(value = "q", required = true) String q,
 			@RequestParam(value = "c", required = true) Boolean c) {
@@ -78,7 +76,7 @@ public class NoraController {
 		return findAll;
 	}
 	
-	@RequestMapping(value = "calle", method=RequestMethod.GET)
+	@GetMapping(value = "calle")
 	public @ResponseBody List<NoraCalle> getCalles(
 			@RequestParam(value = "q", required = true) String q,
 			@RequestParam(value = "c", required = true) Boolean c) {

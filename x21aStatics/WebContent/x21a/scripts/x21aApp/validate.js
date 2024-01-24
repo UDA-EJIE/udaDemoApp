@@ -127,85 +127,79 @@ jQuery(function($) {
             }
         });
 
-        $('#rol_detail_table').rup_combo({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
+        $('#rol_detail_table').rup_select({
+            data: [
+                {i18nCaption: 'asp', id: 'asp_value'},
+                {i18nCaption: 'c', id: 'c_value'},
+                {i18nCaption: 'c++', id: 'c++_value'},
+                {i18nCaption: 'coldfusion', id: 'coldfusion_value'},
+                {i18nCaption: 'groovy', id: 'groovy_value'}
             ],
-            width: '100%',
+            blank: '',
+            rowStriping: true
+        });
+
+
+        $('#autocomplete').rup_select({
+            data: [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
+            ],
+            defaultValue: '',
+            contains: false
+        });
+
+        $('#rolName2').rup_select({
+            data: [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
+            ],
             blank : '',
-            rowStriping : true,
-            inputText:true,
-            customClasses: ['select-material']
+            rowStriping : true
         });
 
-
-        $('#autocomplete').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
+        $('#autocompleteName2').rup_select({
+            data: [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
             ],
-            defaultValue : '',
-            contains : false
+            defaultValue: '',
+            contains: false
         });
 
-        $('#rolName2').rup_combo({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
+        $('#autocompleteCombobox').rup_select({
+            data: [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
             ],
-            width: '100%',
-            blank : '',
-            rowStriping : true,
-            inputText:true,
-            customClasses: ['select-material']
+            defaultValue: '',
+            combo: true,
+            contains: false
         });
 
-        $('#autocompleteName2').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
+        $('#autocompleteCombobox2').rup_select({
+            data: [
+                {i18nCaption: 'asp', id:'asp_value'},
+                {i18nCaption: 'c', id:'c_value'},
+                {i18nCaption: 'c++', id:'c++_value'},
+                {i18nCaption: 'coldfusion', id:'coldfusion_value'},
+                {i18nCaption: 'groovy', id:'groovy_value'}
             ],
-            defaultValue : '',
-            contains : false
-        });
-
-        $('#autocompleteCombobox').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
-            ],
-            defaultValue : '',
-            combobox: true,
-            contains : false
-        });
-
-        $('#autocompleteCombobox2').rup_autocomplete({
-            source : [
-                {i18nCaption: 'asp', value:'asp_value'},
-                {i18nCaption: 'c', value:'c_value'},
-                {i18nCaption: 'c++', value:'c++_value'},
-                {i18nCaption: 'coldfusion', value:'coldfusion_value'},
-                {i18nCaption: 'groovy', value:'groovy_value'}
-            ],
-            defaultValue : '',
-            combobox: true,
-            contains : false
+            defaultValue: '',
+            combo: true,
+            contains: false
         });
     });
 

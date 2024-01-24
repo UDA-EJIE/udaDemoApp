@@ -15,47 +15,45 @@
  */
 jQuery(function($) {
     
-    $('#autocomplete').rup_autocomplete({
-        source : 'autocomplete/remote',
-        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code'},
-        minLength: 4
+    $('#autocomplete').rup_select({
+        url: 'autocomplete/remote',
+        sourceParam: {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'}
     });
     
     
-    $('#comboAbueloRemoto').rup_combo({
-        source : 'comboEnlazadoSimple/remoteEnlazadoProvincia',
-        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+    $('#comboAbueloRemoto').rup_select({
+        url: 'comboEnlazadoSimple/remoteEnlazadoProvincia',
+        sourceParam: {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
         blank: ''
     });
     
-    $('#comboPadreRemoto').rup_combo({
+    $('#comboPadreRemoto').rup_select({
         parent: [ 'comboAbueloRemoto'],
-        source : 'comboEnlazadoSimple/remoteEnlazadoComarca',
-        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+        url: 'comboEnlazadoSimple/remoteEnlazadoComarca',
+        sourceParam: {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
         blank: ''
     });
     
-    $('#comboHijoRemoto').rup_combo({
+    $('#comboHijoRemoto').rup_select({
         parent: [ 'comboPadreRemoto' ],
-        source : 'comboEnlazadoSimple/remoteEnlazadoLocalidad',
-        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+        url: 'comboEnlazadoSimple/remoteEnlazadoLocalidad',
+        sourceParam: {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
         blank: ''
     });
     
-    $('#multicombo').rup_combo({
-        source : [
-            {i18nCaption: 'lunes', value:'1'},
-            {i18nCaption: 'martes', value:'2'},
-            {i18nCaption: 'miercoles', value:'3'},
-            {i18nCaption: 'jueves', value:'4'},
-            {i18nCaption: 'viernes', value:'5'},
-            {i18nCaption: 'sabado', value:'6'},
-            {i18nCaption: 'domingo', value:'7'}
+    $('#multicombo').rup_select({
+        data: [
+            {i18nCaption: 'lunes', id:'1'},
+            {i18nCaption: 'martes', id:'2'},
+            {i18nCaption: 'miercoles', id:'3'},
+            {i18nCaption: 'jueves', id:'4'},
+            {i18nCaption: 'viernes', id:'5'},
+            {i18nCaption: 'sabado', id:'6'},
+            {i18nCaption: 'domingo', id:'7'}
         ],
-        width: 400,
-        ordered:false,
-        loadFromSelect:true,
-        multiselect:true
+        ordered: false,
+        loadFromSelect: true,
+        multiselect: true
     });
     
     $('#fecha').rup_date({
@@ -106,19 +104,17 @@ jQuery(function($) {
         ]
     });
     
-    $('#diaObligatorio').rup_combo({
-        //source : ["asp", "c", "c++", "coldfusion", "groovy", "haskell", "java", "javascript", "perl", "php", "python", "ruby", "scala"],
-        source : [
-            {i18nCaption: 'lunes', value:'1'},
-            {i18nCaption: 'martes', value:'2'},
-            {i18nCaption: 'miercoles', value:'3'},
-            {i18nCaption: 'jueves', value:'4'},
-            {i18nCaption: 'viernes', value:'5'},
-            {i18nCaption: 'sabado', value:'6'},
-            {i18nCaption: 'domingo', value:'7'}
+    $('#diaObligatorio').rup_select({
+        data: [
+            {i18nCaption: 'lunes', id:'1'},
+            {i18nCaption: 'martes', id:'2'},
+            {i18nCaption: 'miercoles', id:'3'},
+            {i18nCaption: 'jueves', id:'4'},
+            {i18nCaption: 'viernes', id:'5'},
+            {i18nCaption: 'sabado', id:'6'},
+            {i18nCaption: 'domingo', id:'7'}
         ],
-        width: 100,
-        ordered:false
+        ordered: false
     });
     
     jQuery('#feedbackErroresValidaciones').rup_feedback({ 

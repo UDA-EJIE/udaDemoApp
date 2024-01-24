@@ -3,11 +3,8 @@ package com.ejie.x21a.model;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class IberdokFile implements java.io.Serializable {
+public class IberdokFile implements java.io.Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String id;	
@@ -85,9 +82,6 @@ public class IberdokFile implements java.io.Serializable {
 	}
 	public void setDocumentoFinal(String documentoFinal) {
 		this.documentoFinal = documentoFinal;
-	}
-	public IberdokFile(String id, String idModelo, String semilla,
-			String idDocumento, String estado) {
 	}
 	public String getNombre() {
 		return nombre;

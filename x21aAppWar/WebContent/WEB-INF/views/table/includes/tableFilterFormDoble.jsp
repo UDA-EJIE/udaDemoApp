@@ -13,19 +13,14 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
-
-
-<form:form modelAttribute="usuario" id="example_filter_form">
+<%@include file="/WEB-INF/includeTemplate.inc"%>
+<spring:url value="/table/filter" var="url"/>
+<form:form modelAttribute="usuario" id="example_filter_form" action="${url}" method="POST">
   <div id="example_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
     
     <div class="form-row">    
 		<div class="form-groupMaterial col-sm">
-	    	<form:input path="id" id="id_filter_table" />
-			<label for="id_filter_table">ID</label>
-	    </div>
-	    
-	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_filter_table" />
 	    	<label for="nombre_filter_table">Nombre</label>
 	    </div>
@@ -53,12 +48,12 @@
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="ejie" id="ejie_filter_table" />
+	    	<form:select path="ejie" id="ejie_filter_table" items="${comboEjie}" />
 	    	<label for="ejie_filter_table">EJIE</label>
 	    </div>
 	    
 	    <div class="form-groupMaterial col-sm">  
-	    	<form:input path="rol" id="rol_filter_table" />
+	    	<form:select path="rol" id="rol_filter_table" items="${comboRol}" />
 	    	<label for="rol_filter_table">ROL</label>
 	    </div>
 	</div>

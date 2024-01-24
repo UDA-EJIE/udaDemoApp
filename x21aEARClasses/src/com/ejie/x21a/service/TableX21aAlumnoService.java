@@ -12,6 +12,7 @@ import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x38.dto.JerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
 
 /**

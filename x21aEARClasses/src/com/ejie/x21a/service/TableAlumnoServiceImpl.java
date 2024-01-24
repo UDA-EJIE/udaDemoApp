@@ -14,6 +14,7 @@
 * que establece la Licencia.
 */
 package com.ejie.x21a.service;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -81,7 +82,7 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	 * Finds a List of rows in the Alumno table.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
 	public List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto) {
@@ -93,11 +94,11 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 	 * Finds rows in the Alumno table using like.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 * @return List
 	 */
-	public List<Alumno> findAllLike(Alumno alumno,  TableRequestDto tableRequestDto, Boolean startsWith) {
+	public List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		return (List<Alumno>) this.alumnoDao.findAllLike(alumno, tableRequestDto, startsWith);
 	}
     
@@ -192,21 +193,29 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 		}
 	}
 
-
 	@Override
 	public List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		return this.alumnoDao.search(filterAlumno, searchAlumno, tableRequestDto, startsWith);
 	}
-
+	
 	@Override
 	public TableResponseDto<Alumno> filter(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Alumno> listaUsuario =  this.alumnoDao.findAllLike(filterAlumno, tableRequestDto, startsWith);
-		Long recordNum =  this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno: new Alumno (), startsWith);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		List<Alumno> listaAlumno = this.alumnoDao.findAllLike(filterAlumno, tableRequestDto, false);
+		Long recordNum = this.alumnoDao.findAllLikeCount(filterAlumno != null ? filterAlumno : new Alumno(), false);
+		TableResponseDto<Alumno> alumnoDto = new TableResponseDto<Alumno>(tableRequestDto, recordNum, listaAlumno);
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Alumno>> reorderSelection = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
-			return new TableResponseDto<Alumno>(tableRequestDto, recordNum, listaUsuario, reorderSelection);
+			alumnoDto.setReorderedSelection(reorderSelection);
+			alumnoDto.addAdditionalParam("reorderedSelection", reorderSelection);
+			alumnoDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		return new TableResponseDto<Alumno>(tableRequestDto, recordNum, listaUsuario);  
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
+			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
+			List<TableRowDto<Alumno>> reorderSeeker = this.alumnoDao.reorderSelection(filterAlumno, tableRequestDto, startsWith);
+			alumnoDto.setReorderedSeeker(reorderSeeker);
+			alumnoDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
+		}
+		return alumnoDto; 
 	}
 
 	@Override
@@ -214,4 +223,3 @@ public  class TableAlumnoServiceImpl implements TableAlumnoService {
 		return this.alumnoDao.reorderSelection(alumno, tableRequestDto, startsWith);
 	}
 }
-

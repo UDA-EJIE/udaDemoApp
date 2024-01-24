@@ -25,16 +25,16 @@ import java.util.List;
  * @author UDA
  */
 
-public class Comarca  implements java.io.Serializable {
+public class Comarca implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-            private BigDecimal code;
-            private Provincia provincia;
-            private String descEs;
-            private String descEu;
-            private String css;
-            private BigDecimal parentCode;
-            private List<Localidad> localidads = new ArrayList<Localidad>();
+	private BigDecimal code;
+	private BigDecimal parentCode;
+	private Provincia provincia;
+	private String descEs;
+	private String descEu;
+	private String css;
+	private List<Localidad> localidads = new ArrayList<Localidad>();
 
 	/** Method 'Comarca'.
 	*
@@ -60,7 +60,7 @@ public class Comarca  implements java.io.Serializable {
         this.descEu = descEu;
         this.css = css;
     }
-
+    
     /** Method 'Comarca'.
     * @param code BigDecimal
     * @param parentCode BigDecimal
@@ -77,9 +77,8 @@ public class Comarca  implements java.io.Serializable {
         this.descEu = descEu;
         this.css = css;
     }
-    
 
-	/**
+    /**
 	 * Method 'getCode'.
 	 *
 	 * @return BigDecimal
@@ -100,6 +99,20 @@ public class Comarca  implements java.io.Serializable {
 		this.code = code;
 	}
     /**
+	 * @return the parentCode
+	 */
+	public BigDecimal getParentCode() {
+		return parentCode;
+	}
+
+	/**
+	 * @param parentCode the parentCode to set
+	 */
+	public void setParentCode(BigDecimal parentCode) {
+		this.parentCode = parentCode;
+	}
+
+	/**
 	 * Method 'getProvincia'.
 	 *
 	 * @return Provincia
@@ -167,20 +180,6 @@ public class Comarca  implements java.io.Serializable {
 	public String getCss() {
 		return this.css;
 	}
-	
-	 /**
-		 * @return the parentCode
-		 */
-		public BigDecimal getParentCode() {
-			return parentCode;
-		}
-
-		/**
-		 * @param parentCode the parentCode to set
-		 */
-		public void setParentCode(BigDecimal parentCode) {
-			this.parentCode = parentCode;
-		}
 
 	/**
 	 * Method 'setCss'.

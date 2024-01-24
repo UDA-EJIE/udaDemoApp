@@ -23,14 +23,15 @@ import java.math.BigDecimal;
 * @author UDA
  */
 
-public class Localidad  implements java.io.Serializable {
+public class Localidad implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
-         private BigDecimal code;
-         private Comarca comarca;
-         private String descEs;
-         private String descEu;
-         private String css;
+    private BigDecimal code;
+	private BigDecimal parentCode;
+    private Comarca comarca;
+    private String descEs;
+    private String descEu;
+    private String css;
 
 /** Method 'Localidad'.
 *
@@ -59,6 +60,23 @@ public class Localidad  implements java.io.Serializable {
     }
 
     /**
+	 * @param code
+	 * @param parentCode
+	 * @param descEs
+	 * @param descEu
+	 * @param css
+	 * @param comarca
+	 */
+	public Localidad(BigDecimal code, BigDecimal parentCode, String descEs, String descEu, String css, Comarca comarca) {
+		this.code = code;
+		this.parentCode = parentCode;
+		this.comarca = comarca;
+		this.descEs = descEs;
+		this.descEu = descEu;
+		this.css = css;
+	}
+
+	/**
      * Method 'getCode'.
      *
      * @return BigDecimal
@@ -80,6 +98,20 @@ public class Localidad  implements java.io.Serializable {
     }
     	
     /**
+	 * @return the parentCode
+	 */
+	public BigDecimal getParentCode() {
+		return parentCode;
+	}
+
+	/**
+	 * @param parentCode the parentCode to set
+	 */
+	public void setParentCode(BigDecimal parentCode) {
+		this.parentCode = parentCode;
+	}
+
+	/**
      * Method 'getComarca'.
      *
      * @return Comarca

@@ -50,14 +50,16 @@ import com.ejie.x38.dto.TableRowDto;
  * @author UDA
  */
 
-// Prueba de tildes áéíóú
+// Prueba de tildes Ã¡Ã©Ã­Ã³Ãº
 
 @Repository
 @Transactional
 public class TableAlumnoDaoImpl implements TableAlumnoDao {
-
+	
+	public static final String[] ORDER_BY_WHITE_LIST = new String[] {"ID", "USUARIO" , "PASSWORD", "NOMBRE", "APELLIDO1", "APELLIDO2", "DNI", "FECHA_NACIMIENTO", "TELEFONO", "EMAIL", "IDIOMA", "SEXO", "NOMBRE_IMAGEN", "PAIS_ID" ,"AUTONOMIA_ID", "PROVINCIA_ID", "MUNICIPIO_ID", "CALLE_ID", "IMAGEN" ,"DIRECCION", "IMPORTE_MATRICULA"};
+		
 	private JdbcTemplate jdbcTemplate;
-
+	
 	@Autowired
 	private LobHandler lobHandler;
 
@@ -378,8 +380,8 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * 
 	 * @param alumno
 	 *            Alumno
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
@@ -422,10 +424,11 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		}
 
 		query.append(where);
-
+		
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
+		
 		return (List<Alumno>) this.jdbcTemplate.query(query.toString(),
 				findAllRowMapper, params.toArray());
 	}
@@ -480,7 +483,8 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		}
 
 		query.append(where);
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 	
 	@Transactional(readOnly = true)
@@ -492,7 +496,8 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 				"SELECT COUNT(1) FROM ALUMNO t1 LEFT JOIN T17_MUNICIPIO t2 ON t1.MUNICIPIO_ID=t2.ID and T1.PROVINCIA_ID=t2.PROVINCIA_ID  ");
 
 		query.append(this.getFindAllLikeWhere(alumno, params, startsWith));
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(),
+				params.toArray(), Long.class);
 	}
 
 	/**
@@ -500,15 +505,14 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * 
 	 * @param alumno
 	 *            Alumno
-	 * @param pagination
-	 *            Pagination
+	 * @param tableRequestDto
+	 *            TableRequestDto
 	 * @param startsWith
 	 *            Boolean
 	 * @return List
 	 */
 	@Transactional(readOnly = true)
-	public List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto,
-			Boolean startsWith) {
+	public List<Alumno> findAllLike(Alumno alumno, TableRequestDto tableRequestDto,	Boolean startsWith) {
 		List<Object> params = new ArrayList<Object>();
 
 //		StringBuilder query = new StringBuilder(
@@ -522,10 +526,10 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 		query.append(this.getFindAllLikeWhere(alumno, params, startsWith));
 
 		if (tableRequestDto != null) {
-			query = TableManager.getPaginationQuery(tableRequestDto, query);
+			query = TableManager.getPaginationQuery(tableRequestDto, query, TableAlumnoDaoImpl.ORDER_BY_WHITE_LIST);
 		}
-		return (List<Alumno>) this.jdbcTemplate.query(query.toString(),
-				findAllRowMapper, params.toArray());
+		
+		return (List<Alumno>) this.jdbcTemplate.query(query.toString(), findAllRowMapper, params.toArray());
 	}
 
 	@Override
@@ -631,9 +635,5 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	public List<TableRowDto<Alumno>> search(Alumno filterParams, Alumno searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	
-	
-	
+	}	
 }

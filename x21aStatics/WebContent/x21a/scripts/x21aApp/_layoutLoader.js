@@ -260,7 +260,7 @@ jQuery(function($) {
     }
 
     window.initRupI18nPromise.then(function() {
-        jQuery.extend(true, jQuery.rup.i18n.base.rup_combo, { blankNotDefined : '----' });
+        jQuery.extend(true, jQuery.rup.i18n.base.rup_select, { blankNotDefined : '----' });
     });
 
     //pie

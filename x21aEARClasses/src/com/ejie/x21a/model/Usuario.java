@@ -19,15 +19,11 @@ package com.ejie.x21a.model;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.groups.Default;
-
-
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ejie.x21a.validation.group.UsuarioEditValidation;
 import com.ejie.x38.serialization.JsonDateDeserializer;
 import com.ejie.x38.serialization.JsonDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,37 +35,34 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @author UDA
  */
 
-public class Usuario  implements java.io.Serializable {
+public class Usuario implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-            
-			@NotBlank(message="validacion.required", groups={Default.class, UsuarioEditValidation.class})
-			@Length(max=25, message="validacion.maxLength", groups={Default.class, UsuarioEditValidation.class})
-            private String id;
-            @NotBlank(message="validacion.required")
-            @Length(max=25, message="validacion.maxLength")
-            private String nombre;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido1;
-            @Length(max=25, message="validacion.maxLength")
-            private String apellido2;
-//            @NotBlank(message="validacion.required")
-            private String ejie;
-            private String tipo;
-            private String subtipo;
-            @NotNull(message="validacion.required")
-            private Date fechaAlta;
-            private Date fechaBaja;
-            private Date fechaModif;
-//            private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
-            private Provincia provincia;
-            private String rol;
-            private String idPadre;
-            private MultipartFile imagenAlumno;
+	private static final long serialVersionUID = 1L;   
+	private String id;
+	@NotBlank(message="validacion.required")
+	@Length(max=25, message="validacion.maxLength")
+	private String nombre;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido1;
+	@Length(max=25, message="validacion.maxLength")
+	private String apellido2;
+	//@NotBlank(message="validacion.required")
+	private String ejie;
+	private String tipo;
+	private String subtipo;
+	@NotNull(message="validacion.required")
+	private Date fechaAlta;
+	private Date fechaBaja;
+	private Date fechaModif;
+	//private List<PerfilUsuario> perfilUsuarios = new ArrayList<PerfilUsuario>();
+	private Provincia provincia;
+	private String rol;
+	private String idPadre;
+	private transient MultipartFile imagenAlumno;
 
 	public MultipartFile getImagenAlumno() {
-				return imagenAlumno;
-			}
+		return imagenAlumno;
+	}
 
 	@JsonIgnore
 	public void setImagenAlumno(MultipartFile imagenAlumno) {
@@ -104,7 +97,7 @@ public class Usuario  implements java.io.Serializable {
         this(id, nombre, apellido1, apellido2, ejie, fechaAlta, fechaBaja, null);
     }
     
-    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol ) {	
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
         this.id = id;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -114,13 +107,33 @@ public class Usuario  implements java.io.Serializable {
         this.fechaBaja = fechaBaja;
         this.rol = rol;
     }
+    
+    public Usuario(String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol) {	
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+    }
+    
+    public Usuario(String id, String nombre, String apellido1, String apellido2, String ejie, Date fechaAlta, Date fechaBaja, String rol, Provincia provincia) {	
+    	this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.ejie = ejie;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+        this.rol = rol;
+        this.provincia = provincia;
+    }
 
     /**
 	 * Method 'getId'.
 	 *
 	 * @return String
 	 */
-    @JsonSerialize()
     public String getId() {
 		return this.id;
 	}
@@ -282,26 +295,6 @@ public class Usuario  implements java.io.Serializable {
 		this.idPadre = idPadre;
 	}
 	
-	/**
-	 * Method 'getPerfilUsuarios'.
-	 *
-	 * @return List
-	 */
-//	@JsonIgnore
-//	public List<PerfilUsuario> getPerfilUsuarios() {
-//		return this.perfilUsuarios;
-//	}
-	
-	/**
-	 * Method 'setPerfilUsuarios'.
-	 *
-	 * @param perfilUsuarios List
-	 * @return
-	 */
-//	public void setPerfilUsuarios(List<PerfilUsuario> perfilUsuarios) {
-//		this.perfilUsuarios = perfilUsuarios;
-//	}
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -324,6 +317,7 @@ public class Usuario  implements java.io.Serializable {
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
+	
 	/**
 	 * Intended only for logging and debugging.
 	 * 
@@ -353,60 +347,4 @@ public class Usuario  implements java.io.Serializable {
 	public void setFechaModif(Date fechaModif) {
 		this.fechaModif = fechaModif;
 	}
-
-//	public int hashCode() {
-//		 int result = 1;
-//		  result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-//		  result = 31 * result + (this.nombre != null ? this.nombre.hashCode() : 0);
-//		  result = 31 * result + (this.apellido1 != null ? this.apellido1.hashCode() : 0);
-//		  result = 31 * result + (this.apellido2 != null ? this.apellido2.hashCode() : 0);
-//		  result = 31 * result + (this.fechaAlta != null ? this.fechaAlta.hashCode() : 0);
-//		  result = 31 * result + (this.fechaBaja != null ? this.fechaBaja.hashCode() : 0);
-//		  result = 31 * result + (this.rol != null ? this.rol.hashCode() : 0);
-//
-//		  return result;
-//	}
-
-//	public boolean equals(Object obj) {
-//		
-//		Usuario user = (Usuario) obj;
-//		
-//		if (this.id == null && user.getId() != null || (this.id == null || !this.id.equals(user.getId()))){
-//			return false;
-//		}
-//		
-//		if (this.nombre == null && user.getNombre() != null || (this.nombre == null || !this.nombre.equals(user.getNombre()))){
-//			return false;
-//		}
-//		
-//		if (this.apellido1 == null && user.getApellido1() != null || (this.apellido1 == null || !this.apellido1.equals(user.getApellido1()))){
-//			return false;
-//		}
-//		
-//		if (this.apellido2 == null && user.getApellido2() != null || (this.apellido2 == null || !this.apellido2.equals(user.getApellido2()))){
-//			return false;
-//		}
-//		
-//		if (this.ejie == null && user.getEjie() != null || (this.ejie == null || !this.ejie.equals(user.getEjie()))){
-//			return false;
-//		}
-//		
-//		if (this.fechaAlta == null && user.getFechaAlta() != null || (this.fechaAlta == null || !this.fechaAlta.equals(user.getFechaAlta()))){
-//			return false;
-//		}
-//		
-//		if (this.fechaBaja == null && user.getFechaBaja() != null || (this.fechaBaja == null || !this.fechaBaja.equals(user.getFechaBaja()))){
-//			return false;
-//		}
-//		
-//		if (this.rol == null && user.getRol() != null || (this.rol == null || !this.rol.equals(user.getRol()))){
-//			return false;
-//		}
-//		
-//		return true;
-//	}
-	
-	
-	
 }
-

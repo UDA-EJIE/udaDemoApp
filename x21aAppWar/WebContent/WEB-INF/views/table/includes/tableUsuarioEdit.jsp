@@ -23,15 +23,12 @@
 	<hr class="m-1">
 	<div class="dialog-content-material">
 		<!-- Formulario -->
-		<form:form modelAttribute="usuario" id="usuario_detail_form">
+		<spring:url value="/table" var="url"/>
+		<form:form modelAttribute="usuario" id="usuario_detail_form" action="${url}">
 			<!-- Feedback del formulario de detalle -->
-			<div id ="usuario_detail_feedback"></div>
+			<div id="usuario_detail_feedback"></div>
+			<!-- Campos del formulario de detalle -->
 			<div class="form-row">
-				<!-- Campos del formulario de detalle -->
-				<div class="form-groupMaterial col-sm">
-					<form:input path="id" id="id_detail_table"/>
-					<label for="id_detail_table"><spring:message code="id"/></label>
-				</div>
 				<div class="form-groupMaterial col-sm">
 					<form:input path="nombre" id="nombre_detail_table"/>
 					<label for="nombre_detail_table"><spring:message code="nombre"/></label>
@@ -66,7 +63,6 @@
 					<form:input path="fechaModif" id="fechaModif_detail_table"/>
 					<label for="fechaModif_detail_table"><spring:message code="fechaModif"/></label>
 				</div>
-				<!-- Fin campos del formulario de detalle -->	
 			</div>
 		</form:form>
 	</div>

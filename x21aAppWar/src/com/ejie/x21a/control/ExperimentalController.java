@@ -31,10 +31,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
@@ -44,12 +46,13 @@ import org.w3c.dom.NodeList;
 import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.RandomForm;
-import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.service.IberdokFileService;
+import com.ejie.x21a.util.Constants;
 import com.ejie.x21a.util.FileUtils;
 import com.ejie.x21a.util.JmsUtils;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
+import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
+import com.ejie.x38.generic.model.SelectGeneric;
 import com.ejie.x38.log.LoggingEditor;
 import com.ejie.x38.log.model.LogModel;
 
@@ -67,19 +70,16 @@ public class ExperimentalController {
 	private static final Logger logger = LoggerFactory.getLogger(ExperimentalController.class);
 
 	@Autowired
-	private Properties appConfiguration;	
-
-	@Autowired
-	private IberdokFileService iberdokFileService;
+	private Properties appConfiguration;
 	
 	//tabsPaging
-	@RequestMapping(value = "tabsPaging", method = RequestMethod.GET)
+	@GetMapping(value = "tabsPaging")
 	public String getTabsPaging(Model model) {
 		return "tabsPaging";
 	}
 	
 	//logLevel
-	@RequestMapping(value = "logLevel", method = RequestMethod.GET)
+	@GetMapping(value = "logLevel")
 	public String getLogLevel(Model model) {
 		model.addAttribute("randomForm", new RandomForm());
 		
@@ -96,41 +96,59 @@ public class ExperimentalController {
 		return "logLevel";
 	}
 	
-	@RequestMapping(value = "/inlineEdit", method = RequestMethod.POST)
+	@PostMapping(value = "/inlineEdit")
 	public String getTableInlineEdit (
-			@RequestParam(required = true) String actionType,
-			@RequestParam(required = true) String tableID,
-			@RequestParam(required = false) String mapping,
+			@RequestParam(required = false) String pkValue,
 			Model model) {
-		model.addAttribute("entity", new Usuario());
-		model.addAttribute("actionType", actionType);
-		model.addAttribute("tableID", tableID);
+		model.addAttribute(Constants.MODEL_LOGMODEL, new LogModel());
+		model.addAttribute(Constants.MODEL_ACTIONTYPE, "PUT");
+		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
 		
-		// Controlar que el mapping siempre se añada al modelo de la manera esperada
-		if (mapping == null || mapping.isEmpty()) {
-			mapping = "/experimental";
-		} else if (mapping.endsWith("/")) {
-			mapping = mapping.substring(0, mapping.length() - 1);
+		if (pkValue != null) {
+			model.addAttribute(Constants.MODEL_PKVALUE, pkValue);
 		}
-		model.addAttribute("mapping", mapping);
 		
-		logger.info("[POST - View] : tableInlineEditAuxForm");
-		return "tableInlineEditAuxForm";
+		model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
+		
+		Map<String,String> comboLevel = new LinkedHashMap<String,String>();
+		comboLevel.put("", "---");
+		comboLevel.put("TRACE", "TRACE");
+		comboLevel.put("DEBUG", "DEBUG");
+		comboLevel.put("INFO", "INFO");
+		comboLevel.put("WARN", "WARN");
+		comboLevel.put("ERROR", "ERROR");
+		model.addAttribute("comboLevel", comboLevel);
+		
+		logger.info("[POST - View] : tableExperimentalInlineEditAuxForm");
+		return "tableExperimentalInlineEditAuxForm";
+	}
+	
+	@GetMapping(value = "/name")
+	public @ResponseBody List<SelectGeneric> getName(
+			@RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "c", required = false) Boolean c) {
+		return LoggingEditor.getNames(q);
+	}
+	
+	@GetMapping(value = "/level")
+	public @ResponseBody List<SelectGeneric> getLevel() {	
+		return LoggingEditor.getLevels();
 	}
 
 	//@Json(mixins={@JsonMixin(target=Usuario.class, mixin=UsuarioMixIn.class)})
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResponseDto<LogModel> filter(
-			@RequestJsonBody(param="filter") LogModel filterLogModel) {	
-		return LoggingEditor.getLoggersFiltered(filterLogModel);
+			@RequestJsonBody(param="filter") LogModel filterLogModel,
+			@RequestJsonBody TableRequestDto tableRequestDto) {	
+		return LoggingEditor.getLoggersFiltered(filterLogModel, tableRequestDto);
 	}
 	
-	@RequestMapping(value = "/{nameLog}", method = RequestMethod.GET)
+	@GetMapping(value = "/{nameLog}")
 	public @ResponseBody LogModel get(@PathVariable String nameLog) {
         return LoggingEditor.getLogger(nameLog);
 	}
 	
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
     public @ResponseBody LogModel edit(@Validated @RequestBody LogModel log) {		
 		logger.info("logModel edit-init");
 		JmsUtils.enviarJMS(log, "x21a.x21aConnectionFactory", "x21a.x21aJMSCacheTopic", null);
@@ -148,9 +166,9 @@ public class ExperimentalController {
     }
 		
 	//xlnetsTest
-	@RequestMapping(value = "xlnetsTest", method = RequestMethod.GET)
+	@GetMapping(value = "xlnetsTest")
 	public String getXlnetsTest(Model model) {
-				return "xlnetsTest";
+		return "xlnetsTest";
 	}
 	
 	/**
@@ -165,9 +183,9 @@ public class ExperimentalController {
 	 *             Exception
 	 * @return Buzones Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/getBuzonesNivel3", method = RequestMethod.GET)
+	@GetMapping(value = "/getBuzonesNivel3")
 	public @ResponseBody
-	List<Buzones>  getBuzonesNivel3(HttpServletRequest request,
+	List<Buzones> getBuzonesNivel3(HttpServletRequest request,
 			@RequestParam(value = "q", required = true) String nombre)
 			throws Exception {
 

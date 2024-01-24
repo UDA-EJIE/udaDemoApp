@@ -27,14 +27,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author UDA
  */
 
-public class Departamento  implements java.io.Serializable {
+public class Departamento implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
-         private BigDecimal code;
-         private String descEs;
-         private String descEu;
-         private String css;
-         private List<DepartamentoProvincia> departamentoProvincias = new ArrayList<DepartamentoProvincia>();
+      private BigDecimal code;
+      private String descEs;
+      private String descEu;
+      private String css;
+      private List<DepartamentoProvincia> departamentoProvincias = new ArrayList<DepartamentoProvincia>();
 
 /** Method 'Departamento'.
 *

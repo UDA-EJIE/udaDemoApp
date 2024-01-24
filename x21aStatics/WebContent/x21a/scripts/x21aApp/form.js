@@ -110,55 +110,53 @@ jQuery(function($) {
     });
     
     // Combo sexo
-    jQuery('#sexo').rup_combo({
-        source : [
-            {i18nCaption: 'masculino', value:'M'},
-            {i18nCaption: 'femenino', value:'F'}
+    jQuery('#sexo').rup_select({
+        data: [
+            {i18nCaption: 'masculino', id:'M'},
+            {i18nCaption: 'femenino', id:'F'}
         ],
         i18nId:'sexo'
     });
     
     // Combo pais
-    jQuery('#pais').rup_combo({
-        source : '../nora/pais',
-        sourceParam : {label:'dsO', value:'id'},
+    jQuery('#pais').rup_select({
+        url: '../nora/pais',
+        sourceParam : {text:'dsO', id:'id'},
         blank : '0'
     });
     
     // Combo autonomia
-    jQuery('#autonomia').rup_combo({
-        source : '../nora/autonomia',
-        sourceParam : {label:'dsO', value:'id'},
-        width : 400,
+    jQuery('#autonomia').rup_select({
+        url: '../nora/autonomia',
+        sourceParam : {text:'dsO', id:'id'},
         blank : ''
     });
     
-    //	jQuery("#formTypeCombo").rup_combo({
-    //		source : [{label:"AJAX submit", value:"ajax"},{label:"HTTP submit", value:"http"}]
+    //	jQuery("#formTypeCombo").rup_select({
+    //		data: [{text:"AJAX submit", id:"ajax"},{text:"HTTP submit", id:"http"}]
     //	});
     
     // Combo provincia
-    jQuery('#provincia').rup_combo({
+    jQuery('#provincia').rup_select({
         parent: ['autonomia'],
         source : '../nora/provincia',
         firstLoad:[{'value':'01','label':'Alava/Araba'},{'value':'20','label':'Gipuzkoa'},{'value':'48','label':'Bizkaia'}],
         sourceParam : {label:'dsO', value:'id'},
-        width : 300,
         blank : ''
     });
     
     // Autocomplete municipio
-    jQuery('#municipio').rup_autocomplete({
-        source : '../nora/municipio',
-        sourceParam : {label:'dsO', value:'id'},
-        minLength: 4
+    jQuery('#municipio').rup_select({
+        url: '../nora/municipio',
+        sourceParam: {text:'dsO', id:'id'},
+        autocomplete: true
     });
     
     // Autocomplete calle
-    jQuery('#calle').rup_autocomplete({
-        source : '../nora/calle',
-        sourceParam : {label:'dsO', value:'id'},
-        minLength: 4
+    jQuery('#calle').rup_select({
+        url: '../nora/calle',
+        sourceParam: {text:'dsO', id:'id'},
+        autocomplete: true
     });
     
     // Fecha

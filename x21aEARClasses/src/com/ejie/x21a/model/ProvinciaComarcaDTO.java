@@ -6,11 +6,8 @@ public class ProvinciaComarcaDTO implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-
 	private BigDecimal codeProvincia;
-
 	private BigDecimal codeComarca;
-
 	private BigDecimal codeAuxiliar;
 	
 	public BigDecimal getCodeProvincia() {

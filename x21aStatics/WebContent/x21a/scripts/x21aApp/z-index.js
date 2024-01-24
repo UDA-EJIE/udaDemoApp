@@ -124,13 +124,27 @@ jQuery(function($){
     
     $('#time').rup_time({});
     
-    $('#combo').rup_combo({
-        source : '../patrones/comboEnlazadoSimple/remoteEnlazadoProvincia',
-        sourceParam : {label:'desc'+$.rup_utils.capitalizedLang(), value:'code', style:'css'},
+    $('#combo').rup_select({
+        url: '../patrones/comboEnlazadoSimple/remoteEnlazadoProvincia',
+        sourceParam: {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
         selected: 3
     });
-    $('#autocomplete').rup_autocomplete({
-        source : ['asp', 'c', 'c++', 'coldfusion', 'groovy', 'haskell', 'java', 'javascript', 'perl', 'php', 'python', 'ruby', 'scala']
+    $('#autocomplete').rup_select({
+        data: [
+			{id: 'asp', text: 'asp'},
+			{id: 'c', text: 'c'},
+			{id: 'c++', text: 'c++'},
+			{id: 'coldfusion', text: 'coldfusion'},
+			{id: 'groovy', text: 'groovy'},
+			{id: 'haskell', text: 'haskell'},
+			{id: 'java', text: 'java'},
+			{id: 'javascript', text: 'javascript'},
+			{id: 'perl', text: 'perl'},
+			{id: 'php', text: 'php'},
+			{id: 'python', text: 'python'},
+			{id: 'ruby', text: 'ruby'},
+			{id: 'scala', text: 'scala'}
+		]
     });
     
     $('[title]').rup_tooltip(); 

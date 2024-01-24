@@ -16,7 +16,6 @@
 
 package com.ejie.x21a.model;
 
-
 import java.math.BigDecimal;
 
 /**
@@ -24,55 +23,95 @@ import java.math.BigDecimal;
  * @author UDA
  */
 
-public class NoraCalle  implements java.io.Serializable {
+public class NoraCalle implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
     //Clave compuesta
-            private BigDecimal id;
-            private BigDecimal calleCod;
-            private String dsO;
-            private String dsE;
-            private String provinciaId;
-            private String municipioId;
-            private String tipoVia;
-            private String tipoViaId;
-            private String estado;
+	private BigDecimal id;
+	private BigDecimal calleCod;
+	private String dsO;
+	private String dsE;
+	private String provinciaId;
+	private String municipioId;
+	private String tipoVia;
+	private String tipoViaId;
+	private String estado;
+
+	//ID
+	private transient String rowId;
 
 	/** Method 'NoraCalle'.
 	*
 	*/
-    public NoraCalle() {
+	public NoraCalle() {}
+	
+	/** 
+    * Method 'NoraCalle'.
+   	* @param rowId String
+   	*/
+   	public NoraCalle(String rowId) {
+		this.rowId = rowId;
     }
-   /** Method 'NoraCalle'.
-   * @param id Long
-   * @param calleCod BigDecimal
-   * @param dsO String
-   * @param dsE String
-   * @param provinciaId String
-   * @param municipioId String
-   * @param tipoVia String
-   * @param tipoViaId String
-   * @param estado String
-   */
-   public NoraCalle(BigDecimal id, BigDecimal calleCod, String dsO, String dsE, String provinciaId, String municipioId, String tipoVia, String tipoViaId, String estado  ) {
 
-           this.id = id;		
-           this.calleCod = calleCod;		
-           this.dsO = dsO;		
-           this.dsE = dsE;		
-           this.provinciaId = provinciaId;		
-           this.municipioId = municipioId;		
-           this.tipoVia = tipoVia;		
-           this.tipoViaId = tipoViaId;		
-           this.estado = estado;		
-    }
+	/** Method 'NoraCalle'.
+	 * @param id Long
+	 * @param calleCod BigDecimal
+	 * @param dsO String
+	 * @param dsE String
+	 * @param provinciaId String
+	 * @param municipioId String
+	 * @param tipoVia String
+	 * @param tipoViaId String
+	 * @param estado String
+	 */
+	public NoraCalle(BigDecimal id, BigDecimal calleCod, String dsO, String dsE, String provinciaId, String municipioId, String tipoVia, String tipoViaId, String estado) {
+		this.id = id;		
+		this.calleCod = calleCod;		
+		this.dsO = dsO;		
+		this.dsE = dsE;		
+		this.provinciaId = provinciaId;		
+		this.municipioId = municipioId;		
+		this.tipoVia = tipoVia;		
+		this.tipoViaId = tipoViaId;		
+		this.estado = estado;		
+	}
+	
+	/**
+     * Method 'getRowId'.
+     *
+     * @return String
+     */
+
+	public String getRowId() {
+		return this.id.toString() + "~" + this.calleCod.toString() + "~" + this.dsO + "~" + this.dsE + "~" + this.provinciaId + "~" + this.municipioId + "~" + this.tipoVia + "~" + this.tipoViaId + "~" + this.estado;
+	}
+
+	/**
+     * Method 'setRowId'.
+     *
+     * @return String
+     */
+
+	public void setRowId(String rowId) {
+		if(rowId != null && !"".equals(rowId)) {
+			String[] parts = rowId.split("~");
+			id = new BigDecimal(parts[0]);
+			calleCod = new BigDecimal(parts[1]);
+			dsO = parts[2];
+			dsE = parts[3];
+			provinciaId = parts[4];
+			municipioId = parts[5];
+			tipoVia = parts[6];
+			tipoViaId = parts[7];
+			estado = parts[7];
+		}
+	}
 
 	/**
      * Method 'getId'.
      *
      * @return Long
      */
-	
 	
 	public BigDecimal getId() {
 		return this.id;

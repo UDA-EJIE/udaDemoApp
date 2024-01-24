@@ -23,25 +23,52 @@ jQuery(document).ready(function () {
         }
     });
     
-    $('#autocompleteDefault').rup_autocomplete({
-        source : ['asp', 'c', 'c++', 'coldfusion', 'groovy', 'haskell', 'java', 'javascript', 'perl', 'php', 'python', 'ruby', 'scala'],
-        defaultValue : '',
-        contains : false
+    $('#autocompleteDefault').rup_select({
+        data: [
+			{id: 'asp', text: 'asp'},
+			{id: 'c', text: 'c'},
+			{id: 'c++', text: 'c++'},
+			{id: 'coldfusion', text: 'coldfusion'},
+			{id: 'groovy', text: 'groovy'},
+			{id: 'haskell', text: 'haskell'},
+			{id: 'java', text: 'java'},
+			{id: 'javascript', text: 'javascript'},
+			{id: 'perl', text: 'perl'},
+			{id: 'php', text: 'php'},
+			{id: 'python', text: 'python'},
+			{id: 'ruby', text: 'ruby'},
+			{id: 'scala', text: 'scala'}
+		],
+        defaultValue: '',
+        contains: false
     });
     
-    $('#autocompleteMaterialized').rup_autocomplete({
-        source : ['asp', 'c', 'c++', 'coldfusion', 'groovy', 'haskell', 'java', 'javascript', 'perl', 'php', 'python', 'ruby', 'scala'],
-        defaultValue : '',
-        contains : false
+    $('#autocompleteMaterialized').rup_select({
+        data: [
+			{id: 'asp', text: 'asp'},
+			{id: 'c', text: 'c'},
+			{id: 'c++', text: 'c++'},
+			{id: 'coldfusion', text: 'coldfusion'},
+			{id: 'groovy', text: 'groovy'},
+			{id: 'haskell', text: 'haskell'},
+			{id: 'java', text: 'java'},
+			{id: 'javascript', text: 'javascript'},
+			{id: 'perl', text: 'perl'},
+			{id: 'php', text: 'php'},
+			{id: 'python', text: 'python'},
+			{id: 'ruby', text: 'ruby'},
+			{id: 'scala', text: 'scala'}
+		],
+        defaultValue: '',
+        contains: false
     });
 
-    $('#rupCombo').rup_combo({
+    $('#rupCombo').rup_select({
         loadFromSelect: true
     });
     
-    $('#rupComboMaterial').rup_combo({
-        loadFromSelect: true,
-        customClasses: ['select-material']
+    $('#rupComboMaterial').rup_select({
+        loadFromSelect: true
     });
     
     $('#fechaMaterial').rup_date({

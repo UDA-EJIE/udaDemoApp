@@ -21,11 +21,14 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -70,13 +73,14 @@ public class IberdokController {
 	 *            Identificador del objeto que se desea recuperar.
 	 * @return Objeto correspondiente al identificador indicado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
 	public @ResponseBody IberdokFile get(@PathVariable String id,HttpServletResponse response) {
-		IberdokController.logger.info("[GET - findBy_PK] : Obtener ficheros de iberdok por PK");
 		IberdokFile file = new IberdokFile();
 		file.setId(id);
+		file = this.iberdokFileService.find(file);
+		IberdokController.logger.info("[GET - findBy_PK] : Obtener ficheros de iberdok por PK");
 		
-		return this.iberdokFileService.find(file);
+		return file;
 	}
 
 	/**
@@ -88,7 +92,7 @@ public class IberdokController {
 	 *            la búsqueda.
 	 * @return Lista de objetos correspondientes a la búsqueda realizada.
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public @ResponseBody List<IberdokFile> getAll(
 			@ModelAttribute() IberdokFile fileFilter) {
 		IberdokController.logger.info("[GET - find_ALL] : Obtener ficheros de iberdok por filtro");
@@ -102,18 +106,18 @@ public class IberdokController {
 	 *            Bean que contiene la información a modificar.
 	 * @return Bean resultante de la modificación.
 	 */
-	@RequestMapping(value = "/edit", method = RequestMethod.PUT)
+	@PutMapping(value = "/edit")
 	public @ResponseBody IberdokFile edit(
 			@Validated @RequestBody IberdokFile file, HttpServletRequest request) {
-		try {
+		try{
 			N38API miApi = new N38API(request);
 			Document miDoc = miApi.n38ItemSesion();
 			String sUsu = DatoSesion(miDoc, "n38login");
 			file.setUsuario(sUsu);
-		} catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+
 		IberdokFile fileAux = this.iberdokFileService.update(file);
 		logger.info("Entity correctly updated!");
 		return fileAux;
@@ -128,7 +132,7 @@ public class IberdokController {
 	 *            nuevo registro.
 	 * @return Bean resultante del proceso de creación.
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@PostMapping(value = "/add")
 	public @ResponseBody IberdokFile add(
 			@Validated @RequestBody IberdokFile file) {
 
@@ -145,7 +149,7 @@ public class IberdokController {
 	 *            Identificador del objeto que se desea eliminar.
 	 * @return Bean eliminado.
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody IberdokFile remove(
 			@PathVariable(value = "id") String id, HttpServletResponse response) {
@@ -174,7 +178,7 @@ public class IberdokController {
 	 */
 	// @Json(mixins={@JsonMixin(target=IberdokFile.class,
 	// mixin=IberdokFileMixIn.class)})
-	@RequestMapping(value = "/filter", method = RequestMethod.POST)
+	@PostMapping(value = "/filter")
 	public @ResponseBody TableResponseDto<IberdokFile> filter(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
@@ -196,7 +200,7 @@ public class IberdokController {
 	 *         que se ajustan a los parámetros de búsqueda.
 	 * 
 	 */
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@PostMapping(value = "/search")
 	public @ResponseBody List<TableRowDto<IberdokFile>> search(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
 			@RequestJsonBody(param = "search") IberdokFile searchIberdokFile,
@@ -215,7 +219,7 @@ public class IberdokController {
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@RequestMapping(value = "/deleteAll", method = RequestMethod.POST)
+	@PostMapping(value = "/filter", params = "deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
@@ -229,7 +233,7 @@ public class IberdokController {
 	}
 
 	// Iberdok
-	@RequestMapping(value = "view", method = RequestMethod.GET)
+	@GetMapping(value = "view")
 	public String getIberdok(Model model, HttpServletRequest request, HttpServletResponse response) {
 
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -261,7 +265,7 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@RequestMapping(value = "iberdokWelcome", method = RequestMethod.GET)
+	@GetMapping(value = "iberdokWelcome")
 	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -299,7 +303,7 @@ public class IberdokController {
 	}
 	
 	// Iberdok
-	@RequestMapping(value = "viewIberdok", method = RequestMethod.GET)
+	@GetMapping(value = "viewIberdok")
 	public String viewIberdok(Model model,HttpServletResponse response,@RequestParam(required = false) String idCorrelacion,@RequestParam(required = false) String idModelo) {
 
 		// anadimos los datos de configuracion de iberdok al cliente desde el
@@ -417,16 +421,12 @@ public class IberdokController {
 		return elemento.item(0).getNodeValue();
 	}
 	
-	@RequestMapping(value = "/editForm", method = RequestMethod.POST)
+	@PostMapping(value = "/editForm")
 	public String getTableEditForm (
 			@RequestParam(required = true) String actionType,
-			@RequestParam(required = false) String fixedMessage,
 			Model model, HttpServletResponse response) {
 		model.addAttribute("randomForm", new RandomForm());
 		model.addAttribute("actionType", actionType);
-		if (fixedMessage != null) {
-			model.addAttribute("fixedMessage", fixedMessage);
-		}
 		
 		Map<String,String> lang = new LinkedHashMap<String,String>();
 		lang.put("es", "Castellano");
@@ -449,7 +449,7 @@ public class IberdokController {
 	 * 
 	 *
 	 */
-	@RequestMapping(value = "/getXhtml", method = RequestMethod.GET)
+	@GetMapping(value = "/getXhtml")
 	@ResponseBody
 	public String getXhtml(
 			@RequestParam(value = "idDocumento", required = true) String idDocumento) {
@@ -475,7 +475,7 @@ public class IberdokController {
 	 * 
 	 *
 	 */
-	@RequestMapping(value = "/getPdf", method = RequestMethod.GET)
+	@GetMapping(value = "/getPdf")
 	@ResponseBody
 	public void getPDF(
 			@RequestParam(value = "idDocumento", required = true) String idDocumento,

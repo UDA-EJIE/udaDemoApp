@@ -1,5 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Tabla con multiples PKs</h2>
+
+<h2 class="title mb-3">Tabla con múltiples PKs</h2>
 
 <jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 
@@ -8,18 +9,18 @@
 	data-filter-form="#MultiPk_filter_form">
     <thead>
 		<tr>
-			<th data-col-prop="ida" data-col-sidx="IDA" >ida</th>
-			<th data-col-prop="idb" data-col-sidx="IDB" >idb</th>
-			<th data-col-prop="nombre" data-col-sidx="NOMBRE" >nombre</th>
-			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1" >apellido1</th>
-			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2" >apellido2</th>
+			<th data-col-prop="ida" data-col-sidx="IDA" >ID A</th>
+			<th data-col-prop="idb" data-col-sidx="IDB" >ID B</th>
+			<th data-col-prop="nombre" data-col-sidx="NOMBRE">Nombre</th>
+			<th data-col-prop="apellido1" data-col-sidx="APELLIDO1">Primer apellido</th>
+			<th data-col-prop="apellido2" data-col-sidx="APELLIDO2">Segundo apellido</th>
 		</tr>
 	</thead>
 </table>
 
 <jsp:include page="includes/tableMultiPkEdit.jsp"></jsp:include>
 
-<form:form modelAttribute="options" id="multipk_tableConfiguration">
+<form:form modelAttribute="options" method="POST" id="multipk_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
    <fieldset class="form-group">		    
 		<div class="row">
@@ -57,15 +58,15 @@
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">
 			    <div class="radio-material pluginsControl">
-			        <form:radiobutton id="multiSelection" path="tipoSeleccionTabla" value="2"/>
+			        <form:radiobutton id="multiSelection" path="selectionType" value="2"/>
 			        <label for="multiSelection">Multiselección</label>
 			    </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton id="selection" path="tipoSeleccionTabla" value="4"/>
+		            <form:radiobutton id="selection" path="selectionType" value="4"/>
 		            <label for="selection">Selección Simple</label>
 		        </div>
 		        <div class="radio-material pluginsControl">
-		            <form:radiobutton id="noSelection" path="tipoSeleccionTabla" value="7"/>
+		            <form:radiobutton id="noSelection" path="selectionType" value="7"/>
 		            <label for="noSelection">Sin selección</label>
 		        </div>
 	        </div>

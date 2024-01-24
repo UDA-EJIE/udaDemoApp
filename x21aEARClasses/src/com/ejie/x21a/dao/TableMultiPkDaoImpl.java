@@ -23,6 +23,7 @@ import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableManagerJerarquia;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
+import com.ejie.x38.util.Constants;
 
 
 
@@ -157,7 +158,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, "IDA,IDB" ));
+    	sbMultipleSQL = sbMultipleSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, MultiPk.class, params, TableMultiPkDaoImpl.ORDER_BY_WHITE_LIST, "ida", "idb"));
     	
     	
     	return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
@@ -240,7 +241,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -262,7 +263,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -291,7 +292,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> filterParamList = (List<Object>) mapaWhere.get("params");
 
 		// SQL para la reordenación
-		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "IDA", "IDB" );
+		StringBuilder sbReorderSelectionSQL =  TableManager.getReorderQuery(query, tableRequestDto, MultiPk.class, filterParamList, "ida", "idb");
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
@@ -332,30 +333,33 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 		List<Object> searchParamList = (List<Object>) mapaWhereSearch.get("params");
 
 		// SQL
-		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "IDA", "IDB");
+		StringBuilder sbReorderSelectionSQL = TableManager.getSearchQuery(query, tableRequestDto, MultiPk.class, filterParamList, searchSQL, searchParamList, from_alias, "ida", "idb");
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
 
 	/**
-	 * Remove multiple method for rup_table
+	 * Removes rows from the MultiPk table.
 	 *
-     * @param filterMultiPk MultiPk
+	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-     * @param startsWith Boolean
+	 * @param startsWith Boolean
      */
 	@Override
 	public void removeMultiple(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// Like clause and params
-		Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterMultiPk, startsWith);
+    	Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterMultiPk, startsWith);
 		
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, MultiPk.class, "MULTI_PK", "t1", "IDA", "IDB");
+    	// Delete query
+    	StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, MultiPk.class, "MULTI_PK", "t1", "ida", "idb");
 		
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapWhereLike.get("params");
 		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
-		List<String> params = new ArrayList<String>();
 		
 		for(String row : selectedIds) {
-			String[] parts = row.split(tableRequestDto.getCore().getPkToken());
+			String[] parts = row.split(Constants.PK_TOKEN);
 			for(String param : parts) {
 				params.add(param);
 			}
@@ -478,7 +482,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -535,7 +539,7 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.query(query.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, "IDA,IDB"), params.toArray());
+		return this.jdbcTemplate.query(query.toString(), new RowNumResultSetExtractor<MultiPk>(this.rwMapPK, "ida", "idb"), params.toArray());
 	}
 
 	/*

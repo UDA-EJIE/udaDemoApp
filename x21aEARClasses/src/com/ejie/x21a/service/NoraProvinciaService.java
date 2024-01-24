@@ -1,7 +1,7 @@
 package com.ejie.x21a.service;
 
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +42,10 @@ public interface NoraProvinciaService {
 	 * Finds a List of rows in the NoraProvincia table.
 	 *
 	 * @param provincia NoraProvincia
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<NoraProvincia> findAll(NoraProvincia provincia, Pagination pagination);
+	List<NoraProvincia> findAll(NoraProvincia provincia, TableRequestDto tableRequestDto);
 
 	/**
 	 * Counts rows in the NoraProvincia table.
@@ -59,11 +59,11 @@ public interface NoraProvinciaService {
 	 * Finds rows in the NoraProvincia table using like.
 	 *
 	 * @param provincia NoraProvincia
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
-	List<NoraProvincia> findAllLike(NoraProvincia provincia, Pagination pagination, Boolean startsWith) ;
+	List<NoraProvincia> findAllLike(NoraProvincia provincia, TableRequestDto tableRequestDto, Boolean startsWith) ;
   
 	/**
 	 * Deletes a single row in the NoraProvincia table.
@@ -80,7 +80,4 @@ public interface NoraProvinciaService {
 	 * @return 
 	 */	
 	void removeMultiple(ArrayList<NoraProvincia> t17ProvinciaList);
-    
 }
-
-

@@ -18,7 +18,7 @@ package com.ejie.x21a.dao;
 import java.util.List;
 
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x21a.model.Usuario2;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 
@@ -40,6 +40,14 @@ public interface TableUsuarioDao {
      * @return Usuario
      */
     Usuario add(Usuario usuario);
+    
+    /**
+     * Inserts a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return Usuario2
+     */
+    Usuario2 add(Usuario2 usuario);
 
     /**
      * Updates a single row in the Usuario table.
@@ -50,12 +58,28 @@ public interface TableUsuarioDao {
     Usuario update(Usuario usuario);
 
     /**
+     * Updates a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return Usuario2
+     */
+    Usuario2 update(Usuario2 usuario);
+
+    /**
      * Finds a single row in the Usuario table.
      *
      * @param usuario Usuario
      * @return Usuario
      */
     Usuario find(Usuario usuario);
+
+    /**
+     * Finds a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return Usuario2
+     */
+    Usuario2 find(Usuario2 usuario);
 
     /**
      * Deletes a single row in the Usuario table.
@@ -66,6 +90,14 @@ public interface TableUsuarioDao {
     void remove(Usuario usuario);
 
     /**
+     * Deletes a single row in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @return 
+     */
+    void remove(Usuario2 usuario);
+
+    /**
      * Finds a List of rows in the Usuario table.
      *
      * @param usuario Usuario
@@ -73,6 +105,25 @@ public interface TableUsuarioDao {
      * @return List
      */
     List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
+
+    /**
+     * Finds a List of rows in the Usuario table.
+     *
+     * @param usuario Usuario2
+     * @param pagination Pagination
+     * @return List
+     */
+    List<Usuario2> findAll(Usuario2 usuario, TableRequestDto tableRequestDto);
+
+    /**
+     * Finds a List of rows containing the PK field values in the Usuario table.
+     *
+     * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+     * @return List<Usuario>
+     */
+    List<Usuario> findAllIds(Usuario usuario, boolean startsWith);
 
 	/**
      * Finds rows in the Usuario table using like.
@@ -83,6 +134,16 @@ public interface TableUsuarioDao {
      * @return List
      */
 	List<Usuario> findAllLike(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
+
+	/**
+     * Finds rows in the Usuario table using like.
+     *
+     * @param usuario Usuario2
+     * @param pagination Pagination
+     * @param startsWith Boolean
+     * @return List
+     */
+	List<Usuario2> findAllLike(Usuario2 usuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	
 	/*
@@ -92,13 +153,24 @@ public interface TableUsuarioDao {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-     * @param filterUsuario Usuario
+	 * @param filterUsuario Usuario
 	 * @param tableRequestDto TableRequestDto
-     * @param startsWith Boolean
-	 */
+	 * @param startsWith Boolean	 
+	 */	
 	void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
 	List<Usuario> getMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
+	
+	List<Usuario2> getMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith);
 	
     /**
      * Counts rows in the Usuario table using like.
@@ -108,6 +180,15 @@ public interface TableUsuarioDao {
      * @return Long
      */
     Long findAllLikeCount(Usuario usuario, Boolean startsWith);
+	
+    /**
+     * Counts rows in the Usuario table using like.
+     *
+     * @param usuario Usuario2
+     * @param startsWith Boolean
+     * @return Long
+     */
+    Long findAllLikeCount(Usuario2 usuario, Boolean startsWith);
     
     /**
      * Counts rows in the Usuario table.
@@ -119,17 +200,10 @@ public interface TableUsuarioDao {
     
     List<TableRowDto<Usuario>> reorderSelection(Usuario usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
-
-    /*
-	 * OPERACIONES RUP_TABLE JERARQUIA
-	 */
+    List<TableRowDto<Usuario2>> reorderSelection(Usuario2 usuario, TableRequestDto tableRequestDto, Boolean startsWith);
     
-	List<JerarquiaDto<Usuario>> findAllLikeJerarquia(Usuario filterUsuario,TableRequestDto tableRequestDto);
-	
-	Long findAllLikeCountJerarquia(Usuario filterUsuario, TableRequestDto tableRequestDto);
-	
-	List<TableRowDto<Usuario>> findAllChild(Usuario filterUsuario, TableRequestDto tableRequestDto);
-	
+    List<TableRowDto<Usuario>> search(Usuario filterParams, Usuario searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
+    
+    List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith);
 }
 

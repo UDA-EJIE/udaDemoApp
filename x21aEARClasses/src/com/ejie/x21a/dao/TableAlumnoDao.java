@@ -53,7 +53,7 @@ public interface TableAlumnoDao {
      * Finds a List of rows in the Alumno table.
      *
      * @param alumno Alumno
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
     List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto);
@@ -63,7 +63,7 @@ public interface TableAlumnoDao {
      * Finds rows in the Alumno table using like.
      *
      * @param alumno Alumno
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
@@ -74,7 +74,13 @@ public interface TableAlumnoDao {
 	 * OPERACIONES RUP_TABLE
 	 */
 	
-	
+	/**
+	 * Deletes multiple rows in the Alumno table.
+	 *
+	 * @param filterAlumno Alumno
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */
 	void removeMultiple(Alumno filterAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
     /**

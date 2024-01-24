@@ -15,59 +15,25 @@
  */
 jQuery(function ($) {
     function inicio() {
-        var tableColModels = [{
-            name: 'ida',
-            index: 'ida',
-            editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 1,
-                colpos: 1
-            }
-        },
-        {
-            name: 'idb',
-            index: 'idb',
-            editable: true,
-            hidden: false,
-            width: 80,
-            formoptions: {
-                rowpos: 2,
-                colpos: 1
-            }
-        },
-        {
-            name: 'nombre',
-            index: 'nombre',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 3,
-                colpos: 1
-            }
-        },
-        {
-            name: 'apellido1',
-            index: 'apellido1',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 4,
-                colpos: 1
-            },
-            classes: 'ui-ellipsis'
-        },
-        {
-            name: 'apellido2',
-            index: 'apellido2',
-            editable: true,
-            hidden: false,
-            formoptions: {
-                rowpos: 5,
-                colpos: 1
-            }
-        }
+    	var tableColModels = [
+        	{
+    	        name: 'nombre',
+    	        index: 'nombre',
+    	        editable: true,
+    	        hidden: false
+    	    },
+    	    {
+    	        name: 'apellido1',
+    	        index: 'apellido1',
+    	        editable: true,
+    	        hidden: false
+    	    },
+    	    {
+    	        name: 'apellido2',
+    	        index: 'apellido2',
+    	        editable: true,
+    	        hidden: false
+    	    }
         ];
 
         var listaPlugins = 'editForm,colReorder,selection,seeker,buttons,';
@@ -90,7 +56,6 @@ jQuery(function ($) {
 
             var plugins = {};
 
-            plugins.primaryKey = 'ida;idb';
             plugins.loadOnStartUp = true;
 
             var fixedHeader = {
@@ -144,12 +109,6 @@ jQuery(function ($) {
                     fillDataMethod: 'clientSide',
                     validate: {
                         rules: {
-                            'ida': {
-                                required: true
-                            },
-                            'idb': {
-                                required: true
-                            },
                             'nombre': {
                                 required: false
                             },
@@ -160,8 +119,7 @@ jQuery(function ($) {
                                 required: false
                             }
                         }
-                    },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
+                    }
                 };
                 plugins.formEdit = formEdit;
 
@@ -171,40 +129,11 @@ jQuery(function ($) {
             }
 
             if (localStorage.plugins.indexOf('inlineEdit') > -1) {
-                formEdit = {
-                    detailForm: '#example_detail_div',
-                    validate: {
-                        rules: {
-                            'ida': {
-                                required: true
-                            },
-                            'nombre': {
-                                required: true
-                            },
-                            'idb': {
-                                required: true
-                            },
-                            'apellido1': {
-                                required: false
-                            },
-                            'apellido2': {
-                                required: false
-                            }
-                        }
-                    },
-                    titleForm: jQuery.rup.i18nParse(jQuery.rup.i18n.base, 'rup_jqtable.edit.editCaption')
-                };
                 var inlineEdit = {
                     deselect: true,
                     validate: {
                         rules: {
-                            'ida': {
-                                required: true
-                            },
                             'nombre': {
-                                required: true
-                            },
-                            'idb': {
                                 required: true
                             },
                             'apellido1': {
@@ -283,7 +212,7 @@ jQuery(function ($) {
                 localStorage.plugins = '';
             }
 
-            var selectionType = $('input[name = multipk_seleccionTabla]:checked')[0].id;
+            var selectionType = $('#multipk_tableConfiguration input[name = multipk_seleccionTabla]:checked')[0].id;
 
             $.each($('#multipk_tableConfiguration .pluginsControl input'), function () {
                 if ($('#' + this.id).prop('checked') && allowedPluginsBySelecionType[selectionType].indexOf(this.id) > -1) {

@@ -46,7 +46,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.TableUsuarioDao;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x21a.model.Usuario2;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -80,6 +80,19 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario add(Usuario usuario) {
+		usuario = setEjieDefault(usuario);
+		return this.tableUsuarioDao.add(usuario);
+	}
+	
+	/**
+	 * Inserts a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public Usuario2 add(Usuario2 usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.add(usuario);
 	}
 
@@ -91,8 +104,21 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	@Transactional(rollbackFor = Throwable.class)
 	public Usuario update(Usuario usuario) {
+		usuario = setEjieDefault(usuario);
 		return this.tableUsuarioDao.update(usuario);
-	 }
+	}
+
+	/**
+	 * Updates a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public Usuario2 update(Usuario2 usuario) {
+		usuario = setEjieDefault(usuario);
+		return this.tableUsuarioDao.update(usuario);
+	}
 
 	/**
 	 * Finds a single row in the Usuario table.
@@ -102,6 +128,16 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	public Usuario find(Usuario usuario) {
 		return (Usuario) this.tableUsuarioDao.find(usuario);
+	}
+
+	/**
+	 * Finds a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario2
+	 */
+	public Usuario2 find(Usuario2 usuario) {
+		return (Usuario2) this.tableUsuarioDao.find(usuario);
 	}
 	
 	/**
@@ -116,6 +152,17 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 	
 	/**
+	 * Deletes a single row in the Usuario table.
+	 *
+	 * @param usuario Usuario2
+	 * @return
+	 */
+	@Transactional(rollbackFor = Throwable.class)
+	public void remove(Usuario2 usuario) {
+		this.tableUsuarioDao.remove(usuario);
+	}
+	
+	/**
 	 * Finds a List of rows in the Usuario table.
 	 *
 	 * @param usuario Usuario
@@ -124,6 +171,18 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 */
 	public List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto) {
 		return (List<Usuario>) this.tableUsuarioDao.findAll(usuario, tableRequestDto);
+	}
+	
+	/**
+	 * Finds a List of rows containing the PK field values in the Usuario table.
+	 *
+	 * @param usuario Usuario
+	 * @param startsWith boolean
+	 * 
+	 * @return List<Usuario>
+	 */
+	public List<Usuario> findAllIds(Usuario usuario, boolean startsWith) {
+		return this.tableUsuarioDao.findAllIds(usuario, startsWith);
 	}
     
 
@@ -147,12 +206,24 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Deletes multiple rows in the Usuario table.
 	 *
-     * @param filterUsuario Usuario
+	 * @param filterUsuario Usuario
 	 * @param tableRequestDto TableRequestDto
-     * @param startsWith Boolean
-	 */
+	 * @param startsWith Boolean	 
+	 */	
 	@Transactional(rollbackFor = Throwable.class)
 	public void removeMultiple(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
+	}
+	
+	/**
+	 * Deletes multiple rows in the Usuario table.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean	 
+	 */	
+	@Transactional(rollbackFor = Throwable.class)
+	public void removeMultiple(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
 		this.tableUsuarioDao.removeMultiple(filterUsuario, tableRequestDto, startsWith);
 	}
 	
@@ -173,17 +244,22 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	}
 
 	@Override
+	public List<TableRowDto<Usuario2>> search(Usuario2 filterParams, Usuario2 searchParams, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return this.tableUsuarioDao.search(filterParams, searchParams, tableRequestDto, startsWith);
+	}
+
+	@Override
 	public TableResponseDto<Usuario> filter(Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<Usuario> listaUsuario =  this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
-		Long recordNum =  this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario (),false);
+		List<Usuario> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario : new Usuario(), false);
 		TableResponseDto<Usuario> usuarioDto = new TableResponseDto<Usuario>(tableRequestDto, recordNum, listaUsuario);
-		if (tableRequestDto.getMultiselection().getSelectedIds()!=null){
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
 			List<TableRowDto<Usuario>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSelection(reorderSelection);
 			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
 			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
 		}
-		if (tableRequestDto.getSeeker().getSelectedIds()!=null){
+		if (tableRequestDto.getSeeker().getSelectedIds() != null) {
 			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
 			List<TableRowDto<Usuario>> reorderSeeker = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
 			usuarioDto.setReorderedSeeker(reorderSeeker);
@@ -191,21 +267,55 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		}
 		return usuarioDto; 
 	}
-	
-	/*
-	 * OPERACIONES RUP_TABLE JERARQUIA
-	 */
 
-	public TableResponseDto<JerarquiaDto<Usuario>> jerarquia (Usuario filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
-		List<JerarquiaDto<Usuario>> listaUsuario =  this.tableUsuarioDao.findAllLikeJerarquia(filterUsuario, tableRequestDto);
-		Long recordNum = this.tableUsuarioDao.findAllLikeCountJerarquia(filterUsuario, tableRequestDto);
-		return new TableResponseDto<JerarquiaDto<Usuario>>(tableRequestDto, recordNum, listaUsuario);
+	@Override
+	public TableResponseDto<Usuario2> filter(Usuario2 filterUsuario, TableRequestDto tableRequestDto, Boolean startsWith) {
+		List<Usuario2> listaUsuario = this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+		Long recordNum = this.tableUsuarioDao.findAllLikeCount(filterUsuario != null ? filterUsuario: new Usuario2(), false);
+		TableResponseDto<Usuario2> usuarioDto = new TableResponseDto<Usuario2>(tableRequestDto, recordNum, listaUsuario);
+		if (tableRequestDto.getMultiselection().getSelectedIds() != null && !tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
+			List<TableRowDto<Usuario2>> reorderSelection = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
+			usuarioDto.setReorderedSelection(reorderSelection);
+			usuarioDto.addAdditionalParam("reorderedSelection", reorderSelection);
+			usuarioDto.addAdditionalParam("selectedAll", tableRequestDto.getMultiselection().getSelectedAll());
+		}
+		if (tableRequestDto.getSeeker().getSelectedIds() != null){
+			tableRequestDto.setMultiselection(tableRequestDto.getSeeker());
+			List<TableRowDto<Usuario2>> reorderSeeker = this.tableUsuarioDao.reorderSelection(filterUsuario, tableRequestDto, startsWith);
+			usuarioDto.setReorderedSeeker(reorderSeeker);
+			usuarioDto.addAdditionalParam("reorderedSeeker", reorderSeeker);
+		}
+		return usuarioDto; 
 	}
 	
-	public TableResponseDto<JerarquiaDto<Usuario>> jerarquiaChildren (Usuario filterUsuario, TableRequestDto tableRequestDto){
-		TableResponseDto<JerarquiaDto<Usuario>> tableResponseDto = new TableResponseDto<JerarquiaDto<Usuario>>();
-		tableResponseDto.addAdditionalParam(TableResponseDto.CHILDREN, this.tableUsuarioDao.findAllChild(filterUsuario, tableRequestDto));
-		return tableResponseDto;
+	/*
+	 * UTILIDADES
+	 */
+	
+	/**
+	 * Si el campo "ejie" no tiene un valor definido le establece uno por defecto. No se hace en la entidad para evitar que el filtro siempre filtre por el valor por defecto.
+	 *
+	 * @param usuario Usuario
+	 * @return Usuario
+	 */
+	private Usuario setEjieDefault(Usuario usuario) {
+		if (usuario.getEjie() == null) {
+			usuario.setEjie("0");
+		}
+		return usuario;
+	}
+	
+	/**
+	 * Si el campo "ejie" no tiene un valor definido le establece uno por defecto. No se hace en la entidad para evitar que el filtro siempre filtre por el valor por defecto.
+	 *
+	 * @param usuario Usuario2
+	 * @return Usuario
+	 */
+	private Usuario2 setEjieDefault(Usuario2 usuario) {
+		if (usuario.getEjie() == null) {
+			usuario.setEjie("0");
+		}
+		return usuario;
 	}
 	
 	/*
@@ -217,6 +327,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 *
 	 * @param filterUsuario Usuario
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param reportsParams ArrayList<?>
@@ -224,7 +335,7 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * @param request HttpServletRequest
 	 * @param response HttpServletResponse
 	 */
-	public void generateReport(Usuario filterUsuario, String[] columns,String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+	public void generateReport(Usuario filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
 		// Accede a la DB para recuperar datos
 		List<Usuario> filteredData = getDataForReports(filterUsuario, tableRequestDto);
 		String extension = null;
@@ -258,8 +369,8 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        columns = tempColumns.toArray(new String[0]);
         }
         
-        //si no se definen el nombre de las columnas , se dejan las de por defecto.
-        if(columnsName == null){
+        // Si no se definen los nombres de las columnas se dejan las definidas por defecto
+        if (columnsName == null) {
         	columnsName = columns;
         }
 		
@@ -273,19 +384,97 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		
 		if (reportType.equals("xlsReport")) {
 			extension = ".xls";
-			generateExcelReport(filteredData, columns,columnsName, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("xlsxReport")) {
 			extension = ".xlsx";
-			generateExcelReport(filteredData, columns,columnsName, fileName, sheetTitle, extension, formatter, response);
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
 		} else if (reportType.equals("pdfReport")) {
 			extension = ".pdf";
-			generatePDFReport(filteredData, columns,columnsName, fileName, response);
+			generatePDFReport(filteredData, columns, columnsName, fileName, response);
 		} else if (reportType.equals("odsReport")) {
 			extension = ".ods";
-			generateODSReport(filteredData, columns,columnsName, fileName, sheetTitle, response);
+			generateODSReport(filteredData, columns, columnsName, fileName, sheetTitle, response);
 		} else if (reportType.equals("csvReport")) {
 			extension = ".csv";
-			generateCSVReport(filteredData, columns,columnsName, fileName, sheetTitle, language, response);
+			generateCSVReport(filteredData, columns, columnsName, fileName, sheetTitle, language, response);
+		}
+	}
+	
+	/**
+	 * Devuelve un fichero en el formato deseado que contiene los datos exportados de la tabla.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param columns String[]
+	 * @param columnsName String[]
+	 * @param fileName String
+	 * @param sheetTitle String
+	 * @param reportsParams ArrayList<?>
+	 * @param tableRequestDto TableRequestDto
+	 * @param request HttpServletRequest
+	 * @param response HttpServletResponse
+	 */
+	public void generateReport(Usuario2 filterUsuario, String[] columns, String[] columnsName, String fileName, String sheetTitle, ArrayList<?> reportsParams, TableRequestDto tableRequestDto, Locale locale, HttpServletRequest request, HttpServletResponse response) {
+		// Accede a la DB para recuperar datos
+		List<Usuario2> filteredData = getDataForReports(filterUsuario, tableRequestDto);
+		String extension = null;
+		
+		// Obtener idioma
+		String language = locale.getLanguage();
+		
+		// Comprobar si las siguientes variables estan vacias, en caso de estarlo se las asigna un valor generico
+		fileName = (fileName != null && !fileName.isEmpty()) ? fileName : "report";
+		sheetTitle = (sheetTitle != null && !sheetTitle.isEmpty()) ? sheetTitle : Usuario2.class.getSimpleName();
+		
+		// Obtener el formato de fecha especifico del locale
+        SimpleDateFormat formatter = DateTimeManager.getDateTimeFormat(locale);
+		
+		// Cuando no se definen columnas porque se quieren obtener todas
+        if (columns == null) {
+        	Field[] fields = Usuario.class.getDeclaredFields();
+        	ArrayList<String> tempColumns = new ArrayList<String>();
+	        
+	        for(int i = 0; i < fields.length; i++) {
+	        	try {
+	        		String methodName = fields[i].getName();
+	        		methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
+    				Usuario.class.getMethod("get" + methodName);
+    				tempColumns.add(fields[i].getName());
+    			} catch (NoSuchMethodException e) {
+    				e.printStackTrace();
+    			}
+	        	
+	        }
+	        columns = tempColumns.toArray(new String[0]);
+        }
+        
+        // Si no se definen los nombres de las columnas se dejan las definidas por defecto
+        if (columnsName == null) {
+        	columnsName = columns;
+        }
+		
+		String servletPath = request.getServletPath();
+		String reportType = null;
+		if (servletPath.contains("/") && (servletPath.lastIndexOf("/") + 1 != servletPath.length())) {
+			reportType = servletPath.substring(servletPath.lastIndexOf("/") + 1, servletPath.length());
+		} else {
+			reportType = servletPath.substring(0, servletPath.length());
+		}
+		
+		if (reportType.equals("xlsReport")) {
+			extension = ".xls";
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("xlsxReport")) {
+			extension = ".xlsx";
+			generateExcelReport(filteredData, columns, columnsName, fileName, sheetTitle, extension, formatter, response);
+		} else if (reportType.equals("pdfReport")) {
+			extension = ".pdf";
+			generatePDFReport(filteredData, columns, columnsName, fileName, response);
+		} else if (reportType.equals("odsReport")) {
+			extension = ".ods";
+			generateODSReport(filteredData, columns, columnsName, fileName, sheetTitle, response);
+		} else if (reportType.equals("csvReport")) {
+			extension = ".csv";
+			generateCSVReport(filteredData, columns, columnsName, fileName, sheetTitle, language, response);
 		}
 	}
 
@@ -306,19 +495,38 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 			return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, false);
 		}
 	}
+
+	/**
+	 * Devuelve los datos recuperados de la DB.
+	 *
+	 * @param filterUsuario Usuario2
+	 * @param tableRequestDto TableRequestDto
+	 */
+	public List<Usuario2> getDataForReports(Usuario2 filterUsuario, TableRequestDto tableRequestDto) {
+		if (tableRequestDto.getMultiselection().getSelectedAll() && tableRequestDto.getMultiselection().getSelectedIds().isEmpty()) {
+			if (filterUsuario != null) {
+				return this.tableUsuarioDao.findAllLike(filterUsuario, tableRequestDto, false);
+			} else {
+				return this.tableUsuarioDao.findAll(new Usuario2(), null);
+			}
+		} else {
+			return this.tableUsuarioDao.getMultiple(filterUsuario, tableRequestDto, false);
+		}
+	}
 	
 	/**
 	 * Devuelve un fichero excel que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param extension String
 	 * @param formatter SimpleDateFormat
 	 * @param response HttpServletResponse
 	 */
-	private void generateExcelReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
+	private void generateExcelReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, String extension, SimpleDateFormat formatter, HttpServletResponse response) {
 		try {
 			// Creacion del Excel
 			Workbook workbook = null;
@@ -366,14 +574,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(formatter.toPattern()));
 	        
 	        // Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	int cellNumber = 0;
 	        	row = sheet.createRow(rowNumber++);
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
 	        		Cell cellUsuario = row.createCell(cellNumber++);
-	        		cellUsuario.setCellValue(getCellValue(column, rowUsuario));
+	        		cellUsuario.setCellValue(getCellValue(column, rowObject));
 	        	}
 	        }
 	        
@@ -393,13 +601,13 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero pdf que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param response HttpServletResponse
-	 * @param columnsName 
 	 */
-	private void generatePDFReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
+	private void generatePDFReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, HttpServletResponse response) {
 		try {
 			// Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
@@ -421,10 +629,10 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
         	}
 			
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		table.addCell(getCellValue(column, rowUsuario));
+	        		table.addCell(getCellValue(column, rowObject));
 	        	}
 	        }
 			
@@ -439,14 +647,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero ods que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param response HttpServletResponse
-	 * @param columnsName 
 	 */
-	private void generateODSReport(List<Usuario> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
+	private void generateODSReport(List<?> filteredData, String[] columns, String[] columnsName, String fileName, String sheetTitle, HttpServletResponse response) {
 		try {
 			// Se añade el fichero ods al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".ods");
@@ -472,13 +680,13 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	        }
 
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	row = table.getRowByIndex(rowNumber++);
 				int cellNumber = 0;
 				
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowUsuario));
+        			row.getCellByIndex(cellNumber++).setStringValue(getCellValue(column, rowObject));
 	        	}
 	        }
 			
@@ -492,15 +700,15 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	/**
 	 * Devuelve un fichero csv que contiene los datos exportados de la tabla.
 	 *
-	 * @param filteredData List<Usuario>
+	 * @param filteredData List<?>
 	 * @param columns String[]
+	 * @param columnsName String[]
 	 * @param fileName String
 	 * @param sheetTitle String
 	 * @param language String
 	 * @param response HttpServletResponse
-	 * @param columnsName 
 	 */
-	private void generateCSVReport(List<Usuario> filteredData, String[] columns,String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
+	private void generateCSVReport(List<?> filteredData, String[] columns,String[] columnsName, String fileName, String sheetTitle, String language, HttpServletResponse response) {
 		try {
 		    // Se añade el fichero excel al response y se añade el contenido
 	        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".csv");
@@ -518,14 +726,14 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 		    boolean addTitles = true;
 			
 			// Añadir datos
-	        for (Usuario rowUsuario : filteredData) {
+	        for (Object rowObject : filteredData) {
 	        	int cellNumber = 1;
 	        	StringBuilder columnsTitles = new StringBuilder();
 	        	StringBuilder row = new StringBuilder();
 	        	
 	        	// Se iteran las columnas y se insertan los datos respetando el orden que tenian las columnas en la tabla
 	        	for (String column : columns) {
-	        		String cellValue = getCellValue(column, rowUsuario);
+	        		String cellValue = getCellValue(column, rowObject);
 	        		
 	        		if (cellNumber < columns.length) {
         				if (addTitles) {
@@ -567,12 +775,12 @@ public class TableUsuarioServiceImpl implements TableUsuarioService {
 	 * Obtiene los valores de las celdas.
 	 *
 	 * @param column String
-	 * @param rowUsuario Usuario
+	 * @param row Object
 	 */
-	private String getCellValue(String column, Usuario rowUsuario) {
+	private String getCellValue(String column, Object row) {
 		String cellValue = "";
 		try {
-			cellValue = BeanUtils.getProperty(rowUsuario, column) != null ? BeanUtils.getProperty(rowUsuario, column) : "";
+			cellValue = BeanUtils.getProperty(row, column) != null ? BeanUtils.getProperty(row, column) : "";
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {

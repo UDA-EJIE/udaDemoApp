@@ -14,58 +14,57 @@
  * que establece la Licencia.
  */
 
-jQuery('#comboProvincias').rup_combo({
-    source : 'comboEnlazado/remoteEnlazadoProvincia',
-    sourceParam : {label:'dsO', value:'id'},
-    blank : '0'
+jQuery('#comboProvincias').rup_select({
+    url: 'comboEnlazado/remoteEnlazadoProvincia',
+    sourceParam: {text:'dsO', id:'id'},
+    blank: '0'
 });
 
 
-jQuery('#comboMunicipios').rup_combo({
-    parent : [ 'comboProvincias' ],
-    source : 'comboEnlazado/remoteEnlazadoMunicipio',
-    sourceParam : {label:'dsO', value:'id'},
-    blank : '0',
+jQuery('#comboMunicipios').rup_select({
+    parent: [ 'comboProvincias' ],
+    url: 'comboEnlazado/remoteEnlazadoMunicipio',
+    sourceParam: {text:'dsO', id:'id'},
+    blank: '0',
     select: function(){
         if(jQuery('#comboMunicipios').val() !== '0'){
-            jQuery('#autocomplete_label').rup_autocomplete('enable');
+            jQuery('#autocomplete').rup_select('enable');
         }else{
-            jQuery('#autocomplete_label').rup_autocomplete('disable');
+            jQuery('#autocomplete').rup_select('disable');
         }
     }
 });
 
-jQuery('#autocomplete').rup_autocomplete({
-    source : 'autocomplete/calleRemote',
-    sourceParam : {label:'dsO', value:'id'},
-    minLength: 0,
-    contains : true,
+jQuery('#autocomplete').rup_select({
+    url: 'autocomplete/calleRemote',
+    sourceParam: {text:'dsO', id:'id'},
+    contains: true,
     extraParams: {
         provinciaId: function() {return jQuery('#comboProvincias').val();},
         municipioId: function() {return jQuery('#comboMunicipios').val();}
     }
 });
 
-jQuery('#comboProvinciasAPI').rup_combo({
-    source : [],
-    blank : '0',
-    select : function(event, value) {
+jQuery('#comboProvinciasAPI').rup_select({
+    data: [],
+    blank: '0',
+    select: function(event, value) {
         jQuery('#autocompleteAPI_label').val('');
-        jQuery('#autocompleteAPI_label').rup_autocomplete('disable');
+        jQuery('#autocompleteAPI').rup_select('disable');
         if (value.index !== 0){
-            jQuery('#comboMunicipiosAPI').rup_combo('enable');
+            jQuery('#comboMunicipiosAPI').rup_select('enable');
         }
     }
 });
 
-jQuery('#comboMunicipiosAPI').rup_combo({
-    parent : [ 'comboProvinciasAPI' ],
-    source : function() {
+jQuery('#comboMunicipiosAPI').rup_select({
+    parent: [ 'comboProvinciasAPI' ],
+    source: function() {
         window.findByNameMunicipio();
     },
     sourceParam : {
-        label : 'dsO',
-        value : 'id'
+        text : 'dsO',
+        id : 'id'
     },
     blank : '0',
     select : function(event, value) {
@@ -74,14 +73,13 @@ jQuery('#comboMunicipiosAPI').rup_combo({
             window.findByNameCalle(jQuery('#autocompleteAPI_label').val());
         } else {
             jQuery('#autocompleteAPI_label').val('');
-            jQuery('#autocompleteAPI_label').rup_autocomplete('disable');
+            jQuery('#autocompleteAPI').rup_select('disable');
         }
     }
 });
 
-jQuery('#autocompleteAPI').rup_autocomplete({
-    source : '',
-    minLength: 0,
+jQuery('#autocompleteAPI').rup_select({
+    url : '',
     contains : true
 });
 function limpiarFiltros() {

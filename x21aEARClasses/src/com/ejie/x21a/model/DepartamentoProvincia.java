@@ -25,16 +25,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author UDA
  */
 
-public class DepartamentoProvincia  implements java.io.Serializable {
+public class DepartamentoProvincia implements java.io.Serializable {
 
-    private static final long serialVersionUID = 1L;
-         private BigDecimal code;
-         private Provincia provincia;
-         private Departamento departamento;
-         private String descEs;
-         private String descEu;
-         private String css;
-         private String parentCode;
+  private static final long serialVersionUID = 1L;
+  private BigDecimal code;
+  private Provincia provincia;
+  private Departamento departamento;
+  private String descEs;
+  private String descEu;
+  private String css;
+  private String parentCode;
 
 /** Method 'DepartamentoProvincia'.
 *
@@ -196,7 +196,8 @@ public class DepartamentoProvincia  implements java.io.Serializable {
     public void setCss(String css) {
       this.css = css;
     }
-    
+    	
+
     public String getParentCode() {
 		return parentCode;
 	}
@@ -204,7 +205,6 @@ public class DepartamentoProvincia  implements java.io.Serializable {
 	public void setParentCode(String parentCode) {
 		this.parentCode = parentCode;
 	}
-    	
 
 /**
 * Intended only for logging and debugging.

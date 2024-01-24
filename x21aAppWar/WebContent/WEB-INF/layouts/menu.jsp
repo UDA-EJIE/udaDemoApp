@@ -342,40 +342,6 @@
                             Formularios
                         </a>
                         <div class="dropdown-menu menu-right">
-                            <spring:url value="/patrones/autocomplete" var="autocomplete" htmlEscape="true"/>
-                            <a class="dropdown-item" href="${autocomplete}">
-                                <spring:message code="autocomplete" />
-                            </a>
-
-                            <div class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">
-                                    <spring:message code="combo" />
-                                </a>
-                                <div class="dropdown-menu menu-right">
-                                <spring:url value="/patrones/comboSimple" var="comboSimple" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${comboSimple}">
-                                        <spring:message code="comboSimple" />
-                                    </a>
-                                    <spring:url value="/patrones/comboEnlazadoSimple" var="comboEnlazadoSimple" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${comboEnlazadoSimple}">
-                                        <spring:message code="comboEnlazadoSimple" />
-                                    </a>
-                                    <spring:url value="/patrones/comboEnlazadoMultiple" var="comboEnlazadoMultiple" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${comboEnlazadoMultiple}">
-                                        <spring:message code="comboEnlazadoMulti" />
-                                    </a>
-                                    <spring:url value="/patrones/multicombo" var="multicombo" htmlEscape="true"/>
-                                    <a class="dropdown-item" href="${multicombo}">
-                                        <spring:message code="multicombo" />
-                                    </a>
-                                    <spring:url value="/patrones/comboMantenimiento" var="comboMantenimiento" htmlEscape="true"/>
-                                    <a class="dropdown-item"
-                                        href="${comboMantenimiento}">Combo anidado
-                                        con mantenimiento</a>
-                                </div>
-                            </div>
                             
                             <div class="dropdown-submenu">
                                 <a class="dropdown-item dropdown-toggle" href="#">

@@ -1,6 +1,8 @@
 package com.ejie.x21a.service;
+
 import com.ejie.x21a.dao.NoraMunicipioDao;
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
@@ -59,11 +61,11 @@ public  class NoraMunicipioServiceImpl implements NoraMunicipioService {
 	 * Finds a List of rows in the NoraMunicipio table.
 	 *
 	 * @param municipio NoraMunicipio
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	public List<NoraMunicipio> findAll(NoraMunicipio municipio, Pagination pagination) {
-		return (List<NoraMunicipio>) this.t17MunicipioDao.findAll(municipio, pagination);
+	public List<NoraMunicipio> findAll(NoraMunicipio municipio, TableRequestDto tableRequestDto) {
+		return (List<NoraMunicipio>) this.t17MunicipioDao.findAll(municipio, tableRequestDto);
 	}
     
 	/**
@@ -80,12 +82,12 @@ public  class NoraMunicipioServiceImpl implements NoraMunicipioService {
 	 * Finds rows in the NoraMunicipio table using like.
 	 *
 	 * @param municipio NoraMunicipio
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 * @return List
 	 */
-	public List<NoraMunicipio> findAllLike(NoraMunicipio municipio, Pagination pagination, Boolean startsWith) {
-		return (List<NoraMunicipio>) this.t17MunicipioDao.findAllLike(municipio, pagination, startsWith);
+	public List<NoraMunicipio> findAllLike(NoraMunicipio municipio, TableRequestDto tableRequestDto, Boolean startsWith) {
+		return (List<NoraMunicipio>) this.t17MunicipioDao.findAllLike(municipio, tableRequestDto, startsWith);
 	}
     
 	/**

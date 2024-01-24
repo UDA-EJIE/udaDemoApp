@@ -21,18 +21,17 @@ jQuery(function($) {
             block:false
         });
 
-        $('#diaObligatorio').rup_combo({
+        $('#diaObligatorio').rup_select({
             source : [
-                {i18nCaption: 'lunes', value:'1'},
-                {i18nCaption: 'martes', value:'2'},
-                {i18nCaption: 'miercoles', value:'3'},
-                {i18nCaption: 'jueves', value:'4'},
-                {i18nCaption: 'viernes', value:'5'},
-                {i18nCaption: 'sabado', value:'6'},
-                {i18nCaption: 'domingo', value:'7'}
+                {i18nCaption: 'lunes', id:'1'},
+                {i18nCaption: 'martes', id:'2'},
+                {i18nCaption: 'miercoles', id:'3'},
+                {i18nCaption: 'jueves', id:'4'},
+                {i18nCaption: 'viernes', id:'5'},
+                {i18nCaption: 'sabado', id:'6'},
+                {i18nCaption: 'domingo', id:'7'}
             ],
-            width: 100,
-            ordered:false
+            ordered: false
         });
 
         $('#formRequiredRules').rup_validate({

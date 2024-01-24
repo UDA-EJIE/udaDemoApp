@@ -30,17 +30,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Provincia  implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-            private BigDecimal code;
-            private String descEs;
-            private String descEu;
-            private String css;
-            private List<Comarca> comarcas = new ArrayList<Comarca>();
+	private BigDecimal code;
+	private String descEs;
+	private String descEu;
+	private String css;
+	private List<Comarca> comarcas = new ArrayList<Comarca>();
 
 	/** Method 'Provincia'.
 	*
 	*/
     public Provincia() {
     }
+    
+    public Provincia(BigDecimal code) {
+    	this.code = code;
+	}
+	
     /** Method 'Provincia'.
     * @param code BigDecimal
     * @param descEs String

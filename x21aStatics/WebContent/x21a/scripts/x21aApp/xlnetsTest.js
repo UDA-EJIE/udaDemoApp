@@ -1,12 +1,10 @@
 $(function($) {
-
-    jQuery('#nomBuzonCas').rup_autocomplete({
-        source : 	'../experimental/getBuzonesNivel3',
+    jQuery('#nomBuzonCas').rup_select({
+        url: '../experimental/getBuzonesNivel3',
         sourceParam : {
-            label: 	'nomBuzonCastT28', 
-            value:	'idbuzonT28'
+            text: 	'nomBuzonCastT28', 
+            id:	'idbuzonT28'
         },
-        minLength: 	3,
-        combobox: false
+        combo: false
     });
 });

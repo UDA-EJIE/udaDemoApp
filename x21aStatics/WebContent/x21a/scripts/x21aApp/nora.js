@@ -14,7 +14,6 @@
  * que establece la Licencia.
  */
 jQuery(function(jQuery){
-    
     jQuery('#limpiar').click(function() {
         window.limpiarFiltros();
     });
@@ -42,22 +41,22 @@ var noraapi_provincias = new window.NORA.provincia({
                 var id = provincias.data[i].id;
                 jQuery('#comboProvinciasAPI').append(jQuery('<option/>').val(id).html(valor));
             }
-            jQuery('#comboProvinciasAPI').rup_combo('refresh');
+            jQuery('#comboProvinciasAPI').rup_select('refresh');
         }
     }),
     noraapi_municipios = new window.NORA.municipio({
         asynchronous : false,
         baseUrl : 'http://www1.geo.jakina.ejiedes.net/t17iApiJSWar',
         onSuccess : function(response) {
-            if (jQuery('#comboProvinciasAPI').rup_combo('index') === 0){
-                jQuery('#comboMunicipiosAPI').rup_combo('disable');
+            if (jQuery('#comboProvinciasAPI').rup_select('index') === 0){
+                jQuery('#comboMunicipiosAPI').rup_select('disable');
             }	
             jQuery('#comboMunicipiosAPI').get(0).options.length = 1;
             var municipios = response.responseText.evalJSON(true);
             jQuery.each(municipios.data, function(position, val){
                 jQuery('#comboMunicipiosAPI').append(jQuery('<option/>').val(val.id).html(val.descripcionOficial));
             });
-            jQuery('#comboMunicipiosAPI').rup_combo('refresh');
+            jQuery('#comboMunicipiosAPI').rup_select('refresh');
         }
     }),
     noraapi_calle = new window.NORA.calle({
@@ -73,8 +72,8 @@ var noraapi_provincias = new window.NORA.provincia({
                     label : val.descripcionOficial
                 };
             });
-            jQuery('#autocompleteAPI_label').rup_autocomplete( 'option', 'source', json);
-            jQuery('#autocompleteAPI_label').rup_autocomplete('enable');
+            jQuery('#autocompleteAPI').rup_select('option', 'source', json);
+            jQuery('#autocompleteAPI').rup_select('enable');
         }
     });
 window.getAllProvincias = function() {

@@ -6,9 +6,7 @@ public class ComarcaLocalidadDTO implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-
 	private BigDecimal codeComarcaLocalidad;
-
 	private BigDecimal codeProvincia;
 
 	public BigDecimal getCodeComarcaLocalidad() {

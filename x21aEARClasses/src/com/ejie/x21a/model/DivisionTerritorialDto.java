@@ -23,7 +23,6 @@ package com.ejie.x21a.model;
 public class DivisionTerritorialDto implements java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
-
     private String code;
     private String descEs;
     private String descEu;

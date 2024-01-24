@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
 import com.ejie.x38.dto.JerarquiaDto;
@@ -43,8 +44,12 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 	 */
 	private RowMapper<X21aAlumno> rwMap = new RowMapper<X21aAlumno>() {
 		public X21aAlumno mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+		Provincia provincia = new Provincia();
+		provincia.setCode(resultSet.getBigDecimal("PROVINCIAID"));
+		provincia.setDescEs("Prueba_Es");
+		provincia.setDescEu("Prueba_Eu");
            return new X21aAlumno(
-               resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHANACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAISID"), resultSet.getString("PROVINCIAID"), resultSet.getLong("LOCALIDADID"), resultSet.getString("COMARCAID"), resultSet.getString("MUNICIPIOID"), resultSet.getLong("CALLEID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIAID"), resultSet.getString("NOMBREIMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTEMATRICULA")
+               resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHANACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAISID"), resultSet.getString("PROVINCIAID"), resultSet.getLong("LOCALIDADID"), resultSet.getString("COMARCAID"), resultSet.getString("MUNICIPIOID"), resultSet.getLong("CALLEID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIAID"), resultSet.getString("NOMBREIMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTEMATRICULA"),provincia
            ); } } ;
 
 	private RowMapper<X21aAlumno> rwMapPK = new RowMapper<X21aAlumno>() {
@@ -62,7 +67,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 	private RowMapper<JerarquiaDto< X21aAlumno>> rwMapJerarquia = new RowMapper<JerarquiaDto<X21aAlumno>>() {
 		public JerarquiaDto<X21aAlumno> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
-			X21aAlumno x21aalumno = new X21aAlumno(resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHA_NACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAIS_ID"), resultSet.getString("PROVINCIA_ID"), resultSet.getLong("LOCALIDAD_ID"), resultSet.getString("COMARCA_ID"), resultSet.getString("MUNICIPIO_ID"), resultSet.getLong("CALLE_ID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIA_ID"), resultSet.getString("NOMBRE_IMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTE_MATRICULA"));
+			X21aAlumno x21aalumno = new X21aAlumno(resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHA_NACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAIS_ID"), resultSet.getString("PROVINCIA_ID"), resultSet.getLong("LOCALIDAD_ID"), resultSet.getString("COMARCA_ID"), resultSet.getString("MUNICIPIO_ID"), resultSet.getLong("CALLE_ID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIA_ID"), resultSet.getString("NOMBRE_IMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTE_MATRICULA"), new Provincia());
 
 			JerarquiaDto<X21aAlumno> jerarquia = new JerarquiaDto<X21aAlumno>();
 			jerarquia.setModel(x21aalumno);
@@ -159,7 +164,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
     	@SuppressWarnings("unchecked")
     	List<Object> params = (List<Object>) mapaWhere.get("params");
     	
-		StringBuilder sbMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, "ID"));
+		StringBuilder sbMultipleSQL = sbSQL.append(TableManager.getSelectMultipleQuery(tableRequestDto, X21aAlumno.class, params, TableX21aAlumnoDaoImpl.ORDER_BY_WHITE_LIST, "ID"));
 		
 		return this.jdbcTemplate.query(sbMultipleSQL.toString(), this.rwMap, params.toArray());
     }
@@ -241,7 +246,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -263,7 +268,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -337,30 +342,26 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 		return this.jdbcTemplate.query(sbReorderSelectionSQL.toString(), new RowNumResultSetExtractor<X21aAlumno>(this.rwMapPK, tableRequestDto), filterParamList.toArray());
 	}
-	
+
 	/**
-	 * Remove multiple method for rup_table
-     *
-     * @param filterx21aalumno X21aAlumno
-     * @param tableRequestDto TableRequestDto
-     * @param startsWith Boolean
+	 * Removes rows from the X21aAlumno table.
+	 *
+	 * @param filterX21aAlumno X21aAlumno
+	 * @param tableRequestDto TableRequestDto
+	 * @param startsWith Boolean
      */
 	@Override
 	public void removeMultiple(X21aAlumno filterx21aalumno, TableRequestDto tableRequestDto, Boolean startsWith) {
 		// Like clause and params
-		Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterx21aalumno, startsWith);
+    	Map<String, Object> mapWhereLike = this.getWhereLikeMap(filterx21aalumno, startsWith);
+    	
+    	// Delete query
+		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, X21aAlumno.class, "X21A_ALUMNO", "t1", new String[]{"ID"});
 		
-		StringBuilder sbRemoveMultipleSQL = TableManager.getRemoveMultipleQuery(mapWhereLike, tableRequestDto, X21aAlumno.class, "X21A_ALUMNO", "t1", "ID");
-		
-		List<String> selectedIds = tableRequestDto.getMultiselection().getSelectedIds();
-		List<String> params = new ArrayList<String>();
-		
-		for(String row : selectedIds) {
-			String[] parts = row.split(tableRequestDto.getCore().getPkToken());
-			for(String param : parts) {
-				params.add(param);
-			}
-		}
+		// Params list. Includes needed params for like and IN/NOT IN clauses
+		@SuppressWarnings("unchecked")
+		List<Object> params = (List<Object>) mapWhereLike.get("params");
+		params.addAll(tableRequestDto.getMultiselection().getSelectedIds());
 		
 		this.jdbcTemplate.update(sbRemoveMultipleSQL.toString(), params.toArray());
 	}
@@ -479,7 +480,7 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
 
 
 		List<?> params = (List<?>) mapaWhere.get("params");
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package com.ejie.x21a.service;
 
-
 import java.util.List;
 
 import org.springframework.validation.Errors;
@@ -58,7 +57,7 @@ public interface TableAlumnoService {
 	 * Finds a List of rows in the Alumno table.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
 	List<Alumno> findAll(Alumno alumno, TableRequestDto tableRequestDto);
@@ -67,7 +66,7 @@ public interface TableAlumnoService {
 	 * Finds rows in the Alumno table using like.
 	 *
 	 * @param alumno Alumno
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean	 
 	 * @return List
 	 */
@@ -95,9 +94,9 @@ public interface TableAlumnoService {
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
 	 */	
-	List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, TableRequestDto TableRequestDto, Boolean startsWith);
+	List<TableRowDto<Alumno>> search(Alumno filterAlumno, Alumno searchAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
 
-	TableResponseDto<Alumno> filter(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith) ;
+	TableResponseDto<Alumno> filter(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	Object reorderSelection(Alumno alumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	

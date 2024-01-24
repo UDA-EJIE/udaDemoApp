@@ -247,7 +247,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 
 		List<?> params = (List<?>) mapaWhere.get("params");
 
-		return this.jdbcTemplate.queryForObject(query.toString(), Long.class, params.toArray());
+		return this.jdbcTemplate.queryForObject(query.toString(), params.toArray(), Long.class);
 	}
 
 	@Override

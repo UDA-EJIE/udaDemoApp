@@ -1,17 +1,13 @@
 package com.ejie.x21a.model;
 
 public class Dashboard {
-
+	
 	private String id;
 	
 	private String nombre;
 	
 	private String serializedArray;
 
-	
-	
-	
-	
 	public Dashboard() {
 		super();
 		// TODO Auto-generated constructor stub

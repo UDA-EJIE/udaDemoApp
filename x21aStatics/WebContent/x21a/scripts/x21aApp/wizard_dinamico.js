@@ -103,15 +103,14 @@ $(function () {
                                 }
                                 ]
                             });
-                            $('#provincia').rup_combo({
-                                source: 'comboSimple/remote',
+                            $('#provincia').rup_select({
+                                url: 'comboSimple/remote',
                                 sourceParam: {
-                                    label: 'desc' + $.rup_utils.capitalizedLang(),
-                                    value: 'code',
+                                    text: 'desc' + $.rup_utils.capitalizedLang(),
+                                    id: 'code',
                                     style: 'css'
                                 },
-                                selected: 'Combo',
-                                width: 300
+                                selected: 'Combo'
                             });
 
                         },
@@ -151,31 +150,117 @@ $(function () {
         showButtonPanel: true
     });
 
-    $('#dias').rup_combo({
-        source: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    $('#dias').rup_select({
+        data: [{
+                i18nCaption: 'lunes',
+                id: 'lunes'
+            },
+            {
+                i18nCaption: 'martes',
+                id: 'martes'
+            },
+            {
+                i18nCaption: 'miercoles',
+                id: 'miercoles'
+            },
+            {
+                i18nCaption: 'jueves',
+                id: 'jueves'
+            },
+            {
+                i18nCaption: 'viernes',
+                id: 'viernes'
+            },
+            {
+                i18nCaption: 'sabado',
+                id: 'sabado'
+            },
+            {
+                i18nCaption: 'domingo',
+                id: 'domingo'
+            }
+		],
         ordered: false,
-        width: 320,
-        multiselect: true,
-        summaryInline: true
+        multiselect: true
     });
 
 
-    $('#cliente').rup_combo({
-        sourceGroup: [{
-            'Invierno': ['Enero', 'Febrero', 'Marzo']
-        },
-        {
-            'Primavera': ['Abril', 'Mayo', 'Junio']
-        },
-        {
-            'Verano': ['Julio', 'Agosto', 'Septiembre']
-        },
-        {
-            'Otoño': ['Octubre', 'Noviembre', 'Diciembre']
-        }
-        ],
-        width: 400,
-        height: 300,
+    $('#cliente').rup_select({
+        dataGroups: [
+			{
+	        	'id':'',
+	        	'text': 'Invierno',
+	            'children': [
+					{
+		                i18nCaption: 'enero',
+		                id: 'enero'
+		            },
+		            {
+		                i18nCaption: 'febrero',
+		                id: 'febrero'
+		            },
+		            {
+		                i18nCaption: 'marzo',
+		                id: 'marzo'
+		            }
+	            ]
+	        },
+	        {
+	        	'id':'',
+	        	'text': 'Primavera',
+	            'children': [
+					{
+		                i18nCaption: 'abril',
+		                id: 'abril'
+		            },
+		            {
+		                i18nCaption: 'mayo',
+		                id: 'mayo'
+		            },
+		            {
+		                i18nCaption: 'junio',
+		                id: 'junio'
+		            }
+	            ]
+	        },
+	        {
+	        	'id':'',
+	        	'text': 'Verano',
+	            'children': [
+					{
+		                i18nCaption: 'julio',
+		                id: 'julio'
+		            },
+		            {
+		                i18nCaption: 'agosto',
+		                id: 'agosto'
+		            },
+		            {
+		                i18nCaption: 'septiembre',
+		                id: 'septiembre'
+		            }
+	            ]
+	        },
+	        {
+	        	'id':'',
+	        	'text': 'Otoño',
+	            'children': [
+					{
+		                i18nCaption: 'octubre',
+		                id: 'octubre'
+		            },
+		            {
+		                i18nCaption: 'noviembre',
+		                id: 'noviembre'
+		            },
+		            {
+		                i18nCaption: 'diciembre',
+		                id: 'diciembre'
+		            }
+	            ]
+	        }
+		],
+        groups: true,
         multiselect: true
     });
 

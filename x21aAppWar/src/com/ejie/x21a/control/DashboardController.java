@@ -28,11 +28,12 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
@@ -64,23 +65,23 @@ public class DashboardController {
 	
 	
 	//dashboardSimple
-	@RequestMapping(value = "dashboardSimple", method = RequestMethod.GET)
+	@GetMapping(value = "dashboardSimple")
 	public String getDashboardSimple(Model model) {
 		return "dashboardSimple";
 	}
 	
 	
-	@RequestMapping(value = "getAll", method = RequestMethod.GET)
+	@GetMapping(value = "getAll")
 	public @ResponseBody List<Dashboard> getAll(Model model) {
 		return dashboardService.getAll();
 	}
 	
-	@RequestMapping(value = "get/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "get/{id}")
 	public @ResponseBody Dashboard get(@PathVariable String id) {
 		return dashboardService.get(new Dashboard(id));
 	}
 	
-	@RequestMapping(value = "put", method = RequestMethod.PUT)
+	@PutMapping(value = "put")
 	public @ResponseBody Dashboard get(@RequestBody Dashboard dashboard) {
 		return dashboardService.put(dashboard);
 	}

@@ -122,18 +122,16 @@ jQuery(document).ready(function () {
         }
     });
     
-    var options_ejie_combo = {
-        source : [
-            {label:'Si', value:'0'},
-            {label:'No', value:'1'}
+    const options_ejie_select = {
+        url: [
+            {text:'Si', id:'0'},
+            {text:'No', id:'1'}
         ],
-        width: '100%',
-        blank: '',
-        customClasses: ['select-material']
+        blank: ''
     };
 
     
-    jQuery('#dropdownButton-combo').rup_combo(options_ejie_combo);
+    jQuery('#dropdownButton-combo').rup_select(options_ejie_select);
 
 
     $('.contenedor').addClass('show');

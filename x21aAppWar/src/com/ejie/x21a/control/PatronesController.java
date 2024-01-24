@@ -1,16 +1,16 @@
 /*
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2020 E.J.I.E., S.A.
  *
- * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
- * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Licencia con arreglo a la EUPL, VersiÃ³n 1.1 exclusivamente (la Â«LicenciaÂ»);
+ * Solo podrÃ¡ usarse esta obra si se respeta la Licencia.
  * Puede obtenerse una copia de la Licencia en
  *
  * http://ec.europa.eu/idabc/eupl.html
  *
- * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
- * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
- * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
- * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * Salvo cuando lo exija la legislaciÃ³n aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye Â«TAL CUALÂ»,
+ * SIN GARANTÃ�AS NI CONDICIONES DE NINGÃšN TIPO, ni expresas ni implÃ­citas.
+ * VÃ©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  * que establece la Licencia.
  */
 package com.ejie.x21a.control;
@@ -19,17 +19,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -51,9 +52,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,15 +71,16 @@ import com.ejie.x21a.model.DepartamentoProvinciaDTO;
 import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.Localidad;
+import com.ejie.x21a.model.MultiPk;
 import com.ejie.x21a.model.NoraAutonomia;
 import com.ejie.x21a.model.NoraPais;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.ProvinciaComarcaDTO;
 import com.ejie.x21a.model.ProvinciaComarcaLocalidadDTO;
 import com.ejie.x21a.model.RandomForm;
+import com.ejie.x21a.model.TableOptions;
 import com.ejie.x21a.model.UploadBean;
 import com.ejie.x21a.model.Usuario;
-import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.ComarcaService;
 import com.ejie.x21a.service.DepartamentoProvinciaService;
 import com.ejie.x21a.service.DepartamentoService;
@@ -109,18 +111,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PatronesController {
 
     private static final Logger logger = LoggerFactory.getLogger(PatronesController.class);
-    
-    // Departamentos
-	private Departamento ayuntamiento = new Departamento(new BigDecimal(1), "Ayuntamiento", "Udaletxea", null);
-	private Departamento diputacion = new Departamento(new BigDecimal(2), "Diputación", "Aldundia", null);
-	private Departamento policia = new Departamento(new BigDecimal(3), "Policía", "Polizia", null);
-	private Departamento bomberos = new Departamento(new BigDecimal(4), "Bomberos", "Suhiltzaileak", null);
-	
-	// Provincias
-	private Provincia alava = new Provincia(new BigDecimal(1), "Álava", "Araba", null);
-	private Provincia vizcaya = new Provincia(new BigDecimal(2), "Vizcaya", "Bizkaia", null);
-	private Provincia gipuzcoa = new Provincia(new BigDecimal(3), "Guipúzcoa", "Gipuzkoa", null);
-
 
     @Autowired
     private Properties appConfiguration;
@@ -136,98 +126,324 @@ public class PatronesController {
 
     @Autowired
     private UploadService uploadService;
+    
+    int provincia = 0;
 
-
-    @Resource
+    @javax.annotation.Resource
     private ReloadableResourceBundleMessageSource messageSource;
 
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws ServletException {
         binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
     }
+    
+    // Departamentos
+	private Departamento ayuntamiento = new Departamento(new BigDecimal(1), "Ayuntamiento", "Udaletxea", null);
+	private Departamento diputacion = new Departamento(new BigDecimal(2), "Diputación", "Aldundia", null);
+	private Departamento policia = new Departamento(new BigDecimal(3), "Policía", "Polizia", null);
+	private Departamento bomberos = new Departamento(new BigDecimal(4), "Bomberos", "Suhiltzaileak", null);
+	
+	// Provincias
+	private Provincia alava = new Provincia(new BigDecimal(1), "Álava", "Araba", null);
+	private Provincia vizcaya = new Provincia(new BigDecimal(2), "Vizcaya", "Bizkaia", null);
+	private Provincia gipuzcoa = new Provincia(new BigDecimal(3), "Guipúzcoa", "Gipuzkoa", null);
+	
+	// Comarca
+	private Comarca llanadaAlavesa = new Comarca(new BigDecimal(1), "Llanada alavesa", "Arabako lautada", null, alava);
+	private Comarca granBilbao = new Comarca(new BigDecimal(2), "Gran Bilbao", "Bilbo handia", null, vizcaya);
+	private Comarca sanSebastian = new Comarca(new BigDecimal(3), "San Sebastián", "Donostialdea", null, gipuzcoa);
+	
+	// Localidad
+	private Localidad vitoriaGasteiz = new Localidad(new BigDecimal(1), "Vitoria-Gasteiz", "Vitoria-Gasteiz", null, llanadaAlavesa);
+	private Localidad bilbo = new Localidad(new BigDecimal(2), "Bilbao", "Bilbo", null, granBilbao);
+	private Localidad donostia = new Localidad(new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastian);
+    
+    private List<Departamento> departamentosGenerator() {
+    	List<Departamento> departamentos = new ArrayList<Departamento>();
+		departamentos.add(ayuntamiento);
+		departamentos.add(diputacion);
+		departamentos.add(policia);
+		departamentos.add(bomberos);
+		
+		return departamentos;
+    }
+    
+    private List<Provincia> provinciasGenerator() {		
+		List<Provincia> provincias = new ArrayList<Provincia>();
+		provincias.add(alava);
+		provincias.add(vizcaya);
+		provincias.add(gipuzcoa);
+		
+		return provincias;
+    }
+    
+    private List<Comarca> comarcasGenerator() {		
+		List<Comarca> comarcas = new ArrayList<Comarca>();
+		comarcas.add(llanadaAlavesa);
+		comarcas.add(granBilbao);
+		comarcas.add(sanSebastian);
+		
+		return comarcas;
+    }
+    
+    private List<Localidad> localidadesGenerator() {		
+		List<Localidad> localidades = new ArrayList<Localidad>();
+		localidades.add(vitoriaGasteiz);
+		localidades.add(bilbo);
+		localidades.add(donostia);
+		
+		return localidades;
+    }
+	
+	// Comarca - Local
+	private Comarca llanadaAlavesaLocal = new Comarca(new BigDecimal(1), new BigDecimal(1), "Llanada alavesa", "Arabako lautada", null, alava);
+	private Comarca granBilbaoLocal = new Comarca(new BigDecimal(2), new BigDecimal(2), "Gran Bilbao", "Bilbo handia", null, vizcaya);
+	private Comarca pruebaComarcaLocal = new Comarca(new BigDecimal(4), new BigDecimal(2), "Prueba", "Froga", null, vizcaya);
+	private Comarca sanSebastianLocal = new Comarca(new BigDecimal(3), new BigDecimal(3), "San Sebastián", "Donostialdea", null, gipuzcoa);
+	
+	// Localidad - Local
+	private Localidad vitoriaGasteizLocal = new Localidad(new BigDecimal(1), new BigDecimal(1), "Vitoria-Gasteiz", "Vitoria-Gasteiz", null, llanadaAlavesaLocal);
+	private Localidad bilboLocal = new Localidad(new BigDecimal(2), new BigDecimal(2), "Bilbao", "Bilbo", null, granBilbaoLocal);
+	private Localidad pruebaLocalidadLocal = new Localidad(new BigDecimal(4), new BigDecimal(2), "Prueba", "Froga", null, granBilbaoLocal);
+	private Localidad donostiaLocal = new Localidad(new BigDecimal(3), new BigDecimal(3), "San Sebastián", "Donostia", null, sanSebastianLocal);
+    
+    private List<Comarca> comarcasGeneratorLocal() {		
+		List<Comarca> comarcas = new ArrayList<Comarca>();
+		comarcas.add(llanadaAlavesaLocal);
+		comarcas.add(granBilbaoLocal);
+		comarcas.add(pruebaComarcaLocal);
+		comarcas.add(sanSebastianLocal);
+		
+		return comarcas;
+    }
+    
+    private List<Localidad> localidadesGeneratorLocal() {		
+		List<Localidad> localidades = new ArrayList<Localidad>();
+		localidades.add(vitoriaGasteizLocal);
+		localidades.add(bilboLocal);
+		localidades.add(pruebaLocalidadLocal);
+		localidades.add(donostiaLocal);
+		
+		return localidades;
+    }
+    
+    private List<DepartamentoProvincia> departamentosProvinciasGenerator() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos));
+    	
+		return departamentoProvincia;
+    }
+    
+    private List<DepartamentoProvincia> departamentosProvinciasGeneratorLocal() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento, "1##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion, "2##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia, "3##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos, "4##1"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento, "1##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion, "2##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia, "3##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos, "4##2"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento, "1##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion, "2##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia, "3##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos, "4##3"));
+    	
+		return departamentoProvincia;
+    }
+    
+    private List<DepartamentoProvincia> departamentosProvinciasGeneratorSelect() {
+    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion,"2##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia,"3##1"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos,"4##1"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento,"1##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion,"2##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia,"3##2"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos,"4##2"));
+
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento,"1##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion,"2##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia,"3##3"));
+    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos,"4##3"));
+    	
+		return departamentoProvincia;
+    }
+    
+    private List<Comarca> comarcasGeneratorSelect() {		
+		List<Comarca> comarcas = new ArrayList<Comarca>();
+		comarcas.add(new Comarca(new BigDecimal(1),new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(2),new BigDecimal(1), "Oyonesa", "Arabako lautada","1", null));
+		comarcas.add(new Comarca(new BigDecimal(3),new BigDecimal(1), "Gamarresa", "Arabako lautada","1", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(4),new BigDecimal(2), "Pequeño Bilbao", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(5),new BigDecimal(2), "Las Playas", "Arabako lautada","2", null));
+		comarcas.add(new Comarca(new BigDecimal(6),new BigDecimal(2), "Gran Bilbao", "Arabako lautada","2", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(7),new BigDecimal(3), "Donosti", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(8),new BigDecimal(3), "Zarautz", "Arabako lautada","3", null));
+		comarcas.add(new Comarca(new BigDecimal(9),new BigDecimal(3), "Eibar", "Arabako lautada","3", null));
+		
+		comarcas.add(new Comarca(new BigDecimal(10),new BigDecimal(4), "Aranda de Duero", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(11),new BigDecimal(4), "Burgos", "Arabako lautada","4", null));
+		comarcas.add(new Comarca(new BigDecimal(12),new BigDecimal(4), "Miranda de Ebro", "Arabako lautada","4", null));
+		
+		return comarcas;
+    }
 
     //Sleep
-    @RequestMapping(value = "sleep/{ms}", method = RequestMethod.GET)
+    @GetMapping(value = "sleep/{ms}")
     public String getSleep(Model model, @PathVariable Integer ms) throws InterruptedException {
         Thread.sleep(ms);
         return "accordion";
     }
 
     //Accordion
-    @RequestMapping(value = "accordion", method = RequestMethod.GET)
+    @GetMapping(value = "accordion")
     public String getAccordion(Model model) {
         return "accordion";
     }
 
-    //Autocomplete
-    @RequestMapping(value = "autocomplete", method = RequestMethod.GET)
-    public String getAutocomplete(Model model) {
-        return "autocomplete";
-    }
-
     //Button (
-    @RequestMapping(value = "button", method = RequestMethod.GET)
+    @GetMapping(value = "button")
     public String buttonJSP(Model model) {
         return "button";
     }
 
     //Date
-    @RequestMapping(value = "date", method = RequestMethod.GET)
+    @GetMapping(value = "date")
     public String getDate(Model model) {
         return "date";
     }
 
     //Dialog
-    @RequestMapping(value = "dialog", method = RequestMethod.GET)
+    @GetMapping(value = "dialog")
     public String getDialog(Model model) {
         return "dialog";
     }
 
     //Dialog (petición Ajax)
-    @RequestMapping(value = "dialogAjax", method = RequestMethod.GET)
+    @GetMapping(value = "dialogAjax")
     public String dialogJSP(Model model) {
         return "dialogAjax";
     }
-
-    //Combos
-    @RequestMapping(value = "comboSimple", method = RequestMethod.GET)
-    public String getComboSimple(Model model) {
-        return "combo";
+    
+    //Select Simple
+    @GetMapping(value = "selectSimple")
+    public String getSelectSimple(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
+    	
+        return "selectSimple";
+    }
+    
+    //SelectEnlazado - simple
+    @GetMapping(value = "selectEnlazadoSimple")
+    public String getSelectEnlazadoSimple(Model model) {
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("comboComarca", comarcasGeneratorSelect());
+    	
+        return "selectEnlazadoSimple";
+    }
+    
+    //selectEnlazado - multiple
+    @GetMapping(value = "selectEnlazadoMultiple")
+    public String getSelectEnlazadoMultiple(Model model) {
+    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
+    	
+    	// Departamentos
+    	model.addAttribute("comboDepartamento", departamentosGenerator());
+		
+		// Provincias
+		model.addAttribute("comboProvincia", provinciasGenerator());
+    	
+		// Departamentos y provincias
+    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorSelect());
+		
+        return "selectEnlazadoMultiple";
+    }
+    
+    //MultiSelect
+    @GetMapping(value = "selectMultiselect")
+    public String getSelectMultiSelect(Model model) {
+    	model.addAttribute("provincia", new Provincia());
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	
+        return "selectMultiselect";
     }
 
-    //CombosEnlazado - simple
-    @RequestMapping(value = "comboEnlazadoSimple", method = RequestMethod.GET)
-    public String getComboEnlazadoSimple(Model model) {
-        return "comboEnlazado";
+    //select en mantenimiento
+    @GetMapping(value = "selectMantenimiento")
+    public String getSelectMantenimiento(Model model) {
+        model.addAttribute("X21aAlumno", new Alumno());
+        return "selectMantenimiento";
+    }
+    
+    // Select Autocomplete
+    @GetMapping(value = "selectAutocomplete")
+    public String getSelectAutocomplete(Model model) {
+    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
+    	model.addAttribute("provincia", new Provincia());
+    	
+        return "selectAutocomplete";
     }
 
-    //CombosEnlazado - multiple
-    @RequestMapping(value = "comboEnlazadoMultiple", method = RequestMethod.GET)
-    public String getEnlazadoMultiple(Model model) {
-        return "comboEnlazadoMultiple";
+    // Select Autocomplete Enlazado
+    @GetMapping(value = "selectAutocompleteEnlazado")
+    public String getSelectAutocompleteEnlazado(Model model) {
+    	
+    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
+    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
+    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
+    	
+		// Provincias
+		model.addAttribute("selectAutocompleteProvincia", provinciasGenerator());
+		
+		// Comarcas
+		model.addAttribute("selectAutocompleteComarca", comarcasGeneratorSelect());
+		
+        return "selectAutocompleteEnlazado";
     }
 
-    //Multicombo
-    @RequestMapping(value = "multicombo", method = RequestMethod.GET)
-    public String getMulticombo(Model model) {
-        return "multicombo";
+    // Select Autocomplete Enlazado Multiple
+    @GetMapping(value = "selectAutocompleteEnlazadoMultiple")
+    public String getSelectAutocompleteEnlazadoMultiple(Model model) {
+        return "selectAutocompleteEnlazadoMultiple";
     }
-
-    //Multicombo
-    @RequestMapping(value = "comboMantenimiento", method = RequestMethod.GET)
-    public String getComboMantenimiento(Model model) {
-        model.addAttribute("alumno", new Alumno());
-        return "comboMantenimiento";
-    }
+    
 
     //Feedback
-    @RequestMapping(value = "feedback", method = RequestMethod.GET)
+    @GetMapping(value = "feedback")
     public String getFeedback(Model model) {
         return "feedback";
     }
 
     //Form
-    @RequestMapping(value = "form", method = RequestMethod.GET)
+    @GetMapping(value = "form")
     public String getForm(Model model){
 
         List<NoraPais> paises = noraPaisService.findAll(null, null);
@@ -248,105 +464,105 @@ public class PatronesController {
     }
 
     //Grid
-    @RequestMapping(value = "grid", method = RequestMethod.GET)
+    @GetMapping(value = "grid")
     public String getGrid(Model model) {
         return "grid";
     }
 
     //Menu
-    @RequestMapping(value = "menu", method = RequestMethod.GET)
+    @GetMapping(value = "menu")
     public String getMenu(Model model) {
         return "menu";
     }
 
     //Menu Vertical
-    @RequestMapping(value = "menuVertical", method = RequestMethod.GET)
+    @GetMapping(value = "menuVertical")
     public String getMenuVertical(Model model) {
         model.addAttribute("defaultLayout", "vertical");
         return "menuVertical";
     }
 
     //Menu Mixto
-    @RequestMapping(value = "menuMixto", method = RequestMethod.GET)
+    @GetMapping(value = "menuMixto")
     public String getMenuMixto(Model model) {
         model.addAttribute("defaultLayout", "mixto");
         return "menuMixto";
     }
 
     //Message
-    @RequestMapping(value = "message", method = RequestMethod.GET)
+    @GetMapping(value = "message")
     public String getMessage(Model model) {
         return "message";
     }
 
-    //Progressbar
-    @RequestMapping(value = "progressbar", method = RequestMethod.GET)
-    public String getProgressbar(Model model) {
-        return "progressbar";
+    //ProgressBar
+    @GetMapping(value = "progressBar")
+    public String getProgressBar(Model model) {
+        return "progressBar";
     }
 
     //Slider
-    @RequestMapping(value = "slider", method = RequestMethod.GET)
+    @GetMapping(value = "slider")
     public String getSlider(Model model) {
         return "slider";
     }
 
     //Spinner
-    @RequestMapping(value = "spinner", method = RequestMethod.GET)
+    @GetMapping(value = "spinner")
     public String getSpinner(Model model) {
         return "spinner";
     }
 
     //Tabs con carga de la pagina
-    @RequestMapping(value = "tabsStatic", method = RequestMethod.GET)
+    @GetMapping(value = "tabsStatic")
     public String getTabsStatic(Model model) {
         return "tabsStatic";
     }
 
     //Tabs con carga ajax
-    @RequestMapping(value = "tabsAjax", method = RequestMethod.GET)
+    @GetMapping(value = "tabsAjax")
     public String getTabsAjax(Model model) {
         return "tabsAjax";
     }
 
     //Tabs Mixto
-    @RequestMapping(value = "tabsMixto", method = RequestMethod.GET)
+    @GetMapping(value = "tabsMixto")
     public String getTabsMixto(Model model) {
         return "tabsMixto";
     }
 
     //Tabs Multiples mantenimientos
-    @RequestMapping(value = "maintTab", method = RequestMethod.GET)
+    @GetMapping(value = {"maintTab", "pruebaSub3Maint"})
     public String getMaintTab(Model model) {
         return "maintTab";
     }
 
     //Tabs Scrollable
-    @RequestMapping(value = "tabsScrollable", method = RequestMethod.GET)
+    @GetMapping(value = "tabsScrollable")
     public String geTabsScrollable(Model model) {
         return "tabsScrollable";
     }
 
     //Time
-    @RequestMapping(value = "time", method = RequestMethod.GET)
+    @GetMapping(value = "time")
     public String getTime(Model model) {
         return "time";
     }
 
     //Toolbar
-    @RequestMapping(value = "toolbar", method = RequestMethod.GET)
+    @GetMapping(value = "toolbar")
     public String getToolbar(Model model) {
         return "toolbar";
     }
 
     //Tooltip
-    @RequestMapping(value = "tooltip", method = RequestMethod.GET)
+    @GetMapping(value = "tooltip")
     public String getTooltip(Model model) {
         return "tooltip";
     }
 
     //Upload
-    @RequestMapping(value = "upload", method = RequestMethod.GET)
+    @GetMapping(value = "upload")
     public String getUpload(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("collection", new Collection());
@@ -354,57 +570,57 @@ public class PatronesController {
     }
 
     //Wizard
-    @RequestMapping(value = "wizard", method = RequestMethod.GET)
+    @GetMapping(value = "wizard")
     public String getWizard(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard";
     }
 
     //Wizard_includeFile
-    @RequestMapping(value = "wizard_includeFile", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_includeFile")
     public String getWizard_includeFile(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_includeFile";
     }
 
     //Wizard_jspInclude
-    @RequestMapping(value = "wizard_jspInclude", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_jspInclude")
     public String getWizard_jspInclude(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_jspInclude";
     }
 
     //Wizard_jstlImport
-    @RequestMapping(value = "wizard_jstlImport", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_jstlImport")
     public String getWizard_jstlImporte(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_jstlImport";
     }
 
     //Wizard dinamico
-    @RequestMapping(value = "wizard_dinamico", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_dinamico")
     public String getWizard_dinamico(Model model) {
         model.addAttribute("randomForm", new RandomForm());
         return "wizard_dinamico";
     }
 
-    @RequestMapping(value = "wizard_dinamico_content", method = RequestMethod.GET)
+    @GetMapping(value = "wizard_dinamico_content")
     public String getWizard_dinamico_content(Model model) {
         return "wizard_dinamico_content";
     }
 
     //Tree
-    @RequestMapping(value = "trees", method = RequestMethod.GET)
+    @GetMapping(value = "trees")
     public String getTrees(Model model) {
         return "trees";
     }
 
-    @RequestMapping(value = "treeDAD", method = RequestMethod.GET)
+    @GetMapping(value = "treeDAD")
     public String getTreeDragAndDrop(Model model) {
         return "treeDAD";
     }
-
-    @RequestMapping(value = "ajaxTree", method = RequestMethod.GET)
+    
+    @GetMapping(value = "ajaxTree")
     public Object getTreeAjax(Model model, HttpServletResponse response) {
 
         // S
@@ -456,7 +672,7 @@ public class PatronesController {
     }
 
     //Validate
-    @RequestMapping(value = "validate", method = RequestMethod.GET)
+    @GetMapping(value = "validate")
     public String getValidate(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("randomForm", new RandomForm());
@@ -464,14 +680,14 @@ public class PatronesController {
     }
 
     //Validate
-    @RequestMapping(value = "validateRules", method = RequestMethod.GET)
+    @GetMapping(value = "validateRules")
     public String getValidateRules(Model model) {
 
         model.addAttribute("alumno", new Alumno());
         return "validateRules";
     }
 
-    @RequestMapping(value = "validateRup", method = RequestMethod.GET)
+    @GetMapping(value = "validateRup")
     public String getValidateRup(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("randomForm", new RandomForm());
@@ -480,21 +696,38 @@ public class PatronesController {
 
 
     //All (todos los patrones en una pagina)
-    @RequestMapping(value = "all", method = RequestMethod.GET)
+    @GetMapping(value = "all")
     public String getAll(Model model) {
-        model.addAttribute("usuario", new Usuario());
+    	model.addAttribute("comarca", new Comarca());
         return "all";
     }
 
     //AllDialog (todos los patrones en un dialogo)
-    @RequestMapping(value = "allDialog", method = RequestMethod.GET)
+    @GetMapping(value = "allDialog")
     public String getAllDialog(Model model) {
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("randomForm", new RandomForm());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "S�");
+		model.addAttribute("comboEjie", comboEjie);
+        
         return "allDialog";
     }
 
     //Context menu
-    @RequestMapping(value = "contextMenu", method = RequestMethod.GET)
+    @GetMapping(value = "contextMenu")
     public String getContextMenu(Model model) {
         return "contextMenu";
     }
@@ -524,12 +757,12 @@ public class PatronesController {
 
     @Autowired
     private DepartamentoProvinciaService departamentoProvinciaService;
-
-
+    
+    
     /**
      * AUTOCOMPLETE REMOTO
      */
-    @RequestMapping(value = "autocomplete/remote", method = RequestMethod.GET)
+    @GetMapping(value = "autocomplete/remote")
     public @ResponseBody
     List<DepartamentoProvincia> getRemoteAutocomplete(
             @RequestParam(value = "q", required = true) String q,
@@ -550,324 +783,26 @@ public class PatronesController {
             provincia.setCode(codProvincia);
             departamentoProvincia.setProvincia(provincia);
         }
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
-    }
-    
-    /**
-     * AUTOCOMPLETE REMOTO ENLAZADO MúLTIPLE
-     */
-    
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamento")
-    public @ResponseBody
-    List<Departamento> getDepartamentoEnlazadoMultipleAutocomplete(
-            @RequestParam(value = "q", required = true) String q,
-            @RequestParam(value = "c", required = true) Boolean c) {
-    	
-    	try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    	
-        return departamentoService.findAllLike(null, null, !c);
-    }
-    
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleProvincia")
-    public @ResponseBody
-    List<Provincia> getProvinciaEnlazadoMultipleAutocomplete(
-            @RequestParam(value = "q", required = true) String q,
-            @RequestParam(value = "c", required = true) Boolean c) {
-    	
-    	try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
-        return provinciaService.findAllLike(null, null, !c);
-    }
-    
-    @GetMapping(value = "autocomplete/remoteEnlazadoMultipleDepartamentoProvincia")
-    public @ResponseBody
-    List<DepartamentoProvincia> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
-            @RequestParam(value = "q", required = true) String q,
-            @RequestParam(value = "c", required = true) Boolean c,
-            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
-    	
-    	//Convertir parÃ¡metros en entidad para bÃºsqueda
-        Departamento departamento = new Departamento();
-        departamento.setCode(departamento_code);
-        
-        Provincia provincia = new Provincia();
-        provincia.setCode(provincia_code);
-        
-        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
-        departamentoProvincia.setDepartamento(departamento);
-        departamentoProvincia.setProvincia(provincia);
-      //Idioma
-        Locale locale = LocaleContextHolder.getLocale();
-        
-        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
-            departamentoProvincia.setDescEu(q);
-        } else {
-            departamentoProvincia.setDescEs(q);
-        }
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         
         return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
     }
-
-
-    /**
-     * COMBO SIMPLE
-     */
-    interface ProvinciaMixIn {
-        @JsonProperty("value")
-        int getCode();
-
-        @JsonProperty("label")
-        int getDescEs();
-    }
-
-    @Json(mixins = {@JsonMixin(target = Provincia.class, mixin = ProvinciaMixIn.class)})
-    @RequestMapping(value = "comboSimple/remote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Provincia> getComboRemote() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return provinciaService.findAll(null, null);
-    }
-
-    @RequestMapping(value = "comboSimple/remoteGroup", method = RequestMethod.GET)
-    public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGrupos() {
-        return this.getRemoteComboGruposEnlazado(null);
-    }
-
-    @RequestMapping(value = "comboSimple/remoteGroupEnlazado", method = RequestMethod.GET)
-    public @ResponseBody
-    List<HashMap<String, List<?>>> getRemoteComboGruposEnlazado(@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
-
-        //Idioma
-        Locale locale = LocaleContextHolder.getLocale();
-
-        //Retorno del método
-        List<HashMap<String, List<?>>> retorno = new ArrayList<HashMap<String, List<?>>>();
-
-        //Nombres de los grupos según idioma
-        String provincia = null, comarca = null, localidad = null;
-        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
-            provincia = "Provincia_eu";
-            comarca = "Comarca_eu";
-            localidad = "Localidad_eu";
-        } else {
-            provincia = "Provincia";
-            comarca = "Comarca";
-            localidad = "Localidad";
-        }
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //Provincia
-        HashMap<String, List<?>> group = new HashMap<String, List<?>>();
-
-        Provincia provinciaFilter = null;
-
-        if (provincia_code == null) {
-            group.put(provincia, provinciaService.findAll(null, null));
-            retorno.add(group);
-        } else {
-            provinciaFilter = new Provincia();
-            provinciaFilter.setCode(provincia_code);
-        }
-
-        //Comarca
-        group = new HashMap<String, List<?>>();
-        if (provincia_code != null) {
-            Comarca comarcaFilter = new Comarca();
-            comarcaFilter.setProvincia(provinciaFilter);
-            group.put(comarca, comarcaService.findAll(comarcaFilter, null));
-        } else {
-            group.put(comarca, comarcaService.findAll(null, null));
-        }
-        retorno.add(group);
-
-        //Localidad
-        group = new HashMap<String, List<?>>();
-        if (provincia_code != null) {
-            Localidad localidadFilter = new Localidad();
-            Comarca comarcaFilter = new Comarca();
-            comarcaFilter.setProvincia(provinciaFilter);
-            localidadFilter.setComarca(comarcaFilter);
-            group.put(localidad, localidadService.findAll(localidadFilter, null));
-        } else {
-            group.put(localidad, localidadService.findAll(null, null));
-        }
-        retorno.add(group);
-
-        return retorno;
-    }
-
-
-    /**
-     * COMBO ENLAZADO SIMPLE
-     */
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Provincia> getEnlazadoProvincia() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return provinciaService.findAll(null, null);
-    }
-
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Comarca> getEnlazadoComarca(
-            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
-
-        //Convertir parámetros en entidad para búsqueda
-        Provincia provincia = new Provincia();
-        provincia.setCode(provincia_code);
-        Comarca comarca = new Comarca();
-        comarca.setProvincia(provincia);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return comarcaService.findAll(comarca, null);
-    }
-
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Localidad> getEnlazadoLocalidad(
-            @RequestParam(value = "codeComarca", required = false) BigDecimal comarca_code) {
-
-        //Convertir parámetros en entidad para búsqueda
-        Comarca comarca = new Comarca();
-        comarca.setCode(comarca_code);
-        Localidad localidad = new Localidad();
-        localidad.setComarca(comarca);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return localidadService.findAll(localidad, null);
-    }
     
-    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam", method = RequestMethod.GET)
-    public @ResponseBody
-    List<DepartamentoProvincia> getEnlMultDptoProvNoParam(
-            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "codeProvincia", required = false) Integer provincia_code) {
-
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
-        Departamento departamento = new Departamento();
-        departamento.setCode(departamento_code);
-        Provincia provincia = new Provincia();
-        provincia.setCode(new BigDecimal(provincia_code));
-        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
-        departamentoProvincia.setDepartamento(departamento);
-        departamentoProvincia.setProvincia(provincia);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return departamentoProvinciaService.findAll(departamentoProvincia, null);
-    }
-
-
-    /**
-     * COMBO ENLAZADO MULTIPLE
-     */
-    /**
-     * Combos Enlazados (múltiple)
-     */
-    @RequestMapping(value = "comboEnlazadoMultiple/departamentoRemote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Departamento> getEnlMultDpto() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return departamentoService.findAll(null, null);
-    }
-
-    @RequestMapping(value = "comboEnlazadoMultiple/provinciaRemote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Provincia> getEnlMultProv() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return provinciaService.findAll(null, null);
-    }
-
-    @RequestMapping(value = "comboEnlazadoMultiple/dptoProvRemote", method = RequestMethod.GET)
-    public @ResponseBody
-    List<DepartamentoProvincia> getEnlMultDptoProv(
-            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
-            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
-
-        //Convertir parámetros en entidad para búsqueda
-        Departamento departamento = new Departamento();
-        departamento.setCode(departamento_code);
-        Provincia provincia = new Provincia();
-        provincia.setCode(provincia_code);
-        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
-        departamentoProvincia.setDepartamento(departamento);
-        departamentoProvincia.setProvincia(provincia);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return departamentoProvinciaService.findAll(departamentoProvincia, null);
-    }
     
     /**
      * AUTOCOMPLETE REMOTO ENLAZADO
      */
-    @RequestMapping(value = "autocomplete/remoteEnlazadoProvincia", method = RequestMethod.GET)
+    @GetMapping(value = "autocompleteEnlazadoSimple/provinciaComarcaLocalidadDTO")
+    public @ResponseBody ProvinciaComarcaLocalidadDTO getAutocompleteProvinciaComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return provinciaComarcaLocalidadDTO;
+    }
+    
+    @GetMapping(value = "autocomplete/remoteEnlazadoProvincia")
     public @ResponseBody
     List<Provincia> getProvinciaEnlazadoAutocomplete(
             @RequestParam(value = "q", required = true) String q,
             @RequestParam(value = "c", required = true) Boolean c) {
     	
-    	try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     	Provincia provincia = new Provincia();
     	if(q != null) {
     		Locale locale = LocaleContextHolder.getLocale();
@@ -911,7 +846,6 @@ public class PatronesController {
         return comarcaService.findAllLike(comarca, null, !c);
     }
     
-
     @GetMapping(value = "autocomplete/remoteEnlazadoLocalidad")
     public @ResponseBody
     List<Localidad> getLocalidadEnlazadoAutocomplete(
@@ -937,13 +871,408 @@ public class PatronesController {
         
         return localidadService.findAllLike(localidad, null, !c);
     }
+    
+    /**
+     * AUTOCOMPLETE REMOTO ENLAZADO M�LTIPLE
+     */
+    @GetMapping(value = "autocompleteEnlazadoMultiple/departamentoProvinciaDTO")
+    public @ResponseBody DepartamentoProvinciaDTO getAutocompleteDepartamentoProvinciaDTO(
+    		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
+        return departamentoProvinciaDTO;
+    }
+    
+    @GetMapping(value = "autocomplete/departamentoRemote")
+    public @ResponseBody
+    List<Departamento> getDepartamentoEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    	
+        return departamentoService.findAllLike(null, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/provinciaRemote")
+    public @ResponseBody
+    List<Provincia> getProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c) {
+    	
+    	try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return provinciaService.findAllLike(null, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/dptoProvRemote")
+    public @ResponseBody
+    List<DepartamentoProvincia> getDepartamentoProvinciaEnlazadoMultipleAutocomplete(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
 
-    @RequestMapping(value = "comboEnlazado/comarcaLocalidad", method = RequestMethod.GET)
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/dptoProvRemoteNoParam")
+    public @ResponseBody
+    List<DepartamentoProvincia> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParam(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+    }
+    
+    @GetMapping(value = "autocomplete/dptoProvRemoteNoParamUno")
+    public @ResponseBody
+    List<DepartamentoProvincia> getDepartamentoProvinciaEnlazadoMultipleAutocompleteNoParamUno(
+            @RequestParam(value = "q", required = true) String q,
+            @RequestParam(value = "c", required = true) Boolean c,
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	
+    	//Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+      //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+        
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            departamentoProvincia.setDescEu(q);
+        } else {
+            departamentoProvincia.setDescEs(q);
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return departamentoProvinciaService.findAllLike(departamentoProvincia, null, !c);
+    }
+
+    /**
+     * COMBO SIMPLE
+     */
+    interface ProvinciaMixIn {
+        @JsonProperty("value")
+        int getCode();
+
+        @JsonProperty("label")
+        int getDescEs();
+    }
+
+    @Json(mixins = {@JsonMixin(target = Provincia.class, mixin = ProvinciaMixIn.class)})
+    @GetMapping(value = "comboSimple/remote")
+    public @ResponseBody List<Provincia> getComboRemote() {
+        List<Provincia> listaProvincias = provinciaService.findAll(null, null);
+        if(provincia == 0){
+        	provincia = 1;
+        }else{
+        	provincia = 0;
+        	Provincia provi = new Provincia(new BigDecimal(33), "Hugo", "Hugo", "Hugo");
+        	listaProvincias.remove(0);
+			listaProvincias.add(provi);
+        }
+        return listaProvincias;
+    }
+    
+    @GetMapping(value = "comboSimple/remoteGroup")
+    public @ResponseBody
+    List<HashMap<String, List<DivisionTerritorialDto>>> getRemoteComboGrupos() {
+        return this.setRemoteComboGruposEnlazado(null);
+    }
+    
+    @GetMapping(value = "comboSimple/remoteGroupEnlazado")
+    public @ResponseBody
+    List<HashMap<String, List<DivisionTerritorialDto>>> getRemoteComboGruposEnlazado(
+    		@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	return this.setRemoteComboGruposEnlazado(provincia_code);
+    }
+    
+    private List<HashMap<String, List<DivisionTerritorialDto>>> setRemoteComboGruposEnlazado(BigDecimal provincia_code) {
+
+        //Idioma
+        Locale locale = LocaleContextHolder.getLocale();
+
+        //Retorno del método
+        List<HashMap<String, List<DivisionTerritorialDto>>> retorno = new ArrayList<HashMap<String, List<DivisionTerritorialDto>>>();
+
+        //Nombres de los grupos según idioma
+        String provincia = null, comarca = null, localidad = null;
+        if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            provincia = "Provincia_eu";
+            comarca = "Comarca_eu";
+            localidad = "Localidad_eu";
+        } else {
+            provincia = "Provincia";
+            comarca = "Comarca";
+            localidad = "Localidad";
+        }
+
+        //Provincia
+        HashMap<String, List<DivisionTerritorialDto>> group = new HashMap<String, List<DivisionTerritorialDto>>();
+
+        Provincia provinciaFilter = null;
+
+        if (provincia_code == null) {
+
+        	List<Provincia> lista = provinciaService.findAll(null, null);
+
+			try {
+				List<DivisionTerritorialDto> listaDivision = listToDivisionResource(lista,"Prov");
+				group.put(provincia, listaDivision);
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        	
+            retorno.add(group);
+        } else {
+            provinciaFilter = new Provincia();
+            provinciaFilter.setCode(provincia_code);
+        }
+
+        //Comarca
+        group = new HashMap<String, List<DivisionTerritorialDto>>();
+        List<Comarca> listaComarca = new ArrayList<Comarca>();
+        if (provincia_code != null) {
+            Comarca comarcaFilter = new Comarca();
+            comarcaFilter.setProvincia(provinciaFilter);
+            listaComarca = comarcaService.findAll(comarcaFilter, null);
+            
+        } else {
+        	listaComarca = comarcaService.findAll(null, null);
+        }
+                
+		try {
+			List<DivisionTerritorialDto> listaDivision = listToDivisionResource(listaComarca,"Coma");
+			group.put(comarca, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        retorno.add(group);
+
+        //Localidad
+        group = new HashMap<String, List<DivisionTerritorialDto>>();
+        List<Localidad> listaLocalidad = new ArrayList<Localidad>();
+        if (provincia_code != null) {
+            Localidad localidadFilter = new Localidad();
+            Comarca comarcaFilter = new Comarca();
+            comarcaFilter.setProvincia(provinciaFilter);
+            localidadFilter.setComarca(comarcaFilter);
+            listaLocalidad= localidadService.findAll(localidadFilter, null);
+        } else {
+        	listaLocalidad= localidadService.findAll(null, null);
+        }
+        
+		try {
+			List<DivisionTerritorialDto> listaDivision = listToDivisionResource(listaLocalidad,"Loca");
+			group.put(localidad, listaDivision);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+        retorno.add(group);
+
+        return retorno;
+    }
+
+
+    private List<DivisionTerritorialDto> listToDivisionResource(List<?> lista, String tipo) throws SecurityException, NoSuchFieldException {
+    	List<DivisionTerritorialDto> listaDivision = new ArrayList<DivisionTerritorialDto>();
+    	for (int i = 0; i < lista.size(); i++) {
+    		
+    		Object obj = lista.get(i);
+    		Class<?> c = obj.getClass();
+    		Field code = c.getDeclaredField("code");
+    		Field descEs = c.getDeclaredField("descEs");
+    		Field descEu = c.getDeclaredField("descEu");
+    		Field css = c.getDeclaredField("css");
+    		code.setAccessible(true);
+    		descEs.setAccessible(true);
+    		descEu.setAccessible(true);
+    		css.setAccessible(true);
+    		try {
+				DivisionTerritorialDto dt = new DivisionTerritorialDto(code.get(obj) + tipo,(String) descEs.get(obj), (String) descEu.get(obj),(String) css.get(obj));
+				listaDivision.add(dt );
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listaDivision;
+	}
+
+	/**
+     * COMBO ENLAZADO SIMPLE
+     */
+    @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaLocalidadDTO")
+    public @ResponseBody ProvinciaComarcaLocalidadDTO getProvinciaComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return provinciaComarcaLocalidadDTO;
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/provinciaComarcaDTO")
+    public @ResponseBody ProvinciaComarcaDTO getProvinciaComarcaDTO(
+    		@RequestBody ProvinciaComarcaDTO provinciaComarcaDTO) {
+        return provinciaComarcaDTO;
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/comarcaLocalidadDTO")
+    public @ResponseBody ProvinciaComarcaLocalidadDTO getComarcaLocalidadDTO(
+    		@RequestBody ProvinciaComarcaLocalidadDTO provinciaComarcaLocalidadDTO) {
+        return provinciaComarcaLocalidadDTO;
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoProvincia")
+    public @ResponseBody
+    List<Provincia> getEnlazadoProvincia() {
+        return provinciaService.findAll(null, null);
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarca")
+    public @ResponseBody
+    List<Comarca> getEnlazadoComarca(
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+
+        //Convertir parámetros en entidad para búsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        return comarcaService.findAll(comarca, null);
+    }
+
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidad")
+    public @ResponseBody
+    List<Localidad> getEnlazadoLocalidad(
+            @RequestParam(value = "codeComarca", required = false) BigDecimal comarca_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Comarca comarca = new Comarca();
+        comarca.setCode(comarca_code);
+        Localidad localidad = new Localidad();
+        localidad.setComarca(comarca);
+        
+        return localidadService.findAll(localidad, null);
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteGroupEnlazadoComarcaLocalidad")
+    public @ResponseBody
+    List<HashMap<String, List<DivisionTerritorialDto>>> getEnlazadoComarcaLocalidad(
+    		@RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+    	return this.setRemoteComboGruposEnlazado(provincia_code);
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam")
+    public @ResponseBody
+    List<Comarca> getEnlazadoComarcaNoParam(
+            @RequestParam(value = "codeProvincia", required = true) BigDecimal provincia_code) throws Exception {
+
+    	if(provincia_code.intValueExact() < 1 || provincia_code.intValueExact() > 6){
+    		throw new Exception("Identificador no valido");
+    	}
+        //Convertir parámetros en entidad para búsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        return comarcaService.findAll(comarca, null);
+    }
+
+    @GetMapping(value = "comboEnlazado/comarcaLocalidad")
     public @ResponseBody
     List<Localidad> getComarcaLocalidad(
             @RequestParam(value = "comarcaId", required = false) BigDecimal comarca_code) {
 
-        //Convertir parámetros en entidad para búsqueda
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
         Localidad localidad = new Localidad();
         Comarca comarca = new Comarca();
         comarca.setCode(comarca_code);
@@ -958,26 +1287,130 @@ public class PatronesController {
         return localidadService.findAll(localidad, null);
     }
 
+
+    /**
+     * COMBO ENLAZADO MULTIPLE
+     */
+    /**
+     * Combos Enlazados (múltiple)
+     */
+    @GetMapping(value = "comboEnlazadoMultiple/departamentoProvinciaDTO")
+    public @ResponseBody DepartamentoProvinciaDTO getDepartamentoProvinciaDTO(
+    		@RequestBody DepartamentoProvinciaDTO departamentoProvinciaDTO) {
+        return departamentoProvinciaDTO;
+    }
+    
+    @GetMapping(value = "comboEnlazadoMultiple/departamentoRemote")
+    public @ResponseBody List<Departamento> getEnlMultDpto() {
+        return departamentoService.findAll(null, null);
+    }
+
+    @GetMapping(value = "comboEnlazadoMultiple/provinciaRemote")
+    public @ResponseBody List<Provincia> getEnlMultProv() {
+        return provinciaService.findAll(null, null);
+    }
+
+    @GetMapping(value = "comboEnlazadoMultiple/dptoProvRemote")
+    public @ResponseBody List<DepartamentoProvincia> getEnlMultDptoProv(
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) BigDecimal provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+        
+        return departamentoProvinciaService.findAll(departamentoProvincia, null);
+    }
+    
+    @GetMapping(value = "comboEnlazadoMultiple/dptoProvRemoteNoParam")
+    public @ResponseBody
+    List<DepartamentoProvincia> getEnlMultDptoProvNoParam(
+            @RequestParam(value = "codeDepartamento", required = false) BigDecimal departamento_code,
+            @RequestParam(value = "codeProvincia", required = false) Integer provincia_code) {
+
+        //Convertir parÃ¡metros en entidad para bÃºsqueda
+        Departamento departamento = new Departamento();
+        departamento.setCode(departamento_code);
+        Provincia provincia = new Provincia();
+        provincia.setCode(new BigDecimal(provincia_code));
+        DepartamentoProvincia departamentoProvincia = new DepartamentoProvincia();
+        departamentoProvincia.setDepartamento(departamento);
+        departamentoProvincia.setProvincia(provincia);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return departamentoProvinciaService.findAll(departamentoProvincia, null);
+    }
+
     /**
      * TABS -> Contenidos
      */
-    @RequestMapping(value = {"fragmento1", "fragmento2", "fragmento3"}, method = RequestMethod.GET)
+    @GetMapping(value = {"fragmento1", "fragmento2", "fragmento3"})
     public String tabsContent(Model model) {
         return "tabsContent_1";
     }
-
-    @RequestMapping(value = {"tab2Fragment"}, method = RequestMethod.GET)
+    
+    @GetMapping(value = {"tab2Fragment"})
     public String tabs2Content(Model model) {
         return "tabsContent_2";
     }
 
-    @RequestMapping(value = {"tab3Fragment"}, method = RequestMethod.GET)
+    @GetMapping(value = {"tab3Fragment"})
     public String tabs3Content(Model model) {
         return "tabsContent_3";
     }
+    
+	@GetMapping(value = "/tabs4Table")
+	public String tabs4Table (Model model) {
+		Usuario usuario = new Usuario();
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("options", new TableOptions());
+		
+		Map<String,String> comboRol = new LinkedHashMap<String,String>();
+		comboRol.put("", "---");
+		comboRol.put("Administrador", "Administrador");
+		comboRol.put("Desarrollador", "Desarrollador");
+		comboRol.put("Espectador", "Espectador");
+		comboRol.put("Informador", "Informador");
+		comboRol.put("Manager", "Manager");
+		model.addAttribute("comboRol", comboRol);
+		
+		Map<String,String> comboEjie = new LinkedHashMap<String,String>();
+		comboEjie.put("", "---");
+		comboEjie.put("0", "No");
+		comboEjie.put("1", "Sí");
+		model.addAttribute("comboEjie", comboEjie);
+		
+		return "tabsTable_4";
+	}
+	
+	@GetMapping(value = "/tabs5TableMultiPk")
+	public String tabs5TableMultiPk (Model model) {
+		model.addAttribute("multiPk", new MultiPk());
+		model.addAttribute("options", new TableOptions());
+		return "tabsTableMultiPk_5";
+	}
+
+    @GetMapping(value = "pruebaSub")
+    public String tabSub(Model model) {
+        return "tabsContent_1";
+    }
+    
+    @GetMapping(value = "pruebaSubAna")
+    public String tabSubAna(Model model) {
+        return "tabsContent_2";
+    }
 
     // rupCharts
-    @RequestMapping(value = "charts", method = RequestMethod.GET)
+    @GetMapping(value = "charts")
     public String getCharts(Model model) {
         return "charts";
     }
@@ -1084,7 +1517,7 @@ public class PatronesController {
      * MAINT (Usuarios) [form.jsp]
      */
     //Form http submit
-    @RequestMapping(value = "form/ejemplo", method = RequestMethod.POST)
+    @PostMapping(value = "form/ejemplo")
     public @ResponseBody
     Object getFormHttp(@RequestBody Alumno alumno) {
 
@@ -1092,13 +1525,61 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("El formulario se ha enviado correctamente.");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(new JSONObject(alumno).toString());
         messageWriter.endSubLevel();
         messageWriter.endMessageList();
 
         return messageWriter.toString();
+    }
+    
+    /**
+     * MAINT (Usuarios) [form.jsp]
+     */
+    //Form http submit
+    @PostMapping(value = "form/ejemploModelView")
+    public @ResponseBody Alumno getFormModelView(Model model, @RequestBody Alumno alumno) {
+
+        List<NoraPais> paises = noraPaisService.findAll(null, null);
+        model.addAttribute("paises", paises);
+
+        List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
+        model.addAttribute("autonomias", autonomias);
+
+        //model.addAttribute("comarca", new Comarca());
+
+        //model.addAttribute("formComarcas", new FormComarcas());
+        alumno.setId(new BigDecimal(1300));
+        model.addAttribute("alumno", alumno);
+
+        return alumno;
+    }
+    
+    @PostMapping(value = "form/ejemploFormNavigate")
+    public String getFormNavigate(Model model, @ModelAttribute  Alumno alumno) {
+
+        List<NoraPais> paises = noraPaisService.findAll(null, null);
+        model.addAttribute("paises", paises);
+
+        List<NoraAutonomia> autonomias = noraAutonomiaService.findAll(null, null);
+        model.addAttribute("autonomias", autonomias);
+
+        //model.addAttribute("comarca", new Comarca());
+
+        //model.addAttribute("formComarcas", new FormComarcas());
+        Usuario usuario = new Usuario();
+        
+        if(alumno != null){
+        	alumno.setId(new BigDecimal(1300));
+        }
+        usuario.setId(alumno.getId()+"");
+        usuario.setNombre(alumno.getNombre());
+        model.addAttribute("alumno", alumno);
+
+        model.addAttribute("usuarioDATA", usuario);
+
+        return "formModelView";
     }
 
 
@@ -1117,7 +1598,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
-    @RequestMapping(value = "form/multientidades", method = RequestMethod.POST)
+    @PostMapping(value = "form/multientidades")
     public @ResponseBody
     Object getFormmMultientidades(
             @RequestJsonBody(param = "alumno") Alumno alumno,
@@ -1127,7 +1608,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(alumno != null ? new JSONObject(alumno).toString() : "");
         messageWriter.endSubLevel();
@@ -1137,7 +1618,7 @@ public class PatronesController {
     }
 
     //Form ajax submit
-    @RequestMapping(value = "form/multientidadesMismoTipo", method = RequestMethod.POST)
+    @PostMapping(value = "form/multientidadesMismoTipo")
     public @ResponseBody
     Object getFormmMultientidadesMismoTipo(
             @RequestJsonBody(param = "comarca1") Comarca comarca1,
@@ -1149,7 +1630,7 @@ public class PatronesController {
 
         messageWriter.startMessageList();
         messageWriter.addMessage("Las entidades se han enviado correctamente");
-        messageWriter.addMessage("Esta es la representación JSON del objeto recibido:");
+        messageWriter.addMessage("Esta es la representaciÃ³n JSON del objeto recibido:");
         messageWriter.startSubLevel();
         messageWriter.addMessage(comarca1 != null ? new JSONObject(comarca1).toString() : "");
         messageWriter.endSubLevel();
@@ -1158,8 +1639,8 @@ public class PatronesController {
         return messageWriter.toString();
 
     }
-
-    @RequestMapping(value = "form/subidaArchivos", method = RequestMethod.POST, produces = "application/json")
+    
+    @PostMapping(value = "form/subidaArchivos", produces = "application/json")
     public @ResponseBody
     Object addFormSimple(
             @ModelAttribute UploadBean uploadBean,
@@ -1195,7 +1676,7 @@ public class PatronesController {
      * Validacion
      */
 
-    @RequestMapping(value = "validacion/cliente", method = RequestMethod.POST)
+    @PostMapping(value = "validacion/cliente")
     public @ResponseBody
     Object validacion(Model model) {
 
@@ -1211,7 +1692,7 @@ public class PatronesController {
      * Validacion
      */
 
-    @RequestMapping(value = "validacion/servidor", method = RequestMethod.POST)
+    @PostMapping(value = "validacion/servidor")
     public @ResponseBody
     Object validacion(@Validated(value = {AlumnoEjemplo1Validation.class}) @RequestBody Alumno alumno, Model model) {
 
@@ -1228,7 +1709,7 @@ public class PatronesController {
      * @throws IOException
      */
 
-    @RequestMapping(value = "validacion/servidor2", method = RequestMethod.POST, produces = "application/json")
+    @PostMapping(value = "validacion/servidor2", produces = "application/json")
     public @ResponseBody
     Object validacion2(@RequestBody Alumno alumno, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -1300,196 +1781,24 @@ public class PatronesController {
 
 
     /**
-     * Método para obtener la vista el calendarios
+     * MÃ©todo para obtener la vista el calendarios
      *
      * @param model el modelo.
      * @return string la view.
      */
-    @RequestMapping(value = "calendar/page", method = RequestMethod.GET)
+    @GetMapping(value = "calendar/page")
     public String getCalendar(Model model) {
         return "calendar";
     }
 
     /**
-     * Método para obtener la vista con dos calendarios
+     * MÃ©todo para obtener la vista con dos calendarios
      *
      * @param model el modelo.
      * @return string la view.
      */
-    @RequestMapping(value = "calendar/pageDouble", method = RequestMethod.GET)
+    @GetMapping(value = "calendar/pageDouble")
     public String getDoubleCalendar(Model model) {
         return "doubleCalendar";
-    }
-    
-    private List<Provincia> provinciasGenerator() {		
-		List<Provincia> provincias = new ArrayList<Provincia>();
-		provincias.add(alava);
-		provincias.add(vizcaya);
-		provincias.add(gipuzcoa);
-		
-		return provincias;
-    }
-    
-    private List<Comarca> comarcasGeneratorSelect() {		
-		List<Comarca> comarcas = new ArrayList<Comarca>();
-		comarcas.add(new Comarca(new BigDecimal(1),new BigDecimal(1), "Llanada alavesa", "Arabako lautada","1", null));
-		comarcas.add(new Comarca(new BigDecimal(2),new BigDecimal(1), "Oyonesa", "Arabako lautada","1", null));
-		comarcas.add(new Comarca(new BigDecimal(3),new BigDecimal(1), "Gamarresa", "Arabako lautada","1", null));
-		
-		comarcas.add(new Comarca(new BigDecimal(4),new BigDecimal(2), "Pequeño Bilbao", "Arabako lautada","2", null));
-		comarcas.add(new Comarca(new BigDecimal(5),new BigDecimal(2), "Las Playas", "Arabako lautada","2", null));
-		comarcas.add(new Comarca(new BigDecimal(6),new BigDecimal(2), "Gran Bilbao", "Arabako lautada","2", null));
-		
-		comarcas.add(new Comarca(new BigDecimal(7),new BigDecimal(3), "Donosti", "Arabako lautada","3", null));
-		comarcas.add(new Comarca(new BigDecimal(8),new BigDecimal(3), "Zarautz", "Arabako lautada","3", null));
-		comarcas.add(new Comarca(new BigDecimal(9),new BigDecimal(3), "Eibar", "Arabako lautada","3", null));
-		
-		comarcas.add(new Comarca(new BigDecimal(10),new BigDecimal(4), "Aranda de Duero", "Arabako lautada","4", null));
-		comarcas.add(new Comarca(new BigDecimal(11),new BigDecimal(4), "Burgos", "Arabako lautada","4", null));
-		comarcas.add(new Comarca(new BigDecimal(12),new BigDecimal(4), "Miranda de Ebro", "Arabako lautada","4", null));
-		
-		return comarcas;
-    }
-
-    
-    private List<Departamento> departamentosGenerator() {
-    	List<Departamento> departamentos = new ArrayList<Departamento>();
-		departamentos.add(ayuntamiento);
-		departamentos.add(diputacion);
-		departamentos.add(policia);
-		departamentos.add(bomberos);
-		
-		return departamentos;
-    }
-    
-    private List<DepartamentoProvincia> departamentosProvinciasGeneratorSelect() {
-    	List<DepartamentoProvincia> departamentoProvincia = new ArrayList<DepartamentoProvincia>();
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(1), "Ayuntamiento de Álava", "Arabako udaletxea", null, alava, ayuntamiento,"1##1"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(2), "Diputación de Álava", "Arabako aldundia", null, alava, diputacion,"2##1"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(3), "Policía de Álava", "Arabako polizia", null, alava, policia,"3##1"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(4), "Bomberos de Álava", "Arabako suhiltzaileak", null, alava, bomberos,"4##1"));
-
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(5), "Ayuntamiento de Vizcaya", "Bizkaiko udaletxea", null, vizcaya, ayuntamiento,"1##2"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(6), "Diputación de Vizcaya", "Bizkaiko aldundia", null, vizcaya, diputacion,"2##2"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(7), "Policía de Vizcaya", "Bizkaiko polizia", null, vizcaya, policia,"3##2"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(8), "Bomberos de Vizcaya", "Bizkaiko suhiltzaileak", null, vizcaya, bomberos,"4##2"));
-
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(9), "Ayuntamiento de Gipúzcoa", "Gipuzkoako udaletxea", null, gipuzcoa, ayuntamiento,"1##3"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(10), "Diputación de Gipúzcoa", "Gipuzkoako aldundia", null, gipuzcoa, diputacion,"2##3"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(11), "Policía de Gipúzcoa", "Gipuzkoako polizia", null, gipuzcoa, policia,"3##3"));
-    	departamentoProvincia.add(new DepartamentoProvincia(new BigDecimal(12), "Bomberos de Gipúzcoa", "Gipuzkoako suhiltzaileak", null, gipuzcoa, bomberos,"4##3"));
-    	
-		return departamentoProvincia;
-    }
-    
-    //Select Simple
-    @GetMapping(value = "selectSimple")
-    public String getSelectSimple(Model model) {
-    	model.addAttribute("provincia", new Provincia());
-    	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
-    	
-        return "selectSimple";
-    }
-    
-    //SelectEnlazado - simple
-    @GetMapping(value = "selectEnlazadoSimple")
-    public String getSelectEnlazadoSimple(Model model) {
-    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
-    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
-    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
-    	
-		// Provincias
-		model.addAttribute("comboProvincia", provinciasGenerator());
-		
-		// Comarcas
-		model.addAttribute("comboComarca", comarcasGeneratorSelect());
-    	
-        return "selectEnlazadoSimple";
-    }
-    
-    //selectEnlazado - multiple
-    @GetMapping(value = "selectEnlazadoMultiple")
-    public String getSelectEnlazadoMultiple(Model model) {
-    	model.addAttribute("departamentoProvinciaDTO", new DepartamentoProvinciaDTO());
-    	
-    	// Departamentos
-    	model.addAttribute("comboDepartamento", departamentosGenerator());
-		
-		// Provincias
-		model.addAttribute("comboProvincia", provinciasGenerator());
-    	
-		// Departamentos y provincias
-    	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorSelect());
-		
-        return "selectEnlazadoMultiple";
-    }
-    
-    //MultiSelect
-    @GetMapping(value = "selectMultiselect")
-    public String getSelectMultiSelect(Model model) {
-    	model.addAttribute("provincia", new Provincia());
-    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
-    	
-        return "selectMultiselect";
-    }
-
-    //select en mantenimiento
-    @GetMapping(value = "selectMantenimiento")
-    public String getSelectMantenimiento(Model model) {
-        model.addAttribute("X21aAlumno", new X21aAlumno());
-        return "selectMantenimiento";
-    }
-    
-    // Select Autocomplete
-    @GetMapping(value = "selectAutocomplete")
-    public String getSelectAutocomplete(Model model) {
-    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
-    	model.addAttribute("provincia", new Provincia());
-    	
-        return "selectAutocomplete";
-    }
-
-    // Select Autocomplete Enlazado
-    @GetMapping(value = "selectAutocompleteEnlazado")
-    public String getSelectAutocompleteEnlazado(Model model) {
-    	
-    	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
-    	model.addAttribute("provinciaComarcaDTO", new ProvinciaComarcaDTO());
-    	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
-    	
-		// Provincias
-		model.addAttribute("selectAutocompleteProvincia", provinciasGenerator());
-		
-		// Comarcas
-		model.addAttribute("selectAutocompleteComarca", comarcasGeneratorSelect());
-		
-        return "selectAutocompleteEnlazado";
-    }
-
-    // Select Autocomplete Enlazado Multiple
-    @GetMapping(value = "selectAutocompleteEnlazadoMultiple")
-    public String getSelectAutocompleteEnlazadoMultiple(Model model) {
-        return "selectAutocompleteEnlazadoMultiple";
-    }
-    
-    @RequestMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaNoParam", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Comarca> getEnlazadoComarcaNoParam(
-            @RequestParam(value = "codeProvincia", required = true) Integer codeProvincia) throws Exception {
-
-    	if(codeProvincia < 1 || codeProvincia > 6){
-    		throw new Exception("Identificador no valido");
-    	}
-        //Convertir parÃ¡metros en entidad para bÃºsqueda
-        Provincia provincia = new Provincia();
-        provincia.setCode(new BigDecimal(codeProvincia));
-        Comarca comarca = new Comarca();
-        comarca.setProvincia(provincia);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return comarcaService.findAll(comarca, null);
     }
 }
