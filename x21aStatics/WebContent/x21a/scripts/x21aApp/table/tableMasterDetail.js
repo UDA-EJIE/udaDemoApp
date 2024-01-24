@@ -64,7 +64,19 @@ jQuery(function ($) {
 	        formoptions: {
 	            rowpos: 5,
 	            colpos: 1
-	        }
+	        },
+	        rupType: 'select',
+	        editoptions:{
+		        url: '../jqGridComarca/provincia',
+		        sourceParam: {
+		            text: 'desc' + $.rup_utils.capitalizedLang(),
+		            id: 'code',
+		            style: 'css'
+		        },
+		        blank: '',
+		        width: '100%',
+		        customClasses: ['select-material']
+		    }
 	    },
 	    {
 	        name: 'provincia.descEs',
@@ -204,18 +216,7 @@ jQuery(function ($) {
 	
 	    });
 	
-	    $('#provinciaRemote').rup_combo({
-	        source: '../jqGridComarca/provincia',
-	        sourceParam: {
-	            label: 'desc' + $.rup_utils.capitalizedLang(),
-	            value: 'code',
-	            style: 'css'
-	        },
-	        rowStriping: true,
-	        blank: '',
-	        width: '100%',
-	        customClasses: ['select-material']
-	    });
+	   
 	    /*
 	    $('#comarcaRemote').rup_combo({
 	        source : "../jqGridComarca/comarca",

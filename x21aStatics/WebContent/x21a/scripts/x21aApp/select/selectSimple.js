@@ -103,19 +103,19 @@ $(function () {
         
         $('#selectLargoMulti').rup_select({
         	data: [{
-                i18nCaption: 'jon_doe',
+                text: 'jon_doe',
                 id: 'jon'
             },
             {
-                i18nCaption: 'jane_doe',
+                text: 'jane_doe',
                 id: 'jane'
             },
             {
-                i18nCaption: 'joseph_doe',
+                text: 'joseph_doe',
                 id: 'joseph'
             },
             {
-                i18nCaption: 'mad_doe',
+                text: 'mad_doe',
                 id: 'mad'
             }
             ],
@@ -132,19 +132,19 @@ $(function () {
         
         $('#selectLargo').rup_select({
         	data: [{
-                i18nCaption: 'jon_doe',
+                text: 'jon_doe',
                 id: 'jon'
             },
             {
-                i18nCaption: 'jane_doe',
+                text: 'jane_doe',
                 id: 'jane'
             },
             {
-                i18nCaption: 'joseph_doe',
+                text: 'joseph_doe',
                 id: 'joseph'
             },
             {
-                i18nCaption: 'mad_doe',
+                text: 'mad_doe',
                 id: 'mad'
             }
             ],
@@ -156,21 +156,21 @@ $(function () {
         //GROUPS
         $('#selectGrupos').rup_select({
             dataGroups: [{
-            	'id':'',
+
             	'text': 'futbol',
                 'children': [{
-                    i18nCaption: 'alaves',
+                    text: 'alaves',
                     id: 'alaves_value',
                     style: 'garage',
                     stylePosition:'A' //B - Before , M - middle , A - After
                 },
                 {
-                    i18nCaption: 'ath',
+                    text: 'ath',
                     id: 'ath_value',
                     style: 'heart text-danger'
                 },
                 {
-                    i18nCaption: 'real',
+                    text: 'real',
                     id: 'real_value',
                     style:'delete',
                     stylePosition:'B'
@@ -178,36 +178,36 @@ $(function () {
                 ],style:'soccer'
             },
             {
-            	'id':'',
+
             	'text':'baloncesto',
                 'children': [{
-                    i18nCaption: 'laboral',
+                    text: 'laboral',
                     id: 'laboral_value'
                 },
                 {
-                    i18nCaption: 'bilbao',
+                    text: 'bilbao',
                     id: 'bilbao_value'
                 },
                 {
-                    i18nCaption: 'lagun aro',
+                    text: 'lagun aro',
                     id: 'lagun aro_value'
                 }
                 ],style:'basketball'
             },
             {
-            	'id':'',
+
             	'text':'formula1',
             	'children': [{
-                    i18nCaption: 'falonso',
+                    text: 'falonso',
                     id: 'falonso_value'
                     
                 },
                 {
-                    i18nCaption: 'hamilton',
+                    text: 'hamilton',
                     id: 'hamilton_value'
                 },
                 {
-                    i18nCaption: 'vettel',
+                    text: 'vettel',
                     id: 'vettel_value'
                 }
                 ],
@@ -234,7 +234,7 @@ $(function () {
             },
              placeholder: '[Seleccione un elemento]',
             allowClear: true,
-            selected: ['7Coma'],
+            selected: ['200'],//haro
             change: function () {
                 console.log('selectGruposRemoto:::Changed');
             },
