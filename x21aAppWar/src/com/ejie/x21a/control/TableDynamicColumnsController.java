@@ -299,7 +299,7 @@ public class TableDynamicColumnsController  {
 	 *            RUP_TABLE a aplicar en la bÃƒÆ’Ã‚Âºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -321,7 +321,7 @@ public class TableDynamicColumnsController  {
 	 * @param filterUsuario Usuario
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<Usuario> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
 			@RequestParam(required = false) String[] columns, 

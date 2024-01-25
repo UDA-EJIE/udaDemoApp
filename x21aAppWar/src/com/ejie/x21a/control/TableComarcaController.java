@@ -280,7 +280,7 @@ public class TableComarcaController {
 	 * @param filterComarca Comarca
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<Comarca> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Comarca filterComarca,
 			@RequestParam(required = false) String[] columns, 

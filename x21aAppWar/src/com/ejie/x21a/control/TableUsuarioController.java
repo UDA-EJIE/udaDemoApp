@@ -953,7 +953,7 @@ public class TableUsuarioController {
 	 *            RUP_TABLE a aplicar en la bÃºsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Usuario filterUsuario,
@@ -975,7 +975,7 @@ public class TableUsuarioController {
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@PostMapping(value = "{bis}/filter", params = "deleteAll")
+	@PostMapping(value = "{bis}/deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple2(
 			@RequestJsonBody(param="filter") Usuario2 filterUsuario,
@@ -1000,7 +1000,7 @@ public class TableUsuarioController {
 	 * @param reportsParams ArrayList<?>
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<Usuario> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Usuario filterUsuario,
 			@RequestParam(required = false) String[] columns, 
@@ -1011,7 +1011,7 @@ public class TableUsuarioController {
 		return this.tableUsuarioService.getDataForReports(filterUsuario, tableRequestDto);
 	}
 	
-	@PostMapping(value = "{bis}/filter", params = "clipboardReport")
+	@PostMapping(value = "{bis}/clipboardReport")
 	public @ResponseBody List<Usuario2> getClipboardReport2(
 			@PathVariable final String bis,
 			@RequestJsonBody(param = "filter", required = false) Usuario2 filterUsuario,

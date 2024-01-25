@@ -328,7 +328,7 @@ public class TableAlumnoController  {
 	 * @param alumnoIds List
 	 * @return alumnoList
 	 */	
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value=HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") Alumno filterAlumno,

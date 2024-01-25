@@ -236,7 +236,7 @@ public class TableX21aAlumnoController  {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
@@ -303,7 +303,7 @@ public class TableX21aAlumnoController  {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<X21aAlumno> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) X21aAlumno filterX21aAlumno,
 			@RequestParam(required = false) String[] columns, 

@@ -213,7 +213,7 @@ public class TableLocalidadController {
 	 * @param filterLocalidad Localidad
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<Localidad> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) Localidad filterLocalidad,
 			@RequestParam(required = false) String[] columns, 

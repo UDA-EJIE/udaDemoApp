@@ -299,7 +299,7 @@ public class TableMultiPkController {
 	 *            Lista de los identificadores de los registros eliminados.
 	 * 
 	 */
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param="filter") MultiPk filterMultiPk,
@@ -321,7 +321,7 @@ public class TableMultiPkController {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 */
-	@PostMapping(value = "/filter", params = "clipboardReport")
+	@PostMapping(value = "/clipboardReport")
 	public @ResponseBody List<MultiPk> getClipboardReport(
 			@RequestJsonBody(param = "filter", required = false) MultiPk filterMultiPk,
 			@RequestParam(required = false) String[] columns, 

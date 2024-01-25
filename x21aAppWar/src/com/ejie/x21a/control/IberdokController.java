@@ -219,7 +219,7 @@ public class IberdokController {
 	 *            RUP_TABLE a aplicar en la búsqueda.
 	 * @return Lista de los identificadores de los registros eliminados.
 	 */
-	@PostMapping(value = "/filter", params = "deleteAll")
+	@PostMapping(value = "/deleteAll")
 	@ResponseStatus(value = HttpStatus.OK)
 	public @ResponseBody List<String> removeMultiple(
 			@RequestJsonBody(param = "filter") IberdokFile filterIberdokFile,
