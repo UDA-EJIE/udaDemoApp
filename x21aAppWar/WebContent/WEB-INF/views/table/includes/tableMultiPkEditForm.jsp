@@ -39,7 +39,7 @@
 			</div>
 		</c:when>
 		<c:when test="${not empty pkValue}">
-			<form:hidden path="id" value="${pkValue.id}" id="id_multipk_detail_table" />
+			<form:hidden path="id" value="${pkValue}" id="id_multipk_detail_table" />
 		</c:when>
 	</c:choose>
 	<div class="form-row">

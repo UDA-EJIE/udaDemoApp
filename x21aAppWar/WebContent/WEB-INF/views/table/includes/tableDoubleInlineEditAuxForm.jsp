@@ -23,7 +23,7 @@
 <spring:url value="/table/2/${endpoint}" var="url"/>
 <form:form modelAttribute="usuario2" id="example2_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
 	<c:if test="${not empty pkValue}">
-		<form:hidden path="id" value="${pkValue.id}" id="id_inlineEdit_aux_form2" />
+		<form:hidden path="id" value="${pkValue}" id="id_inlineEdit_aux_form2" />
 	</c:if>
 	<form:input path="nombre" id="nombre_inlineEdit_aux_form2" />
 	<form:input path="apellido1" id="apellido1_inlineEdit_aux_form2" />

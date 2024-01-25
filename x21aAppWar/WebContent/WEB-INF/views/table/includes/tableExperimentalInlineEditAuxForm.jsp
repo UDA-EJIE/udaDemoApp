@@ -23,7 +23,7 @@
 <spring:url value="/experimental/${endpoint}" var="url"/>
 <form:form modelAttribute="logModel" id="experimental_detail_inlineEdit_aux_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}">
 	<c:if test="${not empty pkValue}">
-		<form:hidden path="nameLog" value="${pkValue.id}" id="id_experimental_inlineEdit_aux_form" />
+		<form:hidden path="nameLog" value="${pkValue}" id="id_experimental_inlineEdit_aux_form" />
 	</c:if>
 	<form:select path="levelLog" id="levelLog_experimental_inlineEdit_aux_form" items="${comboLevel}" />
 	<form:input path="nameEscape" id="nameEscape_experimental_inlineEdit_aux_form" />

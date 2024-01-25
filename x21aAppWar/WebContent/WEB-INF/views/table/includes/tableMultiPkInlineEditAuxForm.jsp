@@ -28,7 +28,7 @@
 			<form:input path="idb" id="idb_multiPk_detail_table"/>
 		</c:when>
 		<c:when test="${not empty pkValue}">
-			<form:hidden path="id" value="${pkValue.id}" id="id_multiPk_inlineEdit_aux_form" />
+			<form:hidden path="id" value="${pkValue}" id="id_multiPk_inlineEdit_aux_form" />
 		</c:when>
 	</c:choose>
 	<form:input path="nombre" id="nombre_multiPk_inlineEdit_aux_form" />
