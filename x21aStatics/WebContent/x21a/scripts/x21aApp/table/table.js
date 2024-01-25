@@ -179,6 +179,8 @@ jQuery(function ($) {
             }
 
             var plugins = {};
+            
+            plugins.enableDynamicForms = true;
 
             plugins.fixedHeader = {
             	footer: false,

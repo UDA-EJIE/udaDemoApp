@@ -55,6 +55,8 @@ jQuery(function ($) {
             }
 
             var plugins = {};
+            
+            plugins.enableDynamicForms = true;
 
             plugins.loadOnStartUp = true;
 

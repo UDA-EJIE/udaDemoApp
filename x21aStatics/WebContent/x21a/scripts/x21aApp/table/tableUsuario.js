@@ -19,6 +19,7 @@ jQuery(function ($) {
 
         primaryKey: 'id',
         loadOnStartUp: true,
+		enableDynamicForms: true,
         filter: {
             id: 'usuario_filter_form',
             filterToolbar: 'usuario_filter_toolbar',

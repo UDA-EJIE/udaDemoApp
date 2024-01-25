@@ -64,6 +64,7 @@ jQuery(function ($) {
 	    $('#comarca').rup_table({
 	        primaryKey: 'code',
 	        loadOnStartUp: true,
+            enableDynamicForms: true,
 	        filter: {
 	            id: 'comarca_filter_form',
 	            filterToolbar: 'comarca_filter_toolbar',

@@ -180,6 +180,7 @@ jQuery(function ($) {
 
         $('#columnasDinamicas').rup_table({
             colModel: tableColModel,
+            enableDynamicForms: true,
             filterMessage: false,
             buttons: {
                 activate: true

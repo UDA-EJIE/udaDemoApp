@@ -174,6 +174,8 @@ function _init() {
         }
 
         var plugins = {};
+            
+		plugins.enableDynamicForms = true;
 
         var fixedHeader = {
             footer: false,
