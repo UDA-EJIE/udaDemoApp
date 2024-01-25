@@ -46,8 +46,8 @@
 			value="/WEB-INF/layouts/header.jsp" />
 		<put-attribute name="language"
 			value="/WEB-INF/layouts/language.jsp" />
-		<put-attribute name="breadCrumb"
-			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/layouts/footer.jsp" />
 		<put-attribute name="base-includes"
@@ -285,6 +285,13 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/patrones/form-includes.jsp" />
 	</definition>
+	
+	<definition extends="template" name="formModelView">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/formModelView.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/formModelView-includes.jsp" />
+	</definition>
 
 	<definition extends="template" name="menu">
 		<put-attribute name="content"
@@ -306,11 +313,11 @@
 			value="/WEB-INF/views/patrones/message-includes.jsp" />
 	</definition>
 
-	<definition extends="template" name="progressbar">
+	<definition extends="template" name="progressBar">
 		<put-attribute name="content"
-			value="/WEB-INF/views/patrones/progressbar.jsp" />
+			value="/WEB-INF/views/patrones/progressBar.jsp" />
 		<put-attribute name="includes"
-			value="/WEB-INF/views/patrones/progressbar-includes.jsp" />
+			value="/WEB-INF/views/patrones/progressBar-includes.jsp" />
 	</definition>
 
 	<definition extends="template" name="slider">
@@ -368,6 +375,20 @@
 		template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp" />
 	<definition name="tabsContent_3"
 		template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp" />
+		
+	<definition extends="templateNoHeads" name="tabsTable_4">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTable-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tabsTableMultiPk_5">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipk.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTableMultipk-includes.jsp" />
+	</definition>
 
 	<definition extends="template" name="time">
 		<put-attribute name="content"
@@ -604,6 +625,39 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/table-includes.jsp" />
 	</definition>
+	
+	<definition extends="template" name="tableEditFormNewWindow">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableEditFormNewWindow.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableEditFormNewWindow-includes.jsp" />
+	</definition>
+	
+	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
+	
+	<definition name="tableDoubleEditForm" template="/WEB-INF/views/table/includes/tableDoubleEditForm.jsp" />
+	
+	<definition name="tableMultiPkEditForm" template="/WEB-INF/views/table/includes/tableMultiPkEditForm.jsp" />
+	
+	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
+	
+	<definition name="tableComarcaExtendidaEditForm" template="/WEB-INF/views/table/includes/tableComarcaExtendidaEditForm.jsp" />
+	
+	<definition name="tableDialogComarcaEditForm" template="/WEB-INF/views/table/includes/tableDialogComarcaEditForm.jsp" />
+	
+	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
+	
+	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDoubleInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDoubleInlineEditAuxForm.jsp" />
+	
+	<definition name="tableMultiPkInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableMultiPkInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDynamicColumnsInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDynamicColumnsInlineEditAuxForm.jsp" />
+	
+	<definition name="tableExperimentalInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableExperimentalInlineEditAuxForm.jsp" />
+	
+	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
 
 	<definition extends="template" name="tableDouble">
 		<put-attribute name="content"
@@ -624,6 +678,13 @@
 			value="/WEB-INF/views/table/tableMasterDetail.jsp" />
 		<put-attribute name="includes"
 			value="/WEB-INF/views/table/includes/tableMasterDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableComarcaExtendida">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableComarcaExtendida.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableComarcaExtendidaDetail-includes.jsp" />
 	</definition>
 	
 	<definition extends="template" name="tableDialogDetail">
@@ -703,6 +764,8 @@
 		<put-attribute name="includes"
 			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
 	</definition>
+	
+	<definition name="tableX21aAlumnoEditForm" template="/WEB-INF/views/x21aalumno/includes/x21aAlumnoEditForm.jsp" />
 
 	<definition extends="template" name="calendar">
 		<put-attribute name="content"

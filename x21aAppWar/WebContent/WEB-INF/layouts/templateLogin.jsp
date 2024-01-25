@@ -13,15 +13,18 @@
  -- Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia. 
  --%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/includeTemplate.inc" %>
 <%@ taglib prefix="tiles" uri="/WEB-INF/tld/tiles-jsp.tld" %>
 
 <html class="no-js" lang="es">
 <head>
-	<%@include file="/WEB-INF/includeTemplate.inc"%>
-	<title><spring:message code="app.title" /></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title><spring:message code="app.title" /></title>
+	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<%-- Estilos RUP --%>
 	<%@include file="/WEB-INF/layouts/includes/rup.styles.inc"%>
@@ -35,19 +38,20 @@
 	</script>
 </head>	
 <body>
-	<div class="contenedor">	
+	<div class="contenedor fade">	
 		<!-- Cabecera -->
 		<tiles:insertAttribute name="header" />
-
-		<!-- Idioma -->
-		<tiles:insertAttribute name="language" /><br/>
 		
-		<!-- Migas de pan -->
-		<tiles:insertAttribute name="breadCrumb" /><br/>
+		<!-- Idioma -->
+		<%-- <tiles:insertAttribute name="language" /><br/> --%>
+		
+		<!-- Menu -->
+		<tiles:insertAttribute name="menu" />
 		
 		<!-- Contenidos -->
-		<tiles:insertAttribute name="content"/>
-		
+		<div id="x21aAppWar_content" class="m-0 m-md-3 p-4 clear" >
+			<tiles:insertAttribute name="content"/>
+		</div>
 		<!-- Pie -->
 		<tiles:insertAttribute name="footer" />
 		
