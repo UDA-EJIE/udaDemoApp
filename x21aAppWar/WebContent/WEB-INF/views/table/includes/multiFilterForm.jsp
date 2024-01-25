@@ -15,7 +15,7 @@
  --%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
-<%@ taglib prefix="form" uri="/WEB-INF/tld/x38-form.tld"%>
+<%@ taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 
 <div id="${tableID}_multifilter_dropdownDialog" style="display:none" class="dialog-content-material">
 	<div id="${tableID}_multifilter_dropdownDialog_feedback"></div>
