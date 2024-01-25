@@ -33,6 +33,13 @@ jQuery(function ($) {
                 editable: true,
                 hidden: false,
             	rupType: 'select',
+                editoptions: {
+                	url: './apellidos',
+                    sourceParam: {text: 'label', id: 'value'},
+					autocomplete: true,
+                    contains: true,
+                    combo: true
+                },
                 searchoptions: {
                 	url: './apellidos',
                     sourceParam: {text: 'label', id: 'value'},
@@ -145,17 +152,10 @@ jQuery(function ($) {
         	combo: true
         });
         $('#fechaAlta_filter_table').rup_date({
-        	labelMaskId : 'fecha-mask',
-            showButtonPanel : true,
-            showOtherMonths : true,
-            noWeekend : true,
-            datetimepicker : true,
-            placeholderMask : true,
-            mask: 'dd/mm/yyyy hh:mm:ss',
-            showSecond: true,
-            dateFormat: 'dd/mm/yy',
-            timeFormat: 'hh:mm:ss',
-            timezoneOffset:120
+			labelMaskId: 'fecha-mask',
+			showButtonPanel: true,
+			showOtherMonths: true,
+			noWeekend: true
         });
         $('#fechaBaja_filter_table').rup_date();
 
