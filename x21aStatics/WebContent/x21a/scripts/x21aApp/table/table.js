@@ -144,9 +144,18 @@ jQuery(function ($) {
         	autocomplete: true,
         	combo: true
         });
+        $('#apellido1_filter_table').rup_select({
+        	url: './apellidos',
+        	sourceParam : {text: 'label', id: 'value'},
+			blank: '',
+        	autocomplete: true,
+        	contains: true,
+        	combo: true
+        });
         $('#apellido2_filter_table').rup_select({
         	url: './apellidos',
         	sourceParam : {text: 'label', id: 'value'},
+			blank: '',
         	autocomplete: true,
         	contains: true,
         	combo: true
