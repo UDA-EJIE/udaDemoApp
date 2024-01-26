@@ -1135,32 +1135,6 @@
 	};
 	
 	/**
-     * Elimina el campo autogenerado por el componente combo de un objeto. 
-     * Dicho campo sólo sirve para gestión interna, por lo tanto, es seguro y recomendable eliminarlo.
-     *
-     * @name deleteMulticomboLabelFromObject
-     * @function
-     * @since UDA 4.2.2
-     *
-     * @param {object} obj - Objeto del que se quiere eliminar el campo autogenerado.
-     * @param {object} container - Contenedor del componente.
-     */
-	$.fn.deleteMulticomboLabelFromObject = function (obj, container) {
-		if (obj !== undefined && obj !== null && container !== undefined && container !== null) {
-			Object.keys(obj).filter(function (key) {
-				// Se escapan todos los puntos para evitar errores sintácticos
-				const escapedKey = key.replaceAll('.', '\\.');
-				// Si container es un fila de la tabla (tr) significa que la función ha sido llamada desde rup.table.inlineEdit y es necesario añadir el sufijo _inline
-				const suffix = container.is('tr') ? '_inline' : '';
-				const element = container.find("[name$=" + escapedKey + suffix + "]");
-	        	if (element.length > 1 && $(element[0]).prop('multiple')) {
-	        		delete obj["_" + key];
-				}
-	        });
-		}
-	};
-	
-	/**
      * Convierte un JSON con múltiples niveles en un JSON con un único nivel.
      *
      * @name flattenJSON
@@ -1182,83 +1156,6 @@
 			}
 		}
 		return flattenedObj;
-	};
-	
-	/**
-     * Comprueba si el parámetro ha sido cifrado por Hdiv.
-     *
-     * @name isHdiv
-     * @function
-     * @since UDA 5.0.0 (backported)
-     *
-     * @param {string} id - Identificador de la entidad.
-     *
-     * @return {boolean} Verdadero si el parámetro ha sido cifrado por Hdiv.
-     */
-	$.fn.isHdiv = function (id) {
-		return /(.+)-([0-9a-fA-F]{3})-(.{8}-([0-9a-fA-FU]{1,33})-\d+-.+)/.test(id);
-	};
-	
-	/**
-     * Procesa el identificador recibido para poder devolver la parte que no altera su cifrado entre peticiones.
-     * Es útil cuando se necesita comparar identificadores cifrados.
-     *
-     * @name getStaticHdivID
-     * @function
-     * @since UDA 5.0.0 (backported)
-     *
-     * @param {string} id - Identificador de la entidad.
-     *
-     * @return {string} Identificador de la entidad con la parte dinámica del cifrado eliminada.
-     */
-	$.fn.getStaticHdivID = function (id) {
-		let regex = /([0-9a-fA-F]+)-([0-9a-fA-F]+)-([0-9a-fA-F]+)$/;
-		
-		if (regex.test(id)) {
-			id = id.replace(regex, '');
-		}
-		
-		return id;
-	};
-	
-	/**
-     * Obtiene el parámetro HDIV_STATE de la URL o de un formulario.
-     *
-     * @name getHDIV_STATE
-     * @function
-     * @since UDA 5.0.0 (backported)
-     *
-     * @param {boolean} hasMoreParams - Parámetro necesario para peticiones GET. Se utilizará para saber si el parámetro HDIV_STATE es el único existente en la URL.
-     * @param {object} $form - Formulario del que extraer el parámetro HDIV_STATE. Este parámetro tiene prioridad respecto a hasMoreParams, por lo tanto, si se recibe será el que se use.
-     *
-     * @return {string} Parámetro HDIV_STATE.
-     */
-	$.fn.getHDIV_STATE = function (hasMoreParams, $form) {
-		let hdivStateParam = '';
-		
-		// Cuando se recibe un formulario se extrae directamente de ahí el parámetro HDIV_STATE
-		if ($form != undefined && $form.length == 1) {
-			let fieldHdiv = $form.find('input[name="_HDIV_STATE_"]');
-			hdivStateParam = fieldHdiv.length == 1 ? fieldHdiv.val() : '';
-		} else {
-			// Si el parámetro HDIV_STATE está disponible se obtiene y se devuelve, en caso contrario, se devuelve vacío
-			let searchParams = new URLSearchParams(window.location.search);
-			hdivStateParam = searchParams.get('_HDIV_STATE_');
-			let prefix = '';
-			
-			// Si se ha especificado un valor booleano en el parámetro recibido es porque se trata de una petición GET
-			if (hasMoreParams !== undefined && hasMoreParams !== null && typeof hasMoreParams === "boolean") {
-				prefix = (hasMoreParams ? '&' : '?') + '_HDIV_STATE_=';
-			}
-		    
-		    if (hdivStateParam != undefined && hdivStateParam != null && hdivStateParam != '') {
-		    	hdivStateParam = prefix + hdivStateParam;
-		    } else {
-		    	hdivStateParam = '';
-		    }
-		}
-	    
-	    return hdivStateParam;
 	};
 
 	jQuery.rup_utils.base64 = {

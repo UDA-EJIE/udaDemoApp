@@ -39,7 +39,7 @@
     if (typeof define === 'function' && define.amd) {
 
         // AMD. Register as an anonymous module.
-        define(['jquery', './rup.base', './rup.message', 'select2','./external/select2MultiCheckboxes'], factory);
+        define(['jquery', './rup.base', 'select2','./external/select2MultiCheckboxes'], factory);
     } else {
 
         // Browser globals
@@ -130,11 +130,11 @@
             		 let data = {};
             		 if(settings.groups){
             			 data = $.grep(settings.optionsGroups, function (v) {
-	                    return v.nid === param || v.id == param;
+	                    return v.id == param;
             			 });
             		}else{
             			data = $.grep(settings.options, function (v) {
-	                    return v.nid === param || v.id == param;
+	                    return v.id == param;
             			});
             		}
  	              	if(data[0] !== undefined){
@@ -187,11 +187,11 @@
 	            		 let data = {};
 	            		 if(settings.groups){
 	            			 data = $.grep(settings.optionsGroups, function (v) {
-		                    return v.nid === value || v.id == value;
+		                    return v.id == value;
 	            			 });
 	            		}else{
 	            			data = $.grep(settings.options, function (v) {
-		                    return v.nid === value || v.id == value;
+		                    return v.id == value;
 	            			});
 	            		}
 	            		if(data[0] != undefined && $('#'+ settings.id).find("option[value='" + data[0] .id + "']").length == 0){
@@ -527,16 +527,7 @@
             // Tipo de select
         	let data = $(this).select2('data');
             if (!$(this).data('settings').multiple) {
-            	//Validar que venga el nid
-            	if(data[0] != undefined && data[0].nid == undefined && $(this).data('settings').options != undefined){
-            	   let seleccionado = $.grep($(this).data('settings').options, function (v, index) {
-            	        return v.id === data[0].id;
-            	   });
-            	   if (seleccionado != undefined && seleccionado.length == 1) {
-            		   data[0].nid = seleccionado[0].nid;
-            	   }
-            	}
-            	 return data[0];
+				return data[0];
             } else {
                 return data;
             }
@@ -1072,55 +1063,53 @@
 
         _loadRemote: function (settings,first) {
         	var rupSelect = this;
-        	 	settings.ajax = {
-		    url: function () {
-    			return rupSelect._generateUrl(settings, _this._getParentsValues(settings, true));
-    		},
-		    dataType: settings.dataType,
-		    processResults: function (response) 
-		    	{// Require id y text, podemos permitir que no venga.
-		    	if(settings.placeholder != undefined && !settings.multiple){
-		    		let elBlank = response.find(x => x.id == settings.blank);
-		    		if(elBlank == undefined && !settings.autocomplete){
-		                response.unshift({
-		                    id: settings.blank,
-		                    text: settings.placeholder
-		                  });
-		    		}
-		    	}
-		    		if(settings.groups){// PArsear para grupos.
-		    			let results = [];
-		    			$.each(response, function (index, value) {
-		    				let key = Object.keys(value)[0];
-		    				results[index] = {'text':key,'children':value[key]};
-		    			});
-
-		    			response =  results;
-		    		}
-		    		
-		    		settings.options = response;
-		    		$('#' + settings.id).data('settings', settings);
-	    		     return {
- 		    	 		results: response
- 		     		};
-		    	},
-		    cache: false,
-		    data: function () {
-		    	// Es necesario enviarlo vacío para que el componente subyacente no genere parámetros extra que Hdiv bloqueará.
-		    	//se hará en el transport
-		    	return  _this._getParentsValues(settings, true);
-		    },
-		    error: function (xhr, textStatus, errorThrown) {
-		               if (settings.onLoadError !== null) {
-		                 jQuery(settings.onLoadError(xhr, textStatus, errorThrown));
-		               } else {
-		            	 if(textStatus != 'abort'){//Si se hacen 2 llamadas se cancela la primera.
-		            		 rupSelect._ajaxError(xhr, textStatus, errorThrown);
-		            	 }
-		            	 console.log(textStatus);
-		               }
-		    }		
-    	};
+        	settings.ajax = {
+				url: settings.url,
+			    dataType: settings.dataType,
+			    processResults: function (response) 
+			    	{// Require id y text, podemos permitir que no venga.
+			    	if(settings.placeholder != undefined && !settings.multiple){
+			    		let elBlank = response.find(x => x.id == settings.blank);
+			    		if(elBlank == undefined && !settings.autocomplete){
+			                response.unshift({
+			                    id: settings.blank,
+			                    text: settings.placeholder
+			                  });
+			    		}
+			    	}
+			    		if(settings.groups){// PArsear para grupos.
+			    			let results = [];
+			    			$.each(response, function (index, value) {
+			    				let key = Object.keys(value)[0];
+			    				results[index] = {'text':key,'children':value[key]};
+			    			});
+	
+			    			response =  results;
+			    		}
+			    		
+			    		settings.options = response;
+			    		$('#' + settings.id).data('settings', settings);
+		    		     return {
+	 		    	 		results: response
+	 		     		};
+			    	},
+			    cache: false,
+			    data: function () {
+			    	// Es necesario enviarlo vacío para que el componente subyacente no genere parámetros extra.
+			    	//se hará en el transport
+			    	return  _this._getParentsValues(settings, true);
+			    },
+			    error: function (xhr, textStatus, errorThrown) {
+			               if (settings.onLoadError !== null) {
+			                 jQuery(settings.onLoadError(xhr, textStatus, errorThrown));
+			               } else {
+			            	 if(textStatus != 'abort'){//Si se hacen 2 llamadas se cancela la primera.
+			            		 rupSelect._ajaxError(xhr, textStatus, errorThrown);
+			            	 }
+			            	 console.log(textStatus);
+			               }
+			    }		
+	    	};
         	 	
         	 	if(settings.selected || (settings.autocomplete && settings.defaultValue != undefined)){
         	 		settings.firstLoad = true;
@@ -1136,7 +1125,7 @@
 
 					// retrieve the cached key or default to _ALL_
 			        let __cachekey = params.data || '_ALL_';
-		    		//Se actualiza el data, para mantener la misma función, con hdiv ya no se mandan los data
+		    		//Se actualiza el data, para mantener la misma función.
 			        if(!settings.autocomplete){
 			        	params.data = "" ;
 			        }
@@ -1198,8 +1187,6 @@
 					        			}
 			        				}
 			        			});
-			        		}else if(params.url.indexOf(datosParent) < 0){//Aseguramos que mete el valor del padre.
-			        			params.url = params.url + '?' + datosParent;
 			        		}
 			        		$request = $.ajax(params);
 			        	}
@@ -1237,6 +1224,7 @@
 				                 $.each(data[i], function (key, value) {
 				 	                if (typeof(value) === 'object') {
 						                 $.each(value, function () {
+						                	 this.id = String(this.id);
 						                	 allFacts.push(this);
 						                 });
 						                }
@@ -1246,9 +1234,9 @@
 				        	  data = allFacts;
 				        	  settings.optionsGroups = data;
 				          }
-				         //Se obliga a que las claves sean String recomendado por select2
+				        //Se obliga a que las claves sean String recomendado por select2
 				          let seleccionado = $.grep(data, function (v,index) {
-				        	  
+				        	  v.id = String(v.id);
 				        	  if (v.text === undefined && v[settings.sourceParam.text] !== undefined) {
 				                  v.text = v[settings.sourceParam.text];
 				                }
@@ -1256,7 +1244,7 @@
 				        	  	if(v.id == valueSelect){
 				        	  		positions.push(index);
 				        	  	}
-			                    return v.nid == settings.selected || v.id == settings.selected;
+			                    return v.id == settings.selected;
 			                  });
 				          if( $('#' + settings.id).rup_select('getRupValue') != ''){
 				        	  seleccionado = $.grep(data, function (v) {
@@ -1456,39 +1444,6 @@
 
             $('#' + settings.id).append(newOption);
         },
-        /**
-         * Gestiona los parámetros a añadir en la URL para que Hdiv permita la llamada.
-         *
-         * @function _generateUrl
-         * @since UDA 5.2.0
-         * @private
-         * @param {object} settings - Configuración del componente.
-         * @param {string} [data] - Valores de búsqueda cuando tiene autocompletado e identificador de los padres en caso de ser enlazados.
-         */
-		_generateUrl: function(settings, data) {
-			let $form;
-			
-			if (settings.$forceForm) {
-				$form = settings.$forceForm;
-			} else {
-				$form = settings.inlineEdit?.$auxForm ? settings.inlineEdit?.$auxForm : $('#' + settings.id).closest('form');
-			}
-			
-			const name = settings.inlineEdit?.auxSiblingFieldName ? settings.inlineEdit?.auxSiblingFieldName : settings.name;
-			
-			if ($form.length === 1) {
-				let url = settings.url + (settings.url.includes('?') ? '&' : '?') + '_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form);
-
-				if (data) {
-					// Escapa los caracteres '#' para evitar problemas en la petición.
-					url += "&" + data.replaceAll('#', '%23');
-				}
-
-				return url + '&MODIFY_FORM_FIELD_NAME=' + name;
-			} else {
-				return settings.url;
-			}
-		},
         /**
 		 * Método de inicialización del componente.
 		 * 
@@ -1923,7 +1878,7 @@
 			                		        clave = clave + val + settings.multiValueToken  ;
 			                		        let dataSelected = $('#'+elem).rup_select("getDataSelected");
 			                		        if(dataSelected !== undefined){
-			                		        	val = dataSelected.nid || dataSelected.id;
+			                		        	val = dataSelected.id;
 			                		        	ClaveNoCifrar = ClaveNoCifrar + val + settings.multiValueToken  ;
 			                		        }
 			                		    });
@@ -1941,10 +1896,6 @@
 				                		if(val != settings.blank && val != ''){
 				                			$('#'+settings.id).rup_select("enable");
 					                		let valores = settings.dataParents[val];
-					                		if(valores == undefined && $('#'+settings.parent).rup_select("getDataSelected") !== undefined){
-					                			let nid = $('#'+settings.parent).rup_select("getDataSelected").nid;
-					                			valores = settings.dataParents[nid];//si vine cifrado de un remoto.
-					                		}
 					                		settings.data = settings.dataParents;
 					                		if(valores == undefined){// Si no
 																		// hay
@@ -2106,7 +2057,7 @@
         dataType: 'json',
         cache: true,
         multiple: false,
-        defaultValueAutocompleteNotLoaded: true,
+        defaultValueAutocompleteNotLoaded: false,
         multiValueToken:'##'
         };
 
