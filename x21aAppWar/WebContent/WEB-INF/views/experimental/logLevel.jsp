@@ -62,7 +62,7 @@
 	data-filter-form="#table_filter_form">
         <thead>
 			<tr>
-				<th data-col-prop="nid" data-col-edit="false">Nombre</th>
+				<th data-col-prop="id" data-col-edit="false">Nombre</th>
 				<th data-col-prop="levelLog" data-col-edit="true">Nivel</th>
 			</tr>
         </thead>

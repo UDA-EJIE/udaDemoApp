@@ -499,8 +499,7 @@ function gestionarDatosDivs(modo, idDocumento) {
         $('#datosNecesarios').show();
         $('#divModo1').show();
         // url de iberdok
-        // TODO: revisar esto porque Hdiv lo va a cortar al hacer la petición
-      //  $('#iberdokTable_detail_form').attr('action', window.IBERDOK.urlEditorDocumentos);
+        $('#iberdokTable_detail_form').attr('action', window.IBERDOK.urlEditorDocumentos);
         break;
     case 2:
     	$('#xhtml64_detail_table').val('');
@@ -533,8 +532,7 @@ function gestionarDatosDivs(modo, idDocumento) {
         // datos
         $('#idDocumento_detail_table').val(idDocumento);
         // url de iberdok
-        // TODO: revisar esto porque Hdiv lo va a cortar al hacer la petición
-       // $('#iberdokTable_detail_form').attr('action', window.IBERDOK.urlEditorDocumentos);
+        $('#iberdokTable_detail_form').attr('action', window.IBERDOK.urlEditorDocumentos);
         break;
     }
 }

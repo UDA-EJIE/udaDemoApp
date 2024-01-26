@@ -26,7 +26,6 @@
 	<span>Cargar Tabla</span>
 </button>
 
-<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 <spring:url value="/table/dynamicColumns/filter" var="url"/>
 <form:form modelAttribute="usuario" id="columnasDinamicas_filter_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}"/>
 

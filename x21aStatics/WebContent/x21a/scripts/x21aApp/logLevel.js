@@ -2,8 +2,8 @@ $(document).ready(function () {
 	window.initRupI18nPromise.then(function () {
 		let tableColModel = [
 			{
-	            name: 'nid',
-	            index: 'nid',
+	            name: 'id',
+	            index: 'id',
 	            editable: false,
 	            hidden: false
 	        },

@@ -140,7 +140,7 @@ jQuery(function ($) {
         // Formulario de filtrado.
         $('#id_filter_table').rup_select({
         	url : './allIds',
-        	sourceParam : {text: 'nid', id: 'id'},
+        	sourceParam : {text: 'id', id: 'id'},
         	autocomplete: true,
         	combo: true
         });

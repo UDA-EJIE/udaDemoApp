@@ -23,7 +23,6 @@
 				<!-- Formulario de filtrado -->
 				<jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 				
-				<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 				<spring:url value="/table/filter" var="noFilter"/>
 				<form:form modelAttribute="usuario" id="example_noFilter_form" class="d-none" action="${noFilter}" method="POST"/>
 			</div>
@@ -156,7 +155,6 @@
 				<!-- Formulario de filtrado -->
 				<jsp:include page="includes/tableFilterForm2.jsp"></jsp:include>
 				
-				<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 				<spring:url value="/table/2/filter" var="noFilter2"/>
 				<form:form modelAttribute="usuario2" id="example2_noFilter_form" class="d-none" action="${noFilter2}" method="POST"/>
 			</div>

@@ -18,11 +18,9 @@
 
 <jsp:include page="includes/tableFilterForm.jsp"></jsp:include>
 
-<!-- Formulario necesario para garantizar el correcto funcionamiento con Hdiv cuando filter = 'noFilter' -->
 <spring:url value="/table/filter" var="noFilterURL"/>
 <form:form modelAttribute="usuario" id="example_noFilter_form" class="d-none" action="${noFilterURL}" method="POST"/>
 
-<!-- Formulario necesario para garantizar el correcto funcionamiento del seeker con Hdiv -->
 <spring:url value="/table/search" var="seekerURL"/>
 <form:form modelAttribute="usuario" id="example_seeker_form" class="d-none" action="${seekerURL}" method="POST">
 	<form:input path="nombre" id="nombre_example_seeker_form" />
