@@ -291,12 +291,6 @@ jQuery(function ($) {
             	}
             };*/
             
-            // FILTROS
-            plugins.filter = {
-                rules: {
-                    fechaBaja: 'date'
-                }
-            }
             
             // Se usan comas para asegurarse de que la opción se busca de manera exacta.
             if (localStorage.plugins.indexOf(',multiFilter,') > -1) {
@@ -738,7 +732,11 @@ jQuery(function ($) {
                 var filter = {
                         id: 'example_filter_form',
                         filterToolbar: 'example_filter_toolbar',
-                        collapsableLayerId: 'example_filter_fieldset'
+                        collapsableLayerId: 'example_filter_fieldset',
+                        rules: {
+                            fechaAlta: 'date',
+                            fechaBaja: 'date'
+                        }
                     };
                 plugins.filter = filter;
                 $('#sinFiltro').prop('checked', false);
@@ -746,13 +744,6 @@ jQuery(function ($) {
 
             //Col model es obligatorio,se mete como generico
             plugins.colModel = tableColModels;
-
-            plugins.filter = {
-                rules: {
-                    fechaAlta: 'date',
-                    fechaBaja: 'date'
-                }
-            }
 
             localStorage.clear();
             return plugins;
