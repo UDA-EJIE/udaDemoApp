@@ -452,7 +452,7 @@ public class IberdokController {
 	@GetMapping(value = "/getXhtml")
 	@ResponseBody
 	public String getXhtml(
-			@RequestParam(value = "idDocumento", required = true) String idDocumento) {
+			@RequestParam(value = "idDocumento", required = true) String idDocumento) throws IOException {
 		logger.info("getXtml-start");
 		String fichero64 = null;
 		String folderIberdokPath = appConfiguration
@@ -461,11 +461,7 @@ public class IberdokController {
 
 		File file = new File(filePath);
 
-		try {
-			fichero64 = FileUtils.encode64File(file);
-		} catch (IOException e) {
-			logger.error(e.getMessage());
-		}
+		fichero64 = FileUtils.encode64File(file);
 		logger.info("getXtml-end");
 		return fichero64;
 	}
