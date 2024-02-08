@@ -5,4 +5,4 @@
 	
 </script>
 
-<script src="${staticsUrl}/x21a/scripts/x21aPilotoPatrones/logLevel.js" type="text/javascript"></script>
+<script src="${staticsUrl}/x21a/scripts/x21aApp/logLevel.js" type="text/javascript"></script>
