@@ -25,7 +25,7 @@ public class FileUtils {
 	 *            el fichero a convertir
 	 * @return String el fichero convertido en un string base64
 	 */
-	public static String encode64File(File file) throws IOException {
+	public static String encode64File(File file) {
 		logger.info("encode64File-start");
 		String file64 = null;
 
