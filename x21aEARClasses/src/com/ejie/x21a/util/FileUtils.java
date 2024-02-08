@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.codec.Base64;
@@ -51,10 +52,7 @@ public class FileUtils {
 	public static byte[] readFile(File file) {
 		logger.info("readFile-start");
 		byte[] bytes = null;
-		InputStream is = null;
-		try {
-			is = new FileInputStream(file);
-
+		try (InputStream is = new FileInputStream(file)) {
 			long length = file.length();
 			if (length > Integer.MAX_VALUE) {
 				// File is too large
@@ -72,8 +70,6 @@ public class FileUtils {
 				throw new IOException("No se pudo leer el fichero  "
 						+ file.getName());
 			}
-
-			is.close();
 		} catch (Exception ex) {
 
 			logger.error(ex.getCause().toString());
@@ -96,10 +92,8 @@ public class FileUtils {
 
 		byte[] buffer = new byte[1024];
 
-		try {
-
-			// get the zip file content
-			ZipInputStream zis = new ZipInputStream(new FileInputStream(file));
+		// get the zip file content
+		try (ZipInputStream zis = new ZipInputStream(new FileInputStream(file))) {
 			// get the zipped file list entry
 			ZipEntry ze = zis.getNextEntry();
 
@@ -125,8 +119,6 @@ public class FileUtils {
 			}
 
 			zis.closeEntry();
-			zis.close();
-
 		} catch (IOException ex) {
 			logger.error(ex.getMessage());
 			logger.error(ex.getCause().toString());
