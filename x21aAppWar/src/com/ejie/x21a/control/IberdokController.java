@@ -452,7 +452,7 @@ public class IberdokController {
 	@GetMapping(value = "/getXhtml")
 	@ResponseBody
 	public String getXhtml(
-			@RequestParam(value = "idDocumento", required = true) String idDocumento) throws IOException {
+			@RequestParam(value = "idDocumento", required = true) String idDocumento) {
 		logger.info("getXtml-start");
 		String fichero64 = null;
 		String folderIberdokPath = appConfiguration
