@@ -20,9 +20,7 @@ jQuery(function($) {
         tabs : [
             {i18nCaption:'pestanaUrl', url:'tab2Fragment'},
             {i18nCaption:'pestanaHtml', layer:'.estiloMixto'},
-            {i18nCaption:'pestanaUrl', url:'tab3Fragment'},
-            {i18nCaption:'pestanaMantenimiento', url:'../tableLegacy/formEditTabs'},
-            {i18nCaption:'pestanaMantenimiento2', url:'../tableLegacy/formEditTabs2'}],
+            {i18nCaption:'pestanaUrl', url:'tab3Fragment'}],
         cache:false,
         select: function() {
             jQuery('.ui-tabs-loading').removeClass('ui-tabs-loading');

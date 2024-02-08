@@ -21,8 +21,8 @@ jQuery(function($) {
             {i18nCaption:'maint1', url:'/x21aAppWar/calendar/noTemplate'},
             {i18nCaption:'maint2', url:'/x21aAppWar/calendar/noTemplate'},
             {i18nCaption:'maint3', url:'/x21aAppWar/calendar/noTemplate'},
-            {i18nCaption:'edit1', url:'/x21aAppWar/lista/noTemplate'},
-            {i18nCaption:'multi1', url:'/x21aAppWar/lista/noTemplate'}],
+            {i18nCaption:'edit1', url:'/x21aAppWar/patrones/lista/noTemplate'},
+            {i18nCaption:'multi1', url:'/x21aAppWar/patrones/lista/noTemplate'}],
         load: function(){
             if($('#mockPageContent').length > 0){
                 $('#tabsMaint').rup_tabs('disableTabs', {
