@@ -25,26 +25,26 @@ var valor = {
     },
     sidx: {
         source: [{
-            value: 'id',
+            id: 'id',
             i18nCaption: 'Id'
         }, {
-            value: 'nombre',
+            id: 'nombre',
             i18nCaption: 'Nombre'
         }, {
-            value: 'apellido1',
+            id: 'apellido1',
             i18nCaption: 'Apellido1'
         }],
         value: 'id'
     },
     rowNum: {
         source: [{
-            value: '5',
+            id: '5',
             i18nCaption: 'Cinco'
         }, {
-            value: '10',
+            id: '10',
             i18nCaption: 'Diez'
         }, {
-            value: '20',
+            id: '20',
             i18nCaption: 'Veinte'
         }],
         value: '5'

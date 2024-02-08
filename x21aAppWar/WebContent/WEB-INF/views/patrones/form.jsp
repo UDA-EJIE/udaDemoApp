@@ -75,7 +75,7 @@
 						<div class="col1">
 							<label for="sexo" class="label"><spring:message
 									code="sexo" /></label>
-							<form:input path="sexo" class="formulario_linea_input" id="sexo"/>
+							<form:select path="sexo" class="formulario_linea_input" id="sexo"/>
 						</div>
 
 						<div class="col1">
@@ -176,7 +176,7 @@
 						<div class="col1">
 							<label for="provincia" class="label"><spring:message
 									code="provincia" /></label>
-							<form:input path="provincia.id" class="formulario_linea_input" id="provincia"/>
+							<form:select path="provincia.id" class="formulario_linea_input" id="provincia"/>
 						</div>
 					</div>
 
@@ -184,12 +184,12 @@
 						<div class="col1">
 							<label for="municipio" class="label"><spring:message
 									code="municipio" /></label>
-							<form:input path="municipio.id" class="formulario_linea_input" size="30" id="municipio"/>
+							<form:select path="municipio.id" class="formulario_linea_input" size="30" id="municipio"/>
 						</div>
 						<div class="col1">
 							<label for="calle" class="label"><spring:message
 									code="calle" /></label>
-							<form:input path="calle.id" class="formulario_linea_input" size="50" id="calle"/>
+							<form:select path="calle.id" class="formulario_linea_input" size="50" id="calle"/>
 						</div>
 					</div>
 

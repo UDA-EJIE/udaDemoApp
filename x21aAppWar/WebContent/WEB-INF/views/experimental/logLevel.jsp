@@ -28,7 +28,7 @@
 	<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
 		<div class="form-row">
 			<div class="form-groupMaterial col-sm">
-				<form:input path="nameLog" id="nameLog_filter_table" />
+				<form:select path="nameLog" id="nameLog_filter_table" />
 				<label for="nameLog_filter_table">Nombre</label>
 			</div>
 			<div class="form-groupMaterial col-sm">

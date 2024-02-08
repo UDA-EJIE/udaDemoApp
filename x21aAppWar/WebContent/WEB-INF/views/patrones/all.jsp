@@ -67,7 +67,7 @@
 			
 			<!-- Autocomplete / Tooltip -->
 			<div class="form-groupMaterial col-sm mt-5">
-		    	<input id="autocomplete" name="autocomplete" />
+		    	<select id="autocomplete" name="autocomplete"></select>
 				<label for="autocomplete">Autocomplete (lenguaje)</label>
 		    </div>
 			<div class="form-groupMaterial col-sm mt-5">

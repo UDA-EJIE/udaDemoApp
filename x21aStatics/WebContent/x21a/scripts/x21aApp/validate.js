@@ -148,6 +148,7 @@ jQuery(function($) {
                 {i18nCaption: 'coldfusion', id:'coldfusion_value'},
                 {i18nCaption: 'groovy', id:'groovy_value'}
             ],
+            autocomplete: true,
             defaultValue: '',
             contains: false
         });
@@ -172,6 +173,7 @@ jQuery(function($) {
                 {i18nCaption: 'coldfusion', id:'coldfusion_value'},
                 {i18nCaption: 'groovy', id:'groovy_value'}
             ],
+            autocomplete: true,
             defaultValue: '',
             contains: false
         });
@@ -184,6 +186,7 @@ jQuery(function($) {
                 {i18nCaption: 'coldfusion', id:'coldfusion_value'},
                 {i18nCaption: 'groovy', id:'groovy_value'}
             ],
+            autocomplete: true,
             defaultValue: '',
             combo: true,
             contains: false
@@ -197,6 +200,7 @@ jQuery(function($) {
                 {i18nCaption: 'coldfusion', id:'coldfusion_value'},
                 {i18nCaption: 'groovy', id:'groovy_value'}
             ],
+            autocomplete: true,
             defaultValue: '',
             combo: true,
             contains: false

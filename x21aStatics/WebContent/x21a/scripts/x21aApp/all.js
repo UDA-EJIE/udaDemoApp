@@ -38,18 +38,16 @@ jQuery(function($){
 	        index: 'provincia.code',
 	        editable: true,
 	        hidden: false,
-	        rupType: 'combo',
+	        rupType: 'select',
             editoptions: {
-            	source : '../tableComarca/provincia',
-                sourceParam : {
-                	label: 'desc' + $.rup_utils.capitalizedLang(), 
-                	value: 'code',
+            	url: '../tableComarca/provincia',
+                sourceParam: {
+                	text: 'desc' + $.rup_utils.capitalizedLang(), 
+                	id: 'code',
     	            style: 'css'
                 },
     	        rowStriping: true,
-    	        blank: '',
-                width: '100%',
-                customClasses: ['select-material']
+    	        blank: ''
             }
 	    },
 	    {
@@ -132,7 +130,8 @@ jQuery(function($){
 				{id: 'python', text: 'python'},
 				{id: 'ruby', text: 'ruby'},
 				{id: 'scala', text: 'scala'}
-			]
+			],
+			autocomplete: true
 	    });
 	    
 	    $('#tooltip').rup_tooltip(); 
@@ -187,15 +186,13 @@ jQuery(function($){
 	                    	index: "apellido2", 
 	                    	editable: true, 
 	                    	hidden: false,
-	                    	rupType: 'autocomplete',
+	                    	rupType: 'select',
 	                        editoptions: {
-	                        	source : '../table/apellidos',
-	                            sourceParam : {label: 'label', value: 'value'},
-	                            menuMaxHeight: 200,
-	                            minLength: 3,
-	                            combobox: true,
-	                            contains: true,
-	                            showDefault: true
+	                        	url: '../table/apellidos',
+	                            sourceParam : {text: 'label', id: 'value'},
+	                            autocomplete: true,
+	                            combo: true,
+	                            contains: true
 	                        }
 	                    },
 	                    {
@@ -316,7 +313,8 @@ jQuery(function($){
 							{id: 'python', text: 'python'},
 							{id: 'ruby', text: 'ruby'},
 							{id: 'scala', text: 'scala'}
-						]
+						],
+						autocomplete: true
 	                });
 	        	    
 	        	    $('#tooltip_dialog').rup_tooltip(); 

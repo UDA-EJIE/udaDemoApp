@@ -162,7 +162,7 @@
 			</div>
 
         	<p>
-				Componentes Rup:: select by id, autocomplete by id, select by name, autocomplete by name
+				Componentes Rup:: select by id, select con autocomplete by id, select by name, select con autocomplete by name
 			</p>
 
 			<p>
@@ -176,12 +176,12 @@
 				</div>
 
 				<div class="form-groupMaterial col-sm-6">
-					<form:input path="autocomplete" id="autocomplete" />
+					<form:select path="autocomplete" id="autocomplete" />
 					<label for="autocomplete">Autocomplete by Id</label>
 				</div>
 
 				<div class="form-groupMaterial col-sm-12">
-					<form:input path="autocompleteCombobox" id="autocompleteCombobox" />
+					<form:select path="autocompleteCombobox" id="autocompleteCombobox" />
 					<label for="autocompleteCombobox">Autocomplete Combobox</label>
 				</div>
 			</div>
@@ -197,12 +197,12 @@
 				</div>
 
 				<div class="form-groupMaterial col-sm-6">
-					<form:input path="autocompleteName2" id="autocompleteName2"/>
+					<form:select path="autocompleteName2" id="autocompleteName2"/>
 					<label for="autocompleteName2">Autocomplete by Name</label>
 				</div>
 
 				<div class="form-groupMaterial col-sm-12">
-					<form:input path="autocompleteCombobox2" id="autocompleteCombobox2"/>
+					<form:select path="autocompleteCombobox2" id="autocompleteCombobox2"/>
 					<label for="autocompleteCombobox2">Autocomplete Combobox</label>
 				</div>
 

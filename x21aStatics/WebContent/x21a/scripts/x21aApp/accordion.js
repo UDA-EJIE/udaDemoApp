@@ -120,6 +120,7 @@ jQuery(function($) {
             {i18nCaption: 'ruby', id:'ruby_value'},
             {i18nCaption: 'scala', id:'scala_value'}
         ],
+        autocomplete: true,
         contains: false
     });
     

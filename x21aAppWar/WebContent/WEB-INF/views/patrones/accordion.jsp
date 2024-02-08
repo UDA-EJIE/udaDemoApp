@@ -69,7 +69,7 @@
 				<h4 class="sectionh4">Autocomplete local</h4>
 				<div class="form-row">
 					<div class="form-groupMaterial col-sm">
-				    	<input id="autocomplete" />
+				    	<select id="autocomplete"></select>
 						<label for="autocomplete">Lenguaje</label>
 						<p>[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
 				    </div>
@@ -78,7 +78,7 @@
 				<h4>Autocomplete remoto</h4>
 				<div class="form-row">   
 				    <div class="form-groupMaterial col-sm">
-				    	<input id="patron" />
+				    	<select id="patron"></select>
 				    	<label for="patron">Departamento-Provincia</label>
 				    	<p>[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
 				    </div>
