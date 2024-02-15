@@ -67,7 +67,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
     /**
      * Inserts a single row in the Departamento table.
      *
-     * @param departamento Pagination
+     * @param departamento TableRequestDto
      * @return Departamento
      */
 	public Departamento add(Departamento departamento) {
@@ -79,7 +79,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
     /**
      * Updates a single row in the Departamento table.
      *
-     * @param departamento Pagination
+     * @param departamento TableRequestDto
      * @return Departamento
      */
     public Departamento update(Departamento departamento) {
@@ -91,7 +91,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
     /**
      * Finds a single row in the Departamento table.
      *
-     * @param departamento Pagination
+     * @param departamento TableRequestDto
      * @return Departamento
      */
     @Transactional (readOnly = true)
@@ -105,7 +105,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
     /**
      * Removes a single row in the Departamento table.
      *
-     * @param departamento Pagination
+     * @param departamento TableRequestDto
      * @return
      */
     public void remove(Departamento departamento) {
@@ -165,7 +165,7 @@ public class DepartamentoDaoImpl implements DepartamentoDao {
 	 * Finds rows in the Departamento table using like.
      * 
      * @param departamento Departamento
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List 
      */

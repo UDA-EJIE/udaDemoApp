@@ -78,7 +78,7 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
     /**
      * Inserts a single row in the ComarcaExtendida table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
 	public ComarcaExtendida add(ComarcaExtendida comarca) {
@@ -98,7 +98,7 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
     /**
      * Updates a single row in the ComarcaExtendida table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
     public ComarcaExtendida update(ComarcaExtendida comarca) {
@@ -114,7 +114,7 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
     /**
      * Finds a single row in the ComarcaExtendida table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
     @Transactional (readOnly = true)
@@ -128,7 +128,7 @@ public class ComarcaExtendidaDaoImpl implements ComarcaExtendidaDao {
     /**
      * Removes a single row in the ComarcaExtendida table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return
      */
     public void remove(ComarcaExtendida comarca) {

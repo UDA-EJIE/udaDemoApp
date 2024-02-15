@@ -67,7 +67,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
     /**
      * Inserts a single row in the Calle table.
      *
-     * @param calle Pagination
+     * @param calle TableRequestDto
      * @return Calle
      */
 	public NoraCalle add(NoraCalle calle) {
@@ -82,7 +82,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
     /**
      * Updates a single row in the Calle table.
      *
-     * @param calle Pagination
+     * @param calle TableRequestDto
      * @return Calle
      */
     public NoraCalle update(NoraCalle calle) {
@@ -94,7 +94,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
     /**
      * Finds a single row in the Calle table.
      *
-     * @param calle Pagination
+     * @param calle TableRequestDto
      * @return Calle
      */
     @Transactional (readOnly = true)
@@ -109,7 +109,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
     /**
      * Removes a single row in the Calle table.
      *
-     * @param calle Pagination
+     * @param calle TableRequestDto
      * @return
      */
     public void remove(NoraCalle calle) {

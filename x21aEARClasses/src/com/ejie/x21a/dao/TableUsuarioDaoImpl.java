@@ -75,7 +75,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Inserts a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario
      */
 	public Usuario add(Usuario usuario) {
@@ -91,7 +91,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	/**
      * Inserts a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario2
      */
 	public Usuario2 add(Usuario2 usuario) {
@@ -107,7 +107,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Updates a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario
      */
     public Usuario update(Usuario usuario) {
@@ -119,7 +119,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Updates a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario2
      */
     public Usuario2 update(Usuario2 usuario) {
@@ -131,7 +131,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Finds a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario
      */
     @Transactional (readOnly = true)
@@ -145,7 +145,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Finds a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return Usuario
      */
     @Transactional (readOnly = true)
@@ -159,7 +159,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Removes a single row in the Usuario table.
      *
-     * @param usuario Pagination
+     * @param usuario TableRequestDto
      * @return
      */
     public void remove(Usuario usuario) {
@@ -170,7 +170,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     /**
      * Removes a single row in the Usuario table.
      *
-     * @param usuario2 Pagination
+     * @param usuario2 TableRequestDto
      * @return
      */
     public void remove(Usuario2 usuario) {
@@ -182,7 +182,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
     * Finds a List of rows in the Usuario table.
     * 
     * @param usuario Usuario
-    * @param pagination Pagination
+    * @param tableRequestDto TableRequestDto
     * @return List 
     */
 	@Transactional (readOnly = true)
@@ -262,7 +262,7 @@ public class TableUsuarioDaoImpl implements TableUsuarioDao {
 	 * Finds rows in the Usuario table using like.
      * 
      * @param usuario Usuario
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List 
      * 

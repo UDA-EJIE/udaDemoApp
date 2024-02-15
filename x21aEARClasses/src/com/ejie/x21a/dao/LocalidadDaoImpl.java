@@ -79,7 +79,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
     /**
      * Inserts a single row in the Localidad table.
      *
-     * @param localidad Pagination
+     * @param localidad TableRequestDto
      * @return Localidad
      */
 	public Localidad add(Localidad localidad) {
@@ -99,7 +99,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
     /**
      * Updates a single row in the Localidad table.
      *
-     * @param localidad Pagination
+     * @param localidad TableRequestDto
      * @return Localidad
      */
     public Localidad update(Localidad localidad) {
@@ -115,7 +115,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
     /**
      * Finds a single row in the Localidad table.
      *
-     * @param localidad Pagination
+     * @param localidad TableRequestDto
      * @return Localidad
      */
     @Transactional (readOnly = true)
@@ -129,7 +129,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
     /**
      * Removes a single row in the Localidad table.
      *
-     * @param localidad Pagination
+     * @param localidad TableRequestDto
      * @return
      */
     public void remove(Localidad localidad) {

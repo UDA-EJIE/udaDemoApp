@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ejie.x21a.model.MultiPk;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -128,18 +128,18 @@ public interface TableMultiPkService {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<JerarquiaDto<MultiPk>>
+	 * @return TableResponseDto<TableJerarquiaDto<MultiPk>>
 	 */	
-	TableResponseDto<JerarquiaDto<MultiPk>> jerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith);
+	TableResponseDto<TableJerarquiaDto<MultiPk>> jerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finder method for siblings rows in the hierarchical the MultiPk table.
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 * @return TableResponseDto<JerarquiaDto<MultiPk>>
+	 * @return TableResponseDto<TableJerarquiaDto<MultiPk>>
 	 */	
-	TableResponseDto<JerarquiaDto<MultiPk>> jerarquiaChildren(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
+	TableResponseDto<TableJerarquiaDto<MultiPk>> jerarquiaChildren(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
     
 	/*
 	 * EXPORTACIONES DE DATOS

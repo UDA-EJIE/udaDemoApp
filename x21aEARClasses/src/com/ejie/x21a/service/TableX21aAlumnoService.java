@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ejie.x21a.model.X21aAlumno;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -127,18 +127,18 @@ public interface TableX21aAlumnoService {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 */	
-	TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
+	TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith);
 	
 	/**
 	 * Finder method for siblings rows in the hierarchical the X21aAlumno table.
 	 *
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 */	
-	TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto);
+	TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquiaChildren(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto);
     
     /**
 	 * Devuelve los datos recuperados de la DB.

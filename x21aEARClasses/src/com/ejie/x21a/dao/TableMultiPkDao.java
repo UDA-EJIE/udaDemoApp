@@ -1,7 +1,7 @@
 package com.ejie.x21a.dao;
 
 import com.ejie.x21a.model.MultiPk;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 import java.util.List;
@@ -125,9 +125,9 @@ public interface TableMultiPkDao {
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 * @return List<JerarquiaDto<MultiPk>>
+	 * @return List<TableJerarquiaDto<MultiPk>>
 	 */	
-	List<JerarquiaDto<MultiPk>> findAllLikeJerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
+	List<TableJerarquiaDto<MultiPk>> findAllLikeJerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto);
 	
 	/**
 	 * Count rows in hierarchy

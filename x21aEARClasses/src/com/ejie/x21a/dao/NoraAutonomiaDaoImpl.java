@@ -67,7 +67,7 @@ public class NoraAutonomiaDaoImpl implements NoraAutonomiaDao {
     /**
      * Finds a single row in the NoraAutonomia table.
      *
-     * @param autonomia Pagination
+     * @param autonomia TableRequestDto
      * @return NoraAutonomia
      */
     @Transactional (readOnly = true)

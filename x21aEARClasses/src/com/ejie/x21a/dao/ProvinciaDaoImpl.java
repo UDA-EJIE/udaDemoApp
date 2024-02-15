@@ -78,7 +78,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     /**
      * Inserts a single row in the Provincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return Provincia
      */
 	public Provincia add(Provincia provincia) {
@@ -94,7 +94,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     /**
      * Updates a single row in the Provincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return Provincia
      */
     public Provincia update(Provincia provincia) {
@@ -106,7 +106,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     /**
      * Finds a single row in the Provincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return Provincia
      */
     @Transactional (readOnly = true)
@@ -120,7 +120,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
     /**
      * Removes a single row in the Provincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return
      */
     public void remove(Provincia provincia) {

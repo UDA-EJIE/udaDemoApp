@@ -69,7 +69,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
     /**
      * Inserts a single row in the DepartamentoProvincia table.
      *
-     * @param departamentoprovincia Pagination
+     * @param departamentoprovincia TableRequestDto
      * @return DepartamentoProvincia
      */
 	public DepartamentoProvincia add(DepartamentoProvincia departamentoprovincia) {
@@ -89,7 +89,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
     /**
      * Updates a single row in the DepartamentoProvincia table.
      *
-     * @param departamentoprovincia Pagination
+     * @param departamentoprovincia TableRequestDto
      * @return DepartamentoProvincia
      */
     public DepartamentoProvincia update(DepartamentoProvincia departamentoprovincia) {
@@ -109,7 +109,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
     /**
      * Finds a single row in the DepartamentoProvincia table.
      *
-     * @param departamentoprovincia Pagination
+     * @param departamentoprovincia TableRequestDto
      * @return DepartamentoProvincia
      */
     @Transactional (readOnly = true)
@@ -123,7 +123,7 @@ public class DepartamentoProvinciaDaoImpl implements DepartamentoProvinciaDao {
     /**
      * Removes a single row in the DepartamentoProvincia table.
      *
-     * @param departamentoprovincia Pagination
+     * @param departamentoprovincia TableRequestDto
      * @return
      */
     public void remove(DepartamentoProvincia departamentoprovincia) {

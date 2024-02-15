@@ -32,7 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.TableMultiPkDao;
 import com.ejie.x21a.model.MultiPk;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -200,12 +200,12 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<JerarquiaDto<MultiPk>>
+	 * @return TableResponseDto<TableJerarquiaDto<MultiPk>>
 	 */	
-	public TableResponseDto<JerarquiaDto<MultiPk>> jerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
-		List<JerarquiaDto<MultiPk>> listaMultiPk =  this.multiPkDao.findAllLikeJerarquia(filterMultiPk, tableRequestDto);
+	public TableResponseDto<TableJerarquiaDto<MultiPk>> jerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto, Boolean startsWith){
+		List<TableJerarquiaDto<MultiPk>> listaMultiPk =  this.multiPkDao.findAllLikeJerarquia(filterMultiPk, tableRequestDto);
 		Long recordNum = this.multiPkDao.findAllLikeCountJerarquia(filterMultiPk, tableRequestDto);
-		return new TableResponseDto<JerarquiaDto<MultiPk>>(tableRequestDto, recordNum, listaMultiPk);
+		return new TableResponseDto<TableJerarquiaDto<MultiPk>>(tableRequestDto, recordNum, listaMultiPk);
 	}
 	
 	/**
@@ -213,10 +213,10 @@ public class TableMultiPkServiceImpl implements TableMultiPkService {
 	 *
 	 * @param filterMultiPk MultiPk
 	 * @param tableRequestDto TableRequestDto
-	 * @return TableResponseDto<JerarquiaDto<MultiPk>>
+	 * @return TableResponseDto<TableJerarquiaDto<MultiPk>>
 	 */	
-	public TableResponseDto<JerarquiaDto<MultiPk>> jerarquiaChildren(MultiPk filterMultiPk, TableRequestDto tableRequestDto){
-		TableResponseDto<JerarquiaDto<MultiPk>> tableResponseDto = new TableResponseDto<JerarquiaDto<MultiPk>>();
+	public TableResponseDto<TableJerarquiaDto<MultiPk>> jerarquiaChildren(MultiPk filterMultiPk, TableRequestDto tableRequestDto){
+		TableResponseDto<TableJerarquiaDto<MultiPk>> tableResponseDto = new TableResponseDto<TableJerarquiaDto<MultiPk>>();
 		tableResponseDto.addAdditionalParam(TableResponseDto.CHILDREN, this.multiPkDao.findAllChild(filterMultiPk, tableRequestDto));
 		return tableResponseDto;
 	}

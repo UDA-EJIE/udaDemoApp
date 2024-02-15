@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ejie.x21a.model.Provincia;
 import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableManagerJerarquia;
 import com.ejie.x38.dto.TableRequestDto;
@@ -64,12 +64,12 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
      * @param dataSource DataSource
      * @return
      */
-	private RowMapper<JerarquiaDto< X21aAlumno>> rwMapJerarquia = new RowMapper<JerarquiaDto<X21aAlumno>>() {
-		public JerarquiaDto<X21aAlumno> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+	private RowMapper<TableJerarquiaDto< X21aAlumno>> rwMapJerarquia = new RowMapper<TableJerarquiaDto<X21aAlumno>>() {
+		public TableJerarquiaDto<X21aAlumno> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
 			X21aAlumno x21aalumno = new X21aAlumno(resultSet.getBigDecimal("ID"), resultSet.getString("USUARIO"), resultSet.getString("PASSWORD"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"), resultSet.getDate("FECHA_NACIMIENTO"), resultSet.getString("TELEFONO"), resultSet.getString("EMAIL"), resultSet.getString("IDIOMA"), resultSet.getString("PAIS_ID"), resultSet.getString("PROVINCIA_ID"), resultSet.getLong("LOCALIDAD_ID"), resultSet.getString("COMARCA_ID"), resultSet.getString("MUNICIPIO_ID"), resultSet.getLong("CALLE_ID"), resultSet.getBlob("IMAGEN"), resultSet.getString("SEXO"), resultSet.getString("DNI"), resultSet.getString("AUTONOMIA_ID"), resultSet.getString("NOMBRE_IMAGEN"), resultSet.getString("CALLE"), resultSet.getString("DIRECCION"), resultSet.getBigDecimal("IMPORTE_MATRICULA"), new Provincia());
 
-			JerarquiaDto<X21aAlumno> jerarquia = new JerarquiaDto<X21aAlumno>();
+			TableJerarquiaDto<X21aAlumno> jerarquia = new TableJerarquiaDto<X21aAlumno>();
 			jerarquia.setModel(x21aalumno);
 			jerarquia.setLevel(resultSet.getBigDecimal("LEVEL").intValue());
 			jerarquia.setParentNodes(resultSet.getString("PARENTNODES"));
@@ -371,10 +371,10 @@ public class TableX21aAlumnoDaoImpl implements TableX21aAlumnoDao {
      *
      * @param filterX21aAlumno X21aAlumno
      * @param tableRequestDto TableRequestDto
-     * @return List<JerarquiaDto<X21aAlumno>>
+     * @return List<TableJerarquiaDto<X21aAlumno>>
      */
 	@Override
-	public List<JerarquiaDto<X21aAlumno>> findAllLikeJerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto) {
+	public List<TableJerarquiaDto<X21aAlumno>> findAllLikeJerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto) {
 		// SELECT
 		StringBuilder query = new StringBuilder("SELECT t1.ID ID,t1.USUARIO USUARIO,t1.PASSWORD PASSWORD,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2,t1.FECHA_NACIMIENTO FECHANACIMIENTO,t1.TELEFONO TELEFONO,t1.EMAIL EMAIL,t1.IDIOMA IDIOMA,t1.PAIS_ID PAISID,t1.PROVINCIA_ID PROVINCIAID,t1.LOCALIDAD_ID LOCALIDADID,t1.COMARCA_ID COMARCAID,t1.MUNICIPIO_ID MUNICIPIOID,t1.CALLE_ID CALLEID,t1.IMAGEN IMAGEN,t1.SEXO SEXO,t1.DNI DNI,t1.AUTONOMIA_ID AUTONOMIAID,t1.NOMBRE_IMAGEN NOMBREIMAGEN,t1.CALLE CALLE,t1.DIRECCION DIRECCION,t1.IMPORTE_MATRICULA IMPORTEMATRICULA ");
 		// FROM

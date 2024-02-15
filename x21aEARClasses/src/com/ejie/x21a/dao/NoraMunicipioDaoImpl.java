@@ -66,7 +66,7 @@ public class NoraMunicipioDaoImpl implements NoraMunicipioDao {
     /**
      * Inserts a single row in the NoraMunicipio table.
      *
-     * @param municipio Pagination
+     * @param municipio TableRequestDto
      * @return NoraMunicipio
      */
 	public NoraMunicipio add(NoraMunicipio municipio) {
@@ -81,7 +81,7 @@ public class NoraMunicipioDaoImpl implements NoraMunicipioDao {
     /**
      * Updates a single row in the NoraMunicipio table.
      *
-     * @param municipio Pagination
+     * @param municipio TableRequestDto
      * @return NoraMunicipio
      */
     public NoraMunicipio update(NoraMunicipio municipio) {
@@ -93,7 +93,7 @@ public class NoraMunicipioDaoImpl implements NoraMunicipioDao {
     /**
      * Finds a single row in the NoraMunicipio table.
      *
-     * @param municipio Pagination
+     * @param municipio TableRequestDto
      * @return NoraMunicipio
      */
     @Transactional (readOnly = true)
@@ -108,7 +108,7 @@ public class NoraMunicipioDaoImpl implements NoraMunicipioDao {
     /**
      * Removes a single row in the NoraMunicipio table.
      *
-     * @param municipio Pagination
+     * @param municipio TableRequestDto
      * @return
      */
     public void remove(NoraMunicipio municipio) {

@@ -32,7 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ejie.x21a.dao.TableX21aAlumnoDao;
 import com.ejie.x21a.model.Usuario;
 import com.ejie.x21a.model.X21aAlumno;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableResponseDto;
@@ -199,12 +199,12 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
 	 * @param startsWith Boolean
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 */	
-	public TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith){
-		List<JerarquiaDto<X21aAlumno>> listaX21aAlumno =  this.x21aAlumnoDao.findAllLikeJerarquia(filterX21aAlumno, tableRequestDto);
+	public TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto, Boolean startsWith){
+		List<TableJerarquiaDto<X21aAlumno>> listaX21aAlumno =  this.x21aAlumnoDao.findAllLikeJerarquia(filterX21aAlumno, tableRequestDto);
 		Long recordNum = this.x21aAlumnoDao.findAllLikeCountJerarquia(filterX21aAlumno, tableRequestDto);
-		return new TableResponseDto<JerarquiaDto<X21aAlumno>>(tableRequestDto, recordNum, listaX21aAlumno);
+		return new TableResponseDto<TableJerarquiaDto<X21aAlumno>>(tableRequestDto, recordNum, listaX21aAlumno);
 	}
 	
 	/**
@@ -212,10 +212,10 @@ public class TableX21aAlumnoServiceImpl implements TableX21aAlumnoService {
 	 *
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 */	
-	public TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto){
-		TableResponseDto<JerarquiaDto<X21aAlumno>> tableResponseDto = new TableResponseDto<JerarquiaDto<X21aAlumno>>();
+	public TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquiaChildren(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto){
+		TableResponseDto<TableJerarquiaDto<X21aAlumno>> tableResponseDto = new TableResponseDto<TableJerarquiaDto<X21aAlumno>>();
 		tableResponseDto.addAdditionalParam(TableResponseDto.CHILDREN, this.x21aAlumnoDao.findAllChild(filterX21aAlumno, tableRequestDto));
 		return tableResponseDto;
 	}

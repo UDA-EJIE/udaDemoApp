@@ -64,7 +64,7 @@ public interface ComarcaDao {
      * Finds a List of rows in the Comarca table.
      *
      * @param comarca Comarca
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
     List<Comarca> findAll(Comarca comarca, TableRequestDto tableRequestDto);

@@ -67,7 +67,7 @@ public class NoraPaisDaoImpl implements NoraPaisDao {
     /**
      * Finds a single row in the NoraPais table.
      *
-     * @param pais Pagination
+     * @param pais TableRequestDto
      * @return NoraPais
      */
     @Transactional (readOnly = true)

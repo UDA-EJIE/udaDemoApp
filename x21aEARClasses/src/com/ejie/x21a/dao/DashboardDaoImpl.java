@@ -60,7 +60,7 @@ public class DashboardDaoImpl implements DashboardDao {
     /**
      * Inserts a single row in the Provincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return Provincia
      */
 	public List<Dashboard> getAll() {

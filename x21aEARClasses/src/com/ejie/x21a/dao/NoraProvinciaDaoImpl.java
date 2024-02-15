@@ -73,7 +73,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
     /**
      * Inserts a single row in the NoraProvincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return NoraProvincia
      */
 	public NoraProvincia add(NoraProvincia provincia) {
@@ -88,7 +88,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
     /**
      * Updates a single row in the NoraProvincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return NoraProvincia
      */
     public NoraProvincia update(NoraProvincia provincia) {
@@ -100,7 +100,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
     /**
      * Finds a single row in the NoraProvincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return NoraProvincia
      */
     @Transactional (readOnly = true)
@@ -115,7 +115,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
     /**
      * Removes a single row in the NoraProvincia table.
      *
-     * @param provincia Pagination
+     * @param provincia TableRequestDto
      * @return
      */
     public void remove(NoraProvincia provincia) {

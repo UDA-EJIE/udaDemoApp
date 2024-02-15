@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.model.MultiPk;
 import com.ejie.x38.dao.RowNumResultSetExtractor;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableManager;
 import com.ejie.x38.dto.TableManagerJerarquia;
 import com.ejie.x38.dto.TableRequestDto;
@@ -62,12 +62,12 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
      * @param dataSource DataSource
      * @return
      */
-	private RowMapper<JerarquiaDto< MultiPk>> rwMapJerarquia = new RowMapper<JerarquiaDto<MultiPk>>() {
-		public JerarquiaDto<MultiPk> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+	private RowMapper<TableJerarquiaDto< MultiPk>> rwMapJerarquia = new RowMapper<TableJerarquiaDto<MultiPk>>() {
+		public TableJerarquiaDto<MultiPk> mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 
 			MultiPk multipk = new MultiPk(resultSet.getBigDecimal("IDA"), resultSet.getBigDecimal("IDB"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO1"), resultSet.getString("APELLIDO2"));
 
-			JerarquiaDto<MultiPk> jerarquia = new JerarquiaDto<MultiPk>();
+			TableJerarquiaDto<MultiPk> jerarquia = new TableJerarquiaDto<MultiPk>();
 			jerarquia.setModel(multipk);
 			jerarquia.setLevel(resultSet.getBigDecimal("LEVEL").intValue());
 			jerarquia.setParentNodes(resultSet.getString("PARENTNODES"));
@@ -373,10 +373,10 @@ public class TableMultiPkDaoImpl implements TableMultiPkDao {
      *
      * @param filterMultiPk MultiPk
      * @param tableRequestDto TableRequestDto
-     * @return List<JerarquiaDto<MultiPk>>
+     * @return List<TableJerarquiaDto<MultiPk>>
      */
 	@Override
-	public List<JerarquiaDto<MultiPk>> findAllLikeJerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto) {
+	public List<TableJerarquiaDto<MultiPk>> findAllLikeJerarquia(MultiPk filterMultiPk, TableRequestDto tableRequestDto) {
 		// SELECT
 		StringBuilder query = new StringBuilder("SELECT t1.IDA IDA,t1.IDB IDB,t1.NOMBRE NOMBRE,t1.APELLIDO1 APELLIDO1,t1.APELLIDO2 APELLIDO2 ");
 		// FROM

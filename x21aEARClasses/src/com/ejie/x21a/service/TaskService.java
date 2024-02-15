@@ -16,7 +16,7 @@
 package com.ejie.x21a.service;
 
 
-import com.ejie.x38.dto.Pagination;
+import com.ejie.x38.dto.TableRequestDto;
 import java.util.List;
 
 import com.ejie.x21a.model.Task;
@@ -72,10 +72,10 @@ public interface TaskService {
 	 * Finds a List of rows in the Comarca table.
 	 *
 	 * @param comarca Comarca
-	 * @param pagination Pagination
+	 * @param tableRequestDto TableRequestDto
 	 * @return List
 	 */
-	List<Task> findAll(Task task, Pagination pagination);
+	List<Task> findAll(Task task, TableRequestDto tableRequestDto);
 
 	
 

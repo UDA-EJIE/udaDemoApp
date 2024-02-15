@@ -1,6 +1,6 @@
 package com.ejie.x21a.dao;
 
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableRowDto;
 import java.util.List;
@@ -125,9 +125,9 @@ public interface TableX21aAlumnoDao {
 	 *
 	 * @param filterX21aAlumno X21aAlumno
 	 * @param tableRequestDto TableRequestDto
-	 * @return List<JerarquiaDto<X21aAlumno>>
+	 * @return List<TableJerarquiaDto<X21aAlumno>>
 	 */	
-	List<JerarquiaDto<X21aAlumno>> findAllLikeJerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto);
+	List<TableJerarquiaDto<X21aAlumno>> findAllLikeJerarquia(X21aAlumno filterX21aAlumno, TableRequestDto tableRequestDto);
 	
 	/**
 	 * Count rows in hierarchy

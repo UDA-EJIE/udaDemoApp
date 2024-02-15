@@ -59,7 +59,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * Inserts a single row in the IberdokFile table.
 	 *
 	 * @param file
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return IberdokFile
 	 */
 	public IberdokFile add(IberdokFile file) {
@@ -80,7 +80,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * Updates a single row in the IberdokFile table.
 	 *
 	 * @param file
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return IberdokFile
 	 */
 	public IberdokFile update(IberdokFile file) {
@@ -94,7 +94,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * Updates a single row in the IberdokFile table.
 	 *
 	 * @param file
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return IberdokFile
 	 */
 	public IberdokFile updateIdDocumento(IberdokFile file) {
@@ -119,7 +119,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * Finds a single row in the IberdokFile table.
 	 *
 	 * @param file
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return IberdokFile
 	 */
 	@Transactional(readOnly = true)
@@ -143,7 +143,7 @@ public class IberdokFileDaoImpl implements IberdokFileDao {
 	 * Removes a single row in the IberdokFile table.
 	 *
 	 * @param file
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return
 	 */
 	public void remove(IberdokFile file) {

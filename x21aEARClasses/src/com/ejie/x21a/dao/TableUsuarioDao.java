@@ -101,7 +101,7 @@ public interface TableUsuarioDao {
      * Finds a List of rows in the Usuario table.
      *
      * @param usuario Usuario
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
     List<Usuario> findAll(Usuario usuario, TableRequestDto tableRequestDto);
@@ -110,7 +110,7 @@ public interface TableUsuarioDao {
      * Finds a List of rows in the Usuario table.
      *
      * @param usuario Usuario2
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @return List
      */
     List<Usuario2> findAll(Usuario2 usuario, TableRequestDto tableRequestDto);
@@ -129,7 +129,7 @@ public interface TableUsuarioDao {
      * Finds rows in the Usuario table using like.
      *
      * @param usuario Usuario
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */
@@ -139,7 +139,7 @@ public interface TableUsuarioDao {
      * Finds rows in the Usuario table using like.
      *
      * @param usuario Usuario2
-     * @param pagination Pagination
+     * @param tableRequestDto TableRequestDto
      * @param startsWith Boolean
      * @return List
      */

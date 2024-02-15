@@ -175,7 +175,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * Inserts a single row in the Alumno table.
 	 * 
 	 * @param alumno
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return Alumno
 	 */
 	public Alumno add(final Alumno alumno) {
@@ -259,7 +259,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * Updates a single row in the Alumno table.
 	 * 
 	 * @param alumno
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return Alumno
 	 */
 	public Alumno update(final Alumno alumno) {
@@ -351,7 +351,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * Finds a single row in the Alumno table.
 	 * 
 	 * @param alumno
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return Alumno
 	 */
 	@Transactional(readOnly = true)
@@ -367,7 +367,7 @@ public class TableAlumnoDaoImpl implements TableAlumnoDao {
 	 * Removes a single row in the Alumno table.
 	 * 
 	 * @param alumno
-	 *            Pagination
+	 *            TableRequestDto
 	 * @return
 	 */
 	public void remove(Alumno alumno) {

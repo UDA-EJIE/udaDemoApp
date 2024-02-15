@@ -33,7 +33,7 @@ import com.ejie.x21a.model.X21aAlumno;
 import com.ejie.x21a.service.TableX21aAlumnoService;
 import com.ejie.x21a.util.Constants;
 import com.ejie.x38.control.bind.annotation.RequestJsonBody;
-import com.ejie.x38.dto.JerarquiaDto;
+import com.ejie.x38.dto.TableJerarquiaDto;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -261,12 +261,12 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto
 	 *            Dto que contiene los parametros de configuracion propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
 	@PostMapping(value = "/jerarquia/filter")
-	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquia(
+	public @ResponseBody TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquia(
 			@RequestJsonBody(param="filter") X21aAlumno filterX21aAlumno,
 			@RequestJsonBody TableRequestDto tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia");
@@ -281,12 +281,12 @@ public class TableX21aAlumnoController  {
 	 * @param tableRequestDto
 	 *            Dto que contiene los parametros de configuracion propios del
 	 *            RUP_TABLE a aplicar en el filtrado.
-	 * @return TableResponseDto<JerarquiaDto<X21aAlumno>>
+	 * @return TableResponseDto<TableJerarquiaDto<X21aAlumno>>
 	 *            Dto que contiene el resultado del filtrado realizado por el
 	 *            componente RUP_TABLE. 
 	 */
 	@PostMapping(value = "/jerarquiaChildren")
-	public @ResponseBody TableResponseDto<JerarquiaDto<X21aAlumno>> jerarquiaChildren(
+	public @ResponseBody TableResponseDto<TableJerarquiaDto<X21aAlumno>> jerarquiaChildren(
 			@RequestJsonBody(param="filter") X21aAlumno  filterX21aAlumno ,
 			@RequestJsonBody TableRequestDto  tableRequestDto) {
 		TableX21aAlumnoController.logger.info("[POST - jerarquia] : Obtener X21aAlumnos jerarquia - Hijos");

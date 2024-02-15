@@ -78,7 +78,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
     /**
      * Inserts a single row in the Comarca table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
 	public Comarca add(Comarca comarca) {
@@ -98,7 +98,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
     /**
      * Updates a single row in the Comarca table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
     public Comarca update(Comarca comarca) {
@@ -114,7 +114,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
     /**
      * Finds a single row in the Comarca table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return Comarca
      */
     @Transactional (readOnly = true)
@@ -128,7 +128,7 @@ public class ComarcaDaoImpl implements ComarcaDao {
     /**
      * Removes a single row in the Comarca table.
      *
-     * @param comarca Pagination
+     * @param comarca TableRequestDto
      * @return
      */
     public void remove(Comarca comarca) {
