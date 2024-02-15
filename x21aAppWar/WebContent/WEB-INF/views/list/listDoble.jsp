@@ -12,14 +12,14 @@
                 <div id="rup-list-left-header-selectables" class="col-md-3">
                     <spring:message code="lista.header.selectables" />
                 </div>
-                <div class="col-md-2">
+                <div class="form-groupMaterial col-md-2">
                     <label for="rup-list-left-header-rowNum"><spring:message code="lista.header.rownum" /></label>
                     <select id="rup-list-left-header-rowNum"></select>
                 </div>
                 <!-- Ordenar por -->
                 <div class="col-md-3">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="form-groupMaterial col-md-7">
                             <label for="rup-list-left-header-sidx"><spring:message code="lista.header.sidx" /></label>
                             <select id="rup-list-left-header-sidx"></select>
                         </div>
@@ -207,14 +207,14 @@
                 <div id="rup-list-right-header-selectables" class="col-md-3">
                     <spring:message code="lista.header.selectables" />
                 </div>
-                <div class="col-md-2">
+                <div class="form-groupMaterial col-md-2">
                     <label for="rup-list-right-header-rowNum"><spring:message code="lista.header.rownum" /></label>
                     <select id="rup-list-right-header-rowNum"></select>
                 </div>
                 <!-- Ordenar por -->
                 <div class="col-md-3">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="form-groupMaterial col-md-7">
                             <label for="rup-list-right-header-sidx"><spring:message code="lista.header.sidx" /></label>
                             <select id="rup-list-right-header-sidx"></select>
                         </div>
