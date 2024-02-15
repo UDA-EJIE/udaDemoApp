@@ -538,6 +538,96 @@
 		"multiplesEntidades":"Envío de varias entidades_eu",
 		"usoModelView":"Ejemplo con model & view_eu"
 	},
+	"rup-list-header-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-left-header-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-right-header-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-left-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-right-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Bost",
+			"10": "Hamar",
+			"20": "Hogei",
+			"30": "Hogeita hamar"
+		}
+	},
+	"rup-list-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
+	"rup-list-left-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
+	"rup-list-right-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
+	"rup-list-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
+	"rup-list-left-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
+	"rup-list-right-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Izena",
+			"apellido1": "1.go abizena"
+		}
+	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario _eu'",
 		"logginOk2" :"' Seleccionado correctamente_eu"

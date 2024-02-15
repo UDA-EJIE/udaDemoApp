@@ -538,6 +538,96 @@
 		"multiplesEntidades":"Envío de varias entidades",
 		"usoModelView":"Ejemplo con model & view"
 	},
+	"rup-list-header-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-left-header-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-right-header-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-left-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-right-footer-rowNum": {
+		"rowPerPage": {
+			"5": "Cinco",
+			"10": "Diez",
+			"20": "Veinte",
+			"30": "Treinta"
+		}
+	},
+	"rup-list-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
+	"rup-list-left-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
+	"rup-list-right-header-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
+	"rup-list-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
+	"rup-list-left-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
+	"rup-list-right-footer-sidx": {
+		"sidx": {
+			"id": "Id",
+			"nombre": "Nombre",
+			"apellido1": "Apellido 1"
+		}
+	},
 	"loginUserMock" :{
 		"logginOk1" :"Usuario '",
 		"logginOk2" :"' Seleccionado correctamente"
