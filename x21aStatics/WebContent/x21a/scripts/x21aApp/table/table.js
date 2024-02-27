@@ -512,63 +512,6 @@ jQuery(function ($) {
                     }
                 };
 
-	            if (localStorage.plugins.indexOf(',editForm,') > -1) {
-	            	const formEdit = {
-	                    detailForm: '#example_detail_div',
-	                    data: {
-	                    	'fixedMessage': 'Este mensaje fijado demuestra la posibilidad del envío de parámetros desde editForm :)'
-	                    },
-	                    validate: {
-	                        rules: {
-	                            'nombre': {
-	                                required: true
-	                            },
-	                            'apellido1': {
-	                                required: true
-	                            },
-	                            'fechaAlta': {
-	                                required: true
-	                            },
-	                            'fechaBaja': {
-	                                date: true
-	                            }
-	                        }
-	                    },
-	                    customTitle: $.rup.i18nParse($.rup.i18n.app, 'table.sampleTitle'),
-	                    cancelDeleteFunction: function () {
-		                    console.log('Ha cancelado eliminar.');
-		                }
-	                };
-	                plugins.validarModificarContinuar = function customGuardar(ctx){
-	                	if($('#apellido1_detail_table').val() !== 'Ruiz'){
-		                	//Ejemplo de validación personalizada
-		                	 let idTableDetail = ctx.oInit.formEdit.detailForm;
-		                	 let feedback = idTableDetail.find('#' + ctx.sTableId + '_detail_feedback');
-		                     try {//Se destruye para asegurar la inicialización.
-		                         feedback.rup_feedback('destroy');
-		                     } catch (ex) {
-		                      
-		                     }
-		
-		                     feedback.rup_feedback({
-		                         message: $.rup.i18nParse($.rup.i18n.app, 'table.sampleValidate'),
-		                         type: 'error',
-		                         block: false,
-		                         gotoTop: false,
-		                         delay: 2000
-		                     });
-		                	return true;//no paso la validacion
-	                	}
-	                	return false;//Paso la validacion
-	                };
-	                
-	                plugins.formEdit = formEdit;
-	
-	                $('#editForm').prop('checked', true);
-	            } else {
-	                $('#editForm').prop('checked', false);
-	            }
-	
 	            if (localStorage.plugins.indexOf(',inlineEdit,') > -1) {
 	            	const inlineEdit = {
 	                    deselect: true,
