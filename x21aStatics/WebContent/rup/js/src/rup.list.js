@@ -155,16 +155,16 @@ import Printd from 'printd';
             rowNum: {
                 source: [{
                     value: '5',
-                    i18nCaption: '5'
+                    i18nCaption: $.rup.i18nTemplate($.rup.i18n.base, 'rup_list.rowPerPage.5')
                 }, {
                     value: '10',
-                    i18nCaption: '10'
+                    i18nCaption: $.rup.i18nTemplate($.rup.i18n.base, 'rup_list.rowPerPage.10')
                 }, {
                     value: '20',
-                    i18nCaption: '20'
+                    i18nCaption: $.rup.i18nTemplate($.rup.i18n.base, 'rup_list.rowPerPage.20')
                 }, {
                     value: '30',
-                    i18nCaption: '30'
+                    i18nCaption: $.rup.i18nTemplate($.rup.i18n.base, 'rup_list.rowPerPage.30')
                 }],
                 value: '5'
             },
@@ -1207,7 +1207,7 @@ import Printd from 'printd';
                 doChange(this, true);
             };
             let changeF = function(){
-                doChange(this, false);
+                doChange(this, true);
             };
 
             var sidxRupConf = {
@@ -1446,19 +1446,17 @@ import Printd from 'printd';
             const opciones = self.options;
 
            let doChange = function(obj, change){
-                if(opciones.createFooter){
-                	let iden = opciones._header.rowNum[0].id;
-                    if (obj.id == 'rup-list-footer-rowNum') {
-                    	$('#'+iden).rup_combo('setRupValue', $('#' + obj.id).rup_combo('getRupValue'));
-                    }
-                    if (obj.id == 'rup-list-header-rowNum') {
-                    	iden = opciones._footer.rowNum[0].id;
-                    	$('#'+iden).rup_combo('setRupValue', $('#' + obj.id).rup_combo('getRupValue'));
-                    }
-                }
-                if(change){
-                    self._changeOption('rowNum', $('#' + obj.id).rup_combo('getRupValue'));
-                }
+				if (!$('#' + obj.id).rup_combo('isDisabled')) {
+					let iden = opciones._header.rowNum[0].id;
+					$('#'+iden).rup_combo('setRupValue', $('#' + obj.id).rup_combo('getRupValue'));
+					if(opciones.createFooter){
+						iden = opciones._footer.rowNum[0].id;
+						$('#'+iden).rup_combo('setRupValue', $('#' + obj.id).rup_combo('getRupValue'));
+					}
+					if(change){
+                    	self._changeOption('rowNum', $('#' + obj.id).rup_combo('getRupValue'));
+                	}
+				}
             };
 
 
@@ -1466,7 +1464,7 @@ import Printd from 'printd';
                 doChange(this, true);
             };
             let changeF = function(){
-                doChange(this, false);
+                doChange(this, true);
             };
 
             var rowNumRupConf = {

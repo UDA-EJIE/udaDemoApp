@@ -169,6 +169,10 @@
 	            		lis.attr('aria-selected', false);
 	            		$(selectedDate).attr('aria-selected',true);
 	            	}
+            		
+            		// Guardar seleccionado.
+            		settings.selected = param;
+            		
 	            	$self.val(param).trigger('change');
 	            	$('#' + settings.id).rup_select('change');
             	}
@@ -202,6 +206,9 @@
 	            			arrayDatos.push(value);
 	            		}
 	            	});
+            		
+            		// Guardar seleccionados.
+            		settings.selected = arrayDatos;
             		
             		$('#' + settings.id).val(arrayDatos).trigger('change');
             	}
@@ -1480,7 +1487,7 @@
 			if ($form.length === 1) {
 				let url = settings.url + (settings.url.includes('?') ? '&' : '?') + '_MODIFY_HDIV_STATE_=' + $.fn.getHDIV_STATE(undefined, $form);
 
-				if (data) {
+				if (data && !settings.url.includes(data)) {
 					// Escapa los caracteres '#' para evitar problemas en la petición.
 					url += "&" + data.replaceAll('#', '%23');
 				}
