@@ -16,7 +16,6 @@
             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<import resource="log-config.xml" />
-	<import resource="jackson-config.xml" />
 	<import resource="validation-config.xml" />
 	<import resource="mvc-config.xml" />
 	<import resource="security-core-config.xml" />
