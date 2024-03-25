@@ -42,6 +42,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDATOMCAT9Classpath"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
