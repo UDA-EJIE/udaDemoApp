@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/resources/x21aApp.i18n_en.properties=UTF-8
+encoding//WebContent/WEB-INF/resources/x21aApp.i18n_es.properties=UTF-8
+encoding//WebContent/WEB-INF/resources/x21aApp.i18n_eu.properties=UTF-8
+encoding//WebContent/WEB-INF/resources/x21aApp.i18n_fr.properties=UTF-8
+encoding//WebContent/WEB-INF/views/experimental/logLevel.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/patrones/validate/validate.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/table/includes/tableFilterForm.jsp=UTF-8
+encoding//src/com/ejie/x21a/control/ExperimentalController.java=UTF-8
+encoding//src/com/ejie/x21a/control/X21aCalendarController.java=UTF-8
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8
