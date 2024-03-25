@@ -588,6 +588,13 @@
 			<version>3.0.1</version>
 		</dependency>
 		<!-- FIN:PIF 1.4 EN APLICACION UDA -->
+		
+		<dependency>
+  			<groupId>ejie.xlnets</groupId>
+  			<artifactId>n38</artifactId>
+  			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
