@@ -27,7 +27,7 @@
 	<!-- Definición del almacen de datos de WebDAV -->
 	<bean id="webDavStore"
 		class="com.ejie.x21a.webdav.LocalFileSystemStore">
-		<property name="rootPath" value="/datos/x21a/tmp" />
+		<property name="rootPath" value="/WEB-INF/datos/tmp" />
 	</bean>
 
 	<!-- Servlet que gestiona las peticiones WebDAV -->
