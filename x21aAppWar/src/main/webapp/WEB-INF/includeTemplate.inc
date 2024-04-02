@@ -18,4 +18,4 @@
 <%@ taglib prefix="spring" uri="/WEB-INF/tld/spring.tld"%>
 <%@ taglib prefix="form" uri="/WEB-INF/tld/spring-form.tld"%>
 <%@page import="com.ejie.x38.util.StaticsContainer"%>
-<c:set var="staticsUrl" value='/x21aStatics' />
+<c:set var="staticsUrl" value='<%=StaticsContainer.staticsUrl%>' />
