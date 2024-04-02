@@ -15,7 +15,7 @@
 			<list>
 				<!-- Se especifica la ubicación del fichero de configuración de logback 
 					(puede ser una ruta del classpath o absoluta) -->
-				<value>/WEB-INF/properties/logback.xml</value>
+				<value>/properties/logback.xml</value>
 				<!-- Se especifica si se desea que se pinte el estado de la configuración 
 					de logback por la salida de log correspondiente -->
 				<value>true</value>

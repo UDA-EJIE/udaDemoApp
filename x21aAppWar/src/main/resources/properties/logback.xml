@@ -5,7 +5,7 @@
 	<contextName>x21a</contextName>
 	
 	<!-- Loaded of the properties file of the application -->
-	<property resource="/WEB-INF/properties/${CONTEXT_NAME}.properties" />
+	<property resource="/properties/${CONTEXT_NAME}.properties" />
 	
 	<!-- Definition of StatusListener that manages the StatusManager -->
 	<statusListener class="com.ejie.x38.log.UdaLogStatusListener" />  

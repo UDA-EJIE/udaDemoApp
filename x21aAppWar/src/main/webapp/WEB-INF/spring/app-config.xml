@@ -15,7 +15,7 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-	<!-- <import resource="log-config.xml" /> -->
+	<import resource="log-config.xml" />
 	<import resource="validation-config.xml" />
 	<import resource="mvc-config.xml" />
 	<import resource="security-core-config.xml" />
