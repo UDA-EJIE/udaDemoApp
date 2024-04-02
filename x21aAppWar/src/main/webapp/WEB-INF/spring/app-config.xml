@@ -22,7 +22,7 @@
 	<import resource="security-config.xml" />
 	<import resource="webdav-config.xml" />
 	<import resource="pif-config.xml" />
-	<!-- <import resource="rup-config.xml" /> -->
+	<import resource="rup-config.xml" />
 	<import resource="dao-config.xml" />
 	<import resource="service-config.xml" />
 	<!-- <import resource="tx-config.xml" /> -->
