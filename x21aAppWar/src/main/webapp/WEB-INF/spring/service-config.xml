@@ -16,8 +16,7 @@
 	<!-- Application Configuration Properties -->
 	<bean id="appConfiguration"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="location"
-			value="/WEB-INF/properties/x21a.properties" />
+		<property name="location" value="classpath:properties/x21a.properties" />
 		<property name="fileEncoding" value="UTF-8" />
 	</bean>
 	<!-- Scans the classpath of this application for @Service to deploy as beans -->
