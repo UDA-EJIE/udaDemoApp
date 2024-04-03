@@ -11,13 +11,7 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:load-time-weaver />
-	<bean id="transactionManager"
-		class="org.springframework.transaction.jta.WebLogicJtaTransactionManager">
-		<property name="transactionManagerName"
-			value="javax.transaction.TransactionManager" />
-	</bean>
-
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 	<aop:aspectj-autoproxy />
 
 </beans>
