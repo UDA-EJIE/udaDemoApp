@@ -15,16 +15,16 @@
  	<!-- General output -->
  	<!-- appender name="traceSystem" class="ch.qos.logback.core.ConsoleAppender"-->
   	<appender name="salidaEstandarAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    	<File>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+    	<File>${log.path}/salidaEstandar_${CONTEXT_NAME}_${hostName}.log</File>
     	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
     		<layout class="com.ejie.x38.log.LogLayout">
     			<appCode>${CONTEXT_NAME}</appCode>
-        		<instance>${weblogic.Name}</instance>	
+        		<instance>${hostName}</instance>	
     		</layout>
     	</encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       		<!-- rollover daily -->
-     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+     		<fileNamePattern>${log.path}/salidaEstandar_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
       		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -34,19 +34,19 @@
   	</appender>
   	
 	<appender name="incidenciasAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    	<File>${log.path}/incidencias_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+    	<File>${log.path}/incidencias_${CONTEXT_NAME}_${hostName}.log</File>
     	<filter class="com.ejie.x38.log.UdaLogFilter">
       		<logIncidences>true</logIncidences>
     	</filter>
     	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 	    	<layout class="com.ejie.x38.log.LogLayout">
 	    		<appCode>${CONTEXT_NAME}</appCode>
-	        	<instance>${weblogic.Name}</instance>	
+	        	<instance>${hostName}</instance>	
 	    	</layout>
 	    </encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/incidencias_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/incidencias_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -56,17 +56,17 @@
   	</appender>
   	
  	<appender name="udaTrazasAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log.path}/udaTrazas_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+		<File>${log.path}/udaTrazas_${CONTEXT_NAME}_${hostName}.log</File>
 		<filter class="com.ejie.x38.log.UdaLogFilter"/>
 		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 			<layout class="com.ejie.x38.log.LogLayout">
 	    		<appCode>${CONTEXT_NAME}</appCode>
-	        	<instance>${weblogic.Name}</instance>	
+	        	<instance>${hostName}</instance>	
 	    	</layout>
 	    </encoder>
 	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/udaTrazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/udaTrazas_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -76,17 +76,17 @@
 	</appender>
 	 
 	<appender name="aplicTrazasAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+		<File>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${hostName}.log</File>
 		<filter class="com.ejie.x38.log.UdaLogFilter"/>
 		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">	
 			<layout class="com.ejie.x38.log.LogLayout">
 	    		<appCode>${CONTEXT_NAME}</appCode>
-	        	<instance>${weblogic.Name}</instance>	
+	        	<instance>${hostName}</instance>	
 	    	</layout>
 	    </encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/${CONTEXT_NAME}Trazas_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -96,17 +96,17 @@
   	</appender>
   	
 	<appender name="auditoriaBBDDAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+		<File>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${hostName}.log</File>
 		<filter class="com.ejie.x38.log.UdaLogFilter"/>
 		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 			<layout class="com.ejie.x38.log.LogLayout">
 	    		<appCode>${CONTEXT_NAME}</appCode>
-	        	<instance>${weblogic.Name}</instance>	
+	        	<instance>${hostName}</instance>	
 	    	</layout>
 	    </encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/auditoriaBBDD_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
@@ -116,17 +116,17 @@
   	</appender>
   	
 	<appender name="auditoriaAccesosAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    	<File>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${weblogic.Name}.log</File>
+    	<File>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${hostName}.log</File>
     	<filter class="com.ejie.x38.log.UdaLogFilter"/>
     	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 	    	<layout class="com.ejie.x38.log.LogLayout">
 	    		<appCode>${CONTEXT_NAME}</appCode>
-	        	<instance>${weblogic.Name}</instance>	
+	        	<instance>${hostName}</instance>	
 	    	</layout>
 	    </encoder>
     	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${weblogic.Name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<fileNamePattern>${log.path}/auditoriaAccesos_${CONTEXT_NAME}_${hostName}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>100MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>

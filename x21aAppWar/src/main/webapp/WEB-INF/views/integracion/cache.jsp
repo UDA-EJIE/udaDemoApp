@@ -18,7 +18,7 @@
 <h2>Cache</h2> <!-- Titulo pagina -->
 
 <br/>
-<span> Weblogic Name : <%=System.getProperty("weblogic.Name")%></span>
+<span> Weblogic Name : <%=StaticsContainer.getServerInstance()%></span>
 
 
 <br/><br/>

@@ -3,6 +3,7 @@
 <%@ page import="java.io.*"%>
 <%@ page import="java.lang.reflect.*" %>
 <%@ page import= "org.springframework.security.core.context.SecurityContextImpl" %>
+<%@ page import= "com.ejie.x38.util.StaticsContainer" %>
 
 <html>
 <head><title>Clusterable Session Object Test</title></head>
@@ -65,8 +66,8 @@ diagnose such problems more quickly.</p>
 	Enumeration attrs = pageContext.getAttributeNamesInScope (pageContext.SESSION_SCOPE);
 %>
 <center>
-<h3>EJIE Weblogic Name</h3>
-	<b><%=System.getProperty("weblogic.Name")%></b>
+<h3>EJIE Server Hostname</h3>
+	<b><%=StaticsContainer.getServerInstance()%></b>
 <p>
 <br>
 
