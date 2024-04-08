@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -65,7 +65,7 @@ public class NoraProvinciaDaoImpl implements NoraProvinciaDao {
      * @param dataSource DataSource
      * @return
      */
-    @Resource
+    @Autowired
     public void setDataSource(DataSource dataSource) {
     	this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
