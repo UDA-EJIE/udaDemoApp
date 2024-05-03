@@ -880,21 +880,21 @@ public class TableUsuarioController {
 	// Obtiene el filtro por defecto
 	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterUser) {
+			@RequestParam(value = "selector", required = true) String selector,
+			@RequestParam(value = "user", required = true) String user) {
 		TableUsuarioController.logger.info("[GET - table] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterUser);
+		return filterService.getDefault(selector, user);
 	}
 	
 	// Obtiene los filtros disponibles
 	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
-			@RequestParam(value = "q", required = false) String filterQ,
-			@RequestParam(value = "c", required = false) Boolean filterC,
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "user", required = true) String filterUser) {
+			@RequestParam(value = "q", required = false) String q,
+			@RequestParam(value = "c", required = false) Boolean c,
+			@RequestParam(value = "selector", required = true) String selector,
+			@RequestParam(value = "user", required = true) String user) {
 		TableUsuarioController.logger.info("[GET - table] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterUser);
+		return filterService.getAllFilters(selector, user);
 	}
 	
 	/**

@@ -180,18 +180,18 @@ public class TableLocalidadController {
 	
 	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "localidad", required = true) String filterLocalidad) {
+			@RequestParam(value = "selector", required = true) String selector,
+			@RequestParam(value = "localidad", required = true) String localidad) {
 		TableLocalidadController.logger.info("[get - table] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterLocalidad);
+		return filterService.getDefault(selector, localidad);
 	}
 	
 	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
-			@RequestParam(value = "filterSelector", required = true) String filterSelector,
-			@RequestParam(value = "localidad", required = true) String filterLocalidad) {
+			@RequestParam(value = "selector", required = true) String selector,
+			@RequestParam(value = "localidad", required = true) String localidad) {
 		TableLocalidadController.logger.info("[get - table] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterLocalidad);
+		return filterService.getAllFilters(selector, localidad);
 	}
 	
 	@PostMapping(value = "/search")

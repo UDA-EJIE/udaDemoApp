@@ -237,18 +237,18 @@ public class TableComarcaExtendidaController {
 	
 	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
-		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
-		@RequestParam(value = "comarca", required = true) final String filterComarcaExtendida) {
+		@RequestParam(value = "selector", required = true) final String selector,
+		@RequestParam(value = "comarcaExtendida", required = true) final String comarcaExtendida) {
 		TableComarcaExtendidaController.logger.info("[get - table] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterComarcaExtendida);
+		return filterService.getDefault(selector, comarcaExtendida);
 	}
 	
 	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
-		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
-		@RequestParam(value = "comarca", required = true) final String filterComarcaExtendida) {
+		@RequestParam(value = "selector", required = true) final String selector,
+		@RequestParam(value = "comarcaExtendida", required = true) final String comarcaExtendida) {
 		TableComarcaExtendidaController.logger.info("[get - table] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterComarcaExtendida);
+		return filterService.getAllFilters(selector, comarcaExtendida);
 	}
 	
 	@PostMapping(value = "/search")
