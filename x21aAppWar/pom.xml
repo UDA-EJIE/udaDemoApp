@@ -5,7 +5,7 @@
 	<groupId>com.ejie.x21a</groupId>
 	<artifactId>x21aAppWar</artifactId>
 	<name>x21a</name>
-    <description>UdaDemoApp</description>
+	<description>UdaDemoApp</description>
 	<version>6.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<url>http://www.ejie.eus</url>
@@ -13,18 +13,24 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source> 
-        <maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<org.springframework.version>5.3.31</org.springframework.version>
 		<org.springframework.security.version>5.8.8</org.springframework.security.version>
 		<org.logback.version>1.2.11</org.logback.version>
 		<org.slf4j.version>1.7.30</org.slf4j.version>
-		<com.ejie.x38.version>6.0.0-TOMCAT-SNAPSHOT</com.ejie.x38.version>
 		<org.apache.tiles.version>3.0.8</org.apache.tiles.version>
 		<org.jackson.version>2.12.7.1</org.jackson.version>
+		<com.ejie.x38.version>6.0.0-TOMCAT-SNAPSHOT</com.ejie.x38.version>
+		<xlnets.version>0.3.0</xlnets.version>
+		<xalan.version>2.7.2</xalan.version>
+		<xerces.version>2.12.2</xerces.version>
+		<xml-apis.version>1.4.01</xml-apis.version>
+		<ejie.weblogic.wlthint3client.version>10.3.6.0</ejie.weblogic.wlthint3client.version>
+		<log4j.version>1.2.17</log4j.version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -129,19 +135,6 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
-		</dependency>
-
-		<!-- XALAN -->
-		<dependency>
-			<groupId>xalan</groupId>
-			<artifactId>xalan</artifactId>
-			<version>2.7.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>xml-apis</groupId>
-					<artifactId>xml-apis</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<!-- TILES -->
@@ -265,6 +258,72 @@
 			<version>${com.ejie.x38.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>n38a</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>n38c</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>n38i</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>n38n</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>iws</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>cryptix32</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ejie.xlnets</groupId>
+			<artifactId>ldapjdk</artifactId>
+			<version>${xlnets.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ejie.weblogic</groupId>
+			<artifactId>wlthint3client</artifactId>
+			<version>${ejie.weblogic.wlthint3client.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>${xalan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>serializer</artifactId>
+			<version>${xalan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>${xerces.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>${xml-apis.version}</version>
+		</dependency>
+
 		<!-- Reports -->
 		<!-- odf -->
 		<dependency>
@@ -293,9 +352,9 @@
 
 		<!-- pdf -->
 		<dependency>
-		    <groupId>com.lowagie</groupId>
-		    <artifactId>itext</artifactId>
-		    <version>2.1.7</version>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
 		</dependency>
 
 		<!-- xls -->
@@ -316,10 +375,10 @@
 					<groupId>javax.servlet</groupId>
 					<artifactId>servlet-api</artifactId>
 				</exclusion>
-				<exclusion>
+				<!--<exclusion>
 					<groupId>log4j</groupId>
 					<artifactId>log4j</artifactId>
-				</exclusion>
+				</exclusion>-->
 			</exclusions>
 		</dependency>
 
@@ -352,9 +411,9 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.1</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
 		</dependency>
 
 		<!-- Reports -->
@@ -594,28 +653,22 @@
 			<version>3.0.1</version>
 		</dependency>
 		<!-- FIN:PIF 1.4 EN APLICACION UDA -->
-		
-		<dependency>
-  			<groupId>ejie.xlnets</groupId>
-  			<artifactId>n38</artifactId>
-  			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
+
 
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>12.2.0.1</version>
-			 <exclusions>
-			    <exclusion>
-			      <groupId>com.oracle.database.ha</groupId>
-			      <artifactId>simplefan</artifactId>
-			    </exclusion>
-			    <exclusion>
-			      <groupId>com.oracle.database.ha</groupId>
-			      <artifactId>ons</artifactId>
-			    </exclusion>
-  			</exclusions>
+			<exclusions>
+				<exclusion>
+					<groupId>com.oracle.database.ha</groupId>
+					<artifactId>simplefan</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.oracle.database.ha</groupId>
+					<artifactId>ons</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- TESTS -->
@@ -626,17 +679,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<repositories></repositories>
-	
-	<build> 
-        <finalName>x21aAppWar</finalName> 
-        <plugins> 
-            <plugin> 
-                <groupId>org.apache.maven.plugins</groupId> 
-                <artifactId>maven-war-plugin</artifactId> 
-                <version>3.4.0</version> 
-            </plugin> 
-        </plugins> 
-    </build>
+	<build>
+		<finalName>x21aAppWar</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
