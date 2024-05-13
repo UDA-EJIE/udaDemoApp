@@ -55,7 +55,7 @@ jQuery(function($) {
        
         // REMOTO
         $('#abueloRemoto').rup_select({
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	url : 'autocomplete/departamentoRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -63,7 +63,7 @@ jQuery(function($) {
         });	
         
         $('#padreRemoto').rup_select({
-        	url : 'autocomplete/remoteEnlazadoMultipleProvincia',
+        	url : 'autocomplete/provinciaRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -72,7 +72,7 @@ jQuery(function($) {
         
         $('#hijoRemoto').rup_select({
         	parent: ['abueloRemoto', 'padreRemoto'],
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	url : 'autocomplete/dptoProvRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: true,
             combo: true,
@@ -106,7 +106,7 @@ jQuery(function($) {
         
         $('#hijoMixtoI').rup_select({
         	parent: ['abueloMixtoI', 'padreMixtoI'],
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	url : 'autocomplete/dptoProvRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -115,7 +115,7 @@ jQuery(function($) {
         
         // MIXTO II (REMOTO, REMOTO y LOCAL)
         $('#abueloMixtoII').rup_select({
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	url : 'autocomplete/departamentoRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -123,7 +123,7 @@ jQuery(function($) {
         });	
         
         $('#padreMixtoII').rup_select({
-        	url : 'autocomplete/remoteEnlazadoMultipleProvincia',
+        	url : 'autocomplete/provinciaRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -153,7 +153,7 @@ jQuery(function($) {
         
         // MIXTO III (REMOTO, LOCAL y REMOTO)
         $('#abueloMixtoIII').rup_select({
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamento',
+        	url : 'autocomplete/departamentoRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
@@ -173,7 +173,7 @@ jQuery(function($) {
         
         $('#hijoMixtoIII').rup_select({
         	parent: ['abueloMixtoIII', 'padreMixtoIII'],
-        	url : 'autocomplete/remoteEnlazadoMultipleDepartamentoProvincia',
+        	url : 'autocomplete/dptoProvRemote',
         	sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code', style:'css'},
             contains: false,
             combo: true,
