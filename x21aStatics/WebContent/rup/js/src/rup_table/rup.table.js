@@ -412,7 +412,7 @@
                 	if (Object.prototype.hasOwnProperty.call(json, key)) {
                 		id = id + json[key];
                 	} else if (key.indexOf('.') !== -1) {
-                	    id = $self._getDescendantProperty(json, key);
+                	    id = id + $self._getDescendantProperty(json, key);
                 	}
 
                     if (opts.primaryKey.length > 1 && index < opts.primaryKey.length - 1) {
@@ -477,8 +477,6 @@
                             // Comprobamos si es un componente rup o no. En caso de serlo usamos el metodo disable.
                             if (input.attr('ruptype') === 'date' && !input.rup_date('isDisabled')) {
                                 input.rup_date('disable');
-                            } else if (input.attr('ruptype') === 'combo' && !input.rup_combo('isDisabled')) {
-                                input.rup_combo('disable');
                             } else if (input.attr('ruptype') === 'time' && !input.rup_time('isDisabled')) {
                                 input.rup_time('disable');
                             } else if (input.attr('type') === 'checkbox') {
@@ -527,8 +525,8 @@
                             // Comprobamos si es un componente rup o no. En caso de serlo usamos el metodo enable.
                             if (input.attr('ruptype') === 'date' && input.rup_date('isDisabled')) {
                                 input.rup_date('enable');
-                            } else if (input.attr('ruptype') === 'combo' && input.rup_combo('isDisabled')) {
-                                input.rup_combo('enable');
+                            } else if (input.attr('ruptype') === 'select' && input.rup_select('isDisabled')) {
+                                input.rup_select('enable');
                             } else if (input.attr('ruptype') === 'time' && input.rup_time('isDisabled')) {
                                 input.rup_time('enable');
                             } else if (input.attr('type') === 'checkbox') {
@@ -1024,8 +1022,8 @@
 
 			options.filter.$filterSummary.html(' <i></i>');
 
-			jQuery.each($('select.rup_combo', options.filter.$filterContainer), function(index, elem) {
-				jQuery(elem).rup_combo('refresh');
+			jQuery.each($('select.rup_select', options.filter.$filterContainer), function(index, elem) {
+				jQuery(elem).rup_select('refresh');
 			});
 
 			$.rup_utils.populateForm([], options.filter.$filterContainer);
@@ -1378,7 +1376,7 @@
 								}
 	                        } else {
 	                            if ($.inArray($(field).attr('id'), filterMulticombo) === -1) {
-	                                numSelected = field.rup_combo('value').length;
+	                                numSelected = field.rup_select('getRupValue').length;
 	                                if (numSelected !== 0) {
 	                                    fieldValue += numSelected;
 	                                } else {
@@ -1428,8 +1426,8 @@
             }
 
             //Añadir criterios
-            if (settings.multiFilter !== undefined && typeof settings.multiFilter.fncFilterName === "function") {
-                searchString = settings.multiFilter.fncFilterName.bind($self, searchString)();
+            if (settings.multiFilter !== undefined && typeof settings.multiFilter.getName === "function") {
+                searchString = settings.multiFilter.getName.bind($self, searchString)();
             }
 
             settings.filter.$filterSummary.html(' <i>' + searchString + '</i>');
@@ -1562,6 +1560,8 @@
             global.initRupI18nPromise.then(() => {
                 var $self = this;
 
+				global.initTableMultiFilter = jQuery.Deferred();
+
                 if (args[0].buttons != undefined && args[0].buttons.contextMenu === undefined) {
                     args[0].buttons.contextMenu = true;
                 }
@@ -1624,43 +1624,44 @@
 
                 // getDefault multifilter
                 if (options.multiFilter !== undefined && options.multiFilter.getDefault === undefined) {
-                    var usuario;
-                    if (options.multiFilter.userFilter != null) {
-                        usuario = options.multiFilter.userFilter;
-                    } else {
-                        usuario = window.LOGGED_USER;
+                    if (!options.multiFilter.userFilter) {
+                        options.multiFilter.userFilter = window.LOGGED_USER;
                     }
                     var ctx = {};
                     ctx.oInit = options;
                     ctx.sTableId = $self[0].id;
                     $.rup_ajax({
                         url: options.urlBase +
-                        	options.multiFilter.url + '/getDefault?filterSelector=' +
+                        	options.multiFilter.url + '/getDefault?selector=' +
                             options.multiFilter.idFilter + '&user=' +
-                            usuario,
+                            options.multiFilter.userFilter,
                         type: 'GET',
                         dataType: 'json',
                         showLoading: false,
                         contentType: 'application/json',
                         //async : false,
                         complete: function () {
-                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterCompleteGetDefaultFilter',ctx);
+							global.initTableMultiFilter.resolve();
+                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterCompleteGetActiveFilter',ctx);
                         },
                         success: function (data) {
                             if (data != null) {
-                                var valorFiltro = JSON.parse(data.filterValue);
+								ctx.oInit.multiFilter.defaultId = String(data.id);
+								
+								const valorFiltro = JSON.parse(data.data);
 
+								if (valorFiltro) {
+									DataTable.Api().multiFilter.fillForm(valorFiltro, ctx);
+									$self._doFilter(data);
+								}
 
-                                DataTable.Api().multiFilter.fillForm(valorFiltro, ctx);
-                                $self._doFilter(data);
-                                $(options.filter.$filterSummary, 'i').prepend(data.filterName + '{');
-                                $(options.filter.$filterSummary, 'i').append('}');
-
+								$(options.filter.$filterSummary, 'i').prepend(' ' + data.text + ' ');
+								$(options.filter.$filterSummary, 'i').append(data.data ? data.data : '{ }');
                             }
-                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterSuccessGetDefaultFilter',ctx);
+                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterSuccessGetActiveFilter',ctx);
                         },
                         error: function () {
-                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterErrorGetDefaultFilter',ctx);
+                            $('#' + ctx.sTableId).triggerHandler('tableMultiFilterErrorGetActiveFilter',ctx);
                         }
                     });
                 }
@@ -1866,18 +1867,13 @@
                         }
                     }
 
-                    if (settingsTable.oInit.formEdit !== undefined){
-                    	if(	settingsTable.oInit.responsive !== undefined && settingsTable.oInit.responsive.selectorResponsive !== undefined) { //si el selector es por defecto.selectorResponsive: 'td span.dtr-data'
-                    		DataTable.Api().editForm.addchildIcons(settingsTable);
-                    	}
-                    	if(typeof settingsTable.oInit.formEdit.detailForm === 'object' && ctx.oInit.formEdit.detailForm.isOpen !== undefined && ctx.oInit.formEdit.detailForm.isOpen() ){//si dialog esta abierto
-                    		// Ejecutar fixComboAutocompleteOnEditForm como callback para garantizar la actualización de las filas.
-                    		DataTable.Api().editForm.fixComboAutocompleteOnEditForm(ctx);
-                    	}
-                    }
-                    if (options.inlineEdit === undefined && options.formEdit === undefined) {
-                        DataTable.Api().editForm.addchildIcons(settingsTable);
-                    }
+					if (settingsTable.oInit.formEdit !== undefined && settingsTable.oInit.responsive !== undefined &&
+						settingsTable.oInit.responsive.selectorResponsive !== undefined) { //si el selector es por defecto.selectorResponsive: 'td span.dtr-data'
+						DataTable.Api().editForm.addchildIcons(settingsTable);
+					}
+					if (options.inlineEdit === undefined && options.formEdit === undefined) {
+						DataTable.Api().editForm.addchildIcons(settingsTable);
+					}
 
                 });
 

@@ -39,7 +39,7 @@
     if (typeof define === 'function' && define.amd) {
 
         // AMD. Register as an anonymous module.
-        define(['jquery', './rup.base', 'select2','./external/select2MultiCheckboxes'], factory);
+        define(['jquery', './rup.base', './rup.message', 'select2', './external/select2MultiCheckboxes'], factory);
     } else {
 
         // Browser globals
@@ -729,16 +729,16 @@
          * $("#idSelect").rup_select("search", "java");
          */
     	search: function (term,notOthersClose) {
-    		let $search = $(this).data('select2').dropdown.$search ||$(this).data('select2').mySelect.selection.$search;
+    		let $search = $(this).data('select2').dropdown.$search || $(this).data('select2').mySelect.selection.$search;
            	if(!notOthersClose){
         		$('.select2-hidden-accessible').select2('close');
         	}
            	$(this).data('select2').$container.find('input').val(term);  
 	        if($search != undefined){
-	          $search.val(term);	
-	          $search.trigger('keyup');
+				$search.val(term);
+				$(this).data('settings').selected = term;
+				$search.trigger('keyup');
 	        }
-	        
     	},
     	/**
          * Permite consultar y modificar la configuración del componente.
@@ -1147,11 +1147,15 @@
 			        }
 			        __lastQuery = __cachekey;
 			        //Si esta cacheado, no busca
-			        if (settings.cache == true && 'undefined' !== typeof __cache[__cachekey]) {
-			          // display the cached results
-			          success(__cache[__cachekey]);
-			          return; 
-			        }
+					if (settings.cache == true && 'undefined' !== typeof __cache[__cachekey]) {
+						// display the cached results
+						success(__cache[__cachekey]);
+						// Marca el valor definido como seleccionado.
+						if (!settings.autocomplete && settings.selected) {
+							$('#' + settings.id).rup_select('setRupValue', settings.selected);
+						}
+						return;
+					}
 			        
 			        mySelect.$results.find('li').addClass('disabledButtonsTable');
 			        mySelect.$selection.find('input').addClass('disabledButtonsTable');
@@ -1194,7 +1198,10 @@
 					        			}
 			        				}
 			        			});
-			        		}
+							} else if (params.url.indexOf(datosParent) < 0) {
+								// Aseguramos que mete el valor del padre.
+								params.url = params.url + '?' + datosParent;
+							}
 			        		$request = $.ajax(params);
 			        	}
 			        }else{
@@ -1220,7 +1227,7 @@
 				          success(__cache[__cachekey]);
 				          // Actualizar seleccionado en la lista//css
 				          let positions = [];
-				          let valueSelect = $('#' + settings.id).rup_select('getRupValue');
+				          let valueSelect = settings.selected ? settings.selected : $('#' + settings.id).rup_select('getRupValue');
 				          
 				          if(settings.groups){// Parseo de grupos para
 												// seleccionar
@@ -1243,46 +1250,43 @@
 				          }
 				        //Se obliga a que las claves sean String recomendado por select2
 				          let seleccionado = $.grep(data, function (v,index) {
-				        	  v.id = String(v.id);
-				        	  if (v.text === undefined && v[settings.sourceParam.text] !== undefined) {
-				                  v.text = v[settings.sourceParam.text];
-				                }
-				        	  
-				        	  	if(v.id == valueSelect){
-				        	  		positions.push(index);
-				        	  	}
-			                    return v.id == settings.selected;
-			                  });
+							  if (v.id === undefined && v[settings.sourceParam.id] !== undefined) {
+								  v.id = String(v[settings.sourceParam.id]);
+							  } else {
+								  v.id = String(v.id);
+							  }
+							  
+							  if (v.text === undefined && v[settings.sourceParam.text] !== undefined) {
+								  v.text = v[settings.sourceParam.text];
+							  }
+
+							  if (v.id == valueSelect) {
+								  positions.push(settings.blank == "" ? index - 1 : index);
+							  }
+							  return v.id == settings.selected;
+						  });
 				          if( $('#' + settings.id).rup_select('getRupValue') != ''){
 				        	  seleccionado = $.grep(data, function (v) {
 				                    return v.id == $('#' + settings.id).rup_select('getRupValue');
 				                  });
 				          }
-				          // Si es el mismo, no cambia porque esta abirendo
-				          let mySelect = $('#' + settings.id).data('select2');
-				          if(seleccionado !== undefined && seleccionado.length == 1 && $('#' + settings.id).rup_select('getRupValue') != seleccionado[0].id){
-				        	  if(settings.multiple){// Revisar varios selects
-				        		  $('#' + settings.id).rup_select('setRupValue',[seleccionado[0].id]);
-				        	  }else{
-				        		  $('#' + settings.id).rup_select('setRupValue',seleccionado[0].id);
-				        	  }
-				        	  
-			                  $.each(positions, function (index,valor) {
-			                	  let $option = mySelect.$results.find('li')[valor];
-			                	  if($option != undefined){
-			                		  $($option).attr('aria-selected', 'true');
-			                	  }
-			                    });
-				          }else{
-				        	  if(settings.autocomplete){
-				        		  let valorInput = mySelect.selection.$selection.find('input').val() 
-				        		  $('#' + settings.id).rup_select('setRupValue',settings.blank);
-				        		  mySelect.selection.$selection.find('input').val(valorInput); 
-				        		  mySelect.selection.$selection.find('input').focus();
-				        	  }else{
-				        		  $('#' + settings.id).rup_select('setRupValue',settings.blank);
-				          	  }
-				          }
+							// Si es el mismo, no cambia porque esta abriendo
+							if (seleccionado !== undefined && seleccionado.length == 1 && $('#' + settings.id).rup_select('getRupValue') != seleccionado[0].id) {
+								if (settings.multiple) {// Revisar varios selects
+									$('#' + settings.id).rup_select('setRupValue', [seleccionado[0].id]);
+								} else {
+									$('#' + settings.id).rup_select('setRupValue', seleccionado[0].id);
+								}
+
+								$.each(positions, function(index, valor) {
+									let $option = $('#' + settings.id).data('select2').$results.find('li')[valor];
+									if ($option != undefined) {
+										$($option).attr('aria-selected', 'true');
+									}
+								});
+							} else {
+								$('#' + settings.id).rup_select('setRupValue', seleccionado.length == 1 ? seleccionado[0].id : settings.blank);
+							}
 				          
 				         if (settings.onLoadSuccess !== null && settings.onLoadSuccess !== undefined) {
 				            jQuery(settings.onLoadSuccess($('#' + settings.id)));
@@ -1302,7 +1306,7 @@
 	                              }
 	              			}
 	              			settings.firstLoad = false;
-	              			settings.selected = '';
+	              			settings.selected = $('#' + settings.id).rup_select('getRupValue');
 	              		  }
 				        });
 				        $request.fail(failure);

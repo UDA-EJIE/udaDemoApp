@@ -459,15 +459,16 @@
         	});
         } else {
         	// Para cuando el formulario actual sigue siendo válido (ya sea dinámico o no)
-        	let deferred = $.Deferred();
-        	ctx.oInit.formEdit.actionType = actionType;
-        	deferred.resolve();
-    		return deferred.promise();
+			let deferred = $.Deferred();
+			ctx.oInit.formEdit.actionType = actionType;
+			$(ctx.oInit.formEdit.idForm).rup_form('clearForm', true);
+			deferred.resolve();
+			return deferred.promise();
         }
     }
     
     /**
-     * Valida los formularios para no, buscarlos.
+     * Valida los formularios para no buscarlos.
      *
      * @name validarFormulario
      * @function
@@ -690,9 +691,9 @@
 	            // Comprobamos si se desea bloquear la edicion de las claves primarias
 	            DataTable.Api().rupTable.blockPKEdit(ctx, actionType);
 	        } else if (actionType === 'POST') {
-	        	//al ser add, s elimpian los combos
-	        	jQuery.each($('select.rup_combo', idForm), function (index, elem) {
-	                jQuery(elem).rup_combo('setRupValue','')
+	        	//al ser add, s elimpian los selects
+	        	jQuery.each($('select.rup_select', idForm), function (index, elem) {
+	                jQuery(elem).rup_select('setRupValue','')
 	            });
 	            $.rup_utils.populateForm(rowArray, idForm);
 	            ctx.oInit.formEdit.$navigationBar.hide();
@@ -715,10 +716,21 @@
 	    	if ($('#' + ctx.sTableId + '_formEdit_dialog_loading').length > 0) {
 	    		$('#' + ctx.sTableId + '_formEdit_dialog_loading').remove();
 	    	}
+			
+			// Evitar problemas visuales con el componente rup_select.
+			$.each($('select[ruptype="select"]', idForm), function(index, element) {
+				$(this).rup_select('close', true);
+
+				const $selectContainer = $("#" + element.id + " + span");
+
+				if ($selectContainer.hasClass('select2-container--focus') && $(document.activeElement) != $(element)) {
+					$selectContainer.removeClass('select2-container--focus');
+				}
+			});
 	
 	        // Establecemos el foco al primer elemento input o select que se
 	        // encuentre habilitado en el formulario
-	        $(idForm[0]).find('input,select').filter(':not([readonly])').first().focus();
+	        $(idForm).find('input,select').filter(':not([readonly],[type=hidden])').first().focus();
 	
 	        // Se guardan los datos originales
 	        ctx.oInit.formEdit.dataOrigin = _editFormSerialize(idForm, ctx.oInit.formEdit.serializerSplitter);
@@ -1386,8 +1398,6 @@
                 	$.when(DataTable.editForm.fnOpenSaveDialog('PUT', dt, rowSelected.line, ctx.oInit.formEdit.customTitle)).then(function () {
                         _showOnNav(dt, linkType);
                     });
-                    // Solventar problemas de los componentes combo y autocomplete en los formularios de edición.
-                    _fixComboAutocompleteOnEditForm(ctx);
                 }
                 $('#first_' + tableId+'_detail_navigation' + 
                 		', #back_' + tableId+'_detail_navigation' +
@@ -1405,25 +1415,6 @@
 
         var barraNavegacion = ctx.oInit._ADAPTER.createDetailNavigation.bind(ctx.oInit.formEdit.$navigationBar);
         ctx.oInit.formEdit.$navigationBar.append(barraNavegacion);
-    }
-    
-    function _fixComboAutocompleteOnEditForm(ctx) {
-    	// Solventar problemas de los componentes combo y autocomplete en los formularios de edición.
-        if (ctx.oInit.colModel !== undefined) {
-        	$.each(ctx.oInit.colModel, function (key, column) {
-        		if (column.editable) {
-        			if (column.rupType === 'combo') {
-        				// Realizar una limpieza total para asegurar un buen funcionamiento.
-        				ctx.oInit.formEdit.idForm.find('[name="' + column.name + '"]')['rup_combo']('hardReset');
-        			} else if (column.rupType === 'autocomplete') {
-        				// Establecer el valor por defecto del componente.
-        				const newDefaultValue = ctx.json.rows.find(row => row.id === ctx.oInit.formEdit.$navigationBar.currentPos.id)[column.name];
-        				column.editoptions.defaultValue = newDefaultValue;
-        				ctx.oInit.formEdit.idForm.find('[name="' + column.name + '"]').data('rup.autocomplete').$labelField.data('settings').defaultValue = newDefaultValue;
-        			}
-        		}
-        	});
-        }
     }
 
     function _hideOnNav(dt, linkType, callback) {
@@ -1928,8 +1919,6 @@
                     // Comprobamos si es un componente rup o no. En caso de serlo usamos el metodo disable.
                     if (input.attr('ruptype') === 'date' && !input.rup_date('isDisabled')) {
                         input.rup_date('disable');
-                    } else if (input.attr('ruptype') === 'combo' && !input.rup_combo('isDisabled')) {
-                        input.rup_combo('disable');
                     } else if (input.attr('ruptype') === 'select' && !input.rup_select('isDisabled')) {
                         input.rup_select('disable');
                     } else if (input.attr('ruptype') === 'time' && !input.rup_time('isDisabled')) {
@@ -1972,8 +1961,6 @@
                     // Comprobamos si es un componente rup o no. En caso de serlo usamos el metodo enable.
                     if (input.attr('ruptype') === 'date' && input.rup_date('isDisabled')) {
                         input.rup_date('enable');
-                    } else if (input.attr('ruptype') === 'combo' && input.rup_combo('isDisabled')) {
-                        input.rup_combo('enable');
                     } else if (input.attr('ruptype') === 'select' && input.rup_select('isDisabled')) {
                         input.rup_select('enable');
                     } else if (input.attr('ruptype') === 'time' && input.rup_time('isDisabled')) {
@@ -2092,10 +2079,6 @@
 
     apiRegister('editForm.addchildIcons()', function (ctx) {
         _addChildIcons(ctx);
-    });
-    
-    apiRegister('editForm.fixComboAutocompleteOnEditForm()', function (ctx) {
-        _fixComboAutocompleteOnEditForm(ctx);
     });
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
