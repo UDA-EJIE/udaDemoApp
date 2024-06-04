@@ -124,6 +124,7 @@ jQuery(function ($) {
 	    $('#localidad').rup_table({
 	        primaryKey: 'code',
 	        loadOnStartUp: false,
+	        enableDynamicForms: true,
 	        filter: {
 	            id: 'localidad_filter_form',
 	            filterToolbar: 'localidad_filter_toolbar',
@@ -148,8 +149,7 @@ jQuery(function ($) {
 	        ],
 	        masterDetail: {
 	            master: '#comarca',
-	            masterPrimaryKey: 'comarca.code',
-	            masterPrimaryNid: true
+	            masterPrimaryKey: 'comarca.code'
 	        },
 	        formEdit: {
 	            detailForm: '#localidad_detail_div',

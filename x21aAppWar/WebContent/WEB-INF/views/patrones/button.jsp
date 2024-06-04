@@ -182,8 +182,8 @@
 				<form>
 					<div class="form-row">
 						<div class="form-groupMaterial col-12">
+							<select id="dropdownButton-combo"></select>
 							<label for="dropdownButton-combo">Filtros</label>
-							<input id="dropdownButton-combo" />
 						</div>
 					</div>
 					<div class="form-row">

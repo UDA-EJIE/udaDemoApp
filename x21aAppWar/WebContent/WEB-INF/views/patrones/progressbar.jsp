@@ -35,6 +35,7 @@
 			<div class="card-body">
 				<blockquote class="blockquote">
 					<div id="progressbarLabel"></div>
+				</blockquote>
 			</div>
 		</div>
 

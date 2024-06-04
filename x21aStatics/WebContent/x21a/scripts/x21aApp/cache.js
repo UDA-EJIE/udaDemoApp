@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	window.initRupI18nPromise.then(function () {
-		let tableColModel = [
+		const tableColModels = [
 			{
 	            name: 'nombre',
 	            index: 'nombre',
@@ -26,7 +26,15 @@ jQuery(function($){
                 name: 'apellido1',
                 index: 'apellido1',
                 editable: true,
-                hidden: false
+                hidden: false,
+            	rupType: 'select',
+                editoptions: {
+                	url: '../../table/apellidos',
+                    sourceParam: {text: 'label', id: 'value'},
+					autocomplete: true,
+                    contains: true,
+                    combo: true
+                }
             },
             { 
             	name: "apellido2", 
@@ -37,19 +45,21 @@ jQuery(function($){
                 editoptions: {
                 	url: '../../table/apellidos',
                     sourceParam : {text: 'label', id: 'value'},
-                    combo: true,
-                    contains: true
+					autocomplete: true,
+                    contains: true,
+                    combo: true
                 }
             },
 	        {
 	            name: 'ejie',
 	            index: 'ejie',
 	            editable: true,
-	            hidden: false
+	            hidden: false,
+                edittype: 'checkbox'
 	        },
 	        {
 	            name: 'fechaAlta',
-	            index: 'fecha_alta',
+	            index: 'fechaAlta',
 	            editable: true,
 	            hidden: false,
 	            rupType: 'date',
@@ -62,7 +72,7 @@ jQuery(function($){
 	        },
 	        {
 	            name: 'fechaBaja',
-	            index: 'fecha_baja',
+	            index: 'fechaBaja',
 	            editable: false,
 	            hidden: false,
 	            rupType: 'date',
@@ -88,7 +98,7 @@ jQuery(function($){
 	    ];
     
 	    $('#table').rup_table({
-	        colModel: tableColModel,
+	        colModel: tableColModels,
 	        pageLength: 100,
 	        buttons: {
                 activate: true,

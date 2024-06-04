@@ -420,12 +420,12 @@
     <h3>Autocomplete</h3>
 
     <div class="form-group">
-		<input id="autocompleteDefault" name="autocompleteDefault" /> 
+		<select id="autocompleteDefault" name="autocompleteDefault"></select>
 		<label for="autocompleteDefault">Autocomplete</label>
 	</div>
 	
 	<div class="form-groupMaterial">
-		<input id="autocompleteMaterialized" name="autocompleteMaterialized" /> 
+		<select id="autocompleteMaterialized" name="autocompleteMaterialized"></select>
 		<label for="autocompleteMaterialized">Autocomplete Material</label>
 	</div>
 
