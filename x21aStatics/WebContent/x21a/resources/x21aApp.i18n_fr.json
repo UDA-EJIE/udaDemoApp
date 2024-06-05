@@ -420,6 +420,28 @@
 		"XLS"		:"XLS",
 		"ZIP"		:"ZIP"
 	},
+	"toolbarMixta" :{
+		"buscar"  	:"Buscar_fr",
+		"otros"	  	:"Otros botones_fr",
+		"nuevo"	  	:"Nuevo_fr",
+		"editar"	:"Editar_fr",
+		"cancelar"	:"Cancelar_fr",
+		"borrar"	:"Borrar_fr",
+		"filtrar"	:"Filtrar_fr",
+		"imprimir"	:"Imprimir_fr",
+		"ficheros"	:"Ficheros_fr",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
+	},
 	"grid##ejie" :{
 		"0" :"Non",
 		"1" :"Oui"
