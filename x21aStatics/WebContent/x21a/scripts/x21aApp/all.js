@@ -62,6 +62,7 @@ jQuery(function($){
 		$('#comarca').rup_table({
 	        primaryKey: 'code',
 	        loadOnStartUp: true,
+			enableDynamicForms: true,
 	        filter: {
 	            id: 'comarca_filter_form',
 	            filterToolbar: 'comarca_filter_toolbar',
@@ -200,7 +201,6 @@ jQuery(function($){
 	                        index: 'ejie',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 60,
 	                        edittype: 'checkbox'
 	                    },
 	                    {
@@ -208,7 +208,6 @@ jQuery(function($){
 	                        index: 'fechaAlta',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 120,
 	                        rupType: 'date',
 	                        editoptions: {
 	                            labelMaskId: 'fecha-mask',
@@ -222,7 +221,6 @@ jQuery(function($){
 	                        index: 'fechaBaja',
 	                        editable: false,
 	                        hidden: false,
-	                        width: 120,
 	                        rupType: 'date',
 	                        editoptions: {
 	                            labelMaskId: 'fecha-mask',
@@ -236,7 +234,6 @@ jQuery(function($){
 	                        index: 'rol',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 140,
 	                        rupType: 'select',
 	                        editoptions: {
 	                            url: '../table/roles',
@@ -248,6 +245,7 @@ jQuery(function($){
 	            	
 	        	    $('#example').rup_table({
 	        	        loadOnStartUp: true,
+	        	        enableDynamicForms: true,
 	        	        filter: {
 	        	            id: 'example_filter_form',
 	        	            filterToolbar: 'example_filter_toolbar',
@@ -268,7 +266,38 @@ jQuery(function($){
 	        	            detailForm: '#example_detail_div',
 	        	            url: '../table/editForm'
 	        	        }
-	        	    });  
+	        	    });
+	        	    
+					// Formulario de filtrado.
+					$('#id_filter_table').rup_select({
+						url: '../table/allIds',
+						sourceParam: { text: 'id', id: 'id' },
+						autocomplete: true,
+						combo: true
+					});
+					$('#apellido1_filter_table').rup_select({
+						url: '../table/apellidos',
+						sourceParam: { text: 'label', id: 'value' },
+						blank: '',
+						autocomplete: true,
+						contains: true,
+						combo: true
+					});
+					$('#apellido2_filter_table').rup_select({
+						url: '../table/apellidos',
+						sourceParam: { text: 'label', id: 'value' },
+						blank: '',
+						autocomplete: true,
+						contains: true,
+						combo: true
+					});
+					$('#fechaAlta_filter_table').rup_date({
+						labelMaskId: 'fecha-mask',
+						showButtonPanel: true,
+						showOtherMonths: true,
+						noWeekend: true
+					});
+					$('#fechaBaja_filter_table').rup_date();
 	        	    
 	        	    $('#feedback_dialog').rup_feedback({ type: 'ok', message:'Este es un ejemplo de <b>Feedback</b>'});
 	        	    
@@ -298,7 +327,7 @@ jQuery(function($){
 	        	        multiselect: true
 	        	    });
 	        	    
-	        	    $('#autocompleteDialog').rup_select({
+	        	    $('#autocomplete_dialog').rup_select({
 	                    data: [
 							{id: 'asp', text: 'asp'},
 							{id: 'c', text: 'c'},
