@@ -207,6 +207,20 @@
 		"ruby":"ruby",
 		"scala":"scala"
 	},
+	"rol_detail_table": {
+		"asp": "asp",
+		"c": "c",
+		"c++": "c++",
+		"coldfusion": "coldfusion",
+		"groovy": "groovy"
+	},
+	"rolName2": {
+		"asp": "asp",
+		"c": "c",
+		"c++": "c++",
+		"coldfusion": "coldfusion",
+		"groovy": "groovy"
+	},
 	"combo" :{ 
 		"_blank":"[Seleccione un elemento]",
 		"asp":"asp",
@@ -380,6 +394,14 @@
 		"pestana1"  :"Tab 1",
 		"sub10" 	:"sub10",
 		"sub11" 	:"sub11"
+	},
+	"tabs_dialog": {
+		"pestana0": "Tab 0",
+		"sub01": "sub01",
+		"sub02": "sub02",
+		"pestana1": "Tab 1",
+		"sub10": "sub10",
+		"sub11": "sub11"
 	},
 	"toolbar" :{
 		"buscar"  	:"Buscar",
@@ -776,6 +798,28 @@
 		"apellido1":"Debe de especificar un primer apellido obligatoriamente.",
 		"apellido2":"Debe de especificar un segundo apellido obligatoriamente.",
 		"alertDay": "Debe de especificar al menos una opción entre las mostradas."
-	} 
-	
+	},
+	"dias": {
+		"lunes": "Lunes",
+		"martes": "Martes",
+		"miercoles": "Miércoles",
+		"jueves": "Jueves",
+		"viernes": "Viernes",
+		"sabado": "Sábado",
+		"domingo": "Domingo"
+	},
+	"cliente": {
+		"enero": "Enero",
+		"febrero": "Febrero",
+		"marzo": "Marzo",
+		"abril": "Abril",
+		"mayo": "Mayo",
+		"junio": "Junio",
+		"julio": "Julio",
+		"agosto": "Agosto",
+		"septiembre": "Septiembre",
+		"octubre": "Octubre",
+		"noviembre": "Noviembre",
+		"diciembre": "Diciembre"
+	}
 }
