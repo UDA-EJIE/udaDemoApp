@@ -11,7 +11,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="src" path=".apt_src">
 		<attributes>
 			<attribute name="optional" value="true"/>

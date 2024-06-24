@@ -5,9 +5,9 @@
 	<projects>
 		<project>x21aAppWar</project>
 		<project>x21aEARClasses</project>
-		<project>x38ShLibClasses</project>
 		<project>x38ShLibClasses-dav</project>
 		<project>x38ShLibClasses-pif</project>
+		<project>x38ShLibClasses</project>
 		<project>x38ShLibClasses-rup</project>
 	</projects>
 	<buildSpec>

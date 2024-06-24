@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+            
+    
     <wb-module deploy-name="x21aStatics">
+                        
+        
         <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <property name="context-root" value="x21aStatics"/>
+                        
+        
         <property name="java-output-path" value="/x21aStatics/build/classes"/>
+        <property name="context-root" value="x21aStatics"/>
+                    
+    
     </wb-module>
+        
+
 </project-modules>
