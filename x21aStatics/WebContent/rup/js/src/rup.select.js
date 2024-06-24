@@ -227,14 +227,19 @@
         	var $self = $(this);
             // init de select
             if (this.length > 0) {
+				const settings = $self.data('settings');
             	var dataSelect2 = $self.data('select2');
             	dataSelect2.$selection.find('input').val('');
                 // Simple y multi
-            	if($self.data('settings').blank !== undefined){           		
-            		$self.val($self.data('settings').blank).trigger('change')
-            	}else{
-            		$self.val(null).trigger('change');
-            	}
+				if (settings.blank !== undefined) {
+					if (settings.multiple) {
+						$self.rup_select('setRupValue', [$self.data('settings').blank]);
+					} else {
+						$self.rup_select('setRupValue', $self.data('settings').blank);
+					}
+				} else {
+					$self.rup_select('setRupValue', null);
+				}
             } 
         },
         /**
@@ -1736,6 +1741,7 @@
 	
                 	$('#' + settings.id).off('select2:select');
                 	$('#' + settings.id).on('select2:select', function (e) {
+						settings.selected = e.params.data.id;
                         if(settings.autocomplete){//Change input
                         	let mySelect2 = $('#' + settings.id).data('select2');
                         	let data = $(this).select2('data')[0];
@@ -1943,12 +1949,12 @@
 	                		        	  $el.select2('close');
 	                		          }
 	                		         
-	                		          if($("#" + settings.id).val() != null && $("#" + settings.id).val().trim() != ''){
+	                		          if($("#" + settings.id).val() != null && settings.multiple ? $("#" + settings.id).val().length > 0 : $("#" + settings.id).val().trim() != ''){
 	                		        	  $("#" + settings.id).val(null).trigger('change');
 	                		          }
 	                		          setTimeout($('#' + settings.id).rup_select("enable"), 200);
 	                		          
-			                		}else if($("#" + settings.id).val() != null && $("#" + settings.id).val().trim() != ''){
+			                		}else if($("#" + settings.id).val() != null && settings.multiple ? $("#" + settings.id).val().length > 0 : $("#" + settings.id).val().trim() != ''){
 			                			// Se llama al cambio del trigger.
 			                			$("#" + settings.id).val(null).trigger('change');
 			                			$('#'+settings.id).rup_select("disable");
