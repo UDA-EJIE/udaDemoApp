@@ -69,7 +69,7 @@ jQuery(function ($) {
         var plugins = {};
             
 		plugins.enableDynamicForms = true;
-
+		plugins.primaryKey = 'ida;idb';
         plugins.loadOnStartUp = true;
 
         var fixedHeader = {
