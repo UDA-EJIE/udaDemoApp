@@ -63,9 +63,6 @@ $(function () {
                 }, {
                     id: 'g2',
                     text: 'g2_text'
-                }, {
-                    id: 'g3',
-                    text: 'g3_text'
                 }]
 
             },
@@ -178,8 +175,7 @@ $(function () {
         //Local -> Remote
     	  $('#selectLocalAbuelo').rup_select({
         	loadFromSelect: true,
-	        selected: '2',
-	        placeholder: ''
+	        selected: '2'
     	});
     	
         $('#selectRemotoPadre').rup_select({
