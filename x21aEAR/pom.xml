@@ -5,7 +5,7 @@
 	<groupId>com.ejie.x21a</groupId>
 	<artifactId>x21aEAR</artifactId>
 	<packaging>pom</packaging>
-	<version>6.0.1-SNAPSHOT</version>
+	<version>6.1.0-SNAPSHOT</version>
 	<name>x21aEAR</name>
 	<url>http://www.ejie.eus</url>
 
