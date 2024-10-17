@@ -79,7 +79,7 @@ jQuery(function($) {
             url : 'autocomplete/remote',
             sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'},
             menuMaxHeight: 200,
-            minLength: 3,
+            minimumResultsForSearch: 3,
             combo: true,
             autocomplete: true
         });
