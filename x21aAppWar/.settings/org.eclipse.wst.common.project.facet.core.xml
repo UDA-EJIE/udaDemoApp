@@ -4,9 +4,9 @@
   <fixed facet="java"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>
-  <installed facet="jst.web" version="2.5"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="java.apt" version="5.0"/>
   <installed facet="java" version="11"/>
   <installed facet="wls.web" version="14.1.1.0"/>
+  <installed facet="jst.web" version="3.1"/>
 </faceted-project>
