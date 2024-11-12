@@ -111,7 +111,7 @@
             </dependency>
 			<!-- Jdbcdslog -->
 			<dependency>
-				<groupId>org</groupId>
+				<groupId>com.googlecode.usc</groupId>
 				<artifactId>jdbcdslog</artifactId>
 				<version>1.0.5</version>
 			</dependency>
