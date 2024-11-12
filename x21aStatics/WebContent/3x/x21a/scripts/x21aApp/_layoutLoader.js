@@ -254,4 +254,10 @@ jQuery(document).ready(function(){
 		jQuery("header").remove();
 		jQuery("footer").remove();
 	}
+	
+	$(document).ajaxError(function(event, jqXHR, ajaxSettings, thrownError) {
+		if (jqXHR.status === 401 || jqXHR.status === 403) {
+			window.location.href = jqXHR.getResponseHeader("LOCATION");
+		}
+	});
 });
