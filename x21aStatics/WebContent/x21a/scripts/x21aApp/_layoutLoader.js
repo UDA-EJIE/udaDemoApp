@@ -271,6 +271,12 @@ jQuery(function($) {
         jQuery('header').remove();
         jQuery('footer').remove();
     }
+    
+	$(document).on("ajaxError", function(event, jqXHR, ajaxSettings, thrownError) {
+		if (jqXHR.status === 401 || jqXHR.status === 403) {
+			window.location.href = jqXHR.getResponseHeader("LOCATION");
+		}
+	});
 
     // Gestión de errores genérica en frontend
     window.onerror = function(message, uri, line) {
