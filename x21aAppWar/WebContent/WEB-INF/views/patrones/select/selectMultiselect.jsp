@@ -66,3 +66,44 @@
 		</div>
 	</div>
 </div>
+<div class="container-fluid">
+	<div class="form-row">
+		<fieldset id="local" class="col-sm mr-sm-5">
+			<legend>Local</legend>
+			<div class="form-groupMaterial">
+				<select id="selectAbuelo"></select>
+				<label for="selectAbuelo">Provincia</label>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<select id="multiselectPadre"></select>
+				<label for="multiselectPadre">Comarca Multiple</label>
+			</div>
+			
+			<div class="form-groupMaterial">
+				<select id="selectHijo"></select>
+				<label for="selectHijo">Localidad</label>
+			</div>
+		</fieldset>
+
+		<fieldset id="remote" class="col-sm mr-sm-5">
+			<legend>Remoto</legend>
+			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
+				<div class="form-groupMaterial">
+					<form:select id="selectAbueloRemoto" path="codeProvincia" />
+					<label for="selectAbueloRemoto">Provincia</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="multiselectPadreRemoto" path="codeComarca" />
+					<label for="selectPadreRemoto">Comarca Multiple</label>
+				</div>
+				
+				<div class="form-groupMaterial">
+					<form:select id="selectHijoRemoto" path="codeLocalidad" />
+					<label for="selectHijoRemoto">Localidad</label>
+				</div>
+			</form:form>
+		</fieldset>
+	</div>
+</div>

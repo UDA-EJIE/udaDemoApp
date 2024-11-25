@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -362,7 +363,8 @@ public class PatronesController {
     	model.addAttribute("comarcaLocalidadDTO", new ComarcaLocalidadDTO());
     	
 		// Provincias
-		model.addAttribute("comboProvincia", provinciasGenerator());
+    	List<Provincia> listaProvincias = provinciasGenerator();
+		model.addAttribute("comboProvincia", listaProvincias);
 		
 		// Comarcas
 		model.addAttribute("comboComarca", comarcasGeneratorSelect());
@@ -1241,6 +1243,24 @@ public class PatronesController {
         localidad.setComarca(comarca);
         
         return localidadService.findAll(localidad, null);
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidadMultiple")
+    public @ResponseBody
+    List<Localidad> getEnlazadoLocalidadMultiple(
+            @RequestParam(value = "codeComarca", required = false) List<BigDecimal> listaComarcas) {
+    	List<Localidad> listaLocalidades = new ArrayList<Localidad>();
+    	for (BigDecimal key : listaComarcas) {
+	        //Convertir parÃ¡metros en entidad para bÃºsqueda
+	        Comarca comarca = new Comarca();
+	        comarca.setCode(key);
+	        Localidad localidad = new Localidad();
+	        localidad.setComarca(comarca);
+	        
+	        List<Localidad> lista = localidadService.findAll(localidad, null);
+	        listaLocalidades.addAll(lista);
+    	}
+        return listaLocalidades;
     }
     
     @GetMapping(value = "comboEnlazadoSimple/remoteGroupEnlazadoComarcaLocalidad")

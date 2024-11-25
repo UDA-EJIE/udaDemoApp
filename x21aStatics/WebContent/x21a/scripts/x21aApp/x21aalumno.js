@@ -30,12 +30,12 @@ jQuery(function ($) {
 	        	index: "apellido1", 
 	        	editable: true, 
 	        	hidden: false,
-	        	rupType: 'autocomplete',
+	        	rupType: 'select',
 	            editoptions: {
-	            	source : '../table/apellidos',
-	                sourceParam : {label: 'label', value: 'value'},
+	            	url : '../table/apellidos',
+	                sourceParam : {text: 'label', id: 'value'},
 	                menuMaxHeight: 200,
-	                minLength: 3,
+	                minimumResultsForSearch: 3,
 	                combobox: true,
 	                contains: true,
 	                showDefault: true

@@ -25,7 +25,13 @@ jQuery(function ($) {
                 name: 'nombre',
                 index: 'nombre',
                 editable: true,
-                hidden: false
+                hidden: false,
+				editoptions: {
+					maxlength: 20
+				},
+				searchoptions: {
+					maxlength: 20
+				}
             },
             {
                 name: 'apellido1',
