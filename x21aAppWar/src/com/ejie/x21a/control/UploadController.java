@@ -129,16 +129,15 @@ public class UploadController {
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "apellido1", required = false) String apellido1,
 			@RequestParam(value = "apellido2", required = false) String apellido2,
-			@RequestParam(value = "foto", required = false) MultipartFile file) {
-		
-		if (!file.isEmpty()) {
-			uploadService.saveToDisk(file, appConfiguration.getProperty("fileUpload.path"));
-			UploadController.logger.info("[POST - addForm] : Fichero guardado.");
-		}
+			@RequestParam(value = "foto", required = false) MultipartFile foto) {
 
 		List<Map<String, Object>> filesMetaInfo = new ArrayList<Map<String, Object>>();
 
-		filesMetaInfo.add(this.getFileReturnMap(file));
+		if (foto != null && !foto.isEmpty()) {
+			uploadService.saveToDisk(foto, appConfiguration.getProperty("fileUpload.path"));
+			filesMetaInfo.add(this.getFileReturnMap(foto));
+			UploadController.logger.info("[POST - addForm] : Fichero guardado.");
+		}
 
 		return filesMetaInfo;
 	}
