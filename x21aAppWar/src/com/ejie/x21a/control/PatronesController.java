@@ -437,7 +437,13 @@ public class PatronesController {
         return "selectAutocompleteEnlazadoMultiple";
     }
     
-
+ // Select Autocomplete Enlazado Multiple
+    @GetMapping(value = "selectAutocompleteMultiple")
+    public String getSelectAutocompleteMultiple(Model model) {
+    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
+    	model.addAttribute("provincia", new Provincia());
+        return "selectAutocompleteMultiple";
+    }
     //Feedback
     @GetMapping(value = "feedback")
     public String getFeedback(Model model) {

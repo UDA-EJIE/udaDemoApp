@@ -349,7 +349,11 @@
                                     <spring:url value="/patrones/selectAutocompleteEnlazadoMultiple" var="selectAutocompleteEnlazadoMultiple" htmlEscape="true"/>
                                     <a class="dropdown-item" href="${selectAutocompleteEnlazadoMultiple}">
                                         <spring:message code="selectAutocompleteEnlazadoMultiple.menu" />
-                                    </a>   
+                                    </a> 
+									<spring:url value="/patrones/selectAutocompleteMultiple" var="selectAutocompleteMultiple" htmlEscape="true"/>
+									<a class="dropdown-item" href="${selectAutocompleteMultiple}">
+										<spring:message code="selectAutocompleteMultiple.menu" />
+									</a>									
                                 </div>
                             </div>
                             
