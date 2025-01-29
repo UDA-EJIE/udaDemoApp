@@ -18475,6 +18475,19 @@
   display: none;
 }
 
+.r01gContainer .select2-search--dropdown {
+  display: block !important;
+}
+
+.r01gContainer .select2-search__field {
+  width: 100% !important;
+  padding: 5px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  margin-bottom: 5px !important;
+  box-sizing: border-box;
+}
+
 .r01gContainer .context-menu-list {
   font-family: "Roboto", sans-serif;
   background-color: #fff;
@@ -53921,6 +53934,19 @@
 
 .r01gContainer .select-icon .select2-search--dropdown {
   display: none;
+}
+
+.r01gContainer .select2-search--dropdown {
+  display: block !important;
+}
+
+.r01gContainer .select2-search__field {
+  width: 100% !important;
+  padding: 5px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  margin-bottom: 5px !important;
+  box-sizing: border-box;
 }
 
 .r01gContainer .context-menu-list {
