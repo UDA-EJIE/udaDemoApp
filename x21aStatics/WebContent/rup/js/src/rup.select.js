@@ -1164,8 +1164,13 @@
 			        }
 			        let mySelect = $('#' + settings.id).data('select2');
 			        if(settings.autocomplete){
-			        	params.data.q = mySelect.$container.find('input').val();
-			        	__cachekey = params.data.q;
+						if(settings.multiple){
+							let searchField = document.querySelector('.select2-search--dropdown .select2-search__field');
+							params.data.q = searchField.value;
+						}else{						
+				        	params.data.q = mySelect.$container.find('input').val();
+				        	__cachekey = params.data.q;
+						}
 			        }
 			        if (__lastQuery !== __cachekey) {
 			          // remove caches not from last query
