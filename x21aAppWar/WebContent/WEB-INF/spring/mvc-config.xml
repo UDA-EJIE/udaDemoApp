@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd 
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context.xsd">
-	
+		
 	<!-- Crea un bean por cada clase anotada con @Component en el paquete 'com.ejie.x21a' -->
 	<context:component-scan base-package="com.ejie.x21a" />
 
@@ -26,8 +26,8 @@
 	<!-- Filtro utilizado para emular el comportamiento de los mensajes de error 
 		http en peticiones realizadas desde iframes -->
 	<bean id="iframeXHREmulationFilter" class="com.ejie.x38.IframeXHREmulationFilter" />
-
- 	<!-- Recursos idiomáticos (i18n) -->
+	
+	<!-- Recursos idiomáticos (i18n) -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="parentMessageSource" ref="appMessageSource" />
 		<property name="basename" value="/WEB-INF/resources/x21aApp.i18n" />
@@ -75,7 +75,6 @@
 			</list>
 		</property>
 	</bean>
-	
 
 	<!-- Configurar MVC -->
     <bean class="com.ejie.x38.spring.context.DefaultAnnotationHandlerMapping">
@@ -84,26 +83,6 @@
     
 	<!-- Permite la subida de ficheros -->	
 	<bean id="multipartResolver" class="com.ejie.x38.util.UdaMultipartResolver" />
-
-    <!-- Bean encargado de las peticiones -->
-    <bean id="requestMappingHandlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-	    <property name="webBindingInitializer">
-	        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-	            <property name="conversionService" ref="conversionService" />
-	        	<property name="validator" ref="validator" />
-	    	</bean>
-	    </property>
-       	<property name="messageConverters">
-            <list>
-            	<ref bean="udaMappingJackson2HttpMessageConverter"/>
-            </list>
-      		</property>
-      		<property name="customArgumentResolvers">
-      			<list>
-            	<bean class="com.ejie.x38.control.method.annotation.RequestJsonBodyMethodArgumentResolver"/>
-            </list>
-        </property>
-	</bean>
 	<!-- FIN -->
 		
 	<!-- Gestión de la Vista (View) -->
