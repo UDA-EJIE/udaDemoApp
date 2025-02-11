@@ -3,17 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- contents of beanRefContext.xml: notice that the bean id is the value 
-		specified by the parentContextKey param -->
-	<bean id="ear.context"
-		class="org.springframework.context.support.ClassPathXmlApplicationContext">
+	<bean id="ear.context" class="org.springframework.context.annotation.AnnotationConfigApplicationContext">
 		<constructor-arg>
 			<list>
-				<value>spring/dao-config.xml</value>
-				<value>spring/log-config.xml</value>
-				<value>spring/service-config.xml</value>
-				<value>spring/security-config.xml</value>
-				<value>spring/tx-config.xml</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.DaoConfig</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.LogConfig</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.AspectConfig</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.ServiceConfig</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.SecurityConfig</value>
+				<value type="java.lang.Class">com.ejie.x21a.config.TxConfig</value>
 			</list>
 		</constructor-arg>
 	</bean>
