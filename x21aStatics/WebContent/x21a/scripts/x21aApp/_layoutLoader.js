@@ -268,8 +268,8 @@ jQuery(function($) {
     
     //Evitar CABECERA y PIE en PORTAL
     if (jQuery.rup_utils.aplicatioInPortal()){
-        jQuery('header').remove();
-        jQuery('footer').remove();
+        jQuery("header[data-belongs-to-portal='false']").remove();
+        jQuery("footer[data-belongs-to-portal='false']").remove();
     }
     
 	$(document).on("ajaxError", function(event, jqXHR, ajaxSettings, thrownError) {
