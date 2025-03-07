@@ -680,6 +680,9 @@
 			}
 			return objectsAreSame;
 		},
+		/**
+		 * @deprecated desde version 6.2.0. Utilizar $.escapeSelector() en su lugar: https://api.jquery.com/jQuery.escapeSelector/
+		 */
 		escapeId: function (id) {
 			if (id) {
                 return id.replace(/([ #;&,.+*~':"!^$[\]()=>|/@])/g, '\\$1');
@@ -1006,7 +1009,7 @@
 						if (!objBox.includes(obj[e]) && deepCont <= deep) {
 							objBox.push(obj[e]);
 							deepCont++;
-							objtmp[e] = $.rup_utils.deepCopy(obj[e]);
+							objtmp[e] = $.rup_utils.deepCopy(obj[e],0);
 						} else {
 							if (deepCont > deep) {
 								objtmp[e] = obj[e];

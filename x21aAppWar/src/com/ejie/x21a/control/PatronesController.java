@@ -1251,6 +1251,20 @@ public class PatronesController {
         return localidadService.findAll(localidad, null);
     }
     
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaTable")
+    public @ResponseBody
+    List<Comarca> getEnlazadoComarcaTable(
+            @RequestParam(value = "provincia.code", required = false) BigDecimal provincia_code) {
+
+        //Convertir parámetros en entidad para búsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        return comarcaService.findAll(comarca, null);
+    }
+    
     @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidadMultiple")
     public @ResponseBody
     List<Localidad> getEnlazadoLocalidadMultiple(

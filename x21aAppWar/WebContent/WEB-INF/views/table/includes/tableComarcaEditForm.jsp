@@ -49,5 +49,11 @@
 	    	<form:select path="provincia.code" id="provinciaCode_detailForm_table" />
 	    	<label for="provinciaCode_detailForm_table">Provincia</label>
 	    </div>
-	</div>	
+	</div>
+	<div class="form-row">
+	    <div class="form-groupMaterial col-sm">
+	    	<form:select path="localidad.code" id="localidaCode_detailForm_table" />
+	    	<label for="localidaCode_detailForm_table">Comarca Anexa</label>
+	    </div>
+	</div>		
 </form:form>
