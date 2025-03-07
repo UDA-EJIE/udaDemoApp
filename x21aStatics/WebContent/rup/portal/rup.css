@@ -18487,10 +18487,6 @@
   display: none;
 }
 
-.r01gContainer .select2-search--dropdown {
-  display: block !important;
-}
-
 .r01gContainer .select2-search__field {
   width: 100% !important;
   padding: 5px !important;
@@ -53962,10 +53958,6 @@
 
 .r01gContainer .select-icon .select2-search--dropdown {
   display: none;
-}
-
-.r01gContainer .select2-search--dropdown {
-  display: block !important;
 }
 
 .r01gContainer .select2-search__field {

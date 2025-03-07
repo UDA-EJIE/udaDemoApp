@@ -154,9 +154,7 @@ jQuery(function ($) {
         	url: './apellidos',
         	sourceParam : {text: 'label', id: 'value'},
 			blank: '',
-        	autocomplete: true,
-        	contains: true,
-        	combo: true
+			placeholder: '[Seleccionar por favor...]'
         });
         $('#apellido2_filter_table').rup_select({
         	url: './apellidos',
