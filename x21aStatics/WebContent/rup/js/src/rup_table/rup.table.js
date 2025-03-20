@@ -1154,7 +1154,7 @@
                 
                 // Se asigna a la tecla ENTER la función de búsqueda
                 filterOpts.$collapsableLayer.on('keydown', function (evt) {
-                    if (evt.keyCode === 13) {
+                    if (evt.code === 'Enter') {
 						evt.preventDefault();
                         let customFiltrar = options.validarFiltrar;
                         if (typeof customFiltrar === "function" && customFiltrar(options)) {
@@ -1941,6 +1941,12 @@
 
                 // Se almacena el objeto settings para facilitar su acceso desde los métodos del componente.
                 $self.data('settings' + $self[0].id, options);
+				
+				if(tabla.context[0].oInit.scrollX && !tabla.context[0].oInit.showScrollFootInner){
+					tabla.on('init.dt', function () {
+					    $('#'+$.escapeSelector(tabla.context[0].sTableId)+'_wrapper .dataTables_scrollFootInner').hide();
+					});
+				}
 
                 $self.triggerHandler('tableAfterInit',tabla.context[0]);
 

@@ -1150,7 +1150,7 @@ function _comprobarFila(ctx,$fila){
 function _crearEventos(ctx,$selector){
         if ($selector.data('events') === undefined || $selector.data('events').keydown === undefined) {
 		$selector.keydown(function(e) {
-		    if (e.keyCode === 27) {//Esc
+		    if (e.code === 'Escape') {//Esc
                     if ($selector.hasClass('new')) { //si se da alta y se cancela.
 		    		var dt = $('#' + $.escapeSelector(ctx.sTableId)).DataTable();
 		    		ctx.inlineEdit.lastRow = undefined;
@@ -1160,8 +1160,7 @@ function _crearEventos(ctx,$selector){
 		    	}else{//si se modifica
 		    		_restaurarFila(ctx,true);
 		    	}
-		    }else if (e.keyCode === 13 || 
-		    		(e.keyCode === 9 && _lastIndexEditable(ctx,$(e.target)))) {//Intro 13, //Tabulador 9
+		    }else if (e.code === 'Enter' || (!e.shiftKey && e.code === 'Tab' && _lastIndexEditable(ctx,$(e.target)))) {//Intro 13, //Tabulador 9
 		    	var child = false;
 		    	if($selector.parent('tr').length > 0){//si es mayor que cero la seleccion es en el td,hay que pasar al tr.
 		    		$selector = $selector.parent('tr');
@@ -1199,7 +1198,7 @@ function _lastIndexEditable(ctx,$target){
 	var index = 0;
 	for (var i = ctx.aoColumns.length-1; i >= 0; i--) {
 		var nombreColumna = ctx.aoColumns[i].data;
-		for (var j = 0 ; j <= ctx.oInit.colModel.length ; j++ ) {
+		for (var j = 0 ; j < ctx.oInit.colModel.length ; j++ ) {
 			  var nombreAux = ctx.oInit.colModel[j].name;
 			  var editable = ctx.oInit.colModel[j].editable;
 			  if ( editable === true && nombreAux === nombreColumna ){
@@ -1230,7 +1229,8 @@ function _lastIndexEditable(ctx,$target){
 *
 */
 function _inlineEditFormSerialize($fila,ctx,child){
-	var serializedForm = {};
+	// Crear un nuevo objeto para no modificar los datos recibidos, de esta forma es posible reutilizarlos.
+	var serializedForm = jQuery.extend(true, {}, ctx.oInit.inlineEdit.receivedFormDataObject);
 	var selectores = {};
 
 	//añadir columnas child
@@ -1245,17 +1245,19 @@ function _inlineEditFormSerialize($fila,ctx,child){
 	}
 	//Se vacian las reglas.
 	$.each(selectores,function() {
-		// Añadir las columnas parent y child.
-		let busqueda = 'td:not([style*="display: none"]):not(".select-checkbox") input:not([disabled]),' +
-			'td:not([style*="display: none"]):not(".select-checkbox") select:not([disabled]),' +
-			'td:not([style*="display: none"]):not(".select-checkbox") textarea:not([disabled])';
+		let campos;
 
-		// Si es el hijo, solo buscar los select, input y textarea que haya.
+		// Si es el hijo, solo buscar los select, input y textarea que haya, de lo contrario, añadir las columnas parent y child.
 		if (this.hasClass('child')) {
-			busqueda = 'select,input,textarea';
+		    campos = this.find('select,input,textarea');
+		} else {
+		    campos = this.find('td:not([style*="display: none"]):not(".select-checkbox") input:not([disabled]),' +
+		            'td:not([style*="display: none"]):not(".select-checkbox") select:not([disabled]),' +
+		            'td:not([style*="display: none"]):not(".select-checkbox") textarea:not([disabled])')
+		        .not('select[ruptype="select"] + span input');
 		}
 		
-		$.each(this.find(busqueda), function(i, obj) {
+		$.each(campos, function(i, obj) {
 			var value = $(obj).val();
 
 			if (value != null) {
@@ -1274,7 +1276,7 @@ function _inlineEditFormSerialize($fila,ctx,child){
 				
 				// Construye correctamente el JSON aunque los datos contengan subentidades.
 				if (nombre.includes(".")) {
-					$.extend(serializedForm, $.rup_utils.queryStringToJson(nombre + "=" + value));
+					$.extend(serializedForm, $.rup_utils.queryStringToObject(nombre + "=" + value));
 				} else {
 					serializedForm[nombre] = value;
 				}
@@ -1292,7 +1294,7 @@ function _inlineEditFormSerialize($fila,ctx,child){
 
 				// Construye correctamente el JSON aunque los datos contengan subentidades.
 				if (isSubentity) {
-					$.extend(serializedForm, $.rup_utils.queryStringToJson(n.name + "=" + text));
+					$.extend(serializedForm, $.rup_utils.queryStringToObject(n.name + "=" + text));
 				} else {
 					serializedForm[n.name] = text;
 				}
@@ -1635,6 +1637,10 @@ function _loadAuxForm(ctx, actionType, row) {
 			tableWrapper.prepend(receivedForm);
 			ctx.oInit.inlineEdit.actionType = actionType;
 			ctx.oInit.inlineEdit.idForm = tableWrapper.find("form").first();
+			
+			// Almacena los datos recibidos en el formulario.
+			const serializedForm = $.rup_utils.editFormSerialize(ctx.oInit.inlineEdit.idForm, ctx.oInit.inlineEdit.serializerSplitter);
+			ctx.oInit.inlineEdit.receivedFormDataObject = $.rup_utils.queryStringToObject(serializedForm, ctx.oInit.inlineEdit.queryStringToObjectOptions);
     	}, 'html');
     } else {
     	// Para cuando el formulario actual sigue siendo válido o los formularios dinámicos están desactivados

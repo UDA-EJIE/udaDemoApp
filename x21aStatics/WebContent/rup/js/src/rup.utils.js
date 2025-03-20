@@ -359,6 +359,7 @@
 		/**
 		 * Convierte una cadena querystring en un objeto json.
 		 *
+		 * @deprecated desde version 6.2.0. Utilizar $.rup_utils.queryStringToObject() en su lugar: https://github.com/sindresorhus/query-string
 		 * @name jQuery.rup_utils#queryStringToJson
 		 * @function
 		 * @param {string} queryString - Query string a transformar en un objeto json.
@@ -464,6 +465,23 @@
 		},
 		
 		/**
+		 * Convierte una cadena query string en un objeto JavaScript.
+		 *
+		 * @name jQuery.rup_utils#queryStringToObject
+		 * @function
+		 * @param {string} query - Query string a transformar en un objeto JavaScript.
+		 * @param {object} options - Opciones de configuración: https://github.com/sindresorhus/query-string?tab=readme-ov-file#options
+		 * @returns {object} - Objeto JavaScript creado a partir de la query string indicada.
+		 * @example
+		 * // Obtener un objeto JavaScript a partir de la query string:
+		 * // "keyA=valueA&keyB=valueB&keyC=valueC&keyD.A=valueDA&keyD.B=valueDB" -> "{ keyA: "valueA", keyB: "valueB", keyC: "valueC", keyD: { A: "valueDA", B: "valueDB" } }"
+		 * $.rup_utils.queryStringToObject("keyA=valueA&keyB=valueB&keyC=valueC&keyD.A=valueDA&keyD.B=valueDB");
+		 */
+		queryStringToObject: function (query, options) {
+			return $.fn.unflattenObject(queryString.parse(query, options));
+		},
+		
+		/**
 		 * Devuelve un string con los caracteres sencillos.
 		 *
 		 * @name normalize
@@ -556,6 +574,47 @@
 				}
 			}
 		},
+		
+	    /**
+	     * Método que serializa los datos del formulario.
+	     *
+	     * @name editFormSerialize
+	     * @function
+	     * @since UDA 6.2.0
+	     *
+	     * @param {object} idForm - Formulario que alberga los datos.
+	     * @param {string} [serializerSplitter=&] - Cadena a usar para separar los campos.
+	     *
+	     * @return {string} - Devuelve los datos del formulario serializados
+	     *
+	     */
+	    editFormSerialize(idForm, serializerSplitter = '&') {
+	        const idFormArray = idForm.formToArray();
+	        let serializedForm = '';
+	        let ultimo = '';
+	        let count = 0;
+	
+	        $.each(idFormArray, function (key, obj) {
+	        	if (ultimo != obj.name) {
+	        		count = 0;
+	    		}
+				let valor = '';
+				if ($(idForm).find('[name="' + obj.name + '"]').prop('multiple')) {
+					valor = '[' + count++ + ']';
+				}
+				else if (ultimo === obj.name) {//Se mete como lista
+					//se hace replace del primer valor
+					serializedForm = serializedForm.replace(ultimo + '=', ultimo + '[' + count++ + ']=');
+					valor = '[' + count++ + ']'; //y se mete el array
+				}
+				serializedForm += (obj.name + valor + '=' + obj.value);
+				serializedForm += serializerSplitter;
+				ultimo = obj.name;
+	        });
+	        // Evitar que el último carácter sea "&" o el separador definido por el usuario.
+	        serializedForm = serializedForm.substring(0, serializedForm.length - serializerSplitter.length);
+	        return serializedForm;
+	    },
 
 		//DATE UTILS
 		createDate: function (day, month, year) {
@@ -1143,6 +1202,7 @@
 	/**
      * Convierte un JSON con múltiples niveles en un JSON con un único nivel.
      *
+	 * @deprecated desde version 6.2.0. Utilizar $.fn.flattenObject() en su lugar: https://github.com/hughsk/flat
      * @name flattenJSON
      * @function
      * @since UDA 5.0.2
@@ -1162,6 +1222,38 @@
 			}
 		}
 		return flattenedObj;
+	};
+	
+	/**
+     * Convierte un objeto de JavaScript con múltiples niveles en un objeto con un único nivel.
+     *
+	 * @name flattenObject
+     * @function
+     * @since UDA 6.2.0
+     *
+     * @param {object} originalObj - Objeto con varios niveles (admite también un único nivel, pero no tiene sentido llamar a la función en ese caso).
+	 * @param {object} options - Opciones de configuración: https://github.com/hughsk/flat?tab=readme-ov-file#options
+     * 
+     * @return {object} Objeto con un único nivel.
+     */
+	$.fn.flattenObject = function (originalObj, options) {
+		return flatten(originalObj, options);
+	};
+	
+	/**
+     * Convierte un objeto de JavaScript con un único nivel en un objeto con múltiples niveles.
+     *
+     * @name unflattenObject
+     * @function
+     * @since UDA 6.2.0
+     *
+     * @param {object} originalObj - Objeto plano con varios niveles (admite también un único nivel, pero no tiene sentido llamar a la función en ese caso).
+	 * @param {object} options - Opciones de configuración: https://github.com/hughsk/flat?tab=readme-ov-file#options
+     * 
+     * @return {object} Objeto con múltiples niveles (siempre y cuando el objeto procesado los tuviese).
+     */
+	$.fn.unflattenObject = function (originalObj, options) {
+		return unflatten(originalObj, options);
 	};
 
 	jQuery.rup_utils.base64 = {

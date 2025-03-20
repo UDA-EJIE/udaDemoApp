@@ -304,10 +304,10 @@
                     $(this).find('a').eq(1).focus();
                 });
                 createdLI.on('keydown', function (event) {
-                    switch (event.keyCode) {
-                    case $.ui.keyCode.UP:
+                    switch (event.code) {
+                    case "ArrowUp":
                         var enlaces = $(this).find('li > a');
-                        for (var i = 0; i <= enlaces.length; i++) {
+                        for (var i = 0; i < enlaces.length; i++) {
                             if (enlaces[i].text === $(event.target).text()) {
                                 break;
                             }
@@ -318,9 +318,9 @@
                             $(this).find('li > a').last().focus();
                         }
                         break;
-                    case $.ui.keyCode.DOWN:
-                        // var enlaces = $(this).find('li > a');
-                        for (var j = 0; j <= enlaces.length; j++) {
+                    case "ArrowDown":
+                        var enlaces = $(this).find('li > a');
+                        for (var j = 0; j < enlaces.length; j++) {
                             if (enlaces[j].text === $(event.target).text()) {
                                 break;
                             }
@@ -331,7 +331,7 @@
                             $(this).find('li > a').first().focus();
                         }
                         break;
-                    case $.ui.keyCode.ESCAPE:
+                    case "Escape":
                         $(this).children('ul').hide();
                         break;
                     default:
