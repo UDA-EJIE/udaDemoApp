@@ -196,7 +196,13 @@
 		<dependency>
 		    <groupId>org.hibernate.validator</groupId>
 		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.2.5.Final</version>  <!-- Última versión compatible con Spring 5 -->
+		    <version>6.2.5.Final</version> 
+		    <exclusions>
+				<exclusion>
+					<groupId>jakarta.validation</groupId>
+					<artifactId>jakarta.validation-api</artifactId>
+				</exclusion> 
+		    </exclusions>	
 		</dependency>
 
 		
@@ -206,19 +212,6 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.13</version>
 		</dependency>
-
-		<!-- Jackson JSON Mapper 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${org.jackson.version}</version>
-			<exclusions>
-                <exclusion>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-core</artifactId>
-                </exclusion>
-            </exclusions>
-		</dependency> -->
 
 		<!-- x38 -->
 		<dependency>
@@ -237,6 +230,10 @@
 				<exclusion>
 					<groupId>org.hibernate</groupId>
 					<artifactId>hibernate-validator</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -258,6 +255,10 @@
 					<groupId>org.hibernate</groupId>
 					<artifactId>hibernate-validator</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -278,6 +279,10 @@
 					<groupId>org.hibernate</groupId>
 					<artifactId>hibernate-validator</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -297,6 +302,10 @@
 				<exclusion>
 					<groupId>org.hibernate</groupId>
 					<artifactId>hibernate-validator</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -576,14 +585,6 @@
 					<groupId>org.tukaani</groupId>
 					<artifactId>xz</artifactId>
 				</exclusion>
-				<!-- <exclusion> -->
-				<!-- <groupId>org.codehaus.jackson</groupId> -->
-				<!-- <artifactId>jackson-core-asl</artifactId> -->
-				<!-- </exclusion> -->
-				<!-- <exclusion> -->
-				<!-- <groupId>org.codehaus.jackson</groupId> -->
-				<!-- <artifactId>jackson-mapper-asl</artifactId> -->
-				<!-- </exclusion> -->
 			</exclusions>
 		</dependency>
 		<dependency>
