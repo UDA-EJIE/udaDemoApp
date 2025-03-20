@@ -20,8 +20,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ejie.x38.serialization.JsonDateDeserializer;
@@ -40,11 +40,11 @@ public class Usuario implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;   
 	private String id;
 	@NotBlank(message="validacion.required")
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String nombre;
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String apellido1;
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String apellido2;
 	//@NotBlank(message="validacion.required")
 	private String ejie;
