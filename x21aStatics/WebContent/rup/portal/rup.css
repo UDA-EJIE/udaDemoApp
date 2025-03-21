@@ -26228,6 +26228,7 @@
 /* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
 
 .r01gContainer .paginationContainer .searchPaginator input {
+  width: 50px;
   padding: 1px;
   border: 1px solid #757575;
   border-radius: 5px;
@@ -61701,6 +61702,7 @@
 /* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
 
 .r01gContainer .paginationContainer .searchPaginator input {
+  width: 50px;
   padding: 1px;
   border: 1px solid #757575;
   border-radius: 5px;

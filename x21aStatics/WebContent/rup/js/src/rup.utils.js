@@ -576,8 +576,9 @@
 		},
 		
 	    /**
-	     * Método que serializa los datos del formulario.
+	     * Método que transforma los datos de un formulario en un query string.
 	     *
+		 * @deprecated desde version 6.2.0. Utilizar $.rup_utils.formDataToQueryString() en su lugar.
 	     * @name editFormSerialize
 	     * @function
 	     * @since UDA 6.2.0
@@ -585,7 +586,7 @@
 	     * @param {object} idForm - Formulario que alberga los datos.
 	     * @param {string} [serializerSplitter=&] - Cadena a usar para separar los campos.
 	     *
-	     * @return {string} - Devuelve los datos del formulario serializados
+	     * @return {string} - Devuelve los datos del formulario en un query string.
 	     *
 	     */
 	    editFormSerialize(idForm, serializerSplitter = '&') {
@@ -615,6 +616,31 @@
 	        serializedForm = serializedForm.substring(0, serializedForm.length - serializerSplitter.length);
 	        return serializedForm;
 	    },
+	    
+		/**
+		 * Método que transforma los datos de un formulario en un query string.
+		 *
+		 * @name formDataToQueryString
+		 * @function
+		 * @since UDA 6.2.0
+		 *
+		 * @param {object} idForm - Formulario que alberga los datos.
+		 * @param {object} options - Opciones de configuración: https://github.com/sindresorhus/query-string?tab=readme-ov-file#stringifyobject-options
+		 *
+		 * @return {string} - Devuelve los datos del formulario en un query string.
+		 *
+		 */
+		formDataToQueryString(idForm, options) {
+			let serializedForm = '';
+
+			$.each(idForm.formToArray(), function(key, obj) {
+				serializedForm += queryString.stringify({ [obj.name]: obj.value }, options) + '&';
+			});
+
+			// Evitar que el último carácter sea "&".
+			serializedForm = serializedForm.substring(0, serializedForm.length - 1);
+			return serializedForm;
+		},
 
 		//DATE UTILS
 		createDate: function (day, month, year) {

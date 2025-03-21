@@ -17159,6 +17159,7 @@ table.dataTable tbody td::selection {
 
 /* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
 .paginationContainer .searchPaginator input {
+  width: 50px;
   padding: 1px;
   border: 1px solid #757575;
   border-radius: 5px;
@@ -42214,6 +42215,7 @@ table.dataTable tbody td::selection {
 
 /* ESTILIZA EL INPUT, LABEL Y SELECT DEL PAGINADOR DE LA TABLA */
 .paginationContainer .searchPaginator input {
+  width: 50px;
   padding: 1px;
   border: 1px solid #757575;
   border-radius: 5px;
