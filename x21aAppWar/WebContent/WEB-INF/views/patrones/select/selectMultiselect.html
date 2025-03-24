@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{selectMultiselect.title}"></title>
+</head>
+<body>
+
+<h2 th:text="#{selectMultiselect.title}"></h2>
+
+<div class="container-fluid">
+    <div class="form-row">
+        <div class="form-groupMaterial col-sm-6">
+            <select id="multiSelect"></select>
+            <label for="multiSelect">MultiSelect local</label>
+        </div>
+        
+        <form th:action="@{/comboSimple/remote}" th:object="${provincia}" method="GET" id="multiSelectRemoto_form" class="mt-0 form-groupMaterial col-sm-6">
+            <div class="form-groupMaterial col-sm-10">
+                <select id="multiSelectRemoto" th:field="*{code}"></select>
+                <label for="multiSelectRemoto">MultiSelect remoto</label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="form-row">
+        <div class="form-groupMaterial col-sm-6">
+            <select id="multiSelectGrupos"></select>
+            <label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
+        </div>
+        
+        <form th:action="@{/comboEnlazadoSimple/provinciaComarcaLocalidadDTO}" th:object="${provinciaComarcaLocalidadDTO}" method="GET" id="multiSelectGruposRemoto_form" class="mt-0 form-groupMaterial col-sm-6">
+            <div class="form-groupMaterial col-sm-10">
+                <select id="multiSelectGruposRemoto" th:field="*{codeProvincia}">
+                    <option value="">---</option>
+                </select>
+                <label for="multiSelectGruposRemoto">MultiSelect con 'optgroups' remoto y preseleccionado</label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="form-row">
+        <div class="form-groupMaterial col-sm-6">
+            <select id="multiSelectLoadFromSelect" multiple="multiple">
+                <option value="1" selected="selected">Álava</option>
+                <option value="3">Gipuzkoa</option>
+                <option value="2" selected="selected">Bizkaia</option>
+            </select>
+            <label for="multiSelectLoadFromSelect">MultiSelect carga inicial desde <strong>HTML</strong></label>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="form-row">
+        <fieldset id="local" class="col-sm mr-sm-5">
+            <legend>Local</legend>
+            
+            <div class="form-groupMaterial">
+                <select id="selectAbuelo"></select>
+                <label for="selectAbuelo">Provincia</label>
+            </div>
+
+            <div class="form-groupMaterial">
+                <select id="multiselectPadre"></select>
+                <label for="multiselectPadre">Comarca Multiple</label>
+            </div>
+
+            <div class="form-groupMaterial">
+                <select id="selectHijo"></select>
+                <label for="selectHijo">Localidad</label>
+            </div>
+        </fieldset>
+
+        <fieldset id="remote" class="col-sm mr-sm-5">
+            <legend>Remoto</legend>
+
+            <form th:action="@{/comboSimple/remote}" th:object="${provinciaComarcaLocalidadDTO}" method="GET" id="selectRemoto_form">
+                <div class="form-groupMaterial">
+                    <select id="selectAbueloRemoto" th:field="*{codeProvincia}"></select>
+                    <label for="selectAbueloRemoto">Provincia</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="multiselectPadreRemoto" th:field="*{codeComarca}"></select>
+                    <label for="selectPadreRemoto">Comarca Multiple</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="selectHijoRemoto" th:field="*{codeLocalidad}"></select>
+                    <label for="selectHijoRemoto">Localidad</label>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+
+</body>
+</html>

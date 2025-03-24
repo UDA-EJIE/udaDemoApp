@@ -78,7 +78,10 @@ public class TableMultiPkController {
 	public String getFiltroSimple (Model model) {
 		model.addAttribute("multiPk", new MultiPk());
 		model.addAttribute("options", new TableOptions());
-		return "tableMultipk";
+		model.addAttribute("content", "table/tableMultipk");
+		model.addAttribute("includes", "table/includes/tableMultipk-includes");
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "/double")
@@ -102,7 +105,10 @@ public class TableMultiPkController {
 		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
-		return "tableMultipkDoble";
+		model.addAttribute("content", "table/tableMultipkDoble");
+		model.addAttribute("includes", "table/includes/tableMultipkDoble-includes");
+		
+		return "template";
 	}
 	
 	@PostMapping(value = "/editForm")

@@ -1,0 +1,60 @@
+<div th:fragment="uploadPif">
+  <div id="fileupload_pif_form" th:with="url=@{/upload/pifForm}">
+    <form th:action="${url}" th:object="${alumno}" id="uploadPifForm" enctype="multipart/form-data" method="post">
+      <fieldset style="border:1px solid #DADADA;" id="fieldset_formulario">
+        <div id="feedback_fileupload_form"></div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label id="label_nombre" for="nombre">Nombre :</label>
+              <input type="text" th:field="*{nombre}" id="nombre"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label id="label_apellido1" for="apellido1">Apellido 1:</label>
+              <input type="text" th:field="*{apellido1}" id="apellido1"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label id="label_apellido2" for="apellido2">Apellido 2:</label>
+              <input type="text" th:field="*{apellido2}" id="apellido2"/>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label id="label_ejie" for="ejie">EJIE:</label>
+              <input type="checkbox" th:field="*{ejie}" id="ejie" value="1"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            Archivos adjuntos:
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="rup-upload">
+              <span class="btn btn-success fileinput-button">
+                <i class="mdi mdi-plus"></i>
+                <span th:text="#{upload.button.addFiles}">Agregar archivos</span>
+                <input id="file_pif_form" type="file" name="file" multiple="multiple"/>
+              </span>
+              <div class="fileupload-content">
+                <div class="files list-group"></div>
+                <div id="fileupload-progressbar" class="fileupload-progressbar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 fileupload-buttonbar">
+            <button id="sendPifButton" type="submit" class="start">Enviar formulario</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

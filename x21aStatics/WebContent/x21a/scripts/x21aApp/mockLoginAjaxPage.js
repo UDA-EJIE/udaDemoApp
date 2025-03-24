@@ -1,5 +1,5 @@
 /*!
- * Copyright 2012 E.J.I.E., S.A.
+ * Copyright 2024 E.J.I.E., S.A.
  *
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
@@ -38,11 +38,6 @@ jQuery(document).ready(function() {
 		} else {
 			$('#content').css('margin-top', '10em');
 		}
-		
-		$('#logFeedback').rup_feedback({
-		        message:'<strong>Atención!</strong> El resultado de la acción requiere su atención.',
-		        type:'alert'
-		    });
 
 		// Especifica el funcionamiento del botón para que se envíen los datos y para que se almacene la cookie de usuario.
 		$('#loginButtonObject').bind('click', function() {

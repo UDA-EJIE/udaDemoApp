@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Fecha</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section class="row">
+    <div class="col-12">
+        <h2>Selector de Fecha</h2>
+        <hr>
+        <p>
+            El componente permite personalizar su uso mediante los
+            parámetros de inicialización. Esto nos permite utilizar el componente
+            fecha de los siguientes modos:
+        </p>
+        
+        <h4>Fecha simple</h4>
+        <p>
+            El uso más básico del componente es mostrar un campo de texto
+            simple con un control que permite desplegar el control de selección
+            de fecha. Permite mostrar al usuario a modo de ayuda, la máscara de
+            entrada que se va a emplear para la fecha a introducir. Existen dos
+            modos de hacerlo:
+        </p>
+        <ul>
+            <li><code>labelMaskId</code>: Permite indicar el id del elemento
+                en el que se indicará el valor de la máscara.</li>
+            <li><code>placeholderMask</code>: Muestra en el placeholder del
+                elemento la máscara de fecha.</li>
+        </ul>
+
+        <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+                <input id="fecha" type="text" />
+                <label for="fecha">Fecha <span class="text-muted" id="fecha-mask"></span>:</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+                <input id="fechaPlaceholder" type="text" />
+                <label for="fechaPlaceholder">Prueba</label>
+                <label for="fechaPlaceholder">Varios</label>
+                <label for="fechaPlaceholder">Labels:</label>
+            </div>
+        </div>
+
+        <h4>Selección múltiple</h4>
+        <p>
+            El componente permite seleccionar varias fechas en un mismo campo.
+            Para ello se debe de configurar el componente mediante la propiedad
+            <code>multiSelect</code>.
+        </p>
+
+        <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+                <input id="fecha_multi" type="text" />
+                <label for="fecha_multi">Fecha múltiple:</label>
+            </div>
+        </div>
+
+        <h4>Intervalo de fechas</h4>
+        <p>
+            Se permite vincular dos campos fecha (desde y hasta) para
+            permitir al usuario especificar un intervalo de fechas.
+        </p>
+
+        <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="desde" />
+                <label for="desde">Intervalo desde:</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="hasta" />
+                <label for="hasta">hasta:</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="desdeDateTime" />
+                <label for="desdeDateTime">Intervalo desde:</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+                <input type="text" id="hastaDateTime" />
+                <label for="hastaDateTime">hasta:</label>
+            </div>
+        </div>
+
+        <h4>Calendario en línea</h4>
+        <p>
+            El componente fecha permite su visualización en modo calendario
+            en vez de estar asociado a un campo concreto.
+        </p>
+
+        <div class="form-row">
+            <div id="fecha_inline"></div>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

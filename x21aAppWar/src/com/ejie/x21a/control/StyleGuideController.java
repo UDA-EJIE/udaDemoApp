@@ -31,7 +31,8 @@ public class StyleGuideController {
 
 	@GetMapping
 	public String getZIndex(Model model) {
-		return "styleGuide";
+		model.addAttribute("content", "styleGuide/styleGuide");
+		return "template";
 	}
 
 }

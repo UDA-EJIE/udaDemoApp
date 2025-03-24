@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tree Example</title>
+  <!-- Incluir aquí tus archivos CSS y JS -->
+</head>
+<body>
+  
+  <section class="content">
+    <h2 th:text="#{tree.trees}">Tree Example</h2>
+
+    <div id="treeCodeDialog" style="display: none">
+      <div id="htmlCode" class="codePanel codePanelLeft"></div>
+      <div id="javaScriptCode" class="codePanel codePanelRight"></div>
+    </div>
+
+    <div id="model_example_1" class="model_example_1_code">
+      <ul>
+        <li id="node1">
+          <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo1}">Hijo1</a>
+          <ul>
+            <li id="node11">
+              <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo2}">Hijo2</a>
+              <ul>
+                <li id="node111">
+                  <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                </li>
+                <li id="node112">
+                  <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo3}">Hijo3</a>
+                  <ul>
+                    <li id="node1121">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                  </ul>
+                </li>
+                <li id="node113">
+                  <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo3}">Hijo3</a>
+                  <ul>
+                    <li id="node1131">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                    <li id="node1132">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li id="node12">
+              <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo2}">Hijo2</a>
+              <ul>
+                <li id="node121">
+                  <a th:href="${urlHashtag}" th:text="#{treeExample.Hijo3}">Hijo3</a>
+                  <ul>
+                    <li id="node1211">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                    <li id="node1212">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                    <li id="node1213">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                    <li id="node1214">
+                      <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                    </li>
+                  </ul>
+                </li>
+                <li id="node122">
+                  <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+                </li>
+              </ul>
+            </li>
+            <li id="node13">
+              <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+            </li>
+          </ul>
+        </li>
+        <li id="node2">
+          <a th:href="${urlHashtag}" th:text="#{treeExample.hoja}">Hoja</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="model_example_2" class="model_example_2_code">
+      <ul>
+        <li id="nodeA">
+          <a th:href="${urlHashtag}" th:text="#{treeExample.HijoA}">HijoA</a>
+          <ul>
+            <li id="nodeAA">
+              <a th:href="${urlHashtag}">
+                <span th:text="#{treeExample.HijoA}">HijoA</span>
+                <span th:text="#{treeExample.HijoA}">HijoA</span>
+              </a>
+            </li>
+            <li id="nodeAB">
+              <a th:href="${urlHashtag}">
+                <span th:text="#{treeExample.HijoA}">HijoA</span>
+                <span th:text="#{treeExample.HijoB}">HijoB</span>
+              </a>
+            </li>
+            <li id="nodeAC">
+              <a th:href="${urlHashtag}">
+                <span th:text="#{treeExample.HijoA}">HijoA</span>
+                <span th:text="#{treeExample.HijoC}">HijoC</span>
+              </a>
+              <ul>
+                <li id="nodeACA">
+                  <a th:href="${urlHashtag}">
+                    <span th:text="#{treeExample.HijoA}">HijoA</span>
+                    <span th:text="#{treeExample.HijoC}">HijoC</span>
+                    <span th:text="#{treeExample.HijoA}">HijoA</span>
+                  </a>
+                </li>
+                <li id="nodeACB">
+                  <a th:href="${urlHashtag}">
+                    <span th:text="#{treeExample.HijoA}">HijoA</span>
+                    <span th:text="#{treeExample.HijoC}">HijoC</span>
+                    <span th:text="#{treeExample.HijoB}">HijoB</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li id="nodeB">
+          <a th:href="${urlHashtag}" th:text="#{treeExample.HijoB}">HijoB</a>
+        </li>
+        <li id="nodeC">
+          <a th:href="${urlHashtag}" th:text="#{treeExample.HijoC}">HijoC</a>
+          <ul>
+            <li id="nodeCA">
+              <a th:href="${urlHashtag}">
+                <span th:text="#{treeExample.HijoC}">HijoC</span>
+                <span th:text="#{treeExample.HijoA}">HijoA</span>
+              </a>
+            </li>
+            <li id="nodeCB">
+              <a th:href="${urlHashtag}">
+                <span th:text="#{treeExample.HijoC}">HijoC</span>
+                <span th:text="#{treeExample.HijoB}">HijoB</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <section class="row">
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.default}">Default Example</h3>
+          <div id="defaultDemo" class="rup_tree model_example_1 overflow-auto"></div>
+          <div id="codeDefaultControl" class="controlsMainCode">
+            <button id="btnDefaultDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.changedTheme}">Changed Theme</h3>
+          <div id="changedThemeDemo" class="rup_tree model_example_1 overflow-auto"></div>
+          <div id="codeChangedThemeControl" class="controlsMainCode">
+            <button id="btnChangedThemeDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.changeView}">Change View</h3>
+          <div id="changeViewDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+          <div id="changeViewExampleControl" class="controlsMainExample">
+            <button id="toggle_dots" style="width: 32%" th:text="#{treeExample.dots}">Dots</button>
+            <button id="toggle_icons" style="width: 32%" th:text="#{treeExample.icons}">Icons</button>
+            <button id="changeTheme" style="width: 32%" th:text="#{treeExample.theme}">Theme</button>
+          </div>
+          <div id="codeChangeViewControl" class="controlsMainCode">
+            <button id="btnChangeViewDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="col-xl-3 col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.select}">Select Example</h3>
+          <div id="selectDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+          <div id="selectExampleControl" class="controlsMainExample">
+            <button id="saveSelection" style="width: 32%" th:text="#{treeExample.save}">Save</button>
+            <button id="loadSelection" style="width: 32%" th:text="#{treeExample.load}">Load</button>
+            <button id="deselectAll" style="width: 32%" th:text="#{treeExample.deselect}">Deselect</button>
+          </div>
+          <div id="codeSelectControl" class="controlsMainCode">
+            <button id="btnSelectDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.sort}">Sort Example</h3>
+          <div id="sortDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+          <div id="sortExampleControl" class="controlsMainExample">
+            <button id="renameButton" style="width: 50%; text-align: center;" th:text="#{treeExample.rename}">Rename</button>
+            <label th:text="#{treeExample.renameKey}">Rename Key</label>
+          </div>
+          <div id="codeSortControl" class="controlsMainCode">
+            <button id="btnSortDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.checkbox}">Checkbox Example</h3>
+          <div id="checkboxDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+          <div id="checkboxExampleControl" class="controlsMainExample">
+            <button id="checkboxShowHide" style="width: 35%" th:text="#{treeExample.showHide}">Show/Hide</button>
+            <button id="checkboxCheckAll" style="width: 31%; white-space: nowrap;" th:text="#{treeExample.checkAll}">Check All</button>
+            <button id="checkboxUncheckAll" style="width: 31%; white-space: nowrap;" th:text="#{treeExample.unCheckAll}">Uncheck All</button>
+          </div>
+          <div id="codeCheckboxControl" class="controlsMainCode">
+            <button id="btnCheckboxDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.contextmenu}">Contextmenu Example</h3>
+          <div id="contextmenuDemo" class="rup_tree model_example_1 overflow-auto"></div>
+          <div id="codeContextmenuControl" class="controlsMainCode">
+            <button id="btnContextmenuDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3" th:text="#{tree.example.unique}">Unique Example</h3>
+          <div id="uniqueDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+          <div id="uniqueExampleControl" class="controlsMainExample">
+            <button id="uniqueRenameButton" style="width: 49%; text-align: center;" th:text="#{treeExample.rename}">Rename</button>
+            <button id="uniqueNewButton" style="width: 49%; text-align: center;" th:text="#{treeExample.new}">New</button>
+          </div>
+          <div id="uniqueControl" class="controlsMainCode">
+            <button id="btnUniqueDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3">Carga datos json</h3>
+          <div id="jsonTreeDemo" class="rup_tree model_example_1 overflow-auto"></div>
+          <div id="codeJsonTreeControl" class="controlsMainCode">
+            <button id="btnJsonTreeDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4">
+        <div class="butstyle">
+          <h3 class="rup_tree_h3">Carga datos mediante AJAX (json)</h3>
+          <div id="ajaxTreeDemo" class="ajax_tree model_example_1 overflow-auto"></div>
+          <div id="codeAjaxTreeControl" class="controlsMainCode">
+            <button id="btnAjaxTreeDemo" th:text="#{tree.verCodigo}">Ver Código</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</body>
+</html>

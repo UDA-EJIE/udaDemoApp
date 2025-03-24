@@ -12,9 +12,9 @@
 				<value>spring/dao-config.xml</value>
 				<value>spring/log-config.xml</value>
 				<value>spring/service-config.xml</value>
-				<value>spring/security-config.xml</value>
+				<value>spring/security-config.xml</value>				
 				<value>spring/tx-config.xml</value>
 			</list>
 		</constructor-arg>
-	</bean>
+	</bean>	
 </beans>

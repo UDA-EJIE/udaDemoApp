@@ -22,13 +22,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ejie.x21a.model.NoraCalle;
 import com.ejie.x38.dto.TableManager;
@@ -59,7 +59,7 @@ public class NoraCalleDaoImpl implements NoraCalleDao {
      * @param dataSource DataSource
      * @return
      */
-    @Resource
+    @Autowired
     public void setDataSource(DataSource dataSource) {
     	this.jdbcTemplate = new JdbcTemplate(dataSource);
     }

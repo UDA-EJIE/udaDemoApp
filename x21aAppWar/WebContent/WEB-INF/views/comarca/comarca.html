@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>comarca</title>
+</head>
+<body>
+
+<h2 class="title">comarca</h2>
+
+<div th:replace="comarca/includes/comarcaFilterForm :: comarcaaFilterForm"></div>
+
+<table id="comarca" class="tableFit table-striped table-bordered table-material" 
+    data-url-base="../comarca"
+    data-filter-form="#comarca_filter_form">
+    <thead>
+        <tr>
+            <th data-col-prop="code" data-col-sidx="CODE" data-col-type="NUMBER">
+                <span th:text="#{code}">code</span>
+            </th>
+            <th data-col-prop="codeAyuntamiento" data-col-sidx="CODE_AYUNTAMIENTO" data-col-type="NUMBER">
+                <span th:text="#{codeAyuntamiento}">codeAyuntamiento</span>
+            </th>
+            <th data-col-prop="codeProvincia" data-col-sidx="CODE_PROVINCIA" data-col-type="NUMBER">
+                <span th:text="#{codeProvincia}">codeProvincia</span>
+            </th>
+            <th data-col-prop="css" data-col-sidx="CSS" data-col-type="VARCHAR2">
+                <span th:text="#{css}">css</span>
+            </th>
+            <th data-col-prop="descEs" data-col-sidx="DESC_ES" data-col-type="VARCHAR2">
+                <span th:text="#{descEs}">descEs</span>
+            </th>
+            <th data-col-prop="descEu" data-col-sidx="DESC_EU" data-col-type="VARCHAR2">
+                <span th:text="#{descEu}">descEu</span>
+            </th>
+        </tr>
+    </thead>
+</table>
+
+
+<div th:replace="comarca/includes/comarcaEdit :: comarcaEdit"></div>
+</body>
+</html>

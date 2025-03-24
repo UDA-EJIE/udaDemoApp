@@ -19,7 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.springframework.dao.support.DataAccessUtils;
@@ -27,6 +26,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ejie.x21a.model.TaskList;
 import com.ejie.x38.dto.TableRequestDto;
@@ -53,7 +53,7 @@ public class TaskListDaoImpl implements TaskListDao {
      * @param dataSource DataSource
      * @return
      */
-    @Resource
+    @Autowired
     public void setDataSource(DataSource dataSource) {
     	this.jdbcTemplate = new JdbcTemplate(dataSource);
     }

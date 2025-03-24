@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla con múltiples PKs</title>
+  <!-- Incluir aquí tus archivos CSS y JS -->
+</head>
+<body>
+  <h2 class="title mb-3">Tabla con múltiples PKs</h2>
+
+  <!-- Formulario de filtrado -->
+  <div th:replace="table/includes/tableMultiPkFilterForm :: tableMultiPkFilterForm"></div>
+
+  <table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
+         data-url-base="./multipk"
+         data-filter-form="#MultiPk_filter_form">
+    <thead>
+      <tr>
+        <th data-col-prop="ida" data-col-sidx="IDA">ID A</th>
+        <th data-col-prop="idb" data-col-sidx="IDB">ID B</th>
+        <th data-col-prop="nombre" data-col-sidx="NOMBRE">Nombre</th>
+        <th data-col-prop="apellido1" data-col-sidx="APELLIDO1">Primer apellido</th>
+        <th data-col-prop="apellido2" data-col-sidx="APELLIDO2">Segundo apellido</th>
+      </tr>
+    </thead>
+  </table>
+
+  <!-- Inclusión de edición de tabla -->
+  <div th:replace="table/includes/tableMultiPkEdit :: tableMultiPkEdit"></div>
+
+  <form th:object="${options}" method="post" id="multipk_tableConfiguration" class="mt-5">
+    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>
+        <div class="col-sm-10">
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="editForm" value="0"/>
+            <label for="editForm">Edición en Formulario</label>
+          </div>
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="colReorder" value="1"/>
+            <label for="colReorder">Col Reorder</label>
+          </div>
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="seeker" value="3"/>
+            <label for="seeker">Seeker</label>
+          </div>
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="buttons" value="5"/>
+            <label for="buttons">Botones</label>
+          </div>
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="groups" value="6"/>
+            <label for="groups">Agrupamiento</label>
+          </div>
+          <div class="checkbox-material pluginsControl">
+            <input type="checkbox" th:field="*{plugins}" id="inlineEdit" value="6"/>
+            <label for="inlineEdit">Edición en Línea</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
+        <div class="col-sm-10">
+          <div class="radio-material pluginsControl">
+            <input type="radio" th:field="*{selectionType}" id="multiSelection" value="2"/>
+            <label for="multiSelection">Multiselección</label>
+          </div>
+          <div class="radio-material pluginsControl">
+            <input type="radio" th:field="*{selectionType}" id="selection" value="4"/>
+            <label for="selection">Selección Simple</label>
+          </div>
+          <div class="radio-material pluginsControl">
+            <input type="radio" th:field="*{selectionType}" id="noSelection" value="7"/>
+            <label for="noSelection">Sin selección</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <span id="pluginError"></span>
+    <button id="multipk_aplicar" type="button" class="btn-material btn-material-primary-medium-emphasis">
+      Aplicar Cambios
+    </button>
+  </form>
+</body>
+</html>

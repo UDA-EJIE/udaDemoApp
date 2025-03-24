@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.xpath.XPathAPI;
-import org.slf4j.Logger;
+import org.slf4j.Logger;	
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -299,7 +299,11 @@ public class IberdokController {
 				e.printStackTrace();
 			}
 		}
-		return "iberdokWelcome";
+		
+		model.addAttribute("content", "experimental/iberdok");
+    	model.addAttribute("includes", "experimental/iberdok-includes");
+
+		return "template";
 	}
 	
 	// Iberdok

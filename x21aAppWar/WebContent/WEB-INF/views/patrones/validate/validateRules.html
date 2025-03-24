@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reglas de validación</title>
+    <!-- Aquí se incluyen los archivos CSS, JavaScript, etc. -->
+  </head>
+  <body>
+
+    <section>
+      <h2>Reglas de validación</h2>
+      <p>El componente implementa por defecto una serie de reglas de validación.</p>
+      
+      <h3>Obligatoriedad</h3>
+      
+      <p>
+        Dentro de estas reglas de validación se puede determinar que un campo debe ser informado de manera obligatoria por parte del usuario.
+      </p>
+      <p>
+        Esta regla puede ser aplicada siempre o de manera condicional.
+      </p>
+      <div class="example">
+        <div id="feedbackRequiredRules"></div>
+        <form th:object="${randomForm}" id="formRequiredRules" method="post">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="campoObligatorio1" class="label" th:text="#{campoObligatorio}">Campo obligatorio</label>
+                <!-- El binding para el campo obligatorio -->
+                <input type="text" th:field="*{campoObligatorio1}" class="form-control" id="campoObligatorio1" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="checkbox" name="esObligatorio" id="esObligatorio" style="float:left;" />
+                <label for="esObligatorio" class="label">
+                  &nbsp;<span th:text="#{patron.validacion.obligatorioSi}">Obligatorio Sí</span>
+                </label>
+                <input type="text" th:field="*{campoObligatorio2}" class="form-control" id="campoObligatorio2" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <!-- En este caso el select se deja vacío; se podría poblar vía JavaScript o con th:each si se tiene la lista -->
+                <select id="diaObligatorio" style="float: left">
+                  <!-- Opciones si son estáticas -->
+                </select>
+                <label for="campoObligatorio3" class="label">
+                  &nbsp;<span th:text="#{patron.validacion.obligatorioSiCombo}">Obligatorio Sí Combo</span>
+                </label>
+                <input type="text" th:field="*{campoObligatorio3}" class="form-control" id="campoObligatorio3" />
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-3">
+              <input type="submit" class="btn btn-block btn-secondary" value="Validar" />
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <h3 th:text="#{patron.validacion.validacionesNumericas}">Validaciones Numéricas</h3>
+      <p>Las validaciones numéricas disponibles son las siguientes:</p>
+      <ul>
+        <li><code>min</code>: El valor no debe ser inferior al indicado en la regla.</li>
+        <li><code>max</code>: El valor no debe ser superior al indicado en la regla.</li>
+        <li><code>range</code>: El valor debe estar dentro del rango especificado.</li>
+        <li><code>integer</code>: El valor debe ser un número entero.</li>
+        <li><code>number</code>: El valor debe ser numérico.</li>
+      </ul>
+      
+      <div class="example">
+        <div id="feedbackNumeric"></div>
+        <form th:object="${randomForm}" id="formNumeric" method="post">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="valorMinimo" class="label" th:text="#{patron.validacion.min}">Mínimo</label>
+                <input type="text" th:field="*{valorMinimo}" class="form-control" id="valorMinimo" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="valorMaximo" class="label" th:text="#{patron.validacion.max}">Máximo</label>
+                <input type="text" th:field="*{valorMaximo}" class="form-control" id="valorMaximo" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="valorIntervalo" class="label" th:text="#{patron.validacion.range}">Rango</label>
+                <input type="text" th:field="*{valorIntervalo}" class="form-control" id="valorIntervalo" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="entero" class="label" th:text="#{patron.validacion.integer}">Entero</label>
+                <input type="text" th:field="*{entero}" class="form-control" id="entero" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="numeroDecimal" class="label" th:text="#{patron.validacion.number}">Número</label>
+                <input type="text" th:field="*{numeroDecimal}" class="form-control" id="numeroDecimal" />
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-3">
+              <input type="submit" class="btn btn-block btn-secondary" value="Validar" />
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <h3 th:text="#{patron.validacion.validacionesTexto}">Validaciones de Texto</h3>
+      <p>Las validaciones alfanuméricas disponibles son las siguientes:</p>
+      <ul>
+        <li><code>min</code>: El valor no debe ser inferior al indicado en la regla.</li>
+        <li><code>max</code>: El valor no debe ser superior al indicado en la regla.</li>
+        <li><code>range</code>: El valor debe estar dentro del rango especificado.</li>
+        <li><code>integer</code>: El valor debe ser un número entero.</li>
+        <li><code>number</code>: El valor debe ser numérico.</li>
+      </ul>
+      
+      <div class="example">
+        <div id="feedbackText"></div>
+        <form th:object="${randomForm}" id="formText" method="post">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="longitudMinima" class="label" th:text="#{patron.validacion.minlength}">Longitud Mínima</label>
+                <input type="text" th:field="*{longitudMinima}" class="form-control" id="longitudMinima" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="longitudMaxima" class="label" th:text="#{patron.validacion.maxlength}">Longitud Máxima</label>
+                <input type="text" th:field="*{longitudMaxima}" class="form-control" id="longitudMaxima" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="longitudIntervalo" class="label" th:text="#{patron.validacion.rangelength}">Rango de Longitud</label>
+                <input type="text" th:field="*{longitudIntervalo}" class="form-control" id="longitudIntervalo" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="palabrasMaximo" class="label" th:text="#{patron.validacion.maxWords}">Máximo de Palabras</label>
+                <input type="text" th:field="*{palabrasMaximo}" class="form-control" id="palabrasMaximo" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="palabrasMinimo" class="label" th:text="#{patron.validacion.minWords}">Mínimo de Palabras</label>
+                <input type="text" th:field="*{palabrasMinimo}" class="form-control" id="palabrasMinimo" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="palabrasIntervalo" class="label" th:text="#{patron.validacion.number}">Número de Palabras</label>
+                <input type="text" th:field="*{palabrasIntervalo}" class="form-control" id="palabrasIntervalo" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="letrasYPuntuacion" class="label" th:text="#{patron.validacion.letterswithbasicpunc}">Letras y Puntuación</label>
+                <input type="text" th:field="*{letrasYPuntuacion}" class="form-control" id="letrasYPuntuacion" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="alfanumerico" class="label" th:text="#{patron.validacion.alphanumeric}">Alfanumérico</label>
+                <input type="text" th:field="*{alfanumerico}" class="form-control" id="alfanumerico" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="soloLetras" class="label" th:text="#{patron.validacion.lettersonly}">Solo Letras</label>
+                <input type="text" th:field="*{soloLetras}" class="form-control" id="soloLetras" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="soloDigitos" class="label" th:text="#{patron.validacion.digits}">Sólo Dígitos</label>
+                <input type="text" th:field="*{soloDigitos}" class="form-control" id="soloDigitos" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="sinEspacios" class="label" th:text="#{patron.validacion.nowhitespace}">Sin Espacios</label>
+                <!-- <input type="text" th:field="*{sinEspacios}" class="form-control" id="sinEspacios" /> -->
+              </div>
+              
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="patron" class="label" th:text="#{patron.validacion.pattern}">Patrón</label>
+                <input type="text" th:field="*{patron}" class="form-control" id="patron" />
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-3">
+              <input type="submit" class="btn btn-block btn-secondary" value="Validar" />
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </section>
+  </body>
+</html>

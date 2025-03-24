@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wizard dinamico</title>
+  <!-- Incluye aquí tus hojas de estilo y scripts necesarios -->
+</head>
+<body>
+
+  <h2>Wizard &lt;c:import&gt;</h2>
+
+  <div id="wizard_options">
+    <fieldset>
+      <legend style="float: left;">Generar resumen:</legend>
+      <input type="radio" name="summary" value="true" id="radio_summary_yes" checked="checked"/>
+      <label for="radio_summary_yes">SÍ</label>
+      <input type="radio" name="summary" value="false" id="radio_summary_no"/>
+      <label for="radio_summary_no">No</label>
+      <br/><br/>
+    </fieldset>
+    <fieldset>
+      <legend style="float: left;">Resumen con 'accordion':</legend>
+      <input type="radio" name="accordion" value="true" id="radio_accordion_yes" checked="checked"/>
+      <label for="radio_accordion_yes">SÍ</label>
+      <input type="radio" name="accordion" value="false" id="radio_accordion_no"/>
+      <label for="radio_accordion_no">No</label>
+      <br/><br/>
+    </fieldset>
+    <fieldset>
+      <legend style="float: left;">Pestañas convertidas a 'accordion':</legend>
+      <input type="radio" name="tabs2accordion" value="true" id="radio_tab2accordion_yes" checked="checked"/>
+      <label for="radio_tab2accordion_yes">SÍ</label>
+      <input type="radio" name="tabs2accordion" value="false" id="radio_tab2accordion_no"/>
+      <label for="radio_tab2accordion_no">No</label>
+      <br/><br/>
+      <input type="button" id="makeWizard" value="Convertir formulario en Wizard"/>
+      <br/><br/>
+    </fieldset>
+  </div>
+
+  <!-- Formulario con binding al objeto 'randomForm' -->
+  <form th:object="${randomForm}" id="wizardForm" method="post">
+    <fieldset>
+      <legend class="wizardLegend">Datos de la cuenta</legend>
+      <label for="username">Usuario</label>
+      <input id="username" type="text" th:field="*{username}" />
+      <br/><br/>
+      <label for="password">Password</label>
+      <input id="password" type="password" th:field="*{password}" />
+      <br/><br/>
+      <label for="ejie">Ejie</label>
+      <select id="ejie" th:field="*{ejie}">
+        <option th:value="0" selected="selected" th:text="'No'"></option>
+        <option th:value="1" th:text="'SÍ'"></option>
+      </select>
+      <br/><br/>
+    </fieldset>
+    <fieldset>
+      <legend class="wizardLegend">Deshabilitado</legend>
+      <!-- Sin contenido -->
+    </fieldset>
+    <fieldset>
+      <legend class="wizardLegend">Paso dinámico</legend>
+      <!-- Sin contenido -->
+    </fieldset>
+    <fieldset>
+      <legend class="wizardLegend">Plan de trabajo</legend>
+      <label for="desde">Fecha desde</label>
+      <label for="desde" id="intervalo-mask"></label>:
+      <input id="desde" type="text" th:field="*{desde}" />
+      <label for="hasta">hasta:</label>
+      <input id="hasta" type="text" th:field="*{hasta}" />
+      <br/><br/>
+      <label for="hora_entrada">Horario desde</label>
+      <label for="hora_entrada" id="hora-mask"></label>:
+      <input id="hora_entrada" type="text" th:field="*{hora_entrada}" />
+      <label for="hora_salida">hasta:</label>
+      <input id="hora_salida" type="text" th:field="*{hora_salida}" />
+      <br/><br/>
+      <label for="dias">Días de trabajo</label>
+      <select id="dias" th:field="*{dias}">
+        <!-- Opciones para 'dias' -->
+      </select>
+      <br/><br/>
+      <label for="cliente">Meses de trabajo en cliente</label>
+      <select id="cliente" th:field="*{cliente}">
+        <!-- Opciones para 'cliente' -->
+      </select>
+      <br/><br/>
+      <div id="meses">
+        <h1><a href="#">Jornada reducida</a></h1>
+        <div>
+          <div style="float:left; margin-left: 1em;">
+            <input type="checkbox" th:field="*{mes_enero}" th:value="0" id="mes_enero" />
+            <label for="mes_enero"> Enero</label><br/>
+            <input type="checkbox" th:field="*{mes_febrero}" th:value="1" id="mes_febrero" />
+            <label for="mes_febrero"> Febrero</label><br/>
+            <input type="checkbox" th:field="*{mes_marzo}" th:value="2" id="mes_marzo" />
+            <label for="mes_marzo"> Marzo</label><br/>
+          </div>
+          <div style="float:left; margin-left: 6em;">
+            <input type="checkbox" th:field="*{mes_abril}" th:value="3" id="mes_abril" />
+            <label for="mes_abril"> Abril</label><br/>
+            <input type="checkbox" th:field="*{mes_mayo}" th:value="4" id="mes_mayo" />
+            <label for="mes_mayo"> Mayo</label><br/>
+            <input type="checkbox" th:field="*{mes_junio}" th:value="5" id="mes_junio" />
+            <label for="mes_junio"> Junio</label><br/>
+          </div>
+          <div style="float:left; margin-left: 6em;">
+            <input type="checkbox" th:field="*{mes_julio}" th:value="6" id="mes_julio" />
+            <label for="mes_julio"> Julio</label><br/>
+            <input type="checkbox" th:field="*{mes_agosto}" th:value="7" id="mes_agosto" />
+            <label for="mes_agosto"> Agosto</label><br/>
+            <input type="checkbox" th:field="*{mes_septiembre}" th:value="8" id="mes_septiembre" />
+            <label for="mes_septiembre"> Septiembre</label><br/>
+          </div>
+          <div style="float:left; margin-left: 6em;">
+            <input type="checkbox" th:field="*{mes_octubre}" th:value="9" id="mes_octubre" />
+            <label for="mes_octubre"> Octubre</label><br/>
+            <input type="checkbox" th:field="*{mes_noviembre}" th:value="10" id="mes_noviembre" />
+            <label for="mes_noviembre"> Noviembre</label><br/>
+            <input type="checkbox" th:field="*{mes_diciembre}" th:value="11" id="mes_diciembre" />
+            <label for="mes_diciembre"> Diciembre</label><br/>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
+    </fieldset>
+    <br/>
+    <input id="saveForm" type="button" value="Enviar" />
+  </form>
+</body>
+</html>

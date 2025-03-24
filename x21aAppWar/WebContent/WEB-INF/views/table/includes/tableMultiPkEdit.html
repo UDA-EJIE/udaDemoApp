@@ -1,0 +1,25 @@
+<div th:fragment="tableMultiPkEdit">
+    <!-- Formulario de detalle -->
+    <div id="MultiPk_detail_div" class="rup-table-formEdit-detail d-none">
+        <!-- Barra de navegación del detalle -->
+        <div id="MultiPk_detail_navigation" class="row no-gutters"></div>
+        <!-- Separador -->
+        <hr class="m-1">
+        <div id="MultiPk_detail_form_container" class="dialog-content-material">
+            <!-- El formulario será insertado mediante una llamada Ajax -->
+        </div>
+        <!-- Botonera del formulario de detalle -->
+        <div class="rup-table-buttonpanel-material">
+            <div class="text-right">
+                <!-- Botón cancelar -->
+                <button id="MultiPk_detail_button_cancel" type="button">
+                    <span th:text="#{cancel}">Cancelar</span>
+                </button>
+                <!-- Botón guardar -->
+                <button id="MultiPk_detail_button_save" type="button">
+                    <span th:text="#{save}">Guardar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

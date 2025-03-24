@@ -19,7 +19,7 @@ public class FileUtils {
 			.getLogger(FileUtils.class);
 
 	/**
-	 * Función que convierte un fichero en un string en base64 del mismo
+	 * Funciï¿½n que convierte un fichero en un string en base64 del mismo
 	 * 
 	 * @param file
 	 *            el fichero a convertir
@@ -43,7 +43,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * Función que lee un fichero y lo convierte en un array de bytes
+	 * Funciï¿½n que lee un fichero y lo convierte en un array de bytes
 	 * 
 	 * @param file
 	 *            el fichero a convertir
@@ -79,7 +79,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * Función que descomprime un fichero zip y lo guarda en la carpeta definida
+	 * Funciï¿½n que descomprime un fichero zip y lo guarda en la carpeta definida
 	 * 
 	 * @param file
 	 *            file el fichero a descomprimir
@@ -128,7 +128,7 @@ public class FileUtils {
 	}
 
 	/**
-	 * Función que convierte un String base64 en un fichero y lo guarda
+	 * Funciï¿½n que convierte un String base64 en un fichero y lo guarda
 	 * 
 	 * @param file64
 	 *            string en base64 a convertir a fichero

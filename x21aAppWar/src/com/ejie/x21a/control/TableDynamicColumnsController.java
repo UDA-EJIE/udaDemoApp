@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.annotation.Resource;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -75,7 +75,7 @@ public class TableDynamicColumnsController  {
 	@Autowired
 	private TableUsuarioService tableUsuarioService;
 	
-	@Resource
+	@Autowired
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	@InitBinder
@@ -115,8 +115,11 @@ public class TableDynamicColumnsController  {
 		model.addAttribute(Constants.MODEL_USUARIO, new Usuario());
 		model.addAttribute(Constants.MODEL_ACTIONTYPE, "POST");
 		model.addAttribute(Constants.MODEL_ENCTYPE, Constants.APPLICATION_URLENCODED);
+		model.addAttribute("content", "table/tableDynamicColumns");
+		model.addAttribute("includes", "table/includes/tableDynamicColumns-includes");
+	
 		
-		return "tableDynamicColumns";
+		return "template";
 	}
 	
 	@PostMapping(value = "/inlineEdit")

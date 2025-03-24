@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ajusta la referencia según tu CSS -->
+</head>
+<body>
+<section class="row">
+    <div class="col-12">
+        <h2>Feedback</h2>
+        <hr>
+        <p>Informa al usuario de cómo interactuar con los elementos de la aplicación y del resultado de cualquier acción que realice o cualquier problema que tenga y de cómo solucionarlo.</p>
+        <p>Se definen tres tipos feedback:</p>
+        <ul>
+            <li><strong>Error:</strong> Se muestra un error irrecuperable del sistema.</li>
+            <li><strong>Advertencia:</strong> Se muestra un mensaje de alerta que debe de ser tenido en cuenta por el usuario.</li>
+            <li><strong>Confirmación:</strong> Muestra un mensaje para indicar al usuario de la finalización satisfactoria de una acción.</li>
+        </ul>	
+        <div class="example">
+            <div id="feedbackOk" role="alert"></div>
+            <div id="feedbackAlert" role="alert"></div>
+            <div id="feedbackError" role="alert"></div>
+        </div>
+
+        <br>
+        <h3>Prueba el sistema</h3>
+        <p>Prueba el sistema de feedback utilizando los siguientes controles.</p>
+        
+        <div class="example">
+            <div id="feedback" role="alert"></div>
+        </div>
+
+        <form>
+            <div class="form-group row">
+                <label for="feedback_type" class="col-md-1 col-12 col-form-label">Tipo:</label>
+                <div class="col-lg-2 col-md-2 col-12">
+                    <select id="feedback_type" class="form-control">
+                        <option value="">---</option>
+                        <option value="ok" selected>Ok</option>
+                        <option value="alert">Alerta</option>
+                        <option value="error">Error</option>
+                    </select>
+                </div>
+                <label for="feedback_gotoTop" class="col-md-1 col-12 col-form-label">Ir arriba:</label>
+                <div class="col-lg-2 col-md-2 col-12">
+                    <select id="feedback_gotoTop" class="form-control">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <label for="feedback_block" class="col-md-1 col-12 col-form-label">Bloquear:</label>
+                <div class="col-lg-2 col-md-2 col-12">
+                    <select id="feedback_block" class="form-control">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="feedback_imgClass" class="col-lg-1 col-form-label">Clase de imagen:</label>
+                <div class="col-lg-2">
+                    <input id="feedback_imgClass" class="form-control" type="text" placeholder="feedbackImgPruebas" />
+                </div>
+                <label for="feedback_delay" class="col-lg-1 col-form-label">Retraso (ms):</label>
+                <div class="col-lg-2">
+                    <input id="feedback_delay" class="form-control" type="text" />
+                </div>
+            </div>
+            
+            <div class="btn-group" role="group">
+                <button id="boton_create" type="button" class="btn btn-secondary">Crear</button>
+                <button id="boton_destroy" type="button" class="btn btn-secondary">Destruir</button>
+                <button id="boton_set" type="button" class="btn btn-secondary">Configurar</button>
+                <button id="boton_setOptions" type="button" class="btn btn-secondary">Opciones</button>
+                <button id="boton_setType" type="button" class="btn btn-secondary">Tipo</button>
+                <button id="boton_hide" type="button" class="btn btn-secondary">Ocultar</button>
+                <button id="boton_close" type="button" class="btn btn-secondary">Cerrar</button>
+                <button id="boton_show" type="button" class="btn btn-secondary">Mostrar</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

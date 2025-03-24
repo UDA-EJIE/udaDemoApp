@@ -242,6 +242,5 @@ public class Comarca implements java.io.Serializable {
 		return result.toString();
 	}
 
-
 }
 

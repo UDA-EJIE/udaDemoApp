@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iberdok Scripts</title>
+    <!-- Inclusión del template base (ajusta la ruta y el nombre del fragmento) -->
+    <div th:replace="~{/WEB-INF/includeTemplate.inc :: headerFragment}"></div>
+</head>
+<body>
+    <script th:inline="javascript">
+    var IBERDOK = (function() {
+        var constants = {
+            'lang' : /*[[${lang}]]*/ 'en',
+            'token' : /*[[${token}]]*/ '',
+            'idUsuario' : /*[[${idUsuario}]]*/ 0,
+            'idModelo' : /*[[${idModelo}]]*/ 0,
+            'urlRetorno' : /*[[${urlRetorno}]]*/ '',
+            'urlFinalizacion' : /*[[${urlFinalizacion}]]*/ '',
+            'urlNuevoDocumento' : /*[[${urlNuevoDocumento}]]*/ '',
+            'urlEditarDocumento' : /*[[${urlEditarDocumento}]]*/ '',
+            'urlEditorDocumentos': /*[[${urlEditorDocumentos}]]*/ ''
+        };
+
+        var result = {};
+        for (var n in constants)
+            if (constants.hasOwnProperty(n))
+                Object.defineProperty(result, n, {
+                    value: constants[n]
+                });
+
+        return result;
+    }());
+</script>
+
+</script>
+
+
+  <script th:src="${staticsUrl}+@{//x21a/scripts/x21aApp/iberdok.js}" type="text/javascript"></script>
+  </body>
+</html>
+

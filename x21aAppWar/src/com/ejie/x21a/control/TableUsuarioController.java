@@ -90,7 +90,7 @@ public class TableUsuarioController {
 	@Autowired
 	private FilterService filterService;
 	
-	@javax.annotation.Resource
+	@Autowired
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	@InitBinder
@@ -157,7 +157,10 @@ public class TableUsuarioController {
 		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
-		return "table";
+		model.addAttribute("content", "table/table");
+		model.addAttribute("includes", "table/includes/table-includes");
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "/double")
@@ -181,7 +184,12 @@ public class TableUsuarioController {
 		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
 		
-		return "tableDouble";
+
+		model.addAttribute("content", "table/tableDouble");
+		model.addAttribute("includes", "table/includes/tableDouble-includes");
+		
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "masterDetail")
@@ -195,7 +203,11 @@ public class TableUsuarioController {
 		model.addAttribute("comarca", comarca);
 		model.addAttribute("localidad", localidad);
 		
-		return "tableMasterDetail";
+
+		model.addAttribute("content", "table/tableMasterDetail");
+		model.addAttribute("includes", "table/includes/tableMasterDetail-includes");
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "masterDialog")
@@ -209,14 +221,21 @@ public class TableUsuarioController {
 		model.addAttribute("comarca", comarca);
 		model.addAttribute("localidad", localidad);
 		
-		return "tableDialogDetail";
+		model.addAttribute("content", "table/tableDialogDetail");
+		model.addAttribute("includes", "table/includes/tableDialogDetail-includes");
+		
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "tableDialog")
 	public String getTableDialog(Model model) {
 		model.addAttribute("tituloPagina", messageSource.getMessage("tabla Dialog", null, LocaleContextHolder.getLocale()));
 		model.addAttribute("multiPk", new MultiPk());
-		return "tableDialog";
+		model.addAttribute("content", "table/tableDialog");
+		model.addAttribute("includes", "table/includes/tableDialog-includes");
+		
+		return "template";
 	}
 	
 	@GetMapping(value = "/tableDialogAjax")
@@ -238,8 +257,10 @@ public class TableUsuarioController {
 		comboEjie.put("0", "No");
 		comboEjie.put("1", "Sí");
 		model.addAttribute("comboEjie", comboEjie);
+		model.addAttribute("content", "table/table");
+		model.addAttribute("includes", "table/includes/table-includes");
 		
-		return "tableDialogAjax";
+		return "template :: content";
 	}
 	
 	@PostMapping(value = "/editForm")
@@ -270,8 +291,8 @@ public class TableUsuarioController {
 				model.addAttribute(Constants.MODEL_ENDPOINT, "edit");
 			}
 		}
-		
-		return "tableEditForm";
+		model.addAttribute("content", "table/includes/tableEditForm");
+		return "template :: content";
 	}
 	
 	@PostMapping(value = "/editFormDouble")
@@ -303,7 +324,8 @@ public class TableUsuarioController {
 			}
 		}
 		
-		return "tableDoubleEditForm";
+		model.addAttribute("content", "table/includes/tableEditForm");
+		return "template :: content";
 	}
 	
 	@PostMapping(value = "/editFormMultipart")

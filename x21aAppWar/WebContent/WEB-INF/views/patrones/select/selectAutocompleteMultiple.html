@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{selectAutocomplete.title}">Título del Select</title>
+    <!-- Aquí se pueden incluir archivos CSS, JavaScript, etc. -->
+  </head>
+  <body>
+
+    <!-- Definición de variables URL a usar en formularios -->
+    <div th:with="remoto=@{/autocomplete/remote}, remotoEnlazado=@{/autocomplete/remoteEnlazadoProvincia}">
+      <section class="row">
+        <div class="col-12">
+          <h2 th:text="#{selectAutocomplete.title}">Título del Select</h2>
+          
+          <!-- Primera fila: Selectbox local y selectbox remoto -->
+          <div class="row mt-4">
+            <!-- Selectbox local -->
+            <div class="col-sm-6">
+              <h3 class="col-sm-12">Selectbox local</h3>
+              <div class="form-groupMaterial col-sm-12">
+                <select id="selectboxLocal" name="selectboxLocal"></select>
+                <label for="selectboxLocal">Lenguaje</label>
+                <p class="mt-2">
+                  [asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]
+                </p>
+              </div>
+            </div>
+            
+            <!-- Selectbox remoto -->
+            <div class="col-sm-6">
+              <form th:object="${departamentoProvincia}" id="selectboxRemoto_form" th:action="${remoto}" method="get">
+                <h3 class="col-sm-12">Selectbox remoto</h3>
+                <div class="form-groupMaterial col-sm-12">
+                  <select id="selectboxRemoto" th:field="*{code}">
+                    <option value="">---</option>
+                  </select>
+                  <label for="selectboxRemoto">Departamento-Provincia</label>
+                  <p class="mt-2">
+                    [Castellano: " de " // Euskara: arab, gipuz, bilb]
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Segunda fila: Selectbox remoto (con evento) y Autocomplete remoto -->
+          <div class="row mt-4">
+            <!-- Selectbox remoto (con evento en el select) -->
+            <div class="col-sm-6">
+              <form th:object="${provincia}" id="selectRemoto_form" th:action="${remotoEnlazado}" method="get">
+                <h3 class="col-sm-12">Selectbox remoto (con evento en el select)</h3>
+                <div class="form-groupMaterial col-sm-12">
+                  <select id="selectRemoto" th:field="*{code}">
+                    <option value="">---</option>
+                  </select>
+                  <label for="selectRemoto">Select remoto</label>
+                  <p class="mt-2">[Alava, Gipuzcoa, Vizcaya]</p>
+                </div>
+              </form>
+            </div>
+            <!-- Autocomplete remoto (el selectbox remoto cambia sus valores) -->
+            <div class="col-sm-6">
+              <form th:object="${departamentoProvincia}" id="autocompleteGet_form" th:action="${remoto}" method="get">
+                <h3 class="col-sm-12">Autocomplete remoto (el selectbox remoto cambia sus valores)</h3>
+                <div class="form-groupMaterial col-sm-12">
+                  <select id="autocompleteGet" th:field="*{code}">
+                    <option value="">---</option>
+                  </select>
+                  <label for="autocompleteGet">Departamento-Provincia</label>
+                  <p class="mt-2">[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Tercera fila: Autocomplete local (con función select), Autocomplete local sin acentos y Autocomplete remoto sin cachear -->
+          <div class="row mt-4">
+            <!-- Autocomplete local con función select -->
+            <div class="col-sm-4">
+              <h3 class="col-sm-12">Autocomplete local con función select</h3>
+              <div class="form-groupMaterial col-sm-12">
+                <select id="autocomplete" name="autocomplete"></select>
+                <label for="autocomplete">Lenguaje</label>
+                <p class="mt-2">
+                  [asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]
+                </p>
+              </div>
+            </div>
+            
+            <!-- Autocomplete local sin acentos -->
+            <div class="col-sm-4">
+              <h3 class="col-sm-12">Autocomplete local sin acentos</h3>
+              <div class="form-groupMaterial col-sm-12">
+                <select id="autocompleteNotAccent" name="autocompleteNotAccent"></select>
+                <label for="autocompleteNotAccent">Lenguaje</label>
+                <p class="mt-2">
+                  [asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]
+                </p>
+              </div>
+            </div>
+            
+            <!-- Autocomplete remoto sin Cachear -->
+            <div class="col-sm-4">
+              <form th:object="${departamentoProvincia}" id="patron_form" th:action="${remoto}" method="get">
+                <h3 class="col-sm-12">Autocomplete remoto sin Cachear</h3>
+                <div class="form-groupMaterial col-sm-12">
+                  <select id="patron" th:field="*{code}">
+                    <option value="">---</option>
+                  </select>
+                  <label for="patron">Departamento-Provincia</label>
+                  <p class="mt-2">
+                    [Castellano: " de " // Euskara: arab, gipuz, bilb]
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+  </body>
+</html>

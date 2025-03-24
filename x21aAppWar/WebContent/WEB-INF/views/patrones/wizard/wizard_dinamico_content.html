@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Dinámico</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-4">
+    <legend class="h4">Paso Dinámico</legend>
+    
+    <div id="tabs"></div>
+
+    <div id="empleado" class="mb-4">
+        <label class="form-label">Género</label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="group1" value="hombre" id="radio_hombre" checked>
+            <label class="form-check-label" for="radio_hombre">Hombre</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="group1" value="mujer" id="radio_mujer">
+            <label class="form-check-label" for="radio_mujer">Mujer</label>
+        </div>
+        <br><br>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input id="nombre" name="nombre" type="text" class="form-control">
+        <br>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input id="apellido" name="apellido" type="text" class="form-control">
+        <br>
+        <label for="provincia" class="form-label">Delegación</label>
+        <select id="provincia" name="provincia" class="form-select">
+            <option value="">Seleccione...</option>
+            <option value="araba">Álava</option>
+            <option value="bizkaia">Bizkaia</option>
+            <option value="gipuzkoa">Gipuzkoa</option>
+        </select>
+    </div>
+
+    <div id="empresa_datos" class="mb-4">
+        <h5>Datos de la Empresa</h5>
+        <label for="empresa_nombre" class="form-label">Nombre</label>
+        <input id="empresa_nombre" name="empresa_nombre" type="text" class="form-control">
+        <br>
+        <label for="empresa_web" class="form-label">Website</label>
+        <input id="empresa_web" name="empresa_web" type="url" class="form-control">
+        <br>
+        <label for="empresa_email" class="form-label">E-mail</label>
+        <input id="empresa_email" name="empresa_email" type="email" class="form-control">
+    </div>
+
+    <div id="empresa_araba" class="mb-4">
+        <h5>Dirección (Álava)</h5>
+        <label for="direccion_araba" class="form-label">Dirección</label>
+        <input id="direccion_araba" name="direccion_araba" type="text" class="form-control">
+        <br>
+        <label for="telefono_araba" class="form-label">Teléfono</label>
+        <input id="telefono_araba" name="telefono_araba" type="tel" class="form-control">
+    </div>
+
+    <div id="empresa_bizkaia" class="mb-4">
+        <h5>Dirección (Bizkaia)</h5>
+        <label for="direccion_bizkaia" class="form-label">Dirección</label>
+        <input id="direccion_bizkaia" name="direccion_bizkaia" type="text" class="form-control">
+        <br>
+        <label for="telefono_bizkaia" class="form-label">Teléfono</label>
+        <input id="telefono_bizkaia" name="telefono_bizkaia" type="tel" class="form-control">
+    </div>
+
+    <div id="empresa_gipuzkoa" class="mb-4">
+        <h5>Dirección (Gipuzkoa)</h5>
+        <label for="direccion_gipuzkoa" class="form-label">Dirección</label>
+        <input id="direccion_gipuzkoa" name="direccion_gipuzkoa" type="text" class="form-control">
+        <br>
+        <label for="telefono_gipuzkoa" class="form-label">Teléfono</label>
+        <input id="telefono_gipuzkoa" name="telefono_gipuzkoa" type="tel" class="form-control">
+    </div>
+
+    <div id="otros_datos" class="mb-4">
+        <label for="aficiones" class="form-label">Aficiones</label>
+        <textarea id="aficiones" name="aficiones" cols="100" rows="5" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

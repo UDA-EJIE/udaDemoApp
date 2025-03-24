@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <system-libraries>
     <library javadoc="http://java.sun.com/j2ee/1.4/docs/api" path="server/lib/api.jar"/>
+    <library path="server/lib/weblogic_lite.jar"/>
 </system-libraries>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla doble</title>
+  <!-- Incluir aquí tus CSS y JS -->
+</head>
+<body>
+  <!-- Información de licencia (comentario HTML) -->
+  <!--
+    Copyright 2011 E.J.I.E., S.A.
+    Licencia EUPL v1.1 – consulta http://ec.europa.eu/idabc/eupl.html
+    Distribuido TAL CUAL, sin garantías.
+  -->
+  <h2 class="title mb-3">Tabla doble</h2>
+  <!-- Título de la página -->
+  <div class="row">
+    <!-- Primera tabla -->
+    <div class="col-xl-6">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Formulario de filtrado -->
+          <div th:replace="table/includes/tableFilterForm :: tableFilterForm"></div>
+          
+          <form th:object="${usuario}" id="example_noFilter_form"
+                class="d-none" th:action="@{/table/filter}" method="post">
+            <!-- Puedes agregar campos adicionales si es necesario -->
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <table id="example"
+                 class="tableFit table-striped table-bordered table-material"
+                 data-url-base="."
+                 data-filter-form="#example_filter_form">
+            <thead>
+              <tr>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                <th data-col-prop="apellido1">Primer apellido</th>
+                <th data-col-prop="apellido2">Segundo apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Inclusión de la edición de tabla -->
+      <div th:replace="table/includes/tableEdit :: tableEdit"></div>
+      
+      <form th:object="${options}" method="post" id="example_tableConfiguration" class="mt-5">
+        <h3 id="pluginErrorLabel">Configuración de la tabla</h3>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>
+          <div class="col-sm-10">
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="colReorder" value="1"/>
+              <label for="colReorder">Reordenar columnas (col reorder)</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="seeker" value="2"/>
+              <label for="seeker">Buscador (seeker)</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="buttons" value="3"/>
+              <label for="buttons">Botonera</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="groups" value="4"/>
+              <label for="groups">Agrupamiento</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de filtrado</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="multiFilter" value="5"/>
+              <label for="multiFilter">Múltiple (MultiFilter)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="simpleFilter" value="15"/>
+              <label for="simpleFilter">Simple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="noFilter" value="12"/>
+              <label for="noFilter">Sin filtro</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="multiSelection" value="7"/>
+              <label for="multiSelection">Múltiple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="selection" value="8"/>
+              <label for="selection">Simple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="noSelection" value="9"/>
+              <label for="noSelection">Sin selección</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de edición</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="editForm" value="0"/>
+              <label for="editForm">Edición en formulario (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="inlineEdit" value="6"/>
+              <label for="inlineEdit">Edición en línea (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="editFormTargetBlank" value="13"
+                     data-add-new-window-url="@{/table/addFromNewWindow}"
+                     data-edit-new-window-url="/x21aAppWar/table/editFromNewWindow/"/>
+              <label for="editFormTargetBlank">Edición en formulario sobre nueva pestaña (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="noEdit" value="14"/>
+              <label for="noEdit">Sin edición</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>
+          <div class="col-sm-10">
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{otros}" id="triggers" value="10"/>
+              <label for="triggers">Activar triggers en consola</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{otros}" id="multipart" value="11"/>
+              <label for="multipart">Edición con multipart (solo funciona con la opción de edición en formulario)</label>
+            </div>
+          </div>
+        </fieldset>
+        <span id="pluginError"></span>
+      </form>
+      <div class="col text-center mt-4 mb-5 d-xl-none d-sm-block">
+        <button id="aplicarCambios2" class="btn-material btn-material-lg btn-material-primary-medium-emphasis">
+          Aplicar cambios
+        </button>
+      </div>
+    </div>
+    
+    <!-- Segunda tabla -->
+    <div class="mt-lg-5 mt-xl-0 col-xl-6 tableDoubleBorder">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Formulario de filtrado -->
+          <div th:replace="table/includes/tableFilterForm2 :: tableFilterForm2"></div>
+          <form th:object="${usuario2}" id="example2_noFilter_form"
+                class="d-none" th:action="@{/table/2/filter}" method="post">
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <table id="example2"
+                 class="tableFit table-striped table-bordered table-material"
+                 data-url-base="./2"
+                 data-filter-form="#example2_filter_form">
+            <thead>
+              <tr>
+                <th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+                <th data-col-prop="apellido1">Primer apellido</th>
+                <th data-col-prop="apellido2">Segundo apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo">Rol</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      
+      <div th:replace="table/includes/tableDoubleEdit :: tableDoubleEdit"></div>
+      
+      <form th:object="${options}" method="post" id="example_tableConfiguration2" class="mt-5">
+        <h3 id="pluginErrorLabel2">Configuración de la tabla</h3>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>
+          <div class="col-sm-10">
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="colReorder2" value="1"/>
+              <label for="colReorder2">Reordenar columnas (col reorder)</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="seeker2" value="2"/>
+              <label for="seeker2">Buscador (seeker)</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="buttons2" value="3"/>
+              <label for="buttons2">Botonera</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{plugins}" id="groups2" value="4"/>
+              <label for="groups2">Agrupamiento</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de filtrado</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="multiFilter2" value="5"/>
+              <label for="multiFilter2">Múltiple (MultiFilter)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="simpleFilter2" value="15"/>
+              <label for="simpleFilter2">Simple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{filterType}" id="noFilter2" value="12"/>
+              <label for="noFilter2">Sin filtro</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="multiSelection2" value="7"/>
+              <label for="multiSelection2">Múltiple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="selection2" value="8"/>
+              <label for="selection2">Simple</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{selectionType}" id="noSelection2" value="9"/>
+              <label for="noSelection2">Sin selección</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Tipos de edición</legend>
+          <div class="col-sm-10">
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="editForm2" value="0"/>
+              <label for="editForm2">Edición en formulario (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="inlineEdit2" value="6"/>
+              <label for="inlineEdit2">Edición en línea (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="editFormTargetBlank2" value="13"
+                     data-add-new-window-url="@{/table/addFromNewWindow(isDouble=true)}"
+                     data-edit-new-window-url="/x21aAppWar/table/editFromNewWindowDouble/"/>
+              <label for="editFormTargetBlank2">Edición en formulario sobre nueva pestaña (necesita tener los botones activos)</label>
+            </div>
+            <div class="radio-material pluginsControl">
+              <input type="radio" th:field="*{editType}" id="noEdit2" value="14"/>
+              <label for="noEdit2">Sin edición</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>
+          <div class="col-sm-10">
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{otros}" id="triggers2" value="10"/>
+              <label for="triggers2">Activar triggers en consola</label>
+            </div>
+            <div class="checkbox-material pluginsControl">
+              <input type="checkbox" th:field="*{otros}" id="multipart2" value="11"/>
+              <label for="multipart2">Edición con multipart (solo funciona con la opción de edición en formulario)</label>
+            </div>
+          </div>
+        </fieldset>
+        <span id="pluginError2"></span>
+      </form>
+    </div>
+    <div class="col text-center mt-xl-4 mt-sm-2">
+      <button id="aplicarCambios2" class="btn-material btn-material-lg btn-material-primary-medium-emphasis">
+        Aplicar cambios
+      </button>
+    </div>
+  </div>
+</body>
+</html>

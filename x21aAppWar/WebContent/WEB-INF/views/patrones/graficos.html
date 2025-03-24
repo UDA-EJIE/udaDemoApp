@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{charts.charts}">Gráficos</title>
+</head>
+<body>
+    <section>
+        <h2 th:text="#{charts.charts}">Gráficos</h2>
+        <p th:text="#{charts.descript}">Descripción de los gráficos</p>
+
+        <section class="espacioLinea">
+            <!-- Fila de gráficos -->
+            <div class="row">
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.line}">Gráfico de Línea</h3>
+                        <canvas id="graficoLine"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.bar}">Gráfico de Barras</h3>
+                        <canvas id="graficoBar"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.radar}">Gráfico de Radar</h3>
+                        <canvas id="graficoRadar"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.polar}">Gráfico Polar</h3>
+                        <canvas id="graficoPolar"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.pie}">Gráfico de Tarta</h3>
+                        <canvas id="graficoPie"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.doughnut}">Gráfico de Donut</h3>
+                        <canvas id="graficoDoughnut"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 col-12 col-sm-5">
+                    <div class="butstyle">
+                        <h3 th:text="#{charts.bubble}">Gráfico de Burbujas</h3>
+                        <canvas id="graficoBubble"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

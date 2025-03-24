@@ -130,7 +130,7 @@ public class PatronesController {
     
     int provincia = 0;
 
-    @javax.annotation.Resource
+    @Autowired
     private ReloadableResourceBundleMessageSource messageSource;
 
     @InitBinder
@@ -319,31 +319,40 @@ public class PatronesController {
     //Accordion
     @GetMapping(value = "accordion")
     public String getAccordion(Model model) {
-        return "accordion";
+    	model.addAttribute("content", "patrones/accordion");
+		model.addAttribute("includes", "patrones/accordion-includes");
+        return "template";
     }
 
     //Button (
     @GetMapping(value = "button")
     public String buttonJSP(Model model) {
-        return "button";
+    	model.addAttribute("content", "patrones/button");
+ 		model.addAttribute("includes", "patrones/button-includes");
+        return "template";
     }
 
     //Date
     @GetMapping(value = "date")
     public String getDate(Model model) {
-        return "date";
+    	model.addAttribute("content", "patrones/date");
+		model.addAttribute("includes", "patrones/date-includes");
+    	return "template";
     }
 
     //Dialog
     @GetMapping(value = "dialog")
     public String getDialog(Model model) {
-        return "dialog";
+    	model.addAttribute("content", "patrones/dialog");
+		model.addAttribute("includes", "patrones/dialog-includes");
+        return "template";
     }
 
     //Dialog (petición Ajax)
     @GetMapping(value = "dialogAjax")
     public String dialogJSP(Model model) {
-        return "dialogAjax";
+    	model.addAttribute("content", "patrones/dialogAjax");
+        return "template :: content";
     }
     
     //Select Simple
@@ -351,8 +360,9 @@ public class PatronesController {
     public String getSelectSimple(Model model) {
     	model.addAttribute("provincia", new Provincia());
     	model.addAttribute("divisionTerritorialDto", new DivisionTerritorialDto());
-    	
-        return "selectSimple";
+    	model.addAttribute("content", "patrones/select/selectSimple");
+		model.addAttribute("includes", "patrones/select/includes/selectSimple-includes");			
+        return "template";
     }
     
     //SelectEnlazado - simple
@@ -368,8 +378,10 @@ public class PatronesController {
 		
 		// Comarcas
 		model.addAttribute("comboComarca", comarcasGeneratorSelect());
+		model.addAttribute("content", "patrones/select/selectEnlazadoSimple");
+		model.addAttribute("includes", "patrones/select/includes/selectEnlazadoSimple-includes");	
     	
-        return "selectEnlazadoSimple";
+        return "template";
     }
     
     //selectEnlazado - multiple
@@ -386,7 +398,10 @@ public class PatronesController {
 		// Departamentos y provincias
     	model.addAttribute("comboDepartamentoProvincia", departamentosProvinciasGeneratorSelect());
 		
-        return "selectEnlazadoMultiple";
+    	model.addAttribute("content", "patrones/select/selectEnlazadoMultiple");
+		model.addAttribute("includes", "patrones/select/includes/selectEnlazadoMultiple-includes");	
+    	
+        return "template";
     }
     
     //MultiSelect
@@ -395,7 +410,10 @@ public class PatronesController {
     	model.addAttribute("provincia", new Provincia());
     	model.addAttribute("provinciaComarcaLocalidadDTO", new ProvinciaComarcaLocalidadDTO());
     	
-        return "selectMultiselect";
+    	model.addAttribute("content", "patrones/select/selectMultiselect");
+		model.addAttribute("includes", "patrones/select/includes/selectMultiselect-includes");	
+    	
+        return "template";
     }
 
     //select en mantenimiento
@@ -411,7 +429,10 @@ public class PatronesController {
     	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
     	model.addAttribute("provincia", new Provincia());
     	
-        return "selectAutocomplete";
+    	model.addAttribute("content", "patrones/select/selectAutocomplete");
+		model.addAttribute("includes", "patrones/select/includes/selectAutocomplete-includes");	
+    	
+        return "template";
     }
 
     // Select Autocomplete Enlazado
@@ -428,13 +449,20 @@ public class PatronesController {
 		// Comarcas
 		model.addAttribute("selectAutocompleteComarca", comarcasGeneratorSelect());
 		
-        return "selectAutocompleteEnlazado";
+		model.addAttribute("content", "patrones/select/selectAutocompleteEnlazado");
+		model.addAttribute("includes", "patrones/select/includes/selectAutocompleteEnlazado-includes");	
+    	
+        return "template";
     }
 
     // Select Autocomplete Enlazado Multiple
     @GetMapping(value = "selectAutocompleteEnlazadoMultiple")
     public String getSelectAutocompleteEnlazadoMultiple(Model model) {
-        return "selectAutocompleteEnlazadoMultiple";
+    	
+    	model.addAttribute("content", "patrones/select/selectAutocompleteEnlazadoMultiple");
+		model.addAttribute("includes", "patrones/select/includes/selectAutocompleteEnlazadoMultiple-includes");	
+    	
+        return "template";
     }
     
  // Select Autocomplete Enlazado Multiple
@@ -442,12 +470,18 @@ public class PatronesController {
     public String getSelectAutocompleteMultiple(Model model) {
     	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
     	model.addAttribute("provincia", new Provincia());
-        return "selectAutocompleteMultiple";
+    	
+    	model.addAttribute("content", "patrones/select/selectAutocompleteMultiple");
+		model.addAttribute("includes", "patrones/select/includes/selectAutocompleteMultiple-includes");	
+    	
+        return "template";
     }
     //Feedback
     @GetMapping(value = "feedback")
     public String getFeedback(Model model) {
-        return "feedback";
+    	model.addAttribute("content", "patrones/feedback");
+		model.addAttribute("includes", "patrones/feedback-includes");
+        return "template";
     }
 
     //Form
@@ -467,8 +501,10 @@ public class PatronesController {
         model.addAttribute("alumno", new Alumno());
 
         model.addAttribute("alumnoDepartamento", new AlumnoDepartamento());
+        model.addAttribute("content", "patrones/form");
+		model.addAttribute("includes", "patrones/form-includes");
 
-        return "form";
+        return "template";
     }
 
     //Grid
@@ -500,7 +536,10 @@ public class PatronesController {
     //Message
     @GetMapping(value = "message")
     public String getMessage(Model model) {
-        return "message";
+    	model.addAttribute("content", "patrones/message");
+		model.addAttribute("includes", "patrones/message-includes");
+     
+        return "template";
     }
 
     //ProgressBar
@@ -512,61 +551,82 @@ public class PatronesController {
     //Slider
     @GetMapping(value = "slider")
     public String getSlider(Model model) {
-        return "slider";
+    	model.addAttribute("content", "patrones/slider");
+		model.addAttribute("includes", "patrones/slider-includes");
+        return "template";
     }
 
     //Spinner
     @GetMapping(value = "spinner")
     public String getSpinner(Model model) {
-        return "spinner";
+    	model.addAttribute("content", "patrones/spinner");
+		model.addAttribute("includes", "patrones/spinner-includes");
+        return "template";
     }
 
     //Tabs con carga de la pagina
     @GetMapping(value = "tabsStatic")
     public String getTabsStatic(Model model) {
-        return "tabsStatic";
+    	model.addAttribute("content", "patrones/tabs/tabsStatic");
+		model.addAttribute("includes", "patrones/tabs/tabsStatic-includes");
+        return "template";
     }
 
     //Tabs con carga ajax
     @GetMapping(value = "tabsAjax")
     public String getTabsAjax(Model model) {
-        return "tabsAjax";
+    	model.addAttribute("content", "patrones/tabs/tabsAjax");
+		model.addAttribute("includes", "patrones/tabs/tabsAjax-includes");
+        return "template";
     }
 
     //Tabs Mixto
     @GetMapping(value = "tabsMixto")
     public String getTabsMixto(Model model) {
-        return "tabsMixto";
+    	model.addAttribute("content", "patrones/tabs/tabsMixto");
+		model.addAttribute("includes", "patrones/tabs/tabsMixto-includes");
+        return "template";
     }
 
     //Tabs Multiples mantenimientos
     @GetMapping(value = {"maintTab", "pruebaSub3Maint"})
     public String getMaintTab(Model model) {
-        return "maintTab";
+    	model.addAttribute("content", "patrones/tabs/tabsMaint");
+		model.addAttribute("includes", "patrones/tabs/tabsMaint-includes");
+        return "template";
     }
 
     //Tabs Scrollable
     @GetMapping(value = "tabsScrollable")
     public String geTabsScrollable(Model model) {
-        return "tabsScrollable";
+    	model.addAttribute("content", "patrones/tabs/tabsScrollable");
+		model.addAttribute("includes", "patrones/tabs/tabsScrollable-includes");
+        return "template";
     }
 
     //Time
     @GetMapping(value = "time")
     public String getTime(Model model) {
-        return "time";
+    	model.addAttribute("content", "patrones/time");
+		model.addAttribute("includes", "patrones/time-includes");
+       
+        return "template";
     }
 
     //Toolbar
     @GetMapping(value = "toolbar")
     public String getToolbar(Model model) {
-        return "toolbar";
+    	model.addAttribute("content", "patrones/toolbar");
+ 		model.addAttribute("includes", "patrones/toolbar-includes");
+        return "template";
     }
 
     //Tooltip
     @GetMapping(value = "tooltip")
     public String getTooltip(Model model) {
-        return "tooltip";
+    	model.addAttribute("content", "patrones/tooltip");
+		model.addAttribute("includes", "patrones/tooltip-includes");
+        return "template";
     }
 
     //Upload
@@ -574,42 +634,54 @@ public class PatronesController {
     public String getUpload(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("collection", new Collection());
-        return "upload";
+        model.addAttribute("content", "patrones/upload/upload");
+		model.addAttribute("includes", "patrones/upload/upload-includes");
+        return "template";
     }
 
     //Wizard
     @GetMapping(value = "wizard")
     public String getWizard(Model model) {
         model.addAttribute("randomForm", new RandomForm());
-        return "wizard";
+        model.addAttribute("content", "patrones/wizard/wizard");
+		model.addAttribute("includes", "patrones/wizard/wizard-includes");
+        return "template";
     }
 
     //Wizard_includeFile
     @GetMapping(value = "wizard_includeFile")
     public String getWizard_includeFile(Model model) {
         model.addAttribute("randomForm", new RandomForm());
-        return "wizard_includeFile";
+        model.addAttribute("content", "patrones/wizard/wizard_includeFile");
+        model.addAttribute("includes", "patrones/wizard/wizard-includes");
+        return "template";
     }
 
     //Wizard_jspInclude
     @GetMapping(value = "wizard_jspInclude")
     public String getWizard_jspInclude(Model model) {
         model.addAttribute("randomForm", new RandomForm());
-        return "wizard_jspInclude";
+        model.addAttribute("content", "patrones/wizard/wizard_jspInclude");
+        model.addAttribute("includes", "patrones/wizard/wizard-includes");
+        return "template";
     }
 
     //Wizard_jstlImport
     @GetMapping(value = "wizard_jstlImport")
     public String getWizard_jstlImporte(Model model) {
         model.addAttribute("randomForm", new RandomForm());
-        return "wizard_jstlImport";
+        model.addAttribute("content", "patrones/wizard/wizard_jstlImport");
+        model.addAttribute("includes", "patrones/wizard/wizard-includes");
+        return "template";
     }
 
     //Wizard dinamico
     @GetMapping(value = "wizard_dinamico")
     public String getWizard_dinamico(Model model) {
         model.addAttribute("randomForm", new RandomForm());
-        return "wizard_dinamico";
+        model.addAttribute("content", "patrones/wizard/wizard_dinamico");
+        model.addAttribute("includes", "patrones/wizard/wizard_dinamico-includes");
+        return "template";
     }
 
     @GetMapping(value = "wizard_dinamico_content")
@@ -620,12 +692,18 @@ public class PatronesController {
     //Tree
     @GetMapping(value = "trees")
     public String getTrees(Model model) {
-        return "trees";
+    	model.addAttribute("content", "patrones/tree/trees");
+		model.addAttribute("includes", "patrones/tree/trees-includes");
+		model.addAttribute("code", "patrones/tree/codigo-trees");
+        return "template";
     }
 
     @GetMapping(value = "treeDAD")
     public String getTreeDragAndDrop(Model model) {
-        return "treeDAD";
+    	model.addAttribute("content", "patrones/tree/treeDAD");
+		model.addAttribute("includes", "patrones/tree/treeDAD-includes");
+		model.addAttribute("code", "patrones/tree/codigo-treeDAD");
+        return "template";
     }
     
     @GetMapping(value = "ajaxTree")
@@ -684,15 +762,18 @@ public class PatronesController {
     public String getValidate(Model model) {
         model.addAttribute("alumno", new Alumno());
         model.addAttribute("randomForm", new RandomForm());
-        return "validate";
+        model.addAttribute("content", "patrones/validate/validate");
+		model.addAttribute("includes", "patrones/validate/validate-includes");
+        return "template";
     }
 
     //Validate
     @GetMapping(value = "validateRules")
     public String getValidateRules(Model model) {
-
-        model.addAttribute("alumno", new Alumno());
-        return "validateRules";
+    	model.addAttribute("randomForm", new RandomForm());
+    	model.addAttribute("content", "patrones/validate/validateRules");
+		model.addAttribute("includes", "patrones/validate/validateRules-includes");
+        return "template";
     }
 
     @GetMapping(value = "validateRup")
@@ -707,7 +788,9 @@ public class PatronesController {
     @GetMapping(value = "all")
     public String getAll(Model model) {
     	model.addAttribute("comarca", new Comarca());
-        return "all";
+    	model.addAttribute("content", "patrones/all");
+		model.addAttribute("includes", "patrones/all-includes");
+        return "template";
     }
 
     //AllDialog (todos los patrones en un dialogo)
@@ -737,7 +820,9 @@ public class PatronesController {
     //Context menu
     @GetMapping(value = "contextMenu")
     public String getContextMenu(Model model) {
-        return "contextMenu";
+    	model.addAttribute("content", "patrones/contextMenu");
+ 		model.addAttribute("includes", "patrones/contextMenu-includes");
+        return "template";
     }
 
     /**
@@ -1395,17 +1480,27 @@ public class PatronesController {
      */
     @GetMapping(value = {"fragmento1", "fragmento2", "fragmento3"})
     public String tabsContent(Model model) {
-        return "tabsContent_1";
+        // Asegúrate de crear o recuperar el objeto "usuario"
+        model.addAttribute("usuario", new Usuario());
+
+        // Indica que en la parte "content" del template se incluya el fragmento "tabsContent"
+        model.addAttribute("content", "patrones/tabs/tabsContent_1");
+
+        // Retorna solo el fragmento 'content' definido en template.html
+        return "template :: content";
     }
+
     
     @GetMapping(value = {"tab2Fragment"})
     public String tabs2Content(Model model) {
-        return "tabsContent_2";
+    	model.addAttribute("content", "patrones/tabs/tabsContent_2");
+        return "template :: content";
     }
 
     @GetMapping(value = {"tab3Fragment"})
     public String tabs3Content(Model model) {
-        return "tabsContent_3";
+    	model.addAttribute("content", "patrones/tabs/tabsContent_3");
+        return "template :: content";
     }
     
 	@GetMapping(value = "/tabs4Table")
@@ -1441,18 +1536,23 @@ public class PatronesController {
 
     @GetMapping(value = "pruebaSub")
     public String tabSub(Model model) {
-        return "tabsContent_1";
+    	model.addAttribute("content", "patrones/tabs/tabsContent_1");
+        return "table";
     }
     
     @GetMapping(value = "pruebaSubAna")
     public String tabSubAna(Model model) {
-        return "tabsContent_2";
+    	model.addAttribute("content", "patrones/tabs/tabsContent_2");
+        return "template";
     }
 
     // rupCharts
     @GetMapping(value = "charts")
     public String getCharts(Model model) {
-        return "charts";
+    	
+    	model.addAttribute("content", "patrones/graficos");
+		model.addAttribute("includes", "patrones/graficos-includes");
+        return "template";
     }
 
     /**
@@ -1828,7 +1928,9 @@ public class PatronesController {
      */
     @GetMapping(value = "calendar/page")
     public String getCalendar(Model model) {
-        return "calendar";
+    	model.addAttribute("content", "calendar/calendar");
+		model.addAttribute("includes", "calendar/calendar-includes");
+        return "template";
     }
 
     /**
@@ -1839,6 +1941,8 @@ public class PatronesController {
      */
     @GetMapping(value = "calendar/pageDouble")
     public String getDoubleCalendar(Model model) {
-        return "doubleCalendar";
+    	model.addAttribute("content", "calendar/doubleCalendar");
+		model.addAttribute("includes", "calendar/doubleCalendar-includes");
+        return "template";
     }
 }

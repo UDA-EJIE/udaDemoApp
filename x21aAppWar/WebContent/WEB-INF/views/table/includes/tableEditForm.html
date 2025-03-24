@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Formulario de detalle</title>
+    <!-- Aquí se incluyen tus CSS, JS, etc. -->
+  </head>
+  <body>
+  
+    <!-- Formulario -->
+    <!-- Construimos la acción usando la variable endpoint (p.ej., /table/algúnValor) -->
+    <form th:object="${usuario}"
+          th:id="example_detail_form"
+          th:action="@{/table/{endpoint}(endpoint=${endpoint})}"
+          th:method="${actionType}"
+          th:attr="enctype=${enctype}">
+
+      <!-- Feedback del formulario de detalle -->
+      <div id="example_detail_feedback"></div>
+
+      <!-- Campos del formulario de detalle -->
+      <input type="hidden"
+             th:if="${pkValue != null}"
+             th:field="*{id}"
+             th:value="${pkValue}"
+             id="id_detail_table" />
+
+      <div class="form-row">
+        <div class="form-groupMaterial col-sm">
+          <input type="text" th:field="*{nombre}" id="nombre_detail_table"/>
+          <label for="nombre_detail_table" th:text="#{nombre}">Nombre</label>
+        </div>
+        <div class="form-groupMaterial col-sm">
+          <!-- Para un select, define las opciones con th:each si lo necesitas -->
+          <select th:field="*{apellido1}" id="apellido1_detail_table"></select>
+          <label for="apellido1_detail_table" th:text="#{apellido1}">Apellido1</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-groupMaterial col-sm">
+          <select th:field="*{apellido2}" id="apellido2_detail_table"></select>
+          <label for="apellido2_detail_table" th:text="#{apellido2}">Apellido2</label>
+        </div>
+        <div class="form-groupMaterial col-sm">
+          <input type="text" th:field="*{fechaBaja}" id="fechaBaja_detail_table"/>
+          <label for="fechaBaja_detail_table" th:text="#{fechaBaja}">Fecha Baja</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-groupMaterial col-sm">
+          <input type="text" th:field="*{fechaAlta}" id="fechaAlta_detail_table"/>
+          <label for="fechaAlta_detail_table" th:text="#{fechaAlta}">Fecha Alta</label>
+        </div>
+        <div class="checkbox-material col-sm">
+          <input type="checkbox" th:field="*{ejie}" th:value="1" id="ejie_detail_table"/>
+          <label for="ejie_detail_table" th:text="#{ejie}">EJIE</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-groupMaterial col-sm">
+          <select th:field="*{rol}" id="rol_detail_table"></select>
+          <label for="rol_detail_table" th:text="#{rol}">Rol</label>
+        </div>
+      </div>
+
+      <!-- Solo se muestra si isMultipart es true -->
+      <div class="form-row" th:if="${isMultipart}">
+        <div class="form-groupMaterial col-sm">
+          <input type="file" th:field="*{imagenAlumno}" id="imagenAlumno_detail_table"/>
+          <label for="imagenAlumno_detail_table" th:text="#{subidaImg}">Subida Imagen</label>
+        </div>
+      </div>
+
+    </form>
+  </body>
+</html>

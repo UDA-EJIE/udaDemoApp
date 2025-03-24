@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Wizard &lt;%@ include %&gt;</title>
+    <!-- Incluye aquí tus hojas de estilo y scripts necesarios -->
+</head>
+<body>
+
+    <h2>Wizard &lt;%@ include %&gt;</h2>
+
+    <div id="wizard_options">
+        <fieldset>
+            <legend style="float: left;">Generar resumen:</legend>
+            <input type="radio" name="summary" value="true" id="radio_summary_yes" checked="checked"/>
+            <label for="radio_summary_yes">Sí</label>
+            <input type="radio" name="summary" value="false" id="radio_summary_no"/>
+            <label for="radio_summary_no">No</label>
+            <br/><br/>
+        </fieldset>
+        <fieldset>
+            <legend style="float: left;">Resumen con 'accordion':</legend>
+            <input type="radio" name="accordion" value="true" id="radio_accordion_yes" checked="checked"/>
+            <label for="radio_accordion_yes">Sí</label>
+            <input type="radio" name="accordion" value="false" id="radio_accordion_no"/>
+            <label for="radio_accordion_no">No</label>
+            <br/><br/>
+        </fieldset>
+        <fieldset>
+            <legend style="float: left;">Pestañas convertidas a 'accordion':</legend>
+            <input type="radio" name="tabs2accordion" value="true" id="radio_tab2accordion_yes" checked="checked"/>
+            <label for="radio_tab2accordion_yes">Sí</label>
+            <input type="radio" name="tabs2accordion" value="false" id="radio_tab2accordion_no"/>
+            <label for="radio_tab2accordion_no">No</label>
+            <br/><br/>
+            <input type="button" id="makeWizard" value="Convertir formulario en Wizard"/>
+            <br/><br/>
+        </fieldset>
+    </div>
+
+    <!-- Formulario: se asume que en el controlador se añade un objeto 'randomForm' al modelo -->
+    <form th:object="${randomForm}" id="wizardForm" method="post">
+        <!-- Incluye el contenido de cada paso del wizard mediante fragmentos Thymeleaf -->
+        <div th:replace="patrones/wizard/wizard_step0 :: wizard_step0"></div>
+        <div th:replace="patrones/wizard/wizard_step1 :: wizard_step1"></div>
+        <div th:replace="patrones/wizard/wizard_step2 :: wizard_step2"></div>
+        <div th:replace="patrones/wizard/wizard_step3 :: wizard_step3"></div>
+        <br/>
+        <input id="saveForm" type="button" value="Enviar"/>
+    </form>
+</body>
+</html>

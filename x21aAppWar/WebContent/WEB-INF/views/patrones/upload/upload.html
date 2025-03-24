@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{upload.title}">T�tulo de Upload</title>
+  </head>
+  <body>
+    <section>
+      <h2 th:text="#{upload.title}">Upload</h2>
+      <p th:text="#{upload.paragraph.line1}">Texto del primer p�rrafo de upload</p>
+      <p th:text="#{upload.paragraph.line2}">Texto del segundo p�rrafo de upload</p>
+      
+      <h3>Configuraci�n b�sica</h3>
+      <p th:text="#{upload.paragraph.basic}">Texto de configuraci�n b�sica</p>
+      
+      <div class="example">
+        <!-- Incluir el fragmento convertido de includes/basic.jsp -->
+        <div th:replace="patrones/upload/includes/basic :: basic"></div>
+      </div>
+      
+      <h3>Cola de subida</h3>
+      <p>
+        El componente permite definir una cola en el que los ficheros seleccionados son adjuntados sin ser enviados autom�ticamente.
+      </p>
+      <p>
+        Una vez seleccionados los ficheros, se permite actuar sobre ellos de manera global o individual. Las acci�nes que se permiten son:
+      </p>
+      <ul>
+        <li>Subir todos los ficheros encolados.</li>
+        <li>Cancelar y eliminar de la cola todos los ficheros previamente adjuntados.</li>
+        <li>Subir un fichero de manera individual.</li>
+        <li>Cancelar y eliminar de la cola un fichero concreto.</li>
+        <li>Eliminar un fichero que ya haya sido subido.</li>
+        <li>Descargar un fichero que ya haya sido subido.</li>
+      </ul>
+      <p>
+        La configuraci�n del componente que hace uso de todas las opciones ser�a la siguiente:
+      </p>
+      
+      <div class="example">
+        <!-- Incluir el fragmento convertido de includes/uploadQueue.jsp -->
+        <div th:replace="patrones/upload/includes/uploadQueue :: uploadQueue"></div>
+      </div>
+      
+      <h3>Subida en formulario</h3>
+      <p>
+        El componente tambi�n permite seleccionar ficheros para su subida y que estos sean enviados junto con el resto de datos del formulario al realizarse el submit. Para ello se deber� de hacer uso de las propiedades:
+      </p>
+      <ul>
+        <li><code>fileInput</code>: Identifica el <code>input</code> de tipo <code>file</code>.</li>
+        <li><code>submitFormButton</code>: Identifica el bot�n que realizar� el env�o del formulario.</li>
+        <li><code>submitInForm</code>: Propiedad que, teniendo el valor de <code>true</code>, configura el componente para este modo de funcionamiento.</li>
+      </ul>
+      
+      <div class="example">
+        <!-- Incluir el fragmento convertido de includes/uploadForm.jsp -->
+        <div th:replace="patrones/upload/includes/uploadForm :: uploadForm"></div>
+      </div>
+      
+      <h3>M�ltiples upload en formulario</h3>
+      <p>
+        Por supuesto, es posible incluir varios componentes de subida de ficheros en el mismo formulario:
+      </p>
+      
+      <div class="example">
+        <!-- Incluir el fragmento convertido de includes/uploadMultipleForm.jsp -->
+        <div th:replace="patrones/upload/includes/uploadMultipleForm :: uploadMultipleForm"></div>
+      </div>
+      
+      <h3>Integraci�n con PIF</h3>
+      <p>
+        A continuaci�n se muestra un ejemplo de c�mo integrar el componente Upload con PIF.
+      </p>
+      
+      <div class="example">
+        <!-- Incluir el fragmento convertido de includes/uploadPif.jsp -->
+        <div th:replace="patrones/upload/includes/uploadPif :: uploadPif"></div>
+      </div>
+    </section>
+  </body>
+</html>

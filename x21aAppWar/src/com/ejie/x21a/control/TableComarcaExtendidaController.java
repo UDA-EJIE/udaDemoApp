@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,14 +77,16 @@ public class TableComarcaExtendidaController {
 	@Autowired
 	private FilterService filterService;
 	
-	@Resource
+	@Autowired
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	@GetMapping(value = "filterSimple")
 	public String getSimpleMasterDetail(Model model) {
 		model.addAttribute("tituloPagina", "Comarca Extendida");
 		model.addAttribute("comarcaExtendida", new ComarcaExtendida());
-		return "tableComarcaExtendida";
+		model.addAttribute("content", "table/tableComarcaExtendida");
+		model.addAttribute("includes", "table/includes/tableComarcaExtendidaDetail-includes");
+		return "template";
 	}
 	
 	@PostMapping(value = "/editForm")

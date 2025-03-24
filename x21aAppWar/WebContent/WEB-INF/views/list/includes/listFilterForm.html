@@ -1,0 +1,40 @@
+<div th:fragment="listFilterForm">
+    <form th:action="@{/patrones/lista/filter}" th:object="${usuario}" id="listFilterForm">
+        <fieldset class="p-4">
+            <legend th:text="#{lista.filter.legend}"></legend>
+
+            <div class="form-row">
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" id="listFilterId" th:field="*{id}" class="form-control"/>
+                    <label for="listFilterId" th:text="#{lista.filter.id}"></label>
+                </div>
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" id="listFilterNombre" th:field="*{nombre}" class="form-control"/>
+                    <label for="listFilterNombre" th:text="#{lista.filter.nombre}"></label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" id="listFilterApe1" th:field="*{apellido1}" class="form-control"/>
+                    <label for="listFilterApe1" th:text="#{lista.filter.apellido1}"></label>
+                </div>
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" id="listFilterApe2" th:field="*{apellido2}" class="form-control"/>
+                    <label for="listFilterApe2" th:text="#{lista.filter.apellido2}"></label>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button id="listFilterLimpiar" type="reset" class="btn-material btn-material-primary-low-emphasis mr-2">
+                    <i class="mdi mdi-eraser"></i>
+                    <span th:text="#{lista.filter.clean}"></span>
+                </button>
+                <button id="listFilterAceptar" type="submit" class="btn-material btn-material-primary-high-emphasis">
+                    <i class="mdi mdi-filter"></i>
+                    <span th:text="#{lista.filter.filter}"></span>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>

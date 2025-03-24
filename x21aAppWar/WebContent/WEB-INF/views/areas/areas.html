@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Areas</title>
+</head>
+<body>
+
+    <h2 class="title">areas HTML</h2>
+
+    <div th:replace="areas/includes/areasFilterForm :: areasFilterForm"></div>
+
+    <table id="areas" class="tableFit table-striped table-bordered table-material" 
+        data-url-base="../areas"
+        data-filter-form="#areas_filter_form">
+        <thead>
+            <tr>
+                <th data-col-prop="idAreaT21" data-col-sidx="ID_AREA_T21" data-col-type="NUMBER">
+                    <span th:text="#{idAreaT21}"></span>
+                </th>
+                <th data-col-prop="areaActivaT21" data-col-sidx="AREA_ACTIVA_T21" data-col-type="VARCHAR2">
+                    <span th:text="#{areaActivaT21}"></span>
+                </th>
+                <th data-col-prop="idLote3T21" data-col-sidx="ID_LOTE3_T21" data-col-type="VARCHAR2">
+                    <span th:text="#{idLote3T21}"></span>
+                </th>
+                <th data-col-prop="nombreAreaCastT21" data-col-sidx="NOMBRE_AREA_CAST_T21" data-col-type="VARCHAR2">
+                    <span th:text="#{nombreAreaCastT21}"></span>
+                </th>
+                <th data-col-prop="nombreAreaEuskT21" data-col-sidx="NOMBRE_AREA_EUSK_T21" data-col-type="VARCHAR2">
+                    <span th:text="#{nombreAreaEuskT21}"></span>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+    <div th:replace="areas/includes/areasEdit :: areasEdit"></div>
+</body>
+</html>

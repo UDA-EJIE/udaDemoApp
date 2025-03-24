@@ -9,19 +9,10 @@
 	<bean id="springSecurityFilterChain" 
 	  class="org.springframework.security.web.FilterChainProxy">
 	  <security:filter-chain-map request-matcher="regex">
-	  	<security:filter-chain pattern="/sessionInfo.*" filters="none"/>
-	  	<security:filter-chain pattern="/mockLoginPage.*" filters="none"/>
-	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
-<!-- 	  	<security:filter-chain pattern="/experimental/.*" filters="none"/> -->
 	  	<security:filter-chain pattern="/error.*" filters="none"/>
 		<security:filter-chain pattern="/accessDenied.*" filters="none"/>
-		<security:filter-chain pattern="/webdavServlet/.*" filters=" 
-			webDAVXLNetsAuthenticationFilter,	    	
-	    	exceptionTranslationFilter,
-	    	securityContextPersistenceFilter,
-	    	logoutFilter,
-	    	preAuthenticateProcessingFilter,
-	    	filterSecurityInterceptor" />
+		<security:filter-chain pattern="/mockLoginPage.*" filters="none"/>
+	  	<security:filter-chain pattern="/mockLoginAjaxPage.*" filters="none"/>
 		<security:filter-chain pattern="**" filters="	    	
 	    	exceptionTranslationFilter,
 	    	securityContextPersistenceFilter,
@@ -30,8 +21,6 @@
 	    	filterSecurityInterceptor" />
 	  </security:filter-chain-map>
 	</bean>
-
-	<bean id="webDAVXLNetsAuthenticationFilter" class="com.ejie.x38.webdav.security.WebDAVXLNetsAuthenticationFilter"/>
 
 	<bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
 	
@@ -47,7 +36,7 @@
 		<property name="filterProcessesUrl" value="/logout" />
 	</bean>
 	
-	<!-- Para la completa interacción con XLNets se especifica un "logoutHandler" especifico -->
+	<!-- Para la completa interacción con XLNetS se especifica un "logoutHandler" especifico -->
 	<bean id="myLogoutHandler" class="com.ejie.x38.security.MyLogoutHandler">
 		<property name="perimetralSecurityWrapper" ref="perimetralSecurityWrapper" />
 		<property name="invalidateHttpSession" value="true" />
@@ -56,10 +45,7 @@
 
 	<!-- Se define el sistema especifico de autenticación aplicado al sistema de seguridad -->
 	<!-- Se define que con cambios de usurio se recargen los datos de seguridad y se mate la session, cual es el "perimetralSecurityWrapper" y el "authenticationManager" -->
-<!-- 	<bean id="stockUdaSecurityPadlocks" class="com.ejie.x38.security.StockUdaSecurityPadlocksImpl"/> -->
-	
 	<bean id="preAuthenticateProcessingFilter" class="com.ejie.x38.security.PreAuthenticateProcessingFilter">
-<!-- 		<property name="stockUdaSecurityPadlocks" ref="stockUdaSecurityPadlocks" /> -->
 		<property name="checkForPrincipalChanges" value="true" />
 		<property name="invalidateSessionOnPrincipalChange" value="true" />
 		<property name="perimetralSecurityWrapper" ref="perimetralSecurityWrapper" />
@@ -67,7 +53,7 @@
 	</bean>
 	
 	<!-- El "authenticationManager" es el componente encargado de implementar el proceso de autenticación -->
-	<security:authentication-manager id="authenticationManager" alias="authenticationManager">
+	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider
 			ref="udaAuthenticationProvider" />
 	</security:authentication-manager>
@@ -84,8 +70,7 @@
 		<property name="perimetralSecurityWrapper" ref="perimetralSecurityWrapper" />
 	</bean>
 
-	<!-- Este filtro se encarga de recoger y gestionar todas las excepciones 
-		producidas durante la gestión de la seguridad -->
+	<!-- Este filtro se encarga de recoger y gestionar todas las excepciones producidas durante la gestión de la seguridad -->
 	<bean id="exceptionTranslationFilter" class="org.springframework.security.web.access.ExceptionTranslationFilter">
 		<constructor-arg ref="myAuthenticationEntryPoint" />
 		<property name="accessDeniedHandler" ref="myAccessDeniedHandler" />
