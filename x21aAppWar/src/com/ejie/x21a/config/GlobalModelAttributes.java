@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-
+import org.springframework.context.annotation.Lazy;
 import com.ejie.x38.control.MvcInterceptor;
 import com.ejie.x38.util.StaticsContainer;
 
@@ -18,6 +18,7 @@ public class GlobalModelAttributes {
 	private String url = null;
 	
 	@Autowired
+	@Lazy
     public GlobalModelAttributes(MvcInterceptor mvcInterceptor,CookieLocaleResolver localeResolver) {
         this.mvcInterceptor = mvcInterceptor;
         this.localeResolver = localeResolver;

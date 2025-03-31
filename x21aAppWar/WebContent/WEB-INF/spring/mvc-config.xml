@@ -36,11 +36,6 @@
 		<property name="useCodeAsDefaultMessage" value="true" />
         <property name="fallbackToSystemLocale" value="false" />
 	</bean>
-
-	<!-- Gestiona la locale (idioma) mediante cookie  -->
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="cookieName" value="language" />
-    </bean>
     
 	<!-- Declaración del interceptor (Gestión idomática) -->
     <mvc:interceptors>
