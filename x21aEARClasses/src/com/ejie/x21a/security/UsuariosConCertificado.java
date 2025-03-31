@@ -45,7 +45,7 @@ public class UsuariosConCertificado implements ExcludeFilter {
 		N38API n38Api = XlnetCore.getN38API(httpRequest);
 		String policy;
 		
-		policy = XlnetCore.getParameterSession(n38Api, N38API.NOMBRE_N38CERTIFICADOPOLITICAS);
+		policy = XlnetCore.getN38ItemSesion(n38Api, N38API.NOMBRE_N38CERTIFICADOPOLITICAS);
 		
 		if (!(policy.toLowerCase().equals("no"))){
 			return true;

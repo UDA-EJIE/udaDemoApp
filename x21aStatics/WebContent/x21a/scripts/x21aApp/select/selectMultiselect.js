@@ -49,6 +49,7 @@ jQuery(function($) {
 		        multiple: true,
 		        placeholder: '[Seleccione gracias..]',
 		        closeOnSelect : false,
+				loadOnStartUp:true,
 		        change: function () {
 		            console.log('selectMultiRemoto:::Changed');
 		        }

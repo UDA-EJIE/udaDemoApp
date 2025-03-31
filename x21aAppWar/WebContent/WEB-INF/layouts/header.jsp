@@ -14,7 +14,7 @@
  --%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 
-<header>
+<header data-belongs-to-portal="false">
   <div id="cabecera" class="cabecera" >
   	<div style="float: left;" >
   		<img src="${staticsUrl}/x21a/images/ejie.jpg"/>

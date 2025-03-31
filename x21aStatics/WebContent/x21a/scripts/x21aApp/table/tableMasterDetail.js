@@ -53,6 +53,26 @@ jQuery(function ($) {
                     customClasses: ['select-material']
                 }
 		    },
+			{
+			    name: 'localidad.code',
+			    index: 'localidad.code',
+			    editable: true,
+			    hidden: false,
+			    rupType: 'select',
+			    editoptions: {
+			    	url : '../patrones/comboEnlazadoSimple/remoteEnlazadoComarcaTable',
+					parent: 'provinciaCode_detailForm_table',
+			        sourceParam : {
+			        	text: 'desc' + $.rup_utils.capitalizedLang(), 
+			        	id: 'code',
+			            style: 'css'
+			        },
+			        rowStriping: true,
+			        blank: '',
+			        width: '100%',
+			        customClasses: ['select-material']
+			    }
+			},
 		    {
 		        name: 'provincia.descEs',
 		        index: 'provincia.descEs',

@@ -437,7 +437,13 @@ public class PatronesController {
         return "selectAutocompleteEnlazadoMultiple";
     }
     
-
+ // Select Autocomplete Enlazado Multiple
+    @GetMapping(value = "selectAutocompleteMultiple")
+    public String getSelectAutocompleteMultiple(Model model) {
+    	model.addAttribute("departamentoProvincia", new DepartamentoProvincia());
+    	model.addAttribute("provincia", new Provincia());
+        return "selectAutocompleteMultiple";
+    }
     //Feedback
     @GetMapping(value = "feedback")
     public String getFeedback(Model model) {
@@ -1243,6 +1249,20 @@ public class PatronesController {
         localidad.setComarca(comarca);
         
         return localidadService.findAll(localidad, null);
+    }
+    
+    @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoComarcaTable")
+    public @ResponseBody
+    List<Comarca> getEnlazadoComarcaTable(
+            @RequestParam(value = "provincia.code", required = false) BigDecimal provincia_code) {
+
+        //Convertir parámetros en entidad para búsqueda
+        Provincia provincia = new Provincia();
+        provincia.setCode(provincia_code);
+        Comarca comarca = new Comarca();
+        comarca.setProvincia(provincia);
+        
+        return comarcaService.findAll(comarca, null);
     }
     
     @GetMapping(value = "comboEnlazadoSimple/remoteEnlazadoLocalidadMultiple")

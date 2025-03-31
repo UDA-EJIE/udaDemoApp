@@ -14,7 +14,7 @@
  --%>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<footer style="height: 2em;">
+<footer style="height: 2em;" data-belongs-to-portal="false">
 	<div class="footer-row-content d-flex p-2">
 		<div class="col-sm-6 text-left">
 			<span class="text-white">

@@ -267,7 +267,7 @@ public class IberdokController {
 	// Iberdok
 	@GetMapping(value = "iberdokWelcome")
 	public String getIberdokWelcome(Model model, HttpServletRequest request, HttpServletResponse response) {
-		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), "n38UidSesion");
+		String udaXLNetsSessionId = XlnetCore.getN38ItemSesion(XlnetCore.getN38API(request), N38API.NOMBRE_N38UIDSESION);
 		// anadimos los datos de configuracion de iberdok al cliente desde el
 		// properties
 

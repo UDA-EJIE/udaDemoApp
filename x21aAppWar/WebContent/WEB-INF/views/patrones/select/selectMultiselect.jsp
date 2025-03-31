@@ -31,7 +31,7 @@
 		<form:form id="multiSelectRemoto_form" modelAttribute="provincia" action="${remoto}" method="GET" class="mt-0 form-groupMaterial col-sm-6">
 			<div class="form-groupMaterial col-sm-10">
 				<form:select id="multiSelectRemoto" path="code" />
-				<label for="multiSelectRemoto">MultiSelect remoto</label>
+				<label for="multiSelectRemoto">MultiSelect remoto con loadOnStartUp</label>
 			</div>
 		</form:form>
 	</div>
