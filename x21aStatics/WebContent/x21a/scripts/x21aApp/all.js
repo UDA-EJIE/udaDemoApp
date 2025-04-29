@@ -17,25 +17,21 @@ jQuery(function($){
 	var tableColModelsComarca = [
 	    {
 	        name: 'descEs',
-	        index: 'descEs',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'descEu',
-	        index: 'descEu',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'css',
-	        index: 'css',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'provincia.code',
-	        index: 'provincia.code',
 	        editable: true,
 	        hidden: false,
 	        rupType: 'select',
@@ -52,7 +48,6 @@ jQuery(function($){
 	    },
 	    {
 	        name: 'provincia.descEs',
-	        index: 'provincia.descEs',
 	        editable: true,
 	        hidden: false
 	    }
@@ -172,19 +167,16 @@ jQuery(function($){
 	            	var tableColModels = [
 	                	{
 	                        name: 'nombre',
-	                        index: 'nombre',
 	                        editable: true,
 	                        hidden: false
 	                    },
 	                    {
 	                        name: 'apellido1',
-	                        index: 'apellido1',
 	                        editable: true,
 	                        hidden: false
 	                    },
 	                    { 
-	                    	name: "apellido2", 
-	                    	index: "apellido2", 
+	                    	name: "apellido2",
 	                    	editable: true, 
 	                    	hidden: false,
 	                    	rupType: 'select',
@@ -198,14 +190,12 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'ejie',
-	                        index: 'ejie',
 	                        editable: true,
 	                        hidden: false,
 	                        edittype: 'checkbox'
 	                    },
 	                    {
 	                        name: 'fechaAlta',
-	                        index: 'fechaAlta',
 	                        editable: true,
 	                        hidden: false,
 	                        rupType: 'date',
@@ -218,7 +208,6 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'fechaBaja',
-	                        index: 'fechaBaja',
 	                        editable: false,
 	                        hidden: false,
 	                        rupType: 'date',
@@ -231,7 +220,6 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'rol',
-	                        index: 'rol',
 	                        editable: true,
 	                        hidden: false,
 	                        rupType: 'select',

@@ -3,13 +3,11 @@ $(document).ready(function () {
 		let tableColModel = [
 			{
 	            name: 'id',
-	            index: 'id',
 	            editable: false,
 	            hidden: false
 	        },
 	        {
                 name: 'levelLog',
-                index: 'levelLog',
                 editable: true,
                 hidden: false,
                 rupType: 'select',
