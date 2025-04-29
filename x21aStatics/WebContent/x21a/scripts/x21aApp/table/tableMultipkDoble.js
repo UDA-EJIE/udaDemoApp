@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	initRupI18nPromise.then(function(){
-        var combo = [
+        var rolData = [
             {rol: "---", codTipoSubsanacion:""},
             {rol: "Administrador", codTipoSubsanacion:"administrador"},
             {rol: "Desarrollador", codTipoSubsanacion:"desarrollador"},
@@ -35,11 +35,11 @@ jQuery(function($){
  	        },*/
  	        { name: "ejie", editable:true, hidden:false/*,
  	            searchoptions:{
- 	                rupType: "combo",
- 	                source : [
- 	                   {label: "---", value:""},
- 	                   {label: "Si", value:"1"},
- 	                   {label: "No", value:"0"}
+ 	                rupType: "select",
+ 	                data : [
+ 	                   {text: "---", id:""},
+ 	                   {text: "Si", id:"1"},
+ 	                   {text: "No", id:"0"}
  	                ]
  	            }*/
  	        },
@@ -62,9 +62,9 @@ jQuery(function($){
  	            }
  	        },
  	        { name: "rol", editable:true, hidden:false,
- 	            rupType: "combo",
+ 	            rupType: "select",
  	            editoptions: {
- 	                data: $.map(combo, function(elem){
+ 	                data: $.map(rolData, function(elem){
  	                    return {
  	                        text: elem.rol,
  	                        id: elem.codTipoSubsanacion
