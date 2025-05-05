@@ -633,9 +633,6 @@
         _getColumns(options) {
             var $self = this;
             
-            // Indica si la primera columna ha sido generada por el componente RUP
-            let rupSelectColumn = false;
-            
             //Se crea la columna del select.
             if (options.columnDefs !== undefined && options.columnDefs.length > 0 &&
                 options.columnDefs[0].className !== undefined && options.columnDefs[0].className.indexOf('select-checkbox') > -1 &&
@@ -656,28 +653,24 @@
                 if (options.multiSelect !== undefined && options.multiSelect.hideMultiselect) {
                     options.columnDefs[0].visible = false;
                 }
-                
-                rupSelectColumn = true;
             }
             
             $.each(options.colModel, function (index, column) {
+				const position = $self.find('th[data-col-prop="' + column.name + '"]').index();
             	// Se ocultan las columnas que así hayan sido definidas en el colModel.
             	if (column.hidden) {
             		options.columnDefs.push({
-            			targets: rupSelectColumn ? index + 1 : index,
+            			targets: position,
             			visible: false,
             			className: 'never'
             		})
             	} else if (column.orderable === false) {
             		// Se bloquea la ordenación de las columnas que así hayan sido definidas en el colModel. Solo se hace esta comprobación cuando la columna no ha sido ocultada.
             		options.columnDefs.push({
-            			targets: rupSelectColumn ? index + 1 : index,
+            			targets: position,
             			orderable: false
             		})
             	}
-            });
-            
-            $.each(options.colModel, function (index, column) {
             });
 
             //se crea el tfoot
@@ -730,8 +723,9 @@
         _doFilter(options) {
             var $self = this;
             let reloadTable = () => {
+				$('#' + $.escapeSelector(options.id)).trigger('tableFilterBeforeSearch',options);
                 $self.DataTable().ajax.reload(() => {
-                    $('#' + $.escapeSelector(options.id)).trigger('tableFilterSearch',options);
+                    $('#' + $.escapeSelector(options.id)).trigger('tableFilterAfterSearch',options);
                 });
             };
 
@@ -803,7 +797,17 @@
                 'type': 'POST',
                 'data': this._ajaxRequestData,
                 'contentType': 'application/json',
-                'dataType': 'json'
+                'dataType': 'json',
+				'beforeSend': function(xhr, settings) {
+					if (options.filter.rules !== undefined){
+					    if (options.filter.noValidarOnStart && !options.filter.$filterContainer.valid()) {
+						  $('#'+options.id+"_processing").hide();
+					      return false;
+					    }
+						options.filter.noValidarOnStart = true;
+					    return true;
+					  }
+				  }
             };
 
             if (options.customError !== undefined) {
@@ -1016,6 +1020,9 @@
 					}
 				}
 			});
+			
+			// Limpiar mensajes de validación.
+			$form.rup_validate("resetElements");
 
 			// Si es Maestro-Detalle restaura el valor del maestro.
 			if (options.masterDetail !== undefined) {
@@ -1033,6 +1040,9 @@
 			});
 
 			$.rup_utils.populateForm([], options.filter.$filterContainer);
+			if(!options.filter.validToClear){
+				options.filter.noValidarOnStart = false;
+			}
 			
 			$(this).DataTable().ajax.reload();
 
