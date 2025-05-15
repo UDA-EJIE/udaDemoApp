@@ -147,7 +147,8 @@ jQuery(function ($) {
         	url: './apellidos',
         	sourceParam : {text: 'label', id: 'value'},
 			blank: '',
-			placeholder: '[Seleccionar por favor...]'
+			placeholder: '[Seleccionar por favor...]',
+			allowClear: true
         });
         $('#apellido2_filter_table').rup_select({
         	url: './apellidos',
