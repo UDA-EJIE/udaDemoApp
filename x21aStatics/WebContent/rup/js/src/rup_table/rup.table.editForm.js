@@ -533,8 +533,8 @@
 	function _formInitializeFields(ctx, row, form) {
 		if (ctx.oInit.colModel !== undefined && (ctx.oInit.multiSelect !== undefined || ctx.oInit.select !== undefined)) {
 			$.each(ctx.oInit.colModel, function(key, column) {
-				const element = form.find('[name="' + column.name + '"]');
 				const rupType = column.editoptions?.rupType !== undefined ? column.editoptions.rupType : column.rupType;
+				const element = rupType !== 'tree' ? form.find('[name="' + column.name + '"]') : form.find('div[class*="rup_tree"]');
 
 				// Comprobar si el campo debe ser mostrado, si debe serlo, se verificará si es editable y un componente RUP, de no cumplir, 
 				// se terminará verificando si es o no editable y en caso de no serlo, se añadirá el atributo readonly.
@@ -1012,6 +1012,9 @@
                 success: function (valor) {
                 	ctx.oInit.formEdit.okCallBack = true;
                 	ctx.oInit.formEdit.lastValue = valor;
+					if(ctx.oInit.filter != undefined){
+						ctx.oInit.filter.type = "operation";
+					}
                     if (url !== '/deleteAll' && actionType !== 'DELETE') {
                         if (continuar) { //Se crea un feedback_ok, para que no se pise con el de los errores
                             var divOkFeedback = idTableDetail.find('#' + feed[0].id + '_ok');
