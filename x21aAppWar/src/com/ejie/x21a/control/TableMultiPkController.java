@@ -1,5 +1,6 @@
 package com.ejie.x21a.control;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -69,6 +70,16 @@ public class TableMultiPkController {
 	public @ResponseBody MultiPk get(@PathVariable String id) {
         MultiPk multiPk = new MultiPk();
 		multiPk.setId(id);
+        multiPk = this.multiPkService.find(multiPk);
+        TableMultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
+        return multiPk;
+	}
+	
+	@GetMapping(value = "/{ida}/{idb}")
+	public @ResponseBody MultiPk get(@PathVariable BigDecimal ida,@PathVariable BigDecimal idb) {
+        MultiPk multiPk = new MultiPk();
+		multiPk.setIda(ida);
+		multiPk.setIdb(idb);
         multiPk = this.multiPkService.find(multiPk);
         TableMultiPkController.logger.info("[GET - findBy_PK] : Obtener MultiPk por PK");
         return multiPk;
