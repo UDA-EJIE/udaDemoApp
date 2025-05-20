@@ -3,8 +3,8 @@
   <display-name>x21aEAR</display-name>
   <module>
     <web>
-      <web-uri>x21aAppWar.war</web-uri>
-      <context-root>x21aAppWar</context-root>
+      <web-uri>x21a4xAppWar.war</web-uri>
+      <context-root>x21a4xAppWar</context-root>
     </web>
   </module>
 </application>

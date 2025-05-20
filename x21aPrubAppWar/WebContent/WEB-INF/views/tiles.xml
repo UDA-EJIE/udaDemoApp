@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- ****************************** -->
+	<!-- PLANTILLAS -->
+	<!-- ****************************** -->
+	<definition name="template"
+		template="/WEB-INF/layouts/template.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<definition name="templateDashboard"
+		template="/WEB-INF/layouts/templateDashboard.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<!-- Plantilla de la pagina de login del Mock -->
+	<definition name="templateLogin"
+		template="/WEB-INF/layouts/templateLogin.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<!-- Para tener ejemplo del menu vertical -->
+	<definition name="templateVertical"
+		template="/WEB-INF/layouts/templateVertical.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<!-- Para tener ejemplo del menu mixto -->
+	<definition name="templateMixto"
+		template="/WEB-INF/layouts/templateMixto.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="menuMixto"
+			value="/WEB-INF/layouts/menuMixto.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<definition name="templateNora"
+		template="/WEB-INF/layouts/templateNora.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+		<put-attribute name="base-includesNora"
+			value="/WEB-INF/layouts/base-includesNora.jsp" />
+		<put-attribute name="includesNora" value="" />
+	</definition>
+
+	<definition name="templateError"
+		template="/WEB-INF/layouts/templateError.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+	</definition>
+
+	<definition name="templateCode"
+		template="/WEB-INF/layouts/templateCode.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/layouts/menu.jsp" />
+		<put-attribute name="breadCrumb"
+			value="/WEB-INF/layouts/breadCrumb.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layouts/footer.jsp" />
+		<put-attribute name="base-includes"
+			value="/WEB-INF/layouts/base-includes.jsp" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<definition name="templateNoHeads"
+		template="/WEB-INF/layouts/template.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="language"
+			value="/WEB-INF/layouts/language.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="breadCrumb" value="" />
+		<put-attribute name="footer" value="" />
+		<put-attribute name="base-includes" value="" />
+		<put-attribute name="includes" value="" />
+	</definition>
+
+	<!-- ***************************** -->
+	<!-- PANTALLAS -->
+	<!-- ***************************** -->
+
+	<!-- Pagina de test para la serializacion y visualizacion de las sesiones 
+		de usuario -->
+	<definition name="serSessionTestServlet"
+		template="/WEB-INF/views/serSessionTestServlet.jsp" />
+
+	<definition extends="templateError" name="error">
+		<put-attribute name="content"
+			value="/WEB-INF/views/error.jsp" />
+	</definition>
+
+	<definition extends="templateError" name="accessDenied">
+		<put-attribute name="content"
+			value="/WEB-INF/views/accessDenied.jsp" />
+	</definition>
+
+	<definition extends="templateLogin" name="mockLoginPage">
+		<put-attribute name="content"
+			value="/WEB-INF/views/mockLogin/mockLoginPage.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/mockLogin/mockLoginPage-includes.jsp" />
+	</definition>
+
+	<definition name="mockLoginAjaxPage"
+		template="/WEB-INF/views/mockLogin/mockLoginAjaxPage.jsp" />
+
+	<definition extends="template" name="welcome">
+		<put-attribute name="content"
+			value="/WEB-INF/views/welcome.jsp" />
+	</definition>
+
+
+	<!-- Patrones -->
+	<definition extends="template" name="accordion">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/accordion.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/accordion-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="date">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/date.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/date-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="dialog">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/dialog.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/dialog-includes.jsp" />
+	</definition>
+	<definition name="dialogAjax"
+		template="/WEB-INF/views/patrones/dialogAjax.jsp" />
+
+	<definition extends="template" name="button">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/button.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/button-includes.jsp" />
+	</definition>
+	
+	<!-- RUP_Select -->
+	<definition extends="template" name="selectSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoSimple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectEnlazadoSimple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectEnlazadoMultiple-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectMultiselect">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectMultiselect.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectMultiselect-includes.jsp" />
+	</definition>
+	<definition extends="template" name="selectMantenimiento">
+		<put-attribute name="content"
+			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocomplete">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocomplete.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocomplete-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocompleteEnlazado">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocompleteEnlazado.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocompleteEnlazado-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="selectAutocompleteEnlazadoMultiple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/select/selectAutocompleteEnlazadoMultiple.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/select/includes/selectAutocompleteEnlazadoMultiple-includes.jsp" />
+	</definition>
+<!-- FIN RUP_Select -->
+
+	<definition extends="template" name="feedback">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/feedback.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/feedback-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="form">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/form.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/form-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="formModelView">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/formModelView.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/formModelView-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="menu">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/menu.jsp" />
+	</definition>
+	<definition extends="templateVertical" name="menuVertical">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/menu.jsp" />
+	</definition>
+	<definition extends="templateMixto" name="menuMixto">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/menu.jsp" />
+	</definition>
+
+	<definition extends="template" name="message">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/message.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/message-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="progressBar">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/progressBar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/progressBar-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="slider">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/slider.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/slider-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="spinner">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/spinner.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/spinner-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tabsStatic">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tabs/tabsStatic.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsStatic-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tabsAjax">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tabs/tabsAjax.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsAjax-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tabsMixto">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tabs/tabsMixto.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsMixto-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="maintTab">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tabs/tabsMaint.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsMaint-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tabsScrollable">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tabs/tabsScrollable.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsScrollable-includes.jsp" />
+	</definition>
+
+	<definition name="tabsContent_1"
+		template="/WEB-INF/views/patrones/tabs/tabsContent_1.jsp" />
+	<definition name="tabsContent_2"
+		template="/WEB-INF/views/patrones/tabs/tabsContent_2.jsp" />
+	<definition name="tabsContent_3"
+		template="/WEB-INF/views/patrones/tabs/tabsContent_3.jsp" />
+		
+	<definition extends="templateNoHeads" name="tabsTable_4">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTable-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tabsTableMultiPk_5">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipk.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tabs/tabsTableMultipk-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="time">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/time.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/time-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="toolbar">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/toolbar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/toolbar-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tooltip">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tooltip.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tooltip-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="upload">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/upload/upload.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/upload/upload-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="validate">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validate.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validate-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="validateRules">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validateRules.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validateRules-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="validateRup">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/validate/validateRup.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/validate/validateRup-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="charts">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/graficos.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/graficos-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="wizard">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/wizard/wizard.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="wizard_includeFile">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/wizard/wizard_includeFile.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="wizard_jspInclude">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/wizard/wizard_jspInclude.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="wizard_jstlImport">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/wizard/wizard_jstlImport.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/wizard/wizard-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="wizard_dinamico">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/wizard/wizard_dinamico.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/wizard/wizard_dinamico-includes.jsp" />
+	</definition>
+	
+	<definition name="wizard_dinamico_content"
+		template="/WEB-INF/views/patrones/wizard/wizard_dinamico_content.jsp" />
+
+	<definition extends="templateCode" name="trees">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tree/trees.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tree/trees-includes.jsp" />
+		<put-attribute name="code"
+			value="/WEB-INF/views/patrones/tree/codigo-trees.jsp" />
+	</definition>
+
+	<definition extends="templateCode" name="treeDAD">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/tree/treeDAD.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/tree/treeDAD-includes.jsp" />
+		<put-attribute name="code"
+			value="/WEB-INF/views/patrones/tree/codigo-treeDAD.jsp" />
+	</definition>
+
+	<definition extends="template" name="all">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/all.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/all-includes.jsp" />
+	</definition>
+	<definition name="allDialog"
+		template="/WEB-INF/views/patrones/allDialog.jsp" />
+
+	<definition extends="template" name="contextMenu">
+		<put-attribute name="content"
+			value="/WEB-INF/views/patrones/contextMenu.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/patrones/contextMenu-includes.jsp" />
+	</definition>
+
+
+	<!-- Experimental -->
+	<definition extends="template" name="xlnetsTest">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/xlnetsTest.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/experimental/xlnetsTest-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="logLevel">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/logLevel.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/experimental/logLevel-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="iberdok">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/iberdok.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/experimental/iberdok-includes.jsp" />
+	</definition>
+	
+	<definition name="iberdokEditForm" template="/WEB-INF/views/experimental/iberdokEditForm.jsp" />
+	
+	<definition extends="template" name="iberdokWelcome">
+		<put-attribute name="content"
+			value="/WEB-INF/views/experimental/iberdokWelcome.jsp" />
+	</definition>
+
+
+	<!-- Integracion -->
+	<definition extends="template" name="geoEuskadi">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/geoEuskadi.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/geoEuskadi-includes.jsp" />
+	</definition>
+	<definition extends="template" name="z-index">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/z-index.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/z-index-includes.jsp" />
+	</definition>
+	<definition extends="templateNora" name="nora">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/nora.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/mantnora-includes.jsp" />
+		<put-attribute name="includesNora"
+			value="/WEB-INF/views/integracion/nora-includes.jsp" />
+	</definition>
+	<definition extends="template" name="tiny">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/tiny.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/tiny-includes.jsp" />
+	</definition>
+	<definition extends="template" name="webdav">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/webdav.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/webdav-includes.jsp" />
+	</definition>
+	<definition extends="template" name="pif">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/pif.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/pif-includes.jsp" />
+	</definition>
+	<definition extends="template" name="cache">
+		<put-attribute name="content"
+			value="/WEB-INF/views/integracion/cache.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/integracion/cache-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="styleGuide">
+		<put-attribute name="content"
+			value="/WEB-INF/views/styleGuide/styleGuide.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/styleGuide/styleGuide-includes.jsp" />
+	</definition>
+
+	<!-- LISTADO -->
+	<definition extends="template" name="listaConfigurable">
+		<put-attribute name="content" value="/WEB-INF/views/list/listConfigurable.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listConfigurable-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="listaDoble">
+		<put-attribute name="content" value="/WEB-INF/views/list/listDoble.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/listDoble-includes.jsp" />
+	</definition>
+
+	<definition extends="templateNoHeads" name="listaNoTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/list/list.jsp" />
+		<put-attribute name="includes" value="/WEB-INF/views/list/includes/list-includes.jsp" />
+	</definition>
+
+	<!-- TABLE -->
+	<definition extends="template" name="table">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/table-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableEditFormNewWindow">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableEditFormNewWindow.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableEditFormNewWindow-includes.jsp" />
+	</definition>
+	
+	<definition name="tableEditForm" template="/WEB-INF/views/table/includes/tableEditForm.jsp" />
+	
+	<definition name="tableDoubleEditForm" template="/WEB-INF/views/table/includes/tableDoubleEditForm.jsp" />
+	
+	<definition name="tableMultiPkEditForm" template="/WEB-INF/views/table/includes/tableMultiPkEditForm.jsp" />
+	
+	<definition name="tableComarcaEditForm" template="/WEB-INF/views/table/includes/tableComarcaEditForm.jsp" />
+	
+	<definition name="tableComarcaExtendidaEditForm" template="/WEB-INF/views/table/includes/tableComarcaExtendidaEditForm.jsp" />
+	
+	<definition name="tableDialogComarcaEditForm" template="/WEB-INF/views/table/includes/tableDialogComarcaEditForm.jsp" />
+	
+	<definition name="tableLocalidadEditForm" template="/WEB-INF/views/table/includes/tableLocalidadEditForm.jsp" />
+	
+	<definition name="tableInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDoubleInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDoubleInlineEditAuxForm.jsp" />
+	
+	<definition name="tableMultiPkInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableMultiPkInlineEditAuxForm.jsp" />
+	
+	<definition name="tableDynamicColumnsInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableDynamicColumnsInlineEditAuxForm.jsp" />
+	
+	<definition name="tableExperimentalInlineEditAuxForm" template="/WEB-INF/views/table/includes/tableExperimentalInlineEditAuxForm.jsp" />
+	
+	<definition name="multiFilterForm" template="/WEB-INF/views/table/includes/multiFilterForm.jsp" />
+
+	<definition extends="template" name="tableDouble">
+		<put-attribute name="content"
+					   value="/WEB-INF/views/table/tableDouble.jsp" />
+		<put-attribute name="includes"
+					   value="/WEB-INF/views/table/includes/tableDouble-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateNoHeads" name="tableDialogAjax">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/table.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/table-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tableMasterDetail">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMasterDetail.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableMasterDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableComarcaExtendida">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableComarcaExtendida.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableComarcaExtendidaDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableDialogDetail">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDialogDetail.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDialogDetail-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableDialog">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDialog.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDialog-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tableMultipk">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipk.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableMultipk-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableMultipkDoble">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableMultipkDoble.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableMultipkDoble-includes.jsp" />
+	</definition>
+	
+	<definition extends="template" name="tableDynamicColumns">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableDynamicColumns.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableDynamicColumns-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="tablePruebas">
+		<put-attribute name="content"
+			value="/WEB-INF/views/table/tableUsuario.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/table/includes/tableUsuario-includes.jsp" />
+	</definition>
+	
+	<definition extends="templateDashboard" name="dashboardSimple">
+		<put-attribute name="content"
+			value="/WEB-INF/views/dashboard/dashboard.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/dashboard/dashboard-includes.jsp" />
+	</definition>
+
+
+	<!-- Bootstrap -->
+	<definition extends="template" name="stackedHorizontal">
+		<put-attribute name="content"
+			value="/WEB-INF/views/bootstrap/stackedHorizontal.jsp" />
+	</definition>
+
+	<definition extends="template" name="mobileDesktop">
+		<put-attribute name="content"
+			value="/WEB-INF/views/bootstrap/mobileDesktop.jsp" />
+	</definition>
+
+	<definition extends="template" name="mobileTabletDesktop">
+		<put-attribute name="content"
+			value="/WEB-INF/views/bootstrap/mobileTabletDesktop.jsp" />
+	</definition>
+
+	<definition extends="template" name="exampleForm">
+		<put-attribute name="content"
+			value="/WEB-INF/views/bootstrap/exampleForm.jsp" />
+	</definition>
+
+	<definition extends="template" name="x21aalumno">
+		<put-attribute name="content"
+			value="/WEB-INF/views/x21aalumno/x21aalumno.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/x21aalumno/x21aalumno-includes.jsp" />
+	</definition>
+	
+	<definition name="tableX21aAlumnoEditForm" template="/WEB-INF/views/x21aalumno/includes/x21aAlumnoEditForm.jsp" />
+
+	<definition extends="template" name="calendar">
+		<put-attribute name="content"
+			value="/WEB-INF/views/calendar/calendar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/calendar/calendar-includes.jsp" />
+	</definition>
+
+	<definition extends="templateNoHeads" name="calendarNoTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/views/calendar/calendar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/calendar/calendar-includes.jsp" />
+	</definition>
+
+	<definition extends="template" name="doubleCalendar">
+		<put-attribute name="content"
+			value="/WEB-INF/views/calendar/doubleCalendar.jsp" />
+		<put-attribute name="includes"
+			value="/WEB-INF/views/calendar/doubleCalendar-includes.jsp" />
+	</definition>
+</tiles-definitions>

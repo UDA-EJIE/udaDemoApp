@@ -9,6 +9,8 @@
 		<project>x38ShLibClasses-pif</project>
 		<project>x38ShLibClasses</project>
 		<project>x38ShLibClasses-rup</project>
+		<project>x21aPrubAppWar</project>
+		<project>x21a4xAppWar</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

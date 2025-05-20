@@ -74,6 +74,11 @@
 				dir="../x21aAppWar/WebContent/WEB-INF/layouts/includes/"
 		    	files="rup.styles.inc,x21a.styles.inc"
 			/>
+			
+			<filelist 
+				dir="../x21aPrubAppWar/WebContent/WEB-INF/layouts/includes/"
+		    	files="rup.styles.inc,x21a.styles.inc"
+			/>
 		</concat>
 		<replace file="${destDir}/uda-portal.inc" token="${staticsUrl}" value="/appcont/rup-cac" />
 		<replace file="${destDir}/uda-portal.inc" token='&lt;%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%&gt;' value="" />

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test-integration"/>
+	<classpathentry kind="src" path="test-unit"/>
+	<classpathentry kind="src" path="test-system"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS14Classpath">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path=".apt_src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_241">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/animal-sniffer-annotations-1.14.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/aspectjweaver-1.8.13.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/avro-1.7.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/bcmail-jdk14-1.38.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/bcmail-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/bcprov-jdk14-1.38.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/bcprov-jdk14-138.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/bctsp-jdk14-1.38.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/byte-buddy-1.8.15.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/checker-compat-qual-2.0.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/classmate-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commonj.sdo-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-digester-2.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-fileupload-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/eclipselink-2.4.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/ehcache-core-2.6.10.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/ehcache-jmsreplication-0.5.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/error_prone_annotations-2.1.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/ezmorph-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/flexjson-2.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/guava-25.0-jre.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/hadoop-client-1.0.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/hadoop-core-without-webhdfs-1.0.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/hibernate-validator-5.4.3.Final.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/httpclient-4.3.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/httpcore-4.3.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/j2objc-annotations-1.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jackson-annotations-2.7.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jackson-core-2.7.9.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jackson-databind-2.7.9.5.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jasperreports-4.7.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/javax.ws.rs-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jboss-logging-3.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jcip-annotations-1.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jcl-over-slf4j-1.7.30.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jcommander-1.72.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jdbcdslog-1.0.5.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jetty-repacked-9.4.12.v20180830.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jetty-util-6.1.26.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/json-lib-2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/jsr305-1.3.9.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/logback-classic-1.2.11.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/logback-core-1.2.11.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/metrics-core-3.1.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/mime-util-2.1.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/mongo-java-driver-2.6.3.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/odfdom-java-0.8.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/okhttp-3.11.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/okio-1.14.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/rome-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-api-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-chrome-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-edge-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-firefox-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-ie-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-java-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-opera-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-remote-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-safari-driver-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-server-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/selenium-support-3.141.59.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/slf4j-api-1.7.30.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/slf4j-ext-1.7.30.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/snakeyaml-1.19.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-aop-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-beans-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-context-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-context-support-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-core-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-expression-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-jdbc-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-orm-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-security-acl-4.2.11.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-security-config-4.2.11.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-security-core-4.2.11.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-security-taglibs-4.2.11.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-security-web-4.2.11.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-tx-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-web-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/spring-webmvc-4.3.22.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-api-3.0.8.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-autotag-core-runtime-1.2.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-core-3.0.8.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-jsp-3.0.8.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-request-api-1.0.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-request-jsp-1.0.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-request-servlet-1.0.7.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-servlet-3.0.8.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/tiles-template-3.0.8.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/w43ta-2.4.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/x38ShLibClasses-4.5.1-RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/x38ShLibClasses-cache-4.5.1-RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/x38ShLibClasses-dav-4.5.1-RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/x38ShLibClasses-pif-4.5.1-RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/x38ShLibClasses-rup-4.5.1-RELEASE.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/y31b-1.4-ifaz.jar"/>
+	<classpathentry kind="lib" path="/x21aEAR/EarContent/APP-INF/lib4/y31c-1.5-impl.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/XLNETSWLS14Classpath"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/x21aEARClasses"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

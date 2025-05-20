@@ -11,7 +11,6 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="src" path=".apt_src">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -22,15 +21,17 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-11.0.16.1">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-dav"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-pif"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-rup"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
