@@ -3,7 +3,7 @@
  *
  * @summary 		Componente RUP Datatable
  * @module			"rup.table"
- * @version     1.0.0
+ * @version     1.0.0.19
  * @license
  * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
  * Solo podrá usarse esta obra si se respeta la Licencia.
