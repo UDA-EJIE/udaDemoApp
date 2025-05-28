@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion</title>
+</head>
+<body>
+    <section class="row">
+        <div class="col-12">
+            <h2>Accordion</h2>
+            <hr>
+
+            <div id="accordionExample1" class="rup_accordion">
+                <h3>
+                    <a th:text="#{seccion1}"></a>
+                </h3>
+                <div class="section">
+				    <img src="/x21aStatics/x21a/images/primera_seccion.PNG" alt="La primera sección">
+
+				</div>
+				<h3>
+				    <a th:text="#{seccion2}"></a>
+				</h3>
+				<div class="section2">
+				    <img th:src="@{|/x21aStatics/x21a/images/segunda_seccion.PNG|}" alt="La segunda sección">
+				</div>
+				<h3>
+				    <a th:text="#{seccion3}"></a>
+				</h3>
+				<div class="section">
+				    <img th:src="@{|/x21aStatics/x21a/images/tercera_seccion.PNG|}" alt="La tercera sección">
+				</div>
+				<h3>
+				    <a th:text="#{seccion4}"></a>
+				</h3>
+				<div class="section2">
+				    <img th:src="@{|/x21aStatics/x21a/images/cuarta_seccion.PNG|}" alt="La cuarta sección">
+				</div>
+
+            </div>
+
+            <br>
+            <div class="separator"></div>
+            <div class="separator"></div>
+            <br>
+
+            <div id="accordionExample2" class="rup_accordion">
+                <h3>
+                    <a th:text="#{secAuto}"></a>
+                </h3>
+                <div class="sectionAuto">
+                    <h4 class="sectionh4">Autocomplete local</h4>
+                    <div class="form-row">
+                        <div class="form-groupMaterial col-sm">
+                            <select id="autocomplete"></select>
+                            <label for="autocomplete">Lenguaje</label>
+                            <p>[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Autocomplete remoto</h4>
+                    <div class="form-row">   
+                        <div class="form-groupMaterial col-sm">
+                            <select id="patron"></select>
+                            <label for="patron">Departamento-Provincia</label>
+                            <p>[Castellano: " de " // Euskara: arab, gipuz, bilb]</p>
+                        </div>
+                    </div>
+                </div>
+                <h3>
+                    <a th:text="#{secMaint}"></a>
+                </h3>
+                <div class="sectionMaint">
+                    <h4 class="sectionh4">Mantenimiento Agrupado</h4>
+                    <div id="maintGroup"></div>
+                </div>
+                <h3>
+                    <a th:text="#{secTab}"></a>
+                </h3>
+                <div class="sectionTab">
+                    <h4 class="sectionh4">Mantenimientos en Tabs</h4>
+                    <div id="maintTab"></div>
+                </div>
+                <h3>
+                    <a th:text="#{secUpload}"></a>
+                </h3>
+                <div class="sectionUpload">
+                    <h4 class="sectionh4" th:text="#{uploadFormMultiple}"></h4>
+                    <div id="fileupload_form_multiple">
+                        <form th:action="@{/upload/formSimple}" th:object="${alumno}" enctype="multipart/form-data" method="POST" id="usuarioFormSimple">
+                            <fieldset style="border: 1px solid #DADADA;" id="fieldset_formulario">
+                                <div id="feedback_fileupload_form_multiple"></div>
+                                <div class="formulario_columna_cnt">
+                                    <div class="form-groupMaterial col-sm">
+                                        <input type="text" th:field="*{nombre}" id="nombre">
+                                        <label id="label_nombre" for="nombre">Nombre</label>
+                                    </div>
+                                    <div class="form-groupMaterial col-sm">
+                                        <input type="text" th:field="*{apellido1}" id="apellido1">
+                                        <label id="label_apellido1" for="apellido1">Apellido 1</label>
+                                    </div>
+                                    <div class="form-groupMaterial col-sm">
+                                        <input type="text" th:field="*{apellido2}" id="apellido2">
+                                        <label id="label_apellido2" for="apellido2">Apellido 2</label>
+                                    </div>
+                                    <div class="checkbox-material col-sm">
+                                        <input type="checkbox" th:field="*{ejie}" id="ejie" value="1">
+                                        <label id="label_ejie" for="ejie">EJIE</label>
+                                    </div>
+                                </div>
+                                <div class="formulario_columna_cnt">&nbsp;</div>
+                                <div class="formulario_columna_cnt">
+                                    <p>Archivos adjuntos:</p>
+                                </div>
+                                <div class="formulario_columna_cnt">
+                                    <div class="formulario_linea_izda_float">
+                                        <div id="fileupload_file_form_padre">
+                                            <div class="fileupload-buttonbar">
+                                                <div class="form-row">
+                                                    <div class="form-groupMaterial col-sm">
+                                                        <input id="file_form_padre" type="file" name="fotoPadre">
+                                                        <label for="file">Foto padre</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="fileupload-content">
+                                                <table class="files"></table>
+                                            </div>
+                                        </div>
+
+                                        <div id="fileupload_file_form_madre">
+                                            <div class="fileupload-buttonbar">
+                                                <div class="form-row">
+                                                    <div class="form-groupMaterial col-sm">
+                                                        <input id="file_form_madre" type="file" name="fotoMadre">
+                                                        <label for="file">Foto madre</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="fileupload-content">
+                                                <table class="files"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formulario_columna_cnt">
+                                    <div class="formulario_linea_izda_float fileupload-buttonbar">
+                                        <button id="sendButtonMultiple" type="submit" class="start btn-material btn-material-primary-high-emphasis">
+                                            Enviar formulario
+                                        </button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

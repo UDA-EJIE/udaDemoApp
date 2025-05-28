@@ -3,26 +3,31 @@ jQuery(function ($) {
 	    const tableColModels = [
 	    	{
 	            name: 'id',
+	            index: 'id',
 	            editable: false,
 	            hidden: false
 	        },
 	    	{
 	            name: 'usuario',
+	            index: 'usuario',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
 	            name: 'password',
+	            index: 'password',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
 	            name: 'nombre',
+	            index: 'nombre',
 	            editable: true,
 	            hidden: false
 	        },
 	        { 
-	        	name: "apellido1",
+	        	name: "apellido1", 
+	        	index: "apellido1", 
 	        	editable: true, 
 	        	hidden: false,
 	        	rupType: 'select',
@@ -38,6 +43,7 @@ jQuery(function ($) {
 	        },
 	        {
 	            name: 'provinciaId',
+	            index: 'provinciaId',
 	            editable: true,
 	            hidden: false,
 	            rupType: 'select',
@@ -51,6 +57,7 @@ jQuery(function ($) {
 	        },
 	        {
 	            name: 'comarcaId',
+	            index: 'comarcaId',
 	            editable: true,
 	            hidden: false,
 	            rupType: 'select',
@@ -64,11 +71,13 @@ jQuery(function ($) {
 	        },
 	        {
 	            name: 'localidadId',
+	            index: 'localidadId',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
 	            name: 'municipioId',
+	            index: 'municipioId',
 	            editable: true,
 	            hidden: false
 	        }

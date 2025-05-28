@@ -1,0 +1,8 @@
+<div th:fragment="basic">
+    <span class="btn btn-success fileinput-button">
+        <i class="mdi mdi-plus"></i>
+        <span th:text="#{upload.button.addFiles}">Añadir ficheros</span>
+        <input id="basicFileupload" type="file" name="files[]" data-url="../upload" multiple="multiple" />
+    </span>
+    <span id="basicFileuploadContext"></span>
+</div>

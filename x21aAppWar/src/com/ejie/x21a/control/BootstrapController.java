@@ -15,7 +15,7 @@
 */
 package com.ejie.x21a.control;
 
-import javax.annotation.Resource;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ejie.x21a.model.RandomForm;
 
@@ -46,7 +47,7 @@ public class BootstrapController {
 	
 
 	
-	@Resource
+	@Autowired
 	private ReloadableResourceBundleMessageSource messageSource;
 	
 	@InitBinder
@@ -57,23 +58,27 @@ public class BootstrapController {
 	
 	@GetMapping(value = "stackedHorizontal")
 	public String getStackedHorizontal(Model model) {
-		return "stackedHorizontal";
+		model.addAttribute("content", "bootstrap/stackedHorizontal");
+		return "template";
 	}
 	
 	@GetMapping(value = "mobileDesktop")
 	public String getMobileDesktop(Model model) {
-		return "mobileDesktop";
+		model.addAttribute("content", "bootstrap/mobileDesktop");
+		return "template";
 	}
 	
 	@GetMapping(value = "mobileTabletDesktop")
 	public String getMobileTabletDesktop(Model model) {
-		return "mobileTabletDesktop";
+		model.addAttribute("content", "bootstrap/mobileTabletDesktop");
+		return "template";
 	}
 	
 	@GetMapping(value = "exampleForm")
 	public String getExampleForm(Model model) {
 		model.addAttribute("randomForm", new RandomForm());
-		return "exampleForm";
+		model.addAttribute("content", "bootstrap/exampleForm");
+		return "template";
 	}
 	
 	

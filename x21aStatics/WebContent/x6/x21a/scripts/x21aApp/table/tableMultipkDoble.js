@@ -15,7 +15,7 @@
  */
 jQuery(function($){
 	initRupI18nPromise.then(function(){
-        var rolData = [
+        var combo = [
             {rol: "---", codTipoSubsanacion:""},
             {rol: "Administrador", codTipoSubsanacion:"administrador"},
             {rol: "Desarrollador", codTipoSubsanacion:"desarrollador"},
@@ -25,25 +25,25 @@ jQuery(function($){
          ];
 
          var tableColModelsSimple = [
- 	        { name: "id", editable:true, hidden:false
+ 	        { name: "id", index: "id", editable:true, hidden:false
  	        },
- 	        { name: "nombre", editable:true, hidden:false
+ 	        { name: "nombre", index: "nombre", editable:true, hidden:false
  	        },
- 	        { name: "apellido1", editable:true, hidden:false
+ 	        { name: "apellido1", index: "apellido1", editable:true, hidden:false
  	        },
- 	    /*	{ name: "apellido2", editable:true, hidden:false
+ 	    /*	{ name: "apellido2", index: "apellido2", editable:true, hidden:false
  	        },*/
- 	        { name: "ejie", editable:true, hidden:false/*,
+ 	        { name: "ejie", index: "ejie", editable:true, hidden:false/*,
  	            searchoptions:{
- 	                rupType: "select",
- 	                data : [
- 	                   {text: "---", id:""},
- 	                   {text: "Si", id:"1"},
- 	                   {text: "No", id:"0"}
+ 	                rupType: "combo",
+ 	                source : [
+ 	                   {label: "---", value:""},
+ 	                   {label: "Si", value:"1"},
+ 	                   {label: "No", value:"0"}
  	                ]
  	            }*/
  	        },
- 	        { name: "fechaAlta", editable:true, hidden:false,
+ 	        { name: "fechaAlta",  index: "fechaAlta", editable:true, hidden:false,
  	            rupType: "date",
  	            editoptions:{
  	                labelMaskId : "fecha-mask",
@@ -52,7 +52,7 @@ jQuery(function($){
  	                noWeekend : true
  	            }
  	        },
- 	        { name: "fechaBaja", editable:false, hidden:false,
+ 	        { name: "fechaBaja", index: "fechaBaja", editable:false, hidden:false,
  	            rupType: "date",
  	            editoptions:{
  	                labelMaskId : "fecha-mask",
@@ -61,10 +61,10 @@ jQuery(function($){
  	                noWeekend : true
  	            }
  	        },
- 	        { name: "rol", editable:true, hidden:false,
- 	            rupType: "select",
+ 	        { name: "rol", index: "rol", editable:true, hidden:false,
+ 	            rupType: "combo",
  	            editoptions: {
- 	                data: $.map(rolData, function(elem){
+ 	                data: $.map(combo, function(elem){
  	                    return {
  	                        text: elem.rol,
  	                        id: elem.codTipoSubsanacion
@@ -109,15 +109,15 @@ jQuery(function($){
          //jQuery("#rol_detail_table").rup_select(options_role_select)	
 		
 	var tableColModels = [
-		{ name: "ida", editable:true, hidden:false
+		{ name: "ida", index: "ida", editable:true, hidden:false
 		},
-		{ name: "idb", editable:true, hidden:false
+		{ name: "idb", index: "idb", editable:true, hidden:false
 		},
-		{ name: "nombre", editable:true, hidden:false
+		{ name: "nombre", index: "nombre", editable:true, hidden:false
 		},
-		{ name: "apellido1", editable:true, hidden:false
+		{ name: "apellido1", index: "apellido1", editable:true, hidden:false
 		},
-		{ name: "apellido2", editable:true, hidden:false
+		{ name: "apellido2", index: "apellido2", editable:true, hidden:false
 		}
 	];
          

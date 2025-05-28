@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{selectEnlazadoSimple.title}"></title>
+</head>
+<body>
+
+<h2 th:text="#{selectEnlazadoSimple.title}"></h2>
+
+<div class="container-fluid">
+    <div class="form-row">
+        <fieldset id="local" class="col-sm mr-sm-5">
+            <legend>Local</legend>
+            <div class="form-groupMaterial">
+                <select id="selectAbuelo"></select>
+                <label for="selectAbuelo">Provincia</label>
+            </div>
+
+            <div class="form-groupMaterial">
+                <select id="selectPadre"></select>
+                <label for="selectPadre">Comarca</label>
+            </div>
+
+            <div class="form-groupMaterial">
+                <select id="selectHijo"></select>
+                <label for="selectHijo">Localidad</label>
+            </div>
+        </fieldset>
+
+        <fieldset id="remote" class="col-sm mr-sm-5">
+            <legend>Remoto</legend>
+            <form th:action="@{/comboEnlazadoSimple/provinciaComarcaLocalidadDTO}" th:object="${provinciaComarcaLocalidadDTO}" method="GET" id="selectRemoto_form">
+                <div class="form-groupMaterial">
+                    <select id="selectAbueloRemoto" th:field="*{codeProvincia}"></select>
+                    <label for="selectAbueloRemoto">Provincia</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="selectPadreRemoto" th:field="*{codeComarca}"></select>
+                    <label for="selectPadreRemoto">Comarca</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="selectHijoRemoto" th:field="*{codeLocalidad}"></select>
+                    <label for="selectHijoRemoto">Localidad</label>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="form-row">
+        <fieldset id="local" class="col-sm mr-sm-5">
+            <legend>Local a Remoto</legend>
+            <form th:action="@{/comboEnlazadoSimple/provinciaComarcaDTO}" th:object="${provinciaComarcaDTO}" method="GET" id="departamentoProvincia_form">
+                <div class="form-groupMaterial">
+                    <select id="selectLocalAbuelo" th:field="*{codeProvincia}">
+                        <option th:each="provincia : ${comboProvincia}" th:value="${provincia.code}" th:text="${provincia.descEs}"></option>
+                    </select>
+                    <label for="selectLocalAbuelo">Provincia Local</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="selectRemotoPadre" th:field="*{codeComarca}"></select>
+                    <label for="selectRemotoPadre">Comarca Remoto</label>
+                </div>
+            </form>
+        </fieldset>
+
+        <fieldset id="remote" class="col-sm mr-sm-5">
+            <legend>Remoto a Local (JS y Thymeleaf)</legend>
+            <form th:action="@{/comboEnlazadoSimple/provinciaComarcaDTO}" th:object="${provinciaComarcaDTO}" method="GET" id="departamentoProvincia_form">
+                <div class="form-groupMaterial">
+                    <select id="selectRemotoAbuelo" th:field="*{codeProvincia}"></select>
+                    <label for="selectRemotoAbuelo">Provincia Remoto</label>
+                </div>
+
+                <div class="form-groupMaterial">
+                    <select id="selectLocalPadre">
+                        <option th:each="comarca : ${comboComarca}" th:value="${comarca.code}" th:text="${comarca.descEs}" th:data-idPadre="${comarca.parentCode}"></option>
+                    </select>
+                    <label for="selectLocalPadre">Comarca Local cargado desde Thymeleaf</label>
+                </div>
+            </form>
+
+            <div class="form-groupMaterial">
+                <select id="selectLocalPadreJs" name="codeAuxiliar"><option>&nbsp;</option></select>
+                <label for="selectLocalPadreJs">Comarca Local cargado con JS</label>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="form-row">
+        <div id="remoteGroup" class="col-sm">
+            <fieldset>
+                <legend>Remoto agrupado</legend>
+                <form th:action="@{/comboEnlazadoSimple/comarcaLocalidadDTO}" th:object="${comarcaLocalidadDTO}" method="GET" id="selectRemotoAgrupado_form">
+                    <div class="form-groupMaterial">
+                        <select id="remoteGroup_selectPadre" th:field="*{codeProvincia}"></select>
+                        <label for="remoteGroup_selectPadre">Provincia</label>
+                    </div>
+
+                    <div class="form-groupMaterial">
+                        <select id="remoteGroup_selectHijo" th:field="*{codeComarcaLocalidad}"></select>
+                        <label for="remoteGroup_selectHijo">Comarca y Localidades</label>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

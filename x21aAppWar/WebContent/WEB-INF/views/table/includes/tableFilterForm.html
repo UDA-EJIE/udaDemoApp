@@ -1,0 +1,71 @@
+<div th:fragment="tableFilterForm">
+    <form th:action="@{/table/filter}" th:object="${usuario}" id="example_filter_form" method="POST">
+        <div id="example_filter_toolbar" class="formulario_legend"></div>
+        <fieldset id="example_filter_fieldset" class="rup-table-filter-fieldset">
+            
+            <div class="form-row">
+                <div class="form-groupMaterial col-sm">
+                    <select th:field="*{id}" id="id_filter_table" class="form-control"></select>
+                    <label for="id_filter_table" th:text="#{identificador}">Identificador</label>
+                </div>
+
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" th:field="*{nombre}" id="nombre_filter_table" class="form-control"/>
+                    <label for="nombre_filter_table" th:text="#{nombre}">Nombre</label>
+                </div>
+
+                <div class="form-groupMaterial col-sm">
+                    <select th:field="*{apellido1}" id="apellido1_filter_table" class="form-control"></select>
+                    <label for="apellido1_filter_table" th:text="#{apellido1}">Primer apellido</label>
+                </div>
+
+                <div class="form-groupMaterial col-sm">
+                    <select th:field="*{apellido2}" id="apellido2_filter_table" class="form-control"></select>
+                    <label for="apellido2_filter_table" th:text="#{apellido2}">Segundo apellido</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" th:field="*{fechaAlta}" id="fechaAlta_filter_table" class="form-control"/>
+                    <label for="fechaAlta_filter_table" th:text="#{fechaAlta}">Fecha de alta</label>
+                </div>
+
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" th:field="*{fechaBaja}" id="fechaBaja_filter_table" class="form-control"/>
+                    <label for="fechaBaja_filter_table" th:text="#{fechaBaja}">Fecha de baja</label>
+                </div>
+
+                 <div class="form-groupMaterial col-sm">  
+                    <select th:field="*{ejie}" id="ejie_filter_table2" class="form-control">
+				    <option th:each="entry : ${comboEjie.entrySet()}"th:value="${entry.key}"th:text="${entry.value}">
+				    </option>
+				</select>
+
+                    <label for="ejie_filter_table2">EJIE</label>
+                </div>
+                <div class="form-groupMaterial col-sm">  
+                    <select th:field="*{rol}" id="rol_filter_table2" class="form-control">                    
+                        <option th:each="entry : ${comboRol.entrySet()}"th:value="${entry.key}"th:text="${entry.value}">
+                    </select>
+                    <label for="rol_filter_table2">ROL</label>
+                </div>
+            </div>
+
+            <!-- Botonera del formulario de filtrado -->
+            <div id="example_filter_buttonSet" class="text-right">
+                <!-- Botón de limpiar -->
+                <button id="example_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                    <i class="mdi mdi-eraser"></i>
+                    <span th:text="#{clear}"></span>
+                </button>
+                <!-- Botón de filtrado -->
+                <button id="example_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                    <i class="mdi mdi-filter"></i>
+                    <span th:text="#{filter}"></span>
+                </button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

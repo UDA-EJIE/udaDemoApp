@@ -1,9 +1,5 @@
 /* eslint-env jquery,jasmine */
 
-global.queryString = queryString;
-global.flatten = flatten;
-global.unflatten = unflatten;
-
 function generateFormEditDatatable(callback) {
     dtGen.createDatatable1(0, callback);
 }
@@ -147,7 +143,7 @@ function testDatatable() {
                             $('#example > tbody > tr:eq(0) > td:eq(0)').click();
                             $('#contextMenu1 > #examplecloneButton_1_contextMenuToolbar').mouseup();
                         	$('#example').on('tableEditFormAddEditAfterShowForm', () => {
-                                setTimeout(done, 100);
+                                done();
                             });
                         });
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{tabla.columnas.dinamicas.title}">Tabla con columnas dinámicas</title>
+</head>
+<body>
+    <h2 class="title mb-3" th:text="#{tabla.columnas.dinamicas.title}">Tabla con columnas dinámicas</h2>
+
+    <div id="columsSelectorContainer" class="form-groupMaterial">
+        <input type="text" name="columsSelector" id="columsSelector" />
+        <label for="columsSelector" th:text="#{tabla.columnas.dinamicas.selector}">Seleccione columnas</label>
+    </div>
+
+    <button id="btnTableLoad" class="btn-material btn-material-primary-high-emphasis" type="button">
+        <span th:text="#{tabla.columnas.dinamicas.cargar}">Cargar Tabla</span>
+    </button>
+
+    <form th:action="@{/table/dynamicColumns/filter}" method="post" id="columnasDinamicas_filter_form" class="d-none">
+        <input type="hidden" name="usuario" th:field="*{usuario}" />
+    </form>
+
+    <table id="columnasDinamicas" class="tableFit table-striped table-bordered table-material d-none"
+           data-url-base="./dynamicColumns"
+           data-filter-form="#columnasDinamicas_filter_form">
+        <thead>
+            <tr>
+                <th data-col-prop="nombre" data-col-edit="true" th:text="#{tabla.columna.nombre}">Nombre</th>
+                <th data-col-prop="apellido1" th:text="#{tabla.columna.apellido1}">Primer apellido</th>
+                <th data-col-prop="apellido2" th:text="#{tabla.columna.apellido2}">Segundo apellido</th>
+                <th data-col-prop="ejie" data-col-type="Checkbox" th:text="#{tabla.columna.ejie}">Ejie</th>
+                <th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker" th:text="#{tabla.columna.fechaAlta}">Fecha alta</th>
+                <th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker" th:text="#{tabla.columna.fechaBaja}">Fecha baja</th>
+                <th data-col-prop="rol" data-col-type="combo" th:text="#{tabla.columna.rol}">Rol</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

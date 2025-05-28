@@ -633,6 +633,9 @@
         _getColumns(options) {
             var $self = this;
             
+            // Indica si la primera columna ha sido generada por el componente RUP
+            let rupSelectColumn = false;
+            
             //Se crea la columna del select.
             if (options.columnDefs !== undefined && options.columnDefs.length > 0 &&
                 options.columnDefs[0].className !== undefined && options.columnDefs[0].className.indexOf('select-checkbox') > -1 &&
@@ -653,24 +656,28 @@
                 if (options.multiSelect !== undefined && options.multiSelect.hideMultiselect) {
                     options.columnDefs[0].visible = false;
                 }
+                
+                rupSelectColumn = true;
             }
             
             $.each(options.colModel, function (index, column) {
-				const position = $self.find('th[data-col-prop="' + column.name + '"]').index();
             	// Se ocultan las columnas que así hayan sido definidas en el colModel.
             	if (column.hidden) {
             		options.columnDefs.push({
-            			targets: position,
+            			targets: rupSelectColumn ? index + 1 : index,
             			visible: false,
             			className: 'never'
             		})
             	} else if (column.orderable === false) {
             		// Se bloquea la ordenación de las columnas que así hayan sido definidas en el colModel. Solo se hace esta comprobación cuando la columna no ha sido ocultada.
             		options.columnDefs.push({
-            			targets: position,
+            			targets: rupSelectColumn ? index + 1 : index,
             			orderable: false
             		})
             	}
+            });
+            
+            $.each(options.colModel, function (index, column) {
             });
 
             //se crea el tfoot
@@ -723,9 +730,8 @@
         _doFilter(options) {
             var $self = this;
             let reloadTable = () => {
-				$('#' + $.escapeSelector(options.id)).trigger('tableFilterBeforeSearch',options);
                 $self.DataTable().ajax.reload(() => {
-                    $('#' + $.escapeSelector(options.id)).trigger('tableFilterAfterSearch',options);
+                    $('#' + $.escapeSelector(options.id)).trigger('tableFilterSearch',options);
                 });
             };
 
@@ -735,8 +741,7 @@
                 	options.filter.hideLayer();
                 }
 
-                if (options.filter.validFilter) {//valida en el beforeSend
-					options.filter.type = 'filter';
+                if (options.filter.$filterContainer.valid()) {
                     reloadTable();
                 }
             } else {
@@ -758,7 +763,7 @@
 
             options.id = this[0].id;
             $('#' + $.escapeSelector(options.id)).triggerHandler('tableFilterInitialize',options);
-			let that = this;
+
             let ajaxData = {
                 'url': options.urls.filter,
                 'dataSrc': function (json) {
@@ -796,13 +801,10 @@
                     return ret.data;
                 },
                 'type': 'POST',
-                'data': that._ajaxRequestData,
+                'data': this._ajaxRequestData,
                 'contentType': 'application/json',
-                'dataType': 'json',
-				'beforeSend': function() {
-					return that._validValidations(options.filter,options.id);
-           		 }
-			};	 
+                'dataType': 'json'
+            };
 
             if (options.customError !== undefined) {
                 ajaxData.error = options.customError;
@@ -810,47 +812,6 @@
 
             return ajaxData;
         },
-		/**
-		 * Solicita los datos al servidor
-		 *
-		 * @name _validValidations
-		 * @function
-		 * @since UDA 6.3.0
-		 *
-		 * @param {object} filter Opciones del filtro
-		 * @param {String} id id  del componente table
-		 *
-		 */
-		_validValidations(filter, id) {
-			// Si no hay reglas definidas, no se valida
-			if (!filter || filter.rules === undefined) {
-			  return true;
-			}
-			
-			// Mapeo de tipo a validación adicional esperada
-			const validationMap = {
-			    'operation': 'validOperation',
-			    'order': 'validOrder',
-			    'init': 'validInit',
-				'filter': 'validFilter',
-				'clear': 'validClear'
-			};
-			//validFilter, validClean, validSave, validDelete,validInit
-			const validationKey = validationMap[filter.type];
-			filter.type = "order";//por defecto se deja orden porque no tiene boton asociado.
-			if (validationKey && filter[validationKey] === true) {
-				//validar
-				if (!filter.$filterContainer.valid()) {
-					  $('#'+id+"_processing").hide();
-				      return false;
-				}
-			    return true;
-			 }
-			 //borrar lo anterior, por si  acaso
-			 var $form = $('#' + $.escapeSelector(id) + '_filter_form');
-			 $form.rup_validate("resetElements");
-			 return true;
-		},
         /**
          * Solicita los datos al servidor
          *
@@ -1031,11 +992,30 @@
 			$('#' + $.escapeSelector(options.sTableId)).triggerHandler('tableFilterBeforeReset', options);
 
 			const $form = $('#' + $.escapeSelector(options.sTableId) + '_filter_form');
-			
-			$form.rup_validate("resetForm");
-			
-			// Limpiar mensajes de validación.
-			$form.rup_validate("resetElements");
+			jQuery.each($('select[rupType=select], input:not([rupType]), select:not([rupType]), input[rupType=date]', $form), function(index, elem) {
+				const elemSettings = jQuery(elem).data('settings');
+
+				if (elemSettings != undefined) {
+					const elemRuptype = jQuery(elem).attr('ruptype');
+
+					if (elemSettings.parent == undefined) {
+						if (elemRuptype == 'select') {
+							jQuery(elem).rup_select('clear');
+							elem.defaultValue = "";
+						} else if (elemRupType == 'date') {
+							jQuery(elem).rup_select('clear');
+							elem.defaultValue = "";
+						}
+					}
+				} else {
+					if(elem.type == 'checkbox'){//los checkbox pueden tener valor asignado.
+						elem.value = elem.defaultValue;
+					}else{
+						elem.defaultValue = "";
+						elem.value = "";
+					}
+				}
+			});
 
 			// Si es Maestro-Detalle restaura el valor del maestro.
 			if (options.masterDetail !== undefined) {
@@ -1053,7 +1033,6 @@
 			});
 
 			$.rup_utils.populateForm([], options.filter.$filterContainer);
-			options.filter.type = 'clear';
 			
 			$(this).DataTable().ajax.reload();
 
@@ -1772,26 +1751,6 @@
                 	if (filterOptions === undefined) {
                 		options.filter = $.fn.rup_table.defaults.filter;
                 	}
-					//la primera vez es la del init de arranque en table
-					options.filter.type = "init";
-					//inicializa validaciones
-					if(options.filter.validFilter == undefined){
-						options.filter.validFilter = true;
-					}
-					if(options.filter.validInit == undefined){
-						options.filter.validInit = false;
-					}
-					if(options.filter.validOrder == undefined){
-						options.filter.validOrder = false;
-					}
-					if(options.filter.validOperation == undefined){
-						options.filter.validOperation = false;
-					}
-
-					if(options.filter.validClear == undefined){
-						options.filter.validClear = false;
-					}
-					
                 	$self._initFilter(options);
                 } else if (filterOptions === 'noFilter' && options.filterForm !== undefined) {
                 	options.filter = {};

@@ -477,24 +477,8 @@
 		 * // "keyA=valueA&keyB=valueB&keyC=valueC&keyD.A=valueDA&keyD.B=valueDB" -> "{ keyA: "valueA", keyB: "valueB", keyC: "valueC", keyD: { A: "valueDA", B: "valueDB" } }"
 		 * $.rup_utils.queryStringToObject("keyA=valueA&keyB=valueB&keyC=valueC&keyD.A=valueDA&keyD.B=valueDB");
 		 */
-		queryStringToObject: function (query, options, $form) {
-			let parsedQuery =  $.fn.unflattenObject(queryString.parse(query, options));
-			if($form != undefined){
-				Object.keys(parsedQuery).forEach(key => {
-				    let $fieldElement = $form.find(`[name="${key}"]`);
-	
-				    // Comprobar si es un select multiple o un rup_select
-				    let isMultiple = $fieldElement.is("select[multiple]") || 
-				                     $fieldElement.attr("ruptype") === "select" && $fieldElement.attr("multiple") !== undefined;
-									 
-					if (isMultiple && !Array.isArray(parsedQuery[key])) {
-					     parsedQuery[key] = [parsedQuery[key]]; // Convertir en array si es un solo valor
-					}
-	
-				});
-			}
-
-			return parsedQuery;
+		queryStringToObject: function (query, options) {
+			return $.fn.unflattenObject(queryString.parse(query, options));
 		},
 		
 		/**
@@ -532,8 +516,7 @@
 		},
 		populateForm: function (aData, formid) { //rellena un formulario que recibe como segundo parametro con los datos que recibe en el segundo parametro
             var formElem;
-			
-			let deferred = $.Deferred();
+			var tree_data, selectorArray;
 
             function loadedJstreeEvent(){
                 var selectorArbol = this.id;
@@ -551,18 +534,27 @@
             }
 
 			if (aData) {
+
 				for (var i in aData) {
+                    tree_data = [];
 					formElem = $('[name=\'' + i + '\']', formid);
-					
-					// Identifica el elemento que contiene el rup_tree.
-					const treeId = formElem.data('tree-id');
-					if (treeId !== undefined) {
-						formElem = $('div[id=\'' + treeId + '\'][class*="jstree"]', formid);
+					if (formElem.length == 0) {
+						selectorArray = i.substr(0, i.indexOf('['));
+						formElem = $('[name=\'' + selectorArray + '\']', formid);
+
+
 					}
-					
 					if (formElem.is('[ruptype]')) {
 						if (formElem.hasClass('jstree')) {
-							formElem['rup_' + formElem.attr('ruptype')]('setRupValue', aData[i]);
+
+							for (var a in aData) {
+								if (a.substr(0, a.indexOf('[')) == selectorArray) {
+									tree_data.push(aData[a]);
+								}
+							}
+							formElem['rup_' + formElem.attr('ruptype')]('setRupValue', tree_data);
+							var $arbol = [];
+							$arbol[selectorArray] = tree_data;
                             formElem.on('loaded.jstree', loadedJstreeEvent);
 
 						} else if(formElem.attr('ruptype') === 'select') {
@@ -581,8 +573,6 @@
 					}
 				}
 			}
-			
-			deferred.resolve();
 		},
 		
 	    /**

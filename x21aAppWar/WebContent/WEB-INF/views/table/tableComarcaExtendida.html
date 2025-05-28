@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{tabla.comarcaExtendida.title}"></title>
+</head>
+<body>
+    <h2 class="title mb-3" th:text="#{tabla.comarcaExtendida.title}"></h2>
+    <h3 th:text="#{tabla.comarcaExtendida.comarca}"></h3>
+
+    <!-- Inclusi�n del formulario de filtrado -->
+    <div th:replace="table/includes/tableComarcaExtendidaFilterForm :: tableComarcaExtendidaFilterForm"></div>
+
+    <table id="comarca" class="tableFit table-striped table-bordered table-material"
+           data-url-base="../tableComarcaExtendida"
+           data-filter-form="#comarca_filter_form">
+        <thead>
+            <tr>
+                <th th:text="#{tabla.comarcaExtendida.descEs}" data-col-prop="descEs" data-col-sidx="DESCES"></th>
+                <th th:text="#{tabla.comarcaExtendida.descEu}" data-col-prop="descEu" data-col-sidx="DESCEU"></th>
+                <th th:text="#{tabla.comarcaExtendida.css}" data-col-prop="css"></th>
+            </tr>
+        </thead>
+    </table>
+
+    <!-- Inclusi�n del formulario de edici�n -->
+    <div th:replace="table/includes/tableComarcaExtendidaEdit :: tableComarcaExtendidaEdit"></div>
+</body>
+</html>

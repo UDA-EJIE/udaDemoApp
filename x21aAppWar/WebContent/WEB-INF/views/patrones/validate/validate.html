@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Validaci�n de formularios</title>
+  </head>
+  <body>
+    <section>
+      <h2>Validacion de formularios</h2>
+      <p>Ejemplos de validaci�n de formularios en distintas disposiciones.</p>
+      
+      <!-- Formulario columnas -->
+      <h3>Formulario columnas</h3>
+      <p>Los textos</p>
+      <div class="example">
+        <div id="feedbackColumns"></div>
+        <form th:action="@{../upload/formSimple}" th:object="${alumno}" id="formColumns" 
+              enctype="multipart/form-data" method="post">
+          <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{nombre}" id="nombre" />
+              <label for="nombre" th:text="#{nombre}">Nombre</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{apellido1}" id="apellido1" />
+              <label for="apellido1" th:text="#{apellido1}">Apellido 1</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{apellido2}" id="apellido2" />
+              <label for="apellido2" th:text="#{apellido2}">Apellido 2</label>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="submit" class="btn-material btn-material-secondary-high-emphasis">Validar</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Formulario columnas con required -->
+      <h3>Formulario columnas con required="required"</h3>
+      <p>Los textos</p>
+      <div class="example">
+        <div id="feedbackColumnsRequired"></div>
+        <form th:action="@{../upload/formSimple}" th:object="${alumno}" id="formColumnsRequired" method="get">
+          <div class="form-row">
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{nombre}" id="nombre" required="required" />
+              <label for="nombre" th:text="#{nombre}">Nombre</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{apellido1}" id="apellido1" required="required" />
+              <label for="apellido1" th:text="#{apellido1}">Apellido 1</label>
+            </div>
+            <div class="form-groupMaterial col-sm">
+              <input type="text" th:field="*{apellido2}" id="apellido2" required="required" />
+              <label for="apellido2" th:text="#{apellido2}">Apellido 2</label>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <button type="submit" class="btn-material btn-material-secondary-high-emphasis">Validar</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Formulario horizontal -->
+      <h3>Formulario horizontal</h3>
+      <p>Los textos</p>
+      <div class="example">
+        <div id="feedbackHorizontalMaterial"></div>
+        <form th:action="@{../upload/formSimple}" th:object="${randomForm}" id="formHorizontalMaterial" method="get">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <div class="form-groupMaterial">
+                <input type="text" th:field="*{nombre}" id="nombre" required="required" />
+                <label for="nombre" th:text="#{nombre}">Nombre</label>
+              </div>
+              <div class="form-groupMaterial">
+                <input type="text" th:field="*{apellido1}" id="apellido1" required="required" />
+                <label for="apellido1" th:text="#{apellido1}">Apellido 1</label>
+              </div>
+              <div class="form-groupMaterial">
+                <input type="text" th:field="*{apellido2}" id="apellido2" required="required" />
+                <label for="apellido2" th:text="#{apellido2}">Apellido 2</label>
+              </div>
+            </div>
+            <div class="form-row col-sm-6">
+              <div class="col-12">
+                <label id="alertDayErrorLabel" data-title="alertDay">Alert on</label>
+              </div>
+              <div class="col-6">
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkLunes" value="0" />
+                  <label for="checkLunes">Lunes</label>
+                </div>
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkMartes" value="1" />
+                  <label for="checkMartes">Martes</label>
+                </div>
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkMiercoles" value="2" />
+                  <label for="checkMiercoles">Mi�rcoles</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkJueves" value="3" />
+                  <label for="checkJueves">Jueves</label>
+                </div>
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkViernes" value="4" />
+                  <label for="checkViernes">Viernes</label>
+                </div>
+                <div class="checkbox-material">
+                  <input type="checkbox" th:field="*{alertDay}" id="checkFindesemana" value="5" />
+                  <label for="checkFindesemana">F�n de semana</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row col-sm-12">
+            <div class="col-12">
+              <label id="alertEdadErrorLabel" for="alertEdad" data-title="alertEdad">�Mayor de edad?</label>
+            </div>
+            <div class="col-12">
+              <div class="radio-material">
+                <input type="radio" th:field="*{alertEdad}" id="radioAdulto" value="0" />
+                <label for="radioAdulto">S�</label>
+              </div>
+              <div class="radio-material">
+                <input type="radio" th:field="*{alertEdad}" id="radioMenor" value="1" />
+                <label for="radioMenor">No</label>
+              </div>
+            </div>
+          </div>
+          
+          <p>
+            Componentes Rup:: select by id, select con autocomplete by id, select by name, select con autocomplete by name, select con autocomplete combobox
+          </p>
+          <p>Con clase padre 'row'</p>
+          <div class="row">
+            <div class="form-groupMaterial col-sm-6">
+              <select th:field="*{rol}" id="rol_detail_table" class="formulario_linea_input"></select>
+              <label for="rol_detail_table">Select by Id</label>
+            </div>
+            <div class="form-groupMaterial col-sm-6">
+              <select th:field="*{autocomplete}" id="autocomplete"></select>
+              <label for="autocomplete">Autocomplete by Id</label>
+            </div>
+            <div class="form-groupMaterial col-sm-12">
+              <select th:field="*{autocompleteCombobox}" id="autocompleteCombobox"></select>
+              <label for="autocompleteCombobox">Autocomplete Combobox</label>
+            </div>
+          </div>
+          
+          <p>Con clase padre 'form-row'</p>
+          <div class="form-row">
+            <div class="form-groupMaterial col-sm-6">
+              <select th:field="*{rolName2}" id="rolName2"></select>
+              <label for="rolName2">Select by Name</label>
+            </div>
+            <div class="form-groupMaterial col-sm-6">
+              <select th:field="*{autocompleteName2}" id="autocompleteName2"></select>
+              <label for="autocompleteName2">Autocomplete by Name</label>
+            </div>
+            <div class="form-groupMaterial col-sm-12">
+              <select th:field="*{autocompleteCombobox2}" id="autocompleteCombobox2"></select>
+              <label for="autocompleteCombobox2">Autocomplete Combobox</label>
+            </div>
+            <div class="form-groupMaterial col-sm-12">
+              <textarea th:field="*{textarea}" id="textarea" rows="5"></textarea>
+              <label for="textarea">Textarea</label>
+            </div>
+          </div>
+          
+          <div class="row justify-content-center">
+            <button type="submit" class="btn-material btn-material-secondary-high-emphasis">Validar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="test-unit"/>
 	<classpathentry kind="src" path="test-system"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UDAWLS14Classpath">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
@@ -32,6 +31,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/x21aEARClasses"/>
 	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.application/x21aEAR"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

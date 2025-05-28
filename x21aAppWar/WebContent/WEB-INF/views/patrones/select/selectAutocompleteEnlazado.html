@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{selectAutocompleteEnlazado.title}">Select Autocomplete Enlazado</title>
+  </head>
+  <body>
+    <section class="container-fluid">
+      <h2 class="title mb-3" th:text="#{selectAutocompleteEnlazado.title}">T�tulo</h2>
+      
+      <div class="form-row">
+        <!-- Fieldset Local (sin vinculaci�n de modelo) -->
+        <fieldset id="local" class="col-md col-12 px-3">
+          <legend>Local</legend>
+          <div class="form-groupMaterial">
+            <select id="abueloLocal"></select>
+            <label for="abueloLocal">Abuelo</label>
+          </div>
+          <div class="form-groupMaterial">
+            <select id="padreLocal"></select>
+            <label for="padreLocal">Padre</label>
+          </div>
+          <div class="form-groupMaterial">
+            <select id="hijoLocal"></select>
+            <label for="hijoLocal">Hijo</label>
+          </div>
+        </fieldset>
+        
+        <!-- Fieldset Remoto (con formulario y vinculaci�n de modelo) -->
+        <fieldset id="remote" class="col-md col-12 px-3 mx-md-5 my-md-0 my-4">
+          <legend>Remoto</legend>
+          <form th:action="@{${remoto}}" th:object="${provinciaComarcaLocalidadDTO}" method="get" id="selectRemoto_form">
+            <div class="form-groupMaterial">
+              <select id="abueloRemoto" th:field="*{codeProvincia}"></select>
+              <label for="abueloRemoto">Abuelo</label>
+            </div>
+            <div class="form-groupMaterial">
+              <select id="padreRemoto" th:field="*{codeComarca}"></select>
+              <label for="padreRemoto">Padre</label>
+            </div>
+            <div class="form-groupMaterial">
+              <select id="hijoRemoto" th:field="*{codeLocalidad}"></select>
+              <label for="hijoRemoto">Hijo</label>
+            </div>
+          </form>
+        </fieldset>
+        
+        <!-- Fieldset Mixto (con formulario y vinculaci�n de modelo) -->
+        <fieldset id="mixto" class="col-md col-12 px-3">
+          <legend>Mixto I</legend>
+          <form th:action="@{${remoto}}" th:object="${provinciaComarcaLocalidadDTO}" method="get" id="selectRemoto_form">
+            <div class="form-groupMaterial">
+              <select id="abueloMixto" th:field="*{codeProvincia}"></select>
+              <label for="abueloMixto">Abuelo</label>
+            </div>
+            <div class="form-groupMaterial">
+              <select id="padreMixto" th:field="*{codeComarca}"></select>
+              <label for="padreMixto">Padre</label>
+            </div>
+            <div class="form-groupMaterial">
+              <select id="hijoMixto" th:field="*{codeLocalidad}"></select>
+              <label for="hijoMixto">Hijo</label>
+            </div>
+          </form>
+        </fieldset>
+      </div>
+    </section>
+  </body>
+</html>

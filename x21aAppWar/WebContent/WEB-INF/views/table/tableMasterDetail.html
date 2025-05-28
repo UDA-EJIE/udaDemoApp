@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabla Maestro - Detalle</title>
+  <!-- Incluir aquí tus CSS y JS -->
+</head>
+<body>
+  <!-- 
+    Copyright 2011 E.J.I.E., S.A.
+    Licencia EUPL v1.1 – consulta http://ec.europa.eu/idabc/eupl.html
+    Distribuido TAL CUAL, sin garantías.
+  -->
+ 
+  <h2 class="title mb-3">Tabla Maestro - Detalle</h2>
+  <h3>Comarca</h3>
+  
+  <!-- Inclusión del formulario de filtrado para Comarca -->
+  <div th:replace="table/includes/tableComarcaFilterForm :: tableComarcaFilterForm"></div>
+  
+  <table id="comarca" class="tableFit table-striped table-bordered table-material" 
+         data-url-base="../tableComarca"
+         data-filter-form="#comarca_filter_form">
+    <thead>
+      <tr>
+        <th data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
+        <th data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
+        <th data-col-prop="css">css</th>
+        <th data-col-prop="provincia.descEs" data-col-sidx="ProvinciaDESCES">provincia.descEs</th>
+      </tr>
+    </thead>
+  </table>
+  
+  <!-- Inclusión de la edición para Comarca -->
+  <div th:replace="table/includes/tableComarcaEdit :: tableComarcaEdit"></div>
+  
+  <h3 class="mt-5">Localidad</h3>
+  
+  <!-- Inclusión del formulario de filtrado para Localidad -->
+  <div th:replace="table/includes/tableLocalidadFilterForm :: tableLocalidadFilterForm"></div>
+  
+  <table id="localidad" class="tableFit table-striped table-bordered table-material" 
+         data-url-base="../tableLocalidad"
+         data-filter-form="#localidad_filter_form">
+    <thead>
+      <tr>
+        <th data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
+        <th data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
+        <th data-col-prop="css">css</th>
+      </tr>
+    </thead>
+  </table>
+  
+  <!-- Inclusión de la edición para Localidad -->
+  <div th:replace="table/includes/tableLocalidadEdit :: tableLocalidadEdit"></div>
+</body>
+</html>

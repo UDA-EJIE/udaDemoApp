@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{lista.configurableLeft}">Lista Configurable</title>
+  </head>
+  <body>
+    <div class="row">
+      <!-- Columna Izquierda -->
+      <div class="col-md-6">
+        <h2 th:text="#{lista.configurableLeft}">Lista Configurable Izquierda</h2>
+        
+        <!-- Sustituye <jsp:include page="includes/listFilterFormDobleLeft.jsp" /> por un fragmento Thymeleaf -->
+        <div th:replace="list/includes/listFilterFormDobleLeft :: listFilterFormDobleLeft"></div>
+        
+        <div id="rup-list-left-feedback"></div>
+        <div id="rup-list-left-content">
+          <div id="rup-list-left-header" class="row">
+            <div id="rup-list-left-header-selectables" class="col-md-3">
+              <span th:text="#{lista.header.selectables}">Seleccionables</span>
+            </div>
+            <div class="form-groupMaterial col-md-2">
+              <label for="rup-list-left-header-rowNum" th:text="#{lista.header.rownum}">Nº Filas</label>
+              <select id="rup-list-left-header-rowNum"></select>
+            </div>
+            <!-- Ordenar por -->
+            <div class="col-md-3">
+              <div class="row">
+                <div class="form-groupMaterial col-md-7">
+                  <label for="rup-list-left-header-sidx" th:text="#{lista.header.sidx}">Ordenar por</label>
+                  <select id="rup-list-left-header-sidx"></select>
+                </div>
+                <div class="col-md-2">
+                  <button id="rup-list-left-header-sord"></button>
+                </div>
+              </div>
+            </div>
+            <!-- Navegación -->
+            <div class="col-md-4">
+              <nav id="rup-list-left-header-nav">
+                <ul class="pagination">
+                  <li id="rup-list-left-header-page-prev" class="page-item disabled">
+                    <a href="javascript:void(0)" class="page-link d-none d-lg-flex" tabindex="-1"
+                       th:text="#{lista.header.nav.prev}">Anterior</a>
+                    <a href="javascript:void(0)" class="page-link d-lg-none" tabindex="-1">
+                      <span class="mdi mdi-arrow-right-bold-circle-outline mdi-rotate-180"></span>
+                    </a>
+                  </li>
+                  <li class="page-item page-separator disabled">
+                    <a class="page-link" tabindex="-1">...</a>
+                  </li>
+                  <li class="page-item page-separator disabled">
+                    <a class="page-link" tabindex="-1">...</a>
+                  </li>
+                  <li id="rup-list-left-header-page-next" class="page-item disabled">
+                    <a href="javascript:void(0)" class="page-link d-none d-lg-flex"
+                       th:text="#{lista.header.nav.next}">Siguiente</a>
+                    <a href="javascript:void(0)" class="page-link d-lg-none" tabindex="-1">
+                      <span class="mdi mdi-arrow-right-bold-circle-outline"></span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div id="rup-list-left"></div>
+          <div id="rup-list-left-itemTemplate" class="row list-item">
+            <div class="col-md-1"
+                 style="border-right: 1px solid gray; display: flex; justify-content: center; align-items: center;">
+              <span class="mdi mdi-account-circle" style="transform:scale(2);"></span>
+            </div>
+            <div class="col-md-2"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div style="border-bottom: 1px gray solid;">
+                <strong><span id="id_label"></span></strong>:
+                <span id="id_value"></span>
+              </div>
+              <div>
+                <strong><span id="nombre_label"></span></strong>:
+                <span id="nombre_value"></span>
+              </div>
+            </div>
+            <div class="col-md-2"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div><span id="apellido1_label"></span></div>
+              <div><span id="apellido1_value"></span></div>
+            </div>
+            <div class="col-md-4"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div style="border-bottom: 1px solid gray;">
+                <span id="apellido2_label"></span>: <span id="apellido2_value"></span>
+              </div>
+              <div>
+                <span id="ejie_label"></span>: <span id="ejie_value"></span>
+              </div>
+            </div>
+            <div class="col-md-3" style="display: flex; justify-content: space-around;">
+              <span class="mdi mdi-36px mdi-account-edit"></span>
+              <span class="mdi mdi-36px mdi-account-remove"></span>
+              <span class="mdi mdi-36px mdi-settings"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rup_list_configuracion">
+          <form id="listConfigLeftFilterForm" class="mt-5">
+            <fieldset class="form-group">
+              <legend th:text="#{lista.configurable.opciones.title}">Opciones</legend>
+              <div class="form-group">
+                <label for="listConfigLeftPrint" class="pr-4"
+                       th:text="#{lista.configurable.opciones.selectables}">Seleccionables</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigLeftSelectNo"
+                         name="listConfigLeftSelect" value="0" checked="checked" />
+                  <label class="form-check-label" for="listConfigLeftSelectNo"
+                         th:text="#{lista.configurable.opciones.selectables.no}">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigLeftSelectSimple"
+                         name="listConfigLeftSelect" value="1" />
+                  <label class="form-check-label" for="listConfigLeftSelectSimple"
+                         th:text="#{lista.configurable.opciones.selectables.simple}">Simple</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigLeftSelectMultiple"
+                         name="listConfigLeftSelect" value="2" />
+                  <label class="form-check-label" for="listConfigLeftSelectMultiple"
+                         th:text="#{lista.configurable.opciones.selectables.multiple}">Múltiple</label>
+                </div>
+                <div class="checkbox-material form-check-inline ml-4">
+                  <input id="listConfigLeftSuperSelect" type="checkbox" disabled="disabled" />
+                  <label for="listConfigLeftSuperSelect" th:text="#{lista.configurable.opciones.superSelect}">SúperSelect</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="checkbox-material">
+                  <input id="listConfigLeftMultiSort" type="checkbox" />
+                  <label for="listConfigLeftMultiSort"
+                         th:text="#{lista.configurable.opciones.multiSort}">Ordenación Múltiple</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigLeftScrollList" type="checkbox" />
+                  <label for="listConfigLeftScrollList"
+                         th:text="#{lista.configurable.opciones.scrollList}">Scroll List</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigLeftHeaderSticky" type="checkbox" />
+                  <label for="listConfigLeftHeaderSticky"
+                         th:text="#{lista.configurable.opciones.headerSticky}">Cabecera Fija</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigLeftMultiFilter" type="checkbox" />
+                  <label for="listConfigLeftMultiFilter"
+                         th:text="#{lista.configurable.opciones.multiFilter}">MultiFiltro</label>
+                </div>
+              </div>
+
+              <div class="form-groupMaterial">
+                <div class="form-groupMaterial">
+                  <input type="text" id="listConfigLeftPrint" placeholder="print.css" />
+                  <label for="listConfigLeftPrint"
+                         th:text="#{lista.configurable.opciones.print}">Imprimir</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <fieldset class="form-group">
+                    <legend class="col-form-label" th:text="#{lista.configurable.opciones.show}">Mostrar</legend>
+                    <div class="row">
+                      <div class="form-group col-md">
+                        <div class="checkbox-material">
+                          <input id="listConfigLeftShow" name="Show" type="checkbox" />
+                          <label for="listConfigLeftShow"
+                                 th:text="#{lista.configurable.opciones.animationSwitch}">Animación On/Off</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigLeftShowAnimation"
+                             th:text="#{lista.configurable.opciones.animation}">Animación</label>
+                      <select id="listConfigLeftShowAnimation" name="ShowAnimation" class="form-control">
+                        <option value="fade">fade</option>
+                        <option value="bounce">bounce</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigLeftShowDelay"
+                             th:text="#{lista.configurable.opciones.animationTime}">Tiempo</label>
+                      <input type="number" class="form-control" name="ShowDelay"
+                             id="listConfigLeftShowDelay" placeholder="200" />
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="col">
+                  <fieldset class="form-group">
+                    <legend class="col-form-label" th:text="#{lista.configurable.opciones.hide}">Ocultar</legend>
+                    <div class="row">
+                      <div class="form-group col-md">
+                        <div class="checkbox-material">
+                          <input id="listConfigLeftHide" name="Hide" type="checkbox" />
+                          <label for="listConfigLeftHide"
+                                 th:text="#{lista.configurable.opciones.animationSwitch}">Animación On/Off</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigLeftHideAnimation"
+                             th:text="#{lista.configurable.opciones.animation}">Animación</label>
+                      <select id="listConfigLeftHideAnimation" name="HideAnimation" class="form-control">
+                        <option value="fade">fade</option>
+                        <option value="bounce">bounce</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigLeftHideDelay"
+                             th:text="#{lista.configurable.opciones.animationTime}">Tiempo</label>
+                      <input type="number" class="form-control" name="HideDelay"
+                             id="listConfigLeftHideDelay" placeholder="200" />
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </fieldset>
+            <button id="listConfigLeftButton" type="button"
+                    class="btn-material btn-material-primary-medium-emphasis"
+                    th:text="#{lista.configurable.opciones.apply}">Aplicar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Columna Derecha -->
+      <div class="col-md-6">
+        <h2 th:text="#{lista.configurableRight}">Lista Configurable Derecha</h2>
+        
+        <!-- Sustituye <jsp:include page="includes/listFilterFormDobleRight.jsp" /> por un fragmento Thymeleaf -->
+        <div th:replace="list/includes/listFilterFormDobleRight :: listFilterFormDobleRight"></div>
+        
+        <div id="rup-list-right-feedback"></div>
+        <div id="rup-list-right-content">
+          <div id="rup-list-right-header" class="row">
+            <div id="rup-list-right-header-selectables" class="col-md-3">
+              <span th:text="#{lista.header.selectables}">Seleccionables</span>
+            </div>
+            <div class="form-groupMaterial col-md-2">
+              <label for="rup-list-right-header-rowNum" th:text="#{lista.header.rownum}">Nº Filas</label>
+              <select id="rup-list-right-header-rowNum"></select>
+            </div>
+            <!-- Ordenar por -->
+            <div class="col-md-3">
+              <div class="row">
+                <div class="form-groupMaterial col-md-7">
+                  <label for="rup-list-right-header-sidx" th:text="#{lista.header.sidx}">Ordenar por</label>
+                  <select id="rup-list-right-header-sidx"></select>
+                </div>
+                <div class="col-md-2">
+                  <button id="rup-list-right-header-sord"></button>
+                </div>
+              </div>
+            </div>
+            <!-- Navegación -->
+            <div class="col-md-4">
+              <nav id="rup-list-right-header-nav">
+                <ul class="pagination">
+                  <li id="rup-list-right-header-page-prev" class="page-item disabled">
+                    <a href="javascript:void(0)" class="page-link d-none d-lg-flex" tabindex="-1"
+                       th:text="#{lista.header.nav.prev}">Anterior</a>
+                    <a href="javascript:void(0)" class="page-link d-lg-none" tabindex="-1">
+                      <span class="mdi mdi-arrow-right-bold-circle-outline mdi-rotate-180"></span>
+                    </a>
+                  </li>
+                  <li class="page-item page-separator disabled">
+                    <a class="page-link" tabindex="-1">...</a>
+                  </li>
+                  <li class="page-item page-separator disabled">
+                    <a class="page-link" tabindex="-1">...</a>
+                  </li>
+                  <li id="rup-list-right-header-page-next" class="page-item disabled">
+                    <a href="javascript:void(0)" class="page-link d-none d-lg-flex"
+                       th:text="#{lista.header.nav.next}">Siguiente</a>
+                    <a href="javascript:void(0)" class="page-link d-lg-none" tabindex="-1">
+                      <span class="mdi mdi-arrow-right-bold-circle-outline"></span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div id="rup-list-right"></div>
+          <div id="rup-list-right-itemTemplate" class="row list-item">
+            <div class="col-md-1"
+                 style="border-right: 1px solid gray; display: flex; justify-content: center; align-items: center;">
+              <span class="mdi mdi-account-circle" style="transform: scale(2);"></span>
+            </div>
+            <div class="col-md-2"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div style="border-bottom: 1px gray solid;">
+                <strong><span id="id_label"></span></strong>:
+                <span id="id_value"></span>
+              </div>
+              <div>
+                <strong><span id="nombre_label"></span></strong>:
+                <span id="nombre_value"></span>
+              </div>
+            </div>
+            <div class="col-md-2"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div><span id="apellido1_label"></span></div>
+              <div><span id="apellido1_value"></span></div>
+            </div>
+            <div class="col-md-4"
+                 style="border-right: 1px solid gray; display: flex; align-items: center; flex-direction: column;">
+              <div style="border-bottom: 1px solid gray;">
+                <span id="apellido2_label"></span>: <span id="apellido2_value"></span>
+              </div>
+              <div>
+                <span id="ejie_label"></span>: <span id="ejie_value"></span>
+              </div>
+            </div>
+            <div class="col-md-3" style="display: flex; justify-content: space-around;">
+              <span class="mdi mdi-36px mdi-account-edit"></span>
+              <span class="mdi mdi-36px mdi-account-remove"></span>
+              <span class="mdi mdi-36px mdi-settings"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rup_list_configuracion">
+          <form id="listConfigRightFilterForm" class="mt-5">
+            <fieldset class="form-group">
+              <legend th:text="#{lista.configurable.opciones.title}">Opciones</legend>
+              <div class="form-group">
+                <label for="listConfigRightPrint" class="pr-4"
+                       th:text="#{lista.configurable.opciones.selectables}">Seleccionables</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigRightSelectNo"
+                         name="listConfigRightSelect" value="0" checked="checked" />
+                  <label class="form-check-label" for="listConfigRightSelectNo"
+                         th:text="#{lista.configurable.opciones.selectables.no}">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigRightSelectSimple"
+                         name="listConfigRightSelect" value="1" />
+                  <label class="form-check-label" for="listConfigRightSelectSimple"
+                         th:text="#{lista.configurable.opciones.selectables.simple}">Simple</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="listConfigRightSelectMultiple"
+                         name="listConfigRightSelect" value="2" />
+                  <label class="form-check-label" for="listConfigRightSelectMultiple"
+                         th:text="#{lista.configurable.opciones.selectables.multiple}">Múltiple</label>
+                </div>
+                <div class="checkbox-material form-check-inline ml-4">
+                  <input id="listConfigRightSuperSelect" type="checkbox" disabled="disabled" />
+                  <label for="listConfigRightSuperSelect"
+                         th:text="#{lista.configurable.opciones.superSelect}">SúperSelect</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="checkbox-material">
+                  <input id="listConfigRightMultiSort" type="checkbox" />
+                  <label for="listConfigRightMultiSort"
+                         th:text="#{lista.configurable.opciones.multiSort}">Ordenación Múltiple</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigRightScrollList" type="checkbox" />
+                  <label for="listConfigRightScrollList"
+                         th:text="#{lista.configurable.opciones.scrollList}">Scroll List</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigRightHeaderSticky" type="checkbox" />
+                  <label for="listConfigRightHeaderSticky"
+                         th:text="#{lista.configurable.opciones.headerSticky}">Cabecera Fija</label>
+                </div>
+                <div class="checkbox-material">
+                  <input id="listConfigRightMultiFilter" type="checkbox" />
+                  <label for="listConfigRightMultiFilter"
+                         th:text="#{lista.configurable.opciones.multiFilter}">MultiFiltro</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-groupMaterial">
+                  <input type="text" id="listConfigRightPrint" placeholder="print.css" />
+                  <label for="listConfigRightPrint"
+                         th:text="#{lista.configurable.opciones.print}">Imprimir</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <fieldset class="form-group">
+                    <legend class="col-form-label" th:text="#{lista.configurable.opciones.show}">Mostrar</legend>
+                    <div class="row">
+                      <div class="form-group col-md">
+                        <div class="checkbox-material">
+                          <input id="listConfigRightShow" name="Show" type="checkbox" />
+                          <label for="listConfigRightShow"
+                                 th:text="#{lista.configurable.opciones.animationSwitch}">Animación On/Off</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigRightShowAnimation"
+                             th:text="#{lista.configurable.opciones.animation}">Animación</label>
+                      <select id="listConfigRightShowAnimation" name="ShowAnimation" class="form-control">
+                        <option value="fade">fade</option>
+                        <option value="bounce">bounce</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigRightShowDelay"
+                             th:text="#{lista.configurable.opciones.animationTime}">Tiempo</label>
+                      <input type="number" class="form-control" name="ShowDelay"
+                             id="listConfigRightShowDelay" placeholder="200" />
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="col">
+                  <fieldset class="form-group">
+                    <legend class="col-form-label" th:text="#{lista.configurable.opciones.hide}">Ocultar</legend>
+                    <div class="row">
+                      <div class="form-group col-md">
+                        <div class="checkbox-material">
+                          <input id="listConfigRightHide" name="Hide" type="checkbox" />
+                          <label for="listConfigRightHide"
+                                 th:text="#{lista.configurable.opciones.animationSwitch}">Animación On/Off</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigRightHideAnimation"
+                             th:text="#{lista.configurable.opciones.animation}">Animación</label>
+                      <select id="listConfigRightHideAnimation" name="HideAnimation" class="form-control">
+                        <option value="fade">fade</option>
+                        <option value="bounce">bounce</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md">
+                      <label for="listConfigRightHideDelay"
+                             th:text="#{lista.configurable.opciones.animationTime}">Tiempo</label>
+                      <input type="number" class="form-control" name="HideDelay"
+                             id="listConfigRightHideDelay" placeholder="200" />
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </fieldset>
+            <button id="listConfigRightButton" type="button"
+                    class="btn-material btn-material-primary-medium-emphasis"
+                    th:text="#{lista.configurable.opciones.apply}">Aplicar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

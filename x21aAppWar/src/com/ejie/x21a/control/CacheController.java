@@ -45,7 +45,10 @@ public class CacheController {
 	@GetMapping(value = "view")
 	public String getCreateForm(Model model) {
 		logger.info("[GET - View] : cache");
-		return "cache";
+		model.addAttribute("content", "integracion/cache");
+    	model.addAttribute("includes", "integracion/cache-includes");
+
+		return "template";
 	}
 	
 	@PostMapping(value = "/inlineEdit")

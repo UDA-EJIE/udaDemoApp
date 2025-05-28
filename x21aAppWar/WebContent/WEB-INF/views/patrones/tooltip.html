@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{tooltip.title}">Tooltip</title>
+ 
+  </head>
+  <body>
+    <section class="row">
+      <div class="col-12">
+        <h2 th:text="#{tooltip.title}">Tooltip</h2>
+        <hr />
+
+        <p th:text="#{tooltip.paragraph.line1}">Texto línea 1</p>
+        <p th:text="#{tooltip.paragraph.line2}">Texto línea 2</p>
+        <p th:text="#{tooltip.paragraph.line3}">Texto línea 3</p>
+
+        <div class="example">
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="nombre" th:text="#{nombre}">Nombre</label>
+              <input id="nombre" name="nombre" class="form-control" th:title="#{nombre}" />
+            </div>
+            <div class="col-md-6">
+              <label for="apellido" th:text="#{apellido1}">Apellido</label>
+              <input id="apellido" name="apellido" class="form-control" th:title="#{apellido1}" />
+            </div>
+          </div>
+        </div>
+
+        <p th:text="#{tooltip.paragraph.line4}">Texto línea 4</p>
+
+        <div class="example">
+          <div class="form-group row">
+            <label for="code" class="col-lg-1 col-md-2 col-form-label" th:text="#{codigo}">Código</label>
+            <div class="col-lg-3">
+              <div class="input-group">
+                <input id="code" name="code" type="text" class="form-control" />
+                <span class="input-group-btn">
+                  <button id="codeTooltip" class="btn btn-secondary" type="button">
+                    <i class="mdi mdi-comment-question" aria-hidden="true"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p th:text="#{tooltip.paragraph.line5}">Texto línea 5</p>
+
+        <div class="example">
+          <div class="form-group row">
+            <label for="identificador" class="col-lg-1 col-md-2 col-form-label" th:text="#{comun.identificador}">Identificador</label>
+            <div class="col-lg-3">
+              <div class="input-group">
+                <input id="identificador" name="identificador" type="text" class="form-control" />
+                <span class="input-group-btn">
+                  <button id="idTooltip" class="btn btn-secondary" type="button">
+                    <i class="mdi mdi-comment-question" aria-hidden="true"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p th:text="#{tooltip.paragraph.line6}">Texto línea 6</p>
+
+        <div class="example">
+          <div class="form-group row">
+            <label for="htmlTooltip" class="col-lg-1 col-md-2 col-form-label">Html:</label>
+            <div class="col-lg-3">
+              <div class="input-group">
+                <input id="htmlTooltip" name="htmlTooltip" type="text" class="form-control" />
+                <span class="input-group-btn">
+                  <button id="idHtmlTooltip" class="btn btn-secondary" type="button">
+                    <i class="mdi mdi-comment-question" aria-hidden="true"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </body>
+</html>

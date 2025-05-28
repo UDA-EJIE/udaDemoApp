@@ -1,0 +1,57 @@
+<div th:fragment="comarcaFilterForm">
+<!-- Formulario de filtrado -->
+<form th:action="@{/comarca}" th:object="${comarca}" id="comarca_filter_form">
+	<!-- Barra de herramientas del formulario de filtrado -->
+	<div id="comarca_filter_toolbar" class="formulario_legend"></div>
+	<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
+		<div class="form-row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
+			<!-- Campos del formulario de filtrado -->
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{code}" id="code_filter_table" />
+				<label for="code_filter_table" th:text="#{code}">code</label>
+			</div>
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{codeAyuntamiento}" id="codeAyuntamiento_filter_table" />
+				<label for="codeAyuntamiento_filter_table" th:text="#{codeAyuntamiento}">codeAyuntamiento</label>
+			</div>
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{codeProvincia}" id="codeProvincia_filter_table" />
+				<label for="codeProvincia_filter_table" th:text="#{codeProvincia}">codeProvincia</label>
+			</div>
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{css}" id="css_filter_table" />
+				<label for="css_filter_table" th:text="#{css}">css</label>
+			</div>
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{descEs}" id="descEs_filter_table" />
+				<label for="descEs_filter_table" th:text="#{descEs}">descEs</label>
+			</div>
+			
+			<div class="form-groupMaterial col">
+				<input th:field="*{descEu}" id="descEu_filter_table" />
+				<label for="descEu_filter_table" th:text="#{descEu}">descEu</label>
+			</div>
+			
+			<!-- Fin campos del formulario de filtrado -->
+		</div>
+		<!-- Botonera del formulario de filtrado -->
+		<div id="comarca_filter_buttonSet" class="text-right">
+			<!-- Botón de limpiar -->
+			<button id="comarca_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+				<i class="mdi mdi-eraser"></i>
+				<span th:text="#{clear}">Clear</span>
+			</button>
+			<!-- Botón de filtrado -->
+			<button id="comarca_filter_filterButton" type="button" class="btn-material btn-material-primary-low-emphasis">
+				<i class="mdi mdi-filter"></i>
+				<span th:text="#{filter}">Filter</span>
+			</button>
+		</div>
+	</fieldset>
+</form>
+</div>

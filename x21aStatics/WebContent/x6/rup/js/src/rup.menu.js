@@ -289,7 +289,7 @@
                                 event.preventDefault();
                                 event.stopPropagation();
                                 break;
-                            case "Right":
+                            case "Ri":ght
                                 if (!$uiMenu.active.hasClass('rup_menu_horizontal_children') && $uiMenu.active.is('[aria-haspopup=\'true\']')) {
                                     $uiMenu.options.position = {
                                         my: 'left bottom',

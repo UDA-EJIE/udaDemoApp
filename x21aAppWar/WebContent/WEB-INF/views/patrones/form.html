@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{patron.formulario.titulo}">Título del Formulario</title>
+    <!-- Aquí se pueden incluir archivos CSS, JavaScript, etc. -->
+  </head>
+  <body>
+    <section class="row">
+      <div class="col-12">
+        <h2 th:text="#{patron.formulario.titulo}">Título del Formulario</h2>
+        <hr />
+
+        <div id="feedbackMensajes"></div>
+        <div id="tabsFormulario"></div>
+        <div id="divformHttpSubmit">
+
+          <!-- Formulario principal -->
+          <form th:action="@{${#httpServletRequest.contextPath}/patrones/form/ejemplo}"
+                th:object="${alumno}" method="post" id="formHttpSubmit">
+            <fieldset class="alumnoFieldset">
+              <legend th:text="#{datosPersonales}">Datos Personales</legend>
+              <div class="two-col">
+                <div class="col1">
+                  <label for="nombre" class="label" th:text="#{nombre}">Nombre</label>
+                  <input type="text" th:field="*{nombre}" class="formulario_linea_input" size="20" id="nombre"/>
+                </div>
+
+                <div class="col1">
+                  <label for="apellido1" class="label" th:text="#{apellido1}">Apellido 1</label>
+                  <input type="text" th:field="*{apellido1}" class="formulario_linea_input" size="30" id="apellido1"/>
+                </div>
+
+                <div class="col1">
+                  <label for="apellido2" class="label" th:text="#{apellido2}">Apellido 2</label>
+                  <input type="text" th:field="*{apellido2}" class="formulario_linea_input" size="30" id="apellido2"/>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="col1">
+                  <label for="sexo" class="label" th:text="#{sexo}">Sexo</label>
+                  <select th:field="*{sexo}" class="formulario_linea_input" id="sexo">
+                    <!-- Las opciones se pueden cargar dinámicamente -->
+                  </select>
+                </div>
+
+                <div class="col1">
+                  <label for="fechaNacimiento" class="label" th:text="#{fechaNacimiento}">Fecha Nacimiento</label>
+                  <input type="text" th:field="*{fechaNacimiento}" class="formulario_linea_input" id="fechaNacimiento"/>
+                </div>
+
+                <div class="col1">
+                  <label for="telefono" class="label" th:text="#{telefono}">Teléfono</label>
+                  <input type="text" th:field="*{telefono}" class="formulario_linea_input" id="telefono"/>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="col1">
+                  <label for="dni" class="label" th:text="#{dni}">DNI</label>
+                  <input type="text" th:field="*{dni}" class="formulario_linea_input" id="dni"/>
+                </div>
+                <div class="form-groupMaterial col-sm">
+                  <input type="text" th:field="*{fechaNacimiento2}" id="fechaNacimiento2" />
+                  <label for="fechaNacimiento2" class="label" th:text="#{fechaNacimiento}">Fecha Nacimiento</label>
+                </div>
+                <div class="form-groupMaterial col-sm">
+                  <input type="text" th:field="*{telefono}" id="telefono2" />
+                  <label for="telefono2" class="label" th:text="#{telefono}">Teléfono</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="alumnoFieldset">
+              <legend th:text="#{datosCuentaUsuario}">Datos de la Cuenta de Usuario</legend>
+
+              <div class="two-col">
+                <div class="col1">
+                  <label for="usuario" class="label" th:text="#{usuario}">Usuario</label>
+                  <input type="text" th:field="*{usuario}" class="formulario_linea_input" id="usuario"/>
+                </div>
+                <div class="col1">
+                  <div>
+                    <label for="password" class="label" th:text="#{contrasena}">Contraseña</label>
+                    <input type="password" th:field="*{password}" class="formulario_linea_input" id="password"/>
+                  </div>
+                  <div>
+                    <label for="password_confirm" class="label" th:text="#{confirmarContrasena}">Confirmar Contraseña</label>
+                    <!-- Si existe un campo distinto para la confirmación, actualiza el binding -->
+                    <input type="password" th:field="*{password}" class="formulario_linea_input" id="password_confirm"/>
+                  </div>
+                </div>
+                <div class="col1">
+                  <div>
+                    <label for="email" class="label" th:text="#{email}">Email</label>
+                    <input type="email" th:field="*{email}" class="formulario_linea_input" id="email"/>
+                  </div>
+                  <div>
+                    <label for="email_confirm" class="label" th:text="#{confirmarEmail}">Confirmar Email</label>
+                    <input type="email" th:field="*{email}" class="formulario_linea_input" id="email_confirm"/>
+                  </div>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <fieldset class="alumnoFieldset">
+              <legend th:text="#{datosDomicilio}">Datos de Domicilio</legend>
+
+              <div class="two-col">
+                <div class="col1">
+                  <label for="pais" class="label" th:text="#{pais}">País</label>
+                  <select th:field="*{pais.id}" class="formulario_linea_input" id="pais">
+                    <option th:each="p : ${paises}" th:value="${p.id}" th:text="${p.dsO}">País</option>
+                  </select>
+                </div>
+                <div class="col1">
+                  <label for="autonomia" class="label" th:text="#{autonomia}">Autonomía</label>
+                  <select th:field="*{autonomia.id}" class="formulario_linea_input" id="autonomia">
+                    <option th:each="a : ${autonomias}" th:value="${a.id}" th:text="${a.dsO}">Autonomía</option>
+                  </select>
+                </div>
+                <div class="col1">
+                  <label for="provincia" class="label" th:text="#{provincia}">Provincia</label>
+                  <select th:field="*{provincia.id}" class="formulario_linea_input" id="provincia">
+                    <!-- Opciones para provincias -->
+                  </select>
+                </div>
+              </div>
+
+              <div class="two-col">
+                <div class="col1">
+                  <label for="municipio" class="label" th:text="#{municipio}">Municipio</label>
+                  <select th:field="*{municipio.id}" class="formulario_linea_input" size="30" id="municipio">
+                    <!-- Opciones para municipios -->
+                  </select>
+                </div>
+                <div class="col1">
+                  <label for="calle" class="label" th:text="#{calle}">Calle</label>
+                  <select th:field="*{calle.id}" class="formulario_linea_input" size="50" id="calle">
+                    <!-- Opciones para calles -->
+                  </select>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <input type="submit" value="Enviar" />
+          </form>
+
+          <fieldset class="alumnoFieldset">
+            <legend th:text="#{patron.formulario.funcionesAjaxForm}">Funciones Ajax del Formulario</legend>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.formSerialize}">Form Serialize</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.formSerialize.ejemplo}">Ejemplo Form Serialize</span>
+                <br />
+              </code>
+              <button id="botonFormSerialize" type="button" th:text="#{patron.formulario.funcionesAjaxForm.formSerialize}">Form Serialize</button>
+              <div id="resultadoFormSerialize" class="col1"></div>
+            </div>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.fieldSerialize}">Field Serialize</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.fieldSerialize.ejemplo}">Ejemplo Field Serialize</span>
+                <br />
+              </code>
+              <button id="botonFieldSerialize" type="button" th:text="#{patron.formulario.funcionesAjaxForm.fieldSerialize}">Field Serialize</button>
+              <div id="resultadoFieldSerialize" class="col1"></div>
+            </div>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.fieldValue}">Field Value</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.fieldValue.ejemplo}">Ejemplo Field Value</span>
+                <br />
+              </code>
+              <button id="botonFieldValue" type="button" th:text="#{patron.formulario.funcionesAjaxForm.fieldValue}">Field Value</button>
+              <div id="resultadoFieldValue" class="col1"></div>
+            </div>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.resetForm}">Reset Form</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.resetForm.ejemplo}">Ejemplo Reset Form</span>
+                <br />
+              </code>
+              <button id="botonResetForm" type="button" th:text="#{patron.formulario.funcionesAjaxForm.resetForm}">Reset Form</button>
+              <div id="resultadoResetForm" class="col1"></div>
+            </div>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.clearForm}">Clear Form</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.clearForm.ejemplo}">Ejemplo Clear Form</span>
+                <br />
+              </code>
+              <button id="botonClearForm" type="button" th:text="#{patron.formulario.funcionesAjaxForm.clearForm}">Clear Form</button>
+              <div id="resultadoClearForm" class="col1"></div>
+            </div>
+            <div>
+              <span th:text="#{patron.formulario.funcionesAjaxForm.clearFields}">Clear Fields</span>
+              <code>
+                <br />
+                <span th:text="#{patron.formulario.funcionesAjaxForm.clearFields.ejemplo}">Ejemplo Clear Fields</span>
+                <br />
+              </code>
+              <button id="botonClearFields" type="button" th:text="#{patron.formulario.funcionesAjaxForm.clearFields}">Clear Fields</button>
+              <div id="resultadoClearFields" class="col1"></div>
+            </div>
+          </fieldset>
+
+          <div id="divMultiplesEntidades">
+            <form th:action="@{/patrones/form/multientidades}" th:object="${alumnoDepartamento}" method="post" id="formMultientidades">
+              <fieldset class="alumnoFieldset">
+                <legend th:text="#{patron.formulario.envioVariasEntidades}">Envío Varias Entidades</legend>
+                <span th:text="#{patron.formulario.envioVariasEntidades.descripcion}">Descripción del envío de varias entidades</span>
+
+                <fieldset class="alumnoFieldset">
+                  <legend th:text="#{alumno}">Alumno</legend>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="alumno_nombre_multi" class="label" th:text="#{nombre}">Nombre</label>
+                      <input type="text" th:field="*{alumno.nombre}" class="formulario_linea_input" size="20" id="alumno_nombre_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="alumno_apellido1_multi" class="label" th:text="#{apellido1}">Apellido 1</label>
+                      <input type="text" th:field="*{alumno.apellido1}" class="formulario_linea_input" size="30" id="alumno_apellido1_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="alumno_apellido2_multi" class="label" th:text="#{apellido2}">Apellido 2</label>
+                      <input type="text" th:field="*{alumno.apellido2}" class="formulario_linea_input" size="30" id="alumno_apellido2_multi"/>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="alumnoFieldset">
+                  <legend th:text="#{departamento}">Departamento</legend>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="departamento_code_multi" class="label" th:text="#{codigo}">Código</label>
+                      <input type="text" th:field="*{departamento.code}" class="formulario_linea_input" size="20" id="departamento_code_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="departamento_descEs_multi" class="label" th:text="#{descEs}">DescEs</label>
+                      <input type="text" th:field="*{departamento.descEs}" class="formulario_linea_input" size="30" id="departamento_descEs_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="departamento_descEu_multi" class="label" th:text="#{descEu}">DescEu</label>
+                      <input type="text" th:field="*{departamento.descEu}" class="formulario_linea_input" size="30" id="departamento_descEu_multi"/>
+                    </div>
+                  </div>
+                </fieldset>
+                <input type="submit" th:value="#{patron.formulario.enviarMultientidad}" />
+              </fieldset>
+            </form>
+
+            <form th:action="@{/patrones/form/multientidadesMismoTipo}" th:object="${formComarcas}" method="post" id="formMultientidadesMismoTipo">
+              <fieldset class="alumnoFieldset">
+                <legend th:text="#{patron.formulario.envioVariasEntidadesIguales}">Envío Varias Entidades Iguales</legend>
+                <span th:text="#{patron.formulario.envioVariasEntidadesIguales.descripcion}">Descripción del envío de varias entidades iguales</span>
+
+                <fieldset class="alumnoFieldset">
+                  <legend th:text="#{comarca}">Comarca</legend>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="comarca1_code_multi" class="label" th:text="#{codigo}">Código</label>
+                      <input type="text" th:field="*{comarca1.code}" class="formulario_linea_input" size="20" id="comarca1_code_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca1_descEs_multi" class="label" th:text="#{descEs}">DescEs</label>
+                      <input type="text" th:field="*{comarca1.descEs}" class="formulario_linea_input" size="30" id="comarca1_descEs_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca1_descEu_multi" class="label" th:text="#{descEu}">DescEu</label>
+                      <input type="text" th:field="*{comarca1.descEu}" class="formulario_linea_input" size="30" id="comarca1_descEu_multi"/>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="alumnoFieldset">
+                  <legend th:text="#{comarca}">Comarca</legend>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="comarca2_code_multi" class="label" th:text="#{codigo}">Código</label>
+                      <input type="text" th:field="*{comarca2.code}" class="formulario_linea_input" size="20" id="comarca2_code_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca2_descEs_multi" class="label" th:text="#{descEs}">DescEs</label>
+                      <input type="text" th:field="*{comarca2.descEs}" class="formulario_linea_input" size="30" id="comarca2_descEs_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca2_descEu_multi" class="label" th:text="#{descEu}">DescEu</label>
+                      <input type="text" th:field="*{comarca2.descEu}" class="formulario_linea_input" size="30" id="comarca2_descEu_multi"/>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="alumnoFieldset">
+                  <legend th:text="#{comarcaYprovincia}">Comarca y Provincia</legend>
+                  <br/><i th:text="#{comarca}">Comarca</i><br/>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="comarca3_code_multi" class="label" th:text="#{codigo}">Código</label>
+                      <input type="text" th:field="*{comarca3.code}" class="formulario_linea_input" size="20" id="comarca3_code_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca3_descEs_multi" class="label" th:text="#{descEs}">DescEs</label>
+                      <input type="text" th:field="*{comarca3.descEs}" class="formulario_linea_input" size="30" id="comarca3_descEs_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca3_descEu_multi" class="label" th:text="#{descEu}">DescEu</label>
+                      <input type="text" th:field="*{comarca3.descEu}" class="formulario_linea_input" size="30" id="comarca3_descEu_multi"/>
+                    </div>
+                  </div>
+                  <br/><br/><br/><i th:text="#{provincia}">Provincia</i><br/>
+                  <div class="two-col">
+                    <div class="col1">
+                      <label for="comarca3_provincia_code_multi" class="label" th:text="#{codigo}">Código</label>
+                      <input type="text" th:field="*{comarca3.provincia.code}" class="formulario_linea_input" size="20" id="comarca3_provincia_code_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca3_provincia_descEs_multi" class="label" th:text="#{descEs}">DescEs</label>
+                      <input type="text" th:field="*{comarca3.provincia.descEs}" class="formulario_linea_input" size="30" id="comarca3_provincia_descEs_multi"/>
+                    </div>
+                    <div class="col1">
+                      <label for="comarca3_provincia_descEu_multi" class="label" th:text="#{descEu}">DescEu</label>
+                      <input type="text" th:field="*{comarca3.provincia.descEu}" class="formulario_linea_input" size="30" id="comarca3_provincia_descEu_multi"/>
+                    </div>
+                  </div>
+                </fieldset>
+                <input type="submit" th:value="#{patron.formulario.enviarMultientidad}" />
+              </fieldset>
+            </form>
+
+            <div id="divSubidaFicheros">
+              <fieldset class="alumnoFieldset">
+                <legend>Subida de ficheros</legend>
+                <form th:action="@{/patrones/form/subidaArchivos}" th:object="${alumno}" method="post" id="formSubidaArchivos" enctype="multipart/form-data">
+                  <div id="feedback_fileupload_form_multiple"></div>
+                  <div class="formulario_columna_cnt">
+                    <div class="formulario_linea_izda_float">
+                      <label id="label_nombre" for="nombre">Nombre :</label>
+                      <input type="text" th:field="*{nombre}" id="nombre"/>
+                    </div>
+                    <div class="formulario_linea_izda_float">
+                      <label id="label_apellido1" for="apellido1">Apellido 1:</label>
+                      <input type="text" th:field="*{apellido1}" id="apellido1"/>
+                    </div>
+                    <div class="formulario_linea_izda_float">
+                      <label id="label_apellido2" for="apellido2">Apellido 2:</label>
+                      <input type="text" th:field="*{apellido2}" id="apellido2"/>
+                    </div>
+                    <div class="formulario_linea_izda_float">
+                      <label id="label_ejie" for="ejie">EJIE:</label>
+                      <input type="checkbox" th:field="*{ejie}" th:value="1" id="ejie"/>
+                    </div>
+                  </div>
+                  <div class="formulario_columna_cnt">&nbsp;</div>
+                  <div class="formulario_columna_cnt">
+                    <div class="formulario_linea_izda_float">
+                      <div id="fileupload_file_form_padre">
+                        <div class="fileupload-buttonbar">
+                          <label for="file">Foto padre: </label>
+                          <input id="file_form_padre" type="file" name="fotoPadre"/>
+                        </div>
+                        <div class="fileupload-content">
+                          <table class="files"></table>
+                        </div>
+                      </div>
+
+                      <div id="fileupload_file_form_madre">
+                        <div class="fileupload-buttonbar">
+                          <label for="file">Foto madre: </label>
+                          <input id="file_form_madre" type="file" name="fotoMadre"/>
+                        </div>
+                        <div class="fileupload-content">
+                          <table class="files"></table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="formulario_columna_cnt">
+                    <div class="formulario_linea_izda_float fileupload-buttonbar">
+                      <button id="sendButtonArchivos" type="submit" class="start">Enviar formulario</button>
+                    </div>
+                  </div>
+                </form>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

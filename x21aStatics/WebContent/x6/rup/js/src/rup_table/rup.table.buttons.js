@@ -3487,7 +3487,7 @@
         		_reportsOpenMessage(dt, ctx, that, exportDataRows, hiddenDiv, textarea);
         	} else {
         		// Descargara un fichero
-        		_reportsRequestFile(ctx, ajaxOptions,that);
+        		_reportsRequestFile(ctx, ajaxOptions);
         	}
         });
     };
@@ -3843,12 +3843,11 @@
      *
      * @param {object} ctx Contexto
      * @param {object} ajaxOptions Parametros de la llamada AJAX
-	 * @param {object} that Api de llamdas
      *
      * @return {object}
      *
      */
-    var _reportsRequestFile = function (ctx, ajaxOptions, that) {	
+    var _reportsRequestFile = function (ctx, ajaxOptions) {	
     	// Dialogo de espera
         var $reportFileWait = $('#' + $.escapeSelector(ctx.sTableId) + 'reportFileWait');
         $reportFileWait.rup_dialog({
@@ -3934,7 +3933,6 @@
                     console.info('----------- ERROR -----------');
                 }
             }
-			that.processing(false);
         };
         request.send();
         

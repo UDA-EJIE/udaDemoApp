@@ -1,0 +1,70 @@
+<div th:fragment="comarcaEdit">
+<!-- Formulario de detalle -->
+<div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
+	<!-- Barra de navegación del detalle -->
+	<div id ="comarca_detail_navigation" class="row no-gutters"></div>
+	<!-- Separador -->
+	<hr class="m-1">
+	<div class="dialog-content-material">
+		<!-- Formulario -->
+		<form th:action="@{/comarca}" th:object="${comarca}" id="comarca_detail_form">
+			<!-- Feedback del formulario de detalle -->
+			<div id ="comarca_detail_feedback"></div>
+			<div class="form-row row-cols-1 row-cols-sm-2 row-cols-md-3">
+				<!-- Campos del formulario de detalle -->
+				<div class="form-groupMaterial col">
+					<input th:field="*{code}" id="code_detail_table"/>
+					<label for="code_detail_table" th:text="#{code}">code</label>
+				</div>				
+
+				<div class="form-groupMaterial col">
+					<input th:field="*{codeAyuntamiento}" id="codeAyuntamiento_detail_table"/>
+					<label for="codeAyuntamiento_detail_table" th:text="#{codeAyuntamiento}">codeAyuntamiento</label>
+				</div>				
+
+				<div class="form-groupMaterial col">
+					<input th:field="*{codeProvincia}" id="codeProvincia_detail_table"/>
+					<label for="codeProvincia_detail_table" th:text="#{codeProvincia}">codeProvincia</label>
+				</div>				
+
+				<div class="form-groupMaterial col">
+					<input th:field="*{css}" id="css_detail_table"/>
+					<label for="css_detail_table" th:text="#{css}">css</label>
+				</div>				
+
+				<div class="form-groupMaterial col">
+					<input th:field="*{descEs}" id="descEs_detail_table"/>
+					<label for="descEs_detail_table" th:text="#{descEs}">descEs</label>
+				</div>				
+
+				<div class="form-groupMaterial col">
+					<input th:field="*{descEu}" id="descEu_detail_table"/>
+					<label for="descEu_detail_table" th:text="#{descEu}">descEu</label>
+				</div>				
+
+				<!-- Fin campos del formulario de detalle -->
+			</div>
+		</form>
+	</div>
+
+	<!-- Botonera del formulario de detalle -->
+	<div class="rup-table-buttonpanel-material">
+		<div class="text-right">
+			<!-- Botón cancelar -->
+			<button id="comarca_detail_button_cancel" class="btn-material btn-material-sm btn-material-primary-low-emphasis" type="button">
+				<span th:text="#{cancel}">Cancel</span>
+			</button>
+
+			<!-- Botón guardar -->
+			<button id="comarca_detail_button_save" class="btn-material btn-material-sm btn-material-primary-high-emphasis" type="button">
+				<span th:text="#{save}">Save</span>
+			</button>
+			
+			<!-- Botón guardar y continuar -->
+			<button id="comarca_detail_button_save_repeat" class="btn-material btn-material-sm btn-material-primary-high-emphasis" type="button">
+				<span th:text="#{saveAndContinue}">Save and Continue</span>
+			</button>
+		</div>
+	</div>	
+</div>
+</div>

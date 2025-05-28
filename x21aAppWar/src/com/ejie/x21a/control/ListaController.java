@@ -32,11 +32,13 @@ public class ListaController {
     @Autowired
     private TableUsuarioService tableUsuarioService;
     
+  
     @Autowired
 	private FilterService filterService;
     
     @GetMapping (value = "/configurable")
     public String getListaConfigurableView(Model model) {
+    	
     	model.addAttribute("usuario", new Usuario());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -53,12 +55,19 @@ public class ListaController {
 		comboEjie.put("0", "No");
 		comboEjie.put("1", "S�");
 		model.addAttribute("comboEjie", comboEjie);
-    	
-    	return "listaConfigurable";
+		
+		model.addAttribute("content", "list/listConfigurable");
+		model.addAttribute("includes", "list/includes/listConfigurable-includes");
+     
+		
+    	return "template";
     }
     
     @GetMapping (value = "/doble")
     public String getListaDobleView(Model model) {
+    	
+    	model.addAttribute("content", "list/listDoble");
+		model.addAttribute("includes", "list/includes/listDoble-includes");
     	model.addAttribute("usuario", new Usuario());
 		
 		Map<String,String> comboRol = new LinkedHashMap<String,String>();
@@ -76,7 +85,7 @@ public class ListaController {
 		comboEjie.put("1", "S�");
 		model.addAttribute("comboEjie", comboEjie);
     	
-    	return "listaDoble";
+    	return "template";
     }
     
     @GetMapping (value = "/noTemplate")

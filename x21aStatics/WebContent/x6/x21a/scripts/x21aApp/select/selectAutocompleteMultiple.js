@@ -168,15 +168,6 @@ jQuery(function($) {
                 return true;
             }
         });
-		
-		$('#autocompleteCacheUrl').rup_select({
-		    url : 'autocomplete/remote',
-		    cache: true,
-		    autocomplete:true,
-		    multiple: true,
-			cacheUrl:true,
-		    sourceParam : {text:'desc'+$.rup_utils.capitalizedLang(), id:'code'}
-		});
 
 
         $('.contenedor').addClass('show');

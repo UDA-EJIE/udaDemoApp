@@ -1,0 +1,28 @@
+<div th:fragment="tableComarcaExtendidaEdit">
+    <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
+        <!-- Barra de navegaci�n del detalle -->
+        <div id="comarca_detail_navigation" class="row no-gutters"></div>
+        <!-- Separador -->
+        <hr class="m-1">
+        <div id="comarca_detail_form_container" class="dialog-content-material">
+            <!-- El formulario ser� insertado mediante una llamada Ajax -->
+        </div>
+        <!-- Botonera del formulario de detalle -->
+        <div class="rup-table-buttonpanel-material">
+            <div class="text-right">
+                <!-- Bot�n cancelar -->
+                <button id="comarca_detail_button_cancel" type="button">
+                    <span th:text="#{cancel}">Cancelar</span>
+                </button>
+                <!-- Bot�n guardar -->
+                <button id="comarca_detail_button_save" type="button">
+                    <span th:text="#{save}">Guardar</span>
+                </button>
+                <!-- Bot�n guardar y continuar -->
+                <button id="comarca_detail_button_save_repeat" type="button">
+                    <span th:text="#{saveAndContinue}">Guardar y Continuar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

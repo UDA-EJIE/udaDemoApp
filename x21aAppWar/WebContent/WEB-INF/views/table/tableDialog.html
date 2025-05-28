@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{tabla.dialogo.title}">Tabla en di�logo</title>
+</head>
+<body>
+    <h2 class="title mb-3" th:text="#{tabla.dialogo.title}">Tabla en di�logo</h2>
+
+    <button id="btnTablaDialog_div" class="btn-material btn-material-primary-high-emphasis" type="button">
+        <span th:text="#{tabla.dialogo.div}">Tabla en formulario (DIV)</span>
+    </button>
+    <button id="btnTablaDialog_ajax" class="btn-material btn-material-primary-high-emphasis" type="button">
+        <span th:text="#{tabla.dialogo.ajax}">Tabla en formulario (AJAX)</span>
+    </button>
+
+    <div id="tableDialog_layer_ajax"></div>
+    <div id="tableDialog_layer_div" style="display:none">
+        <div id="tableDialog_div" class="rup-table-container">      
+            <!-- Inclusi�n del formulario de filtro -->
+            <div th:replace="table/includes/tableMultiPkFilterForm :: tableMultiPkFilterForm"></div>
+
+            <table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
+                   data-url-base="./multipk"
+                   data-filter-form="#MultiPk_filter_form">
+                <thead>
+                    <tr>
+                        <th data-col-prop="nombre" data-col-sidx="NOMBRE" th:text="#{tabla.columna.nombre}">Nombre</th>
+                        <th data-col-prop="apellido1" data-col-sidx="APELLIDO1" th:text="#{tabla.columna.apellido1}">Primer apellido</th>
+                        <th data-col-prop="apellido2" data-col-sidx="APELLIDO2" th:text="#{tabla.columna.apellido2}">Segundo apellido</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>  
+
+        <!-- Inclusi�n del formulario de edici�n -->
+        <div th:replace="table/includes/tableMultiPkEdit :: tableMultiPkEdit"></div>
+    </div>
+</body>
+</html>

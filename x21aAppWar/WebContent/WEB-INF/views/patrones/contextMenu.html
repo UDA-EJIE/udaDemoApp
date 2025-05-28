@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Context Menu</title>
+  </head>
+  <body>
+    <section class="row">
+      <div class="col-12">
+        <h2>Context Menu</h2>
+        <hr />
+
+        <div id="contextMenu" class="card text-white"
+             style="background-color: #333; border-color: #333;">
+          <div class="card-body">
+            <h2>
+              <center>Right click + Opciones desabilitadas</center>
+            </h2>
+          </div>
+        </div>
+
+        <div id="contextMenu-left" class="card text-white contextMenu-left"
+             style="background-color: #333; border-color: #333;">
+          <div class="card-body">
+            <h2>
+              <center>Left click + Atajos de teclado</center>
+            </h2>
+          </div>
+        </div>
+
+        <div id="contextMenu-hover" class="card text-white"
+             style="background-color: #333; border-color: #333;">
+          <div class="card-body">
+            <h2>
+              <center>Hover + submenus</center>
+            </h2>
+          </div>
+        </div>
+
+        <div id="contextMenu-other" class="card text-white contextMenu-other"
+             style="background-color: #333; border-color: #333;">
+          <div class="card-body">
+            <h2>
+              <center>
+                Abrir desde otro elemento + bajo demanda
+                <button type="button" id="activate-menu">click me</button>
+              </center>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

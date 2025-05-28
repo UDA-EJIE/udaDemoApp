@@ -42,28 +42,33 @@ jQuery(function ($) {
         ];
       let tableColModel = [{
             name: 'id',
+            index: 'id',
             editable: true,
             hidden: false,
             obligatorio: true
         },
         {
             name: 'nombre',
+            index: 'nombre',
             editable: true,
             hidden: false,
             obligatorio: true
         },
         {
             name: 'apellido1',
+            index: 'apellido1',
             editable: true,
             hidden: false
         },
         {
             name: 'ejie',
+            index: 'ejie',
             editable: true,
             hidden: false
         },
         {
             name: 'fechaAlta',
+            index: 'fechaAlta',
             editable: true,
             hidden: false,
             obligatorio: true,
@@ -77,6 +82,7 @@ jQuery(function ($) {
         },
         {
             name: 'fechaBaja',
+            index: 'fechaBaja',
             editable: false,
             hidden: false,
             rupType: 'date',
@@ -89,6 +95,7 @@ jQuery(function ($) {
         },
         {
             name: 'rol',
+            index: 'rol',
             editable: true,
             hidden: false,
             rupType: 'select',

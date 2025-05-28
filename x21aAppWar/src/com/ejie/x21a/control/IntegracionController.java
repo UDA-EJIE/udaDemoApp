@@ -63,8 +63,11 @@ public class IntegracionController {
 
     //visor geoEuskadi
     @GetMapping(value = "geoEuskadi")
-    public String getVisorGeoEuskadi() {
-        return "geoEuskadi";
+    public String getVisorGeoEuskadi(Model model) {
+    	model.addAttribute("content", "integracion/geoEuskadi");
+    	model.addAttribute("includes", "integracion/geoEuskadi-includes");
+
+        return "template";
     }
     
     @GetMapping(value = "geoEuskadiLayer.kml")
@@ -98,13 +101,18 @@ public class IntegracionController {
     //Tiny
     @GetMapping(value = "tiny")
     public String getTiny(Model model) {
-        return "tiny";
+    	model.addAttribute("content", "integracion/tiny");
+    	model.addAttribute("includes", "integracion/tiny-includes");
+
+        return "template";
     }
 
     //Webdav
     @GetMapping(value = "webdav")
     public String getWebdav(Model model) {
-        return "webdav";
+    	model.addAttribute("content", "integracion/webdav");
+    	model.addAttribute("includes", "integracion/webdav-includes");
+        return "template";
     }
 
     //PIF

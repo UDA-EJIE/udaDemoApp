@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{iberdok.title}">Iberdok</title>
+ 
+</head>
+<body>
+    <h2 class="title mb-3" th:text="#{iberdok.title}"></h2>
+
+    <!-- TABLA DOCUMENTOS -->
+    <form th:action="@{/iberdok/filter}" th:object="${randomForm}" id="iberdokTable_filter_form" method="post">
+        <!-- Barra de herramientas del formulario de filtrado -->
+        <div id="iberdokTable_filter_toolbar" class="formulario_legend"></div>
+        <fieldset id="iberdokTable_filter_fieldset" class="rup-table-filter-fieldset">
+            <div class="form-row">
+                <!-- Campos del formulario de filtrado -->
+                <div class="form-groupMaterial col-sm">
+                    <input type="text" th:field="*{idDocumento}" id="idDocumento_filter_table" />
+                    <label for="idDocumento_filter_table" th:text="#{idDocumento}">idDocumento</label>
+                </div>
+            </div>
+            <!-- Botonera del formulario de filtrado -->
+            <div id="iberdokTable_filter_buttonSet" class="text-right">
+                <!-- Bot�n de limpiar -->
+                <button id="iberdokTable_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+                    <i class="mdi mdi-eraser"></i>
+                    <span th:text="#{clear}">Clear</span>
+                </button>
+                <!-- Bot�n de filtrado -->
+                <button id="iberdokTable_filter_filterButton" type="button" class="btn-material btn-material-primary-high-emphasis">
+                    <i class="mdi mdi-filter"></i>
+                    <span th:text="#{filter}">Filter</span>        	
+                </button>
+            </div>
+        </fieldset>
+    </form>
+
+    <table id="iberdokTable" class="tableFit table-striped table-bordered table-material"
+           data-url-base="." data-filter-form="#iberdokTable_filter_form">
+        <thead>
+            <tr>
+                <th data-col-prop="id" data-col-edit="false">ID</th>
+                <th data-col-prop="nombre">Nombre</th>
+                <th data-col-prop="idModelo" data-col-sidx="id_modelo">ID Modelo</th>
+                <th data-col-prop="idDocumento" data-col-sidx="id_documento">ID Documento</th>
+                <th data-col-prop="usuario" data-col-sidx="usuario">Usuario</th>
+                <th data-col-prop="fechaApp" data-col-sidx="fecha_app">Fecha Editado</th>
+                <th data-col-prop="fechaIberdok" data-col-sidx="fecha_iberdok">Fecha Vuelta de iberdok</th>
+                <th data-col-prop="docFinalizado" data-col-sidx="estado">Estado</th>
+            </tr>
+        </thead>
+    </table>
+
+    <!-- Incluir la edici�n de iberdok (aseg�rate de tener un fragmento llamado "editFragment" en el archivo iberdokEdit) -->
+    <div th:replace="experimental/iberdokEdit :: iberdokEdit"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<div th:fragment="tableDialogComarcaEdit">
+    <!-- Formulario de detalle -->
+    <div id="comarca_detail_div" class="rup-table-formEdit-detail d-none">
+        <!-- Barra de navegación del detalle -->
+        <div id="comarca_detail_navigation" class="row no-gutters"></div>
+        <!-- Separador -->
+        <hr class="m-1">
+        <div id="comarca_detail_form_container" class="dialog-content-material">
+            <!-- El formulario será insertado mediante una llamada Ajax -->
+        </div>
+        <!-- Botonera del formulario de detalle -->
+        <div class="rup-table-buttonpanel-material">
+            <div class="text-right">
+                <!-- Botón cancelar -->
+                <button id="comarca_detail_button_cancel" type="button">
+                    <span th:text="#{cancel}"></span>
+                </button>
+                <!-- Botón guardar -->
+                <button id="comarca_detail_button_save" type="button">
+                    <span th:text="#{save}"></span>
+                </button>
+                <!-- Botón guardar y continuar -->
+                <button id="comarca_detail_button_save_repeat" type="button">
+                    <span th:text="#{saveAndContinue}"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sección para la Localidad -->
+        <div>
+            <h3 th:text="#{tabla.localidad}">Localidad</h3>
+            <h4 th:text="#{tabla.seleccioneLocalidad}">Seleccione una Localidad para cargar el CSS en la Comarca</h4>
+
+            <!-- Inclusión del formulario de filtro de localidades -->
+            <div th:replace="table/includes/tableLocalidadFilterForm :: tableLocalidadFilterForm"></div>
+
+            <table id="localidad" class="tableFit table-striped table-bordered table-material"
+                   data-url-base="../tableLocalidad"
+                   data-filter-form="#localidad_filter_form">
+                <thead>
+                    <tr>
+                        <th th:text="#{tabla.descEs}" data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
+                        <th th:text="#{tabla.descEu}" data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
+                        <th th:text="#{tabla.css}" data-col-prop="css">css</th>
+                    </tr>
+                </thead>
+            </table>  
+        </div>
+    </div>
+</div>

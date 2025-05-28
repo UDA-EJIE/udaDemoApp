@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{tabla.seleccionOtraTabla}">Tabla con selecci�n desde otra tabla</title>
+</head>
+<body>
+    <h2 class="title mb-3" th:text="#{tabla.seleccionOtraTabla}">Tabla con selecci�n desde otra tabla</h2>
+    <h3 th:text="#{tabla.comarca}">Comarca</h3>
+
+    <!-- Inclusi�n del formulario de filtro -->
+    <div th:replace="table/includes/tableComarcaFilterForm :: tableComarcaFilterForm"></div>
+
+    <table id="comarca" class="tableFit table-striped table-bordered table-material"
+           data-url-base="../tableComarca"
+           data-filter-form="#comarca_filter_form">
+        <thead>
+            <tr>
+                <th th:text="#{tabla.descEs}" data-col-prop="descEs" data-col-sidx="DESCES">descEs</th>
+                <th th:text="#{tabla.descEu}" data-col-prop="descEu" data-col-sidx="DESCEU">descEu</th>
+                <th th:text="#{tabla.css}" data-col-prop="css">css</th>
+                <th th:text="#{tabla.descEsProvincia}" data-col-prop="provincia.descEs" data-col-sidx="ProvinciaDESCES">DescEs provincia</th>
+            </tr>
+        </thead>
+    </table>
+
+    <!-- Inclusi�n del formulario de edici�n -->
+    <div th:replace="table/includes/tableDialogComarcaEdit :: tableDialogComarcaEdit"></div>
+</body>
+</html>

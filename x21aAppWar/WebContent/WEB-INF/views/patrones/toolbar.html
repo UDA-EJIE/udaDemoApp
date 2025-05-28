@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Botonera</title>
+  </head>
+  <body>
+    <section class="row">
+      <div class="col-12">
+        <h2>Botonera</h2>
+        <hr />
+
+        <p>
+          Se les presenta a los usuarios una barra de botones con diversas funcionalidades relacionadas a elementos de la página. Gracias a este componente se presentan, ordenan y agrupan las distintas funcionalidades gestionadas por las aplicaciones.
+        </p>
+        <p>
+          La configuración de la botonera puede realizarse mediante un JSON en el que indican los diferentes botones que se van a incluir o directamente mediante elementos HTML.
+        </p>
+        <p>
+          Un ejemplo de construcción de una botonera a partir de un JSON sería la siguiente:
+        </p>
+        <div class="example">
+          <div id="toolbar"></div>
+        </div>
+
+        <p>
+          En el JSON de definición de los botones es posible especificar que ciertos botones se agrupen a la izquierda de la botonera.
+        </p>
+        <p>
+          Para ello, se debe de hacer uso de la propiedad <code>right: true</code> en la definición del botón.
+        </p>
+        <div class="example">
+          <div id="toolbarRight"></div>
+        </div>
+
+        <p>
+          Naturalmente, es posible combinar botones alineados tanto a la derecha como a la izquierda.
+        </p>
+        <div class="example">
+          <div id="toolbarMixta"></div>
+        </div>
+
+        <p>Configuración de mbuttons responsive</p>
+        <div class="example">
+          <div id="toolbarRwd"></div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

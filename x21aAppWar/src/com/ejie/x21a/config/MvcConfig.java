@@ -16,16 +16,20 @@
 
 package com.ejie.x21a.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
+import com.ejie.x38.control.MvcInterceptor;
 import com.ejie.x38.util.StaticsContainer;
 
 @Configuration
 public class MvcConfig extends DelegatingWebMvcConfiguration {
+	private static final Logger logger = LoggerFactory.getLogger(MvcConfig.class);
 
 	/** 
      * Gestiona la locale (idioma) mediante una cookie.
@@ -35,6 +39,7 @@ public class MvcConfig extends DelegatingWebMvcConfiguration {
      */
 	@Bean
 	public CookieLocaleResolver localeResolver(WebApplicationContext webApplicationContext) {
+		MvcConfig.logger.info("[ENTROOO] : CookieLocaleResolver");
 		final CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
 		cookieLocaleResolver.setCookieName("language");
 		cookieLocaleResolver.setCookieHttpOnly(false);
@@ -44,5 +49,15 @@ public class MvcConfig extends DelegatingWebMvcConfiguration {
 						+ "; SameSite=Lax;");
 		return cookieLocaleResolver;
 	}
+	
+    @Bean
+    public MvcInterceptor mvcInterceptor() {
+        MvcInterceptor mvcInterceptor = new MvcInterceptor();
+        mvcInterceptor.setDefaultLanguage("es");
+        mvcInterceptor.setDefaultLayout("horizontal");
+        mvcInterceptor.setAvailableLangs("es, eu");
+        mvcInterceptor.setParamName("locale");
+        return mvcInterceptor;
+    }
 
 }

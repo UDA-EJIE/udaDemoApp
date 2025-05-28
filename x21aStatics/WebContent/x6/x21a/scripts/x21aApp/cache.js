@@ -18,11 +18,13 @@ jQuery(function($){
 		const tableColModels = [
 			{
 	            name: 'nombre',
+	            index: 'nombre',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
                 name: 'apellido1',
+                index: 'apellido1',
                 editable: true,
                 hidden: false,
             	rupType: 'select',
@@ -35,7 +37,8 @@ jQuery(function($){
                 }
             },
             { 
-            	name: "apellido2",
+            	name: "apellido2", 
+            	index: "apellido2", 
             	editable: true, 
             	hidden: false,
             	rupType: 'select',
@@ -49,12 +52,14 @@ jQuery(function($){
             },
 	        {
 	            name: 'ejie',
+	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
                 edittype: 'checkbox'
 	        },
 	        {
 	            name: 'fechaAlta',
+	            index: 'fechaAlta',
 	            editable: true,
 	            hidden: false,
 	            rupType: 'date',
@@ -67,6 +72,7 @@ jQuery(function($){
 	        },
 	        {
 	            name: 'fechaBaja',
+	            index: 'fechaBaja',
 	            editable: false,
 	            hidden: false,
 	            rupType: 'date',
@@ -79,6 +85,7 @@ jQuery(function($){
 	        },
 	        {
                 name: 'rol',
+                index: 'rol',
                 editable: true,
                 hidden: false,
                 rupType: 'select',

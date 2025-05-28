@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="#{selectSimple.title}">Título del Select</title>
+    <!-- Aquí se pueden incluir archivos CSS, JavaScript, etc. -->
+  </head>
+  <body>
+    <!-- Definición de variables URL a usar en formularios -->
+    
+      <h2 th:text="#{selectSimple.title}">Título del Select</h2>
+      
+      <div class="container-fluid">
+        <div class="form-row">
+          <!-- Select simple local -->
+          <div class="form-groupMaterial col-sm">
+            <select id="selectSimple"></select>  
+            <label for="selectSimple">Select simple local</label>
+          </div>
+          <!-- Formulario para select remoto -->
+          <form th:object="${provincia}" id="selectRemoto_form" th:action="${remoto}" method="get">
+            <div class="form-groupMaterial col-sm">
+              <select id="selectRemoto" th:field="*{code}"></select>
+              <label for="selectRemoto">Select remoto</label>
+            </div>
+          </form>
+          <!-- Select Multi con texto largo -->
+          <div class="form-groupMaterial col-sm">
+            <select id="selectLargoMulti"></select>  
+            <label for="selectLargoMulti">Select Multi con texto largo</label>
+          </div>
+          <!-- Select Simple con texto largo -->
+          <div class="form-groupMaterial col-sm">
+            <select id="selectLargo"></select>  
+            <label for="selectLargo">Select Simple con texto largo</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container-fluid mt-4">
+        <div class="form-row">
+          <!-- Select con 'optgroups' -->
+          <div class="form-groupMaterial col-sm">
+            <select id="selectGrupos"></select>  
+            <label for="selectGrupos">Select con 'optgroups'</label>
+          </div>
+          <!-- Formulario para select remoto con optgroups -->
+          <form th:object="${divisionTerritorialDto}" id="selectGruposRemoto_form" th:action="${remotoAgrupado}" method="get">
+            <div class="form-groupMaterial col-sm">
+              <select id="selectGruposRemoto" th:field="*{code}"></select> 
+              <label for="selectGruposRemoto">Select con 'optgroups' remoto</label>
+            </div>
+          </form>
+          <!-- Select (no i18n) con imágenes -->
+          <div class="form-groupMaterial col-sm">
+            <select id="selectImgs"></select>  
+            <label for="selectImgs">Select (no i18n) con imágenes</label>
+          </div>
+          <!-- Select carga inicial desde HTML -->
+          <div class="form-groupMaterial col-sm">
+            <select id="SelectLoadFromSelect">
+              <option value="1">Alava</option>
+              <option value="3">Gipuzcoa</option>
+              <option value="2" selected="selected">Vizcaya</option>
+            </select>  
+            <label for="SelectLoadFromSelect">
+              Select carga inicial desde <strong>HTML</strong>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
