@@ -122,7 +122,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.default" />
 				</h3>
-				<div id="defaultDemo" class="rup_tree model_example_1 overflow-auto"></div>
+				<div id="defaultDemo" class="rup_tree model_example_1 overflow-auto" data-name="defaultDemo"></div>
 				<div id="codeDefaultControl" class="controlsMainCode">
 					<button id="btnDefaultDemo">
 						<spring:message code="tree.verCodigo" />
@@ -136,7 +136,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.changedTheme" />
 				</h3>
-				<div id="changedThemeDemo" class="rup_tree model_example_1 overflow-auto"></div>
+				<div id="changedThemeDemo" class="rup_tree model_example_1 overflow-auto" data-name="changedThemeDemo"></div>
 				<div id="codeChangedThemeControl" class="controlsMainCode">
 					<button id="btnChangedThemeDemo">
 						<spring:message code="tree.verCodigo" />
@@ -149,7 +149,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.changeView" />
 				</h3>
-				<div id="changeViewDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+				<div id="changeViewDemo" class="rup_tree model_example_1_button overflow-auto" data-name="changeViewDemo"></div>
 
 				<div id="changeViewExampleControl" class="controlsMainExample">
 					<button id="toggle_dots" style="width: 32%">
@@ -177,7 +177,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.select" />
 				</h3>
-				<div id="selectDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+				<div id="selectDemo" class="rup_tree model_example_1_button overflow-auto" data-name="selectDemo"></div>
 
 				<div id="selectExampleControl" class="controlsMainExample">
 					<button id="saveSelection" style="width: 32%">
@@ -204,7 +204,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.sort" />
 				</h3>
-				<div id="sortDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+				<div id="sortDemo" class="rup_tree model_example_1_button overflow-auto" data-name="sortDemo"></div>
 
 				<div id="sortExampleControl" class="controlsMainExample">
 					<button id="renameButton" style="width: 50%; text-align: center;">
@@ -225,7 +225,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.checkbox" />
 				</h3>
-				<div id="checkboxDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+				<div id="checkboxDemo" class="rup_tree model_example_1_button overflow-auto" data-name="checkboxDemo"></div>
 
 				<div id="checkboxExampleControl" class="controlsMainExample">
 					<button id="checkboxShowHide" style="width: 35%">
@@ -253,7 +253,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.contextmenu" />
 				</h3>
-				<div id="contextmenuDemo" class="rup_tree model_example_1 overflow-auto"></div>
+				<div id="contextmenuDemo" class="rup_tree model_example_1 overflow-auto" data-name="contextmenuDemo"></div>
 
 				<div id="codeContextmenuControl" class="controlsMainCode">
 					<button id="btnContextmenuDemo">
@@ -269,7 +269,7 @@
 				<h3 class="rup_tree_h3">
 					<spring:message code="tree.example.unique" />
 				</h3>
-				<div id="uniqueDemo" class="rup_tree model_example_1_button overflow-auto"></div>
+				<div id="uniqueDemo" class="rup_tree model_example_1_button overflow-auto" data-name="uniqueDemo"></div>
 
 				<div id="uniqueExampleControl" class="controlsMainExample">
 					<button id="uniqueRenameButton"
@@ -292,7 +292,7 @@
 		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos json</h3>
-				<div id="jsonTreeDemo" class="rup_tree model_example_1 overflow-auto"></div>
+				<div id="jsonTreeDemo" class="rup_tree model_example_1 overflow-auto" data-name="jsonTreeDemo"></div>
 
 				<div id="codeJsonTreeControl" class="controlsMainCode">
 					<button id="btnJsonTreeDemo">
@@ -304,7 +304,7 @@
 		<div class="col-12 col-sm-4">
 			<div class="butstyle">
 				<h3 class="rup_tree_h3">Carga datos mediante AJAX (json)</h3>
-				<div id="ajaxTreeDemo" class="ajax_tree model_example_1 overflow-auto"></div>
+				<div id="ajaxTreeDemo" class="ajax_tree model_example_1 overflow-auto" data-name="ajaxTreeDemo"></div>
 
 				<div id="codeAjaxTreeControl" class="controlsMainCode">
 					<button id="btnAjaxTreeDemo">
