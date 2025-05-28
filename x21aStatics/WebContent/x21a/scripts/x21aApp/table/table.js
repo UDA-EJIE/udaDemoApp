@@ -337,8 +337,10 @@ jQuery(function ($) {
 	                plugins.formEdit = formEdit;
 	
 	                $('#editForm').prop('checked', true);
+					$('#multipart').prop('disabled', false);
 	            } else {
 	                $('#editForm').prop('checked', false);
+					$('#multipart').prop('disabled', true);
 	            }
 	
 	            if (localStorage.plugins.indexOf(',inlineEdit,') > -1) {

@@ -136,7 +136,7 @@
 				<label for="triggers">Activar triggers en consola</label>
 			</div>
 			<div class="checkbox-material pluginsControl">
-			<form:checkbox path="otros" id="multipart" value="11"/>
+			<form:checkbox path="otros" id="multipart" value="11" disabled="true" />
 				<label for="multipart">Edición con multipart (solo funciona con la opción de edición en formulario)</label>
 			</div>
 		</div>
