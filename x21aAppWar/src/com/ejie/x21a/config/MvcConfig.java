@@ -16,33 +16,60 @@
 
 package com.ejie.x21a.config;
 
+import java.util.Locale;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.handler.MappedInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import com.ejie.x38.util.StaticsContainer;
+import com.ejie.x38.control.MvcInterceptor;
 
+@ComponentScan("com.ejie.x21a")
 @Configuration
-public class MvcConfig extends DelegatingWebMvcConfiguration {
+@EnableWebMvc
+public class MvcConfig {
 
-	/** 
-     * Gestiona la locale (idioma) mediante una cookie.
-     * 
-     * @param webApplicationContext Contexto de la aplicación Web.
-     * @return La cookie de idioma.
-     */
+	/**
+	 * Gestiona las propiedades del WAR: idioma (cuando se envía el parametro
+	 * 'locale' en la request '/?locale=en'), layout, idioma disponible...
+	 * 
+	 * @return MvcInterceptor
+	 */
 	@Bean
-	public CookieLocaleResolver localeResolver(WebApplicationContext webApplicationContext) {
-		final CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
-		cookieLocaleResolver.setCookieName("language");
-		cookieLocaleResolver.setCookieHttpOnly(false);
-		cookieLocaleResolver.setCookieSecure(StaticsContainer.isCookieSecure());
-		cookieLocaleResolver.setCookiePath(
-				(StaticsContainer.isCookiePathRoot() ? "/" : webApplicationContext.getServletContext().getContextPath())
-						+ "; SameSite=Lax;");
-		return cookieLocaleResolver;
+	public MvcInterceptor mvcInterceptor() {
+		MvcInterceptor mvcInterceptor = new MvcInterceptor();
+		mvcInterceptor.setParamName("locale");
+		mvcInterceptor.setDefaultLanguage("es");
+		mvcInterceptor.setDefaultLayout("horizontal");
+		mvcInterceptor.setAvailableLangs("es,eu,en,fr");
+		mvcInterceptor.setPortalCookie("r01euskadiCookie");
+		return mvcInterceptor;
+	}
+
+	/**
+	 * Gestiona la locale (idioma) mediante la sesión.
+	 * 
+	 * @return LocaleResolver
+	 */
+	@Bean
+	public LocaleResolver localeResolver() {
+		SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+		sessionLocaleResolver.setDefaultLocale(new Locale("es"));
+		return sessionLocaleResolver;
+	}
+
+	/**
+	 * Declaración del interceptor (Gestión idomática).
+	 * 
+	 * @return MappedInterceptor
+	 */
+	@Bean
+	public MappedInterceptor myInterceptor() {
+		return new MappedInterceptor(null, mvcInterceptor());
 	}
 
 }
