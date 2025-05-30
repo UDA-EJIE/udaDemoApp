@@ -351,7 +351,7 @@
         });
 
         // Se recubre con un form
-        var $searchForm = jQuery('<form>').attr('id', idTabla + '_search_searchForm');
+        var $searchForm = jQuery('<form>').attr('id', idTabla + '_search_searchForm').addClass('w-100');
 
         $('#' + $.escapeSelector(idTabla)).wrapAll($searchForm);
 
@@ -485,7 +485,7 @@
             _selectSearch(dt, ctx, data);
         } else {
             var tabla = $('#' + $.escapeSelector(ctx.sTableId));
-            tabla.dataTable().fnPageChange(data[ctx.seeker.search.pos].page - 1);
+            tabla.DataTable().page(data[ctx.seeker.search.pos].page - 1).draw('page');
         }
 
         if (data.length === 0) {
