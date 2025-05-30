@@ -135,37 +135,6 @@ jQuery(function ($) {
             }
         ];
 
-
-        // Formulario de filtrado.
-        $('#id_filter_table').rup_select({
-        	url : './allIds',
-        	sourceParam : {text: 'id', id: 'id'},
-        	autocomplete: true,
-        	combo: true
-        });
-        $('#apellido1_filter_table').rup_select({
-        	url: './apellidos',
-        	sourceParam : {text: 'label', id: 'value'},
-			blank: '',
-			placeholder: '[Seleccionar por favor...]',
-			allowClear: true
-        });
-        $('#apellido2_filter_table').rup_select({
-        	url: './apellidos',
-        	sourceParam : {text: 'label', id: 'value'},
-			blank: '',
-        	autocomplete: true,
-        	contains: true,
-        	combo: true
-        });
-        $('#fechaAlta_filter_table').rup_date({
-			labelMaskId: 'fecha-mask',
-			showButtonPanel: true,
-			showOtherMonths: true,
-			noWeekend: true
-        });
-        $('#fechaBaja_filter_table').rup_date();
-
         const listaPlugins = 'colReorder,seeker,buttons,simpleFilter,multiSelection,editForm,';
 
         const allowedPluginsBySelecionType = {
@@ -237,6 +206,36 @@ jQuery(function ($) {
             	plugins.filter.filterToolbar = 'example_filter_toolbar';
             	plugins.filter.collapsableLayerId = 'example_filter_fieldset';
                 $('#noFilter').prop('checked', false);
+
+				// Formulario de filtrado.
+				$('#id_filter_table').rup_select({
+					url: './allIds',
+					sourceParam: { text: 'id', id: 'id' },
+					autocomplete: true,
+					combo: true
+				});
+				$('#apellido1_filter_table').rup_select({
+					url: './apellidos',
+					sourceParam: { text: 'label', id: 'value' },
+					blank: '',
+					placeholder: '[Seleccionar por favor...]',
+					allowClear: true
+				});
+				$('#apellido2_filter_table').rup_select({
+					url: './apellidos',
+					sourceParam: { text: 'label', id: 'value' },
+					blank: '',
+					autocomplete: true,
+					contains: true,
+					combo: true
+				});
+				$('#fechaAlta_filter_table').rup_date({
+					labelMaskId: 'fecha-mask',
+					showButtonPanel: true,
+					showOtherMonths: true,
+					noWeekend: true
+				});
+				$('#fechaBaja_filter_table').rup_date();
             }
             
             // SELECCIÓN
