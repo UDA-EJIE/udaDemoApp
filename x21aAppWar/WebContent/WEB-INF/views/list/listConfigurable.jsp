@@ -93,7 +93,7 @@
         <fieldset class="mb-3">
             <legend><spring:message code="lista.configurable.opciones.title" /></legend>
             <div class="mb-3">
-                <label for="listConfigPrint" class="pr-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
+                <label for="listConfigPrint" class="pe-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" id="listConfigSelectNo" name="listConfigSelect" value="0" checked>
                   <label class="form-check-label" for="listConfigSelectNo"><spring:message code="lista.configurable.opciones.selectables.no" /></label>

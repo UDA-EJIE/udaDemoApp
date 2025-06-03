@@ -94,7 +94,7 @@
                 <fieldset class="mb-3">
                     <legend><spring:message code="lista.configurable.opciones.title" /></legend>
                     <div class="mb-3">
-                        <label for="listConfigLeftPrint" class="pr-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
+                        <label for="listConfigLeftPrint" class="pe-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" id="listConfigLeftSelectNo" name="listConfigLeftSelect" value="0" checked>
                           <label class="form-check-label" for="listConfigLeftSelectNo"><spring:message code="lista.configurable.opciones.selectables.no" /></label>
@@ -290,7 +290,7 @@
                 <fieldset class="mb-3">
                     <legend><spring:message code="lista.configurable.opciones.title" /></legend>
                     <div class="mb-3">
-                        <label for="listConfigRightPrint" class="pr-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
+                        <label for="listConfigRightPrint" class="pe-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" id="listConfigRightSelectNo" name="listConfigRightSelect" value="0" checked>
                           <label class="form-check-label" for="listConfigRightSelectNo"><spring:message code="lista.configurable.opciones.selectables.no" /></label>
