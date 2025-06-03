@@ -26,7 +26,7 @@
 <form:form modelAttribute="randomForm" id="table_filter_form" action="${url}" method="POST">
 	<div id="table_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:select path="nameLog" id="nameLog_filter_table" />
 				<label for="nameLog_filter_table">Nombre</label>

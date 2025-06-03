@@ -91,9 +91,9 @@
 
         <div class="rup_list_configuracion">
             <form id="listConfigLeftFilterForm" class="mt-5">
-                <fieldset class="form-group">
+                <fieldset class="mb-3">
                     <legend><spring:message code="lista.configurable.opciones.title" /></legend>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="listConfigLeftPrint" class="pr-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" id="listConfigLeftSelectNo" name="listConfigLeftSelect" value="0" checked>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
                         <div class="checkbox-material">
                             <input id="listConfigLeftMultiSort" type="checkbox">
                             <label for="listConfigLeftMultiSort"><spring:message code="lista.configurable.opciones.multiSort" /></label>
@@ -141,48 +141,48 @@
 
                     <div class="row">
                         <div class="col">
-                            <fieldset class="form-group">
+                            <fieldset class="mb-3">
                                 <legend class="col-form-label"><spring:message code="lista.configurable.opciones.show" /></legend>
                                 <div class="row">
-                                    <div class="form-group col-md">
+                                    <div class="mb-3 col-md">
                                         <div class="checkbox-material">
                                             <input id="listConfigLeftShow" name="Show" type="checkbox">
                                             <label for="listConfigLeftShow"><spring:message code="lista.configurable.opciones.animationSwitch" /></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigLeftShowAnimation"><spring:message code="lista.configurable.opciones.animation" /></label>
                                     <select id="listConfigLeftShowAnimation" name="ShowAnimation" class="form-control">
                                         <option value="fade">fade</option>
                                         <option value="bounce">bounce</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigLeftShowDelay"><spring:message code="lista.configurable.opciones.animationTime" /></label>
                                     <input type="number" class="form-control" name="ShowDelay" id="listConfigLeftShowDelay" placeholder="200">
                                 </div>
                             </fieldset>
                         </div>
                         <div class="col">
-                            <fieldset class="form-group">
+                            <fieldset class="mb-3">
                                 <legend class="col-form-label"><spring:message code="lista.configurable.opciones.hide" /></legend>
                                 <div class="row">
-                                    <div class="form-group col-md">
+                                    <div class="mb-3 col-md">
                                         <div class="checkbox-material">
                                             <input id="listConfigLeftHide" name="Hide" type="checkbox">
                                             <label for="listConfigLeftHide"><spring:message code="lista.configurable.opciones.animationSwitch" /></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigLeftHideAnimation"><spring:message code="lista.configurable.opciones.animation" /></label>
                                     <select id="listConfigLeftHideAnimation" name="HideAnimation" class="form-control">
                                         <option value="fade">fade</option>
                                         <option value="bounce">bounce</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigLeftHideDelay"><spring:message code="lista.configurable.opciones.animationTime" /></label>
                                     <input type="number" class="form-control" name="HideDelay" id="listConfigLeftHideDelay" placeholder="200">
                                 </div>
@@ -287,9 +287,9 @@
 
         <div class="rup_list_configuracion">
             <form id="listConfigRightFilterForm" class="mt-5">
-                <fieldset class="form-group">
+                <fieldset class="mb-3">
                     <legend><spring:message code="lista.configurable.opciones.title" /></legend>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="listConfigRightPrint" class="pr-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" id="listConfigRightSelectNo" name="listConfigRightSelect" value="0" checked>
@@ -309,7 +309,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
                         <div class="checkbox-material">
                             <input id="listConfigRightMultiSort" type="checkbox">
                             <label for="listConfigRightMultiSort"><spring:message code="lista.configurable.opciones.multiSort" /></label>
@@ -328,7 +328,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
                         <div class="form-groupMaterial">
                             <input type="text" id="listConfigRightPrint" placeholder="print.css">
                             <label for="listConfigRightPrint"><spring:message code="lista.configurable.opciones.print" /></label>
@@ -337,48 +337,48 @@
 
                     <div class="row">
                         <div class="col">
-                            <fieldset class="form-group">
+                            <fieldset class="mb-3">
                                 <legend class="col-form-label"><spring:message code="lista.configurable.opciones.show" /></legend>
                                 <div class="row">
-                                    <div class="form-group col-md">
+                                    <div class="mb-3 col-md">
                                         <div class="checkbox-material">
                                             <input id="listConfigRightShow" name="Show" type="checkbox">
                                             <label for="listConfigRightShow"><spring:message code="lista.configurable.opciones.animationSwitch" /></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigRightShowAnimation"><spring:message code="lista.configurable.opciones.animation" /></label>
                                     <select id="listConfigRightShowAnimation" name="ShowAnimation" class="form-control">
                                         <option value="fade">fade</option>
                                         <option value="bounce">bounce</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigRightShowDelay"><spring:message code="lista.configurable.opciones.animationTime" /></label>
                                     <input type="number" class="form-control" name="ShowDelay" id="listConfigRightShowDelay" placeholder="200">
                                 </div>
                             </fieldset>
                         </div>
                         <div class="col">
-                            <fieldset class="form-group">
+                            <fieldset class="mb-3">
                                 <legend class="col-form-label"><spring:message code="lista.configurable.opciones.hide" /></legend>
                                 <div class="row">
-                                    <div class="form-group col-md">
+                                    <div class="mb-3 col-md">
                                         <div class="checkbox-material">
                                             <input id="listConfigRightHide" name="Hide" type="checkbox">
                                             <label for="listConfigRightHide"><spring:message code="lista.configurable.opciones.animationSwitch" /></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigRightHideAnimation"><spring:message code="lista.configurable.opciones.animation" /></label>
                                     <select id="listConfigRightHideAnimation" name="HideAnimation" class="form-control">
                                         <option value="fade">fade</option>
                                         <option value="bounce">bounce</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md">
+                                <div class="mb-3 col-md">
                                     <label for="listConfigRightHideDelay"><spring:message code="lista.configurable.opciones.animationTime" /></label>
                                     <input type="number" class="form-control" name="HideDelay" id="listConfigRightHideDelay" placeholder="200">
                                 </div>

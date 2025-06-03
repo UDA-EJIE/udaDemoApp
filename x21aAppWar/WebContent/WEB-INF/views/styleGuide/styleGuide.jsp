@@ -379,11 +379,11 @@
     <p>En caso de utilizar los estilos de bootstrap a la hora de diseñar los campos de los formularios el estilo será similar.</p>
 
     <div class="example">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="textFieldBootstrap">Campo de texto Bootstrap</label>
         <input type="text" class="form-control" id="textFieldBootstrap" placeholder=".form-control">
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <label for="passwordFieldBootstrap">Password</label>
         <input type="password" class="form-control" id="passwordFieldBootstrap" placeholder="Password">
       </div>
@@ -419,7 +419,7 @@
     
     <h3>Autocomplete</h3>
 
-    <div class="form-group">
+    <div class="mb-3">
 		<select id="autocompleteDefault" name="autocompleteDefault"></select>
 		<label for="autocompleteDefault">Autocomplete</label>
 	</div>
@@ -605,7 +605,7 @@
 	
 	<div class="example">
 		<p>Textarea básico</p>
-		<div class="form-group">
+		<div class="mb-3">
 			<label for="textarea">Textarea</label>
 			<textarea id="textarea" class="form-control"></textarea>
 		</div>
@@ -623,7 +623,7 @@
 		</div>
 		
 		<p>Textarea con placeholder materializado // Textarea con required y placeholder materializado</p>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm-6">
 				<textarea id="textareaPlaceholderMaterial" placeholder="Soy un placeholder..."></textarea>
 				<label for="textareaPlaceholderMaterial">Textarea</label>

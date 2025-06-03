@@ -32,7 +32,7 @@
 		<form:form modelAttribute="randomForm" id="formDate">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="form-group">
+					<div class="mb-3">
 				     	<label for="dateField" class="label"><spring:message code="campoObligatorio" /></label>
 					  	<form:input path="dateField" class="form-control" id="dateField" />
 				    </div>
@@ -58,7 +58,7 @@
 		<form:form modelAttribute="randomForm" id="formAutocomplete">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="form-group">
+					<div class="mb-3">
 				     	<label for="autocompleteField" class="label"><spring:message code="campoObligatorio" /></label>
 					  	<form:input path="autocompleteField" class="form-control" id="autocompleteField" />
 				    </div>

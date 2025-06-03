@@ -22,7 +22,7 @@
 
 <form:form modelAttribute="options" method="POST" id="multipk_tableConfiguration" class="mt-5">
    <h3 id="pluginErrorLabel">Selección de Plugins</h3>
-   <fieldset class="form-group">		    
+   <fieldset class="mb-3">		    
 		<div class="row">
 			  <legend class="col-form-label col-sm-2 pt-0">Plugins</legend>				    
 	          <div class="col-sm-10">
@@ -53,7 +53,7 @@
 	          </div>
 		</div>
   	</fieldset>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<div class="row">
 			<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 			<div class="col-sm-10">

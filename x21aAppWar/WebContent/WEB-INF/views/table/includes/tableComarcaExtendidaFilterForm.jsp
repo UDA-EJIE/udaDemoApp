@@ -19,7 +19,7 @@
 <form:form modelAttribute="comarcaExtendida" id="comarca_filter_form" action="${url}" method="POST">
 	<div  id="comarca_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="comarca_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="descEs" id="descEs_filter_comarca" />
 				<label for="descEs_filter_comarca">descEs</label>
@@ -29,7 +29,7 @@
 				<label for="descEu_filter_comarca">descEu</label>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="css" id="css_filter_comarca" />
 				<label for="css_filter_comarca">css</label>

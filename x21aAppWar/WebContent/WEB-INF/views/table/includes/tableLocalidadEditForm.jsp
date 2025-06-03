@@ -31,7 +31,7 @@
 	<c:if test="${not empty pkValueIdPadre}">
 		<form:hidden path="comarca.code" value="${pkValueIdPadre.id}" id="localidad_idPadre_masterPK" />
 	</c:if>
-	<div class="form-row"> 
+	<div class="row"> 
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detail_tableLocalidad" />
 	    	<label for="descEs_detail_tableLocalidad">descEs</label>
@@ -41,7 +41,7 @@
 	    	<label for="descEu_detail_tableLocalidad">descEu</label>
 	    </div> 
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="css" id="css_detail_tableLocalidad" />
 	    	<label for="css_detail_tableLocalidad">css</label>
@@ -51,7 +51,7 @@
 	    	<label for="comarcaCss_detail_tableLocalidad">comarca.css</label>
 	    </div>
 	</div>
-	<div class="form-row">  
+	<div class="row">  
 	    <div class="form-groupMaterial col-sm d-none">
 	    	<form:input path="comarca.descEs" id="comarcaDescEs_detail_tableLocalidad" />
 	    	<label for="comarcaDescEs_detail_tableLocalidad">comarca.descEs</label>

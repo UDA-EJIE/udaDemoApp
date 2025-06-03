@@ -30,7 +30,7 @@
 <spring:url value="comboEnlazadoMultiple/departamentoProvinciaDTO" var="remoto"/>
  
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<fieldset class="col-sm me-sm-5">
 			<legend>Local (no i18n)</legend>
 			
@@ -73,7 +73,7 @@
 </div>
 
 <div class="container-fluid mt-4">
-	<div class="form-row">
+	<div class="row">
 		<fieldset class="col-sm me-sm-5">
 			<legend>Mixto I</legend>
 			<form:form id="departamentoProvinciaMixto1_form" modelAttribute="departamentoProvinciaDTO" action="${remoto}" method="GET">

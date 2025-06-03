@@ -22,7 +22,7 @@
 	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
 		<!-- Campos del formulario de filtrado -->
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
 				<label for="nombre_filter_table" >

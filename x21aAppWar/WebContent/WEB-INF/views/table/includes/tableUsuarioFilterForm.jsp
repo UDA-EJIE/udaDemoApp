@@ -21,7 +21,7 @@
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="usuario_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="usuario_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
@@ -36,7 +36,7 @@
 				<label for="apellido2_filter_table"><spring:message code="apellido2"/></label>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="ejie" id="ejie_filter_table"/>
 				<label for="ejie_filter_table"><spring:message code="ejie"/></label>

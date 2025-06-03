@@ -26,7 +26,7 @@
       <p>Para ello, debe de introducir un nombre con el que se identificará.</p>
     </div>
     <div class="row col-md-12">
-      <div class="form-group">
+      <div class="mb-3">
 			     <label for="feedback_type">Nombre:</label>
 					 <input id="feedback_imgClass" class="form-control" type="text" placeholder="feedbackImgPruebas" />
       </div>
@@ -40,7 +40,7 @@
       <p>Por fevor, seleccione el widget que desea añadir:</p>
     </div>
     <div class="row col-md-12">
-      <div class="form-group">
+      <div class="mb-3">
         <ul class="list-group">
           <a id="newWidgetHtmlInline" class="list-group-item" >
             <h5 class="list-group-item-heading">Widget HTML inline</h5>

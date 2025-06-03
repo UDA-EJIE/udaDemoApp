@@ -9,7 +9,7 @@
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="iberdokTable_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="iberdokTable_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
 				<form:input path="idDocumento" id="idDocumento_filter_table" />

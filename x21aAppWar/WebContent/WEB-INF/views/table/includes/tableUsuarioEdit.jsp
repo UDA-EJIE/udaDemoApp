@@ -28,7 +28,7 @@
 			<!-- Feedback del formulario de detalle -->
 			<div id="usuario_detail_feedback"></div>
 			<!-- Campos del formulario de detalle -->
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm">
 					<form:input path="nombre" id="nombre_detail_table"/>
 					<label for="nombre_detail_table"><spring:message code="nombre"/></label>
@@ -42,7 +42,7 @@
 					<label for="apellido2_detail_table"><spring:message code="apellido2"/></label>
 				</div>
 			</div>
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm">
 					<form:checkbox path="ejie" id="ejie_detail_table"/>			
 					<label for="ejie_detail_table"><spring:message code="ejie"/></label>				

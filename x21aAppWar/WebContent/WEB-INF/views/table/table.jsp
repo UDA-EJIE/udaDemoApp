@@ -51,7 +51,7 @@
 
 <form:form modelAttribute="options" method="POST" id="example_tableConfiguration" class="mt-5">
 	<h3 id="pluginErrorLabel">Configuración de la tabla</h3>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<legend class="col-form-label col-sm-2 pt-0">Plugins</legend>
 		<div class="col-sm-10">
 			<div class="checkbox-material pluginsControl">
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 	</fieldset>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<legend class="col-form-label col-sm-2 pt-0">Tipos de filtrado</legend>
 		<div class="col-sm-10">
 			<div class="radio-material pluginsControl">
@@ -89,7 +89,7 @@
 			</div>
 		</div>
 	</fieldset>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<legend class="col-form-label col-sm-2 pt-0">Tipos de selección</legend>
 		<div class="col-sm-10">
 			<div class="radio-material pluginsControl">
@@ -106,7 +106,7 @@
 			</div>
 		</div>
 	</fieldset>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<legend class="col-form-label col-sm-2 pt-0">Tipos de edición</legend>
 		<div class="col-sm-10">
 			<div class="radio-material pluginsControl">
@@ -128,7 +128,7 @@
 			</div>
 		</div>
 	</fieldset>
-	<fieldset class="form-group">
+	<fieldset class="mb-3">
 		<legend class="col-form-label col-sm-2 pt-0">Pruebas</legend>
 		<div class="col-sm-10">
 			<div class="checkbox-material pluginsControl">

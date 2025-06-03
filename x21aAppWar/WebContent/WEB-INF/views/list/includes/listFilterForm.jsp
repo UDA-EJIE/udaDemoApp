@@ -3,7 +3,7 @@
     <legend><spring:message code="lista.filter.legend" /></legend>
     <spring:url value="/patrones/lista/filter" var="url"/>
     <form:form modelAttribute="usuario" id="listFilterForm" action="${url}">
-        <div class="form-row">
+        <div class="row">
             <div class="form-groupMaterial col-sm">
                 <form:input id="listFilterId" path="id"/>
             	<label for="listFilterId">
@@ -17,7 +17,7 @@
             	</label>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="form-groupMaterial col-sm">
                 <form:input id="listFilterApe1" path="apellido1"/>
             	<label for="listFilterApe1">

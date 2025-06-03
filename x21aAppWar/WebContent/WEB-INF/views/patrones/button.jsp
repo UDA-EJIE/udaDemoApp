@@ -180,13 +180,13 @@
 			<button type="button" id="dropdownDialogButton">Dialogo</button>
 			<div id="dropdownDialog" class="dialog-content-material">
 				<form>
-					<div class="form-row">
+					<div class="row">
 						<div class="form-groupMaterial col-12">
 							<select id="dropdownButton-combo"></select>
 							<label for="dropdownButton-combo">Filtros</label>
 						</div>
 					</div>
-					<div class="form-row">
+					<div class="row">
 						<div class="checkbox-material col-12">
 							<input type="checkbox" id="dropdownButton-defaultFilter" />
 							<label for="dropdownButton-defaultFilter">Filtro por defecto</label>

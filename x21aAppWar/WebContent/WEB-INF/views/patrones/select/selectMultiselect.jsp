@@ -23,7 +23,7 @@
 <spring:url value="comboEnlazadoSimple/provinciaComarcaLocalidadDTO" var="remotoAgrupado"/>
 
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm-6">
 			<select id="multiSelect"></select>  
 			<label for="multiSelect">MultiSelect local</label>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="container-fluid mt-4">
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm-6">
 			<select id="multiSelectGrupos"></select>  
 			<label for="multiSelectGrupos">MultiSelect con 'optgroups'</label>
@@ -55,7 +55,7 @@
 </div>
 
 <div class="container-fluid mt-4">
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm-6">
 			<select id="multiSelectLoadFromSelect" multiple="multiple">
 				<option value="1" selected="selected">Alava</option>
@@ -67,7 +67,7 @@
 	</div>
 </div>
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<fieldset id="local" class="col-sm me-sm-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">

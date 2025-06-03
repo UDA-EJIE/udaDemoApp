@@ -25,7 +25,7 @@
 </h2>
 
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<fieldset id="local" class="col-sm me-sm-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
@@ -68,7 +68,7 @@
 </div>
 
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<fieldset id="local" class="col-sm me-sm-5">
 			<legend>Local a Remoto</legend>
 			<form:form id="departamentoProvincia_form" modelAttribute="provinciaComarcaDTO" action="${mixto}" method="GET">
@@ -112,7 +112,7 @@
 </div>
 
 <div class="container-fluid mt-4">
-	<div class="form-row">
+	<div class="row">
 		
 		<div id="remoteGroup" class="col-sm">
 			<fieldset>
