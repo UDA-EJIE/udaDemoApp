@@ -35,18 +35,13 @@ jQuery(function ($) {
 		        name: 'provincia.code',
 		        editable: true,
 		        hidden: false,
-		        rupType: 'combo',
+		        rupType: 'select',
                 editoptions: {
-                	source : '../tableComarca/provincia',
-                    sourceParam : {
-                    	label: 'desc' + $.rup_utils.capitalizedLang(), 
-                    	value: 'code',
-        	            style: 'css'
-                    },
-        	        rowStriping: true,
-        	        blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
+                	url: '../tableComarca/provincia',
+                    sourceParam: {text: 'desc' +$.rup_utils.capitalizedLang(), id: 'code'},
+					autocomplete: true,
+                    contains: true,
+                    combo: true
                 }
 		    },
 		    {

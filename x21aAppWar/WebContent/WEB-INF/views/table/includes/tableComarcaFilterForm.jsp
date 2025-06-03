@@ -35,7 +35,7 @@
 				<label for="css_filter_comarca">css</label>
 			</div>
 			<div class="form-groupMaterial col-sm">
-				<form:input path="provincia.descEs" id="provinciaDescEs_filter_comarca" />
+				<form:select path="provincia.code" id="provinciaDescEs_filter_comarca" />
 				<label for="provinciaDescEs_filter_comarca">provinciaDescEs</label>
 			</div>
 		</div>

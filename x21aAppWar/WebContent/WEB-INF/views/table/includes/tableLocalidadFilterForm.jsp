@@ -23,7 +23,7 @@
 	    
 	    <div class="form-row">
 			<!-- PK de la tabla padre (NECESARIO) -->
-       		<form:input id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
+       		<form:select id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
        		
 			<div class="form-groupMaterial col-sm">
 				<form:input path="descEs" id="descEs_filter_localidad" />
