@@ -60,9 +60,9 @@
 		</div>
 		
 		<!-- Botonera del formulario de filtrado -->
-	    <div id="x21aAlumno_filter_buttonSet" class="text-right">
+	    <div id="x21aAlumno_filter_buttonSet" class="text-end">
 	    	<!-- Bot�n de limpiar -->
-	        <button id="x21aAlumno_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+	        <button id="x21aAlumno_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>Limpiar</span>
 	        </button>

@@ -101,7 +101,7 @@ jQuery(function($){
             	 		return 'Recargar tabla';
             	 	},
             	 	id: 'exampleRecargarTabla', // Campo obligatorio si se quiere usar desde el contextMenu
-            	 	className: 'btn-material-primary-high-emphasis table_toolbar_btnReload order-last ml-1 ml-lg-auto',
+            	 	className: 'btn-material-primary-high-emphasis table_toolbar_btnReload order-last ms-1 ms-lg-auto',
             	 	icon: "mdi-refresh",
             	 	displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
             	 	insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido

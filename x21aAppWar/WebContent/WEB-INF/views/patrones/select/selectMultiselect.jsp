@@ -68,7 +68,7 @@
 </div>
 <div class="container-fluid">
 	<div class="form-row">
-		<fieldset id="local" class="col-sm mr-sm-5">
+		<fieldset id="local" class="col-sm me-sm-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
 				<select id="selectAbuelo"></select>
@@ -86,7 +86,7 @@
 			</div>
 		</fieldset>
 
-		<fieldset id="remote" class="col-sm mr-sm-5">
+		<fieldset id="remote" class="col-sm me-sm-5">
 			<legend>Remoto</legend>
 			<form:form id="selectRemoto_form" modelAttribute="provinciaComarcaLocalidadDTO" action="${remoto}" method="GET">
 				<div class="form-groupMaterial">

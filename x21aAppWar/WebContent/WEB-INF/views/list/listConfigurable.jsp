@@ -106,7 +106,7 @@
                   <input class="form-check-input" type="radio" id="listConfigSelectMultiple" name="listConfigSelect" value="2">
                   <label class="form-check-label" for="listConfigSelectMultiple"><spring:message code="lista.configurable.opciones.selectables.multiple" /></label>
                 </div>
-                <div class="checkbox-material form-check-inline ml-4">
+                <div class="checkbox-material form-check-inline ms-4">
                     <input id="listConfigSuperSelect" type="checkbox" disabled>
                     <label for="listConfigSuperSelect"><spring:message code="lista.configurable.opciones.superSelect" /></label>
                 </div>

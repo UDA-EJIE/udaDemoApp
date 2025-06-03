@@ -65,9 +65,9 @@
 	</div>
 	
 	<!-- Botonera del formulario -->
-    <div id="example_detail_buttonSet" class="text-right">
+    <div id="example_detail_buttonSet" class="text-end">
     	<!-- Botón de limpiar -->
-        <button id="closeEditFormWindow" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <button id="closeEditFormWindow" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
         	<i class="mdi mdi-exit-to-app"></i>
         	<span>
 				Cerrar formulario

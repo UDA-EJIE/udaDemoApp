@@ -31,8 +31,8 @@
 	            </label>
             </div>
         </div>
-        <div class="text-right">
-            <button id="listFilterLimpiar" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <div class="text-end">
+            <button id="listFilterLimpiar" class="btn-material btn-material-primary-low-emphasis me-2">
             	<i class="mdi mdi-eraser"></i>
             	<span><spring:message code="lista.filter.clean"/></span>
             </button>

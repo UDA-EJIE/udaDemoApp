@@ -19,9 +19,9 @@
 			</div>
 		</div>
 		<!-- Botonera del formulario de filtrado -->
-	    <div id="iberdokTable_filter_buttonSet" class="text-right">
+	    <div id="iberdokTable_filter_buttonSet" class="text-end">
 	    	<!-- Botón de limpiar -->
-	        <button id="iberdokTable_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+	        <button id="iberdokTable_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 					<spring:message code="clear" />

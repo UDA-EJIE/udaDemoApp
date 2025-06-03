@@ -68,7 +68,7 @@
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">
-		<div class="text-right">
+		<div class="text-end">
 			<!-- Botón cancelar -->
 			<button id="usuario_detail_button_cancel" type="button">
 				<spring:message code="cancel" />

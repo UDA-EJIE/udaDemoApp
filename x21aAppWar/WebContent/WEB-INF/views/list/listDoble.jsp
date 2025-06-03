@@ -107,7 +107,7 @@
                           <input class="form-check-input" type="radio" id="listConfigLeftSelectMultiple" name="listConfigLeftSelect" value="2">
                           <label class="form-check-label" for="listConfigLeftSelectMultiple"><spring:message code="lista.configurable.opciones.selectables.multiple" /></label>
                         </div>
-                        <div class="checkbox-material form-check-inline ml-4">
+                        <div class="checkbox-material form-check-inline ms-4">
                             <input id="listConfigLeftSuperSelect" type="checkbox" disabled>
                             <label for="listConfigLeftSuperSelect"><spring:message code="lista.configurable.opciones.superSelect" /></label>
                         </div>
@@ -303,7 +303,7 @@
                           <input class="form-check-input" type="radio" id="listConfigRightSelectMultiple" name="listConfigRightSelect" value="2">
                           <label class="form-check-label" for="listConfigRightSelectMultiple"><spring:message code="lista.configurable.opciones.selectables.multiple" /></label>
                         </div>
-                        <div class="checkbox-material form-check-inline ml-4">
+                        <div class="checkbox-material form-check-inline ms-4">
                             <input id="listConfigRightSuperSelect" type="checkbox" disabled>
                             <label for="listConfigRightSuperSelect"><spring:message code="lista.configurable.opciones.superSelect" /></label>
                         </div>
