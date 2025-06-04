@@ -236,7 +236,7 @@
 	
 	<div class="row">
 		<div class="col-md-3">
-			<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+			<input type="submit" class="btn d-block w-100 btn-secondary" value="Validar"  />
 		</div>
 		<div class="col-md-9">
 		

@@ -65,7 +65,7 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-3">
-					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+					<input type="submit" class="btn d-block w-100 btn-secondary" value="Validar"  />
 				</div>
 			</div>
 		</form:form>
@@ -125,7 +125,7 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-3">
-					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+					<input type="submit" class="btn d-block w-100 btn-secondary" value="Validar"  />
 				</div>
 			</div>
 		</form:form>
@@ -229,7 +229,7 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-3">
-					<input type="submit" class="btn btn-block btn-secondary" value="Validar"  />
+					<input type="submit" class="btn d-block w-100 btn-secondary" value="Validar"  />
 				</div>
 			</div>
 		</form:form>
