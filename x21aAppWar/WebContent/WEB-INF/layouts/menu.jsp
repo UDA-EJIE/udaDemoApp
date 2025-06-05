@@ -517,7 +517,7 @@
 			<!--<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_releases"
 					data-toggle="dropdown">
-					<i class="mdi mdi-settings" aria-hidden="true"></i>
+					<i class="mdi mdi-cog" aria-hidden="true"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow-center">
 				</div>

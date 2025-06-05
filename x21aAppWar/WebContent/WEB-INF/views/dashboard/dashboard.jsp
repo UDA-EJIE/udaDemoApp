@@ -60,7 +60,7 @@
   </div>
 
   <!-- FAB Button -->
-  <button type="button" id="fabButton" data-fab="true" data-fixed="true" data-layer="fabButtonDiv"><span class="mdi mdi-settings" /></button>
+  <button type="button" id="fabButton" data-fab="true" data-fixed="true" data-layer="fabButtonDiv"><span class="mdi mdi-cog" /></button>
   <div id="fabButtonDiv">
 
 	</div>
@@ -86,7 +86,7 @@
       <li>
       	<spring:url value="#toolsList" var="urlToolList" htmlEscape="true"/>
         <a data-toggle="collapse" href="${urlToolList}" aria-expanded="false" aria-controls="toolsList">
-          <i class="mdi mdi-settings" aria-hidden="true"></i><span>Acciones</span>
+          <i class="mdi mdi-cog" aria-hidden="true"></i><span>Acciones</span>
         </a>
         <div class="collapse" id="toolsList">
           <ul>
