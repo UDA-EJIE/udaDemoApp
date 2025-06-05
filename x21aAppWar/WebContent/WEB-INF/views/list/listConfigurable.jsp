@@ -91,7 +91,7 @@
 <div class="rup_list_configuracion">
     <form id="listConfigFilterForm" class="mt-5">
         <fieldset class="mb-3">
-            <legend><spring:message code="lista.configurable.opciones.title" /></legend>
+            <legend class="float-none"><spring:message code="lista.configurable.opciones.title" /></legend>
             <div class="mb-3">
                 <label for="listConfigPrint" class="pe-4"><spring:message code="lista.configurable.opciones.selectables" /></label>
                 <div class="form-check form-check-inline">
@@ -139,7 +139,7 @@
             <div class="row">
                 <div class="col">
                     <fieldset class="mb-3">
-                        <legend class="col-form-label"><spring:message code="lista.configurable.opciones.show" /></legend>
+                        <legend class="col-form-label float-none"><spring:message code="lista.configurable.opciones.show" /></legend>
                         <div class="row">
                             <div class="mb-3 col-md">
                                 <div class="checkbox-material">
@@ -163,7 +163,7 @@
                 </div>
                 <div class="col">
                     <fieldset class="mb-3">
-                        <legend class="col-form-label"><spring:message code="lista.configurable.opciones.hide" /></legend>
+                        <legend class="col-form-label float-none"><spring:message code="lista.configurable.opciones.hide" /></legend>
                         <div class="row">
                             <div class="mb-3 col-md">
                                 <div class="checkbox-material">

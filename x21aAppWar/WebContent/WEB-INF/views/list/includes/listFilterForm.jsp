@@ -1,6 +1,6 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <fieldset class="p-4">
-    <legend><spring:message code="lista.filter.legend" /></legend>
+    <legend class="float-none"><spring:message code="lista.filter.legend" /></legend>
     <spring:url value="/patrones/lista/filter" var="url"/>
     <form:form modelAttribute="usuario" id="listFilterForm" action="${url}">
         <div class="row">
