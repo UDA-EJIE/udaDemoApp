@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <table id="example"
-                    class="tableFit table-striped table-bordered table-material"
+                    class="tableFit table table-striped table-bordered table-material align-middle"
                     data-url-base="."
                     data-filter-form="#example_filter_form">
                     <thead>
@@ -162,7 +162,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <table id="example2"
-                    class="tableFit table-striped table-bordered table-material"
+                    class="tableFit table table-striped table-bordered table-material align-middle"
                     data-url-base="./2"
                     data-filter-form="#example2_filter_form">
                     <thead>

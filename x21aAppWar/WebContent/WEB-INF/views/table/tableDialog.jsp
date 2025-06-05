@@ -28,7 +28,7 @@
 	<div id="tableDialog_div" class="rup-table-container">		
 		<jsp:include page="includes/tableMultiPkFilterForm.jsp"></jsp:include>
 	
-		<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
+		<table id="MultiPk" class="tableFit table table-striped table-bordered table-material align-middle" 
 			data-url-base="./multipk"
 			data-filter-form="#MultiPk_filter_form">
 	        <thead>

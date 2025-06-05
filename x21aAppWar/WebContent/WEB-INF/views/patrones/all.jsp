@@ -19,7 +19,7 @@
 
 <jsp:include page="../table/includes/tableComarcaFilterForm.jsp"></jsp:include>
 
-<table id="comarca" class="tableFit table-striped table-bordered table-material" 
+<table id="comarca" class="tableFit table table-striped table-bordered table-material align-middle" 
 	data-url-base="../tableComarca"
 	data-filter-form="#comarca_filter_form">
     <thead>

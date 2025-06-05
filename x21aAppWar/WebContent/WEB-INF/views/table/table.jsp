@@ -33,7 +33,7 @@
 	<form:select path="rol" id="rol_example_seeker_form" />
 </form:form>
 
-<table id="example" class="tableFit table-striped table-bordered table-material" data-url-base="." data-filter-form="#example_filter_form">
+<table id="example" class="tableFit table table-striped table-bordered table-material align-middle" data-url-base="." data-filter-form="#example_filter_form">
 	<thead>
 		<tr>
 			<th data-col-prop="nombre" data-col-edit="true">Nombre</th>

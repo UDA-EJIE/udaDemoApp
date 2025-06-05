@@ -50,7 +50,7 @@
 			
 		<jsp:include page="tableLocalidadFilterForm.jsp"></jsp:include>
 			
-		<table id="localidad" class="tableFit table-striped table-bordered table-material" 
+		<table id="localidad" class="tableFit table table-striped table-bordered table-material align-middle" 
 			data-url-base="../tableLocalidad"
 			data-filter-form="#localidad_filter_form">
 			<thead>

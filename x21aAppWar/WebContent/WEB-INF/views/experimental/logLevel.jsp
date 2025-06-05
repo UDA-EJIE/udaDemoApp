@@ -57,7 +57,7 @@
 	</fieldset>
 </form:form>
 
-<table id="table" class="tableFit table-striped table-bordered table-material" 
+<table id="table" class="tableFit table table-striped table-bordered table-material align-middle" 
 	data-url-base="."
 	data-filter-form="#table_filter_form">
         <thead>
