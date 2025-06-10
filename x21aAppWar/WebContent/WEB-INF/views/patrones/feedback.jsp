@@ -58,7 +58,7 @@
 		</div>
 
 		<form>
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<label for="feedback_type" class="col-md-1 col-12 col-form-label">type:</label>
 				<div class="col-lg-2 col-md-2 col-12">
 					<select id="feedback_type" class="form-control">
@@ -94,7 +94,7 @@
 				</div>
 			</div>
 
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<label for="feedback_imgClass" class="col-lg-1 col-form-label">imgClass:</label>
 				<div class="col-lg-2">
 					<input id="feedback_imgClass" class="form-control" type="text"

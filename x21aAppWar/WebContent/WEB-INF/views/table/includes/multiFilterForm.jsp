@@ -19,7 +19,7 @@
 
 <div id="${tableID}_multifilter_dropdownDialog" style="display:none" class="dialog-content-material">
 	<div id="${tableID}_multifilter_dropdownDialog_feedback"></div>
-	<div class="form-row">
+	<div class="row">
        	<div id="${tableID}_multifilter_dropdownDialog_lineaCombo" class="${containerClass} col-12">
            	<select id="${tableID}_multifilter_select" class="rup_multifilter_selector"></select>
            	<label for="${tableID}_multifilter_select" class="${labelClass}">
@@ -27,7 +27,7 @@
            	</label>
        	</div>
 	</div>
-	<div class="form-row">
+	<div class="row">
        	<div id="${tableID}_multifilter_dropdownDialog_lineaDefault" class="${defaultContainerClass} col-12">
            	<input type="checkbox" id="${tableID}_multifilter_activeFilter" class="${defaultCheckboxClass}"/>
            	<label for="${tableID}_multifilter_activeFilter" class="${labelClass}">

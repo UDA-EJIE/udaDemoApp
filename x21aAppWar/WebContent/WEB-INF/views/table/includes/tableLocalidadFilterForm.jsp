@@ -21,7 +21,7 @@
 	<fieldset id="localidad_filter_fieldset" class="rup-table-filter-fieldset">
 	    <legend></legend>
 	    
-	    <div class="form-row">
+	    <div class="row">
 			<!-- PK de la tabla padre (NECESARIO) -->
        		<form:select id="localidad_filter_masterPK" path="comarca.code" cssClass="d-none"/>
        		
@@ -34,7 +34,7 @@
 				<label for="descEu_filter_localidad">descEu</label>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="css" id="css_filter_localidad" />
 				<label for="css_filter_localidad">css</label>
@@ -42,9 +42,9 @@
 		</div>
 		
 		<!-- Botonera del formulario de filtrado -->
-		<div id="localidad_filter_buttonSet" class="text-right">
+		<div id="localidad_filter_buttonSet" class="text-end">
 			<!-- Bot�n de limpiar -->
-        	<button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        	<button id="localidad_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
             	<i class="mdi mdi-eraser"></i>
         		<span>
            			<spring:message code="clear" />

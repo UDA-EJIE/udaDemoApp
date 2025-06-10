@@ -21,7 +21,7 @@
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="usuario_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="usuario_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
@@ -36,7 +36,7 @@
 				<label for="apellido2_filter_table"><spring:message code="apellido2"/></label>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="ejie" id="ejie_filter_table"/>
 				<label for="ejie_filter_table"><spring:message code="ejie"/></label>
@@ -60,9 +60,9 @@
 		</div>
 		
 		<!-- Botonera del formulario de filtrado -->
-	    <div id="usuario_filter_buttonSet" class="text-right">
+	    <div id="usuario_filter_buttonSet" class="text-end">
 	    	<!-- Bot�n de limpiar -->
-	        <button id="usuario_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+	        <button id="usuario_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 	        		<spring:message code="clear" />

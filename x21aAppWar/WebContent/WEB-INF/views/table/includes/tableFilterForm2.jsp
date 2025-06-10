@@ -19,7 +19,7 @@
   <div id="example2_filter_toolbar" class="formulario_legend"></div>
   <fieldset id="example2_filter_fieldset" class="rup-table-filter-fieldset">
     
-    <div class="form-row">    
+    <div class="row">    
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_filter_table2" />
 	    	<label for="nombre_filter_table2">Nombre</label>
@@ -41,7 +41,7 @@
 	    </div>
 	</div>
     
-    <div class="form-row">
+    <div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaBaja" id="fechaBaja_filter_table2" />
 	    	<label for="fechaBaja_filter_table2">Fecha de baja</label>
@@ -59,9 +59,9 @@
 	</div>
      
     <!-- Botonera del formulario de filtrado -->
-    <div id="example2_filter_buttonSet" class="text-right">
+    <div id="example2_filter_buttonSet" class="text-end">
     	<!-- Bot�n de limpiar -->
-        <button id="example2_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <button id="example2_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
         	<i class="mdi mdi-eraser"></i>
         	<span>
 				<spring:message code="clear" />

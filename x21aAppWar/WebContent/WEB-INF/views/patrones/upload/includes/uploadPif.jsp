@@ -8,28 +8,28 @@
 			<div id="feedback_fileupload_form"></div>
 			<div class="row">
 				<div class="col-md-3">
-					<div class="form-group">
+					<div class="mb-3">
 						<label id="label_nombre"  for="nombre" >Nombre :</label>
 						<!-- <input id="nombre" name="nombre" /> -->
 						<form:input path="nombre" id="nombre"/>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group">
+					<div class="mb-3">
 						<label id="label_apellido1"  for="apellido1" >Apellido 1:</label>
 						<!-- <input id="apellido1" name="apellido1" /> -->
 						<form:input path="apellido1" id="apellido1"/>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group">
+					<div class="mb-3">
 						<label id="label_apellido2"  for="apellido2" >Apellido 2:</label>
 						<!-- <input id="apellido2" name="apellido2" /> -->
 						<form:input path="apellido2" id="apellido2"/>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group">
+					<div class="mb-3">
 						<label id="label_ejie"  for="ejie" >EJIE:</label>
 						<!-- <input type="checkbox" id="ejie" name="ejie" value="1" /> -->
 						<form:checkbox path="ejie" id="ejie" value= "1"/>

@@ -21,7 +21,7 @@
 		<spring:message code="selectAutocompleteEnlazado.title" />
 	</h2>
 	
-	<div class="form-row">
+	<div class="row">
 		<fieldset id="local" class="col-md col-12 px-3">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">

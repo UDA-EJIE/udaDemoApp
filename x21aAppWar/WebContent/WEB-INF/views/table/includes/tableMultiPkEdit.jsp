@@ -26,7 +26,7 @@
 	</div>
 	<!-- Botonera del formulario de detalle -->
 	<div class="rup-table-buttonpanel-material">
-		<div class="text-right">
+		<div class="text-end">
 			<!-- Bot�n cancelar -->
 			<button id="MultiPk_detail_button_cancel" type="button">
 				<spring:message code="cancel" />

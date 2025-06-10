@@ -21,8 +21,8 @@
 		<spring:message code="selectAutocompleteEnlazadoMultiple.title"/>
 	</h2>
 	
-	<div class="form-row">
-		<fieldset id="local" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+	<div class="row">
+		<fieldset id="local" class="col-md col-12 px-3 my-md-0 my-2 me-md-5">
 			<legend>Local</legend>
 			<div class="form-groupMaterial">
 				<select id="abueloLocal" ></select>
@@ -38,7 +38,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset id="remote" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+		<fieldset id="remote" class="col-md col-12 px-3 my-md-0 my-2 me-md-5">
 			<legend>Remoto</legend>
 			<div class="form-groupMaterial">
 				<select id="abueloRemoto" name="departamento"></select> 
@@ -54,7 +54,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset id="mixtoI" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+		<fieldset id="mixtoI" class="col-md col-12 px-3 my-md-0 my-2 me-md-5">
 			<legend>Mixto I (LOCAL, LOCAL y REMOTO)</legend>
 			<div class="form-groupMaterial">
 				<select id="abueloMixtoI" name="departamento"></select> 
@@ -70,7 +70,7 @@
 			</div>
 		</fieldset>
 		
-		<fieldset id="mixtoII" class="col-md col-12 px-3 my-md-0 my-2 mr-md-5">
+		<fieldset id="mixtoII" class="col-md col-12 px-3 my-md-0 my-2 me-md-5">
 			<legend>Mixto II (REMOTO, REMOTO y LOCAL)</legend>
 			<div class="form-groupMaterial">
 				<select id="abueloMixtoII" name="departamento"></select> 

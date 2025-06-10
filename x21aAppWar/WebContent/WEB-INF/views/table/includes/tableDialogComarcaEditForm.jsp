@@ -28,7 +28,7 @@
 	<c:if test="${not empty pkValue}">
 		<form:hidden path="code" value="${pkValue}" id="code_detailForm_tableComarca" />
 	</c:if>
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="descEs" id="descEs_detailForm_tableComarca" />
 	    	<label for="descEs_detailForm_tableComarca">descEs</label>
@@ -38,13 +38,13 @@
 	    	<label for="descEu_detailForm_tableComarca">descEu</label>
 	    </div>
 	</div>
-	<div class="form-row">			    
+	<div class="row">			    
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="css" id="css_detailForm_tableComarca" />
 	    	<label for="css_detailForm_tableComarca">css</label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	 	<div class="form-groupMaterial col-sm">
 	    	<form:select path="provincia.code" id="provinciaCode_detailForm_table" />
 	    	<label for="provinciaCode_detailForm_table">Provincia</label>

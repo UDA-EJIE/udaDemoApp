@@ -28,22 +28,22 @@
 		<div class="example">
 			<div class="row">
 				<div class="col-md-3">
-					<button id="btnError" class="btn btn-block btn-secondary">
+					<button id="btnError" class="btn d-block w-100 btn-secondary">
 						<spring:message code="messages.showError" />
 					</button>
 				</div>
 				<div class="col-md-3">
-					<button id="btnConfirm" class="btn btn-block btn-secondary">
+					<button id="btnConfirm" class="btn d-block w-100 btn-secondary">
 						<spring:message code="messages.showConfirm" />
 					</button>
 				</div>
 				<div class="col-md-3">
-					<button id="btnOK" class="btn btn-block btn-secondary">
+					<button id="btnOK" class="btn d-block w-100 btn-secondary">
 						<spring:message code="messages.showOk" />
 					</button>
 				</div>
 				<div class="col-md-3">
-					<button id="btnAlert" class="btn btn-block btn-secondary">
+					<button id="btnAlert" class="btn d-block w-100 btn-secondary">
 						<spring:message code="messages.showAlert" />
 					</button>
 				</div>
@@ -56,7 +56,7 @@
 		<div class="example">
 			<div class="row">
 				<div class="col-md-3">
-					<button id="btnAlertJS" class="btn btn-block btn-secondary">
+					<button id="btnAlertJS" class="btn d-block w-100 btn-secondary">
 						<spring:message code="messages.showJSAlert" />
 					</button>
 				</div>

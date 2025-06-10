@@ -27,7 +27,7 @@
 	<c:if test="${actionType != 'POST'}">
 		<form:hidden path="id" value="${pkValue}" id="id_detail_table" />
 	</c:if>
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table" />
 	    	<label for="nombre_detail_table"><spring:message code="nombre" /></label>
@@ -37,7 +37,7 @@
 	    	<label for="apellido1_detail_table"><spring:message code="apellido1" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="apellido2" id="apellido2_detail_table" />
 	    	<label for="apellido2_detail_table"><spring:message code="apellido2" /></label>
@@ -47,7 +47,7 @@
 	    	<label for="fechaBaja_detail_table"><spring:message code="fechaBaja" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaAlta" id="fechaAlta_detail_table" />
 	    	<label for="fechaAlta_detail_table"><spring:message code="fechaAlta" /></label>
@@ -57,7 +57,7 @@
 	    	<label for="ejie_detail_table"><spring:message code="ejie" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:select path="rol" id="rol_detail_table" items="${comboRol}" />
 	    	<label for="rol_detail_table"><spring:message code="rol" /></label>
@@ -65,9 +65,9 @@
 	</div>
 	
 	<!-- Botonera del formulario -->
-    <div id="example_detail_buttonSet" class="text-right">
+    <div id="example_detail_buttonSet" class="text-end">
     	<!-- Botón de limpiar -->
-        <button id="closeEditFormWindow" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <button id="closeEditFormWindow" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
         	<i class="mdi mdi-exit-to-app"></i>
         	<span>
 				Cerrar formulario

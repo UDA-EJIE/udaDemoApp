@@ -22,7 +22,7 @@
 	<div id="MultiPk_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="MultiPk_filter_fieldset" class="rup-table-filter-fieldset">
 		<!-- Campos del formulario de filtrado -->
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:input path="nombre" id="nombre_filter_table"/>
 				<label for="nombre_filter_table" >
@@ -43,8 +43,8 @@
 			</div>
 		</div>
 		<!-- Botonera del formulario de filtrado -->
-		<div id="MultiPk_filter_buttonSet" class="text-right">
-			<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+		<div id="MultiPk_filter_buttonSet" class="text-end">
+			<button id="MultiPk_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 	        		<spring:message code="clear" />
