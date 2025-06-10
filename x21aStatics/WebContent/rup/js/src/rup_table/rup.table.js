@@ -1069,7 +1069,7 @@
                 }
 
                 toggleIcon1Tmpl = "<span id='{0}' class='collapse_icon mdi mdi-arrow-down-drop-circle'></span>";
-                toggleLabelTmpl = "<a id='{0}' class='text-primary text-decoration-underline font-weight-bold' href='#0'>{1}:</a>";
+                toggleLabelTmpl = "<a id='{0}' class='text-primary text-decoration-underline fw-bold' href='#0'>{1}:</a>";
                 filterSummaryTmpl = "<span id='{0}'></span>";
                 toggleIcon2Tmpl = "<span id='{0}' class='collapse_icon_right mdi mdi-arrow-up-drop-circle'></span>";
 
@@ -1630,7 +1630,7 @@
                 // Se añaden las clases CSS de los títulos y flechas de las columnas.
                 const displayStyle = {
                 	'block': 'd-block',
-                	'inline': 'd-inline ml-1',
+                	'inline': 'd-inline ms-1',
                 	'none': 'd-none',
                 	'default': 'd-block'
                 };
@@ -1645,7 +1645,7 @@
                 	if (options.columnOrderArrows.showOnlyActive) $this.addClass('sorting_active_only');
                 	
                 	// Crear elementos para las flechas de ordenación.
-                	const $columnDownArrow = $('<span></span>').addClass('mdi mdi-arrow-down mr-2 mr-xl-0');
+                	const $columnDownArrow = $('<span></span>').addClass('mdi mdi-arrow-down me-2 me-xl-0');
                 	const $columnUpArrow = $('<span></span>').addClass('mdi mdi-arrow-up');
                 	const $columnArrowsContainer = $('<div></div>').addClass(arrowsStyle).append($columnDownArrow, $columnUpArrow);
 
@@ -1895,8 +1895,9 @@
     //******************************************************
     // DEFINICIÓN DE LA CONFIGURACION POR DEFECTO DEL PATRON
     //******************************************************
-    DataTable.ext.classes.length.container = 'dt-length col-12 order-2 text-center align-self-center col-sm-2 order-sm-3 col-xl-1 p-0';
-    DataTable.ext.classes.info.container = 'dt-info col-6 order-4 text-left align-self-center col-sm-5 order-sm-4 col-xl-2 text-xl-center';
+	DataTable.ext.classes.length.select = '';
+	DataTable.ext.classes.length.container = 'dt-length col-12 order-2 text-center align-self-center col-sm-2 order-sm-3 col-xl-1 p-0';
+	DataTable.ext.classes.info.container = 'dt-info col-6 order-4 text-start align-self-center col-sm-5 order-sm-4 col-xl-2 text-xl-center';
     
     $.fn.rup_table.defaults = {
         foobar: false,
@@ -1951,7 +1952,7 @@
 				features: [{
 					div: {
 						id: 'select_info',
-						className: 'col-6 order-3 text-right align-self-center col-sm-5 order-sm-2 col-xl-2 order-xl-1 text-xl-left'
+						className: 'col-6 order-3 text-end align-self-center col-sm-5 order-sm-2 col-xl-2 order-xl-1 text-xl-start'
 					},
 					inputPaging: {},
 					pageLength: {},
