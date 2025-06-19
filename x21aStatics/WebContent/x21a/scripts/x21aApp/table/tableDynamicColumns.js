@@ -93,14 +93,10 @@ jQuery(function ($) {
             hidden: false,
             rupType: 'select',
             editoptions: {
-                data: $.map(combo, function (elem) {
-                    return {
-                        text: elem.rol,
-                        id: elem.codTipoSubsanacion
-                    };
-
-                })
-            }
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                }
         }
         ],
         optionalColumns = [{

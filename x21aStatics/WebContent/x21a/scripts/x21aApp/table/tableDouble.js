@@ -482,7 +482,12 @@ function _init() {
                     };
 
                 })
-            }
+            },
+            searchoptions: {
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                }
         }
         ];
 

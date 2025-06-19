@@ -28,9 +28,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-dav"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-pif"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/x38ShLibClasses-rup"/>
+	<classpathentry kind="con" path="oracle.eclipse.tools.weblogic.lib.system"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
