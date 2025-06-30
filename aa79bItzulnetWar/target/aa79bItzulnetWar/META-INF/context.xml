@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Configuración del DataSource JNDI para aa79b -->
+    <Resource name="jdbc/aa79bDB" 
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="20" 
+              maxIdle="5" 
+              maxWaitMillis="10000"
+              username="AA79B_USER" 
+              password="AA79B_PASS" 
+              driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@localhost:1521:XE"
+              validationQuery="SELECT 1 FROM DUAL"
+              testOnBorrow="true" />
+</Context>

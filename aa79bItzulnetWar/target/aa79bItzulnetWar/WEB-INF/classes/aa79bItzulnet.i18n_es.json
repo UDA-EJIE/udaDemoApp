@@ -1,0 +1,1107 @@
+{
+	"aa79bItzulnetWar_migas" :{
+		"comun":"",
+		"avisolegal":"Aviso legal",
+		"administracion":"Administración",
+		"mantenimientoTablasMaestras":"Mantenimiento de tablas y datos maestros",
+		"tiporelevancia":"Tipos de relevancia",
+		"calendariopersonal":"Calendario personal",
+		"calendarioServicio": "Calendario Servicio",
+		"ayudaAplicacion": "Edición de la ayuda de la aplicación",
+		"motivosRechazo":"Motivos de rechazo",
+		"motivosAnulacion":"Motivos de anulacion",
+		"tiposdocumento":"Tipos de documentos de traducción revisión",
+		"tiposrevision":"Tipos de revisión",
+		"horariosatencion":"Horario de atención al público",
+		"horarioslaborales":"Horario laboral del servicio",
+		"lotes":"Configuración de lotes",
+		"tipostarea":"Tareas",
+		"libroregistro":"Libro de registros",
+		"modosinterpretacion":"Modos de interpretacion",
+		"tiposinterpretacion":"Tipos de interpretacion",
+		"formatosfichero":"Formatos de fichero",
+		"configuraciontarifas":"Configuración de tarifas y datos de facturación",
+		"ordenprecios":"Orden de precios públicos",
+		"excepcionfacturacion": "Excepciones de facturación por entidad",
+		"datosBasicos": "Datos básicos",
+		"pifPid": "PIF/PID",
+		"gruposTrabajo": "Gestión de grupos de trabajo",
+		"metadatosBusqueda":"Etiquetas búsqueda",
+		"tramitacionexpedientes":"Tramitación Expedientes",
+		"gestionexpedientes":"Gestión Expedientes",
+		"estudioexpedientes":"Estudio Expedientes",
+		"altaexpedientes":"Alta expediente de oficio",
+		"servicios":"Servicios",
+		"trataFicherosConfi":"Tratamiento de ficheros confidenciales",
+		"encripFicheros":"Encriptacion de ficheros"
+		,"ficherosConfidencialesAsoc": "Ficheros asociados a expedientes confidenciales"
+		,"planificacion":"Planificación"
+		,"planificacionexpediente":"Planificación de expedientes"
+		,"cargatrabajo":"Carga de trabajo"
+		,"detalleTarea":"Detalle de la tarea",
+		"facturacionypagos": "Facturación y pagos",
+		"revisiondatosfacturacion": "Revisión de los datos de facturación",
+		"emisiondefacturas": "Emisión de facturas",
+		"consultafacturas": "Consulta de facturas",
+		"requerirsubsanacionexpedientes":"Requerir subsanaci\u00F3n"
+		,"gestionanulaciones": "Gestión de anulaciones"
+		,"facturacion": "Facturación y pagos",
+		"consultaalbaranes" : "Consulta de albaranes",
+		"pagamentos" : "Pago a proveedores",
+		"plantillas" : "Plantillas",
+		"nivelesDeCalidad" : "Niveles de calidad",
+		"consultas" : "Consultas",
+		"consultaexpedientes" : "Consulta de expedientes",
+		"consultaplanificacionexpedientes" : "Consulta de planificación de expedientes",
+		"consultaregistroacciones" : "Consulta del Registro de acciones"
+		, "actDatosFacturacion": "Actualización de los datos de facturación",
+		"clonacionexpedientes": "Clonación de expedientes",
+		"cambioEstadoExpediente": "Cambio de estado",
+		"servicioActializarAlbaran": "Actualización de albaranes",
+		"informes":"Informes",
+		"auditoria":"Auditoría",
+		"asignadoProveedores":"Asignado a proveedores",
+		"configuracionAuditoria": "Configuración auditoria",
+		"pesosValoracionCalidad": "Pesos valoración de calidad",
+		"seccionesControlDeCalidad": "Secciones del informe de control de calidad",
+		"camposControlCalidad": "Campos control de calidad",
+		"otrostrabajos":"Gestión de otros trabajos"
+	}
+	
+	,"comun" : {
+		"_blank": "[Seleccione]",
+	    "warningSeleccion":"Debe seleccionar primero un elemento de la tabla."	
+	    ,"warningExpAnulados":"Los expedientes que cumplen esta condición están anulados, podrá consultarlos desde la Consulta de expedientes."
+		,"warningExpCerrados": "No se pueden reasignar expedientes en estado cerrado. Quítelos de la selección para poder continuar."
+		,"warningTrabajoTareas": "No se puede eliminar el trabajo ya que tiene tareas asociadas."	
+		,"limiteExportar": "Se ha sobrepasado el límite de {0} resultados para imprimir. Debe filtrar por algún campo más restrictivo."
+		,"seleccionecolumna":"No ha seleccionado ninguna columna"
+	    ,"exportar":"Exportar"
+	    ,"si":"Sí"
+		,"no":"No"
+	    ,"crear":"Crear"
+	    ,"renombrar":"Renombrar"
+	    ,"eliminar":"Eliminar"
+	    ,"cancelar":"¿Esta seguro de que desea cancelar?"
+	    ,"cargando": "Cargando"
+	    ,"generandoPDF": "Generando PDF"
+		,"generandoCSV": "Generando CSV"
+	    ,"guardando": "Guardando"
+	    ,"eliminando": "Eliminando"
+	    ,"copiando": "Copiando"
+	    ,"buscadorDePersonas": "Buscador de Personas"
+	    ,"buscadorDeEtiquetas": "Buscador de etiquetas de búsqueda"
+	    ,"buscadorExpedientesRelacionados": "Buscador de Expedientes Relacionados"
+	    ,"atencion":"Atención"
+	    ,"hora":"hora"
+		,"asignadaA":"Asignada a"
+	    ,"estadoPendienteEjecucion":"Pendiente ejecuci\u00F3n"
+		,"estadoRetrasada":"Retrasada"
+		,"estadoEjecutada":"Ejecutada"
+		,"estadoPendienteAsignacion":"Pendiente asignaci\u00F3n"
+		,"estadoPendienteAceptacion":"Pendiente aceptaci\u00F3n"
+		,"estadoAceptada":"Aceptada"
+		,"estadoRechazada":"Rechazada"
+		,"warningSelectOnlyOne":"Debe seleccionar un único elemento de la tabla."
+		,"buscadorDeLotes": "Buscador de Lotes"
+		,"subiendo": "Subiendo documento"
+		,"guardandoDoc": "Guardando documento"
+		,"tareasfacturables":"Tareas facturables"
+	}
+	, "label": {
+		"tipoDocumento": "Tipo documento"
+		, "iva": "IVA"
+		,"porIva": "% IVA"
+		, "documento": "Documento"
+		, "solicitadas": "Solicitadas"
+		, "IZO": "IZO"
+		, "total": "Total"
+		, "xmlTrados": "XML trados"
+		, "tramosConcor1": "0-84%"
+		, "tramosConcor2": "85-94%"
+		, "tramosConcor3": "95-100%"
+		, "tramosConcor084": "0-84%"
+		, "tramosConcor8594": "85-94%"
+		, "tramosConcor95100": "95-100%"
+		, "tramosConcor100": "100%"
+		, "tramosConcor9599": "95-99%"
+		, "accion":"Acci\u00F3n"
+		, "fechaDesde": "Fecha desde"
+		, "fechaHasta": "Fecha hasta"
+		, "vigente": "Vigente"
+		, "enVigor": "En vigor"
+		, "codigo": "Código"
+		, "confidencial": "Confidencial"
+		, "observaciones": "Observaciones"
+		,"observacionesEjecucion": "Observaciones de ejecuci\u00F3n"
+		, "tipoExpediente": "Tipo expediente"
+		, "descripcion": "Descripción"
+		, "bopv": "BOPV"
+		, "previstoBopv": "Previsto BOPV"
+		, "responsable": "Responsable"
+		, "estado": "Estado"
+		, "numPalabras": "Num. palabras"
+		, "impPalabra": "Imp. palabra"
+		, "impTarea": "Imp. tarea"
+		, "impRecargoFormato": "Imp. recargo formato"
+		, "impRecargoApremio": "Imp. recargo apremio"
+		, "impPenalRetraso": "Imp. penal. retraso"
+		, "impPenalCalidad": "Imp. penal. calidad"
+		, "jornadaIntensiva": "Jornada intensiva"
+		, "nombreDocZIPgenerado": "DocumentosExpediente_"
+		, "calendarioServicio": "Calendario laboral de servicio"
+		, "documentosTradAccesibles":"Al finalizar la tarea los documentos traducidos serán accesibles por el usuario. ¿Desea continuar?"
+		, "documentosRevAccesibles":"Al finalizar la tarea los documentos revisados serán accesibles por el usuario. ¿Desea continuar?"
+		, "dni": "DNI"
+		, "apellidosNombre": "Apellidos y nombre"
+		, "tipo": "Tipo"
+		, "entidad": "Entidad"
+		, "departamento": "Departamento"
+		, "empresa": "Empresa"
+		, "infoDocumento": "Información del documento"
+		, "nombre": "Nombre"
+		, "apellidos": "Apellidos"
+		, "tipoEntidad": "Tipo Entidad"
+		, "numExp": "Número de Expediente"
+		, "titulo": "Título"
+		, "tituloDoc": "Título del documento"
+		, "tituloEnvioMail": "Env\u00EDo de mail"
+		, "solicitudExpediente": "Solicitud/Expediente"
+		, "entrega": "Entrega"
+		, "entidadGestora": "Entidad Gestora"
+		, "gestor": "Gestor"
+		, "fechaHoraSolicitud": "Fecha/Hora Solicitud"
+		, "fecSolicitud": "Fec. Solicitud"
+		, "fechaHoraEntrega": "Fecha/Hora Entrega"
+		, "estadoFase": "Estado/Fase"
+		, "subirFichero": "Subir nuevo fichero"
+		, "adjuntarFichero": "Adjuntar fichero"
+		, "modifFichero": "Modificar fichero"
+		, "todasTipoEntidad": "Ent./Dpto./Emp."
+		, "todos": "Todos"
+		,"tipoTarea":"Tipo tarea"
+		,"numTotalPal":"N\u00BA total palabras"
+		,"fechaInicioTarea":"Fecha y hora inicio tarea"
+		,"fechaFinTarea":"Fecha y hora finalizaci\u00F3n tarea"
+		,"fechaHoraRegistro":"Fecha y hora registro"
+		,"ptoAplicacion":"Pto aplicaci\u00F3n"
+		,"personaAsignada":"Recurso asignado"
+		,"estadoAsignado":"Estado de aceptación"
+		,"estadoEjecucion":"Estado de ejecución"
+		,"horaPrevista":"Horas previstas"
+		,"fechaFin":"Fecha/hora fin prevista"
+		,"fechaInicio":"Fecha/hora inicio prevista"
+		,"fechaHoraInicio":"Fecha/hora inicio"
+		,"orden":"Orden"
+		,"crearTradas":"Crear el proyecto Trados"
+		,"traducir":"Traducir"
+		,"corredactar":"Corredactar"
+		,"revisar":"Revisar"
+		,"interpretar":"Interpretar"
+		,"sencilla":"Sencilla"
+		,"exhaustiva":"Exhaustiva"
+		,"muestreo":"Muestreo"
+		,"recurso":"Recurso"
+		,"numRecursos":"Nº de recursos requeridos"
+		,"costeHoras":"Coste en horas"
+		,"trabajoDia":"Horas/Recurso diario"
+		,"prioridad":"Prioridad"
+		,"priori":"Pr"
+		,"numExpediente":"Nº Exp."
+		,"gestorExpediente":"Gestor exp."
+		,"entidadDeGestor":"Entidad del Gestor"
+		,"fechaHoraEntregaIZO":"Fecha/Hora entrega IZO"
+		,"fechaHoraEntregaReal":"Fecha/Hora entrega real"
+		,"entregaIZO":"Entrega IZO"
+		,"fechaHora":"Fecha/Hora"
+		,"fechaInterpretacion": "Fecha de la interpretación"
+		,"numPalabraIZO":"Nº palabras IZO"
+		,"lote":"Lote"
+		,"proveedor":"Proveedor"
+		,"impTotal":"Imp Total"
+		,"impConsum":"Imp Consumido"
+		,"impPrev":"Imp Previsto"
+		,"impRest":"Imp Restante"
+		,"impDispo":"Imp Disponible"
+		, "costeExpediente":"Coste expediente"
+		,"fechaHoraFinPrevista":"Fecha/Hora fin prevista"
+		,"inicioPrevista":"Inicio prevista"
+		,"finPrevista":"Final prevista"
+		,"fechaHoraInicioPrevista":"Fecha/Hora inicio prevista"
+		,"seleccionarTodo": "Seleccionar todo"
+		,"dependeDeOtros":"Depende de otros"
+		,"asignador":"Asignador"
+		,"requierePresupuesto":"Requiere presupuesto"
+		,"faseExpediente":"Fase expediente "
+		,"estadoTareas":"Estado tareas"
+		,"estadoTareasAsignadas":"Estado tareas asignadas"
+		,"proyectoTrados":"Requiere trados"
+		,"negociacionFechaHora":"Negociación fecha/hora (IZO)"
+		,"interno":"Interno"
+		,"externo":"Externo"
+		,"fechaHoraAsignacion":"Fecha/Hora asig."
+		,"misExpedientes" : "Mis expedientes"	
+		,"misTareas" : "Mis Tareas"	
+		,"dependeOtrosPdteEjecucion":"S\u00ED (Pendientes de ejecuci\u00F3n)"
+		,"dependeOtrosFin":"S\u00ED (Finalizadas)"
+		, "grupoTrabajo": "Grupo de trabajo"
+		, "perfil": "Perfil"
+		, "teletrabajo": "Teletrabajo"
+		, "tel": "Tel."
+		, "correoElectronico": "Correo electrónico"
+		, "horasGestionExpedientes": "Horas gestión expedientes"
+		, "importeConsumido": "Importe consumido"
+		, "importeTotal": "Importe total"
+		, "importePrevisto": "Importe previsto"
+		, "importeDisponible": "Importe disponible"
+		, "empresaProveedora": "Empresa proveedora"
+		, "calculoImportes": "Cálculo importes"
+		, "importeTotalAsignadoAlLote": "Importe total asignado al lote"
+		, "importeTotalConsumido": "Importe total consumido (importe total pagado)"
+		, "importeTotalPrevisto": "Importe total previsto (sin facturar y facturado no pagado)"
+		, "importeTotalDisponible": "Importe total disponible = Importe total asignado al lote - (importe total consumido + importe total previsto)"
+		, "docOriginal": "Documento original"
+		, "docARevisar": "Documento a revisar"
+		,"noPrioritario": "No prioritario"
+		,"prioritario": "Prioritario"
+		,"pestDatosPago": "Datos de pago"
+		,"pestInfoAdicional": "Informaci\u00F3n adicional"
+		,"docARevisarAFinal": "Pasar documento a revisar a final"
+		,"docTraduccionAFinal": "Pasar documento traducción a final"
+		,"docRevisionFinal": "Pasar el documento original a final"
+		,"adjuntarDocumento": "Adjuntar documento"
+		,"generarNoConformidad": "No conformidad con el trabajo entregado por el proveedor"
+		,"generarNoConformidadInt": "No conformidad con el trabajo entregado por el traductor"
+		,"notificarCorreccionProveedor": "Notificar una corrección al proveedor"
+		, "pasarAFinal": "Pasar a final"
+		, "numTotalPalabras": "Nº total de palabras"
+		, "revisionDatosFact": "Revisión de los datos de facturación"
+		,"entidadFacturar": "Entidad a la que facturar"
+		,"contactoFacturar": "Contacto al que facturar"
+		,"numExpFacturar": "Nº expedientes pendientes de facturar"
+		, "fechaYHoraEntrega": "Fecha y hora entrega"
+		, "requerimiento": "Requerimiento"
+		, "fechaYHoraLimite": "Fecha y hora límite"
+		, "estadoRequerimiento": "Estado requerimiento"
+		, "errorselectempresa": "Selecione una empresa proovedora"
+		, "errorselectlote": "Selecione un lote"
+		, "solicitado": "Solicitado"
+		, "numFactura": "N\u00BA factura"
+		, "refLiquidacion": "Ref. liquidaci\u00F3n"
+		, "refAlbaran": "Ref. Albar\u00E1n"
+		, "fechaCreacion": "Fecha Creaci\u00F3n"
+		, "estadoAlbaran": "Estado albar\u00E1n"
+		, "importePrevConIva": "Importe previsto (IVA incl.)"
+		, "importePagadoConIva": "Importe pagado (IVA incl.)"
+		, "entidadContactoAFacturar": "Entidad/contacto a facturar"
+		, "importe": "Importe (€)"
+		, "fecEmision": "Fec. emisi\u00F3n"
+		, "estadoInci": "Estado incidencia"
+		, "codError": "Cod. Error"
+		, "estadoEFactura": "Estado e-factura"
+		, "fecPago": "Fec. Pago"
+		, "inicio": "Inicio"
+		, "fin": "Fin"
+		, "relevancia": "Relevancia"
+		, "idioma": "Idioma"
+		, "tarifa": "Tarifa (€)"
+		, "numTotPalFacturar": "Nº palabras a facturar"
+		, "urgencia": "Urgencia"
+		, "dificultad": "Dificultad"
+		, "impBase": "Imp. Base (€)"
+		, "impIva": "Imp. IVA (€)"
+		, "totalMayus": "TOTAL (€)"
+		, "calculo": "Cálculo"
+		, "tipoActo": "Tipo de acto"
+		, "numInterpretes": "Nº interpretes"
+		, "horasRealesInterprete": "Horas reales por intérprete"
+		, "ver": "Ver"
+		, "calcular": "Calcular"
+		, "aviso": "Aviso"
+		, "contacto": "Contacto"
+		, "direccionPostal": "Dirección postal"
+		, "facturable": "Facturable"
+		, "porcFactura": "% fact"
+		, "usuario": "Usuario"
+		, "nPalabras": "Nº palabras"
+		, "importeBase": "Oinarrizko zenbatekoa (€)"
+		, "importeIva": "Importe IVA (€)"
+		, "anadirLote": "Añadir lote"
+		, "modificarLote": "Modificar lote"
+		, "searchAddress": "Buscar dirección"
+		, "errorselectfields" : "Se han producido los siguientes errores"
+		, "ordenObligatorio": "Orden (*)"
+		, "fase" : "Fase"
+		, "contactoGestor" : "Contacto gestor"
+		, "misGrupos" : "De mis grupos de trabajo"
+		, "modEstadoAlbaran" : "Se va a modificar el estado del albarán a "
+		, "deseaContinuar" : "¿Desea continuar?"
+		, "borrarAlbaran" : "Borrar albar\u00E1n"
+		, "rellenarDatos" : "Debe rellenar los seguientes datos:"
+		, "final7Dias" : "Finalizan en los próximos 7 días"
+		, "palabras" : "palabras"
+		, "enDiasNoDisponibles" : "En días no disponibles"
+		, "clonarExpediente" : "Clonar expediente"
+		, "fechaHoraFin": "Fecha/Hora fin"
+		, "consultafacturas": "Consulta de facturas"
+		, "fechaClonacion": "Fecha de clonación"
+		, "facturas": "Facturas"
+		, "autor": "Autor"
+		, "contactoGestorExpEnEstudio": "Contacto Gestor con expedientes en estudio"
+		, "boe": "BOE"
+		, "administrativo" : "Administrativo"
+		, "modificarIndboe": "Publicar en el BOE"
+		, "izoTraPalHoraEntre": "es_IZOko baliabideek orduko itzultzen duten hitz-kopurua bat-etortzea %XX-YY bitartekoa bada(*)"
+		, "izoTradPalHora": "es_IZOko baliabideek orduko itzultzen duten hitz-kopurua (*)"
+		, "izoRevPalHora": "es_IZOko baliabideek orduko berrikusten duten hitz-kopurua (*)"
+		, "provExtTraPalHoraEntre": "es_Kanpoko hornitzaileek orduko itzultzen duten hitz-kopurua bat-etortzea %XX-YY bitartekoa bada(*)"
+		, "provExtTradPalHora": "es_Kanpoko hornitzaileek orduko itzultzen duten hitz-kopurua (*)"
+		, "provExtRevPalHora": "es_Kanpoko hornitzaileek orduko berrikusten duten hitz-kopurua (*)"
+		, "usuarioVip": "VIP"
+		, "usuarioNormal": "Normal"
+		, "palabraSeg": "Pal./Seg."
+		, "palabraHora": "Pal./Hora."
+		, "tipoRelevancia": "Tipo relevancia"
+		, "crearPlantilla": "Crear plantilla"
+		, "editarPlantilla": "Editar plantilla"
+		, "tareaRevTrabajo": "Tarea de revisión del trabajo"
+		, "aQuienSeAudita": "A quien se audita"
+		, "fechaEnvio": "Fecha envío"
+		, "fechaConfirmacion": "Fecha confirmación"
+		, "usuariosEjecTareasPrev": "Los siguientes datos han sido confirmados por sus compañeros: {0}"
+		, "modificarFechaEntrega": "Modificar fecha-hora de entrega"
+		, "id": "id"
+		, "descEu": "Descripción euskera"
+		, "descEs":"Descripción castellano"
+		, "numTrabajo": "N\u00BA de trabajo"
+		, "documentoEntrada": "Documento de entrada de la tarea"
+		, "documentoSalida": "Documento de salida de la tarea"
+		, "pdfAyudaLotes": "Pdf ayuda asignación"
+		, "centroOrganicoAFacturar": "Centro org\u00E1nico a facturar"
+		, "centroOrganico": "Centro orgánico"
+		, "BDCentroOrganico": "CENTROORGANICOES"
+		, "remitente": "Remitente"
+		, "asunto": "Asunto"
+		, "nuevoMensaje": "Nuevo mensaje"
+		, "verMensaje": "Ver mensaje"
+	}
+	,"piloto" : {
+	    "dialogoDetalle":"Introduzca un código y pulse aceptar"
+	}
+	,"estadoTareasAsignadas":{
+		"todasAceptadas":"Todas aceptadas",
+		"algunaRechazada":"Alguna rechazada",
+		"algunaPendienteAceptacion":"Alguna pendiente aceptacion",
+		"algunaRetrasada":"Alguna retrasada"
+	}
+	,"mensajes" : {
+	    "calendarioAnioSinDatos":"El año seleccionado no dispone de información. Si desea inicializarlo con los días festivos por defecto pulse el enlace 'Inicializar calendario'",
+	    "calendarioErrorInicializar": "Error al inicializar el calendario con los días festivos por defecto",
+	    "calendarioInicializarOK": "El año seleccionado se ha inicializado con los días festivos por defecto",
+	    "calendarioPersonalAnioSinDatos":"El año seleccionado no dispone de información de los días festivos. Si desea inicializarlo con los días festivos por defecto, vaya al 'Calendario de Servicio' y pulse el enlace 'Inicializar calendario'",
+	    "calendarioPersonalAnioSinAusencias":"Aún no ha introducido ninguna ausencia para el año seleccionado. Si desea hacerlo, pulse volver y añada las ausencias que desee.",
+	    "errorLlamadaAjax": "Se ha producido un error en la llamada",
+	    "errorGuardandoDatos": "Se ha producido un error guardando los datos",
+	    "docuIncorrecto": "La documentaci\u00F3n obligatoria del expediente no est\u00E1 completa",
+	    "numPalabrasIZOIncorrecto": "El n\u00FAmero de palabras total IZO esta sin determinar",
+	    "numPalabrasIZODocIncorrecto": "Hay documentos con el n\u00FAmero de palabras IZO sin determinar",
+	    "errorCargandoDatos": "Se ha producido un error cargando los datos",
+	    "errorBorrandoDatos": "Se ha producido un error borrando los datos",
+	    "errorCambioPrioridadExp": "Error cambiando prioridad de expediente: ",
+	    "errorComprobarEstadoExpedientesSeleccionadosEnCurso": "Error comprobando expedientes en curso: ",
+	    "datosCargadosOK": "Se han cargado los datos correctamente",
+	    "docuNoTarea": "El documento no pertenece a la tarea",
+	    "cancelar":"Confirmacion de cambio",
+	    "guardadoCorrecto": "Se han guardado los datos correctamente.",
+	    "guardadoCorrectoMetadatos": "Se han guardado los etiquetas de búsqueda correctamente: {0}",
+	    "finalizadaLaRevision": "Revisi\u00F3n finalizada correctamente.",
+	    "seleccionEntidad": "Seleccione una entidad.",
+	    "borradoCorrecto": "Se han borrado los datos correctamente.",
+	    "copiadoCorrecto": "Se han copiado los datos correctamente.",
+	    "albaranBorrado": "Se ha borrado el albar\u00E1n correctamente.",
+	    "seleccioneTecnicoAReasignar": "Debe elegir un Técnico.",
+	    "tecnicoReasignado": "Técnico reasignado correctamente.",
+	    "asignadorReasignado": "Asignador reasignado correctamente.",
+	    "expRechazado": "Expediente rechazado correctamente.",
+	    "subRegistrada": "Subsanaci\u00F3n registrada correctamente.",
+	    "subFechaLimite": "Se ha modificado la fecha limite de la subsanaci\u00F3n correctamente.",
+	    "subAceptada": "Subsanaci\u00F3n aceptada.",
+	    "subRechazada": "Subsanaci\u00F3n rechazada correctamente.",
+	    "rellenaCampos": "Por favor, escoge campo o documento.",
+	    "concordanciaMayorNumPal": "El n\u00FAmero de palabras debe cuadrar con el sumatorio de los rangos de concordancia.",
+	    "estudioFinalizado": "El estudio finaliz\u00F3 correctamente.",
+	    "errorExtensionNoPermitida": "Por favor, adjunte un archivo con una extensión válida. El archivo adjunto es de un tipo no permitido: ",
+	    "errorDescVacio": "Por favor, escriba una descripcion.",
+	    "errorMotivoVacio": "Por favor, escoja un el motivo.",
+	    "errorSeleccionPersona": "No se ha seleccionado ninguna persona.",
+	    "errorSeleccionEtiqueta": "No se ha seleccionado ninguna etiqueta.",
+	    "errorSeleccionExpediente": "No se ha seleccionado ningún Expediente.",
+	    "errorSeleccionDocumento": "No hay documentos seleccionados.",
+	    "errorEnvioExpediente": "No se ha enviado el expediente a P43 porque ya se había enviado previamente. Por tanto, se procede a finalizar la tarea de entrega.<br />¿Desea continuar?",
+	    "errorDocsNoEncriptados": "El expediente tiene documentos sin encriptar. Debe encriptar todos los ficheros del expediente para poder convertirlo en confidencial",	    
+	    "errorDocsEncriptados": "El expediente tiene documentos encriptados. Debe desencriptar todos los ficheros del expediente para poder convertirlo en no confidencial",
+	    "errorDocsNoEncriptadosFinAlta": "El expediente tiene documentos sin encriptar. Debe encriptar todos los ficheros del expediente para poder finalizar el estudio",
+	    "errorDocsEncriptadosFinAlta": "El expediente tiene documentos encriptados. Debe desencriptar todos los ficheros del expediente para poder finalizar el estudio",
+	    "errorDocsNoEncriptadosConfirm": "El expediente tiene documentos sin encriptar. Debe encriptar todos los ficheros del expediente para poder convertirlo en confidencial.<br />Si continua se borrarán los ficheros adjuntos para que los vuelva a introducir encriptados.<br />¿Desea continuar?",
+	    "errorDocsEncriptadosConfirm": "El expediente tiene documentos encriptados. Debe desencriptar todos los ficheros del expediente para poder convertirlo en no confidencial.<br />Si continua se borrarán los ficheros adjuntos para que los vuelva a introducir sin encriptar.<br />¿Desea continuar?",
+	    "errorCambioConfidencialSubsanar": "Los documentos del expediente deben estar encriptados, solicite la subsanación marcando el indicador de Confidencial",
+	    "msgCambioTipoExpediente":"Pulsando el bot\u00F3n Aceptar se modificar\u00E1 el tipo de expediente. Tras la modificaci\u00F3n, le recomendamos que revise la informaci\u00F3n, prestando especial atenci\u00F3n a la documentaci\u00F3n adjunta, n\u00FAmero de palabras, tipolog\u00EDa, etc.",
+	    "finalizarAltaOficio": "Se guardarán los datos del expediente y se procederá a finalizar el alta de oficio, ¿desea continuar?",
+	    "altaOficioOk": "El alta de oficio ha finalizado correctamente",
+	    "sinCambiosCategorizacion":"No se han realizado cambios",
+	    "cambiosCategorizacion":"Se han realizado cambios sin guardarlos, ¿desea continuar?",
+	    "cambiosEnPantalla":"Se han realizado cambios",
+	    "cambiosEnPantallaEjecucionTareaMensaje":"Se han realizado cambios y no se ha ejecutado la tarea, ¿desea continuar?",
+	    "errorPegarFlotante": "Los datos que está intentando pegar contienen caracteres no válidos",
+	    "excepFacturOtroTipo": "La entidad solicitante seleccionada, dispone de excepciones del tipo no seleccionado",
+	    "expedConfidencialSI": "El expediente se ha convertido en confidencial",
+	    "aceptarAsignacion":"\u00BFDesea aceptar la asignaci\u00F3n de las tareas seleccionadas?",
+	    "aceptarAsignacionConflictoFechas":"Alguna de las tareas de interpretaci\u00F3n que estas aceptando entran en conflicto de fechas. A\u00FAn así, \u00BFdesea continuar?",
+	    "rechazarAsignacion":"\u00BFDesea rechazar la asignaci\u00F3n de las tareas seleccionadas? Debe indicar un motivo de rechazo para ello",
+	    "aceptadaLaAsignacion":"Se ha aceptado la asignaci\u00F3n correctamente.",
+	    "rechazadaLaAsignacion":"Se ha rechazado la asignaci\u00F3n correctamente",
+	    "sinEstarAsignada":"Por favor, escoja tareas que tenga asignadas y est\u00E9n con el estado pendiente de aceptaci\u00F3n.",
+	    "tipoDocConfidencialFich": "El tipo de documento que ha seleccionado es confidencial, por lo que los archivos que adjunte deben estar encriptados.",
+	    "seleccionEncriptODesencript": "Debe seleccionar una opción (Encriptar o Desencriptar)",
+	    "errorObtenerGruposTrabajoInterUsuario": "Se ha producido un error al intentar obtener los grupos de trabajo del usuario",
+	    "horasRealesOblig" : "Debe informar las horas reales dedicadas a la ejecución de la tarea",
+	    "horasRealesOpt" : "Puede informar las horas reales dedicadas a la tarea",
+	    "continuarFinTarea" : "Va a finalizar la tarea, ¿Desea continuar?",
+	    "horasReales" : "Horas reales dedicadas a la ejecución (hh:mm)",
+	    "docsTraducidosAcc" : "Al finalizar la tarea los documentos traducidos serán accesibles por el usuario"
+	    , "buscadorLotesNoRecords": "Atención: No hay  lotes vigentes definidos para la fecha de entrega del expediente."
+	    , "errorSeleccionLote": "No se ha seleccionado ningún lote.",
+	    "prioridadCambiada": "La prioridad del expediente ha cambiado a ",
+	    "sinAsignador": "Sin asignador",
+	    "sinAdministrativo": "Sin administrativo",
+	    "sinTareasAsignadas": "Sin tareas asignadas",
+	    "sinFechaFinPrevista": "Sin fecha fin prevista",
+	    "fechaMinPasada": "La hora escogida es inferior a la actual",
+	    "sinResponsable": "Sin responsable",
+	    "tareasCreadas": "Se han creado las tareas necesarias para el expediente que no se habían creado anteriormente.",
+	    "tareaTraduccionFaltaFicheroTraduccion": "Los documentos originales deben tener ficheros de traducción",
+	    "tareaTraduccionFaltanFicheros": "Los documentos originales deben tener ficheros de traducción.<br />En caso de que todos los documentos originales que aparecen en la tarea tienen su correspondiente documento traducido, revise que la tarea incluye todos los documentos de traducción/revisión originales.",
+	    "tareaTraduccionFaltanFicherosOFirmas": "Los documentos originales deben tener ficheros de traducción/revisión y además deben estar firmados.",
+	    "docuXliffNoPerteneceATarea": "El documento seleccionado, no pertenece a la tarea",
+	    "tareaFaltaFicheroXliff": "Debe añadir por lo menos un documento de tipo XLIFF, SDLXLIFF o TMX",
+	    "tareaTraduccionFaltaFicheroRevision": "Los documentos originales deben tener ficheros de revisión",
+	    "tareaTraduccionErrorValidandoDocumentos": "Ha ocurrido un error validando los documentos asociados a la tarea",
+	    "tareaEstudiarSubsDocuErrorObteniendoDatos": "Ha ocurrido un error al intentar obtener los datos de la tarea",
+	    "tareaEstudiarSubsDocuCampoObligatorioSubsIncorrecta": "Debe escribir el motivo de subsanación incorrecta",
+	    "seleccionDocumentos": "Por favor, seleccione al menos un documento.",
+	    "eliminadoCorrecto": "Se ha eliminado el fichero correctamente",
+	    "preguntaEliminarFichero": "¿Está seguro de que quiere eliminar el fichero?",
+	    "asignacionTarea": "Es necesario que la tarea seleccionada esté asignada al usuario conectado.",
+	    "tareasAnterioresPdtes": "Es necesario que las tareas anteriores a la seleccionada estén finalizadas.",
+	    "tareaEjecutada": "Es necesario que la tarea seleccionada esté ejecutada.",
+	    "atencionPalXmlSupPalIzoSupDesfaseAsumible": "¡Atención! El nº de palabras extraido del XML es superior al nº de palabras definido por el IZO por encima del desfase asumible",
+	    "tareaTradosCheckVisibleATrue": "Para finalizar la tarea, el presupuesto debe hacerse visible al cliente ",
+	    "faltaFicheroXmlTrados": "Debe adjuntar un fichero xml extraido del Trados",
+	    "faltaFichero": "Debe adjuntar un fichero.",
+	    "reasignacionIncorrecta": "No se pueden reasignar tareas ejecutadas, sin recurso asignado o tareas de no conformidad con el trabajo entregado por el proveedor.<br/><br/>Quítelas de la selección para poder continuar.",
+	    "expedientesRelacionadosAsignados": "Los espedientes ya relacionados no se mostrarán en la tabla de resultados.",
+	    "ejecucionTareaEjecutada": "La tarea está ejecutada.<br/><br/>No es posible volver a ejecutarla.",
+	    "zipObligatorio": "Si el documento original es un Zip el final adjunto también tiene que serlo.",
+	    "valorCampoMenorOIgual":"El valor del campo debe ser menor o igual que ",
+	    "valorCampoMayorOIgual":"El valor del campo debe ser mayor o igual que ",
+	    "eliminacionTareas": "No se pueden eliminar tareas automáticas.<br/><br/>Quítelas de la selección para poder continuar.",
+	    "noExisteTareaRevExt": "Para generar una no conformidad con el trabajo entregado por el proveedor es necesario disponer de una tarea de revisión externa.",
+	    "tablaConfeccionarInterpretacion": "(*) Para poder seleccionar un expediente este debe tener sus importes calculados",
+	    "expedientesSinImporte": "Hay expedientes seleccionados que no tienen los importes calculados, calcula los importes o quítalos de la selección",
+	    "calculoCorrectoExpInterp": "Cálculo realizado correctamente para el expediente : ",
+	    "errorCalculoCorrectoExpInterp": "Error al intentar realizar el cálculo para el expediente : ",
+	    "errorGenericoCapas": "Error recuperando datos del paso",
+	    "indiceCorreccionesActualizado": "Índice correcciones actualizado",
+	    "msgEliminarTareas": "No se pueden eliminar tareas ejecutadas o aceptadas por recursos internos.<br/>Tampoco las tareas de No conformidad con el cliente.<br/><br/>Quítelas de la selección para poder continuar.",
+	    "msgEliminarTareasTrabajo": "No se pueden eliminar tareas ejecutadas o aceptadas.",
+	    "fechaFinTareaPasada": "La fecha final de la tarea ha expirado."
+	    , "fechaFinalIZOIncorrecta": "Falta determinar la fecha final IZO"
+	    , "tareasEliminadasCorrectamente": "Las tareas se han eliminado correctamente."
+	    , "fechasGuardadas": "Fechas guardadas correctamente."
+	    , "tareasReasignadasCorrectamente": "Las tareas se han reasignado correctamente."
+	    , "reasignacionTareasIncorrecta": "Es necesario asignar las tareas a algún recurso."
+	    , "expEnCursoPdteTramClte": "El expediente está en curso y pendiente tramitación del cliente, por lo que no es posible ejecutar ninguna tarea."
+	    ,"metadatosBajaNoGuardar": "Ha seleccionado etiquetas de búsqueda que están dadas de baja. Modifique su selección para poder guardar."
+	    , "msgGenerarFactura": "Los datos de la factura se han enviado correctamente. Podrá consultar el estado de la factura desde la consulta de facturas."
+	    , "expEnCursoPdteProyTrados": "El expediente está en curso y Pdte. proyecto trados, por lo que no es posible asignar ninguna tarea.<br/><br/>Ejecute la tarea crear proyecto trados para poder continuar."
+	    , "faltaDirEmail": "La persona asignada a la tarea no será informado vía email al carecer de correo electrónico."
+	    , "faltaDirEmailRechExp": "No será informado vía email al carecer de correo electrónico."
+	    , "errorEnvioEmail": "Error en el envío de email."
+	    , "errorcalculoPptoInterp": "<b>Atención</b> No se puede calcular el presupuesto de interpretación porque no hay una orden de precios públicos vigente."
+	    , "registroCalendarioPersonal": "El recurso asignado a la tarea no tiene creado el calendario personal."
+	    , "gestorReasignado": "Gestor reasignado correctamente."
+	    , "noExistePartidaPresupuestaria": "No existe partida presupuestaria para el ejercicio actual."
+	    , "ausenciaInterpNoModificable":"Desde el calendario personal no se pueden añadir ni modificar ausencias de tipo Interpretación."
+	    , "ausenciaInterpNoEliminable":"Desde el calendario personal no se pueden eliminar ausencias de tipo Interpretación."
+	    , "avisoTareasPlanificadas":"Tiene tareas asignadas en esas fechas, se enviará un email a los asignadores correspondientes"
+	    , "tareasNotificadasAsignador":"Se ha guardado la información y se han enviado las notificaciones por email a los asignadores de las tareas de ese periodo."
+	    , "errorTareasNotificadasAsignador":"Se ha guardado la información y se han enviado las notificaciones por email a los asignadores de las tareas de ese periodo, aunque alguno de los emails no se ha podido enviar."
+	    , "noHayLotesParaMostrar":"Atención: No hay lotes vigentes definidos para la fecha de entrega del expediente. "
+	    , "estadoAlbaranModificado":"El estado del albarán se ha modificado correctamente."
+	    , "desasociarTareas":"Va a desasociar las tareas seleccionadas del albar\u00E1n."
+	    , "desasociarTareasCorrecto":"Se han desasociado las tareas seleccionadas correctamente."
+	    , "errorValidacionestadoAlbaranPagado":"Debe rellenar la referencia de la factura y el importe pagado para poder continuar."
+	    , "errorBorrarFichUtilizadoTareas":"No es posible eliminar el documento porque está siendo referenciado en alguna tarea. Si lo desea elimine primero la tarea para poder eliminar el documento."
+	    , "tareaSinAceptar": "La tarea está sin aceptar, por lo que no es posible ejecutar la tarea."
+	    , "estadoPagado": "Por favor, escoja albaranes que no estén en estado Pagado."
+	    , "tareasAsociadas": "Por favor, escoja albaranes que no tengan tareas asociadas."
+	    , "borrarAlbaran": "Se va a borrar el albar\u00E1n seleccionado."
+	    , "clonarExpediente": "Va a clonar el expediente seleccionado."
+	    , "seleccionDocTradRev": "No se ha seleccionado ningun documento a traducir/revisar."
+	    , "seleccionTodosDocTradRev": "Se deben seleccionar todos los documentos a traducir/revisar."
+	    , "tareasInterpretacionEnFecha": "Tiene una(s) Interpretación(es) planificada(s) en esas fechas. Se informará a los asignadores para que procedan con la desasignación de las mismas y se te permita generar la ausencia."
+	    , "solicitadaDesasignacionTareas": "Se ha solicitado a los asignadores de las tareas que las desasignen para que posteriormente puedas crear la ausencia."
+	    , "errorFechaMenorOIgual": "Fecha mayor que límite {0}"
+	    , "errorHoraMenorOIgual": "Hora mayor que límite {0}"
+	    , "errorFechaMenorOIgualQueFechaIntroducida": "Fecha mayor que nueva fecha de entrega {0}"
+	    , "errorFechaMenorQueCampo": "Fecha mayor que límite {0}"
+	    , "errorHoraMenorQueCampo": "Hora mayor o igual que límite {0}"
+	    , "errorFechaMayorQueCampo": "Fecha menor o igual o igual que propuesta {0}"
+	    , "errorHoraMayorQueCampo": "Hora menor o igual que propuesta {0}"
+	    , "errorFechaMayorOIgualQueCampo": "Fecha menor que propuesta {0}"
+	    , "errorHoraMayorOIgualQueCampo": "Hora menor que propuesta {0}"
+	    , "noAsigTareaExpEnCursoPdteTramitClte": "El expediente está Pendiente de tramitación por parte del cliente, por lo que no es posible asignar ninguna tarea en este momento."
+	    , "nocrearTareaexpEnCursoPdteTramitClte": "El expediente está Pendiente de tramitación por parte del cliente, por lo que no es posible crear ninguna tarea en este momento."
+	    , "expTareasAsignadas": "El expediente tiene tareas asignadas, desasígnelas antes de hacer este cambio. Recuerde generar la tarea {0} para definir el presupuesto."
+	    , "expConTareaRevisionExterna": "El expediente tiene asociada una tarea de revisión externa, por lo que no es posible crear otra tarea del mismo tipo."
+	    , "extraerFicherosDelZip": "El expediente contiene un fichero zip y otros ficheros, debe extraer los ficheros del zip para poder realizar la subsanaci\u00F3n."
+	    , "expPendienteTramitacionCliente": "El expediente esta pendiente de un tr\u00E1mite con el cliente por lo que no es posible realizar la acción en este momento."
+	    , "tareaNoConformidadProvSinEjec": "El expediente tiene asociada una tarea de no conformidad con el proveedor sin ejecutar para alguno de los documentos seleccionados, por lo que no es posible crear la tarea."
+	    , "tareaNoConformidadTradSinEjec": "El expediente tiene asociada una tarea de no conformidad con el traductor sin ejecutar para alguno de los documentos seleccionados, por lo que no es posible crear la tarea."
+	    , "sinRefLiquidacion": "La factura no tiene referencia de liquidaci\u00F3n asociada."
+	    , "msjErrorZIP": "Si desea adjuntar un fichero ZIP debe hacerlo como primer fichero del documento."
+	    , "msgReaperturaTarea": "No se puede reabrir la tarea seleccionada."
+	    , "reaperturaTarea": "Se va a reabrir la tarea seleccionada."
+	    , "reaperturaTareaEntregaClte": "Los documentos finales dejarán de ser visibles por el cliente, hasta que se realice de nuevo la ejecución de la tarea."	    
+	    , "tareaNotifCorreccionProv": "No se pueden reabrir la tarea de notificación de correcciones al proveedor."
+	    , "clonacionSolicitada": "Se ha solicitado la clonación del expediente. Recibirá un email cuando el proceso haya finalizado."
+	    , "errorCalcFPropuesta": "Se ha producido un error calculando la fecha propuesta."
+	    , "ivaConfeccionFactura": "El IVA de la orden de precios públicos no se corresponde con el IVA asociado al expediente. Por favor, actualice los datos de facturación."
+	    , "facturaNoEliminable": "No se pueden eliminar las facturas registradas en el Sistema de Control de Ingresos del IVAP (W05B)."
+	    , "expedientesInterSinCalculoFactura": "Alguno(s) de los expedientes seleccionados no tiene(n) realizado el cálculo de la factura. Por favor, realícelo(s) o deselecciónelo(s) para acceder al borrador."
+	    , "errorObteniendoDatosExpedientes": "Ha ocurrido un error al intentar obtener los datos de los expedientes seleccionados."
+	    , "fechaEntregaMayorLimite": "La fecha de entrega debe ser mayor que la fecha límite de aceptación"
+	    , "horaEntregaMayorLimite": "La fecha/hora de entrega debe ser mayor que la fecha/hora límite de aceptación"
+	    , "expedienteFinalizado": "El expediente ha sido finalizado."
+	    , "firmaSolicitada": "Se ha sollicitado la firma de los documentos seleccionados."
+	    , "firmaErronea": "la firma de los documentos no es válida o se ha producido un error en la comunicación con P43."
+	    , "errorSolicitandoFirma": "Se ha producido un error solicitando la firma de los documentos."
+	    , "deseleccionarExpedientesConEstPresupAceptado": "Algunos de los expedientes seleccionados tiene el presupuesto aceptado. Quítelo de la selección para poder continuar"
+	    , "errorComporobExpedientesConEstPresupAceptado": "Ha ocurrido un error al intentar comprobar el estado del presupuesto de los expedientes seleccionados"
+	    , "errorComprobandoZIPfirmas": "El ZIP firmado no contiene las firmas de todos los archivos del ZIP original."
+	    , "errorLlamadaFirmaWSP43": "Ha ocurrido un error en la llamada al WS de boletín (P43)."
+	    , "comprobandoFirmas": "Comprobando firmas"
+	    , "pagoProveedoresImportesDiferentesMessage": "El importe previsto y el importe a pagar no se corresponden. Aún así, ¿desea continuar?"
+	    , "regSeleccionadosSuperaMax": "El número de registros seleccionados supera el máximo permitido ({0}). Utilice los filtros para acotar la búsqueda."
+	    , "reasignacionEnEstadoPendienteDeEj": "Para poder reasignar la(s) tarea(s) seleccionada(s), ésta(s) deberá(n) estar en estado pendiente de ejecución."
+	    ,"cambioEstadoExpediente": "Se va a cambiar el estado del expediente. ¿Desea continuar?"
+	    , "seleccionIncorrectaIndBoe": "Alguno(s) de los expedientes seleccionados es(son) de interpretación o revisión o siendo de traducción ya está(n) publicado(s) en el BOE o no han sido solicitados por el BOE. Por favor, deselecciónelo(s) para poder continuar."
+	    , "enviandoInfoP43": "Enviando a P43"
+	    , "ejecutarTareaAsignadaPagoProv": "La tarea asignada debe de estar ejecutada."
+	    , "recargoFormatoCantidad": "Candidad de recargo por formato"
+	    , "recargoApremioCantidad": "Cantidad de recargo por apremio"
+	    , "adjuntarAmbosFicheros": "Para realizar el proceso de firma, es necesario adjuntar ambos ficheros finales."
+	    , "errorNoOrdenVigente": "No hay una una orden de precios públicos vigente, para poder realizar la facturación"
+	    , "errorCampoVacioPorDefectoACero": "El campo no puede quedar vacío. Por defecto se pondrá a cero."
+	    , "errorObtenerInfoTareasInterAnteriores": "Ha ocurrido un error al intentar obtener información de tareas de interpretación anteriores."
+	    , "errorActualizarTareasInterAnteriores": "Ha ocurrido un error al intentar actualizar las tareas de interpretación anteriores."
+	    , "errorValorErroneoCampoPorDefectoACero": "El valor introducido no es válido. Escriba un valor que esté comprendido entre {0} y {1}. Por defecto se pondrá a cero."
+	    , "fechaFinTareasSuperaFechaFinExp": "Hay tareas a revisar ya que su fecha de fin prevista supera la fecha de entrega del expediente"
+	    , "errorNombreDocTradRev": "El nombre del documento no es correcto, tiene que ser {0}"
+	    , "usuarioConectadoNoAuditor": "El usuario conectado no corresponde con el auditor seleccionado."
+	    , "errorCamposAuditoria": "Hay campos que son obligatorios para poder guardar la auditor\u00EDa. Rell\u00E9nelos para poder continuar."
+	    , "guardadoDatosAuditoriaOk": "Los datos de la auditor\u00EDa se han guardado correctamente."
+	    , "guardadoDatosAuditoriaOkYEmailEnviado": "Los datos de la auditor\u00EDa se han guardado correctamente y el email ha sido enviado."
+	    , "guardadoDatosAuditoriaOkYEmailNoEnviadoError": "Los datos de la auditor\u00EDa se han guardado correctamente, pero ha ocurrido un error al enviar el email."
+	    , "guardadoDatosAuditoriaOkYEmailNoEnviadoNoDestinatario": "Los datos de la auditor\u00EDa se han guardado correctamente, pero el email no ha sido enviado debido a que no se ha encontrado destinatario para el mismo."
+	    , "fechasEntregaModificada": "La fecha de entrega se ha modificado correctamente."
+	    , "avisoImporteLoteInsuficiente": "(*) En rojo los importes insuficientes para hacer frente al coste del expediente."
+	    , "documentoAnyadido": "El documento se ha añadido correctamente."
+	    , "errorDocumentoAnyadido": "Ha ocurrido un error al intentar añadir el documento."
+	    , "errorSubirDocumentoAPID": "Ha ocurrido un error al intentar subir el documento al PID."
+	    , "errorSubirDocumentoAPIF": "Ha ocurrido un error al intentar subir el documento al PIF."
+	    , "asignacionTareaAceptada": "Es necesario que la asignación de la tarea seleccionada esté aceptada."
+	    , "tareaSinCambios": "No se han realizado cambios en la tarea."
+	    , "avisoLoteDefecto": "Para esta entidad solicitante, el lote a seleccionar suele ser {0}"
+	    , "comentarioGuardadoError": "Ha ocurrido un error al intentar guardar el comentario."
+	    , "comentarioGuardadoOk": "El comentario se ha guardado correctamente."
+	    , "obtenerComentarioEntidadError": "Ha ocurrido un error al intentar obtener el comentario de la entidad."
+	}
+	,"boton" : {
+		"finalizarTarea": "Finalizar tarea"
+		,"verTrabajador":"Ver trabajador"	
+		,"verEntidad":"Ver entidad"	
+		,"verTrabajadorDni":"Ver trabajador por dni"	
+		,"verDepartamento":"Ver departamento"
+		,"verEmpresa":"Ver empresa"
+		,"aceptar":"Aceptar"
+		,"cancelar":"Cancelar"
+		,"metadatos": "CSV de etiquetas de búsqueda"
+		,"volver":"Volver"
+		,"editarFestivos":"Festivos"
+		,"editarAusencias": "Ausencias"
+		,"preview":"Previsualizar"
+		,"imprimir":"Imprimir"
+		,"entidades":"Entidades"
+		,"traductoresInterpretes":"Traductores/Intérpretes"
+		,"informes":"Informes"
+		,"albaranes":"Albaranes"
+		,"modificar":"Modificar"
+		,"detalle":"Detalle"
+		,"horariosatencion":"Horario de atención al público"
+		,"horarioslaborales":"Horario laboral del servicio"
+		,"asociar": "Asociar"
+		,"desasociar": "Desasociar"
+		,"desasociarTareas": "Desasociar tareas"
+		,"porResponsable":"Por responsable"
+		,"porTraductorInterprete":"Por traductor/intérprete"
+		,"porEntidad":"Por entidad"
+		,"situacionActual":"Situación actual"
+		,"pestanaDocumentacionExped":"Datos de trabajo y documentación"
+		,"pestanaDatosGeneralesExp":"Datos generales"
+		,"verDetalle":"Ver detalle"
+		,"reasignarTecnico":"Reasignar técnico"
+	    ,"filtrar":"Filtrar"
+	    ,"limpiar":"Limpiar"
+	    ,"abandonar":"Abandonar"
+	    ,"configurarPersonal":"Configurar Personal"
+	    ,"rechazarExp":"Rechazar expediente"
+	    ,"requerirSub":"Requerir subsanacion"
+	    ,"finEstudio":"Finalizar estudio"
+	    ,"finAltaOficio":"Finalizar alta de oficio"
+	    ,"seleccionar":"Seleccionar"
+	    ,"expedientesRelacionados":"Expedientes Relacionados"
+	    ,"requerirSubToolbar":"Requerir subsanacion"
+	    ,"nuevo":"Nuevo"
+	    ,"borrar":"Borrar"
+	    ,"receptoresAutorizados":"Receptores Autorizados"
+	    ,"anyadir":"Añadir"
+	    ,"categorizacionExpediente":"Etiquetas de búsqueda del expediente"
+	    ,"contactoFacturacionExpediente":"Entidad y contacto de facturación"
+	    ,"guardar":"Guardar"
+	    ,"otros":"Otros"
+	    ,"justificanteSolicitud":"Justificante"
+	    ,"finalizarAltaOficio": "Finalizar alta de oficio"
+	   	,"tareas":"Acciones sobre tareas"
+	    ,"crearTareaDefecto":"Crear tareas por defecto"
+	    ,"crearConfigurar":"Crear y configurar tareas"
+	    ,"buscadorLotes":"Buscador de Lotes"
+	    ,"modificarTarea":"Modificar tarea"
+	    ,"eliminarTarea":"Eliminar tarea"
+	    ,"reasignarTareas":"Reasignar tareas"
+	    ,"reordenarTareas":"Reordenar tareas"
+	    ,"reabrirTarea":"Reabrir tarea"
+	    ,"ejecutarTareas":"Ejecutar tarea"
+	    ,"otrasOpciones":"Otras acciones"
+	    ,"estudiarEstimacion":"Estudiar estimación"
+	    ,"cargarIZO":"Carga de trabajo IZO"
+	    ,"aceptarAsignacion":"Aceptar asignaci\u00F3n"
+	    ,"rechazarAsignacion":"Rechazar asignaci\u00F3n"
+	    ,"detalleAccion":"Detalle acci\u00F3n"
+	    ,"descargarACalendario":"Descargar a calendario"
+	    ,"asignadoProveedores":"Asignado a proveedores"
+	    ,"reasignarExpedientes":"Reasignar expedientes"
+	    ,"desgloseTareas":"Desglose tareas"
+	    ,"configTarea":"Configuración tarea"
+	    ,"anadirDoc": "Añadir documento"
+	    ,"eliminarDoc": "Eliminar documento"
+	    ,"paginaSiguiente":"Siguiente"
+	    ,"paginaAnterior":"Anterior"
+	    ,"ahora":"Ahora"
+	    ,"semanaSiguiente":"Semana siguiente"
+	    ,"semanaAnterior":"Semana anterior"
+	    ,"diaSiguiente":"D\u00EDa siguiente"
+	    ,"diaAnterior":"D\u00EDa anterior"
+	    ,"masDesglose":"M\u00E1s desglose"
+	    ,"menosDesglose":"Menos desglose"	
+	    ,"adjuntar": "Adjuntar"
+	    ,"descargarCalendario": "Descargar Calendario (ICS)"
+	    ,"servicioDeEncriptacion": "Servicio de Encriptación"
+	    ,"generarNoConformidad": "Generar una no conformidad"
+	    ,"notificarCorreccionProveedor": "Notificar una corrección al proveedor"
+	    ,"actualizarEntidadyContactoFact":"Actualizar entidad y contacto de facturación"
+	    ,"configEntidades":"Config. entidades"
+	    ,"configPersonas":"Config. personas"
+	    ,"actualizarDatosEntidadContacto":"Actualizar datos"
+	    ,"finRevDatosFact":"Finalizar revisi\u00F3n de datos facturaci\u00F3n"
+	    ,"anularExpedientes":"Anular expedientes"
+	    ,"confeccionarFactura": "Confeccionar factura"
+	    ,"verBorrador": "Ver borrador"
+	    ,"generarFactura": "Generar factura"
+		,"tareasfacturables": "Tareas facturables"
+	    ,"incluirMetadatosBusqueda": "Incluir etiquetas de búsqueda"
+	    ,"reasignarNuevoGestor": "Reasignar nuevo gestor"
+	    ,"datosFacturacion": "Datos facturación"
+	    ,"datosPagoAProveedores": "Datos de pago a proveedores"
+	    ,"expDesdeCliente": "Expediente desde el cliente"
+		,"modificarEstadoFase": "Modificar estado/fase"
+	    ,"clonar": "Clonar"
+	    ,"negociarNuevaFechaEntrega": "Negociar nueva fecha y hora de entrega"
+	    ,"procesosClonacion": "Procesos de clonación"
+	    ,"firmar": "Firmar"
+	    ,"refrescar": "Refrescar"
+	    ,"anadir":"Añadir"
+	    ,"generarNoConformidadTradRealizada":"Generar no conformidad con traducción realizada"
+	    ,"verCrearAuditoria": "Ver/crear auditoría"
+	    ,"seleccionarContinuar": "Añadir y continuar"
+	    ,"clonarTrabajo": "Clonar trabajo"  
+	    ,"anyadirComentarioEntidad": "Añadir comentario a entidad"  
+	}
+	,"validaciones": {
+		"horasParejasReq":"Debe rellenar ambas horas: inicio y fin"
+		,"horaFin":"La hora de fin debe ser mayor que la de inicio"
+		,"horaIncorrecta":"Formato de hora incorrecta"
+		,"horasTardeManana":"El horario de tarde debe ser posterior al horario de fin de la mañana."
+		,"horarioActivoDuplicado": "Sólo puede haber un horario activo de tipo NORMAL y uno de tipo VIP"
+		,"horarioActivoDuplicadoSinTipo": "Sólo puede haber un horario activo"		
+		,"validateHora": "El formato de la hora no es correcto."
+		,"n\u00FAmeroDecimal": "No es correcto."
+		,"dosDecimalesCincoEnteros" : "El formato del n\u00FAmero debe ser 5 enteros y 2 decimales"
+		,"dosDecimalesSieteEnteros" : "El formato del n\u00FAmero debe ser 7 enteros y 2 decimales"
+		,"esMayorQueDesde":"Fecha hasta tiene que ser mayor que fecha desde."
+		,"nombreFichero": "El nombre de fichero no debe superar los {0} caracteres."
+		,"validateEmail":"El correo electrónico no cumple el formato."
+		,"mailMovil":"Es obligatorio introducir el correo electrónico o un teléfono."
+		,"dniError": "EL DNI introducido no es correcto."
+		,"rangoAusenciaConflicto": "El rango de fechas introducido no es válido porque se solapa con otra ausencia."
+		,"rangoConflicto": "El rango de calidad introducido no es válido porque se solapa con otro."
+		,"nivelDuplicado": "El nivel introducido no es válido, ya exite un registro con el mismo valor."
+		, "porcentajeMenorCien" : "El tanto por ciento debe estar en un rango de 0 a 100"
+		, "porcentajeApremioMayorQueLote" : "El recargo por apremio indicado, no puede supere el % de recargo configurado en el lote."
+		, "porcentajePenalMayorQueLote" : "El recargo por penalizaci\u00F3n indicado, no puede supere el % de recargo configurado en el lote."
+		, "valorMayorQueNumPal" : "El valor no puede superar el numero de palabras a pagar"
+		,"fechaNoAnyo": "La fecha no pertenece al año sobre el que está trabajando."
+		,"ordenEnVigor": "Sólo puede haber una orden de precios en vigor"
+		,"prioridad":"La prioridad introducida ya esta asignada a otro tipo de relevancia"
+		,"mayorQueCampo": "Debe ser mayor que {1} {2}"
+		,"mayorQue":"El campo hasta tiene que ser mayor que el campo desde."
+		,"existeInterpretacion": "Ya existe un grupo de alta de tipo Interpretación"
+		,"existeBOPV": "Ya existe un grupo configurado como BOPV"
+		,"existePrevistoBOPV": "Ya existe un grupo configurado como Previsto para BOPV"
+		,"existeExcepcion": "Ya existe una excepción para la entidad solicitante, con el misma entidad asociada y contacto."
+		,"excepFactSupera100": "El sumatorio de porcentajes de las excepciones supera 100."
+		,"excepFactSolicitanteRepetido": "Ya existe una excepción para la entidad solicitante con el mismo contacto solicitante."
+		,"excepFactSolicEntidaBaja": "No se puede actualizar la excepción de facturación. La entidad o el solicitante seleccionados no están activos o no tienen permisos suficientes."
+		,"existeEntidad": "Esta entidad ya está asociada a un grupo de trabajo."
+		,"existeEntidadAsociadaALote": "Esta entidad ya está asociada a un lote."
+		,"existeTraductor": "Este traductor/intérprete ya está asociado al grupo de trabajo."
+		,"comboBaja": "El elemento seleccionado está dado de baja."
+		,"esHoraMayorQueIni":"Hora fin tiene que ser mayor que hora ini."
+		,"numPalMaximoExcedido": "Se ha excedido el n\u00FAmero máximo de palabras IZO del expediente"
+		,"grupoOptCombo": "No puede seleccionar opciones de grupos diferentes",
+		"seleccionarUno":"Escoja un expediente.",
+		"expedientePdteTramiteCliente":"El expediente seleccionado se encuentra pendiente de un tr\u00E1mite con el cliente. No es posible solicitar una subsanaci\u00F3n.",
+		"seleccionarSoloUno":"Escoja solamente un expediente.",
+		"extXliffTmx":"El archivo debe tener formato xliff, sdlxliff o tmx.",
+		"ordenTarea": "El orden introducido no es correcto.",
+		"ordenSuperiorACero": "El orden debe ser superior a 0.",
+		"ordenSuperiorAUno": "El orden debe ser superior a 1.",
+		"tipoTarea": "No se puede crear una tarea de ese tipo en este momento.",
+		"fechaFin": "No se puede superar la fecha y hora de entrega del expediente.",
+		"ordenNumerico": "El orden debe ser numérico.",
+		"ordenNoCorrecto": "El orden establecido no es correcto.",
+		"fechaMenorActual": "La fecha debe ser superior a la fecha actual",
+		"horaMenorActual": "La hora debe ser superior a la hora actual"
+		,"numInterpretesHoras": "Las horas reales de interpretación por intérprete y el número de interpretes no se corresponden."
+		,"expFacturado": "El expediente se ha facturado, por lo que no se puede cambiar el expediente al estado/fase seleccionados."
+		,"tareasFinalizadas": "Todas las tareas planificadas para el expediente están sin finalizar, por lo que no se puede cambiar el expediente al estado/fase seleccionados."
+		,"palPresupuestoMayorIgualQuePalTrados": "Este campo debe ser mayor o igual al de Trados."
+		,"unDecimalCeroCien" : "[0-100] y como m\u00E1ximo un decimal"
+		,"checkFileSize": "El fichero añadido es demasiado grande: fijarse en las imágenes que tiene el fichero, y reducir su resolución con Paint, y volver a añadirlas"
+        ,"adjuntarSegundoArchivo": "Es obligatorio analizar el documento bilingüe de entrada y subir una nueva versión"
+		,"nombreXliffIncorrecto": "El nombre del fichero no es correcto: tiene que tener _ZUZ antes de la extensión"
+	}	
+	,"tabsExpediente" :{
+        "pestdatosg" : "Datos generales",
+        "pestdocumentos" : "Datos de trabajo y documentación"
+    }
+	,"estado013_filter_table" :{
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado013_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado012_filter_table": {
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado012_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado014_filter_table": {
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado014_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado015_filter_table": {
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado015_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado011_filter_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado011_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"indReqCierre015_filter_table": {
+		"_blank": "[Todos]",
+		"al": "Si",
+		"baja": "No"
+	},
+	"indGestionAsociada015_filter_table": {
+		"_blank": "[Todos]",
+		"al": "Si",
+		"baja": "No"
+	},
+	"indReqCierre015_detail_table": {
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"indGestionAsoc015_detail_table": {
+		"_blank": "[Seleccione]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"tipoTarea_filter_table": {
+		"_blank": "[Seleccione]",
+		"revisar": "Revisar",
+		"traducir": "Traducir"
+	},
+	"grupoTrabajo_combo": {
+		"_blank": "[Todos]"
+	},
+	"ptoAplicacion_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"tipoTareaCargaTrabajo": {
+		"_blank": "[Todos]"
+	},
+	"tabla": {
+		"excel": "EXCEL",
+		"pdf": "PDF"
+	},
+	"indGestionAsoc015_filter_table": {
+		"_blank": "[Todos]",
+		"Si": "Sí",
+		"No": "No"
+	},
+	"estado018_filter_table": {
+		"_blank": "[Todos]",
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"estado018_detail_table": {
+		"alta": "Alta",
+		"baja": "Baja"
+	},
+	"nivelUsuario020_filter_table": {
+		"_blank": "[Todos]",
+		"normal": "Normal",
+		"vip": "VIP"
+	},
+	"nivelUsuario020_detail_table": {
+		"_blank": "[Todos]",
+		"normal": "Normal",
+		"vip": "VIP"
+	},
+	"indActivo020_filter_table": {
+		"_blank": "[Todos]",
+		"Si": "Sí",
+		"No": "No"
+	},
+	"indActivo038_filter_table": {
+		"_blank": "[Todos]",
+		"Si": "Sí",
+		"No": "No"
+	},
+	"contacto_nombre_detail_form": {
+		"_blank": " "
+	},
+	"fases_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"calidad_combo": {
+		"_blank": "[Todos]"
+	},
+	"estado_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"tareaAsignadaA_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"idEntidadSolicitante_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"idMotivosAnulacion_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"idEstadoExp_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"tipo_expediente": {
+		"I": "Interpretación",
+		"T": "Traducción",
+		"R": "Revisión"
+	},
+	"bitacora": {
+		"activo": "Activo",
+		"registrarAccion": "Registrar acción",
+		"modificacionesEstado": "Modificaciones en el estado",
+		"fechaYHora": "Fecha y hora",
+		"usuario": "Usuario",
+		"accionRealizada": "Acción realizada",
+		"cambioRealizado": "Cambio realizado",
+		"manual": "Manual",
+		"alta": "Alta",
+		"modificacion": "Modificación",
+		"borrado": "Borrado",
+		"nota": "Nota",
+		"notas": "Notas",
+		"comunicacionesExped":"Comunicaciones del expediente",
+		"quienCuando":"QUIÉN y CUANDO"
+	},
+	"tabsPlantificacion": {
+		"pestSituacionActual": "Situación actual",
+		"pestBusqueda": "Búsqueda general de expedientes",
+		"pestResumen": "Resumen",
+		"pestDatos": "Datos"
+	},
+	"tabsCargaTrabajo": {
+		"pestTareasTradRev": "Tareas traducción/revisión",
+		"pestTareasInter": "Tareas interpretación",
+		"pestRecurso": "Gráfico por recurso",
+		"pestExpediente": "Gráfico por trabajos y expedientes",
+		"pestTareasTrabajo": "Tareas trabajo"
+	},
+	"tabsDetalleEspediente": {
+		"pestDatosExp": "Datos generales",
+		"pestDocumentacion": "Datos de trabajo y documentación"
+	}
+
+	,"planifExpedientesTipos" :{
+		"pendientesEntrega" : "Pendientes de entregar que se tenían que haber entregado",
+		"hoy" : "Deben entregarse hoy",
+		"sieteDias" : "Deben entregarse en 7 días",
+		"noConformidad" : "Con una no conformidad y sin tratar por el IZO",
+		"sinPlanificar" : "Sin planificar",
+		"sinAsignador" : "Sin asignador determinado"
+	}
+	
+	,"planifTareasTipos" :{
+		"sinAsignarHoy" : "Sin asignar en expedientes que deben finalizar hoy",
+		"sinAsignar" : "Sin asignar en expedientes cuya fecha de entrega finaliza en 7 días",
+		"asignadas" : "Asignadas a recursos que no van a estar disponibles",
+		"finalizanHoy" : "Deben finalizar hoy",
+		"retrasadas" : "Van retrasadas"
+	}
+	
+	,"planifTramitesTipos" :{
+		"pendientes" : "Pendientes de aceptación",
+		"aceptados" : "Aceptados",
+		"rechazados" : "Rechazados",
+		"expiradosRechazados" : "Expirados/Rechazados"
+	}
+	,"filtro_combo":{
+		"expedientes" : "Expedientes",
+		"expedientesSin" : "Expedientes sin asignador",
+		"tareas" :  "Tareas",
+		"tramites" : "Trámites con cliente"
+	}
+	,"perfiles_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"lote_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"idiomaDestino": {
+		"_blank": "[Todos]"
+	}
+	,"idEntidadFactExpediente_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"contactoSolicitante_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"contactoFactExpediente_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"asignador_IZO_filter_table": {
+		"_blank": "[Todos]"
+	}
+	, "rup_tree": {
+    	"removeElementAndContinue": "Se eliminará el elemento seleccionado y los hijos del mismo, ¿desea continuar?"
+    	, "saveContent": "El contenido se ha guardado correctamente"
+    	, "errorSavingContent": "Error al guardar el contenido"
+    	, "errorMovingNode": "La reubicación del nodo es incorrecta."
+  	}
+  	, "rup_table": {
+    	"deleteEntidades": "Se procede a eliminar las entidades solicitantes asociadas al grupo de trabajo, ¿desea continuar?"
+    	, "finEstudio": "Se procede a finalizar el estudio, ¿desea continuar?"
+    	, "rechExp": "Se procede a rechazar el expediente, ¿desea continuar?"
+    	, "rechSub": "Se procede a rechazar la subsanaci\u00F3n, ¿desea continuar?"
+    	, "aceptarSub": "Se procede a aceptar la subsanaci\u00F3n, ¿desea continuar?"
+    	, "modifyData": "Hay cambios en los datos"
+    	, "feedback": {	      
+    		"deletedError": "Error al borrar el elemento.",
+    		"copyError": "Error al copiar los datos."
+	    }
+  	},
+	"estadosConsulta_filter_table": {
+		"_blank": "[Todos]"
+	},
+	"fasesConsulta_filter_table": {
+		"_blank": "[Todos]"
+	}
+	, "tabsDashboard": {
+		"pestEstudio": "Estudio",
+		"pestPlanificacion": "Planificación",
+		"pestCargatrabajo": "Carga de trabajo"
+	}
+	,"idiomaDestinoConsulta_filter_table": {
+		"_blank": "[Todos]"
+	}
+	,"dashboardExpedientesTipos" :{
+		"enEstudio" : "En estudio",
+		"enEstudioPdteClte" : "En estudio y pdte. tramitación por el cliente",
+		"pdtesAnulacion" : "Pdtes de anulación"
+	}
+	,"tipoRelevancia_detail_table": {
+		"_blank": "[Seleccione]"
+	},
+	"auditoria": {
+		"tabla": {
+			"campos": "es_alderdiak",
+			"cumplido": "es_bete da",
+			"observIZO": "es_IZOko oharrak",
+			"valoracion": "es_lortutako balorazio orokorra",
+			"docsParaProveedor": "es_Hornitzailearentzako dokumentuak"
+		}
+	}
+	,"tipoComunicacion" :{
+		"recibido" : "Recibido",
+		"enviado" : "Enviado"
+	}
+}

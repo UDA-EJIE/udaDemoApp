@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="Oracle WebLogic Server 14.1.1.0"/>
+  <runtime name="apache-tomcat-7.0.109"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>
   <fixed facet="java"/>
@@ -8,4 +8,5 @@
   <installed facet="jst.web" version="2.5"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="wls.web" version="14.1.1.0"/>
+  <installed facet="jst.jaxrs" version="2.0"/>
 </faceted-project>

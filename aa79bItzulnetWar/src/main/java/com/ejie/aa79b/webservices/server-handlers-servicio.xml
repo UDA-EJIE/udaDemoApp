@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+	<handler-chain>
+		<handler>
+			<handler-class>
+				com.ejie.aa79b.webservices.N38TokenServerHandlerServicio
+			</handler-class>
+		</handler>
+	</handler-chain>
+</handler-chains>

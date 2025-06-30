@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:p="http://www.springframework.org/schema/p"
+ 	xsi:schemaLocation="
+  		http://www.springframework.org/schema/beans
+  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">	
+ 
+ 	<!-- UDA exporters -->
+	<bean id="csvReport" class="com.ejie.x38.reports.CSVReportView" />
+	<bean id="odsReport" class="com.ejie.x38.reports.ODSReportView" />
+	<bean id="xlsReport" class="com.ejie.x38.reports.XLSReportView" />
+	<bean id="xlsxReport" class="com.ejie.x38.reports.XLSXReportView" />
+	
+	<!-- PDF (Jasper) -->
+	<bean id="pdfOrdenPreciosPublicos" p:url="/WEB-INF/resources/reports/ordenPreciosPublicos.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+	<bean id="pdfConfiguracionLotes" p:url="/WEB-INF/resources/reports/configuracionLotes.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+	<bean id="pdfResponsable" p:url="/WEB-INF/resources/reports/responsables.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+	<bean id="pdfEntidad" p:url="/WEB-INF/resources/reports/entidades.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+	<bean id="pdfJustificanteTradRev" p:url="/WEB-INF/resources/reports/justificanteTraducRevision.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+	<bean id="pdfJustificanteInterpretacion" p:url="/WEB-INF/resources/reports/justificanteInterpretacion.jasper"
+		class="com.ejie.x38.reports.PDFReportView" />
+</beans>

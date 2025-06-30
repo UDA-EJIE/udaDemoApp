@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed6f7c50-5308-433a-973a-c00b2ea40154">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D3D3D3">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#D3D3D3">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#D3D3D3">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="b5c6211e-682e-4a8f-9586-b104e8006f33">
+		<parameter name="CLASE_DOCU_EU" class="java.lang.String"/>
+		<parameter name="TITULO_DOCU_EU" class="java.lang.String"/>
+		<parameter name="TIPO_DOCU_EU" class="java.lang.String"/>
+		<parameter name="CLASE_DOCU_ES" class="java.lang.String"/>
+		<parameter name="TITULO_DOCU_ES" class="java.lang.String"/>
+		<parameter name="TIPO_DOCU_ES" class="java.lang.String"/>
+		<parameter name="NUM_PALABRAS_SOLIC_EU" class="java.lang.String"/>
+		<parameter name="NUM_PALABRAS_SOLIC_ES" class="java.lang.String"/>
+		<parameter name="NUM_PALABRAS_IZO_EU" class="java.lang.String"/>
+		<parameter name="NUM_PALABRAS_IZO_ES" class="java.lang.String"/>
+		<field name="claseDocumentoDescEs" class="java.lang.String"/>
+		<field name="titulo" class="java.lang.String"/>
+		<field name="tipoDocumentoDescEs" class="java.lang.String"/>
+		<field name="numPalSolic" class="java.lang.Integer"/>
+		<field name="numPalIzo" class="java.lang.Integer"/>
+		<field name="tipoDocumentoDescEu" class="java.lang.String"/>
+		<field name="claseDocumentoDescEu" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="6fdd69f9-f8eb-4856-9fa6-7b73c4933851">
+		<parameter name="TITULO_EXP_EU" class="java.lang.String"/>
+		<parameter name="FECHA_ALTA_EU" class="java.lang.String"/>
+		<parameter name="NUM_EXP_EU" class="java.lang.String"/>
+		<parameter name="TITULO_EXP_ES" class="java.lang.String"/>
+		<parameter name="FECHA_ALTA_ES" class="java.lang.String"/>
+		<parameter name="NUM_EXP_ES" class="java.lang.String"/>
+		<field name="fechaAltaRel" class="java.util.Date"/>
+		<field name="numExpFormated" class="java.lang.String"/>
+		<field name="tituloRel" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="TITULO_EU" class="java.lang.String"/>
+	<parameter name="TITULO_ES" class="java.lang.String"/>
+	<parameter name="DATOS_PERSONAL_EU" class="java.lang.String"/>
+	<parameter name="DATOS_PERSONAL_ES" class="java.lang.String"/>
+	<parameter name="CIF_EU" class="java.lang.String"/>
+	<parameter name="NIF_EU" class="java.lang.String"/>
+	<parameter name="ENTIDAD_EU" class="java.lang.String"/>
+	<parameter name="GESTOR_EU" class="java.lang.String"/>
+	<parameter name="CIF_ES" class="java.lang.String"/>
+	<parameter name="NIF_ES" class="java.lang.String"/>
+	<parameter name="ENTIDAD_ES" class="java.lang.String"/>
+	<parameter name="GESTOR_ES" class="java.lang.String"/>
+	<parameter name="TIPO_EXP_EU" class="java.lang.String"/>
+	<parameter name="TIPO_EXP_ES" class="java.lang.String"/>
+	<parameter name="NOM_APELLIDOS" class="java.lang.String"/>
+	<parameter name="STATICS" class="java.lang.String"/>
+	<parameter name="DATOS_SOLICITUD_EU" class="java.lang.String"/>
+	<parameter name="TITULO_EXP_EU" class="java.lang.String"/>
+	<parameter name="IDIOMA_EU" class="java.lang.String"/>
+	<parameter name="CONFIDENCIAL_EU" class="java.lang.String"/>
+	<parameter name="BOPV_EU" class="java.lang.String"/>
+	<parameter name="REFERENCIA_TRAM_EU" class="java.lang.String"/>
+	<parameter name="CORREDACCION_EU" class="java.lang.String"/>
+	<parameter name="TEXT_ELABORAR_EU" class="java.lang.String"/>
+	<parameter name="TIPO_REDACCION_EU" class="java.lang.String"/>
+	<parameter name="PARTICIPANTES_EU" class="java.lang.String"/>
+	<parameter name="OBSERVACIONES_EU" class="java.lang.String"/>
+	<parameter name="NOM_FICHERO_EU" class="java.lang.String"/>
+	<parameter name="DATOS_SOLICITUD_ES" class="java.lang.String"/>
+	<parameter name="TITULO_EXP_ES" class="java.lang.String"/>
+	<parameter name="IDIOMA_ES" class="java.lang.String"/>
+	<parameter name="CONFIDENCIAL_ES" class="java.lang.String"/>
+	<parameter name="BOPV_ES" class="java.lang.String"/>
+	<parameter name="REFERENCIA_TRAM_ES" class="java.lang.String"/>
+	<parameter name="CORREDACCION_ES" class="java.lang.String"/>
+	<parameter name="TEXT_ELABORAR_ES" class="java.lang.String"/>
+	<parameter name="TIPO_REDACCION_ES" class="java.lang.String"/>
+	<parameter name="PARTICIPANTES_ES" class="java.lang.String"/>
+	<parameter name="OBSERVACIONES_ES" class="java.lang.String"/>
+	<parameter name="NOM_FICHERO_ES" class="java.lang.String"/>
+	<parameter name="EXP_RELACIONADAS_EU" class="java.lang.String"/>
+	<parameter name="EXP_RELACIONADAS_ES" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_IZO_EU" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_IZO_ES" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_SOL_EU" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_SOL_ES" class="java.lang.String"/>
+	<parameter name="DOCUMENTACION_EU" class="java.lang.String"/>
+	<parameter name="DOCUMENTACION_ES" class="java.lang.String"/>
+	<parameter name="NUM_EXP_EU" class="java.lang.String"/>
+	<parameter name="FECHA_ALTA_EU" class="java.lang.String"/>
+	<parameter name="NUM_EXP_ES" class="java.lang.String"/>
+	<parameter name="FECHA_ALTA_ES" class="java.lang.String"/>
+	<parameter name="TIPO_DOCU_EU" class="java.lang.String"/>
+	<parameter name="CLASE_DOCU_EU" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_DOCU_EU" class="java.lang.String"/>
+	<parameter name="TIPO_DOCU_ES" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_DOCU_ES" class="java.lang.String"/>
+	<parameter name="CLASE_DOCU_ES" class="java.lang.String"/>
+	<parameter name="EXP_FACTURABLE" class="java.lang.String"/>
+	<parameter name="REQUIERE_PRESUPUESTO" class="java.lang.String"/>
+	<parameter name="GARRANTZIA" class="java.lang.String"/>
+	<parameter name="URGENTE" class="java.lang.String"/>
+	<parameter name="HORA_FIN_IZO" class="java.lang.String"/>
+	<parameter name="SI" class="java.lang.String"/>
+	<parameter name="NO" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_PROPUESTA" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_IZO_EU" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_IZO_ES" class="java.lang.String"/>
+	<parameter name="SI_EU" class="java.lang.String"/>
+	<parameter name="SI_ES" class="java.lang.String"/>
+	<parameter name="NO_EU" class="java.lang.String"/>
+	<parameter name="NO_ES" class="java.lang.String"/>
+	<parameter name="DECLARACION_EU" class="java.lang.String"/>
+	<parameter name="DECLARACION_RESPON_EU" class="java.lang.String"/>
+	<parameter name="LOPD_TITULO_EU" class="java.lang.String"/>
+	<parameter name="DECLARACION_ES" class="java.lang.String"/>
+	<parameter name="DECLARACION_RESPON_ES" class="java.lang.String"/>
+	<parameter name="LOPD_TITULO_ES" class="java.lang.String"/>
+	<parameter name="LIBRO_REGISTRO_NUM" class="java.lang.String"/>
+	<parameter name="NUMERO_ANOTACION_EU" class="java.lang.String"/>
+	<parameter name="NUMERO_ANOTACION_ES" class="java.lang.String"/>
+	<parameter name="LIBRO_REGISTRO_EU" class="java.lang.String"/>
+	<parameter name="LIBRO_REGISTRO_ES" class="java.lang.String"/>
+	<parameter name="RESGUARDO_EU" class="java.lang.String"/>
+	<parameter name="RESGUARDO_ES" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_SOLIC_ES" class="java.lang.String"/>
+	<parameter name="NUM_PALABRAS_SOLIC_EU" class="java.lang.String"/>
+	<parameter name="TITULO_EXP_REL_EU" class="java.lang.String"/>
+	<parameter name="TITULO_EXP_REL_ES" class="java.lang.String"/>
+	<parameter name="NOTAS_EU" class="java.lang.String"/>
+	<parameter name="NOTAS_ES" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_ES" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_EU" class="java.lang.String"/>
+	<parameter name="SOLIC_PRESUPUESTO_EU" class="java.lang.String"/>
+	<parameter name="SOLIC_PRESUPUESTO_ES" class="java.lang.String"/>
+	<field name="gestorExpediente.entidad.descEs" class="java.lang.String"/>
+	<field name="gestorExpediente.entidad.descEu" class="java.lang.String"/>
+	<field name="gestorExpediente.solicitante.nombreCompleto" class="java.lang.String"/>
+	<field name="gestorExpediente.entidad.cif" class="java.lang.String"/>
+	<field name="gestorExpediente.solicitante.dniCompleto" class="java.lang.String"/>
+	<field name="tipoExpedienteDescEuPDF" class="java.lang.String"/>
+	<field name="tipoExpedienteDescEsPDF" class="java.lang.String"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="expedienteTradRev.idIdiomaDescEu" class="java.lang.String"/>
+	<field name="expedienteTradRev.idIdiomaDescEs" class="java.lang.String"/>
+	<field name="expedienteTradRev.indConfidencial" class="java.lang.String"/>
+	<field name="expedienteTradRev.texto" class="java.lang.String"/>
+	<field name="expedienteTradRev.participantes" class="java.lang.String"/>
+	<field name="expedienteTradRev.observaciones.observaciones" class="java.lang.String"/>
+	<field name="expedienteTradRev.observaciones.nombre" class="java.lang.String"/>
+	<field name="expedienteTradRev.indPublicarBopv" class="java.lang.String"/>
+	<field name="expedienteTradRev.publicarBopvDescEs" class="java.lang.String"/>
+	<field name="expedienteTradRev.publicarBopvDescEu" class="java.lang.String"/>
+	<field name="expedienteTradRev.refTramitagune" class="java.lang.String"/>
+	<field name="expedienteTradRev.indCorredaccion" class="java.lang.String"/>
+	<field name="expedienteTradRev.tipoRedaccion" class="java.lang.String"/>
+	<field name="expedienteTradRev.numTotalPalIzo" class="java.lang.Integer"/>
+	<field name="expedienteTradRev.numTotalPalSolic" class="java.lang.Integer"/>
+	<field name="expedienteTradRev.indFacturable" class="java.lang.String"/>
+	<field name="expedienteTradRev.fechaFinalIzo" class="java.util.Date"/>
+	<field name="expedienteTradRev.fechaFinalSolic" class="java.util.Date"/>
+	<field name="expedienteTradRev.idRelevancia" class="java.lang.Long"/>
+	<field name="expedienteTradRev.indUrgente" class="java.lang.String"/>
+	<field name="expedienteTradRev.horaFinalIzo" class="java.lang.String"/>
+	<field name="expedienteTradRev.fechaFinalProp" class="java.util.Date"/>
+	<field name="documentosExpediente" class="java.util.List"/>
+	<field name="listaExpedientesRelacionados" class="java.util.List"/>
+	<field name="expedienteTradRev.horaFinalSolic" class="java.lang.String"/>
+	<field name="idTipoExpediente" class="java.lang.String"/>
+	<field name="expedienteTradRev.indPresupuesto" class="java.lang.String"/>
+	<field name="numExpFormated" class="java.lang.String"/>
+	<field name="fechaHoraAlta" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="145">
+			<image>
+				<reportElement mode="Transparent" x="0" y="0" width="233" height="59" uuid="a75d2cc6-ee73-44a0-aef5-7a14efa5716d"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/logo-IVAP.jpg")]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="105" width="555" height="20" uuid="3397e9a3-80a6-4190-87c4-834420f999eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="13" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO_EU}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="125" width="555" height="20" uuid="3525ffe4-9d4b-4b34-b7ae-790c7d73c91f"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="31" width="159" height="20" uuid="1cbe54a3-8e1f-437c-8131-2ecf24a05a3a"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RESGUARDO_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="11" width="159" height="20" uuid="c3e92216-2b17-4ec5-932a-4b2f0961c3b0"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{RESGUARDO_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="51" width="112" height="20" uuid="69d19f11-3f30-46c9-9a11-0f67783c1e5d"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NUM_EXP_ES}+":"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="51" width="125" height="20" uuid="d97689fb-5074-4f06-8383-f3161138f99b"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NUM_EXP_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="51" width="10" height="20" uuid="7955d85a-15e8-442d-ad04-ed2ec89fe551"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="51" width="75" height="20" uuid="e46672ca-df9e-487c-9365-e888c28e0836"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numExpFormated}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="71" width="82" height="20" uuid="23ce01c5-f611-4155-b06a-4919b19d36fb"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_ALTA_ES}+":"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="71" width="125" height="20" uuid="1d934f5b-31ce-456d-a9e4-13366829f9ba"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_ALTA_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="71" width="10" height="20" uuid="b6146be3-bb55-451f-be81-bfe1e7a8c496"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="71" width="105" height="20" uuid="a41e98d6-7aad-4f7d-8e13-1411a884b405"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaHoraAlta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="97" splitType="Stretch">
+			<textField>
+				<reportElement x="141" y="0" width="113" height="20" uuid="b4f8ffae-101a-4d18-b720-7319fb2a9196"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATOS_PERSONAL_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="0" width="10" height="20" uuid="52a33c4d-de50-4eef-8a0f-bf53968cdc90"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="0" width="107" height="20" uuid="2679ed3e-61a0-4ffc-8fa8-0b63ae6e38c0"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATOS_PERSONAL_EU}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="68" uuid="8b224c2f-fb5f-492a-b766-b30fcbe84e8b"/>
+				<textField>
+					<reportElement x="110" y="20" width="100" height="15" uuid="b6a151a0-7937-4431-9117-38f0ed466786"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gestorExpediente.solicitante.dniCompleto}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="110" y="50" width="100" height="15" uuid="fa3d974e-f3b0-4362-a3be-10c1b70fea68"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gestorExpediente.entidad.cif}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="110" y="5" width="435" height="15" uuid="90ae579f-62d2-46ed-91ae-88c9596dcff0"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gestorExpediente.solicitante.nombreCompleto}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="110" y="35" width="435" height="15" uuid="444b451d-2787-4306-89e7-74787200b252"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gestorExpediente.entidad.descEu}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="5" width="100" height="15" uuid="a550d5d3-42ce-4b66-bf58-9248668d8793"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{GESTOR_EU} + " / " + $P{GESTOR_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="35" width="100" height="15" uuid="d4a7fba5-fa0f-4a14-a50f-7957e41f4d2b"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ENTIDAD_EU} + " / " + $P{ENTIDAD_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="20" width="70" height="15" uuid="168cc984-fbfc-46c0-b832-747bba155064"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NIF_EU} + " / " + $P{NIF_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="50" width="70" height="15" uuid="b6f5180d-bb13-4fbf-826c-8ede94d5ec8a"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{CIF_EU} + " / " + $P{CIF_ES} + ":"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="52">
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="23" uuid="99c44764-64a5-4879-8550-5ecaa1459105"/>
+				<textField>
+					<reportElement x="10" y="5" width="172" height="15" uuid="581c7283-3f5c-429c-a28e-c33505221885"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{TIPO_EXP_EU} + " / " + $P{TIPO_EXP_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="182" y="5" width="363" height="15" uuid="bb9059a3-1bd6-49c4-9ef4-1e178faeb9ff"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipoExpedienteDescEuPDF}+" / "+$F{tipoExpedienteDescEsPDF}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="119" y="0" width="10" height="20" uuid="e3ad2e75-9871-46c9-9d93-4cb364b912a6"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="90" height="20" uuid="17e44226-0db5-4fa5-a30b-2e9ca64ecf57"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TIPO_EXP_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="0" width="95" height="20" uuid="be78e46b-621b-4e0c-8294-fef5af261080"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TIPO_EXP_EU}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="66">
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="46" uuid="23928b2e-8731-401e-aaba-30c5a3891d4c"/>
+				<box>
+					<bottomPen lineColor="#FFFFFF"/>
+				</box>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="10" y="5" width="535" height="26" uuid="4f87640b-a225-46b1-afb7-12836249d6ea"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{TITULO_EXP_EU} + " / " + $P{TITULO_EXP_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="10" y="31" width="535" height="15" uuid="67e2e42c-6e70-4a60-9ace-18e0ff0bc867"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="24" y="0" width="89" height="20" uuid="6504dbfb-be89-4a13-b034-2bae869ecfa6"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATOS_SOLICITUD_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="0" width="100" height="20" uuid="04b76134-b61e-4908-84e1-da66e25f2057"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATOS_SOLICITUD_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="0" width="10" height="20" uuid="3670eded-3da3-403c-bd58-21f61c18df38"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="60">
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="60" uuid="5e2a6d68-545d-4a6c-8a10-7d56fc8c4a75"/>
+				<box>
+					<topPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+				</box>
+				<textField>
+					<reportElement x="10" y="15" width="296" height="15" uuid="6dcadef0-dba6-4a83-8d3a-7ee62de990e0"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{IDIOMA_EU} + " / " + $P{IDIOMA_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="45" width="159" height="15" uuid="2518dec9-da93-47cf-b76d-9d9cd33a5c1b"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{CONFIDENCIAL_EU} + " / " + $P{CONFIDENCIAL_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="261" y="45" width="219" height="15" uuid="d676a3dd-6ad6-4bbb-9f11-f4b7f341eafb">
+						<printWhenExpression><![CDATA["T".equals($F{idTipoExpediente})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{CORREDACCION_EU} + " / " + $P{CORREDACCION_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="0" width="296" height="15" uuid="5cb190a9-9b34-427a-8f57-56d59a5c9a5d"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{BOPV_EU} + " / " + $P{BOPV_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="30" width="251" height="15" uuid="6fbeb7d9-1662-4965-893e-171a07971fa7"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{REFERENCIA_TRAM_EU} + " / " + $P{REFERENCIA_TRAM_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="306" y="0" width="50" height="15" uuid="47e56fd8-8b97-40ea-84e7-f6642d31783d"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.indPublicarBopv}.equals("S")?
+$P{SI_EU}+"/"+$P{SI_ES}:$P{NO_EU}+"/"+$P{NO_ES}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="169" y="45" width="50" height="15" uuid="86f5daa6-9085-4374-a0f9-bdf2d919c8c0"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.indConfidencial}.equals("S")?
+$P{SI_EU}+"/"+$P{SI_ES}:$P{NO_EU}+"/"+$P{NO_ES}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="480" y="45" width="50" height="15" uuid="ebfac4d8-5ea6-494c-890e-1010ec32d907">
+						<printWhenExpression><![CDATA["T".equals($F{idTipoExpediente})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.indCorredaccion}.equals("S")?
+$P{SI_EU}+"/"+$P{SI_ES}:$P{NO_EU}+"/"+$P{NO_ES}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="306" y="15" width="222" height="15" uuid="11410f95-1754-4af0-946f-5de4bcbaa52f"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.idIdiomaDescEu}+"/"+$F{expedienteTradRev.idIdiomaDescEs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="261" y="30" width="284" height="15" uuid="2213d641-c062-41e2-ae59-31267104bd8b"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.refTramitagune}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="15">
+			<printWhenExpression><![CDATA[$F{expedienteTradRev.indCorredaccion}.equals("S")]]></printWhenExpression>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="15" uuid="23928b2e-8731-401e-aaba-30c5a3891d4c"/>
+				<box>
+					<topPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+				</box>
+				<textField>
+					<reportElement x="10" y="0" width="81" height="15" isRemoveLineWhenBlank="true" uuid="4f87640b-a225-46b1-afb7-12836249d6ea"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{TEXT_ELABORAR_EU} + " / " + $P{TEXT_ELABORAR_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="91" y="0" width="454" height="15" uuid="67e2e42c-6e70-4a60-9ace-18e0ff0bc867"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.texto}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="16">
+			<printWhenExpression><![CDATA[$F{expedienteTradRev.indCorredaccion}.equals("S")]]></printWhenExpression>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="16" uuid="23928b2e-8731-401e-aaba-30c5a3891d4c"/>
+				<box>
+					<topPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+				</box>
+				<textField>
+					<reportElement x="10" y="0" width="213" height="15" isRemoveLineWhenBlank="true" uuid="4f87640b-a225-46b1-afb7-12836249d6ea"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{TIPO_REDACCION_EU} + " / " + $P{TIPO_REDACCION_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="223" y="0" width="322" height="15" uuid="67e2e42c-6e70-4a60-9ace-18e0ff0bc867"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.tipoRedaccion}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="18">
+			<printWhenExpression><![CDATA[$F{expedienteTradRev.indCorredaccion}.equals("S")]]></printWhenExpression>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="18" uuid="23928b2e-8731-401e-aaba-30c5a3891d4c"/>
+				<box>
+					<topPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+				</box>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="223" y="0" width="322" height="15" uuid="67e2e42c-6e70-4a60-9ace-18e0ff0bc867"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.participantes}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="0" width="213" height="15" isRemoveLineWhenBlank="true" uuid="4f87640b-a225-46b1-afb7-12836249d6ea"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{PARTICIPANTES_EU} + " / " + $P{PARTICIPANTES_ES} + ":"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="40">
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="40" uuid="23928b2e-8731-401e-aaba-30c5a3891d4c"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textField>
+					<reportElement x="172" y="5" width="100" height="15" uuid="6cfdb804-f669-4b3f-9c17-495bfee8a362"/>
+					<textElement>
+						<font fontName="SansSerif" size="11" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{OBSERVACIONES_ES}]]></textFieldExpression>
+				</textField>
+				<frame>
+					<reportElement style="table" mode="Transparent" x="10" y="20" width="535" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="6b166d76-db26-4a72-a996-208a4fc088f8"/>
+					<box>
+						<topPen lineColor="#000000"/>
+						<leftPen lineColor="#000000"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textField>
+						<reportElement x="5" y="5" width="208" height="15" uuid="4ba56d3c-7c86-4be5-97f1-3616eecd2f02"/>
+						<textElement>
+							<font fontName="SansSerif" size="9" isBold="false" isStrikeThrough="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{NOM_FICHERO_EU} + " / " + $P{NOM_FICHERO_ES} + ":"]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="213" y="5" width="317" height="15" uuid="35709b09-26c5-48f3-80fc-df86c54aa746"/>
+						<textElement textAlignment="Left">
+							<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{expedienteTradRev.observaciones.nombre}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<textField>
+					<reportElement x="24" y="5" width="138" height="15" uuid="0bb130de-f043-47a2-848e-45fd6e944124"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{OBSERVACIONES_EU}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="162" y="5" width="10" height="15" uuid="9d05ddc1-8376-4957-b645-87b41bac82ff"/>
+					<textElement>
+						<font fontName="SansSerif" size="11" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="41">
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="555" height="30" uuid="0741a67c-2062-4417-bddf-060d2c52c847"/>
+				<box>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<frame>
+					<reportElement style="table" mode="Transparent" x="10" y="0" width="535" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="9821cc7a-fae8-4f5a-a141-d166496cf1fe"/>
+					<box>
+						<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					</box>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="213" y="0" width="317" height="15" uuid="cf88b112-05b8-484b-8982-a33829a6c0fd"/>
+						<textElement textAlignment="Left">
+							<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{expedienteTradRev.observaciones.observaciones}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="5" y="0" width="208" height="15" isRemoveLineWhenBlank="true" uuid="66c909ec-9209-4807-8138-1b29c4cae091"/>
+						<textElement>
+							<font fontName="SansSerif" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{NOTAS_EU} + " / " + $P{NOTAS_ES} + ":"]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+		</band>
+		<band height="84">
+			<printWhenExpression><![CDATA[!$F{listaExpedientesRelacionados}.isEmpty()]]></printWhenExpression>
+			<textField>
+				<reportElement x="186" y="0" width="242" height="20" uuid="08ac620c-46df-4773-bef0-943462bebed5"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EXP_RELACIONADAS_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="0" width="10" height="20" uuid="11bf48d1-f560-40f6-972b-8bfb6059c442"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" stretchType="RelativeToBandHeight" x="0" y="25" width="555" height="50" isRemoveLineWhenBlank="true" uuid="8dbb9506-8e56-4a23-86ad-e732dab03ea8"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 2" uuid="a982c0bc-aba2-436e-8470-b9e062eae793">
+						<datasetParameter name="TITULO_EXP_EU">
+							<datasetParameterExpression><![CDATA[$P{TITULO_EXP_REL_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TITULO_EXP_ES">
+							<datasetParameterExpression><![CDATA[$P{TITULO_EXP_REL_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="FECHA_ALTA_EU">
+							<datasetParameterExpression><![CDATA[$P{FECHA_ALTA_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="FECHA_ALTA_ES">
+							<datasetParameterExpression><![CDATA[$P{FECHA_ALTA_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_EXP_EU">
+							<datasetParameterExpression><![CDATA[$P{NUM_EXP_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_EXP_ES">
+							<datasetParameterExpression><![CDATA[$P{NUM_EXP_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listaExpedientesRelacionados})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="100" uuid="1b469645-9e87-4135-bf97-12c6e50f1a3c">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="30" uuid="05b04bae-1dae-4ea4-8916-d402ee92fb45"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{NUM_EXP_EU} + " / " + $P{NUM_EXP_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="80" height="20" uuid="3b4f98fa-d19a-4a66-955e-d690a2060528"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{numExpFormated}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="354" uuid="94343145-32a6-4aef-878f-6b6a725877cf">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="354" height="30" uuid="a09d0694-cbde-420e-b760-ab2b799eb00a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{TITULO_EXP_EU} + " / " + $P{TITULO_EXP_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="334" height="20" uuid="dd56f237-4d67-4b92-836a-4258875f1dc0"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tituloRel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="8ecc5824-8bd1-44ef-bb69-c33ddd4c1895">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="30" uuid="7c4e6c2c-2469-420c-98a7-2914a5d2b574"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{FECHA_ALTA_EU} + " / " + $P{FECHA_ALTA_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="80" height="20" uuid="8c232158-7957-49df-b87e-9f4a7187d26a"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format($F{fechaAltaRel}):
+new SimpleDateFormat("dd/MM/yyyy").format($F{fechaAltaRel})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement x="26" y="0" width="150" height="20" uuid="36fa8a5b-ae7f-4d78-b7e4-8e833567b0aa"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EXP_RELACIONADAS_EU}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="100">
+			<printWhenExpression><![CDATA[!$F{documentosExpediente}.isEmpty()]]></printWhenExpression>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="23" uuid="558f8f57-96cb-4418-b1b9-5f3b9955ac84"/>
+				<textField isBlankWhenNull="true">
+					<reportElement x="254" y="5" width="291" height="15" uuid="bc7216fc-a75c-4038-a9af-181bf462632b"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.numTotalPalSolic}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="5" width="244" height="15" uuid="350dd542-8d18-42e8-a3d0-afd86e78daff"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NUM_PALABRAS_SOLIC_EU} + " / " + $P{NUM_PALABRAS_SOLIC_ES} + ":"]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="125" y="0" width="100" height="20" uuid="1c048575-352e-46f5-9b31-a8a42e24ee64"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DOCUMENTACION_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="10" height="20" uuid="da6646d6-5248-4f10-8566-663c38111dd2"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="50" width="555" height="40" uuid="1ff94977-598c-4359-99af-7eabfa848eeb"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 1" uuid="d745c17d-e78f-4721-b768-3ff5173a5e40">
+						<datasetParameter name="CLASE_DOCU_EU">
+							<datasetParameterExpression><![CDATA[$P{CLASE_DOCU_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TITULO_DOCU_EU">
+							<datasetParameterExpression><![CDATA[$P{TITULO_EXP_REL_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TIPO_DOCU_EU">
+							<datasetParameterExpression><![CDATA[$P{TIPO_DOCU_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_PALABRAS_IZO_EU">
+							<datasetParameterExpression><![CDATA[$P{NUM_PALABRAS_IZO_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CLASE_DOCU_ES">
+							<datasetParameterExpression><![CDATA[$P{CLASE_DOCU_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TITULO_DOCU_ES">
+							<datasetParameterExpression><![CDATA[$P{TITULO_EXP_REL_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="TIPO_DOCU_ES">
+							<datasetParameterExpression><![CDATA[$P{TIPO_DOCU_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_PALABRAS_IZO_ES">
+							<datasetParameterExpression><![CDATA[$P{NUM_PALABRAS_IZO_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_PALABRAS_SOLIC_EU">
+							<datasetParameterExpression><![CDATA[$P{NUM_PALABRAS_SOLIC_EU}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="NUM_PALABRAS_SOLIC_ES">
+							<datasetParameterExpression><![CDATA[$P{NUM_PALABRAS_SOLIC_ES}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{documentosExpediente})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="100" uuid="ef6c3ed5-94c5-43e1-a475-077fcaa50bb4">
+						<jr:tableHeader style="table 1_TH" height="21" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="21" uuid="b3b04abc-af5e-40c2-936d-1dab69496b7a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{CLASE_DOCU_EU} + " / " + $P{CLASE_DOCU_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="80" height="20" uuid="32b6eaec-8fb9-4b95-9395-914e31a5f643"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{claseDocumentoDescEu}+"/"+$F{claseDocumentoDescEs}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="274" uuid="258b05fb-b2d8-4877-bb80-7a385e37482d">
+						<jr:tableHeader style="table 1_TH" height="21" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="274" height="21" uuid="bc88baeb-63a4-4651-b9dc-bdaafcea36f0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{TITULO_DOCU_EU} + " / " + $P{TITULO_DOCU_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="254" height="20" uuid="7080bb0e-d5da-4bb0-a02c-ffe6ad338593"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="d0f4c04e-b3cb-4764-96f4-fe3c7df27af8">
+						<jr:tableHeader style="table 1_TH" height="21" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="21" uuid="e15f1325-20e7-41b8-a172-48a90d513a6d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{TIPO_DOCU_EU} + " / " + $P{TIPO_DOCU_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="80" height="20" uuid="e9fc3c0c-043d-468b-855f-f56dce7a8c74"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[null == $F{tipoDocumentoDescEu}?
+"":$F{tipoDocumentoDescEu}+"/"+$F{tipoDocumentoDescEs}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="77fceb32-1a90-4eba-b050-fc214c809963">
+						<jr:tableHeader style="table 1_TH" height="21" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="80" height="21" uuid="cfac5dd4-9275-4342-b1f9-4a59b72b354a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$P{NUM_PALABRAS_SOLIC_EU} + " / " + $P{NUM_PALABRAS_SOLIC_ES}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="10" y="0" width="60" height="20" uuid="38effb80-c30b-4da2-b44d-2aedf630bdd8"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="SansSerif" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{numPalSolic}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement x="26" y="0" width="89" height="20" uuid="06ff5de6-be62-4dd3-8d15-11f6effa62fd"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DOCUMENTACION_EU}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="67">
+			<textField>
+				<reportElement x="110" y="0" width="176" height="20" uuid="e52d63ea-f304-430d-8500-7c377df490d2"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_FIN_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="10" height="20" uuid="00b93590-dde9-4f62-b374-b4088d72e8a9"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="0" width="75" height="20" uuid="98199dbe-cf64-4b1a-b367-fb5073571fe3"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_FIN_EU}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="38" uuid="6b42d736-4546-4b93-ab2b-f96787766aa4"/>
+				<textField isBlankWhenNull="true">
+					<reportElement x="322" y="20" width="55" height="15" uuid="df77a632-a32c-4e97-a795-0c085aa0b89a"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format($F{expedienteTradRev.fechaFinalSolic}):
+new SimpleDateFormat("dd/MM/yyyy").format($F{expedienteTradRev.fechaFinalSolic})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="377" y="20" width="40" height="15" uuid="76547cce-4a40-4510-b3fd-3962c9d72ffb"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.horaFinalSolic}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToBandHeight" x="10" y="20" width="312" height="15" uuid="e226caff-755f-4072-b144-ed7720407695"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{FECHA_FIN_SOL_EU} + " / " + $P{FECHA_FIN_SOL_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="5" width="312" height="15" uuid="b0466add-913d-48b6-9b4e-d7b460819694"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{SOLIC_PRESUPUESTO_EU} + " / " + $P{SOLIC_PRESUPUESTO_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="322" y="5" width="50" height="15" uuid="4befe16b-494c-437c-b47d-8b5a0332eb90"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expedienteTradRev.indPresupuesto}.equals("S")?
+$P{SI_EU}+"/"+$P{SI_ES}:$P{NO_EU}+"/"+$P{NO_ES}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="52">
+			<printWhenExpression><![CDATA[!$P{LIBRO_REGISTRO_NUM}.isEmpty()]]></printWhenExpression>
+			<textField>
+				<reportElement x="135" y="0" width="100" height="20" uuid="e52d63ea-f304-430d-8500-7c377df490d2"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBRO_REGISTRO_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="0" width="10" height="20" uuid="00b93590-dde9-4f62-b374-b4088d72e8a9"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="0" width="100" height="20" uuid="98199dbe-cf64-4b1a-b367-fb5073571fe3"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBRO_REGISTRO_EU}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement style="table" mode="Transparent" x="0" y="20" width="555" height="23" uuid="6b42d736-4546-4b93-ab2b-f96787766aa4"/>
+				<textField>
+					<reportElement x="10" y="5" width="170" height="15" uuid="a5e7cb89-29ef-46c0-b02b-39488d5ccf3b"/>
+					<textElement>
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NUMERO_ANOTACION_EU} + " / " + $P{NUMERO_ANOTACION_ES} + ":"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="180" y="5" width="365" height="15" uuid="63481a06-23fb-4c0d-bf9d-5f5cf2783ff2"/>
+					<textElement textAlignment="Left">
+						<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{LIBRO_REGISTRO_NUM}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="45">
+			<textField>
+				<reportElement x="26" y="0" width="175" height="20" uuid="18e0948e-25ef-4d3e-a501-4ebb53fd1dc2"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DECLARACION_RESPON_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="0" width="10" height="20" uuid="35171627-7973-4ac9-bd1e-b35d59b899cf"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="170" height="20" uuid="2359bfbb-41dc-42a1-b21e-362c066086cd"/>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DECLARACION_RESPON_ES}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="35" y="25" width="510" height="15" uuid="85900e17-0df5-406d-880a-fcc3d349c0cc"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DECLARACION_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="25" width="16" height="15" uuid="fe62de42-e7ac-47a3-af85-225c45b9646c"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="11" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["[X]  "]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="15">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="35" y="0" width="505" height="15" uuid="841452d4-22be-4e0f-8b54-6dd280cee037"/>
+				<textElement>
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DECLARACION_ES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="51" y="23" width="37" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="165dbbdb-8361-47b9-883e-f0ba4e63ced6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["/ Hoja :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="23" width="41" height="15" uuid="4aa17cc7-cf7c-4cd3-a359-a6f078d4e00e"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + " / "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="129" y="23" width="33" height="15" uuid="8eaccd7d-a9e0-4fa2-bb1c-73e06f717533"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="23" width="25" height="15" uuid="10036e52-0f22-4275-8501-1563d266710a"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="9" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Orria"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement mode="Transparent" x="322" y="0" width="233" height="59" uuid="f7a3d057-4f54-4a97-ba4c-fb4ac61edfc1"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/gobierno.jpg")]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

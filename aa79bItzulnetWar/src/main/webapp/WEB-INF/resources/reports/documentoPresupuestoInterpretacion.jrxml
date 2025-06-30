@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="documentoPresupuestoInterpretacion" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cab6e850-6565-4467-bbcb-4d79387fb9bf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="126"/>
+	<parameter name="STATICS" class="java.lang.String"/>
+	<parameter name="TITULO_ES" class="java.lang.String"/>
+	<parameter name="TITULO_EU" class="java.lang.String"/>
+	<parameter name="INTRO_ES" class="java.lang.String"/>
+	<parameter name="INTRO_EU" class="java.lang.String"/>
+	<parameter name="TOTAL_ES" class="java.lang.String"/>
+	<parameter name="TOTAL_EU" class="java.lang.String"/>
+	<parameter name="NUM_INTERPRETES_ES" class="java.lang.String"/>
+	<parameter name="NUM_INTERPRETES_EU" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_ES" class="java.lang.String"/>
+	<parameter name="FECHA_FIN_EU" class="java.lang.String"/>
+	<parameter name="FECHA_INI_ES" class="java.lang.String"/>
+	<parameter name="FECHA_INI_EU" class="java.lang.String"/>
+	<parameter name="PIEDOC_ES" class="java.lang.String"/>
+	<parameter name="PIEDOC_EU" class="java.lang.String"/>
+	<parameter name="CORDIALMENTE_EU" class="java.lang.String"/>
+	<parameter name="TARIFA_ES" class="java.lang.String"/>
+	<parameter name="NOMBREEMP_ES" class="java.lang.String"/>
+	<parameter name="PUESTOEMP_EU" class="java.lang.String"/>
+	<parameter name="LOCALIZEMP_EU" class="java.lang.String"/>
+	<parameter name="IVA_INC_ES" class="java.lang.String"/>
+	<parameter name="IVA_INC_EU" class="java.lang.String"/>
+	<parameter name="INTRO2_ES" class="java.lang.String"/>
+	<parameter name="INTRO2_EU" class="java.lang.String"/>
+	<parameter name="ES_BORRADOR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="horaIni" class="java.lang.String"/>
+	<field name="horaFin" class="java.lang.String"/>
+	<field name="fechaIni" class="java.sql.Date"/>
+	<field name="fechaFin" class="java.sql.Date"/>
+	<field name="gestionInterpretacion.numInterpretes" class="java.lang.Long"/>
+	<field name="subsanacion.presupuesto" class="java.math.BigDecimal"/>
+	<field name="personaAsignada.nombreCompleto" class="java.lang.String"/>
+	<field name="personaAsignada.entidad.descAmpEu" class="java.lang.String"/>
+	<field name="subsanacion.fechaReq" class="java.sql.Date"/>
+	<field name="gestionInterpretacion.presupuesto" class="java.math.BigDecimal"/>
+	<field name="personaAsignada.entidad.direccion.direccion" class="java.lang.String"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image hAlign="Center">
+				<reportElement mode="Transparent" x="78" y="30" width="398" height="645" uuid="58f4423e-8803-44d4-84ac-06597b566e48">
+					<printWhenExpression><![CDATA[$P{ES_BORRADOR} != "N"]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$P{REPORT_LOCALE}.getLanguage() == "eu"?
+$P{STATICS}.concat("/images/img_borrador_eu.png"):
+$P{STATICS}.concat("/images/img_borrador_es.png")]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch">
+			<image>
+				<reportElement mode="Transparent" x="10" y="0" width="233" height="59" uuid="d082a5b5-a8ec-4f4c-a216-8d2476736938"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/logo-IVAP.jpg")]]></imageExpression>
+			</image>
+			<image>
+				<reportElement mode="Transparent" x="486" y="0" width="59" height="59" uuid="2d155721-a4a3-43c0-9082-01f1db8fb255"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/Q2012.jpg")]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="10" y="80" width="255" height="33" uuid="f3bcaebe-4f4c-403b-809e-7853780ae82b"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Roboto" size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="266" y="80" width="287" height="33" forecolor="#999999" uuid="e97aea0b-21d5-410f-a0b7-ec2b721e7cff"/>
+				<textElement>
+					<font fontName="Roboto" size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITULO_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="181" y="7" width="344" height="13" uuid="a6e8ef6c-4ff1-480e-a918-08f2f9660458"/>
+				<textElement textAlignment="Right">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaAsignada.entidad.descAmpEu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="181" y="23" width="344" height="13" uuid="8e3c8ba0-bdb8-431b-96fe-7384df35fc11"/>
+				<textElement textAlignment="Right">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaAsignada.nombreCompleto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="78" y="40" width="447" height="13" uuid="0fff6a38-383f-4274-9eeb-167cfc709a7f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaAsignada.entidad.direccion.direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="3" width="210" height="40" uuid="4993a523-99f0-4a31-ab6f-2ae6ea85eedf"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INTRO_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="315" y="3" width="210" height="40" forecolor="#999999" uuid="b54c8733-f512-42c4-96b2-de24ba1818e7"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INTRO_ES}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="247">
+			<rectangle>
+				<reportElement mode="Transparent" x="30" y="14" width="495" height="146" backcolor="#FFFFFF" uuid="04f6db58-9097-4b09-8535-f5188cf805c2"/>
+			</rectangle>
+			<line>
+				<reportElement mode="Transparent" x="190" y="14" width="1" height="146" uuid="211244f2-d555-4469-8476-aa094b8585ae"/>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="30" y="54" width="495" height="1" uuid="4bf203c7-d383-4ba0-a949-c3b1e7570216"/>
+			</line>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="19" width="146" height="13" uuid="256ffce8-86d0-4ff2-a72c-f60117041009"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_INI_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="35" width="146" height="13" forecolor="#999999" uuid="58af0551-16ca-4726-8243-65feeca687cf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_INI_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="59" width="146" height="13" uuid="cb9bedbb-c513-47d8-953c-0707e51ab223"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_FIN_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="75" width="147" height="13" forecolor="#999999" uuid="ee11c1cc-7c30-4577-a7f2-23c60147e3e2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA_FIN_ES}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Transparent" x="30" y="93" width="495" height="1" uuid="35cf7517-884b-425b-8b67-8c414b0bc105"/>
+			</line>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="99" width="146" height="13" uuid="54419267-babe-45e0-a294-d1f99e3eb7c8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NUM_INTERPRETES_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="115" width="146" height="13" forecolor="#999999" uuid="910642c2-c322-4004-ab62-a4cab33d2d2d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NUM_INTERPRETES_ES}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Transparent" x="30" y="133" width="495" height="1" uuid="8f5c7315-ce37-4fde-90e2-5983c2636064"/>
+			</line>
+			<textField>
+				<reportElement mode="Transparent" x="41" y="133" width="40" height="26" uuid="d83cd72e-bbe0-495c-9744-775b51df2865"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="81" y="133" width="95" height="26" forecolor="#999999" uuid="abba79cb-5588-47f3-9fd9-49db5171cab5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_ES}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="270" y="15" width="85" height="39" uuid="5a5df704-fabe-47bf-95c6-bb97de4eaa84"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horaIni}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="200" y="15" width="70" height="39" uuid="9222ef1a-4bfc-40e4-88cb-ffd9c658466f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format($F{fechaIni}):
+new SimpleDateFormat("dd/MM/yyyy").format($F{fechaIni})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="200" y="54" width="70" height="39" uuid="9684b4e1-5f20-4142-9535-bcd98050b6a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format($F{fechaFin}):
+new SimpleDateFormat("dd/MM/yyyy").format($F{fechaFin})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="270" y="54" width="85" height="39" uuid="8c62620a-e5a8-488a-bf32-f7d97910ecd3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horaFin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="200" y="94" width="85" height="39" uuid="4c17ee38-f7b6-4ff1-88a3-87ff79b1a55b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gestionInterpretacion.numInterpretes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="200" y="133" width="65" height="26" uuid="56411f2f-e95f-4c98-b69d-e41844c006a8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,##0.00", new java.text.DecimalFormatSymbols(new Locale("es","ES"))).format($F{gestionInterpretacion.presupuesto}) + " €"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="265" y="133" width="217" height="25" uuid="9a475f1a-1bfe-454e-b37d-7eb9fbd086ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Roboto" size="11"/>
+				</textElement>
+				<text><![CDATA[  (                                                 )]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="277" y="133" width="62" height="25" uuid="2623c285-3aa6-40b8-b40e-836450bae282"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{IVA_INC_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="337" y="133" width="74" height="25" forecolor="#999999" uuid="ef61698c-0129-4a00-9b05-1da2d5739c41"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{IVA_INC_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="315" y="176" width="210" height="52" forecolor="#999999" uuid="54ce7356-7dc1-4272-bd11-b69ce9258cf9"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INTRO2_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="176" width="210" height="52" uuid="52f92bc9-38b4-4119-a83e-421b8da62dff"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INTRO2_EU}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="145">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="10" width="250" height="20" uuid="9867c597-173b-47d9-bdc2-7385db9b55ed"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CORDIALMENTE_EU}+","]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape">
+				<reportElement mode="Transparent" x="50" y="23" width="470" height="120" backcolor="#FFFFFF" uuid="064e4c58-4388-4313-9820-e4b344a583c7"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/firmaPpto1.jpg")]]></imageExpression>
+			</image>
+		</band>
+		<band height="69">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="7" width="370" height="16" uuid="c74c0c6d-5305-48a1-a9fe-d88f29edf668"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOMBREEMP_ES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="22" width="370" height="16" uuid="fe5b0c3c-3a0c-4141-91da-f3b95962f0fc"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PUESTOEMP_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="30" y="46" width="94" height="16" uuid="124dc2cf-d973-4809-97ed-a6cb348fa4a2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LOCALIZEMP_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="124" y="46" width="120" height="16" uuid="3c30172a-e799-41af-a3c2-00390e0640a0"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subsanacion.fechaReq} != null?
+$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format($F{subsanacion.fechaReq}):
+new SimpleDateFormat("dd/MM/yyyy").format($F{subsanacion.fechaReq})
+:
+$P{REPORT_LOCALE}.getLanguage() == "eu"?
+new SimpleDateFormat("yyyy/MM/dd").format(new Date()):
+new SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="119" splitType="Stretch">
+			<image>
+				<reportElement mode="Transparent" x="351" y="60" width="193" height="59" uuid="14606ce2-55ed-4892-8da9-e5072a395e93"/>
+				<imageExpression><![CDATA[$P{STATICS}.concat("/images/gobierno.jpg")]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="10" y="13" width="534" height="22" uuid="e12279b6-5447-4f15-ac7a-6e560b765350"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Roboto" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PIEDOC_EU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="10" y="2" width="534" height="18" uuid="bf85aac4-db83-4c44-9289-0e300fb13c88"/>
+				<textElement textAlignment="Left">
+					<font fontName="Roboto" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TARIFA_ES}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="10" y="36" width="534" height="24" forecolor="#999999" uuid="1e622f52-8eb4-439a-bb37-782e3340f3a1"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Roboto" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PIEDOC_ES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
