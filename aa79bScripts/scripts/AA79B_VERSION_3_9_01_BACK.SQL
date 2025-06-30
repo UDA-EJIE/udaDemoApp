@@ -1,5 +1,0 @@
-DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
-
-ALTER TABLE AA79BA4T00 DROP COLUMN APP_ID_0A4;
-
-exit;

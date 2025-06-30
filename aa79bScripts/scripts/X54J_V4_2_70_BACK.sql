@@ -1,3 +1,0 @@
-Delete from X54J41T00 where CAPLIC_041 = 7 AND CROL_041 = 1 AND CPER_041 = 6;
-    
-EXIT;

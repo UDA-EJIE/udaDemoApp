@@ -1,6 +1,0 @@
-DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
-
-@@&DIR_SCRIPTS/Procedures/CREAR_TAREAS_RELACIONADAS.SQL;
-
-/
-exit;

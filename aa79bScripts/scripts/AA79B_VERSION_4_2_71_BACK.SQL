@@ -1,6 +1,0 @@
-DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
-
-ALTER TABLE AA79B56T00 DROP COLUMN OID_DOKUSI_056;
-
-/
-exit;

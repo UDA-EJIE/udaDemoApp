@@ -1,8 +1,0 @@
-CREATE OR REPLACE VIEW AA79O27V00 AS
-    SELECT 0 COD_TIPO_PROY
-         , 'Handia (>1000)' DESC_TIPO_PROY
-      FROM DUAL
-    UNION ALL
-    SELECT 1
-         , 'Txikia (<1000)'
-      FROM DUAL;

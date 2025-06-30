@@ -1,8 +1,0 @@
-SET DEFINE ON;
-set verify off;
-
-INSERT INTO AA79B00T00 (ID_000, VALOR_000)
-VALUES(9999, '&1' );
-/
-
-exit;

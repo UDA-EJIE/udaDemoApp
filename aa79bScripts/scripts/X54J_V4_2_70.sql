@@ -1,9 +1,0 @@
-INSERT INTO X54J41T00 (CAPLIC_041, CROL_041, CPER_041, DESPER_041, DEUPER_041) VALUES (7, 1, 6, 'Gestor expedientes Tramitagune', 'Tramitaguneko espedienteen kudeatzailea');
-
-DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
-
-@@&DIR_SCRIPTS/Vistas/X54j/X54JAPI_SOLICITANTES.sql;
-
-GRANT SELECT ON X54JAPI_SOLICITANTES TO AA79B;
-
-EXIT;

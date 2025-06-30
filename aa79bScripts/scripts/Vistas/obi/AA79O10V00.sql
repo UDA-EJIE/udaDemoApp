@@ -1,8 +1,0 @@
-CREATE OR REPLACE VIEW AA79O10V00 AS
-    SELECT 1 COD_TIPO_DOCU
-         , 'Xedapen' DESC_TIPO_DOCU
-      FROM DUAL
-    UNION ALL
-    SELECT 2
-         , 'Sumarioa'
-      FROM DUAL;
