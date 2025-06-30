@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions targetNamespace="http://com.ejie.x43f/X43FNSHF/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://com.ejie.x43f/X43FNSHF/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:conv="http://www.openuri.org/2002/04/soap/conversation/" xmlns:cw="http://www.openuri.org/2002/04/wsdl/conversation/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:jms="http://www.openuri.org/2002/04/wsdl/jms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:x43f="http://com.ejie.x43f/X43FNSHF/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://com.ejie.x43f/X43FNSHF/" schemaLocation="X43FNSHF2.xsd"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="createSignatureLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:createSignatureLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createSignatureLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:createSignatureLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="updateSignatureLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:updateSignatureLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="updateSignatureLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:updateSignatureLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createHashLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:createHashLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createHashLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:createHashLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="verifyCertificateLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:verifyCertificateLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="verifyCertificateLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:verifyCertificateLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="stampAdESSignatureLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:stampAdESSignatureLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="stampAdESSignatureLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:stampAdESSignatureLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="stampSignatureLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:stampSignatureLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="stampSignatureLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:stampSignatureLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="verifySignatureLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:verifySignatureLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="verifySignatureLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:verifySignatureLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createEjgvDocumentFromXmlLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:createEjgvDocumentFromXmlLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createEjgvDocumentFromXmlLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:createEjgvDocumentFromXmlLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createEjgvDocumentFromHtmlLocationRequest">
+    <WL5G3N0:part element="WL5G3N1:createEjgvDocumentFromHtmlLocation" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createEjgvDocumentFromHtmlLocationResponse">
+    <WL5G3N0:part element="WL5G3N1:createEjgvDocumentFromHtmlLocationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createSignatureEjgvDocumentRequest">
+    <WL5G3N0:part element="WL5G3N1:createSignatureEjgvDocument" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="createSignatureEjgvDocumentResponse">
+    <WL5G3N0:part element="WL5G3N1:createSignatureEjgvDocumentResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="X43FNSHF">
+    <WL5G3N0:operation name="createSignatureLocation">
+      <WL5G3N0:input message="WL5G3N1:createSignatureLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:createSignatureLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="updateSignatureLocation">
+      <WL5G3N0:input message="WL5G3N1:updateSignatureLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:updateSignatureLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createHashLocation">
+      <WL5G3N0:input message="WL5G3N1:createHashLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:createHashLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="verifyCertificateLocation">
+      <WL5G3N0:input message="WL5G3N1:verifyCertificateLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:verifyCertificateLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="stampAdESSignatureLocation">
+      <WL5G3N0:input message="WL5G3N1:stampAdESSignatureLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:stampAdESSignatureLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="stampSignatureLocation">
+      <WL5G3N0:input message="WL5G3N1:stampSignatureLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:stampSignatureLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="verifySignatureLocation">
+      <WL5G3N0:input message="WL5G3N1:verifySignatureLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:verifySignatureLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createEjgvDocumentFromXmlLocation">
+      <WL5G3N0:input message="WL5G3N1:createEjgvDocumentFromXmlLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:createEjgvDocumentFromXmlLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createEjgvDocumentFromHtmlLocation">
+      <WL5G3N0:input message="WL5G3N1:createEjgvDocumentFromHtmlLocationRequest"/>
+      <WL5G3N0:output message="WL5G3N1:createEjgvDocumentFromHtmlLocationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createSignatureEjgvDocument">
+      <WL5G3N0:input message="WL5G3N1:createSignatureEjgvDocumentRequest"/>
+      <WL5G3N0:output message="WL5G3N1:createSignatureEjgvDocumentResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="X43FNSHFSOAP" type="WL5G3N1:X43FNSHF">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="createSignatureLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/createSignatureLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="updateSignatureLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/updateSignatureLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createEjgvDocumentFromXmlLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/createEjgvDocumentFromXmlLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createEjgvDocumentFromHtmlLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/createEjgvDocumentFromHtmlLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createHashLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/createHashLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="stampAdESSignatureLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/stampAdESSignatureLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="stampSignatureLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/stampSignatureLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="verifySignatureLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/verifySignatureLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="verifyCertificateLocation">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/verifyCertificateLocation"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="createSignatureEjgvDocument">
+      <WL5G3N2:operation soapAction="http://com.ejie.x43f/X43FNSHF/createSignatureEjgvDocument"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="X43FNSHF">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N1:X43FNSHFSOAP" name="X43FNSHFSOAP">
+      <WL5G3N2:address location="http://svc.intra.integracion.jakina.ejiedes.net:80/ctxapp/X43FNSHF2"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

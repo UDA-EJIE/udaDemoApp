@@ -1,0 +1,5 @@
+DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
+
+@@&DIR_SCRIPTS/Functions/CLONAR_TRABAJO.SQL;
+
+EXIT;

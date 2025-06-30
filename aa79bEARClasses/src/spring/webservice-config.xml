@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:ctx="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context-3.0.xsd
+							http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<ctx:property-placeholder location="classpath:/aa79b/aa79b.properties" />
+
+	
+	<bean id="x54jWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="wsdlDocumentUrl" value="${webservice.x54j.wsdl}"/>
+		<property name="serviceInterface" value="com.ejie.aa79b.webservices.x54j.X54JPermisosWSPort"/>
+		<property name="serviceName" value="x54jPermisosWS"/>
+		<property name="portName" value="x54jPermisosWSPort"/>
+		<property name="namespaceUri" value="${qname.x54j.namespaceURI}"/>
+		<property name="lookupServiceOnStartup" value="false"/>
+		<property name="handlerResolver" ref="webServiceHandlerResolver"/>
+	</bean>
+	
+	<bean id="cpWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="wsdlDocumentUrl" value="${webservice.cpWebService.wsdl}"/>
+		<property name="serviceInterface" value="com.ejie.aa79b.webservices.cp.Q99RCPFacadeWSSoap"/>
+		<property name="serviceName" value="Q99rCPFacadeWS"/>
+		<property name="portName" value="Q99rCPFacadeWSSoap"/>
+		<property name="namespaceUri" value="${webservice.cpWebService.namespace}"/>
+		<property name="lookupServiceOnStartup" value="false"/>
+		<property name="handlerResolver" ref="webServiceHandlerResolver"/>
+	</bean>
+	
+	<bean id="srtWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="wsdlDocumentUrl" value="${webservice.srtWebService.wsdl}"/>
+		<property name="serviceInterface" value="com.ejie.aa79b.webservices.srt.Q99DSRTFacadeWSSoap"/>
+		<property name="serviceName" value="Q99dSRTFacadeWS"/>
+		<property name="portName" value="Q99dSRTFacadeWSSoap"/>
+		<property name="namespaceUri" value="${webservice.srtWebService.namespace}"/>
+		<property name="lookupServiceOnStartup" value="false"/>
+		<property name="handlerResolver" ref="webServiceHandlerResolver"/>
+	</bean>
+	
+	<!-- ========================================================================================= -->
+	<!-- HANDLER RESOLVERS                                                                         -->
+	<!-- ========================================================================================= -->
+	
+	<bean id="webServiceHandlerResolver" class="com.ejie.aa79b.common.TokenClientHandlerResolver">
+		<property name="handlerChain">
+			<list>
+				<bean class="com.ejie.aa79b.common.TokenClientHandler" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

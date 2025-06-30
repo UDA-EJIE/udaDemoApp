@@ -1,0 +1,27 @@
+create or replace
+FUNCTION TIENE_NEGOCIACION_FECHA( ANYO IN NUMBER,
+  NUM_EXP IN NUMBER) RETURN VARCHAR IS
+
+CONTADOR NUMBER(2):=0;
+RETORNO VARCHAR2(1):='N';
+
+TIPO_REQ_NUEVA_FECHA NUMBER(1):= 3;
+TIPO_REQ_PRES_FECHA NUMBER(1):= 4;
+
+BEGIN
+    -- obtenemos los datos del expediente
+    
+	SELECT COUNT(1) into contador from  AA79B64T00 
+	JOIN AA79B59T00 ON ID_REQUERIMIENTO_059 = ID_064  
+	AND tipo_requerimiento_064 IN (TIPO_REQ_NUEVA_FECHA,TIPO_REQ_PRES_FECHA)
+	where anyo_059 = ANYO and NUM_EXP_059 = NUM_EXP;
+	
+    IF (contador > 0) THEN
+    	RETORNO:='S';
+    END IF;
+	
+    RETURN RETORNO;
+    
+	
+END;
+/

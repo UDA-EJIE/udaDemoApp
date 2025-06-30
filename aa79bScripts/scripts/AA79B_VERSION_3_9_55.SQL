@@ -1,0 +1,5 @@
+DEFINE DIR_SCRIPTS = '/aplic/aa79b/scripts';
+-- LANZAR EL PL INF_SITUACION_TRAD_REV
+@@&DIR_SCRIPTS/Vistas/informes/INF_SITUACION_TRAD_REV.sql;
+/
+exit;

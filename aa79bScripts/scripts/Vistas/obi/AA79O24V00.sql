@@ -1,0 +1,9 @@
+CREATE OR REPLACE VIEW AA79O24V00 AS
+    SELECT 1 QUINCENA
+         , 'Lehenengoa' DESC_QUINCENA
+      FROM DUAL
+    UNION ALL
+    SELECT 2 QUINCENA
+         , 'Bigarrengoa' DESC_QUINCENA
+      FROM DUAL;
+      
