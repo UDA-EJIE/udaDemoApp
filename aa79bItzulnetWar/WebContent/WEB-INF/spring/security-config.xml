@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperN38Impl">
+		<property name="xlnetCachingPeriod" value="120" />
+		<property name="specificCredentials" value="com.ejie.aa79b.security.Usuario"/>
+		<property name="userChangeUrl" value="/aa79bItzulnetWar/"/>
+	</bean>	
+    
+   <!--  <bean id="perimetralSecurityWrapper" class="com.ejie.x38.security.PerimetralSecurityWrapperMockImpl">
+        <property name="principal">
+            <list>
+                <map>
+                    <entry key="userName" value="USER_UDA" />
+                    <entry key="name" value="UDA" />
+                    <entry key="surname" value="User" />
+                    <entry key="fullName" value="UDA User" />
+                    <entry key="nif" value="17398234h" />
+                    <entry key="nif" value="00000001R" />
+                    <entry key="policy" value="1" />
+                    <entry key="position" value="01" />
+                    <entry key="isCertificate" value="no" />
+                    <entry key="roles">
+                        <list>
+                            <value>UDA</value>
+                        </list>
+                    </entry>
+                </map>
+            </list>
+        </property>
+    </bean>-->
+    <bean id="filterSecurityInterceptor" class="com.ejie.aa79b.security.SecurityInterceptor">
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="accessDecisionManager" ref="affirmativeBased" />
+        <property name="securityMetadataSource">
+            <security:filter-security-metadata-source use-expressions="true" request-matcher="regex">
+                <security:intercept-url pattern="/logout" access="isAuthenticated()" />
+				<security:intercept-url pattern="/tramitacionexpedientes/planificacion/planificacionexpediente/general/maint" access="hasRole('ROLE_AA79B_ASIGNADOR')" />
+				<security:intercept-url pattern="/administracion/datosmaestros/motivosrechazo/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/datosmaestros/motivosrechazo/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/motivosanulacion/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/modosinterpretacion/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/tiposinterpretacion/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/tiporelevancia/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/tipostarea/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/formatosfichero/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/tiposdocumento/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/tiposrevision/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/metadatosbusqueda/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/plantillas/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/datosmaestros/nivelesdecalidad/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/grupostrabajo/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/calendarioservicio/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/empresasproveedoras/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/configuraciontarifas/ordenprecios/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+                <security:intercept-url pattern="/administracion/configuraciontarifas/excepcionfacturacion/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/administracion/datosBasicos/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/gestionexpedientes/altaexpedientes/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/gestionexpedientes/estudioexpedientes/expediente/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/gestionexpedientes/gestionanulaciones/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/planificacion/planificacionexpediente/general/maint"  access="hasRole('ROLE_AA79B_ASIGNADOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/planificacionCarga/tareas/maint"  access="hasRole('ROLE_AA79B_ASIGNADOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/planificacionCarga/cargatrabajo/maint"  access="hasAnyRole('ROLE_AA79B_ASIGNADOR', 'ROLE_AA79B_TRADUCTOR', 'ROLE_AA79B_INTERPRETE')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/facturacionypagos/revisiondatosfacturacion/busquedarevision/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/facturacionypagos/emisiondefacturas/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/facturacionypagos/consultafacturas/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/facturacionypagos/pagamentos/maint"   access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/facturacionypagos/albaranes/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/tramitacionexpedientes/otrostrabajos/maint"  access="hasAnyRole('ROLE_AA79B_ASIGNADOR','ROLE_AA79B_TECNICO_GESTOR')" />
+				<security:intercept-url pattern="/servicios/trataFicherosConfi/ficherosConfidenciales/maint" access="hasAnyRole('ROLE_AA79B_TECNICO_GESTOR', 'ROLE_AA79B_TRADUCTOR')"/>
+	            <security:intercept-url pattern="/servicios/requerirsubsanacionexpedientes/maint" access="hasRole('ROLE_AA79B_ASIGNADOR')"/>
+	            <security:intercept-url pattern="/servicios/actualizacionalbaran/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')"/>
+				<security:intercept-url pattern="/servicios/actDatosFacturacion/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')"/>
+				<security:intercept-url pattern="/servicios/cambioEstadoExpediente/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')"/>
+	            <security:intercept-url pattern="/servicios/clonacionexpedientes/maint" access="hasRole('ROLE_AA79B_TECNICO_GESTOR')"/>
+                <security:intercept-url pattern="/consultas/consultaexpedientes/maint" access="hasAnyRole('ROLE_AA79B_TECNICO_GESTOR', 'ROLE_AA79B_TRADUCTOR', 'ROLE_AA79B_INTERPRETE')"/>
+                <security:intercept-url pattern="/consultas/consultaplanificacionexpedientes/maint"  access="hasRole('ROLE_AA79B_ASIGNADOR')"/>
+                <security:intercept-url pattern="/consultas/consultaregistroacciones/maint"  access="hasRole('ROLE_AA79B_TECNICO_GESTOR')"/>
+            	<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_AA79B-IN-0001', 'ROLE_AA79B_TECNICO_GESTOR', 'ROLE_AA79B_ASIGNADOR', 'ROLE_AA79B_TRADUCTOR', 'ROLE_AA79B_INTERPRETE', 'ROLE_AA79B_GESTORBOPV')" />
+            </security:filter-security-metadata-source>
+        </property>
+    </bean>
+</beans>

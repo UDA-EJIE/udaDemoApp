@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-application xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-application" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/javaee_5.xsd http://xmlns.oracle.com/weblogic/weblogic-application http://xmlns.oracle.com/weblogic/weblogic-application/1.9/weblogic-application.xsd">
+	<!--weblogic-version:14.1.1.0-->
+	<wls:application-param>
+		<wls:param-name>webapp.encoding.default</wls:param-name>
+		<wls:param-value>UTF-8</wls:param-value>
+	</wls:application-param>
+	<wls:session-descriptor>
+		<wls:persistent-store-type>replicated_if_clustered</wls:persistent-store-type>
+	</wls:session-descriptor>
+	<wls:prefer-application-packages>	
+		<wls:package-name>org.apache.xerces.*</wls:package-name>
+		<wls:package-name>org.apache.xerces.jaxp.*</wls:package-name>
+		<wls:package-name>javax.persistence.*</wls:package-name>
+	</wls:prefer-application-packages>
+		<wls:cdi-descriptor>
+		<wls:implicit-bean-discovery-enabled>false</wls:implicit-bean-discovery-enabled>
+		<wls:policy>Disabled</wls:policy>
+	</wls:cdi-descriptor>
+</wls:weblogic-application>

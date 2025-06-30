@@ -1,0 +1,203 @@
+/*def nodo = 'vdorantes'
+def app = 'aa79b'
+def userSvnEJIE = 'USUARIO_EUROHELP'
+def passSvnEJIE = 'USUARIO_EUROHELP'*/
+def urlSvnEJIE = 'svn://cvs.ejiedes.net/'+app
+
+try {
+    // Esta fase hace un checkout del codigo del proyecto
+    // El codigo se descarga solo si no se ha descargado antes
+    stage('initialize') {
+        node(nodo) {
+            // Mira si existe el directorio v85ju
+            def exists = fileExists app
+
+            // Si no existe el directorio
+            if (!exists) {
+                // Creamos el directorio
+                bat 'mkdir v85ju'
+
+                // Descargamos el SVN en este directorio
+                dir(app) {
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/backend/trunk backend'
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/codigo/trunk codigo'
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/config/trunk config'
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/datos/trunk datos'
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/documentacion/trunk documentacion'
+					bat 'svn checkout --username '+ userSvnEJIE +' --password '+ passSvnEJIE +' '+ urlSvnEJIE +'/estatico/trunk estatico'
+                }
+            } 
+        }
+    }
+
+    // Esta fase es la responsable de obtener las diferencias entre la version actual
+    // del repositorio en EJIE y la descargada
+    // Las siguientes variables son el resultado de las consultas de los cambios
+    // en cada uno de los proyectos sincronizados
+    def svnBackendDiff = ''
+    def svnCodigoDiff = ''
+    def svnConfigDiff = ''
+    def svnDatosDiff = ''
+    def svnDocumentacionDiff = ''
+    def svnEstaticoDiff = ''
+    stage('svnStatus') {
+        node(nodo) {
+            dir(app+'/backend') {
+                svnBackendDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+            dir(app+'/codigo') {
+                svnCodigoDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+            dir(app+'/config') {
+                svnConfigDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+            dir(app+'/datos') {
+                svnDatosDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+            dir(app+'/documentacion') {
+                svnDocumentacionDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+            dir(app+'/estatico') {
+                svnEstaticoDiff = bat returnStdout: true, script: 'svn status -u'
+            }
+        }
+    }
+
+    // En esta fase se comprueba si se han obtenido cambios en cada una de las
+    // consultas realizadas en la fase anterior
+    // La variable representa el cuerpo del correo que se mandara en caso de
+    // cambios. Se supondra que si el cuerpo del correo esta vacio no ha habido 
+    // cambios
+    def mailBody = ''
+    stage('svnCheck') {
+        node {
+            echo svnBackendDiff
+            def svnBackendDiffList = svnBackendDiff.readLines()
+            def svnBackendDiffListSize = svnBackendDiffList.size()
+            if (svnBackendDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Backend<h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnBackendDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnBackendDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+
+            echo svnCodigoDiff
+            def svnCodigoDiffList = svnCodigoDiff.readLines()
+            def svnCodigoDiffListSize = svnCodigoDiffList.size()
+            if (svnCodigoDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Codigo</h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnCodigoDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnCodigoDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+
+            echo svnConfigDiff
+            def svnConfigDiffList = svnConfigDiff.readLines()
+            def svnConfigDiffListSize = svnConfigDiffList.size()
+            if (svnConfigDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Config</h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnConfigDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnConfigDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+
+            echo svnDatosDiff
+            def svnDatosDiffList = svnDatosDiff.readLines()
+            def svnDatosDiffListSize = svnDatosDiffList.size()
+            if (svnDatosDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Datos</h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnDatosDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnDatosDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+
+            echo svnDocumentacionDiff
+            def svnDocumentacionDiffList = svnDocumentacionDiff.readLines()
+            def svnDocumentacionDiffListSize = svnDocumentacionDiffList.size()
+            if (svnDocumentacionDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Documentacion</h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnDocumentacionDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnDocumentacionDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+
+            echo svnEstaticoDiff
+            def svnEstaticoDiffList = svnEstaticoDiff.readLines()
+            def svnEstaticoDiffListSize = svnEstaticoDiffList.size()
+            if (svnEstaticoDiffListSize > 3) {
+                mailBody = mailBody + '<h1>Estatico</h1>'
+                mailBody = mailBody + '<ul>'
+                for (i = 2; i < svnEstaticoDiffListSize - 1; i++) {
+                    mailBody = mailBody + '<li>' + svnEstaticoDiffList[i] + '</li>'
+                }
+                mailBody = mailBody + '</ul>'
+            }
+        }
+    }
+
+    // Esta fase notifica los cambios encontrados, en caso que los hubiera,
+    // enviando un correo a los responsables
+    stage('notify') {
+        node {
+            if (mailBody != '') {
+                mail (
+                    to: 'soporteivap@euro-help.es',
+                    from: 'soporteivap@euro-help.es',
+                    replyTo: 'soporteivap@euro-help.es',
+                    subject: app.toUpperCase()+': Automatic SVN diff check', 
+                    body: mailBody, 
+                    mimeType:'text/html'
+                );
+            }
+        }
+    }
+
+    // Se actualiza el respositorio de SVN para evitar que se sigan
+    // enviando correos
+    stage('svnUpdate') {
+        node(nodo) {
+            dir(app+'/backend') {
+                svnBackendDiff = bat returnStdout: true, script: 'svn update'
+            }
+            dir(app+'/codigo') {
+                svnCodigoDiff = bat returnStdout: true, script: 'svn update'
+            }
+            dir(app+'/config') {
+                svnConfigDiff = bat returnStdout: true, script: 'svn update'
+            }
+            dir(app+'/datos') {
+                svnDatosDiff = bat returnStdout: true, script: 'svn update'
+            }
+            dir(app+'/documentacion') {
+                svnDocumentacionDiff = bat returnStdout: true, script: 'svn update'
+            }
+            dir(app+'/estatico') {
+                svnEstaticoDiff = bat returnStdout: true, script: 'svn update'
+            }
+        }
+    }
+} catch (err) {
+    // Si se produce un error se envia un mail a los responsables para
+    // que comprueben los scripts
+    stage ('failure') {
+        /*mail (
+            to: 'soporteivap@euro-help.es',
+            from: 'soporteivap@euro-help.es',
+            replyTo: 'soporteivap@euro-help.es',
+            subject: "El proceso '${env.JOB_NAME}' (${env.BUILD_NUMBER}) ha fallado.", 
+            body: 'Se ha producido un error durante el proceso de IVAP - '+app+' - SVN diff check. Por favor, compruebe su ejecucion.', 
+            mimeType:'text/html'
+        );*/
+        currentBuild.result = 'FAILURE' 
+    }
+}

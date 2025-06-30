@@ -1,0 +1,12 @@
+CREATE OR REPLACE VIEW AA79O07V00 AS
+    SELECT 1 COD_PUBLICACION
+         , 'EHAA' DESC_PUBLICACION
+      FROM DUAL
+    UNION ALL
+    SELECT 2
+         , 'BOE'
+      FROM DUAL
+    UNION ALL
+    SELECT 3
+         , 'Beste batzuk'
+      FROM DUAL;

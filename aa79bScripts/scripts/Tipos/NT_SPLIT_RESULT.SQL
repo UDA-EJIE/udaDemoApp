@@ -1,0 +1,2 @@
+CREATE OR REPLACE TYPE nt_split_result IS TABLE OF VARCHAR2(20);
+/   

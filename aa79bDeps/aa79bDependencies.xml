@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module 
+		version="1.0" 
+		xmlns:m="http://ant.apache.org/ivy/maven">
+	<info 
+			organisation="com.ejie" 
+			module="aa79b" 
+			revision="1.0" 
+			status="release" 
+			publication="20131128165000"/>
+	<dependencies>	
+		<dependency org="aopalliance" name="aopalliance" rev="1.0" conf="default" transitive="false" />
+		<dependency org="org.aspectj" name="aspectjweaver" rev="1.6.9" conf="default" transitive="false" />
+		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.8.0" conf="default" transitive="false" />
+		<dependency org="commons-digester" name="commons-digester" rev="2.0" conf="default" transitive="false" />
+		<dependency org="org.hibernate" name="hibernate-validator" rev="5.4.3.Final" conf="default" transitive="false" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.6.0" conf="default" transitive="false" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.6.5" conf="default" transitive="false" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.6.5" conf="default" transitive="false" />
+		<dependency org="org.jboss.logging" name="jboss-logging" rev="3.1.0.CR2" conf="default" transitive="false" />
+		<dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.7.21" conf="default" transitive="false" />
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.1.7" conf="default" transitive="false" />
+		<dependency org="ch.qos.logback" name="logback-core" rev="1.1.7" conf="default" transitive="false" />
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.21" conf="default" transitive="false" />
+		<dependency org="org.slf4j" name="slf4j-ext" rev="1.7.21" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-aop" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-beans" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-context" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-context-support" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-core" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-expression" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-jdbc" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-orm" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework.security" name="spring-security-acl" rev="3.2.9.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework.security" name="spring-security-config" rev="3.2.9.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework.security" name="spring-security-core" rev="3.2.9.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework.security" name="spring-security-taglibs" rev="3.2.9.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework.security" name="spring-security-web" rev="3.2.9.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-tx" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-web" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.springframework" name="spring-webmvc" rev="3.2.17.RELEASE" conf="default" transitive="false" />
+		<dependency org="org.apache.tiles" name="tiles-api" rev="2.2.2" conf="default" transitive="false" />
+		<dependency org="org.apache.tiles" name="tiles-core" rev="2.2.2" conf="default" transitive="false" />
+		<dependency org="org.apache.tiles" name="tiles-jsp" rev="2.2.2" conf="default" transitive="false" />
+		<dependency org="org.apache.tiles" name="tiles-servlet" rev="2.2.2" conf="default" transitive="false" />
+		<dependency org="org.apache.tiles" name="tiles-template" rev="2.2.2" conf="default" transitive="false" />
+		<dependency org="javax.validation" name="validation-api" rev="1.0.0.GA" conf="default" transitive="false" />
+		<dependency org="com.ejie" name="w43ta" rev="1.1" transitive="true" />
+		<dependency org="com.ejie.x38" name="x38ShLibClasses" rev="3.2.0-RELEASE" conf="default" transitive="false">
+			<artifact name="x38ShLibClasses" type="jar" ext="jar"/>
+		</dependency>
+		<dependency org="com.ejie.x38" name="x38ShLibClasses-rup" rev="3.2.0-RELEASE" conf="default" transitive="false">
+			<artifact name="x38ShLibClasses-rup" type="jar" ext="jar"/>
+		</dependency>		
+		<dependency org="com.ejie.x38" name="x38ShLibClasses-pif" rev="3.2.0-RELEASE" conf="default" transitive="false">
+			<artifact name="x38ShLibClasses-pif" type="jar" ext="jar"/>
+		</dependency>			
+		<!-- PIF -->
+		<dependency org="com.ejie" name="y31c" rev="1.5" conf="default" transitive="false">
+              <artifact name="y31c" m:classifier="impl"  type="jar" ext="jar"/>
+        </dependency>
+        <dependency org="com.ejie" name="y31b" rev="1.4" conf="default" transitive="false">
+              <artifact name="y31b" type="jar" ext="jar" m:classifier="ifaz"/>
+        </dependency>
+        <dependency org="commons-codec" name="commons-codec" rev="1.6" conf="default" transitive="false"/>
+        <dependency org="commons-collections" name="commons-collections" rev="3.2.2" conf="default" transitive="false"/>
+        <dependency org="net.sf.ezmorph" name="ezmorph" rev="1.0.2" conf="default" transitive="false"/>
+        <dependency org="net.sf.json-lib" name="json-lib" rev="2.3" conf="default" transitive="false">
+  			<artifact name="json-lib" m:classifier="jdk13" /> 
+  		</dependency>                
+        <dependency org="org.mortbay.jetty" name="jetty-util" rev="6.1.26" conf="default" transitive="false"/>        
+        <dependency org="javax.ws.rs" name="javax.ws.rs-api" rev="2.0.1" conf="default" transitive="false"/>        
+        <dependency org="org.apache.hadoop" name="hadoop-client" rev="1.0.3" conf="default" transitive="false"/>        
+        <dependency org="org.apache.hadoop" name="hadoop-core-without-webhdfs" rev="1.0.3" conf="default" transitive="false"/>                
+        <dependency org="commons-io" name="commons-io" rev="2.1" conf="default" transitive="false"/>
+		<dependency org="eu.medsea.mimeutil" name="mime-util" rev="2.1.3" conf="default" transitive="false"/>
+		<dependency org="net.sf.flexjson" name="flexjson" rev="2.1" conf="default" transitive="false"/>		
+		<dependency org="log4j" name="log4j" rev="1.2.16" conf="default" transitive="false"/>
+		<dependency org="commons-lang" name="commons-lang" rev="2.0" conf="default" transitive="false"/>
+		<dependency org="commons-configuration" name="commons-configuration" rev="1.6" conf="default" transitive="false"/>
+		<dependency org="avalon-framework" name="avalon-framework" rev="20020627" conf="default" transitive="false" />
+		<dependency org="batik" name="batik-1.5-fop" rev="0.20-5" conf="default" transitive="false" />
+		
+		<dependency org="xerces" name="xercesImpl" rev="2.9.1" conf="default" transitive="false" />
+		<!-- PDF -->
+		<dependency org="org.apache.xmlgraphics" name="xmlgraphics-commons" rev="1.4" conf="default" transitive="false" />
+		<dependency org="org.apache.xmlgraphics" name="fop" rev="1.0" conf="default" transitive="false" />
+		<!-- xlsx -->
+		<dependency org="org.apache.poi" name="poi-ooxml" rev="3.7" conf="default" transitive="false" />
+		<dependency org="org.apache.poi" name="poi" rev="3.7" conf="default" transitive="false" />
+		<dependency org="org.apache.poi" name="poi-ooxml-schemas" rev="3.7" conf="default" transitive="false" />
+		<dependency org="dom4j" name="dom4j" rev="1.6.1" conf="default" transitive="false" />
+		<!-- itext-->
+		<dependency org="com.itextpdf" name="itextpdf" rev="5.5.12" conf="default" transitive="false" />
+		<dependency org="com.itextpdf.tool" name="xmlworker" rev="5.5.12" conf="default" transitive="false" />
+		
+		<!-- PDF -->
+		<dependency org="net.sf.jasperreports" name="jasperreports" rev="4.7.1" conf="default" transitive="false" />
+		<dependency org="com.lowagie" name="itext" rev="2.1.7" conf="default" transitive="false" />
+		
+  		<dependency org="commons-httpclient" name="commons-httpclient" rev="3.0.1" conf="default" transitive="false"/>
+	  	<dependency org="org.odftoolkit" name="odfdom-java" rev="0.8.7" conf="default" transitive="false" />
+	  	
+	  	<!-- ical4j -->
+	  	<dependency org="net.sf.biweekly" name="biweekly" rev="0.6.2" conf="default" transitive="false" />
+	  	<dependency org="com.github.mangstadt" name="vinnie" rev="2.0.2" conf="default" transitive="false" />
+	  	
+	  	<!-- PASARELA -->
+		<dependency org="com.ejie.r01.r01ft" name="r01ftShLibClasses" rev="3.8" transitive="false" conf="default" />
+		<dependency org="com.ejie.p12.p12ft" name="p12ftClasses" rev="4.1.7" transitive="false" conf="default" />
+		<dependency org="com.ejie.p12.p12dt" name="p12dtClasses" rev="4.1.7" transitive="false" conf="default" />
+		
+		<dependency org="xalan" name="xalan" rev="2.7.2" transitive="false" conf="default" />
+		<dependency org="com.ejie" name="o75d" rev="2.0" transitive="false" conf="default" />
+  
+	  	<!-- x54j -->
+<!-- 		<dependency org="com.ejie" name="x54j" rev="3.4.00" conf="default" transitive="false"> -->
+<!-- 			<artifact name="x54jAPILib" type="jar" ext="jar"/> -->
+<!-- 		</dependency> -->
+	</dependencies>
+</ivy-module>

@@ -1,0 +1,8 @@
+CREATE OR REPLACE VIEW AA79O19V00 AS
+    SELECT 1 COD_RECARGO
+         , 'Bai' DESC_RECARGO
+      FROM DUAL
+    UNION ALL
+    SELECT 0
+         , 'Ez'
+      FROM DUAL;

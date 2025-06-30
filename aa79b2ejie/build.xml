@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+<project name="aa79b2ejie" basedir="." default="aa79b2ejie">
+	<property name="codApp" value="aa79b" />
+	<property name="staticCode" value="itzulnet" />
+	<property name="git.checkoutFolder" value=".." />
+	<property name="svnFolder" value="..\${codApp}Svn" />
+	<!-- Master folder and subfolders -->
+	<property name="masterFolder" value="master" />
+	<property name="backendFolder" value="${masterFolder}\backend" />
+	<property name="codigoFolder" value="${masterFolder}\codigo" />
+	<property name="configFolder" value="${masterFolder}\config" />
+	<property name="datosFolder" value="${masterFolder}\datos" />
+	<property name="documentacionFolder" value="${masterFolder}\documentacion" />
+	<property name="estaticoFolder" value="${masterFolder}\estatico" />
+	<property name="estaticoNameFolder" value="${estaticoFolder}\${staticCode}" />
+	
+	<!-- <property name="codigoFolder14" value="${masterFolder}\codigo14" />
+	<property name="configFolder14" value="${masterFolder}\config14" /> -->
+	<!-- This method is used to clear folders except .svn dirs -->
+	<target name="clearDir"> 
+		<echo message="Clearing ${folder}..." />
+		<delete includeemptydirs="true">
+			<fileset dir="${folder}">
+				<include name="**/*" />
+				<exclude name="**/.svn/**" />
+			</fileset>
+		</delete>
+	</target>
+	<target name="clearDelivery">
+		<echo message="========================================================" />
+		<echo message="Clearing SVN folder" />
+		<echo message="========================================================" />
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\backend" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\codigo" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\config" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\datos" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\documentacion" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\estatico" />
+		</antcall>
+		
+		<!-- <antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\codigo14" />
+		</antcall>
+		<antcall target="clearDir">
+			<param name="folder" value="${svnFolder}\config14" />
+		</antcall> -->
+	</target>
+	<!-- this task copies generated structure checked out from git to the folder synced with svn EJIE -->
+	<target name="copyDelivery">
+		<echo message="========================================================" />
+		<echo message="Copying folders to SVN folder" />
+		<echo message="========================================================" />
+		<echo message="Copying ${backendFolder}..." />
+		<copy todir="${svnFolder}\backend" overwrite="true" failonerror="false">
+			<fileset dir="${backendFolder}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		<echo message="Copying ${codigoFolder}..." />
+		<copy todir="${svnFolder}\codigo" overwrite="true" failonerror="false">
+			<fileset dir="${codigoFolder}" casesensitive="false">
+				<include name="**/**" />
+	<!-- EXCLUIR CAMBIOS ESPECÍFICOS DE WEBLOGIC 14-->
+				<!-- <exclude name="**/${codApp}Dependencies.xml" />
+				<exclude name="**/weblogic-application.xml" />
+				<exclude name="**/MyMessageSourceResourceBundleLocator.java" />
+				<exclude name="**/MyValidatorFactoryBean.java" />
+				<exclude name="**/mvc-config.xml" />
+				<exclude name="**/web.xml" />
+				<exclude name="**/weblogic.xml" /> -->
+			</fileset>
+		</copy>
+		<echo message="Copying ${configFolder}..." />
+		<copy todir="${svnFolder}\config" overwrite="true" failonerror="false">
+			<fileset dir="${configFolder}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		<echo message="Copying ${datosFolder}..." />
+		<copy todir="${svnFolder}\datos" overwrite="true" failonerror="false">
+			<fileset dir="${datosFolder}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		<echo message="Copying ${documentacionFolder}..." />
+		<copy todir="${svnFolder}\documentacion" overwrite="true" failonerror="false">
+			<fileset dir="${documentacionFolder}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		<echo message="Copying ${estaticoFolder}..." />
+		<copy todir="${svnFolder}\estatico" overwrite="true" failonerror="false">
+			<fileset dir="${estaticoFolder}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		
+		<!-- <echo message="Copying ${codigoFolder14}..." />
+		<copy todir="${svnFolder}\codigo14" overwrite="true" failonerror="false">
+			<fileset dir="${codigoFolder14}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+		<echo message="Copying ${configFolder14}..." />
+		<copy todir="${svnFolder}\config14" overwrite="true" failonerror="false">
+			<fileset dir="${configFolder14}" casesensitive="false">
+				<include name="**/**" />
+			</fileset>
+		</copy> -->
+	</target>
+	<!-- This target delivers the generated delivery code -->
+	<target name="deliver">
+		<antcall target="clearDelivery" />
+		<antcall target="copyDelivery" />
+	</target>
+	<target name="createProjectFile">
+		<echo file="${projectFileFolder}\.project" append="false" message="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;projectDescription&gt;&lt;name&gt;${projectName}&lt;/name&gt;&lt;comment&gt;&lt;/comment&gt;&lt;projects&gt;&lt;/projects&gt;&lt;buildSpec&gt;&lt;/buildSpec&gt;&lt;natures&gt;&lt;/natures&gt;&lt;/projectDescription&gt;" />
+	</target>
+	<!-- this task generates master folder containing source checked out from git but in svn EJIE structure -->
+	<target name="generateMaster" depends="prepareEnvironment">
+		<echo message="========================================================" />
+		<echo message="Generating delivery master" />
+		<echo message="========================================================" />
+	<!-- BACKEND -->
+		<echo message="Preparing ${backendFolder}..." />
+		<mkdir dir="${backendFolder}\c" />
+		<mkdir dir="${backendFolder}\cobol" />
+		<copy todir="${backendFolder}\cade" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Scripts\cade" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		<copy todir="${backendFolder}\scripts" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Scripts\scripts" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${backendFolder}\cade" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\cade" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+			
+		<copy todir="${backendFolder}\lib" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\lib" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${backendFolder}\java\javs\${codApp}EAR\classes" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\src" casesensitive="false">
+				<include name="**/**" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<echo message=" => Project file..." />
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${backendFolder}" />
+			<param name="projectName" value="${codApp}EJIEBackend" />
+		</antcall>
+	<!-- CODIGO -->
+		<echo message="Preparing ${codigoFolder}..." />
+		<echo message="========> Copiando EARs" />
+		<copy todir="${codigoFolder}\" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}" casesensitive="false">
+				<include name="${codApp}EAR/**" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name="**/*.jar" />
+				<exclude name=".svn" />
+				<exclude name="**/.project" />
+				<exclude name="**/APP-INF/classes" />
+				<exclude name="**/.settings/" />
+			</fileset>
+		</copy>
+		<echo message="========> Copiando EARClasses" />
+		<copy todir="${codigoFolder}\" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}" casesensitive="false">
+				<include name="${codApp}EARClasses/**" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+				<exclude name="**/build/**" />
+				<exclude name="**/.settings/" />
+				<exclude name="**/.checkstyle" />
+				<exclude name="**/.classpath" />
+				<exclude name="**/.project" />
+				<exclude name="**/.pmd" />
+				<exclude name="**/test-integration" />
+				<exclude name="**/test-system" />
+				<exclude name="**/test-unit" />
+			</fileset>
+		</copy>
+		<echo message="========> Copiando Wars" />
+		<copy todir="${codigoFolder}\" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}" casesensitive="false">
+				<include name="${codApp}*War/**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+				<exclude name="**/build/**" />
+				<exclude name="**/.settings/" />
+				<exclude name="**/.checkstyle" />
+				<exclude name="**/.classpath" />
+				<exclude name="**/.project" />
+				<exclude name="**/.pmd" />
+				<exclude name="**/test-integration" />
+				<exclude name="**/test-system" />
+				<exclude name="**/test-unit" />
+				<exclude name="**/resources/reports" />
+			</fileset>
+		</copy>
+		
+		<mkdir dir="${codigoFolder}\${codApp}ItzulnetWar\WebContent\WEB-INF\lib" />
+		
+		<echo message="========> Copiando Deps" />
+		<copy todir="${codigoFolder}\" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}" casesensitive="false">
+				<include name="${codApp}Deps/**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+				<exclude name="**/.project" />
+				<exclude name="**/ivy-setting.xml" />
+			</fileset>
+		</copy>
+		
+		<echo message=" => Project file..." />
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${codigoFolder}" />
+			<param name="projectName" value="${codApp}EJIECodigo" />
+		</antcall>
+	<!-- CONFIG WL 11-->
+		<!-- <echo message="Preparing ${configFolder}..." />
+		<echo message=" => Config" />
+		<copy todir="${configFolder}\serapp\${codApp}Config" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Config" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/${codApp}.properties" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+				<exclude name="**/.project" />
+				<exclude name="**/.settings/" />
+				<exclude name="**/${codApp}Desarrollo.properties" />
+				<exclude name="**/${codApp}Produccion.properties" />
+				<exclude name="**/${codApp}Pruebas.properties" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${configFolder}\backend\${codApp}Config"  overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\config" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy> 
+
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${configFolder}" />
+			<param name="projectName" value="${codApp}EJIEConfig" />
+		</antcall> -->
+	<!-- DATOS -->
+		<echo message="Preparing ${datosFolder}..." />
+		<echo message=" => Datos" />
+		<copy todir="${datosFolder}" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Datos" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+				<exclude name="**/.project" />
+			</fileset>
+		</copy>
+		<mkdir dir="${datosFolder}\backend\lis" />
+		<mkdir dir="${datosFolder}\serapp\lis" />
+		<echo message=" => Project file..." />
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${datosFolder}" />
+			<param name="projectName" value="${codApp}EJIEDatos" />
+		</antcall>
+	<!-- DOCUMENTACION -->
+		<echo message="Preparing ${documentacionFolder}..." />
+		<echo message=" => Project file..." />
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${documentacionFolder}" />
+			<param name="projectName" value="${codApp}EJIEDocumentacion" />
+		</antcall>
+	<!-- ESTATICO -->
+		<echo message="Preparing ${estaticoFolder}..." />
+		<echo message=" => Statics" />
+		<copy todir="${estaticoNameFolder}\" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Statics\WebContent\" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="WEB-INF/**/*.*" />
+				<exclude name="META-INF/**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		<echo message=" => Project file..." />
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${estaticoFolder}" />
+			<param name="projectName" value="${codApp}EJIEEstatico" />
+		</antcall>
+	<!-- CODIGO14 -->
+		<!-- <echo message="Preparing ${codigoFolder14}..." />
+		<copy todir="${codigoFolder14}\" overwrite="true" failonerror="false">
+			<fileset dir="${codigoFolder}\" casesensitive="false"/>
+		</copy> -->
+	<!-- CONFIG14 -->
+		<!-- <echo message="Preparing ${configFolder14}..." /> -->
+		<echo message="Preparing ${configFolder}..." />
+		<echo message=" => Config" />
+		<copy todir="${configFolder}\desarrollo\serapp\E02_DES_WL14_IVAP_EUSKALSAREA" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Config" casesensitive="false">
+				<include name="**/${codApp}Resources.properties" />
+				<include name="**/logback.xml" />
+			</fileset>
+		</copy>
+		<copy file="${git.checkoutFolder}\${codApp}Config\${codApp}Desarrollo.properties" tofile="${configFolder}\desarrollo\serapp\E02_DES_WL14_IVAP_EUSKALSAREA\${codApp}.properties"/>
+		<copy todir="${configFolder}\desarrollo\backend" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\config\desarrollo" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${configFolder}\pruebas\serapp\E02_PRU_WL14_IVAP_EUSKALSAREA" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Config" casesensitive="false">
+				<include name="**/${codApp}Resources.properties" />
+				<include name="**/logback.xml" />
+			</fileset>
+		</copy>
+		<copy file="${git.checkoutFolder}\${codApp}Config\${codApp}Pruebas.properties" tofile="${configFolder}\pruebas\serapp\E02_PRU_WL14_IVAP_EUSKALSAREA\${codApp}.properties"/>
+		<copy todir="${configFolder}\pruebas\backend" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\config\pruebas" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${configFolder}\produccion\serapp\E02_PROD_WL14_IVAP_EUSKALSAREA" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Config" casesensitive="false">
+				<include name="**/${codApp}Resources.properties" />
+				<include name="**/logback.xml" />
+			</fileset>
+		</copy>
+		<copy file="${git.checkoutFolder}\${codApp}Config\${codApp}Produccion.properties" tofile="${configFolder}\produccion\serapp\E02_PROD_WL14_IVAP_EUSKALSAREA\${codApp}.properties"/>
+		<copy todir="${configFolder}\produccion\backend" overwrite="true" failonerror="false">
+			<fileset dir="${git.checkoutFolder}\${codApp}Batch\config\produccion" casesensitive="false">
+				<include name="**/*.*" />
+				<exclude name="**/*.class" />
+				<exclude name="**/*.mex" />
+				<exclude name=".svn" />
+			</fileset>
+		</copy>
+		
+		<antcall target="createProjectFile">
+			<param name="projectFileFolder" value="${configFolder}" />
+			<param name="projectName" value="${codApp}EJIEConfig" />
+		</antcall> 
+	</target>
+	<!-- This target is used to prepare the delivery environment -->
+	<!-- Empties master folder for a new execution of delivery process -->
+	<target name="prepareEnvironment">
+		<echo message="========================================================" />
+		<echo message="Preparing environment" />
+		<echo message="========================================================" />
+		<echo message="Preparing ${masterFolder}..." />
+		<delete dir="${masterFolder}" />
+		<mkdir dir="${masterFolder}" />
+	</target>
+	<target name="aa79b2ejie" depends="generateMaster" />
+</project>

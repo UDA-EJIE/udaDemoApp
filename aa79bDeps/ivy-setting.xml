@@ -1,0 +1,15 @@
+<ivysettings>
+  <settings defaultCache="${user.home}/.ivy2/download-cache" defaultResolver="ejie-Nexus" />
+  <property name="ejie_appsdesa" value="http://repository.ejiedes.net:3690/content/repositories/ejie_appsdesa"/>
+  <property name="ejie_thirdparty" value="http://repository.ejiedes.net:3690/content/repositories/ejie_thirdparty"/>
+  <property name="ejie_homologadas" value="http://repository.ejiedes.net:3690/content/repositories/ejie_homologadas"/>
+  <property name="public" value="http://repository.ejiedes.net:3690/content/groups/public"/>
+  <resolvers>  
+    <chain name="ejie-Nexus">
+      <ibiblio name="ejie_appsdesa" m2compatible="true" root="${ejie_appsdesa}"/>
+      <ibiblio name="ejie_thirdparty" m2compatible="true" root="${ejie_thirdparty}"/>
+      <ibiblio name="public" m2compatible="true" root="${public}"/>
+      <ibiblio name="ejie_homologadas" m2compatible="true" root="${ejie_homologadas}"/>
+    </chain>
+  </resolvers>
+</ivysettings>
