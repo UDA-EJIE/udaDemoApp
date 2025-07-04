@@ -9,6 +9,7 @@
 							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<ctx:property-placeholder location="classpath:/properties/aa79b.properties" />
+
 	
 	<bean id="x54jWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
 		<property name="wsdlDocumentUrl" value="${webservice.x54j.wsdl}"/>
@@ -51,5 +52,5 @@
 			</list>
 		</property>
 	</bean>
-	  
+	
 </beans>

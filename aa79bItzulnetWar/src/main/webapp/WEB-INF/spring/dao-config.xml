@@ -10,14 +10,14 @@
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<!-- Crea un bean por cada clase anotada con @Repository -->
-    <context:component-scan base-package="com.ejie.aa79b.dao" />
-    
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+
+	<context:component-scan
+		base-package="com.ejie.x21a.dao" />
+	<!-- Create DataSource Bean -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
     	<property name="jndiName" value="java:comp/env/jdbc/aa79bDB"/>
 	</bean>
-    <!-- 
-	<jee:jndi-lookup id="dataSource" jndi-name="aa79b.aa79bDataSource" resource-ref="false" />
-	<jee:jndi-lookup id="dataSource" jndi-name="aa79bDesarrollo.aa79bDataSource" resource-ref="false" /> -->
+    
+	<!-- 	<jee:jndi-lookup id="dataSource" jndi-name="aa79bDesarrollo.aa79bDataSource" resource-ref="false" /> -->
 	
 </beans>
