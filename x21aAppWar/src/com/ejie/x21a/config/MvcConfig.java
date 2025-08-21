@@ -21,6 +21,7 @@ import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.handler.MappedInterceptor;
@@ -33,6 +34,13 @@ import com.ejie.x38.control.MvcInterceptor;
 @EnableWebMvc
 public class MvcConfig {
 
+	private WebApplicationContext webApplicationContext;
+
+	// Constructor con inyección de dependencias.
+	public MvcConfig(WebApplicationContext webApplicationContext) {
+		this.webApplicationContext = webApplicationContext;
+	}
+
 	/**
 	 * Gestiona las propiedades del WAR: idioma (cuando se envía el parametro
 	 * 'locale' en la request '/?locale=en'), layout, idioma disponible...
@@ -41,7 +49,7 @@ public class MvcConfig {
 	 */
 	@Bean
 	public MvcInterceptor mvcInterceptor() {
-		MvcInterceptor mvcInterceptor = new MvcInterceptor();
+		MvcInterceptor mvcInterceptor = new MvcInterceptor(webApplicationContext);
 		mvcInterceptor.setParamName("locale");
 		mvcInterceptor.setDefaultLanguage("es");
 		mvcInterceptor.setDefaultLayout("horizontal");
