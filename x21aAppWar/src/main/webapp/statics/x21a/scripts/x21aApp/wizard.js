@@ -166,7 +166,6 @@ $(function() {
 		});
 	}
 
-
 	$('#cliente').rup_select({
 		dataGroups: [
 			{
@@ -243,7 +242,7 @@ $(function() {
 			}
 		],
 		groups: true,
-		multiselect: true
+		multiple: true
 	});
 
 	$('#meses').rup_accordion({

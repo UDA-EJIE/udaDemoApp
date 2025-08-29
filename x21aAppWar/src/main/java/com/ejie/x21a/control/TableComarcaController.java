@@ -205,8 +205,8 @@ public class TableComarcaController {
 	}
 	
 	// Obtiene el formulario del multi filtro
-	@PostMapping(value = "/multiFilter")
-	public String getMultiFilterForm (
+	@PostMapping(value = "/")
+	public String getForm (
 			@RequestParam(required = false) String mapping,
 			@RequestParam(required = true) String tableID,
 			@RequestParam(required = true) String containerClass,
@@ -247,18 +247,18 @@ public class TableComarcaController {
 	
 	@GetMapping(value = "/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
-		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
-		@RequestParam(value = "comarca", required = true) final String filterComarca) {
+		@RequestParam(value = "selector", required = true) final String selector,
+		@RequestParam(value = "comarca", required = true) final String comarca) {
 		TableComarcaController.logger.info("[get - table] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterComarca);
+		return filterService.getDefault(selector, comarca);
 	}
 	
 	@GetMapping(value = "/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
-		@RequestParam(value = "filterSelector", required = true) final String filterSelector,
-		@RequestParam(value = "comarca", required = true) final String filterComarca) {
+		@RequestParam(value = "selector", required = true) final String selector,
+		@RequestParam(value = "comarca", required = true) final String comarca) {
 		TableComarcaController.logger.info("[get - table] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterComarca);
+		return filterService.getAllFilters(selector, comarca);
 	}
 	
 	@PostMapping(value = "/search")

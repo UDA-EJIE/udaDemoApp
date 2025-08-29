@@ -215,6 +215,20 @@
 		"ruby":"ruby_eu",
 		"scala":"scala_eu"
 	},
+	"rol_detail_table": {
+		"asp": "asp_eu",
+		"c": "c_eu",
+		"c++": "c++_eu",
+		"coldfusion": "coldfusion_eu",
+		"groovy": "groovy_eu"
+	},
+	"rolName2": {
+		"asp": "asp_eu",
+		"c": "c_eu",
+		"c++": "c++_eu",
+		"coldfusion": "coldfusion_eu",
+		"groovy": "groovy_eu"
+	},
 	"combo" :{ 
 		"_blank":"[Elementu bat aukeratu]",
 		"asp":"asp_eu",
@@ -389,6 +403,14 @@
 		"sub10" 	:"sub10_eu",
 		"sub11" 	:"sub11_eu"
 	},
+	"tabs_dialog": {
+		"pestana0": "Tab 0_eu",
+		"sub01": "sub01_eu",
+		"sub02": "sub02_eu",
+		"pestana1": "Tab 1_eu",
+		"sub10": "sub10_eu",
+		"sub11": "sub11_eu"
+	},
 	"toolbar" :{
 		"buscar"  	:"Bilatu",
 		"otros"	  	:"Beste botoi",
@@ -412,6 +434,28 @@
 		"ZIP"		:"ZIP"
 	},
 	"toolbarRight" :{
+		"buscar"  	:"Bilatu",
+		"otros"	  	:"Beste botoi",
+		"nuevo"	  	:"Berria",
+		"editar"	:"Aldatu",
+		"cancelar"	:"Ezeztatu",
+		"borrar"	:"Ezabatu",
+		"filtrar"	:"Iragazi",
+		"imprimir"	:"Inprimatu",
+		"ficheros"	:"Fitxategiak",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
+	},
+	"toolbarMixta" :{
 		"buscar"  	:"Bilatu",
 		"otros"	  	:"Beste botoi",
 		"nuevo"	  	:"Berria",
@@ -754,5 +798,28 @@
 		"apellido1":"Debe de especificar un primer apellido obligatoriamente._eu",
 		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._eu",
 		"alertDay": "Debe de especificar al menos una opción entre las mostradas._eu"
-	} 
+	},
+	"dias": {
+		"lunes": "Astelehena",
+		"martes": "Asteartea",
+		"miercoles": "Asteazkena",
+		"jueves": "Osteguna",
+		"viernes": "Ostirala",
+		"sabado": "Larunbata",
+		"domingo": "Igandea"
+	},
+	"cliente": {
+		"enero": "Urtarrila",
+		"febrero": "Otsaila",
+		"marzo": "Martxoa",
+		"abril": "Apirila",
+		"mayo": "Maiatza",
+		"junio": "Ekaina",
+		"julio": "Uztaila",
+		"agosto": "Abuztua",
+		"septiembre": "Iraila",
+		"octubre": "Urria",
+		"noviembre": "Azaroa",
+		"diciembre": "Abendua"
+	}
 }

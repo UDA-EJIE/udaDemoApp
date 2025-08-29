@@ -19,19 +19,19 @@
 
 <div id="${tableID}_multifilter_dropdownDialog" style="display:none" class="dialog-content-material">
 	<div id="${tableID}_multifilter_dropdownDialog_feedback"></div>
-	<div class="form-row">
+	<div class="row">
        	<div id="${tableID}_multifilter_dropdownDialog_lineaCombo" class="${containerClass} col-12">
-           	<input id="${tableID}_multifilter_combo" class="rup_multifilter_selector" />
-           	<label for="${tableID}_multifilter_combo" class="${labelClass}">
+           	<select id="${tableID}_multifilter_select" class="rup_multifilter_selector"></select>
+           	<label for="${tableID}_multifilter_select" class="${labelClass}">
            		<spring:message code="multiFilter.filters" />
            	</label>
        	</div>
 	</div>
-	<div class="form-row">
+	<div class="row">
        	<div id="${tableID}_multifilter_dropdownDialog_lineaDefault" class="${defaultContainerClass} col-12">
-           	<input type="checkbox" id="${tableID}_multifilter_defaultFilter" class="${defaultCheckboxClass}"/>
-           	<label for="${tableID}_multifilter_defaultFilter" class="${labelClass}">
-           		<spring:message code="multiFilter.defaultFilter" />
+           	<input type="checkbox" id="${tableID}_multifilter_activeFilter" class="${defaultCheckboxClass}"/>
+           	<label for="${tableID}_multifilter_activeFilter" class="${labelClass}">
+           		<spring:message code="multiFilter.activeFilter" />
            	</label>
 		</div>
 	</div>
@@ -39,23 +39,23 @@
 	<!-- Formulario para añadir o actualizar filtros -->
 	<spring:url value="${mapping}/add" var="addUrl"/>
 	<form:form modelAttribute="filter" id="${tableID}_add_multiFilter_form" class="d-none" action="${addUrl}" method="POST">
-		<form:input path="filterName" id="${tableID}_add_multifilter_combo" />
-		<form:input path="filterDefault" value="0" id="${tableID}_add_multifilter_defaultFilter" />
-		<form:input path="filterSelector" id="${tableID}_add_multifilter_selector" />
-		<form:input path="filterUser" id="${tableID}_add_multifilter_user" />
-		<form:input path="filterValue" id="${tableID}_add_multifilter_value" />
-		<form:input path="filterFeedback" id="${tableID}_add_multifilter_feedback" />
+		<form:input path="text" id="${tableID}_add_multifilter_name" />
+		<form:input path="data" id="${tableID}_add_multifilter_data" />
+		<form:input path="active" value="0" id="${tableID}_add_multifilter_active" />
+		<form:input path="selector" id="${tableID}_add_multifilter_selector" />
+		<form:input path="user" id="${tableID}_add_multifilter_user" />
+		<form:input path="feedback" id="${tableID}_add_multifilter_feedback" />
 	</form:form>
 	
 	<!-- Formulario para eliminar filtros -->
 	<spring:url value="${mapping}/delete" var="deleteUrl"/>
 	<form:form modelAttribute="filter" id="${tableID}_delete_multiFilter_form" class="d-none" action="${deleteUrl}" method="DELETE">
-		<form:input path="filterId" id="${tableID}_delete_multifilter_id" />
-		<form:input path="filterName" id="${tableID}_delete_multifilter_combo" />
-		<form:input path="filterDefault" id="${tableID}_delete_multifilter_defaultFilter" />
-		<form:input path="filterSelector" id="${tableID}_delete_multifilter_selector" />
-		<form:input path="filterUser" id="${tableID}_delete_multifilter_user" />
-		<form:input path="filterValue" id="${tableID}_delete_multifilter_value" />
-		<form:input path="filterFeedback" id="${tableID}_delete_multifilter_feedback" />
+		<form:input path="id" id="${tableID}_delete_multifilter_id" />
+		<form:input path="text" id="${tableID}_delete_multifilter_name" />
+		<form:input path="data" id="${tableID}_delete_multifilter_data" />
+		<form:input path="active" id="${tableID}_delete_multifilter_active" />
+		<form:input path="selector" id="${tableID}_delete_multifilter_selector" />
+		<form:input path="user" id="${tableID}_delete_multifilter_user" />
+		<form:input path="feedback" id="${tableID}_delete_multifilter_feedback" />
 	</form:form>
 </div>

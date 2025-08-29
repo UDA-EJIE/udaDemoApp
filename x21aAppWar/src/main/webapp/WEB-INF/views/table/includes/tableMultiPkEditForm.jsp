@@ -27,7 +27,7 @@
 	<!-- Campos del formulario de detalle -->
 	<c:choose>
 		<c:when test="${actionType eq 'POST'}">
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm">
 					<form:input path="ida" id="ida_multipk_detail_table"/>
 					<label for="ida_multipk_detail_table"><spring:message code="ida"/></label>
@@ -42,14 +42,14 @@
 			<form:hidden path="id" value="${pkValue}" id="id_multipk_detail_table" />
 		</c:when>
 	</c:choose>
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 		
 			<form:input path="nombre" id="nombre_multipk_detail_table"/>
 			<label for="nombre_multipk_detail_table"><spring:message code="nombre"/></label>
 		</div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 			<form:input path="apellido1" id="apellido1_multipk_detail_table"/>
 			<label for="apellido1_multipk_detail_table"><spring:message code="apellido1"/></label>

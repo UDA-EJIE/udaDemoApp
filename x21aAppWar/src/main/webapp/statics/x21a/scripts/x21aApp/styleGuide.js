@@ -39,6 +39,7 @@ jQuery(document).ready(function () {
 			{id: 'ruby', text: 'ruby'},
 			{id: 'scala', text: 'scala'}
 		],
+		autocomplete: true,
         defaultValue: '',
         contains: false
     });
@@ -59,6 +60,7 @@ jQuery(document).ready(function () {
 			{id: 'ruby', text: 'ruby'},
 			{id: 'scala', text: 'scala'}
 		],
+		autocomplete: true,
         defaultValue: '',
         contains: false
     });

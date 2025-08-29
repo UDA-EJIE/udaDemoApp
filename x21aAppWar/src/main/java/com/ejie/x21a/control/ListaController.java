@@ -109,17 +109,17 @@ public class ListaController {
 	
 	@GetMapping(value = "/filter/multiFilter/getDefault")
 	public @ResponseBody Filter filterGetDefault(
-		@RequestParam(value = "filterSelector", required = true) String filterSelector,
-		@RequestParam(value = "user", required = true) String filterUser) {
+		@RequestParam(value = "selector", required = true) String selector,
+		@RequestParam(value = "user", required = true) String user) {
 		ListaController.logger.info("[get - table] : getDefault filter");
-		return filterService.getDefault(filterSelector, filterUser);
+		return filterService.getDefault(selector, user);
 	}
 	
 	@GetMapping(value = "/filter/multiFilter/getAll")
 	public @ResponseBody List<Filter> filterGetAll(
-		@RequestParam(value = "filterSelector", required = true) String filterSelector,
-		@RequestParam(value = "user", required = true) String filterUser) {
+		@RequestParam(value = "selector", required = true) String selector,
+		@RequestParam(value = "user", required = true) String user) {
 		ListaController.logger.info("[get - table] : GetAll filter");
-		return filterService.getAllFilters(filterSelector, filterUser);
+		return filterService.getAllFilters(selector, user);
 	}
 }

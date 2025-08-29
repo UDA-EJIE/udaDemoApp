@@ -434,37 +434,31 @@ function _init() {
 
         plugins.colModel = [{
             name: 'id' + num,
-            index: 'id' + num,
             editable: true,
             hidden: false
         },
         {
             name: 'nombre' + num,
-            index: 'nombre' + num,
             editable: true,
             hidden: false
         },
         {
             name: 'apellido1' + num,
-            index: 'apellido1' + num,
             editable: true,
             hidden: false
         },
         {
             name: 'ejie' + num,
-            index: 'ejie' + num,
             editable: true,
             hidden: false
         },
         {
             name: 'fechaAlta' + num,
-            index: 'fechaAlta' + num,
             editable: true,
             hidden: false
         },
         {
             name: 'fechaBaja' + num,
-            index: 'fechaBaja' + num,
             editable: false,
             hidden: false,
             rupType: 'date',
@@ -477,7 +471,6 @@ function _init() {
         },
         {
             name: 'rol' + num,
-            index: 'rol' + num,
             editable: true,
             hidden: false,
             rupType: 'select',
@@ -489,7 +482,12 @@ function _init() {
                     };
 
                 })
-            }
+            },
+            searchoptions: {
+                    url : './roles',
+                    sourceParam : {text: 'label', id: 'value'},
+                    blank: ''
+                }
         }
         ];
 

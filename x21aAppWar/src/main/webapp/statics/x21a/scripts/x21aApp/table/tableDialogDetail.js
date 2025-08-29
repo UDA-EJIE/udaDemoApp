@@ -18,44 +18,34 @@ jQuery(function ($) {
 	    var tableColModelsComarca = [
 	    	{
 		        name: 'descEs',
-		        index: 'descEs',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
-		        index: 'descEu',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'css',
-		        index: 'css',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'provincia.code',
-		        index: 'provincia.code',
 		        editable: true,
 		        hidden: false,
-		        rupType: 'combo',
+		        rupType: 'select',
                 editoptions: {
-                	source : '../tableComarca/provincia',
-                    sourceParam : {
-                    	label: 'desc' + $.rup_utils.capitalizedLang(), 
-                    	value: 'code',
-        	            style: 'css'
-                    },
-        	        rowStriping: true,
-        	        blank: '',
-                    width: '100%',
-                    customClasses: ['select-material']
+                	url: '../tableComarca/provincia',
+                    sourceParam: {text: 'desc' +$.rup_utils.capitalizedLang(), id: 'code'},
+					autocomplete: true,
+                    contains: true,
+                    combo: true
                 }
 		    },
 		    {
 		        name: 'provincia.descEs',
-		        index: 'provincia.descEs',
 		        editable: true,
 		        hidden: false
 		    }
@@ -103,19 +93,16 @@ jQuery(function ($) {
 	    var tableColModelsLocalidad = [
 	    	{
 		        name: 'descEs',
-		        index: 'descEs',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
-		        index: 'descEu',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'css',
-		        index: 'css',
 		        editable: true,
 		        hidden: false
 		    }

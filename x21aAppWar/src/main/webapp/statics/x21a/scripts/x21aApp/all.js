@@ -17,25 +17,21 @@ jQuery(function($){
 	var tableColModelsComarca = [
 	    {
 	        name: 'descEs',
-	        index: 'descEs',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'descEu',
-	        index: 'descEu',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'css',
-	        index: 'css',
 	        editable: true,
 	        hidden: false
 	    },
 	    {
 	        name: 'provincia.code',
-	        index: 'provincia.code',
 	        editable: true,
 	        hidden: false,
 	        rupType: 'select',
@@ -52,7 +48,6 @@ jQuery(function($){
 	    },
 	    {
 	        name: 'provincia.descEs',
-	        index: 'provincia.descEs',
 	        editable: true,
 	        hidden: false
 	    }
@@ -62,6 +57,7 @@ jQuery(function($){
 		$('#comarca').rup_table({
 	        primaryKey: 'code',
 	        loadOnStartUp: true,
+			enableDynamicForms: true,
 	        filter: {
 	            id: 'comarca_filter_form',
 	            filterToolbar: 'comarca_filter_toolbar',
@@ -171,19 +167,16 @@ jQuery(function($){
 	            	var tableColModels = [
 	                	{
 	                        name: 'nombre',
-	                        index: 'nombre',
 	                        editable: true,
 	                        hidden: false
 	                    },
 	                    {
 	                        name: 'apellido1',
-	                        index: 'apellido1',
 	                        editable: true,
 	                        hidden: false
 	                    },
 	                    { 
-	                    	name: "apellido2", 
-	                    	index: "apellido2", 
+	                    	name: "apellido2",
 	                    	editable: true, 
 	                    	hidden: false,
 	                    	rupType: 'select',
@@ -197,18 +190,14 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'ejie',
-	                        index: 'ejie',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 60,
 	                        edittype: 'checkbox'
 	                    },
 	                    {
 	                        name: 'fechaAlta',
-	                        index: 'fechaAlta',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 120,
 	                        rupType: 'date',
 	                        editoptions: {
 	                            labelMaskId: 'fecha-mask',
@@ -219,10 +208,8 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'fechaBaja',
-	                        index: 'fechaBaja',
 	                        editable: false,
 	                        hidden: false,
-	                        width: 120,
 	                        rupType: 'date',
 	                        editoptions: {
 	                            labelMaskId: 'fecha-mask',
@@ -233,10 +220,8 @@ jQuery(function($){
 	                    },
 	                    {
 	                        name: 'rol',
-	                        index: 'rol',
 	                        editable: true,
 	                        hidden: false,
-	                        width: 140,
 	                        rupType: 'select',
 	                        editoptions: {
 	                            url: '../table/roles',
@@ -248,6 +233,7 @@ jQuery(function($){
 	            	
 	        	    $('#example').rup_table({
 	        	        loadOnStartUp: true,
+	        	        enableDynamicForms: true,
 	        	        filter: {
 	        	            id: 'example_filter_form',
 	        	            filterToolbar: 'example_filter_toolbar',
@@ -268,7 +254,38 @@ jQuery(function($){
 	        	            detailForm: '#example_detail_div',
 	        	            url: '../table/editForm'
 	        	        }
-	        	    });  
+	        	    });
+	        	    
+					// Formulario de filtrado.
+					$('#id_filter_table').rup_select({
+						url: '../table/allIds',
+						sourceParam: { text: 'id', id: 'id' },
+						autocomplete: true,
+						combo: true
+					});
+					$('#apellido1_filter_table').rup_select({
+						url: '../table/apellidos',
+						sourceParam: { text: 'label', id: 'value' },
+						blank: '',
+						autocomplete: true,
+						contains: true,
+						combo: true
+					});
+					$('#apellido2_filter_table').rup_select({
+						url: '../table/apellidos',
+						sourceParam: { text: 'label', id: 'value' },
+						blank: '',
+						autocomplete: true,
+						contains: true,
+						combo: true
+					});
+					$('#fechaAlta_filter_table').rup_date({
+						labelMaskId: 'fecha-mask',
+						showButtonPanel: true,
+						showOtherMonths: true,
+						noWeekend: true
+					});
+					$('#fechaBaja_filter_table').rup_date();
 	        	    
 	        	    $('#feedback_dialog').rup_feedback({ type: 'ok', message:'Este es un ejemplo de <b>Feedback</b>'});
 	        	    
@@ -298,7 +315,7 @@ jQuery(function($){
 	        	        multiselect: true
 	        	    });
 	        	    
-	        	    $('#autocompleteDialog').rup_select({
+	        	    $('#autocomplete_dialog').rup_select({
 	                    data: [
 							{id: 'asp', text: 'asp'},
 							{id: 'c', text: 'c'},

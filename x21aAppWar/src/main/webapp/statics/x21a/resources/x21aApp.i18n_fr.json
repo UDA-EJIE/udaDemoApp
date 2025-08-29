@@ -202,6 +202,20 @@
 		"ruby":"ruby_fr",
 		"scala":"scala_fr"
 	},
+	"rol_detail_table": {
+		"asp": "asp_fr",
+		"c": "c_fr",
+		"c++": "c++_fr",
+		"coldfusion": "coldfusion_fr",
+		"groovy": "groovy_fr"
+	},
+	"rolName2": {
+		"asp": "asp_fr",
+		"c": "c_fr",
+		"c++": "c++_fr",
+		"coldfusion": "coldfusion_fr",
+		"groovy": "groovy_fr"
+	},
 	"combo" :{ 
 		"_blank":"[Seleccione un elemento_fr]",
 		"asp":"asp_fr",
@@ -376,6 +390,14 @@
 		"sub10" 	:"sub10_fr",
 		"sub11" 	:"sub11_fr"
 	},
+	"tabs_dialog": {
+		"pestana0": "Tab 0_fr",
+		"sub01": "sub01_fr",
+		"sub02": "sub02_fr",
+		"pestana1": "Tab 1_fr",
+		"sub10": "sub10_fr",
+		"sub11": "sub11_fr"
+	},
 	"toolbar" :{
 		"buscar"  	:"Buscar_fr",
 		"otros"	  	:"Otros botones_fr",
@@ -399,6 +421,28 @@
 		"ZIP"		:"ZIP"
 	},
 	"toolbarRight" :{
+		"buscar"  	:"Buscar_fr",
+		"otros"	  	:"Otros botones_fr",
+		"nuevo"	  	:"Nuevo_fr",
+		"editar"	:"Editar_fr",
+		"cancelar"	:"Cancelar_fr",
+		"borrar"	:"Borrar_fr",
+		"filtrar"	:"Filtrar_fr",
+		"imprimir"	:"Imprimir_fr",
+		"ficheros"	:"Ficheros_fr",
+		"DLL"		:"DLL",
+		"DOC"		:"DOC",
+		"EXE"		:"EXE",
+		"GIF"		:"GIF",
+		"JPG"		:"JPG",
+		"JS"		:"JS",
+		"PDF"		:"PDF",
+		"PPT"		:"PPT",
+		"TXT"		:"TXT",
+		"XLS"		:"XLS",
+		"ZIP"		:"ZIP"
+	},
+	"toolbarMixta" :{
 		"buscar"  	:"Buscar_fr",
 		"otros"	  	:"Otros botones_fr",
 		"nuevo"	  	:"Nuevo_fr",
@@ -659,7 +703,9 @@
 		"ejie" : "Ejie_fr",
 		"fechaAlta":"Fecha de alta_fr",
 		"fechaBaja":"Fecha de baja_fr",
-		"rol":"Rol_fr"
+		"rol":"Rol_fr",
+		"sampleTitle": "Título establecido con la propiedad 'customTitle'_fr",
+		"sampleValidate": "No validado, validación personal, sólo se valida si el primer apellido es Ruiz._fr"
 	},
 	"GRID_simple##rol" : {
 		"administrador" : "Administrador_fr",
@@ -737,5 +783,28 @@
 		"apellido1":"Debe de especificar un primer apellido obligatoriamente._fr",
 		"apellido2":"Debe de especificar un segundo apellido obligatoriamente._fr",
 		"alertDay": "Debe de especificar al menos una opción entre las mostradas._fr"
-	} 
+	},
+	"dias": {
+		"lunes": "Lundi",
+		"martes": "Mardi",
+		"miercoles": "Mercredi",
+		"jueves": "Jeudi",
+		"viernes": "Vendredi",
+		"sabado": "Samedi",
+		"domingo": "Dimanche"
+	},
+	"cliente": {
+		"enero": "Janvier",
+		"febrero": "Février",
+		"marzo": "Mars",
+		"abril": "Avril",
+		"mayo": "Mai",
+		"junio": "Juin",
+		"julio": "Juillet",
+		"agosto": "Août",
+		"septiembre": "Septembre",
+		"octubre": "Octobre",
+		"noviembre": "Novembre",
+		"diciembre": "Décembre"
+	}
 }

@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,19 +39,19 @@ public class Alumno implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private BigDecimal id;
 	@NotEmpty(message="validacion.required",groups={Default.class, AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo2Validation.class})
-	@Length(min=4, message="validacion.minLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class})
+	@Size(min=4, message="validacion.minLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class})
 	private String usuario;
 	@NotEmpty(message="validacion.required",groups={AlumnoAddValidation.class, AlumnoEjemplo2Validation.class})
-	@Length(min=6, message="validacion.minLength", groups={AlumnoAddValidation.class})
+	@Size(min=6, message="validacion.minLength", groups={AlumnoAddValidation.class})
 	private String password;
 	private String password_confirm;
 	@NotEmpty(message="validacion.required", groups={Default.class,AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-	@Length(max=20, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	@Size(max=20, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
 	private String nombre;
 	@NotEmpty(message="validacion.required", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
-	@Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	@Size(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
 	private String apellido1;
-	@Length(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
+	@Size(max=30, message="validacion.maxLength", groups={AlumnoAddValidation.class, AlumnoEditValidation.class, AlumnoEjemplo1Validation.class})
 	private String apellido2;
 	private String sexo;
 	private Date fechaNacimiento;

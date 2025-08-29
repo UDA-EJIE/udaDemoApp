@@ -46,7 +46,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ejie.x21a.dao.ComarcaDao;
+import com.ejie.x21a.dao.LocalidadDao;
 import com.ejie.x21a.model.Comarca;
+import com.ejie.x21a.model.Localidad;
 import com.ejie.x38.dto.TableRequestDto;
 import com.ejie.x38.dto.TableResponseDto;
 import com.ejie.x38.dto.TableRowDto;
@@ -67,6 +69,9 @@ public class ComarcaServiceImpl implements ComarcaService {
 
 	@Autowired
 	private ComarcaDao comarcaDao;
+	
+	@Autowired
+	private LocalidadDao localidadDao;
 
 	/**
 	 * Inserts a single row in the Comarca table.
@@ -97,7 +102,12 @@ public class ComarcaServiceImpl implements ComarcaService {
 	 * @return Comarca
 	 */
 	public Comarca find(Comarca comarca) {
-		return (Comarca) this.comarcaDao.find(comarca);
+		comarca = (Comarca) this.comarcaDao.find(comarca);
+		if(comarca.getLocalidad() != null) {
+			Localidad localidad = this.localidadDao.find(comarca.getLocalidad());
+			comarca.setLocalidad(localidad);
+		}
+		return comarca;
 	}
 
 	/**

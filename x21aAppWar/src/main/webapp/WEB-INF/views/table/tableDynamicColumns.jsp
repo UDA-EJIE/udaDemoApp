@@ -29,7 +29,7 @@
 <spring:url value="/table/dynamicColumns/filter" var="url"/>
 <form:form modelAttribute="usuario" id="columnasDinamicas_filter_form" class="d-none" action="${url}" method="${actionType}" enctype="${enctype}"/>
 
-<table id="columnasDinamicas" class="tableFit table-striped table-bordered table-material d-none" 
+<table id="columnasDinamicas" class="tableFit table table-striped table-bordered table-material align-middle d-none" 
 	data-url-base="./dynamicColumns"
 	data-filter-form="#columnasDinamicas_filter_form">
         <thead>
@@ -40,7 +40,7 @@
 				<th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
 				<th data-col-prop="fechaAlta" data-col-sidx="fecha_alta" data-col-type="Datepicker">Fecha alta</th>
 				<th data-col-prop="fechaBaja" data-col-sidx="fecha_baja" data-col-type="Datepicker">Fecha baja</th>
-				<th data-col-prop="rol" data-col-type="combo">Rol</th>
+				<th data-col-prop="rol" data-col-type="select">Rol</th>
 			</tr>
         </thead>
 </table>

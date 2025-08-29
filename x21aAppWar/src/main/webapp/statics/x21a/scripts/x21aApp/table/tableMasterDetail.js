@@ -18,25 +18,21 @@ jQuery(function ($) {
 		 var tableColModelsComarca = [
 		    {
 		        name: 'descEs',
-		        index: 'descEs',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
-		        index: 'descEu',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'css',
-		        index: 'css',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'provincia.code',
-		        index: 'provincia.code',
 		        editable: true,
 		        hidden: false,
 		        rupType: 'select',
@@ -53,9 +49,27 @@ jQuery(function ($) {
                     customClasses: ['select-material']
                 }
 		    },
+			{
+			    name: 'localidad.code',
+			    editable: true,
+			    hidden: false,
+			    rupType: 'select',
+			    editoptions: {
+			    	url : '../patrones/comboEnlazadoSimple/remoteEnlazadoComarcaTable',
+					parent: 'provinciaCode_detailForm_table',
+			        sourceParam : {
+			        	text: 'desc' + $.rup_utils.capitalizedLang(), 
+			        	id: 'code',
+			            style: 'css'
+			        },
+			        rowStriping: true,
+			        blank: '',
+			        width: '100%',
+			        customClasses: ['select-material']
+			    }
+			},
 		    {
 		        name: 'provincia.descEs',
-		        index: 'provincia.descEs',
 		        editable: true,
 		        hidden: false
 		    }
@@ -103,19 +117,16 @@ jQuery(function ($) {
 	    var tableColModelsLocalidad = [
 	    	{
 		        name: 'descEs',
-		        index: 'descEs',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'descEu',
-		        index: 'descEu',
 		        editable: true,
 		        hidden: false
 		    },
 		    {
 		        name: 'css',
-		        index: 'css',
 		        editable: true,
 		        hidden: false
 		    }
@@ -124,6 +135,7 @@ jQuery(function ($) {
 	    $('#localidad').rup_table({
 	        primaryKey: 'code',
 	        loadOnStartUp: false,
+	        enableDynamicForms: true,
 	        filter: {
 	            id: 'localidad_filter_form',
 	            filterToolbar: 'localidad_filter_toolbar',
@@ -148,8 +160,7 @@ jQuery(function ($) {
 	        ],
 	        masterDetail: {
 	            master: '#comarca',
-	            masterPrimaryKey: 'comarca.code',
-	            masterPrimaryNid: true
+	            masterPrimaryKey: 'comarca.code'
 	        },
 	        formEdit: {
 	            detailForm: '#localidad_detail_div',

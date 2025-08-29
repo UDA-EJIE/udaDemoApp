@@ -1,9 +1,1 @@
-module.exports = function (options) {
-
-	var langJSON = {};
-	langJSON[options.hash.lang] = JSON.parse('{'+options.fn(this)+'}');
-
-	options.data.languages = jQuery.extend(true, {}, options.data.languages, langJSON);
-
-
-};
+module.exports=function(a){var e={};e[a.hash.lang]=JSON.parse("{"+a.fn(this)+"}"),a.data.languages=jQuery.extend(!0,{},a.data.languages,e)};

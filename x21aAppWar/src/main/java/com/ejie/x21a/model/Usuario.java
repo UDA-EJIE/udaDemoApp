@@ -19,8 +19,8 @@ package com.ejie.x21a.model;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,11 +40,11 @@ public class Usuario implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;   
 	private String id;
 	@NotBlank(message="validacion.required")
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String nombre;
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String apellido1;
-	@Length(max=25, message="validacion.maxLength")
+	@Size(max=25, message="validacion.maxLength")
 	private String apellido2;
 	//@NotBlank(message="validacion.required")
 	private String ejie;

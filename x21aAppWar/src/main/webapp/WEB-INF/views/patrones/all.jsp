@@ -1,24 +1,25 @@
 <%--  
  -- Copyright 2011 E.J.I.E., S.A.
  --
- -- Licencia con arreglo a la EUPL, VersiÛn 1.1 exclusivamente (la ´Licenciaª);
- -- Solo podr· usarse esta obra si se respeta la Licencia.
+ -- Licencia con arreglo a la EUPL, Versi√≥n 1.1 exclusivamente (la ¬´Licencia¬ª);
+ -- Solo podr√° usarse esta obra si se respeta la Licencia.
  -- Puede obtenerse una copia de la Licencia en
  --
  --      http://ec.europa.eu/idabc/eupl.html
  --
- -- Salvo cuando lo exija la legislaciÛn aplicable o se acuerde por escrito, 
- -- el programa distribuido con arreglo a la Licencia se distribuye ´TAL CUALª,
- -- SIN GARANTÕAS NI CONDICIONES DE NING⁄N TIPO, ni expresas ni implÌcitas.
- -- VÈase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ -- Salvo cuando lo exija la legislaci√≥n aplicable o se acuerde por escrito, 
+ -- el programa distribuido con arreglo a la Licencia se distribuye ¬´TAL CUAL¬ª,
+ -- SIN GARANT√çAS NI CONDICIONES DE NING√öN TIPO, ni expresas ni impl√≠citas.
+ -- V√©ase la Licencia en el idioma concreto que rige los permisos y limitaciones
  -- que establece la Licencia.
  --%>
+ <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <h2 class="title mb-3">Todos los patrones</h2>
 
 <jsp:include page="../table/includes/tableComarcaFilterForm.jsp"></jsp:include>
 
-<table id="comarca" class="tableFit table-striped table-bordered table-material" 
+<table id="comarca" class="tableFit table table-striped table-bordered table-material align-middle" 
 	data-url-base="../tableComarca"
 	data-filter-form="#comarca_filter_form">
     <thead>
@@ -75,7 +76,7 @@
 				<label for="tooltip">Tooltip</label>
 		    </div>
 		    
-		    <!-- PestaÒas -->
+		    <!-- Pesta√±as -->
 			<div class="form-groupMaterial col-sm mt-5">
 		    	<div id="tabs" class="col-sm"></div>
 		    </div>
@@ -84,12 +85,12 @@
     
     <div class="row mt-3">
     	<div class="col-sm-8">
-    		<p>El siguiente botÛn muestra una pantalla similar a esta pero dentro de un di·logo:</p>
+    		<p>El siguiente bot√≥n muestra una pantalla similar a esta pero dentro de un di√°logo:</p>
     	</div>
     	<div class="col-sm-4">
     		<button id="dialogLauncher" class="btn-material btn-material-primary-high-emphasis">
     			<i class="mdi mdi-forum"></i>
-    			<span>Patrones en di·logo</span>
+    			<span>Patrones en di√°logo</span>
     		</button>
     	</div>
     </div>

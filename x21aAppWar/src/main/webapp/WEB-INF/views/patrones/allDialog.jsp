@@ -17,7 +17,7 @@
 
 <jsp:include page="../table/includes/tableFilterForm.jsp"></jsp:include>
 
-<table id="example" class="tableFit table-striped table-bordered table-material"
+<table id="example" class="tableFit table table-striped table-bordered table-material align-middle"
 	data-url-base="../table"
 	data-filter-form="#example_filter_form">
         <thead>
@@ -69,12 +69,12 @@
 			
 			<!-- Autocomplete / Tooltip -->
 			<div class="form-groupMaterial col-sm mt-5">
-		    	<input id="autocomplete_dialog" name="autocomplete" />
-				<label for="autocomplete">Autocomplete (lenguaje)</label>
+		    	<select id="autocomplete_dialog" name="autocomplete"></select>
+				<label for="autocomplete_dialog">Autocomplete (lenguaje)</label>
 		    </div>
 			<div class="form-groupMaterial col-sm mt-5">
 		    	<input id="tooltip_dialog" name="tooltip" title="Introduzca su nombre."/>
-				<label for="tooltip">Tooltip</label>
+				<label for="tooltip_dialog">Tooltip</label>
 		    </div>
 		    
 		    <!-- Pestañas -->

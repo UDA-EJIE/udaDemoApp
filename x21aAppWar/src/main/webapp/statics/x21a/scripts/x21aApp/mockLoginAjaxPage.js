@@ -38,6 +38,11 @@ jQuery(document).ready(function() {
 		} else {
 			$('#content').css('margin-top', '10em');
 		}
+		
+		$('#logFeedback').rup_feedback({
+		        message:'<strong>Atención!</strong> El resultado de la acción requiere su atención.',
+		        type:'alert'
+		    });
 
 		// Especifica el funcionamiento del botón para que se envíen los datos y para que se almacene la cookie de usuario.
 		$('#loginButtonObject').bind('click', function() {

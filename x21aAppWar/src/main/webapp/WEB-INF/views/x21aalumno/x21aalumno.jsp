@@ -3,7 +3,7 @@
 
 <jsp:include page="includes/x21aAlumnoFilterForm.jsp"></jsp:include>
 
-<table id="x21aAlumno" class="tableFit table-striped table-bordered table-material" 
+<table id="x21aAlumno" class="tableFit table table-striped table-bordered table-material align-middle" 
 	data-url-base="../x21aalumno"
 	data-filter-form="#x21aAlumno_filter_form">
 	<thead>

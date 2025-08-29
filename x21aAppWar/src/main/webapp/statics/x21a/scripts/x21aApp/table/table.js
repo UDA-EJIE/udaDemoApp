@@ -23,13 +23,17 @@ jQuery(function ($) {
         const tableColModels = [
         	{
                 name: 'nombre',
-                index: 'nombre',
                 editable: true,
-                hidden: false
+                hidden: false,
+				editoptions: {
+					maxlength: 20
+				},
+				searchoptions: {
+					maxlength: 20
+				}
             },
             {
                 name: 'apellido1',
-                index: 'apellido1',
                 editable: true,
                 hidden: false,
             	rupType: 'select',
@@ -50,8 +54,7 @@ jQuery(function ($) {
                 }
             },
             { 
-            	name: "apellido2", 
-            	index: "apellido2", 
+            	name: "apellido2",
             	editable: true, 
             	hidden: false,
             	rupType: 'select',
@@ -74,14 +77,12 @@ jQuery(function ($) {
             },
             {
                 name: 'ejie',
-                index: 'ejie',
                 editable: true,
                 hidden: false,
                 edittype: 'checkbox'
             },
             {
                 name: 'fechaAlta',
-                index: 'fechaAlta',
                 editable: true,
                 hidden: false,
                 rupType: 'date',
@@ -100,7 +101,6 @@ jQuery(function ($) {
             },
             {
                 name: 'fechaBaja',
-                index: 'fechaBaja',
                 editable: false,
                 hidden: false,
                 rupType: 'date',
@@ -119,7 +119,6 @@ jQuery(function ($) {
             },
             {
                 name: 'rol',
-                index: 'rol',
                 editable: true,
                 hidden: false,
                 rupType: 'select',
@@ -135,38 +134,6 @@ jQuery(function ($) {
                 }
             }
         ];
-
-
-        // Formulario de filtrado.
-        $('#id_filter_table').rup_select({
-        	url : './allIds',
-        	sourceParam : {text: 'id', id: 'id'},
-        	autocomplete: true,
-        	combo: true
-        });
-        $('#apellido1_filter_table').rup_select({
-        	url: './apellidos',
-        	sourceParam : {text: 'label', id: 'value'},
-			blank: '',
-        	autocomplete: true,
-        	contains: true,
-        	combo: true
-        });
-        $('#apellido2_filter_table').rup_select({
-        	url: './apellidos',
-        	sourceParam : {text: 'label', id: 'value'},
-			blank: '',
-        	autocomplete: true,
-        	contains: true,
-        	combo: true
-        });
-        $('#fechaAlta_filter_table').rup_date({
-			labelMaskId: 'fecha-mask',
-			showButtonPanel: true,
-			showOtherMonths: true,
-			noWeekend: true
-        });
-        $('#fechaBaja_filter_table').rup_date();
 
         const listaPlugins = 'colReorder,seeker,buttons,simpleFilter,multiSelection,editForm,';
 
@@ -239,6 +206,36 @@ jQuery(function ($) {
             	plugins.filter.filterToolbar = 'example_filter_toolbar';
             	plugins.filter.collapsableLayerId = 'example_filter_fieldset';
                 $('#noFilter').prop('checked', false);
+
+				// Formulario de filtrado.
+				$('#id_filter_table').rup_select({
+					url: './allIds',
+					sourceParam: { text: 'id', id: 'id' },
+					autocomplete: true,
+					combo: true
+				});
+				$('#apellido1_filter_table').rup_select({
+					url: './apellidos',
+					sourceParam: { text: 'label', id: 'value' },
+					blank: '',
+					placeholder: '[Seleccionar por favor...]',
+					allowClear: true
+				});
+				$('#apellido2_filter_table').rup_select({
+					url: './apellidos',
+					sourceParam: { text: 'label', id: 'value' },
+					blank: '',
+					autocomplete: true,
+					contains: true,
+					combo: true
+				});
+				$('#fechaAlta_filter_table').rup_date({
+					labelMaskId: 'fecha-mask',
+					showButtonPanel: true,
+					showOtherMonths: true,
+					noWeekend: true
+				});
+				$('#fechaBaja_filter_table').rup_date();
             }
             
             // SELECCIÓN
@@ -339,8 +336,10 @@ jQuery(function ($) {
 	                plugins.formEdit = formEdit;
 	
 	                $('#editForm').prop('checked', true);
+					$('#multipart').prop('disabled', false);
 	            } else {
 	                $('#editForm').prop('checked', false);
+					$('#multipart').prop('disabled', true);
 	            }
 	
 	            if (localStorage.plugins.indexOf(',inlineEdit,') > -1) {

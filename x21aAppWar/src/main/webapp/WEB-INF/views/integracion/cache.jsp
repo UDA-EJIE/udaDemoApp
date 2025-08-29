@@ -15,21 +15,31 @@
  --%>
 
 <%@include file="/WEB-INF/includeTemplate.inc"%>
-<h2>Cache</h2> <!-- Titulo pagina -->
+<!-- Tï¿½tulo pï¿½gina -->
+<h2 class="title mb-3">
+	<spring:message code="integracion.cache" />
+</h2>
 
 <br/>
 <span> Weblogic Name : <%=StaticsContainer.getServerInstance()%></span>
 
+<div id="table_feedback"></div>
 
-<br/><br/>
-<button type="button" id="btnRecargarTabla">Recargar tabla</button>
-<div id="table_div" class="rup-table-container">
-	<div id="table_feedback"></div>
-
-	<div id="table_grid_div">
-		<!-- Tabla -->
-		<table id="table"></table>
-		<!-- Barra de paginación -->
-		<div id="table_pager"></div>
-	</div>
-</div>	
+<!-- Tabla -->
+<table id="table"
+	class="tableFit table table-striped table-bordered table-material align-middle"
+	data-url-base="." data-filter-form="#table_filter_form">
+	<thead>
+		<tr>
+			<th data-col-prop="nombre" data-col-edit="true">Nombre</th>
+			<th data-col-prop="apellido1">Primer apellido</th>
+			<th data-col-prop="apellido2">Segundo apellido</th>
+			<th data-col-prop="ejie" data-col-type="Checkbox">Ejie</th>
+			<th data-col-prop="fechaAlta" data-col-sidx="fecha_alta"
+				data-col-type="Datepicker">Fecha alta</th>
+			<th data-col-prop="fechaBaja" data-col-sidx="fecha_baja"
+				data-col-type="Datepicker">Fecha baja</th>
+			<th data-col-prop="rol" data-col-type="select">Rol</th>
+		</tr>
+	</thead>
+</table>

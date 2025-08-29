@@ -1,9 +1,9 @@
 <%@include file="/WEB-INF/includeTemplate.inc"%>
 <fieldset class="p-4">
-    <legend><spring:message code="lista.filter.legend" /></legend>
+    <legend class="float-none"><spring:message code="lista.filter.legend" /></legend>
     <spring:url value="/patrones/lista/filter" var="url"/>
     <form:form modelAttribute="usuario" id="listFilterForm" action="${url}">
-        <div class="form-row">
+        <div class="row">
             <div class="form-groupMaterial col-sm">
                 <form:input id="listFilterId" path="id"/>
             	<label for="listFilterId">
@@ -17,7 +17,7 @@
             	</label>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="form-groupMaterial col-sm">
                 <form:input id="listFilterApe1" path="apellido1"/>
             	<label for="listFilterApe1">
@@ -31,8 +31,8 @@
             	</label>
             </div>
         </div>
-        <div class="text-right">
-            <button id="listFilterLimpiar" class="btn-material btn-material-primary-low-emphasis mr-2">
+        <div class="text-end">
+            <button id="listFilterLimpiar" class="btn-material btn-material-primary-low-emphasis me-2">
             	<i class="mdi mdi-eraser"></i>
             	<span><spring:message code="lista.filter.clean"/></span>
             </button>

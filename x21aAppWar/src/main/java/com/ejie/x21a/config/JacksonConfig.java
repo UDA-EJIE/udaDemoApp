@@ -21,6 +21,7 @@ import com.ejie.x21a.model.Buzones;
 import com.ejie.x21a.model.Comarca;
 import com.ejie.x21a.model.Departamento;
 import com.ejie.x21a.model.DepartamentoProvincia;
+import com.ejie.x21a.model.DivisionTerritorialDto;
 import com.ejie.x21a.model.FormComarcas;
 import com.ejie.x21a.model.IberdokFile;
 import com.ejie.x21a.model.Localidad;
@@ -110,6 +111,7 @@ public class JacksonConfig implements WebMvcConfigurer {
 		serializers.put(Buzones.class, customSerializer());
 		serializers.put(IberdokFile.class, customSerializer());
 		serializers.put(LogModel.class, customSerializer());
+		serializers.put(DivisionTerritorialDto.class, customSerializer());
 
 		udaModule.setSerializers(serializers);
 		//udaModule.setSerializationInclusions(serializationInclusions());

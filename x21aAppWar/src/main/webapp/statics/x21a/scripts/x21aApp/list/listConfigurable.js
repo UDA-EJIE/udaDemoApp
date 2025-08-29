@@ -26,26 +26,26 @@ window.initRupI18nPromise.then(function () {
 	    },
 	    sidx: {
 	        source: [{
-	            id: 'id',
+	            value: 'id',
 	            i18nCaption: 'sidx.id'
 	        }, {
-	            id: 'nombre',
+	            value: 'nombre',
 	            i18nCaption: 'sidx.nombre'
 	        }, {
-	            id: 'apellido1',
+	            value: 'apellido1',
 	            i18nCaption: 'sidx.apellido1'
 	        }],
 	        value: 'id'
 	    },
 	    rowNum: {
 	        source: [{
-	            id: '5',
+	            value: '5',
 	            i18nCaption: 'rowPerPage.5'
 	        }, {
-	            id: '10',
+	            value: '10',
 	            i18nCaption: 'rowPerPage.10'
 	        }, {
-	            id: '20',
+	            value: '20',
 	            i18nCaption: 'rowPerPage.20'
 	        }],
 	        value: '5'
