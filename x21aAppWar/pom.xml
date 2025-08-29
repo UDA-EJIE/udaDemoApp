@@ -22,7 +22,7 @@
 		<org.slf4j.version>1.7.30</org.slf4j.version>
 		<org.apache.tiles.version>3.0.8</org.apache.tiles.version>
 		<org.jackson.version>2.12.7.1</org.jackson.version>
-		<com.ejie.x38.version>6.0.0-TOMCAT-SNAPSHOT</com.ejie.x38.version>
+		<com.ejie.x38.version>6.3.0-TOMCAT-SNAPSHOT</com.ejie.x38.version>
 		<xlnets.version>0.3.0</xlnets.version>
 		<xalan.version>2.7.2</xalan.version>
 		<xerces.version>2.12.2</xerces.version>
