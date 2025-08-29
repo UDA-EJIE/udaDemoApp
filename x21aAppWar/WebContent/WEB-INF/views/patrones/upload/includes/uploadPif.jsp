@@ -48,7 +48,7 @@
 				        <span class="btn btn-success fileinput-button">
 						      <i class="mdi mdi-plus"></i>
 						      <span><spring:message code="upload.button.addFiles"/></span>
-						      <input id="file_pif_form" type="file" name="file" multiple>
+						      <input id="file_pif_form" type="file" name="foto" multiple>
 						 
 						      
 						</span>
