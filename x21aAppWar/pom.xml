@@ -6,7 +6,7 @@
 	<artifactId>x21aAppWar</artifactId>
 	<name>x21a</name>
 	<description>UdaDemoApp</description>
-	<version>6.0.0-SNAPSHOT</version>
+	<version>6.3.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<url>http://www.ejie.eus</url>
 
