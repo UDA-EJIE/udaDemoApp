@@ -1,3 +1,1 @@
-module.exports = function (options) {
-	options.data.languages = [];
-};
+module.exports=function(a){a.data.languages=[]};
