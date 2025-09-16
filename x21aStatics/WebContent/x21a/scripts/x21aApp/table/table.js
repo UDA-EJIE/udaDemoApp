@@ -341,7 +341,12 @@ jQuery(function ($) {
                 };
 
                 var formEdit = {
-                    detailForm: '#example_detail_div',
+					detailForm: {
+						id: '#example_detail_div',
+						customDialog: {
+							width: 1000
+						}
+					},
                     validate: {
                         rules: {
                             'id': {
@@ -367,7 +372,7 @@ jQuery(function ($) {
                 plugins.validarModificarContinuar = function customGuardar(ctx){
                 	if($('#apellido1_detail_table').val() !== 'ruiz'){
 	                	//Ejemplo de validación personalizada
-	                	 let idTableDetail = ctx.oInit.formEdit.detailForm;
+	                	 let idTableDetail = ctx.oInit.formEdit.detailForm.$dialog;
 	                	 let feedback = idTableDetail.find('#' + ctx.sTableId + '_detail_feedback');
 	                     try {//Se destruye para asegurar la inicialización.
 	                         feedback.rup_feedback('destroy');
