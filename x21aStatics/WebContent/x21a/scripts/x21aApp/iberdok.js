@@ -190,7 +190,9 @@ function addTableIberdok() {
             activate: true
         },
         formEdit: {
-            detailForm: '#iberdokTable_detail_div'
+			detailForm: {
+				id: '#iberdokTable_detail_div'
+			}
         },
         seeker: {
         	activate: true

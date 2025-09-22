@@ -59,7 +59,9 @@ jQuery(function($){
             
         },
         formEdit:{
-            detailForm: '#table_detail_div',
+			detailForm: {
+				id: '#table_detail_div'
+			},
             validate:{
                 rules:{
                     'nombre':{required:true},
@@ -201,7 +203,9 @@ jQuery(function($){
                         
                     },
                     formEdit:{
-                        detailForm: '#tableDialog_detail_div',
+						detailForm: {
+							id: '#tableDialog_detail_div'
+						},
                         validate:{
                             rules:{
                                 'nombre':{required:true},
