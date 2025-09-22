@@ -78,7 +78,9 @@ jQuery(function($){
 	        	activate: true
 	        },
 	        formEdit: {
-	            detailForm: '#comarca_detail_div',
+				detailForm: {
+					id: '#comarca_detail_div'
+				},
 	            url: '../tableComarca/editForm'
 	        }
 	    });
@@ -251,7 +253,9 @@ jQuery(function($){
 	        	        	style: 'multi'
 	        	        },
 	        	        formEdit: {
-	        	            detailForm: '#example_detail_div',
+							detailForm: {
+								id: '#example_detail_div'
+							},
 	        	            url: '../table/editForm'
 	        	        }
 	        	    });

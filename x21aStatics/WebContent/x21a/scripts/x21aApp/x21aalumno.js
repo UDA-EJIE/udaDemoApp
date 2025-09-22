@@ -85,7 +85,9 @@ jQuery(function ($) {
 	            collapsableLayerId: 'x21aAlumno_filter_fieldset'
 	        },
 	        formEdit: {
-	            detailForm: '#x21aAlumno_detail_div',
+				detailForm: {
+					id: '#x21aAlumno_detail_div'
+				},
 	            fillDataMethod: 'clientSide',
 	            validate: {
 	                rules: {

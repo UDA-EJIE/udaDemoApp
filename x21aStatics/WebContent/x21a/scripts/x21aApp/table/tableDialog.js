@@ -104,7 +104,9 @@ jQuery(function ($) {
 
             if (localStorage.plugins.indexOf('editForm') > -1) {
                 formEdit = {
-                    detailForm: '#MultiPk_detail_div',
+					detailForm: {
+						id: '#MultiPk_detail_div'
+					},
                     fillDataMethod: 'clientSide',
                     validate: {
                         rules: {

@@ -168,7 +168,9 @@ jQuery(function($){
         	function cancelClicked() { console.log("Ha cancelado eliminar."); };
       
             var formEdit = {
-                detailForm: "#example_detail_div",
+				detailForm: {
+					id: '#example_detail_div'
+				},
                 validate:{
                     rules:{
                         "id":{required:true},
@@ -233,7 +235,9 @@ jQuery(function($){
 		    plugins.multiSelect = multiSelect;
 
 	        var formEdit = {
-	            	detailForm: "#MultiPk_detail_div",
+					detailForm: {
+						id: '#MultiPk_detail_div'
+					},
 	    			fillDataMethod: "clientSide",
 	             	validate:{ 
 	        			rules:{

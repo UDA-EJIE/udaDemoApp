@@ -224,7 +224,9 @@ function _init() {
         if (localStorage['plugins' + num].indexOf('editForm') > -1) {
             window.initRupI18nPromise.then(function () {
                 var formEdit = {
-                    detailForm: '#example' + num + '_detail_div',
+					detailForm: {
+						id: '#example' + num + '_detail_div'
+					},
                     validate: {
                         rules: {}
                     },

@@ -99,7 +99,9 @@ jQuery(function ($) {
 	            style: 'multi'
 	        },
 	        formEdit: {
-	            detailForm: '#comarca_detail_div',
+				detailForm: {
+					id: '#comarca_detail_div'
+				},
 	            url: '../tableComarca/editForm',
 	            /*validate: {
 	                rules: {
@@ -163,7 +165,9 @@ jQuery(function ($) {
 	            masterPrimaryKey: 'comarca.code'
 	        },
 	        formEdit: {
-	            detailForm: '#localidad_detail_div',
+				detailForm: {
+					id: '#localidad_detail_div'
+				},
 	            url: '../tableLocalidad/editForm',
 	            data: {}
 	            /*validate: {

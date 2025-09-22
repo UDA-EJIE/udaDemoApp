@@ -75,7 +75,9 @@ jQuery(function ($) {
 	            style: 'multi'
 	        },
 	        formEdit: {
-	            detailForm: '#comarca_detail_div',
+				detailForm: {
+					id: '#comarca_detail_div'
+				},
 	            url: '../tableComarca/editFormDialog',
 	            /*validate: {
 	                rules: {
