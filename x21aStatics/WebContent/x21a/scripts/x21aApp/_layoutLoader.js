@@ -14,7 +14,6 @@
  * que establece la Licencia.
  */
 jQuery(function($) {
-    //Habilitamos el envío de trazas a PIB
     window.IS_EJIE = true;
     
     jQuery('#rup_dept_logo').attr('src', jQuery.rup.APP_STATICS + '/images/dept_logo_' + jQuery.rup.lang + '.gif');
