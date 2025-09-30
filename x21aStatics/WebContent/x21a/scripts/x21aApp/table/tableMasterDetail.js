@@ -65,8 +65,8 @@ jQuery(function ($) {
 	            rowpos: 5,
 	            colpos: 1
 	        },
-	        rupType: 'select',
 	        editoptions:{
+	        	rupType: 'select',
 		        url: '../jqGridComarca/provincia',
 		        sourceParam: {
 		            text: 'desc' + $.rup_utils.capitalizedLang(),

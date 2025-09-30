@@ -30,8 +30,8 @@ jQuery(function ($) {
 	        	index: "apellido1", 
 	        	editable: true, 
 	        	hidden: false,
-	        	rupType: 'autocomplete',
 	            editoptions: {
+	        		rupType: 'autocomplete',
 	            	source : '../table/apellidos',
 	                sourceParam : {label: 'label', value: 'value'},
 	                menuMaxHeight: 200,
@@ -46,8 +46,8 @@ jQuery(function ($) {
 	            index: 'provinciaId',
 	            editable: true,
 	            hidden: false,
-	            rupType: 'select',
 	            editoptions: {
+	            	rupType: 'select',
 	                url : '../provincia',
 	                sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
 	                //blank: '',
@@ -60,8 +60,8 @@ jQuery(function ($) {
 	            index: 'comarcaId',
 	            editable: true,
 	            hidden: false,
-	            rupType: 'select',
 	            editoptions: {
+	            	rupType: 'select',
 	                url : '../comarca',
 	                sourceParam : {text: 'desc' + $.rup_utils.capitalizedLang(), id: 'code'},
 	                //blank: '',

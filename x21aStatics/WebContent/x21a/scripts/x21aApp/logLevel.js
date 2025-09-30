@@ -13,6 +13,7 @@ $(document).ready(function () {
 
 
     var options_level_combo = {
+		rupType: 'combo',
         source : [
             {label: '---', value:''},
             {label: 'TRACE', value:'TRACE'},
@@ -37,7 +38,6 @@ $(document).ready(function () {
         colModel: [
             {name: 'nameLog', label: 'nameLog', editable:false,formoptions:{rowpos:1, colpos:1}},
             { name: 'levelLog', index: 'levelLog', editable:true, width: 140,
-                rupType: 'combo',
                 editoptions: options_level_combo,
                 formoptions:{rowpos:1, colpos:2}
             }

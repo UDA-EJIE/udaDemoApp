@@ -492,9 +492,9 @@ function _init() {
             editable: true,
             hidden: false,
             width: 120,
-            rupType: 'date',
             rwdClasses: 'hidden-xs hidden-sm hidden-md',
             editoptions: {
+            	rupType: 'date',
                 labelMaskId: 'fecha-mask',
                 showButtonPanel: true,
                 showOtherMonths: true,
@@ -511,9 +511,9 @@ function _init() {
             editable: false,
             hidden: false,
             width: 120,
-            rupType: 'date',
             rwdClasses: 'hidden-xs hidden-sm hidden-md',
             editoptions: {
+            	rupType: 'date',
                 labelMaskId: 'fecha-mask',
                 showButtonPanel: true,
                 showOtherMonths: true,
@@ -530,10 +530,10 @@ function _init() {
             editable: true,
             hidden: false,
             width: 140,
-            rupType: 'combo',
             rwdClasses: 'hidden-xs hidden-sm hidden-md',
             formatter: 'rup_combo',
             editoptions: {
+            	rupType: 'combo',
                 source: $.map(combo, function (elem) {
                     return {
                         label: elem.rol,
