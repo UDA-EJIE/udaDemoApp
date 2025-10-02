@@ -1,3 +1,0 @@
-/*! Select for DataTables 3.0.0
- * © SpryMedia Ltd - datatables.net/license
- */
