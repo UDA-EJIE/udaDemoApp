@@ -900,8 +900,16 @@ public class PatronesController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    	
-        return departamentoService.findAllLike(null, null, !c);
+    	Departamento departamento = new Departamento();
+    	if(q != null) {
+    		Locale locale = LocaleContextHolder.getLocale();
+            if (com.ejie.x38.util.Constants.EUSKARA.equals(locale.getLanguage())) {
+            	departamento.setDescEu(q);
+            } else {
+            	departamento.setDescEs(q);
+            }
+    	}
+        return departamentoService.findAllLike(departamento, null, !c);
     }
     
     @GetMapping(value = "autocomplete/provinciaRemote")
