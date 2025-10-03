@@ -123,7 +123,7 @@ jQuery(document).ready(function () {
     });
     
     const options_ejie_select = {
-        url: [
+        data: [
             {text:'Si', id:'0'},
             {text:'No', id:'1'}
         ],
