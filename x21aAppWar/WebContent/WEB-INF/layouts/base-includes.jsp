@@ -36,6 +36,6 @@ var	IS_EJIE = '${isEjie}',
 </script>
 
 <!-- Scripts RUP -->
-<%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>
+<%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>
