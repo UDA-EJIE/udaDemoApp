@@ -18,7 +18,7 @@ package com.ejie.x21a.model;
 
 import javax.validation.groups.Default;
 
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**

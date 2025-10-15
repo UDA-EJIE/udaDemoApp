@@ -21,7 +21,7 @@
 <div class="row">
 	<div class="col-xl-12">
 		<div class="page-header w-100 mb-3">
-			<div class="pull-right form-inline">
+			<div class="pull-right d-flex flex-row align-items-center flex-wrap">
 				<div class="btn-group mb-3">
 					<span class="btn-material btn-material-primary" data-calendar-nav="prev">
 						<i class="mdi mdi-chevron-left-circle" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
 						<i class="mdi mdi-chevron-right-circle" aria-hidden="true"></i>
 					</span>
 				</div>
-				<div class="pl-3 d-xs-none"></div>
+				<div class="ps-3 d-xs-none"></div>
 				<div class="btn-group mb-3">
 					<span class="btn-material" data-calendar-view="year">Año</span>
 					<span class="btn-material active" data-calendar-view="month">Mes</span>
@@ -89,7 +89,7 @@
 			<div class="row row-noPadding">
 				<div class="col-md-1">
 					<div class="legend bgCheck">
-						<i class='mdi mdi-check pr-1' style='color: black'
+						<i class='mdi mdi-check pe-1' style='color: black'
 							aria-hidden='true'></i>
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 			<div class="row row-noPadding">
 				<div class="col-md-1">
 					<div class="legend bgExclamation">
-						<i class='mdi mdi-exclamation pr-1'
+						<i class='mdi mdi-exclamation pe-1'
 							style='color: black; padding: 6px 7px;' aria-hidden='true'></i>
 					</div>
 				</div>

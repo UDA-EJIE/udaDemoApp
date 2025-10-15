@@ -26,7 +26,9 @@ jQuery(function ($) {
             collapsableLayerId: 'usuario_filter_fieldset'
         },
         formEdit: {
-            detailForm: '#usuario_detail_div',
+			detailForm: {
+				id: '#usuario_detail_div'
+			},
             fillDataMethod: 'clientSide',
             validate: {
                 rules: {

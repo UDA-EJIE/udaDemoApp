@@ -34,7 +34,7 @@
 		</p>
 
 		<div class="example">
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<div class="col-md-6">
 					<label for="nombre"><spring:message code="nombre" /></label> <input
 						id="nombre" name="nombre" class="form-control"
@@ -54,7 +54,7 @@
 		</p>
 
 		<div class="example">
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<label for="code" class="col-lg-1 col-md-2 col-form-label"><spring:message
 						code="codigo" /></label>
 				<div class="col-lg-3">
@@ -75,7 +75,7 @@
 		</p>
 
 		<div class="example">
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<label for="identificador" class="col-lg-1 col-md-2 col-form-label"><spring:message
 						code="comun.identificador" /></label>
 				<div class="col-lg-3">
@@ -97,7 +97,7 @@
 		</p>
 
 		<div class="example">
-			<div class="form-group row">
+			<div class="mb-3 row">
 				<label for="htmlTooltip" class="col-lg-1 col-md-2 col-form-label">Html:</label>
 				<div class="col-lg-3">
 					<div class="input-group">

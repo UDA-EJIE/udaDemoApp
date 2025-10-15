@@ -29,7 +29,7 @@
 		<spring:message code="iberdok.dialog.editor" />
 	</h3>
 	<!-- Campos del formulario de detalle -->
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:select path="lang" items="${lang}" id="lang_detail_table" />
 	    	<label for="lang_detail_table"><spring:message code="iberdok.lang" /></label>
@@ -44,13 +44,13 @@
 	    </div> 
 	</div>
 
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="urlRetorno" id="urlRetorno_detail_table" />
 	    	<label for="urlRetorno_detail_table"><spring:message code="iberdok.urlRetorno" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="urlFinalizacion" id="urlFinalizacion_detail_table" />
 	    	<label for="urlFinalizacion_detail_table"><spring:message code="iberdok.urlFinalizacion" /></label>
@@ -59,7 +59,7 @@
 	<h3 id="datosNecesarios">
 		<spring:message code="iberdok.datosNecesarios" />
 	</h3>
-	<div id="divModo1" class="form-row">
+	<div id="divModo1" class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="idModelo" id="idModelo_detail_table" />
 	    	<label for="idModelo_detail_table"><spring:message code="iberdok.idModelo" /></label>
@@ -69,7 +69,7 @@
 	    	<label for="nombre_detail_table"><spring:message code="iberdok.nombre" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div id="divModo2" class="form-groupMaterial col-sm">
 	    	<form:input path="xhtml64" id="xhtml64_detail_table" readonly="readonly" />
 	    	<label for="xhtml64_detail_table"><spring:message code="iberdok.xhtml64" /></label>
@@ -79,7 +79,7 @@
 	    	<label for="idDocumento_detail_table"><spring:message code="iberdok.idDocumento" /></label>
 	    </div>
 	</div>	
-	<div id="semillas" class="form-row">
+	<div id="semillas" class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:textarea path="semilla" id="semilla_detail_table" />
 	    	<label for="semilla_detail_table"><spring:message code="iberdok.semilla" /></label>

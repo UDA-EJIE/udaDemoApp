@@ -2,6 +2,11 @@
 /* jslint multistr: true */
 /* eslint-env jasmine, jquery */
 
+import 'jquery';
+import * as testutils from '../common/specCommonUtils.js';
+import 'handlebars';
+import 'jasmine-jquery';
+import 'rup.message';
 
 $.when(messageTester('Ok'))
     .then(messageTester('Alert'))
@@ -145,7 +150,7 @@ function messageTester(msgType) {
                 beforeEach((done) => {
                     window.done = done;
                     $('.ui-dialog').on('dialogclose');
-                    $('i.mdi.mdi-close.float-right.pointer').click();
+                    $('i.mdi.mdi-close.float-end.pointer').click();
                     done();
                 });
                 it('Se cierra el message:', (done) => {

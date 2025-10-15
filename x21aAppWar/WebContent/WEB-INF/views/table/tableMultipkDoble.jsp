@@ -14,7 +14,7 @@
 		</div>
         <div class="row">
         	<div class="col-xl-12">
-				<table id="MultiPk" class="tableFit table-striped table-bordered table-material" 
+				<table id="MultiPk" class="tableFit table table-striped table-bordered table-material align-middle" 
 					data-url-base="../multipk"
 					data-filter-form="#MultiPk_filter_form">
 				    <thead>
@@ -43,7 +43,7 @@
 		</div>
         <div class="row">
 			<div class="col-xl-12">
-				<table id="example" class="tableFit table-striped table-bordered table-material"
+				<table id="example" class="tableFit table table-striped table-bordered table-material align-middle"
 					data-url-base=".."
 					data-filter-form="#example_filter_form">
 				        <thead>

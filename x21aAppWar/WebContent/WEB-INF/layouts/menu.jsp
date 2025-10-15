@@ -511,13 +511,13 @@
 			<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon"
 					href="http://uda-ejie.github.io/" id="uda_github">
-					<i class="mdi mdi-github-circle" aria-hidden="true"></i>
+					<i class="mdi mdi-github" aria-hidden="true"></i>
 				</a>
 			</li>
 			<!--<li class="nav-item">
 				<a class="nav-link rup-nav-tool-icon" href="#" id="x21aApp_releases"
 					data-toggle="dropdown">
-					<i class="mdi mdi-settings" aria-hidden="true"></i>
+					<i class="mdi mdi-cog" aria-hidden="true"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow-center">
 				</div>

@@ -27,7 +27,7 @@
 	<div class="example">
 		<div id="feedbackColumns"></div>
 		<form:form id="formColumns" modelAttribute="alumno" action="../upload/formSimple" enctype="multipart/form-data" method="POST">
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm">
 				  	<form:input path="nombre" id="nombre" />
 			     	<label for="nombre"><spring:message code="nombre" /></label>
@@ -54,7 +54,7 @@
 	<div class="example">
 		<div id="feedbackColumnsRequired"></div>
 		<form:form id="formColumnsRequired" modelAttribute="alumno" method="get">
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm">
 				  	<form:input path="nombre" id="nombre" required="required" />
 			     	<label for="nombre"><spring:message code="nombre" /></label>
@@ -82,7 +82,7 @@
 		<div id="feedbackHorizontalMaterial"></div>
 		<form:form id="formHorizontalMaterial" modelAttribute="randomForm" method="get">
 
-			<div class="form-row">
+			<div class="row">
 				<div class="col-sm-6">
 
 					<div class="form-groupMaterial">
@@ -103,7 +103,7 @@
 
 				</div>
 
-			  	<div class="form-row col-sm-6">
+			  	<div class="row col-sm-6">
 
 					<div class="col-12">
 						<label id="alertDayErrorLabel" data-title="alertDay">Alert on</label>
@@ -142,7 +142,7 @@
 				</div>
 			</div>
 
-			<div class="form-row col-sm-12">
+			<div class="row col-sm-12">
 
 				<div class="col-12">
 					<label id="alertEdadErrorLabel" for="alertEdad[]" data-title="alertEdad">¿Mayor de edad?</label>
@@ -187,10 +187,10 @@
 			</div>
 
 			<p>
-				Con clase padre 'form-row'
+				Con clase padre 'row'
 			</p>
 
-			<div class="form-row">
+			<div class="row">
 				<div class="form-groupMaterial col-sm-6">
 					<form:select path="rolName2"  id="rolName2"></form:select>
 					<label for="rolName2">Select by Name</label>

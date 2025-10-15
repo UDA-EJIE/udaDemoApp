@@ -44,7 +44,17 @@
     if (typeof define === 'function' && define.amd) {
 
         // AMD. Register as an anonymous module.
-        define(['jquery', './rup.base', './rup.message', 'select2', './external/select2MultiCheckboxes'], factory);
+		define([
+            'jquery', 
+            './rup.base', 
+            './rup.message',
+            'select2/dist/js/select2.full.min',
+            'select2/dist/js/i18n/eu', 
+            'select2/dist/js/i18n/es', 
+            'select2/dist/js/i18n/en', 
+            'select2/dist/js/i18n/fr', 
+            './external/select2MultiCheckboxes'
+        ], factory);
     } else {
 
         // Browser globals
@@ -177,10 +187,8 @@
 	            	}
             		
             		// Guardar seleccionado.
-            		settings.selected = param;
-            		
+            		settings.selected = param;					
 	            	$self.val(param).trigger('change');
-	            	$('#' + $.escapeSelector(settings.id)).rup_select('change');
             	}
 
             } else {
@@ -220,7 +228,8 @@
             	}
             	
             }
-            
+			
+			$('#' + $.escapeSelector(settings.id)).rup_select('change');
         },
         /**
 		 * Método que limpia el valor seleccionado en el select. En el caso de
@@ -236,6 +245,9 @@
 				const settings = $self.data('settings');
             	var dataSelect2 = $self.data('select2');
             	dataSelect2.$selection.find('input').val('');
+				if(settings.data == undefined){//si es remoto
+					$('#' + $.escapeSelector(settings.id)).empty();
+				}
                 // Simple y multi
 				if (settings.blank !== undefined) {
 					if (settings.multiple) {
@@ -247,6 +259,7 @@
 				} else {
 					$self.rup_select('setRupValue', null);
 				}
+				
             } 
         },
         /**
@@ -833,6 +846,47 @@
         		$(this).find('option').remove();
         	}
 		},
+
+		/**
+		 * Configura el contenedor padre para el dropdown del select.
+		 * Permite cambiar dinámicamente dónde se adjunta el dropdown del componente.
+		 * 
+		 * @function setDropdownParent
+		 * @param {string|jQuery|null} parent - Elemento contenedor donde se adjuntará el dropdown.
+		 *        Acepta los siguientes valores:
+		 *        - 'auto': utiliza automáticamente el elemento padre del select
+		 *        - string: selector CSS del elemento contenedor (ej: '#miModal', '.contenedor')
+		 *        - jQuery object: objeto jQuery que representa el elemento contenedor
+		 *        - null: utiliza el comportamiento por defecto de Select2 (adjunta al body)
+		 * @throws {Warning} Muestra una advertencia en consola si el elemento especificado no existe
+		 * @example 
+		 * // Cambiar a un modal específico
+		 * $("#miSelect").rup_select("setDropdownParent", "#miModal");
+		 * 
+		 * @example
+		 * // Usar el padre automático del select
+		 * $("#miSelect").rup_select("setDropdownParent", "auto");
+		 * 
+		 * @example
+		 * // Usar comportamiento por defecto de Select2
+		 * $("#miSelect").rup_select("setDropdownParent", null);
+		 * 
+		 * @example
+		 * // Usar objeto jQuery
+		 * $("#miSelect").rup_select("setDropdownParent", $('.mi-contenedor'));
+		 */
+		setDropdownParent: function(parent) {
+			var $self = $(this);
+			var settings = $self.data('settings');
+			
+			if ($(parent).length > 0) {
+				settings.dropdownParent = $(parent);
+				// Reinicializar el componente con la nueva configuración
+				$self.rup_select('reload');
+			} else {
+				console.warn($.rup.i18nParse($.rup.i18n.base, 'rup_select.warnings.parentElementNotExists'), parent);
+			}
+		}
     });
 
     // *******************************
@@ -1161,23 +1215,28 @@
 			               }
 			    }		
 	    	};
+				if(settings.firstLoad == undefined){//si no esta definido en la primera vez
+					settings.firstLoad = true;
+				}
         	 	
         	 	if(settings.selected || (settings.autocomplete && settings.defaultValue != undefined)){
         	 		settings.firstLoad = true;
         	 	}
-        	 	if(settings.parent != undefined 
+        	 	/*if(settings.parent != undefined 
         	 			&& ($('#' + $.escapeSelector(settings.parent)).val() == null ||
 						($.isArray($('#' + $.escapeSelector(settings.parent)).val()) && $('#' + $.escapeSelector(settings.parent)).val().length == 0) ||
 						 (!$.isArray($('#' + $.escapeSelector(settings.parent)).val()) && $('#' + $.escapeSelector(settings.parent)).val().trim() === ''))){
         	 		settings.firstLoad = false;
-        	 	}
+        	 	}*/
 
 				let __cache = [];
 				let __lastQuery = null;
+				settings.cacheUrlSelectData = {};
 		    	settings.ajax.transport = function(params, success, failure) {
 
 					// retrieve the cached key or default to _ALL_
 			        let __cachekey = params.data || '_ALL_';
+					let sameParam = true;
 		    		//Se actualiza el data, para mantener la misma función.
 			        if(!settings.autocomplete){
 			        	params.data = "" ;
@@ -1188,6 +1247,14 @@
 							let searchField = document.querySelector('.select2-search--dropdown .select2-search__field');
 							params.data.q = searchField.value;
 							__cachekey = params.data.q;
+							if (settings.cacheUrl === true && Object.keys(settings.cacheUrlSelectData).length > 0) {
+							      // filtrar datos en caché, no va al controller
+							      let filtered = settings.cacheUrlSelectData.filter(function (item) {
+								    return self._normalizeString(item.text).includes(self._normalizeString(__cachekey));
+								  });
+							      success(filtered);
+							      return;
+							 }
 						}else{						
 				        	params.data.q = mySelect.$container.find('input').val();
 				        	__cachekey = params.data.q;
@@ -1196,16 +1263,32 @@
 			        if (__lastQuery !== __cachekey) {
 			          // remove caches not from last query
 			          __cache = [];
+					  sameParam = false;
 			        }
 			        __lastQuery = __cachekey;
 			        //Si esta cacheado, no busca
 					if (settings.cache == true && 'undefined' !== typeof __cache[__cachekey]) {
 						// display the cached results
 						success(__cache[__cachekey]);
+
 						// Marca el valor definido como seleccionado.
-						if (!settings.autocomplete && settings.selected) {
-							$('#' + $.escapeSelector(settings.id)).rup_select('setRupValue', settings.selected);
+						const $element = $('#' + $.escapeSelector(settings.id));
+						const currentValue = $element.rup_select('getRupValue');
+
+						if (!settings.autocomplete && settings.selected !== currentValue) {
+							if (!settings.multiple) {
+								// Caso simple: solo verificar que settings.selected existe.
+								if (settings.selected) {
+									$element.rup_select('setRupValue', settings.selected);
+								}
+							} else {
+								// Caso múltiple: verificar que no esté vacío o tenga elementos.
+								if (settings.selected !== "" || settings.selected.length > 0) {
+									$element.rup_select('setRupValue', settings.selected);
+								}
+							}
 						}
+
 						return;
 					}
 			        
@@ -1254,6 +1337,7 @@
 								// Aseguramos que mete el valor del padre.
 								params.url = params.url + '?' + datosParent;
 							}
+							
 			        		$request = $.ajax(params);
 			        	}
 			        }else{
@@ -1264,6 +1348,7 @@
 				    
 				          // store data in cache
 				          __cache[__cachekey] = data;
+
 				          // display the results
 				          $('#' + $.escapeSelector(settings.id)).rup_select("enable");
 					        //Si tiene padres deshabilitarlos
@@ -1276,7 +1361,21 @@
 			                      });
 					        	}
 					        }
+							if (settings.autocomplete != true){// siempre limpiar, vienen datos nuevos
+								$('#' + $.escapeSelector(settings.id)).empty();
+							}
+							if (settings.autocomplete && settings.multiple && settings.cacheUrl !== true && !sameParam) {
+									$('#' + $.escapeSelector(settings.id)).empty();
+								}		
 				          success(__cache[__cachekey]);
+						  if (settings.autocomplete && settings.multiple) {
+							  if (settings.cacheUrl === true) {//almacena los datos para no ir al controller
+							     settings.cacheUrlSelectData = data;
+							  }else if(!settings.firstLoad && !sameParam){//Vaciamos las opciones, porque recargan nuevas
+							  	//la primera carga no hace falta.
+							  	mySelect.selection.update([]);//actualizo con los nuevos datos	
+							  }
+						  }
 				          // Actualizar seleccionado en la lista//css
 				          let positions = [];
 				          let valueSelect = settings.selected ? settings.selected : $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue');
@@ -1312,6 +1411,9 @@
 								  v.text = v[settings.sourceParam.text];
 							  }
 							  if(settings.multiple ){
+								if (typeof valueSelect === 'string') {//si viene String lo convierte, no debería
+									valueSelect = [valueSelect];
+								}
 								let selectMultiple = $.grep(valueSelect, function (h) {
 										return String(h) == v.id;
 									});
@@ -1330,7 +1432,8 @@
 								  return v.id == settings.selected;
 							  }
 						  });
-				          if( $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue') != ''){
+				          if( $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue') != '' && 
+							  $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue') != settings.blank){
 				        	  seleccionado = $.grep(data, function (v) {
 				                    return v.id == $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue');
 				                  });
@@ -1358,11 +1461,30 @@
 								  let valorInput = mySelect.selection.$selection.find('input').val() 
 								  $('#' + $.escapeSelector(settings.id)).rup_select('setRupValue', seleccionado.length == 1 ? seleccionado[0].id : settings.blank);
 								  mySelect.selection.$selection.find('input').val(valorInput); 
-								  mySelect.selection.$selection.find('input').focus();
+								  
+								  if(settings.fromParentChange = true && settings.parent != undefined && settings.parent != ''){
+									const padresConfigurados = Array.isArray(settings.parent)
+									  ? settings.parent
+									  : settings.parent
+									    ? [settings.parent]
+									    : [];
+									  for (const padre of padresConfigurados) {
+									  	const $padre = $('#' + $.escapeSelector(padre));
+									  	const settingsPadre = $padre.data('settings');
+									  	if(settingsPadre.fromSong === true){
+									  		settingsPadre.fromSong = false;
+									  		let select2Padre = $('#' + $.escapeSelector(settingsPadre.id)).data('select2');
+									  		select2Padre.selection.$selection.find('input').focus();
+									  	}
+									  }
+								  }else{
+									mySelect.selection.$selection.find('input').focus();
+								  }	
 								}else{
 									$('#' + $.escapeSelector(settings.id)).rup_select('setRupValue', seleccionado.length == 1 ? seleccionado[0].id : settings.blank);
 								}
 							}
+
 				          
 				         if (settings.onLoadSuccess !== null && settings.onLoadSuccess !== undefined) {
 				            jQuery(settings.onLoadSuccess($('#' + $.escapeSelector(settings.id))));
@@ -1370,6 +1492,9 @@
 				          $('#' + $.escapeSelector(settings.id)).data('settings', settings);
 	              		  $('#' + $.escapeSelector(settings.id)).triggerHandler('selectAjaxSuccess', [data]);
 	              		  if(settings.firstLoad){
+							if(settings.multiple){//actualizar el número de lo cargado, siempre que sea multiple
+								mySelect.selection.update([]);
+							}	
 	              			if(settings.autocomplete && settings.selected == undefined && settings.defaultValue != undefined && data != undefined &&
 	              					($('#' + $.escapeSelector(settings.id)).rup_select('getRupValue') == '' || $('#' + $.escapeSelector(settings.id)).rup_select('getRupValue') == settings.blank)){
 	              				//setear el valor para el defaultValue
@@ -1391,7 +1516,8 @@
 				        });
 				        $request.fail(failure);
 			        }else{// cerrar
-			        	$('#' + $.escapeSelector(settings.id)).select2('close');
+			        	mySelect.$container.removeClass('select2-container--open');	
+						mySelect.$dropdown[0].remove();
 			            if (settings.parent) {
 			                if (typeof settings.parent === 'string') {
 			                  $('#' + $.escapeSelector(settings.parent)).rup_select("enable");
@@ -1441,6 +1567,9 @@
 			
 
         	if(settings.multiple){
+				if(settings.closeOnSelect == undefined){//en los multiples por defecto que o se cierre.
+					settings.closeOnSelect = false;
+				}
          		$('#' + $.escapeSelector(settings.id)).select2MultiCheckboxes(settings);
         	}else{
                 if (settings.placeholder == undefined || settings.placeholder == '') {
@@ -1462,20 +1591,22 @@
     	 		
     	 		let $el = $('#' + $.escapeSelector(settings.id));
     	 		let mySelect = $el.data('select2');
-    	 		let $search = mySelect.dropdown.$search || mySelect.selection.$search;
+    	 		
     	 		if(settings.autocomplete && settings.defaultValue != undefined){
     	 			mySelect.$container.find('input').val(settings.defaultValue);
     	 		}
-    	 		if($search != undefined){
-    	 			$search.trigger('keyup');
-    	 			$el.select2('close');
-    	 		}else{
-    	 			mySelect.selection.trigger('toggle');
-    	 			$el.select2('close');
-    	 		}
+			    //vale para cualquier select o autocomplete
+				$el.select2('trigger', 'query');
+				mySelect.$container.removeClass('select2-container--open');	
+				mySelect.$dropdown[0].remove();
+
     	 	}
  
         },
+		_normalizeString(str) {
+		  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+		},
+
         /**
 		 * Método de inicialización del componente.
 		 * 
@@ -1559,6 +1690,21 @@
 	                    html, loadAsLocal = false,
 	                    isValidableElem = false,
 	                    attrs;
+
+					// Configurar AttachContainer
+					if (settings.dropdownParent === 'auto' || !settings.dropdownParent) {
+						// Usar el padre del select2 por defecto
+						settings.dropdownParent = $self.parent();
+					} else {
+						// Si se especifica un dropdownParent personalizado, verificar que existe
+						if ($(settings.dropdownParent).length > 0) {
+							settings.dropdownParent = $(settings.dropdownParent);
+						} else {
+							console.warn($.rup.i18nParse($.rup.i18n.base, 'rup_select.warnings.dropdownParentNotExists'), settings.dropdownParent);
+							// Fallback al padre del select2
+							settings.dropdownParent = $self.parent();
+						}
+					}
 	
 	                // Se recoge el tabindex indicado en el elemento
 	                settings.tabindex = $self.attr('tabindex');
@@ -1596,7 +1742,8 @@
 	                $('#' + $.escapeSelector(settings.id)).on('change', function () {
 	                    
 	                });
-	                
+					
+      
 	                // tratar placeHolder
 	                if(settings.placeholder !== undefined && typeof settings.placeholder == 'string'){
 	                	 if(!settings.allowClear){
@@ -1605,9 +1752,12 @@
 																	// for
 																	// custom
 																	// placeholder
-																	// values,
-																	// restaurar
-		                        	return $('<span class="select2-selection__placeholder">' + data.text + '</span>');
+																	// values,// restaurar
+									let textTemplate = settings.placeholder;	
+									if(typeof settings.placeholder !== 'string'){
+										textTemplate = settings.placeholder.text ;
+									}						
+		                        	return $('<span class="select2-selection__placeholder">' + textTemplate+ '</span>');
 		                        }
 		                        
 		                        chargedStyles(data);
@@ -1624,6 +1774,10 @@
 															// asigna el label
 		                		settings.placeholder = self._getBlankLabel(settings.id)
 		                	}
+							//para admitir blank vacios, debe tener un placeHolder
+							if(settings.blank == ''){
+								settings.placeholder = { id: '__ph__', text: settings.placeholder };
+							}
 		                	if(settings.data !== undefined && !settings.multiple){// y si
 																					// no
 																					// es
@@ -1670,7 +1824,11 @@
 			                	settings.templateResult = function (data,span) {
 			                		chargedStyles(data);
 			                		if (data.id === settings.blank) {
-			                			return $('<span class="select2-selection__placeholder">' + data.text + '</span>');
+										let textTemplate = settings.placeholder;	
+										if(typeof settings.placeholder !== 'string'){
+												textTemplate = settings.placeholder.text ;
+										}
+			                			return $('<span class="select2-selection__placeholder">' + textTemplate + '</span>');
 			                		}else  if (data.style != null && data.id !== settings.blank) { // adjust
 																									// for
 																									// custom
@@ -1834,6 +1992,9 @@
                 	// Lanzar evento change cuando se deselecciona una opción.
                 	$('#' + $.escapeSelector(settings.id)).off('select2:unselect');
 					$('#' + $.escapeSelector(settings.id)).on('select2:unselect', function(e) {
+						if (!settings.multiple) {//quitar el valor por defecto
+							settings.selected = settings.blank;
+						}
 						if(settings.deselect){
                         	settings.deselect(e);
     	                }
@@ -1872,6 +2033,9 @@
 	                	
 
 	                	if(settings.multiple){
+								if(settings.closeOnSelect == undefined){//en los multiples por defecto que o se cierre.
+									settings.closeOnSelect = false;
+								}
 	 	                        $('#' + $.escapeSelector(settings.id)).select2MultiCheckboxes(settings);
 	                	}else{	  
 	                        if (settings.placeholder == undefined || settings.placeholder == '') {
@@ -2051,11 +2215,15 @@
 										}
 										if (settings.autocomplete) {
 											$el.data('select2').$container.find('input').val('');
+										}else if(settings.firstLoad != true){//se inicializa salvo la primera vez xq si estaría marcado
+											settings.selected = '';
 										}
 
 										if ($search != undefined) {
-											$search.trigger('keyup');
-											$el.select2('close');
+											let mySelectSong = $el.data('select2');
+											$el.select2('trigger', 'query');
+											mySelectSong.$container.removeClass('select2-container--open');	
+											mySelectSong.$dropdown[0].remove();
 										}
 
 										if (!settings.multiple && $("#" + elemId).val() != null && $("#" + elemId).val().trim() != '') {
@@ -2083,11 +2251,12 @@
 						mySelectCheck.on("results:all", function() {
 						    let listItems = mySelectCheck.$results.find('li');
 							listItems.each(function () {
-						   		$self.addClass('ocultar-before');
+						   		$(this).addClass('ocultar-before');
 						    });
 						});
 					}	
 	                $('#' + $.escapeSelector(settings.id)).data('settings', settings);
+					
 	                //Si es remoto, el último evento es: selectAjaxSuccess
 	                $('#' + $.escapeSelector(settings.id)).triggerHandler('selectFinish', settings);
 	            }
@@ -2130,6 +2299,9 @@
 	 * 
 	 * @name defaults
 	 * 
+	 * @property {string} [language] - Determina el idioma del componente.
+	 *           Por defecto obtiene el idioma de la aplicación y soporta euskera (eu),
+	 *           castellano (es), inglés (en) y francés (fr).
 	 * @property {jQuery.rup_select~onLoadError} [onLoadError] - Función de
 	 *           callback a ejecutar en caso de que se produzca un error en la
 	 *           petición de obtención de la lista de elementos a mostrar.
@@ -2188,12 +2360,53 @@
 	 * @property {boolean} [autocomplete=false] - Habilita la funcionalidad de
 	 *           autocompletado, permitiendo hacer búsquedas sobre los resultados.
 	 * @property {boolean} [spaceEnable=true] - Habilita la funcionalidad de búsquedas con barra espaciadora.
+	 * @property {string|jQuery|null} [dropdownParent='auto'] - Especifica el elemento contenedor 
+	 *           donde se adjuntará el dropdown del select. Acepta los siguientes valores:
+	 *           - 'auto': utiliza automáticamente el elemento padre del select (comportamiento por defecto)
+	 *           - string: selector CSS del elemento contenedor (ej: '#miModal', '.mi-contenedor')
+	 *           - jQuery object: objeto jQuery que representa el elemento contenedor
+	 *           - null: utiliza el comportamiento por defecto de Select2 (adjunta al body)
+	 *           Esta opción es útil para resolver problemas de z-index en modales o contenedores 
+	 *           con overflow:hidden.
 	 * @property {jQuery.rup_select~select} [select] - Función de callback
 	 *           a ejecutar cuando se selecciona una opción de la lista.
 	 * @property {jQuery.rup_select~deselect} [deselect] - Función de callback
 	 *           a ejecutar cuando se deselecciona una opción de la lista.
+	 *  
+	 * @example
+	 * // Uso básico con dropdownParent automático
+	 * $("#miSelect").rup_select({
+	 *     url: "selectSimple/remote",
+	 *     sourceParam: {
+	 *         text: "desc" + $.rup_utils.capitalizedLang(),
+	 *         id: "code"
+	 *     }
+	 *     // dropdownParent: 'auto' es el valor por defecto
+	 * });
+	 * 
+	 * @example
+	 * // Select dentro de un modal
+	 * $("#selectEnModal").rup_select({
+	 *     data: [{id: 1, text: "Opción 1"}, {id: 2, text: "Opción 2"}],
+	 *     dropdownParent: '#miModal' // El dropdown se adjuntará al modal
+	 * });
+	 * 
+	 * @example
+	 * // Select con contenedor personalizado usando objeto jQuery
+	 * $("#miSelect").rup_select({
+	 *     url: "datos/remote",
+	 *     dropdownParent: $('.mi-contenedor-personalizado')
+	 * });
+	 * 
+	 * @example
+	 * // Usar comportamiento por defecto de Select2 (adjuntar al body)
+	 * $("#miSelect").rup_select({
+	 *     data: misDatos,
+	 *     dropdownParent: null
+	 * });
 	 */
 	$.fn.rup_select.defaults = {
+		language: window.LANG,
 		onLoadError: null,
 		width: '100%',
 		customClasses: ['select-material'],
@@ -2205,7 +2418,8 @@
 		multiple: false,
 		defaultValueAutocompleteNotLoaded: false,
 		multiValueToken: '##',
-		spaceEnable: true
+		spaceEnable: true,
+		dropdownParent: 'auto'
 	};
 }));
 

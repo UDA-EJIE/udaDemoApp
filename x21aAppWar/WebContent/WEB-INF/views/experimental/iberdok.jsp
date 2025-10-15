@@ -9,7 +9,7 @@
 	<!-- Barra de herramientas del formulario de filtrado -->
 	<div id="iberdokTable_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="iberdokTable_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<!-- Campos del formulario de filtrado -->
 			<div class="form-groupMaterial col-sm">
 				<form:input path="idDocumento" id="idDocumento_filter_table" />
@@ -19,9 +19,9 @@
 			</div>
 		</div>
 		<!-- Botonera del formulario de filtrado -->
-	    <div id="iberdokTable_filter_buttonSet" class="text-right">
+	    <div id="iberdokTable_filter_buttonSet" class="text-end">
 	    	<!-- Botón de limpiar -->
-	        <button id="iberdokTable_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+	        <button id="iberdokTable_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
 	        	<i class="mdi mdi-eraser"></i>
 	        	<span>
 					<spring:message code="clear" />
@@ -38,7 +38,7 @@
 	</fieldset>
 </form:form>
 
-<table id="iberdokTable" class="tableFit table-striped table-bordered table-material"
+<table id="iberdokTable" class="tableFit table table-striped table-bordered table-material align-middle"
 	data-url-base="."
 	data-filter-form="#iberdokTable_filter_form">
         <thead>

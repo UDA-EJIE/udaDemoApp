@@ -1,6 +1,10 @@
 /* jslint multistr: true */
 /* eslint-env jasmine, jquery */
 
+import 'jquery';
+import * as testutils from '../common/specCommonUtils.js';
+import 'jasmine-jquery';
+import 'rup.contextMenu';
 
 describe('Test ContextMenu > ', () => {
     var $context;
@@ -103,7 +107,7 @@ describe('Test ContextMenu > ', () => {
             setTimeout(() => {
                 $('.context-menu-submenu').mouseenter();
                 done();
-            }, 200);
+            }, 600);
         });
         it('Se muestra el elemento del submenu > ', () => {
             expect($('span:contains(Clickable2)').is(':visible')).toBeTruthy();

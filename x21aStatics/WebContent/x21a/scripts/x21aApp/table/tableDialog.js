@@ -18,19 +18,16 @@ jQuery(function ($) {
     	var tableColModels = [
         	{
     	        name: 'nombre',
-    	        index: 'nombre',
     	        editable: true,
     	        hidden: false
     	    },
     	    {
     	        name: 'apellido1',
-    	        index: 'apellido1',
     	        editable: true,
     	        hidden: false
     	    },
     	    {
     	        name: 'apellido2',
-    	        index: 'apellido2',
     	        editable: true,
     	        hidden: false
     	    }
@@ -107,7 +104,9 @@ jQuery(function ($) {
 
             if (localStorage.plugins.indexOf('editForm') > -1) {
                 formEdit = {
-                    detailForm: '#MultiPk_detail_div',
+					detailForm: {
+						id: '#MultiPk_detail_div'
+					},
                     fillDataMethod: 'clientSide',
                     validate: {
                         rules: {

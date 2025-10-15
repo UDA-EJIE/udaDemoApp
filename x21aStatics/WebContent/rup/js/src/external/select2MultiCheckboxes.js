@@ -34,7 +34,7 @@
 			adapter.prototype.update = function(data) {
 				const options = this.options.options;
 				let selectSettings = $('#' + $.escapeSelector(options.id)).data('settings');
-
+				
 				// copy and modify SingleSelection adapter
 				this.clear();
 				this.container.$dropdown.find(".select2-search--dropdown").addClass('d-block')
@@ -77,6 +77,12 @@
 							}
 						});
 					}
+					
+					if (selectSettings != undefined && selectSettings.cacheUrl === true 
+						&& Object.keys(selectSettings.cacheUrlSelectData).length > 0 
+						&& selectableOptions.length < Object.keys(selectSettings.cacheUrlSelectData).length) {
+							selectableOptions = selectSettings.cacheUrlSelectData;
+					}
 
 					itemsData = {
 						selected: selectedData,
@@ -89,6 +95,9 @@
 					if(selectSettings == undefined){//aseguramos que el adapter siempre tenga las opciones cargadas
 						selectSettings = myOpcions;
 					}
+					
+					selectSettings.selected = "";
+					
 					if(selectSettings != undefined && selectSettings.placeholder != undefined && itemsData.selected.length == 0){
 						formatted = $('<span>', {
 						    class: 'select2-selection__placeholder', // Clase asignada
@@ -265,7 +274,10 @@
 						if ($('#' + $.escapeSelector($options.options.id)).select2('isOpen')) {
 							openLast = true;
 						}
-
+						let settingsId = $('#' + $.escapeSelector($options.options.id));
+						let settings = settingsId.data('settings');
+						settings.fromSong = true;
+						settingsId.data('settings',settings)
 						$('#' + $.escapeSelector($options.options.id)).select2('open');
 						$('input.select2-search__field').addClass('d-none');
 						$('input.select2-search__field').val(this.value);

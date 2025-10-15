@@ -67,7 +67,7 @@
 			</h3>
 			<div class="sectionAuto">
 				<h4 class="sectionh4">Autocomplete local</h4>
-				<div class="form-row">
+				<div class="row">
 					<div class="form-groupMaterial col-sm">
 				    	<select id="autocomplete"></select>
 						<label for="autocomplete">Lenguaje</label>
@@ -76,7 +76,7 @@
 				</div>
 				
 				<h4>Autocomplete remoto</h4>
-				<div class="form-row">   
+				<div class="row">   
 				    <div class="form-groupMaterial col-sm">
 				    	<select id="patron"></select>
 				    	<label for="patron">Departamento-Provincia</label>
@@ -137,7 +137,7 @@
 								<div class="formulario_linea_izda_float">
 									<div id="fileupload_file_form_padre">
 										<div class="fileupload-buttonbar">
-											<div class="form-row">
+											<div class="row">
 												<div class="form-groupMaterial col-sm">
 											    	<input id="file_form_padre" type="file" name="fotoPadre" />
 													<label for="file">Foto padre</label>
@@ -151,7 +151,7 @@
 
 									<div id="fileupload_file_form_madre">
 										<div class="fileupload-buttonbar">
-											<div class="form-row">
+											<div class="row">
 												<div class="form-groupMaterial col-sm">
 											    	<input id="file_form_madre" type="file" name="fotoMadre" />
 													<label for="file">Foto madre</label>

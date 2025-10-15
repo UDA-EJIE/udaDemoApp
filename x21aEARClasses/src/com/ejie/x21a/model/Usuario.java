@@ -19,9 +19,9 @@ package com.ejie.x21a.model;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ejie.x38.serialization.JsonDateDeserializer;

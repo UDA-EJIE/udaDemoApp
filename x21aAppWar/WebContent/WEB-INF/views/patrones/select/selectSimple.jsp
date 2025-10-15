@@ -27,7 +27,7 @@
 	<spring:message code="selectSimple.title" />
 </h2>
 <div class="container-fluid">
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 			<select id="selectSimple"></select>  
 			<label for="selectSimple">Select simple local</label>
@@ -50,7 +50,7 @@
 </div>
 
 <div class="container-fluid mt-4">
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 			<select id="selectGrupos"></select>  
 			<label for="selectGrupos">Select con 'optgroups'</label>

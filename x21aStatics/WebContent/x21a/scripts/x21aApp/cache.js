@@ -18,13 +18,11 @@ jQuery(function($){
 		const tableColModels = [
 			{
 	            name: 'nombre',
-	            index: 'nombre',
 	            editable: true,
 	            hidden: false
 	        },
 	        {
                 name: 'apellido1',
-                index: 'apellido1',
                 editable: true,
                 hidden: false,
             	rupType: 'select',
@@ -37,8 +35,7 @@ jQuery(function($){
                 }
             },
             { 
-            	name: "apellido2", 
-            	index: "apellido2", 
+            	name: "apellido2",
             	editable: true, 
             	hidden: false,
             	rupType: 'select',
@@ -52,14 +49,12 @@ jQuery(function($){
             },
 	        {
 	            name: 'ejie',
-	            index: 'ejie',
 	            editable: true,
 	            hidden: false,
                 edittype: 'checkbox'
 	        },
 	        {
 	            name: 'fechaAlta',
-	            index: 'fechaAlta',
 	            editable: true,
 	            hidden: false,
 	            rupType: 'date',
@@ -72,7 +67,6 @@ jQuery(function($){
 	        },
 	        {
 	            name: 'fechaBaja',
-	            index: 'fechaBaja',
 	            editable: false,
 	            hidden: false,
 	            rupType: 'date',
@@ -85,7 +79,6 @@ jQuery(function($){
 	        },
 	        {
                 name: 'rol',
-                index: 'rol',
                 editable: true,
                 hidden: false,
                 rupType: 'select',
@@ -108,7 +101,7 @@ jQuery(function($){
             	 		return 'Recargar tabla';
             	 	},
             	 	id: 'exampleRecargarTabla', // Campo obligatorio si se quiere usar desde el contextMenu
-            	 	className: 'btn-material-primary-high-emphasis table_toolbar_btnReload order-last ml-1 ml-lg-auto',
+            	 	className: 'btn-material-primary-high-emphasis table_toolbar_btnReload order-last ms-1 ms-lg-auto',
             	 	icon: "mdi-refresh",
             	 	displayRegex: /^\d+$/, // Se muestra siempre que sea un numero positivo o neutro
             	 	insideContextMenu: true, // Independientemente de este valor, sera 'false' si no tiene un id definido

@@ -26,16 +26,16 @@ var	IS_EJIE = '${isEjie}',
 	//model
 	LAYOUT = "${empty defaultLayout ?  mvcInterceptor.defaultLayout : defaultLayout}",
 	//mvc-config.xml
-	LOCALE_COOKIE_NAME = "${localeResolver.cookieName}",
 	LOCALE_PARAM_NAME = "${mvcInterceptor.paramName}",
 	AVAILABLE_LANGS = "${mvcInterceptor.availableLangs}",
 	DEFAULT_LANG = "${mvcInterceptor.defaultLanguage}",
+	LANG = "${pageContext.response.locale}",
 	//breadCrumbs
 	LOGGED_USER = "${udaAuthenticationProvider.userCredentials.fullName}",
 	DESTROY_XLNETS_SESSION = "${udaAuthenticationProvider.userCredentials.destroySessionSecuritySystem}";
 </script>
 
 <!-- Scripts RUP -->
-<%@include file="/WEB-INF/layouts/includes/rup.scripts.min.inc"%>
+<%@include file="/WEB-INF/layouts/includes/rup.scripts.inc"%>
 <%@include file="/WEB-INF/layouts/includes/tiny_mce.inc"%>
 <%@include file="/WEB-INF/layouts/includes/x21a.scripts.inc"%>

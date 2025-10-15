@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ejie.x21a.validation.constraints.AlumnoDireccion;

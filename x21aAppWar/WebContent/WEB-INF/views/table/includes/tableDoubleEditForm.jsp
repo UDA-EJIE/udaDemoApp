@@ -28,7 +28,7 @@
 	<c:if test="${not empty pkValue}">
 		<form:hidden path="id" value="${pkValue}" id="id_detail_table2" />
 	</c:if>
-	<div class="form-row">
+	<div class="row">
 		<div class="form-groupMaterial col-sm">
 	    	<form:input path="nombre" id="nombre_detail_table2" />
 	    	<label for="nombre_detail_table2"><spring:message code="nombre" /></label>
@@ -38,7 +38,7 @@
 	    	<label for="apellido1_detail_table2"><spring:message code="apellido1" /></label>
 	    </div> 
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="apellido2" id="apellido2_detail_table2" />
 	    	<label for="apellido2_detail_table2"><spring:message code="apellido2" /></label>
@@ -48,7 +48,7 @@
 	    	<label for="fechaBaja_detail_table2"><spring:message code="fechaBaja" /></label>
 	    </div>
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:input path="fechaAlta" id="fechaAlta_detail_table2" />
 	    	<label for="fechaAlta_detail_table2"><spring:message code="fechaAlta" /></label>
@@ -58,14 +58,14 @@
 	    	<label for="ejie_detail_table2"><spring:message code="ejie" /></label>
 	    </div> 
 	</div>
-	<div class="form-row">
+	<div class="row">
 	    <div class="form-groupMaterial col-sm">
 	    	<form:select path="rol" id="rol_detail_table2" />
 	    	<label for="rol_detail_table2"><spring:message code="rol" /></label>
 	    </div>
 	</div>
 	<c:if test="${isMultipart}">
-	<div class="form-row">	
+	<div class="row">	
 		<div class="form-groupMaterial col-sm">
 			<form:input path="imagenAlumno" type="file" id="imagenAlumno_detail_table2" />
 			<label for="imagenAlumno_detail_table2"><spring:message code="subidaImg" /></label>

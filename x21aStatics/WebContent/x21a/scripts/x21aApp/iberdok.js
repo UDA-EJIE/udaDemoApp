@@ -61,49 +61,41 @@ function addTableIberdok() {
 	let tableColModel = [
 		{
             name: 'id',
-            index: 'id',
             editable: false,
             hidden: true
         },
 		{
             name: 'nombre',
-            index: 'nombre',
             editable: true,
             hidden: false
         },
         {
             name: 'idModelo',
-            index: 'idModelo',
             editable: true,
             hidden: false
         },
         {
             name: 'idDocumento',
-            index: 'idDocumento',
             editable: true,
             hidden: false
         },
         {
             name: 'usuario',
-            index: 'usuario',
             editable: true,
             hidden: false
         },
         {
             name: 'fechaApp',
-            index: 'fechaApp',
             editable: true,
             hidden: false
         },
         {
             name: 'fechaIberdok',
-            index: 'fechaIberdok',
             editable: true,
             hidden: false
         },
         {
             name: 'docFinalizado',
-            index: 'docFinalizado',
             editable: true,
             hidden: false
         }
@@ -190,7 +182,9 @@ function addTableIberdok() {
             activate: true
         },
         formEdit: {
-            detailForm: '#iberdokTable_detail_div'
+			detailForm: {
+				id: '#iberdokTable_detail_div'
+			}
         },
         seeker: {
         	activate: true

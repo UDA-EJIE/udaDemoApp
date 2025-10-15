@@ -82,7 +82,7 @@
 			<div class="col-sm-4">
 				<h3 class="col-sm-12">Autocomplete local con función select</h3>
 				<div class="form-groupMaterial col-sm-12">
-					<select id="autocomplete" name="autocomplete" /> </select> 
+					<select id="autocomplete" name="autocomplete"> </select> 
 					<label for="autocomplete">Lenguaje</label>
 					<p class="mt-2">[asp, c, c++, coldfusion, groovy, haskell, java, javascript, perl, php, python, ruby, scala]</p>
 				</div>
@@ -109,6 +109,17 @@
 					</div>
 				</form:form>
 			</div>	
+		</div>
+		
+				<div class="row mt-4">
+			<div class="col-sm-4">
+				<h3 class="col-sm-12">Autocomplete remoto con cacheUrl a True</h3>
+				<div class="form-groupMaterial col-sm-12">
+					<select id="autocompleteCacheUrl" name="autocomplete"> </select> 
+					<label for="autocomplete">Departamento-Provincia</label>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </section>

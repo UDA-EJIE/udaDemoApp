@@ -22,18 +22,18 @@ jQuery(document).ready(function () {
 
     // Botón con icono JS
     $('#btnIconJs').rup_button({
-        iconCss: 'mdi mdi-settings'
+        iconCss: 'mdi mdi-cog'
     });
 
     // Botón Rwd HTML Sd
     $('#btnRwdHtmlSm').rup_button();
     $('#btnRwdHtmlMd').rup_button();
     $('#btnRwdJsSm').rup_button({
-        iconCss: 'mdi mdi-settings',
+        iconCss: 'mdi mdi-cog',
         labelCss: 'hidden-sm-down'
     });
     $('#btnRwdJsMd').rup_button({
-        iconCss: 'mdi mdi-settings',
+        iconCss: 'mdi mdi-cog',
         labelCss: 'hidden-md-down'
     });
 
@@ -74,7 +74,7 @@ jQuery(document).ready(function () {
         });
     });
     $('#btnClickRup').rup_button({
-        iconCss: 'mdi mdi-settings',
+        iconCss: 'mdi mdi-cog',
         click: function(){
             $.rup_messages('msgOK', {
                 title: 'Evento Click',
@@ -123,7 +123,7 @@ jQuery(document).ready(function () {
     });
     
     const options_ejie_select = {
-        url: [
+        data: [
             {text:'Si', id:'0'},
             {text:'No', id:'1'}
         ],

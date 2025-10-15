@@ -8,27 +8,27 @@
 		<!-- <form id="MultiPk_detail_form">	 -->				<!-- Formulario -->
 		<form:form id="MultiPk_detail_form" modelAttribute="multiPk" method="put">
 			<div id ="MultiPk_detail_feedback"></div>		<!-- Feedback del formulario de detalle -->
-			<div class="form-row">
+			<div class="row">
 				<!-- Campos del formulario de detalle -->
-				<div class="form-group col-sm">
+				<div class="mb-3 col-sm">
 					<label for="ida_detail_table" class="formulario_linea_label"><spring:message code="ida"/></label>
 					<form:input path="ida" class="formulario_linea_input form-control" id="ida_detail_table"/>
 				</div>
-				<div class="form-group col-sm">
+				<div class="mb-3 col-sm">
 					<label for="idb_detail_table" class="formulario_linea_label"><spring:message code="idb"/></label>
 					<form:input path="idb" class="formulario_linea_input form-control" id="idb_detail_table"/>
 				</div>
-				<div class="form-group col-sm">
+				<div class="mb-3 col-sm">
 					<label for="nombre_detail_table" class="formulario_linea_label"><spring:message code="nombre"/></label>
 					<form:input path="nombre" class="formulario_linea_input form-control" id="nombre_detail_table"/>
 				</div>
 			</div>
-			<div class="form-row">
-				<div class="form-group col-sm">
+			<div class="row">
+				<div class="mb-3 col-sm">
 					<label for="apellido1_detail_table" class="formulario_linea_label"><spring:message code="apellido1"/></label>
 					<form:input path="apellido1" class="formulario_linea_input form-control" id="apellido1_detail_table"/>
 				</div>
-				<div class="form-group col-sm">
+				<div class="mb-3 col-sm">
 					<label for="apellido2_detail_table" class="formulario_linea_label"><spring:message code="apellido2"/></label>
 					<form:input path="apellido2" class="formulario_linea_input form-control" id="apellido2_detail_table"/>
 				</div>

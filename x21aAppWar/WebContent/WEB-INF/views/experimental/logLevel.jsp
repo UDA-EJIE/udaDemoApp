@@ -26,7 +26,7 @@
 <form:form modelAttribute="randomForm" id="table_filter_form" action="${url}" method="POST">
 	<div id="table_filter_toolbar" class="formulario_legend"></div>
 	<fieldset id="table_filter_fieldset" class="rup-table-filter-fieldset">
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<form:select path="nameLog" id="nameLog_filter_table" />
 				<label for="nameLog_filter_table">Nombre</label>
@@ -38,9 +38,9 @@
 		</div>
 		
 		<!-- Botonera del formulario de filtrado -->
-		<div id="table_filter_buttonSet" class="text-right">
+		<div id="table_filter_buttonSet" class="text-end">
 			<!-- Bot�n de limpiar -->
-        	<button id="table_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis mr-2">
+        	<button id="table_filter_cleanButton" type="button" class="btn-material btn-material-primary-low-emphasis me-2">
             	<i class="mdi mdi-eraser"></i>
             	<span>
                    	<spring:message code="clear" />
@@ -57,7 +57,7 @@
 	</fieldset>
 </form:form>
 
-<table id="table" class="tableFit table-striped table-bordered table-material" 
+<table id="table" class="tableFit table table-striped table-bordered table-material align-middle" 
 	data-url-base="."
 	data-filter-form="#table_filter_form">
         <thead>

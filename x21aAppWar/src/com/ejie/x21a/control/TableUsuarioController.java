@@ -19,7 +19,9 @@ import java.math.BigDecimal;
 import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -38,6 +40,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -634,13 +637,24 @@ public class TableUsuarioController {
 	 * @param usuario
 	 *            Bean que contiene la informaciÃ³n a modificar.
 	 * @return Bean resultante de la modificaciÃ³n.
+	 * @throws Exception 
 	 */
 	@PutMapping(value = "/edit")
-    public @ResponseBody Usuario edit(@RequestBody Usuario usuario) {
-		Usuario usuarioAux = this.tableUsuarioService.update(usuario);
-		logger.info("Entity correctly updated!");
-        return usuarioAux;
-    }
+	public ResponseEntity<?> edit(@RequestBody Usuario usuario) {
+	    try {
+	        Usuario usuarioAux = this.tableUsuarioService.update(usuario);
+
+	        return ResponseEntity.ok(usuarioAux);
+	    } catch (Exception e) {
+	        Map<String, Object> errorBody = new HashMap<>();
+	        errorBody.put("rupFeedback", Map.of("message", "Error para pruebas"));
+
+	        return ResponseEntity
+	                .status(HttpStatus.NOT_ACCEPTABLE) // 👈 406, tu JS ya lo espera
+	                .body(errorBody);
+	    }
+	}
+
 	
 	@PutMapping(value = "/{bis}/edit")
     public @ResponseBody Usuario2 edit2(@PathVariable final String bis,

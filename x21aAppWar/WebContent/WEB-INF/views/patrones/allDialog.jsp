@@ -17,7 +17,7 @@
 
 <jsp:include page="../table/includes/tableFilterForm.jsp"></jsp:include>
 
-<table id="example" class="tableFit table-striped table-bordered table-material"
+<table id="example" class="tableFit table table-striped table-bordered table-material align-middle"
 	data-url-base="../table"
 	data-filter-form="#example_filter_form">
         <thead>

@@ -40,7 +40,7 @@
 			<li><code>placeholderMask</code>: Muestra en el placeholder del
 				elemento la máscara de fecha.</li>
 		</ul>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<input id="fecha" type="text" />
 				<label for="fecha">Fecha <span class="text-muted" id="fecha-mask"/>:</label>
@@ -60,7 +60,7 @@
 			<code>multiSelect</code>
 			.
 		</p>
-		<div class="form-row">
+		<div class="row">
 			<div class="form-groupMaterial col-sm">
 				<input id="fecha_multi" type="text" />
 				<label for="fecha_multi">Fecha multiple:</label>
@@ -71,7 +71,7 @@
 
 		<p>Se permite vincular dos campos fecha (desde y hasta) para
 			permitir al usuario especificar un intervalo de fechas.</p>
-		<div class="form-row">
+		<div class="row">
           	<div class="form-groupMaterial col-sm">
               	<input type="text" id="desde" />
               	<label for="desde">Intervalo desde:</label>
@@ -81,7 +81,7 @@
             	<label for="hasta">hasta:</label>
         	</div>
       	</div>
-		<div class="form-row">
+		<div class="row">
             <div class="form-groupMaterial col-sm">
                 <input type="text" id="desdeDateTime" />
                 <label for="desdeDateTime">Intervalo desde:</label>
@@ -97,7 +97,7 @@
 		<p>El componente fecha permite su visualización en modo calendario
 			en vez de estar asociado a un campo concreto.</p>
 
-		<div class="form-row">
+		<div class="row">
 			<div id="fecha_inline"></div>
 		</div>
 	</div>
