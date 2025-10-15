@@ -1,2 +1,277 @@
-/*! For license information please see rup.table.select.js.LICENSE.txt */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","datatables.net","../rup.contextMenu","../rup.feedback"],(function(t){return e(t,window,document)})):"object"==typeof exports?module.exports=function(t,i){return t||(t=window),i&&i.fn.dataTable||(i=require("datatables.net")(t,i).$),e(i,t,t.document)}:e(jQuery,window,document)}((function(e,t,i){"use strict";var n=e.fn.dataTable;function l(t,i,s){var o=t.settings()[0];o.multiselection.selectedRowsPerPage=[],o.oInit.select.funcionParams="";var d=e(o.nTBody);if(s.hasClass("tr-highlight"))s.removeClass("selected tr-highlight"),s.next(".child").length>=1&&s.next(".child").removeClass("selected tr-highlight"),o.multiselection.numSelected=0,o.multiselection.selectedIds=[],o.multiselection.lastSelectedId="",!o.oInit.noEdit&&void 0!==o.oInit.inlineEdit&&n.Api().inlineEdit.editSameLine(o,i)&&l(t,i,s);else{e("tr",d).removeClass("selected tr-highlight"),s.addClass("selected tr-highlight"),s.next(".child").length>=1&&s.next(".child").addClass("selected tr-highlight"),s.triggerHandler("tableHighlightRowAsSelected",o);var c=o.json.rows[i];if(void 0!==c){var r={id:n.Api().rupTable.getIdPk(c,o.oInit),page:t.page()+1,line:i};o.multiselection.selectedRowsPerPage.splice(0,0,r),o.multiselection.numSelected=1,o.multiselection.selectedIds=[n.Api().rupTable.getIdPk(c,o.oInit)],o.multiselection.lastSelectedId=n.Api().rupTable.getIdPk(c,o.oInit)}o.oInit.noEdit||void 0===o.oInit.inlineEdit||void 0===o.inlineEdit.lastRow||o.inlineEdit.lastRow.idx===i||n.Api().inlineEdit.restaurarFila(o,!0)}void 0!==o.oInit.buttons&&n.Api().buttons.displayRegex(o)}n.select={},n.select.version="3.0.0",n.select.init=function(i){var s=i.settings()[0];if(!n.versionCheck("2"))throw"Warning: Select requires DataTables 2 or newer";if(s.select=[],!s._select){var o=e(s.nTBody);s.oInit.selectFilaDer?o.on("click.DT contextmenu keydown","tr:not(.dtrg-group)",(function(t){if(1==t.which||32==t.which||3==t.which)if(t.target.className.indexOf("openResponsive")>-1||e(this).hasClass("editable"));else{e(this).triggerHandler("tableSelectBeforeSelectRow",s);var n=this._DT_RowIndex;l(i,n,e(this)),e(this).triggerHandler("tableSelectAfterSelectRow",s)}})):o.on("click.DT keydown","tr:not(.dtrg-group)",(function(t){if(1==t.which||32==t.which||3==t.which)if(t.target.className.indexOf("openResponsive")>-1||e(this).hasClass("editable"));else{e(this).triggerHandler("tableSelectBeforeSelectRow",s);var n=this._DT_RowIndex;l(i,n,e(this)),e(this).triggerHandler("tableSelectAfterSelectRow",s)}})),void 0===s.oInit.inlineEdit&&void 0===s.oInit.formEdit&&e(t).on("resize.dtr",n.util.throttle((function(){n.Api().editForm.addchildIcons(s)})))}};var s=n.Api.register;return s("select()",(function(){return this.iterator("table",(function(e){n.select.init(new n.Api(e))}))})),s("select.drawSelectId()",(function(t){!function(t){if(1===t.multiselection.selectedRowsPerPage.length){var i=t.multiselection.selectedRowsPerPage[0],l=t.json.rows[i.line];if(void 0!==l&&i.id===n.Api().rupTable.getIdPk(l,t.oInit)){var s=e(t.nTBody);e("tr:not(.dtrg-group)",s).eq(i.line).addClass("selected tr-highlight")}}}(t)})),s("select.deselect()",(function(t){var i=e(t.nTBody);e("tr",i).removeClass("selected tr-highlight"),t.multiselection.numSelected=0,t.multiselection.selectedIds=[],n.Api().buttons.displayRegex(t),e("#"+e.escapeSelector(t.sTableId)).trigger("rupTable_deselect",t)})),s("select.selectRowIndex()",(function(t,i,n){const s=t.settings()[0],o=e(s.nTBody);l(t,i,e("tr:not(.dtrg-group)",o).eq(i))})),s("select.defaultId()",(function(e){let t=e.oInit.select.defaultId;void 0!==t&&jQuery.inArray(t,e.multiselection.selectedIds)<0&&(e.multiselection.selectedIds.push(t),e.oInit.select.defaultId=void 0)})),e(i).on("preInit.dt.dtSelect",(function(e,t){"dt"===e.namespace&&void 0!==t.oInit.select&&!1!==t.oInit.select.activate&&n.select.init(new n.Api(t))})),n.select}));
+/*! Select for DataTables 3.0.0
+ * © SpryMedia Ltd - datatables.net/license
+ */
+
+/**
+ * @summary     Select
+ * @description Select for DataTables
+ * @module      "rup.table.select"
+ * @version     3.0.0
+ * @author      SpryMedia Ltd (www.sprymedia.co.uk)
+ * @contact     datatables.net
+ * @copyright   SpryMedia Ltd.
+ *
+ * This source file is free software, available under the following license:
+ *   MIT license - http://datatables.net/license/mit
+ *
+ * This source file is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ *
+ * For details please refer to: http://www.datatables.net
+ */
+
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['jquery', 'datatables.net', '../rup.contextMenu', '../rup.feedback'], function ($) {
+            return factory($, window, document);
+        });
+    } else if (typeof exports === 'object') {
+        // CommonJS
+        module.exports = function (root, $) {
+            if (!root) {
+                root = window;
+            }
+
+            if (!$ || !$.fn.dataTable) {
+                $ = require('datatables.net')(root, $).$;
+            }
+
+            return factory($, root, root.document);
+        };
+    } else {
+        // Browser
+        factory(jQuery, window, document);
+    }
+}(function ($, window, document) {
+    'use strict';
+    var DataTable = $.fn.dataTable;
+
+    // Version information for debugger
+    DataTable.select = {};
+
+    DataTable.select.version = '3.0.0';
+
+    /**
+     * Se inicializa el componente select
+     *
+     * @name init
+     * @function
+     * @since UDA 3.4.0
+     * 
+     * @param {object} dt - Es el objeto table.
+     *
+     */
+    DataTable.select.init = function (dt) {
+		var ctx = dt.settings()[0];
+
+		if (!DataTable.versionCheck('2')) {
+			throw 'Warning: Select requires DataTables 2 or newer';
+		}
+		
+		ctx.select = [];
+
+		if (ctx._select) {
+			return;
+		}
+
+		var rowsBody = $(ctx.nTBody);
+		
+		// Se selecciona una fila
+		if (ctx.oInit.selectFilaDer) {
+			rowsBody.on('click.DT contextmenu keydown', 'tr:not(.dtrg-group)', function(e) {
+				// Solo selecciona si se pulsa sobre la barra espaciadora o se hace click izquierdo col raton
+				if (e.which == 1 || e.which == 32 || e.which == 3) {
+					if (e.target.className.indexOf('openResponsive') > -1 || $(this).hasClass('editable')) {// no hacer nada
+						//no se devuelve nada para los checkbox funcionen.
+					} else {//selecionar
+						$(this).triggerHandler('tableSelectBeforeSelectRow', ctx);
+						var idRow = this._DT_RowIndex;
+						_selectRowIndex(dt, idRow, $(this));
+						$(this).triggerHandler('tableSelectAfterSelectRow', ctx);
+					}
+				}
+			});
+		} else {
+			rowsBody.on('click.DT keydown', 'tr:not(.dtrg-group)', function(e) {
+				// Solo selecciona si se pulsa sobre la barra espaciadora o se hace click izquierdo col raton
+				if (e.which == 1 || e.which == 32 || e.which == 3) {
+					if (e.target.className.indexOf('openResponsive') > -1 || $(this).hasClass('editable')) {// no hacer nada
+						//no se devuelve nada para los checkbox funcionen.
+					} else {//selecionar
+						$(this).triggerHandler('tableSelectBeforeSelectRow', ctx);
+						var idRow = this._DT_RowIndex;
+						_selectRowIndex(dt, idRow, $(this));
+						$(this).triggerHandler('tableSelectAfterSelectRow', ctx);
+					}
+				}
+			});
+		}
+
+		if (ctx.oInit.inlineEdit === undefined && ctx.oInit.formEdit === undefined) {
+			$(window).on('resize.dtr', DataTable.util.throttle(function() { //Se calcula el responsive
+				DataTable.Api().editForm.addchildIcons(ctx);
+			}));
+		}
+    };
+    
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Local functions
+     */
+
+    /**
+     * Pinta los elementos selecionables, porque tiene los ids almacenados y mete la clase que se le indica.
+     *
+     *
+     * This will occur _after_ the initial DataTables initialisation, although
+     * before Ajax data is rendered
+     *
+     * @name drawSelectId
+     * @function
+     * @since UDA 3.4.0
+     *
+     * 
+     */
+    function _drawSelectId(ctx) {
+
+        if (ctx.multiselection.selectedRowsPerPage.length === 1) {
+            var row = ctx.multiselection.selectedRowsPerPage[0];
+            var rowSelectAux = ctx.json.rows[row.line];
+
+            if (rowSelectAux !== undefined && row.id === DataTable.Api().rupTable.getIdPk(rowSelectAux, ctx.oInit)) {
+                var rowsBody = $(ctx.nTBody);
+                $('tr:not(.dtrg-group)', rowsBody).eq(row.line).addClass('selected tr-highlight');
+            }
+        }
+    }
+
+    function _selectRowIndex(dt, index, tr) {
+        var ctx = dt.settings()[0];
+        ctx.multiselection.selectedRowsPerPage = [];
+        ctx.oInit.select.funcionParams = '';
+        var rowsBody = $(ctx.nTBody);
+        if (tr.hasClass('tr-highlight')) { //se deselecciona
+            tr.removeClass('selected tr-highlight');
+            if (tr.next('.child').length >= 1) {
+                tr.next('.child').removeClass('selected tr-highlight');
+            }
+            ctx.multiselection.numSelected = 0;
+            ctx.multiselection.selectedIds = [];
+            ctx.multiselection.lastSelectedId = '';
+            //Si es en edicion en linea, no hacer nada
+            if (!ctx.oInit.noEdit && ctx.oInit.inlineEdit !== undefined && DataTable.Api().inlineEdit.editSameLine(ctx, index)) {
+                //Seleccionar la fila otra vez.
+                _selectRowIndex(dt, index, tr);
+            }
+        } else { //se selecciona
+            $('tr', rowsBody).removeClass('selected tr-highlight');
+            tr.addClass('selected tr-highlight');
+            if (tr.next('.child').length >= 1) {
+                tr.next('.child').addClass('selected tr-highlight');
+            }
+            tr.triggerHandler('tableHighlightRowAsSelected',ctx);
+            var row = ctx.json.rows[index];
+            if (row !== undefined) {
+                var arra = {
+                    id: DataTable.Api().rupTable.getIdPk(row, ctx.oInit),
+                    page: dt.page() + 1,
+                    line: index
+                };
+                ctx.multiselection.selectedRowsPerPage.splice(0, 0, arra);
+                ctx.multiselection.numSelected = 1;
+                ctx.multiselection.selectedIds = [DataTable.Api().rupTable.getIdPk(row, ctx.oInit)];
+                ctx.multiselection.lastSelectedId = DataTable.Api().rupTable.getIdPk(row, ctx.oInit);
+            }
+            // si es en edicion en linea,
+            if (!ctx.oInit.noEdit && ctx.oInit.inlineEdit !== undefined && ctx.inlineEdit.lastRow !== undefined &&
+                ctx.inlineEdit.lastRow.idx !== index) {
+                DataTable.Api().inlineEdit.restaurarFila(ctx, true);
+            }
+        }
+        if (ctx.oInit.buttons !== undefined) {
+            DataTable.Api().buttons.displayRegex(ctx);
+        }
+    }
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * DataTables selectors
+     */
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * DataTables API
+     *
+     * For complete documentation, please refer to the docs/api directory or the
+     * DataTables site
+     */
+
+    // Local variables to improve compression
+    var apiRegister = DataTable.Api.register;
+
+    apiRegister('select()', function () {
+        return this.iterator('table', function (ctx) {
+            DataTable.select.init(new DataTable.Api(ctx));
+        });
+    });
+
+
+    apiRegister('select.drawSelectId()', function (ctx) {
+        _drawSelectId(ctx);
+    });
+
+    apiRegister('select.deselect()', function (ctx) {
+        var rowsBody = $(ctx.nTBody);
+        $('tr', rowsBody).removeClass('selected tr-highlight');
+        ctx.multiselection.numSelected = 0;
+        ctx.multiselection.selectedIds = [];
+        DataTable.Api().buttons.displayRegex(ctx);
+        $('#' + $.escapeSelector(ctx.sTableId)).trigger('rupTable_deselect',ctx);
+    });
+
+    apiRegister('select.selectRowIndex()', function (dt, index, isDoubleClick) {
+        const ctx = dt.settings()[0];
+        const rowsBody = $(ctx.nTBody);
+        var countTr = index;
+        if (isDoubleClick !== undefined) {
+            countTr = countTr + 1;
+        }
+        _selectRowIndex(dt, index, $('tr:not(.dtrg-group)', rowsBody).eq(index));
+    });
+    
+    apiRegister('select.defaultId()', function (ctx) {
+
+    	let defaultId = ctx.oInit.select.defaultId;
+    	
+        if(defaultId !== undefined){
+	        let indexInArray = jQuery.inArray(defaultId, ctx.multiselection.selectedIds);
+ 	        if(indexInArray < 0){//no esta ya seleccioando
+	        	ctx.multiselection.selectedIds.push(defaultId);
+	        	ctx.oInit.select.defaultId = undefined;
+ 	        }
+        }
+    });
+
+
+    /* * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Initialisation
+     */
+
+    // DataTables creation - check if select has been defined in the options. Note
+    // this required that the table be in the document! If it isn't then something
+    // needs to trigger this method unfortunately. The next major release of
+    // DataTables will rework the events and address this.
+    $(document).on('preInit.dt.dtSelect', function (e, ctx) {
+        if (e.namespace !== 'dt') {
+            return;
+        }
+        if (ctx.oInit.select !== undefined && ctx.oInit.select.activate !== false) {
+            DataTable.select.init(new DataTable.Api(ctx));
+        }
+    });
+
+
+    return DataTable.select;
+}));

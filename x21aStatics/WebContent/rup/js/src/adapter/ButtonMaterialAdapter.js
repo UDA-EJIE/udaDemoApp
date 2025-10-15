@@ -1,1 +1,72 @@
-!function(t,o){"function"==typeof define&&define.amd?define(["jquery","../templates"],o):t.ButtonMaterialAdapter=o(jQuery)}(this,(function(t,o){function n(){}return n.prototype.NAME="button_material",n.prototype.createDropdownButton=function(n){var r=this;n.dropdown,r.removeClass("ui-button ui-corner-all ui-widget");var e="rup-dropdown-button-material";return t.each(r[0].classList,(function(t,o){o.indexOf("btn-material")>=0&&(e=e+" "+o)})),t(o.Templates.rup.button.dropdownButton({id:r.prop("id")+"_dropdown",classes:e}))},n.prototype.createMButton=function(n,r){return n.dropdown,t(o.Templates.rup.button.mbutton({id:this.prop("id"),classes:"btn-material btn-material-primary-high-emphasis rup-toolbar_menuButton rup-toolbar_menuButtonSlided",label:r,iconClasses:"rup-toolbar_menuButtonIcon"}))},n.prototype.createMButtonContainer=function(n,r){return n.dropdown,t(o.Templates.rup.button["mbutton-container"]({id:this.prop("id")+"-container",classes:"rup-toolbar_menuButtonContainer",label:r,iconClasses:"rup-toolbar_menuButtonIcon"}))},t.rup=t.rup||{},t.rup.adapter=t.rup.adapter||{},t.rup.adapter[n.prototype.NAME]=new n,t}));
+
+/*global jQuery */
+/*global define */
+
+( function(root, factory ) {
+    if ( typeof define === 'function' && define.amd ) {
+
+        // AMD. Register as an anonymous module.
+        define( ['jquery', '../templates'], factory );
+    } else {
+
+        // Browser globals
+        root.ButtonMaterialAdapter = factory( jQuery );
+    }
+} (this,  function( $, Rup ) {
+
+    function ButtonMaterialAdapter(){
+
+    }
+
+    ButtonMaterialAdapter.prototype.NAME = 'button_material';
+
+    ButtonMaterialAdapter.prototype.createDropdownButton = function (settings) {
+        var $self = this, dropdownSettings = settings.dropdown;
+		
+        // Limpieza de las clases de jQuery UI
+        $self.removeClass('ui-button ui-corner-all ui-widget');
+		
+        var classes = 'rup-dropdown-button-material';
+		
+        $.each($self[0].classList, function(key, value){
+            if(value.indexOf('btn-material') >= 0) {
+                classes = classes + ' ' + value;
+            }
+        });
+
+        return $(Rup.Templates.rup.button.dropdownButton({
+            id: $self.prop('id')+'_dropdown',
+            // Usamos las clases del boton principal para que el enfasis sea siempre el mismo
+            classes: classes
+        }));
+    };
+
+    ButtonMaterialAdapter.prototype.createMButton = function (settings, label) {
+        var $self = this, dropdownSettings = settings.dropdown;
+
+        return $(Rup.Templates.rup.button.mbutton({
+            id: $self.prop('id'),
+            classes: 'btn-material btn-material-primary-high-emphasis rup-toolbar_menuButton rup-toolbar_menuButtonSlided',
+            label: label,
+            iconClasses: 'rup-toolbar_menuButtonIcon'
+        }));
+    };
+
+    ButtonMaterialAdapter.prototype.createMButtonContainer = function (settings, label) {
+        var $self = this, dropdownSettings = settings.dropdown;
+
+        return $(Rup.Templates.rup.button['mbutton-container']({
+            id: $self.prop('id')+'-container',
+            classes: 'rup-toolbar_menuButtonContainer',
+            label: label,
+            iconClasses: 'rup-toolbar_menuButtonIcon'
+        }));
+    };
+
+    $.rup = $.rup || {};
+    $.rup.adapter = $.rup.adapter || {};
+
+    $.rup.adapter[ButtonMaterialAdapter.prototype.NAME ] = new ButtonMaterialAdapter;
+
+    return $;
+}));

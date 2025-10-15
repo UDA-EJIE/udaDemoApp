@@ -1,1 +1,87 @@
-!function(e){"use strict";var t={events_source:"events.json.php",view:"month",tmpl_path:"tmpls/",tmpl_cache:!1,day:"2013-03-12",onAfterEventsLoad:function(t){if(t){var a=e("#eventlist");a.html(""),e.each(t,(function(t,n){e(document.createElement("li")).html('<a href="'+n.url+'">'+n.title+"</a>").appendTo(a)}))}},onAfterViewLoad:function(t){e(".page-header h3").text(this.getTitle()),e(".btn-group button").removeClass("active"),e('button[data-calendar-view="'+t+'"]').addClass("active")},classes:{months:{general:"label"}}},a=e("#calendar").calendar(t);e(".btn-group button[data-calendar-nav]").each((function(){var t=e(this);t.click((function(){a.navigate(t.data("calendar-nav"))}))})),e(".btn-group button[data-calendar-view]").each((function(){var t=e(this);t.click((function(){a.view(t.data("calendar-view"))}))})),e("#first_day").change((function(){var t=e(this).val();t=t.length?parseInt(t):null,a.setOptions({first_day:t}),a.view()})),e("#language").change((function(){a.setLanguage(e(this).val()),a.view()})),e("#events-in-modal").change((function(){var t=e(this).is(":checked")?e(this).val():null;a.setOptions({modal:t})})),e("#format-12-hours").change((function(){var t=!!e(this).is(":checked");a.setOptions({format12:t}),a.view()})),e("#show_wbn").change((function(){var t=!!e(this).is(":checked");a.setOptions({display_week_numbers:t}),a.view()})),e("#show_wb").change((function(){var t=!!e(this).is(":checked");a.setOptions({weekbox:t}),a.view()})),e("#events-modal .modal-header, #events-modal .modal-footer").click((function(e){}))}(jQuery);
+(function($) {
+
+	"use strict";
+
+	var options = {
+		events_source: 'events.json.php',
+		view: 'month',
+		tmpl_path: 'tmpls/',
+		tmpl_cache: false,
+		day: '2013-03-12',
+		onAfterEventsLoad: function(events) {
+			if(!events) {
+				return;
+			}
+			var list = $('#eventlist');
+			list.html('');
+
+			$.each(events, function(key, val) {
+				$(document.createElement('li'))
+					.html('<a href="' + val.url + '">' + val.title + '</a>')
+					.appendTo(list);
+			});
+		},
+		onAfterViewLoad: function(view) {
+			$('.page-header h3').text(this.getTitle());
+			$('.btn-group button').removeClass('active');
+			$('button[data-calendar-view="' + view + '"]').addClass('active');
+		},
+		classes: {
+			months: {
+				general: 'label'
+			}
+		}
+	};
+
+	var calendar = $('#calendar').calendar(options);
+
+	$('.btn-group button[data-calendar-nav]').each(function() {
+		var $this = $(this);
+		$this.click(function() {
+			calendar.navigate($this.data('calendar-nav'));
+		});
+	});
+
+	$('.btn-group button[data-calendar-view]').each(function() {
+		var $this = $(this);
+		$this.click(function() {
+			calendar.view($this.data('calendar-view'));
+		});
+	});
+
+	$('#first_day').change(function(){
+		var value = $(this).val();
+		value = value.length ? parseInt(value) : null;
+		calendar.setOptions({first_day: value});
+		calendar.view();
+	});
+
+	$('#language').change(function(){
+		calendar.setLanguage($(this).val());
+		calendar.view();
+	});
+
+	$('#events-in-modal').change(function(){
+		var val = $(this).is(':checked') ? $(this).val() : null;
+		calendar.setOptions({modal: val});
+	});
+	$('#format-12-hours').change(function(){
+		var val = $(this).is(':checked') ? true : false;
+		calendar.setOptions({format12: val});
+		calendar.view();
+	});
+	$('#show_wbn').change(function(){
+		var val = $(this).is(':checked') ? true : false;
+		calendar.setOptions({display_week_numbers: val});
+		calendar.view();
+	});
+	$('#show_wb').change(function(){
+		var val = $(this).is(':checked') ? true : false;
+		calendar.setOptions({weekbox: val});
+		calendar.view();
+	});
+	$('#events-modal .modal-header, #events-modal .modal-footer').click(function(e){
+		//e.preventDefault();
+		//e.stopPropagation();
+	});
+}(jQuery));

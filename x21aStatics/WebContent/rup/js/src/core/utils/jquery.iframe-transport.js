@@ -1,1 +1,219 @@
-!function(t){"use strict";var e=0;t.ajaxTransport("iframe",(function(a){var r,n;if(a.async&&("POST"===a.type||"GET"===a.type))return{send:function(o,p){r=t('<form style="display:none;"></form>'),-1!==a.url.indexOf("emulate_iframe_http_status")&&-1!==a.dataType.indexOf("iframe")&&(a.dataType=a.dataType.split(" ")[1],a.dataTypes=a.dataTypes.slice(1));var i={aborted:0,responseText:null,responseXML:null,status:200,statusText:"success",getAllResponseHeaders:function(){},getResponseHeader:function(){},setRequestHeader:function(){},abort:function(e){var a="timeout"===e?"timeout":"aborted";log("aborting upload... "+a),this.aborted=1,$io.attr("src",s.iframeSrc),i.error=a,s.error&&s.error.call(s.context,i,a,e),g&&t.event.trigger("ajaxError",[i,s,a]),s.complete&&s.complete.call(s.context,i,a)}};n=t('<iframe src="javascript:false;" name="iframe-transport-'+(e+=1)+'"></iframe>').on("load",(function(){var e;n.off("load").on("load",(function(){var e;try{var a,o,s=e=n.contents();t(document).find("body");try{o=(a=t(t(s).text())).is("textarea")}catch(t){o=!1}if(o)i.status=Number(a.attr("status"))||i.status,i.statusText=a.attr("statusText")||i.statusText,i.responseText={json:a.text()};else if(i.responseText={iframe:e},!e.length||!e[0].firstChild)throw new Error}catch(t){e=void 0}p(i.status,i.statusText,i.responseText),t('<iframe src="javascript:false;"></iframe>').appendTo(r),r.remove()})),r.prop("target",n.prop("name")).prop("action",a.url).prop("method",a.type),a.formData&&t.each(a.formData,(function(e,a){t('<input type="hidden"/>').prop("name",a.name).val(a.value).appendTo(r)})),a.fileInput&&a.fileInput.length&&"POST"===a.type&&(e=a.fileInput.clone(),a.fileInput.after((function(t){return e[t]})),a.paramName&&a.fileInput.each((function(){t(this).prop("name",a.paramName)})),r.append(a.fileInput).prop("enctype","multipart/form-data").prop("encoding","multipart/form-data")),r.submit(),e&&e.length&&a.fileInput.each((function(a,r){var n=t(e[a]);t(r).prop("name",n.prop("name")),n.replaceWith(r)}))})),r.append(n).appendTo(document.body)},abort:function(){n&&n.off("load").prop("src","javascript".concat(":false;")),r&&r.remove()}}})),t.ajaxSetup({converters:{"iframe text":function(t){return t.find("body").text()},"iframe json":function(t){return JSON.parse(t.find("body").text())},"iframe html":function(t){return t.find("body").html()},"iframe script":function(e){return t.globalEval(e.find("body").text())}}})}(jQuery);
+/*
+ * jQuery Iframe Transport Plugin 1.2.4
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2011, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://creativecommons.org/licenses/MIT/
+ */
+
+/*jslint unparam: true, nomen: true */
+/*global jQuery, document */
+
+(function ($) {
+	'use strict';
+
+	// Helper variable to create unique names for the transport iframes:
+	var counter = 0;
+
+	// The iframe transport accepts three additional options:
+	// options.fileInput: a jQuery collection of file input fields
+	// options.paramName: the parameter name for the file form data,
+	//  overrides the name property of the file input field(s)
+	// options.formData: an array of objects with name and value properties,
+	//  equivalent to the return data of .serializeArray(), e.g.:
+	//  [{name: 'a', value: 1}, {name: 'b', value: 2}]
+	$.ajaxTransport('iframe', function (options) {
+		if (options.async && (options.type === 'POST' || options.type === 'GET')) {
+			var form,
+				iframe;
+			return {
+				send: function (_, completeCallback) {
+					form = $('<form style="display:none;"></form>');
+					// javascript:false as initial iframe src
+					// prevents warning popups on HTTPS in IE6.
+					// IE versions below IE8 cannot set the name property of
+					// elements that have already been added to the DOM,
+					// so we set the name along with the iframe HTML markup:
+
+					if (options.url.indexOf('emulate_iframe_http_status') !==-1 && options.dataType.indexOf('iframe') !== -1){
+                    	options.dataType = options.dataType.split(' ')[1];
+                    	options.dataTypes = options.dataTypes.slice(1);
+					}
+
+					var xhr = { // mock object
+                			aborted: 0,
+                			responseText: null,
+                			responseXML: null,
+                			status: 200,
+                			statusText: 'success',
+                			getAllResponseHeaders: function() {},
+                			getResponseHeader: function() {},
+                			setRequestHeader: function() {},
+                			abort: function(status) {
+                				var e = (status === 'timeout' ? 'timeout' : 'aborted');
+                				log('aborting upload... ' + e);
+                				this.aborted = 1;
+                				$io.attr('src', s.iframeSrc); // abort op in progress
+                				xhr.error = e;
+                				s.error && s.error.call(s.context, xhr, e, status);
+                				g && $.event.trigger('ajaxError', [xhr, s, e]);
+                				s.complete && s.complete.call(s.context, xhr, e);
+                			}
+                		};
+
+
+					iframe = $(
+						'<iframe src="javascript:false;" name="iframe-transport-' +
+																												(counter += 1) + '"></iframe>'
+					).on('load', function () {
+						var fileInputClones;
+						iframe
+							.off('load')
+							.on('load', function () {
+								var response;
+								// Wrap in a try/catch block to catch exceptions thrown
+								// when trying to access cross-domain iframe contents:
+								try {
+
+
+                                	response = iframe.contents();
+
+
+
+
+
+                                	var frame = response;
+
+                                	var doc = frame;
+                                	var docRoot = $(document).find('body');
+                                	var documentContent, isTextArea;
+                					// see if user embedded response in textarea
+                					try {
+                						documentContent = $($(doc).text());
+                						isTextArea = documentContent.is('textarea');
+                					}catch(e){
+                						isTextArea = false;
+                					}
+                					if (isTextArea) {
+										//                						xhr.responseText = documentContent.text();
+                						// support for XHR 'status' & 'statusText' emulation :
+                						xhr.status = Number( documentContent.attr('status') ) || xhr.status;
+
+                						xhr.statusText = documentContent.attr('statusText') || xhr.statusText;
+
+                						xhr.responseText = {'json': documentContent.text()};
+                					}else{
+
+                						xhr.responseText = {'iframe': response};
+										// Google Chrome and Firefox do not throw an
+										// exception when calling iframe.contents() on
+										// cross-domain requests, so we unify the response:
+										if (!response.length || !response[0].firstChild) {
+											throw new Error();
+										}
+                					}
+
+
+
+
+								} catch (e) {
+									response = undefined;
+								}
+								// The complete callback returns the
+								// iframe content document as response object:
+								completeCallback(
+									xhr.status,
+									xhr.statusText,
+									xhr.responseText
+								);
+								// Fix for IE endless progress bar activity bug
+								// (happens on form submits to iframe targets):
+								$('<iframe src="javascript:false;"></iframe>')
+									.appendTo(form);
+								form.remove();
+							});
+						form
+							.prop('target', iframe.prop('name'))
+							.prop('action', options.url)
+							.prop('method', options.type);
+						if (options.formData) {
+							$.each(options.formData, function (index, field) {
+								$('<input type="hidden"/>')
+									.prop('name', field.name)
+									.val(field.value)
+									.appendTo(form);
+							});
+						}
+						if (options.fileInput && options.fileInput.length &&
+																																options.type === 'POST') {
+							fileInputClones = options.fileInput.clone();
+							// Insert a clone for each file input field:
+							options.fileInput.after(function (index) {
+								return fileInputClones[index];
+							});
+							if (options.paramName) {
+								options.fileInput.each(function () {
+									$(this).prop('name', options.paramName);
+								});
+							}
+							// Appending the file input fields to the hidden form
+							// removes them from their original location:
+							form
+								.append(options.fileInput)
+								.prop('enctype', 'multipart/form-data')
+							// enctype must be set as encoding for IE:
+								.prop('encoding', 'multipart/form-data');
+						}
+						form.submit();
+						// Insert the file input fields at their original location
+						// by replacing the clones with the originals:
+						if (fileInputClones && fileInputClones.length) {
+							options.fileInput.each(function (index, input) {
+								var clone = $(fileInputClones[index]);
+								$(input).prop('name', clone.prop('name'));
+								clone.replaceWith(input);
+							});
+						}
+					});
+					form.append(iframe).appendTo(document.body);
+				},
+				abort: function () {
+					if (iframe) {
+						// javascript:false as iframe src aborts the request
+						// and prevents warning popups on HTTPS in IE6.
+						// concat is used to avoid the "Script URL" JSLint error:
+						iframe
+							.off('load')
+							.prop('src', 'javascript'.concat(':false;'));
+					}
+					if (form) {
+						form.remove();
+					}
+				}
+			};
+		}
+	});
+
+	// The iframe transport returns the iframe content document as response.
+	// The following adds converters from iframe to text, json, html, and script:
+	$.ajaxSetup({
+		converters: {
+			'iframe text': function (iframe) {
+				return iframe.find('body').text();
+			},
+			'iframe json': function (iframe) {
+				return JSON.parse(iframe.find('body').text());
+			},
+			'iframe html': function (iframe) {
+				return iframe.find('body').html();
+			},
+			'iframe script': function (iframe) {
+				return $.globalEval(iframe.find('body').text());
+			}
+		}
+	});
+
+}(jQuery));

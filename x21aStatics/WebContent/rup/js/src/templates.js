@@ -1,1 +1,793 @@
-!function(l){"function"==typeof define&&define.amd?define(["handlebars"],l):l(Handlebars)}((function(l){return this.Rup=this.Rup||{},this.Rup.Templates=this.Rup.Templates||{},this.Rup.Templates.rup=this.Rup.Templates.rup||{},this.Rup.Templates.rup.button=this.Rup.Templates.rup.button||{},this.Rup.Templates.rup.button.dropdownButton=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<button id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:12},end:{line:1,column:18}}}):o)+'" class="'+s(typeof(o=null!=(o=c(e,"classes")||(null!=n?c(n,"classes"):n))?o:r)===u?o.call(i,{name:"classes",hash:{},data:a,loc:{start:{line:1,column:27},end:{line:1,column:38}}}):o)+'" type="button">\r\n  <i class="mdi mdi-menu-down" aria-hidden="true"></i>\r\n</button>'},useData:!0}),this.Rup.Templates.rup.button["mbutton-container"]=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:9},end:{line:1,column:15}}}):o)+'" class="'+s(typeof(o=null!=(o=c(e,"classes")||(null!=n?c(n,"classes"):n))?o:r)===u?o.call(i,{name:"classes",hash:{},data:a,loc:{start:{line:1,column:24},end:{line:1,column:35}}}):o)+'">\r\n  <ul role="menu" aria-activedescendant="active-menuitem" aria-labelledby="active-menuitem">\r\n    <li style="display: block;">\r\n      <button type="button" class="btn-material btn-material-primary-high-emphasis rup-toolbar_button rup-button rup-toolbar_menuButtonElement" id="toolbar##mbuton1##nuevo">\r\n        <span class="mdi mdi-plus"></span>\r\n        <span class="rup-ui-button-text">\r\n        \t'+s((c(e,"i18n")||n&&c(n,"i18n")||r).call(i,"rup_button.new",{name:"i18n",hash:{},data:a,loc:{start:{line:7,column:9},end:{line:7,column:34}}}))+"\r\n        </span>\r\n      </button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"},useData:!0}),this.Rup.Templates.rup.button.mbutton=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<button id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:12},end:{line:1,column:18}}}):o)+'"\r\n  class="btn-material btn-material-primary-high-emphasis rup-toolbar_menuButton rup-toolbar_menuButtonSlided"\r\n  role="button"\r\n  href="#">\r\n  \t'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:5,column:3},end:{line:5,column:12}}}):o)+'\r\n  \t<span class="mdi '+s(typeof(o=null!=(o=c(e,"iconClasses")||(null!=n?c(n,"iconClasses"):n))?o:r)===u?o.call(i,{name:"iconClasses",hash:{},data:a,loc:{start:{line:6,column:20},end:{line:6,column:35}}}):o)+'" aria-hidden="true"></span>\r\n</button>\r\n'},useData:!0}),this.Rup.Templates.rup.dashboard=this.Rup.Templates.rup.dashboard||{},this.Rup.Templates.rup.dashboard.item=l.template({1:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return' data-gs-min-width="'+l.escapeExpression("function"==typeof(o=null!=(o=i(e,"minWidth")||(null!=n?i(n,"minWidth"):n))?o:l.hooks.helperMissing)?o.call(null!=n?n:l.nullContext||{},{name:"minWidth",hash:{},data:a,loc:{start:{line:2,column:41},end:{line:2,column:53}}}):o)+'" '},3:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return' data-gs-max-width="'+l.escapeExpression("function"==typeof(o=null!=(o=i(e,"maxWidth")||(null!=n?i(n,"maxWidth"):n))?o:l.hooks.helperMissing)?o.call(null!=n?n:l.nullContext||{},{name:"maxWidth",hash:{},data:a,loc:{start:{line:3,column:41},end:{line:3,column:53}}}):o)+'" '},5:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return' data-gs-min-height="'+l.escapeExpression("function"==typeof(o=null!=(o=i(e,"minHeight")||(null!=n?i(n,"minHeight"):n))?o:l.hooks.helperMissing)?o.call(null!=n?n:l.nullContext||{},{name:"minHeight",hash:{},data:a,loc:{start:{line:4,column:43},end:{line:4,column:56}}}):o)+'" '},7:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return' data-gs-max-height="'+l.escapeExpression("function"==typeof(o=null!=(o=i(e,"maxHeight")||(null!=n?i(n,"maxHeight"):n))?o:l.hooks.helperMissing)?o.call(null!=n?n:l.nullContext||{},{name:"maxHeight",hash:{},data:a,loc:{start:{line:5,column:43},end:{line:5,column:56}}}):o)+'" '},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i,r=null!=n?n:l.nullContext||{},u=l.hooks.helperMissing,s="function",c=l.escapeExpression,p=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div class="grid-stack-item"  \r\n     '+(null!=(o=p(e,"if").call(r,null!=n?p(n,"minWidth"):n,{name:"if",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:2,column:5},end:{line:2,column:62}}}))?o:"")+"\r\n     "+(null!=(o=p(e,"if").call(r,null!=n?p(n,"maxWidth"):n,{name:"if",hash:{},fn:l.program(3,a,0),inverse:l.noop,data:a,loc:{start:{line:3,column:5},end:{line:3,column:62}}}))?o:"")+"\r\n     "+(null!=(o=p(e,"if").call(r,null!=n?p(n,"minHeight"):n,{name:"if",hash:{},fn:l.program(5,a,0),inverse:l.noop,data:a,loc:{start:{line:4,column:5},end:{line:4,column:65}}}))?o:"")+"\r\n     "+(null!=(o=p(e,"if").call(r,null!=n?p(n,"maxHeight"):n,{name:"if",hash:{},fn:l.program(7,a,0),inverse:l.noop,data:a,loc:{start:{line:5,column:5},end:{line:5,column:65}}}))?o:"")+'\r\n     data-rup-widget-type="'+c(typeof(i=null!=(i=p(e,"type")||(null!=n?p(n,"type"):n))?i:u)===s?i.call(r,{name:"type",hash:{},data:a,loc:{start:{line:6,column:27},end:{line:6,column:35}}}):i)+'">\r\n\r\n    <div class="'+c(typeof(i=null!=(i=p(e,"itemClass")||(null!=n?p(n,"itemClass"):n))?i:u)===s?i.call(r,{name:"itemClass",hash:{},data:a,loc:{start:{line:8,column:16},end:{line:8,column:29}}}):i)+'" >\r\n\r\n    </div>\r\n</div>\r\n'},useData:!0}),this.Rup.Templates.rup.table=this.Rup.Templates.rup.table||{},this.Rup.Templates.rup.table.detail=this.Rup.Templates.rup.table.detail||{},this.Rup.Templates.rup.table.detail.navigation=this.Rup.Templates.rup.table.detail.navigation||{},this.Rup.Templates.rup.table.detail.navigation.bootstrap=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="pagination_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:1,column:20},end:{line:1,column:31}}}):o)+'" class="col-sm-4 text-center text-sm-start">\r\n  \t<i class="mdi mdi-view-list" aria-hidden="true" title="'+s(typeof(o=null!=(o=c(e,"resultNumText")||(null!=n?c(n,"resultNumText"):n))?o:r)===u?o.call(i,{name:"resultNumText",hash:{},data:a,loc:{start:{line:2,column:58},end:{line:2,column:75}}}):o)+'"></i>\r\n  \t<span id="rup_table_selectedElements_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:3,column:40},end:{line:3,column:51}}}):o)+'" class="ms-1" >\r\n    \t'+s(typeof(o=null!=(o=c(e,"resultNumText")||(null!=n?c(n,"resultNumText"):n))?o:r)===u?o.call(i,{name:"resultNumText",hash:{},data:a,loc:{start:{line:4,column:5},end:{line:4,column:22}}}):o)+'\r\n  \t</span>\r\n</div>\r\n<div id="pag_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:7,column:13},end:{line:7,column:24}}}):o)+'" class="col-sm-8 text-center text-sm-end mt-3 mt-sm-0">\r\n    <button type="button" id="first_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:8,column:36},end:{line:8,column:47}}}):o)+'" class="btn-sm btn-outline-dark" alt="'+s(typeof(o=null!=(o=c(e,"labelFirst")||(null!=n?c(n,"labelFirst"):n))?o:r)===u?o.call(i,{name:"labelFirst",hash:{},data:a,loc:{start:{line:8,column:86},end:{line:8,column:100}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelFirst")||(null!=n?c(n,"labelFirst"):n))?o:r)===u?o.call(i,{name:"labelFirst",hash:{},data:a,loc:{start:{line:8,column:102},end:{line:8,column:116}}}):o)+'</button>\r\n    <button type="button" id="back_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:9,column:35},end:{line:9,column:46}}}):o)+'" class="btn-sm btn-outline-dark" alt="'+s(typeof(o=null!=(o=c(e,"labelPrev")||(null!=n?c(n,"labelPrev"):n))?o:r)===u?o.call(i,{name:"labelPrev",hash:{},data:a,loc:{start:{line:9,column:85},end:{line:9,column:98}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelPrev")||(null!=n?c(n,"labelPrev"):n))?o:r)===u?o.call(i,{name:"labelPrev",hash:{},data:a,loc:{start:{line:9,column:100},end:{line:9,column:113}}}):o)+'</button>\r\n    <button type="button" id="forward_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:10,column:38},end:{line:10,column:49}}}):o)+'" class="btn-sm btn-outline-dark" alt="'+s(typeof(o=null!=(o=c(e,"labelNext")||(null!=n?c(n,"labelNext"):n))?o:r)===u?o.call(i,{name:"labelNext",hash:{},data:a,loc:{start:{line:10,column:88},end:{line:10,column:101}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelNext")||(null!=n?c(n,"labelNext"):n))?o:r)===u?o.call(i,{name:"labelNext",hash:{},data:a,loc:{start:{line:10,column:103},end:{line:10,column:116}}}):o)+'</button>\r\n    <button type="button" id="last_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:11,column:35},end:{line:11,column:46}}}):o)+'" class="btn-sm btn-outline-dark" alt="'+s(typeof(o=null!=(o=c(e,"labelLast")||(null!=n?c(n,"labelLast"):n))?o:r)===u?o.call(i,{name:"labelLast",hash:{},data:a,loc:{start:{line:11,column:85},end:{line:11,column:98}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelLast")||(null!=n?c(n,"labelLast"):n))?o:r)===u?o.call(i,{name:"labelLast",hash:{},data:a,loc:{start:{line:11,column:100},end:{line:11,column:113}}}):o)+"</button>\r\n</div>"},useData:!0}),this.Rup.Templates.rup.table.detail.navigation.material=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="pagination_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:1,column:20},end:{line:1,column:31}}}):o)+'" class="col-sm-4 text-center text-sm-start">\r\n\t<i class="mdi mdi-view-list" aria-hidden="true" title="'+s(typeof(o=null!=(o=c(e,"resultNumText")||(null!=n?c(n,"resultNumText"):n))?o:r)===u?o.call(i,{name:"resultNumText",hash:{},data:a,loc:{start:{line:2,column:56},end:{line:2,column:73}}}):o)+'"></i>\r\n  \t<span id="rup_table_selectedElements_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:3,column:40},end:{line:3,column:51}}}):o)+'" class="ms-1" >\r\n    \t'+s(typeof(o=null!=(o=c(e,"resultNumText")||(null!=n?c(n,"resultNumText"):n))?o:r)===u?o.call(i,{name:"resultNumText",hash:{},data:a,loc:{start:{line:4,column:5},end:{line:4,column:22}}}):o)+'\r\n  \t</span>\r\n</div>\r\n<div id="pag_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:7,column:13},end:{line:7,column:24}}}):o)+'" class="col-sm-8 text-center text-sm-end mt-3 mt-sm-0">\r\n    <button type="button" id="first_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:8,column:36},end:{line:8,column:47}}}):o)+'" class="btn-material btn-material-sm btn-material-secondary-low-emphasis" alt="'+s(typeof(o=null!=(o=c(e,"labelFirst")||(null!=n?c(n,"labelFirst"):n))?o:r)===u?o.call(i,{name:"labelFirst",hash:{},data:a,loc:{start:{line:8,column:127},end:{line:8,column:141}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelFirst")||(null!=n?c(n,"labelFirst"):n))?o:r)===u?o.call(i,{name:"labelFirst",hash:{},data:a,loc:{start:{line:8,column:143},end:{line:8,column:157}}}):o)+'</button>\r\n    <button type="button" id="back_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:9,column:35},end:{line:9,column:46}}}):o)+'" class="btn-material btn-material-sm btn-material-secondary-low-emphasis" alt="'+s(typeof(o=null!=(o=c(e,"labelPrev")||(null!=n?c(n,"labelPrev"):n))?o:r)===u?o.call(i,{name:"labelPrev",hash:{},data:a,loc:{start:{line:9,column:126},end:{line:9,column:139}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelPrev")||(null!=n?c(n,"labelPrev"):n))?o:r)===u?o.call(i,{name:"labelPrev",hash:{},data:a,loc:{start:{line:9,column:141},end:{line:9,column:154}}}):o)+'</button>\r\n    <button type="button" id="forward_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:10,column:38},end:{line:10,column:49}}}):o)+'" class="btn-material btn-material-sm btn-material-secondary-low-emphasis" alt="'+s(typeof(o=null!=(o=c(e,"labelNext")||(null!=n?c(n,"labelNext"):n))?o:r)===u?o.call(i,{name:"labelNext",hash:{},data:a,loc:{start:{line:10,column:129},end:{line:10,column:142}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelNext")||(null!=n?c(n,"labelNext"):n))?o:r)===u?o.call(i,{name:"labelNext",hash:{},data:a,loc:{start:{line:10,column:144},end:{line:10,column:157}}}):o)+'</button>\r\n    <button type="button" id="last_'+s(typeof(o=null!=(o=c(e,"tableId")||(null!=n?c(n,"tableId"):n))?o:r)===u?o.call(i,{name:"tableId",hash:{},data:a,loc:{start:{line:11,column:35},end:{line:11,column:46}}}):o)+'" class="btn-material btn-material-sm btn-material-secondary-low-emphasis" alt="'+s(typeof(o=null!=(o=c(e,"labelLast")||(null!=n?c(n,"labelLast"):n))?o:r)===u?o.call(i,{name:"labelLast",hash:{},data:a,loc:{start:{line:11,column:126},end:{line:11,column:139}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"labelLast")||(null!=n?c(n,"labelLast"):n))?o:r)===u?o.call(i,{name:"labelLast",hash:{},data:a,loc:{start:{line:11,column:141},end:{line:11,column:154}}}):o)+"</button>\r\n</div>"},useData:!0}),this.Rup.Templates.rup.table.pager=this.Rup.Templates.rup.table.pager||{},this.Rup.Templates.rup.table.pager.link=this.Rup.Templates.rup.table.pager.link||{},this.Rup.Templates.rup.table.pager.link.bootstrap=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<a href="javascript:void(0)" class="linkPaginacion">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:1,column:52},end:{line:1,column:61}}}):o)+'</a>\r\n<i class="iconPaginacion '+s(typeof(o=null!=(o=c(e,"icon")||(null!=n?c(n,"icon"):n))?o:r)===u?o.call(i,{name:"icon",hash:{},data:a,loc:{start:{line:2,column:25},end:{line:2,column:33}}}):o)+'"></i></td>\r\n'},useData:!0}),this.Rup.Templates.rup.table.pager.link.material=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<button type="button" class="btn-material btn-material-sm btn-material-secondary-low-emphasis">\r\n\t<i class="iconPaginacion '+s(typeof(o=null!=(o=c(e,"icon")||(null!=n?c(n,"icon"):n))?o:r)===u?o.call(i,{name:"icon",hash:{},data:a,loc:{start:{line:2,column:26},end:{line:2,column:34}}}):o)+'"></i>\r\n\t<span>'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:3,column:7},end:{line:3,column:16}}}):o)+"<span>\r\n</button>"},useData:!0}),this.Rup.Templates.rup.tabs=this.Rup.Templates.rup.tabs||{},this.Rup.Templates.rup.tabs.container=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){return"<ul>\r\n\r\n</ul>\r\n"},useData:!0}),this.Rup.Templates.rup.tabs.subtab=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return"<div id="+s(typeof(o=null!=(o=c(e,"rupRandomLayerId")||(null!=n?c(n,"rupRandomLayerId"):n))?o:r)===u?o.call(i,{name:"rupRandomLayerId",hash:{},data:a,loc:{start:{line:1,column:8},end:{line:1,column:28}}}):o)+' class="rupRandomLayerId ssss">\r\n  <div id='+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:2,column:10},end:{line:2,column:16}}}):o)+' actualTab="'+s(typeof(o=null!=(o=c(e,"actualTab")||(null!=n?c(n,"actualTab"):n))?o:r)===u?o.call(i,{name:"actualTab",hash:{},data:a,loc:{start:{line:2,column:28},end:{line:2,column:41}}}):o)+'">\r\n\r\n  </div>\r\n</div>\r\n'},useData:!0}),this.Rup.Templates.rup.tabs.tab=l.template({1:function(l,n,e,t,a){return'        <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span>\r\n'},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i,r=null!=n?n:l.nullContext||{},u=l.hooks.helperMissing,s="function",c=l.escapeExpression,p=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<li>\r\n  <a  id="'+c(typeof(i=null!=(i=p(e,"id")||(null!=n?p(n,"id"):n))?i:u)===s?i.call(r,{name:"id",hash:{},data:a,loc:{start:{line:2,column:10},end:{line:2,column:16}}}):i)+'"\r\n      href="'+c(typeof(i=null!=(i=p(e,"href")||(null!=n?p(n,"href"):n))?i:u)===s?i.call(r,{name:"href",hash:{},data:a,loc:{start:{line:3,column:12},end:{line:3,column:20}}}):i)+'"\r\n      rupLevel="'+c(typeof(i=null!=(i=p(e,"rupLevel")||(null!=n?p(n,"rupLevel"):n))?i:u)===s?i.call(r,{name:"rupLevel",hash:{},data:a,loc:{start:{line:4,column:16},end:{line:4,column:28}}}):i)+'"\r\n      title="'+c(typeof(i=null!=(i=p(e,"title")||(null!=n?p(n,"title"):n))?i:u)===s?i.call(r,{name:"title",hash:{},data:a,loc:{start:{line:5,column:13},end:{line:5,column:22}}}):i)+'"\r\n      alt="'+c(typeof(i=null!=(i=p(e,"alt")||(null!=n?p(n,"alt"):n))?i:u)===s?i.call(r,{name:"alt",hash:{},data:a,loc:{start:{line:6,column:11},end:{line:6,column:18}}}):i)+'">\r\n\r\n      <div class="rup-tabs_title">'+c(typeof(i=null!=(i=p(e,"label")||(null!=n?p(n,"label"):n))?i:u)===s?i.call(r,{name:"label",hash:{},data:a,loc:{start:{line:8,column:34},end:{line:8,column:43}}}):i)+'</div>\r\n      <span class="rup-tabs_loading"> </span>\r\n'+(null!=(o=p(e,"if").call(r,null!=n?p(n,"btnClose"):n,{name:"if",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:10,column:6},end:{line:12,column:13}}}))?o:"")+"  </a>\r\n\r\n</li>\r\n"},useData:!0}),this.Rup.Templates.rup.toolbar=this.Rup.Templates.rup.toolbar||{},this.Rup.Templates.rup.toolbar.button=this.Rup.Templates.rup.toolbar.button||{},this.Rup.Templates.rup.toolbar.button.bootstrap=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'\r\n<button type="button" id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:2,column:26},end:{line:2,column:32}}}):o)+'" class="rup-button">\r\n\t\t<i class="'+s(typeof(o=null!=(o=c(e,"css")||(null!=n?c(n,"css"):n))?o:r)===u?o.call(i,{name:"css",hash:{},data:a,loc:{start:{line:3,column:12},end:{line:3,column:19}}}):o)+'" aria-hidden="true"></i>\r\n    <span class="rup-ui-button-text">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:4,column:37},end:{line:4,column:46}}}):o)+"</span>\r\n</button>\r\n"},useData:!0}),this.Rup.Templates.rup.toolbar.button.jqueryui=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<button id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:12},end:{line:1,column:18}}}):o)+'" type="button" class="rup-toolbar_button">\r\n    <span class="ui-button-icon ui-icon '+s(typeof(o=null!=(o=c(e,"css")||(null!=n?c(n,"css"):n))?o:r)===u?o.call(i,{name:"css",hash:{},data:a,loc:{start:{line:2,column:40},end:{line:2,column:47}}}):o)+'"></span>\r\n    <span class="ui-button-icon-space"> </span>\r\n    <span class="rup-ui-button-text">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:4,column:37},end:{line:4,column:46}}}):o)+"</span>\r\n</button>\r\n"},useData:!0}),this.Rup.Templates.rup.toolbar.button.material=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'\r\n<button type="button" id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:2,column:26},end:{line:2,column:32}}}):o)+'" class="btn-material btn-material-primary-high-emphasis rup-button">\r\n\t<i class="'+s(typeof(o=null!=(o=c(e,"css")||(null!=n?c(n,"css"):n))?o:r)===u?o.call(i,{name:"css",hash:{},data:a,loc:{start:{line:3,column:11},end:{line:3,column:18}}}):o)+'" aria-hidden="true"></i>\r\n    <span class="rup-ui-button-text">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:4,column:37},end:{line:4,column:46}}}):o)+"</span>\r\n</button>\r\n"},useData:!0}),this.Rup.Templates.rup.toolbar.mbutton=this.Rup.Templates.rup.toolbar.mbutton||{},this.Rup.Templates.rup.toolbar.mbutton.bootstrap=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:9},end:{line:1,column:15}}}):o)+'-mbutton-group" class="rup-mbutton '+s(typeof(o=null!=(o=c(e,"groupClasses")||(null!=n?c(n,"groupClasses"):n))?o:r)===u?o.call(i,{name:"groupClasses",hash:{},data:a,loc:{start:{line:1,column:50},end:{line:1,column:66}}}):o)+'">\r\n\t\t<button type="button" data-mbutton="true" id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:2,column:48},end:{line:2,column:54}}}):o)+'" data-mbutton="true" class="ui-button ui-corner-all ui-widget rup-button">\r\n\t\t\t<i class="mdi mdi-cog" aria-hidden="true"></i>\r\n\t\t\t<span class="rup-ui-button-text">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:4,column:36},end:{line:4,column:45}}}):o)+'</span>\r\n\t\t</button>\r\n\t\t<ul id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:6,column:10},end:{line:6,column:16}}}):o)+'-mbutton-container" class="rup-mbutton-container" aria-labelledby="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:6,column:83},end:{line:6,column:89}}}):o)+'">\r\n\r\n\t\t</ul>\r\n</div>'},useData:!0}),this.Rup.Templates.rup.toolbar.mbutton.material=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:1,column:9},end:{line:1,column:15}}}):o)+'-mbutton-group" class="rup-mbutton '+s(typeof(o=null!=(o=c(e,"groupClasses")||(null!=n?c(n,"groupClasses"):n))?o:r)===u?o.call(i,{name:"groupClasses",hash:{},data:a,loc:{start:{line:1,column:50},end:{line:1,column:66}}}):o)+'">\r\n\t\t<button type="button" data-mbutton="true" id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:2,column:48},end:{line:2,column:54}}}):o)+'" data-mbutton="true" class="btn-material btn-material-primary-high-emphasis rup-button">\r\n\t\t\t<i class="mdi mdi-cog" aria-hidden="true"></i>\r\n\t\t\t<span class="rup-ui-button-text">'+s(typeof(o=null!=(o=c(e,"label")||(null!=n?c(n,"label"):n))?o:r)===u?o.call(i,{name:"label",hash:{},data:a,loc:{start:{line:4,column:36},end:{line:4,column:45}}}):o)+'</span>\r\n\t\t</button>\r\n\t\t<ul id="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:6,column:10},end:{line:6,column:16}}}):o)+'-mbutton-container" class="rup-mbutton-container" aria-labelledby="'+s(typeof(o=null!=(o=c(e,"id")||(null!=n?c(n,"id"):n))?o:r)===u?o.call(i,{name:"id",hash:{},data:a,loc:{start:{line:6,column:83},end:{line:6,column:89}}}):o)+'">\r\n\r\n\t\t</ul>\r\n</div>\r\n'},useData:!0}),this.Rup.Templates.rup.upload=this.Rup.Templates.rup.upload||{},this.Rup.Templates.rup.upload.downloadTemplate=l.template({1:function(l,n,e,t,a){var o,i,r=null!=n?n:l.nullContext||{},u=l.hooks.helperMissing,s="function",c=l.escapeExpression,p=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'    <li class="list-group-item template-download '+(null!=(o=p(e,"if").call(r,null!=n?p(n,"error"):n,{name:"if",hash:{},fn:l.program(2,a,0),inverse:l.noop,data:a,loc:{start:{line:4,column:49},end:{line:4,column:74}}}))?o:"")+'">\r\n      <div class="row">\r\n\r\n\r\n          <div class="col-xs-6 col-md-3">\r\n            <p class="name text-xs-left"><b>'+(null!=(o=p(e,"if").call(r,null!=n?p(n,"error"):n,{name:"if",hash:{},fn:l.program(4,a,0),inverse:l.program(6,a,0),data:a,loc:{start:{line:9,column:44},end:{line:9,column:110}}}))?o:"")+'</b></p>\r\n            <span class="name text-xs-left"><span class="type">'+c(typeof(i=null!=(i=p(e,"type")||(null!=n?p(n,"type"):n))?i:u)===s?i.call(r,{name:"type",hash:{},data:a,loc:{start:{line:10,column:63},end:{line:10,column:71}}}):i)+'</span></span>\r\n\r\n            <p class="name text-xs-left error-text error">'+c(typeof(i=null!=(i=p(e,"error")||(null!=n?p(n,"error"):n))?i:u)===s?i.call(r,{name:"error",hash:{},data:a,loc:{start:{line:12,column:58},end:{line:12,column:67}}}):i)+"</p>\r\n\r\n          </div>\r\n\r\n"+(null!=(o=p(e,"if").call(r,null!=n?p(n,"error"):n,{name:"if",hash:{},fn:l.program(8,a,0),inverse:l.program(10,a,0),data:a,loc:{start:{line:16,column:10},end:{line:31,column:15}}}))?o:"")+"      </div>\r\n    </li>\r\n"},2:function(l,n,e,t,a){return"error"},4:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return l.escapeExpression("function"==typeof(o=null!=(o=i(e,"name")||(null!=n?i(n,"name"):n))?o:l.hooks.helperMissing)?o.call(null!=n?n:l.nullContext||{},{name:"name",hash:{},data:a,loc:{start:{line:9,column:57},end:{line:9,column:65}}}):o)},6:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<a href="'+s(typeof(o=null!=(o=c(e,"url")||(null!=n?c(n,"url"):n))?o:r)===u?o.call(i,{name:"url",hash:{},data:a,loc:{start:{line:9,column:82},end:{line:9,column:89}}}):o)+'">'+s(typeof(o=null!=(o=c(e,"name")||(null!=n?c(n,"name"):n))?o:r)===u?o.call(i,{name:"name",hash:{},data:a,loc:{start:{line:9,column:91},end:{line:9,column:99}}}):o)+"</a>"},8:function(l,n,e,t,a){return"\r\n"},10:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'            <div class="col-xs-6 col-md-4 fileupload-buttonbar">\r\n\t\t\t\t<a href="'+s(typeof(o=null!=(o=c(e,"url")||(null!=n?c(n,"url"):n))?o:r)===u?o.call(i,{name:"url",hash:{},data:a,loc:{start:{line:20,column:13},end:{line:20,column:20}}}):o)+'">\r\n               \t\t<span  class="btn-material btn-material-primary-high-emphasis download">\r\n                \t\t<i class="mdi mdi-download" aria-hidden="true"></i>\r\n                \t\t<span>'+s((c(e,"i18n")||n&&c(n,"i18n")||r).call(i,"rup_upload.openUploaded",{name:"i18n",hash:{},data:a,loc:{start:{line:23,column:24},end:{line:23,column:58}}}))+'</span>\r\n                \t</span>\r\n                </a>\r\n                <span class="btn-material btn-material-secondary-high-emphasis delete" data-type="'+s(typeof(o=null!=(o=c(e,"delete_type")||(null!=n?c(n,"delete_type"):n))?o:r)===u?o.call(i,{name:"delete_type",hash:{},data:a,loc:{start:{line:26,column:98},end:{line:26,column:113}}}):o)+'" data-url="'+s(typeof(o=null!=(o=c(e,"delete_url")||(null!=n?c(n,"delete_url"):n))?o:r)===u?o.call(i,{name:"delete_url",hash:{},data:a,loc:{start:{line:26,column:125},end:{line:26,column:139}}}):o)+'">\r\n                \t<i class="mdi mdi-delete" aria-hidden="true"></i>\r\n                \t<span>'+s((c(e,"i18n")||n&&c(n,"i18n")||r).call(i,"rup_upload.deleteUploaded",{name:"i18n",hash:{},data:a,loc:{start:{line:28,column:23},end:{line:28,column:59}}}))+"</span>\r\n                </span>\r\n            </div>\r\n"},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return"\r\n\r\n"+(null!=(o=i(e,"each").call(null!=n?n:l.nullContext||{},null!=n?i(n,"files"):n,{name:"each",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:3,column:2},end:{line:34,column:11}}}))?o:"")},useData:!0}),this.Rup.Templates.rup.upload.uploadTemplate=l.template({1:function(l,n,e,t,a,o,i){var r,u,s=null!=n?n:l.nullContext||{},c=l.hooks.helperMissing,p="function",m=l.escapeExpression,d=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'    <li class="list-group-item template-upload">\r\n      <div class="row">\r\n        <div class="col-xs-6 col-md-3">\r\n          <p class="name text-xs-left"><b>'+m(typeof(u=null!=(u=d(e,"name")||(null!=n?d(n,"name"):n))?u:c)===p?u.call(s,{name:"name",hash:{},data:a,loc:{start:{line:7,column:42},end:{line:7,column:50}}}):u)+'</b></p>\r\n          <span class="name text-xs-left"><span class="type-text type">'+m(typeof(u=null!=(u=d(e,"type")||(null!=n?d(n,"type"):n))?u:c)===p?u.call(s,{name:"type",hash:{},data:a,loc:{start:{line:8,column:71},end:{line:8,column:79}}}):u)+'</span><span class="name text-xs-left size-text size">'+m(typeof(u=null!=(u=d(e,"size")||(null!=n?d(n,"size"):n))?u:c)===p?u.call(s,{name:"size",hash:{},data:a,loc:{start:{line:8,column:133},end:{line:8,column:141}}}):u)+'</span></span>\r\n          <p class="name text-xs-left error-text error"></p>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="col-xs-6 col-md-4 fileupload-buttonbar">\r\n'+(null!=(r=d(e,"if").call(s,null!=i[1]?d(i[1],"notSubmitInForm"):i[1],{name:"if",hash:{},fn:l.program(2,a,0,o,i),inverse:l.noop,data:a,loc:{start:{line:15,column:12},end:{line:21,column:19}}}))?r:"")+'\r\n                <button class="btn-material btn-material-secondary-high-emphasis cancel">\r\n                    <i class="mdi mdi-close-circle" aria-hidden="true"></i>\r\n                    <span>'+m((d(e,"i18n")||n&&d(n,"i18n")||c).call(s,"rup_upload.cancelUpload",{name:"i18n",hash:{},data:a,loc:{start:{line:25,column:26},end:{line:25,column:60}}}))+"</span>\r\n                </button>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </li>\r\n"},2:function(l,n,e,t,a){var o=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'                <button class="btn-material btn-material-primary-high-emphasis start" disabled="true">\r\n                    <i class="mdi mdi-upload" aria-hidden="true"></i>\r\n                    <span>'+l.escapeExpression((o(e,"i18n")||n&&o(n,"i18n")||l.hooks.helperMissing).call(null!=n?n:l.nullContext||{},"rup_upload.startUpload",{name:"i18n",hash:{},data:a,loc:{start:{line:18,column:26},end:{line:18,column:59}}}))+"</span>\r\n                </button>\r\n\r\n"},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a,o,i){var r,u=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return"\r\n\r\n"+(null!=(r=u(e,"each").call(null!=n?n:l.nullContext||{},null!=n?u(n,"files"):n,{name:"each",hash:{},fn:l.program(1,a,0,o,i),inverse:l.noop,data:a,loc:{start:{line:3,column:2},end:{line:32,column:11}}}))?r:"")},useData:!0,useDepths:!0}),this.Rup.Templates.rup.widget=this.Rup.Templates.rup.widget||{},this.Rup.Templates.rup.widget.base=l.template({1:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u=l.escapeExpression,s=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetClose-'+u("function"==typeof(o=null!=(o=s(e,"uuid")||(null!=n?s(n,"uuid"):n))?o:r)?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:8,column:32},end:{line:8,column:40}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-delete" data-toggle="tooltip" data-placement="top" title="'+u((s(e,"i18n")||n&&s(n,"i18n")||r).call(i,"title.eliminar",{name:"i18n",hash:{},data:a,loc:{start:{line:8,column:145},end:{line:8,column:170}}}))+'"></span>\r\n'},3:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u=l.escapeExpression,s=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetReload-'+u("function"==typeof(o=null!=(o=s(e,"uuid")||(null!=n?s(n,"uuid"):n))?o:r)?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:11,column:33},end:{line:11,column:41}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-refresh" data-toggle="tooltip" data-placement="top" title="'+u((s(e,"i18n")||n&&s(n,"i18n")||r).call(i,"title.refrescar",{name:"i18n",hash:{},data:a,loc:{start:{line:11,column:147},end:{line:11,column:173}}}))+'"></span>\r\n'},5:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u=l.escapeExpression,s=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetResizeFull-'+u("function"==typeof(o=null!=(o=s(e,"uuid")||(null!=n?s(n,"uuid"):n))?o:r)?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:14,column:37},end:{line:14,column:45}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-window-maximize" data-toggle="tooltip" data-placement="top" title="'+u((s(e,"i18n")||n&&s(n,"i18n")||r).call(i,"title.maximizar",{name:"i18n",hash:{},data:a,loc:{start:{line:14,column:159},end:{line:14,column:185}}}))+'"></span>\r\n'},7:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u=l.escapeExpression,s=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetConfig-'+u("function"==typeof(o=null!=(o=s(e,"uuid")||(null!=n?s(n,"uuid"):n))?o:r)?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:18,column:33},end:{line:18,column:41}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-cog" data-toggle="tooltip" data-placement="top" title="'+u((s(e,"i18n")||n&&s(n,"i18n")||r).call(i,"title.configuracion",{name:"i18n",hash:{},data:a,loc:{start:{line:18,column:143},end:{line:18,column:173}}}))+'" ></span>\r\n'},9:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetInfo-'+s(typeof(o=null!=(o=c(e,"uuid")||(null!=n?c(n,"uuid"):n))?o:r)===u?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:21,column:31},end:{line:21,column:39}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-comment-question-outline" data-toggle="tooltip" data-placement="bottom" title="'+s(typeof(o=null!=(o=c(e,"infoTextNew")||(null!=n?c(n,"infoTextNew"):n))?o:r)===u?o.call(i,{name:"infoTextNew",hash:{},data:a,loc:{start:{line:21,column:165},end:{line:21,column:180}}}):o)+'" tttt="'+s(typeof(o=null!=(o=c(e,"infoText")||(null!=n?c(n,"infoText"):n))?o:r)===u?o.call(i,{name:"infoText",hash:{},data:a,loc:{start:{line:21,column:188},end:{line:21,column:200}}}):o)+'"></span>\r\n'},11:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u=l.escapeExpression,s=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <span id="widgetShow-'+u("function"==typeof(o=null!=(o=s(e,"uuid")||(null!=n?s(n,"uuid"):n))?o:r)?o.call(i,{name:"uuid",hash:{},data:a,loc:{start:{line:24,column:31},end:{line:24,column:39}}}):o)+'" class="widget-icon widget-icon-right mdi mdi-toggle-switch" data-toggle="tooltip" data-placement="top" title="'+u((s(e,"i18n")||n&&s(n,"i18n")||r).call(i,"title.mostrarOcultar",{name:"i18n",hash:{},data:a,loc:{start:{line:24,column:151},end:{line:24,column:182}}}))+'"></span>\r\n'},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i,r=null!=n?n:l.nullContext||{},u=l.hooks.helperMissing,s="function",c=l.escapeExpression,p=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div class="widget rssBottom" id="'+c(typeof(i=null!=(i=p(e,"uuid")||(null!=n?p(n,"uuid"):n))?i:u)===s?i.call(r,{name:"uuid",hash:{},data:a,loc:{start:{line:1,column:34},end:{line:1,column:42}}}):i)+'">\r\n    <div class="widget-header">\r\n        <div>\r\n          <span class="widget-header-title">'+c(typeof(i=null!=(i=p(e,"title")||(null!=n?p(n,"title"):n))?i:u)===s?i.call(r,{name:"title",hash:{},data:a,loc:{start:{line:4,column:44},end:{line:4,column:53}}}):i)+'</span>\r\n        </div>\r\n        <div class="widget-header-controls">\r\n'+(null!=(o=p(e,"if").call(r,null!=(o=null!=n?p(n,"buttons"):n)?p(o,"btnClose"):o,{name:"if",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:7,column:10},end:{line:9,column:17}}}))?o:"")+(null!=(o=p(e,"if").call(r,null!=(o=null!=n?p(n,"buttons"):n)?p(o,"btnReload"):o,{name:"if",hash:{},fn:l.program(3,a,0),inverse:l.noop,data:a,loc:{start:{line:10,column:10},end:{line:12,column:17}}}))?o:"")+(null!=(o=p(e,"if").call(r,null!=(o=null!=n?p(n,"buttons"):n)?p(o,"btnResizeFull"):o,{name:"if",hash:{},fn:l.program(5,a,0),inverse:l.noop,data:a,loc:{start:{line:13,column:10},end:{line:15,column:17}}}))?o:"")+'          <span id="widgetResizeSmall-'+c(typeof(i=null!=(i=p(e,"uuid")||(null!=n?p(n,"uuid"):n))?i:u)===s?i.call(r,{name:"uuid",hash:{},data:a,loc:{start:{line:16,column:38},end:{line:16,column:46}}}):i)+'" class="widget-icon widget-icon-right mdi mdi-window-minimize" data-toggle="tooltip" data-placement="top" title="'+c((p(e,"i18n")||n&&p(n,"i18n")||u).call(r,"title.minimizar",{name:"i18n",hash:{},data:a,loc:{start:{line:16,column:160},end:{line:16,column:186}}}))+'"></span>\r\n'+(null!=(o=p(e,"if").call(r,null!=(o=null!=n?p(n,"buttons"):n)?p(o,"btnConfig"):o,{name:"if",hash:{},fn:l.program(7,a,0),inverse:l.noop,data:a,loc:{start:{line:17,column:10},end:{line:19,column:17}}}))?o:"")+(null!=(o=p(e,"if").call(r,null!=n?p(n,"infoText"):n,{name:"if",hash:{},fn:l.program(9,a,0),inverse:l.noop,data:a,loc:{start:{line:20,column:10},end:{line:22,column:17}}}))?o:"")+(null!=(o=p(e,"if").call(r,null!=(o=null!=n?p(n,"buttons"):n)?p(o,"btnShow"):o,{name:"if",hash:{},fn:l.program(11,a,0),inverse:l.noop,data:a,loc:{start:{line:23,column:10},end:{line:25,column:17}}}))?o:"")+'        </div>\r\n    </div>\r\n    <div class="widget-feedback">\r\n    </div>\r\n    <div class="widget-body">\r\n\r\n    </div>\r\n</div>\r\n'},useData:!0}),this.Rup.Templates.rup.widget.close=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){return""},useData:!0}),this.Rup.Templates.rup.widget.configRequired=l.template({1:function(l,n,e,t,a){var o,i,r=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return"<br/>"+(null!=(o="function"==typeof(i=null!=(i=r(e,"urlConsulta")||(null!=n?r(n,"urlConsulta"):n))?i:l.hooks.helperMissing)?i.call(null!=n?n:l.nullContext||{},{name:"urlConsulta",hash:{},data:a,loc:{start:{line:4,column:52},end:{line:4,column:69}}}):i)?o:"")},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i,r=null!=n?n:l.nullContext||{},u=l.hooks.helperMissing,s="function",c=l.escapeExpression,p=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<div id="'+c(typeof(i=null!=(i=p(e,"idModal")||(null!=n?p(n,"idModal"):n))?i:u)===s?i.call(r,{name:"idModal",hash:{},data:a,loc:{start:{line:1,column:9},end:{line:1,column:20}}}):i)+'" class="config-required-modal">\r\n    <div>\r\n        <div>\r\n            <span>'+c(typeof(i=null!=(i=p(e,"titulo")||(null!=n?p(n,"titulo"):n))?i:u)===s?i.call(r,{name:"titulo",hash:{},data:a,loc:{start:{line:4,column:18},end:{line:4,column:28}}}):i)+(null!=(o=p(e,"if").call(r,null!=n?p(n,"urlConsulta"):n,{name:"if",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:4,column:28},end:{line:4,column:76}}}))?o:"")+'</span><br>\r\n            <button id="btnConfigRequired" type="button" class="btn-material btn-material-primary-high-emphasis">\r\n                <span class="mdi mdi-cog" aria-hidden="true"></span>'+c((p(e,"i18n")||n&&p(n,"i18n")||u).call(r,"title.configuracion",{name:"i18n",hash:{},data:a,loc:{start:{line:6,column:68},end:{line:6,column:98}}}))+'</button>\r\n            <button id="btnDelete" type="button" class="btn-material btn-material-warning-dark-high-emphasis">\r\n                <span class="mdi mdi-delete" aria-hidden="true"></span>'+c((p(e,"i18n")||n&&p(n,"i18n")||u).call(r,"title.eliminar",{name:"i18n",hash:{},data:a,loc:{start:{line:8,column:71},end:{line:8,column:96}}}))+"</button>\r\n            \r\n        </div>\r\n    </div>\r\n</div>"},useData:!0}),this.Rup.Templates.rup.widget.help=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o=null!=n?n:l.nullContext||{},i=l.hooks.helperMissing,r=l.escapeExpression,u=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'\r\n<p class="help_widget_intro">'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.parrafo1",{name:"i18n",hash:{},data:a,loc:{start:{line:2,column:29},end:{line:2,column:53}}}))+'</p>\r\n\r\n<div class="help_block add_widget_action">\r\n<p>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.addWidget",{name:"i18n",hash:{},data:a,loc:{start:{line:5,column:3},end:{line:5,column:28}}}))+"</p>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.addWidgetText",{name:"i18n",hash:{},data:a,loc:{start:{line:6,column:3},end:{line:6,column:32}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_block config_widget_action">\r\n<p>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.configura",{name:"i18n",hash:{},data:a,loc:{start:{line:10,column:3},end:{line:10,column:28}}}))+"</p>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.configuraText",{name:"i18n",hash:{},data:a,loc:{start:{line:11,column:3},end:{line:11,column:32}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_block help_widget_action">\r\n<p>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.ayuda",{name:"i18n",hash:{},data:a,loc:{start:{line:15,column:3},end:{line:15,column:24}}}))+"</p>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"help.ayudaText",{name:"i18n",hash:{},data:a,loc:{start:{line:16,column:3},end:{line:16,column:28}}}))+"</p>\r\n</div>\r\n"},useData:!0}),this.Rup.Templates.rup.widget.rss=l.template({1:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'    <div class="list-group">\r\n'+(null!=(o=i(e,"each").call(null!=n?n:l.nullContext||{},null!=n?i(n,"items"):n,{name:"each",hash:{},fn:l.program(2,a,0),inverse:l.noop,data:a,loc:{start:{line:3,column:7},end:{line:9,column:17}}}))?o:"")+"    </div>\r\n"},2:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'          <a href="'+s(typeof(o=null!=(o=c(e,"link")||(null!=n?c(n,"link"):n))?o:r)===u?o.call(i,{name:"link",hash:{},data:a,loc:{start:{line:4,column:19},end:{line:4,column:27}}}):o)+'" class="list-group-item" data-source="'+s(typeof(o=null!=(o=c(e,"source")||(null!=n?c(n,"source"):n))?o:r)===u?o.call(i,{name:"source",hash:{},data:a,loc:{start:{line:4,column:66},end:{line:4,column:76}}}):o)+'" data-url="'+s(typeof(o=null!=(o=c(e,"link")||(null!=n?c(n,"link"):n))?o:r)===u?o.call(i,{name:"link",hash:{},data:a,loc:{start:{line:4,column:88},end:{line:4,column:96}}}):o)+'" data-comments="'+s(typeof(o=null!=(o=c(e,"comments")||(null!=n?c(n,"comments"):n))?o:r)===u?o.call(i,{name:"comments",hash:{},data:a,loc:{start:{line:4,column:113},end:{line:4,column:125}}}):o)+'" target="_blank">\r\n            <h5 class="list-group-item-heading">'+s(typeof(o=null!=(o=c(e,"title")||(null!=n?c(n,"title"):n))?o:r)===u?o.call(i,{name:"title",hash:{},data:a,loc:{start:{line:5,column:48},end:{line:5,column:57}}}):o)+'</h5>\r\n            <p class="list-group-item-text">'+s(typeof(o=null!=(o=c(e,"content")||(null!=n?c(n,"content"):n))?o:r)===u?o.call(i,{name:"content",hash:{},data:a,loc:{start:{line:6,column:44},end:{line:6,column:55}}}):o)+'</p>\r\n            <p class="list-group-item-text">'+s(typeof(o=null!=(o=c(e,"pubDate")||(null!=n?c(n,"pubDate"):n))?o:r)===u?o.call(i,{name:"pubDate",hash:{},data:a,loc:{start:{line:7,column:44},end:{line:7,column:55}}}):o)+"</p>\r\n          </a>\r\n"},compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return(null!=(o=i(e,"each").call(null!=n?n:l.nullContext||{},null!=n?i(n,"channel"):n,{name:"each",hash:{},fn:l.program(1,a,0),inverse:l.noop,data:a,loc:{start:{line:1,column:0},end:{line:11,column:9}}}))?o:"")+"\r\n"},useData:!0}),this.Rup.Templates.rup.widget.search=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o,i=null!=n?n:l.nullContext||{},r=l.hooks.helperMissing,u="function",s=l.escapeExpression,c=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return'<form>\r\n    <div class="mb-3">\r\n        <label for="'+s(typeof(o=null!=(o=c(e,"fieldId")||(null!=n?c(n,"fieldId"):n))?o:r)===u?o.call(i,{name:"fieldId",hash:{},data:a,loc:{start:{line:3,column:20},end:{line:3,column:31}}}):o)+'" class="control-label">'+s(typeof(o=null!=(o=c(e,"fieldLabel")||(null!=n?c(n,"fieldLabel"):n))?o:r)===u?o.call(i,{name:"fieldLabel",hash:{},data:a,loc:{start:{line:3,column:55},end:{line:3,column:69}}}):o)+'</label>\r\n        <input type="text" class="form-control" id="'+s(typeof(o=null!=(o=c(e,"fieldId")||(null!=n?c(n,"fieldId"):n))?o:r)===u?o.call(i,{name:"fieldId",hash:{},data:a,loc:{start:{line:4,column:52},end:{line:4,column:63}}}):o)+'" placeholder="'+s(typeof(o=null!=(o=c(e,"fieldPlaceholder")||(null!=n?c(n,"fieldPlaceholder"):n))?o:r)===u?o.call(i,{name:"fieldPlaceholder",hash:{},data:a,loc:{start:{line:4,column:78},end:{line:4,column:98}}}):o)+'">\r\n    </div>\r\n    <div class="mb-3">\r\n        <button type="button" class="btn-material btn-material-primary-high-emphasis">\r\n            <span class="mdi mdi-magnify"></span>\r\n            Consultar</button>\r\n        <button type="button" class="btn-material btn-material-primary-high-emphasis">\r\n            <span class="mdi mdi-cog"></span>\r\n            Tramitar</button>\r\n    </div>\r\n</form> \r\n'},useData:!0}),this.Rup.Templates.rup.widget.welcome=l.template({compiler:[8,">= 4.3.0"],main:function(l,n,e,t,a){var o=null!=n?n:l.nullContext||{},i=l.hooks.helperMissing,r=l.escapeExpression,u=l.lookupProperty||function(l,n){if(Object.prototype.hasOwnProperty.call(l,n))return l[n]};return"<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.parrafo1",{name:"i18n",hash:{},data:a,loc:{start:{line:1,column:3},end:{line:1,column:30}}}))+"</p>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.parrafo2",{name:"i18n",hash:{},data:a,loc:{start:{line:2,column:3},end:{line:2,column:30}}}))+'</p>\r\n\r\n\r\n<div class="help_herramienta bienvenida_1 noborder_widget">\r\n<h2>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.seleccionActivo",{name:"i18n",hash:{},data:a,loc:{start:{line:6,column:4},end:{line:6,column:38}}}))+"</h2>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.seleccionActivoText",{name:"i18n",hash:{},data:a,loc:{start:{line:7,column:3},end:{line:7,column:41}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_herramienta bienvenida_2">\r\n<h2>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.opcionConfiguracion",{name:"i18n",hash:{},data:a,loc:{start:{line:11,column:4},end:{line:11,column:42}}}))+"</h2>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.opcionConfiguracionText",{name:"i18n",hash:{},data:a,loc:{start:{line:12,column:3},end:{line:12,column:45}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_herramienta bienvenida_3">\r\n<h2>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.addWidget",{name:"i18n",hash:{},data:a,loc:{start:{line:16,column:4},end:{line:16,column:32}}}))+"</h2>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.addWidgetText",{name:"i18n",hash:{},data:a,loc:{start:{line:17,column:3},end:{line:17,column:35}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_herramienta bienvenida_4">\r\n<h2>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.accesoFamilias",{name:"i18n",hash:{},data:a,loc:{start:{line:21,column:4},end:{line:21,column:37}}}))+"</h2>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.accesoFamiliasText",{name:"i18n",hash:{},data:a,loc:{start:{line:22,column:3},end:{line:22,column:40}}}))+'</p>\r\n</div>\r\n\r\n<div class="help_herramienta bienvenida_5">\r\n<h2>'+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.herramientas",{name:"i18n",hash:{},data:a,loc:{start:{line:26,column:4},end:{line:26,column:35}}}))+"</h2>\r\n<p>"+r((u(e,"i18n")||n&&u(n,"i18n")||i).call(o,"welcome.herramientasText",{name:"i18n",hash:{},data:a,loc:{start:{line:27,column:3},end:{line:27,column:38}}}))+"</p>\r\n</div>\r\n\r\n"},useData:!0}),this.Rup}));
+
+        ( function( factory ) {
+         if ( typeof define === "function" && define.amd ) {
+
+            // AMD. Register as an anonymous module.
+            define( ["handlebars" ], factory );
+         } else {
+
+            // Browser globals
+            factory( Handlebars );
+         }
+        } ( function( Handlebars ) {
+          // Configurar Handlebars para suprimir warnings de acceso a propiedades del prototipo
+          if (typeof Handlebars !== 'undefined') {
+            // Interceptar y suprimir warnings específicos
+            var originalLog = Handlebars.logger.log;
+            if (Handlebars.logger && originalLog) {
+              Handlebars.logger.log = function(level, message) {
+                if (typeof message === 'string' && message.includes('Access has been denied to resolve the property')) {
+                  return; // Suprimir este warning
+                }
+                return originalLog.apply(this, arguments);
+              };
+            }
+            
+            // Configurar opciones de runtime globalmente
+            if (Handlebars.Utils && Handlebars.Utils.extend) {
+              Handlebars.Utils.extend(Handlebars, {
+                allowProtoPropertiesByDefault: true,
+                allowProtoMethodsByDefault: true
+              });
+            }
+          }
+          this["Rup"] = this["Rup"] || {};
+this["Rup"]["Templates"] = this["Rup"]["Templates"] || {};
+this["Rup"]["Templates"]["rup"] = this["Rup"]["Templates"]["rup"] || {};
+this["Rup"]["Templates"]["rup"]["button"] = this["Rup"]["Templates"]["rup"]["button"] || {};
+this["Rup"]["Templates"]["rup"]["button"]["dropdownButton"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<button id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":12},"end":{"line":1,"column":18}}}) : helper)))
+    + "\" class=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"classes") || (depth0 != null ? lookupProperty(depth0,"classes") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"classes","hash":{},"data":data,"loc":{"start":{"line":1,"column":27},"end":{"line":1,"column":38}}}) : helper)))
+    + "\" type=\"button\">\r\n  <i class=\"mdi mdi-menu-down\" aria-hidden=\"true\"></i>\r\n</button>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["button"]["mbutton-container"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":15}}}) : helper)))
+    + "\" class=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"classes") || (depth0 != null ? lookupProperty(depth0,"classes") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"classes","hash":{},"data":data,"loc":{"start":{"line":1,"column":24},"end":{"line":1,"column":35}}}) : helper)))
+    + "\">\r\n  <ul role=\"menu\" aria-activedescendant=\"active-menuitem\" aria-labelledby=\"active-menuitem\">\r\n    <li style=\"display: block;\">\r\n      <button type=\"button\" class=\"btn-material btn-material-primary-high-emphasis rup-toolbar_button rup-button rup-toolbar_menuButtonElement\" id=\"toolbar##mbuton1##nuevo\">\r\n        <span class=\"mdi mdi-plus\"></span>\r\n        <span class=\"rup-ui-button-text\">\r\n        	"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"rup_button.new",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":7,"column":9},"end":{"line":7,"column":34}}}))
+    + "\r\n        </span>\r\n      </button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["button"]["mbutton"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<button id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":12},"end":{"line":1,"column":18}}}) : helper)))
+    + "\"\r\n  class=\"btn-material btn-material-primary-high-emphasis rup-toolbar_menuButton rup-toolbar_menuButtonSlided\"\r\n  role=\"button\"\r\n  href=\"#\">\r\n  	"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":5,"column":3},"end":{"line":5,"column":12}}}) : helper)))
+    + "\r\n  	<span class=\"mdi "
+    + alias4(((helper = (helper = lookupProperty(helpers,"iconClasses") || (depth0 != null ? lookupProperty(depth0,"iconClasses") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"iconClasses","hash":{},"data":data,"loc":{"start":{"line":6,"column":20},"end":{"line":6,"column":35}}}) : helper)))
+    + "\" aria-hidden=\"true\"></span>\r\n</button>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["dashboard"] = this["Rup"]["Templates"]["rup"]["dashboard"] || {};
+this["Rup"]["Templates"]["rup"]["dashboard"]["item"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return " data-gs-min-width=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"minWidth") || (depth0 != null ? lookupProperty(depth0,"minWidth") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"minWidth","hash":{},"data":data,"loc":{"start":{"line":2,"column":41},"end":{"line":2,"column":53}}}) : helper)))
+    + "\" ";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return " data-gs-max-width=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"maxWidth") || (depth0 != null ? lookupProperty(depth0,"maxWidth") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"maxWidth","hash":{},"data":data,"loc":{"start":{"line":3,"column":41},"end":{"line":3,"column":53}}}) : helper)))
+    + "\" ";
+},"5":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return " data-gs-min-height=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"minHeight") || (depth0 != null ? lookupProperty(depth0,"minHeight") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"minHeight","hash":{},"data":data,"loc":{"start":{"line":4,"column":43},"end":{"line":4,"column":56}}}) : helper)))
+    + "\" ";
+},"7":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return " data-gs-max-height=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"maxHeight") || (depth0 != null ? lookupProperty(depth0,"maxHeight") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"maxHeight","hash":{},"data":data,"loc":{"start":{"line":5,"column":43},"end":{"line":5,"column":56}}}) : helper)))
+    + "\" ";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div class=\"grid-stack-item\"  \r\n     "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"minWidth") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":2,"column":5},"end":{"line":2,"column":62}}})) != null ? stack1 : "")
+    + "\r\n     "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"maxWidth") : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":3,"column":5},"end":{"line":3,"column":62}}})) != null ? stack1 : "")
+    + "\r\n     "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"minHeight") : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":4,"column":5},"end":{"line":4,"column":65}}})) != null ? stack1 : "")
+    + "\r\n     "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"maxHeight") : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":5,"column":5},"end":{"line":5,"column":65}}})) != null ? stack1 : "")
+    + "\r\n     data-rup-widget-type=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"type") || (depth0 != null ? lookupProperty(depth0,"type") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"type","hash":{},"data":data,"loc":{"start":{"line":6,"column":27},"end":{"line":6,"column":35}}}) : helper)))
+    + "\">\r\n\r\n    <div class=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"itemClass") || (depth0 != null ? lookupProperty(depth0,"itemClass") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"itemClass","hash":{},"data":data,"loc":{"start":{"line":8,"column":16},"end":{"line":8,"column":29}}}) : helper)))
+    + "\" >\r\n\r\n    </div>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["table"] = this["Rup"]["Templates"]["rup"]["table"] || {};
+this["Rup"]["Templates"]["rup"]["table"]["detail"] = this["Rup"]["Templates"]["rup"]["table"]["detail"] || {};
+this["Rup"]["Templates"]["rup"]["table"]["detail"]["navigation"] = this["Rup"]["Templates"]["rup"]["table"]["detail"]["navigation"] || {};
+this["Rup"]["Templates"]["rup"]["table"]["detail"]["navigation"]["bootstrap"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\"pagination_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":1,"column":20},"end":{"line":1,"column":31}}}) : helper)))
+    + "\" class=\"col-sm-4 text-center text-sm-start\">\r\n  	<i class=\"mdi mdi-view-list\" aria-hidden=\"true\" title=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"resultNumText") || (depth0 != null ? lookupProperty(depth0,"resultNumText") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"resultNumText","hash":{},"data":data,"loc":{"start":{"line":2,"column":58},"end":{"line":2,"column":75}}}) : helper)))
+    + "\"></i>\r\n  	<span id=\"rup_table_selectedElements_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":3,"column":40},"end":{"line":3,"column":51}}}) : helper)))
+    + "\" class=\"ms-1\" >\r\n    	"
+    + alias4(((helper = (helper = lookupProperty(helpers,"resultNumText") || (depth0 != null ? lookupProperty(depth0,"resultNumText") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"resultNumText","hash":{},"data":data,"loc":{"start":{"line":4,"column":5},"end":{"line":4,"column":22}}}) : helper)))
+    + "\r\n  	</span>\r\n</div>\r\n<div id=\"pag_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":7,"column":13},"end":{"line":7,"column":24}}}) : helper)))
+    + "\" class=\"col-sm-8 text-center text-sm-end mt-3 mt-sm-0\">\r\n    <button type=\"button\" id=\"first_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":8,"column":36},"end":{"line":8,"column":47}}}) : helper)))
+    + "\" class=\"btn-sm btn-outline-dark\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelFirst") || (depth0 != null ? lookupProperty(depth0,"labelFirst") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelFirst","hash":{},"data":data,"loc":{"start":{"line":8,"column":86},"end":{"line":8,"column":100}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelFirst") || (depth0 != null ? lookupProperty(depth0,"labelFirst") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelFirst","hash":{},"data":data,"loc":{"start":{"line":8,"column":102},"end":{"line":8,"column":116}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"back_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":9,"column":35},"end":{"line":9,"column":46}}}) : helper)))
+    + "\" class=\"btn-sm btn-outline-dark\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelPrev") || (depth0 != null ? lookupProperty(depth0,"labelPrev") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelPrev","hash":{},"data":data,"loc":{"start":{"line":9,"column":85},"end":{"line":9,"column":98}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelPrev") || (depth0 != null ? lookupProperty(depth0,"labelPrev") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelPrev","hash":{},"data":data,"loc":{"start":{"line":9,"column":100},"end":{"line":9,"column":113}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"forward_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":10,"column":38},"end":{"line":10,"column":49}}}) : helper)))
+    + "\" class=\"btn-sm btn-outline-dark\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelNext") || (depth0 != null ? lookupProperty(depth0,"labelNext") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelNext","hash":{},"data":data,"loc":{"start":{"line":10,"column":88},"end":{"line":10,"column":101}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelNext") || (depth0 != null ? lookupProperty(depth0,"labelNext") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelNext","hash":{},"data":data,"loc":{"start":{"line":10,"column":103},"end":{"line":10,"column":116}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"last_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":11,"column":35},"end":{"line":11,"column":46}}}) : helper)))
+    + "\" class=\"btn-sm btn-outline-dark\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelLast") || (depth0 != null ? lookupProperty(depth0,"labelLast") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelLast","hash":{},"data":data,"loc":{"start":{"line":11,"column":85},"end":{"line":11,"column":98}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelLast") || (depth0 != null ? lookupProperty(depth0,"labelLast") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelLast","hash":{},"data":data,"loc":{"start":{"line":11,"column":100},"end":{"line":11,"column":113}}}) : helper)))
+    + "</button>\r\n</div>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["table"]["detail"]["navigation"]["material"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\"pagination_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":1,"column":20},"end":{"line":1,"column":31}}}) : helper)))
+    + "\" class=\"col-sm-4 text-center text-sm-start\">\r\n	<i class=\"mdi mdi-view-list\" aria-hidden=\"true\" title=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"resultNumText") || (depth0 != null ? lookupProperty(depth0,"resultNumText") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"resultNumText","hash":{},"data":data,"loc":{"start":{"line":2,"column":56},"end":{"line":2,"column":73}}}) : helper)))
+    + "\"></i>\r\n  	<span id=\"rup_table_selectedElements_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":3,"column":40},"end":{"line":3,"column":51}}}) : helper)))
+    + "\" class=\"ms-1\" >\r\n    	"
+    + alias4(((helper = (helper = lookupProperty(helpers,"resultNumText") || (depth0 != null ? lookupProperty(depth0,"resultNumText") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"resultNumText","hash":{},"data":data,"loc":{"start":{"line":4,"column":5},"end":{"line":4,"column":22}}}) : helper)))
+    + "\r\n  	</span>\r\n</div>\r\n<div id=\"pag_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":7,"column":13},"end":{"line":7,"column":24}}}) : helper)))
+    + "\" class=\"col-sm-8 text-center text-sm-end mt-3 mt-sm-0\">\r\n    <button type=\"button\" id=\"first_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":8,"column":36},"end":{"line":8,"column":47}}}) : helper)))
+    + "\" class=\"btn-material btn-material-sm btn-material-secondary-low-emphasis\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelFirst") || (depth0 != null ? lookupProperty(depth0,"labelFirst") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelFirst","hash":{},"data":data,"loc":{"start":{"line":8,"column":127},"end":{"line":8,"column":141}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelFirst") || (depth0 != null ? lookupProperty(depth0,"labelFirst") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelFirst","hash":{},"data":data,"loc":{"start":{"line":8,"column":143},"end":{"line":8,"column":157}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"back_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":9,"column":35},"end":{"line":9,"column":46}}}) : helper)))
+    + "\" class=\"btn-material btn-material-sm btn-material-secondary-low-emphasis\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelPrev") || (depth0 != null ? lookupProperty(depth0,"labelPrev") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelPrev","hash":{},"data":data,"loc":{"start":{"line":9,"column":126},"end":{"line":9,"column":139}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelPrev") || (depth0 != null ? lookupProperty(depth0,"labelPrev") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelPrev","hash":{},"data":data,"loc":{"start":{"line":9,"column":141},"end":{"line":9,"column":154}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"forward_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":10,"column":38},"end":{"line":10,"column":49}}}) : helper)))
+    + "\" class=\"btn-material btn-material-sm btn-material-secondary-low-emphasis\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelNext") || (depth0 != null ? lookupProperty(depth0,"labelNext") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelNext","hash":{},"data":data,"loc":{"start":{"line":10,"column":129},"end":{"line":10,"column":142}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelNext") || (depth0 != null ? lookupProperty(depth0,"labelNext") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelNext","hash":{},"data":data,"loc":{"start":{"line":10,"column":144},"end":{"line":10,"column":157}}}) : helper)))
+    + "</button>\r\n    <button type=\"button\" id=\"last_"
+    + alias4(((helper = (helper = lookupProperty(helpers,"tableId") || (depth0 != null ? lookupProperty(depth0,"tableId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tableId","hash":{},"data":data,"loc":{"start":{"line":11,"column":35},"end":{"line":11,"column":46}}}) : helper)))
+    + "\" class=\"btn-material btn-material-sm btn-material-secondary-low-emphasis\" alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelLast") || (depth0 != null ? lookupProperty(depth0,"labelLast") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelLast","hash":{},"data":data,"loc":{"start":{"line":11,"column":126},"end":{"line":11,"column":139}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"labelLast") || (depth0 != null ? lookupProperty(depth0,"labelLast") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelLast","hash":{},"data":data,"loc":{"start":{"line":11,"column":141},"end":{"line":11,"column":154}}}) : helper)))
+    + "</button>\r\n</div>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["table"]["pager"] = this["Rup"]["Templates"]["rup"]["table"]["pager"] || {};
+this["Rup"]["Templates"]["rup"]["table"]["pager"]["link"] = this["Rup"]["Templates"]["rup"]["table"]["pager"]["link"] || {};
+this["Rup"]["Templates"]["rup"]["table"]["pager"]["link"]["bootstrap"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<a href=\"javascript:void(0)\" class=\"linkPaginacion\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":1,"column":52},"end":{"line":1,"column":61}}}) : helper)))
+    + "</a>\r\n<i class=\"iconPaginacion "
+    + alias4(((helper = (helper = lookupProperty(helpers,"icon") || (depth0 != null ? lookupProperty(depth0,"icon") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"icon","hash":{},"data":data,"loc":{"start":{"line":2,"column":25},"end":{"line":2,"column":33}}}) : helper)))
+    + "\"></i></td>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["table"]["pager"]["link"]["material"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<button type=\"button\" class=\"btn-material btn-material-sm btn-material-secondary-low-emphasis\">\r\n	<i class=\"iconPaginacion "
+    + alias4(((helper = (helper = lookupProperty(helpers,"icon") || (depth0 != null ? lookupProperty(depth0,"icon") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"icon","hash":{},"data":data,"loc":{"start":{"line":2,"column":26},"end":{"line":2,"column":34}}}) : helper)))
+    + "\"></i>\r\n	<span>"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":3,"column":7},"end":{"line":3,"column":16}}}) : helper)))
+    + "<span>\r\n</button>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["tabs"] = this["Rup"]["Templates"]["rup"]["tabs"] || {};
+this["Rup"]["Templates"]["rup"]["tabs"]["container"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<ul>\r\n\r\n</ul>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["tabs"]["subtab"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id="
+    + alias4(((helper = (helper = lookupProperty(helpers,"rupRandomLayerId") || (depth0 != null ? lookupProperty(depth0,"rupRandomLayerId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rupRandomLayerId","hash":{},"data":data,"loc":{"start":{"line":1,"column":8},"end":{"line":1,"column":28}}}) : helper)))
+    + " class=\"rupRandomLayerId ssss\">\r\n  <div id="
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":10},"end":{"line":2,"column":16}}}) : helper)))
+    + " actualTab=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"actualTab") || (depth0 != null ? lookupProperty(depth0,"actualTab") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"actualTab","hash":{},"data":data,"loc":{"start":{"line":2,"column":28},"end":{"line":2,"column":41}}}) : helper)))
+    + "\">\r\n\r\n  </div>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["tabs"]["tab"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "        <span class=\"ui-icon ui-icon-close\" role=\"presentation\">Remove Tab</span>\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<li>\r\n  <a  id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":10},"end":{"line":2,"column":16}}}) : helper)))
+    + "\"\r\n      href=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"href") || (depth0 != null ? lookupProperty(depth0,"href") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"href","hash":{},"data":data,"loc":{"start":{"line":3,"column":12},"end":{"line":3,"column":20}}}) : helper)))
+    + "\"\r\n      rupLevel=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"rupLevel") || (depth0 != null ? lookupProperty(depth0,"rupLevel") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rupLevel","hash":{},"data":data,"loc":{"start":{"line":4,"column":16},"end":{"line":4,"column":28}}}) : helper)))
+    + "\"\r\n      title=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"title") || (depth0 != null ? lookupProperty(depth0,"title") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data,"loc":{"start":{"line":5,"column":13},"end":{"line":5,"column":22}}}) : helper)))
+    + "\"\r\n      alt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"alt") || (depth0 != null ? lookupProperty(depth0,"alt") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"alt","hash":{},"data":data,"loc":{"start":{"line":6,"column":11},"end":{"line":6,"column":18}}}) : helper)))
+    + "\">\r\n\r\n      <div class=\"rup-tabs_title\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":8,"column":34},"end":{"line":8,"column":43}}}) : helper)))
+    + "</div>\r\n      <span class=\"rup-tabs_loading\"> </span>\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"btnClose") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":10,"column":6},"end":{"line":12,"column":13}}})) != null ? stack1 : "")
+    + "  </a>\r\n\r\n</li>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["toolbar"] = this["Rup"]["Templates"]["rup"]["toolbar"] || {};
+this["Rup"]["Templates"]["rup"]["toolbar"]["button"] = this["Rup"]["Templates"]["rup"]["toolbar"]["button"] || {};
+this["Rup"]["Templates"]["rup"]["toolbar"]["button"]["bootstrap"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "\r\n<button type=\"button\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":26},"end":{"line":2,"column":32}}}) : helper)))
+    + "\" class=\"rup-button\">\r\n		<i class=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"css") || (depth0 != null ? lookupProperty(depth0,"css") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"css","hash":{},"data":data,"loc":{"start":{"line":3,"column":12},"end":{"line":3,"column":19}}}) : helper)))
+    + "\" aria-hidden=\"true\"></i>\r\n    <span class=\"rup-ui-button-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":4,"column":37},"end":{"line":4,"column":46}}}) : helper)))
+    + "</span>\r\n</button>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["toolbar"]["button"]["jqueryui"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<button id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":12},"end":{"line":1,"column":18}}}) : helper)))
+    + "\" type=\"button\" class=\"rup-toolbar_button\">\r\n    <span class=\"ui-button-icon ui-icon "
+    + alias4(((helper = (helper = lookupProperty(helpers,"css") || (depth0 != null ? lookupProperty(depth0,"css") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"css","hash":{},"data":data,"loc":{"start":{"line":2,"column":40},"end":{"line":2,"column":47}}}) : helper)))
+    + "\"></span>\r\n    <span class=\"ui-button-icon-space\"> </span>\r\n    <span class=\"rup-ui-button-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":4,"column":37},"end":{"line":4,"column":46}}}) : helper)))
+    + "</span>\r\n</button>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["toolbar"]["button"]["material"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "\r\n<button type=\"button\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":26},"end":{"line":2,"column":32}}}) : helper)))
+    + "\" class=\"btn-material btn-material-primary-high-emphasis rup-button\">\r\n	<i class=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"css") || (depth0 != null ? lookupProperty(depth0,"css") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"css","hash":{},"data":data,"loc":{"start":{"line":3,"column":11},"end":{"line":3,"column":18}}}) : helper)))
+    + "\" aria-hidden=\"true\"></i>\r\n    <span class=\"rup-ui-button-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":4,"column":37},"end":{"line":4,"column":46}}}) : helper)))
+    + "</span>\r\n</button>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["toolbar"]["mbutton"] = this["Rup"]["Templates"]["rup"]["toolbar"]["mbutton"] || {};
+this["Rup"]["Templates"]["rup"]["toolbar"]["mbutton"]["bootstrap"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":15}}}) : helper)))
+    + "-mbutton-group\" class=\"rup-mbutton "
+    + alias4(((helper = (helper = lookupProperty(helpers,"groupClasses") || (depth0 != null ? lookupProperty(depth0,"groupClasses") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"groupClasses","hash":{},"data":data,"loc":{"start":{"line":1,"column":50},"end":{"line":1,"column":66}}}) : helper)))
+    + "\">\r\n		<button type=\"button\" data-mbutton=\"true\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":48},"end":{"line":2,"column":54}}}) : helper)))
+    + "\" data-mbutton=\"true\" class=\"ui-button ui-corner-all ui-widget rup-button\">\r\n			<i class=\"mdi mdi-cog\" aria-hidden=\"true\"></i>\r\n			<span class=\"rup-ui-button-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":4,"column":36},"end":{"line":4,"column":45}}}) : helper)))
+    + "</span>\r\n		</button>\r\n		<ul id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":6,"column":10},"end":{"line":6,"column":16}}}) : helper)))
+    + "-mbutton-container\" class=\"rup-mbutton-container\" aria-labelledby=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":6,"column":83},"end":{"line":6,"column":89}}}) : helper)))
+    + "\">\r\n\r\n		</ul>\r\n</div>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["toolbar"]["mbutton"]["material"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":15}}}) : helper)))
+    + "-mbutton-group\" class=\"rup-mbutton "
+    + alias4(((helper = (helper = lookupProperty(helpers,"groupClasses") || (depth0 != null ? lookupProperty(depth0,"groupClasses") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"groupClasses","hash":{},"data":data,"loc":{"start":{"line":1,"column":50},"end":{"line":1,"column":66}}}) : helper)))
+    + "\">\r\n		<button type=\"button\" data-mbutton=\"true\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":2,"column":48},"end":{"line":2,"column":54}}}) : helper)))
+    + "\" data-mbutton=\"true\" class=\"btn-material btn-material-primary-high-emphasis rup-button\">\r\n			<i class=\"mdi mdi-cog\" aria-hidden=\"true\"></i>\r\n			<span class=\"rup-ui-button-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"label") || (depth0 != null ? lookupProperty(depth0,"label") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label","hash":{},"data":data,"loc":{"start":{"line":4,"column":36},"end":{"line":4,"column":45}}}) : helper)))
+    + "</span>\r\n		</button>\r\n		<ul id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":6,"column":10},"end":{"line":6,"column":16}}}) : helper)))
+    + "-mbutton-container\" class=\"rup-mbutton-container\" aria-labelledby=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"id") || (depth0 != null ? lookupProperty(depth0,"id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data,"loc":{"start":{"line":6,"column":83},"end":{"line":6,"column":89}}}) : helper)))
+    + "\">\r\n\r\n		</ul>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["upload"] = this["Rup"]["Templates"]["rup"]["upload"] || {};
+this["Rup"]["Templates"]["rup"]["upload"]["downloadTemplate"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <li class=\"list-group-item template-download "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"error") : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":4,"column":49},"end":{"line":4,"column":74}}})) != null ? stack1 : "")
+    + "\">\r\n      <div class=\"row\">\r\n\r\n\r\n          <div class=\"col-xs-6 col-md-3\">\r\n            <p class=\"name text-xs-left\"><b>"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"error") : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.program(6, data, 0),"data":data,"loc":{"start":{"line":9,"column":44},"end":{"line":9,"column":110}}})) != null ? stack1 : "")
+    + "</b></p>\r\n            <span class=\"name text-xs-left\"><span class=\"type\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"type") || (depth0 != null ? lookupProperty(depth0,"type") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"type","hash":{},"data":data,"loc":{"start":{"line":10,"column":63},"end":{"line":10,"column":71}}}) : helper)))
+    + "</span></span>\r\n\r\n            <p class=\"name text-xs-left error-text error\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"error") || (depth0 != null ? lookupProperty(depth0,"error") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"error","hash":{},"data":data,"loc":{"start":{"line":12,"column":58},"end":{"line":12,"column":67}}}) : helper)))
+    + "</p>\r\n\r\n          </div>\r\n\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"error") : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data,"loc":{"start":{"line":16,"column":10},"end":{"line":31,"column":15}}})) != null ? stack1 : "")
+    + "      </div>\r\n    </li>\r\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "error";
+},"4":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return container.escapeExpression(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"name","hash":{},"data":data,"loc":{"start":{"line":9,"column":57},"end":{"line":9,"column":65}}}) : helper)));
+},"6":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<a href=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"url") || (depth0 != null ? lookupProperty(depth0,"url") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data,"loc":{"start":{"line":9,"column":82},"end":{"line":9,"column":89}}}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":9,"column":91},"end":{"line":9,"column":99}}}) : helper)))
+    + "</a>";
+},"8":function(container,depth0,helpers,partials,data) {
+    return "\r\n";
+},"10":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "            <div class=\"col-xs-6 col-md-4 fileupload-buttonbar\">\r\n				<a href=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"url") || (depth0 != null ? lookupProperty(depth0,"url") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data,"loc":{"start":{"line":20,"column":13},"end":{"line":20,"column":20}}}) : helper)))
+    + "\">\r\n               		<span  class=\"btn-material btn-material-primary-high-emphasis download\">\r\n                		<i class=\"mdi mdi-download\" aria-hidden=\"true\"></i>\r\n                		<span>"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"rup_upload.openUploaded",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":23,"column":24},"end":{"line":23,"column":58}}}))
+    + "</span>\r\n                	</span>\r\n                </a>\r\n                <span class=\"btn-material btn-material-secondary-high-emphasis delete\" data-type=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"delete_type") || (depth0 != null ? lookupProperty(depth0,"delete_type") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"delete_type","hash":{},"data":data,"loc":{"start":{"line":26,"column":98},"end":{"line":26,"column":113}}}) : helper)))
+    + "\" data-url=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"delete_url") || (depth0 != null ? lookupProperty(depth0,"delete_url") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"delete_url","hash":{},"data":data,"loc":{"start":{"line":26,"column":125},"end":{"line":26,"column":139}}}) : helper)))
+    + "\">\r\n                	<i class=\"mdi mdi-delete\" aria-hidden=\"true\"></i>\r\n                	<span>"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"rup_upload.deleteUploaded",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":28,"column":23},"end":{"line":28,"column":59}}}))
+    + "</span>\r\n                </span>\r\n            </div>\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "\r\n\r\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"files") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":3,"column":2},"end":{"line":34,"column":11}}})) != null ? stack1 : "");
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["upload"]["uploadTemplate"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <li class=\"list-group-item template-upload\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-6 col-md-3\">\r\n          <p class=\"name text-xs-left\"><b>"
+    + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":7,"column":42},"end":{"line":7,"column":50}}}) : helper)))
+    + "</b></p>\r\n          <span class=\"name text-xs-left\"><span class=\"type-text type\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"type") || (depth0 != null ? lookupProperty(depth0,"type") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"type","hash":{},"data":data,"loc":{"start":{"line":8,"column":71},"end":{"line":8,"column":79}}}) : helper)))
+    + "</span><span class=\"name text-xs-left size-text size\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"size") || (depth0 != null ? lookupProperty(depth0,"size") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"size","hash":{},"data":data,"loc":{"start":{"line":8,"column":133},"end":{"line":8,"column":141}}}) : helper)))
+    + "</span></span>\r\n          <p class=\"name text-xs-left error-text error\"></p>\r\n\r\n\r\n        </div>\r\n\r\n        <div class=\"col-xs-6 col-md-4 fileupload-buttonbar\">\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depths[1] != null ? lookupProperty(depths[1],"notSubmitInForm") : depths[1]),{"name":"if","hash":{},"fn":container.program(2, data, 0, blockParams, depths),"inverse":container.noop,"data":data,"loc":{"start":{"line":15,"column":12},"end":{"line":21,"column":19}}})) != null ? stack1 : "")
+    + "\r\n                <button class=\"btn-material btn-material-secondary-high-emphasis cancel\">\r\n                    <i class=\"mdi mdi-close-circle\" aria-hidden=\"true\"></i>\r\n                    <span>"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"rup_upload.cancelUpload",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":25,"column":26},"end":{"line":25,"column":60}}}))
+    + "</span>\r\n                </button>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </li>\r\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "                <button class=\"btn-material btn-material-primary-high-emphasis start\" disabled=\"true\">\r\n                    <i class=\"mdi mdi-upload\" aria-hidden=\"true\"></i>\r\n                    <span>"
+    + container.escapeExpression((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||container.hooks.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),"rup_upload.startUpload",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":18,"column":26},"end":{"line":18,"column":59}}}))
+    + "</span>\r\n                </button>\r\n\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "\r\n\r\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"files") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data,"loc":{"start":{"line":3,"column":2},"end":{"line":32,"column":11}}})) != null ? stack1 : "");
+},"useData":true,"useDepths":true});
+this["Rup"]["Templates"]["rup"]["widget"] = this["Rup"]["Templates"]["rup"]["widget"] || {};
+this["Rup"]["Templates"]["rup"]["widget"]["base"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetClose-"
+    + alias3(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":8,"column":32},"end":{"line":8,"column":40}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-delete\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.eliminar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":8,"column":145},"end":{"line":8,"column":170}}}))
+    + "\"></span>\r\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetReload-"
+    + alias3(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":11,"column":33},"end":{"line":11,"column":41}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-refresh\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.refrescar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":11,"column":147},"end":{"line":11,"column":173}}}))
+    + "\"></span>\r\n";
+},"5":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetResizeFull-"
+    + alias3(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":14,"column":37},"end":{"line":14,"column":45}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-window-maximize\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.maximizar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":14,"column":159},"end":{"line":14,"column":185}}}))
+    + "\"></span>\r\n";
+},"7":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetConfig-"
+    + alias3(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":18,"column":33},"end":{"line":18,"column":41}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-cog\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.configuracion",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":18,"column":143},"end":{"line":18,"column":173}}}))
+    + "\" ></span>\r\n";
+},"9":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetInfo-"
+    + alias4(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":21,"column":31},"end":{"line":21,"column":39}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-comment-question-outline\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"infoTextNew") || (depth0 != null ? lookupProperty(depth0,"infoTextNew") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"infoTextNew","hash":{},"data":data,"loc":{"start":{"line":21,"column":165},"end":{"line":21,"column":180}}}) : helper)))
+    + "\" tttt=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"infoText") || (depth0 != null ? lookupProperty(depth0,"infoText") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"infoText","hash":{},"data":data,"loc":{"start":{"line":21,"column":188},"end":{"line":21,"column":200}}}) : helper)))
+    + "\"></span>\r\n";
+},"11":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <span id=\"widgetShow-"
+    + alias3(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":24,"column":31},"end":{"line":24,"column":39}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-toggle-switch\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.mostrarOcultar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":24,"column":151},"end":{"line":24,"column":182}}}))
+    + "\"></span>\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div class=\"widget rssBottom\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":42}}}) : helper)))
+    + "\">\r\n    <div class=\"widget-header\">\r\n        <div>\r\n          <span class=\"widget-header-title\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"title") || (depth0 != null ? lookupProperty(depth0,"title") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data,"loc":{"start":{"line":4,"column":44},"end":{"line":4,"column":53}}}) : helper)))
+    + "</span>\r\n        </div>\r\n        <div class=\"widget-header-controls\">\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,((stack1 = (depth0 != null ? lookupProperty(depth0,"buttons") : depth0)) != null ? lookupProperty(stack1,"btnClose") : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":7,"column":10},"end":{"line":9,"column":17}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,((stack1 = (depth0 != null ? lookupProperty(depth0,"buttons") : depth0)) != null ? lookupProperty(stack1,"btnReload") : stack1),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":10,"column":10},"end":{"line":12,"column":17}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,((stack1 = (depth0 != null ? lookupProperty(depth0,"buttons") : depth0)) != null ? lookupProperty(stack1,"btnResizeFull") : stack1),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":13,"column":10},"end":{"line":15,"column":17}}})) != null ? stack1 : "")
+    + "          <span id=\"widgetResizeSmall-"
+    + alias4(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":16,"column":38},"end":{"line":16,"column":46}}}) : helper)))
+    + "\" class=\"widget-icon widget-icon-right mdi mdi-window-minimize\" data-toggle=\"tooltip\" data-placement=\"top\" title=\""
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.minimizar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":16,"column":160},"end":{"line":16,"column":186}}}))
+    + "\"></span>\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,((stack1 = (depth0 != null ? lookupProperty(depth0,"buttons") : depth0)) != null ? lookupProperty(stack1,"btnConfig") : stack1),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":17,"column":10},"end":{"line":19,"column":17}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"infoText") : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":20,"column":10},"end":{"line":22,"column":17}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,((stack1 = (depth0 != null ? lookupProperty(depth0,"buttons") : depth0)) != null ? lookupProperty(stack1,"btnShow") : stack1),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":23,"column":10},"end":{"line":25,"column":17}}})) != null ? stack1 : "")
+    + "        </div>\r\n    </div>\r\n    <div class=\"widget-feedback\">\r\n    </div>\r\n    <div class=\"widget-body\">\r\n\r\n    </div>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["close"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["configRequired"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<br/>"
+    + ((stack1 = ((helper = (helper = lookupProperty(helpers,"urlConsulta") || (depth0 != null ? lookupProperty(depth0,"urlConsulta") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"urlConsulta","hash":{},"data":data,"loc":{"start":{"line":4,"column":52},"end":{"line":4,"column":69}}}) : helper))) != null ? stack1 : "");
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"idModal") || (depth0 != null ? lookupProperty(depth0,"idModal") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"idModal","hash":{},"data":data,"loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":20}}}) : helper)))
+    + "\" class=\"config-required-modal\">\r\n    <div>\r\n        <div>\r\n            <span>"
+    + alias4(((helper = (helper = lookupProperty(helpers,"titulo") || (depth0 != null ? lookupProperty(depth0,"titulo") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"titulo","hash":{},"data":data,"loc":{"start":{"line":4,"column":18},"end":{"line":4,"column":28}}}) : helper)))
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"urlConsulta") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":4,"column":28},"end":{"line":4,"column":76}}})) != null ? stack1 : "")
+    + "</span><br>\r\n            <button id=\"btnConfigRequired\" type=\"button\" class=\"btn-material btn-material-primary-high-emphasis\">\r\n                <span class=\"mdi mdi-cog\" aria-hidden=\"true\"></span>"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.configuracion",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":6,"column":68},"end":{"line":6,"column":98}}}))
+    + "</button>\r\n            <button id=\"btnDelete\" type=\"button\" class=\"btn-material btn-material-warning-dark-high-emphasis\">\r\n                <span class=\"mdi mdi-delete\" aria-hidden=\"true\"></span>"
+    + alias4((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"title.eliminar",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":8,"column":71},"end":{"line":8,"column":96}}}))
+    + "</button>\r\n            \r\n        </div>\r\n    </div>\r\n</div>";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["help"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "\r\n<p class=\"help_widget_intro\">"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.parrafo1",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":2,"column":29},"end":{"line":2,"column":53}}}))
+    + "</p>\r\n\r\n<div class=\"help_block add_widget_action\">\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.addWidget",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":5,"column":3},"end":{"line":5,"column":28}}}))
+    + "</p>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.addWidgetText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":6,"column":3},"end":{"line":6,"column":32}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_block config_widget_action\">\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.configura",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":10,"column":3},"end":{"line":10,"column":28}}}))
+    + "</p>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.configuraText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":11,"column":3},"end":{"line":11,"column":32}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_block help_widget_action\">\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.ayuda",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":15,"column":3},"end":{"line":15,"column":24}}}))
+    + "</p>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"help.ayudaText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":16,"column":3},"end":{"line":16,"column":28}}}))
+    + "</p>\r\n</div>\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["rss"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <div class=\"list-group\">\r\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"items") : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":3,"column":7},"end":{"line":9,"column":17}}})) != null ? stack1 : "")
+    + "    </div>\r\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "          <a href=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"link") || (depth0 != null ? lookupProperty(depth0,"link") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"link","hash":{},"data":data,"loc":{"start":{"line":4,"column":19},"end":{"line":4,"column":27}}}) : helper)))
+    + "\" class=\"list-group-item\" data-source=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"source") || (depth0 != null ? lookupProperty(depth0,"source") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"source","hash":{},"data":data,"loc":{"start":{"line":4,"column":66},"end":{"line":4,"column":76}}}) : helper)))
+    + "\" data-url=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"link") || (depth0 != null ? lookupProperty(depth0,"link") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"link","hash":{},"data":data,"loc":{"start":{"line":4,"column":88},"end":{"line":4,"column":96}}}) : helper)))
+    + "\" data-comments=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"comments") || (depth0 != null ? lookupProperty(depth0,"comments") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comments","hash":{},"data":data,"loc":{"start":{"line":4,"column":113},"end":{"line":4,"column":125}}}) : helper)))
+    + "\" target=\"_blank\">\r\n            <h5 class=\"list-group-item-heading\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"title") || (depth0 != null ? lookupProperty(depth0,"title") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data,"loc":{"start":{"line":5,"column":48},"end":{"line":5,"column":57}}}) : helper)))
+    + "</h5>\r\n            <p class=\"list-group-item-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"content") || (depth0 != null ? lookupProperty(depth0,"content") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content","hash":{},"data":data,"loc":{"start":{"line":6,"column":44},"end":{"line":6,"column":55}}}) : helper)))
+    + "</p>\r\n            <p class=\"list-group-item-text\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"pubDate") || (depth0 != null ? lookupProperty(depth0,"pubDate") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pubDate","hash":{},"data":data,"loc":{"start":{"line":7,"column":44},"end":{"line":7,"column":55}}}) : helper)))
+    + "</p>\r\n          </a>\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"channel") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":1,"column":0},"end":{"line":11,"column":9}}})) != null ? stack1 : "")
+    + "\r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["search"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<form>\r\n    <div class=\"mb-3\">\r\n        <label for=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"fieldId") || (depth0 != null ? lookupProperty(depth0,"fieldId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fieldId","hash":{},"data":data,"loc":{"start":{"line":3,"column":20},"end":{"line":3,"column":31}}}) : helper)))
+    + "\" class=\"control-label\">"
+    + alias4(((helper = (helper = lookupProperty(helpers,"fieldLabel") || (depth0 != null ? lookupProperty(depth0,"fieldLabel") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fieldLabel","hash":{},"data":data,"loc":{"start":{"line":3,"column":55},"end":{"line":3,"column":69}}}) : helper)))
+    + "</label>\r\n        <input type=\"text\" class=\"form-control\" id=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"fieldId") || (depth0 != null ? lookupProperty(depth0,"fieldId") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fieldId","hash":{},"data":data,"loc":{"start":{"line":4,"column":52},"end":{"line":4,"column":63}}}) : helper)))
+    + "\" placeholder=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"fieldPlaceholder") || (depth0 != null ? lookupProperty(depth0,"fieldPlaceholder") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fieldPlaceholder","hash":{},"data":data,"loc":{"start":{"line":4,"column":78},"end":{"line":4,"column":98}}}) : helper)))
+    + "\">\r\n    </div>\r\n    <div class=\"mb-3\">\r\n        <button type=\"button\" class=\"btn-material btn-material-primary-high-emphasis\">\r\n            <span class=\"mdi mdi-magnify\"></span>\r\n            Consultar</button>\r\n        <button type=\"button\" class=\"btn-material btn-material-primary-high-emphasis\">\r\n            <span class=\"mdi mdi-cog\"></span>\r\n            Tramitar</button>\r\n    </div>\r\n</form> \r\n";
+},"useData":true});
+this["Rup"]["Templates"]["rup"]["widget"]["welcome"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.parrafo1",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":1,"column":3},"end":{"line":1,"column":30}}}))
+    + "</p>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.parrafo2",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":2,"column":3},"end":{"line":2,"column":30}}}))
+    + "</p>\r\n\r\n\r\n<div class=\"help_herramienta bienvenida_1 noborder_widget\">\r\n<h2>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.seleccionActivo",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":6,"column":4},"end":{"line":6,"column":38}}}))
+    + "</h2>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.seleccionActivoText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":7,"column":3},"end":{"line":7,"column":41}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_herramienta bienvenida_2\">\r\n<h2>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.opcionConfiguracion",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":11,"column":4},"end":{"line":11,"column":42}}}))
+    + "</h2>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.opcionConfiguracionText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":12,"column":3},"end":{"line":12,"column":45}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_herramienta bienvenida_3\">\r\n<h2>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.addWidget",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":16,"column":4},"end":{"line":16,"column":32}}}))
+    + "</h2>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.addWidgetText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":17,"column":3},"end":{"line":17,"column":35}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_herramienta bienvenida_4\">\r\n<h2>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.accesoFamilias",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":21,"column":4},"end":{"line":21,"column":37}}}))
+    + "</h2>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.accesoFamiliasText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":22,"column":3},"end":{"line":22,"column":40}}}))
+    + "</p>\r\n</div>\r\n\r\n<div class=\"help_herramienta bienvenida_5\">\r\n<h2>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.herramientas",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":26,"column":4},"end":{"line":26,"column":35}}}))
+    + "</h2>\r\n<p>"
+    + alias3((lookupProperty(helpers,"i18n")||(depth0 && lookupProperty(depth0,"i18n"))||alias2).call(alias1,"welcome.herramientasText",{"name":"i18n","hash":{},"data":data,"loc":{"start":{"line":27,"column":3},"end":{"line":27,"column":38}}}))
+    + "</p>\r\n</div>\r\n\r\n";
+},"useData":true});
+          return this['Rup'];
+        }
+        ));
+        

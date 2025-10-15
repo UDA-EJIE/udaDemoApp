@@ -1,1 +1,143 @@
-!function(e,t){"function"==typeof define&&define.amd?define(["jquery","../rup.base","../templates"],t):e.ValidateBootstrapAdapter=t(jQuery)}(this,(function(e){function t(){}function r(t){e(t).parent().hasClass("rup-validate-field-error")&&(e(t).parent().find(".rup-validate-error-icon").remove(),e(t).unwrap(),e(t).parent().find("div").remove())}return t.prototype.NAME="validate_bootstrap",t.prototype.forLabelElement=function(t,r){return void 0!==r.labelForTitle&&""!==r.labelForTitle?e(t).find(":input[id='"+r.labelForId+"']").attr("oldtitle"):void 0!==r.labelForId&&""!==r.labelForId?e(t).find("label[for='"+r.labelForId+"']").text():e(t).find("label[for='"+r.labelForName+"']").text()},t.prototype.forInputNameElement=function(t,r){return e(t).find("label[for='"+r.labelForName+"']")},t.prototype.forInputIdElement=function(e,t){return e.elements[t.labelForId]},t.prototype.highlight=function(t,s){r(t),e(t).addClass("error")},t.prototype.unhighlight=function(t){r(t),e(t).removeClass("error")},t.prototype.errorElement="div",t.prototype.errorPlacement=function(t,r){var s=r.prop("name"),a=this.labels?this.labels[s]:void 0,i=e(a),o=this.icons?this.icons[s]:void 0,n=e(o),l=e("<i>").addClass("rup-validate-error-icon error mdi mdi-close").attr("aria-hidden","true");i.length>0?i.append(t):t.insertAfter(r),n.length>0?n.append(l):r.parent().hasClass("rup-validate-field-error")||(r.wrap(e("<div>").addClass("rup-validate-field-error")),l.insertAfter(r))},t.prototype.showLabel=function(t,r){var s=this.errorsFor(t),a=e(this.currentForm).data("settings");s.length?(s.removeClass(this.settings.validClass).addClass(this.settings.errorClass),s.attr("generated")&&s.html(r)):(this.settings.showFieldErrorAsDefault,s=e("<"+this.settings.errorElement+"></label>").attr({for:this.idOrName(t),generated:!0}).addClass(this.settings.errorClass).html(r||""),this.settings.wrapper&&(s=s.hide().show().wrap("<"+this.settings.wrapper+"></label>").parent()),this.labelContainer.append(s).length||(this.settings.errorPlacement?this.settings.errorPlacement(s,e(t)):s.insertAfter(t))),!r&&a.success&&(s.text(""),"string"==typeof this.settings.success?s.addClass(this.settings.success):this.settings.success(s)),this.toShow=this.toShow.add(s)},e.rup=e.rup||{},e.rup.adapter=e.rup.adapter||{},e.rup.adapter[t.prototype.NAME]=new t,e}));
+/*global jQuery */
+/*global define */
+
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+
+		// AMD. Register as an anonymous module.
+		define(['jquery', '../rup.base', '../templates'], factory);
+	} else {
+
+		// Browser globals
+		root.ValidateBootstrapAdapter = factory(jQuery);
+	}
+}(this, function ($) {
+
+	function ValidateBootstrapAdapter() {
+
+	}
+
+	ValidateBootstrapAdapter.prototype.NAME = 'validate_bootstrap';
+	
+	ValidateBootstrapAdapter.prototype.forLabelElement = function (contextForm, labelAttributes) {
+		if(labelAttributes.labelForTitle !== undefined && labelAttributes.labelForTitle !== '') {
+			return $(contextForm).find(":input[id='" + labelAttributes.labelForId + "']").attr("oldtitle");
+		}
+		else if(labelAttributes.labelForId !== undefined && labelAttributes.labelForId !== '') {
+			return $(contextForm).find("label[for='" + labelAttributes.labelForId + "']").text();
+		} else {
+			return $(contextForm).find("label[for='" + labelAttributes.labelForName + "']").text();
+		}
+	};
+	
+	ValidateBootstrapAdapter.prototype.forInputNameElement = function (contextForm, labelAttributes) {
+		return $(contextForm).find("label[for='" + labelAttributes.labelForName + "']");
+	};
+
+	ValidateBootstrapAdapter.prototype.forInputIdElement = function (contextForm, labelAttributes) {
+		return contextForm.elements[labelAttributes.labelForId];
+	};
+
+	ValidateBootstrapAdapter.prototype.highlight = function (element, errorClass) {
+		clearValidation(element);
+		$(element).addClass('error');
+	};
+
+	ValidateBootstrapAdapter.prototype.unhighlight = function (element) {
+		clearValidation(element);
+		$(element).removeClass('error');
+	};
+
+	function clearValidation(element) {
+		if ($(element).parent().hasClass('rup-validate-field-error')) {
+			$(element).parent().find('.rup-validate-error-icon').remove();
+			$(element).unwrap();
+			$(element).parent().find('div').remove();
+		}
+	}
+	ValidateBootstrapAdapter.prototype.errorElement = 'div';
+
+
+
+	ValidateBootstrapAdapter.prototype.errorPlacement = function (error, element) {
+		var name = element.prop('name'),
+			labelProp = this.labels ? this.labels[name] : undefined,
+			$labelContainer = $(labelProp),
+			iconProp = this.icons ? this.icons[name] : undefined,
+			$iconContainer = $(iconProp),
+			$icon = $('<i>').addClass('rup-validate-error-icon error mdi mdi-close').attr('aria-hidden', 'true');
+
+
+		// Posicionamiento del label
+		if ($labelContainer.length > 0) {
+			$labelContainer.append(error);
+		} else {
+			error.insertAfter(element);
+		}
+
+		// Posicionamiento del icon
+		if ($iconContainer.length > 0) {
+			$iconContainer.append($icon);
+		} else {
+			if (!element.parent().hasClass('rup-validate-field-error')) {
+				element.wrap($('<div>').addClass('rup-validate-field-error'));
+				$icon.insertAfter(element);
+			}
+		}
+	};
+
+	ValidateBootstrapAdapter.prototype.showLabel = function (element, message) {
+
+		var label = this.errorsFor(element),
+			settings = $(this.currentForm).data('settings');
+		if (label.length) {
+			// refresh error/success class
+			label.removeClass(this.settings.validClass).addClass(this.settings.errorClass);
+
+			// check if we have a generated label, replace the message then
+			label.attr('generated') && label.html(message);
+		} else {
+			// create label
+			if (this.settings.showFieldErrorAsDefault) {
+				label = $('<' + this.settings.errorElement + '></label>')
+					.attr({
+						'for': this.idOrName(element),
+						generated: true
+					})
+					.addClass(this.settings.errorClass)
+					.html(message || '');
+			} else {
+				label = $('<' + this.settings.errorElement + '></label>')
+					.attr({
+						'for': this.idOrName(element),
+						generated: true
+					})
+					.addClass(this.settings.errorClass)
+					.html(message || '');
+			}
+			if (this.settings.wrapper) {
+				// make sure the element is visible, even in IE
+				// actually showing the wrapped element is handled elsewhere
+				label = label.hide().show().wrap('<' + this.settings.wrapper + '></label>').parent();
+			}
+			if (!this.labelContainer.append(label).length)
+				this.settings.errorPlacement ?
+					this.settings.errorPlacement(label, $(element)) :
+					label.insertAfter(element);
+		}
+		if (!message && settings.success) {
+			label.text('');
+			typeof this.settings.success == 'string' ?
+				label.addClass(this.settings.success) :
+				this.settings.success(label);
+		}
+		this.toShow = this.toShow.add(label);
+	};
+
+	$.rup = $.rup || {};
+	$.rup.adapter = $.rup.adapter || {};
+
+	$.rup.adapter[ValidateBootstrapAdapter.prototype.NAME ] = new ValidateBootstrapAdapter;
+
+	return $;
+}));

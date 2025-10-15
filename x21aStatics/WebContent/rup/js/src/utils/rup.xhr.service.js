@@ -1,1 +1,53 @@
-import*as jQuery from"jquery";function AjaxError(r,e,t){this.name="AjaxError",this.message=e,this.jqXHR=r,this.errorThrown=t}function decorateAsJQuery(r){return r.done=function(e){return decorateAsJQuery(r.then(e))},r.fail=function(e){return decorateAsJQuery(r.then(null,e))},r.complete=function(e){return decorateAsJQuery(r.then(e,e))},r}AjaxError.prototype=new Error,AjaxError.prototype.constructor=AjaxError;class RupXhrService{static get(){this.ajax(arguments)}static ajax(){const r=Array.prototype.slice.call(arguments),e=jQuery.ajax.apply(this,r);return decorateAsJQuery(new Promise((function(r,t){e.then((function(e,t,o){r(e)}),(function(r,e,o){t(new AjaxError(r,e,o))}))})))}}export{RupXhrService};
+import * as jQuery from 'jquery';
+
+
+function AjaxError(jqXHR, textStatus, errorThrown) {
+	this.name = 'AjaxError';
+	this.message = textStatus;
+	this.jqXHR = jqXHR;
+	this.errorThrown = errorThrown;
+}
+AjaxError.prototype = new Error();
+AjaxError.prototype.constructor = AjaxError;
+
+
+function decorateAsJQuery(promise) {
+	promise.done = function(fn) {
+		return decorateAsJQuery(promise.then(fn));
+	};
+	promise.fail = function(fn) {
+		return decorateAsJQuery(promise.then(null, fn));
+	};
+	promise.complete = function(fn) {
+		return decorateAsJQuery(promise.then(fn, fn));
+	};
+	return promise;
+}
+
+class RupXhrService{
+
+	static get(){
+
+		this.ajax(arguments);
+
+	}
+
+	static ajax(){
+		const args = Array.prototype.slice.call(arguments);
+		const jqPromise = jQuery.ajax.apply(this, args);
+		var promise = new Promise(function(resolve, reject) {
+			jqPromise.then(function(data, textStatus, jqXHR) {
+				resolve(data);
+			}, function(jqXHR, textStatus, errorThrown) {
+				reject(new AjaxError(jqXHR, textStatus, errorThrown));
+			});
+		});
+		return decorateAsJQuery(promise);
+
+
+	}
+
+}
+
+
+export { RupXhrService };

@@ -1,2 +1,360 @@
-/*! For license information please see rup.lang.js.LICENSE.txt */
-!function(a){"function"==typeof define&&define.amd?define(["jquery","./rup.base","./rup.tooltip"],a):a(jQuery)}((function(a){a.widget("$.rup_language",{options:{languages:null,active:null,modo:"default"},_create:function(){const e=this;global.initRupI18nPromise.then((()=>{var n;this.options.active=null==a.rup.lang?"[lang]":a.rup.lang,n=this.options.active,this.options.languages=a.rup.AVAILABLE_LANGS.split(",");var t=this.element,i=a(`<a id="rup_language_choice" class="rup-language_change_option">${a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguage")}</a>`);if(a(t).addClass("ui-widget"),"default"===this.options.modo){let n,i=t.parent(),r=t.find("[data-rup-lang-current]");i.addClass("dropdown"),t.addClass("dropdown-toggle").attr({"data-toogle":"dropdown","aria-haspopup":"true","aria-expanded":"false"}),r.text(a.rup.i18nParse(a.rup.i18n.base,"rup_language."+this.options.active)),n=i.find("[aria-labelledby="+t.attr("id")+"]"),a.each(this.options.languages,(function(t,i){i=i.replace(/^\s*|\s*$/g,"");var r=a.rup.i18nParse(a.rup.i18n.base,"rup_language."+i),l=e._getLocaleChangeUrl(i);n.append(a(`<a href="${l}" class="dropdown-item">${r}</a>`))})),i.append(n)}else if("portal"===this.options.modo){let i=a("<ul>").addClass("rup-language_portal"),r=a(this.options.languages).length;a.each(this.options.languages,(function(t,l){l=l.replace(/^\s*|\s*$/g,"");var u=a.rup.i18nParse(a.rup.i18n.base,"rup_language."+l+"_short");if(l!==n){const n=a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguageLiteral_"+l)+a.rup.i18nParse(a.rup.i18n.base,"rup_language."+l);var s=e._getLocaleChangeUrl(l);a(`<li><a href="${s}"\n                                class="rup-language_portal_list ui-corner-all"\n                                title="${n}">${u}</a></li>`).appendTo(i)}else{const e=a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguageLiteral")+a.rup.i18nParse(a.rup.i18n.base,"rup_language."+l);a(`<li class="ui-state-active"><a href="javascript:void(0);"\n                                class="rup-language_portal_list_active ui-corner-all"\n                                title="${e}">${u}</a></li>`).appendTo(i)}t<r-1&&i.append(a("<div>").html("|").addClass("rup-language_portal_separator"))})),t.append(i)}else if("classic"===this.options.modo||"jquery-ui"===this.options.modo){let u=a("<ul>").attr("id","ulGeneral"),s=a("<li>").attr("id","rup_active_language").addClass("rup-language_active").text(a.rup.i18nParse(a.rup.i18n.base,"rup_language."+this.options.active)).attr("title",a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguageLiteral")+a.rup.i18nParse(a.rup.i18n.base,"rup_language."+n)),g=a("<li>").addClass("rup-language_change").attr("id","rup_language_link"),p=a("<li>").attr("id","rup_language_list").addClass("rup-language_change_opened").css("visibility","hidden"),o=a("<div>"),c=a("<div>").addClass("rup-language_language_list"),d=a("<a>").addClass("rup-language_close_languages").attr("id","rup_language_close").attr("href","#").attr("title",a.rup.i18nParse(a.rup.i18n.base,"rup_language.closingLiteral")).html(a.rup.i18nParse(a.rup.i18n.base,"rup_global.cerrar")),_=a("<ul>");u.append(s),a("<a>").attr("href","#").text(a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguage")).appendTo(g),u.append(g),o.append(i),c.append(d),a.each(this.options.languages,(function(t,i){i=i.replace(/^\s*|\s*$/g,"");var r=a("<li>").attr("id","rup_language_lng_"+i),l=a.rup.i18nParse(a.rup.i18n.base,"rup_language."+i);if(i!==n){var u=e._getLocaleChangeUrl(i);a("<a>").appendTo(r).attr("href",u).text(l).attr("title",a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguageLiteral_"+i)+a.rup.i18nParse(a.rup.i18n.base,"rup_language."+i))}else a("<a>").appendTo(r).attr("href","javascript:void(0);").text(l).attr("title",a.rup.i18nParse(a.rup.i18n.base,"rup_language.changeLanguageLiteral")+a.rup.i18nParse(a.rup.i18n.base,"rup_language."+i));r.appendTo(_)})),c.append(_),o.append(c),p.append(o),u.append(p),t.append(u);var r=c.css("width","0.8em").width(),l=g.css("margin-right");g.css("margin-right","0px"),c.width(p.position().left-r),c.css("padding-left","0.6em"),c.css("padding-right","0.2em"),c.css("top",s.height()-1),p.hide(),p.css("visibility",""),g.css("margin-right",l),a("#rup_language_lng_"+a.rup.lang).addClass("ui-state-active"),g.click((function(){g.hide(),p.show(),a(".rup-language_language_list").find("li:not(.rup-language_language_list_active)").first().children("a").focus()})),i.click((function(){p.hide(),g.show()})),d.click((function(){p.hide(),g.show()})),p.mouseenter((function(){t.one("mouseleave",(function(){p.hide(),g.show()}))})),t.on("keydown",(function(e){switch(e.code){case"ArrowUp":a(e.target).parent().prevAll("li:not(.rup-language_language_list_active)").length>0?a(e.target).parent().prevAll("li:not(.rup-language_language_list_active)").first().children().focus():a(e.target).parent().siblings("li:not(.rup-language_language_list_active)").last().children().focus();break;case"ArrowDown":a(e.target).parent().nextAll("li:not(.rup-language_language_list_active)").length>0?a(e.target).parent().nextAll("li:not(.rup-language_language_list_active)").first().children().focus():a(e.target).parent().siblings("li:not(.rup-language_language_list_active)").first().children().focus();break;case"Escape":p.hide(),g.show()}}))}t.find("[title]").rup_tooltip({applyToPortal:!0})}))},_getLocaleChangeUrl:function(e,n){const t=new URL(window.location),i=n||a.rup.LOCALE_PARAM_NAME;return t.searchParams.set(i,e),t.toString()},_changeLocale:function(a,e){const n=this._getLocaleChangeUrl(a,e);window.location.href=n},_setOption:function(){a.Widget.prototype._setOption.apply(this,arguments)},destroy:function(){a.Widget.prototype.destroy.apply(this,arguments)},getLocaleChangeUrl:function(a){return this._getLocaleChangeUrl(a)},changeLocale:function(a){this._changeLocale(a)}})}));
+/*!
+ * Copyright 2016 E.J.I.E., S.A.
+ *
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ *      http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ */
+
+/*
+	 Plugin que genera la combo de idiomas con el siguiente formato.
+		<ul>
+			<li id="idiomaActivo" class="activo">Castellano </li>
+			<li id="enlace" class="ultimo cambio_idioma" >
+				<a href="#">Cambiar Idioma</a>
+			</li>
+			<li id="listado" class="ultimo cambio_idioma_desplegado" style="display: none;">
+				<div  class="caja_idiomas">
+					<a id="caja_listado" class="opcion_cambio" >Cambiar Idioma</a>
+					<div class="listado_idiomas">
+						<a id="cerrar" class="cerrar_idiomas" href="#" title="Cerrar"><span class="hidden">Cerrar</span></a>
+
+						<ul class="principal">
+								<li id="idioma_es" class="activo">
+									<a class="idioma">Castellano</a>
+								</li>
+								<li id="idioma_eu">
+									<a class="idioma">Euskera</a>
+								</li>
+						</ul>
+					 </div>
+				 </div>
+			</li>
+		</ul>
+*/
+
+/**
+ * El componente de idioma esta diseñado para permitir al usuario elegir, de forma intuitiva, el idioma en el que se presenta la aplicación.
+ *
+ * @summary Componente RUP Language.
+ * @module rup_language
+ * @example
+ * var properties={
+ *   // Propiedades de configuración
+ * };
+ *
+ * $("#idlanguage").rup_language(properties);
+ */
+
+(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+
+		// AMD. Register as an anonymous module.
+		define(['jquery', './rup.base', './rup.tooltip'], factory);
+	} else {
+
+		// Browser globals
+		factory(jQuery);
+	}
+}(function($) {
+
+	$.widget('$.rup_language', {
+		options: {
+			languages: null,
+			active: null,
+			modo: 'default' //portal
+		},
+
+		/**
+		 * Función encargada de crear en el DOM los elementos necesarios para el componente.
+		 *
+		 * @function _create
+		 * @private
+		 */
+		_create: function() {
+			const self = this;
+
+			global.initRupI18nPromise.then(() => {
+				var active;
+				this.options.active = $.rup.lang == null ? '[lang]' : $.rup.lang;
+				active = this.options.active;
+				this.options.languages = $.rup.AVAILABLE_LANGS.split(',');
+
+				var selfElement = this.element,
+					aChangeLang = $(`<a id="rup_language_choice" class="rup-language_change_option">${$.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguage')}</a>`);
+
+				//gestion de estilos de jquery-ui
+				$(selfElement).addClass('ui-widget');
+
+				if (this.options.modo === 'default') {
+					let $parent = selfElement.parent(),
+						$langCurrentText = selfElement.find('[data-rup-lang-current]'),
+						$languagesDropdown;
+
+					$parent.addClass('dropdown');
+					selfElement.addClass('dropdown-toggle').attr({
+						'data-toogle': 'dropdown',
+						'aria-haspopup': 'true',
+						'aria-expanded': 'false'
+					});
+
+					$langCurrentText.text($.rup.i18nParse($.rup.i18n.base, 'rup_language.' + this.options.active));
+					$languagesDropdown = $parent.find('[aria-labelledby=' + selfElement.attr('id') + ']');
+
+					$.each(this.options.languages, function(key, value) {
+						value = value.replace(/^\s*|\s*$/g, '');
+						var txt = $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value);
+
+						// Usar la función para generar la URL correcta
+						var localeUrl = self._getLocaleChangeUrl(value);
+
+						$languagesDropdown.append($(`<a href="${localeUrl}" class="dropdown-item">${txt}</a>`));
+					});
+
+					$parent.append($languagesDropdown);
+
+				} else if (this.options.modo === 'portal') {
+					let ul = $('<ul>').addClass('rup-language_portal'),
+						lng_lenght = $(this.options.languages).length;
+
+					$.each(this.options.languages, function(key, value) {
+						value = value.replace(/^\s*|\s*$/g, '');
+						var txt = $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value + '_short');
+
+						if (value !== active) {
+							const title = $.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguageLiteral_' + value) +
+								$.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value);
+
+							// Usar la función para generar la URL correcta
+							var localeUrl = self._getLocaleChangeUrl(value);
+
+							$(`<li><a href="${localeUrl}"
+                                class="rup-language_portal_list ui-corner-all"
+                                title="${title}">${txt}</a></li>`).appendTo(ul);
+						} else {
+							const title = $.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguageLiteral') +
+								$.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value);
+							$(`<li class="ui-state-active"><a href="javascript:void(0);"
+                                class="rup-language_portal_list_active ui-corner-all"
+                                title="${title}">${txt}</a></li>`).appendTo(ul);
+						}
+
+						if (key < lng_lenght - 1) {
+							ul.append($('<div>').html('|').addClass('rup-language_portal_separator'));
+						}
+					});
+
+					selfElement.append(ul);
+
+				} else if (this.options.modo === 'classic' || this.options.modo === 'jquery-ui') {
+					// Carga de los valores por defecto para los atributos que no ha introducido el usuario
+					let ul = $('<ul>').attr('id', 'ulGeneral'),
+						liIdiomaActivo = $('<li>').attr('id', 'rup_active_language').addClass('rup-language_active').text($.rup.i18nParse($.rup.i18n.base, 'rup_language.' + this.options.active)).attr('title', $.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguageLiteral') + $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + active)),
+						liEnlace = $('<li>').addClass('rup-language_change').attr('id', 'rup_language_link'),
+						liListado = $('<li>').attr('id', 'rup_language_list').addClass('rup-language_change_opened').css('visibility', 'hidden'),
+						divCajaIdiomas = $('<div>'),
+						listadoIdiomas = $('<div>').addClass('rup-language_language_list'),
+						cerrarIdioma = $('<a>').addClass('rup-language_close_languages').attr('id', 'rup_language_close').attr('href', '#').attr('title', $.rup.i18nParse($.rup.i18n.base, 'rup_language.closingLiteral')).html($.rup.i18nParse($.rup.i18n.base, 'rup_global.cerrar')),
+						ulPrincipal = $('<ul>');
+
+					ul.append(liIdiomaActivo);
+					$('<a>').attr('href', '#').text($.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguage')).appendTo(liEnlace);
+					ul.append(liEnlace);
+					divCajaIdiomas.append(aChangeLang);
+					listadoIdiomas.append(cerrarIdioma);
+
+					$.each(this.options.languages, function(key, value) {
+						value = value.replace(/^\s*|\s*$/g, '');
+						var liIdioma = $('<li>').attr('id', 'rup_language_lng_' + value),
+							txt = $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value);
+
+						if (value !== active) {
+							// Usar la función para generar la URL correcta
+							var localeUrl = self._getLocaleChangeUrl(value);
+
+							$('<a>').appendTo(liIdioma)
+								.attr('href', localeUrl)
+								.text(txt)
+								.attr('title', $.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguageLiteral_' + value) + $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value));
+						} else {
+							//hacemos que sea el lenguage actual el activo
+							$('<a>').appendTo(liIdioma)
+								.attr('href', 'javascript:void(0);')
+								.text(txt)
+								.attr('title', $.rup.i18nParse($.rup.i18n.base, 'rup_language.changeLanguageLiteral') + $.rup.i18nParse($.rup.i18n.base, 'rup_language.' + value));
+						}
+						liIdioma.appendTo(ulPrincipal);
+					});
+
+					listadoIdiomas.append(ulPrincipal);
+					divCajaIdiomas.append(listadoIdiomas);
+					liListado.append(divCajaIdiomas);
+					ul.append(liListado);
+					selfElement.append(ul);
+
+					var ajust = listadoIdiomas.css('width', '0.8em').width();
+					var saveMargin = liEnlace.css('margin-right');
+					liEnlace.css('margin-right', '0px');
+					listadoIdiomas.width((liListado.position()).left - ajust);
+					listadoIdiomas.css('padding-left', '0.6em');
+					listadoIdiomas.css('padding-right', '0.2em');
+					listadoIdiomas.css('top', liIdiomaActivo.height() - 1);
+					liListado.hide();
+					liListado.css('visibility', '');
+					liEnlace.css('margin-right', saveMargin);
+
+					//se aplica el lenguage actual el activo
+					$('#rup_language_lng_' + $.rup.lang).addClass('ui-state-active');
+
+					//evento click para mostrar el listado de idiomas
+					liEnlace.click(function() {
+						liEnlace.hide();
+						liListado.show();
+						$('.rup-language_language_list').find('li:not(.rup-language_language_list_active)').first().children('a').focus();
+					});
+
+					//evento del enlace de cambio de idioma
+					aChangeLang.click(function() {
+						liListado.hide();
+						liEnlace.show();
+					});
+
+					//evento del boton de cerrar
+					cerrarIdioma.click(function() {
+						liListado.hide();
+						liEnlace.show();
+					});
+
+					// gestion de eventos del raton sobre la parte del cambio de idioma
+					liListado.mouseenter(function() {
+						selfElement.one('mouseleave', function() {
+							liListado.hide();
+							liEnlace.show();
+						});
+					});
+
+					selfElement.on('keydown', function(event) {
+						switch (event.code) {
+							case "ArrowUp":
+								if ($(event.target).parent().prevAll('li:not(.rup-language_language_list_active)').length > 0) {
+									$(event.target).parent().prevAll('li:not(.rup-language_language_list_active)').first().children().focus();
+								} else {
+									$(event.target).parent().siblings('li:not(.rup-language_language_list_active)').last().children().focus();
+								}
+								break;
+							case "ArrowDown":
+								if ($(event.target).parent().nextAll('li:not(.rup-language_language_list_active)').length > 0) {
+									$(event.target).parent().nextAll('li:not(.rup-language_language_list_active)').first().children().focus();
+								} else {
+									$(event.target).parent().siblings('li:not(.rup-language_language_list_active)').first().children().focus();
+								}
+								break;
+							case "Escape":
+								liListado.hide();
+								liEnlace.show();
+								break;
+							default:
+						}
+					});
+				}
+
+				// Se aplica el tooltip
+				selfElement.find('[title]').rup_tooltip({
+					'applyToPortal': true
+				});
+			});
+		},
+
+		/**
+		 * Genera URL de cambio de idioma manteniendo todos los parámetros existentes.
+		 * 
+		 * @function _getLocaleChangeUrl
+		 * @private
+		 * @param {string} newLocale - El nuevo idioma a establecer
+		 * @param {string} [paramName] - Nombre del parámetro de locale (por defecto usa $.rup.LOCALE_PARAM_NAME)
+		 * @returns {string} La URL completa con todos los parámetros preservados
+		 */
+		_getLocaleChangeUrl: function(newLocale, paramName) {
+			const url = new URL(window.location);
+			const localeParam = paramName || $.rup.LOCALE_PARAM_NAME;
+			url.searchParams.set(localeParam, newLocale);
+			return url.toString();
+		},
+
+		/**
+		 * Cambia el idioma redirigiendo a la nueva URL manteniendo parámetros existentes.
+		 * 
+		 * @function _changeLocale
+		 * @private
+		 * @param {string} newLocale - El nuevo idioma a establecer
+		 * @param {string} [paramName] - Nombre del parámetro de locale (por defecto usa $.rup.LOCALE_PARAM_NAME)
+		 */
+		_changeLocale: function(newLocale, paramName) {
+			const newUrl = this._getLocaleChangeUrl(newLocale, paramName);
+			window.location.href = newUrl;
+		},
+
+		/**
+		 * Modifica las opciones de configuración del componente.
+		 *
+		 * @function _setOption
+		 * @private
+		 */
+		_setOption: function() {
+			$.Widget.prototype._setOption.apply(this, arguments);
+		},
+
+		/**
+		 * Elimina el componente.
+		 *
+		 * @function destroy
+		 * @example
+		 * $("#idlanguage").rup_language("destroy");
+		 */
+		destroy: function() {
+			$.Widget.prototype.destroy.apply(this, arguments);
+		},
+
+		/**
+		 * Método público para obtener URL de cambio de idioma.
+		 * 
+		 * @function getLocaleChangeUrl
+		 * @param {string} newLocale - El nuevo idioma a establecer
+		 * @returns {string} La URL completa con todos los parámetros preservados
+		 * @example
+		 * var spanishUrl = $("#idlanguage").rup_language("getLocaleChangeUrl", "es");
+		 */
+		getLocaleChangeUrl: function(newLocale) {
+			return this._getLocaleChangeUrl(newLocale);
+		},
+
+		/**
+		 * Método público para cambiar idioma programáticamente.
+		 * 
+		 * @function changeLocale
+		 * @param {string} newLocale - El nuevo idioma a establecer
+		 * @example
+		 * $("#idlanguage").rup_language("changeLocale", "es");
+		 */
+		changeLocale: function(newLocale) {
+			this._changeLocale(newLocale);
+		}
+	});
+
+	/**
+	 * Opciones por defecto de configuración del componente.
+	 * @name defaults
+	 *
+	 * @property {object} languages - Conjunto de idiomas que serán gestionados con el componente. El listado de los mismos, por configuración general, se gestiona a través de la variable jQuery "$.rup.AVAILABLE_LANGS_ARRAY". Para mas información, consultar el documento "Anexo-Gestion_idiomatica.doc" de la documentación de UDA.
+	 * @property {string} [modo] - Determina el tipo de maquetación que utilizara el componente para presentar las diferentes opciones idiomáticas. Si el valor especificado es "portal", los idiomas se presentaran en un listado horizontal separado por barras (ver ejemplo visual del capítulo/Sección "2. Ejemplo"). En cualquier otro caso, se mostrara el modo por defecto (ver ejemplo visual del capítulo/Sección "2. Ejemplo").
+	 */
+
+}));

@@ -1,1 +1,71 @@
-!function(e,t){"function"==typeof define&&define.amd?define(["jquery","../rup.base","../templates"],t):e.TimeMaterialAdapter=t(jQuery)}(this,(function(e){function t(){}return t.prototype.NAME="time_material",t.prototype.initIconTrigger=function(t){var i,r,a,n=this;if(!n.is("div")){i=e("<div>").addClass("rup-time-input-group-material"),r=e("<button>").attr("type","button").addClass("ui-timepicker-trigger"),a=e("<i>").attr("aria-hidden","true").addClass("mdi mdi-clock"),r.append(a),n.wrap(i),r.insertAfter(n);let t=e('label[for="'+n[0].id+'"]');e.each(t,(function(i,a){if(i>0){let r=t[i-1].offsetLeft,n=e(t[i-1]).outerWidth();e(a).css({left:r+n+10+"px"}),e(a).insertAfter(e(t[i-1]))}else e(a).insertAfter(r)})),r.on("click",(function(){"none"===e("#ui-datepicker-div").css("display")?n.timepicker("show"):n.timepicker("hide")}))}e(".ui-datepicker, .ui-datepicker-inline").addClass("material-datepicker")},e.rup=e.rup||{},e.rup.adapter=e.rup.adapter||{},e.rup.adapter[t.prototype.NAME]=new t,e}));
+/*global jQuery */
+/*global define */
+
+( function(root, factory ) {
+	if ( typeof define === 'function' && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define( ['jquery','../rup.base','../templates'], factory );
+	} else {
+
+		// Browser globals
+		root.TimeMaterialAdapter = factory( jQuery );
+	}
+} (this,  function( $ ) {
+
+	function TimeMaterialAdapter(){
+
+	}
+
+	TimeMaterialAdapter.prototype.NAME = 'time_material';
+
+	TimeMaterialAdapter.prototype.initIconTrigger = function (settings) {
+		var $self = this,
+			$div, $button, $icon;
+
+		if (!$self.is('div')){
+
+			$div = $('<div>').addClass('rup-time-input-group-material');
+			$button = $('<button>').attr('type','button').addClass('ui-timepicker-trigger');
+			$icon = $('<i>').attr('aria-hidden', 'true').addClass('mdi mdi-clock');
+
+			$button.append($icon);
+			
+			$self.wrap($div);
+			$button.insertAfter($self);
+			
+			// Añade los labels tras el input al que esten asociados.
+			let allLabels = $('label[for="' + $self[0].id + '"]');
+			$.each(allLabels, function(key, label) {
+				// En caso de tener mas de un label, entrara por el if (la primera iteracion siempre se añade al dom directamente).
+				if (key > 0) {
+					let previousLabelLeftValue = allLabels[key - 1].offsetLeft;
+					let previousLabelWidthValue = $(allLabels[key - 1]).outerWidth();
+					
+					$(label).css({left: '' + (previousLabelLeftValue + previousLabelWidthValue + 10) + 'px'});
+					$(label).insertAfter($(allLabels[key - 1]));
+				} else {
+					$(label).insertAfter($button);
+				}
+			});
+			
+			$button.on('click', function(){
+				if ( $('#ui-datepicker-div').css('display')==='none'){
+					$self.timepicker('show');
+				} else {
+					$self.timepicker('hide');
+				}
+			});
+		}
+		
+		// Estiliza el dialogo
+		$(".ui-datepicker, .ui-datepicker-inline").addClass("material-datepicker");
+	};
+
+	$.rup = $.rup || {};
+	$.rup.adapter = $.rup.adapter || {};
+
+	$.rup.adapter[TimeMaterialAdapter.prototype.NAME ] = new TimeMaterialAdapter;
+
+	return $;
+}));

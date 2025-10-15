@@ -1,2 +1,579 @@
-/*! For license information please see rup.table.rowGroup.js.LICENSE.txt */
-!function(t){"function"==typeof define&&define.amd?define(["jquery","datatables.net"],(function(r){return t(r,window,document)})):"object"==typeof exports?module.exports=function(r,e){return r||(r=window),e&&e.fn.dataTable||(e=require("datatables.net")(r,e).$),t(e,0,r.document)}:t(jQuery,window,document)}((function(t,r,e,n){"use strict";var i=t.fn.dataTable,o=function(r,e){if(!i.versionCheck||!i.versionCheck("1.11"))throw"RowGroup requires DataTables 1.11 or newer";this.c=t.extend(!0,{},i.defaults.rowGroup,o.defaults,e),this.s={dt:new i.Api(r)},this.dom={};var n=this.s.dt.settings()[0],s=n.rowGroup;if(s)return s;n.rowGroup=this,this._constructor()};return t.extend(o.prototype,{dataSrc:function(r){if(r===n)return this.c.dataSrc;var e=this.s.dt;return this.c.dataSrc=r,t(e.table().node()).triggerHandler("rowgroup-datasrc.dt",[e,r]),this},disable:function(){return this.c.enable=!1,this},enable:function(t){return!1===t?this.disable():(this.c.enable=!0,this)},enabled:function(){return this.c.enable},_constructor:function(){var t=this,r=this.s.dt,e=r.settings()[0];r.on("draw.dtrg",(function(r,n){t.c.enable&&e===n&&t._draw()})),r.on("column-visibility.dt.dtrg responsive-resize.dt.dtrg",(function(){t._adjustColspan()})),r.on("destroy",(function(){r.off(".dtrg")}))},_adjustColspan:function(){t("tr."+this.c.className,this.s.dt.table().body()).find("th:visible, td:visible").attr("colspan",this._colspan())},_colspan:function(){return this.s.dt.columns().visible().reduce((function(t,r){return t+r}),0)},_draw:function(){var t=this.s.dt,r=this._group(0,t.rows({page:"current"}).indexes());this._groupDisplay(0,r)},_group:function(t,r){var e,o,s,a,u=Array.isArray(this.c.dataSrc)?this.c.dataSrc:[this.c.dataSrc],l=i.util.get(u[t]),d=this.s.dt,c=[];for(s=0,a=r.length;s<a;s++){var p=r[s];null!==(e=l(d.row(p).data(),t))&&e!==n||(e=this.c.emptyDataGroup),o!==n&&e===o||(c.push({dataPoint:e,rows:[]}),o=e),c[c.length-1].rows.push(p)}if(u[t+1]!==n)for(s=0,a=c.length;s<a;s++)c[s].children=this._group(t+1,c[s].rows);return c},_groupDisplay:function(r,e){for(var n,o=this.s.dt,s=o.context[0],a=0,u=e.length;a<u;a++){var l,d=e[a],c=d.dataPoint,p=d.rows,h=t("<span></span>").addClass("ui-icon tree-wrap-ltr ui-icon-circlesmall-minus");h.attr("identificador",a),this.c.startRender&&(n=this.c.startRender.call(this,o.rows(p),c,r),(l=this._rowWrap(n,this.c.startClassName,r))&&(l.insertBefore(o.row(p[0]).node()),t("td",l).prepend(h),l.click((function(){let r=t(this).find("span")[0],e=Number(r.getAttribute("identificador"));t(r).hasClass("ui-icon-circlesmall-minus")?i.Api().rowGroup().collapse(s,e,r,"next"):i.Api().rowGroup().expand(s,e,r,"next")})))),this.c.endRender&&(n=this.c.endRender.call(this,o.rows(p),c,r),(l=this._rowWrap(n,this.c.endClassName,r))&&(l.insertAfter(o.row(p[p.length-1]).node()),t("td",l).prepend(h),l.click((function(){let r=t(this).find("span")[0],e=Number(r.getAttribute("identificador"));t(r).hasClass("ui-icon-circlesmall-minus")?i.Api().rowGroup().collapse(s,e,r,"prev"):i.Api().rowGroup().expand(s,e,r,"prev")})))),d.children&&this._groupDisplay(r+1,d.children)}s.oInit.rowGroup.hiddenDefault&&i.Api().rowGroup().collapse(s)},_rowWrap:function(r,e,i){return null!==r&&""!==r||(r=this.c.emptyDataGroup),r===n||null===r?null:("object"==typeof r&&r.nodeName&&"tr"===r.nodeName.toLowerCase()?t(r):r instanceof t&&r.length&&"tr"===r[0].nodeName.toLowerCase()?r:t("<tr/>").append(t("<th/>").attr("colspan",this._colspan()).attr("scope","row").append(r))).addClass(this.c.className).addClass(e).addClass("dtrg-level-"+i)},_getRowsByGroup:function(r,e){let n=[];return"prev"===e?t.each(r.prevAll(),(function(){if(t(this).hasClass("dtrg-group"))return!1;n.push(this)})):t.each(r.nextAll(),(function(){if(t(this).hasClass("dtrg-group"))return!1;n.push(this)})),n}}),o.defaults={className:"cursor_pointer dtrg-group",dataSrc:0,emptyDataGroup:"No group",enable:!0,endClassName:"dtrg-end",endRender:null,startClassName:"dtrg-start",startRender:function(t,r){return r}},o.version="1.5.1",t.fn.dataTable.RowGroup=o,t.fn.DataTable.RowGroup=o,i.Api.register("rowGroup()",(function(){return this})),i.Api.register("rowGroup().disable()",(function(){return this.iterator("table",(function(t){t.rowGroup&&t.rowGroup.enable(!1)}))})),i.Api.register("rowGroup().enable()",(function(t){return this.iterator("table",(function(r){r.rowGroup&&r.rowGroup.enable(t===n||t)}))})),i.Api.register("rowGroup().enabled()",(function(){var t=this.context;return!(!t.length||!t[0].rowGroup)&&t[0].rowGroup.enabled()})),i.Api.register("rowGroup().dataSrc()",(function(t){return t===n?this.context[0].rowGroup.dataSrc():this.iterator("table",(function(r){r.rowGroup&&r.rowGroup.dataSrc(t)}))})),i.Api.register("rowGroup().expand()",(function(r,e,i,o){if(e===n){let e=t(r.nTBody).find("tr.dtrg-group span");t(r.nTBody).find("tr:not(.dtrg-group)").show(),e.addClass("ui-icon-circlesmall-minus"),e.removeClass("ui-icon-circlesmall-plus")}else{i===n&&(i=t(r.nTBody).find("[identificador="+e+"]")[0]);let s=r.rowGroup._getRowsByGroup(t(i.parentNode.parentElement),o);t.each(s,(function(){t(this).show()})),t(i).addClass("ui-icon-circlesmall-minus"),t(i).removeClass("ui-icon-circlesmall-plus"),t(i).triggerHandler("tablaGroupingClickGroupExpand",r)}})),i.Api.register("rowGroup().collapse()",(function(r,e,i,o){if(e===n){let e=t(r.nTBody).find("tr.dtrg-group span");t(r.nTBody).find("tr:not(.dtrg-group)").hide(),e.addClass("ui-icon-circlesmall-plus"),e.removeClass("ui-icon-circlesmall-minus")}else{i===n&&(i=t(r.nTBody).find("[identificador="+e+"]")[0]);let s=r.rowGroup._getRowsByGroup(t(i.parentNode.parentElement),o);t.each(s,(function(){t(this).hide()})),t(i).addClass("ui-icon-circlesmall-plus"),t(i).removeClass("ui-icon-circlesmall-minus"),t(i).triggerHandler("tablaGroupingClickGroup",r)}})),t(e).on("preInit.dt.dtrg",(function(r,e,n){if("dt"===r.namespace){var s=e.oInit.rowGroup,a=i.defaults.rowGroup;if(s||a){var u=t.extend({},a,s);!1!==s&&new o(e,u)}}})),o}));
+/*! RowGroup 1.5.1
+ * © SpryMedia Ltd - datatables.net/license
+ */
+
+/**
+ * @summary     RowGroup
+ * @description RowGrouping for DataTables
+ * @module      "rup.table.rowGroup"
+ * @version     1.5.1
+ * @author      SpryMedia Ltd (www.sprymedia.co.uk)
+ * @contact     datatables.net
+ * @copyright   SpryMedia Ltd.
+ *
+ * This source file is free software, available under the following license:
+ *   MIT license - http://datatables.net/license/mit
+ *
+ * This source file is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
+ *
+ * For details please refer to: http://www.datatables.net
+ */
+
+(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery', 'datatables.net'], function($) {
+			return factory($, window, document);
+		});
+	}
+	else if (typeof exports === 'object') {
+		// CommonJS
+		module.exports = function(root, $) {
+			if (!root) {
+				root = window;
+			}
+
+			if (!$ || !$.fn.dataTable) {
+				$ = require('datatables.net')(root, $).$;
+			}
+
+			return factory($, root, root.document);
+		};
+	}
+	else {
+		// Browser
+		factory(jQuery, window, document);
+	}
+}(function($, window, document, undefined) {
+	'use strict';
+	var DataTable = $.fn.dataTable;
+
+	var RowGroup = function (dt, opts) {
+		// Sanity check that we are using DataTables 1.10 or newer
+		if (!DataTable.versionCheck || !DataTable.versionCheck('1.11')) {
+			throw 'RowGroup requires DataTables 1.11 or newer';
+		}
+	
+		// User and defaults configuration object
+		this.c = $.extend(true, {}, DataTable.defaults.rowGroup, RowGroup.defaults, opts);
+	
+		// Internal settings
+		this.s = {
+			dt: new DataTable.Api(dt)
+		};
+	
+		// DOM items
+		this.dom = {};
+	
+		// Check if row grouping has already been initialised on this table
+		var settings = this.s.dt.settings()[0];
+		var existing = settings.rowGroup;
+		if (existing) {
+			return existing;
+		}
+	
+		settings.rowGroup = this;
+		this._constructor();
+	};
+	
+	$.extend(RowGroup.prototype, {
+		/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * API methods for DataTables API interface
+		 */
+	
+		/**
+		 * Get/set the grouping data source - need to call draw after this is
+		 * executed as a setter
+		 * @returns string~RowGroup
+		 */
+		dataSrc: function (val) {
+			if (val === undefined) {
+				return this.c.dataSrc;
+			}
+	
+			var dt = this.s.dt;
+	
+			this.c.dataSrc = val;
+	
+			$(dt.table().node()).triggerHandler('rowgroup-datasrc.dt', [dt, val]);
+	
+			return this;
+		},
+	
+		/**
+		 * Disable - need to call draw after this is executed
+		 * @returns RowGroup
+		 */
+		disable: function () {
+			this.c.enable = false;
+			return this;
+		},
+	
+		/**
+		 * Enable - need to call draw after this is executed
+		 * @returns RowGroup
+		 */
+		enable: function (flag) {
+			if (flag === false) {
+				return this.disable();
+			}
+	
+			this.c.enable = true;
+			return this;
+		},
+	
+		/**
+		 * Get enabled flag
+		 * @returns boolean
+		 */
+		enabled: function () {
+			return this.c.enable;
+		},
+	
+		/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * Constructor
+		 */
+		_constructor: function () {
+			var that = this;
+			var dt = this.s.dt;
+			var hostSettings = dt.settings()[0];
+	
+			dt.on('draw.dtrg', function (e, s) {
+				if (that.c.enable && hostSettings === s) {
+					that._draw();
+				}
+			});
+	
+			dt.on('column-visibility.dt.dtrg responsive-resize.dt.dtrg', function () {
+				that._adjustColspan();
+			});
+	
+			dt.on('destroy', function () {
+				dt.off('.dtrg');
+			});
+		},
+	
+		/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		 * Private methods
+		 */
+	
+		/**
+		 * Adjust column span when column visibility changes
+		 * @private
+		 */
+		_adjustColspan: function () {
+			$('tr.' + this.c.className, this.s.dt.table().body())
+				.find('th:visible, td:visible')
+				.attr('colspan', this._colspan());
+		},
+	
+		/**
+		 * Get the number of columns that a grouping row should span
+		 * @private
+		 */
+		_colspan: function () {
+			return this.s.dt
+				.columns()
+				.visible()
+				.reduce(function (a, b) {
+					return a + b;
+				}, 0);
+		},
+	
+		/**
+		 * Update function that is called whenever we need to draw the grouping rows.
+		 * This is basically a bootstrap for the self iterative _group and _groupDisplay
+		 * methods
+		 * @private
+		 */
+		_draw: function () {
+			var dt = this.s.dt;
+			var groupedRows = this._group(0, dt.rows({ page: 'current' }).indexes());
+	
+			this._groupDisplay(0, groupedRows);
+		},
+	
+		/**
+		 * Get the grouping information from a data set (index) of rows
+		 * @param {number} level Nesting level
+		 * @param {DataTables.Api} rows API of the rows to consider for this group
+		 * @returns {object[]} Nested grouping information - it is structured like this:
+		 *	{
+		 *		dataPoint: 'Edinburgh',
+		 *		rows: [ 1,2,3,4,5,6,7 ],
+		 *		children: [ {
+		 *			dataPoint: 'developer'
+		 *			rows: [ 1, 2, 3 ]
+		 *		},
+		 *		{
+		 *			dataPoint: 'support',
+		 *			rows: [ 4, 5, 6, 7 ]
+		 *		} ]
+		 *	}
+		 * @private
+		 */
+		_group: function (level, rows) {
+			var fns = Array.isArray(this.c.dataSrc) ? this.c.dataSrc : [this.c.dataSrc];
+			var fn = DataTable.util.get(fns[level]);
+			var dt = this.s.dt;
+			var group, last;
+			var i, ien;
+			var data = [];
+			var that = this;
+	
+			for (i = 0, ien = rows.length; i < ien; i++) {
+				var rowIndex = rows[i];
+				var rowData = dt.row(rowIndex).data();
+	
+				group = fn(rowData, level);
+	
+				if (group === null || group === undefined) {
+					group = that.c.emptyDataGroup;
+				}
+	
+				if (last === undefined || group !== last) {
+					data.push({
+						dataPoint: group,
+						rows: []
+					});
+	
+					last = group;
+				}
+	
+				data[data.length - 1].rows.push(rowIndex);
+			}
+	
+			if (fns[level + 1] !== undefined) {
+				for (i = 0, ien = data.length; i < ien; i++) {
+					data[i].children = this._group(level + 1, data[i].rows);
+				}
+			}
+	
+			return data;
+		},
+	
+		/**
+		 * Row group display - insert the rows into the document
+		 * @param {number} level Nesting level
+		 * @param {object[]} groups Takes the nested array from `_group`
+		 * @private
+		 */
+		_groupDisplay: function (level, groups) {
+			var dt = this.s.dt;
+			var ctx = dt.context[0];
+			var display;
+	
+			for (var i = 0, ien = groups.length; i < ien; i++) {
+				var group = groups[i];
+				var groupName = group.dataPoint;
+				var row;
+				var rows = group.rows;
+				var span = $('<span></span>').addClass('ui-icon tree-wrap-ltr ui-icon-circlesmall-minus');
+				span.attr('identificador', i);
+	
+				if (this.c.startRender) {
+					display = this.c.startRender.call(this, dt.rows(rows), groupName, level);
+					row = this._rowWrap(display, this.c.startClassName, level);
+	
+					if (row) {
+						row.insertBefore(dt.row(rows[0]).node());
+						
+						$('td', row).prepend(span);
+						row.click(function() {
+							let span = $(this).find('span')[0];
+							let position = Number(span.getAttribute("identificador"));
+	
+							if ($(span).hasClass('ui-icon-circlesmall-minus')) {
+								DataTable.Api().rowGroup().collapse(ctx, position, span, "next");
+							} else {
+								DataTable.Api().rowGroup().expand(ctx, position, span, "next");
+							}
+						});
+					}
+				}
+	
+				if (this.c.endRender) {
+					display = this.c.endRender.call(this, dt.rows(rows), groupName, level);
+					row = this._rowWrap(display, this.c.endClassName, level);
+	
+					if (row) {
+						row.insertAfter(dt.row(rows[rows.length - 1]).node());
+						
+						$('td', row).prepend(span);
+						row.click(function() {
+							let span = $(this).find('span')[0];
+							let position = Number(span.getAttribute("identificador"));
+	
+							if ($(span).hasClass('ui-icon-circlesmall-minus')) {
+								DataTable.Api().rowGroup().collapse(ctx, position, span, "prev");
+							} else {
+								DataTable.Api().rowGroup().expand(ctx, position, span, "prev");
+							}
+						});
+					}
+				}
+	
+				if (group.children) {
+					this._groupDisplay(level + 1, group.children);
+				}
+			}
+			
+			if (ctx.oInit.rowGroup.hiddenDefault) {
+				DataTable.Api().rowGroup().collapse(ctx);
+			}
+		},
+	
+		/**
+		 * Take a rendered value from an end user and make it suitable for display
+		 * as a row, by wrapping it in a row, or detecting that it is a row.
+		 * @param {node|jQuery|string} display Display value
+		 * @param {string} className Class to add to the row
+		 * @param {array} group
+		 * @param {number} group level
+		 * @private
+		 */
+		_rowWrap: function (display, className, level) {
+			var row;
+	
+			if (display === null || display === '') {
+				display = this.c.emptyDataGroup;
+			}
+	
+			if (display === undefined || display === null) {
+				return null;
+			}
+	
+			if (
+				typeof display === 'object' &&
+				display.nodeName &&
+				display.nodeName.toLowerCase() === 'tr'
+			) {
+				row = $(display);
+			}
+			else if (
+				display instanceof $ &&
+				display.length &&
+				display[0].nodeName.toLowerCase() === 'tr'
+			) {
+				row = display;
+			}
+			else {
+				row = $('<tr/>').append(
+					$('<th/>').attr('colspan', this._colspan()).attr('scope', 'row').append(display)
+				);
+			}
+	
+			return row
+				.addClass(this.c.className)
+				.addClass(className)
+				.addClass('dtrg-level-' + level);
+		},
+		
+		/*
+		 * Get the rows of a group.
+		 * @param [object] group Group parent row
+		 * @param [string] direction Sets the direction in which elements will be selected
+		 * @private 
+		 */
+		_getRowsByGroup: function(group, direction) {
+			let rows = [];
+	
+			if (direction === "prev") {
+				$.each(group.prevAll(), function() {
+					if ($(this).hasClass("dtrg-group")) {
+						return false;
+					}
+	
+					rows.push(this);
+				})
+			} else {
+				$.each(group.nextAll(), function() {
+					if ($(this).hasClass("dtrg-group")) {
+						return false;
+					}
+	
+					rows.push(this);
+				})
+			}
+	
+			return rows;
+		}
+	});
+	
+	/**
+	 * RowGroup default settings for initialisation
+	 *
+	 * @namespace
+	 * @name RowGroup.defaults
+	 * @static
+	 */
+	RowGroup.defaults = {
+		/**
+		 * Class to apply to grouping rows - applied to both the start and
+		 * end grouping rows.
+		 * @type string
+		 */
+		className: 'cursor_pointer dtrg-group',
+	
+		/**
+		 * Data property from which to read the grouping information
+		 * @type string|integer|array
+		 */
+		dataSrc: 0,
+	
+		/**
+		 * Text to show if no data is found for a group
+		 * @type string
+		 */
+		emptyDataGroup: 'No group',
+	
+		/**
+		 * Initial enablement state
+		 * @boolean
+		 */
+		enable: true,
+	
+		/**
+		 * Class name to give to the end grouping row
+		 * @type string
+		 */
+		endClassName: 'dtrg-end',
+	
+		/**
+		 * End grouping label function
+		 * @function
+		 */
+		endRender: null,
+	
+		/**
+		 * Class name to give to the start grouping row
+		 * @type string
+		 */
+		startClassName: 'dtrg-start',
+	
+		/**
+		 * Start grouping label function
+		 * @function
+		 */
+		startRender: function (rows, group) {
+			return group;
+		}
+	};
+	
+	RowGroup.version = '1.5.1';
+	
+	$.fn.dataTable.RowGroup = RowGroup;
+	$.fn.DataTable.RowGroup = RowGroup;
+	
+	DataTable.Api.register('rowGroup()', function () {
+		return this;
+	});
+	
+	DataTable.Api.register('rowGroup().disable()', function () {
+		return this.iterator('table', function (ctx) {
+			if (ctx.rowGroup) {
+				ctx.rowGroup.enable(false);
+			}
+		});
+	});
+	
+	DataTable.Api.register('rowGroup().enable()', function (opts) {
+		return this.iterator('table', function (ctx) {
+			if (ctx.rowGroup) {
+				ctx.rowGroup.enable(opts === undefined ? true : opts);
+			}
+		});
+	});
+	
+	DataTable.Api.register('rowGroup().enabled()', function () {
+		var ctx = this.context;
+	
+		return ctx.length && ctx[0].rowGroup ? ctx[0].rowGroup.enabled() : false;
+	});
+	
+	DataTable.Api.register('rowGroup().dataSrc()', function (val) {
+		if (val === undefined) {
+			return this.context[0].rowGroup.dataSrc();
+		}
+	
+		return this.iterator('table', function (ctx) {
+			if (ctx.rowGroup) {
+				ctx.rowGroup.dataSrc(val);
+			}
+		});
+	});
+	
+	DataTable.Api.register('rowGroup().expand()', function(ctx, position, span, direction) {
+		// Si es undefined es que quiere expandir todos
+		if (position === undefined) {
+			let selectorRowPadre = $(ctx.nTBody).find("tr.dtrg-group span");
+	
+			$(ctx.nTBody).find("tr:not(.dtrg-group)").show();
+			selectorRowPadre.addClass('ui-icon-circlesmall-minus');
+			selectorRowPadre.removeClass('ui-icon-circlesmall-plus');
+		} else {
+			if (span === undefined) {
+				span = $(ctx.nTBody).find("[identificador=" + position + "]")[0];
+			}
+	
+			let rows = ctx.rowGroup._getRowsByGroup($(span.parentNode.parentElement), direction);
+	
+			$.each(rows, function() {
+				$(this).show();
+			});
+	
+			$(span).addClass('ui-icon-circlesmall-minus');
+			$(span).removeClass('ui-icon-circlesmall-plus');
+			$(span).triggerHandler('tablaGroupingClickGroupExpand', ctx);
+		}
+	});
+	
+	DataTable.Api.register('rowGroup().collapse()', function(ctx, position, span, direction) {
+		// Si es undefined es que quiere colapsar todos
+		if (position === undefined) {
+			let selectorRowPadre = $(ctx.nTBody).find("tr.dtrg-group span");
+	
+			$(ctx.nTBody).find("tr:not(.dtrg-group)").hide();
+			selectorRowPadre.addClass('ui-icon-circlesmall-plus');
+			selectorRowPadre.removeClass('ui-icon-circlesmall-minus');
+		} else {
+			if (span === undefined) {
+				span = $(ctx.nTBody).find("[identificador=" + position + "]")[0];
+			}
+	
+			let rows = ctx.rowGroup._getRowsByGroup($(span.parentNode.parentElement), direction);
+	
+			$.each(rows, function() {
+				$(this).hide();
+			});
+	
+			$(span).addClass('ui-icon-circlesmall-plus');
+			$(span).removeClass('ui-icon-circlesmall-minus');
+			$(span).triggerHandler('tablaGroupingClickGroup', ctx);
+		}
+	});
+	
+	// Attach a listener to the document which listens for DataTables initialisation
+	// events so we can automatically initialise
+	$(document).on('preInit.dt.dtrg', function (e, settings, json) {
+		if (e.namespace !== 'dt') {
+			return;
+		}
+	
+		var init = settings.oInit.rowGroup;
+		var defaults = DataTable.defaults.rowGroup;
+	
+		if (init || defaults) {
+			var opts = $.extend({}, defaults, init);
+	
+			if (init !== false) {
+				new RowGroup(settings, opts);
+			}
+		}
+	});
+
+	return RowGroup;
+
+}));

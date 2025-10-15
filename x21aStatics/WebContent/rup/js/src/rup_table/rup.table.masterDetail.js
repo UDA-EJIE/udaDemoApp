@@ -1,2 +1,258 @@
-/*! For license information please see rup.table.masterDetail.js.LICENSE.txt */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","datatables.net"],(function(t){return e(t,window,document)})):"object"==typeof exports?module.exports=function(t,r){return t||(t=window),r&&r.fn.dataTable||(r=require("datatables.net")(t,r).$),e(r,0,t.document)}:e(jQuery,window,document)}((function(e,t,r,a){"use strict";var n=e.fn.dataTable;function i(t,r,a){a.val("-1"),e("#"+e.escapeSelector(r.sTableId)+" > tbody tr").remove();var i=t.columns().responsiveHidden().reduce((function(e,t){return!0===t?e+1:e}),0),l=e("<tr></tr>",{class:""}).append(e("<td></td>",{valign:"top",colSpan:i,class:r.oClasses.sRowEmpty}).html(r.oLanguage.sZeroRecords))[0];e("#"+e.escapeSelector(r.sTableId)+" > tbody").append(l),r.seeker.search.$searchRow.hide(),e("#"+e.escapeSelector(r.sTableId)+"addButton_1").prop("disabled",!0),n.Api().select.deselect(r)}n.masterDetail={},n.masterDetail.version="1.2.4",n.masterDetail.init=function(t){var r=t.settings()[0];let l="#"+r.sTableId+"_filter_masterPK";var o=e(l);if(0===o.length){const t=jQuery.rup.i18nTemplate(jQuery.rup.i18n.base,"rup_table.errors.noMasterPKField.msg",r.oInit.filter.$filterContainer.attr("id"),l);throw e.rup_messages("msgError",{title:jQuery.rup.i18nTemplate(jQuery.rup.i18n.base,"rup_table.errors.noMasterPKField.title"),message:t}),t}var s=e(r.oInit.masterDetail.master+" > tbody"),d=e(r.oInit.masterDetail.master).DataTable(),c=r.oInit;s.on("click.DT","tr:not(.dtrg-group)",(function(){var l=d.rows(".selected").indexes();if(l[0]!==a){var s=d.rows(l).data(),c=n.Api().rupTable.getIdPk(s[0],d.context[0].oInit);o.val(""+c),e("#"+e.escapeSelector(r.sTableId)+"_filter_filterButton").click()}else i(t,r,o)})),e("#"+e.escapeSelector(r.sTableId)).on("tableEditFormAfterData",(function(e,t){t.oInit.formEdit!=a&&(t.oInit.formEdit.data==a&&(t.oInit.formEdit.data={}),t.oInit.formEdit.data.pkValueIdPadre=d.context[0].multiselection.lastSelectedId)})),d.on("tableAfterReorderData",(function(){var a=d.context[0].multiselection;0===a.selectedIds.length?i(t,r,o):(o.val(""+a.selectedIds[0]),e("#"+e.escapeSelector(r.sTableId)+"_filter_filterButton").click())})),d.on("tableButtonsAddActionConfirmed",(function(t,r){e("#"+e.escapeSelector(r.sTableId)+"_filter_cleanButton").click(),c.filter.$filterSummary.html(" <i></i>")}))};var l=n.Api.register;return l("masterDetail()",(function(){return this.iterator("table",(function(e){n.masterDetail.init(new n.Api(e))}))})),l("masterDetail.getMasterTablePkObject()",(function(t){return function(t){var r=e("#"+e.escapeSelector(t.sTableId)+"_filter_masterPK").val(),n=t.oInit.masterDetail.masterPrimaryKey;function i(e,t){var r={},a=e.split(".");return 1===a.length?(r[e]=t,r):(r[a[0]]=i(e.substr(e.indexOf(".")+1),t),r)}if(Array.isArray(n)&&n.length>0&&r!==a){var l=t.oInit.masterDetail.multiplePkToken,o=r.split(l),s={};return o.length===n.length&&e.each(n,(function(e,t){jQuery.extend(!0,s,i(t,o[e]))})),s}return r!==a?i(n,r):r===a?null:void 0}(t)})),e(r).on("preInit.dt.dtSelect",(function(e,t){"dt"===e.namespace&&t.oInit.masterDetail!==a&&n.masterDetail.init(new n.Api(t))})),n.masterDetail}));
+/**
+ * Módulo que permite toda la seleción simple
+ *
+ * @summary 		Extensión del componente RUP Datatable
+ * @module			"rup.table.masterDetail"
+ * @version     1.0.0
+ * @license
+ * Licencia con arreglo a la EUPL, Versión 1.1 exclusivamente (la «Licencia»);
+ * Solo podrá usarse esta obra si se respeta la Licencia.
+ * Puede obtenerse una copia de la Licencia en
+ *
+ *      http://ec.europa.eu/idabc/eupl.html
+ *
+ * Salvo cuando lo exija la legislación aplicable o se acuerde por escrito,
+ * el programa distribuido con arreglo a la Licencia se distribuye «TAL CUAL»,
+ * SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ni expresas ni implícitas.
+ * Véase la Licencia en el idioma concreto que rige los permisos y limitaciones
+ * que establece la Licencia.
+ * @copyright   Copyright 2018 E.J.I.E., S.A.
+ *
+ */
+
+/*global define */
+/*global jQuery */
+
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['jquery', 'datatables.net'], function ($) {
+            return factory($, window, document);
+        });
+    } else if (typeof exports === 'object') {
+        // CommonJS
+        module.exports = function (root, $) {
+            if (!root) {
+                root = window;
+            }
+
+            if (!$ || !$.fn.dataTable) {
+                $ = require('datatables.net')(root, $).$;
+            }
+
+            return factory($, root, root.document);
+        };
+    } else {
+        // Browser
+        factory(jQuery, window, document);
+    }
+}(function ($, window, document, undefined) {
+    'use strict';
+    var DataTable = $.fn.dataTable;
+
+
+    // Version information for debugger
+    DataTable.masterDetail = {};
+
+    DataTable.masterDetail.version = '1.2.4';
+
+    /**
+	 * Se inicializa el componente select
+	 *
+	 * @name init
+	 * @function
+	 * @since UDA 3.4.0
+	 * 
+	 * @param {object} dt - Es el objeto table.
+	 *
+	 */
+    DataTable.masterDetail.init = function (dt) {
+        var ctx = dt.settings()[0];
+        //se crear el hidden en el formulario. 
+        let masterPKInputId = '#' + ctx.sTableId + '_filter_masterPK';
+        var $hiddenPKMaster = $(masterPKInputId);
+
+        if ($hiddenPKMaster.length === 0) {
+            const msgError = jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, 'rup_table.errors.noMasterPKField.msg', ctx.oInit.filter.$filterContainer.attr('id'), masterPKInputId);
+            $.rup_messages('msgError', {
+                title: jQuery.rup.i18nTemplate(jQuery.rup.i18n.base, 'rup_table.errors.noMasterPKField.title'),
+                message: msgError
+            });
+            throw msgError;
+        }
+
+        var rowsBody = $(ctx.oInit.masterDetail.master + ' > tbody');
+
+        var tableMaster = $(ctx.oInit.masterDetail.master).DataTable();
+        
+		var tableDetailOptions = ctx.oInit;
+
+        //Se edita el row/fila.
+        rowsBody.on('click.DT', 'tr:not(.dtrg-group)', function () {
+            //var tableMaster = $(ctx.oInit.masterDetail.master).DataTable();
+            var rowSelected = tableMaster.rows('.selected').indexes();
+            if (rowSelected[0] !== undefined) { //Se ha deseleccionado, no entrar.
+                var row = tableMaster.rows(rowSelected).data();
+                var id = DataTable.Api().rupTable.getIdPk(row[0], tableMaster.context[0].oInit);
+                $hiddenPKMaster.val('' + id);
+                $('#' + $.escapeSelector(ctx.sTableId) + '_filter_filterButton').click();
+            } else { //se deselecciona
+                _deselectMaster(dt, ctx, $hiddenPKMaster);
+            }
+
+        });
+        
+        //Se manda el valor del padre
+	    $('#' + $.escapeSelector(ctx.sTableId)).on('tableEditFormAfterData', function(event, ctx) {
+	    	if(ctx.oInit.formEdit != undefined) {
+				if (ctx.oInit.formEdit.data == undefined) {
+					ctx.oInit.formEdit.data = {};
+				}
+				ctx.oInit.formEdit.data.pkValueIdPadre = tableMaster.context[0].multiselection.lastSelectedId;
+	    	}
+		});
+
+        //Se filtra.
+        tableMaster.on('tableAfterReorderData', function () {
+            var multi = tableMaster.context[0].multiselection;
+            if (multi.selectedIds.length === 0) {
+                _deselectMaster(dt, ctx, $hiddenPKMaster);
+            } else {
+                $hiddenPKMaster.val('' + multi.selectedIds[0]);
+                $('#' + $.escapeSelector(ctx.sTableId) + '_filter_filterButton').click();
+            }
+
+        });
+        
+		// Bloquea la botonera en la tabla de detalle cuando no hay registros seleccionados en la tabla maestra.
+		tableMaster.on('tableButtonsAddActionConfirmed', function(event, ctx) {
+			$('#' + $.escapeSelector(ctx.sTableId) + '_filter_cleanButton').click();
+			// Limpia el criterio de filtrado de la tabla de detalle (parte visual).
+			tableDetailOptions.filter.$filterSummary.html(' <i></i>');
+		});
+
+    };
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * Local functions
+	 */
+
+    function _deselectMaster(dt, ctx, $hiddenPKMaster) {
+        $hiddenPKMaster.val('-1');
+        $('#' + $.escapeSelector(ctx.sTableId) + ' > tbody tr').remove();
+        var numberVisibles = dt.columns().responsiveHidden().reduce(function (a, b) {
+            return b === true ? a + 1 : a;
+        }, 0);
+        var $tr = $('<tr></tr>', {
+            'class': ''
+        })
+            .append($('<td></td>', {
+                'valign': 'top',
+                'colSpan': numberVisibles,
+                'class': ctx.oClasses.sRowEmpty
+            }).html(ctx.oLanguage.sZeroRecords))[0];
+        $('#' + $.escapeSelector(ctx.sTableId) + ' > tbody').append($tr);
+        ctx.seeker.search.$searchRow.hide();
+        $('#' + $.escapeSelector(ctx.sTableId) + 'addButton_1').prop('disabled', true);
+        DataTable.Api().select.deselect(ctx);
+    }
+
+    /**
+	 * Devuelve un objeto json con la clave primaria del registro correspondiente de la tabla maestra.
+	 *
+	 * @function getMasterTablePkObject
+	 * @param {object} options - Opciones de configuración de la acción de inserción.
+	 * @return {object} - Objeto json con la clave primaria del registro correspondiente de la tabla maestra
+	 *
+	 */
+    function _getMasterTablePkObject(ctx) {
+
+        var masterPkValue = $('#' + $.escapeSelector(ctx.sTableId) + '_filter_masterPK').val();
+        var masterPkName = ctx.oInit.masterDetail.masterPrimaryKey;
+
+        function nestJSON(key, value) {
+            var retObj = {};
+            var splitedKey = key.split('.');
+            if (splitedKey.length === 1) {
+                retObj[key] = value;
+                return retObj;
+            } else {
+                retObj[splitedKey[0]] = nestJSON(key.substr(key.indexOf('.') + 1), value);
+                return retObj;
+            }
+        }
+        //Inicio compatibilidad con masterPrimaryKey compuestas
+        if (Array.isArray(masterPkName) && masterPkName.length > 0 && (masterPkValue !== undefined)) {
+            var multiplePkToken = ctx.oInit.masterDetail.multiplePkToken;
+            var splitedMasterPkValue = masterPkValue.split(multiplePkToken);
+            var retPkObj = {};
+            if (splitedMasterPkValue.length === masterPkName.length) {
+                $.each(masterPkName, function (index, value) {
+                    jQuery.extend(true, retPkObj, nestJSON(value, splitedMasterPkValue[index]));
+                });
+            }
+            return retPkObj;
+            //Fin compatibilidad con masterPrimaryKey compuestas
+        } else {
+            if (masterPkValue !== undefined) {
+                return nestJSON(masterPkName, masterPkValue);
+            } else if (masterPkValue === undefined) {
+                return null;
+            }
+        }
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * DataTables selectors
+	 */
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * DataTables API
+	 *
+	 * For complete documentation, please refer to the docs/api directory or the
+	 * DataTables site
+	 */
+
+    // Local variables to improve compression
+    var apiRegister = DataTable.Api.register;
+
+    apiRegister('masterDetail()', function () {
+        return this.iterator('table', function (ctx) {
+            DataTable.masterDetail.init(new DataTable.Api(ctx));
+        });
+    });
+
+    apiRegister('masterDetail.getMasterTablePkObject()', function (ctx) {
+        return _getMasterTablePkObject(ctx);
+    });
+
+
+    // Common events with suitable namespaces
+    function namespacedEvents(config) {
+        var unique = config._eventNamespace;
+
+        return 'draw.dt.DT' + unique + ' select.dt.DT' + unique + ' deselect.dt.DT' + unique;
+    }
+
+
+    /* * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 * Initialisation
+	 */
+
+    // DataTables creation - check if select has been defined in the options. Note
+    // this required that the table be in the document! If it isn't then something
+    // needs to trigger this method unfortunately. The next major release of
+    // DataTables will rework the events and address this.
+    $(document).on('preInit.dt.dtSelect', function (e, ctx) {
+        if (e.namespace !== 'dt') {
+            return;
+        }
+        if (ctx.oInit.masterDetail !== undefined) {
+            DataTable.masterDetail.init(new DataTable.Api(ctx));
+        }
+    });
+
+
+    return DataTable.masterDetail;
+}));
