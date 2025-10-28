@@ -17,7 +17,7 @@
 
 <div class="container-fluid">
     <h2 style="float:none;">ERROR</h2> <br>
-    <spring:url value="${pageContext.request.contextPath}/" var="urlError" htmlEscape="true"/>
+    <spring:url value="/" var="urlError" htmlEscape="true"/>
     <a href="${urlError}"><spring:message code="error.volver" /></a>
 
     <h3>Name: </h3>${(empty param)? exception_name : param.exception_name}<br>
