@@ -25,6 +25,7 @@ jQuery(function ($) {
                 name: 'nombre',
                 editable: true,
                 hidden: false,
+                orderable: false,
 				editoptions: {
 					maxlength: 20
 				},
