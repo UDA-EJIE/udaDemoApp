@@ -476,7 +476,7 @@ jQuery(function ($) {
             			return $('<tr/>').append('<td colspan="8"><b>' + group + ' - ' + rows[0].length + ' Elemento(s) </b></td>');
             		},
             		endRender: false,
-            		dataSrc: 'nombre'
+            		dataSrc: 'apellido1'
                 };
                 $('#groups').prop('checked', true);
             } else {
