@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -47,7 +46,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 /**
  * Configuración de Jackson.
  */
-@ComponentScan("com.ejie.x21a")
 @Configuration
 @EnableWebMvc
 public class JacksonConfig implements WebMvcConfigurer {
