@@ -258,7 +258,10 @@ $(function() {
 			allowClear: true,
 			change: function(e) {
 				console.log('SelectLoadFromSelect:::Changed');
-			}
+			},
+			sortered: function(a, b) {
+			    return b.textContent.localeCompare(a.textContent, "es"); // Z → A
+			  }
 		});
 	});
 	$('.contenedor').addClass('show');
