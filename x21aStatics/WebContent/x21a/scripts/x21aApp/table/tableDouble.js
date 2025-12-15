@@ -251,6 +251,13 @@ function _init() {
 
                 plugins.formEdit = formEdit;
 
+                // Introducir propiedad dropdownParent de rup_select para evitar que el diálogo solape el desplegable.
+                $.each(tableColModels, function (index, element) {
+                    if (element.rupType === 'select' && element.editoptions) {
+                        element.editoptions.dropdownParent = '.rup-dialog';
+                    }
+                });
+
                 $('#editForm' + num).prop('checked', true);
             });
         } else {
