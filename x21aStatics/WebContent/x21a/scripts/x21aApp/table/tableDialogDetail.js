@@ -41,7 +41,8 @@ jQuery(function ($) {
                     sourceParam: {text: 'desc' +$.rup_utils.capitalizedLang(), id: 'code'},
 					autocomplete: true,
                     contains: true,
-                    combo: true
+                    combo: true,
+                    dropdownParent: '.rup-dialog'
                 }
 		    },
 		    {

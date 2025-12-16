@@ -25,6 +25,7 @@ jQuery(function ($) {
                 name: 'nombre',
                 editable: true,
                 hidden: false,
+                orderable: false,
 				editoptions: {
 					maxlength: 20
 				},
@@ -339,6 +340,13 @@ jQuery(function ($) {
 	                };
 	                
 	                plugins.formEdit = formEdit;
+
+                    // Introducir propiedad dropdownParent de rup_select para evitar que el diálogo solape el desplegable.
+                    $.each(tableColModels, function (index, element) {
+                        if (element.rupType === 'select' && element.editoptions) {
+                            element.editoptions.dropdownParent = '.rup-dialog';
+                        }
+                    });
 	
 	                $('#editForm').prop('checked', true);
 					$('#multipart').prop('disabled', false);
@@ -475,7 +483,7 @@ jQuery(function ($) {
             			return $('<tr/>').append('<td colspan="8"><b>' + group + ' - ' + rows[0].length + ' Elemento(s) </b></td>');
             		},
             		endRender: false,
-            		dataSrc: 'nombre'
+            		dataSrc: 'apellido1'
                 };
                 $('#groups').prop('checked', true);
             } else {

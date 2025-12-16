@@ -54,7 +54,10 @@ public class MvcConfig {
 		mvcInterceptor.setDefaultLanguage("es");
 		mvcInterceptor.setDefaultLayout("horizontal");
 		mvcInterceptor.setAvailableLangs("es,eu,en,fr");
+		// Activar soporte para cookie del portal r01euskadiCookie (prioridad máxima)
 		mvcInterceptor.setPortalCookie("r01euskadiCookie");
+		// Activar soporte para cookie n38Idioma de XLNetS
+		mvcInterceptor.setXlnetsCookie("n38Idioma");
 		return mvcInterceptor;
 	}
 
