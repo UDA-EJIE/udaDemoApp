@@ -129,6 +129,16 @@ public class TableUsuarioController {
         return usuario;
 	}
 	
+	@GetMapping
+	public @ResponseBody Usuario getUsuarioParam(
+			@RequestParam  String id) {
+        Usuario usuario = new Usuario();
+		usuario.setId(id);
+        usuario = this.tableUsuarioService.find(usuario);
+		TableUsuarioController.logger.info("[GET - findBy_PK] : Obtener Usuarios por PK");
+        return usuario;
+	}
+	
 	@GetMapping(value = "/{bis}/{id}")
 	public @ResponseBody Usuario2 getUsuario2(
 			@PathVariable final String bis, 
