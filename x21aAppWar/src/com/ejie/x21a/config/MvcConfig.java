@@ -29,9 +29,11 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.ejie.x38.control.MvcInterceptor;
 
-@ComponentScan("com.ejie.x21a")
 @Configuration
 @EnableWebMvc
+@ComponentScan(
+		  basePackages = "com.ejie.x21a.control"
+		)
 public class MvcConfig {
 
 	private WebApplicationContext webApplicationContext;
